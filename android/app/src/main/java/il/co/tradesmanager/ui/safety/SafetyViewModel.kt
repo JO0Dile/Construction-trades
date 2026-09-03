@@ -8,7 +8,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -24,7 +24,9 @@ class SafetyViewModel(private val container: AppContainer) : ViewModel() {
     @OptIn(ExperimentalCoroutinesApi::class)
     val templates: StateFlow<List<ChecklistTemplateEntity>> = tradeIds
         .flatMapLatest { ids ->
-            if (ids.isEmpty()) emptyFlow() else container.safety.observeTemplates(ids)
+            // Emit an empty list rather than nothing, so the screen can show its
+            // "no checklists for your trades" state instead of staying blank.
+            if (ids.isEmpty()) flowOf(emptyList()) else container.safety.observeTemplates(ids)
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 }

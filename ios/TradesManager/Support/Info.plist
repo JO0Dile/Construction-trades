@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  The English text of each usage description is here; the Hebrew and Arabic
+  versions live in <lang>.lproj/InfoPlist.strings and are generated from
+  shared/i18n/strings.json by tools/gen-strings.py. iOS prefers the localised
+  string, so a Hebrew device shows the Hebrew reason in the system prompt.
+-->
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleDisplayName</key>
+    <string>Trades Work Manager</string>
+    <key>CFBundleIdentifier</key>
+    <string>il.co.tradesmanager</string>
+    <key>CFBundleName</key>
+    <string>TradesManager</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <!-- Adding a language: one entry here, one <locale> in the Android
+         locales_config.xml, and one code in shared/i18n/strings.json. -->
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>he</string>
+        <string>ar</string>
+    </array>
+
+    <key>CFBundleAllowMixedLocalizations</key>
+    <true/>
+
+    <key>NSCameraUsageDescription</key>
+    <string>Used to photograph items and site progress, and to scan barcodes. Photos stay on this device unless you sync.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Used to attach existing photos of items and site progress to your records.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Used only while you dictate a task note in Hebrew or Arabic.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Used only while you dictate a task note in Hebrew or Arabic.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Optional. Stamps check-ins, site photos and incident reports with where they happened. The app works fully without it.</string>
+
+    <!--
+      True because the app encrypts its local database with AES-256 (SQLCipher).
+      Declaring true is the conservative answer and routes the submission
+      through App Store Connect's export-compliance questions rather than
+      skipping them. The publisher must complete the US self-classification
+      or obtain an ERN and add ITSEncryptionExportComplianceCode below; that
+      is a legal filing, not a build setting. See docs/STORE_COMPLIANCE.md.
+    -->
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <true/>
+
+    <!-- Camera and GPS are optional features, so neither is a required
+         capability: an iPad without a camera must still install the app. -->
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>arm64</string>
+    </array>
+
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+
+    <key>UILaunchScreen</key>
+    <dict>
+        <key>UIColorName</key>
+        <string>LaunchBackground</string>
+    </dict>
+
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+    </dict>
+
+    <!-- The app has no server dependency; ATS stays at its strict default so
+         any future sync endpoint is forced onto TLS 1.2+. -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+    </dict>
+</dict>
+</plist>

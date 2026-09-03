@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
@@ -40,11 +40,16 @@ class ChecklistRunViewModel(
     private val runId = MutableStateFlow<String?>(null)
     private val loaded = MutableStateFlow(State())
 
+    // flowOf(...) rather than emptyFlow() on the null branch: combine waits for
+    // every source to emit at least once, so an empty flow here would leave the
+    // screen frozen on its initial state until the run id arrived.
     @OptIn(ExperimentalCoroutinesApi::class)
     val state: StateFlow<State> = combine(
         loaded,
-        runId.flatMapLatest { id -> if (id == null) emptyFlow() else container.safety.observeRun(id) },
-        runId.flatMapLatest { id -> if (id == null) emptyFlow() else container.safety.observeRunItems(id) },
+        runId.flatMapLatest { id -> if (id == null) flowOf(null) else container.safety.observeRun(id) },
+        runId.flatMapLatest { id ->
+            if (id == null) flowOf(emptyList()) else container.safety.observeRunItems(id)
+        },
     ) { base, run, items ->
         base.copy(run = run, answers = items.associateBy { it.templateItemId })
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())

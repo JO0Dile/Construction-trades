@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Privacy manifest, required by App Store Connect for submissions since
+  May 2024. It must describe THIS build. The declarations below are true of
+  the offline build: nothing is transmitted off the device.
+
+  If a build enables cloud sync, or adds a crash-reporting or analytics SDK,
+  this file must be updated before that build is submitted — see
+  docs/STORE_COMPLIANCE.md, "When the privacy manifest has to change".
+-->
+<plist version="1.0">
+<dict>
+    <!-- No tracking, no advertising identifier, no data shared with data brokers. -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+
+    <!--
+      Empty because the offline build collects nothing in Apple's sense: site
+      photos, GPS stamps, names and stock figures are written to the device's
+      own encrypted database and never leave it. Enabling sync makes several
+      of these "collected" and this array must then be filled in.
+    -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+
+    <!-- Required-reason APIs, each with the reason code Apple publishes. -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <!-- CA92.1: read and write only this app's own defaults. -->
+                <string>CA92.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <!-- C617.1: timestamps of files inside the app's container,
+                     used to order site photos and exported reports. -->
+                <string>C617.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <!-- E174.1: check there is room before writing a photo or a
+                     PDF export, so a full device fails with a message rather
+                     than a corrupt file. -->
+                <string>E174.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>
