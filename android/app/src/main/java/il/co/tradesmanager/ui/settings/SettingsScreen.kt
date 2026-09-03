@@ -1,0 +1,221 @@
+package il.co.tradesmanager.ui.settings
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import il.co.tradesmanager.R
+import il.co.tradesmanager.core.i18n.AppLanguages
+import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.data.repository.SettingsRepository.ThemeMode
+import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.currentLanguageTag
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
+    val viewModel: SettingsViewModel = viewModel(
+        factory = ViewModelFactory(container) { SettingsViewModel(it) },
+    )
+    val settings by viewModel.settings.collectAsStateWithLifecycle()
+    val trades by viewModel.trades.collectAsStateWithLifecycle()
+    val languageTag = currentLanguageTag()
+    val context = LocalContext.current
+    val languages = remember(languageTag) { AppLanguages.supported(context) }
+    var confirmDelete by remember { mutableStateOf(false) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.set_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.action_back),
+                        )
+                    }
+                },
+            )
+        },
+    ) { padding ->
+        LazyColumn(Modifier.padding(padding)) {
+
+            item { SectionHeader(stringResource(R.string.set_language)) }
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    languages.forEach { language ->
+                        FilterChip(
+                            selected = languageTag.startsWith(language.tag),
+                            onClick = { viewModel.setLanguage(language.tag) },
+                            label = { Text(language.endonym) },
+                        )
+                    }
+                }
+            }
+
+            item { SectionHeader(stringResource(R.string.set_theme)) }
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    ThemeChip(ThemeMode.SYSTEM, R.string.set_theme_system, settings.themeMode, viewModel::setThemeMode)
+                    ThemeChip(ThemeMode.LIGHT, R.string.set_theme_light, settings.themeMode, viewModel::setThemeMode)
+                    ThemeChip(ThemeMode.DARK, R.string.set_theme_dark, settings.themeMode, viewModel::setThemeMode)
+                }
+            }
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.set_large_text)) },
+                    trailingContent = {
+                        Switch(checked = settings.largeText, onCheckedChange = viewModel::setLargeText)
+                    },
+                )
+            }
+
+            item { SectionHeader(stringResource(R.string.saf_signed_by)) }
+            item {
+                OutlinedTextField(
+                    value = settings.actorName,
+                    onValueChange = viewModel::setActorName,
+                    label = { Text(stringResource(R.string.saf_signed_by)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                )
+            }
+
+            item { SectionHeader(stringResource(R.string.set_trades)) }
+            items(trades, key = { it.id }) { trade ->
+                ListItem(
+                    headlineContent = { Text(trade.names.resolve(languageTag)) },
+                    trailingContent = {
+                        Switch(
+                            checked = trade.isSelected,
+                            onCheckedChange = { viewModel.toggleTrade(trade.id, it) },
+                        )
+                    },
+                )
+            }
+            item {
+                Column(Modifier.padding(16.dp)) {
+                    OutlinedButton(onClick = { viewModel.reseed() }, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.set_reseed))
+                    }
+                    Text(
+                        text = stringResource(R.string.set_reseed_note),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(top = 4.dp),
+                    )
+                }
+            }
+
+            item { SectionHeader(stringResource(R.string.set_security)) }
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.set_encrypt)) },
+                    supportingContent = {
+                        Text(
+                            stringResource(
+                                if (viewModel.databaseIsEncrypted) R.string.state_saved else R.string.error_generic,
+                            ),
+                        )
+                    },
+                )
+            }
+            item {
+                Column(Modifier.padding(16.dp)) {
+                    OutlinedButton(
+                        onClick = { confirmDelete = true },
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(stringResource(R.string.set_delete_data))
+                    }
+                }
+            }
+
+            item {
+                Text(
+                    text = stringResource(R.string.set_catalog_version) + ": " +
+                        settings.seededCatalogVersion,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(16.dp),
+                )
+            }
+        }
+    }
+
+    if (confirmDelete) {
+        AlertDialog(
+            onDismissRequest = { confirmDelete = false },
+            title = { Text(stringResource(R.string.set_delete_data)) },
+            text = { Text(stringResource(R.string.set_reseed_note)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        confirmDelete = false
+                        viewModel.deleteEverything(onBack)
+                    },
+                ) {
+                    Text(stringResource(R.string.action_delete))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { confirmDelete = false }) {
+                    Text(stringResource(R.string.action_cancel))
+                }
+            },
+        )
+    }
+}
+
+@Composable
+private fun ThemeChip(
+    mode: ThemeMode,
+    labelRes: Int,
+    current: ThemeMode,
+    onSelect: (ThemeMode) -> Unit,
+) {
+    FilterChip(
+        selected = current == mode,
+        onClick = { onSelect(mode) },
+        label = { Text(stringResource(labelRes)) },
+    )
+}

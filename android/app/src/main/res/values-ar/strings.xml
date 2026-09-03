@@ -89,6 +89,7 @@
     <string name="proj_name">اسم المشروع</string>
     <string name="proj_address">العنوان</string>
     <string name="proj_client">الزبون</string>
+    <string name="proj_status">الحالة</string>
     <string name="proj_start">تاريخ البدء</string>
     <string name="proj_due">تاريخ الاستحقاق</string>
     <string name="proj_notes">ملاحظات</string>

@@ -89,6 +89,7 @@
 "proj_name" = "اسم المشروع";
 "proj_address" = "العنوان";
 "proj_client" = "الزبون";
+"proj_status" = "الحالة";
 "proj_start" = "تاريخ البدء";
 "proj_due" = "تاريخ الاستحقاق";
 "proj_notes" = "ملاحظات";

@@ -89,6 +89,7 @@
     <string name="proj_name">שם הפרויקט</string>
     <string name="proj_address">כתובת</string>
     <string name="proj_client">לקוח</string>
+    <string name="proj_status">סטטוס</string>
     <string name="proj_start">תאריך התחלה</string>
     <string name="proj_due">תאריך יעד</string>
     <string name="proj_notes">הערות</string>

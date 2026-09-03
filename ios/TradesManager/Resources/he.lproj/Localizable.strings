@@ -89,6 +89,7 @@
 "proj_name" = "שם הפרויקט";
 "proj_address" = "כתובת";
 "proj_client" = "לקוח";
+"proj_status" = "סטטוס";
 "proj_start" = "תאריך התחלה";
 "proj_due" = "תאריך יעד";
 "proj_notes" = "הערות";

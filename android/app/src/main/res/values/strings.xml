@@ -90,6 +90,7 @@
     <string name="proj_name">Project name</string>
     <string name="proj_address">Address</string>
     <string name="proj_client">Client</string>
+    <string name="proj_status">Status</string>
     <string name="proj_start">Start date</string>
     <string name="proj_due">Due date</string>
     <string name="proj_notes">Notes</string>

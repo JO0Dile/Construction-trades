@@ -89,6 +89,7 @@
 "proj_name" = "Project name";
 "proj_address" = "Address";
 "proj_client" = "Client";
+"proj_status" = "Status";
 "proj_start" = "Start date";
 "proj_due" = "Due date";
 "proj_notes" = "Notes";
