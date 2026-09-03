@@ -6,8 +6,14 @@ carpenters and general builders. Tools and materials, day planning, projects,
 safety sign-off and the audit trail behind all of it, in Hebrew, Arabic and
 English, working with no signal.
 
-**Native apps.** Android is Kotlin and Jetpack Compose; iOS is Swift. There is
-no WebView, no PWA, no hybrid shell, and no browser dependency for anything.
+**Native apps.** Android is Kotlin and Jetpack Compose; iOS is Swift and
+SwiftUI. There is no WebView, no PWA, no hybrid shell, and no browser
+dependency for anything.
+
+> **This project is meant to live in a repository of its own.** It currently
+> sits inside an unrelated one. `tools/extract-standalone-repo.sh` lifts it out
+> — with its history, not as a flat copy — into a standalone repo whose root is
+> this folder. See [Moving it out](#moving-it-out).
 
 ---
 
@@ -62,8 +68,9 @@ cd android
 ./gradlew :app:testDebugUnitTest    # unit tests
 ```
 
-iOS: see [`ios/README.md`](ios/README.md). The Swift files are the shared layer
-and the store configuration; the SwiftUI screens are not written yet.
+iOS needs a Mac: see [`ios/README.md`](ios/README.md) for the fifteen-minute
+Xcode set-up, and [`docs/TESTING.md`](docs/TESTING.md) for getting a build onto
+an actual phone on either platform.
 
 ---
 
@@ -97,9 +104,23 @@ refusing to start on a site with no signal.
 
 ---
 
+## Moving it out
+
+```bash
+./tools/extract-standalone-repo.sh                       # build it locally
+./tools/extract-standalone-repo.sh git@github.com:you/trades-work-manager.git
+```
+
+The script uses `git subtree split`, so the new repository's history is the
+commits that touched this folder — not a single "initial commit" that throws
+the rest away. It also rewrites the CI workflow's paths for the new root. The
+target repository must be **empty** (no README, no licence).
+
+---
+
 ## State of the work
 
-Built and tested:
+Built, and verified by running:
 
 - the shared catalogues, and the generator and format they depend on
 - the Room data layer: 19 entities, seeding with a duplicate guard, stock
@@ -107,19 +128,29 @@ Built and tested:
 - Compose screens: onboarding, home, inventory list and editor, projects with
   templates, day schedule with check-in, safety checklist runs with sign-off,
   settings
-- 30 unit tests, all passing — locale resolution and fallback, Israeli
-  date/time/currency formats, time-of-day parsing, and the catalogue integrity
-  suite that parses all 178 items, 84 checks and 12 templates through the app's
-  own model types with unknown keys rejected
+- SwiftUI screens covering the same ground, over SwiftData models that mirror
+  the Room schema field for field, with in-app language switching that needs no
+  restart
+- barcode scanning on both platforms — CameraX with ML Kit on Android,
+  AVFoundation on iOS — and CSV + PDF export that survives Excel on Windows and
+  mirrors its columns for Hebrew and Arabic
+- 40 unit tests, all passing — locale resolution and fallback, Israeli
+  date/time/currency formats, time-of-day parsing, CSV quoting and filename
+  reduction, and a catalogue integrity suite that parses all 178 items, 84
+  checks and 12 templates through the app's own model types with unknown keys
+  rejected
 
-Not built yet, and honestly not started:
+Not built, and not pretended otherwise:
 
-- barcode scanning, photo capture and the export/report generation are wired
-  as dependencies and permissions but have no screens
-- the cloud sync implementation behind `SyncEngine`, and the on-premise service
-- iOS screens
+- **No `.xcodeproj`** — an Xcode project cannot be generated faithfully without
+  Xcode, so the iOS set-up is fifteen manual minutes on a Mac.
+- The Swift has never been compiled; this repository was built in an
+  environment with no Swift toolchain and no Android SDK. The Kotlin's pure
+  layers are compiled and tested, the Android build itself is not.
+- Photo capture, the cloud sync implementation behind `SyncEngine`, and the
+  on-premise service.
 - Hebrew and Arabic terminology review by a native-speaking tradesperson, and a
-  VoiceOver/TalkBack accessibility pass
+  VoiceOver/TalkBack accessibility pass.
 
 The safety content carries a warning in the app and in
 [`docs/CATALOG_FORMAT.md`](docs/CATALOG_FORMAT.md): the regulation references

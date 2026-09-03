@@ -1,18 +1,23 @@
 # iOS target
 
-The App Store half of the product. What is here is the part that must agree
-with Android exactly — the shared content layer and the store-facing
-configuration. The SwiftUI screens are not written yet.
+The App Store half of the product: a SwiftUI app over SwiftData, plus the
+store-facing configuration and the shared content layer that must agree with
+Android exactly.
 
 ## What is in this folder
 
 ```
 ios/TradesManager/
+  App/             entry point, root tabs, theme
+  Model/           SwiftData models, DataStore, settings, TimeOfDay
+  Localization/    instant in-app language switching
   Shared/          Swift mirror of the shared content layer
     LocalizedText.swift   the same resolve() fallback chain as Kotlin
     Catalog.swift         Codable models for shared/assets/catalog
     CatalogSource.swift   bundled catalogue, preferring a newer downloaded one
     Formats.swift         ₪, dd/MM/yyyy, 24-hour, metric
+  Features/        Onboarding, Home, Inventory, Projects, Schedule, Safety,
+                   Settings, Scanner, Export
   Resources/
     en.lproj/ he.lproj/ ar.lproj/   generated — do not edit
       Localizable.strings
@@ -28,6 +33,21 @@ an environment with no Swift toolchain and no Xcode. They are written against
 the same JSON that `CatalogIntegrityTest` validates, and the Kotlin equivalents
 of the same logic are covered by passing tests, but expect to fix compiler
 diagnostics on first build.
+
+## Two decisions worth knowing about
+
+**Deployment target is iOS 17**, because SwiftData and `@Observable` need it.
+That covers the iPhone XS and later. If older phones turn out to matter on
+site, the persistence layer is the only part that has to change — the screens
+and the shared layer do not care.
+
+**Language switching does not restart the app.** iOS has no equivalent of
+`AppCompatDelegate.setApplicationLocales`, and the usual workaround — write
+`AppleLanguages` and ask the user to relaunch — is unacceptable on a building
+site. So `Localization` resolves strings through the chosen language's `.lproj`
+bundle and pushes `locale` and `layoutDirection` into the environment, and
+`@Observable` re-renders the tree. The picker lists whatever `.lproj` folders
+are in the bundle, so a new translation appears with no code change.
 
 ## Creating the Xcode project
 
@@ -60,16 +80,17 @@ them, and the Android resources would silently drift out of step.
 
 ## What still has to be built
 
-- SwiftUI screens matching the Android set: onboarding, home, inventory,
-  projects, schedule, safety, settings.
-- Local persistence. SwiftData or Core Data with `NSPersistentStoreFileProtectionKey`
-  set to `.completeUnlessOpen` is the iOS answer to the SQLCipher layer on
-  Android; the requirement is encryption at rest, not a particular library.
-- The seeding rules, which are behaviour and not data, and must be ported
-  faithfully: reference data is separate from the user's own stock, and a
-  catalogue id already stocked is never stocked twice.
-- Sign-off blocking: a critical safety check that is failed or unanswered must
-  block the signature on iOS exactly as it does on Android.
+- **The Xcode project itself.** There is no `.xcodeproj` here; generating a
+  valid one without Xcode is not something to fake. The set-up above is the
+  whole of it.
+- Photo capture and attachment.
+- The sync implementation behind the Android `SyncEngine` interface, and the
+  on-premise service.
+- File protection: set `NSPersistentStoreFileProtectionKey` to
+  `.completeUnlessOpen` on the SwiftData store, which is the iOS answer to the
+  SQLCipher layer on Android. The requirement is encryption at rest, not a
+  particular library.
+- A VoiceOver pass in all three languages.
 
 ## Before submitting
 
