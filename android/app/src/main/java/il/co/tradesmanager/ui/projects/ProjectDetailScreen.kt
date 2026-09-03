@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -20,7 +21,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,8 +34,11 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
-import il.co.tradesmanager.ui.inventory.unitLabel
+import il.co.tradesmanager.ui.export.ExportDocument
+import il.co.tradesmanager.ui.export.Exporter
+import il.co.tradesmanager.ui.components.unitLabel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,12 +48,37 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
     )
     val state by viewModel.state.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val languageTag = currentLanguageTag()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
     val project = state.project
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(project?.name ?: stringResource(R.string.proj_title)) },
+                actions = {
+                    val project = state.project
+                    IconButton(
+                        enabled = project != null,
+                        onClick = {
+                            if (project == null) return@IconButton
+                            val result = Exporter.write(
+                                context = context,
+                                document = ExportDocument.ProjectSheet(project, state.tasks, state.materials),
+                                languageTag = languageTag,
+                                locale = locale,
+                                rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                            )
+                            context.startActivity(Exporter.shareIntent(context, result))
+                        },
+                    ) {
+                        Icon(
+                            Icons.Filled.IosShare,
+                            contentDescription = stringResource(R.string.set_export),
+                        )
+                    }
+                },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(

@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -24,7 +25,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -33,6 +37,9 @@ import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.currentLanguageTag
+import il.co.tradesmanager.ui.components.currentLocale
+import il.co.tradesmanager.ui.export.ExportDocument
+import il.co.tradesmanager.ui.export.Exporter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,11 +49,42 @@ fun ChecklistRunScreen(container: AppContainer, templateId: String, onDone: () -
     )
     val state by viewModel.state.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
+    val locale = currentLocale()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(state.template?.titles?.resolve(languageTag).orEmpty()) },
+                actions = {
+                    val template = state.template
+                    val run = state.run
+                    IconButton(
+                        enabled = template != null && run != null,
+                        onClick = {
+                            if (template == null || run == null) return@IconButton
+                            val result = Exporter.write(
+                                context = context,
+                                document = ExportDocument.Checklist(
+                                    template = template,
+                                    run = run,
+                                    checks = state.checks,
+                                    answers = state.answers.mapValues { it.value.state },
+                                ),
+                                languageTag = languageTag,
+                                locale = locale,
+                                rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                            )
+                            context.startActivity(Exporter.shareIntent(context, result))
+                        },
+                    ) {
+                        Icon(
+                            Icons.Filled.IosShare,
+                            contentDescription = stringResource(R.string.set_export),
+                        )
+                    }
+                },
                 navigationIcon = {
                     IconButton(onClick = onDone) {
                         Icon(

@@ -11,6 +11,8 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.IosShare
+import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Badge
@@ -26,20 +28,29 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
+import androidx.lifecycle.SavedStateHandle
 import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.export.ExportDocument
+import il.co.tradesmanager.ui.export.Exporter
+import il.co.tradesmanager.ui.nav.Routes
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.currentLanguageTag
+import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.components.currentLocale
 
 private val KIND_FILTERS = listOf(
@@ -56,6 +67,8 @@ fun InventoryScreen(
     container: AppContainer,
     onAddItem: () -> Unit,
     onEditItem: (String) -> Unit,
+    onScan: () -> Unit,
+    savedStateHandle: SavedStateHandle,
 ) {
     val viewModel: InventoryViewModel = viewModel(
         factory = ViewModelFactory(container) { InventoryViewModel(it) },
@@ -65,9 +78,53 @@ fun InventoryScreen(
     val lowStockCount by viewModel.lowStockCount.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
     val locale = currentLocale()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
+    val scanned by savedStateHandle
+        .getStateFlow<String?>(Routes.SCAN_RESULT, null)
+        .collectAsStateWithLifecycle()
+
+    // A scan that matches opens the item; one that does not starts a new item
+    // with the code already filled in, which is the point of scanning a label
+    // on a box you have never stocked before.
+    LaunchedEffect(scanned) {
+        val code = scanned ?: return@LaunchedEffect
+        savedStateHandle[Routes.SCAN_RESULT] = null
+        val match = viewModel.findByBarcode(code)
+        if (match != null) onEditItem(match.id) else onAddItem()
+    }
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text(stringResource(R.string.inv_title)) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.inv_title)) },
+                actions = {
+                    IconButton(onClick = onScan) {
+                        Icon(
+                            Icons.Filled.QrCodeScanner,
+                            contentDescription = stringResource(R.string.inv_scan),
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            val result = Exporter.write(
+                                context = context,
+                                document = ExportDocument.Inventory(items),
+                                languageTag = languageTag,
+                                locale = locale,
+                                rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                            )
+                            context.startActivity(Exporter.shareIntent(context, result))
+                        },
+                    ) {
+                        Icon(
+                            Icons.Filled.IosShare,
+                            contentDescription = stringResource(R.string.set_export),
+                        )
+                    }
+                },
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(onClick = onAddItem) {
                 Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.inv_add_item))
@@ -165,19 +222,6 @@ fun InventoryScreen(
     }
 }
 
-/** Units are catalogue data, so an unknown code degrades to "pcs" rather than crashing. */
-internal fun unitLabel(unit: String): Int = when (unit.uppercase()) {
-    "M" -> R.string.unit_m
-    "M2" -> R.string.unit_m2
-    "M3" -> R.string.unit_m3
-    "KG" -> R.string.unit_kg
-    "L" -> R.string.unit_l
-    "ROLL" -> R.string.unit_roll
-    "BAG" -> R.string.unit_bag
-    "PAIR" -> R.string.unit_pair
-    "BOX" -> R.string.unit_box
-    else -> R.string.unit_pcs
-}
 
 private const val USED_ON_SITE = "used_on_site"
 private const val RESTOCKED = "restocked"

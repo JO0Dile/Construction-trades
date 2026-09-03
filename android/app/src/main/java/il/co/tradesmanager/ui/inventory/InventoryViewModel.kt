@@ -46,6 +46,10 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
         _filters.value = _filters.value.copy(lowStockOnly = !_filters.value.lowStockOnly)
     }
 
+    /** Looks a scanned label up in this user's own stock. */
+    suspend fun findByBarcode(code: String): InventoryItemEntity? =
+        container.inventory.findByBarcode(code)
+
     fun adjustStock(itemId: String, delta: Double, reason: String) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
         container.inventory.adjustStock(itemId, delta, reason, actor)

@@ -32,6 +32,7 @@ import il.co.tradesmanager.ui.inventory.InventoryScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
+import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
 import il.co.tradesmanager.ui.safety.ChecklistRunScreen
 import il.co.tradesmanager.ui.safety.SafetyScreen
 import il.co.tradesmanager.ui.schedule.ScheduleScreen
@@ -48,6 +49,10 @@ object Routes {
     const val SAFETY = "safety"
     const val CHECKLIST_RUN = "safety/run"
     const val SETTINGS = "settings"
+    const val SCANNER = "scanner"
+
+    /** Key the scanner writes its result under, read by whoever launched it. */
+    const val SCAN_RESULT = "scan_result"
 
     fun inventoryEdit(itemId: String?) = "$INVENTORY_EDIT?itemId=${itemId.orEmpty()}"
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
@@ -112,11 +117,29 @@ fun AppNavHost(
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                 )
             }
-            composable(Routes.INVENTORY) {
+            composable(Routes.INVENTORY) { entry ->
                 InventoryScreen(
                     container = container,
                     onAddItem = { navController.navigate(Routes.inventoryEdit(null)) },
                     onEditItem = { navController.navigate(Routes.inventoryEdit(it)) },
+                    onScan = { navController.navigate(Routes.SCANNER) },
+                    // The scanner hands its result back through this entry's
+                    // saved state, which survives the process being killed
+                    // behind the camera on a low-memory phone. The screen
+                    // observes it and clears it once handled, so a scan is
+                    // never replayed on the next recomposition.
+                    savedStateHandle = entry.savedStateHandle,
+                )
+            }
+            composable(Routes.SCANNER) {
+                BarcodeScannerScreen(
+                    onScanned = { code ->
+                        navController.previousBackStackEntry
+                            ?.savedStateHandle
+                            ?.set(Routes.SCAN_RESULT, code)
+                        navController.popBackStack()
+                    },
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable("${Routes.INVENTORY_EDIT}?itemId={itemId}") { entry ->
