@@ -1,0 +1,42 @@
+{
+  "tradeId": "carpentry",
+  "catalogVersion": 1,
+  "checklists": [
+    {
+      "id": "sf.ca.machine",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Machine guarding and set-up", "he": "מיגון מכונות והתקנה", "ar": "حماية الآلات والإعداد" },
+      "references": ["פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970", "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"],
+      "items": [
+        { "id": "sf.ca.mc.1", "critical": true, "texts": { "en": "All guards fitted; riving knife aligned on the saw", "he": "כל המגנים מותקנים; סכין מפצל מיושר במסור", "ar": "جميع الواقيات مركّبة؛ سكين الشق محاذٍ في المنشار" } },
+        { "id": "sf.ca.mc.2", "critical": true, "texts": { "en": "Push stick used for every cut narrower than 150 mm", "he": "מוט דחיפה בכל חיתוך צר מ־150 מ״מ", "ar": "تُستخدم عصا الدفع في كل قطع أضيق من 150 ملم" } },
+        { "id": "sf.ca.mc.3", "critical": true, "texts": { "en": "Blade unplugged before any change or adjustment", "he": "הכלי מנותק מהחשמל לפני החלפת להב או כוונון", "ar": "الأداة مفصولة عن الكهرباء قبل تغيير الشفرة أو الضبط" } },
+        { "id": "sf.ca.mc.4", "critical": false, "texts": { "en": "Workpiece clamped, never held by hand near the blade", "he": "פריט העבודה מהודק, לא מוחזק ביד ליד הלהב", "ar": "القطعة مثبّتة، ولا تُمسك باليد قرب الشفرة" } },
+        { "id": "sf.ca.mc.5", "critical": false, "texts": { "en": "Loose sleeves, gloves and jewellery removed at the machine", "he": "שרוולים רפויים, כפפות ותכשיטים הוסרו ליד המכונה", "ar": "أُزيلت الأكمام الفضفاضة والقفازات والحلي عند الآلة" } }
+      ]
+    },
+    {
+      "id": "sf.ca.dust",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Wood dust and noise", "he": "אבק עץ ורעש", "ar": "غبار الخشب والضجيج" },
+      "references": ["תקנות הבטיחות בעבודה (גיהות תעסוקתית ובריאות העובדים באבק מזיק)", "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"],
+      "items": [
+        { "id": "sf.ca.ds.1", "critical": true, "texts": { "en": "Dust extraction connected and running at every cutting tool", "he": "שאיבת אבק מחוברת ופועלת בכל כלי חיתוך", "ar": "شفط الغبار موصول ويعمل عند كل أداة قص" } },
+        { "id": "sf.ca.ds.2", "critical": true, "texts": { "en": "FFP2 mask worn when cutting MDF or sanding", "he": "מסכת FFP2 נלבשת בחיתוך MDF ובליטוש", "ar": "كمّامة FFP2 مُرتداة عند قص MDF أو الصنفرة" } },
+        { "id": "sf.ca.ds.3", "critical": true, "texts": { "en": "Hearing protection worn near saw, router and planer", "he": "מגן שמיעה נלבש ליד מסור, ראוטר ומקצוע", "ar": "واقي السمع مُرتدى قرب المنشار والراوتر والمسحاج" } },
+        { "id": "sf.ca.ds.4", "critical": false, "texts": { "en": "Offcuts and shavings cleared; no dry sweeping of fine dust", "he": "שאריות ונסורת מפונות; אין לטאטא אבק דק ביבש", "ar": "تُزال القصاصات والنشارة؛ ممنوع كنس الغبار الناعم جافًا" } }
+      ]
+    },
+    {
+      "id": "sf.ca.install",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "Installation on site", "he": "התקנה באתר", "ar": "التركيب في الموقع" },
+      "references": ["תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"],
+      "items": [
+        { "id": "sf.ca.in.1", "critical": true, "texts": { "en": "Wall scanned for cables and pipes before drilling", "he": "הקיר נסרק לאיתור כבלים וצנרת לפני קדיחה", "ar": "تم مسح الجدار للكابلات والأنابيب قبل الثقب" } },
+        { "id": "sf.ca.in.2", "critical": true, "texts": { "en": "Tall units secured to the wall against tipping", "he": "יחידות גבוהות עוגנו לקיר נגד התהפכות", "ar": "الوحدات العالية مثبّتة بالجدار ضد الانقلاب" } },
+        { "id": "sf.ca.in.3", "critical": false, "texts": { "en": "Two-person lift for any panel over 25 kg", "he": "הרמה בשניים לכל לוח מעל 25 ק״ג", "ar": "الرفع بشخصين لأي لوح يزيد عن 25 كغ" } }
+      ]
+    }
+  ]
+}

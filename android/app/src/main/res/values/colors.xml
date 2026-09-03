@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Site-safety palette: high-visibility amber against slate, chosen for
+         legibility in direct sun and through a scratched screen protector. -->
+    <color name="brand_amber">#FFB300</color>
+    <color name="brand_slate">#1F2933</color>
+    <color name="brand_slate_light">#3E4C59</color>
+    <color name="surface_light">#FAFAF7</color>
+    <color name="surface_dark">#12181F</color>
+    <color name="splash_background_light">#1F2933</color>
+    <color name="splash_background_dark">#12181F</color>
+</resources>

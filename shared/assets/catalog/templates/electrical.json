@@ -1,0 +1,47 @@
+{
+  "tradeId": "electrical",
+  "catalogVersion": 1,
+  "templates": [
+    {
+      "id": "tpl.el.apartment_wiring",
+      "estimatedDays": 5,
+      "names": { "en": "Apartment electrical first fix", "he": "חשמל דירה — שלב ראשון", "ar": "كهرباء شقة — المرحلة الأولى" },
+      "descriptions": { "en": "Chasing, conduit, boxes and cable pulling for a 4-room apartment.", "he": "חריצה, צנרת, קופסאות ומשיכת כבלים לדירת 4 חדרים.", "ar": "تخديد وتمديد وعلب وسحب كابلات لشقة من 4 غرف." },
+      "materials": [
+        { "itemId": "el.conduit.flex.16", "quantity": 180 },
+        { "itemId": "el.conduit.flex.23", "quantity": 120 },
+        { "itemId": "el.cable.nyy.3x1_5", "quantity": 150 },
+        { "itemId": "el.cable.nyy.3x2_5", "quantity": 120 },
+        { "itemId": "el.cable.nyy.3x6", "quantity": 25 },
+        { "itemId": "el.junction.box.round", "quantity": 40 },
+        { "itemId": "el.tape.insulating", "quantity": 6 }
+      ],
+      "tasks": [
+        { "id": "tpl.el.aw.1", "order": 1, "titles": { "en": "Mark out points with the client", "he": "סימון נקודות מול הלקוח", "ar": "تعليم النقاط مع الزبون" } },
+        { "id": "tpl.el.aw.2", "order": 2, "titles": { "en": "Chase walls and cut boxes", "he": "חריצת קירות וקדיחת קופסאות", "ar": "تخديد الجدران وقص العلب" } },
+        { "id": "tpl.el.aw.3", "order": 3, "titles": { "en": "Lay conduit and set boxes", "he": "הנחת צנרת והתקנת קופסאות", "ar": "تمديد الأنابيب وتركيب العلب" } },
+        { "id": "tpl.el.aw.4", "order": 4, "titles": { "en": "Pull cables and label both ends", "he": "משיכת כבלים וסימון שני הקצוות", "ar": "سحب الكابلات وتعليم الطرفين" } },
+        { "id": "tpl.el.aw.5", "order": 5, "titles": { "en": "Photograph runs before plastering", "he": "צילום המסלולים לפני טיח", "ar": "تصوير المسارات قبل القصارة" } }
+      ]
+    },
+    {
+      "id": "tpl.el.board_replace",
+      "estimatedDays": 1,
+      "names": { "en": "Distribution board replacement", "he": "החלפת לוח חשמל", "ar": "استبدال لوحة التوزيع" },
+      "descriptions": { "en": "Swap an old board for a DIN board with RCD protection and testing.", "he": "החלפת לוח ישן בלוח DIN עם מפסק פחת ובדיקות.", "ar": "استبدال لوحة قديمة بلوحة DIN مع قاطع تسرّب وفحوص." },
+      "materials": [
+        { "itemId": "el.board.din.24", "quantity": 1 },
+        { "itemId": "el.rcd.40a.30ma", "quantity": 2 },
+        { "itemId": "el.mcb.c16.1p", "quantity": 8 },
+        { "itemId": "el.mcb.c25.3p", "quantity": 1 },
+        { "itemId": "el.earth.bar", "quantity": 1 }
+      ],
+      "tasks": [
+        { "id": "tpl.el.br.1", "order": 1, "titles": { "en": "Agree the outage window with the occupants", "he": "תיאום חלון הפסקת חשמל עם הדיירים", "ar": "الاتفاق على وقت انقطاع الكهرباء مع السكان" } },
+        { "id": "tpl.el.br.2", "order": 2, "titles": { "en": "Isolate, lock off and prove dead", "he": "ניתוק, נעילה והוכחת היעדר מתח", "ar": "العزل والإقفال وإثبات انعدام الجهد" } },
+        { "id": "tpl.el.br.3", "order": 3, "titles": { "en": "Transfer circuits and label the legend", "he": "העברת מעגלים וכתיבת מקרא", "ar": "نقل الدوائر وكتابة الدليل" } },
+        { "id": "tpl.el.br.4", "order": 4, "titles": { "en": "Test, energise and hand over the certificate", "he": "בדיקות, הפעלה ומסירת תעודה", "ar": "الفحوص والتشغيل وتسليم الشهادة" } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": 1,
+  "revisedOn": "2026-09-03",
+  "sourceNote": {
+    "en": "Trade catalogues compiled for the Israeli market. Standard references are pointers for the site file, not a substitute for the published standard.",
+    "he": "קטלוגים מקצועיים שנערכו לשוק הישראלי. אזכורי התקנים הם הפניה לתיק האתר ואינם תחליף לתקן המלא.",
+    "ar": "كتالوجات مهنية أُعدّت للسوق الإسرائيلي. الإشارات إلى المواصفات هي مرجع لملف الموقع ولا تُغني عن المواصفة الكاملة."
+  },
+  "trades": [
+    {
+      "id": "electrical",
+      "icon": "bolt",
+      "colorHex": "#F2B705",
+      "names": { "en": "Electrical", "he": "חשמל", "ar": "كهرباء" },
+      "itemsFile": "items/electrical.json",
+      "safetyFile": "safety/electrical.json",
+      "templatesFile": "templates/electrical.json"
+    },
+    {
+      "id": "plumbing",
+      "icon": "water_drop",
+      "colorHex": "#2E86C1",
+      "names": { "en": "Plumbing", "he": "אינסטלציה", "ar": "سباكة" },
+      "itemsFile": "items/plumbing.json",
+      "safetyFile": "safety/plumbing.json",
+      "templatesFile": "templates/plumbing.json"
+    },
+    {
+      "id": "hvac",
+      "icon": "ac_unit",
+      "colorHex": "#48C9B0",
+      "names": { "en": "HVAC & Refrigeration", "he": "מיזוג אוויר וקירור", "ar": "تكييف وتبريد" },
+      "itemsFile": "items/hvac.json",
+      "safetyFile": "safety/hvac.json",
+      "templatesFile": "templates/hvac.json"
+    },
+    {
+      "id": "painting",
+      "icon": "format_paint",
+      "colorHex": "#AF7AC5",
+      "names": { "en": "Painting", "he": "צביעה", "ar": "دهان" },
+      "itemsFile": "items/painting.json",
+      "safetyFile": "safety/painting.json",
+      "templatesFile": "templates/painting.json"
+    },
+    {
+      "id": "carpentry",
+      "icon": "carpenter",
+      "colorHex": "#B9770E",
+      "names": { "en": "Carpentry", "he": "נגרות", "ar": "نجارة" },
+      "itemsFile": "items/carpentry.json",
+      "safetyFile": "safety/carpentry.json",
+      "templatesFile": "templates/carpentry.json"
+    },
+    {
+      "id": "general",
+      "icon": "construction",
+      "colorHex": "#7F8C8D",
+      "names": { "en": "General construction", "he": "בנייה כללית", "ar": "بناء عام" },
+      "itemsFile": "items/general.json",
+      "safetyFile": "safety/general.json",
+      "templatesFile": "templates/general.json"
+    }
+  ]
+}

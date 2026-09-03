@@ -1,0 +1,42 @@
+{
+  "tradeId": "hvac",
+  "catalogVersion": 1,
+  "checklists": [
+    {
+      "id": "sf.hv.refrigerant",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Refrigerant handling", "he": "טיפול בגז קירור", "ar": "التعامل مع غاز التبريد" },
+      "references": ["ת״י 994", "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"],
+      "items": [
+        { "id": "sf.hv.rf.1", "critical": true, "texts": { "en": "Refrigerant type confirmed against the unit nameplate", "he": "סוג הגז אומת מול לוחית היצרן של היחידה", "ar": "تم التأكد من نوع الغاز مقابل لوحة بيانات الوحدة" } },
+        { "id": "sf.hv.rf.2", "critical": true, "texts": { "en": "Refrigerant recovered to a rated cylinder — never vented", "he": "הגז נשאב למכל מאושר — לא שוחרר לאוויר", "ar": "تم استرجاع الغاز إلى أسطوانة معتمدة — ولم يُطلق في الهواء" } },
+        { "id": "sf.hv.rf.3", "critical": true, "texts": { "en": "Goggles and cold-resistant gloves worn while the circuit is open", "he": "משקפי מגן וכפפות עמידות לקור בזמן שהמעגל פתוח", "ar": "نظارات واقية وقفازات مقاومة للبرودة أثناء فتح الدائرة" } },
+        { "id": "sf.hv.rf.4", "critical": true, "texts": { "en": "Space ventilated; A2L refrigerants kept away from ignition sources", "he": "החלל מאוורר; גזי A2L מורחקים ממקורות הצתה", "ar": "المكان مهوّى؛ غازات A2L بعيدة عن مصادر الاشتعال" } },
+        { "id": "sf.hv.rf.5", "critical": false, "texts": { "en": "Charge weighed and the figure written on the service record", "he": "כמות הגז נשקלה והערך נרשם בכרטיס השירות", "ar": "تم وزن كمية الغاز وتسجيل القيمة في بطاقة الخدمة" } }
+      ]
+    },
+    {
+      "id": "sf.hv.electrical",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Electrical safety on the unit", "he": "בטיחות חשמל ביחידה", "ar": "السلامة الكهربائية للوحدة" },
+      "references": ["תקנות הבטיחות בעבודה (חשמל), התש״ן-1990"],
+      "items": [
+        { "id": "sf.hv.el.1", "critical": true, "texts": { "en": "Unit isolated at its own breaker and locked off", "he": "היחידה נותקה במא״ז הייעודי וננעלה", "ar": "تم عزل الوحدة عند قاطعها الخاص وإقفالها" } },
+        { "id": "sf.hv.el.2", "critical": true, "texts": { "en": "Capacitors discharged before touching the board", "he": "הקבלים פורקו לפני נגיעה בכרטיס", "ar": "تم تفريغ المكثّفات قبل لمس اللوحة" } },
+        { "id": "sf.hv.el.3", "critical": false, "texts": { "en": "Outdoor unit earthing continuity checked", "he": "רציפות ההארקה של היחידה החיצונית נבדקה", "ar": "تم فحص استمرارية تأريض الوحدة الخارجية" } }
+      ]
+    },
+    {
+      "id": "sf.hv.height",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Ladder and roof access", "he": "עבודה בסולם ובגישה לגג", "ar": "العمل بالسلّم والوصول إلى السطح" },
+      "references": ["תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007"],
+      "items": [
+        { "id": "sf.hv.ht.1", "critical": true, "texts": { "en": "Work above 2 m done only by a certified worker", "he": "עבודה מעל 2 מ׳ מבוצעת רק בידי עובד מוסמך", "ar": "العمل فوق 2 م يُنفَّذ فقط بواسطة عامل مؤهّل" } },
+        { "id": "sf.hv.ht.2", "critical": true, "texts": { "en": "Ladder footed on firm ground, tied, at a 1:4 angle", "he": "הסולם ניצב על משטח יציב, קשור, בזווית 1:4", "ar": "السلّم على أرض ثابتة، مربوط، بزاوية 1:4" } },
+        { "id": "sf.hv.ht.3", "critical": true, "texts": { "en": "Roof edge protection or harness with a verified anchor", "he": "הגנת קצה בגג או רתמה עם נקודת עיגון מאומתת", "ar": "حماية حافة السطح أو حزام مع نقطة تثبيت متحقّق منها" } },
+        { "id": "sf.hv.ht.4", "critical": false, "texts": { "en": "Tools raised and lowered by line, never carried on a ladder", "he": "כלים מועלים ומורדים בחבל, לא נישאים בסולם", "ar": "تُرفع الأدوات وتُنزل بالحبل، لا تُحمل على السلّم" } }
+      ]
+    }
+  ]
+}

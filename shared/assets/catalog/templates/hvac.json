@@ -1,0 +1,42 @@
+{
+  "tradeId": "hvac",
+  "catalogVersion": 1,
+  "templates": [
+    {
+      "id": "tpl.hv.split_install",
+      "estimatedDays": 1,
+      "names": { "en": "Split unit installation", "he": "התקנת מזגן עילי", "ar": "تركيب مكيّف سبليت" },
+      "descriptions": { "en": "Indoor and outdoor unit, lines, drain and commissioning.", "he": "יחידה פנימית וחיצונית, צנרת, ניקוז והפעלה.", "ar": "وحدة داخلية وخارجية وأنابيب وتصريف وتشغيل." },
+      "materials": [
+        { "itemId": "hv.unit.split.1_5hp", "quantity": 1 },
+        { "itemId": "hv.pipe.cu.1_4", "quantity": 5 },
+        { "itemId": "hv.pipe.cu.1_2", "quantity": 5 },
+        { "itemId": "hv.insulation.elastomeric", "quantity": 10 },
+        { "itemId": "hv.drain.pipe.25", "quantity": 6 },
+        { "itemId": "hv.consum.flare_nuts", "quantity": 4 }
+      ],
+      "tasks": [
+        { "id": "tpl.hv.si.1", "order": 1, "titles": { "en": "Agree unit positions and core drilling", "he": "תיאום מיקום היחידות וקידוח מעבר", "ar": "الاتفاق على مواقع الوحدات وثقب العبور" } },
+        { "id": "tpl.hv.si.2", "order": 2, "titles": { "en": "Mount brackets and run lines", "he": "התקנת מתלים והנחת צנרת", "ar": "تركيب الحوامل وتمديد الأنابيب" } },
+        { "id": "tpl.hv.si.3", "order": 3, "titles": { "en": "Flare, connect and leak test", "he": "פלייר, חיבור ובדיקת דליפות", "ar": "التفليج والتوصيل وفحص التسرّب" } },
+        { "id": "tpl.hv.si.4", "order": 4, "titles": { "en": "Evacuate to 500 microns and charge by weight", "he": "ואקום עד 500 מיקרון ומילוי לפי משקל", "ar": "التفريغ حتى 500 ميكرون والشحن بالوزن" } },
+        { "id": "tpl.hv.si.5", "order": 5, "titles": { "en": "Run test, record currents, show the client the filter", "he": "הרצת בדיקה, רישום זרמים, הדגמת המסנן ללקוח", "ar": "تشغيل تجريبي وتسجيل التيارات وعرض الفلتر على الزبون" } }
+      ]
+    },
+    {
+      "id": "tpl.hv.service",
+      "estimatedDays": 1,
+      "names": { "en": "Seasonal service visit", "he": "טיפול תקופתי", "ar": "زيارة صيانة موسمية" },
+      "descriptions": { "en": "Filter, coil, drain and electrical check on an installed system.", "he": "מסנן, סוללה, ניקוז ובדיקת חשמל במערכת קיימת.", "ar": "الفلتر والملف والتصريف وفحص كهربائي لنظام قائم." },
+      "materials": [
+        { "itemId": "hv.filter.g4", "quantity": 2 }
+      ],
+      "tasks": [
+        { "id": "tpl.hv.sv.1", "order": 1, "titles": { "en": "Clean or replace filters", "he": "ניקוי או החלפת מסננים", "ar": "تنظيف أو استبدال الفلاتر" } },
+        { "id": "tpl.hv.sv.2", "order": 2, "titles": { "en": "Wash coils and clear the condensate line", "he": "שטיפת סוללות ופתיחת קו הניקוז", "ar": "غسل الملفات وتسليك خط التصريف" } },
+        { "id": "tpl.hv.sv.3", "order": 3, "titles": { "en": "Measure running current and delta-T", "he": "מדידת זרם עבודה והפרש טמפרטורות", "ar": "قياس تيار التشغيل وفرق الحرارة" } },
+        { "id": "tpl.hv.sv.4", "order": 4, "titles": { "en": "Record readings on the service card", "he": "רישום המדידות בכרטיס השירות", "ar": "تسجيل القياسات في بطاقة الخدمة" } }
+      ]
+    }
+  ]
+}

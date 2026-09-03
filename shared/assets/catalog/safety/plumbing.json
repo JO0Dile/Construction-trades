@@ -1,0 +1,44 @@
+{
+  "tradeId": "plumbing",
+  "catalogVersion": 1,
+  "checklists": [
+    {
+      "id": "sf.pl.confined",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Confined space entry", "he": "כניסה לחלל מוקף", "ar": "الدخول إلى مكان مغلق" },
+      "references": ["תקנות הבטיחות בעבודה (עבודה בחלל מוקף), התשע״ח-2018"],
+      "items": [
+        { "id": "sf.pl.cf.1", "critical": true, "texts": { "en": "Entry permit issued and signed by the supervisor", "he": "היתר כניסה הונפק ונחתם בידי הממונה", "ar": "تصريح الدخول صادر وموقّع من المشرف" } },
+        { "id": "sf.pl.cf.2", "critical": true, "texts": { "en": "Atmosphere tested for oxygen, CO, H2S and flammables", "he": "האטמוספרה נבדקה לחמצן, CO, ‏H2S וגזים דליקים", "ar": "تم فحص الجو للأكسجين وأول أكسيد الكربون وكبريتيد الهيدروجين والغازات القابلة للاشتعال" } },
+        { "id": "sf.pl.cf.3", "critical": true, "texts": { "en": "Forced ventilation running before and during entry", "he": "אוורור מאולץ פועל לפני הכניסה ובמהלכה", "ar": "التهوية القسرية تعمل قبل الدخول وأثناءه" } },
+        { "id": "sf.pl.cf.4", "critical": true, "texts": { "en": "Attendant posted outside with rescue equipment and a means to call help", "he": "משגיח ניצב בחוץ עם ציוד חילוץ ואמצעי לקריאת עזרה", "ar": "مراقب متواجد بالخارج مع معدات إنقاذ ووسيلة لطلب المساعدة" } },
+        { "id": "sf.pl.cf.5", "critical": false, "texts": { "en": "Harness and retrieval line worn by the entrant", "he": "הנכנס חובש רתמה וחבל חילוץ", "ar": "الداخل يرتدي حزامًا وحبل استرجاع" } }
+      ]
+    },
+    {
+      "id": "sf.pl.hotwork",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Hot work — brazing and soldering", "he": "עבודה חמה — הלחמה וריתוך", "ar": "عمل ساخن — لحام" },
+      "references": ["פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970"],
+      "items": [
+        { "id": "sf.pl.hw.1", "critical": true, "texts": { "en": "Hot work permit issued for the shift", "he": "היתר עבודה חמה הונפק למשמרת", "ar": "تصريح عمل ساخن صادر للمناوبة" } },
+        { "id": "sf.pl.hw.2", "critical": true, "texts": { "en": "Combustibles cleared or covered within 10 m", "he": "חומרים דליקים פונו או כוסו ברדיוס 10 מ׳", "ar": "أُزيلت المواد القابلة للاشتعال أو غُطّيت ضمن 10 م" } },
+        { "id": "sf.pl.hw.3", "critical": true, "texts": { "en": "Fire extinguisher within reach and known to work", "he": "מטף כיבוי בהישג יד ותקין", "ar": "طفاية الحريق في متناول اليد وصالحة" } },
+        { "id": "sf.pl.hw.4", "critical": true, "texts": { "en": "Fire watch kept for 30 minutes after the last flame", "he": "שמירת אש 30 דקות אחרי כיבוי הלהבה האחרונה", "ar": "مراقبة الحريق 30 دقيقة بعد إطفاء آخر لهب" } },
+        { "id": "sf.pl.hw.5", "critical": false, "texts": { "en": "Gas cylinder secured upright and hoses checked", "he": "בלון הגז מאובטח זקוף והצינורות נבדקו", "ar": "أسطوانة الغاز مثبّتة عموديًا والخراطيم مفحوصة" } }
+      ]
+    },
+    {
+      "id": "sf.pl.handover",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "Pressure test and handover", "he": "בדיקת אטימות ומסירה", "ar": "اختبار الضغط والتسليم" },
+      "references": ["ת״י 1205", "הל״ת"],
+      "items": [
+        { "id": "sf.pl.ho.1", "critical": true, "texts": { "en": "Pressure test held for the required period and recorded", "he": "בדיקת הלחץ הוחזקה למשך הזמן הנדרש ותועדה", "ar": "تم إبقاء اختبار الضغط للمدة المطلوبة وتوثيقه" } },
+        { "id": "sf.pl.ho.2", "critical": true, "texts": { "en": "Drainage falls checked and a flow test run", "he": "שיפועי הניקוז נבדקו ובוצעה בדיקת זרימה", "ar": "تم فحص ميول الصرف وإجراء اختبار تدفق" } },
+        { "id": "sf.pl.ho.3", "critical": false, "texts": { "en": "Concealed pipe runs photographed before closing walls", "he": "צנרת סמויה צולמה לפני סגירת הקירות", "ar": "تم تصوير الأنابيب المخفية قبل إغلاق الجدران" } },
+        { "id": "sf.pl.ho.4", "critical": false, "texts": { "en": "Isolating valves labelled and shown to the client", "he": "ברזי הניתוק סומנו והוצגו ללקוח", "ar": "محابس العزل مُعلَّمة وعُرضت على الزبون" } }
+      ]
+    }
+  ]
+}

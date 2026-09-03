@@ -1,0 +1,43 @@
+{
+  "tradeId": "painting",
+  "catalogVersion": 1,
+  "checklists": [
+    {
+      "id": "sf.pa.ventilation",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Ventilation and respiratory protection", "he": "אוורור והגנה נשימתית", "ar": "التهوية وحماية الجهاز التنفسي" },
+      "references": ["תקנות הבטיחות בעבודה (גיהות תעסוקתית ובריאות העובדים בממיסים פחמימניים ארומטיים)", "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"],
+      "items": [
+        { "id": "sf.pa.vn.1", "critical": true, "texts": { "en": "Cross ventilation opened, or forced extraction running", "he": "אוורור צולב נפתח, או שאיבה מאולצת פועלת", "ar": "تم فتح تهوية متقاطعة أو تشغيل شفط قسري" } },
+        { "id": "sf.pa.vn.2", "critical": true, "texts": { "en": "A2-P3 respirator worn for spraying and for solvent paints", "he": "מסכת A2-P3 נלבשת בריסוס ובצבעי ממס", "ar": "كمّامة A2-P3 مُرتداة عند الرش ودهانات المذيبات" } },
+        { "id": "sf.pa.vn.3", "critical": true, "texts": { "en": "No ignition source, smoking or hot work while solvents are open", "he": "אין מקור הצתה, עישון או עבודה חמה בזמן שממסים פתוחים", "ar": "لا مصدر اشتعال ولا تدخين ولا عمل ساخن أثناء فتح المذيبات" } },
+        { "id": "sf.pa.vn.4", "critical": false, "texts": { "en": "Solvents and thinners stored outside the occupied room", "he": "ממסים ומדללים מאוחסנים מחוץ לחדר שבו עובדים", "ar": "تُخزَّن المذيبات والمخفّفات خارج الغرفة المشغولة" } },
+        { "id": "sf.pa.vn.5", "critical": false, "texts": { "en": "Safety data sheet available for every product on site", "he": "גיליון בטיחות זמין לכל מוצר באתר", "ar": "صحيفة بيانات السلامة متوفرة لكل منتج في الموقع" } }
+      ]
+    },
+    {
+      "id": "sf.pa.access",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Ladders and working platforms", "he": "סולמות ומשטחי עבודה", "ar": "السلالم ومنصّات العمل" },
+      "references": ["תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007"],
+      "items": [
+        { "id": "sf.pa.ac.1", "critical": true, "texts": { "en": "Ladder or platform on level ground with feet locked", "he": "סולם או משטח על קרקע ישרה עם רגליים נעולות", "ar": "السلّم أو المنصّة على أرض مستوية مع أقدام مثبّتة" } },
+        { "id": "sf.pa.ac.2", "critical": true, "texts": { "en": "No standing on the top two steps of a step ladder", "he": "אין לעמוד על שני השלבים העליונים של סולם א׳", "ar": "ممنوع الوقوف على آخر درجتين من السلّم" } },
+        { "id": "sf.pa.ac.3", "critical": false, "texts": { "en": "Extension pole used instead of a ladder wherever the reach allows", "he": "מוט הארכה משמש במקום סולם בכל מקום שההישג מאפשר", "ar": "تُستخدم عصا التمديد بدل السلّم حيثما أمكن الوصول" } },
+        { "id": "sf.pa.ac.4", "critical": false, "texts": { "en": "Floor kept clear of tins, sheeting and trailing leads", "he": "הרצפה נקייה מפחיות, יריעות וכבלים נגררים", "ar": "الأرضية خالية من العلب والنايلون والكابلات المتدلّية" } }
+      ]
+    },
+    {
+      "id": "sf.pa.spray",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "Airless spraying", "he": "ריסוס אירלס", "ar": "الرش بدون هواء" },
+      "references": ["פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970"],
+      "items": [
+        { "id": "sf.pa.sp.1", "critical": true, "texts": { "en": "Trigger lock engaged whenever the gun is not in use", "he": "נעילת ההדק מופעלת בכל רגע שהאקדח אינו בשימוש", "ar": "قفل الزناد مفعّل كلما لم يكن المسدس قيد الاستخدام" } },
+        { "id": "sf.pa.sp.2", "critical": true, "texts": { "en": "Pressure released before removing the tip or a hose", "he": "הלחץ שוחרר לפני הסרת פייה או צינור", "ar": "تم تحرير الضغط قبل إزالة الرأس أو الخرطوم" } },
+        { "id": "sf.pa.sp.3", "critical": true, "texts": { "en": "Everyone knows an injection injury needs immediate hospital care", "he": "כולם יודעים שפציעת הזרקה מחייבת פינוי מיידי לבית חולים", "ar": "الجميع يعلم أن إصابة الحقن تستوجب نقلًا فوريًا للمستشفى" } },
+        { "id": "sf.pa.sp.4", "critical": false, "texts": { "en": "Adjacent surfaces, windows and cars masked against overspray", "he": "משטחים סמוכים, חלונות ומכוניות מוסככו מפני נדף", "ar": "الأسطح المجاورة والنوافذ والسيارات مغطّاة ضد الرذاذ" } }
+      ]
+    }
+  ]
+}

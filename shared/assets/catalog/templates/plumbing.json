@@ -1,0 +1,45 @@
+{
+  "tradeId": "plumbing",
+  "catalogVersion": 1,
+  "templates": [
+    {
+      "id": "tpl.pl.bathroom",
+      "estimatedDays": 4,
+      "names": { "en": "Bathroom plumbing rough-in", "he": "אינסטלציה לחדר רחצה — שלב ראשון", "ar": "سباكة حمّام — المرحلة الأولى" },
+      "descriptions": { "en": "Water and waste rough-in for one bathroom, tested before tiling.", "he": "צנרת מים ודלוחין לחדר רחצה אחד, נבדקת לפני ריצוף.", "ar": "تمديد المياه والصرف لحمّام واحد، يُفحص قبل التبليط." },
+      "materials": [
+        { "itemId": "pl.pipe.pex.16", "quantity": 45 },
+        { "itemId": "pl.pipe.pvc.50", "quantity": 12 },
+        { "itemId": "pl.pipe.pvc.110", "quantity": 6 },
+        { "itemId": "pl.fit.elbow.90.pvc.50", "quantity": 10 },
+        { "itemId": "pl.fit.manifold.4way", "quantity": 1 },
+        { "itemId": "pl.valve.ball.1_2", "quantity": 4 },
+        { "itemId": "pl.consum.teflon", "quantity": 3 }
+      ],
+      "tasks": [
+        { "id": "tpl.pl.bt.1", "order": 1, "titles": { "en": "Set out fixture positions", "he": "סימון מיקומי כלים סניטריים", "ar": "تعليم مواقع الأدوات الصحية" } },
+        { "id": "tpl.pl.bt.2", "order": 2, "titles": { "en": "Run waste with correct falls", "he": "הנחת דלוחין בשיפועים נכונים", "ar": "تمديد الصرف بميول صحيحة" } },
+        { "id": "tpl.pl.bt.3", "order": 3, "titles": { "en": "Run water lines to the manifold", "he": "הנחת קווי מים למחלק", "ar": "تمديد خطوط المياه إلى الموزّع" } },
+        { "id": "tpl.pl.bt.4", "order": 4, "titles": { "en": "Pressure test and photograph before closing", "he": "בדיקת אטימות וצילום לפני סגירה", "ar": "اختبار الضغط والتصوير قبل الإغلاق" } }
+      ]
+    },
+    {
+      "id": "tpl.pl.heater",
+      "estimatedDays": 1,
+      "names": { "en": "Water heater replacement", "he": "החלפת דוד חשמל", "ar": "استبدال سخان المياه" },
+      "descriptions": { "en": "Remove and replace a domestic cylinder with new safety valve.", "he": "פירוק והתקנת דוד ביתי עם שסתום ביטחון חדש.", "ar": "فك وتركيب سخان منزلي مع صمام أمان جديد." },
+      "materials": [
+        { "itemId": "pl.heater.electric.150", "quantity": 1 },
+        { "itemId": "pl.valve.ball.1_2", "quantity": 2 },
+        { "itemId": "pl.valve.check.3_4", "quantity": 1 },
+        { "itemId": "pl.consum.teflon", "quantity": 2 }
+      ],
+      "tasks": [
+        { "id": "tpl.pl.hr.1", "order": 1, "titles": { "en": "Isolate water and electricity, drain the cylinder", "he": "ניתוק מים וחשמל, ריקון הדוד", "ar": "فصل الماء والكهرباء وتفريغ السخان" } },
+        { "id": "tpl.pl.hr.2", "order": 2, "titles": { "en": "Remove old unit and check the bracket", "he": "פירוק הדוד הישן ובדיקת המתלה", "ar": "فك السخان القديم وفحص الحامل" } },
+        { "id": "tpl.pl.hr.3", "order": 3, "titles": { "en": "Fit new cylinder, safety valve and connections", "he": "התקנת דוד חדש, שסתום ביטחון וחיבורים", "ar": "تركيب السخان الجديد وصمام الأمان والتوصيلات" } },
+        { "id": "tpl.pl.hr.4", "order": 4, "titles": { "en": "Fill, vent, check for leaks and restore power", "he": "מילוי, שחרור אוויר, בדיקת נזילות והחזרת חשמל", "ar": "التعبئة وتنفيس الهواء وفحص التسريب وإعادة الكهرباء" } }
+      ]
+    }
+  ]
+}

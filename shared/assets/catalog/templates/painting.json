@@ -1,0 +1,44 @@
+{
+  "tradeId": "painting",
+  "catalogVersion": 1,
+  "templates": [
+    {
+      "id": "tpl.pa.room_repaint",
+      "estimatedDays": 2,
+      "names": { "en": "Room repaint", "he": "צביעת חדר מחדש", "ar": "إعادة دهان غرفة" },
+      "descriptions": { "en": "Prepare, fill, prime and two coats on walls and ceiling.", "he": "הכנה, שפכטל, יסוד ושתי שכבות לקירות ולתקרה.", "ar": "تحضير ومعجون وأساس وطبقتان للجدران والسقف." },
+      "materials": [
+        { "itemId": "pa.paint.acrylic.interior", "quantity": 12 },
+        { "itemId": "pa.primer.wall", "quantity": 4 },
+        { "itemId": "pa.filler.wall", "quantity": 5 },
+        { "itemId": "pa.tape.masking", "quantity": 3 },
+        { "itemId": "pa.sheet.protection", "quantity": 1 },
+        { "itemId": "pa.sandpaper.120", "quantity": 10 }
+      ],
+      "tasks": [
+        { "id": "tpl.pa.rr.1", "order": 1, "titles": { "en": "Cover floor and furniture, mask edges", "he": "כיסוי רצפה וריהוט, מיסוך קצוות", "ar": "تغطية الأرضية والأثاث وتغطية الحواف" } },
+        { "id": "tpl.pa.rr.2", "order": 2, "titles": { "en": "Fill cracks and sand back", "he": "מילוי סדקים וליטוש", "ar": "ملء الشقوق والصنفرة" } },
+        { "id": "tpl.pa.rr.3", "order": 3, "titles": { "en": "Prime patched areas", "he": "יסוד על אזורים מתוקנים", "ar": "أساس على المناطق المرمّمة" } },
+        { "id": "tpl.pa.rr.4", "order": 4, "titles": { "en": "Two finish coats, checked under raking light", "he": "שתי שכבות גמר, נבדקות בתאורה משיקה", "ar": "طبقتا تشطيب، تُفحصان بإضاءة مائلة" } },
+        { "id": "tpl.pa.rr.5", "order": 5, "titles": { "en": "Remove masking and hand the room back clean", "he": "הסרת מיסוך ומסירת החדר נקי", "ar": "إزالة التغطية وتسليم الغرفة نظيفة" } }
+      ]
+    },
+    {
+      "id": "tpl.pa.exterior",
+      "estimatedDays": 6,
+      "names": { "en": "Building exterior repaint", "he": "צביעת חזית בניין", "ar": "إعادة دهان واجهة مبنى" },
+      "descriptions": { "en": "Wash, repair, prime and coat an external elevation from scaffold.", "he": "שטיפה, תיקון, יסוד וצבע לחזית מפיגום.", "ar": "غسل وترميم وأساس ودهان لواجهة من السقالة." },
+      "materials": [
+        { "itemId": "pa.paint.acrylic.exterior", "quantity": 60 },
+        { "itemId": "pa.primer.wall", "quantity": 20 },
+        { "itemId": "pa.filler.plaster_skim", "quantity": 25 }
+      ],
+      "tasks": [
+        { "id": "tpl.pa.ex.1", "order": 1, "titles": { "en": "Scaffold inspected and tagged", "he": "פיגום נבדק ותויג", "ar": "السقالة مفحوصة وموسومة" } },
+        { "id": "tpl.pa.ex.2", "order": 2, "titles": { "en": "Pressure wash and let dry", "he": "שטיפה בלחץ וייבוש", "ar": "غسل بالضغط والتجفيف" } },
+        { "id": "tpl.pa.ex.3", "order": 3, "titles": { "en": "Repair cracks and render", "he": "תיקון סדקים וטיח", "ar": "ترميم الشقوق والقصارة" } },
+        { "id": "tpl.pa.ex.4", "order": 4, "titles": { "en": "Prime and apply two coats", "he": "יסוד ושתי שכבות צבע", "ar": "أساس وطبقتا دهان" } }
+      ]
+    }
+  ]
+}

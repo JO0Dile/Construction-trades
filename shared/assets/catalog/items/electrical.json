@@ -1,0 +1,336 @@
+{
+  "tradeId": "electrical",
+  "catalogVersion": 1,
+  "items": [
+    {
+      "id": "el.cable.nyy.3x1_5",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": { "en": "NYY cable 3×1.5 mm²", "he": "כבל NYY ‎3×1.5 ממ״ר", "ar": "كابل NYY ‏3×1.5 ملم²" },
+      "spec": { "en": "Lighting circuits. 3 cores, 1.5 mm².", "he": "מעגלי תאורה. 3 גידים, 1.5 ממ״ר.", "ar": "دوائر الإنارة. 3 موصلات، 1.5 ملم²." },
+      "attributes": { "cores": "3", "crossSectionMm2": "1.5", "standard": "ת״י 473" },
+      "tags": ["cable", "lighting"]
+    },
+    {
+      "id": "el.cable.nyy.3x2_5",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": { "en": "NYY cable 3×2.5 mm²", "he": "כבל NYY ‎3×2.5 ממ״ר", "ar": "كابل NYY ‏3×2.5 ملم²" },
+      "spec": { "en": "Socket circuits. 3 cores, 2.5 mm².", "he": "מעגלי שקעים. 3 גידים, 2.5 ממ״ר.", "ar": "دوائر المقابس. 3 موصلات، 2.5 ملم²." },
+      "attributes": { "cores": "3", "crossSectionMm2": "2.5", "standard": "ת״י 473" },
+      "tags": ["cable", "sockets"]
+    },
+    {
+      "id": "el.cable.nyy.5x1_5",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": { "en": "NYY cable 5×1.5 mm²", "he": "כבל NYY ‎5×1.5 ממ״ר", "ar": "كابل NYY ‏5×1.5 ملم²" },
+      "spec": { "en": "Three-phase control and switched lighting.", "he": "פיקוד תלת־פאזי ותאורה מחוללת.", "ar": "تحكم ثلاثي الأطوار وإنارة مُبدَّلة." },
+      "attributes": { "cores": "5", "crossSectionMm2": "1.5", "standard": "ת״י 473" },
+      "tags": ["cable", "three-phase"]
+    },
+    {
+      "id": "el.cable.nyy.5x4",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": { "en": "NYY cable 5×4 mm²", "he": "כבל NYY ‎5×4 ממ״ר", "ar": "كابل NYY ‏5×4 ملم²" },
+      "spec": { "en": "Three-phase feeder to a sub-board.", "he": "הזנה תלת־פאזית ללוח משנה.", "ar": "تغذية ثلاثية الأطوار للوحة فرعية." },
+      "attributes": { "cores": "5", "crossSectionMm2": "4", "standard": "ת״י 473" },
+      "tags": ["cable", "feeder"]
+    },
+    {
+      "id": "el.cable.nyy.3x6",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": { "en": "NYY cable 3×6 mm²", "he": "כבל NYY ‎3×6 ממ״ר", "ar": "كابل NYY ‏3×6 ملم²" },
+      "spec": { "en": "Water heater and oven circuits.", "he": "מעגלי דוד חשמל ותנור.", "ar": "دوائر سخان المياه والفرن." },
+      "attributes": { "cores": "3", "crossSectionMm2": "6", "standard": "ת״י 473" },
+      "tags": ["cable", "heavy-load"]
+    },
+    {
+      "id": "el.wire.h07vu.1_5",
+      "kind": "MATERIAL",
+      "category": "wires",
+      "unit": "M",
+      "names": { "en": "Single insulated wire 1.5 mm²", "he": "חוט מבודד חד־גידי 1.5 ממ״ר", "ar": "سلك مفرد معزول 1.5 ملم²" },
+      "spec": { "en": "Pulled into conduit. Colour per phase / neutral / earth.", "he": "נמשך בתוך צינור. צבע לפי פאזה / אפס / הארקה.", "ar": "يُسحب داخل الأنبوب. اللون حسب الطور / المحايد / التأريض." },
+      "attributes": { "crossSectionMm2": "1.5", "colours": "brown, blue, green-yellow" },
+      "tags": ["wire", "conduit"]
+    },
+    {
+      "id": "el.conduit.flex.16",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": { "en": "Corrugated conduit 16 mm", "he": "צינור שרשורי 16 מ״מ", "ar": "خرطوم مموج 16 ملم" },
+      "spec": { "en": "Flexible PVC conduit for concealed lighting runs.", "he": "צינור PVC גמיש להתקנה סמויה של מעגלי תאורה.", "ar": "خرطوم PVC مرن للتمديدات المخفية للإنارة." },
+      "attributes": { "diameterMm": "16", "colour": "yellow / grey" },
+      "tags": ["conduit", "concealed"]
+    },
+    {
+      "id": "el.conduit.flex.23",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": { "en": "Corrugated conduit 23 mm", "he": "צינור שרשורי 23 מ״מ", "ar": "خرطوم مموج 23 ملم" },
+      "spec": { "en": "Flexible PVC conduit for socket and feeder runs.", "he": "צינור PVC גמיש למעגלי שקעים והזנות.", "ar": "خرطوم PVC مرن لدوائر المقابس والتغذية." },
+      "attributes": { "diameterMm": "23", "colour": "yellow / grey" },
+      "tags": ["conduit", "concealed"]
+    },
+    {
+      "id": "el.conduit.rigid.pvc.25",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": { "en": "Rigid PVC conduit 25 mm", "he": "צינור PVC קשיח 25 מ״מ", "ar": "أنبوب PVC صلب 25 ملم" },
+      "spec": { "en": "Surface-mounted runs and risers.", "he": "התקנה גלויה ועמודי עלייה.", "ar": "تمديد ظاهر وأعمدة صاعدة." },
+      "attributes": { "diameterMm": "25" },
+      "tags": ["conduit", "surface"]
+    },
+    {
+      "id": "el.trunking.pvc.20x10",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": { "en": "PVC trunking 20×10 mm", "he": "תעלת PVC ‎20×10 מ״מ", "ar": "مجرى PVC ‏20×10 ملم" },
+      "spec": { "en": "Surface cable trunking with adhesive back.", "he": "תעלת כבלים גלויה עם הדבקה.", "ar": "مجرى كابلات ظاهر بلاصق." },
+      "attributes": { "widthMm": "20", "heightMm": "10" },
+      "tags": ["trunking", "surface"]
+    },
+    {
+      "id": "el.mcb.c16.1p",
+      "kind": "MATERIAL",
+      "category": "protection",
+      "unit": "PCS",
+      "names": { "en": "MCB 1P C16", "he": "מא״ז חד־פאזי C16", "ar": "قاطع مصغّر أحادي C16" },
+      "spec": { "en": "Miniature circuit breaker, curve C, 16 A, 1 pole.", "he": "מפסק אוטומטי זעיר, עקום C, ‏16 אמפר, קוטב אחד.", "ar": "قاطع كهربائي مصغّر، منحنى C، ‏16 أمبير، قطب واحد." },
+      "attributes": { "ratedCurrentA": "16", "poles": "1", "curve": "C" },
+      "tags": ["breaker", "board"]
+    },
+    {
+      "id": "el.mcb.c25.3p",
+      "kind": "MATERIAL",
+      "category": "protection",
+      "unit": "PCS",
+      "names": { "en": "MCB 3P C25", "he": "מא״ז תלת־פאזי C25", "ar": "قاطع مصغّر ثلاثي C25" },
+      "spec": { "en": "Miniature circuit breaker, curve C, 25 A, 3 poles.", "he": "מפסק אוטומטי זעיר, עקום C, ‏25 אמפר, שלושה קטבים.", "ar": "قاطع كهربائي مصغّر، منحنى C، ‏25 أمبير، ثلاثة أقطاب." },
+      "attributes": { "ratedCurrentA": "25", "poles": "3", "curve": "C" },
+      "tags": ["breaker", "board", "three-phase"]
+    },
+    {
+      "id": "el.rcd.40a.30ma",
+      "kind": "MATERIAL",
+      "category": "protection",
+      "unit": "PCS",
+      "names": { "en": "RCD 40 A / 30 mA", "he": "מפסק פחת 40 אמפר / 30 מ״א", "ar": "قاطع تسرّب أرضي 40 أمبير / 30 مللي أمبير" },
+      "spec": { "en": "Residual current device. Mandatory on domestic circuits; test button pressed at handover.", "he": "מפסק מגן לזרם דלף. חובה במעגלים ביתיים; לוחצים על לחצן הבדיקה במסירה.", "ar": "جهاز حماية من التسرّب. إلزامي في الدوائر المنزلية؛ يُضغط زر الفحص عند التسليم." },
+      "attributes": { "ratedCurrentA": "40", "sensitivityMa": "30", "standard": "חוק החשמל, תקנות החשמל" },
+      "tags": ["rcd", "safety", "board"]
+    },
+    {
+      "id": "el.board.din.12",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "PCS",
+      "names": { "en": "Distribution board, 12 modules", "he": "לוח חשמל 12 מקומות", "ar": "لوحة توزيع 12 وحدة" },
+      "spec": { "en": "Flush or surface DIN board with door and busbar.", "he": "לוח שקוע או גלוי על מסילת DIN, עם דלת ופס צבירה.", "ar": "لوحة DIN غاطسة أو ظاهرة مع باب وقضيب تجميع." },
+      "attributes": { "modules": "12", "standard": "ת״י 1424" },
+      "tags": ["board"]
+    },
+    {
+      "id": "el.board.din.24",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "PCS",
+      "names": { "en": "Distribution board, 24 modules", "he": "לוח חשמל 24 מקומות", "ar": "لوحة توزيع 24 وحدة" },
+      "spec": { "en": "Two-row DIN board for a full apartment.", "he": "לוח דו־שורתי לדירה מלאה.", "ar": "لوحة بصفّين لشقة كاملة." },
+      "attributes": { "modules": "24", "standard": "ת״י 1424" },
+      "tags": ["board"]
+    },
+    {
+      "id": "el.socket.schuko",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": { "en": "Socket outlet, earthed", "he": "שקע מוארק", "ar": "مقبس مؤرّض" },
+      "spec": { "en": "16 A earthed socket, flush box mounting.", "he": "שקע 16 אמפר עם הארקה, להתקנה בקופסה שקועה.", "ar": "مقبس 16 أمبير مؤرّض، تركيب في علبة غاطسة." },
+      "attributes": { "ratedCurrentA": "16", "standard": "ת״י 32" },
+      "tags": ["socket"]
+    },
+    {
+      "id": "el.socket.ip44",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": { "en": "Weatherproof socket IP44", "he": "שקע מוגן מים IP44", "ar": "مقبس مقاوم للماء IP44" },
+      "spec": { "en": "For balconies, bathrooms and outdoor walls.", "he": "למרפסות, חדרי רחצה וקירות חוץ.", "ar": "للشرفات والحمّامات والجدران الخارجية." },
+      "attributes": { "ingressProtection": "IP44" },
+      "tags": ["socket", "outdoor"]
+    },
+    {
+      "id": "el.switch.1way",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": { "en": "Light switch, single", "he": "מפסק תאורה חד־קוטבי", "ar": "مفتاح إنارة مفرد" },
+      "spec": { "en": "One-gang one-way switch.", "he": "מפסק בודד, מעגל אחד.", "ar": "مفتاح مفرد، دائرة واحدة." },
+      "attributes": { "gangs": "1" },
+      "tags": ["switch"]
+    },
+    {
+      "id": "el.switch.2way",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": { "en": "Two-way switch", "he": "מפסק מחליף", "ar": "مفتاح مبادل" },
+      "spec": { "en": "Stairwell switching from two positions.", "he": "הפעלת תאורת חדר מדרגות משתי נקודות.", "ar": "تشغيل إنارة الدرج من نقطتين." },
+      "attributes": { "gangs": "1", "type": "two-way" },
+      "tags": ["switch"]
+    },
+    {
+      "id": "el.junction.box.round",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": { "en": "Round junction box", "he": "קופסת הסתעפות עגולה", "ar": "علبة تفريعات دائرية" },
+      "spec": { "en": "Concealed box for joints and ceiling points.", "he": "קופסה שקועה לחיבורים ולנקודות תקרה.", "ar": "علبة غاطسة للوصلات ونقاط السقف." },
+      "attributes": { "diameterMm": "70" },
+      "tags": ["box"]
+    },
+    {
+      "id": "el.connector.leverlock",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": { "en": "Lever wire connector", "he": "מחבר מהיר עם ידית", "ar": "وصلة أسلاك بذراع" },
+      "spec": { "en": "Reusable 3-way connector for solid and stranded wire.", "he": "מחבר תלת־כיווני רב־פעמי לחוט קשיח וגמיש.", "ar": "وصلة ثلاثية قابلة لإعادة الاستخدام للسلك الصلب والمجدول." },
+      "attributes": { "ways": "3" },
+      "tags": ["connector"]
+    },
+    {
+      "id": "el.earth.bar",
+      "kind": "MATERIAL",
+      "category": "earthing",
+      "unit": "PCS",
+      "names": { "en": "Earth busbar", "he": "פס הארקה", "ar": "قضيب تأريض" },
+      "spec": { "en": "Board earth bar with brass terminals.", "he": "פס הארקה ללוח עם מהדקי פליז.", "ar": "قضيب تأريض للوحة بأطراف نحاسية." },
+      "attributes": { "standard": "ת״י 1847" },
+      "tags": ["earthing"]
+    },
+    {
+      "id": "el.tape.insulating",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "ROLL",
+      "names": { "en": "Insulating tape", "he": "סרט בידוד", "ar": "شريط عازل" },
+      "spec": { "en": "PVC electrical tape, 19 mm × 20 m.", "he": "סרט חשמל PVC, ‏19 מ״מ × 20 מ׳.", "ar": "شريط كهرباء PVC، ‏19 ملم × 20 م." },
+      "attributes": { "widthMm": "19", "lengthM": "20" },
+      "tags": ["consumable"]
+    },
+    {
+      "id": "el.tool.multimeter",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": { "en": "Multimeter", "he": "רב־מודד", "ar": "مقياس متعدد (أفوميتر)" },
+      "spec": { "en": "True-RMS meter, CAT III 600 V minimum.", "he": "מכשיר מדידה True-RMS, דירוג CAT III 600V לפחות.", "ar": "جهاز قياس True-RMS، تصنيف CAT III 600 فولت على الأقل." },
+      "attributes": { "category": "CAT III 600V" },
+      "tags": ["tool", "testing"]
+    },
+    {
+      "id": "el.tool.voltage_tester",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": { "en": "Two-pole voltage tester", "he": "בודק מתח דו־קוטבי", "ar": "كاشف جهد ثنائي القطب" },
+      "spec": { "en": "Proves dead before work. Checked on a live source first.", "he": "מוודא ניתוק מתח לפני עבודה. נבדק על מקור חי לפני השימוש.", "ar": "يثبت انقطاع التيار قبل العمل. يُفحص على مصدر حي قبل الاستخدام." },
+      "attributes": {},
+      "tags": ["tool", "testing", "lockout"]
+    },
+    {
+      "id": "el.tool.insulation_tester",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": { "en": "Insulation resistance tester", "he": "בודק התנגדות בידוד (מגר)", "ar": "جهاز فحص مقاومة العزل (ميجر)" },
+      "spec": { "en": "500 V / 1000 V megohmmeter for handover testing.", "he": "מגר 500V/1000V לבדיקות מסירה.", "ar": "ميجر 500/1000 فولت لفحوص التسليم." },
+      "attributes": { "testVoltage": "500V / 1000V" },
+      "tags": ["tool", "testing", "handover"]
+    },
+    {
+      "id": "el.tool.wire_stripper",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": { "en": "Wire stripper", "he": "קולפן חוטים", "ar": "مقشّرة أسلاك" },
+      "spec": { "en": "Automatic stripper, 0.5–6 mm².", "he": "קולפן אוטומטי, ‏0.5–6 ממ״ר.", "ar": "مقشّرة أوتوماتيكية، ‏0.5–6 ملم²." },
+      "attributes": { "rangeMm2": "0.5-6" },
+      "tags": ["tool"]
+    },
+    {
+      "id": "el.tool.side_cutter",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": { "en": "Side cutting pliers", "he": "צבת חיתוך", "ar": "كماشة قطع جانبية" },
+      "spec": { "en": "VDE 1000 V insulated handles.", "he": "ידיות מבודדות VDE ‏1000 וולט.", "ar": "مقابض معزولة VDE ‏1000 فولت." },
+      "attributes": { "insulation": "VDE 1000V" },
+      "tags": ["tool", "insulated"]
+    },
+    {
+      "id": "el.tool.fish_tape",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": { "en": "Draw wire / fish tape", "he": "חוט משיכה", "ar": "سلك سحب" },
+      "spec": { "en": "Nylon or steel draw wire, 20–30 m.", "he": "חוט משיכה מניילון או פלדה, ‏20–30 מ׳.", "ar": "سلك سحب من النايلون أو الفولاذ، ‏20–30 م." },
+      "attributes": { "lengthM": "20-30" },
+      "tags": ["tool", "conduit"]
+    },
+    {
+      "id": "el.tool.hammer_drill",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": { "en": "Hammer drill (SDS)", "he": "פטישון SDS", "ar": "مثقاب دقّاق SDS" },
+      "spec": { "en": "SDS-Plus rotary hammer for chasing and anchor holes.", "he": "פטישון SDS-Plus לחריצה ולקדיחת עוגנים.", "ar": "مثقاب دوّار SDS-Plus للتخديد وثقوب التثبيت." },
+      "attributes": { "chuck": "SDS-Plus" },
+      "tags": ["tool", "power"]
+    },
+    {
+      "id": "el.tool.hole_saw.70",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": { "en": "Hole saw 70 mm", "he": "מקדח כוס 70 מ״מ", "ar": "منشار كؤوس 70 ملم" },
+      "spec": { "en": "For junction and switch boxes in block or plaster.", "he": "לקופסאות הסתעפות ומפסקים בבלוק או בטיח.", "ar": "لعلب التفريعات والمفاتيح في البلوك أو القصارة." },
+      "attributes": { "diameterMm": "70" },
+      "tags": ["tool", "power"]
+    },
+    {
+      "id": "el.safety.gloves.1000v",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PAIR",
+      "names": { "en": "Insulating gloves 1000 V", "he": "כפפות מבודדות 1000 וולט", "ar": "قفازات عازلة 1000 فولت" },
+      "spec": { "en": "Class 0 electrical gloves, inspected before each use.", "he": "כפפות חשמל דרגה 0, נבדקות לפני כל שימוש.", "ar": "قفازات كهرباء درجة 0، تُفحص قبل كل استخدام." },
+      "attributes": { "class": "0", "standard": "EN 60903" },
+      "tags": ["ppe", "safety"]
+    },
+    {
+      "id": "el.safety.lockout_kit",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": { "en": "Lockout / tagout kit", "he": "ערכת נעילה ותיוג", "ar": "طقم إقفال ووسم" },
+      "spec": { "en": "Breaker locks, padlock and warning tags for isolation.", "he": "מנעולי מא״ז, מנעול ותוויות אזהרה לניתוק.", "ar": "أقفال قواطع وقفل وبطاقات تحذير للعزل." },
+      "attributes": {},
+      "tags": ["ppe", "safety", "lockout"]
+    }
+  ]
+}

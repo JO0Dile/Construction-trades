@@ -1,0 +1,56 @@
+{
+  "tradeId": "general",
+  "catalogVersion": 1,
+  "checklists": [
+    {
+      "id": "sf.ge.height",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Work at height and fall protection", "he": "עבודה בגובה ומניעת נפילה", "ar": "العمل على ارتفاع ومنع السقوط" },
+      "references": ["תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007"],
+      "items": [
+        { "id": "sf.ge.ht.1", "critical": true, "texts": { "en": "Every worker above 2 m holds a valid work-at-height certificate", "he": "לכל עובד מעל 2 מ׳ יש הסמכת עבודה בגובה בתוקף", "ar": "كل عامل فوق 2 م يحمل شهادة عمل على ارتفاع سارية" } },
+        { "id": "sf.ge.ht.2", "critical": true, "texts": { "en": "Edge protection, guard rail or toe board fitted at every open edge", "he": "הגנת קצה, מעקה או לוח רגל בכל קצה פתוח", "ar": "حماية الحافة أو درابزين أو لوح قدم عند كل حافة مفتوحة" } },
+        { "id": "sf.ge.ht.3", "critical": true, "texts": { "en": "Harness inspected and clipped to a verified anchor point", "he": "הרתמה נבדקה ומחוברת לנקודת עיגון מאומתת", "ar": "تم فحص الحزام وربطه بنقطة تثبيت متحقّق منها" } },
+        { "id": "sf.ge.ht.4", "critical": true, "texts": { "en": "Floor openings covered and marked, or fenced", "he": "פתחים ברצפה מכוסים ומסומנים, או מגודרים", "ar": "فتحات الأرضية مغطّاة ومُعلَّمة أو مسيَّجة" } },
+        { "id": "sf.ge.ht.5", "critical": false, "texts": { "en": "Rescue plan agreed before anyone goes up", "he": "תוכנית חילוץ סוכמה לפני שמישהו עולה", "ar": "تم الاتفاق على خطة إنقاذ قبل صعود أي شخص" } }
+      ]
+    },
+    {
+      "id": "sf.ge.scaffold",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Scaffolding", "he": "פיגומים", "ar": "السقالات" },
+      "references": ["תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988", "ת״י 1139"],
+      "items": [
+        { "id": "sf.ge.sc.1", "critical": true, "texts": { "en": "Scaffold erected by a competent person and tagged as inspected", "he": "הפיגום הוקם בידי אדם מוסמך ותויג כנבדק", "ar": "السقالة رُكّبت بواسطة شخص مؤهل ووُسمت كمفحوصة" } },
+        { "id": "sf.ge.sc.2", "critical": true, "texts": { "en": "Base plates on firm ground; scaffold tied to the structure", "he": "לוחיות בסיס על קרקע יציבה; הפיגום קשור למבנה", "ar": "ألواح القاعدة على أرض ثابتة؛ السقالة مربوطة بالمبنى" } },
+        { "id": "sf.ge.sc.3", "critical": true, "texts": { "en": "Platform fully boarded with guard rail and toe board", "he": "המשטח מרוצף במלואו עם מעקה ולוח רגל", "ar": "المنصّة مغطاة بالكامل مع درابزين ولوح قدم" } },
+        { "id": "sf.ge.sc.4", "critical": false, "texts": { "en": "Re-inspected after storm, alteration or seven days", "he": "נבדק מחדש אחרי סערה, שינוי או שבעה ימים", "ar": "يُعاد الفحص بعد العاصفة أو التعديل أو سبعة أيام" } }
+      ]
+    },
+    {
+      "id": "sf.ge.site",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Site induction and PPE", "he": "תדריך אתר וציוד מגן אישי", "ar": "تعريف الموقع ومعدات الوقاية" },
+      "references": ["תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988", "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"],
+      "items": [
+        { "id": "sf.ge.st.1", "critical": true, "texts": { "en": "Site manager appointed and present as required", "he": "מנהל עבודה מונה ונוכח כנדרש", "ar": "مدير عمل مُعيَّن وحاضر كما هو مطلوب" } },
+        { "id": "sf.ge.st.2", "critical": true, "texts": { "en": "Helmet, safety boots and hi-vis vest worn by everyone on site", "he": "קסדה, נעלי בטיחות ואפוד זוהר על כל אדם באתר", "ar": "الخوذة وحذاء الأمان والسترة العاكسة على كل شخص في الموقع" } },
+        { "id": "sf.ge.st.3", "critical": true, "texts": { "en": "Safety briefing given in a language every worker understands", "he": "תדריך בטיחות נמסר בשפה שכל עובד מבין", "ar": "تم تقديم إحاطة السلامة بلغة يفهمها كل عامل" } },
+        { "id": "sf.ge.st.4", "critical": false, "texts": { "en": "First aid kit and extinguisher located and known to all", "he": "ערכת עזרה ראשונה ומטף אותרו וידועים לכולם", "ar": "حقيبة الإسعاف والطفاية محدّدتان ومعروفتان للجميع" } },
+        { "id": "sf.ge.st.5", "critical": false, "texts": { "en": "Emergency numbers and the site address posted at the entrance", "he": "מספרי חירום וכתובת האתר תלויים בכניסה", "ar": "أرقام الطوارئ وعنوان الموقع معلّقة عند المدخل" } }
+      ]
+    },
+    {
+      "id": "sf.ge.excavation",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "Excavation and buried services", "he": "חפירה ותשתיות תת־קרקעיות", "ar": "الحفر والبنى التحتية المدفونة" },
+      "references": ["תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"],
+      "items": [
+        { "id": "sf.ge.ex.1", "critical": true, "texts": { "en": "Utility drawings obtained and the ground scanned before digging", "he": "תוכניות תשתית התקבלו והקרקע נסרקה לפני חפירה", "ar": "تم الحصول على مخططات البنى التحتية ومسح الأرض قبل الحفر" } },
+        { "id": "sf.ge.ex.2", "critical": true, "texts": { "en": "Trench over 1.2 m shored, battered or benched", "he": "תעלה מעל 1.2 מ׳ נתמכת, משופעת או מדורגת", "ar": "الخندق فوق 1.2 م مدعوم أو مائل أو مدرّج" } },
+        { "id": "sf.ge.ex.3", "critical": true, "texts": { "en": "Edges barriered and spoil kept back from the edge", "he": "הקצוות מגודרים והחומר החפור מורחק מהקצה", "ar": "الحواف مسيَّجة والأتربة مُبعدة عن الحافة" } },
+        { "id": "sf.ge.ex.4", "critical": false, "texts": { "en": "Safe access ladder within 8 m of any working position", "he": "סולם גישה בטוח בטווח 8 מ׳ מכל עמדת עבודה", "ar": "سلّم وصول آمن ضمن 8 م من كل موقع عمل" } }
+      ]
+    }
+  ]
+}

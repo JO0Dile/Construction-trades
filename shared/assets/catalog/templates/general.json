@@ -1,0 +1,43 @@
+{
+  "tradeId": "general",
+  "catalogVersion": 1,
+  "templates": [
+    {
+      "id": "tpl.ge.partition",
+      "estimatedDays": 3,
+      "names": { "en": "Block partition wall", "he": "מחיצת בלוקים", "ar": "جدار قواطع بلوك" },
+      "descriptions": { "en": "Build, plaster and prepare a partition for painting.", "he": "בנייה, טיח והכנה לצביעה של מחיצה.", "ar": "بناء وقصارة وتحضير جدار للدهان." },
+      "materials": [
+        { "itemId": "ge.block.ytong.10", "quantity": 180 },
+        { "itemId": "ge.cement.portland", "quantity": 8 },
+        { "itemId": "ge.sand.washed", "quantity": 1 },
+        { "itemId": "ge.plaster.base", "quantity": 20 }
+      ],
+      "tasks": [
+        { "id": "tpl.ge.pt.1", "order": 1, "titles": { "en": "Set out the wall line and check services", "he": "סימון קו הקיר ובדיקת תשתיות", "ar": "تعليم خط الجدار وفحص البنى التحتية" } },
+        { "id": "tpl.ge.pt.2", "order": 2, "titles": { "en": "Lay blocks to line and level", "he": "בניית בלוקים לפי קו ופלס", "ar": "بناء البلوك حسب الخط والميزان" } },
+        { "id": "tpl.ge.pt.3", "order": 3, "titles": { "en": "Fix beads and apply base plaster", "he": "התקנת פינות וביצוע טיח", "ar": "تركيب الزوايا وتنفيذ القصارة" } },
+        { "id": "tpl.ge.pt.4", "order": 4, "titles": { "en": "Cure, check flatness, hand over to the painter", "he": "אשפרה, בדיקת מישוריות ומסירה לצבע", "ar": "المعالجة وفحص الاستواء والتسليم للدهان" } }
+      ]
+    },
+    {
+      "id": "tpl.ge.wetroom",
+      "estimatedDays": 5,
+      "names": { "en": "Wet room waterproofing and tiling", "he": "איטום וריצוף חדר רטוב", "ar": "عزل وتبليط غرفة رطبة" },
+      "descriptions": { "en": "Waterproof, flood test and tile a bathroom floor and walls.", "he": "איטום, בדיקת הצפה וריצוף רצפה וקירות חדר רחצה.", "ar": "عزل واختبار غمر وتبليط أرضية وجدران الحمّام." },
+      "materials": [
+        { "itemId": "ge.waterproof.cement", "quantity": 40 },
+        { "itemId": "ge.tile.adhesive", "quantity": 12 },
+        { "itemId": "ge.grout", "quantity": 4 },
+        { "itemId": "ge.tile.porcelain.60", "quantity": 30 }
+      ],
+      "tasks": [
+        { "id": "tpl.ge.wr.1", "order": 1, "titles": { "en": "Prepare and prime the substrate", "he": "הכנת התשתית ויסוד", "ar": "تحضير الأرضية والأساس" } },
+        { "id": "tpl.ge.wr.2", "order": 2, "titles": { "en": "Apply two waterproofing coats with corner tape", "he": "שתי שכבות איטום עם סרט פינות", "ar": "طبقتا عزل مع شريط الزوايا" } },
+        { "id": "tpl.ge.wr.3", "order": 3, "titles": { "en": "Flood test 24 hours and photograph the result", "he": "בדיקת הצפה 24 שעות ותיעוד בתמונה", "ar": "اختبار غمر 24 ساعة وتوثيق النتيجة بصورة" } },
+        { "id": "tpl.ge.wr.4", "order": 4, "titles": { "en": "Tile floor to falls, then walls", "he": "ריצוף לפי שיפועים ואז חיפוי קירות", "ar": "تبليط الأرضية حسب الميول ثم الجدران" } },
+        { "id": "tpl.ge.wr.5", "order": 5, "titles": { "en": "Grout, seal junctions and clean down", "he": "רובה, איטום מפגשים וניקיון", "ar": "الروبة وعزل الفواصل والتنظيف" } }
+      ]
+    }
+  ]
+}

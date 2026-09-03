@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A folding rule and a wrench crossed inside the adaptive-icon safe zone.
+     Trade-neutral on purpose: the app is not an electricians' app. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Folding rule, opened to an angle. -->
+    <path
+        android:fillColor="#FFB300"
+        android:pathData="M30,72 L30,64 L62,64 L62,72 Z" />
+    <path
+        android:fillColor="#FFC94D"
+        android:pathData="M62,72 L62,64 L78,38 L85,42 L69,68 Z" />
+    <!-- Rule graduations. -->
+    <path android:fillColor="#1F2933" android:pathData="M38,64 L40,64 L40,68 L38,68 Z" />
+    <path android:fillColor="#1F2933" android:pathData="M46,64 L48,64 L48,68 L46,68 Z" />
+    <path android:fillColor="#1F2933" android:pathData="M54,64 L56,64 L56,68 L54,68 Z" />
+
+    <!-- Wrench, laid across the rule. -->
+    <path
+        android:fillColor="#E0E4E8"
+        android:pathData="M40,30 A11,11 0 0,0 55,44 L72,61 A5,5 0 0,0 79,54 L62,37 A11,11 0 0,0 48,22 L55,29 L51,37 L43,37 Z" />
+</vector>

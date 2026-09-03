@@ -1,0 +1,46 @@
+{
+  "tradeId": "carpentry",
+  "catalogVersion": 1,
+  "templates": [
+    {
+      "id": "tpl.ca.kitchen",
+      "estimatedDays": 4,
+      "names": { "en": "Kitchen installation", "he": "התקנת מטבח", "ar": "تركيب مطبخ" },
+      "descriptions": { "en": "Carcases, doors, worktop and hardware for a fitted kitchen.", "he": "גופים, דלתות, משטח ופרזול למטבח.", "ar": "هياكل وأبواب وسطح عمل وإكسسوارات لمطبخ." },
+      "materials": [
+        { "itemId": "ca.board.melamine.18", "quantity": 22 },
+        { "itemId": "ca.board.plywood.12", "quantity": 6 },
+        { "itemId": "ca.edge.banding.pvc", "quantity": 60 },
+        { "itemId": "ca.screw.confirmat", "quantity": 200 },
+        { "itemId": "ca.hinge.softclose", "quantity": 24 },
+        { "itemId": "ca.slide.undermount", "quantity": 8 },
+        { "itemId": "ca.handle.bar", "quantity": 20 }
+      ],
+      "tasks": [
+        { "id": "tpl.ca.kt.1", "order": 1, "titles": { "en": "Site survey and final measurements", "he": "מדידה סופית באתר", "ar": "قياس نهائي في الموقع" } },
+        { "id": "tpl.ca.kt.2", "order": 2, "titles": { "en": "Cut and edge the carcases", "he": "ניסור וקינוט הגופים", "ar": "قص وتحويف الهياكل" } },
+        { "id": "tpl.ca.kt.3", "order": 3, "titles": { "en": "Assemble and level base units", "he": "הרכבה ופילוס יחידות תחתונות", "ar": "تجميع وتسوية الوحدات السفلية" } },
+        { "id": "tpl.ca.kt.4", "order": 4, "titles": { "en": "Hang doors, fit drawers and handles", "he": "תליית דלתות, מגירות וידיות", "ar": "تعليق الأبواب وتركيب الأدراج والمقابض" } },
+        { "id": "tpl.ca.kt.5", "order": 5, "titles": { "en": "Coordinate worktop, sink and appliance cut-outs", "he": "תיאום משטח, כיור ופתחי מכשירים", "ar": "تنسيق السطح والمغسلة وفتحات الأجهزة" } }
+      ]
+    },
+    {
+      "id": "tpl.ca.wardrobe",
+      "estimatedDays": 2,
+      "names": { "en": "Built-in wardrobe", "he": "ארון קיר בהתאמה", "ar": "خزانة حائط مفصّلة" },
+      "descriptions": { "en": "Floor-to-ceiling wardrobe with sliding or hinged doors.", "he": "ארון מהרצפה לתקרה עם דלתות הזזה או ציריות.", "ar": "خزانة من الأرض للسقف بأبواب منزلقة أو مفصّلية." },
+      "materials": [
+        { "itemId": "ca.board.melamine.18", "quantity": 16 },
+        { "itemId": "ca.edge.banding.pvc", "quantity": 40 },
+        { "itemId": "ca.screw.confirmat", "quantity": 120 },
+        { "itemId": "ca.hinge.softclose", "quantity": 12 }
+      ],
+      "tasks": [
+        { "id": "tpl.ca.wd.1", "order": 1, "titles": { "en": "Check walls for plumb and square", "he": "בדיקת אנך וניצבות הקירות", "ar": "فحص شاقولية وتعامد الجدران" } },
+        { "id": "tpl.ca.wd.2", "order": 2, "titles": { "en": "Build and scribe the carcase to the wall", "he": "בניית הגוף והתאמתו לקיר", "ar": "بناء الهيكل وتطويعه للجدار" } },
+        { "id": "tpl.ca.wd.3", "order": 3, "titles": { "en": "Fit internals, rails and shelves", "he": "התקנת פנים, מוטות ומדפים", "ar": "تركيب الداخل والقضبان والرفوف" } },
+        { "id": "tpl.ca.wd.4", "order": 4, "titles": { "en": "Anchor to the wall and align doors", "he": "עיגון לקיר ויישור דלתות", "ar": "التثبيت بالجدار ومحاذاة الأبواب" } }
+      ]
+    }
+  ]
+}

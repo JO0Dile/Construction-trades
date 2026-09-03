@@ -1,0 +1,45 @@
+{
+  "tradeId": "electrical",
+  "catalogVersion": 1,
+  "checklists": [
+    {
+      "id": "sf.el.loto",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Isolation and lockout before work", "he": "ניתוק ונעילה לפני תחילת עבודה", "ar": "العزل والإقفال قبل بدء العمل" },
+      "references": ["חוק החשמל, התשי״ד-1954", "תקנות הבטיחות בעבודה (חשמל), התש״ן-1990"],
+      "items": [
+        { "id": "sf.el.loto.1", "critical": true, "texts": { "en": "Circuit identified on the board and its feed traced", "he": "המעגל זוהה בלוח ומקור ההזנה אותר", "ar": "تم تحديد الدائرة في اللوحة وتتبّع مصدر التغذية" } },
+        { "id": "sf.el.loto.2", "critical": true, "texts": { "en": "Supply switched off and locked with a personal padlock", "he": "ההזנה נותקה וננעלה במנעול אישי", "ar": "تم فصل التغذية وإقفالها بقفل شخصي" } },
+        { "id": "sf.el.loto.3", "critical": true, "texts": { "en": "Warning tag fitted with name, date and contact number", "he": "תווית אזהרה עם שם, תאריך ומספר טלפון הוצמדה", "ar": "تم تثبيت بطاقة تحذير باسم وتاريخ ورقم هاتف" } },
+        { "id": "sf.el.loto.4", "critical": true, "texts": { "en": "Voltage tester proved on a known live source before and after testing", "he": "בודק המתח נבדק על מקור חי ידוע לפני הבדיקה ואחריה", "ar": "تم فحص كاشف الجهد على مصدر حي معروف قبل الفحص وبعده" } },
+        { "id": "sf.el.loto.5", "critical": true, "texts": { "en": "Absence of voltage proved at the point of work on every conductor", "he": "היעדר מתח הוכח בנקודת העבודה בכל מוליך", "ar": "تم إثبات انعدام الجهد في نقطة العمل على كل موصل" } },
+        { "id": "sf.el.loto.6", "critical": false, "texts": { "en": "Others on site told which circuit is out and for how long", "he": "העובדים באתר עודכנו איזה מעגל מנותק ולכמה זמן", "ar": "أُبلغ العاملون في الموقع بالدائرة المفصولة ومدة الفصل" } }
+      ]
+    },
+    {
+      "id": "sf.el.ppe",
+      "mandatoryBeforeWork": true,
+      "titles": { "en": "Personal protective equipment", "he": "ציוד מגן אישי", "ar": "معدات الوقاية الشخصية" },
+      "references": ["תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"],
+      "items": [
+        { "id": "sf.el.ppe.1", "critical": true, "texts": { "en": "Insulating gloves inspected for holes and in date", "he": "כפפות מבודדות נבדקו לחורים ובתוקף", "ar": "تم فحص القفازات العازلة من الثقوب وصلاحيتها سارية" } },
+        { "id": "sf.el.ppe.2", "critical": true, "texts": { "en": "Face and eye protection worn for board work", "he": "מגן פנים ועיניים נלבש לעבודה בלוח", "ar": "واقي الوجه والعينين مُرتدى للعمل في اللوحة" } },
+        { "id": "sf.el.ppe.3", "critical": false, "texts": { "en": "No metal watch, ring or chain worn", "he": "אין שעון, טבעת או שרשרת ממתכת", "ar": "لا ساعة أو خاتم أو سلسلة معدنية" } },
+        { "id": "sf.el.ppe.4", "critical": false, "texts": { "en": "Hand tools carry a valid 1000 V insulation rating", "he": "כלי היד מדורגים לבידוד 1000 וולט בתוקף", "ar": "الأدوات اليدوية مصنّفة لعزل 1000 فولت وسارية" } }
+      ]
+    },
+    {
+      "id": "sf.el.handover",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "Testing before energising and handover", "he": "בדיקות לפני הפעלה ומסירה", "ar": "الفحوص قبل التشغيل والتسليم" },
+      "references": ["חוק החשמל, התשי״ד-1954", "ת״י 1424", "ת״י 1847"],
+      "items": [
+        { "id": "sf.el.hand.1", "critical": true, "texts": { "en": "Earth continuity measured and recorded on every circuit", "he": "רציפות הארקה נמדדה ותועדה בכל מעגל", "ar": "تم قياس وتوثيق استمرارية التأريض في كل دائرة" } },
+        { "id": "sf.el.hand.2", "critical": true, "texts": { "en": "Insulation resistance tested and the reading recorded", "he": "התנגדות הבידוד נבדקה והתוצאה תועדה", "ar": "تم فحص مقاومة العزل وتوثيق القراءة" } },
+        { "id": "sf.el.hand.3", "critical": true, "texts": { "en": "RCD test button and trip time verified", "he": "לחצן הבדיקה של מפסק הפחת וזמן הניתוק נבדקו", "ar": "تم فحص زر اختبار قاطع التسرّب وزمن الفصل" } },
+        { "id": "sf.el.hand.4", "critical": false, "texts": { "en": "Board legend written in the client's language", "he": "מקרא הלוח נכתב בשפת הלקוח", "ar": "تمت كتابة دليل اللوحة بلغة الزبون" } },
+        { "id": "sf.el.hand.5", "critical": false, "texts": { "en": "Test certificate signed by a licensed electrician", "he": "תעודת הבדיקה נחתמה בידי חשמלאי בעל רישיון", "ar": "شهادة الفحص موقّعة من كهربائي مرخّص" } }
+      ]
+    }
+  ]
+}

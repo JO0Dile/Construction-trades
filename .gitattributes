@@ -1,0 +1,4 @@
+# The Gradle wrapper jar is a binary; keep git from touching its bytes.
+android/gradle/wrapper/gradle-wrapper.jar binary
+* text=auto eol=lf
+*.bat text eol=crlf

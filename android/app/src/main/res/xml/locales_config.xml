@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Per-app language picker (Android 13+) and the AppCompat backport below it.
+     To add a language: add one <locale> line here, add the matching code to
+     resourceConfigurations in app/build.gradle.kts, and drop in
+     res/values-<code>/strings.xml. No Kotlin changes are required. -->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="he" />
+    <locale android:name="ar" />
+    <locale android:name="en" />
+    <!-- Planned, translation pending: ru, am, fr, es -->
+</locale-config>
