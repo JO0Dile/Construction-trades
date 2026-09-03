@@ -39,6 +39,11 @@ final class DataStore {
 
         let existingTrades = try context.fetch(FetchDescriptor<Trade>())
         let tradesById = Dictionary(uniqueKeysWithValues: existingTrades.map { ($0.id, $0) })
+        // Fetched once, not once per trade: the loop below inserts into these
+        // sets as it goes, so a re-fetch each iteration would be both wasteful
+        // and no more correct.
+        var knownEntryIds = Set(try context.fetch(FetchDescriptor<CatalogEntry>()).map(\.id))
+        var knownTemplateIds = Set(try context.fetch(FetchDescriptor<SafetyTemplate>()).map(\.id))
 
         for (index, trade) in manifest.trades.enumerated() {
             if let existing = tradesById[trade.id] {
@@ -55,11 +60,8 @@ final class DataStore {
                 )
             }
 
-            let entriesById = Dictionary(
-                uniqueKeysWithValues: try context.fetch(FetchDescriptor<CatalogEntry>()).map { ($0.id, $0) }
-            )
             let file = try source.items(for: trade)
-            for item in file.items where entriesById[item.id] == nil {
+            for item in file.items where !knownEntryIds.contains(item.id) {
                 context.insert(
                     CatalogEntry(
                         id: item.id, tradeId: trade.id, kind: item.kind, category: item.category,
@@ -69,11 +71,11 @@ final class DataStore {
                         searchIndex: Self.searchIndex(names: item.names, spec: item.spec, tags: item.tags, category: item.category)
                     )
                 )
+                knownEntryIds.insert(item.id)
             }
 
             if let safety = try source.safety(for: trade) {
-                let known = Set(try context.fetch(FetchDescriptor<SafetyTemplate>()).map(\.id))
-                for list in safety.checklists where !known.contains(list.id) {
+                for list in safety.checklists where !knownTemplateIds.contains(list.id) {
                     context.insert(
                         SafetyTemplate(
                             id: list.id, tradeId: trade.id, titles: list.titles,
@@ -89,6 +91,7 @@ final class DataStore {
                             )
                         )
                     }
+                    knownTemplateIds.insert(list.id)
                 }
             }
         }
@@ -388,14 +391,22 @@ final class DataStore {
 
     /// Account and data deletion, as both stores require it to be offered.
     func deleteEverything() {
-        for type in [
-            StockItem.self, StockMovement.self, Project.self, ProjectMaterial.self,
-            ProjectTask.self, TaskBlock.self, TimeEntry.self, ChecklistRun.self,
-            ChecklistAnswer.self, AuditEntry.self, CatalogEntry.self,
-            SafetyTemplate.self, SafetyTemplateCheck.self, Trade.self,
-        ] as [any PersistentModel.Type] {
-            try? context.delete(model: type)
-        }
+        // delete(model:) is generic over a concrete PersistentModel, so these
+        // cannot be looped over as `any PersistentModel.Type`.
+        try? context.delete(model: StockItem.self)
+        try? context.delete(model: StockMovement.self)
+        try? context.delete(model: Project.self)
+        try? context.delete(model: ProjectMaterial.self)
+        try? context.delete(model: ProjectTask.self)
+        try? context.delete(model: TaskBlock.self)
+        try? context.delete(model: TimeEntry.self)
+        try? context.delete(model: ChecklistRun.self)
+        try? context.delete(model: ChecklistAnswer.self)
+        try? context.delete(model: AuditEntry.self)
+        try? context.delete(model: CatalogEntry.self)
+        try? context.delete(model: SafetyTemplate.self)
+        try? context.delete(model: SafetyTemplateCheck.self)
+        try? context.delete(model: Trade.self)
         settings.reset()
         try? context.save()
     }

@@ -1,5 +1,4 @@
 import Foundation
-import PDFKit
 import SwiftUI
 import UIKit
 
@@ -34,7 +33,8 @@ enum ExportDocument {
         let safe = base.unicodeScalars
             .map { CharacterSet.alphanumerics.contains($0) ? Character($0) : "-" }
             .reduce(into: "") { $0.append($1) }
-        return "\(safe.isEmpty ? "export" : safe)-\(stamp)"
+        let name = safe.isEmpty ? "export" : safe
+        return "\(name)-\(stamp)"
     }
 
     /// Column headings and rows, shared by both renderers.
@@ -107,11 +107,17 @@ enum Exporter {
         return Data(text.utf8)
     }
 
+    private static let quote = "\""
+
+    /// RFC 4180: fields holding a comma, quote or newline are quoted, and an
+    /// embedded quote is doubled. Mirrors `ExportFormat.escape` on Android,
+    /// whose behaviour is pinned by unit tests.
     private static func escape(_ field: String) -> String {
         guard field.contains(where: { $0 == "," || $0 == "\"" || $0 == "\n" || $0 == "\r" }) else {
             return field
         }
-        return "\"\(field.replacingOccurrences(of: "\"", with: "\"\""))\""
+        let doubled = field.replacingOccurrences(of: quote, with: quote + quote)
+        return quote + doubled + quote
     }
 
     /// A4 portrait, mirrored for Hebrew and Arabic. The layout is deliberately

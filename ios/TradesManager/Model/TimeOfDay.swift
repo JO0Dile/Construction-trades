@@ -14,8 +14,12 @@ enum TimeOfDay {
         let trimmed = text.trimmingCharacters(in: .whitespaces)
         guard !trimmed.isEmpty else { return fallback }
 
+        // split drops empty subsequences, so ":" and "::" yield no parts at
+        // all — indexing [0] there would crash rather than fall back.
         let parts = trimmed.split(whereSeparator: { $0 == ":" || $0 == "." }).map(String.init)
-        guard let hour = Int(parts[0].trimmingCharacters(in: .whitespaces)) else { return fallback }
+        guard let first = parts.first,
+              let hour = Int(first.trimmingCharacters(in: .whitespaces))
+        else { return fallback }
 
         var minute = 0
         if parts.count > 1 {

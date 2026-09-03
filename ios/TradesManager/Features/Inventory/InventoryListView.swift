@@ -15,7 +15,6 @@ struct InventoryListView: View {
     @State private var editing: StockItem?
     @State private var creating = false
     @State private var showScanner = false
-    @State private var scanMessage: String?
     @State private var showExport = false
 
     private static let kindFilters: [(kind: String?, key: String)] = [
@@ -115,12 +114,6 @@ struct InventoryListView: View {
             .sheet(isPresented: $showExport) {
                 ExportSheet(items: items)
             }
-            .alert(scanMessage ?? "", isPresented: .init(
-                get: { scanMessage != nil },
-                set: { if !$0 { scanMessage = nil } }
-            )) {
-                Button(loc["action_ok"], role: .cancel) { scanMessage = nil }
-            }
         }
     }
 
@@ -131,9 +124,9 @@ struct InventoryListView: View {
         if let match = store.item(withBarcode: code) {
             editing = match
         } else {
-            let fresh = StockItem(barcode: code, names: [loc.languageCode: ""])
-            fresh.barcode = code
-            editing = fresh
+            // Not inserted into the context yet: the editor treats an item with
+            // no modelContext as new, and discards it if the user cancels.
+            editing = StockItem(names: [loc.languageCode: ""], barcode: code)
         }
     }
 }

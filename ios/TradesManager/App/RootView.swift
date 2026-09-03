@@ -3,7 +3,6 @@ import SwiftUI
 
 struct RootView: View {
 
-    @Environment(Localization.self) private var loc
     @Environment(AppSettings.self) private var settings
     @Environment(\.modelContext) private var context
 
