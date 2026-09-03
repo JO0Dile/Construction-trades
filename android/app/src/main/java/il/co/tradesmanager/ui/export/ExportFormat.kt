@@ -14,7 +14,7 @@ object ExportFormat {
      * mojibake — the single most common complaint about exported site data
      * once it leaves a Hebrew or Arabic phone.
      */
-    const val UTF8_BOM: Char = '﻿'
+    const val UTF8_BOM: Char = '\uFEFF'
 
     private const val QUOTE = "\""
     private const val CRLF = "\r\n"
