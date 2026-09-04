@@ -11,6 +11,11 @@ public struct CatalogManifest: Codable, Sendable {
     public let catalogVersion: Int
     public let revisedOn: String?
     public let sourceNote: LocalizedText?
+    /// Which icon each catalogue category is drawn with — the same mapping the
+    /// Android app reads, so the two agree on what a valve looks like. Each
+    /// platform turns the name into its own asset (see `CategoryIcon`).
+    /// Optional so an older bundled catalogue still decodes.
+    public let categoryIcons: [String: String]?
     public let trades: [CatalogTrade]
 }
 

@@ -49,6 +49,7 @@ import il.co.tradesmanager.ui.export.Exporter
 import il.co.tradesmanager.ui.nav.Routes
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
+import il.co.tradesmanager.ui.components.ItemThumbnail
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.components.currentLocale
@@ -173,6 +174,9 @@ fun InventoryScreen(
                 LazyColumn(Modifier.fillMaxWidth()) {
                     items(items, key = { it.id }) { item ->
                         ListItem(
+                            leadingContent = {
+                                ItemThumbnail(category = item.category, kind = item.kind)
+                            },
                             headlineContent = { Text(item.names.resolve(languageTag)) },
                             supportingContent = {
                                 Text(item.spec.resolve(languageTag), maxLines = 2)

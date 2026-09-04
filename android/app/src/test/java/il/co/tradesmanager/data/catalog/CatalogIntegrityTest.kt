@@ -89,6 +89,25 @@ class CatalogIntegrityTest {
     }
 
     @Test
+    fun `every catalogue category has an icon`() {
+        val categories = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items.map { it.category }
+        }.toSet()
+
+        assertEquals(
+            "a category with no icon draws as a generic box, which is how a new " +
+                "trade quietly ships looking unfinished",
+            emptySet<String>(),
+            categories - manifest.categoryIcons.keys,
+        )
+        assertEquals(
+            "an icon mapping for a category nothing uses is dead weight",
+            emptySet<String>(),
+            manifest.categoryIcons.keys - categories,
+        )
+    }
+
+    @Test
     fun `every safety check is written in all shipped languages`() {
         val missing = manifest.trades.mapNotNull { it.safetyFile }.flatMap { path ->
             json.decodeFromString<SafetyFile>(read(path)).checklists.flatMap { list ->

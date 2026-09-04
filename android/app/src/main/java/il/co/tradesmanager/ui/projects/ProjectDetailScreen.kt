@@ -33,6 +33,7 @@ import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
+import il.co.tradesmanager.ui.components.ItemThumbnail
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
@@ -133,6 +134,13 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
                 item { SectionHeader(stringResource(R.string.proj_materials)) }
                 items(state.materials, key = { it.id }) { material ->
                     ListItem(
+                        leadingContent = {
+                            ItemThumbnail(
+                                category = state.categoryOf(material),
+                                kind = "MATERIAL",
+                                size = 36,
+                            )
+                        },
                         headlineContent = { Text(material.label) },
                         supportingContent = {
                             Text(

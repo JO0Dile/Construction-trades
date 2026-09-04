@@ -22,7 +22,12 @@ class ProjectDetailViewModel(
         val project: ProjectEntity? = null,
         val materials: List<ProjectMaterialEntity> = emptyList(),
         val tasks: List<ProjectTaskEntity> = emptyList(),
+        /** Catalogue id -> category, so a material line can pick its icon. */
+        val categories: Map<String, String> = emptyMap(),
     ) {
+        fun categoryOf(material: ProjectMaterialEntity): String =
+            material.catalogItemId?.let { categories[it] }.orEmpty()
+
         /** Task completion drives the progress bar; an empty list is 0, not NaN. */
         val progress: Double
             get() = if (tasks.isEmpty()) 0.0 else tasks.count { it.isDone }.toDouble() / tasks.size
@@ -32,8 +37,10 @@ class ProjectDetailViewModel(
         container.projects.observeProject(projectId),
         container.projects.observeMaterials(projectId),
         container.projects.observeTasks(projectId),
-    ) { project, materials, tasks -> State(project, materials, tasks) }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())
+        container.catalogDao.observeCategories(),
+    ) { project, materials, tasks, categories ->
+        State(project, materials, tasks, categories.associate { it.id to it.category })
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())
 
     fun setTaskDone(taskId: String, done: Boolean) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName

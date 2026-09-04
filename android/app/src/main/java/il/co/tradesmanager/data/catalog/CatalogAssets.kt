@@ -16,6 +16,13 @@ data class CatalogManifest(
     val catalogVersion: Int,
     val revisedOn: String = "",
     val sourceNote: LocalizedText = emptyMap(),
+    /**
+     * Which icon each catalogue category is drawn with. Shared with iOS so the
+     * two apps agree on what a cable or a valve looks like; each platform maps
+     * the name to its own asset. A new category needs an entry here, not a
+     * code change.
+     */
+    val categoryIcons: Map<String, String> = emptyMap(),
     val trades: List<CatalogTrade> = emptyList(),
 )
 

@@ -10,6 +10,9 @@ import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import kotlinx.coroutines.flow.Flow
 
+/** Projection for [CatalogDao.observeCategories]. */
+data class CatalogCategory(val id: String, val category: String)
+
 @Dao
 interface CatalogDao {
 
@@ -46,6 +49,14 @@ interface CatalogDao {
 
     @Query("SELECT COUNT(*) FROM catalog_items")
     suspend fun catalogItemCount(): Int
+
+    /**
+     * Just the id and category of every catalogue row. A project's material
+     * lines store only the catalogue id, and the screen needs the category to
+     * pick an icon; pulling two columns is cheaper than the whole table.
+     */
+    @Query("SELECT id, category FROM catalog_items")
+    fun observeCategories(): Flow<List<CatalogCategory>>
 
     @Upsert
     suspend fun upsertChecklistTemplates(templates: List<ChecklistTemplateEntity>)

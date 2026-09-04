@@ -56,5 +56,14 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
         auditDao = database.auditDao(),
     )
 
+    /**
+     * Category -> icon name, read once from the shared catalogue. Small enough
+     * (a few KB) that a lazy synchronous read costs nothing, and it must be
+     * available synchronously because list rows draw with it.
+     */
+    val categoryIcons: Map<String, String> by lazy {
+        runCatching { catalogSource.manifest().categoryIcons }.getOrDefault(emptyMap())
+    }
+
     val syncEngine: SyncEngine = NoOpSyncEngine()
 }
