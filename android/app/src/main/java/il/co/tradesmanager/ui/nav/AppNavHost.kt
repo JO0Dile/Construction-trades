@@ -114,6 +114,7 @@ fun AppNavHost(
                     onOpenInventory = { navController.switchTab(Routes.INVENTORY) },
                     onOpenSchedule = { navController.switchTab(Routes.SCHEDULE) },
                     onOpenProjects = { navController.switchTab(Routes.PROJECTS) },
+                    onOpenSafety = { navController.switchTab(Routes.SAFETY) },
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                 )
             }

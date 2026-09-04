@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -43,6 +44,7 @@ fun HomeScreen(
     onOpenInventory: () -> Unit,
     onOpenSchedule: () -> Unit,
     onOpenProjects: () -> Unit,
+    onOpenSafety: () -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val viewModel: HomeViewModel = viewModel(factory = ViewModelFactory(container) { HomeViewModel(it) })
@@ -70,7 +72,10 @@ fun HomeScreen(
                         text = stringResource(R.string.home_no_tasks_today),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable(onClick = onOpenSchedule)
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }
             } else {
@@ -84,7 +89,9 @@ fun HomeScreen(
                                     Formats.time(LocalTime.ofSecondOfDay(block.endMinute * 60L), locale),
                             )
                         },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable(onClick = onOpenSchedule),
                     )
                 }
             }
@@ -127,7 +134,7 @@ fun HomeScreen(
             if (state.openChecklists > 0) {
                 item {
                     Card(
-                        onClick = onOpenSchedule,
+                        onClick = onOpenSafety,
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
                     ) {
                         Text(
