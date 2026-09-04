@@ -77,6 +77,7 @@ fun InventoryScreen(
     val items by viewModel.items.collectAsStateWithLifecycle()
     val filters by viewModel.filters.collectAsStateWithLifecycle()
     val lowStockCount by viewModel.lowStockCount.collectAsStateWithLifecycle()
+    val photoByItem by viewModel.photoByItem.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
     val locale = currentLocale()
     val context = LocalContext.current
@@ -175,7 +176,11 @@ fun InventoryScreen(
                     items(items, key = { it.id }) { item ->
                         ListItem(
                             leadingContent = {
-                                ItemThumbnail(category = item.category, kind = item.kind)
+                                ItemThumbnail(
+                                    category = item.category,
+                                    kind = item.kind,
+                                    photoUri = photoByItem[item.id],
+                                )
                             },
                             headlineContent = { Text(item.names.resolve(languageTag)) },
                             supportingContent = {

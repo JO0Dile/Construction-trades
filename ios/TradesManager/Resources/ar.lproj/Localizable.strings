@@ -104,6 +104,19 @@
 "proj_empty" = "لا توجد مشاريع بعد";
 "proj_add_material" = "إضافة مادة";
 "proj_required_qty" = "مطلوب";
+/* Project section holding the site plan and progress photos */
+"photo_section" = "مخططات وصور";
+"photo_add" = "إضافة مخطط أو صورة";
+"photo_take" = "التقاط صورة";
+/* Pick an existing image — a floor plan sent by the architect, for instance */
+"photo_choose" = "اختيار صورة";
+"photo_set_plan" = "تعيين كمخطط الموقع";
+"photo_plan_badge" = "مخطط الموقع";
+"photo_empty" = "لا يوجد مخطط أو صور بعد";
+"photo_empty_hint" = "صوّر المخطط المعلّق على الجدار، أو اختر مخططًا أرسله لك أحدهم.";
+"photo_failed" = "تعذّر حفظ الصورة";
+/* Photograph of the user's own stock, replacing the category icon */
+"item_photo" = "صورة الصنف";
 "sch_title" = "الجدول";
 "sch_new_block" = "فترة زمنية جديدة";
 "sch_start" = "البداية";

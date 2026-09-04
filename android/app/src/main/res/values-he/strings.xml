@@ -104,6 +104,16 @@
     <string name="proj_empty">אין עדיין פרויקטים</string>
     <string name="proj_add_material">הוספת חומר</string>
     <string name="proj_required_qty">נדרש</string>
+    <string name="photo_section">תוכניות ותמונות</string>
+    <string name="photo_add">הוספת תוכנית או תמונה</string>
+    <string name="photo_take">צילום תמונה</string>
+    <string name="photo_choose">בחירת תמונה</string>
+    <string name="photo_set_plan">הגדרה כתוכנית האתר</string>
+    <string name="photo_plan_badge">תוכנית אתר</string>
+    <string name="photo_empty">אין עדיין תוכנית או תמונות</string>
+    <string name="photo_empty_hint">אפשר לצלם את התוכנית שתלויה בקיר, או לבחור תוכנית שנשלחה אליך.</string>
+    <string name="photo_failed">לא ניתן היה לשמור את התמונה</string>
+    <string name="item_photo">תמונה של הפריט</string>
     <string name="sch_title">לוח זמנים</string>
     <string name="sch_new_block">משבצת זמן חדשה</string>
     <string name="sch_start">התחלה</string>

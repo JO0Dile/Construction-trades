@@ -104,6 +104,19 @@
 "proj_empty" = "No projects yet";
 "proj_add_material" = "Add material";
 "proj_required_qty" = "Required";
+/* Project section holding the site plan and progress photos */
+"photo_section" = "Plans and photos";
+"photo_add" = "Add a plan or photo";
+"photo_take" = "Take a photo";
+/* Pick an existing image — a floor plan sent by the architect, for instance */
+"photo_choose" = "Choose an image";
+"photo_set_plan" = "Set as the site plan";
+"photo_plan_badge" = "Site plan";
+"photo_empty" = "No plan or photos yet";
+"photo_empty_hint" = "Photograph the drawing on the wall, or pick a plan someone sent you.";
+"photo_failed" = "That image could not be saved";
+/* Photograph of the user's own stock, replacing the category icon */
+"item_photo" = "Photo of this item";
 "sch_title" = "Schedule";
 "sch_new_block" = "New time block";
 "sch_start" = "Start";

@@ -38,6 +38,10 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
     ) { low, _ -> low.size }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
+    /** Item id -> photo uri, so a row can show the user's own picture. */
+    val photoByItem: StateFlow<Map<String, String>> = container.photos.observeItemThumbnails()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
     fun setQuery(value: String) { _filters.value = _filters.value.copy(query = value) }
 
     fun setKind(kind: String?) { _filters.value = _filters.value.copy(kind = kind) }

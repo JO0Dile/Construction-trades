@@ -6,6 +6,7 @@ import androidx.room.TypeConverters
 import il.co.tradesmanager.data.local.dao.AuditDao
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
+import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.dao.ProjectDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
 import il.co.tradesmanager.data.local.dao.ScheduleDao
@@ -62,6 +63,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun scheduleDao(): ScheduleDao
     abstract fun safetyDao(): SafetyDao
     abstract fun auditDao(): AuditDao
+    abstract fun photoDao(): PhotoDao
 
     companion object {
         const val NAME = "tradesmanager.db"

@@ -104,6 +104,19 @@
 "proj_empty" = "אין עדיין פרויקטים";
 "proj_add_material" = "הוספת חומר";
 "proj_required_qty" = "נדרש";
+/* Project section holding the site plan and progress photos */
+"photo_section" = "תוכניות ותמונות";
+"photo_add" = "הוספת תוכנית או תמונה";
+"photo_take" = "צילום תמונה";
+/* Pick an existing image — a floor plan sent by the architect, for instance */
+"photo_choose" = "בחירת תמונה";
+"photo_set_plan" = "הגדרה כתוכנית האתר";
+"photo_plan_badge" = "תוכנית אתר";
+"photo_empty" = "אין עדיין תוכנית או תמונות";
+"photo_empty_hint" = "אפשר לצלם את התוכנית שתלויה בקיר, או לבחור תוכנית שנשלחה אליך.";
+"photo_failed" = "לא ניתן היה לשמור את התמונה";
+/* Photograph of the user's own stock, replacing the category icon */
+"item_photo" = "תמונה של הפריט";
 "sch_title" = "לוח זמנים";
 "sch_new_block" = "משבצת זמן חדשה";
 "sch_start" = "התחלה";

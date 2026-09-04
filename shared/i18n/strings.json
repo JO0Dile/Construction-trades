@@ -530,6 +530,59 @@
       "he": "נדרש",
       "ar": "مطلوب"
     },
+    "photo_section": {
+      "c": "Project section holding the site plan and progress photos",
+      "en": "Plans and photos",
+      "he": "תוכניות ותמונות",
+      "ar": "مخططات وصور"
+    },
+    "photo_add": {
+      "en": "Add a plan or photo",
+      "he": "הוספת תוכנית או תמונה",
+      "ar": "إضافة مخطط أو صورة"
+    },
+    "photo_take": {
+      "en": "Take a photo",
+      "he": "צילום תמונה",
+      "ar": "التقاط صورة"
+    },
+    "photo_choose": {
+      "c": "Pick an existing image — a floor plan sent by the architect, for instance",
+      "en": "Choose an image",
+      "he": "בחירת תמונה",
+      "ar": "اختيار صورة"
+    },
+    "photo_set_plan": {
+      "en": "Set as the site plan",
+      "he": "הגדרה כתוכנית האתר",
+      "ar": "تعيين كمخطط الموقع"
+    },
+    "photo_plan_badge": {
+      "en": "Site plan",
+      "he": "תוכנית אתר",
+      "ar": "مخطط الموقع"
+    },
+    "photo_empty": {
+      "en": "No plan or photos yet",
+      "he": "אין עדיין תוכנית או תמונות",
+      "ar": "لا يوجد مخطط أو صور بعد"
+    },
+    "photo_empty_hint": {
+      "en": "Photograph the drawing on the wall, or pick a plan someone sent you.",
+      "he": "אפשר לצלם את התוכנית שתלויה בקיר, או לבחור תוכנית שנשלחה אליך.",
+      "ar": "صوّر المخطط المعلّق على الجدار، أو اختر مخططًا أرسله لك أحدهم."
+    },
+    "photo_failed": {
+      "en": "That image could not be saved",
+      "he": "לא ניתן היה לשמור את התמונה",
+      "ar": "تعذّر حفظ الصورة"
+    },
+    "item_photo": {
+      "c": "Photograph of the user's own stock, replacing the category icon",
+      "en": "Photo of this item",
+      "he": "תמונה של הפריט",
+      "ar": "صورة الصنف"
+    },
     "sch_title": {
       "en": "Schedule",
       "he": "לוח זמנים",

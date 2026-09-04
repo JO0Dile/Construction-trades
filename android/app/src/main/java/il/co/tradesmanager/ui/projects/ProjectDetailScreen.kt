@@ -1,12 +1,22 @@
 package il.co.tradesmanager.ui.projects
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AddAPhoto
 import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -15,12 +25,19 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
@@ -28,12 +45,16 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.AsyncImage
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.ItemThumbnail
+import il.co.tradesmanager.ui.components.PhotoViewer
+import il.co.tradesmanager.ui.components.rememberImageAdder
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
@@ -53,6 +74,12 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
     val context = LocalContext.current
     val layoutDirection = LocalLayoutDirection.current
     val project = state.project
+    var viewing by remember { mutableStateOf<PhotoEntity?>(null) }
+    val addImage = rememberImageAdder(
+        newCameraTarget = viewModel::newCameraTarget,
+        onCaptured = viewModel::onCaptured,
+        onPicked = viewModel::onPicked,
+    )
 
     Scaffold(
         topBar = {
@@ -100,6 +127,15 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
                         project.clientName?.let { DetailRow(stringResource(R.string.proj_client), it) }
                     }
                 }
+            }
+
+            item {
+                ProjectImages(
+                    images = state.images,
+                    planId = state.plan?.id,
+                    onAdd = addImage,
+                    onOpen = { viewing = it },
+                )
             }
 
             if (state.tasks.isNotEmpty()) {
@@ -156,6 +192,101 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
                             )
                         },
                     )
+                }
+            }
+        }
+    }
+
+    viewing?.let { photo ->
+        PhotoViewer(
+            photo = photo,
+            isPlan = photo.id == state.plan?.id,
+            onSetAsPlan = {
+                viewModel.setAsPlan(photo)
+                viewing = null
+            },
+            onDelete = {
+                viewModel.deletePhoto(photo)
+                viewing = null
+            },
+            onDismiss = { viewing = null },
+        )
+    }
+}
+
+@Composable
+private fun ProjectImages(
+    images: List<PhotoEntity>,
+    planId: String?,
+    onAdd: () -> Unit,
+    onOpen: (PhotoEntity) -> Unit,
+) {
+    Column(Modifier.padding(vertical = 8.dp)) {
+        SectionHeader(stringResource(R.string.photo_section))
+
+        if (images.isEmpty()) {
+            Column(Modifier.padding(horizontal = 16.dp)) {
+                Text(
+                    text = stringResource(R.string.photo_empty),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                Text(
+                    text = stringResource(R.string.photo_empty_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 2.dp, bottom = 8.dp),
+                )
+                OutlinedButton(onClick = onAdd) {
+                    Icon(Icons.Filled.AddAPhoto, contentDescription = null)
+                    Text(
+                        text = stringResource(R.string.photo_add),
+                        modifier = Modifier.padding(start = 8.dp),
+                    )
+                }
+            }
+        } else {
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                items(images, key = { it.id }) { photo ->
+                    Box(
+                        modifier = Modifier
+                            .size(110.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .clickable { onOpen(photo) },
+                    ) {
+                        AsyncImage(
+                            model = photo.uri,
+                            contentDescription = photo.note,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize(),
+                        )
+                        if (photo.id == planId) {
+                            // The drawing is what people hunt for on a site,
+                            // so it says so on the thumbnail.
+                            Text(
+                                text = stringResource(R.string.photo_plan_badge),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                modifier = Modifier
+                                    .align(Alignment.BottomStart)
+                                    .background(MaterialTheme.colorScheme.primaryContainer)
+                                    .padding(horizontal = 6.dp, vertical = 2.dp),
+                            )
+                        }
+                    }
+                }
+                item {
+                    OutlinedButton(
+                        onClick = onAdd,
+                        modifier = Modifier.size(110.dp),
+                    ) {
+                        Icon(
+                            Icons.Filled.AddAPhoto,
+                            contentDescription = stringResource(R.string.photo_add),
+                        )
+                    }
                 }
             }
         }

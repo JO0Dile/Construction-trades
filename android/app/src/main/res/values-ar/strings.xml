@@ -104,6 +104,16 @@
     <string name="proj_empty">لا توجد مشاريع بعد</string>
     <string name="proj_add_material">إضافة مادة</string>
     <string name="proj_required_qty">مطلوب</string>
+    <string name="photo_section">مخططات وصور</string>
+    <string name="photo_add">إضافة مخطط أو صورة</string>
+    <string name="photo_take">التقاط صورة</string>
+    <string name="photo_choose">اختيار صورة</string>
+    <string name="photo_set_plan">تعيين كمخطط الموقع</string>
+    <string name="photo_plan_badge">مخطط الموقع</string>
+    <string name="photo_empty">لا يوجد مخطط أو صور بعد</string>
+    <string name="photo_empty_hint">صوّر المخطط المعلّق على الجدار، أو اختر مخططًا أرسله لك أحدهم.</string>
+    <string name="photo_failed">تعذّر حفظ الصورة</string>
+    <string name="item_photo">صورة الصنف</string>
     <string name="sch_title">الجدول</string>
     <string name="sch_new_block">فترة زمنية جديدة</string>
     <string name="sch_start">البداية</string>

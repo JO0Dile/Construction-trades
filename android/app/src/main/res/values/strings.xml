@@ -105,6 +105,19 @@
     <string name="proj_empty">No projects yet</string>
     <string name="proj_add_material">Add material</string>
     <string name="proj_required_qty">Required</string>
+    <!-- Project section holding the site plan and progress photos -->
+    <string name="photo_section">Plans and photos</string>
+    <string name="photo_add">Add a plan or photo</string>
+    <string name="photo_take">Take a photo</string>
+    <!-- Pick an existing image — a floor plan sent by the architect, for instance -->
+    <string name="photo_choose">Choose an image</string>
+    <string name="photo_set_plan">Set as the site plan</string>
+    <string name="photo_plan_badge">Site plan</string>
+    <string name="photo_empty">No plan or photos yet</string>
+    <string name="photo_empty_hint">Photograph the drawing on the wall, or pick a plan someone sent you.</string>
+    <string name="photo_failed">That image could not be saved</string>
+    <!-- Photograph of the user's own stock, replacing the category icon -->
+    <string name="item_photo">Photo of this item</string>
     <string name="sch_title">Schedule</string>
     <string name="sch_new_block">New time block</string>
     <string name="sch_start">Start</string>

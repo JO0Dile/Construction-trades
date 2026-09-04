@@ -3,13 +3,18 @@ package il.co.tradesmanager.ui.inventory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.i18n.resolve
+import android.net.Uri
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
+import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.di.AppContainer
 import java.util.UUID
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 /**
@@ -44,6 +49,41 @@ class InventoryEditViewModel(
     val form: StateFlow<Form> = _form.asStateFlow()
 
     private var loaded: InventoryItemEntity? = null
+
+    /**
+     * Settled the moment the editor opens, including for a new item, so a
+     * photo can be attached before the item has ever been saved. Without this
+     * the user would have to save, reopen, and only then add the picture.
+     */
+    private val editingId: String = itemId ?: UUID.randomUUID().toString()
+
+    val photos: StateFlow<List<PhotoEntity>> =
+        container.photos.observeFor(PhotoRepository.Owner.INVENTORY_ITEM, editingId)
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    fun newCameraTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
+
+    fun onCaptured(photoId: String) = viewModelScope.launch {
+        container.photos.recordCameraPhoto(
+            id = photoId,
+            ownerType = PhotoRepository.Owner.INVENTORY_ITEM,
+            ownerId = editingId,
+            actorName = container.settings.settings.first().actorName,
+        )
+    }
+
+    fun onPicked(uri: Uri) = viewModelScope.launch {
+        container.photos.importPhoto(
+            source = uri,
+            ownerType = PhotoRepository.Owner.INVENTORY_ITEM,
+            ownerId = editingId,
+            actorName = container.settings.settings.first().actorName,
+        )
+    }
+
+    fun deletePhoto(photo: PhotoEntity) = viewModelScope.launch {
+        container.photos.delete(photo, container.settings.settings.first().actorName)
+    }
 
     init {
         if (itemId != null) {
@@ -86,7 +126,7 @@ class InventoryEditViewModel(
             val existing = loaded
             val now = System.currentTimeMillis()
             val item = InventoryItemEntity(
-                id = existing?.id ?: UUID.randomUUID().toString(),
+                id = existing?.id ?: editingId,
                 catalogItemId = existing?.catalogItemId,
                 tradeId = existing?.tradeId,
                 kind = existing?.kind ?: "MATERIAL",
