@@ -50,18 +50,84 @@ cd android
 No phone required. Two routes; the first is better if you want to report bugs
 back, because it gives you the crash log.
 
-### Android Studio (recommended)
+### Android Studio, step by step
 
-1. Install [Android Studio](https://developer.android.com/studio) — free, and
-   it brings the SDK and emulator with it.
-2. **Open** the `android/` folder of this repository (not the repository root
-   — the Gradle project lives one level down). Let it sync; the first sync
-   downloads the SDK and dependencies and takes a while.
-3. **Device Manager** → **Create Virtual Device** → pick any phone, e.g.
-   Pixel 7 → choose a system image (API 34 or 35) → Download → Finish.
-4. Press **Run** (▶). It builds, starts the emulator and installs the app.
+Assumes you have Android Studio installed and have never used it. It is slow
+the first time and fast every time after.
 
-You do not need the CI artifact at all this way — you are building from source.
+#### 1. Get the code onto your computer
+
+Either clone it:
+
+```bash
+git clone https://github.com/JO0Dile/Construction-trades.git
+```
+
+or, with no Git at all: open
+<https://github.com/JO0Dile/Construction-trades> → green **Code** button →
+**Download ZIP** → unzip it somewhere.
+
+#### 2. Open the `android` folder — not the top folder
+
+This is the step everyone gets wrong. In Android Studio: **File → Open**, then
+select the **`android`** folder *inside* what you just downloaded.
+
+```
+Construction-trades/     ← NOT this one
+  android/               ← THIS one. Open this.
+    app/
+    gradle/
+    settings.gradle.kts
+  ios/
+  shared/
+```
+
+If you open the top folder instead, Android Studio shows a plain file list
+with no Run button and complains it cannot find a Gradle project. If that
+happens, just **File → Open** the `android` folder instead.
+
+#### 3. Wait for the first sync
+
+The status bar at the bottom says *Gradle sync in progress*. **This takes 5–15
+minutes the first time** — it is downloading the Android SDK and every library
+the app uses. It is not frozen. Later syncs take seconds.
+
+While it runs you may get banners at the top:
+
+- *"Install missing SDK components"* / *"Accept licences"* → **accept**.
+- *"Android Gradle Plugin upgrade recommended"* → **decline / "Remind me
+  later"**. The pinned version is the one CI builds with; upgrading here would
+  quietly put your build out of step with it.
+
+#### 4. Create a phone to run it on
+
+1. Open **Device Manager** — the phone icon down the right-hand edge, or
+   **View → Tool Windows → Device Manager**.
+2. Click **+** → **Create Virtual Device**.
+3. Pick any phone (**Pixel 7** is a safe choice) → **Next**.
+4. Pick a system image. If it has a **⬇** next to its name, click that first
+   and wait for the download. **API 35** or **API 34** are both fine.
+5. **Next** → **Finish**.
+
+#### 5. Run it
+
+At the top of the window there is a device dropdown and a green **▶**.
+
+1. Choose your **Pixel 7** in the dropdown.
+2. Press **▶**.
+
+It compiles (a few minutes the first time), boots the emulator, installs the
+app and opens it. You should land on the onboarding screen asking for a
+language and your trades.
+
+#### When it goes wrong
+
+| What you see | What it means |
+|---|---|
+| No **▶** button, no Gradle | You opened the top folder. Open `android` instead (step 2). |
+| *"SDK licences not accepted"* | **Tools → SDK Manager → SDK Tools** tab → accept and install. |
+| Emulator never boots, or *"HAXM/WHPX not installed"* | Hardware virtualisation is off. Enable **Intel VT-x / AMD-V** in your BIOS; on Windows also enable *Windows Hypervisor Platform* in *Turn Windows features on or off*. |
+| App installs then closes immediately | Open the **Logcat** tab at the bottom and copy the red lines — that is the crash, and it is exactly what to send back. |
 
 ### Or drop the APK onto a running emulator
 
