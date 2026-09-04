@@ -11,8 +11,8 @@ iOS build cannot exist without a Mac.
 Every push builds a debug APK in GitHub Actions. That artifact is the app.
 
 1. Open the repository on GitHub → **Actions** tab.
-2. Pick the most recent **Trades Work Manager** run on your branch.
-3. Scroll to **Artifacts** at the bottom → download **tradesmanager-debug-apk**.
+2. Pick the most recent **CI** run on your branch.
+3. Scroll to **Artifacts** at the bottom → download **trades-work-manager-debug-apk**.
 4. Unzip it. Inside are the per-ABI APKs and one universal APK. On a phone,
    take **`app-universal-debug.apk`** — it runs on any device. The
    `arm64-v8a` one is smaller and works on essentially every phone sold since
@@ -25,10 +25,9 @@ The debug build installs as **Trades Work Manager (debug)** with its own
 package id (`il.co.tradesmanager.debug`), so it sits alongside a release build
 without either overwriting the other.
 
-> The workflow has not run yet — it was written in an environment with no
-> Android SDK, so the first run is the first real compile. If it fails, the log
-> in the Actions tab names the file and line, and it will be a build-config or
-> API-signature fix rather than a design problem.
+> The Swift has never been compiled — this repository was built in an
+> environment with no Swift toolchain and no Xcode. The Android side is
+> compiled and tested by the workflow above on every push.
 
 ### Or build it yourself
 

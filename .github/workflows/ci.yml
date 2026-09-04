@@ -1,21 +1,12 @@
-name: Trades Work Manager
+name: CI
 
-# The Android app lives in  and is unrelated to the StudyPlan
-# site in web/ — different product, different toolchain. Scoping this workflow
-# to its own paths keeps a change to one from running the other's checks.
+# Runs on every branch, not just main: the debug APK this produces is how the
+# app gets onto a phone before there is a Play listing, so it has to be built
+# on whichever branch the work is happening on.
 
 on:
-  # Every branch, not just main: the debug APK this produces is how the app is
-  # actually tested on a phone before there is a Play listing, so it has to be
-  # built on the branch the work is happening on.
   push:
-    paths:
-      - '**'
-      - '.github/workflows/tradesmanager.yml'
   pull_request:
-    paths:
-      - '**'
-      - '.github/workflows/tradesmanager.yml'
   workflow_dispatch:
 
 permissions:
@@ -42,8 +33,8 @@ jobs:
         run: python3 tools/gen-strings.py --check
 
       # Parses every catalogue file through the app's own model types with
-      # unknown keys rejected, and runs the locale, format and time-of-day
-      # tests. Needs no emulator.
+      # unknown keys rejected, and runs the locale, format, time-of-day and
+      # CSV tests. Needs no emulator.
       - name: Unit tests
         working-directory: android
         run: ./gradlew --no-daemon :app:testDebugUnitTest
@@ -56,11 +47,11 @@ jobs:
         working-directory: android
         run: ./gradlew --no-daemon :app:assembleDebug
 
+      # This artifact is the app. See docs/TESTING.md.
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: tradesmanager-debug-apk
+          name: trades-work-manager-debug-apk
           path: android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
-          # Long enough to install and try it, short enough not to hoard builds.
           retention-days: 30

@@ -10,11 +10,6 @@ English, working with no signal.
 SwiftUI. There is no WebView, no PWA, no hybrid shell, and no browser
 dependency for anything.
 
-> **This project is meant to live in a repository of its own.** It currently
-> sits inside an unrelated one. `tools/extract-standalone-repo.sh` lifts it out
-> — with its history, not as a flat copy — into a standalone repo whose root is
-> this folder. See [Moving it out](#moving-it-out).
-
 ---
 
 ## What makes it usable on day one
@@ -37,17 +32,17 @@ copy of something you have been counting.
 ## Layout
 
 ```
-tradesmanager/
-  shared/
-    assets/catalog/     the catalogues — bundled unchanged by BOTH apps
-    i18n/strings.json   the only place UI text is written
-  android/              Gradle + Kotlin + Compose  (namespace il.co.tradesmanager)
-  ios/                  Swift shared layer, Info.plist, privacy manifest
-  tools/gen-strings.py  strings.json -> strings.xml + .strings/.stringsdict
-  docs/
-    STORE_COMPLIANCE.md Google Play and App Store rules, mapped to this code
-    LOCALIZATION.md     how to add a language without touching code
-    CATALOG_FORMAT.md   the catalogue file format and its invariants
+shared/
+  assets/catalog/       the catalogues — bundled unchanged by BOTH apps
+  i18n/strings.json     the only place UI text is written
+android/                Gradle + Kotlin + Compose  (namespace il.co.tradesmanager)
+ios/                    Swift + SwiftUI + SwiftData, Info.plist, privacy manifest
+tools/gen-strings.py    strings.json -> strings.xml + .strings/.stringsdict
+docs/
+  TESTING.md            how to get a build onto an actual phone
+  STORE_COMPLIANCE.md   Google Play and App Store rules, mapped to this code
+  LOCALIZATION.md       how to add a language without touching code
+  CATALOG_FORMAT.md     the catalogue file format and its invariants
 ```
 
 `shared/` is not a convention, it is the mechanism. Gradle merges
@@ -101,20 +96,6 @@ one retention purge, which records its own purge.
 generated on the device and held in the Android Keystore. If the native library
 cannot load, the app opens unencrypted and says so in Settings, rather than
 refusing to start on a site with no signal.
-
----
-
-## Moving it out
-
-```bash
-./tools/extract-standalone-repo.sh                       # build it locally
-./tools/extract-standalone-repo.sh git@github.com:you/trades-work-manager.git
-```
-
-The script uses `git subtree split`, so the new repository's history is the
-commits that touched this folder — not a single "initial commit" that throws
-the rest away. It also rewrites the CI workflow's paths for the new root. The
-target repository must be **empty** (no README, no licence).
 
 ---
 
