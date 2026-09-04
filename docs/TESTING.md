@@ -1,8 +1,11 @@
-# Getting it onto a phone
+# Getting it running
 
-Two different situations, because the two platforms genuinely differ: an
-Android build can be produced by a machine in the cloud and sideloaded, and an
-iOS build cannot exist without a Mac.
+Three ways in, depending on what hardware you have. The Android ones work on
+any computer; iOS genuinely cannot exist without a Mac.
+
+- [On an Android phone](#android--the-path-that-needs-nothing-but-a-phone) — no tools, just the APK
+- [On a PC, in an emulator](#android-on-a-pc--emulator) — no phone needed
+- [On iOS](#ios--needs-a-mac) — needs a Mac
 
 ---
 
@@ -39,6 +42,75 @@ cd android
 # app/build/outputs/apk/debug/app-universal-debug.apk
 ./gradlew :app:installDebug     # straight onto a connected phone
 ```
+
+---
+
+## Android on a PC — emulator
+
+No phone required. Two routes; the first is better if you want to report bugs
+back, because it gives you the crash log.
+
+### Android Studio (recommended)
+
+1. Install [Android Studio](https://developer.android.com/studio) — free, and
+   it brings the SDK and emulator with it.
+2. **Open** the `android/` folder of this repository (not the repository root
+   — the Gradle project lives one level down). Let it sync; the first sync
+   downloads the SDK and dependencies and takes a while.
+3. **Device Manager** → **Create Virtual Device** → pick any phone, e.g.
+   Pixel 7 → choose a system image (API 34 or 35) → Download → Finish.
+4. Press **Run** (▶). It builds, starts the emulator and installs the app.
+
+You do not need the CI artifact at all this way — you are building from source.
+
+### Or drop the APK onto a running emulator
+
+If you already downloaded the artifact: start any emulator, then **drag the
+`app-universal-debug.apk` file onto the emulator window**. It installs.
+
+Same thing from a terminal, which also works for a real phone over USB with
+developer mode on:
+
+```bash
+adb install -r app-universal-debug.apk
+```
+
+### What the emulator does and does not do well
+
+| | |
+|---|---|
+| Hebrew and Arabic, RTL mirroring | Works exactly as on a phone |
+| Larger text, dark mode | Fine |
+| Everything offline | Fine — and the emulator can be put in flight mode too |
+| **Barcode scanning** | Awkward. The emulator's camera shows a synthetic scene by default. Fix: **Device Manager → edit the AVD (pencil) → Show Advanced Settings → Camera Back → `Webcam0`**, then hold a real barcode up to your laptop's webcam. |
+| **GPS check-in stamp** | Set a position in the emulator's **⋯ Extended controls → Location**. |
+| **Export share sheet** | An emulator has few share targets. To actually inspect the exported files, pull them (below). |
+
+### Getting the exported CSV and PDF off the device
+
+The export writes to the app's private cache, which is exactly where it should
+go. Debug builds are debuggable, so `run-as` can read it — this works on an
+emulator and on a real phone alike:
+
+```bash
+adb shell run-as il.co.tradesmanager.debug ls cache/exports
+adb exec-out run-as il.co.tradesmanager.debug cat cache/exports/inventory-2026-09-04.csv > inventory.csv
+```
+
+Open `inventory.csv` in Excel or LibreOffice. Hebrew and Arabic must appear as
+readable text; if you see `Ã—Ö¸` the byte-order mark has been lost somewhere and
+that is a bug worth reporting.
+
+### Getting a crash log
+
+If something crashes or misbehaves, this is the single most useful thing to
+send back:
+
+```bash
+adb logcat -v time | grep -i "tradesmanager\|AndroidRuntime"
+```
+
+In Android Studio the same thing is the **Logcat** tab at the bottom.
 
 ---
 
