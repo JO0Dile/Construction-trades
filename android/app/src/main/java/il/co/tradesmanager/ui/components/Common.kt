@@ -50,29 +50,6 @@ fun SectionHeader(text: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Composable
-fun EmptyState(message: String, modifier: Modifier = Modifier, hint: String? = null) {
-    Column(
-        modifier = modifier.fillMaxSize().padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(
-            text = message,
-            style = MaterialTheme.typography.titleMedium,
-            textAlign = TextAlign.Center,
-        )
-        if (hint != null) {
-            Text(
-                text = hint,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(top = 8.dp),
-            )
-        }
-    }
-}
 
 @Composable
 fun LoadingState(message: String, modifier: Modifier = Modifier) {

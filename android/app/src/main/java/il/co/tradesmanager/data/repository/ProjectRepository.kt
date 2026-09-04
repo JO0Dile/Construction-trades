@@ -6,6 +6,7 @@ import il.co.tradesmanager.data.catalog.CatalogSource
 import il.co.tradesmanager.data.catalog.ProjectTemplateDto
 import il.co.tradesmanager.data.catalog.TemplateFile
 import il.co.tradesmanager.data.local.dao.ProjectDao
+import il.co.tradesmanager.data.local.dao.ProjectProgress
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
@@ -32,6 +33,7 @@ class ProjectRepository(
     fun observeProject(id: String): Flow<ProjectEntity?> = dao.observeProject(id)
     fun observeMaterials(id: String): Flow<List<ProjectMaterialEntity>> = dao.observeMaterials(id)
     fun observeTasks(id: String): Flow<List<ProjectTaskEntity>> = dao.observeTasks(id)
+    fun observeProgress(): Flow<List<ProjectProgress>> = dao.observeTaskProgress()
 
     suspend fun save(project: ProjectEntity, actorName: String): ProjectEntity {
         val now = System.currentTimeMillis()

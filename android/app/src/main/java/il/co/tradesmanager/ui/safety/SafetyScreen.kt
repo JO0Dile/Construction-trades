@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
@@ -37,7 +39,12 @@ fun SafetyScreen(container: AppContainer, onRunChecklist: (String) -> Unit) {
         topBar = { TopAppBar(title = { Text(stringResource(R.string.saf_title)) }) },
     ) { padding ->
         if (templates.isEmpty()) {
-            EmptyState(stringResource(R.string.saf_empty), modifier = Modifier.padding(padding))
+            EmptyState(
+                message = stringResource(R.string.saf_empty),
+                hint = stringResource(R.string.set_trades),
+                icon = Icons.Filled.HealthAndSafety,
+                modifier = Modifier.padding(padding),
+            )
         } else {
             LazyColumn(Modifier.padding(padding)) {
                 items(templates, key = { it.id }) { template ->

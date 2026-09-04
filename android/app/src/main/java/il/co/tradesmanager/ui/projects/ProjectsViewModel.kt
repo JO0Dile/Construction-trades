@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -20,6 +21,11 @@ class ProjectsViewModel(
 
     val projects: StateFlow<List<ProjectEntity>> = container.projects.observeProjects()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** Project id -> how far through its task list it is. */
+    val progress: StateFlow<Map<String, Double>> = container.projects.observeProgress()
+        .map { rows -> rows.associate { it.projectId to it.fraction } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     private val _templates = MutableStateFlow<List<Pair<String, ProjectTemplateDto>>>(emptyList())
     val templates: StateFlow<List<Pair<String, ProjectTemplateDto>>> = _templates.asStateFlow()

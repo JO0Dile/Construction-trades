@@ -10,6 +10,11 @@ import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import kotlinx.coroutines.flow.Flow
 
+/** Projection for [ProjectDao.observeTaskProgress]. */
+data class ProjectProgress(val projectId: String, val total: Int, val done: Int) {
+    val fraction: Double get() = if (total == 0) 0.0 else done.toDouble() / total
+}
+
 @Dao
 interface ProjectDao {
 
@@ -48,6 +53,22 @@ interface ProjectDao {
 
     @Query("SELECT COUNT(*) FROM project_tasks WHERE projectId = :projectId AND isDone = 1")
     fun observeDoneTaskCount(projectId: String): Flow<Int>
+
+    /**
+     * Done and total per project, in one query. The list screen shows a
+     * progress bar per row, and a query per row would be one round trip per
+     * project on every recomposition.
+     */
+    @Query(
+        """
+        SELECT projectId,
+               COUNT(*) AS total,
+               SUM(CASE WHEN isDone THEN 1 ELSE 0 END) AS done
+        FROM project_tasks
+        GROUP BY projectId
+        """,
+    )
+    fun observeTaskProgress(): Flow<List<ProjectProgress>>
 
     @Upsert
     suspend fun upsertMilestones(milestones: List<MilestoneEntity>)

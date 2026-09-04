@@ -1,19 +1,24 @@
 package il.co.tradesmanager.ui.projects
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Work
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,7 +29,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -46,6 +53,7 @@ fun ProjectsScreen(container: AppContainer, onOpenProject: (String) -> Unit) {
     )
     val projects by viewModel.projects.collectAsStateWithLifecycle()
     val templates by viewModel.templates.collectAsStateWithLifecycle()
+    val progress by viewModel.progress.collectAsStateWithLifecycle()
     var showTemplatePicker by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -65,15 +73,12 @@ fun ProjectsScreen(container: AppContainer, onOpenProject: (String) -> Unit) {
         } else {
             LazyColumn(Modifier.padding(padding)) {
                 items(projects, key = { it.id }) { project ->
-                    ListItem(
-                        headlineContent = { Text(project.name) },
-                        supportingContent = {
-                            Text(listOfNotNull(project.kindLabel, project.city).joinToString(" · "))
-                        },
-                        trailingContent = { Text(stringResource(statusLabel(project.status))) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onOpenProject(project.id) },
+                    ProjectRow(
+                        name = project.name,
+                        subtitle = listOfNotNull(project.kindLabel, project.city).joinToString(" · "),
+                        status = project.status,
+                        progress = progress[project.id] ?: 0.0,
+                        onClick = { onOpenProject(project.id) },
                     )
                 }
             }
@@ -132,4 +137,69 @@ internal fun statusLabel(status: String): Int = when (status) {
     ProjectRepository.Status.ON_HOLD -> R.string.proj_status_hold
     ProjectRepository.Status.DONE -> R.string.proj_status_done
     else -> R.string.proj_status_planned
+}
+
+/**
+ * One job in the list.
+ *
+ * Status and progress are the two things worth knowing before opening a job,
+ * and neither was shown before — the row was a name and a subtitle, which is
+ * the same information as the project's own title bar.
+ */
+@Composable
+private fun ProjectRow(
+    name: String,
+    subtitle: String,
+    status: String,
+    progress: Double,
+    onClick: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = name,
+                style = MaterialTheme.typography.titleSmall,
+                modifier = Modifier.weight(1f),
+            )
+            StatusChip(status)
+        }
+        if (subtitle.isNotBlank()) {
+            Text(
+                text = subtitle,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        // Only drawn once there is a task list to be a fraction of; a full-width
+        // empty bar on every row reads as "nothing is happening anywhere".
+        if (progress > 0.0) {
+            LinearProgressIndicator(
+                progress = { progress.toFloat() },
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun StatusChip(status: String) {
+    val colour = when (status) {
+        ProjectRepository.Status.ACTIVE -> Color(0xFF117864)
+        ProjectRepository.Status.ON_HOLD -> Color(0xFFB9770E)
+        ProjectRepository.Status.DONE -> Color(0xFF566573)
+        else -> Color(0xFF2E86C1)
+    }
+    Text(
+        text = stringResource(statusLabel(status)),
+        style = MaterialTheme.typography.labelSmall,
+        color = colour,
+        modifier = Modifier
+            .background(colour.copy(alpha = 0.12f), RoundedCornerShape(6.dp))
+            .padding(horizontal = 8.dp, vertical = 3.dp),
+    )
 }

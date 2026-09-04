@@ -11,6 +11,7 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Remove
@@ -170,6 +171,9 @@ fun InventoryScreen(
                 EmptyState(
                     message = stringResource(R.string.inv_empty),
                     hint = stringResource(R.string.inv_from_catalog),
+                    icon = Icons.Filled.Inventory2,
+                    actionLabel = stringResource(R.string.inv_add_item),
+                    onAction = onAddItem,
                 )
             } else {
                 LazyColumn(Modifier.fillMaxWidth()) {

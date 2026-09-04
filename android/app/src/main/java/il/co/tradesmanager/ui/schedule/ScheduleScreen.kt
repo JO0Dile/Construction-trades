@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
@@ -119,7 +120,14 @@ fun ScheduleScreen(container: AppContainer) {
             }
 
             if (blocks.isEmpty()) {
-                item { EmptyState(stringResource(R.string.sch_empty)) }
+                item {
+                    EmptyState(
+                        message = stringResource(R.string.sch_empty),
+                        icon = Icons.Filled.CalendarMonth,
+                        actionLabel = stringResource(R.string.sch_new_block),
+                        onAction = { showAdd = true },
+                    )
+                }
             } else {
                 items(blocks, key = { it.id }) { block ->
                     ListItem(
