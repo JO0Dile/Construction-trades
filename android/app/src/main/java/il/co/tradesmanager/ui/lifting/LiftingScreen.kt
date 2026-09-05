@@ -633,27 +633,26 @@ private fun CrewPickerDialog(
                         candidate.certifications.forEach { certification ->
                             val lapsed =
                                 Expiry.state(certification.expiresOn, now) == Expiry.State.EXPIRED
+                            // Lapsed tickets are shown, not hidden, and are
+                            // pickable: the plan then says out loud why the
+                            // lift is refused, rather than leaving somebody to
+                            // wonder where the name went.
+                            val label = certification.title +
+                                certification.expiresOn
+                                    ?.let { " · " + dateOf(it, zone, locale) }
+                                    .orEmpty()
                             FilterChip(
                                 selected = ticket?.id == certification.id,
                                 onClick = { ticket = certification },
                                 label = {
                                     Text(
-                                        certification.title +
-                                            (
-                                                certification.expiresOn
-                                                    ?.let { " · " + dateOf(it, zone, locale) }
-                                                    .orEmpty()
-                                                ),
+                                        if (lapsed) {
+                                            label + " · " +
+                                                stringResource(R.string.lift_block_ticket)
+                                        } else {
+                                            label
+                                        },
                                     )
-                                },
-                                // Shown, not hidden. A lapsed ticket is
-                                // pickable so the plan can say out loud why
-                                // the lift is refused, rather than leaving
-                                // somebody to wonder where the name went.
-                                leadingIcon = if (lapsed) {
-                                    { Text("!") }
-                                } else {
-                                    null
                                 },
                             )
                         }

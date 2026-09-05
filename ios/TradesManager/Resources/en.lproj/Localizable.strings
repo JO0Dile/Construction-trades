@@ -626,7 +626,7 @@
 "lift_radius" = "Radius (m)";
 "lift_capacity" = "Chart capacity at that radius (kg)";
 "lift_capacity_hint" = "Off the duty chart at the radius being worked. Not the crane's headline tonnage.";
-"lift_utilisation" = "Of the chart";
+"lift_utilisation" = "of the chart";
 "lift_heavy" = "Over three quarters of the chart — have somebody senior look at this.";
 "lift_wind" = "Wind now (km/h)";
 "lift_wind_limit" = "Wind limit (km/h)";

@@ -627,7 +627,7 @@
     <string name="lift_radius">Radius (m)</string>
     <string name="lift_capacity">Chart capacity at that radius (kg)</string>
     <string name="lift_capacity_hint">Off the duty chart at the radius being worked. Not the crane\'s headline tonnage.</string>
-    <string name="lift_utilisation">Of the chart</string>
+    <string name="lift_utilisation">of the chart</string>
     <string name="lift_heavy">Over three quarters of the chart — have somebody senior look at this.</string>
     <string name="lift_wind">Wind now (km/h)</string>
     <string name="lift_wind_limit">Wind limit (km/h)</string>
