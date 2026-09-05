@@ -2092,6 +2092,141 @@
       "en": "Tomorrow 07:00",
       "he": "מחר 07:00",
       "ar": "غدًا 07:00"
+    },
+    "snag_title": {
+      "en": "Snags",
+      "he": "ליקויים",
+      "ar": "العيوب"
+    },
+    "snag_new": {
+      "en": "Raise a snag",
+      "he": "פתיחת ליקוי",
+      "ar": "فتح عيب"
+    },
+    "snag_empty": {
+      "en": "No snags. Raise one when you find a defect.",
+      "he": "אין ליקויים. פתחו ליקוי כשמוצאים פגם.",
+      "ar": "لا توجد عيوب. افتح عيبًا عند اكتشاف خلل."
+    },
+    "snag_what": {
+      "en": "What is wrong",
+      "he": "מה הליקוי",
+      "ar": "ما هو الخلل"
+    },
+    "snag_where": {
+      "en": "Where — room, floor, wall",
+      "he": "היכן — חדר, קומה, קיר",
+      "ar": "أين — الغرفة، الطابق، الجدار"
+    },
+    "snag_who": {
+      "en": "Who has to put it right",
+      "he": "מי אמור לתקן",
+      "ar": "من عليه الإصلاح"
+    },
+    "snag_due": {
+      "en": "Fix by",
+      "he": "לתיקון עד",
+      "ar": "للإصلاح حتى"
+    },
+    "snag_blocks": {
+      "en": "Holds up handover",
+      "he": "מעכב מסירה",
+      "ar": "يؤخّر التسليم"
+    },
+    "snag_blocks_hint": {
+      "en": "Leave this off for something worth fixing that does not hold up a building.",
+      "he": "השאירו כבוי לליקוי שראוי לתקן אך אינו מעכב מסירה.",
+      "ar": "اتركه مغلقًا لعيب يستحق الإصلاح لكنه لا يؤخّر التسليم."
+    },
+    "snag_photo_raised": {
+      "en": "What is wrong",
+      "he": "צילום הליקוי",
+      "ar": "صورة العيب"
+    },
+    "snag_photo_fixed": {
+      "en": "What was done",
+      "he": "צילום התיקון",
+      "ar": "صورة الإصلاح"
+    },
+    "snag_mark_fixed": {
+      "en": "I have put this right",
+      "he": "תיקנתי",
+      "ar": "قمت بالإصلاح"
+    },
+    "snag_verify": {
+      "en": "Go and check it",
+      "he": "בדיקה",
+      "ar": "فحص"
+    },
+    "snag_accept": {
+      "en": "Accepted — close it",
+      "he": "מאושר — לסגור",
+      "ar": "مقبول — إغلاق"
+    },
+    "snag_reject": {
+      "en": "Not done — send it back",
+      "he": "לא בוצע — להחזיר",
+      "ar": "لم يُنفَّذ — إعادة"
+    },
+    "snag_verify_notes": {
+      "en": "What you found",
+      "he": "מה נמצא",
+      "ar": "ما وجدته"
+    },
+    "snag_state_open": {
+      "en": "Open",
+      "he": "פתוח",
+      "ar": "مفتوح"
+    },
+    "snag_state_awaiting": {
+      "en": "Says fixed — not checked",
+      "he": "מדווח כתוקן — טרם נבדק",
+      "ar": "مُبلَّغ كمُصلَح — لم يُفحص"
+    },
+    "snag_state_closed": {
+      "en": "Closed",
+      "he": "סגור",
+      "ar": "مغلق"
+    },
+    "snag_state_rejected": {
+      "en": "Sent back",
+      "he": "הוחזר",
+      "ar": "أُعيد"
+    },
+    "snag_claim_note": {
+      "en": "Somebody said this was done. It stays on the list until somebody else has looked.",
+      "he": "מישהו דיווח שזה בוצע. הליקוי נשאר ברשימה עד שמישהו אחר יבדוק.",
+      "ar": "أبلغ أحدهم أنه أُنجز. يبقى في القائمة حتى يفحصه شخص آخر."
+    },
+    "snag_ready": {
+      "en": "Nothing left holding up handover",
+      "he": "אין ליקויים המעכבים מסירה",
+      "ar": "لا شيء يؤخّر التسليم"
+    },
+    "snag_not_ready": {
+      "en": "Still holding up handover",
+      "he": "עדיין מעכב מסירה",
+      "ar": "ما زال يؤخّر التسليم"
+    },
+    "snag_filter_outstanding": {
+      "en": "Outstanding",
+      "he": "פתוחים",
+      "ar": "المفتوحة"
+    },
+    "snag_filter_all": {
+      "en": "All",
+      "he": "הכול",
+      "ar": "الكل"
+    },
+    "snag_raised_by": {
+      "en": "Raised by",
+      "he": "נפתח על ידי",
+      "ar": "فتحه"
+    },
+    "snag_checked_by": {
+      "en": "Checked by",
+      "he": "נבדק על ידי",
+      "ar": "فحصه"
     }
   },
   "plurals": {
@@ -2261,6 +2396,48 @@
         "few": "%d ساعات",
         "many": "%d ساعة",
         "other": "%d ساعة"
+      }
+    },
+    "snag_overdue_days": {
+      "c": "How long a snag has been past its fix-by date",
+      "en": {
+        "one": "%d day late",
+        "other": "%d days late"
+      },
+      "he": {
+        "one": "באיחור של יום",
+        "two": "באיחור של יומיים",
+        "many": "באיחור של %d ימים",
+        "other": "באיחור של %d ימים"
+      },
+      "ar": {
+        "zero": "متأخر اليوم",
+        "one": "متأخر بيوم",
+        "two": "متأخر بيومين",
+        "few": "متأخر بـ %d أيام",
+        "many": "متأخر بـ %d يومًا",
+        "other": "متأخر بـ %d يوم"
+      }
+    },
+    "snag_outstanding": {
+      "c": "How many of a job's defects are not finished",
+      "en": {
+        "one": "%d outstanding",
+        "other": "%d outstanding"
+      },
+      "he": {
+        "one": "ליקוי אחד פתוח",
+        "two": "שני ליקויים פתוחים",
+        "many": "%d ליקויים פתוחים",
+        "other": "%d ליקויים פתוחים"
+      },
+      "ar": {
+        "zero": "لا عيوب مفتوحة",
+        "one": "عيب واحد مفتوح",
+        "two": "عيبان مفتوحان",
+        "few": "%d عيوب مفتوحة",
+        "many": "%d عيبًا مفتوحًا",
+        "other": "%d عيب مفتوح"
       }
     }
   }

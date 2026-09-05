@@ -415,6 +415,33 @@
     <string name="ptw_elec_4">المفاتيح بحوزة منفّذ العمل</string>
     <string name="time_now">الآن</string>
     <string name="time_tomorrow_morning">غدًا 07:00</string>
+    <string name="snag_title">العيوب</string>
+    <string name="snag_new">فتح عيب</string>
+    <string name="snag_empty">لا توجد عيوب. افتح عيبًا عند اكتشاف خلل.</string>
+    <string name="snag_what">ما هو الخلل</string>
+    <string name="snag_where">أين — الغرفة، الطابق، الجدار</string>
+    <string name="snag_who">من عليه الإصلاح</string>
+    <string name="snag_due">للإصلاح حتى</string>
+    <string name="snag_blocks">يؤخّر التسليم</string>
+    <string name="snag_blocks_hint">اتركه مغلقًا لعيب يستحق الإصلاح لكنه لا يؤخّر التسليم.</string>
+    <string name="snag_photo_raised">صورة العيب</string>
+    <string name="snag_photo_fixed">صورة الإصلاح</string>
+    <string name="snag_mark_fixed">قمت بالإصلاح</string>
+    <string name="snag_verify">فحص</string>
+    <string name="snag_accept">مقبول — إغلاق</string>
+    <string name="snag_reject">لم يُنفَّذ — إعادة</string>
+    <string name="snag_verify_notes">ما وجدته</string>
+    <string name="snag_state_open">مفتوح</string>
+    <string name="snag_state_awaiting">مُبلَّغ كمُصلَح — لم يُفحص</string>
+    <string name="snag_state_closed">مغلق</string>
+    <string name="snag_state_rejected">أُعيد</string>
+    <string name="snag_claim_note">أبلغ أحدهم أنه أُنجز. يبقى في القائمة حتى يفحصه شخص آخر.</string>
+    <string name="snag_ready">لا شيء يؤخّر التسليم</string>
+    <string name="snag_not_ready">ما زال يؤخّر التسليم</string>
+    <string name="snag_filter_outstanding">المفتوحة</string>
+    <string name="snag_filter_all">الكل</string>
+    <string name="snag_raised_by">فتحه</string>
+    <string name="snag_checked_by">فحصه</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -478,5 +505,21 @@
         <item quantity="few">%d ساعات</item>
         <item quantity="many">%d ساعة</item>
         <item quantity="other">%d ساعة</item>
+    </plurals>
+    <plurals name="snag_overdue_days">
+        <item quantity="zero">متأخر اليوم</item>
+        <item quantity="one">متأخر بيوم</item>
+        <item quantity="two">متأخر بيومين</item>
+        <item quantity="few">متأخر بـ %d أيام</item>
+        <item quantity="many">متأخر بـ %d يومًا</item>
+        <item quantity="other">متأخر بـ %d يوم</item>
+    </plurals>
+    <plurals name="snag_outstanding">
+        <item quantity="zero">لا عيوب مفتوحة</item>
+        <item quantity="one">عيب واحد مفتوح</item>
+        <item quantity="two">عيبان مفتوحان</item>
+        <item quantity="few">%d عيوب مفتوحة</item>
+        <item quantity="many">%d عيبًا مفتوحًا</item>
+        <item quantity="other">%d عيب مفتوح</item>
     </plurals>
 </resources>

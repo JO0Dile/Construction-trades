@@ -40,6 +40,7 @@ import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.local.entity.PurchaseOrderEntity
 import il.co.tradesmanager.data.local.entity.PurchaseOrderLineEntity
+import il.co.tradesmanager.data.local.entity.SnagEntity
 import il.co.tradesmanager.data.local.entity.StockMovementEntity
 import il.co.tradesmanager.data.local.entity.SupplierEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
@@ -85,8 +86,9 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         ToolboxTalkAttendeeEntity::class,
         PermitEntity::class,
         PermitPrecautionEntity::class,
+        SnagEntity::class,
     ],
-    version = 7,
+    version = 8,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)

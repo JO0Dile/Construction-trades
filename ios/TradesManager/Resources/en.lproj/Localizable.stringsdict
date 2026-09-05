@@ -131,5 +131,37 @@
             <string>%d hours</string>
         </dict>
     </dict>
+    <key>snag_overdue_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d day late</string>
+            <key>other</key>
+            <string>%d days late</string>
+        </dict>
+    </dict>
+    <key>snag_outstanding</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d outstanding</string>
+            <key>other</key>
+            <string>%d outstanding</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

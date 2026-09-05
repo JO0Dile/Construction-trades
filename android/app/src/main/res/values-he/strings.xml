@@ -415,6 +415,33 @@
     <string name="ptw_elec_4">המפתחות בידי מבצע העבודה</string>
     <string name="time_now">עכשיו</string>
     <string name="time_tomorrow_morning">מחר 07:00</string>
+    <string name="snag_title">ליקויים</string>
+    <string name="snag_new">פתיחת ליקוי</string>
+    <string name="snag_empty">אין ליקויים. פתחו ליקוי כשמוצאים פגם.</string>
+    <string name="snag_what">מה הליקוי</string>
+    <string name="snag_where">היכן — חדר, קומה, קיר</string>
+    <string name="snag_who">מי אמור לתקן</string>
+    <string name="snag_due">לתיקון עד</string>
+    <string name="snag_blocks">מעכב מסירה</string>
+    <string name="snag_blocks_hint">השאירו כבוי לליקוי שראוי לתקן אך אינו מעכב מסירה.</string>
+    <string name="snag_photo_raised">צילום הליקוי</string>
+    <string name="snag_photo_fixed">צילום התיקון</string>
+    <string name="snag_mark_fixed">תיקנתי</string>
+    <string name="snag_verify">בדיקה</string>
+    <string name="snag_accept">מאושר — לסגור</string>
+    <string name="snag_reject">לא בוצע — להחזיר</string>
+    <string name="snag_verify_notes">מה נמצא</string>
+    <string name="snag_state_open">פתוח</string>
+    <string name="snag_state_awaiting">מדווח כתוקן — טרם נבדק</string>
+    <string name="snag_state_closed">סגור</string>
+    <string name="snag_state_rejected">הוחזר</string>
+    <string name="snag_claim_note">מישהו דיווח שזה בוצע. הליקוי נשאר ברשימה עד שמישהו אחר יבדוק.</string>
+    <string name="snag_ready">אין ליקויים המעכבים מסירה</string>
+    <string name="snag_not_ready">עדיין מעכב מסירה</string>
+    <string name="snag_filter_outstanding">פתוחים</string>
+    <string name="snag_filter_all">הכול</string>
+    <string name="snag_raised_by">נפתח על ידי</string>
+    <string name="snag_checked_by">נבדק על ידי</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -462,5 +489,17 @@
         <item quantity="two">שעתיים</item>
         <item quantity="many">%d שעות</item>
         <item quantity="other">%d שעות</item>
+    </plurals>
+    <plurals name="snag_overdue_days">
+        <item quantity="one">באיחור של יום</item>
+        <item quantity="two">באיחור של יומיים</item>
+        <item quantity="many">באיחור של %d ימים</item>
+        <item quantity="other">באיחור של %d ימים</item>
+    </plurals>
+    <plurals name="snag_outstanding">
+        <item quantity="one">ליקוי אחד פתוח</item>
+        <item quantity="two">שני ליקויים פתוחים</item>
+        <item quantity="many">%d ליקויים פתוחים</item>
+        <item quantity="other">%d ליקויים פתוחים</item>
     </plurals>
 </resources>
