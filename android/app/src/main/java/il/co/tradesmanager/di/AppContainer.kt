@@ -14,6 +14,7 @@ import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.sync.NoOpSyncEngine
+import il.co.tradesmanager.data.update.UpdateRepository
 import il.co.tradesmanager.data.sync.SyncEngine
 
 /**
@@ -38,6 +39,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val catalogSource = CatalogSource(appContext)
 
     val settings = SettingsRepository(appContext)
+
+    val updates = UpdateRepository(appContext)
 
     val auditTrail = AuditTrail(database.auditDao())
 

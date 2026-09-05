@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The sideloaded build's extra permission, kept out of the main manifest on
+    purpose: a Play build must not so much as declare REQUEST_INSTALL_PACKAGES.
+
+    It is used for one thing — installing this app's own update, downloaded
+    from its own release feed, with Android's installer asking the user to
+    confirm. Nothing is ever installed silently. See docs/UPDATES.md.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+</manifest>

@@ -15,8 +15,21 @@ android {
         // Android 8.0 — the floor the tender documents ask for.
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
+
+        // Where the in-app update check looks. Read through BuildConfig so a
+        // fork points at its own repository without touching Kotlin.
+        buildConfigField(
+            "String",
+            "RELEASES_API",
+            "\"https://api.github.com/repos/JO0Dile/Construction-trades/releases/latest\"",
+        )
+        buildConfigField(
+            "String",
+            "RELEASES_PAGE",
+            "\"https://github.com/JO0Dile/Construction-trades/releases/latest\"",
+        )
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -28,13 +41,37 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    // Gradle's own debug key is generated per machine, so an APK built by CI
+    // could not install over one built by the last CI run — Android refuses a
+    // signature change. This keystore is committed on purpose: its password is
+    // the well-known Android debug one, it protects nothing, and a shared key
+    // is the only way direct-download updates can work at all. It is NOT the
+    // key a Play or App Store release is signed with.
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debug")
+            // The sideloaded build — the one handed round as a download —
+            // checks for its own updates. See docs/UPDATES.md.
+            buildConfigField("boolean", "SELF_UPDATE", "true")
         }
         release {
+            // Never in a store build. Google Play treats an app that
+            // installs its own APK as Device and Network Abuse, and iOS does
+            // not permit it at all; the permission that would make it work is
+            // not even declared here (see src/debug/AndroidManifest.xml).
+            buildConfigField("boolean", "SELF_UPDATE", "false")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

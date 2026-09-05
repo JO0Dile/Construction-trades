@@ -45,6 +45,12 @@ cd android
 
 ---
 
+## Updating a phone that already has it
+
+Settings → App updates → Check for updates. To publish the update people will
+see there, see [UPDATES.md](UPDATES.md) — it is one `git tag`, plus three
+caveats worth reading before you rely on it.
+
 ## Android on a PC — emulator
 
 No phone required. Two routes; the first is better if you want to report bugs

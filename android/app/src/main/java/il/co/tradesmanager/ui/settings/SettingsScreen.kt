@@ -55,6 +55,7 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
     val settings by viewModel.settings.collectAsStateWithLifecycle()
     val trades by viewModel.trades.collectAsStateWithLifecycle()
     var addingTrade by remember { mutableStateOf(false) }
+    val updateState by viewModel.update.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
     val context = LocalContext.current
     val languages = remember(languageTag) { AppLanguages.supported(context) }
@@ -121,6 +122,16 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                     label = { Text(stringResource(R.string.saf_signed_by)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                )
+            }
+
+            item { SectionHeader(stringResource(R.string.update_title)) }
+            item {
+                UpdateSection(
+                    state = updateState,
+                    onCheck = viewModel::checkForUpdate,
+                    onDownload = viewModel::downloadUpdate,
+                    installIntent = viewModel::installIntent,
                 )
             }
 

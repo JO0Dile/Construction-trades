@@ -6,6 +6,8 @@ import il.co.tradesmanager.core.i18n.LocaleController
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TradeRepository
+import il.co.tradesmanager.data.update.UpdateRepository
+import java.io.File
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -61,6 +63,43 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
     }
 
     fun isCustom(trade: TradeEntity): Boolean = TradeRepository.isCustom(trade)
+
+    /**
+     * The update check, as the screen sees it. One flow rather than four
+     * booleans, so the button can never read "check" while a download is
+     * running.
+     */
+    sealed interface UpdateState {
+        data object Idle : UpdateState
+        data object Checking : UpdateState
+        data object UpToDate : UpdateState
+        data object Failed : UpdateState
+        data class Available(val release: UpdateRepository.Release) : UpdateState
+        data class Downloading(val release: UpdateRepository.Release, val fraction: Float) : UpdateState
+        data class Ready(val apk: File) : UpdateState
+    }
+
+    private val _update = MutableStateFlow<UpdateState>(UpdateState.Idle)
+    val update: StateFlow<UpdateState> = _update.asStateFlow()
+
+    fun checkForUpdate() = viewModelScope.launch {
+        _update.value = UpdateState.Checking
+        _update.value = when (val result = container.updates.check()) {
+            is UpdateRepository.Result.Available -> UpdateState.Available(result.release)
+            UpdateRepository.Result.UpToDate -> UpdateState.UpToDate
+            UpdateRepository.Result.Unavailable -> UpdateState.Failed
+        }
+    }
+
+    fun downloadUpdate(release: UpdateRepository.Release) = viewModelScope.launch {
+        _update.value = UpdateState.Downloading(release, 0f)
+        val apk = container.updates.download(release) { fraction ->
+            _update.value = UpdateState.Downloading(release, fraction)
+        }
+        _update.value = if (apk == null) UpdateState.Failed else UpdateState.Ready(apk)
+    }
+
+    fun installIntent(apk: File) = container.updates.installIntent(apk)
 
     fun reseed() = viewModelScope.launch {
         val ids = container.catalogDao.selectedTradeIds()
