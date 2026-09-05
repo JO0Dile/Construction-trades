@@ -245,6 +245,31 @@ app claims to get right:
 - [ ] Set a low-stock threshold above the quantity; the row gets a *Low* flag
       and Home counts it.
 
+**Jobs — the ones that are not a template**
+- [ ] Projects → **+**. Name it, pick **Lobby** as the type of place, leave
+      *Empty project* selected, Create. It should open a job with no tasks and
+      no materials — and both sections still visible, each with a **+**.
+- [ ] Add materials to it by typing: `מרבטים`, `כבל 1.5`, whatever the job
+      needs. Nothing has to be in the catalogue.
+- [ ] Now type a couple of letters of something that *is* — matches appear
+      underneath as you type, and picking one fills in the name and the unit.
+- [ ] Type your own kind of place: **+** → *Something else* → anything. It
+      should be accepted exactly as typed, in any language.
+- [ ] Settings → Trades → **+**. Add a trade the app does not ship, e.g.
+      *Roofing*. It appears in the list marked **Yours**, switched on, and only
+      that one has a delete button — the six shipped trades do not.
+
+**Projects as pictures**
+- [ ] Photograph a floor plan inside a job (Photos → camera or gallery).
+- [ ] Back on Projects, the job's card should now show that plan.
+- [ ] Top-right toggle switches between picture cards and a list, and the
+      choice survives leaving the app and coming back.
+
+**Updates**
+- [ ] Settings → App updates. It shows the version you are running.
+- [ ] *Check for updates.* With no newer release published it should say you
+      are on the latest — not fail, and not offer you the version you have.
+
 **Safety — the one that matters**
 - [ ] Safety → *Isolation and lockout before work*.
 - [ ] Answer every check **Done** except one marked *Critical* — answer that
