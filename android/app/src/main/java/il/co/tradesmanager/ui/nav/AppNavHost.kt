@@ -32,6 +32,7 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.home.HomeScreen
 import il.co.tradesmanager.ui.inventory.InventoryEditScreen
 import il.co.tradesmanager.ui.inventory.InventoryScreen
+import il.co.tradesmanager.ui.money.MoneyScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
@@ -53,6 +54,7 @@ object Routes {
     const val SAFETY = "safety"
     const val CHECKLIST_RUN = "safety/run"
     const val PEOPLE = "people"
+    const val MONEY = "money"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
 
@@ -61,6 +63,7 @@ object Routes {
 
     fun inventoryEdit(itemId: String?) = "$INVENTORY_EDIT?itemId=${itemId.orEmpty()}"
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
+    fun money(projectId: String) = "$MONEY/$projectId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
 }
 
@@ -183,7 +186,16 @@ fun AppNavHost(
                 )
             }
             composable("${Routes.PROJECT_DETAIL}/{projectId}") { entry ->
+                val id = entry.arguments?.getString("projectId").orEmpty()
                 ProjectDetailScreen(
+                    container = container,
+                    projectId = id,
+                    onOpenMoney = { navController.navigate(Routes.money(id)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.MONEY}/{projectId}") { entry ->
+                MoneyScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

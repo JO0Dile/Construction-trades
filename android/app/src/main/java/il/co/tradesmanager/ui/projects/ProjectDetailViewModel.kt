@@ -9,6 +9,7 @@ import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.SharingStarted
@@ -52,6 +53,10 @@ class ProjectDetailViewModel(
     ) { project, materials, tasks, categories, images ->
         State(project, materials, tasks, categories.associate { it.id to it.category }, images)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())
+
+    /** Enough of the Money lens for the one line that opens it. */
+    val financials: StateFlow<JobFinancials> = container.money.observeFinancials(projectId)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), JobFinancials())
 
     /** What the person looking at this job is allowed to see and change. */
     val session: StateFlow<SessionRepository.State> = container.session.state

@@ -1241,6 +1241,231 @@
       "en": "Not part of your work",
       "he": "לא חלק מהעבודה שלך",
       "ar": "ليس جزءًا من عملك"
+    },
+    "money_title": {
+      "en": "Money",
+      "he": "כספים",
+      "ar": "المالية"
+    },
+    "money_empty": {
+      "en": "No contract value set yet.",
+      "he": "עדיין לא הוגדר שווי חוזה.",
+      "ar": "لم يتم تحديد قيمة العقد بعد."
+    },
+    "money_contract": {
+      "en": "Contract",
+      "he": "חוזה",
+      "ar": "العقد"
+    },
+    "money_revised": {
+      "en": "Revised contract",
+      "he": "חוזה מעודכן",
+      "ar": "العقد المعدّل"
+    },
+    "money_cost": {
+      "en": "Cost to date",
+      "he": "עלות עד היום",
+      "ar": "التكلفة حتى اليوم"
+    },
+    "money_committed": {
+      "en": "Committed",
+      "he": "מחויב",
+      "ar": "ملتزَم"
+    },
+    "money_committed_hint": {
+      "en": "Priced materials on the job sheet, not yet bought.",
+      "he": "חומרים מתומחרים בגיליון העבודה שטרם נרכשו.",
+      "ar": "مواد مسعّرة في ورقة العمل ولم تُشترَ بعد."
+    },
+    "money_margin": {
+      "en": "Margin",
+      "he": "רווח",
+      "ar": "الهامش"
+    },
+    "money_forecast": {
+      "en": "Forecast margin",
+      "he": "רווח צפוי",
+      "ar": "الهامش المتوقع"
+    },
+    "money_invoiced": {
+      "en": "Invoiced",
+      "he": "חויב",
+      "ar": "تمت الفوترة"
+    },
+    "money_uninvoiced": {
+      "en": "Not yet invoiced",
+      "he": "טרם חויב",
+      "ar": "لم تتم فوترته بعد"
+    },
+    "money_outstanding": {
+      "en": "Owed to you",
+      "he": "חייבים לך",
+      "ar": "مستحق لك"
+    },
+    "money_over": {
+      "en": "Over budget",
+      "he": "חריגה מהתקציב",
+      "ar": "تجاوز الميزانية"
+    },
+    "money_over_soon": {
+      "en": "Heading over budget",
+      "he": "בדרך לחריגה",
+      "ar": "في طريقه لتجاوز الميزانية"
+    },
+    "money_ex_vat": {
+      "en": "before VAT",
+      "he": "לפני מע\"מ",
+      "ar": "قبل الضريبة"
+    },
+    "money_inc_vat": {
+      "en": "with VAT",
+      "he": "כולל מע\"מ",
+      "ar": "شامل الضريبة"
+    },
+    "money_vat_rate": {
+      "en": "VAT rate",
+      "he": "שיעור מע\"מ",
+      "ar": "نسبة الضريبة"
+    },
+    "money_set_budget": {
+      "en": "Set contract value",
+      "he": "הגדרת שווי חוזה",
+      "ar": "تحديد قيمة العقد"
+    },
+    "money_amount": {
+      "en": "Amount",
+      "he": "סכום",
+      "ar": "المبلغ"
+    },
+    "money_costs": {
+      "en": "Costs",
+      "he": "עלויות",
+      "ar": "التكاليف"
+    },
+    "money_add_cost": {
+      "en": "Add a cost",
+      "he": "הוספת עלות",
+      "ar": "إضافة تكلفة"
+    },
+    "money_costs_empty": {
+      "en": "Nothing spent on this job yet.",
+      "he": "עדיין לא הוצא כסף על העבודה הזו.",
+      "ar": "لم يُنفق شيء على هذا العمل بعد."
+    },
+    "money_description": {
+      "en": "What it was for",
+      "he": "עבור מה",
+      "ar": "لماذا كان"
+    },
+    "money_supplier_ref": {
+      "en": "Supplier invoice no. (optional)",
+      "he": "מס' חשבונית ספק (לא חובה)",
+      "ar": "رقم فاتورة المورّد (اختياري)"
+    },
+    "money_variations": {
+      "en": "Variations",
+      "he": "שינויים",
+      "ar": "التغييرات"
+    },
+    "money_add_variation": {
+      "en": "Raise a variation",
+      "he": "פתיחת שינוי",
+      "ar": "فتح تغيير"
+    },
+    "money_variations_empty": {
+      "en": "No extra work raised.",
+      "he": "לא נפתחו עבודות נוספות.",
+      "ar": "لم تُفتح أعمال إضافية."
+    },
+    "money_variation_hint": {
+      "en": "Extra work, or work taken away. A negative amount is an omission.",
+      "he": "עבודה נוספת או עבודה שהוסרה. סכום שלילי הוא הפחתה.",
+      "ar": "عمل إضافي أو عمل تم حذفه. المبلغ السالب يعني حذفًا."
+    },
+    "money_approve": {
+      "en": "Approve",
+      "he": "אישור",
+      "ar": "موافقة"
+    },
+    "money_reject": {
+      "en": "Reject",
+      "he": "דחייה",
+      "ar": "رفض"
+    },
+    "money_proposed": {
+      "en": "Awaiting decision",
+      "he": "ממתין להחלטה",
+      "ar": "بانتظار القرار"
+    },
+    "money_approved": {
+      "en": "Approved",
+      "he": "אושר",
+      "ar": "مُعتمد"
+    },
+    "money_rejected": {
+      "en": "Rejected",
+      "he": "נדחה",
+      "ar": "مرفوض"
+    },
+    "money_invoices": {
+      "en": "Invoices",
+      "he": "חשבוניות",
+      "ar": "الفواتير"
+    },
+    "money_add_invoice": {
+      "en": "Raise an invoice",
+      "he": "הפקת חשבונית",
+      "ar": "إصدار فاتورة"
+    },
+    "money_invoices_empty": {
+      "en": "Nothing invoiced yet.",
+      "he": "טרם הופקו חשבוניות.",
+      "ar": "لم تُصدر فواتير بعد."
+    },
+    "money_invoice_no": {
+      "en": "Invoice number",
+      "he": "מספר חשבונית",
+      "ar": "رقم الفاتورة"
+    },
+    "money_mark_paid": {
+      "en": "Mark as paid",
+      "he": "סימון כשולם",
+      "ar": "تعليم كمدفوع"
+    },
+    "money_paid": {
+      "en": "Paid",
+      "he": "שולם",
+      "ar": "مدفوع"
+    },
+    "money_sent": {
+      "en": "Sent",
+      "he": "נשלח",
+      "ar": "مُرسل"
+    },
+    "cost_material": {
+      "en": "Materials",
+      "he": "חומרים",
+      "ar": "مواد"
+    },
+    "cost_labour": {
+      "en": "Labour",
+      "he": "עבודה",
+      "ar": "عمالة"
+    },
+    "cost_plant": {
+      "en": "Plant hire",
+      "he": "השכרת ציוד",
+      "ar": "تأجير معدات"
+    },
+    "cost_subcontractor": {
+      "en": "Subcontractor",
+      "he": "קבלן משנה",
+      "ar": "مقاول من الباطن"
+    },
+    "cost_other": {
+      "en": "Other",
+      "he": "אחר",
+      "ar": "أخرى"
     }
   },
   "plurals": {

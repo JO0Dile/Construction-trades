@@ -7,6 +7,7 @@ import il.co.tradesmanager.data.local.dao.AccountDao
 import il.co.tradesmanager.data.local.dao.AuditDao
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
+import il.co.tradesmanager.data.local.dao.MoneyDao
 import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.dao.ProjectDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
@@ -16,11 +17,14 @@ import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
 import il.co.tradesmanager.data.local.entity.CompanyEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
+import il.co.tradesmanager.data.local.entity.CostEntryEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunItemEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
+import il.co.tradesmanager.data.local.entity.InvoiceEntity
+import il.co.tradesmanager.data.local.entity.JobBudgetEntity
 import il.co.tradesmanager.data.local.entity.MilestoneEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
@@ -32,6 +36,7 @@ import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TeamMemberEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
+import il.co.tradesmanager.data.local.entity.VariationEntity
 
 @Database(
     entities = [
@@ -56,8 +61,12 @@ import il.co.tradesmanager.data.local.entity.TradeEntity
         AuditLogEntity::class,
         CompanyEntity::class,
         AccountEntity::class,
+        JobBudgetEntity::class,
+        CostEntryEntity::class,
+        VariationEntity::class,
+        InvoiceEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -70,6 +79,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun auditDao(): AuditDao
     abstract fun photoDao(): PhotoDao
     abstract fun accountDao(): AccountDao
+    abstract fun moneyDao(): MoneyDao
 
     companion object {
         const val NAME = "tradesmanager.db"

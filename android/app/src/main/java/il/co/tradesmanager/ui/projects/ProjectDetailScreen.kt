@@ -69,12 +69,18 @@ import il.co.tradesmanager.ui.components.unitLabel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -> Unit) {
+fun ProjectDetailScreen(
+    container: AppContainer,
+    projectId: String,
+    onOpenMoney: () -> Unit,
+    onBack: () -> Unit,
+) {
     val viewModel: ProjectDetailViewModel = viewModel(
         factory = ViewModelFactory(container) { ProjectDetailViewModel(it, projectId) },
     )
     val state by viewModel.state.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
+    val money by viewModel.financials.collectAsStateWithLifecycle()
     // A job is all five lenses at once, so each section asks separately. A
     // finance clerk opening a job sees what it cost, not the task list.
     val signedIn = session as? SessionRepository.State.SignedIn
@@ -82,6 +88,7 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
     val canEditPlan = signedIn?.canWrite(Lens.PLAN) != false
     val canSeeStuff = signedIn?.canRead(Lens.STUFF) != false
     val canEditStuff = signedIn?.canWrite(Lens.STUFF) != false
+    val canSeeMoney = signedIn?.canRead(Lens.MONEY) != false
     val canSeeEvidence = signedIn?.canRead(Lens.EVIDENCE) != false
     val canEditEvidence = signedIn?.canWrite(Lens.EVIDENCE) != false
     val locale = currentLocale()
@@ -158,6 +165,33 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
                         project.city?.let { DetailRow(stringResource(R.string.proj_address), it) }
                         project.clientName?.let { DetailRow(stringResource(R.string.proj_client), it) }
                     }
+                }
+            }
+
+            // The Money lens, as one line and a way in. A job's finances are
+            // too much to inline here and too important to bury in a menu.
+            if (canSeeMoney) {
+                item {
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.money_title)) },
+                        supportingContent = {
+                            Text(
+                                if (money.revisedContract == 0.0) {
+                                    stringResource(R.string.money_empty)
+                                } else {
+                                    stringResource(R.string.money_margin) + " " +
+                                        Formats.money(money.margin, locale)
+                                },
+                            )
+                        },
+                        trailingContent = {
+                            Text(
+                                Formats.money(money.revisedContract, locale),
+                                style = MaterialTheme.typography.titleMedium,
+                            )
+                        },
+                        modifier = Modifier.clickable(onClick = onOpenMoney),
+                    )
                 }
             }
 
