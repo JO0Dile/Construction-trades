@@ -163,5 +163,45 @@
             <string>%d שעות</string>
         </dict>
     </dict>
+    <key>snag_overdue_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>באיחור של יום</string>
+            <key>two</key>
+            <string>באיחור של יומיים</string>
+            <key>many</key>
+            <string>באיחור של %d ימים</string>
+            <key>other</key>
+            <string>באיחור של %d ימים</string>
+        </dict>
+    </dict>
+    <key>snag_outstanding</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>ליקוי אחד פתוח</string>
+            <key>two</key>
+            <string>שני ליקויים פתוחים</string>
+            <key>many</key>
+            <string>%d ליקויים פתוחים</string>
+            <key>other</key>
+            <string>%d ליקויים פתוחים</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

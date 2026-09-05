@@ -6,6 +6,7 @@ import androidx.room.Query
 import androidx.room.Upsert
 import il.co.tradesmanager.data.local.entity.PermitEntity
 import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
+import il.co.tradesmanager.data.local.entity.SnagEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkAttendeeEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
 import kotlinx.coroutines.flow.Flow
@@ -117,4 +118,36 @@ interface EvidenceDao {
 
     @Query("SELECT * FROM permit_precautions WHERE permitId = :permitId ORDER BY sortOrder")
     suspend fun precautions(permitId: String): List<PermitPrecautionEntity>
+
+    @Upsert
+    suspend fun upsertSnag(snag: SnagEntity)
+
+    @Delete
+    suspend fun deleteSnag(snag: SnagEntity)
+
+    @Query("SELECT * FROM snags WHERE id = :id")
+    fun observeSnag(id: String): Flow<SnagEntity?>
+
+    @Query("SELECT * FROM snags WHERE id = :id")
+    suspend fun snag(id: String): SnagEntity?
+
+    /**
+     * Outstanding first, then by when they were due.
+     *
+     * SQL can tell a closed snag from an open one, but not an overdue one from
+     * a merely late-ish one — that depends on the clock. The coarse ordering
+     * is here; the rest is done in Kotlin against one tested definition.
+     */
+    @Query(
+        """
+        SELECT * FROM snags
+        WHERE (:projectId IS NULL OR projectId = :projectId)
+        ORDER BY status = 'CLOSED', dueOn IS NULL, dueOn, raisedAt DESC
+        LIMIT 500
+        """,
+    )
+    fun observeSnags(projectId: String?): Flow<List<SnagEntity>>
+
+    @Query("SELECT COUNT(*) FROM snags")
+    suspend fun snagCount(): Int
 }

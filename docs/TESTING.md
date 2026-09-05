@@ -294,6 +294,26 @@ app claims to get right:
       it back, because the work stopping and the area being checked are two
       different events.
 
+**Snags** — Safety → the checklist icon in the top bar
+- [ ] **+** → describe a defect, say where it is, who has to fix it, and leave
+      *Holds up handover* on. Create.
+- [ ] The banner at the top says handover is still held up, and counts one
+      outstanding.
+- [ ] Photograph the defect under *What is wrong*. It should appear as the
+      thumbnail on the list row.
+- [ ] Tap **I have put this right**. The snag moves to *Says fixed — not
+      checked* — and is **still counted as outstanding**. That is the whole
+      point: a claim is not a completion.
+- [ ] Photograph the repair under *What was done*, then **Accepted — close it**.
+      Now the count drops and the banner goes green.
+- [ ] Raise another, tap *I have put this right*, then **Not done — send it
+      back**. It reads *Sent back* in red and can be claimed again.
+- [ ] Raise one with *Holds up handover* switched **off**. It stays on the
+      outstanding count but the banner still says nothing is holding up
+      handover — a scuff is real work that does not stop a building.
+- [ ] Give one a fix-by date in the past. It goes red and says how many days
+      late. Mark it fixed but do not check it: it is **still late**.
+
 **Tickets**
 - [ ] People → tap anyone → **Add a ticket**. Pick *Work at height*, set an
       expiry a couple of weeks out.
@@ -365,8 +385,8 @@ app claims to get right:
       who is using the device. If it crashes on launch, that is a migration
       bug — tell me and do not clear the app's data, the crash log is worth
       more than the recovery.
-- [ ] The database is at version 8, so a device coming from the first build
-      runs **seven** migrations back to back. CI proves each one's SQL matches
+- [ ] The database is at version 10, so a device coming from the first build
+      runs **nine** migrations back to back. CI proves each one's SQL matches
       what the app expects; only a real upgrade proves they run in order, on
       real data, on a real phone.
 

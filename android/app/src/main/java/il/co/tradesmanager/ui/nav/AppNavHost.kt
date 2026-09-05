@@ -43,6 +43,8 @@ import il.co.tradesmanager.ui.projects.ProjectsScreen
 import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
 import il.co.tradesmanager.ui.evidence.PermitDetailScreen
 import il.co.tradesmanager.ui.evidence.PermitsScreen
+import il.co.tradesmanager.ui.evidence.SnagDetailScreen
+import il.co.tradesmanager.ui.evidence.SnagsScreen
 import il.co.tradesmanager.ui.evidence.TalkDetailScreen
 import il.co.tradesmanager.ui.evidence.TalksScreen
 import il.co.tradesmanager.ui.safety.ChecklistRunScreen
@@ -64,6 +66,8 @@ object Routes {
     const val TALK_DETAIL = "safety/talks/detail"
     const val PERMITS = "safety/permits"
     const val PERMIT_DETAIL = "safety/permits/detail"
+    const val SNAGS = "safety/snags"
+    const val SNAG_DETAIL = "safety/snags/detail"
     const val PEOPLE = "people"
     const val MONEY = "money"
     const val PLANT = "plant"
@@ -82,6 +86,7 @@ object Routes {
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
     fun talkDetail(talkId: String) = "$TALK_DETAIL/$talkId"
     fun permitDetail(permitId: String) = "$PERMIT_DETAIL/$permitId"
+    fun snagDetail(snagId: String) = "$SNAG_DETAIL/$snagId"
 }
 
 /**
@@ -246,6 +251,7 @@ fun AppNavHost(
                     onRunChecklist = { navController.navigate(Routes.checklistRun(it)) },
                     onOpenTalks = { navController.navigate(Routes.TALKS) },
                     onOpenPermits = { navController.navigate(Routes.PERMITS) },
+                    onOpenSnags = { navController.navigate(Routes.SNAGS) },
                 )
             }
             composable(Routes.TALKS) {
@@ -273,6 +279,20 @@ fun AppNavHost(
                 PermitDetailScreen(
                     container = container,
                     permitId = entry.arguments?.getString("permitId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.SNAGS) {
+                SnagsScreen(
+                    container = container,
+                    onOpenSnag = { navController.navigate(Routes.snagDetail(it)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.SNAG_DETAIL}/{snagId}") { entry ->
+                SnagDetailScreen(
+                    container = container,
+                    snagId = entry.arguments?.getString("snagId").orEmpty(),
                     onBack = { navController.popBackStack() },
                 )
             }

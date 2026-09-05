@@ -123,3 +123,51 @@ data class PermitPrecautionEntity(
     val checkedAt: Long?,
     val sortOrder: Int,
 )
+
+/**
+ * A defect found on a job.
+ *
+ * [status] records what somebody did about it; whether that means it is
+ * finished is `core.evidence.Snags`' business, and the answer is no until
+ * somebody other than the person who claimed it has been and looked.
+ *
+ * The pictures are not on this row. A snag has two of them — the one that
+ * raised it and the one that says it was put right — and they live in the
+ * photos table under their own owner types, which is why adding snagging
+ * needed no change to how photos work.
+ */
+@Entity(
+    tableName = "snags",
+    indices = [Index("projectId"), Index("status"), Index("dueOn")],
+)
+data class SnagEntity(
+    @PrimaryKey val id: String,
+    /** Site form: SNAG-001. A defect gets argued about; an argument needs a name. */
+    val reference: String,
+    /** Never null. A snag that belongs to no job belongs to nobody. */
+    val projectId: String,
+    val title: String,
+    /** Which room, which floor, which wall. The half of a snag that saves a walk. */
+    val location: String?,
+    val tradeId: String?,
+    val assignedToName: String?,
+    /** OPEN, FIXED, CLOSED or REJECTED — see Snags.Status. */
+    val status: String,
+    /**
+     * Whether this one holds up handover.
+     *
+     * Separate from the outstanding count on purpose: a scuff to touch up next
+     * week is a real snag that stays on the list without pretending to hold up
+     * a building.
+     */
+    val blocksHandover: Boolean,
+    val raisedByName: String,
+    val raisedAt: Long,
+    val dueOn: Long?,
+    val fixedByName: String?,
+    val fixedAt: Long?,
+    val verifiedByName: String?,
+    val verifiedAt: Long?,
+    val verifyNotes: String?,
+    val updatedAt: Long,
+)
