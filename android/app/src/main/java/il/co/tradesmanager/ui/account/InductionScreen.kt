@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.account
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,8 +17,8 @@ import androidx.compose.material.icons.filled.AddAPhoto
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -220,8 +221,15 @@ private fun IdentityPicture(
         onCaptured = onCaptured,
         onPicked = onPicked,
     )
+    // The trailing button used to carry its own label, and "Add a plan or
+    // photo" next to a 72dp thumbnail left the title about two characters
+    // wide — "A photograp / h of you". The whole row is the button now, and
+    // the icon says what it does without spending any width on saying it.
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = add)
+            .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -258,6 +266,11 @@ private fun IdentityPicture(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
-        OutlinedButton(onClick = add) { Text(stringResource(R.string.photo_add)) }
+        IconButton(onClick = add) {
+            Icon(
+                Icons.Filled.AddAPhoto,
+                contentDescription = stringResource(titleRes),
+            )
+        }
     }
 }

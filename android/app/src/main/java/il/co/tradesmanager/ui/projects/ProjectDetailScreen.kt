@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,7 +32,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -108,6 +111,41 @@ fun ProjectDetailScreen(
     // Typed explicitly: a null add-action is what turns a section read-only,
     // and inferring that through a chain is the kind of thing that quietly
     // becomes non-null again during a refactor.
+    // Adding to a job sheet appends, so on a list of any length the line you
+    // just typed lands below the fold and the screen looks like it ignored
+    // you. Scrolling to it is the difference between "that did not work" and
+    // "there it is".
+    //
+    // The row counts below mirror the LazyColumn's sections. If a section is
+    // added or moved there, it has to move here too — there is no way in
+    // Compose to ask a lazy list where a key ended up when it is off screen.
+    val listState = rememberLazyListState()
+    val rowsAboveTasks = (if (project != null) 1 else 0) +
+        (if (canSeeMoney) 1 else 0) +
+        (if (canSeeEvidence) 1 else 0) +
+        (if (state.tasks.isNotEmpty() && canSeePlan) 1 else 0)
+    val firstTaskRow = rowsAboveTasks + 1
+    val firstMaterialRow = firstTaskRow +
+        (if (state.tasks.isEmpty()) 1 else 0) + state.tasks.size + 1
+
+    var knownTasks by remember(projectId) { mutableIntStateOf(-1) }
+    LaunchedEffect(state.tasks.size) {
+        val previous = knownTasks
+        knownTasks = state.tasks.size
+        if (canSeePlan && previous >= 0 && state.tasks.size > previous) {
+            listState.animateScrollToItem(firstTaskRow + state.tasks.size - 1)
+        }
+    }
+
+    var knownMaterials by remember(projectId) { mutableIntStateOf(-1) }
+    LaunchedEffect(state.materials.size) {
+        val previous = knownMaterials
+        knownMaterials = state.materials.size
+        if (canSeeStuff && previous >= 0 && state.materials.size > previous) {
+            listState.animateScrollToItem(firstMaterialRow + state.materials.size - 1)
+        }
+    }
+
     val addTaskAction: (() -> Unit)? = if (canEditPlan) {
         { addingTask = true }
     } else {
@@ -157,7 +195,7 @@ fun ProjectDetailScreen(
             )
         },
     ) { padding ->
-        LazyColumn(Modifier.padding(padding)) {
+        LazyColumn(state = listState, modifier = Modifier.padding(padding)) {
             if (project != null) {
                 item {
                     Column(Modifier.padding(vertical = 8.dp)) {

@@ -140,6 +140,13 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                     )
                 }
 
+                item {
+                    IdNumberRow(
+                        idNumber = signedIn.account.idNumber,
+                        onSet = { viewModel.setIdNumber(signedIn.account.id, it) },
+                    )
+                }
+
                 // Only worth a section when there is a choice to make. One
                 // membership is not a switcher, it is a row saying where you
                 // already are.
@@ -350,4 +357,55 @@ private fun ThemeChip(
         onClick = { onSelect(mode) },
         label = { Text(stringResource(labelRes)) },
     )
+}
+
+/**
+ * The ID number, or a way to add one.
+ *
+ * Somebody who signed up before this field existed has none, and cannot sign in
+ * with it — which is exactly the complaint that put this row here. Once it is
+ * set the field goes away rather than turning read-only-ish: a box you can type
+ * in but that ignores you is worse than no box.
+ */
+@Composable
+private fun IdNumberRow(idNumber: String?, onSet: (String) -> Unit) {
+    if (!idNumber.isNullOrBlank()) {
+        ListItem(
+            overlineContent = { Text(stringResource(R.string.acc_id_number)) },
+            headlineContent = { Text(idNumber) },
+            supportingContent = { Text(stringResource(R.string.acc_id_locked)) },
+        )
+        return
+    }
+
+    var typed by remember { mutableStateOf("") }
+    Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+        Text(
+            text = stringResource(R.string.acc_id_missing),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            OutlinedTextField(
+                value = typed,
+                onValueChange = { typed = it },
+                label = { Text(stringResource(R.string.acc_id_number)) },
+                singleLine = true,
+                modifier = Modifier.weight(1f),
+            )
+            TextButton(
+                enabled = typed.isNotBlank(),
+                onClick = {
+                    onSet(typed.trim())
+                    typed = ""
+                },
+            ) {
+                Text(stringResource(R.string.action_save))
+            }
+        }
+    }
 }

@@ -33,6 +33,14 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
             SessionRepository.State.Loading,
         )
 
+    /**
+     * Adds an ID number to an account that has none. Refused if one is already
+     * set — see [il.co.tradesmanager.data.repository.AccountRepository.setIdNumber].
+     */
+    fun setIdNumber(accountId: String, idNumber: String) = viewModelScope.launch {
+        container.accounts.setIdNumber(accountId, idNumber)
+    }
+
     /** Switching which company's work is on screen. */
     fun switchCompany(companyId: String?) = viewModelScope.launch {
         container.session.switchCompany(companyId)

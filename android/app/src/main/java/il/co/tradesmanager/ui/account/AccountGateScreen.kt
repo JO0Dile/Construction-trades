@@ -56,17 +56,25 @@ fun AccountGateScreen(container: AppContainer, needsSetup: Boolean) {
     )
     val wrongCredentials by viewModel.wrongCredentials.collectAsStateWithLifecycle()
 
+    // Signing out has to leave a way back in for somebody who has never been
+    // in. A phone gets handed to a new starter with the last person's account
+    // still on it, and a door that only opens for people already inside is not
+    // a door.
+    var creating by remember { mutableStateOf(false) }
+
     Surface(Modifier.fillMaxSize()) {
-        if (needsSetup) {
+        if (needsSetup || creating) {
             FirstRun(
                 onPersonal = viewModel::createPersonal,
                 onCompany = viewModel::createCompany,
+                onCancel = if (needsSetup) null else ({ creating = false }),
             )
         } else {
             SignIn(
                 wrongCredentials = wrongCredentials,
                 onTyping = viewModel::clearError,
                 onSignIn = viewModel::signIn,
+                onCreateAccount = { creating = true },
             )
         }
     }
@@ -87,6 +95,8 @@ private fun FirstRun(
         idNumber: String?,
         passcode: String?,
     ) -> Unit,
+    /** Null on a device with no accounts: there is nowhere to go back to. */
+    onCancel: (() -> Unit)?,
 ) {
     var step by remember { mutableStateOf(Setup.CHOOSE) }
 
@@ -95,8 +105,12 @@ private fun FirstRun(
             .verticalScroll(rememberScrollState())
             .padding(24.dp),
     ) {
-        if (step != Setup.CHOOSE) {
-            TextButton(onClick = { step = Setup.CHOOSE }) {
+        if (step != Setup.CHOOSE || onCancel != null) {
+            TextButton(
+                onClick = {
+                    if (step != Setup.CHOOSE) step = Setup.CHOOSE else onCancel?.invoke()
+                },
+            ) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                 Text(" " + stringResource(R.string.action_back))
             }
@@ -318,6 +332,7 @@ private fun SignIn(
     wrongCredentials: Boolean,
     onTyping: () -> Unit,
     onSignIn: (identifier: String, password: String) -> Unit,
+    onCreateAccount: () -> Unit,
 ) {
     var identifier by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -377,6 +392,10 @@ private fun SignIn(
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.acc_sign_in))
+        }
+
+        TextButton(onClick = onCreateAccount, modifier = Modifier.fillMaxWidth()) {
+            Text(stringResource(R.string.acc_create_instead))
         }
     }
 }

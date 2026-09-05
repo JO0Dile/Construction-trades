@@ -228,12 +228,27 @@ class AccountRepository(
     suspend fun isIdNumberTaken(idNumber: String): Boolean =
         idNumber.isNotBlank() && dao.countWithIdNumber(idNumber) > 0
 
-    /** The ID number the site office holds. Set at sign-up, editable after. */
-    suspend fun setIdNumber(account: AccountEntity, idNumber: String?) {
-        dao.upsert(
-            account.copy(idNumber = idNumber?.trim()?.takeIf { it.isNotEmpty() }),
-        )
+    /**
+     * Sets the ID number, once.
+     *
+     * A one-way door on purpose. This is what a site office identifies a person
+     * by — it goes on the gate list and on the induction record — so quietly
+     * editing it is how one person ends up standing behind another person's
+     * paperwork. Adding a missing one is welcome; changing a set one is a
+     * conversation with the office, not a text field.
+     *
+     * Returns false when there is already one, so a caller cannot overwrite it
+     * by mistake even if a screen forgets to disable the field.
+     */
+    suspend fun setIdNumber(accountId: String, idNumber: String): Boolean {
+        val trimmed = idNumber.trim()
+        if (trimmed.isEmpty()) return false
+        val account = dao.account(accountId)?.takeIf { it.deletedAt == null } ?: return false
+        if (!account.idNumber.isNullOrBlank()) return false
+        if (isIdNumberTaken(trimmed)) return false
+        dao.upsert(account.copy(idNumber = trimmed))
         audit.record(ENTITY, account.id, AuditTrail.Action.UPDATE, account.displayName, "ID number set")
+        return true
     }
 
     private suspend fun create(
