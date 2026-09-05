@@ -8,6 +8,11 @@ name: Release
 #
 #   git tag v0.3.0 && git push origin v0.3.0
 #
+# Or, with no terminal at all: Actions -> Release -> "Run workflow", type the
+# version, done. That path exists because publishing a build should not require
+# being sat at a computer — the person who needs to ship a fix is often the
+# person holding a phone on a site.
+#
 # The APK is signed with the committed debug key (android/app/debug.keystore)
 # on purpose: every release has to carry the same signature or Android refuses
 # to install one over another. That key is not, and must never be, the key a
@@ -18,6 +23,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish, e.g. v0.3.0. Must match versionName in build.gradle.kts.'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -42,9 +52,14 @@ jobs:
 
       # The universal APK first: it runs on every phone, which is what someone
       # tapping "install" without knowing what a CPU ABI is needs.
+      # A tag push already names the version; a manual run is told it. The
+      # action creates the tag when it does not exist, so both routes end up
+      # with the same thing: a tag and a release carrying the APKs.
       - name: Publish
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.version || github.ref_name }}
+          name: ${{ inputs.version || github.ref_name }}
           files: |
             android/app/build/outputs/apk/debug/app-universal-debug.apk
             android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk

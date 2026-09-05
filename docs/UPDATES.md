@@ -7,11 +7,23 @@ running four different versions, so the app checks for its own updates:
 
 ## Publishing a version
 
+Bump `versionCode` and `versionName` in `android/app/build.gradle.kts` first,
+then either:
+
+**From a phone, or anywhere with a browser.** Actions → **Release** → *Run
+workflow* → type the version → go. No terminal, no clone. This is the route
+worth knowing, because the person who needs to ship a fix is usually the one
+holding a phone on a site.
+
+**From a terminal.**
+
 ```bash
-# Bump versionCode and versionName in android/app/build.gradle.kts first.
 git tag v0.3.0
 git push origin v0.3.0
 ```
+
+Both end up in the same place: the workflow creates the tag if it does not
+exist, builds the APKs and attaches them to a release named after the version.
 
 `.github/workflows/release.yml` builds the APKs and attaches them to a GitHub
 release named after the tag. Installed copies compare their own version against
