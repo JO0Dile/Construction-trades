@@ -78,6 +78,7 @@ fun ProjectDetailScreen(
     onOpenMoney: () -> Unit,
     onOpenDailyLog: () -> Unit,
     onOpenConcrete: () -> Unit,
+    onOpenScaffolds: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -124,11 +125,12 @@ fun ProjectDetailScreen(
     val listState = rememberLazyListState()
     val rowsAboveTasks = (if (project != null) 1 else 0) +
         (if (canSeeMoney) 1 else 0) +
-        // The daily log, then concrete, then the photographs. The first and
-        // last are Evidence; concrete is a delivery, so it follows Stuff.
+        // The daily log, concrete, the scaffold register, then the
+        // photographs. Concrete is a delivery, so it follows Stuff; the rest
+        // are Evidence.
         (if (canSeeEvidence) 1 else 0) +
         (if (canSeeStuff) 1 else 0) +
-        (if (canSeeEvidence) 1 else 0) +
+        (if (canSeeEvidence) 2 else 0) +
         (if (state.tasks.isNotEmpty() && canSeePlan) 1 else 0)
     val firstTaskRow = rowsAboveTasks + 1
     val firstMaterialRow = firstTaskRow +
@@ -260,6 +262,19 @@ fun ProjectDetailScreen(
                         headlineContent = { Text(stringResource(R.string.pour_title)) },
                         supportingContent = { Text(stringResource(R.string.pour_row_hint)) },
                         modifier = Modifier.clickable(onClick = onOpenConcrete),
+                    )
+                }
+            }
+
+            // The scaffold register sits under Evidence, not Stuff: nobody
+            // is booking a scaffold in, they are recording that somebody
+            // competent looked at it and what they found.
+            if (canSeeEvidence) {
+                item {
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.scf_title)) },
+                        supportingContent = { Text(stringResource(R.string.scf_row_hint)) },
+                        modifier = Modifier.clickable(onClick = onOpenScaffolds),
                     )
                 }
             }

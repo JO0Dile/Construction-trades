@@ -19,6 +19,7 @@ import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
+import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -96,6 +97,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Concrete arriving, and the clock on every load. */
     val concrete = ConcreteRepository(database.concreteDao(), auditTrail)
+
+    val scaffolds = ScaffoldRepository(database.scaffoldDao(), auditTrail)
 
     /** The daily site log — the יומן עבודה a site manager has to keep. */
     val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)

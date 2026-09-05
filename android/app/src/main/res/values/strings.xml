@@ -573,6 +573,43 @@
     <string name="tick_state_placed">Placed</string>
     <string name="tick_late">Went in late</string>
     <string name="tick_late_hint">Recorded because it cannot be seen afterwards. The engineer should know.</string>
+    <string name="scf_title">Scaffolds</string>
+    <string name="scf_row_hint">The seven-day register, and which ones may be climbed today.</string>
+    <string name="scf_new">Add a scaffold</string>
+    <string name="scf_empty">No scaffolds on the register.</string>
+    <string name="scf_location">Where it is</string>
+    <string name="scf_location_hint">In the words somebody would use on the radio: north elevation, stairwell 2.</string>
+    <string name="scf_type">Kind of scaffold</string>
+    <string name="scf_type_hint">Independent tied, birdcage, mobile tower.</string>
+    <string name="scf_erected_by">Put up by</string>
+    <string name="scf_inspect">Record an inspection</string>
+    <string name="scf_inspections">Inspections</string>
+    <string name="scf_no_inspections">Nothing recorded yet.</string>
+    <string name="scf_passed">Passed — safe to use</string>
+    <string name="scf_failed">Failed — do not use</string>
+    <string name="scf_defects">What is wrong</string>
+    <string name="scf_action">What was done about it</string>
+    <string name="scf_inspector">Inspector</string>
+    <string name="scf_reason">Why this inspection</string>
+    <string name="scf_reason_weekly">The weekly one</string>
+    <string name="scf_reason_first">Before first use</string>
+    <string name="scf_reason_altered">After it was changed</string>
+    <string name="scf_reason_weather">After the weather</string>
+    <string name="scf_altered">Mark it changed</string>
+    <string name="scf_altered_hint">Moved, added to, or hit by weather. It comes out of use until it is inspected again.</string>
+    <string name="scf_dismantle">Struck down</string>
+    <string name="scf_dismantled">Dismantled</string>
+    <string name="scf_state_safe">Safe to climb</string>
+    <string name="scf_state_due">Inspection due</string>
+    <string name="scf_state_overdue">Out of date — do not climb</string>
+    <string name="scf_state_failed">Failed inspection — do not climb</string>
+    <string name="scf_state_altered">Changed since it was passed — do not climb</string>
+    <string name="scf_state_never">Never inspected — do not climb</string>
+    <string name="scf_last_inspected">Last inspected</string>
+    <string name="scf_next_due">Next inspection</string>
+    <string name="scf_must_sign">Sign before recording the inspection.</string>
+    <string name="scf_unusable">Not to be climbed</string>
+    <string name="scf_all_clear">Every scaffold on this job is in date.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -620,5 +657,9 @@
     <plurals name="tick_minutes_left">
         <item quantity="one">%d minute left</item>
         <item quantity="other">%d minutes left</item>
+    </plurals>
+    <plurals name="scf_days_over">
+        <item quantity="one">%d day out of date</item>
+        <item quantity="other">%d days out of date</item>
     </plurals>
 </resources>

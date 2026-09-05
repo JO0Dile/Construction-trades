@@ -118,6 +118,13 @@ object Migrations {
         }
     }
 
+    /** Adds the scaffold register and its seven-day inspections. */
+    val MIGRATION_12_13 = object : Migration(12, 13) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_12_13.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -130,6 +137,7 @@ object Migrations {
         MIGRATION_9_10,
         MIGRATION_10_11,
         MIGRATION_11_12,
+        MIGRATION_12_13,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -348,5 +356,29 @@ object Migrations {
             "`concrete_pours`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "CREATE INDEX IF NOT EXISTS `index_concrete_tickets_pourId` " +
             "ON `concrete_tickets` (`pourId`)",
+    )
+
+    val SQL_12_13: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `scaffolds` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`location` TEXT NOT NULL, `type` TEXT, `erectedByName` TEXT, " +
+            "`erectedAt` INTEGER, `lastInspectedAt` INTEGER, " +
+            "`lastInspectionPassed` INTEGER NOT NULL, `lastInspectorName` TEXT, " +
+            "`alteredAt` INTEGER, `dismantledAt` INTEGER, `notes` TEXT, " +
+            "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_scaffolds_projectId` " +
+            "ON `scaffolds` (`projectId`)",
+        "CREATE TABLE IF NOT EXISTS `scaffold_inspections` (`id` TEXT NOT NULL, " +
+            "`scaffoldId` TEXT NOT NULL, `inspectedAt` INTEGER NOT NULL, " +
+            "`inspectorName` TEXT NOT NULL, `passed` INTEGER NOT NULL, " +
+            "`defects` TEXT, `actionTaken` TEXT, `reason` TEXT NOT NULL, " +
+            "`signature` TEXT, `createdAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`), FOREIGN KEY(`scaffoldId`) REFERENCES " +
+            "`scaffolds`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_scaffold_inspections_scaffoldId` " +
+            "ON `scaffold_inspections` (`scaffoldId`)",
+        "CREATE INDEX IF NOT EXISTS `index_scaffold_inspections_inspectedAt` " +
+            "ON `scaffold_inspections` (`inspectedAt`)",
     )
 }

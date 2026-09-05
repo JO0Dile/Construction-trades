@@ -243,5 +243,25 @@
             <string>נותרו %d דקות</string>
         </dict>
     </dict>
+    <key>scf_days_over</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>פג תוקף לפני יום</string>
+            <key>two</key>
+            <string>פג תוקף לפני יומיים</string>
+            <key>many</key>
+            <string>פג תוקף לפני %d ימים</string>
+            <key>other</key>
+            <string>פג תוקף לפני %d ימים</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

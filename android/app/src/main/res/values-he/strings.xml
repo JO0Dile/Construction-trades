@@ -564,6 +564,43 @@
     <string name="tick_state_placed">נוצק</string>
     <string name="tick_late">נוצק באיחור</string>
     <string name="tick_late_hint">נרשם משום שאי אפשר לראות זאת בדיעבד. יש ליידע את המהנדס.</string>
+    <string name="scf_title">פיגומים</string>
+    <string name="scf_row_hint">פנקס הבדיקה השבועית, ואילו פיגומים מותר לטפס עליהם היום.</string>
+    <string name="scf_new">הוספת פיגום</string>
+    <string name="scf_empty">אין פיגומים בפנקס.</string>
+    <string name="scf_location">מיקום</string>
+    <string name="scf_location_hint">במילים שאומרים בקשר: חזית צפונית, חדר מדרגות 2.</string>
+    <string name="scf_type">סוג הפיגום</string>
+    <string name="scf_type_hint">פיגום זקפים, פיגום שולחן, מגדל נייד.</string>
+    <string name="scf_erected_by">הוקם על ידי</string>
+    <string name="scf_inspect">רישום בדיקה</string>
+    <string name="scf_inspections">בדיקות</string>
+    <string name="scf_no_inspections">עדיין לא נרשם דבר.</string>
+    <string name="scf_passed">עבר — מותר לשימוש</string>
+    <string name="scf_failed">נכשל — אין להשתמש</string>
+    <string name="scf_defects">מה הליקוי</string>
+    <string name="scf_action">מה נעשה בעניין</string>
+    <string name="scf_inspector">הבודק</string>
+    <string name="scf_reason">סיבת הבדיקה</string>
+    <string name="scf_reason_weekly">הבדיקה השבועית</string>
+    <string name="scf_reason_first">לפני שימוש ראשון</string>
+    <string name="scf_reason_altered">אחרי שינוי</string>
+    <string name="scf_reason_weather">אחרי מזג אוויר</string>
+    <string name="scf_altered">סימון כשונה</string>
+    <string name="scf_altered_hint">הוזז, הורחב או נפגע ממזג אוויר. יוצא מכלל שימוש עד לבדיקה חוזרת.</string>
+    <string name="scf_dismantle">פורק</string>
+    <string name="scf_dismantled">מפורק</string>
+    <string name="scf_state_safe">מותר לטפס</string>
+    <string name="scf_state_due">הבדיקה מתקרבת</string>
+    <string name="scf_state_overdue">פג תוקף — אין לטפס</string>
+    <string name="scf_state_failed">נכשל בבדיקה — אין לטפס</string>
+    <string name="scf_state_altered">שונה מאז האישור — אין לטפס</string>
+    <string name="scf_state_never">לא נבדק מעולם — אין לטפס</string>
+    <string name="scf_last_inspected">נבדק לאחרונה</string>
+    <string name="scf_next_due">הבדיקה הבאה</string>
+    <string name="scf_must_sign">יש לחתום לפני רישום הבדיקה.</string>
+    <string name="scf_unusable">אסורים לטיפוס</string>
+    <string name="scf_all_clear">כל הפיגומים באתר בתוקף.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -635,5 +672,11 @@
         <item quantity="two">נותרו שתי דקות</item>
         <item quantity="many">נותרו %d דקות</item>
         <item quantity="other">נותרו %d דקות</item>
+    </plurals>
+    <plurals name="scf_days_over">
+        <item quantity="one">פג תוקף לפני יום</item>
+        <item quantity="two">פג תוקף לפני יומיים</item>
+        <item quantity="many">פג תוקף לפני %d ימים</item>
+        <item quantity="other">פג תוקף לפני %d ימים</item>
     </plurals>
 </resources>

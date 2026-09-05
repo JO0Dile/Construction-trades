@@ -1,0 +1,4 @@
+# Byte-compiled tooling. tools/*.py are run directly and by CI; importing one
+# for a check leaves this behind, and it has no business in the history.
+__pycache__/
+*.pyc
