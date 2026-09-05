@@ -29,8 +29,9 @@ check rather than offered to everyone — see `UpdateVersionTest`.
 
 ## Three things that will bite
 
-**The repository has to be public.** The app carries no GitHub token, on
-purpose: anything shipped inside an APK can be pulled back out of it. An
+**The repository has to be public** — it currently is, so the check works as
+shipped. Keep it that way or the button stops working. The app carries no
+GitHub token, on purpose: anything shipped inside an APK can be pulled back out of it. An
 anonymous request to a private repository's release feed gets a 404, so the
 check reports "could not check for updates" and nothing else happens. If the
 repository stays private, the alternatives are to host the APK and a small JSON
