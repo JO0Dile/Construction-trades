@@ -2652,6 +2652,191 @@
       "en": "Signed",
       "he": "נחתם",
       "ar": "موقّع"
+    },
+    "pour_title": {
+      "en": "Concrete",
+      "he": "יציקות בטון",
+      "ar": "صبّ الخرسانة"
+    },
+    "pour_row_hint": {
+      "en": "Trucks on the way, and how long each load has left.",
+      "he": "משאיות בדרך, וכמה זמן נותר לכל מנה.",
+      "ar": "الشاحنات في الطريق، وكم بقي لكل حمولة."
+    },
+    "pour_new": {
+      "en": "Start a pour",
+      "he": "פתיחת יציקה",
+      "ar": "بدء صبّة"
+    },
+    "pour_empty": {
+      "en": "No pours recorded. Start one before the first truck arrives.",
+      "he": "לא נרשמו יציקות. פתחו יציקה לפני שהמערבל הראשון מגיע.",
+      "ar": "لا صبّات مسجّلة. ابدأ واحدة قبل وصول أول خلاطة."
+    },
+    "pour_element": {
+      "en": "What is being cast",
+      "he": "מה יוצקים",
+      "ar": "ما يُصبّ"
+    },
+    "pour_element_hint": {
+      "en": "Foundation, column, level 3 slab.",
+      "he": "יסוד, עמוד, תקרת קומה 3.",
+      "ar": "أساس، عمود، سقف الطابق 3."
+    },
+    "pour_mix": {
+      "en": "Mix",
+      "he": "סוג הבטון",
+      "ar": "نوع الخرسانة"
+    },
+    "pour_mix_hint": {
+      "en": "As the engineer specified: B-30, and so on.",
+      "he": "כפי שקבע המהנדס: ב-30 וכדומה.",
+      "ar": "كما حدّد المهندس: ب-30 وما شابه."
+    },
+    "pour_ordered": {
+      "en": "Cubic metres ordered",
+      "he": "כמות שהוזמנה (מ\"ק)",
+      "ar": "الكمية المطلوبة (م³)"
+    },
+    "pour_supplier": {
+      "en": "Batch plant",
+      "he": "מפעל הבטון",
+      "ar": "مصنع الخرسانة"
+    },
+    "pour_temperature": {
+      "en": "Temperature today (°C)",
+      "he": "טמפרטורה היום (°C)",
+      "ar": "درجة الحرارة اليوم (°م)"
+    },
+    "pour_temperature_hint": {
+      "en": "Thirty degrees or more cuts every load's working life from 90 minutes to 60.",
+      "he": "מ-30 מעלות ומעלה, זמן העבודה של כל מערבל מתקצר מ-90 ל-60 דקות.",
+      "ar": "من 30 درجة فأكثر، يتقلّص زمن عمل كل حمولة من 90 إلى 60 دقيقة."
+    },
+    "pour_placed_of": {
+      "en": "placed of",
+      "he": "נוצקו מתוך",
+      "ar": "صُبّت من أصل"
+    },
+    "pour_finish": {
+      "en": "Finish the pour",
+      "he": "סיום היציקה",
+      "ar": "إنهاء الصبّة"
+    },
+    "pour_finished": {
+      "en": "Finished",
+      "he": "הסתיימה",
+      "ar": "انتهت"
+    },
+    "pour_running": {
+      "en": "Pouring",
+      "he": "ביציקה",
+      "ar": "قيد الصبّ"
+    },
+    "tick_title": {
+      "en": "Trucks",
+      "he": "מערבלים",
+      "ar": "الخلاطات"
+    },
+    "tick_add": {
+      "en": "Book a truck in",
+      "he": "רישום מערבל",
+      "ar": "تسجيل خلاطة"
+    },
+    "tick_empty": {
+      "en": "No trucks yet.",
+      "he": "עדיין אין מערבלים.",
+      "ar": "لا خلاطات بعد."
+    },
+    "tick_number": {
+      "en": "Ticket number",
+      "he": "מספר תעודת משלוח",
+      "ar": "رقم إذن التسليم"
+    },
+    "tick_truck": {
+      "en": "Truck",
+      "he": "מספר מערבל",
+      "ar": "رقم الخلاطة"
+    },
+    "tick_volume": {
+      "en": "Cubic metres",
+      "he": "מ\"ק",
+      "ar": "م³"
+    },
+    "tick_dispatched": {
+      "en": "Batched",
+      "he": "יוצר במפעל",
+      "ar": "وقت الخلط"
+    },
+    "tick_dispatched_ago": {
+      "en": "Minutes since it was batched",
+      "he": "כמה דקות עברו מאז היציאה מהמפעל",
+      "ar": "كم دقيقة مضت منذ الخلط"
+    },
+    "tick_dispatched_hint": {
+      "en": "Read the time off the delivery note and count back to now. The clock starts at the plant, not when the truck reached you.",
+      "he": "קראו את השעה מתעודת המשלוח וספרו אחורה עד עכשיו. הספירה מתחילה במפעל, לא כשהמערבל הגיע אליכם.",
+      "ar": "اقرأ الوقت من إذن التسليم واحسب رجوعًا حتى الآن. يبدأ العدّ في المصنع، لا عند وصول الشاحنة إليك."
+    },
+    "tick_slump": {
+      "en": "Slump (cm)",
+      "he": "שקיעה (ס\"מ)",
+      "ar": "الهبوط (سم)"
+    },
+    "tick_place": {
+      "en": "Discharged",
+      "he": "נוצק",
+      "ar": "تم الصبّ"
+    },
+    "tick_reject": {
+      "en": "Send it back",
+      "he": "החזרת המערבל",
+      "ar": "إعادة الخلاطة"
+    },
+    "tick_reject_reason": {
+      "en": "Why",
+      "he": "סיבה",
+      "ar": "السبب"
+    },
+    "tick_rejected": {
+      "en": "Sent back",
+      "he": "הוחזר",
+      "ar": "أُعيدت"
+    },
+    "tick_state_en_route": {
+      "en": "On the way",
+      "he": "בדרך",
+      "ar": "في الطريق"
+    },
+    "tick_state_on_site": {
+      "en": "Here",
+      "he": "באתר",
+      "ar": "في الموقع"
+    },
+    "tick_state_expiring": {
+      "en": "Running out",
+      "he": "עומד לפוג",
+      "ar": "على وشك الانتهاء"
+    },
+    "tick_state_expired": {
+      "en": "Out of time — do not pour",
+      "he": "פג הזמן — לא לצקת",
+      "ar": "انتهى الوقت — لا تصبّ"
+    },
+    "tick_state_placed": {
+      "en": "Placed",
+      "he": "נוצק",
+      "ar": "مصبوب"
+    },
+    "tick_late": {
+      "en": "Went in late",
+      "he": "נוצק באיחור",
+      "ar": "صُبّ متأخرًا"
+    },
+    "tick_late_hint": {
+      "en": "Recorded because it cannot be seen afterwards. The engineer should know.",
+      "he": "נרשם משום שאי אפשר לראות זאת בדיעבד. יש ליידע את המהנדס.",
+      "ar": "يُسجَّل لأنه لا يُرى لاحقًا. يجب إعلام المهندس."
     }
   },
   "plurals": {
@@ -2884,6 +3069,27 @@
         "few": "%d عمال في الموقع",
         "many": "%d عاملًا في الموقع",
         "other": "%d عامل في الموقع"
+      }
+    },
+    "tick_minutes_left": {
+      "c": "How long a concrete load has before it must not be placed",
+      "en": {
+        "one": "%d minute left",
+        "other": "%d minutes left"
+      },
+      "he": {
+        "one": "נותרה דקה",
+        "two": "נותרו שתי דקות",
+        "many": "נותרו %d דקות",
+        "other": "נותרו %d דקות"
+      },
+      "ar": {
+        "zero": "لم تبقَ دقائق",
+        "one": "بقيت دقيقة",
+        "two": "بقيت دقيقتان",
+        "few": "بقيت %d دقائق",
+        "many": "بقيت %d دقيقة",
+        "other": "بقيت %d دقيقة"
       }
     }
   }

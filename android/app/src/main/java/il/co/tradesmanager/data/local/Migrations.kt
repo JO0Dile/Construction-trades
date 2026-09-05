@@ -111,6 +111,13 @@ object Migrations {
         }
     }
 
+    /** Adds concrete pours and the delivery tickets that fill them. */
+    val MIGRATION_11_12 = object : Migration(11, 12) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_11_12.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -122,6 +129,7 @@ object Migrations {
         MIGRATION_8_9,
         MIGRATION_9_10,
         MIGRATION_10_11,
+        MIGRATION_11_12,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -316,5 +324,29 @@ object Migrations {
         "CREATE UNIQUE INDEX IF NOT EXISTS `index_daily_logs_projectId_logDate` " +
             "ON `daily_logs` (`projectId`, `logDate`)",
         "CREATE INDEX IF NOT EXISTS `index_daily_logs_logDate` ON `daily_logs` (`logDate`)",
+    )
+
+    val SQL_11_12: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `concrete_pours` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`element` TEXT NOT NULL, `mixDesign` TEXT, `orderedVolume` REAL, " +
+            "`supplierName` TEXT, `temperatureCelsius` REAL, " +
+            "`startedAt` INTEGER NOT NULL, `completedAt` INTEGER, `notes` TEXT, " +
+            "`recordedByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_concrete_pours_projectId` " +
+            "ON `concrete_pours` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_concrete_pours_startedAt` " +
+            "ON `concrete_pours` (`startedAt`)",
+        "CREATE TABLE IF NOT EXISTS `concrete_tickets` (`id` TEXT NOT NULL, " +
+            "`pourId` TEXT NOT NULL, `ticketNumber` TEXT, `truckNumber` TEXT, " +
+            "`volume` REAL NOT NULL, `dispatchedAt` INTEGER NOT NULL, " +
+            "`arrivedAt` INTEGER, `dischargedAt` INTEGER, `slumpCm` REAL, " +
+            "`rejected` INTEGER NOT NULL, `rejectionReason` TEXT, " +
+            "`recordedByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`), FOREIGN KEY(`pourId`) REFERENCES " +
+            "`concrete_pours`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_concrete_tickets_pourId` " +
+            "ON `concrete_tickets` (`pourId`)",
     )
 }

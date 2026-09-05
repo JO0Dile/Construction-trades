@@ -335,6 +335,37 @@ app claims to get right:
 - [ ] Reopen an older day from the list at the bottom. A signed one stays
       locked.
 
+**Concrete** — open a job → *Concrete*
+
+This is the one screen where being slow is the failure. Concrete has about
+ninety minutes from the plant, sixty on a hot afternoon, and a load that has
+run out looks exactly like a good one.
+
+- [ ] **+** → *Start a pour*. Name what is being cast, put **35** in the
+      temperature. Create.
+- [ ] **+** again → book a truck in. Put **80** in *Minutes since it was
+      batched*, 6 cubic metres. Add.
+- [ ] The row is coloured and reads that it is out of time. At 35 degrees the
+      working life is an hour, so a load batched eighty minutes ago is gone.
+      Nothing about that is obvious from looking at the truck — that is why
+      the screen says it.
+- [ ] Book a second truck at **50** minutes on the same pour. It reads as
+      running out, with the minutes left on it, and it sits **below** the
+      expired one — the list is ordered by how little time is left, so the load
+      somebody must be stopped from pouring is always the one at the top.
+- [ ] Start another pour with **no** temperature and book a truck at 80
+      minutes. That one is fine: without a temperature the app assumes the
+      ordinary ninety minutes rather than inventing a hot day.
+- [ ] *Send it back* on a truck, with a reason. It stays on the list, greyed,
+      with the reason — and it drops to the bottom instead of counting down
+      forever at the top.
+- [ ] *Discharged* on another. It stops counting and moves down. The volume at
+      the top counts it; the rejected one is never counted.
+- [ ] Type a slump, leave the screen, come back. It is still there. There is no
+      Save button on purpose.
+- [ ] Leave the screen open for a minute without touching it. The countdown
+      moves on its own.
+
 **Snags** — Safety → the checklist icon in the top bar
 - [ ] **+** → describe a defect, say where it is, who has to fix it, and leave
       *Holds up handover* on. Create.
@@ -483,7 +514,7 @@ app claims to get right:
 
 ```bash
 python3 tools/gen-strings.py --check          # translations complete & current
-cd android && ./gradlew :app:testDebugUnitTest # 40 unit tests
+cd android && ./gradlew :app:testDebugUnitTest # unit tests
 ```
 
 The tests cover locale resolution and fallback, the Israeli date/time/currency

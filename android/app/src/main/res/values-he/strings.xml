@@ -527,6 +527,43 @@
     <string name="log_must_sign">יש לחתום לפני סגירת היום.</string>
     <string name="log_state_draft">לא נחתם</string>
     <string name="log_state_signed">נחתם</string>
+    <string name="pour_title">יציקות בטון</string>
+    <string name="pour_row_hint">משאיות בדרך, וכמה זמן נותר לכל מנה.</string>
+    <string name="pour_new">פתיחת יציקה</string>
+    <string name="pour_empty">לא נרשמו יציקות. פתחו יציקה לפני שהמערבל הראשון מגיע.</string>
+    <string name="pour_element">מה יוצקים</string>
+    <string name="pour_element_hint">יסוד, עמוד, תקרת קומה 3.</string>
+    <string name="pour_mix">סוג הבטון</string>
+    <string name="pour_mix_hint">כפי שקבע המהנדס: ב-30 וכדומה.</string>
+    <string name="pour_ordered">כמות שהוזמנה (מ\"ק)</string>
+    <string name="pour_supplier">מפעל הבטון</string>
+    <string name="pour_temperature">טמפרטורה היום (°C)</string>
+    <string name="pour_temperature_hint">מ-30 מעלות ומעלה, זמן העבודה של כל מערבל מתקצר מ-90 ל-60 דקות.</string>
+    <string name="pour_placed_of">נוצקו מתוך</string>
+    <string name="pour_finish">סיום היציקה</string>
+    <string name="pour_finished">הסתיימה</string>
+    <string name="pour_running">ביציקה</string>
+    <string name="tick_title">מערבלים</string>
+    <string name="tick_add">רישום מערבל</string>
+    <string name="tick_empty">עדיין אין מערבלים.</string>
+    <string name="tick_number">מספר תעודת משלוח</string>
+    <string name="tick_truck">מספר מערבל</string>
+    <string name="tick_volume">מ\"ק</string>
+    <string name="tick_dispatched">יוצר במפעל</string>
+    <string name="tick_dispatched_ago">כמה דקות עברו מאז היציאה מהמפעל</string>
+    <string name="tick_dispatched_hint">קראו את השעה מתעודת המשלוח וספרו אחורה עד עכשיו. הספירה מתחילה במפעל, לא כשהמערבל הגיע אליכם.</string>
+    <string name="tick_slump">שקיעה (ס\"מ)</string>
+    <string name="tick_place">נוצק</string>
+    <string name="tick_reject">החזרת המערבל</string>
+    <string name="tick_reject_reason">סיבה</string>
+    <string name="tick_rejected">הוחזר</string>
+    <string name="tick_state_en_route">בדרך</string>
+    <string name="tick_state_on_site">באתר</string>
+    <string name="tick_state_expiring">עומד לפוג</string>
+    <string name="tick_state_expired">פג הזמן — לא לצקת</string>
+    <string name="tick_state_placed">נוצק</string>
+    <string name="tick_late">נוצק באיחור</string>
+    <string name="tick_late_hint">נרשם משום שאי אפשר לראות זאת בדיעבד. יש ליידע את המהנדס.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -592,5 +629,11 @@
         <item quantity="two">שני עובדים באתר</item>
         <item quantity="many">%d עובדים באתר</item>
         <item quantity="other">%d עובדים באתר</item>
+    </plurals>
+    <plurals name="tick_minutes_left">
+        <item quantity="one">נותרה דקה</item>
+        <item quantity="two">נותרו שתי דקות</item>
+        <item quantity="many">נותרו %d דקות</item>
+        <item quantity="other">נותרו %d דקות</item>
     </plurals>
 </resources>

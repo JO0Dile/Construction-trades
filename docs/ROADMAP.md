@@ -139,6 +139,22 @@ person's own photograph and their ID document are left alone: stamping somebody
 with the coordinates of where they stood is no use as evidence and is not a
 thing to do to identity documents.
 
+**Phase 4g — concrete, against the clock. Done.**
+The first screen in the app whose value is that it is fast rather than that it
+is complete. Concrete has roughly ninety minutes of working life from the
+moment water met cement at the plant, and about sixty on an Israeli summer
+afternoon — and a load that has run out looks exactly like a load that has not.
+Nobody can tell by eye, the test that proves it comes back twenty-eight days
+later, and by then the element is cast and the only remedy is a hammer.
+
+So the screen is a countdown. The time is read off the supplier's ticket rather
+than defaulted to when somebody noticed the truck, because the clock starts at
+the batch plant; the truck closest to running out sorts to the top; and the
+temperature entered once on the pour shortens every load in it. A rejected load
+is kept as a row, with the reason, and never counted towards the volume that
+went in: a pour that quietly does not add up is worse than one that visibly
+does not.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -154,11 +170,12 @@ Whole categories still at zero, in roughly the order they are worth doing:
 | Payment applications, retention, subcontract ledgers | Money |
 | Sync between devices | every lens, one mechanism |
 | Israeli government and accounting integrations | the edge, Phase 5 |
-| Site security, concrete and structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
+| Site security, structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
 
-Since that list was written, five of its rows have landed and are no longer on
+Since that list was written, six of its rows have landed and are no longer on
 it: the plant register, purchase orders with goods received, toolbox talks with
-permits to work, one person belonging to several companies, and snagging.
+permits to work, one person belonging to several companies, snagging, and the
+concrete half of "concrete and structural".
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
@@ -171,8 +188,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 35 | |
-| Buildable here — on the device, no server | 150 | where the work is |
+| Built | 40 | |
+| Buildable here — on the device, no server | 145 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

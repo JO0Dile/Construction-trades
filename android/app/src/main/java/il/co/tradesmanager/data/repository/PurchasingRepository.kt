@@ -4,6 +4,7 @@ import il.co.tradesmanager.data.local.dao.ProjectDao
 import il.co.tradesmanager.data.local.dao.PurchasingDao
 import il.co.tradesmanager.data.local.entity.PurchaseOrderEntity
 import il.co.tradesmanager.data.local.entity.PurchaseOrderLineEntity
+import java.util.Locale
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 
@@ -60,7 +61,7 @@ class PurchasingRepository(
         val now = System.currentTimeMillis()
         val order = PurchaseOrderEntity(
             id = UUID.randomUUID().toString(),
-            reference = "PO-%03d".format(dao.orderCount() + 1),
+            reference = String.format(Locale.ROOT, "PO-%03d", dao.orderCount() + 1),
             projectId = projectId,
             supplierId = null,
             supplierName = supplierName.trim(),

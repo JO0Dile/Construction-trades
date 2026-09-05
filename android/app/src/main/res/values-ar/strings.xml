@@ -527,6 +527,43 @@
     <string name="log_must_sign">وقّع قبل إغلاق اليوم.</string>
     <string name="log_state_draft">غير موقّع</string>
     <string name="log_state_signed">موقّع</string>
+    <string name="pour_title">صبّ الخرسانة</string>
+    <string name="pour_row_hint">الشاحنات في الطريق، وكم بقي لكل حمولة.</string>
+    <string name="pour_new">بدء صبّة</string>
+    <string name="pour_empty">لا صبّات مسجّلة. ابدأ واحدة قبل وصول أول خلاطة.</string>
+    <string name="pour_element">ما يُصبّ</string>
+    <string name="pour_element_hint">أساس، عمود، سقف الطابق 3.</string>
+    <string name="pour_mix">نوع الخرسانة</string>
+    <string name="pour_mix_hint">كما حدّد المهندس: ب-30 وما شابه.</string>
+    <string name="pour_ordered">الكمية المطلوبة (م³)</string>
+    <string name="pour_supplier">مصنع الخرسانة</string>
+    <string name="pour_temperature">درجة الحرارة اليوم (°م)</string>
+    <string name="pour_temperature_hint">من 30 درجة فأكثر، يتقلّص زمن عمل كل حمولة من 90 إلى 60 دقيقة.</string>
+    <string name="pour_placed_of">صُبّت من أصل</string>
+    <string name="pour_finish">إنهاء الصبّة</string>
+    <string name="pour_finished">انتهت</string>
+    <string name="pour_running">قيد الصبّ</string>
+    <string name="tick_title">الخلاطات</string>
+    <string name="tick_add">تسجيل خلاطة</string>
+    <string name="tick_empty">لا خلاطات بعد.</string>
+    <string name="tick_number">رقم إذن التسليم</string>
+    <string name="tick_truck">رقم الخلاطة</string>
+    <string name="tick_volume">م³</string>
+    <string name="tick_dispatched">وقت الخلط</string>
+    <string name="tick_dispatched_ago">كم دقيقة مضت منذ الخلط</string>
+    <string name="tick_dispatched_hint">اقرأ الوقت من إذن التسليم واحسب رجوعًا حتى الآن. يبدأ العدّ في المصنع، لا عند وصول الشاحنة إليك.</string>
+    <string name="tick_slump">الهبوط (سم)</string>
+    <string name="tick_place">تم الصبّ</string>
+    <string name="tick_reject">إعادة الخلاطة</string>
+    <string name="tick_reject_reason">السبب</string>
+    <string name="tick_rejected">أُعيدت</string>
+    <string name="tick_state_en_route">في الطريق</string>
+    <string name="tick_state_on_site">في الموقع</string>
+    <string name="tick_state_expiring">على وشك الانتهاء</string>
+    <string name="tick_state_expired">انتهى الوقت — لا تصبّ</string>
+    <string name="tick_state_placed">مصبوب</string>
+    <string name="tick_late">صُبّ متأخرًا</string>
+    <string name="tick_late_hint">يُسجَّل لأنه لا يُرى لاحقًا. يجب إعلام المهندس.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -614,5 +651,13 @@
         <item quantity="few">%d عمال في الموقع</item>
         <item quantity="many">%d عاملًا في الموقع</item>
         <item quantity="other">%d عامل في الموقع</item>
+    </plurals>
+    <plurals name="tick_minutes_left">
+        <item quantity="zero">لم تبقَ دقائق</item>
+        <item quantity="one">بقيت دقيقة</item>
+        <item quantity="two">بقيت دقيقتان</item>
+        <item quantity="few">بقيت %d دقائق</item>
+        <item quantity="many">بقيت %d دقيقة</item>
+        <item quantity="other">بقيت %d دقيقة</item>
     </plurals>
 </resources>

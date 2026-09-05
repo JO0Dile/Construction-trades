@@ -223,5 +223,25 @@
             <string>%d עובדים באתר</string>
         </dict>
     </dict>
+    <key>tick_minutes_left</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נותרה דקה</string>
+            <key>two</key>
+            <string>נותרו שתי דקות</string>
+            <key>many</key>
+            <string>נותרו %d דקות</string>
+            <key>other</key>
+            <string>נותרו %d דקות</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
