@@ -1,10 +1,12 @@
 package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.evidence.Permits
+import il.co.tradesmanager.core.evidence.Snags
 import il.co.tradesmanager.data.local.dao.BriefingRecord
 import il.co.tradesmanager.data.local.dao.EvidenceDao
 import il.co.tradesmanager.data.local.entity.PermitEntity
 import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
+import il.co.tradesmanager.data.local.entity.SnagEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkAttendeeEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
 import java.util.UUID
@@ -269,8 +271,116 @@ class EvidenceRepository(
         audit.record(PERMIT, permit.id, AuditTrail.Action.DELETE, actorName, permit.reference)
     }
 
+    // ---- Snagging ----
+
+    fun observeSnags(projectId: String? = null): Flow<List<SnagEntity>> =
+        dao.observeSnags(projectId)
+
+    fun observeSnag(id: String): Flow<SnagEntity?> = dao.observeSnag(id)
+
+    suspend fun raiseSnag(
+        projectId: String,
+        title: String,
+        location: String?,
+        assignedToName: String?,
+        tradeId: String?,
+        dueOn: Long?,
+        blocksHandover: Boolean,
+        actorName: String,
+    ): SnagEntity {
+        val now = System.currentTimeMillis()
+        val snag = SnagEntity(
+            id = UUID.randomUUID().toString(),
+            reference = "SNAG-%03d".format(dao.snagCount() + 1),
+            projectId = projectId,
+            title = title.trim(),
+            location = location?.trim()?.takeIf { it.isNotEmpty() },
+            tradeId = tradeId,
+            assignedToName = assignedToName?.trim()?.takeIf { it.isNotEmpty() },
+            status = Snags.Status.OPEN,
+            blocksHandover = blocksHandover,
+            raisedByName = actorName,
+            raisedAt = now,
+            dueOn = dueOn,
+            fixedByName = null,
+            fixedAt = null,
+            verifiedByName = null,
+            verifiedAt = null,
+            verifyNotes = null,
+            updatedAt = now,
+        )
+        dao.upsertSnag(snag)
+        audit.record(SNAG, snag.id, AuditTrail.Action.CREATE, actorName, "${snag.reference} ${snag.title}")
+        return snag
+    }
+
+    /**
+     * Records that somebody says they have put it right.
+     *
+     * Deliberately not the same call as [verifySnag], and deliberately not
+     * able to reach [Snags.Status.CLOSED]. The person who did the work cannot
+     * be the person who signs it off, or the list is worth nothing.
+     */
+    suspend fun markSnagFixed(snagId: String, actorName: String): Boolean {
+        val snag = dao.snag(snagId) ?: return false
+        if (!Snags.canMarkFixed(snag.status)) return false
+        val now = System.currentTimeMillis()
+        dao.upsertSnag(
+            snag.copy(
+                status = Snags.Status.FIXED,
+                fixedByName = actorName.trim(),
+                fixedAt = now,
+                // A snag going round again starts with a clean verification:
+                // the last rejection was about work that has now been redone.
+                verifiedByName = null,
+                verifiedAt = null,
+                verifyNotes = null,
+                updatedAt = now,
+            ),
+        )
+        audit.record(SNAG, snagId, AuditTrail.Action.UPDATE, actorName, "${snag.reference} claimed fixed")
+        return true
+    }
+
+    /**
+     * Somebody went and looked. [accepted] false sends it back to the trade
+     * rather than deleting anything — a snag that failed its check twice is
+     * the most useful row on the list.
+     */
+    suspend fun verifySnag(
+        snagId: String,
+        accepted: Boolean,
+        notes: String?,
+        actorName: String,
+    ): Boolean {
+        val snag = dao.snag(snagId) ?: return false
+        if (!Snags.canVerify(snag.status)) return false
+        val now = System.currentTimeMillis()
+        val status = if (accepted) Snags.Status.CLOSED else Snags.Status.REJECTED
+        dao.upsertSnag(
+            snag.copy(
+                status = status,
+                verifiedByName = actorName.trim(),
+                verifiedAt = now,
+                verifyNotes = notes?.trim()?.takeIf { it.isNotEmpty() },
+                updatedAt = now,
+            ),
+        )
+        audit.record(
+            SNAG, snagId, AuditTrail.Action.SIGN_OFF, actorName,
+            "${snag.reference} ${status.lowercase()}",
+        )
+        return true
+    }
+
+    suspend fun removeSnag(snag: SnagEntity, actorName: String) {
+        dao.deleteSnag(snag)
+        audit.record(SNAG, snag.id, AuditTrail.Action.DELETE, actorName, snag.reference)
+    }
+
     private companion object {
         const val TALK = "toolbox_talk"
         const val PERMIT = "permit"
+        const val SNAG = "snag"
     }
 }

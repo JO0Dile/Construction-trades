@@ -104,6 +104,17 @@ photograph, their induction — belongs to the person, while the role belongs to
 the membership. The identity fields already sit on the account for that
 reason; the membership table is the next change.
 
+**Phase 4d — snagging. Done.**
+The defects found on a job, raised with a photograph and closed with another.
+One rule carries it: *fixed* is a claim and *closed* is a verification, and a
+snag somebody says they put right stays on the outstanding count until somebody
+else has been and looked. Collapsing those two into one button gives you a list
+a subcontractor can complete from the van, which is worth nothing at handover.
+
+Handover readiness is a separate number from the outstanding count, because a
+scuff to touch up next week is a real snag that should stay on the list without
+pretending to hold up a building.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -116,16 +127,14 @@ Whole categories still at zero, in roughly the order they are worth doing:
 
 | Not started | Lens it will land in |
 | ----------- | -------------------- |
-| One person, several companies or sites | People |
-| Snagging and quality inspections | Evidence |
 | Payment applications, retention, subcontract ledgers | Money |
 | Sync between devices | every lens, one mechanism |
 | Israeli government and accounting integrations | the edge, Phase 5 |
 | Site security, concrete and structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
 
-Since that list was written, three of its rows have landed and are no longer
-on it: the plant register, purchase orders with goods received, and toolbox
-talks with permits to work.
+Since that list was written, five of its rows have landed and are no longer on
+it: the plant register, purchase orders with goods received, toolbox talks with
+permits to work, one person belonging to several companies, and snagging.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens

@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Assignment
+import androidx.compose.material.icons.filled.ChecklistRtl
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material3.AssistChip
@@ -39,6 +40,7 @@ fun SafetyScreen(
     onRunChecklist: (String) -> Unit,
     onOpenTalks: () -> Unit,
     onOpenPermits: () -> Unit,
+    onOpenSnags: () -> Unit,
 ) {
     val viewModel: SafetyViewModel = viewModel(factory = ViewModelFactory(container) { SafetyViewModel(it) })
     val templates by viewModel.templates.collectAsStateWithLifecycle()
@@ -61,6 +63,12 @@ fun SafetyScreen(
                         Icon(
                             Icons.Filled.Assignment,
                             contentDescription = stringResource(R.string.ptw_title),
+                        )
+                    }
+                    IconButton(onClick = onOpenSnags) {
+                        Icon(
+                            Icons.Filled.ChecklistRtl,
+                            contentDescription = stringResource(R.string.snag_title),
                         )
                     }
                 },

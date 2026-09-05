@@ -43,6 +43,15 @@ class PhotoRepository(
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.
          */
+        /**
+         * A snag's two pictures: the one that raised it, and the one that says
+         * it was put right. Two owner types on the same table rather than two
+         * columns on the snag, so a defect can carry three photos of an awkward
+         * corner without a schema that only allowed for one.
+         */
+        const val SNAG_RAISED = "snag.raised"
+        const val SNAG_FIXED = "snag.fixed"
+
         const val ACCOUNT_PHOTO = "account.photo"
         const val ACCOUNT_ID_DOCUMENT = "account.id_document"
 

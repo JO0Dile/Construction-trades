@@ -97,6 +97,13 @@ object Migrations {
         }
     }
 
+    /** Adds snagging: the defects found on a job, and who checked them. */
+    val MIGRATION_9_10 = object : Migration(9, 10) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_9_10.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -106,6 +113,7 @@ object Migrations {
         MIGRATION_6_7,
         MIGRATION_7_8,
         MIGRATION_8_9,
+        MIGRATION_9_10,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -274,5 +282,19 @@ object Migrations {
         // One company per device until now, so every job belongs to it. A
         // personal account has none, and its jobs stay company-less.
         "UPDATE projects SET companyId = (SELECT id FROM companies LIMIT 1)",
+    )
+
+    val SQL_9_10: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `snags` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`title` TEXT NOT NULL, `location` TEXT, `tradeId` TEXT, " +
+            "`assignedToName` TEXT, `status` TEXT NOT NULL, " +
+            "`blocksHandover` INTEGER NOT NULL, `raisedByName` TEXT NOT NULL, " +
+            "`raisedAt` INTEGER NOT NULL, `dueOn` INTEGER, `fixedByName` TEXT, " +
+            "`fixedAt` INTEGER, `verifiedByName` TEXT, `verifiedAt` INTEGER, " +
+            "`verifyNotes` TEXT, `updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_snags_projectId` ON `snags` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_snags_status` ON `snags` (`status`)",
+        "CREATE INDEX IF NOT EXISTS `index_snags_dueOn` ON `snags` (`dueOn`)",
     )
 }
