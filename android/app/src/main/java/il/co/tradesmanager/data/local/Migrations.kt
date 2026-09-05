@@ -125,6 +125,13 @@ object Migrations {
         }
     }
 
+    /** Adds lift plans and the three crew roles every lift needs. */
+    val MIGRATION_13_14 = object : Migration(13, 14) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_13_14.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -138,6 +145,7 @@ object Migrations {
         MIGRATION_10_11,
         MIGRATION_11_12,
         MIGRATION_12_13,
+        MIGRATION_13_14,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -380,5 +388,33 @@ object Migrations {
             "ON `scaffold_inspections` (`scaffoldId`)",
         "CREATE INDEX IF NOT EXISTS `index_scaffold_inspections_inspectedAt` " +
             "ON `scaffold_inspections` (`inspectedAt`)",
+    )
+
+    val SQL_13_14: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `lift_plans` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`description` TEXT NOT NULL, `loadWeightKg` REAL, " +
+            "`riggingWeightKg` REAL, `applianceName` TEXT, `applianceId` TEXT, " +
+            "`applianceCertificateExpiresOn` INTEGER, " +
+            "`applianceCertificateRequired` INTEGER NOT NULL, " +
+            "`radiusMetres` REAL, `capacityAtRadiusKg` REAL, " +
+            "`windLimitKmh` REAL NOT NULL, `windSpeedKmh` REAL, " +
+            "`plannedFor` INTEGER, `approvedByName` TEXT, `approvedAt` INTEGER, " +
+            "`completedAt` INTEGER, `notes` TEXT, `createdByName` TEXT NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_lift_plans_projectId` " +
+            "ON `lift_plans` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_lift_plans_plannedFor` " +
+            "ON `lift_plans` (`plannedFor`)",
+        "CREATE TABLE IF NOT EXISTS `lift_crew` (`id` TEXT NOT NULL, " +
+            "`planId` TEXT NOT NULL, `role` TEXT NOT NULL, `accountId` TEXT, " +
+            "`name` TEXT NOT NULL, `certificationId` TEXT, " +
+            "`certificateReference` TEXT, `certificateExpiresOn` INTEGER, " +
+            "`createdAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`), FOREIGN KEY(`planId`) REFERENCES " +
+            "`lift_plans`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_lift_crew_planId` " +
+            "ON `lift_crew` (`planId`)",
     )
 }

@@ -79,6 +79,7 @@ fun ProjectDetailScreen(
     onOpenDailyLog: () -> Unit,
     onOpenConcrete: () -> Unit,
     onOpenScaffolds: () -> Unit,
+    onOpenLifts: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -125,12 +126,12 @@ fun ProjectDetailScreen(
     val listState = rememberLazyListState()
     val rowsAboveTasks = (if (project != null) 1 else 0) +
         (if (canSeeMoney) 1 else 0) +
-        // The daily log, concrete, the scaffold register, then the
-        // photographs. Concrete is a delivery, so it follows Stuff; the rest
-        // are Evidence.
+        // The daily log, concrete, the scaffold register, the lift plans,
+        // then the photographs. Concrete is a delivery, so it follows Stuff;
+        // the rest are Evidence.
         (if (canSeeEvidence) 1 else 0) +
         (if (canSeeStuff) 1 else 0) +
-        (if (canSeeEvidence) 2 else 0) +
+        (if (canSeeEvidence) 3 else 0) +
         (if (state.tasks.isNotEmpty() && canSeePlan) 1 else 0)
     val firstTaskRow = rowsAboveTasks + 1
     val firstMaterialRow = firstTaskRow +
@@ -275,6 +276,19 @@ fun ProjectDetailScreen(
                         headlineContent = { Text(stringResource(R.string.scf_title)) },
                         supportingContent = { Text(stringResource(R.string.scf_row_hint)) },
                         modifier = Modifier.clickable(onClick = onOpenScaffolds),
+                    )
+                }
+            }
+
+            // Lifts are Evidence for the same reason scaffolds are: the row
+            // is a record that somebody worked out the numbers and named the
+            // three people, not a note that a crane turned up.
+            if (canSeeEvidence) {
+                item {
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.lift_title)) },
+                        supportingContent = { Text(stringResource(R.string.lift_row_hint)) },
+                        modifier = Modifier.clickable(onClick = onOpenLifts),
                     )
                 }
             }
