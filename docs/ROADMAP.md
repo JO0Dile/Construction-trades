@@ -52,32 +52,53 @@ else, which is why integrations (below) are deliberately at the edge.
 
 Each phase is usable on its own. Nothing here is a rewrite of what is above it.
 
-**Phase 1 — the five lenses exist (mostly done).**
-Plan and Stuff and Evidence are in the app today: tasks, materials, photos,
-safety checklists, site plans. People and Money do not exist yet.
+**Phase 1 — the five lenses exist. Done.**
+Plan, Stuff and Evidence: tasks, materials, photos, safety checklists, site
+plans, and jobs started from nothing in any kind of place.
 
-**Phase 2 — accounts and roles.**
-Personal account or company account; a company holds members with roles
-(admin, manager, finance, HR, worker). Roles gate lenses, per the rule above.
-Local-first: an account is a row on the device, so the app still opens and
-works in a basement with no signal. Sync comes later and does not change the
-model. This is the phase that unlocks People, because a person on a job is a
-member of the company.
+**Phase 2 — accounts and roles. Done.**
+Personal or company account; a company holds members with roles. Roles gate
+lenses, per the rule above. Local-first: an account is a row on the device, so
+the app still opens and works in a basement with no signal. Sync comes later
+and does not change the model.
 
-**Phase 3 — People and Money.**
-Timesheets and certifications hang off members. Budgets, variations and
-invoices hang off jobs. Both are lenses, not new apps.
+**Phase 3 — People and Money. Done.**
+Money: contract value, VAT at the job's own rate, cost lines, variations with
+approval, invoices, margin and forecast. People: certifications with expiry
+warnings, thirty days out. Both are lenses on what already existed, not new
+apps beside it.
 
-**Phase 4 — reports across jobs.**
-The dashboard grows: cost to date, who is where, what is overdue, what expires
-this month. Everything here is a query over data phases 1–3 already collect.
-Nothing new is entered.
+**Phase 4 — reports across jobs. Done.**
+The dashboard grows: what is owed across the book of work, the margin on all
+of it, which jobs have run late, whose tickets lapse this month. Every tile
+belongs to a lens, so the dashboard is different work for different people.
+Not one line of new data entry — the whole phase is queries over what phases
+1–3 already collect, which is the point.
 
-**Phase 5 — integrations, at the edge.**
+**Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
 already owns. None of them is allowed to become a source of truth, because the
 moment one is, the app stops working offline.
+
+## What is not built
+
+Whole categories still at zero, in roughly the order they are worth doing:
+
+| Not started | Lens it will land in |
+| ----------- | -------------------- |
+| Plant and equipment register, fleet | Stuff |
+| Purchase orders, deliveries, goods received | Stuff, feeding Money |
+| Toolbox talks, permits to work | Evidence |
+| Snagging and quality inspections | Evidence |
+| Payment applications, retention, subcontract ledgers | Money |
+| Sync between devices | every lens, one mechanism |
+| Israeli government and accounting integrations | the edge, Phase 5 |
+| Site security, concrete and structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
+
+The ones that are genuinely hard are sync, the government integrations, and
+anything needing a server. The rest are now another table, another lens
+section, another screen — which is what the four phases above were for.
 
 ## The rule for anything not on the list
 

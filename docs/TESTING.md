@@ -250,6 +250,35 @@ app claims to get right:
 - [ ] Set a low-stock threshold above the quantity; the row gets a *Low* flag
       and Home counts it.
 
+**Money on a job**
+- [ ] Open a job → **Money**. Set a contract value (say 50000) and leave VAT at
+      18. The summary should show ₪59,000 with VAT.
+- [ ] Add a cost: Materials, ₪12,000. The margin drops to ₪38,000.
+- [ ] Raise a variation for ₪8,000. Nothing moves yet — it says *awaiting
+      decision*, because until the client says yes it changes nothing.
+- [ ] **Approve** it. The revised contract becomes ₪58,000 and the margin
+      ₪46,000.
+- [ ] Raise an invoice. The amount is pre-filled with what is left to bill.
+      Mark it paid and *Owed to you* goes to zero.
+- [ ] Add a priced item to the job's materials (one with a purchase price in
+      stock). It appears as **Committed** without you typing a number twice.
+
+**Tickets**
+- [ ] People → tap anyone → **Add a ticket**. Pick *Work at height*, set an
+      expiry a couple of weeks out.
+- [ ] Their row in People goes amber and says the ticket needs attention.
+- [ ] Set one to a date in the past — the row goes red and says *Expired*.
+- [ ] Type `31/02/2027` as an expiry. It should refuse rather than quietly
+      storing 3 March.
+
+**The dashboard across jobs**
+- [ ] Home should now show *Owed to you* and *Margin · across all jobs* — but
+      only if your role reads Money. Sign in as the worker: those tiles are
+      gone, and so is nothing else they need.
+- [ ] Give a job a due date in the past and set it Active. An **Overdue** tile
+      appears. Clear it and the tile disappears — it only shows when it means
+      something.
+
 **Accounts and roles — the new gate**
 - [ ] First launch after installing this build: it asks who is using the
       device. Pick **A company**, name it, name yourself, set a 4-digit
