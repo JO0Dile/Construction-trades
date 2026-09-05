@@ -13,10 +13,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
  * at all. Keeping it to this interface is what makes the on-premise build a
  * different implementation rather than a different app.
  *
- * The conflict rule for the first release is last-write-wins by
- * [SyncRecord.updatedAt], with one exception the field demands: stock
- * movements and audit entries are append-only and are merged, never
- * overwritten, so two people counting the same van do not erase each other.
+ * The conflict rules live in [il.co.tradesmanager.core.sync.SyncPolicy] and are
+ * written and tested already, because they are the part of sync that has
+ * nothing to do with networks and everything to do with not destroying a signed
+ * permit. What is missing is the half that cannot be written without somewhere
+ * to sync to: the transport, authentication, and tombstones so a delete on one
+ * phone is a delete everywhere rather than a row that comes back.
+ *
+ * Anyone implementing this against a real server: the local database is the
+ * source of truth for anything not yet pushed, the server is the arbiter of
+ * time — a phone with its clock set wrong is the failure mode that quietly
+ * ruins last-writer-wins, and only the server knows what time it really is.
  */
 interface SyncEngine {
 
