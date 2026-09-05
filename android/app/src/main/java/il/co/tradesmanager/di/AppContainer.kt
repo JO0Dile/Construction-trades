@@ -10,6 +10,7 @@ import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
+import il.co.tradesmanager.data.repository.EvidenceRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
@@ -67,6 +68,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
         CertificationRepository(database.certificationDao(), catalogSource, auditTrail)
 
     val equipment = EquipmentRepository(database.equipmentDao(), auditTrail)
+
+    /** Toolbox talks and permits to work. */
+    val evidence = EvidenceRepository(database.evidenceDao(), auditTrail)
 
     val purchasing = PurchasingRepository(
         dao = database.purchasingDao(),

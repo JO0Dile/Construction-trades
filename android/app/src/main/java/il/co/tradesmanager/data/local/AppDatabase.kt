@@ -8,6 +8,7 @@ import il.co.tradesmanager.data.local.dao.AuditDao
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.CertificationDao
 import il.co.tradesmanager.data.local.dao.EquipmentDao
+import il.co.tradesmanager.data.local.dao.EvidenceDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
 import il.co.tradesmanager.data.local.dao.MoneyDao
 import il.co.tradesmanager.data.local.dao.PhotoDao
@@ -31,6 +32,8 @@ import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
 import il.co.tradesmanager.data.local.entity.JobBudgetEntity
 import il.co.tradesmanager.data.local.entity.MilestoneEntity
+import il.co.tradesmanager.data.local.entity.PermitEntity
+import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
@@ -42,6 +45,8 @@ import il.co.tradesmanager.data.local.entity.SupplierEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TeamMemberEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
+import il.co.tradesmanager.data.local.entity.ToolboxTalkAttendeeEntity
+import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.local.entity.VariationEntity
 
@@ -76,8 +81,12 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         EquipmentEntity::class,
         PurchaseOrderEntity::class,
         PurchaseOrderLineEntity::class,
+        ToolboxTalkEntity::class,
+        ToolboxTalkAttendeeEntity::class,
+        PermitEntity::class,
+        PermitPrecautionEntity::class,
     ],
-    version = 6,
+    version = 7,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -94,6 +103,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun certificationDao(): CertificationDao
     abstract fun equipmentDao(): EquipmentDao
     abstract fun purchasingDao(): PurchasingDao
+    abstract fun evidenceDao(): EvidenceDao
 
     companion object {
         const val NAME = "tradesmanager.db"

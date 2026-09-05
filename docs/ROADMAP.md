@@ -75,6 +75,16 @@ belongs to a lens, so the dashboard is different work for different people.
 Not one line of new data entry — the whole phase is queries over what phases
 1–3 already collect, which is the point.
 
+**Phase 4b — the Evidence lens gets teeth. Done.**
+Toolbox talks with an attendance register, and permits to work for the five
+kinds of job that need one: hot work, height, confined space, excavation,
+electrical isolation. Two rules carry the weight. A permit cannot be issued
+until every precaution on it is ticked, because the precautions *are* the
+permit. And whether a permit authorises anything is worked out from the clock
+every time it is asked, never read off its status column — nobody goes round
+updating database rows at knocking-off time, so a permit that ran out at five
+has to stop saying "live" at five, on a phone that has been open since two.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -87,14 +97,15 @@ Whole categories still at zero, in roughly the order they are worth doing:
 
 | Not started | Lens it will land in |
 | ----------- | -------------------- |
-| Plant and equipment register, fleet | Stuff |
-| Purchase orders, deliveries, goods received | Stuff, feeding Money |
-| Toolbox talks, permits to work | Evidence |
 | Snagging and quality inspections | Evidence |
 | Payment applications, retention, subcontract ledgers | Money |
 | Sync between devices | every lens, one mechanism |
 | Israeli government and accounting integrations | the edge, Phase 5 |
 | Site security, concrete and structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
+
+Since that list was written, three of its rows have landed and are no longer
+on it: the plant register, purchase orders with goods received, and toolbox
+talks with permits to work.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens

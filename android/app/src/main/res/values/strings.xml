@@ -356,6 +356,74 @@
     <string name="po_cancel">Cancel the order</string>
     <string name="po_draft_note">A draft costs nothing. Place it and it counts against the job.</string>
     <string name="update_none">No version has been published yet.</string>
+    <string name="tbt_title">Toolbox talks</string>
+    <string name="tbt_new">Record a talk</string>
+    <string name="tbt_empty">No talks recorded. A briefing nobody wrote down did not happen.</string>
+    <string name="tbt_topic">Topic</string>
+    <string name="tbt_presenter">Given by</string>
+    <string name="tbt_notes">What was covered</string>
+    <string name="tbt_register">Who was there</string>
+    <string name="tbt_register_empty">Nobody has signed in. A talk with an empty register records nothing.</string>
+    <string name="tbt_sign_in">Sign somebody in</string>
+    <string name="tbt_name">Name</string>
+    <string name="tbt_crew">From the crew</string>
+    <string name="tbt_visitor">Somebody else</string>
+    <string name="tbt_overdue_title">Who needs briefing</string>
+    <string name="tbt_never">Never briefed</string>
+    <string name="tbt_all_briefed">Everybody has been briefed this quarter.</string>
+    <string name="ptw_title">Permits to work</string>
+    <string name="ptw_new">Raise a permit</string>
+    <string name="ptw_empty">No permits. Raise one before hot work, height, a confined space, digging or an isolation.</string>
+    <string name="ptw_type">What kind of work</string>
+    <string name="ptw_description">The job</string>
+    <string name="ptw_location">Where on site</string>
+    <string name="ptw_issued_to">Who is doing the work</string>
+    <string name="ptw_issued_by">Issued by</string>
+    <string name="ptw_precautions">Before work starts</string>
+    <string name="ptw_issue">Issue the permit</string>
+    <string name="ptw_issue_blocked">Every precaution has to be ticked before this permit can be issued.</string>
+    <string name="ptw_valid_from">Valid from</string>
+    <string name="ptw_valid_to">Valid until</string>
+    <string name="ptw_window_invalid">The end has to come after the start.</string>
+    <string name="ptw_close">Sign the permit back</string>
+    <string name="ptw_close_notes">Area left safe — anything to note</string>
+    <string name="ptw_cancel">Withdraw the permit</string>
+    <string name="ptw_expired_note">This permit has run out. It authorises nothing. Sign it back once the area is safe.</string>
+    <string name="ptw_state_draft">Draft</string>
+    <string name="ptw_state_pending">Not started yet</string>
+    <string name="ptw_state_active">Live</string>
+    <string name="ptw_state_expiring">Running out</string>
+    <string name="ptw_state_expired">Expired — work must stop</string>
+    <string name="ptw_state_closed">Signed back</string>
+    <string name="ptw_state_cancelled">Withdrawn</string>
+    <string name="ptw_type_hot">Hot work</string>
+    <string name="ptw_type_height">Work at height</string>
+    <string name="ptw_type_confined">Confined space</string>
+    <string name="ptw_type_excavation">Excavation</string>
+    <string name="ptw_type_electrical">Electrical isolation</string>
+    <string name="ptw_hot_1">Fire extinguisher within reach of the work</string>
+    <string name="ptw_hot_2">Combustibles cleared or covered within 10 metres</string>
+    <string name="ptw_hot_3">Fire watch during the work and for 30 minutes after</string>
+    <string name="ptw_hot_4">Gas cylinders upright and secured, hoses checked</string>
+    <string name="ptw_height_1">Anchor point checked and rated for the load</string>
+    <string name="ptw_height_2">Harness and lanyard inspected today</string>
+    <string name="ptw_height_3">Edge protection or fall arrest in place</string>
+    <string name="ptw_height_4">The area below is closed off</string>
+    <string name="ptw_confined_1">Atmosphere tested before entry</string>
+    <string name="ptw_confined_2">Ventilation running continuously</string>
+    <string name="ptw_confined_3">Attendant stationed at the entrance</string>
+    <string name="ptw_confined_4">Rescue plan agreed and the equipment is on site</string>
+    <string name="ptw_exc_1">Underground services located and marked</string>
+    <string name="ptw_exc_2">Sides supported or battered back</string>
+    <string name="ptw_exc_3">Edge barriers up and a ladder for access</string>
+    <string name="ptw_exc_4">Spoil and plant kept back from the edge</string>
+    <string name="ptw_elec_1">Circuit isolated and locked off</string>
+    <string name="ptw_elec_2">Proved dead with a tester proved before and after</string>
+    <string name="ptw_elec_3">Warning notice fitted at the isolation point</string>
+    <string name="ptw_elec_4">Keys held by the person doing the work</string>
+    <string name="time_now">Now</string>
+    <!-- When an Israeli site starts, for a permit written up the evening before -->
+    <string name="time_tomorrow_morning">Tomorrow 07:00</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -371,5 +439,21 @@
     <plurals name="cert_expiring_days">
         <item quantity="one">Expires in %d day</item>
         <item quantity="other">Expires in %d days</item>
+    </plurals>
+    <plurals name="tbt_attendees">
+        <item quantity="one">%d attended</item>
+        <item quantity="other">%d attended</item>
+    </plurals>
+    <plurals name="tbt_last_briefed">
+        <item quantity="one">Last briefed %d day ago</item>
+        <item quantity="other">Last briefed %d days ago</item>
+    </plurals>
+    <plurals name="ptw_minutes_left">
+        <item quantity="one">%d minute left</item>
+        <item quantity="other">%d minutes left</item>
+    </plurals>
+    <plurals name="ptw_hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
     </plurals>
 </resources>

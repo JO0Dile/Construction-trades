@@ -6,9 +6,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Assignment
+import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -30,13 +34,38 @@ import il.co.tradesmanager.ui.components.currentLanguageTag
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SafetyScreen(container: AppContainer, onRunChecklist: (String) -> Unit) {
+fun SafetyScreen(
+    container: AppContainer,
+    onRunChecklist: (String) -> Unit,
+    onOpenTalks: () -> Unit,
+    onOpenPermits: () -> Unit,
+) {
     val viewModel: SafetyViewModel = viewModel(factory = ViewModelFactory(container) { SafetyViewModel(it) })
     val templates by viewModel.templates.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text(stringResource(R.string.saf_title)) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.saf_title)) },
+                actions = {
+                    // Talks and permits sit beside the checklists rather than
+                    // in tabs of their own: one lens, three questions about it.
+                    IconButton(onClick = onOpenTalks) {
+                        Icon(
+                            Icons.Filled.Groups,
+                            contentDescription = stringResource(R.string.tbt_title),
+                        )
+                    }
+                    IconButton(onClick = onOpenPermits) {
+                        Icon(
+                            Icons.Filled.Assignment,
+                            contentDescription = stringResource(R.string.ptw_title),
+                        )
+                    }
+                },
+            )
+        },
     ) { padding ->
         if (templates.isEmpty()) {
             EmptyState(
