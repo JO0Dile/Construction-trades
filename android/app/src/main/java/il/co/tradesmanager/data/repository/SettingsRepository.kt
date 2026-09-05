@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 private val Context.dataStore by preferencesDataStore(name = "settings")
@@ -36,6 +37,15 @@ class SettingsRepository(private val context: Context) {
          * still names it. See core.access.Memberships.active.
          */
         val activeCompanyId: String? = null,
+        /**
+         * This installation's own id, minted once and kept.
+         *
+         * Sync needs it to break ties deterministically — see
+         * [il.co.tradesmanager.core.sync.Revision] — and it has to survive
+         * restarts, because a device that gets a new id every launch loses
+         * every argument it has already won. Empty until first read.
+         */
+        val deviceId: String = "",
     )
 
     val settings: Flow<Settings> = context.dataStore.data.map { prefs ->
@@ -50,6 +60,7 @@ class SettingsRepository(private val context: Context) {
             projectsAsGrid = prefs[KEY_PROJECTS_GRID] ?: true,
             signedInAccountId = prefs[KEY_ACCOUNT]?.takeIf { it.isNotBlank() },
             activeCompanyId = prefs[KEY_ACTIVE_COMPANY]?.takeIf { it.isNotBlank() },
+            deviceId = prefs[KEY_DEVICE_ID].orEmpty(),
         )
     }
 
@@ -63,6 +74,21 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setActiveCompany(companyId: String?) =
         put { it[KEY_ACTIVE_COMPANY] = companyId.orEmpty() }
+
+    /**
+     * This installation's id, minted on first use and never changed.
+     *
+     * Not tied to any hardware identifier: those need permissions the app does
+     * not ask for, and several are not stable across Android versions anyway.
+     * A random id kept in settings is enough — nothing depends on it being
+     * anything but unique and unchanging.
+     */
+    suspend fun deviceId(): String {
+        settings.first().deviceId.takeIf { it.isNotBlank() }?.let { return it }
+        val minted = java.util.UUID.randomUUID().toString()
+        put { it[KEY_DEVICE_ID] = minted }
+        return minted
+    }
 
     /**
      * Signing in also sets the actor name, so every audit entry written from
@@ -102,5 +128,6 @@ class SettingsRepository(private val context: Context) {
         val KEY_PROJECTS_GRID = booleanPreferencesKey("projects_as_grid")
         val KEY_ACCOUNT = stringPreferencesKey("signed_in_account")
         val KEY_ACTIVE_COMPANY = stringPreferencesKey("active_company")
+        val KEY_DEVICE_ID = stringPreferencesKey("device_id")
     }
 }
