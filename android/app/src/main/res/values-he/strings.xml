@@ -500,6 +500,10 @@
     <string name="snag_filter_all">הכול</string>
     <string name="snag_raised_by">נפתח על ידי</string>
     <string name="snag_checked_by">נבדק על ידי</string>
+    <string name="acc_create_instead">לא קיבלתי חשבון</string>
+    <string name="acc_id_add">הוספת מספר תעודת זהות</string>
+    <string name="acc_id_locked">נקבע פעם אחת ונשמר. משרד האתר מזהה אתכם לפיו, ולכן אי אפשר לשנות אותו בשקט.</string>
+    <string name="acc_id_missing">אין לכם עדיין מספר תעודת זהות, ולכן אפשר להיכנס רק עם שם המשתמש. הוסיפו מספר ושניהם יעבדו.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

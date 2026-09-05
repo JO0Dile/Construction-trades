@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -139,7 +140,17 @@ fun AppNavHost(
                             selected = currentRoute == tab.route,
                             onClick = { navController.switchTab(tab.route) },
                             icon = { Icon(tab.icon, contentDescription = null) },
-                            label = { Text(stringResource(tab.labelRes)) },
+                            label = {
+                                // Six tabs on a narrow phone leaves each one
+                                // about fifty pixels. A label that wraps reads
+                                // as "Inventor / y", so it is cut instead —
+                                // and the labels themselves are kept short.
+                                Text(
+                                    text = stringResource(tab.labelRes),
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                            },
                             alwaysShowLabel = false,
                         )
                     }

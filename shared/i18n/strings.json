@@ -161,7 +161,7 @@
       "ar": "الرئيسية"
     },
     "nav_inventory": {
-      "en": "Inventory",
+      "en": "Stock",
       "he": "מלאי",
       "ar": "المخزون"
     },
@@ -2517,6 +2517,26 @@
       "en": "Checked by",
       "he": "נבדק על ידי",
       "ar": "فحصه"
+    },
+    "acc_create_instead": {
+      "en": "I have not been given an account",
+      "he": "לא קיבלתי חשבון",
+      "ar": "لم أحصل على حساب"
+    },
+    "acc_id_add": {
+      "en": "Add your ID number",
+      "he": "הוספת מספר תעודת זהות",
+      "ar": "أضف رقم هويتك"
+    },
+    "acc_id_locked": {
+      "en": "Set once and kept. The site office identifies you by this, so it is not something to change quietly.",
+      "he": "נקבע פעם אחת ונשמר. משרד האתר מזהה אתכם לפיו, ולכן אי אפשר לשנות אותו בשקט.",
+      "ar": "يُحدَّد مرة واحدة ويُحفظ. مكتب الموقع يعرفك به، لذا لا يمكن تغييره بهدوء."
+    },
+    "acc_id_missing": {
+      "en": "You have no ID number yet, so you can only sign in with your username. Add one and either will work.",
+      "he": "אין לכם עדיין מספר תעודת זהות, ולכן אפשר להיכנס רק עם שם המשתמש. הוסיפו מספר ושניהם יעבדו.",
+      "ar": "لا يوجد لديك رقم هوية بعد، لذا يمكنك الدخول باسم المستخدم فقط. أضف رقمًا وسيعمل كلاهما."
     }
   },
   "plurals": {

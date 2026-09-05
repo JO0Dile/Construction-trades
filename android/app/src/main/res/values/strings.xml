@@ -31,7 +31,7 @@
     <string name="onboarding_seeding">Preparing your catalogues…</string>
     <string name="onboarding_select_one">Select at least one trade</string>
     <string name="nav_home">Home</string>
-    <string name="nav_inventory">Inventory</string>
+    <string name="nav_inventory">Stock</string>
     <string name="nav_projects">Projects</string>
     <string name="nav_schedule">Schedule</string>
     <string name="nav_safety">Safety</string>
@@ -509,6 +509,10 @@
     <string name="snag_filter_all">All</string>
     <string name="snag_raised_by">Raised by</string>
     <string name="snag_checked_by">Checked by</string>
+    <string name="acc_create_instead">I have not been given an account</string>
+    <string name="acc_id_add">Add your ID number</string>
+    <string name="acc_id_locked">Set once and kept. The site office identifies you by this, so it is not something to change quietly.</string>
+    <string name="acc_id_missing">You have no ID number yet, so you can only sign in with your username. Add one and either will work.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

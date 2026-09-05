@@ -18,6 +18,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
@@ -42,10 +43,13 @@ import il.co.tradesmanager.core.security.Signature
  * correctly on a different phone, in a report, or on whatever somebody opens
  * the record with years from now — see [Signature].
  *
- * The strokes are kept in a snapshot list rather than rebuilt from the encoded
- * string on every touch. A finger drawing a name generates a point every few
- * milliseconds, and re-parsing a growing string at that rate is how a
- * signature pad ends up lagging behind the finger drawing on it.
+ * Every list here is a snapshot list, the outer one and each stroke inside it.
+ * That is not tidiness, it is the whole thing working: Compose redraws when it
+ * sees a state read change, and adding a point to a plain MutableList inside a
+ * snapshot list changes nothing it is watching. The pad then only redraws when
+ * the *next* stroke starts, so a signature appears one stroke behind the
+ * finger — you draw your name, nothing happens, you tap twice more and your
+ * name from a moment ago turns up.
  */
 @Composable
 fun SignaturePad(
@@ -53,7 +57,7 @@ fun SignaturePad(
     modifier: Modifier = Modifier,
     height: Dp = 180.dp,
 ) {
-    val strokes = remember { mutableStateListOf<MutableList<Signature.Point>>() }
+    val strokes = remember { mutableStateListOf<SnapshotStateList<Signature.Point>>() }
     var revision by remember { mutableStateOf(0) }
     val onChange by rememberUpdatedState(onSignatureChange)
 
@@ -80,7 +84,11 @@ fun SignaturePad(
                     .pointerInput(Unit) {
                         detectDragGestures(
                             onDragStart = { start ->
-                                strokes.add(mutableListOf(normalise(start, size.width, size.height)))
+                                strokes.add(
+                                    mutableStateListOf(
+                                        normalise(start, size.width, size.height),
+                                    ),
+                                )
                                 revision++
                             },
                             onDrag = { change, _ ->
@@ -94,7 +102,18 @@ fun SignaturePad(
                     },
             ) {
                 strokes.forEach { stroke ->
-                    if (stroke.size < 2) return@forEach
+                    // A stroke of one point is a dot — on an "i", or a full
+                    // stop after initials. Drawing nothing for it makes the pad
+                    // look broken to somebody who signs with short marks.
+                    if (stroke.size == 1) {
+                        val only = stroke.first()
+                        drawCircle(
+                            color = ink,
+                            radius = 2f,
+                            center = Offset(only.x * size.width, only.y * size.height),
+                        )
+                        return@forEach
+                    }
                     val path = Path()
                     stroke.forEachIndexed { index, point ->
                         val x = point.x * size.width
