@@ -27,6 +27,22 @@ interface ProjectDao {
     @Query("SELECT * FROM projects WHERE id = :id")
     fun observeProject(id: String): Flow<ProjectEntity?>
 
+    /**
+     * Jobs past their due date and not finished.
+     *
+     * "Not finished" is the point: a job delivered late is history, a job
+     * still running late is a phone call somebody has to make today.
+     */
+    @Query(
+        """
+        SELECT * FROM projects
+        WHERE deletedAt IS NULL AND status != 'DONE'
+          AND dueDate IS NOT NULL AND dueDate < :now
+        ORDER BY dueDate
+        """,
+    )
+    fun observeOverdue(now: Long): Flow<List<ProjectEntity>>
+
     @Upsert
     suspend fun upsert(project: ProjectEntity)
 

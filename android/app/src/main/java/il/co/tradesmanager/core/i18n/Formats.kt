@@ -58,6 +58,19 @@ object Formats {
         }.format(amount)
 
     /**
+     * Money with the agorot dropped, for a dashboard tile.
+     *
+     * A summary figure is read at a glance from a van; two decimal places make
+     * it longer without making it more useful, and the exact number is on the
+     * invoice where it belongs.
+     */
+    fun moneyRounded(amount: Double, locale: Locale): String =
+        NumberFormat.getCurrencyInstance(locale).apply {
+            currency = ILS
+            maximumFractionDigits = 0
+        }.format(amount)
+
+    /**
      * A stock figure. Whole numbers print without a decimal tail, because
      * "12 sockets" reads better on a phone in the sun than "12.00 sockets".
      */

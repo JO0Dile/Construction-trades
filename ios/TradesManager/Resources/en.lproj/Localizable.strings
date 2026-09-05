@@ -308,3 +308,8 @@
 "cert_empty" = "No tickets recorded.";
 "cert_attention" = "Tickets needing attention";
 "cert_date_bad" = "Use DD/MM/YYYY.";
+"home_overdue" = "Overdue";
+"home_book" = "Across all jobs";
+"home_owed" = "Owed to you";
+"home_tickets" = "Tickets";
+"home_margin" = "Margin";

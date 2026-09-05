@@ -17,7 +17,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.HealthAndSafety
+import androidx.compose.material.icons.filled.Badge
 import androidx.compose.material.icons.filled.Inventory2
+import androidx.compose.material.icons.filled.RequestQuote
+import androidx.compose.material.icons.filled.TrendingUp
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Work
 import androidx.compose.material3.Card
@@ -38,10 +42,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -66,11 +73,24 @@ fun HomeScreen(
     onOpenSchedule: () -> Unit,
     onOpenProjects: () -> Unit,
     onOpenSafety: () -> Unit,
+    onOpenPeople: () -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val viewModel: HomeViewModel = viewModel(factory = ViewModelFactory(container) { HomeViewModel(it) })
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val portfolio by viewModel.portfolio.collectAsStateWithLifecycle()
+    val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
+
+    // Each tile belongs to a lens, so the dashboard is different work for
+    // different people rather than the same wall of numbers with some greyed
+    // out. A foreman never sees the book; the finance clerk never sees stock.
+    val signedIn = session as? SessionRepository.State.SignedIn
+    val seesStuff = signedIn?.canRead(Lens.STUFF) != false
+    val seesPlan = signedIn?.canRead(Lens.PLAN) != false
+    val seesEvidence = signedIn?.canRead(Lens.EVIDENCE) != false
+    val seesMoney = signedIn?.canRead(Lens.MONEY) != false
+    val seesPeople = signedIn?.canRead(Lens.PEOPLE) != false
 
     Scaffold(
         topBar = {
@@ -103,30 +123,92 @@ fun HomeScreen(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    StatTile(
-                        value = state.lowStock.size.toString(),
-                        label = stringResource(R.string.home_low_stock),
-                        icon = Icons.Filled.Inventory2,
-                        accent = if (state.lowStock.isEmpty()) Neutral else Warning,
-                        onClick = onOpenInventory,
-                        modifier = Modifier.weight(1f),
-                    )
-                    StatTile(
-                        value = state.activeProjects.size.toString(),
-                        label = stringResource(R.string.home_active_projects),
-                        icon = Icons.Filled.Work,
-                        accent = Neutral,
-                        onClick = onOpenProjects,
-                        modifier = Modifier.weight(1f),
-                    )
-                    StatTile(
-                        value = state.openChecklists.toString(),
-                        label = stringResource(R.string.home_safety_due),
-                        icon = Icons.Filled.HealthAndSafety,
-                        accent = if (state.openChecklists == 0) Neutral else Danger,
-                        onClick = onOpenSafety,
-                        modifier = Modifier.weight(1f),
-                    )
+                    if (seesStuff) {
+                        StatTile(
+                            value = state.lowStock.size.toString(),
+                            label = stringResource(R.string.home_low_stock),
+                            icon = Icons.Filled.Inventory2,
+                            accent = if (state.lowStock.isEmpty()) Neutral else Warning,
+                            onClick = onOpenInventory,
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                    if (seesPlan) {
+                        StatTile(
+                            value = state.activeProjects.size.toString(),
+                            label = stringResource(R.string.home_active_projects),
+                            icon = Icons.Filled.Work,
+                            accent = Neutral,
+                            onClick = onOpenProjects,
+                            modifier = Modifier.weight(1f),
+                        )
+                        // Only once something is actually late: a permanent
+                        // zero teaches people to stop reading the row.
+                        if (state.overdue.isNotEmpty()) {
+                            StatTile(
+                                value = state.overdue.size.toString(),
+                                label = stringResource(R.string.home_overdue),
+                                icon = Icons.Filled.Warning,
+                                accent = Danger,
+                                onClick = onOpenProjects,
+                                modifier = Modifier.weight(1f),
+                            )
+                        }
+                    }
+                    if (seesEvidence) {
+                        StatTile(
+                            value = state.openChecklists.toString(),
+                            label = stringResource(R.string.home_safety_due),
+                            icon = Icons.Filled.HealthAndSafety,
+                            accent = if (state.openChecklists == 0) Neutral else Danger,
+                            onClick = onOpenSafety,
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                }
+            }
+
+            if (seesMoney || seesPeople) {
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        if (seesMoney) {
+                            StatTile(
+                                value = Formats.moneyRounded(portfolio.money.outstanding, locale),
+                                label = stringResource(R.string.home_owed),
+                                icon = Icons.Filled.RequestQuote,
+                                accent = if (portfolio.money.outstanding > 0.0) Warning else Neutral,
+                                onClick = onOpenProjects,
+                                modifier = Modifier.weight(1f),
+                            )
+                            StatTile(
+                                value = Formats.moneyRounded(portfolio.money.margin, locale),
+                                label = stringResource(R.string.home_margin) + " · " +
+                                    stringResource(R.string.home_book),
+                                icon = Icons.Filled.TrendingUp,
+                                accent = if (portfolio.money.margin < 0.0) Danger else Neutral,
+                                onClick = onOpenProjects,
+                                modifier = Modifier.weight(1f),
+                            )
+                        }
+                        if (seesPeople && portfolio.ticketsNeedingAttention.isNotEmpty()) {
+                            StatTile(
+                                value = portfolio.ticketsNeedingAttention.size.toString(),
+                                label = stringResource(R.string.home_tickets),
+                                icon = Icons.Filled.Badge,
+                                accent = if (viewModel.anyExpired(portfolio.ticketsNeedingAttention)) {
+                                    Danger
+                                } else {
+                                    Warning
+                                },
+                                onClick = onOpenPeople,
+                                modifier = Modifier.weight(1f),
+                            )
+                        }
+                    }
                 }
             }
 
@@ -277,8 +359,16 @@ private fun StatTile(
             Icon(icon, contentDescription = null, tint = accent, modifier = Modifier.size(20.dp))
             Text(
                 text = value,
-                style = MaterialTheme.typography.headlineMedium,
+                // A count fits at headline size; "₪257,240" does not, and a
+                // clipped number on a dashboard is worse than a smaller one.
+                style = if (value.length <= 4) {
+                    MaterialTheme.typography.headlineMedium
+                } else {
+                    MaterialTheme.typography.titleMedium
+                },
                 fontWeight = FontWeight.Bold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(top = 6.dp),
             )
             Text(

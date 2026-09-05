@@ -3,6 +3,7 @@ package il.co.tradesmanager.data.repository
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.data.local.dao.CostByCategory
 import il.co.tradesmanager.data.local.dao.MoneyDao
+import kotlinx.coroutines.flow.map
 import il.co.tradesmanager.data.local.entity.CostEntryEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
 import il.co.tradesmanager.data.local.entity.JobBudgetEntity
@@ -47,6 +48,24 @@ class MoneyRepository(
             invoiced = totals.invoiced,
             paid = totals.paid,
             vatRate = budget?.vatRate ?: JobFinancials.ISRAELI_VAT,
+        )
+    }
+
+    /**
+     * The whole book of work as one [JobFinancials], so the dashboard and a
+     * single job are read with the same tested arithmetic rather than two
+     * versions of it that drift apart.
+     *
+     * Committed costs are left out here: they are a per-job forecast, and
+     * summing forecasts across a portfolio produces a number nobody can act on.
+     */
+    fun observePortfolio(): Flow<JobFinancials> = dao.observePortfolio().map { totals ->
+        JobFinancials(
+            contractValue = totals.contractValue,
+            approvedVariations = totals.approvedVariations,
+            costToDate = totals.costToDate,
+            invoiced = totals.invoiced,
+            paid = totals.paid,
         )
     }
 

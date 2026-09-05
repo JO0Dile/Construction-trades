@@ -309,6 +309,11 @@
     <string name="cert_empty">No tickets recorded.</string>
     <string name="cert_attention">Tickets needing attention</string>
     <string name="cert_date_bad">Use DD/MM/YYYY.</string>
+    <string name="home_overdue">Overdue</string>
+    <string name="home_book">Across all jobs</string>
+    <string name="home_owed">Owed to you</string>
+    <string name="home_tickets">Tickets</string>
+    <string name="home_margin">Margin</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

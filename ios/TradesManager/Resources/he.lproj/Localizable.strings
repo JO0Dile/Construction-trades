@@ -308,3 +308,8 @@
 "cert_empty" = "לא נרשמו הסמכות.";
 "cert_attention" = "הסמכות שדורשות טיפול";
 "cert_date_bad" = "יש להזין DD/MM/YYYY.";
+"home_overdue" = "באיחור";
+"home_book" = "בכל העבודות";
+"home_owed" = "חייבים לך";
+"home_tickets" = "הסמכות";
+"home_margin" = "רווח";

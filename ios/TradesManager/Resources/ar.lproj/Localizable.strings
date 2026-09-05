@@ -308,3 +308,8 @@
 "cert_empty" = "لم تُسجَّل شهادات.";
 "cert_attention" = "شهادات تحتاج انتباهًا";
 "cert_date_bad" = "استخدم يوم/شهر/سنة.";
+"home_overdue" = "متأخر";
+"home_book" = "في كل الأعمال";
+"home_owed" = "مستحق لك";
+"home_tickets" = "الشهادات";
+"home_margin" = "الهامش";

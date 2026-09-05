@@ -36,6 +36,10 @@ class ProjectRepository(
     fun observeTasks(id: String): Flow<List<ProjectTaskEntity>> = dao.observeTasks(id)
     fun observeProgress(): Flow<List<ProjectProgress>> = dao.observeTaskProgress()
 
+    /** Jobs past their due date and still running. */
+    fun observeOverdue(): Flow<List<ProjectEntity>> =
+        dao.observeOverdue(System.currentTimeMillis())
+
     suspend fun save(project: ProjectEntity, actorName: String): ProjectEntity {
         val now = System.currentTimeMillis()
         val stored = project.copy(updatedAt = now, createdAt = project.createdAt.takeIf { it > 0 } ?: now)

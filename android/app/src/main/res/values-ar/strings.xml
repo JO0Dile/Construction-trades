@@ -301,6 +301,11 @@
     <string name="cert_empty">لم تُسجَّل شهادات.</string>
     <string name="cert_attention">شهادات تحتاج انتباهًا</string>
     <string name="cert_date_bad">استخدم يوم/شهر/سنة.</string>
+    <string name="home_overdue">متأخر</string>
+    <string name="home_book">في كل الأعمال</string>
+    <string name="home_owed">مستحق لك</string>
+    <string name="home_tickets">الشهادات</string>
+    <string name="home_margin">الهامش</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

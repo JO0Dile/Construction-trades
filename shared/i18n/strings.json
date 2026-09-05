@@ -1521,6 +1521,31 @@
       "en": "Use DD/MM/YYYY.",
       "he": "יש להזין DD/MM/YYYY.",
       "ar": "استخدم يوم/شهر/سنة."
+    },
+    "home_overdue": {
+      "en": "Overdue",
+      "he": "באיחור",
+      "ar": "متأخر"
+    },
+    "home_book": {
+      "en": "Across all jobs",
+      "he": "בכל העבודות",
+      "ar": "في كل الأعمال"
+    },
+    "home_owed": {
+      "en": "Owed to you",
+      "he": "חייבים לך",
+      "ar": "مستحق لك"
+    },
+    "home_tickets": {
+      "en": "Tickets",
+      "he": "הסמכות",
+      "ar": "الشهادات"
+    },
+    "home_margin": {
+      "en": "Margin",
+      "he": "רווח",
+      "ar": "الهامش"
     }
   },
   "plurals": {

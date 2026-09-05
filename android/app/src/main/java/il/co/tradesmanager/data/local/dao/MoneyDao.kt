@@ -22,6 +22,15 @@ data class MoneyTotals(
 /** A cost line grouped by what it was spent on. */
 data class CostByCategory(val category: String, val total: Double)
 
+/** The same five numbers as [MoneyTotals], summed over every live job. */
+data class PortfolioTotals(
+    val contractValue: Double,
+    val approvedVariations: Double,
+    val costToDate: Double,
+    val invoiced: Double,
+    val paid: Double,
+)
+
 @Dao
 interface MoneyDao {
 
@@ -100,6 +109,36 @@ interface MoneyDao {
         """,
     )
     fun observeTotals(projectId: String): Flow<MoneyTotals>
+
+    /**
+     * The whole book of work, in one query.
+     *
+     * Every subquery joins back to projects and excludes deleted ones, because
+     * a job someone removed must stop counting the moment they remove it — a
+     * portfolio figure that silently includes cancelled work is worse than no
+     * portfolio figure.
+     */
+    @Query(
+        """
+        SELECT
+            (SELECT COALESCE(SUM(b.contractValue), 0) FROM job_budgets b
+                JOIN projects p ON p.id = b.projectId
+                WHERE p.deletedAt IS NULL) AS contractValue,
+            (SELECT COALESCE(SUM(v.amount), 0) FROM variations v
+                JOIN projects p ON p.id = v.projectId
+                WHERE p.deletedAt IS NULL AND v.status = 'APPROVED') AS approvedVariations,
+            (SELECT COALESCE(SUM(c.amount), 0) FROM cost_entries c
+                JOIN projects p ON p.id = c.projectId
+                WHERE p.deletedAt IS NULL) AS costToDate,
+            (SELECT COALESCE(SUM(i.amount), 0) FROM invoices i
+                JOIN projects p ON p.id = i.projectId
+                WHERE p.deletedAt IS NULL AND i.status != 'DRAFT') AS invoiced,
+            (SELECT COALESCE(SUM(i.amount), 0) FROM invoices i
+                JOIN projects p ON p.id = i.projectId
+                WHERE p.deletedAt IS NULL AND i.status = 'PAID') AS paid
+        """,
+    )
+    fun observePortfolio(): Flow<PortfolioTotals>
 
     /**
      * What the job sheet says it still needs, priced from stock.
