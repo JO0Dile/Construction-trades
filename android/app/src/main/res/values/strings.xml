@@ -476,6 +476,13 @@
     <string name="ind_sup_incidents_body">Report the same day. Photograph it first and tidy up after — an investigation starts from what was actually there.</string>
     <string name="ind_sup_emergency">Emergencies</string>
     <string name="ind_sup_emergency_body">Ambulance 101. Fire 102. Know your assembly point and who your first aider is before the day you need them.</string>
+    <string name="comp_switch">Where you are working</string>
+    <string name="comp_switch_hint">You can be on more than one firm\'s books. This decides whose jobs you see and what you may do.</string>
+    <string name="comp_own">Your own tools</string>
+    <string name="comp_own_hint">Jobs that belong to nobody but you.</string>
+    <string name="comp_add">Start another company</string>
+    <string name="comp_add_hint">A new firm on the same phone, with its own jobs and its own crew. Your ID, photograph and induction come with you.</string>
+    <string name="comp_none">You are not on any firm\'s books.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

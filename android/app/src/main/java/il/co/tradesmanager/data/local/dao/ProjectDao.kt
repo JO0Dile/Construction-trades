@@ -18,11 +18,34 @@ data class ProjectProgress(val projectId: String, val total: Int, val done: Int)
 @Dao
 interface ProjectDao {
 
-    @Query("SELECT * FROM projects WHERE deletedAt IS NULL ORDER BY dueDate IS NULL, dueDate, updatedAt DESC")
-    fun observeProjects(): Flow<List<ProjectEntity>>
+    /**
+     * The jobs of one company.
+     *
+     * Every job list is scoped this way. Somebody who works for two firms on
+     * the same phone must not see one firm's work while signed in to the
+     * other, and scoping the job scopes everything hanging off it — tasks,
+     * materials, money, permits, snags all reach their company through here.
+     *
+     * A null companyId matches jobs that belong to no company: a sole trader's
+     * own work. It is written out rather than left to `= :companyId`, because
+     * in SQL nothing equals NULL, not even NULL.
+     */
+    @Query(
+        """
+        SELECT * FROM projects
+        WHERE deletedAt IS NULL AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+        ORDER BY dueDate IS NULL, dueDate, updatedAt DESC
+        """,
+    )
+    fun observeProjects(companyId: String?): Flow<List<ProjectEntity>>
 
-    @Query("SELECT * FROM projects WHERE deletedAt IS NULL AND status = :status")
-    fun observeProjectsByStatus(status: String): Flow<List<ProjectEntity>>
+    @Query(
+        """
+        SELECT * FROM projects
+        WHERE deletedAt IS NULL AND status = :status AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+        """,
+    )
+    fun observeProjectsByStatus(status: String, companyId: String?): Flow<List<ProjectEntity>>
 
     @Query("SELECT * FROM projects WHERE id = :id")
     fun observeProject(id: String): Flow<ProjectEntity?>
@@ -38,10 +61,11 @@ interface ProjectDao {
         SELECT * FROM projects
         WHERE deletedAt IS NULL AND status != 'DONE'
           AND dueDate IS NOT NULL AND dueDate < :now
+          AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
         ORDER BY dueDate
         """,
     )
-    fun observeOverdue(now: Long): Flow<List<ProjectEntity>>
+    fun observeOverdue(now: Long, companyId: String?): Flow<List<ProjectEntity>>
 
     @Upsert
     suspend fun upsert(project: ProjectEntity)

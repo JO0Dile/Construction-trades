@@ -67,6 +67,7 @@ fun PersonSheet(
     person: AccountEntity,
     certifications: List<CertificationEntity>,
     suggestedKinds: List<ProjectKind>,
+    role: Role,
     canManage: Boolean,
     onDismiss: () -> Unit,
     onSetRole: (Role) -> Unit,
@@ -77,7 +78,6 @@ fun PersonSheet(
     val locale = currentLocale()
     val languageTag = currentLanguageTag()
     var adding by remember { mutableStateOf(false) }
-    val role = Role.parse(person.role)
 
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = sheetState) {
         Column(

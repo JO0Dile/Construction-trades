@@ -9,7 +9,10 @@ import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -25,8 +28,26 @@ class TalkDetailViewModel(
         container.evidence.observeAttendees(talkId)
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
-    /** The crew, so the common case is two taps rather than typing a name. */
-    val crew: StateFlow<List<AccountEntity>> = container.accounts.observeAccounts()
+    /**
+     * The crew of the company this talk belongs to, so the common case is two
+     * taps rather than typing a name.
+     *
+     * Scoped like every other list of people: somebody who works for two firms
+     * on one phone must not be offered the other firm's crew on a register.
+     */
+    @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+    val crew: StateFlow<List<AccountEntity>> = container.session.state
+        .flatMapLatest { state ->
+            val signedIn = state as? SessionRepository.State.SignedIn
+                ?: return@flatMapLatest flowOf(emptyList())
+            combine(
+                container.memberships.observeForCompany(signedIn.active?.companyId),
+                container.accounts.observeAccounts(),
+            ) { rows, accounts ->
+                rows.mapNotNull { row -> accounts.firstOrNull { it.id == row.accountId } }
+                    .sortedBy { it.displayName }
+            }
+        }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     val session: StateFlow<SessionRepository.State> = container.session.state

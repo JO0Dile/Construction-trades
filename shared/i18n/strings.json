@@ -2352,6 +2352,41 @@
       "en": "Ambulance 101. Fire 102. Know your assembly point and who your first aider is before the day you need them.",
       "he": "מד״א 101. כבאות 102. דעו את נקודת ההתכנסות ומי מגיש העזרה הראשונה — לפני היום שבו תצטרכו.",
       "ar": "الإسعاف 101. الإطفاء 102. اعرف نقطة التجمّع ومن هو المسعف قبل اليوم الذي تحتاجهما فيه."
+    },
+    "comp_switch": {
+      "en": "Where you are working",
+      "he": "היכן אתם עובדים",
+      "ar": "أين تعمل"
+    },
+    "comp_switch_hint": {
+      "en": "You can be on more than one firm's books. This decides whose jobs you see and what you may do.",
+      "he": "אפשר להיות רשומים ביותר מחברה אחת. הבחירה קובעת אילו עבודות תראו ומה מותר לכם.",
+      "ar": "يمكن أن تكون مسجّلًا لدى أكثر من شركة. هذا يحدد أعمال من ترى وما المسموح لك."
+    },
+    "comp_own": {
+      "en": "Your own tools",
+      "he": "העבודות שלכם",
+      "ar": "أعمالك الخاصة"
+    },
+    "comp_own_hint": {
+      "en": "Jobs that belong to nobody but you.",
+      "he": "עבודות ששייכות רק לכם.",
+      "ar": "أعمال تخصّك وحدك."
+    },
+    "comp_add": {
+      "en": "Start another company",
+      "he": "פתיחת חברה נוספת",
+      "ar": "إنشاء شركة أخرى"
+    },
+    "comp_add_hint": {
+      "en": "A new firm on the same phone, with its own jobs and its own crew. Your ID, photograph and induction come with you.",
+      "he": "חברה נוספת באותו טלפון, עם עבודות וצוות משלה. תעודת הזהות, התמונה והתדריך שלכם עוברים איתכם.",
+      "ar": "شركة جديدة على الهاتف نفسه، بأعمالها وطاقمها. هويتك وصورتك وتعليماتك تنتقل معك."
+    },
+    "comp_none": {
+      "en": "You are not on any firm's books.",
+      "he": "אינכם רשומים באף חברה.",
+      "ar": "لست مسجّلًا لدى أي شركة."
     }
   },
   "plurals": {

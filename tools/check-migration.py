@@ -27,6 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MIGRATIONS = ROOT / "android/app/src/main/java/il/co/tradesmanager/data/local/Migrations.kt"
+DATABASE = ROOT / "android/app/src/main/java/il/co/tradesmanager/data/local/AppDatabase.kt"
 GENERATED = ROOT / "android/app/build/generated/ksp"
 
 TABLE_NAME = re.compile(r"CREATE\s+TABLE\s+IF\s+NOT\s+EXISTS\s+`([^`]+)`", re.IGNORECASE)
@@ -38,6 +39,10 @@ ADD_COLUMN = re.compile(
 )
 # "val SQL_7_8: List<String> = listOf(" -> (7, 8)
 SQL_BLOCK = re.compile(r"val\s+SQL_(\d+)_(\d+)\s*:\s*List<String>\s*=\s*listOf\(")
+# "val MIGRATION_7_8 = object : Migration(7, 8)" -> (7, 8)
+MIGRATION_OBJECT = re.compile(r"Migration\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)")
+# "version = 9," in the @Database annotation
+DB_VERSION = re.compile(r"\bversion\s*=\s*(\d+)")
 
 
 def normalise(sql: str) -> str:
@@ -222,6 +227,54 @@ def check_added_column(table: str, column: str, definition: str, room: str) -> l
     return []
 
 
+def check_version_chain(source: str) -> list[str]:
+    """The migrations must reach the version the database says it is.
+
+    Room stores a hash of the schema and re-checks it on every open, not only
+    when the version changes. So an entity that gains a column while the
+    version stays put does not quietly work — it throws "cannot verify the data
+    integrity" on launch, for everyone upgrading, with no migration having run.
+
+    This file was written to catch launch crashes and did not catch that one,
+    because it only ever compared SQL. It compares the numbers now too.
+    """
+    declared = DB_VERSION.search(DATABASE.read_text(encoding="utf-8"))
+    if not declared:
+        return [f"No `version = N` found in {DATABASE.name}."]
+    version = int(declared.group(1))
+
+    steps = sorted(
+        {(int(a), int(b)) for a, b in MIGRATION_OBJECT.findall(COMMENTS.sub("", source))}
+    )
+    if not steps:
+        return [] if version == 1 else [
+            f"{DATABASE.name} says version {version}, but there are no migrations."
+        ]
+
+    problems: list[str] = []
+    highest = max(to for _, to in steps)
+    if highest != version:
+        problems.append(
+            f"{DATABASE.name} says version {version}, but the migrations reach {highest}.\n"
+            f"    Room re-checks its schema hash on every open, so an entity that changed\n"
+            f"    without a version bump crashes on launch instead of migrating."
+        )
+
+    expected = 1
+    for start, end in steps:
+        if start != expected:
+            problems.append(
+                f"The migration chain breaks: nothing goes from {expected} to {start}.\n"
+                f"    A device on version {expected} would have no way forward."
+            )
+            break
+        if end != start + 1:
+            problems.append(f"Migration {start} to {end} skips a version.")
+            break
+        expected = end
+    return problems
+
+
 def main() -> int:
     source = MIGRATIONS.read_text(encoding="utf-8")
     statements = migration_statements(source)
@@ -231,7 +284,7 @@ def main() -> int:
 
     expected = generated_statements()
     created, added, indexes = replay(statements)
-    problems: list[str] = []
+    problems: list[str] = check_version_chain(source)
     checked: set[str] = set()
 
     for name, create in created.items():
@@ -289,7 +342,11 @@ def main() -> int:
             print(f"  {problem}\n")
         return 1
 
-    print(f"Migration SQL matches the schema Room expects ({', '.join(sorted(checked))}).")
+    version = DB_VERSION.search(DATABASE.read_text(encoding="utf-8")).group(1)
+    print(
+        f"Migration SQL matches the schema Room expects at version {version} "
+        f"({', '.join(sorted(checked))})."
+    )
     return 0
 
 

@@ -71,7 +71,7 @@ fun PeopleScreen(container: AppContainer) {
     val certifications by viewModel.certifications.collectAsStateWithLifecycle()
     val kinds by viewModel.kinds.collectAsStateWithLifecycle()
     var adding by remember { mutableStateOf(false) }
-    var editing by remember { mutableStateOf<AccountEntity?>(null) }
+    var editing by remember { mutableStateOf<PeopleViewModel.Member?>(null) }
 
     val signedIn = session as? SessionRepository.State.SignedIn
     val canManage = signedIn?.canManageMembers == true
@@ -94,12 +94,14 @@ fun PeopleScreen(container: AppContainer) {
             )
         } else {
             LazyColumn(Modifier.padding(padding)) {
-                items(members, key = { it.id }) { member ->
-                    val role = Role.parse(member.role)
+                items(members, key = { it.membership.id }) { member ->
+                    // The role held in *this* company. The same person can be
+                    // an owner on another firm's list without it showing here.
+                    val role = member.role
                     ListItem(
-                        headlineContent = { Text(member.displayName) },
+                        headlineContent = { Text(member.account.displayName) },
                         supportingContent = {
-                            val tickets = certifications[member.id].orEmpty()
+                            val tickets = certifications[member.account.id].orEmpty()
                             val worst = tickets.minByOrNull {
                                 Expiry.urgency(it.expiresOn, System.currentTimeMillis())
                             }
@@ -125,7 +127,7 @@ fun PeopleScreen(container: AppContainer) {
                             // You cannot remove yourself: signing out is the
                             // thing someone actually wants there, and it is in
                             // Settings where they expect it.
-                            if (canManage && member.id != signedIn?.account?.id) {
+                            if (canManage && member.account.id != signedIn?.account?.id) {
                                 IconButton(onClick = { viewModel.remove(member) }) {
                                     Icon(
                                         Icons.Filled.PersonRemove,
@@ -157,15 +159,16 @@ fun PeopleScreen(container: AppContainer) {
 
     editing?.let { member ->
         PersonSheet(
-            person = member,
-            certifications = certifications[member.id].orEmpty(),
+            person = member.account,
+            role = member.role,
+            certifications = certifications[member.account.id].orEmpty(),
             suggestedKinds = kinds,
             // You may look at your own tickets; you may not re-role yourself.
-            canManage = canManage && member.id != signedIn?.account?.id,
+            canManage = canManage && member.account.id != signedIn?.account?.id,
             onDismiss = { editing = null },
             onSetRole = { viewModel.setRole(member, it) },
             onAddCertification = { title, reference, expiresOn ->
-                viewModel.addCertification(member.id, title, reference, expiresOn)
+                viewModel.addCertification(member.account.id, title, reference, expiresOn)
             },
             onRemoveCertification = viewModel::removeCertification,
         )

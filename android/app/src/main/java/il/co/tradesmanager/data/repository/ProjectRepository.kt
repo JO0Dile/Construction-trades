@@ -13,13 +13,30 @@ import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import java.util.UUID
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.withContext
 
+/**
+ * Jobs, and everything hanging off them.
+ *
+ * Every list here is scoped to the company somebody is working in, and the
+ * scoping lives in this one class rather than in the seven screens that ask
+ * for jobs. A screen that had to remember to pass a company id is a screen
+ * that will one day forget, and forgetting means showing one firm's work to
+ * another — which is the whole thing this is meant to prevent.
+ *
+ * [activeCompanyId] is a flow rather than a value because switching companies
+ * has to change what is on screen without anybody navigating anywhere.
+ */
+@OptIn(ExperimentalCoroutinesApi::class)
 class ProjectRepository(
     private val dao: ProjectDao,
     private val source: CatalogSource,
     private val audit: AuditTrail,
+    private val activeCompanyId: Flow<String?>,
 ) {
 
     object Status {
@@ -29,8 +46,11 @@ class ProjectRepository(
         const val DONE = "DONE"
     }
 
-    fun observeProjects(): Flow<List<ProjectEntity>> = dao.observeProjects()
-    fun observeActive(): Flow<List<ProjectEntity>> = dao.observeProjectsByStatus(Status.ACTIVE)
+    fun observeProjects(): Flow<List<ProjectEntity>> =
+        activeCompanyId.flatMapLatest { dao.observeProjects(it) }
+
+    fun observeActive(): Flow<List<ProjectEntity>> =
+        activeCompanyId.flatMapLatest { dao.observeProjectsByStatus(Status.ACTIVE, it) }
     fun observeProject(id: String): Flow<ProjectEntity?> = dao.observeProject(id)
     fun observeMaterials(id: String): Flow<List<ProjectMaterialEntity>> = dao.observeMaterials(id)
     fun observeTasks(id: String): Flow<List<ProjectTaskEntity>> = dao.observeTasks(id)
@@ -38,7 +58,7 @@ class ProjectRepository(
 
     /** Jobs past their due date and still running. */
     fun observeOverdue(): Flow<List<ProjectEntity>> =
-        dao.observeOverdue(System.currentTimeMillis())
+        activeCompanyId.flatMapLatest { dao.observeOverdue(System.currentTimeMillis(), it) }
 
     suspend fun save(project: ProjectEntity, actorName: String): ProjectEntity {
         val now = System.currentTimeMillis()
@@ -84,6 +104,9 @@ class ProjectRepository(
             status = Status.PLANNED,
             createdAt = now,
             updatedAt = now,
+            // Stamped at creation. A job that arrived with no company would be
+            // invisible to everyone in one, which reads as data loss.
+            companyId = activeCompanyId.first(),
         )
         dao.upsert(project)
         audit.record(ENTITY, project.id, AuditTrail.Action.CREATE, actorName, project.name)
@@ -180,6 +203,7 @@ class ProjectRepository(
             templateId = template.id,
             createdAt = now,
             updatedAt = now,
+            companyId = activeCompanyId.first(),
         )
         dao.upsert(project)
 

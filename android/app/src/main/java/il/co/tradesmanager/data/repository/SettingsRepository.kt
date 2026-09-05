@@ -27,6 +27,15 @@ class SettingsRepository(private val context: Context) {
         val projectsAsGrid: Boolean = true,
         /** Who is signed in on this device, or null when nobody is. */
         val signedInAccountId: String? = null,
+        /**
+         * Which company they last chose to work in.
+         *
+         * A preference, not an authority: it only counts while the
+         * membership behind it is still current, so being taken off a
+         * firm's books stops that firm's work appearing even though this
+         * still names it. See core.access.Memberships.active.
+         */
+        val activeCompanyId: String? = null,
     )
 
     val settings: Flow<Settings> = context.dataStore.data.map { prefs ->
@@ -40,6 +49,7 @@ class SettingsRepository(private val context: Context) {
             seededCatalogVersion = prefs[KEY_SEEDED_VERSION] ?: 0,
             projectsAsGrid = prefs[KEY_PROJECTS_GRID] ?: true,
             signedInAccountId = prefs[KEY_ACCOUNT]?.takeIf { it.isNotBlank() },
+            activeCompanyId = prefs[KEY_ACTIVE_COMPANY]?.takeIf { it.isNotBlank() },
         )
     }
 
@@ -50,6 +60,9 @@ class SettingsRepository(private val context: Context) {
     suspend fun setActorName(name: String) = put { it[KEY_ACTOR] = name }
     suspend fun setSeededCatalogVersion(version: Int) = put { it[KEY_SEEDED_VERSION] = version }
     suspend fun setProjectsAsGrid(value: Boolean) = put { it[KEY_PROJECTS_GRID] = value }
+
+    suspend fun setActiveCompany(companyId: String?) =
+        put { it[KEY_ACTIVE_COMPANY] = companyId.orEmpty() }
 
     /**
      * Signing in also sets the actor name, so every audit entry written from
@@ -65,6 +78,9 @@ class SettingsRepository(private val context: Context) {
     suspend fun signOut() = put {
         it.remove(KEY_ACCOUNT)
         it.remove(KEY_ACTOR)
+        // The next person to sign in on this phone gets their own company,
+        // not whichever one the last person was working in.
+        it.remove(KEY_ACTIVE_COMPANY)
     }
 
     /** Account deletion, as both stores require it to be offered in-app. */
@@ -85,5 +101,6 @@ class SettingsRepository(private val context: Context) {
         val KEY_SEEDED_VERSION = intPreferencesKey("seeded_catalog_version")
         val KEY_PROJECTS_GRID = booleanPreferencesKey("projects_as_grid")
         val KEY_ACCOUNT = stringPreferencesKey("signed_in_account")
+        val KEY_ACTIVE_COMPANY = stringPreferencesKey("active_company")
     }
 }
