@@ -2,37 +2,45 @@ package il.co.tradesmanager.ui.account
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class AccountViewModel(private val container: AppContainer) : ViewModel() {
 
-    val accounts: StateFlow<List<AccountEntity>> = container.accounts.observeAccounts()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
-
-    /** Set when a passcode is refused; cleared as soon as they type again. */
-    private val _wrongPasscode = MutableStateFlow(false)
-    val wrongPasscode: StateFlow<Boolean> = _wrongPasscode.asStateFlow()
+    /** Set when a sign-in is refused; cleared as soon as they type again. */
+    private val _wrongCredentials = MutableStateFlow(false)
+    val wrongCredentials: StateFlow<Boolean> = _wrongCredentials.asStateFlow()
 
     fun clearError() {
-        _wrongPasscode.value = false
+        _wrongCredentials.value = false
     }
 
-    fun createPersonal(name: String, passcode: String?) = viewModelScope.launch {
-        container.session.adopt(container.accounts.createPersonalAccount(name, passcode))
+    fun createPersonal(
+        name: String,
+        username: String?,
+        idNumber: String?,
+        passcode: String?,
+    ) = viewModelScope.launch {
+        container.session.adopt(
+            container.accounts.createPersonalAccount(
+                name = name,
+                passcode = passcode,
+                username = username,
+                idNumber = idNumber,
+            ),
+        )
     }
 
     fun createCompany(
         companyName: String,
         registrationNumber: String?,
         ownerName: String,
+        username: String?,
+        idNumber: String?,
         passcode: String?,
     ) = viewModelScope.launch {
         container.session.adopt(
@@ -41,13 +49,20 @@ class AccountViewModel(private val container: AppContainer) : ViewModel() {
                 registrationNumber = registrationNumber,
                 ownerName = ownerName,
                 passcode = passcode,
+                ownerUsername = username,
+                ownerIdNumber = idNumber,
             ),
         )
     }
 
-    fun signIn(accountId: String, passcode: String) = viewModelScope.launch {
-        _wrongPasscode.value =
-            container.session.signIn(accountId, passcode) is AccountRepository.SignIn.WrongPasscode
+    /**
+     * Signs in with what a manager handed over: a username or an ID number,
+     * and a password. Anything that is not a success is one error, on purpose
+     * — see [AccountRepository.signInByIdentifier].
+     */
+    fun signIn(identifier: String, password: String) = viewModelScope.launch {
+        val result = container.session.signInByIdentifier(identifier, password)
+        _wrongCredentials.value = result !is AccountRepository.SignIn.Success
     }
 
     fun signOut() = viewModelScope.launch { container.session.signOut() }

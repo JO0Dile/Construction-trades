@@ -148,8 +148,8 @@ fun PeopleScreen(container: AppContainer) {
     if (adding) {
         AddMemberDialog(
             onDismiss = { adding = false },
-            onAdd = { name, role, passcode ->
-                viewModel.addMember(name, role, passcode)
+            onAdd = { name, username, idNumber, role, passcode ->
+                viewModel.addMember(name, username, idNumber, role, passcode)
                 adding = false
             },
         )
@@ -199,9 +199,17 @@ fun PeopleScreen(container: AppContainer) {
 @Composable
 private fun AddMemberDialog(
     onDismiss: () -> Unit,
-    onAdd: (name: String, role: Role, passcode: String?) -> Unit,
+    onAdd: (
+        name: String,
+        username: String?,
+        idNumber: String?,
+        role: Role,
+        passcode: String?,
+    ) -> Unit,
 ) {
     var name by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
+    var idNumber by remember { mutableStateOf("") }
     var role by remember { mutableStateOf(Role.WORKER) }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
@@ -215,6 +223,23 @@ private fun AddMemberDialog(
                     value = name,
                     onValueChange = { name = it },
                     label = { Text(stringResource(R.string.acc_your_name)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                // What this person will actually type at the door. Filling it
+                // in here is the whole point of adding somebody: they are told
+                // a username and a password, not shown a list.
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = { username = it },
+                    label = { Text(stringResource(R.string.acc_identifier)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = idNumber,
+                    onValueChange = { idNumber = it },
+                    label = { Text(stringResource(R.string.acc_id_number)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )
@@ -263,7 +288,15 @@ private fun AddMemberDialog(
         confirmButton = {
             TextButton(
                 enabled = name.isNotBlank() && passcodeOk,
-                onClick = { onAdd(name.trim(), role, passcode.takeIf { it.isNotEmpty() }) },
+                onClick = {
+                    onAdd(
+                        name.trim(),
+                        username.trim().takeIf { it.isNotEmpty() },
+                        idNumber.trim().takeIf { it.isNotEmpty() },
+                        role,
+                        passcode.takeIf { it.isNotEmpty() },
+                    )
+                },
             ) {
                 Text(stringResource(R.string.action_add))
             }

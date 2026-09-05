@@ -61,6 +61,20 @@ object Migrations {
         }
     }
 
+    /**
+     * Adds the identity and induction fields to an account.
+     *
+     * Three ALTER TABLEs rather than a rebuild. Every one is nullable and has
+     * no default, which is what lets it be added in place: a NOT NULL column
+     * would need a DEFAULT that Room does not know about, and the schema check
+     * on the next open would fail on every device that already has the app.
+     */
+    val MIGRATION_7_8 = object : Migration(7, 8) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_7_8.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -68,6 +82,7 @@ object Migrations {
         MIGRATION_4_5,
         MIGRATION_5_6,
         MIGRATION_6_7,
+        MIGRATION_7_8,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -198,5 +213,12 @@ object Migrations {
             "ON UPDATE NO ACTION ON DELETE CASCADE )",
         "CREATE INDEX IF NOT EXISTS `index_permit_precautions_permitId` " +
             "ON `permit_precautions` (`permitId`)",
+    )
+
+    val SQL_7_8: List<String> = listOf(
+        "ALTER TABLE `accounts` ADD COLUMN `username` TEXT",
+        "ALTER TABLE `accounts` ADD COLUMN `idNumber` TEXT",
+        "ALTER TABLE `accounts` ADD COLUMN `inductionSignature` TEXT",
+        "ALTER TABLE `accounts` ADD COLUMN `inductedAt` INTEGER",
     )
 }

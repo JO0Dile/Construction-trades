@@ -310,6 +310,40 @@ app claims to get right:
       appears. Clear it and the tile disappears — it only shows when it means
       something.
 
+**Signing in — no more list of everybody**
+- [ ] Settings → **Sign out**. You should get a form with two fields, not a
+      list of every account on the phone. That list was showing your whole
+      crew to whoever picked the device up.
+- [ ] Sign in with the **username** you were given. Then sign out and do it
+      again with the **ID number** instead — both work, same password.
+- [ ] Type a username that does not exist. The error must not tell you whether
+      it was the name or the password that was wrong.
+- [ ] Two people can be called Hammam. Add a second member with the same
+      display name but a different username, and check both can sign in.
+- [ ] An account with **no** password is opened by leaving the field blank —
+      and by nothing else. Type a random password against one and it refuses.
+
+**The safety induction — the gate before the app**
+- [ ] Add a member as **On the tools**, give them a username and password, then
+      sign out and sign in as them. You should land on *Before you start*, not
+      on the app.
+- [ ] There is no skip, no Later, and no back. The only way in is through.
+- [ ] The continue button is dead until you have **scrolled to the bottom**
+      *and* signed. Sign without scrolling — still dead. Scroll without
+      signing — still dead.
+- [ ] A single tap on the signature pad is not a signature. Draw a real stroke.
+- [ ] Kill the app half way through the induction and reopen it. You come back
+      to the induction, not to the inside of the app.
+- [ ] The worker induction is one page: hard hat, hi-vis, boots, gloves, eyes,
+      ears, stop if it is not safe, know where things are.
+- [ ] Now sign out and sign in as the **owner or a manager**. Their induction
+      has a second section — permits, toolbox talks, certificates, incidents,
+      emergencies — because they are about to enforce it on everyone else.
+- [ ] Add your photograph and a picture of your ID. Both optional: a cracked
+      camera must not lock somebody out of the app they need for work.
+- [ ] Sign in again afterwards. The induction does not come back — it is signed
+      once, and the date is on the account.
+
 **Accounts and roles — the new gate**
 - [ ] First launch after installing this build: it asks who is using the
       device. Pick **A company**, name it, name yourself, set a 4-digit
@@ -331,8 +365,8 @@ app claims to get right:
       who is using the device. If it crashes on launch, that is a migration
       bug — tell me and do not clear the app's data, the crash log is worth
       more than the recovery.
-- [ ] The database is at version 7, so a device coming from the first build
-      runs **six** migrations back to back. CI proves each one's SQL matches
+- [ ] The database is at version 8, so a device coming from the first build
+      runs **seven** migrations back to back. CI proves each one's SQL matches
       what the app expects; only a real upgrade proves they run in order, on
       real data, on a real phone.
 

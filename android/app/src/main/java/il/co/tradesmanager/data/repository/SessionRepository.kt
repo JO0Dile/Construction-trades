@@ -2,6 +2,7 @@ package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.safety.Induction
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.CompanyEntity
 import kotlinx.coroutines.flow.Flow
@@ -40,6 +41,19 @@ class SessionRepository(
             val role: Role get() = Role.parse(account.role)
             val isCompany: Boolean get() = company != null
 
+            /**
+             * True until this person has read and signed the safety induction.
+             *
+             * Read off the account row rather than held as a flag somewhere,
+             * so it survives the app being killed mid-induction: somebody who
+             * closes the app on the PPE page comes back to the PPE page, not
+             * to the inside of the app.
+             */
+            val needsInduction: Boolean get() = Induction.isRequired(account.inductedAt)
+
+            /** Which induction they get — see [Induction.levelFor]. */
+            val inductionLevel: Induction.Level get() = Induction.levelFor(role)
+
             fun canRead(lens: Lens): Boolean = role.canRead(lens)
             fun canWrite(lens: Lens): Boolean = role.canWrite(lens)
             val canManageMembers: Boolean get() = role.canManageMembers
@@ -64,6 +78,15 @@ class SessionRepository(
 
     suspend fun signIn(accountId: String, passcode: String): AccountRepository.SignIn {
         val result = accounts.signIn(accountId, passcode)
+        if (result is AccountRepository.SignIn.Success) {
+            settings.setSignedInAccount(result.account.id, result.account.displayName)
+        }
+        return result
+    }
+
+    /** Signing in with the name or ID number and password a manager handed over. */
+    suspend fun signInByIdentifier(identifier: String, passcode: String): AccountRepository.SignIn {
+        val result = accounts.signInByIdentifier(identifier, passcode)
         if (result is AccountRepository.SignIn.Success) {
             settings.setSignedInAccount(result.account.id, result.account.displayName)
         }

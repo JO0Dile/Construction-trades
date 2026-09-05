@@ -38,6 +38,34 @@ interface AccountDao {
     @Query("SELECT * FROM accounts WHERE id = :id")
     suspend fun account(id: String): AccountEntity?
 
+    /**
+     * Everyone who could be the person typing that name or ID number.
+     *
+     * Three ways in: the username the site office issued, the ID number, or —
+     * for accounts made before usernames existed — the display name. More than
+     * one match is not an error: two Hammams on one job is an ordinary
+     * Tuesday, so every match is returned and the password decides which was
+     * meant.
+     *
+     * Matching is case-insensitive and ignores surrounding spaces, because a
+     * name typed with gloves on at seven in the morning is not typed
+     * carefully.
+     *
+     * NOCASE is ASCII-only in SQLite, so it does nothing for Hebrew or Arabic
+     * names — which have no case for it to fold, so nothing is lost.
+     */
+    @Query(
+        """
+        SELECT * FROM accounts
+        WHERE deletedAt IS NULL
+          AND (TRIM(username) = TRIM(:identifier) COLLATE NOCASE
+               OR TRIM(idNumber) = TRIM(:identifier) COLLATE NOCASE
+               OR TRIM(displayName) = TRIM(:identifier) COLLATE NOCASE)
+        ORDER BY lastSignInAt IS NULL, lastSignInAt DESC
+        """,
+    )
+    suspend fun accountsMatching(identifier: String): List<AccountEntity>
+
     @Query("SELECT COUNT(*) FROM accounts WHERE deletedAt IS NULL")
     suspend fun accountCount(): Int
 
@@ -47,6 +75,15 @@ interface AccountDao {
      */
     @Query("SELECT COUNT(*) FROM accounts WHERE deletedAt IS NULL AND role = :role")
     suspend fun countWithRole(role: String): Int
+
+    /** Whether an ID number is already spoken for, so sign-up can say so. */
+    @Query(
+        """
+        SELECT COUNT(*) FROM accounts
+        WHERE deletedAt IS NULL AND TRIM(idNumber) = TRIM(:idNumber) COLLATE NOCASE
+        """,
+    )
+    suspend fun countWithIdNumber(idNumber: String): Int
 
     @Query("UPDATE accounts SET lastSignInAt = :at WHERE id = :id")
     suspend fun recordSignIn(id: String, at: Long)

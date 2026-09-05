@@ -2092,6 +2092,266 @@
       "en": "Tomorrow 07:00",
       "he": "מחר 07:00",
       "ar": "غدًا 07:00"
+    },
+    "sign_here": {
+      "en": "Sign here with your finger",
+      "he": "חתמו כאן באצבע",
+      "ar": "وقّع هنا بإصبعك"
+    },
+    "sign_clear": {
+      "en": "Clear",
+      "he": "ניקוי",
+      "ar": "مسح"
+    },
+    "acc_sign_in_title": {
+      "en": "Sign in",
+      "he": "כניסה",
+      "ar": "تسجيل الدخول"
+    },
+    "acc_identifier": {
+      "en": "Username or ID number",
+      "he": "שם משתמש או מספר זהות",
+      "ar": "اسم المستخدم أو رقم الهوية"
+    },
+    "acc_identifier_hint": {
+      "en": "Whichever your site office gave you. Both work.",
+      "he": "מה שקיבלתם ממשרד האתר. שניהם עובדים.",
+      "ar": "أيهما أعطاك مكتب الموقع. كلاهما يصلح."
+    },
+    "acc_password": {
+      "en": "Password",
+      "he": "סיסמה",
+      "ar": "كلمة المرور"
+    },
+    "acc_password_blank_hint": {
+      "en": "Leave blank if you were not given one.",
+      "he": "השאירו ריק אם לא קיבלתם סיסמה.",
+      "ar": "اتركه فارغًا إن لم تُعطَ كلمة مرور."
+    },
+    "acc_wrong_credentials": {
+      "en": "That does not match. Check with whoever set you up.",
+      "he": "אין התאמה. בדקו מול מי שפתח לכם את החשבון.",
+      "ar": "لا يوجد تطابق. راجع من أنشأ حسابك."
+    },
+    "acc_id_number": {
+      "en": "ID number",
+      "he": "מספר תעודת זהות",
+      "ar": "رقم الهوية"
+    },
+    "acc_id_number_hint": {
+      "en": "Teudat Zehut or passport. Names on a site repeat; this does not.",
+      "he": "תעודת זהות או דרכון. שמות באתר חוזרים על עצמם, המספר לא.",
+      "ar": "الهوية أو جواز السفر. الأسماء تتكرر في الموقع، والرقم لا."
+    },
+    "acc_id_taken": {
+      "en": "Somebody is already signed up with that ID number.",
+      "he": "כבר קיים משתמש עם מספר הזהות הזה.",
+      "ar": "يوجد مستخدم مسجّل بهذا الرقم بالفعل."
+    },
+    "ind_title": {
+      "en": "Before you start",
+      "he": "לפני שמתחילים",
+      "ar": "قبل أن تبدأ"
+    },
+    "ind_intro_worker": {
+      "en": "Read this, then sign. It takes a minute, and it is the only thing on this phone that can stop you getting hurt.",
+      "he": "קראו וחתמו. זה לוקח דקה, וזה הדבר היחיד בטלפון הזה שיכול למנוע מכם להיפגע.",
+      "ar": "اقرأ ثم وقّع. يستغرق دقيقة، وهو الشيء الوحيد في هذا الهاتف الذي قد يمنع إصابتك."
+    },
+    "ind_intro_supervisor": {
+      "en": "Read this, then sign. All of it is also what you are about to enforce on everybody else.",
+      "he": "קראו וחתמו. כל מה שכאן הוא גם מה שאתם עומדים לאכוף על כל האחרים.",
+      "ar": "اقرأ ثم وقّع. كل ما هنا هو أيضًا ما ستفرضه على الجميع."
+    },
+    "ind_ppe_heading": {
+      "en": "What you wear",
+      "he": "מה לובשים",
+      "ar": "ما ترتديه"
+    },
+    "ind_photo": {
+      "en": "A photograph of you",
+      "he": "תמונה שלכם",
+      "ar": "صورة لك"
+    },
+    "ind_photo_hint": {
+      "en": "So the site office can put a face to the name at the gate.",
+      "he": "כדי שמשרד האתר יוכל לקשר בין הפנים לשם בשער.",
+      "ar": "ليتمكن مكتب الموقع من ربط الوجه بالاسم عند البوابة."
+    },
+    "ind_id_photo": {
+      "en": "A photograph of your ID",
+      "he": "תמונה של תעודת הזהות",
+      "ar": "صورة لبطاقة هويتك"
+    },
+    "ind_id_photo_hint": {
+      "en": "Kept on this device only. It never leaves the phone.",
+      "he": "נשמרת במכשיר הזה בלבד. היא לא יוצאת מהטלפון.",
+      "ar": "تُحفظ على هذا الجهاز فقط. لا تغادر الهاتف."
+    },
+    "ind_sign_heading": {
+      "en": "Sign to say you have read it",
+      "he": "חתמו כדי לאשר שקראתם",
+      "ar": "وقّع لتأكيد أنك قرأت"
+    },
+    "ind_confirm": {
+      "en": "I have read this — let me in",
+      "he": "קראתי — כניסה לאפליקציה",
+      "ar": "قرأت — ادخل إلى التطبيق"
+    },
+    "ind_must_sign": {
+      "en": "Sign above before you can continue.",
+      "he": "יש לחתום למעלה כדי להמשיך.",
+      "ar": "وقّع أعلاه قبل المتابعة."
+    },
+    "ind_must_read": {
+      "en": "Read to the bottom first.",
+      "he": "קראו עד הסוף קודם.",
+      "ar": "اقرأ حتى النهاية أولًا."
+    },
+    "ind_hat": {
+      "en": "Hard hat",
+      "he": "כובע מגן",
+      "ar": "خوذة واقية"
+    },
+    "ind_hat_body": {
+      "en": "On site, always. On your head, not in your hand.",
+      "he": "באתר, תמיד. על הראש, לא ביד.",
+      "ar": "في الموقع، دائمًا. على رأسك، لا في يدك."
+    },
+    "ind_vis": {
+      "en": "High-visibility jacket",
+      "he": "אפוד זוהר",
+      "ar": "سترة عاكسة"
+    },
+    "ind_vis_body": {
+      "en": "Reflective, whatever the colour. A plant driver sees the jacket before they see you, and after dark they see nothing else.",
+      "he": "מחזיר אור, בכל צבע. מפעיל כלי כבד רואה את האפוד לפני שהוא רואה אתכם, ובחושך הוא לא רואה שום דבר אחר.",
+      "ar": "عاكسة، بأي لون كانت. سائق المعدة يرى السترة قبل أن يراك، وبعد حلول الظلام لا يرى سواها."
+    },
+    "ind_boots": {
+      "en": "Safety boots",
+      "he": "נעלי בטיחות",
+      "ar": "أحذية أمان"
+    },
+    "ind_boots_body": {
+      "en": "Steel toe and a protected sole. A nail goes through a trainer without slowing down.",
+      "he": "כיפת פלדה וסוליה מוגנת. מסמר עובר דרך נעל ספורט בלי להאט.",
+      "ar": "مقدمة فولاذية ونعل محمي. المسمار يخترق الحذاء الرياضي دون أن يتباطأ."
+    },
+    "ind_gloves": {
+      "en": "Gloves",
+      "he": "כפפות",
+      "ar": "قفازات"
+    },
+    "ind_gloves_body": {
+      "en": "For the job in hand: cut-resistant near blades, insulated in the cold. Never near a turning bit — a glove that catches takes the hand with it.",
+      "he": "לפי העבודה: עמידות לחיתוך ליד להבים, מבודדות בקור. לעולם לא ליד מקדח מסתובב — כפפה שנתפסת לוקחת איתה את היד.",
+      "ar": "حسب العمل: مقاومة للقطع قرب الشفرات، وعازلة في البرد. أبدًا قرب لقمة دوّارة — القفاز الذي يعلق يأخذ اليد معه."
+    },
+    "ind_eyes": {
+      "en": "Eye protection",
+      "he": "משקפי מגן",
+      "ar": "نظارات واقية"
+    },
+    "ind_eyes_body": {
+      "en": "Cutting, grinding, drilling, chasing, and anything at all above your head.",
+      "he": "חיתוך, השחזה, קידוח, חריצה, וכל עבודה מעל הראש.",
+      "ar": "القطع والجلخ والثقب والتخديد وأي عمل فوق الرأس."
+    },
+    "ind_ears": {
+      "en": "Ear protection",
+      "he": "מגני אוזניים",
+      "ar": "واقيات الأذن"
+    },
+    "ind_ears_body": {
+      "en": "Breakers and cut-off saws. Hearing does not come back.",
+      "he": "מקבות חשמליות ומסורי דיסק. שמיעה שאובדת לא חוזרת.",
+      "ar": "المطارق الهيدروليكية ومناشير القطع. السمع لا يعود."
+    },
+    "ind_stop": {
+      "en": "If it is not safe, stop",
+      "he": "אם זה לא בטוח — עצרו",
+      "ar": "إن لم يكن آمنًا، توقّف"
+    },
+    "ind_stop_body": {
+      "en": "Stop and say so. Nobody on this job is in trouble for stopping work.",
+      "he": "עצרו ואמרו. אף אחד בעבודה הזאת לא ייענש על עצירת עבודה.",
+      "ar": "توقّف وقُل. لا أحد في هذا العمل يُعاقَب على إيقاف العمل."
+    },
+    "ind_where": {
+      "en": "Know where things are",
+      "he": "דעו איפה הדברים",
+      "ar": "اعرف أين الأشياء"
+    },
+    "ind_where_body": {
+      "en": "First-aid kit and assembly point — find them today, not on the day you need them.",
+      "he": "ערכת עזרה ראשונה ונקודת התכנסות — אתרו אותן היום, לא ביום שתצטרכו.",
+      "ar": "حقيبة الإسعافات ونقطة التجمّع — اعرف مكانهما اليوم، لا يوم تحتاجهما."
+    },
+    "ind_sup_heading": {
+      "en": "What you are responsible for",
+      "he": "על מה אתם אחראים",
+      "ar": "ما أنت مسؤول عنه"
+    },
+    "ind_sup_enforce": {
+      "en": "The kit above is yours to enforce",
+      "he": "הציוד שלמעלה — באחריותכם לאכוף",
+      "ar": "المعدات أعلاه مسؤوليتك في فرضها"
+    },
+    "ind_sup_enforce_body": {
+      "en": "Somebody on your site without a hard hat is your problem, not theirs.",
+      "he": "מי שנמצא באתר שלכם בלי כובע מגן — זו הבעיה שלכם, לא שלו.",
+      "ar": "من يوجد في موقعك بلا خوذة فهو مشكلتك، لا مشكلته."
+    },
+    "ind_sup_permits": {
+      "en": "Permits to work",
+      "he": "היתרי עבודה",
+      "ar": "تصاريح العمل"
+    },
+    "ind_sup_permits_body": {
+      "en": "Hot work, height, confined space, excavation, isolation: no permit, no work. Issue one only when every precaution is ticked, and sign it back yourself once the area is safe.",
+      "he": "עבודה חמה, עבודה בגובה, חלל מוקף, חפירה, ניתוק: בלי היתר — אין עבודה. הנפיקו רק לאחר סימון כל אמצעי הזהירות, והחזירו את ההיתר בעצמכם כשהשטח בטוח.",
+      "ar": "الأعمال الساخنة، العمل على ارتفاع، الحيز المغلق، الحفر، العزل: بلا تصريح لا عمل. أصدره فقط بعد وضع علامة على كل إجراءات الوقاية، وأعِده بنفسك بعد تأمين المنطقة."
+    },
+    "ind_sup_talks": {
+      "en": "Toolbox talks",
+      "he": "שיחות בטיחות",
+      "ar": "محادثات السلامة"
+    },
+    "ind_sup_talks_body": {
+      "en": "Brief before the work, not after it. Keep the register — a briefing nobody wrote down did not happen.",
+      "he": "תדרכו לפני העבודה, לא אחריה. נהלו רשימת נוכחות — תדריך שלא נרשם, לא התקיים.",
+      "ar": "بلّغ قبل العمل لا بعده. احتفظ بكشف الحضور — تعليمات لم تُسجَّل لم تحدث."
+    },
+    "ind_sup_tickets": {
+      "en": "Certificates",
+      "he": "אישורים והסמכות",
+      "ar": "الشهادات والتصاريح"
+    },
+    "ind_sup_tickets_body": {
+      "en": "Nobody works at height or operates plant on a lapsed ticket. The app warns you thirty days out — act then, not on the day.",
+      "he": "אף אחד לא עובד בגובה ולא מפעיל כלי הנדסי עם אישור שפג. האפליקציה מתריעה 30 יום מראש — פעלו אז, לא ביום עצמו.",
+      "ar": "لا أحد يعمل على ارتفاع أو يشغّل معدة بشهادة منتهية. التطبيق ينبّهك قبل ثلاثين يومًا — تصرّف حينها لا في اليوم نفسه."
+    },
+    "ind_sup_incidents": {
+      "en": "Incidents",
+      "he": "אירועי בטיחות",
+      "ar": "حوادث السلامة"
+    },
+    "ind_sup_incidents_body": {
+      "en": "Report the same day. Photograph it first and tidy up after — an investigation starts from what was actually there.",
+      "he": "דווחו באותו יום. צלמו קודם ורק אחר כך סדרו — חקירה מתחילה ממה שבאמת היה שם.",
+      "ar": "أبلغ في اليوم نفسه. صوّر أولًا ورتّب بعد ذلك — التحقيق يبدأ مما كان موجودًا فعلًا."
+    },
+    "ind_sup_emergency": {
+      "en": "Emergencies",
+      "he": "מקרי חירום",
+      "ar": "حالات الطوارئ"
+    },
+    "ind_sup_emergency_body": {
+      "en": "Ambulance 101. Fire 102. Know your assembly point and who your first aider is before the day you need them.",
+      "he": "מד״א 101. כבאות 102. דעו את נקודת ההתכנסות ומי מגיש העזרה הראשונה — לפני היום שבו תצטרכו.",
+      "ar": "الإسعاف 101. الإطفاء 102. اعرف نقطة التجمّع ومن هو المسعف قبل اليوم الذي تحتاجهما فيه."
     }
   },
   "plurals": {

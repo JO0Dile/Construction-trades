@@ -15,6 +15,7 @@ import il.co.tradesmanager.TradesManagerApp
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.ui.account.AccountGateScreen
+import il.co.tradesmanager.ui.account.InductionScreen
 import il.co.tradesmanager.ui.components.ProvideCatalogImagery
 import il.co.tradesmanager.ui.nav.AppNavHost
 import il.co.tradesmanager.ui.theme.TradesManagerTheme
@@ -70,11 +71,24 @@ class MainActivity : AppCompatActivity() {
                             SessionRepository.State.SignedOut ->
                                 AccountGateScreen(container, needsSetup = false)
 
-                            is SessionRepository.State.SignedIn -> AppNavHost(
-                                container = container,
-                                settings = settings,
-                                role = state.role,
-                            )
+                            is SessionRepository.State.SignedIn ->
+                                // The induction is not a screen inside the app,
+                                // it is the last thing before it. Somebody who
+                                // closes the phone half way through comes back
+                                // to the induction, not to the inside.
+                                if (state.needsInduction) {
+                                    InductionScreen(
+                                        container = container,
+                                        accountId = state.account.id,
+                                        level = state.inductionLevel,
+                                    )
+                                } else {
+                                    AppNavHost(
+                                        container = container,
+                                        settings = settings,
+                                        role = state.role,
+                                    )
+                                }
                         }
                     }
                 }
