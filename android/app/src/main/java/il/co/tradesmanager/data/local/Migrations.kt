@@ -54,12 +54,20 @@ object Migrations {
         }
     }
 
+    /** Adds toolbox talks with their registers, and permits to work. */
+    val MIGRATION_6_7 = object : Migration(6, 7) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_6_7.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
         MIGRATION_3_4,
         MIGRATION_4_5,
         MIGRATION_5_6,
+        MIGRATION_6_7,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -150,5 +158,45 @@ object Migrations {
             "ON `purchase_order_lines` (`orderId`)",
         "CREATE INDEX IF NOT EXISTS `index_purchase_order_lines_catalogItemId` " +
             "ON `purchase_order_lines` (`catalogItemId`)",
+    )
+
+    val SQL_6_7: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `toolbox_talks` (`id` TEXT NOT NULL, " +
+            "`projectId` TEXT, `topic` TEXT NOT NULL, `notes` TEXT, " +
+            "`heldAt` INTEGER NOT NULL, `presenterName` TEXT NOT NULL, " +
+            "`presenterId` TEXT, `signatureStrokes` TEXT, " +
+            "`createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_toolbox_talks_projectId` " +
+            "ON `toolbox_talks` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_toolbox_talks_heldAt` " +
+            "ON `toolbox_talks` (`heldAt`)",
+        "CREATE TABLE IF NOT EXISTS `toolbox_talk_attendees` (`id` TEXT NOT NULL, " +
+            "`talkId` TEXT NOT NULL, `accountId` TEXT, `name` TEXT NOT NULL, " +
+            "`signatureStrokes` TEXT, `signedAt` INTEGER, PRIMARY KEY(`id`), " +
+            "FOREIGN KEY(`talkId`) REFERENCES `toolbox_talks`(`id`) " +
+            "ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_toolbox_talk_attendees_talkId` " +
+            "ON `toolbox_talk_attendees` (`talkId`)",
+        "CREATE INDEX IF NOT EXISTS `index_toolbox_talk_attendees_accountId` " +
+            "ON `toolbox_talk_attendees` (`accountId`)",
+        "CREATE TABLE IF NOT EXISTS `permits` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT, `type` TEXT NOT NULL, " +
+            "`status` TEXT NOT NULL, `description` TEXT NOT NULL, `location` TEXT, " +
+            "`issuedByName` TEXT, `issuedToName` TEXT NOT NULL, `validFrom` INTEGER, " +
+            "`validTo` INTEGER, `issuedAt` INTEGER, `issuerSignature` TEXT, " +
+            "`closedAt` INTEGER, `closedByName` TEXT, `closeNotes` TEXT, " +
+            "`createdBy` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_permits_projectId` ON `permits` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_permits_status` ON `permits` (`status`)",
+        "CREATE INDEX IF NOT EXISTS `index_permits_validTo` ON `permits` (`validTo`)",
+        "CREATE TABLE IF NOT EXISTS `permit_precautions` (`id` TEXT NOT NULL, " +
+            "`permitId` TEXT NOT NULL, `label` TEXT NOT NULL, " +
+            "`checked` INTEGER NOT NULL, `checkedAt` INTEGER, " +
+            "`sortOrder` INTEGER NOT NULL, PRIMARY KEY(`id`), " +
+            "FOREIGN KEY(`permitId`) REFERENCES `permits`(`id`) " +
+            "ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_permit_precautions_permitId` " +
+            "ON `permit_precautions` (`permitId`)",
     )
 }

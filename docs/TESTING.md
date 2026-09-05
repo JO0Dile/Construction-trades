@@ -263,6 +263,37 @@ app claims to get right:
 - [ ] Add a priced item to the job's materials (one with a purchase price in
       stock). It appears as **Committed** without you typing a number twice.
 
+**Toolbox talks** — Safety → the people icon in the top bar
+- [ ] The first thing on the screen is *Who needs briefing*, not the log.
+      Everybody on the books is on it, marked **Never briefed**.
+- [ ] **+** → topic (*Working near the excavation*), a line of notes, Create.
+      It opens the register, which says an empty register records nothing.
+- [ ] Sign the crew in from the chips — one tap each. Type a name for somebody
+      who is not on the books (a subcontractor's lad) and add them too.
+- [ ] Tap the same crew member's chip twice: they cannot be added twice, and
+      the register does not claim a crew of nine when six turned up.
+- [ ] Go back. The people you signed in have dropped off *Who needs briefing*.
+      Anybody you did not sign in is still on it.
+
+**Permits to work** — Safety → the clipboard icon in the top bar
+- [ ] **+** → *Hot work*. Describe the job, name who is doing it, Create.
+      It opens showing four precautions, none ticked, and **Issue the permit**
+      is greyed out with a line saying why.
+- [ ] Tick three of the four. Still greyed out. Tick the fourth: now it is live.
+- [ ] Issue it for **4 hours**. The row now shows a coloured **Live** state,
+      and the precautions can no longer be un-ticked — it is a signed record.
+- [ ] The chip counts down on its own. In the last hour it stops saying *Live*
+      and starts saying how many minutes are left, without you touching the
+      screen. This is the part worth watching: leave the list open.
+- [ ] Raise a second permit and issue it for 4 hours starting **Tomorrow
+      07:00**. It reads *Not started yet* and does not authorise anything.
+- [ ] **Sign the permit back** on the first one, with a note. It moves to
+      *Signed back* and drops below the live ones.
+- [ ] If you can, change the phone's clock forward past a live permit's end
+      time. It must go red and say *work must stop* — and still let you sign
+      it back, because the work stopping and the area being checked are two
+      different events.
+
 **Tickets**
 - [ ] People → tap anyone → **Add a ticket**. Pick *Work at height*, set an
       expiry a couple of weeks out.
@@ -300,6 +331,10 @@ app claims to get right:
       who is using the device. If it crashes on launch, that is a migration
       bug — tell me and do not clear the app's data, the crash log is worth
       more than the recovery.
+- [ ] The database is at version 7, so a device coming from the first build
+      runs **six** migrations back to back. CI proves each one's SQL matches
+      what the app expects; only a real upgrade proves they run in order, on
+      real data, on a real phone.
 
 **Jobs — the ones that are not a template**
 - [ ] Projects → **+**. Name it, pick **Lobby** as the type of place, leave

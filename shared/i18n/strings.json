@@ -1756,6 +1756,342 @@
       "en": "No version has been published yet.",
       "he": "עדיין לא פורסמה גרסה.",
       "ar": "لم تُنشر أي نسخة بعد."
+    },
+    "tbt_title": {
+      "en": "Toolbox talks",
+      "he": "שיחות בטיחות",
+      "ar": "محادثات السلامة"
+    },
+    "tbt_new": {
+      "en": "Record a talk",
+      "he": "רישום שיחה",
+      "ar": "تسجيل محادثة"
+    },
+    "tbt_empty": {
+      "en": "No talks recorded. A briefing nobody wrote down did not happen.",
+      "he": "לא נרשמו שיחות. תדריך שלא נרשם — לא התקיים.",
+      "ar": "لا توجد محادثات مسجّلة. تعليمات لم تُسجَّل لم تحدث."
+    },
+    "tbt_topic": {
+      "en": "Topic",
+      "he": "נושא",
+      "ar": "الموضوع"
+    },
+    "tbt_presenter": {
+      "en": "Given by",
+      "he": "העביר",
+      "ar": "قدّمها"
+    },
+    "tbt_notes": {
+      "en": "What was covered",
+      "he": "מה נאמר",
+      "ar": "ما تم تناوله"
+    },
+    "tbt_register": {
+      "en": "Who was there",
+      "he": "מי נכח",
+      "ar": "من حضر"
+    },
+    "tbt_register_empty": {
+      "en": "Nobody has signed in. A talk with an empty register records nothing.",
+      "he": "אף אחד לא נרשם. שיחה בלי רשימת נוכחות לא מתעדת דבר.",
+      "ar": "لم يسجّل أحد حضوره. محادثة بلا كشف حضور لا توثّق شيئًا."
+    },
+    "tbt_sign_in": {
+      "en": "Sign somebody in",
+      "he": "הוספת נוכח",
+      "ar": "إضافة حاضر"
+    },
+    "tbt_name": {
+      "en": "Name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "tbt_crew": {
+      "en": "From the crew",
+      "he": "מהצוות",
+      "ar": "من الطاقم"
+    },
+    "tbt_visitor": {
+      "en": "Somebody else",
+      "he": "אדם אחר",
+      "ar": "شخص آخر"
+    },
+    "tbt_overdue_title": {
+      "en": "Who needs briefing",
+      "he": "מי זקוק לתדריך",
+      "ar": "من يحتاج إلى تعليمات"
+    },
+    "tbt_never": {
+      "en": "Never briefed",
+      "he": "מעולם לא תודרך",
+      "ar": "لم يُبلَّغ قط"
+    },
+    "tbt_all_briefed": {
+      "en": "Everybody has been briefed this quarter.",
+      "he": "כל הצוות תודרך ברבעון הזה.",
+      "ar": "الجميع تلقّى تعليمات هذا الربع."
+    },
+    "ptw_title": {
+      "en": "Permits to work",
+      "he": "היתרי עבודה",
+      "ar": "تصاريح العمل"
+    },
+    "ptw_new": {
+      "en": "Raise a permit",
+      "he": "פתיחת היתר",
+      "ar": "إصدار تصريح"
+    },
+    "ptw_empty": {
+      "en": "No permits. Raise one before hot work, height, a confined space, digging or an isolation.",
+      "he": "אין היתרים. פתחו היתר לפני עבודה חמה, עבודה בגובה, חלל מוקף, חפירה או ניתוק חשמלי.",
+      "ar": "لا توجد تصاريح. أصدر تصريحًا قبل الأعمال الساخنة أو العمل على ارتفاع أو حيز مغلق أو الحفر أو العزل."
+    },
+    "ptw_type": {
+      "en": "What kind of work",
+      "he": "סוג העבודה",
+      "ar": "نوع العمل"
+    },
+    "ptw_description": {
+      "en": "The job",
+      "he": "העבודה",
+      "ar": "العمل"
+    },
+    "ptw_location": {
+      "en": "Where on site",
+      "he": "היכן באתר",
+      "ar": "أين في الموقع"
+    },
+    "ptw_issued_to": {
+      "en": "Who is doing the work",
+      "he": "מבצע העבודה",
+      "ar": "منفّذ العمل"
+    },
+    "ptw_issued_by": {
+      "en": "Issued by",
+      "he": "מנפיק ההיתר",
+      "ar": "مُصدِر التصريح"
+    },
+    "ptw_precautions": {
+      "en": "Before work starts",
+      "he": "לפני תחילת העבודה",
+      "ar": "قبل بدء العمل"
+    },
+    "ptw_issue": {
+      "en": "Issue the permit",
+      "he": "הנפקת ההיתר",
+      "ar": "إصدار التصريح"
+    },
+    "ptw_issue_blocked": {
+      "en": "Every precaution has to be ticked before this permit can be issued.",
+      "he": "יש לסמן את כל אמצעי הזהירות לפני הנפקת ההיתר.",
+      "ar": "يجب وضع علامة على كل إجراءات الوقاية قبل إصدار التصريح."
+    },
+    "ptw_valid_from": {
+      "en": "Valid from",
+      "he": "בתוקף מ",
+      "ar": "ساري من"
+    },
+    "ptw_valid_to": {
+      "en": "Valid until",
+      "he": "בתוקף עד",
+      "ar": "ساري حتى"
+    },
+    "ptw_window_invalid": {
+      "en": "The end has to come after the start.",
+      "he": "שעת הסיום חייבת להיות אחרי שעת ההתחלה.",
+      "ar": "يجب أن يكون وقت الانتهاء بعد وقت البدء."
+    },
+    "ptw_close": {
+      "en": "Sign the permit back",
+      "he": "החזרת ההיתר",
+      "ar": "إعادة تسليم التصريح"
+    },
+    "ptw_close_notes": {
+      "en": "Area left safe — anything to note",
+      "he": "השטח הושאר בטוח — הערות",
+      "ar": "المنطقة تُركت آمنة — ملاحظات"
+    },
+    "ptw_cancel": {
+      "en": "Withdraw the permit",
+      "he": "ביטול ההיתר",
+      "ar": "سحب التصريح"
+    },
+    "ptw_expired_note": {
+      "en": "This permit has run out. It authorises nothing. Sign it back once the area is safe.",
+      "he": "תוקף ההיתר פג. הוא אינו מתיר דבר. החזירו אותו לאחר שהשטח בטוח.",
+      "ar": "انتهت صلاحية هذا التصريح. لم يعد يجيز أي عمل. أعِده بعد تأمين المنطقة."
+    },
+    "ptw_state_draft": {
+      "en": "Draft",
+      "he": "טיוטה",
+      "ar": "مسودة"
+    },
+    "ptw_state_pending": {
+      "en": "Not started yet",
+      "he": "טרם החל",
+      "ar": "لم يبدأ بعد"
+    },
+    "ptw_state_active": {
+      "en": "Live",
+      "he": "בתוקף",
+      "ar": "ساري"
+    },
+    "ptw_state_expiring": {
+      "en": "Running out",
+      "he": "עומד לפוג",
+      "ar": "على وشك الانتهاء"
+    },
+    "ptw_state_expired": {
+      "en": "Expired — work must stop",
+      "he": "פג — יש להפסיק את העבודה",
+      "ar": "منتهٍ — يجب إيقاف العمل"
+    },
+    "ptw_state_closed": {
+      "en": "Signed back",
+      "he": "הוחזר",
+      "ar": "أُعيد تسليمه"
+    },
+    "ptw_state_cancelled": {
+      "en": "Withdrawn",
+      "he": "בוטל",
+      "ar": "مسحوب"
+    },
+    "ptw_type_hot": {
+      "en": "Hot work",
+      "he": "עבודה חמה",
+      "ar": "أعمال ساخنة"
+    },
+    "ptw_type_height": {
+      "en": "Work at height",
+      "he": "עבודה בגובה",
+      "ar": "العمل على ارتفاع"
+    },
+    "ptw_type_confined": {
+      "en": "Confined space",
+      "he": "כניסה לחלל מוקף",
+      "ar": "دخول حيز مغلق"
+    },
+    "ptw_type_excavation": {
+      "en": "Excavation",
+      "he": "חפירה",
+      "ar": "حفريات"
+    },
+    "ptw_type_electrical": {
+      "en": "Electrical isolation",
+      "he": "ניתוק חשמלי",
+      "ar": "عزل كهربائي"
+    },
+    "ptw_hot_1": {
+      "en": "Fire extinguisher within reach of the work",
+      "he": "מטף כיבוי בהישג יד ממקום העבודה",
+      "ar": "طفاية حريق في متناول اليد من مكان العمل"
+    },
+    "ptw_hot_2": {
+      "en": "Combustibles cleared or covered within 10 metres",
+      "he": "חומרים דליקים הורחקו או כוסו ברדיוס 10 מטר",
+      "ar": "المواد القابلة للاشتعال أُبعدت أو غُطيت ضمن 10 أمتار"
+    },
+    "ptw_hot_3": {
+      "en": "Fire watch during the work and for 30 minutes after",
+      "he": "צופה אש במהלך העבודה ו-30 דקות אחריה",
+      "ar": "مراقب حريق أثناء العمل ولمدة 30 دقيقة بعده"
+    },
+    "ptw_hot_4": {
+      "en": "Gas cylinders upright and secured, hoses checked",
+      "he": "בלוני גז זקופים ומעוגנים, הצינורות נבדקו",
+      "ar": "أسطوانات الغاز قائمة ومثبّتة، والخراطيم مفحوصة"
+    },
+    "ptw_height_1": {
+      "en": "Anchor point checked and rated for the load",
+      "he": "נקודת עיגון נבדקה ומתאימה לעומס",
+      "ar": "نقطة التثبيت مفحوصة ومناسبة للحمل"
+    },
+    "ptw_height_2": {
+      "en": "Harness and lanyard inspected today",
+      "he": "רתמה וחבל קשירה נבדקו היום",
+      "ar": "الحزام والحبل تم فحصهما اليوم"
+    },
+    "ptw_height_3": {
+      "en": "Edge protection or fall arrest in place",
+      "he": "מעקות או מערכת בלימת נפילה מותקנים",
+      "ar": "حواجز الحافة أو نظام إيقاف السقوط مركّب"
+    },
+    "ptw_height_4": {
+      "en": "The area below is closed off",
+      "he": "השטח שמתחת נסגר למעבר",
+      "ar": "المنطقة أسفل العمل مغلقة"
+    },
+    "ptw_confined_1": {
+      "en": "Atmosphere tested before entry",
+      "he": "האוויר נבדק לפני הכניסה",
+      "ar": "تم فحص الهواء قبل الدخول"
+    },
+    "ptw_confined_2": {
+      "en": "Ventilation running continuously",
+      "he": "אוורור פועל ברציפות",
+      "ar": "التهوية تعمل باستمرار"
+    },
+    "ptw_confined_3": {
+      "en": "Attendant stationed at the entrance",
+      "he": "משגיח מוצב בפתח",
+      "ar": "مراقب متمركز عند المدخل"
+    },
+    "ptw_confined_4": {
+      "en": "Rescue plan agreed and the equipment is on site",
+      "he": "תוכנית חילוץ סוכמה והציוד באתר",
+      "ar": "خطة إنقاذ متفق عليها والمعدات في الموقع"
+    },
+    "ptw_exc_1": {
+      "en": "Underground services located and marked",
+      "he": "תשתיות תת-קרקעיות אותרו וסומנו",
+      "ar": "الخدمات تحت الأرض حُددت ووُسمت"
+    },
+    "ptw_exc_2": {
+      "en": "Sides supported or battered back",
+      "he": "דפנות נתמכו או שופעו",
+      "ar": "الجوانب مدعّمة أو مائلة"
+    },
+    "ptw_exc_3": {
+      "en": "Edge barriers up and a ladder for access",
+      "he": "מעקות בשפת החפירה וסולם לירידה",
+      "ar": "حواجز عند الحافة وسلّم للنزول"
+    },
+    "ptw_exc_4": {
+      "en": "Spoil and plant kept back from the edge",
+      "he": "ערמות עפר וכלים הורחקו משפת החפירה",
+      "ar": "الأتربة والمعدات مُبعدة عن الحافة"
+    },
+    "ptw_elec_1": {
+      "en": "Circuit isolated and locked off",
+      "he": "המעגל נותק וננעל",
+      "ar": "الدائرة معزولة ومقفلة"
+    },
+    "ptw_elec_2": {
+      "en": "Proved dead with a tester proved before and after",
+      "he": "נבדק כמנותק במכשיר שנבדק לפני ואחרי",
+      "ar": "تم إثبات انعدام الجهد بجهاز فُحص قبل وبعد"
+    },
+    "ptw_elec_3": {
+      "en": "Warning notice fitted at the isolation point",
+      "he": "שלט אזהרה הוצב בנקודת הניתוק",
+      "ar": "لافتة تحذير مثبّتة عند نقطة العزل"
+    },
+    "ptw_elec_4": {
+      "en": "Keys held by the person doing the work",
+      "he": "המפתחות בידי מבצע העבודה",
+      "ar": "المفاتيح بحوزة منفّذ العمل"
+    },
+    "time_now": {
+      "en": "Now",
+      "he": "עכשיו",
+      "ar": "الآن"
+    },
+    "time_tomorrow_morning": {
+      "c": "When an Israeli site starts, for a permit written up the evening before",
+      "en": "Tomorrow 07:00",
+      "he": "מחר 07:00",
+      "ar": "غدًا 07:00"
     }
   },
   "plurals": {
@@ -1841,6 +2177,90 @@
         "few": "تنتهي خلال %d أيام",
         "many": "تنتهي خلال %d يومًا",
         "other": "تنتهي خلال %d يوم"
+      }
+    },
+    "tbt_attendees": {
+      "c": "How many people signed a toolbox talk register",
+      "en": {
+        "one": "%d attended",
+        "other": "%d attended"
+      },
+      "he": {
+        "one": "נוכח אחד",
+        "two": "שני נוכחים",
+        "many": "%d נוכחים",
+        "other": "%d נוכחים"
+      },
+      "ar": {
+        "zero": "لا حضور",
+        "one": "حاضر واحد",
+        "two": "حاضران",
+        "few": "%d حاضرين",
+        "many": "%d حاضرًا",
+        "other": "%d حاضر"
+      }
+    },
+    "tbt_last_briefed": {
+      "c": "Days since somebody last sat through a safety briefing",
+      "en": {
+        "one": "Last briefed %d day ago",
+        "other": "Last briefed %d days ago"
+      },
+      "he": {
+        "one": "תודרך לפני יום",
+        "two": "תודרך לפני יומיים",
+        "many": "תודרך לפני %d ימים",
+        "other": "תודרך לפני %d ימים"
+      },
+      "ar": {
+        "zero": "تلقّى تعليمات اليوم",
+        "one": "آخر تعليمات قبل يوم",
+        "two": "آخر تعليمات قبل يومين",
+        "few": "آخر تعليمات قبل %d أيام",
+        "many": "آخر تعليمات قبل %d يومًا",
+        "other": "آخر تعليمات قبل %d يوم"
+      }
+    },
+    "ptw_minutes_left": {
+      "c": "How long a live permit to work has left to run",
+      "en": {
+        "one": "%d minute left",
+        "other": "%d minutes left"
+      },
+      "he": {
+        "one": "נותרה דקה",
+        "two": "נותרו שתי דקות",
+        "many": "נותרו %d דקות",
+        "other": "נותרו %d דקות"
+      },
+      "ar": {
+        "zero": "لم تبقَ دقائق",
+        "one": "بقيت دقيقة",
+        "two": "بقيت دقيقتان",
+        "few": "بقيت %d دقائق",
+        "many": "بقيت %d دقيقة",
+        "other": "بقيت %d دقيقة"
+      }
+    },
+    "ptw_hours": {
+      "c": "How long a permit to work runs for",
+      "en": {
+        "one": "%d hour",
+        "other": "%d hours"
+      },
+      "he": {
+        "one": "שעה",
+        "two": "שעתיים",
+        "many": "%d שעות",
+        "other": "%d שעות"
+      },
+      "ar": {
+        "zero": "بدون ساعات",
+        "one": "ساعة",
+        "two": "ساعتان",
+        "few": "%d ساعات",
+        "many": "%d ساعة",
+        "other": "%d ساعة"
       }
     }
   }

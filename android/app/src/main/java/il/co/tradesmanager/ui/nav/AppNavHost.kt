@@ -41,6 +41,10 @@ import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
 import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
+import il.co.tradesmanager.ui.evidence.PermitDetailScreen
+import il.co.tradesmanager.ui.evidence.PermitsScreen
+import il.co.tradesmanager.ui.evidence.TalkDetailScreen
+import il.co.tradesmanager.ui.evidence.TalksScreen
 import il.co.tradesmanager.ui.safety.ChecklistRunScreen
 import il.co.tradesmanager.ui.safety.SafetyScreen
 import il.co.tradesmanager.ui.schedule.ScheduleScreen
@@ -56,6 +60,10 @@ object Routes {
     const val SCHEDULE = "schedule"
     const val SAFETY = "safety"
     const val CHECKLIST_RUN = "safety/run"
+    const val TALKS = "safety/talks"
+    const val TALK_DETAIL = "safety/talks/detail"
+    const val PERMITS = "safety/permits"
+    const val PERMIT_DETAIL = "safety/permits/detail"
     const val PEOPLE = "people"
     const val MONEY = "money"
     const val PLANT = "plant"
@@ -72,6 +80,8 @@ object Routes {
     fun money(projectId: String) = "$MONEY/$projectId"
     fun orderDetail(orderId: String) = "$ORDER_DETAIL/$orderId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
+    fun talkDetail(talkId: String) = "$TALK_DETAIL/$talkId"
+    fun permitDetail(permitId: String) = "$PERMIT_DETAIL/$permitId"
 }
 
 /**
@@ -234,6 +244,36 @@ fun AppNavHost(
                 SafetyScreen(
                     container = container,
                     onRunChecklist = { navController.navigate(Routes.checklistRun(it)) },
+                    onOpenTalks = { navController.navigate(Routes.TALKS) },
+                    onOpenPermits = { navController.navigate(Routes.PERMITS) },
+                )
+            }
+            composable(Routes.TALKS) {
+                TalksScreen(
+                    container = container,
+                    onOpenTalk = { navController.navigate(Routes.talkDetail(it)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.TALK_DETAIL}/{talkId}") { entry ->
+                TalkDetailScreen(
+                    container = container,
+                    talkId = entry.arguments?.getString("talkId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.PERMITS) {
+                PermitsScreen(
+                    container = container,
+                    onOpenPermit = { navController.navigate(Routes.permitDetail(it)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.PERMIT_DETAIL}/{permitId}") { entry ->
+                PermitDetailScreen(
+                    container = container,
+                    permitId = entry.arguments?.getString("permitId").orEmpty(),
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable("${Routes.CHECKLIST_RUN}/{templateId}") { entry ->

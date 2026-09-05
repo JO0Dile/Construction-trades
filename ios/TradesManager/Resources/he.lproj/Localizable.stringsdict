@@ -83,5 +83,85 @@
             <string>פג בעוד %d ימים</string>
         </dict>
     </dict>
+    <key>tbt_attendees</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נוכח אחד</string>
+            <key>two</key>
+            <string>שני נוכחים</string>
+            <key>many</key>
+            <string>%d נוכחים</string>
+            <key>other</key>
+            <string>%d נוכחים</string>
+        </dict>
+    </dict>
+    <key>tbt_last_briefed</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>תודרך לפני יום</string>
+            <key>two</key>
+            <string>תודרך לפני יומיים</string>
+            <key>many</key>
+            <string>תודרך לפני %d ימים</string>
+            <key>other</key>
+            <string>תודרך לפני %d ימים</string>
+        </dict>
+    </dict>
+    <key>ptw_minutes_left</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נותרה דקה</string>
+            <key>two</key>
+            <string>נותרו שתי דקות</string>
+            <key>many</key>
+            <string>נותרו %d דקות</string>
+            <key>other</key>
+            <string>נותרו %d דקות</string>
+        </dict>
+    </dict>
+    <key>ptw_hours</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>שעה</string>
+            <key>two</key>
+            <string>שעתיים</string>
+            <key>many</key>
+            <string>%d שעות</string>
+            <key>other</key>
+            <string>%d שעות</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

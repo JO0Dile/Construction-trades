@@ -67,5 +67,69 @@
             <string>Expires in %d days</string>
         </dict>
     </dict>
+    <key>tbt_attendees</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d attended</string>
+            <key>other</key>
+            <string>%d attended</string>
+        </dict>
+    </dict>
+    <key>tbt_last_briefed</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>Last briefed %d day ago</string>
+            <key>other</key>
+            <string>Last briefed %d days ago</string>
+        </dict>
+    </dict>
+    <key>ptw_minutes_left</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d minute left</string>
+            <key>other</key>
+            <string>%d minutes left</string>
+        </dict>
+    </dict>
+    <key>ptw_hours</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d hour</string>
+            <key>other</key>
+            <string>%d hours</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
