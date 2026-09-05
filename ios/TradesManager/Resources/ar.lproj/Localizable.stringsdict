@@ -85,12 +85,18 @@
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
             <string>d</string>
+            <key>zero</key>
+            <string>تنتهي اليوم</string>
             <key>one</key>
             <string>تنتهي خلال يوم</string>
             <key>two</key>
             <string>تنتهي خلال يومين</string>
-            <key>other</key>
+            <key>few</key>
             <string>تنتهي خلال %d أيام</string>
+            <key>many</key>
+            <string>تنتهي خلال %d يومًا</string>
+            <key>other</key>
+            <string>تنتهي خلال %d يوم</string>
         </dict>
     </dict>
 </dict>

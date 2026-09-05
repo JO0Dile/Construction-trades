@@ -327,6 +327,7 @@
     <plurals name="cert_expiring_days">
         <item quantity="one">פג בעוד יום</item>
         <item quantity="two">פג בעוד יומיים</item>
+        <item quantity="many">פג בעוד %d ימים</item>
         <item quantity="other">פג בעוד %d ימים</item>
     </plurals>
 </resources>

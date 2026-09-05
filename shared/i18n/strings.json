@@ -1613,6 +1613,7 @@
       }
     },
     "cert_expiring_days": {
+      "c": "Days until a certificate lapses",
       "en": {
         "one": "Expires in %d day",
         "other": "Expires in %d days"
@@ -1620,12 +1621,16 @@
       "he": {
         "one": "פג בעוד יום",
         "two": "פג בעוד יומיים",
+        "many": "פג בעוד %d ימים",
         "other": "פג בעוד %d ימים"
       },
       "ar": {
+        "zero": "تنتهي اليوم",
         "one": "تنتهي خلال يوم",
         "two": "تنتهي خلال يومين",
-        "other": "تنتهي خلال %d أيام"
+        "few": "تنتهي خلال %d أيام",
+        "many": "تنتهي خلال %d يومًا",
+        "other": "تنتهي خلال %d يوم"
       }
     }
   }

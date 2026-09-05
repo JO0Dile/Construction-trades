@@ -48,6 +48,16 @@ def load() -> dict:
         return json.load(fh)
 
 
+# The plural categories each language actually uses, per CLDR. Android's lint
+# requires every one of them; supplying only "one" and "other" is fine for
+# English and a build failure for Hebrew or Arabic.
+CLDR_QUANTITIES: dict[str, set[str]] = {
+    "en": {"one", "other"},
+    "he": {"one", "two", "many", "other"},
+    "ar": {"zero", "one", "two", "few", "many", "other"},
+}
+
+
 def validate(data: dict) -> list[str]:
     problems: list[str] = []
     languages = data["languages"]
@@ -63,8 +73,17 @@ def validate(data: dict) -> list[str]:
             forms = entry.get(lang)
             if not forms:
                 problems.append(f"plurals.{key}: missing {lang}")
-            elif "other" not in forms:
+                continue
+            if "other" not in forms:
                 problems.append(f"plurals.{key}.{lang}: no 'other' form")
+            # Android's MissingQuantity lint fails the build over this, and it
+            # only shows up three minutes into CI. Catch it here, in a second.
+            missing = sorted(CLDR_QUANTITIES.get(lang, {"other"}) - set(forms))
+            if missing:
+                problems.append(
+                    f"plurals.{key}.{lang}: {lang} needs {', '.join(missing)} "
+                    f"(CLDR plural categories); Android lint rejects the build without them"
+                )
     for key in IOS_INFO_PLIST_KEYS.values():
         if key not in data["strings"]:
             problems.append(f"InfoPlist mapping references unknown key {key!r}")

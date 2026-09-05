@@ -331,8 +331,11 @@
         <item quantity="other">%d صنف منخفض</item>
     </plurals>
     <plurals name="cert_expiring_days">
+        <item quantity="zero">تنتهي اليوم</item>
         <item quantity="one">تنتهي خلال يوم</item>
         <item quantity="two">تنتهي خلال يومين</item>
-        <item quantity="other">تنتهي خلال %d أيام</item>
+        <item quantity="few">تنتهي خلال %d أيام</item>
+        <item quantity="many">تنتهي خلال %d يومًا</item>
+        <item quantity="other">تنتهي خلال %d يوم</item>
     </plurals>
 </resources>
