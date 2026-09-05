@@ -294,6 +294,21 @@ app claims to get right:
       it back, because the work stopping and the area being checked are two
       different events.
 
+**Stamped photographs**
+- [ ] Photograph something inside a job. The picture should come back with the
+      date, time, coordinates and your name burned into a dark band along the
+      bottom.
+- [ ] Take one in **portrait**. The stamp must be along the bottom of an
+      upright picture — if the photo comes out sideways, the rotation handling
+      is wrong and that is the bug to report.
+- [ ] Export the job sheet, or send the photo to yourself. The stamp travels
+      with the file. That is the entire point: an emailed photo arrives as a
+      picture of a wall unless the date came with it.
+- [ ] Add your own photograph or a picture of your ID in Settings or the
+      induction. Those are **not** stamped, deliberately.
+- [ ] Somewhere with no GPS fix (a basement), the stamp should still carry the
+      date and your name rather than a blank line.
+
 **The daily log** — open a job → *Daily log*
 - [ ] It opens on today with a date at the top and *Not signed*.
 - [ ] The top half counts what the app already recorded. Do something on the
