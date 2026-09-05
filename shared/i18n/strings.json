@@ -3022,6 +3022,251 @@
       "en": "Every scaffold on this job is in date.",
       "he": "כל הפיגומים באתר בתוקף.",
       "ar": "جميع السقالات في هذا الموقع سارية."
+    },
+    "lift_title": {
+      "en": "Lifts",
+      "he": "הרמות",
+      "ar": "عمليات الرفع"
+    },
+    "lift_row_hint": {
+      "en": "Lift plans, and what has to be right before the load leaves the ground.",
+      "he": "תוכניות הרמה, ומה חייב להיות תקין לפני שהמטען עוזב את הקרקע.",
+      "ar": "خطط الرفع، وما يجب أن يكون سليمًا قبل أن يغادر الحمل الأرض."
+    },
+    "lift_new": {
+      "en": "Plan a lift",
+      "he": "תכנון הרמה",
+      "ar": "تخطيط عملية رفع"
+    },
+    "lift_empty": {
+      "en": "No lifts planned.",
+      "he": "לא תוכננו הרמות.",
+      "ar": "لا عمليات رفع مخططة."
+    },
+    "lift_what": {
+      "en": "What is being lifted",
+      "he": "מה מרימים",
+      "ar": "ما الذي يُرفع"
+    },
+    "lift_what_hint": {
+      "en": "In the words used on the radio: air handling unit, roof beam 4.",
+      "he": "במילים שאומרים בקשר: יחידת מיזוג, קורת גג 4.",
+      "ar": "بالكلمات التي تُقال في اللاسلكي: وحدة تكييف، جسر السطح 4."
+    },
+    "lift_load_weight": {
+      "en": "Load (kg)",
+      "he": "משקל המטען (ק״ג)",
+      "ar": "وزن الحمل (كغم)"
+    },
+    "lift_rigging_weight": {
+      "en": "Rigging (kg)",
+      "he": "משקל אביזרי ההרמה (ק״ג)",
+      "ar": "وزن معدات الرفع (كغم)"
+    },
+    "lift_rigging_hint": {
+      "en": "Slings, shackles, spreader beam, hook block. They hang off the same rope, and leaving them out is how a lift planned at ninety per cent turns out to have been at a hundred and four.",
+      "he": "מנשאים, שאקלים, קורת פריסה וגוש הוו. הם תלויים על אותו כבל, והשמטתם היא הדרך שבה הרמה שתוכננה לתשעים אחוז מתבררת כמאה וארבעה.",
+      "ar": "الأحزمة والأقفال وعارضة التوزيع وكتلة الخطاف. كلها معلّقة على الحبل نفسه، وإغفالها هو ما يجعل رفعة خُطط لها عند تسعين بالمئة تتبين عند مئة وأربعة."
+    },
+    "lift_gross": {
+      "en": "On the hook",
+      "he": "סך הכול על הוו",
+      "ar": "الإجمالي على الخطاف"
+    },
+    "lift_appliance": {
+      "en": "Crane or appliance",
+      "he": "העגורן או מכשיר ההרמה",
+      "ar": "الرافعة أو جهاز الرفع"
+    },
+    "lift_appliance_cert": {
+      "en": "Its test certificate runs out",
+      "he": "תוקף בדיקת המכשיר",
+      "ar": "تنتهي شهادة فحصه"
+    },
+    "lift_appliance_cert_none": {
+      "en": "No test certificate recorded",
+      "he": "לא נרשמה תעודת בדיקה",
+      "ar": "لم تُسجَّل شهادة فحص"
+    },
+    "lift_appliance_cert_needed": {
+      "en": "This appliance needs a periodic test",
+      "he": "מכשיר זה טעון בדיקה תקופתית",
+      "ar": "يحتاج هذا الجهاز إلى فحص دوري"
+    },
+    "lift_radius": {
+      "en": "Radius (m)",
+      "he": "רדיוס (מ׳)",
+      "ar": "نصف القطر (م)"
+    },
+    "lift_capacity": {
+      "en": "Chart capacity at that radius (kg)",
+      "he": "כושר ההרמה בטבלה ברדיוס זה (ק״ג)",
+      "ar": "الحمولة من الجدول عند نصف القطر هذا (كغم)"
+    },
+    "lift_capacity_hint": {
+      "en": "Off the duty chart at the radius being worked. Not the crane's headline tonnage.",
+      "he": "מתוך טבלת העומסים ברדיוס העבודה בפועל. לא הטונאז׳ הנקוב של העגורן.",
+      "ar": "من جدول الحمولات عند نصف قطر العمل الفعلي. لا الحمولة الاسمية للرافعة."
+    },
+    "lift_utilisation": {
+      "en": "of the chart",
+      "he": "מהטבלה",
+      "ar": "من الجدول"
+    },
+    "lift_heavy": {
+      "en": "Over three quarters of the chart — have somebody senior look at this.",
+      "he": "מעל שלושה רבעים מהטבלה — שגורם בכיר יבחן זאת.",
+      "ar": "أكثر من ثلاثة أرباع الجدول — ليراجعها مسؤول أعلى."
+    },
+    "lift_wind": {
+      "en": "Wind now (km/h)",
+      "he": "רוח כעת (קמ״ש)",
+      "ar": "الرياح الآن (كم/س)"
+    },
+    "lift_wind_limit": {
+      "en": "Wind limit (km/h)",
+      "he": "מגבלת הרוח (קמ״ש)",
+      "ar": "حد الرياح (كم/س)"
+    },
+    "lift_wind_unmeasured": {
+      "en": "Nobody has measured the wind.",
+      "he": "איש לא מדד את הרוח.",
+      "ar": "لم يقس أحد الرياح."
+    },
+    "lift_crew": {
+      "en": "Who is on it",
+      "he": "מי מבצע",
+      "ar": "من ينفّذها"
+    },
+    "lift_role_operator": {
+      "en": "Crane operator",
+      "he": "מפעיל העגורן",
+      "ar": "مشغّل الرافعة"
+    },
+    "lift_role_slinger": {
+      "en": "Slinger",
+      "he": "רתָּב",
+      "ar": "المُوثِّق"
+    },
+    "lift_role_banksman": {
+      "en": "Banksman",
+      "he": "אתת",
+      "ar": "الإشاري"
+    },
+    "lift_crew_name": {
+      "en": "Name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "lift_crew_ticket": {
+      "en": "Ticket number",
+      "he": "מספר ההסמכה",
+      "ar": "رقم الشهادة"
+    },
+    "lift_crew_expires": {
+      "en": "Ticket runs out",
+      "he": "תוקף ההסמכה",
+      "ar": "تنتهي صلاحية الشهادة"
+    },
+    "lift_crew_no_expiry": {
+      "en": "Does not expire",
+      "he": "ללא תפוגה",
+      "ar": "بلا تاريخ انتهاء"
+    },
+    "lift_crew_set": {
+      "en": "Put somebody in this role",
+      "he": "שיבוץ לתפקיד",
+      "ar": "تعيين شخص لهذا الدور"
+    },
+    "lift_crew_none": {
+      "en": "Nobody",
+      "he": "לא שובץ איש",
+      "ar": "لا أحد"
+    },
+    "lift_planned_for": {
+      "en": "Planned for",
+      "he": "מתוכנן ל",
+      "ar": "مخطط ليوم"
+    },
+    "lift_approve": {
+      "en": "Approve the lift",
+      "he": "אישור ההרמה",
+      "ar": "اعتماد عملية الرفع"
+    },
+    "lift_approved_by": {
+      "en": "Approved by",
+      "he": "אושר על ידי",
+      "ar": "اعتمدها"
+    },
+    "lift_complete": {
+      "en": "Lifted",
+      "he": "הורם",
+      "ar": "تم الرفع"
+    },
+    "lift_completed": {
+      "en": "Done",
+      "he": "הושלם",
+      "ar": "اكتملت"
+    },
+    "lift_may_go": {
+      "en": "Everything checks out.",
+      "he": "הכול תקין.",
+      "ar": "كل شيء سليم."
+    },
+    "lift_blocked": {
+      "en": "Do not lift",
+      "he": "אין להרים",
+      "ar": "ممنوع الرفع"
+    },
+    "lift_block_weight": {
+      "en": "Nobody has said what it weighs",
+      "he": "לא נרשם משקל המטען",
+      "ar": "لم يُسجَّل وزن الحمل"
+    },
+    "lift_block_capacity": {
+      "en": "No capacity from the duty chart",
+      "he": "לא נרשם כושר הרמה מהטבלה",
+      "ar": "لم تُسجَّل الحمولة من الجدول"
+    },
+    "lift_block_overloaded": {
+      "en": "Over the chart",
+      "he": "מעל הטבלה",
+      "ar": "فوق الجدول"
+    },
+    "lift_block_operator": {
+      "en": "No crane operator",
+      "he": "אין מפעיל עגורן",
+      "ar": "لا مشغّل رافعة"
+    },
+    "lift_block_slinger": {
+      "en": "No slinger",
+      "he": "אין רתָּב",
+      "ar": "لا مُوثِّق"
+    },
+    "lift_block_banksman": {
+      "en": "No banksman",
+      "he": "אין אתת",
+      "ar": "لا إشاري"
+    },
+    "lift_block_ticket": {
+      "en": "Somebody's ticket has run out",
+      "he": "פג תוקף הסמכה של אחד המבצעים",
+      "ar": "انتهت صلاحية شهادة أحد المنفذين"
+    },
+    "lift_block_appliance": {
+      "en": "The appliance's test certificate is not in date",
+      "he": "תעודת הבדיקה של המכשיר אינה בתוקף",
+      "ar": "شهادة فحص الجهاز غير سارية"
+    },
+    "lift_block_wind": {
+      "en": "Too windy",
+      "he": "רוח חזקה מדי",
+      "ar": "الرياح شديدة جدًا"
+    },
+    "lift_block_approval": {
+      "en": "Nobody has approved it",
+      "he": "איש לא אישר את ההרמה",
+      "ar": "لم يعتمدها أحد"
     }
   },
   "plurals": {

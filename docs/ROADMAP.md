@@ -175,6 +175,32 @@ for the same reason. The seven days are seven calendar days in the site's own
 zone rather than a fixed 168 hours: one week a year in Israel is 167 hours
 long, and a fixed span would move the deadline.
 
+**Phase 4i — lifting operations. Done.**
+The first screen in the app that refuses to let somebody press a button. Every
+other lens records what happened; this one decides whether it may.
+
+Everything that stops a lift is known before the load leaves the ground and
+forgotten while it is in the air. A crane at ninety-six per cent of its chart at
+thirty metres is a different machine from the same crane at forty per cent, and
+nobody redoes that arithmetic with a load swinging. So the plan carries the
+weight *including the rigging* — slings, shackles, spreader beam, hook block are
+on the same rope, and leaving them out is the ordinary way a lift planned at
+ninety per cent turns out to have been at a hundred and four — against the
+capacity read off the duty chart at the radius actually being worked.
+
+The three legally required people are named, and each is named **with the
+ticket the role relies on**, because a slinger holds several certificates and
+only one of them is the slinging ticket. Blocking a lift because somebody's
+first-aid card lapsed would be wrong; blocking it because their slinging ticket
+lapsed is the entire point, and it is the first thing in the app to make the
+certifications table do work rather than sit there being a list.
+
+The gate reports every blocker at once. A plan that fails four checks and
+reports one is a plan somebody fixes four times, walking back to the crane in
+between. And editing any number, or changing who is on it, clears the approval:
+a supervisor signed off a specific lift, and a plan that keeps the signature
+while the numbers move underneath it is a plan nobody actually approved.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -192,10 +218,11 @@ Whole categories still at zero, in roughly the order they are worth doing:
 | Israeli government and accounting integrations | the edge, Phase 5 |
 | Site security, structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
 
-Since that list was written, seven of its rows have landed and are no longer on
+Since that list was written, eight of its rows have landed and are no longer on
 it: the plant register, purchase orders with goods received, toolbox talks with
 permits to work, one person belonging to several companies, snagging, the
-concrete half of "concrete and structural", and the scaffold register.
+concrete half of "concrete and structural", the scaffold register, and lifting
+operations.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
@@ -208,8 +235,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 44 | |
-| Buildable here — on the device, no server | 141 | where the work is |
+| Built | 49 | |
+| Buildable here — on the device, no server | 136 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

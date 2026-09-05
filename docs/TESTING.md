@@ -397,6 +397,54 @@ is whether it says so plainly.
 - [ ] *Struck down* on one. It greys out, keeps its row and its history, and
       stops counting towards the banner.
 
+**Lifts** — open a job → *Lifts*
+
+Everything that stops a lift is known before the load leaves the ground and
+forgotten while it is in the air. The test is whether the screen says all of it
+at once.
+
+First, in People, give somebody a ticket that has **already expired** — you
+will need it below.
+
+- [ ] **+** → *Plan a lift*. Name the load. Create.
+- [ ] It opens red, listing everything missing at once: no weight, no capacity,
+      no operator, no slinger, no banksman, no certificate, not approved. Not
+      one blocker at a time.
+- [ ] Fill in the numbers: load **5,900**, rigging blank, capacity **6,000**,
+      wind limit 72, wind 20. Save. The weight and capacity blockers clear and
+      the header reads ninety-eight per cent, marked as over three quarters of
+      the chart.
+- [ ] Now put **200** in rigging and save. It goes **over the chart** — the
+      slings and the beam are on the same rope, and this is the ordinary way a
+      lift planned at ninety per cent turns out to have been at a hundred and
+      four.
+- [ ] Put the load back to 4,000. The overload clears.
+- [ ] Tap each of the three crew rows and pick somebody, then pick which of
+      their tickets this role relies on. Picking the person is not enough —
+      the plan names the ticket, the way a paper lift plan carries a licence
+      number.
+- [ ] Put the person with the **expired** ticket in as slinger. The row goes
+      red and the blocker list says somebody's ticket has run out. Give them a
+      different, in-date ticket for the same role; the blocker clears. That is
+      the point: a lapsed first-aid card must not stop a lift, and a lapsed
+      slinging ticket must.
+- [ ] Set the appliance's test certificate to a date in the past. Blocked.
+      Clear the date entirely — still blocked, because unlike a person's trade
+      licence a crane with no recorded certificate is not assumed to have one.
+- [ ] Turn *This appliance needs a periodic test* off. Now it is not blocked
+      for lacking one.
+- [ ] Put **80** in the wind box against a limit of 72. Blocked. Clear the box
+      — not blocked, because the app has no anemometer and treating "nobody
+      looked" as a stop would train everybody to type a number in to get past
+      it.
+- [ ] With everything else clear, *Lifted* is still disabled until somebody
+      approves the plan. Approve it. Now it moves.
+- [ ] Approve a plan, then change any number and save. The approval is
+      **gone** — somebody signed off four tonnes at twenty metres, and keeping
+      the signature over different numbers would be a plan nobody approved.
+      Same for changing who is on it.
+- [ ] Sign in as a worker rather than a supervisor. *Approve* is not offered.
+
 **Snags** — Safety → the checklist icon in the top bar
 - [ ] **+** → describe a defect, say where it is, who has to fix it, and leave
       *Holds up handover* on. Create.

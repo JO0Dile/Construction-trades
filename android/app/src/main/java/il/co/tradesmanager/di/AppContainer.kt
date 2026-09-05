@@ -13,6 +13,7 @@ import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
+import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
@@ -99,6 +100,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val concrete = ConcreteRepository(database.concreteDao(), auditTrail)
 
     val scaffolds = ScaffoldRepository(database.scaffoldDao(), auditTrail)
+
+    val lifting = LiftingRepository(database.liftingDao(), auditTrail)
 
     /** The daily site log — the יומן עבודה a site manager has to keep. */
     val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)
