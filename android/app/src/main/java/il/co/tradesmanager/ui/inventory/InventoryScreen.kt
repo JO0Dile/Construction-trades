@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.IosShare
+import androidx.compose.material.icons.filled.Construction
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.AssistChip
@@ -70,6 +71,7 @@ fun InventoryScreen(
     onAddItem: () -> Unit,
     onEditItem: (String) -> Unit,
     onScan: () -> Unit,
+    onOpenPlant: () -> Unit,
     savedStateHandle: SavedStateHandle,
 ) {
     val viewModel: InventoryViewModel = viewModel(
@@ -102,6 +104,14 @@ fun InventoryScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.inv_title)) },
                 actions = {
+                    // Plant lives beside stock rather than in its own tab: it
+                    // is the same lens, asking a different question about it.
+                    IconButton(onClick = onOpenPlant) {
+                        Icon(
+                            Icons.Filled.Construction,
+                            contentDescription = stringResource(R.string.plant_title),
+                        )
+                    }
                     IconButton(onClick = onScan) {
                         Icon(
                             Icons.Filled.QrCodeScanner,

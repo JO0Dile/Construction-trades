@@ -1546,6 +1546,101 @@
       "en": "Margin",
       "he": "רווח",
       "ar": "الهامش"
+    },
+    "plant_title": {
+      "en": "Plant",
+      "he": "ציוד",
+      "ar": "المعدات"
+    },
+    "plant_add": {
+      "en": "Add plant",
+      "he": "הוספת ציוד",
+      "ar": "إضافة معدات"
+    },
+    "plant_empty": {
+      "en": "No plant on the books. Add what you own or hire.",
+      "he": "אין ציוד רשום. הוסיפו מה שבבעלותכם או בהשכרה.",
+      "ar": "لا توجد معدات مسجّلة. أضف ما تملكه أو تستأجره."
+    },
+    "plant_name": {
+      "en": "What it is",
+      "he": "מה זה",
+      "ar": "ما هو"
+    },
+    "plant_serial": {
+      "en": "Serial number (optional)",
+      "he": "מספר סידורי (לא חובה)",
+      "ar": "الرقم التسلسلي (اختياري)"
+    },
+    "plant_owned": {
+      "en": "Owned",
+      "he": "בבעלות",
+      "ar": "مملوكة"
+    },
+    "plant_hired": {
+      "en": "Hired",
+      "he": "בהשכרה",
+      "ar": "مستأجرة"
+    },
+    "plant_rate": {
+      "en": "Hire per day",
+      "he": "עלות ליום",
+      "ar": "التكلفة يوميًا"
+    },
+    "plant_service": {
+      "en": "Next service",
+      "he": "טיפול הבא",
+      "ar": "الصيانة القادمة"
+    },
+    "plant_serviced": {
+      "en": "Mark as serviced",
+      "he": "סימון כטופל",
+      "ar": "تعليم كمُصان"
+    },
+    "plant_service_due": {
+      "en": "Service due",
+      "he": "נדרש טיפול",
+      "ar": "الصيانة مستحقة"
+    },
+    "plant_overdue": {
+      "en": "Service overdue",
+      "he": "טיפול באיחור",
+      "ar": "الصيانة متأخرة"
+    },
+    "plant_available": {
+      "en": "In the yard",
+      "he": "במחסן",
+      "ar": "في المستودع"
+    },
+    "plant_on_site": {
+      "en": "On site",
+      "he": "באתר",
+      "ar": "في الموقع"
+    },
+    "plant_maintenance": {
+      "en": "In for repair",
+      "he": "בתיקון",
+      "ar": "في الإصلاح"
+    },
+    "plant_off_hire": {
+      "en": "Off hire",
+      "he": "הוחזר",
+      "ar": "أُعيدت"
+    },
+    "plant_assign": {
+      "en": "Send to a job",
+      "he": "שליחה לעבודה",
+      "ar": "إرسال إلى عمل"
+    },
+    "plant_unassign": {
+      "en": "Back to the yard",
+      "he": "חזרה למחסן",
+      "ar": "العودة إلى المستودع"
+    },
+    "plant_accrued": {
+      "en": "Hire so far",
+      "he": "עלות השכרה עד כה",
+      "ar": "تكلفة الاستئجار حتى الآن"
     }
   },
   "plurals": {

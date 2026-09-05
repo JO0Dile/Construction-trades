@@ -34,6 +34,7 @@ import il.co.tradesmanager.ui.inventory.InventoryEditScreen
 import il.co.tradesmanager.ui.inventory.InventoryScreen
 import il.co.tradesmanager.ui.money.MoneyScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
+import il.co.tradesmanager.ui.plant.PlantScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
@@ -55,6 +56,7 @@ object Routes {
     const val CHECKLIST_RUN = "safety/run"
     const val PEOPLE = "people"
     const val MONEY = "money"
+    const val PLANT = "plant"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
 
@@ -154,6 +156,7 @@ fun AppNavHost(
                     onAddItem = { navController.navigate(Routes.inventoryEdit(null)) },
                     onEditItem = { navController.navigate(Routes.inventoryEdit(it)) },
                     onScan = { navController.navigate(Routes.SCANNER) },
+                    onOpenPlant = { navController.navigate(Routes.PLANT) },
                     // The scanner hands its result back through this entry's
                     // saved state, which survives the process being killed
                     // behind the camera on a low-memory phone. The screen
@@ -204,6 +207,9 @@ fun AppNavHost(
             }
             composable(Routes.SCHEDULE) { ScheduleScreen(container = container) }
             composable(Routes.PEOPLE) { PeopleScreen(container = container) }
+            composable(Routes.PLANT) {
+                PlantScreen(container = container, onBack = { navController.popBackStack() })
+            }
             composable(Routes.SAFETY) {
                 SafetyScreen(
                     container = container,

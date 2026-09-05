@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.combine
  */
 class MoneyRepository(
     private val dao: MoneyDao,
+    private val equipment: EquipmentRepository,
     private val audit: AuditTrail,
 ) {
 
@@ -38,13 +39,17 @@ class MoneyRepository(
         dao.observeBudget(projectId),
         dao.observeTotals(projectId),
         dao.observeCommittedMaterials(projectId),
-    ) { budget, totals, committed ->
+        equipment.observeCommittedHire(projectId),
+    ) { budget, totals, materials, hire ->
         JobFinancials(
             contractValue = budget?.contractValue ?: 0.0,
             approvedVariations = totals.approvedVariations,
             proposedVariations = totals.proposedVariations,
             costToDate = totals.costToDate,
-            committedCosts = committed,
+            // Priced materials still to buy, plus what hired plant has run up.
+            // Both are commitments the job has made and neither is a cost line
+            // yet; the supplier's invoice is what becomes one.
+            committedCosts = materials + hire,
             invoiced = totals.invoiced,
             paid = totals.paid,
             vatRate = budget?.vatRate ?: JobFinancials.ISRAELI_VAT,

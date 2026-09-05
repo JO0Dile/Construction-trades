@@ -7,6 +7,7 @@ import il.co.tradesmanager.data.local.dao.AccountDao
 import il.co.tradesmanager.data.local.dao.AuditDao
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.CertificationDao
+import il.co.tradesmanager.data.local.dao.EquipmentDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
 import il.co.tradesmanager.data.local.dao.MoneyDao
 import il.co.tradesmanager.data.local.dao.PhotoDao
@@ -23,6 +24,7 @@ import il.co.tradesmanager.data.local.entity.CostEntryEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunItemEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
+import il.co.tradesmanager.data.local.entity.EquipmentEntity
 import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
@@ -68,8 +70,9 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         VariationEntity::class,
         InvoiceEntity::class,
         CertificationEntity::class,
+        EquipmentEntity::class,
     ],
-    version = 4,
+    version = 5,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -84,6 +87,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun accountDao(): AccountDao
     abstract fun moneyDao(): MoneyDao
     abstract fun certificationDao(): CertificationDao
+    abstract fun equipmentDao(): EquipmentDao
 
     companion object {
         const val NAME = "tradesmanager.db"

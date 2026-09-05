@@ -40,7 +40,15 @@ object Migrations {
         }
     }
 
-    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+    /** Adds the plant register: kit the firm owns or hires. */
+    val MIGRATION_4_5 = object : Migration(4, 5) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_4_5.forEach(db::execSQL)
+        }
+    }
+
+    val ALL: Array<Migration> =
+        arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
 
     /** Exposed so the CI check can read the same strings the migration runs. */
     val SQL_1_2: List<String> = listOf(
@@ -90,5 +98,19 @@ object Migrations {
             "`createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_certifications_accountId` " +
             "ON `certifications` (`accountId`)",
+    )
+
+    val SQL_4_5: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `equipment` (`id` TEXT NOT NULL, " +
+            "`name` TEXT NOT NULL, `ownership` TEXT NOT NULL, `status` TEXT NOT NULL, " +
+            "`serialNumber` TEXT, `supplierId` TEXT, `assignedProjectId` TEXT, " +
+            "`hireRatePerDay` REAL, `hireStartedOn` INTEGER, `hireEndsOn` INTEGER, " +
+            "`lastServicedOn` INTEGER, `serviceDueOn` INTEGER, `notes` TEXT, " +
+            "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_equipment_assignedProjectId` " +
+            "ON `equipment` (`assignedProjectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_equipment_supplierId` " +
+            "ON `equipment` (`supplierId`)",
     )
 }
