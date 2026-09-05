@@ -513,6 +513,29 @@
     <string name="acc_id_add">Add your ID number</string>
     <string name="acc_id_locked">Set once and kept. The site office identifies you by this, so it is not something to change quietly.</string>
     <string name="acc_id_missing">You have no ID number yet, so you can only sign in with your username. Add one and either will work.</string>
+    <string name="log_title">Daily log</string>
+    <string name="log_empty">No days logged yet. Today\'s is ready when you are.</string>
+    <string name="log_today">Today</string>
+    <string name="log_gathered">What the app recorded today</string>
+    <string name="log_gathered_hint">Counted from what was actually entered. Correct the entry and this corrects itself.</string>
+    <string name="log_quiet">Nothing was recorded on this job today. If work happened, it did not reach the app.</string>
+    <string name="log_tasks_done">Tasks finished</string>
+    <string name="log_deliveries">Deliveries booked in</string>
+    <string name="log_permits">Permits issued</string>
+    <string name="log_talks">Safety talks</string>
+    <string name="log_snags">Snags raised</string>
+    <string name="log_incidents">Incidents</string>
+    <string name="log_typed">What only you know</string>
+    <string name="log_weather">Weather</string>
+    <string name="log_headcount">People on site</string>
+    <string name="log_notes">How the day went</string>
+    <string name="log_notes_hint">Delays, visitors, anything an inspector or a solicitor would want to know later.</string>
+    <string name="log_sign">Sign the day off</string>
+    <string name="log_signed_by">Signed by</string>
+    <string name="log_locked">Signed and closed. A daily log that can be tidied up afterwards is evidence of nothing.</string>
+    <string name="log_must_sign">Draw a signature before signing the day off.</string>
+    <string name="log_state_draft">Not signed</string>
+    <string name="log_state_signed">Signed</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -552,5 +575,9 @@
     <plurals name="snag_outstanding">
         <item quantity="one">%d outstanding</item>
         <item quantity="other">%d outstanding</item>
+    </plurals>
+    <plurals name="log_workers">
+        <item quantity="one">%d on site</item>
+        <item quantity="other">%d on site</item>
     </plurals>
 </resources>

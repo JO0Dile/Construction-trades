@@ -42,6 +42,7 @@ import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
 import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
+import il.co.tradesmanager.ui.evidence.DailyLogScreen
 import il.co.tradesmanager.ui.evidence.PermitDetailScreen
 import il.co.tradesmanager.ui.evidence.PermitsScreen
 import il.co.tradesmanager.ui.evidence.SnagDetailScreen
@@ -69,6 +70,7 @@ object Routes {
     const val PERMIT_DETAIL = "safety/permits/detail"
     const val SNAGS = "safety/snags"
     const val SNAG_DETAIL = "safety/snags/detail"
+    const val DAILY_LOG = "projects/log"
     const val PEOPLE = "people"
     const val MONEY = "money"
     const val PLANT = "plant"
@@ -88,6 +90,7 @@ object Routes {
     fun talkDetail(talkId: String) = "$TALK_DETAIL/$talkId"
     fun permitDetail(permitId: String) = "$PERMIT_DETAIL/$permitId"
     fun snagDetail(snagId: String) = "$SNAG_DETAIL/$snagId"
+    fun dailyLog(projectId: String) = "$DAILY_LOG/$projectId"
 }
 
 /**
@@ -227,6 +230,7 @@ fun AppNavHost(
                     container = container,
                     projectId = id,
                     onOpenMoney = { navController.navigate(Routes.money(id)) },
+                    onOpenDailyLog = { navController.navigate(Routes.dailyLog(id)) },
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -290,6 +294,13 @@ fun AppNavHost(
                 PermitDetailScreen(
                     container = container,
                     permitId = entry.arguments?.getString("permitId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.DAILY_LOG}/{projectId}") { entry ->
+                DailyLogScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },
                 )
             }

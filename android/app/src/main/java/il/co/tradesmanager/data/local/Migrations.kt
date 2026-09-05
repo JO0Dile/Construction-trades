@@ -104,6 +104,13 @@ object Migrations {
         }
     }
 
+    /** Adds the daily site log — the יומן עבודה a site manager has to keep. */
+    val MIGRATION_10_11 = object : Migration(10, 11) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_10_11.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -114,6 +121,7 @@ object Migrations {
         MIGRATION_7_8,
         MIGRATION_8_9,
         MIGRATION_9_10,
+        MIGRATION_10_11,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -296,5 +304,17 @@ object Migrations {
         "CREATE INDEX IF NOT EXISTS `index_snags_projectId` ON `snags` (`projectId`)",
         "CREATE INDEX IF NOT EXISTS `index_snags_status` ON `snags` (`status`)",
         "CREATE INDEX IF NOT EXISTS `index_snags_dueOn` ON `snags` (`dueOn`)",
+    )
+
+    val SQL_10_11: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `daily_logs` (`id` TEXT NOT NULL, " +
+            "`projectId` TEXT NOT NULL, `logDate` INTEGER NOT NULL, " +
+            "`status` TEXT NOT NULL, `weather` TEXT, `workforceCount` INTEGER, " +
+            "`notes` TEXT, `preparedByName` TEXT NOT NULL, `preparedById` TEXT, " +
+            "`signature` TEXT, `signedAt` INTEGER, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE UNIQUE INDEX IF NOT EXISTS `index_daily_logs_projectId_logDate` " +
+            "ON `daily_logs` (`projectId`, `logDate`)",
+        "CREATE INDEX IF NOT EXISTS `index_daily_logs_logDate` ON `daily_logs` (`logDate`)",
     )
 }

@@ -203,5 +203,25 @@
             <string>%d ליקויים פתוחים</string>
         </dict>
     </dict>
+    <key>log_workers</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>עובד אחד באתר</string>
+            <key>two</key>
+            <string>שני עובדים באתר</string>
+            <key>many</key>
+            <string>%d עובדים באתר</string>
+            <key>other</key>
+            <string>%d עובדים באתר</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
