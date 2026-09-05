@@ -139,6 +139,13 @@ object Migrations {
         }
     }
 
+    /** Adds the excavation register and its per-shift inspections. */
+    val MIGRATION_15_16 = object : Migration(15, 16) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_15_16.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -154,6 +161,7 @@ object Migrations {
         MIGRATION_12_13,
         MIGRATION_13_14,
         MIGRATION_14_15,
+        MIGRATION_15_16,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -443,5 +451,31 @@ object Migrations {
             "ON `temporary_works` (`projectId`)",
         "CREATE INDEX IF NOT EXISTS `index_temporary_works_supportsPourId` " +
             "ON `temporary_works` (`supportsPourId`)",
+    )
+
+    val SQL_15_16: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `excavations` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`location` TEXT NOT NULL, `depthMetres` REAL, " +
+            "`support` TEXT NOT NULL, `servicesLocatedAt` INTEGER, " +
+            "`servicesLocatedByName` TEXT, `servicesNotes` TEXT, " +
+            "`lastInspectedAt` INTEGER, `lastInspectionPassed` INTEGER NOT NULL, " +
+            "`lastInspectorName` TEXT, `disturbedAt` INTEGER, " +
+            "`backfilledAt` INTEGER, `notes` TEXT, " +
+            "`createdByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_excavations_projectId` " +
+            "ON `excavations` (`projectId`)",
+        "CREATE TABLE IF NOT EXISTS `excavation_inspections` (`id` TEXT NOT NULL, " +
+            "`excavationId` TEXT NOT NULL, `inspectedAt` INTEGER NOT NULL, " +
+            "`inspectorName` TEXT NOT NULL, `passed` INTEGER NOT NULL, " +
+            "`defects` TEXT, `actionTaken` TEXT, `signature` TEXT, " +
+            "`createdAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`), FOREIGN KEY(`excavationId`) REFERENCES " +
+            "`excavations`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_excavation_inspections_excavationId` " +
+            "ON `excavation_inspections` (`excavationId`)",
+        "CREATE INDEX IF NOT EXISTS `index_excavation_inspections_inspectedAt` " +
+            "ON `excavation_inspections` (`inspectedAt`)",
     )
 }

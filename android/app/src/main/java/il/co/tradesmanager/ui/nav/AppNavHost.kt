@@ -31,6 +31,7 @@ import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.concrete.ConcreteScreen
+import il.co.tradesmanager.ui.excavation.ExcavationScreen
 import il.co.tradesmanager.ui.home.HomeScreen
 import il.co.tradesmanager.ui.inventory.InventoryEditScreen
 import il.co.tradesmanager.ui.inventory.InventoryScreen
@@ -79,6 +80,7 @@ object Routes {
     const val SCAFFOLDS = "projects/scaffolds"
     const val LIFTS = "projects/lifts"
     const val TEMP_WORKS = "projects/tempworks"
+    const val EXCAVATIONS = "projects/excavations"
     const val PEOPLE = "people"
     const val MONEY = "money"
     const val PLANT = "plant"
@@ -106,6 +108,7 @@ object Routes {
     fun scaffolds(projectId: String) = "$SCAFFOLDS/$projectId"
     fun lifts(projectId: String) = "$LIFTS/$projectId"
     fun temporaryWorks(projectId: String) = "$TEMP_WORKS/$projectId"
+    fun excavations(projectId: String) = "$EXCAVATIONS/$projectId"
 }
 
 /**
@@ -259,6 +262,7 @@ fun AppNavHost(
                     onOpenTemporaryWorks = {
                         navController.navigate(Routes.temporaryWorks(id))
                     },
+                    onOpenExcavations = { navController.navigate(Routes.excavations(id)) },
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -355,6 +359,13 @@ fun AppNavHost(
             }
             composable("${Routes.TEMP_WORKS}/{projectId}") { entry ->
                 TemporaryWorksScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.EXCAVATIONS}/{projectId}") { entry ->
+                ExcavationScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

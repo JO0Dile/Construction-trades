@@ -7,6 +7,7 @@ import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
+import il.co.tradesmanager.data.repository.ExcavationRepository
 import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
@@ -106,6 +107,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val temporaryWorks =
         TemporaryWorksRepository(database.temporaryWorksDao(), auditTrail)
+
+    val excavations = ExcavationRepository(database.excavationDao(), auditTrail)
 
     /** The daily site log — the יומן עבודה a site manager has to keep. */
     val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)
