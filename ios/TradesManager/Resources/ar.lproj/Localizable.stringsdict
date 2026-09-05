@@ -315,5 +315,29 @@
             <string>انتهت الصلاحية منذ %d يوم</string>
         </dict>
     </dict>
+    <key>tw_days_owed</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لم يبقَ يوم</string>
+            <key>one</key>
+            <string>يوم إضافي</string>
+            <key>two</key>
+            <string>يومان إضافيان</string>
+            <key>few</key>
+            <string>%d أيام إضافية</string>
+            <key>many</key>
+            <string>%d يومًا إضافيًا</string>
+            <key>other</key>
+            <string>%d يوم إضافي</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

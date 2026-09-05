@@ -21,6 +21,7 @@ import il.co.tradesmanager.data.local.dao.PurchasingDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
 import il.co.tradesmanager.data.local.dao.ScaffoldDao
 import il.co.tradesmanager.data.local.dao.ScheduleDao
+import il.co.tradesmanager.data.local.dao.TemporaryWorksDao
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
@@ -58,6 +59,7 @@ import il.co.tradesmanager.data.local.entity.StockMovementEntity
 import il.co.tradesmanager.data.local.entity.SupplierEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TeamMemberEntity
+import il.co.tradesmanager.data.local.entity.TemporaryWorksEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkAttendeeEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
@@ -108,8 +110,9 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         ScaffoldInspectionEntity::class,
         LiftPlanEntity::class,
         LiftCrewEntity::class,
+        TemporaryWorksEntity::class,
     ],
-    version = 14,
+    version = 15,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -134,6 +137,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun scaffoldDao(): ScaffoldDao
 
     abstract fun liftingDao(): LiftingDao
+
+    abstract fun temporaryWorksDao(): TemporaryWorksDao
 
     companion object {
         const val NAME = "tradesmanager.db"

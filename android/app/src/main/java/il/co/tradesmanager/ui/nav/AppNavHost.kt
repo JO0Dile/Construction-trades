@@ -56,6 +56,7 @@ import il.co.tradesmanager.ui.safety.ChecklistRunScreen
 import il.co.tradesmanager.ui.safety.SafetyScreen
 import il.co.tradesmanager.ui.schedule.ScheduleScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
+import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
 
 object Routes {
     const val ONBOARDING = "onboarding"
@@ -77,6 +78,7 @@ object Routes {
     const val CONCRETE = "projects/concrete"
     const val SCAFFOLDS = "projects/scaffolds"
     const val LIFTS = "projects/lifts"
+    const val TEMP_WORKS = "projects/tempworks"
     const val PEOPLE = "people"
     const val MONEY = "money"
     const val PLANT = "plant"
@@ -103,6 +105,7 @@ object Routes {
     fun concrete(projectId: String) = "$CONCRETE/$projectId"
     fun scaffolds(projectId: String) = "$SCAFFOLDS/$projectId"
     fun lifts(projectId: String) = "$LIFTS/$projectId"
+    fun temporaryWorks(projectId: String) = "$TEMP_WORKS/$projectId"
 }
 
 /**
@@ -253,6 +256,9 @@ fun AppNavHost(
                     onOpenConcrete = { navController.navigate(Routes.concrete(id)) },
                     onOpenScaffolds = { navController.navigate(Routes.scaffolds(id)) },
                     onOpenLifts = { navController.navigate(Routes.lifts(id)) },
+                    onOpenTemporaryWorks = {
+                        navController.navigate(Routes.temporaryWorks(id))
+                    },
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -342,6 +348,13 @@ fun AppNavHost(
             }
             composable("${Routes.LIFTS}/{projectId}") { entry ->
                 LiftingScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.TEMP_WORKS}/{projectId}") { entry ->
+                TemporaryWorksScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

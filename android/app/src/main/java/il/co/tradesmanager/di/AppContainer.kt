@@ -23,6 +23,7 @@ import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.TemporaryWorksRepository
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import il.co.tradesmanager.data.repository.SettingsRepository
@@ -102,6 +103,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val scaffolds = ScaffoldRepository(database.scaffoldDao(), auditTrail)
 
     val lifting = LiftingRepository(database.liftingDao(), auditTrail)
+
+    val temporaryWorks =
+        TemporaryWorksRepository(database.temporaryWorksDao(), auditTrail)
 
     /** The daily site log — the יומן עבודה a site manager has to keep. */
     val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)

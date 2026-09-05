@@ -3267,6 +3267,246 @@
       "en": "Nobody has approved it",
       "he": "איש לא אישר את ההרמה",
       "ar": "لم يعتمدها أحد"
+    },
+    "tw_title": {
+      "en": "Temporary works",
+      "he": "עבודות זמניות",
+      "ar": "الأعمال المؤقتة"
+    },
+    "tw_row_hint": {
+      "en": "Propping and formwork: what may take load, and what may come down.",
+      "he": "תמיכות ותבניות: מה מותר להעמיס, ומה מותר לפרק.",
+      "ar": "الدعائم والقوالب: ما يجوز تحميله، وما يجوز فكّه."
+    },
+    "tw_new": {
+      "en": "Add temporary works",
+      "he": "הוספת עבודה זמנית",
+      "ar": "إضافة عمل مؤقت"
+    },
+    "tw_empty": {
+      "en": "Nothing on the register.",
+      "he": "אין דבר בפנקס.",
+      "ar": "لا شيء في السجل."
+    },
+    "tw_what": {
+      "en": "What it is",
+      "he": "מה זה",
+      "ar": "ما هو"
+    },
+    "tw_what_hint": {
+      "en": "Props to the level 3 slab; façade retention to the north wall.",
+      "he": "תמיכות לתקרת קומה 3; תמיכת חזית לקיר הצפוני.",
+      "ar": "دعائم لسقف الطابق الثالث؛ تدعيم الواجهة للجدار الشمالي."
+    },
+    "tw_kind": {
+      "en": "Kind",
+      "he": "סוג",
+      "ar": "النوع"
+    },
+    "tw_kind_propping": {
+      "en": "Propping",
+      "he": "תמיכות",
+      "ar": "دعائم"
+    },
+    "tw_kind_formwork": {
+      "en": "Formwork",
+      "he": "תבניות",
+      "ar": "قوالب"
+    },
+    "tw_kind_shoring": {
+      "en": "Shoring",
+      "he": "דיפון",
+      "ar": "تدعيم حفر"
+    },
+    "tw_kind_facade": {
+      "en": "Façade retention",
+      "he": "תמיכת חזית",
+      "ar": "تدعيم الواجهة"
+    },
+    "tw_kind_edge": {
+      "en": "Edge protection",
+      "he": "מעקות בטיחות",
+      "ar": "حماية الحواف"
+    },
+    "tw_kind_other": {
+      "en": "Something else",
+      "he": "אחר",
+      "ar": "غير ذلك"
+    },
+    "tw_category": {
+      "en": "How hard it has to be checked",
+      "he": "רמת הבדיקה הנדרשת",
+      "ar": "مستوى الفحص المطلوب"
+    },
+    "tw_category_0": {
+      "en": "Standard solution, used within its limits",
+      "he": "פתרון סטנדרטי, בתוך מגבלותיו",
+      "ar": "حل قياسي، ضمن حدوده"
+    },
+    "tw_category_1": {
+      "en": "Simple design, checked inside the team",
+      "he": "תכנון פשוט, נבדק בתוך הצוות",
+      "ar": "تصميم بسيط، يُفحص داخل الفريق"
+    },
+    "tw_category_2": {
+      "en": "Checked by somebody outside the design",
+      "he": "נבדק על ידי מי שאינו מהמתכננים",
+      "ar": "يفحصه شخص من خارج فريق التصميم"
+    },
+    "tw_category_3": {
+      "en": "Checked by an independent organisation",
+      "he": "נבדק על ידי גורם עצמאי",
+      "ar": "تفحصه جهة مستقلة"
+    },
+    "tw_design_ref": {
+      "en": "Drawing or calculation",
+      "he": "מספר תוכנית או חישוב",
+      "ar": "رقم المخطط أو الحساب"
+    },
+    "tw_designer": {
+      "en": "Designed by",
+      "he": "תוכנן על ידי",
+      "ar": "صمّمه"
+    },
+    "tw_checker": {
+      "en": "Checked by",
+      "he": "נבדק על ידי",
+      "ar": "فحصه"
+    },
+    "tw_mark_checked": {
+      "en": "Record the check",
+      "he": "רישום הבדיקה",
+      "ar": "تسجيل الفحص"
+    },
+    "tw_mark_erected": {
+      "en": "It is built",
+      "he": "הוקם",
+      "ar": "تم تركيبه"
+    },
+    "tw_mark_inspected": {
+      "en": "Built as drawn",
+      "he": "נבנה לפי התוכנית",
+      "ar": "نُفّذ حسب المخطط"
+    },
+    "tw_mark_inspected_hint": {
+      "en": "Somebody has held the drawing up against what is standing there. This is a separate act from building it, because the commonest failure is a good design built differently.",
+      "he": "מישהו השווה את התוכנית למה שעומד בפועל. זו פעולה נפרדת מההקמה, משום שהכשל הנפוץ ביותר הוא תכנון טוב שבוצע אחרת.",
+      "ar": "قارن أحدهم المخطط بما هو قائم فعلًا. هذا فعل منفصل عن التركيب، لأن الإخفاق الأكثر شيوعًا هو تصميم جيد نُفّذ بشكل مختلف."
+    },
+    "tw_mark_loaded": {
+      "en": "It is carrying load",
+      "he": "נושא עומס",
+      "ar": "يحمل الحمولة"
+    },
+    "tw_release": {
+      "en": "Release it for striking",
+      "he": "אישור לפירוק",
+      "ar": "الإذن بالفك"
+    },
+    "tw_release_hint": {
+      "en": "The decision that drops slabs. It is recorded with a name because afterwards the question is always who released it.",
+      "he": "ההחלטה שמפילה תקרות. היא נרשמת עם שם, משום שבדיעבד השאלה תמיד היא מי אישר.",
+      "ar": "القرار الذي يُسقط الأسقف. يُسجَّل باسم، لأن السؤال لاحقًا هو دائمًا من أذن به."
+    },
+    "tw_released_by": {
+      "en": "Released by",
+      "he": "אושר על ידי",
+      "ar": "أذن به"
+    },
+    "tw_mark_struck": {
+      "en": "Struck",
+      "he": "פורק",
+      "ar": "فُكّ"
+    },
+    "tw_struck": {
+      "en": "Taken down",
+      "he": "מפורק",
+      "ar": "مفكوك"
+    },
+    "tw_supports_pour": {
+      "en": "Holding up a pour",
+      "he": "תומך ביציקה",
+      "ar": "يدعم صبّة"
+    },
+    "tw_supports_pour_none": {
+      "en": "Not holding up concrete",
+      "he": "אינו תומך בבטון",
+      "ar": "لا يدعم خرسانة"
+    },
+    "tw_striking_days": {
+      "en": "Days before it may be struck",
+      "he": "ימים עד שמותר לפרק",
+      "ar": "الأيام قبل السماح بالفك"
+    },
+    "tw_striking_days_hint": {
+      "en": "The engineer's number, off the design. The app defaults to fourteen because that errs towards leaving props in; it does not work the figure out and it is not a judgement about the concrete.",
+      "he": "המספר של המהנדס, מתוך התכנון. ברירת המחדל של האפליקציה היא ארבעה עשר משום שהיא נוטה להשארת התמיכות; היא אינה מחשבת את המספר ואינה מחווה דעה על הבטון.",
+      "ar": "رقم المهندس، من التصميم. القيمة الافتراضية في التطبيق أربعة عشر لأنها تميل إلى إبقاء الدعائم؛ التطبيق لا يحسب الرقم ولا يبدي رأيًا في الخرسانة."
+    },
+    "tw_may_load": {
+      "en": "It may take load.",
+      "he": "מותר להעמיס.",
+      "ar": "يجوز تحميله."
+    },
+    "tw_may_not_load": {
+      "en": "Do not load it",
+      "he": "אין להעמיס",
+      "ar": "ممنوع التحميل"
+    },
+    "tw_may_strike": {
+      "en": "It may come down.",
+      "he": "מותר לפרק.",
+      "ar": "يجوز فكّه."
+    },
+    "tw_may_not_strike": {
+      "en": "Do not strike it",
+      "he": "אין לפרק",
+      "ar": "ممنوع الفك"
+    },
+    "tw_block_no_design": {
+      "en": "No design on record",
+      "he": "לא נרשם תכנון",
+      "ar": "لا تصميم مسجّل"
+    },
+    "tw_block_not_checked": {
+      "en": "The design has not been checked",
+      "he": "התכנון לא נבדק",
+      "ar": "لم يُفحص التصميم"
+    },
+    "tw_block_not_independent": {
+      "en": "At this level the designer cannot check his own work",
+      "he": "ברמה זו המתכנן אינו יכול לבדוק את עצמו",
+      "ar": "في هذا المستوى لا يجوز للمصمم أن يفحص عمله"
+    },
+    "tw_block_not_erected": {
+      "en": "It has not been built",
+      "he": "טרם הוקם",
+      "ar": "لم يُركّب بعد"
+    },
+    "tw_block_not_inspected": {
+      "en": "Nobody has checked it was built as drawn",
+      "he": "איש לא בדק שהביצוע תואם לתוכנית",
+      "ar": "لم يتحقق أحد من مطابقته للمخطط"
+    },
+    "tw_block_struck": {
+      "en": "It has already been taken down",
+      "he": "כבר פורק",
+      "ar": "سبق أن فُكّ"
+    },
+    "tw_block_already_struck": {
+      "en": "Already struck",
+      "he": "כבר פורק",
+      "ar": "فُكّ بالفعل"
+    },
+    "tw_block_too_young": {
+      "en": "The concrete has not had its days",
+      "he": "הבטון טרם השלים את הימים",
+      "ar": "لم تستوفِ الخرسانة أيامها"
+    },
+    "tw_block_not_released": {
+      "en": "Nobody has released it",
+      "he": "איש לא אישר לפירוק",
+      "ar": "لم يأذن أحد بالفك"
     }
   },
   "plurals": {
@@ -3541,6 +3781,27 @@
         "few": "انتهت الصلاحية منذ %d أيام",
         "many": "انتهت الصلاحية منذ %d يومًا",
         "other": "انتهت الصلاحية منذ %d يوم"
+      }
+    },
+    "tw_days_owed": {
+      "c": "Days the concrete still owes before propping may be struck",
+      "en": {
+        "one": "%d more day",
+        "other": "%d more days"
+      },
+      "he": {
+        "one": "עוד יום",
+        "two": "עוד יומיים",
+        "many": "עוד %d ימים",
+        "other": "עוד %d ימים"
+      },
+      "ar": {
+        "zero": "لم يبقَ يوم",
+        "one": "يوم إضافي",
+        "two": "يومان إضافيان",
+        "few": "%d أيام إضافية",
+        "many": "%d يومًا إضافيًا",
+        "other": "%d يوم إضافي"
       }
     }
   }

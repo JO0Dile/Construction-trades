@@ -201,6 +201,31 @@ between. And editing any number, or changing who is on it, clears the approval:
 a supervisor signed off a specific lift, and a plan that keeps the signature
 while the numbers move underneath it is a plan nobody actually approved.
 
+**Phase 4j — temporary works. Done.**
+Propping, formwork, shoring, façade retention: the structures that hold a
+building up while it cannot hold itself, and then come down again. They fail
+differently from permanent work. A permanent structure that is wrong is usually
+wrong slowly; temporary works fail at the moment somebody loads them and the
+moment somebody takes them away, and both of those are decisions a person makes
+on site.
+
+So the register is two gates rather than a status field. Nothing may take load
+until it has been designed, independently checked, erected, **and inspected
+against that design** — the last of those being a separate act from building it,
+because the commonest failure is not a bad design but a good design built
+differently with nobody holding the two up against each other. And nothing may
+come down until somebody with the authority has released it.
+
+The second gate is the one that kills people. Striking props under a slab that
+has not reached strength drops the slab, and the decision is usually made by
+whoever needs the props for the next floor. It is almost always verbal. Here it
+has a name and a time against it, and where the propping is tied to a pour the
+app already recorded, the gate also knows when the concrete went in — so it can
+refuse until the days the engineer specified have passed. The app does not work
+that number out and does not have an opinion about the concrete; it defaults to
+fourteen days because that errs towards leaving props in, and the engineer's
+number replaces it.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -221,8 +246,8 @@ Whole categories still at zero, in roughly the order they are worth doing:
 Since that list was written, eight of its rows have landed and are no longer on
 it: the plant register, purchase orders with goods received, toolbox talks with
 permits to work, one person belonging to several companies, snagging, the
-concrete half of "concrete and structural", the scaffold register, and lifting
-operations.
+concrete half of "concrete and structural", the scaffold register, lifting
+operations, and temporary works.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
@@ -235,8 +260,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 49 | |
-| Buildable here — on the device, no server | 136 | where the work is |
+| Built | 53 | |
+| Buildable here — on the device, no server | 132 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
