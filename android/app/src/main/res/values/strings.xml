@@ -536,6 +536,43 @@
     <string name="log_must_sign">Draw a signature before signing the day off.</string>
     <string name="log_state_draft">Not signed</string>
     <string name="log_state_signed">Signed</string>
+    <string name="pour_title">Concrete</string>
+    <string name="pour_row_hint">Trucks on the way, and how long each load has left.</string>
+    <string name="pour_new">Start a pour</string>
+    <string name="pour_empty">No pours recorded. Start one before the first truck arrives.</string>
+    <string name="pour_element">What is being cast</string>
+    <string name="pour_element_hint">Foundation, column, level 3 slab.</string>
+    <string name="pour_mix">Mix</string>
+    <string name="pour_mix_hint">As the engineer specified: B-30, and so on.</string>
+    <string name="pour_ordered">Cubic metres ordered</string>
+    <string name="pour_supplier">Batch plant</string>
+    <string name="pour_temperature">Temperature today (°C)</string>
+    <string name="pour_temperature_hint">Thirty degrees or more cuts every load\'s working life from 90 minutes to 60.</string>
+    <string name="pour_placed_of">placed of</string>
+    <string name="pour_finish">Finish the pour</string>
+    <string name="pour_finished">Finished</string>
+    <string name="pour_running">Pouring</string>
+    <string name="tick_title">Trucks</string>
+    <string name="tick_add">Book a truck in</string>
+    <string name="tick_empty">No trucks yet.</string>
+    <string name="tick_number">Ticket number</string>
+    <string name="tick_truck">Truck</string>
+    <string name="tick_volume">Cubic metres</string>
+    <string name="tick_dispatched">Batched</string>
+    <string name="tick_dispatched_ago">Minutes since it was batched</string>
+    <string name="tick_dispatched_hint">Read the time off the delivery note and count back to now. The clock starts at the plant, not when the truck reached you.</string>
+    <string name="tick_slump">Slump (cm)</string>
+    <string name="tick_place">Discharged</string>
+    <string name="tick_reject">Send it back</string>
+    <string name="tick_reject_reason">Why</string>
+    <string name="tick_rejected">Sent back</string>
+    <string name="tick_state_en_route">On the way</string>
+    <string name="tick_state_on_site">Here</string>
+    <string name="tick_state_expiring">Running out</string>
+    <string name="tick_state_expired">Out of time — do not pour</string>
+    <string name="tick_state_placed">Placed</string>
+    <string name="tick_late">Went in late</string>
+    <string name="tick_late_hint">Recorded because it cannot be seen afterwards. The engineer should know.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -579,5 +616,9 @@
     <plurals name="log_workers">
         <item quantity="one">%d on site</item>
         <item quantity="other">%d on site</item>
+    </plurals>
+    <plurals name="tick_minutes_left">
+        <item quantity="one">%d minute left</item>
+        <item quantity="other">%d minutes left</item>
     </plurals>
 </resources>

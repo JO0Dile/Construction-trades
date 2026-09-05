@@ -9,6 +9,7 @@ import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
 import il.co.tradesmanager.data.local.entity.SnagEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkAttendeeEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
+import java.util.Locale
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 
@@ -138,7 +139,7 @@ class EvidenceRepository(
         val now = System.currentTimeMillis()
         val permit = PermitEntity(
             id = UUID.randomUUID().toString(),
-            reference = "PTW-%03d".format(dao.permitCount() + 1),
+            reference = String.format(Locale.ROOT, "PTW-%03d", dao.permitCount() + 1),
             projectId = projectId,
             type = type,
             status = Permits.Status.DRAFT,
@@ -291,7 +292,7 @@ class EvidenceRepository(
         val now = System.currentTimeMillis()
         val snag = SnagEntity(
             id = UUID.randomUUID().toString(),
-            reference = "SNAG-%03d".format(dao.snagCount() + 1),
+            reference = String.format(Locale.ROOT, "SNAG-%03d", dao.snagCount() + 1),
             projectId = projectId,
             title = title.trim(),
             location = location?.trim()?.takeIf { it.isNotEmpty() },

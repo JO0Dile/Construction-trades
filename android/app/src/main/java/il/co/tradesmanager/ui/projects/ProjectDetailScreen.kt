@@ -77,6 +77,7 @@ fun ProjectDetailScreen(
     projectId: String,
     onOpenMoney: () -> Unit,
     onOpenDailyLog: () -> Unit,
+    onOpenConcrete: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -123,8 +124,11 @@ fun ProjectDetailScreen(
     val listState = rememberLazyListState()
     val rowsAboveTasks = (if (project != null) 1 else 0) +
         (if (canSeeMoney) 1 else 0) +
-        // Two rows for Evidence: the daily log, then the photographs.
-        (if (canSeeEvidence) 2 else 0) +
+        // The daily log, then concrete, then the photographs. The first and
+        // last are Evidence; concrete is a delivery, so it follows Stuff.
+        (if (canSeeEvidence) 1 else 0) +
+        (if (canSeeStuff) 1 else 0) +
+        (if (canSeeEvidence) 1 else 0) +
         (if (state.tasks.isNotEmpty() && canSeePlan) 1 else 0)
     val firstTaskRow = rowsAboveTasks + 1
     val firstMaterialRow = firstTaskRow +
@@ -243,6 +247,19 @@ fun ProjectDetailScreen(
                         headlineContent = { Text(stringResource(R.string.log_title)) },
                         supportingContent = { Text(stringResource(R.string.log_notes_hint)) },
                         modifier = Modifier.clickable(onClick = onOpenDailyLog),
+                    )
+                }
+            }
+
+            // Concrete is under Stuff, not Evidence: it is material arriving
+            // on a lorry, and the person who books it in is the one who books
+            // in everything else that gets delivered.
+            if (canSeeStuff) {
+                item {
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.pour_title)) },
+                        supportingContent = { Text(stringResource(R.string.pour_row_hint)) },
+                        modifier = Modifier.clickable(onClick = onOpenConcrete),
                     )
                 }
             }

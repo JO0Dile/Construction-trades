@@ -8,6 +8,7 @@ import il.co.tradesmanager.data.local.entity.CostEntryEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
 import il.co.tradesmanager.data.local.entity.JobBudgetEntity
 import il.co.tradesmanager.data.local.entity.VariationEntity
+import java.util.Locale
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -155,7 +156,7 @@ class MoneyRepository(
         val variation = VariationEntity(
             id = UUID.randomUUID().toString(),
             projectId = projectId,
-            reference = "VO-%02d".format(next),
+            reference = String.format(Locale.ROOT, "VO-%02d", next),
             title = title.trim(),
             amount = amount,
             status = JobFinancials.VariationStatus.PROPOSED,
