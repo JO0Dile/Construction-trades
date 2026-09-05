@@ -130,6 +130,15 @@ twenty-four hours. Israel moves its clocks in March and October, so two days a
 year are twenty-three and twenty-five hours long, and a fixed window either
 loses an hour of work off one or steals an hour from the next.
 
+**Phase 4f — photographs that are worth something later. Done.**
+The date, the coordinates and the photographer are burned into the pixels of
+every site photograph rather than drawn over them at display time, because the
+value of a stamp is what survives leaving the app. A photograph emailed to a
+loss adjuster arrives as a picture of a wall unless the date came with it. A
+person's own photograph and their ID document are left alone: stamping somebody
+with the coordinates of where they stood is no use as evidence and is not a
+thing to do to identity documents.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

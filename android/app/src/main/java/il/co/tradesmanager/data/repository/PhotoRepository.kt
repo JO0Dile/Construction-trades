@@ -5,7 +5,11 @@ import android.net.Uri
 import androidx.core.content.FileProvider
 import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.core.evidence.PhotoStamp
+import il.co.tradesmanager.data.photo.Watermark
 import java.io.File
+import java.time.ZoneId
+import java.util.Locale
 import java.util.UUID
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -159,12 +163,33 @@ class PhotoRepository(
         latitude: Double?,
         longitude: Double?,
     ): PhotoEntity {
+        val capturedAt = System.currentTimeMillis()
+
+        // Stamped into the pixels before the row is written, because the value
+        // of the stamp is what survives leaving the app — a photograph that is
+        // emailed to a loss adjuster arrives as a picture of a wall unless the
+        // date and place came with it. Identity photographs are left alone;
+        // see PhotoStamp.appliesTo.
+        if (PhotoStamp.appliesTo(ownerType)) {
+            Watermark.burn(
+                file = file,
+                lines = PhotoStamp.lines(
+                    capturedAt = capturedAt,
+                    latitude = latitude,
+                    longitude = longitude,
+                    recordedBy = actorName,
+                    locale = Locale.getDefault(),
+                    zone = ZoneId.systemDefault(),
+                ),
+            )
+        }
+
         val photo = PhotoEntity(
             id = id,
             ownerType = ownerType,
             ownerId = ownerId,
             uri = file.toURI().toString(),
-            capturedAt = System.currentTimeMillis(),
+            capturedAt = capturedAt,
             latitude = latitude,
             longitude = longitude,
             note = note,
