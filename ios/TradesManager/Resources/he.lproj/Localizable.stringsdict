@@ -263,5 +263,25 @@
             <string>פג תוקף לפני %d ימים</string>
         </dict>
     </dict>
+    <key>tw_days_owed</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>עוד יום</string>
+            <key>two</key>
+            <string>עוד יומיים</string>
+            <key>many</key>
+            <string>עוד %d ימים</string>
+            <key>other</key>
+            <string>עוד %d ימים</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

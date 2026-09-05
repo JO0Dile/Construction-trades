@@ -132,6 +132,13 @@ object Migrations {
         }
     }
 
+    /** Adds the temporary works register: propping, formwork and the rest. */
+    val MIGRATION_14_15 = object : Migration(14, 15) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_14_15.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -146,6 +153,7 @@ object Migrations {
         MIGRATION_11_12,
         MIGRATION_12_13,
         MIGRATION_13_14,
+        MIGRATION_14_15,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -416,5 +424,24 @@ object Migrations {
             "`lift_plans`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "CREATE INDEX IF NOT EXISTS `index_lift_crew_planId` " +
             "ON `lift_crew` (`planId`)",
+    )
+
+    val SQL_14_15: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `temporary_works` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`description` TEXT NOT NULL, `kind` TEXT NOT NULL, " +
+            "`checkCategory` TEXT NOT NULL, `designReference` TEXT, " +
+            "`designerName` TEXT, `checkerName` TEXT, `checkedAt` INTEGER, " +
+            "`erectedAt` INTEGER, `inspectedAt` INTEGER, " +
+            "`inspectedByName` TEXT, `loadedAt` INTEGER, " +
+            "`supportsPourId` TEXT, `supportsPourAt` INTEGER, " +
+            "`minimumStrikingDays` INTEGER NOT NULL, `releasedByName` TEXT, " +
+            "`releasedAt` INTEGER, `struckAt` INTEGER, `notes` TEXT, " +
+            "`createdByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_temporary_works_projectId` " +
+            "ON `temporary_works` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_temporary_works_supportsPourId` " +
+            "ON `temporary_works` (`supportsPourId`)",
     )
 }

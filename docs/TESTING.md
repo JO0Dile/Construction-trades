@@ -445,6 +445,48 @@ will need it below.
       Same for changing who is on it.
 - [ ] Sign in as a worker rather than a supervisor. *Approve* is not offered.
 
+**Temporary works** — open a job → *Temporary works*
+
+Two gates, one above the other: what may take load, and what may come down.
+The second one is the one that drops slabs.
+
+- [ ] **+** → *Propping*, category **Checked by somebody outside the design**.
+      Describe it. Create.
+- [ ] Both gates open red. The load gate lists everything missing at once —
+      no design, not checked, not built, nobody has confirmed it was built as
+      drawn.
+- [ ] *It is carrying load* is **disabled** until the load gate clears. Nothing
+      gets recorded as loaded before it is allowed to be.
+- [ ] Fill in the drawing number and the designer. Record the check, typing the
+      **same name** as the designer. The gate still refuses, because on this
+      category the designer cannot check his own work. Record it again with a
+      different name; that blocker clears.
+- [ ] *It is built* and then *Built as drawn* are two separate buttons on
+      purpose. Press only the first: the gate still refuses. The commonest way
+      temporary works go wrong is a good design built differently, with nobody
+      holding the two up against each other.
+- [ ] Press the second. The load gate goes green and *It is carrying load*
+      becomes pressable.
+
+Now the striking gate. You will need a pour on this job — record one under
+*Concrete* first if there is not one.
+
+- [ ] Open the design dialog again and tie the propping to that pour, leaving
+      the days at **14**.
+- [ ] The strike gate reads that the concrete has not had its days, and counts
+      how many are left. *Struck* is disabled.
+- [ ] Change the days to **0** and save. The concrete blocker clears — but the
+      gate still refuses, because nobody has released it. However old the
+      concrete, something has to come down on somebody's word.
+- [ ] *Release it for striking*. Now *Struck* is pressable, and the register
+      says who released it. That name is the whole reason this screen exists:
+      afterwards the question is always who released it, and the honest answer
+      is usually that nobody remembers.
+- [ ] Sign in as a worker rather than a supervisor. *Release it for striking*
+      is not offered.
+- [ ] Set the days back to 14 and add another item with **no** pour tied to it
+      — edge protection, say. Releasing it is enough; there is nothing curing.
+
 **Snags** — Safety → the checklist icon in the top bar
 - [ ] **+** → describe a defect, say where it is, who has to fix it, and leave
       *Holds up handover* on. Create.
