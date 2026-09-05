@@ -63,6 +63,23 @@ object Passcode {
         )
     }
 
+    /**
+     * Whether a typed password opens this account.
+     *
+     * Stricter than [verify] on the one case that matters once people sign in
+     * by typing a name instead of picking it off a list: an account with no
+     * passcode is opened by an empty password and by nothing else.
+     *
+     * With a picker, "no passcode" was a visible property of an account you
+     * had already chosen. With a typed form, letting any password through
+     * would mean anyone who knows a colleague's name is in — and on a shared
+     * site tablet everybody knows everybody's name. Leaving the field blank is
+     * still one tap for the sole trader who never set one.
+     */
+    fun opens(typed: String, hash: String?, salt: String?): Boolean =
+        if (hash.isNullOrBlank() || salt.isNullOrBlank()) typed.isEmpty()
+        else verify(typed, hash, salt)
+
     fun isAcceptable(passcode: String): Boolean =
         passcode.length >= MIN_LENGTH && passcode.none { it.isWhitespace() }
 

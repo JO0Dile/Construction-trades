@@ -31,6 +31,11 @@ GENERATED = ROOT / "android/app/build/generated/ksp"
 # "CREATE TABLE IF NOT EXISTS `accounts` (...)" -> accounts
 TABLE_NAME = re.compile(r"CREATE\s+TABLE\s+IF\s+NOT\s+EXISTS\s+`([^`]+)`", re.IGNORECASE)
 INDEX_NAME = re.compile(r"CREATE\s+(?:UNIQUE\s+)?INDEX\s+IF\s+NOT\s+EXISTS\s+`([^`]+)`", re.IGNORECASE)
+# "ALTER TABLE `accounts` ADD COLUMN `idNumber` TEXT" -> (accounts, idNumber, TEXT)
+ADD_COLUMN = re.compile(
+    r"ALTER\s+TABLE\s+`([^`]+)`\s+ADD\s+(?:COLUMN\s+)?`([^`]+)`\s*(.*)$",
+    re.IGNORECASE,
+)
 
 
 def normalise(sql: str) -> str:
@@ -52,7 +57,8 @@ def kotlin_statements(source: str) -> list[str]:
             part[1:-1].encode().decode("unicode_escape")
             for part in re.findall(LITERAL, chain)
         )
-        if TABLE_NAME.match(joined.strip()) or INDEX_NAME.match(joined.strip()):
+        stripped = joined.strip()
+        if TABLE_NAME.match(stripped) or INDEX_NAME.match(stripped) or ADD_COLUMN.match(stripped):
             statements.append(normalise(joined))
     return statements
 
@@ -77,16 +83,89 @@ def generated_statements() -> dict[str, str]:
     return found
 
 
+def split_columns(create_table: str) -> dict[str, str]:
+    """Column name -> its definition, out of a Room CREATE TABLE statement.
+
+    A column added by ALTER TABLE has to end up identical to the one Room
+    generates from the entity, or the schema check on the next open fails just
+    as loudly as a mismatched CREATE TABLE would.
+    """
+    body = create_table[create_table.index("(") + 1 : create_table.rindex(")")]
+    parts: list[str] = []
+    depth = 0
+    current = ""
+    for char in body:
+        if char == "(":
+            depth += 1
+        elif char == ")":
+            depth -= 1
+        if char == "," and depth == 0:
+            parts.append(current)
+            current = ""
+        else:
+            current += char
+    parts.append(current)
+
+    columns: dict[str, str] = {}
+    for part in parts:
+        piece = part.strip()
+        match = re.match(r"`([^`]+)`\s*(.*)$", piece)
+        if match:
+            columns[match.group(1)] = normalise(match.group(2))
+    return columns
+
+
+def check_added_column(statement: str, expected: dict[str, str]) -> str | None:
+    """Verifies one ALTER TABLE ADD COLUMN against the entity's own DDL."""
+    match = ADD_COLUMN.match(statement)
+    if not match:
+        return None
+    table, column, definition = match.group(1), match.group(2), normalise(match.group(3))
+
+    create = expected.get(table)
+    if create is None:
+        return f"{table}.{column}: the migration alters a table no entity declares."
+
+    room = split_columns(create).get(column)
+    if room is None:
+        return (
+            f"{table}.{column}: the migration adds it, but the entity has no such column.\n"
+            f"    migration: {definition}"
+        )
+    if room != definition:
+        return (
+            f"{table}.{column}: the migration and the entity disagree.\n"
+            f"    migration: {definition}\n"
+            f"    room:      {room}"
+        )
+    # SQLite cannot add a NOT NULL column without a DEFAULT, and Room does not
+    # know about a default the entity never declared. Catching it here beats
+    # catching it as a crash on launch.
+    if "NOT NULL" in definition.upper() and "DEFAULT" not in definition.upper():
+        return (
+            f"{table}.{column}: SQLite refuses a NOT NULL column with no DEFAULT.\n"
+            f"    Make the property nullable, or declare a matching "
+            f"@ColumnInfo(defaultValue = ...)."
+        )
+    return None
+
+
 def main() -> int:
     migration_sql = kotlin_statements(MIGRATIONS.read_text(encoding="utf-8"))
     if not migration_sql:
-        print("No CREATE statements in Migrations.kt — nothing to check.")
+        print("No CREATE or ALTER statements in Migrations.kt — nothing to check.")
         return 0
 
     expected = generated_statements()
     problems: list[str] = []
 
     for statement in migration_sql:
+        if ADD_COLUMN.match(statement):
+            problem = check_added_column(statement, expected)
+            if problem:
+                problems.append(problem)
+            continue
+
         match = TABLE_NAME.match(statement) or INDEX_NAME.match(statement)
         if not match:
             continue
@@ -114,13 +193,16 @@ def main() -> int:
             print(f"  {problem}\n")
         return 1
 
-    checked = ", ".join(
-        sorted(
-            (TABLE_NAME.match(s) or INDEX_NAME.match(s)).group(1)
-            for s in migration_sql
-            if TABLE_NAME.match(s) or INDEX_NAME.match(s)
-        )
-    )
+    names: set[str] = set()
+    for statement in migration_sql:
+        created = TABLE_NAME.match(statement) or INDEX_NAME.match(statement)
+        if created:
+            names.add(created.group(1))
+            continue
+        altered = ADD_COLUMN.match(statement)
+        if altered:
+            names.add(f"{altered.group(1)}.{altered.group(2)}")
+    checked = ", ".join(sorted(names))
     print(f"Migration SQL matches the schema Room expects ({checked}).")
     return 0
 

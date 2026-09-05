@@ -38,6 +38,14 @@ class PhotoRepository(
         const val INVENTORY_ITEM = "inventory_item"
         const val INCIDENT = "incident"
 
+        /**
+         * The two identity pictures: a face for the gate, and the ID document
+         * itself. Both stay on the device — the app has no server to send them
+         * to, and an ID document is not something to be casual about.
+         */
+        const val ACCOUNT_PHOTO = "account.photo"
+        const val ACCOUNT_ID_DOCUMENT = "account.id_document"
+
         val projectAny = listOf(PROJECT_PLAN, PROJECT_PHOTO)
     }
 

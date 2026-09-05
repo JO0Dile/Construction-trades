@@ -85,6 +85,25 @@ every time it is asked, never read off its status column — nobody goes round
 updating database rows at knocking-off time, so a permit that ran out at five
 has to stop saying "live" at five, on a phone that has been open since two.
 
+**Phase 4c — the door, and the induction behind it. Done.**
+Signing in is typing the username or ID number and the password somebody in
+the office gave you, not picking yourself off a list of everyone on the
+device — that list handed a crew roster to whoever picked the phone up, and it
+did not match how people are actually told who they are.
+
+Behind the door is a safety induction that cannot be skipped, dismissed or
+gone back from. Two versions of it: one page of PPE for somebody on the tools,
+and the same page plus the rules they enforce for somebody running the job —
+which one you get is derived from the existing role grid rather than from a
+second list beside it. It is signed by hand, and the signature is stored
+against the account with the date.
+
+Still open: one person belonging to more than one company. A tradesperson is
+on this site today and another tomorrow, and identity — their ID number, their
+photograph, their induction — belongs to the person, while the role belongs to
+the membership. The identity fields already sit on the account for that
+reason; the membership table is the next change.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -97,6 +116,7 @@ Whole categories still at zero, in roughly the order they are worth doing:
 
 | Not started | Lens it will land in |
 | ----------- | -------------------- |
+| One person, several companies or sites | People |
 | Snagging and quality inspections | Evidence |
 | Payment applications, retention, subcontract ledgers | Money |
 | Sync between devices | every lens, one mechanism |

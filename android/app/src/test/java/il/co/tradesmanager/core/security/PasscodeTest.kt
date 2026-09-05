@@ -78,4 +78,22 @@ class PasscodeTest {
         assertTrue(Passcode.verify("סיסמה", stored.hash, stored.salt))
         assertFalse(Passcode.verify("סיסמא", stored.hash, stored.salt))
     }
+
+    @Test
+    fun `an account with no passcode is opened by a blank password and nothing else`() {
+        // Once people sign in by typing a name rather than picking it off a
+        // list, "anything verifies" would mean anyone who knows a colleague's
+        // name is in — and on a shared site tablet everybody knows everybody.
+        assertTrue(Passcode.opens("", null, null))
+        assertFalse(Passcode.opens("guess", null, null))
+        assertFalse(Passcode.opens("0000", null, null))
+    }
+
+    @Test
+    fun `opens still needs the right passcode when there is one`() {
+        val hashed = Passcode.hash("2468")
+        assertTrue(Passcode.opens("2468", hashed.hash, hashed.salt))
+        assertFalse(Passcode.opens("2469", hashed.hash, hashed.salt))
+        assertFalse(Passcode.opens("", hashed.hash, hashed.salt))
+    }
 }

@@ -60,9 +60,17 @@ class PeopleViewModel(private val container: AppContainer) : ViewModel() {
         _refusal.value = null
     }
 
-    fun addMember(name: String, role: Role, passcode: String?) = viewModelScope.launch {
+    fun addMember(
+        name: String,
+        username: String?,
+        idNumber: String?,
+        role: Role,
+        passcode: String?,
+    ) = viewModelScope.launch {
         val actor = container.session.current() ?: return@launch
-        container.accounts.addMember(actor, name, role, passcode).recordRefusal()
+        container.accounts
+            .addMember(actor, name, role, passcode, username, idNumber)
+            .recordRefusal()
     }
 
     fun setRole(target: AccountEntity, role: Role) = viewModelScope.launch {

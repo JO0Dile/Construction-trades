@@ -2,6 +2,7 @@ package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.security.Passcode
+import il.co.tradesmanager.core.security.Signature
 import il.co.tradesmanager.data.local.dao.AccountDao
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.CompanyEntity
@@ -27,6 +28,16 @@ class AccountRepository(
         data class Success(val account: AccountEntity) : SignIn
         data object WrongPasscode : SignIn
         data object NoSuchAccount : SignIn
+
+        /**
+         * The name and the password together did not match anybody.
+         *
+         * Deliberately one answer rather than two. Telling somebody that the
+         * name exists but the password is wrong tells them which of their
+         * colleagues to keep guessing at, and the person signing in gained
+         * nothing from the distinction — they retype both either way.
+         */
+        data object WrongCredentials : SignIn
     }
 
     /** Why a member could not be removed or demoted. */
@@ -49,8 +60,20 @@ class AccountRepository(
      * Stored as an owner so every permission check has one shape — a sole
      * trader never meets the permission model at all.
      */
-    suspend fun createPersonalAccount(name: String, passcode: String?): AccountEntity =
-        create(name = name, companyId = null, role = Role.OWNER, passcode = passcode)
+    suspend fun createPersonalAccount(
+        name: String,
+        passcode: String?,
+        username: String? = null,
+        idNumber: String? = null,
+    ): AccountEntity =
+        create(
+            name = name,
+            companyId = null,
+            role = Role.OWNER,
+            passcode = passcode,
+            username = username,
+            idNumber = idNumber,
+        )
 
     /**
      * A company and the person setting it up, who is its owner. Both rows are
@@ -62,6 +85,8 @@ class AccountRepository(
         registrationNumber: String?,
         ownerName: String,
         passcode: String?,
+        ownerUsername: String? = null,
+        ownerIdNumber: String? = null,
     ): AccountEntity {
         val now = System.currentTimeMillis()
         val company = CompanyEntity(
@@ -78,6 +103,8 @@ class AccountRepository(
             companyId = company.id,
             role = Role.OWNER,
             passcode = passcode,
+            username = ownerUsername,
+            idNumber = ownerIdNumber,
         )
     }
 
@@ -87,6 +114,8 @@ class AccountRepository(
         name: String,
         role: Role,
         passcode: String?,
+        username: String? = null,
+        idNumber: String? = null,
     ): Result<AccountEntity> {
         if (!Role.parse(actor.role).canManageMembers) {
             return Result.failure(RefusedException(Refusal.NotPermitted))
@@ -97,6 +126,8 @@ class AccountRepository(
                 companyId = actor.companyId,
                 role = role,
                 passcode = passcode,
+                username = username,
+                idNumber = idNumber,
                 actorName = actor.displayName,
             ),
         )
@@ -160,6 +191,66 @@ class AccountRepository(
     }
 
     /**
+     * Signs in by the name or ID number the site office gave somebody, rather
+     * than by picking their row off a list.
+     *
+     * The list was the wrong shape twice over. It showed everyone on the
+     * device to anyone holding it — a crew roster to whoever picks the tablet
+     * up — and it did not match how people are actually told who they are: a
+     * manager hands over a name and a password.
+     *
+     * Names on a site repeat. Two Hammams on one job is normal, so every
+     * account matching the name is tried and the password decides which one
+     * was meant. The ID number is accepted in the same field because it is the
+     * thing that does not repeat.
+     */
+    suspend fun signInByIdentifier(identifier: String, passcode: String): SignIn {
+        val typed = identifier.trim()
+        if (typed.isEmpty()) return SignIn.WrongCredentials
+
+        val candidates = dao.accountsMatching(typed).filter { it.deletedAt == null }
+        val account = candidates.firstOrNull {
+            Passcode.opens(passcode, it.passcodeHash, it.passcodeSalt)
+        } ?: return SignIn.WrongCredentials
+
+        val now = System.currentTimeMillis()
+        dao.recordSignIn(account.id, now)
+        return SignIn.Success(account.copy(lastSignInAt = now))
+    }
+
+    /**
+     * Records that somebody read the safety induction and signed it.
+     *
+     * Refuses a signature that is not one. The induction is the record that
+     * says a person was told what to wear and who to tell, and a stray tap on
+     * the glass has told them nothing — so the check lives here, on the only
+     * path that can set the date, rather than only on the screen.
+     */
+    suspend fun recordInduction(accountId: String, signature: String): Boolean {
+        if (!Signature.isSigned(signature)) return false
+        val account = dao.account(accountId)?.takeIf { it.deletedAt == null } ?: return false
+        val now = System.currentTimeMillis()
+        dao.upsert(account.copy(inductionSignature = signature, inductedAt = now))
+        audit.record(
+            ENTITY, account.id, AuditTrail.Action.SIGN_OFF, account.displayName,
+            "Safety induction signed",
+        )
+        return true
+    }
+
+    /** Whether an ID number is already spoken for, so sign-up can say so. */
+    suspend fun isIdNumberTaken(idNumber: String): Boolean =
+        idNumber.isNotBlank() && dao.countWithIdNumber(idNumber) > 0
+
+    /** The ID number the site office holds. Set at sign-up, editable after. */
+    suspend fun setIdNumber(account: AccountEntity, idNumber: String?) {
+        dao.upsert(
+            account.copy(idNumber = idNumber?.trim()?.takeIf { it.isNotEmpty() }),
+        )
+        audit.record(ENTITY, account.id, AuditTrail.Action.UPDATE, account.displayName, "ID number set")
+    }
+
+    /**
      * True when this change would leave nobody able to administer the company.
      * A personal account cannot strand anyone, so it is always free to change.
      */
@@ -175,6 +266,8 @@ class AccountRepository(
         companyId: String?,
         role: Role,
         passcode: String?,
+        username: String? = null,
+        idNumber: String? = null,
         actorName: String = name.trim(),
     ): AccountEntity {
         val hashed = passcode?.takeIf { it.isNotBlank() }?.let { Passcode.hash(it) }
@@ -188,6 +281,12 @@ class AccountRepository(
             createdAt = System.currentTimeMillis(),
             lastSignInAt = null,
             deletedAt = null,
+            username = username?.trim()?.takeIf { it.isNotEmpty() },
+            idNumber = idNumber?.trim()?.takeIf { it.isNotEmpty() },
+            // Nobody is inducted by being created. The person themselves reads
+            // it and signs it, on their own first sign-in.
+            inductionSignature = null,
+            inductedAt = null,
         )
         dao.upsert(account)
         audit.record(

@@ -1,6 +1,5 @@
 package il.co.tradesmanager.ui.account
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,15 +16,12 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,7 +37,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.security.Passcode
-import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 
@@ -59,8 +54,7 @@ fun AccountGateScreen(container: AppContainer, needsSetup: Boolean) {
     val viewModel: AccountViewModel = viewModel(
         factory = ViewModelFactory(container) { AccountViewModel(it) },
     )
-    val accounts by viewModel.accounts.collectAsStateWithLifecycle()
-    val wrongPasscode by viewModel.wrongPasscode.collectAsStateWithLifecycle()
+    val wrongCredentials by viewModel.wrongCredentials.collectAsStateWithLifecycle()
 
     Surface(Modifier.fillMaxSize()) {
         if (needsSetup) {
@@ -70,8 +64,7 @@ fun AccountGateScreen(container: AppContainer, needsSetup: Boolean) {
             )
         } else {
             SignIn(
-                accounts = accounts,
-                wrongPasscode = wrongPasscode,
+                wrongCredentials = wrongCredentials,
                 onTyping = viewModel::clearError,
                 onSignIn = viewModel::signIn,
             )
@@ -85,8 +78,15 @@ private enum class Setup { CHOOSE, PERSONAL, COMPANY }
 
 @Composable
 private fun FirstRun(
-    onPersonal: (name: String, passcode: String?) -> Unit,
-    onCompany: (company: String, registration: String?, owner: String, passcode: String?) -> Unit,
+    onPersonal: (name: String, username: String?, idNumber: String?, passcode: String?) -> Unit,
+    onCompany: (
+        company: String,
+        registration: String?,
+        owner: String,
+        username: String?,
+        idNumber: String?,
+        passcode: String?,
+    ) -> Unit,
 ) {
     var step by remember { mutableStateOf(Setup.CHOOSE) }
 
@@ -157,8 +157,12 @@ private fun Choice(title: String, hint: String, onClick: () -> Unit) {
 }
 
 @Composable
-private fun PersonalForm(onCreate: (name: String, passcode: String?) -> Unit) {
+private fun PersonalForm(
+    onCreate: (name: String, username: String?, idNumber: String?, passcode: String?) -> Unit,
+) {
     var name by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
+    var idNumber by remember { mutableStateOf("") }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
 
@@ -170,9 +174,22 @@ private fun PersonalForm(onCreate: (name: String, passcode: String?) -> Unit) {
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
         )
+        IdentityFields(
+            username = username,
+            onUsername = { username = it },
+            idNumber = idNumber,
+            onIdNumber = { idNumber = it },
+        )
         PasscodeField(passcode, { passcode = it }, passcodeOk)
         Button(
-            onClick = { onCreate(name.trim(), passcode.takeIf { it.isNotEmpty() }) },
+            onClick = {
+                onCreate(
+                    name.trim(),
+                    username.trim().takeIf { it.isNotEmpty() },
+                    idNumber.trim().takeIf { it.isNotEmpty() },
+                    passcode.takeIf { it.isNotEmpty() },
+                )
+            },
             enabled = name.isNotBlank() && passcodeOk,
             modifier = Modifier.fillMaxWidth(),
         ) {
@@ -181,13 +198,54 @@ private fun PersonalForm(onCreate: (name: String, passcode: String?) -> Unit) {
     }
 }
 
+/**
+ * The two things that identify one person out of five on a site.
+ *
+ * Both optional. A sole trader setting the app up on a Tuesday morning should
+ * not be stopped at a field they have to go and look up, and a manager filling
+ * in a crew has every reason to fill both in.
+ */
+@Composable
+private fun IdentityFields(
+    username: String,
+    onUsername: (String) -> Unit,
+    idNumber: String,
+    onIdNumber: (String) -> Unit,
+) {
+    OutlinedTextField(
+        value = username,
+        onValueChange = onUsername,
+        label = { Text(stringResource(R.string.acc_identifier)) },
+        supportingText = { Text(stringResource(R.string.acc_identifier_hint)) },
+        singleLine = true,
+        modifier = Modifier.fillMaxWidth(),
+    )
+    OutlinedTextField(
+        value = idNumber,
+        onValueChange = onIdNumber,
+        label = { Text(stringResource(R.string.acc_id_number)) },
+        supportingText = { Text(stringResource(R.string.acc_id_number_hint)) },
+        singleLine = true,
+        modifier = Modifier.fillMaxWidth(),
+    )
+}
+
 @Composable
 private fun CompanyForm(
-    onCreate: (company: String, registration: String?, owner: String, passcode: String?) -> Unit,
+    onCreate: (
+        company: String,
+        registration: String?,
+        owner: String,
+        username: String?,
+        idNumber: String?,
+        passcode: String?,
+    ) -> Unit,
 ) {
     var companyName by remember { mutableStateOf("") }
     var registration by remember { mutableStateOf("") }
     var ownerName by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
+    var idNumber by remember { mutableStateOf("") }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
 
@@ -214,6 +272,12 @@ private fun CompanyForm(
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
         )
+        IdentityFields(
+            username = username,
+            onUsername = { username = it },
+            idNumber = idNumber,
+            onIdNumber = { idNumber = it },
+        )
         PasscodeField(passcode, { passcode = it }, passcodeOk)
         Button(
             onClick = {
@@ -221,6 +285,8 @@ private fun CompanyForm(
                     companyName.trim(),
                     registration.trim().takeIf { it.isNotEmpty() },
                     ownerName.trim(),
+                    username.trim().takeIf { it.isNotEmpty() },
+                    idNumber.trim().takeIf { it.isNotEmpty() },
                     passcode.takeIf { it.isNotEmpty() },
                 )
             },
@@ -234,93 +300,83 @@ private fun CompanyForm(
 
 /* ------------------------------------------------------------------ sign in */
 
+/**
+ * Typing who you are, rather than picking yourself off a list.
+ *
+ * The list was wrong twice over. It showed every account on the device to
+ * whoever picked the phone up — a crew roster handed to a stranger — and it did
+ * not match how people are actually told who they are on a site: somebody in
+ * the office gives you a username and a password.
+ *
+ * One error message covers both a name nobody has and a password that does not
+ * match. Telling somebody which half was wrong tells them which of their
+ * colleagues to keep guessing at, and the person genuinely signing in learns
+ * nothing from the distinction — they retype both either way.
+ */
 @Composable
 private fun SignIn(
-    accounts: List<AccountEntity>,
-    wrongPasscode: Boolean,
+    wrongCredentials: Boolean,
     onTyping: () -> Unit,
-    onSignIn: (String, String) -> Unit,
+    onSignIn: (identifier: String, password: String) -> Unit,
 ) {
-    var chosen by remember { mutableStateOf<AccountEntity?>(null) }
-    var passcode by remember { mutableStateOf("") }
-
-    // One account with no passcode is not a sign-in screen, it is a doorway
-    // someone taps through for no reason — go straight in. In an effect, not
-    // in composition: composition runs again for all sorts of reasons and this
-    // must happen once.
-    val single = accounts.singleOrNull()
-    LaunchedEffect(single?.id) {
-        if (single != null && single.passcodeHash == null) onSignIn(single.id, "")
-    }
+    var identifier by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
             .padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Text(
-            text = stringResource(R.string.acc_sign_in_as),
-            style = MaterialTheme.typography.headlineSmall,
-            modifier = Modifier.padding(bottom = 16.dp),
+            text = stringResource(R.string.acc_sign_in_title),
+            style = MaterialTheme.typography.headlineMedium,
         )
 
-        accounts.forEach { account ->
-            val selected = chosen?.id == account.id
-            ListItem(
-                headlineContent = { Text(account.displayName) },
-                supportingContent = { Text(stringResource(roleLabel(Role.parse(account.role)))) },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        chosen = account
-                        passcode = ""
-                        onTyping()
-                    },
-                colors = ListItemDefaults.colors(
-                    containerColor = if (selected) {
-                        MaterialTheme.colorScheme.secondaryContainer
-                    } else {
-                        MaterialTheme.colorScheme.surface
-                    },
-                ),
-            )
-        }
+        OutlinedTextField(
+            value = identifier,
+            onValueChange = {
+                identifier = it
+                onTyping()
+            },
+            label = { Text(stringResource(R.string.acc_identifier)) },
+            supportingText = { Text(stringResource(R.string.acc_identifier_hint)) },
+            isError = wrongCredentials,
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+        )
 
-        val account = chosen
-        if (account != null) {
-            Spacer(Modifier.height(20.dp))
-            if (account.passcodeHash == null) {
-                Button(
-                    onClick = { onSignIn(account.id, "") },
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(stringResource(R.string.acc_sign_in))
-                }
-            } else {
-                OutlinedTextField(
-                    value = passcode,
-                    onValueChange = {
-                        passcode = it
-                        onTyping()
-                    },
-                    label = { Text(stringResource(R.string.acc_passcode)) },
-                    isError = wrongPasscode,
-                    supportingText = {
-                        if (wrongPasscode) Text(stringResource(R.string.acc_wrong_passcode))
-                    },
-                    singleLine = true,
-                    visualTransformation = PasswordVisualTransformation(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-                    modifier = Modifier.fillMaxWidth(),
+        OutlinedTextField(
+            value = password,
+            onValueChange = {
+                password = it
+                onTyping()
+            },
+            label = { Text(stringResource(R.string.acc_password)) },
+            supportingText = {
+                Text(
+                    stringResource(
+                        if (wrongCredentials) {
+                            R.string.acc_wrong_credentials
+                        } else {
+                            R.string.acc_password_blank_hint
+                        },
+                    ),
                 )
-                Button(
-                    onClick = { onSignIn(account.id, passcode) },
-                    enabled = passcode.isNotEmpty(),
-                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
-                ) {
-                    Text(stringResource(R.string.acc_sign_in))
-                }
-            }
+            },
+            isError = wrongCredentials,
+            singleLine = true,
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            modifier = Modifier.fillMaxWidth(),
+        )
+
+        Button(
+            onClick = { onSignIn(identifier, password) },
+            enabled = identifier.isNotBlank(),
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(stringResource(R.string.acc_sign_in))
         }
     }
 }

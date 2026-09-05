@@ -45,4 +45,33 @@ data class AccountEntity(
     val lastSignInAt: Long?,
     /** Removed members are kept, because the audit trail names them. */
     val deletedAt: Long?,
+    /**
+     * What they type to sign in.
+     *
+     * Separate from [displayName] because the two answer different questions.
+     * A display name is what a register should read; a username is what picks
+     * one person out of five. Two people called Hammam on one job is an
+     * ordinary Tuesday, and a list showing "hammam" twice is not a list
+     * anybody can sign in from.
+     *
+     * Nullable, because accounts made before this existed have none. They keep
+     * signing in by display name, which still works.
+     */
+    val username: String?,
+    /**
+     * The תעודת זהות or passport number the site office holds.
+     *
+     * Optional, because a sole trader setting the app up on a Tuesday morning
+     * should not be stopped at a field, but the thing a manager actually
+     * identifies a person by — names on a site repeat, and this one does not.
+     * It is also accepted at the sign-in field for exactly that reason.
+     */
+    val idNumber: String?,
+    /**
+     * The induction this person signed, drawn with a finger. Encoded by
+     * [il.co.tradesmanager.core.security.Signature].
+     */
+    val inductionSignature: String?,
+    /** When they signed it. Null means they have not, and the app does not open. */
+    val inductedAt: Long?,
 )
