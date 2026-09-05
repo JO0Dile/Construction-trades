@@ -10,4 +10,9 @@ captures/
 *.apk
 *.aab
 *.keystore
+# ...except this one, which is committed on purpose. Gradle's generated debug
+# key differs per machine, so two CI runners would build APKs that cannot
+# install over each other. Its password is the well-known "android" and it
+# protects nothing. A real signing key never goes in here.
+!app/debug.keystore
 keystore.properties
