@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -28,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -41,6 +43,7 @@ import il.co.tradesmanager.data.repository.SettingsRepository.ThemeMode
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
 import il.co.tradesmanager.ui.components.currentLanguageTag
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,6 +54,7 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
     )
     val settings by viewModel.settings.collectAsStateWithLifecycle()
     val trades by viewModel.trades.collectAsStateWithLifecycle()
+    var addingTrade by remember { mutableStateOf(false) }
     val languageTag = currentLanguageTag()
     val context = LocalContext.current
     val languages = remember(languageTag) { AppLanguages.supported(context) }
@@ -120,15 +124,41 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 )
             }
 
-            item { SectionHeader(stringResource(R.string.set_trades)) }
+            item {
+                SectionHeaderWithAdd(
+                    title = stringResource(R.string.set_trades),
+                    contentDescription = stringResource(R.string.trade_add),
+                    onAdd = { addingTrade = true },
+                )
+            }
             items(trades, key = { it.id }) { trade ->
+                val isCustom = viewModel.isCustom(trade)
+                val badge: (@Composable () -> Unit)? = if (isCustom) {
+                    { Text(stringResource(R.string.trade_custom)) }
+                } else {
+                    null
+                }
                 ListItem(
                     headlineContent = { Text(trade.names.resolve(languageTag)) },
+                    supportingContent = badge,
                     trailingContent = {
-                        Switch(
-                            checked = trade.isSelected,
-                            onCheckedChange = { viewModel.toggleTrade(trade.id, it) },
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Switch(
+                                checked = trade.isSelected,
+                                onCheckedChange = { viewModel.toggleTrade(trade.id, it) },
+                            )
+                            // Only the user's own trades can go. A shipped one
+                            // would be back on the next catalogue load, so
+                            // offering to delete it would be a lie.
+                            if (isCustom) {
+                                IconButton(onClick = { viewModel.deleteTrade(trade) }) {
+                                    Icon(
+                                        Icons.Filled.Close,
+                                        contentDescription = stringResource(R.string.action_delete),
+                                    )
+                                }
+                            }
+                        }
                     },
                 )
             }
@@ -180,6 +210,46 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 )
             }
         }
+    }
+
+    if (addingTrade) {
+        var name by remember { mutableStateOf("") }
+        AlertDialog(
+            onDismissRequest = { addingTrade = false },
+            title = { Text(stringResource(R.string.trade_add)) },
+            text = {
+                Column {
+                    Text(
+                        text = stringResource(R.string.trade_add_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { name = it },
+                        label = { Text(stringResource(R.string.trade_name)) },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    enabled = name.isNotBlank(),
+                    onClick = {
+                        viewModel.addTrade(name, languageTag)
+                        addingTrade = false
+                    },
+                ) {
+                    Text(stringResource(R.string.action_add))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { addingTrade = false }) {
+                    Text(stringResource(R.string.action_cancel))
+                }
+            },
+        )
     }
 
     if (confirmDelete) {

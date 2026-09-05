@@ -48,6 +48,14 @@ interface PhotoDao {
     @Query("SELECT * FROM photos WHERE ownerType = :ownerType ORDER BY capturedAt DESC")
     fun observeAllOfType(ownerType: String): Flow<List<PhotoEntity>>
 
+    /**
+     * Every project image in one query. A cover thumbnail per project row is
+     * otherwise one query per visible row, which is the classic way to make a
+     * list scroll badly.
+     */
+    @Query("SELECT * FROM photos WHERE ownerType IN (:ownerTypes) ORDER BY capturedAt DESC")
+    fun observeAllOfTypes(ownerTypes: List<String>): Flow<List<PhotoEntity>>
+
     @Query("UPDATE photos SET ownerType = :ownerType WHERE id = :id")
     suspend fun setOwnerType(id: String, ownerType: String)
 }

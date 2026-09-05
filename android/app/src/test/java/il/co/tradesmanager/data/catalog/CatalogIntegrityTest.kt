@@ -108,6 +108,23 @@ class CatalogIntegrityTest {
     }
 
     @Test
+    fun `every kind of place is offered in all shipped languages`() {
+        assertTrue("no project kinds in the manifest", manifest.projectKinds.isNotEmpty())
+
+        val missing = manifest.projectKinds.flatMap { kind ->
+            languages.filter { kind.names[it].isNullOrBlank() }.map { "${kind.id}:$it" }
+        }
+        assertEquals(
+            "an untranslated kind shows a job as \"lobby\" on a Hebrew phone",
+            emptyList<String>(),
+            missing,
+        )
+
+        val duplicates = manifest.projectKinds.groupBy { it.id }.filterValues { it.size > 1 }.keys
+        assertEquals(emptySet<String>(), duplicates)
+    }
+
+    @Test
     fun `every safety check is written in all shipped languages`() {
         val missing = manifest.trades.mapNotNull { it.safetyFile }.flatMap { path ->
             json.decodeFromString<SafetyFile>(read(path)).checklists.flatMap { list ->

@@ -12,6 +12,7 @@ import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
+import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.sync.NoOpSyncEngine
 import il.co.tradesmanager.data.sync.SyncEngine
 
@@ -51,6 +52,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val safety = SafetyRepository(database.safetyDao(), database.catalogDao(), auditTrail)
 
     val catalogDao = database.catalogDao()
+
+    val trades = TradeRepository(catalogDao, auditTrail)
 
     val seeder = CatalogSeeder(
         source = catalogSource,

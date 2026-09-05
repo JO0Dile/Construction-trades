@@ -104,6 +104,14 @@
 "proj_empty" = "لا توجد مشاريع بعد";
 "proj_add_material" = "إضافة مادة";
 "proj_required_qty" = "مطلوب";
+"proj_add_task" = "إضافة مهمة";
+"proj_task_title" = "ما الذي يجب عمله";
+"proj_tasks_empty" = "لا توجد مهام بعد.";
+"proj_materials_empty" = "لم يُسجَّل شيء بعد. أضف ما يحتاجه هذا العمل.";
+"proj_material_name" = "مادة أو أداة";
+"proj_material_search" = "ابحث في الكتالوج";
+"proj_quantity" = "الكمية";
+"proj_unit" = "الوحدة";
 /* Project section holding the site plan and progress photos */
 "photo_section" = "مخططات وصور";
 "photo_add" = "إضافة مخطط أو صورة";
@@ -117,6 +125,35 @@
 "photo_failed" = "تعذّر حفظ الصورة";
 /* Photograph of the user's own stock, replacing the category icon */
 "item_photo" = "صورة الصنف";
+/* Create a trade the app does not ship a catalogue for */
+"trade_add" = "إضافة مهنة";
+"trade_add_hint" = "لعمل لا يغطيه التطبيق بعد — أسطح، تنسيق حدائق، زجاج. تبدأ فارغة وتضيف إليها أصنافك.";
+"trade_name" = "اسم المهنة";
+/* Badge marking a trade the user created */
+"trade_custom" = "خاصتك";
+"proj_blank" = "مشروع فارغ";
+/* What sort of place the job is — house, floor, room */
+"proj_kind" = "نوع المكان";
+"proj_kind_other" = "شيء آخر";
+"proj_create" = "إنشاء";
+"proj_start_from" = "ابدأ من";
+"proj_blank_hint" = "بدون قائمة مهام وبدون مواد — عمل تملؤه بنفسك.";
+"proj_view_grid" = "عرض كبطاقات";
+"proj_view_list" = "عرض كقائمة";
+"proj_kind_other_hint" = "ما اسم هذا المكان؟";
+"update_title" = "تحديثات التطبيق";
+"update_installed" = "النسخة المثبّتة";
+"update_check" = "التحقق من التحديثات";
+"update_checking" = "جارٍ التحقق…";
+"update_current" = "لديك أحدث نسخة";
+"update_available" = "تتوفر نسخة جديدة";
+"update_download" = "تنزيل وتثبيت";
+"update_downloading" = "جارٍ التنزيل…";
+"update_install" = "تثبيت";
+"update_failed" = "تعذّر التحقق من التحديثات. حاول مجددًا عند توفر إشارة.";
+/* Android asks the user to allow this app to install apps */
+"update_permission" = "سيطلب أندرويد السماح لهذا التطبيق بتثبيت التحديثات. تُستخدم هذه الصلاحية لتحديثات التطبيق نفسه فقط.";
+"update_notes" = "ما الذي تغيّر";
 "sch_title" = "الجدول";
 "sch_new_block" = "فترة زمنية جديدة";
 "sch_start" = "البداية";

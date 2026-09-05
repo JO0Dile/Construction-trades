@@ -23,7 +23,19 @@ data class CatalogManifest(
      * code change.
      */
     val categoryIcons: Map<String, String> = emptyMap(),
+    /**
+     * Suggested kinds of place a job happens in. Content, not code: a Hebrew
+     * "לובי" is a translation, and a user can always type something the list
+     * does not offer.
+     */
+    val projectKinds: List<ProjectKind> = emptyList(),
     val trades: List<CatalogTrade> = emptyList(),
+)
+
+@Serializable
+data class ProjectKind(
+    val id: String,
+    val names: LocalizedText,
 )
 
 @Serializable

@@ -48,8 +48,17 @@ interface ProjectDao {
     @Query("SELECT * FROM project_tasks WHERE projectId = :projectId ORDER BY sortOrder")
     fun observeTasks(projectId: String): Flow<List<ProjectTaskEntity>>
 
+    @Query("DELETE FROM project_tasks WHERE id = :taskId")
+    suspend fun deleteTask(taskId: String)
+
     @Query("UPDATE project_tasks SET isDone = :done, doneAt = :at, doneByName = :by WHERE id = :taskId")
     suspend fun setTaskDone(taskId: String, done: Boolean, at: Long?, by: String?)
+
+    @Query("SELECT COALESCE(MAX(sortOrder), -1) + 1 FROM project_tasks WHERE projectId = :projectId")
+    suspend fun nextTaskSortOrder(projectId: String): Int
+
+    @Query("SELECT COALESCE(MAX(sortOrder), -1) + 1 FROM project_materials WHERE projectId = :projectId")
+    suspend fun nextMaterialSortOrder(projectId: String): Int
 
     @Query("SELECT COUNT(*) FROM project_tasks WHERE projectId = :projectId AND isDone = 1")
     fun observeDoneTaskCount(projectId: String): Flow<Int>

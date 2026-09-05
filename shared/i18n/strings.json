@@ -530,6 +530,46 @@
       "he": "נדרש",
       "ar": "مطلوب"
     },
+    "proj_add_task": {
+      "en": "Add task",
+      "he": "הוספת משימה",
+      "ar": "إضافة مهمة"
+    },
+    "proj_task_title": {
+      "en": "What has to be done",
+      "he": "מה צריך לעשות",
+      "ar": "ما الذي يجب عمله"
+    },
+    "proj_tasks_empty": {
+      "en": "No tasks yet.",
+      "he": "אין עדיין משימות.",
+      "ar": "لا توجد مهام بعد."
+    },
+    "proj_materials_empty": {
+      "en": "Nothing listed yet. Add what this job needs.",
+      "he": "עדיין לא נרשם כלום. הוסיפו את מה שהעבודה דורשת.",
+      "ar": "لم يُسجَّل شيء بعد. أضف ما يحتاجه هذا العمل."
+    },
+    "proj_material_name": {
+      "en": "Material or tool",
+      "he": "חומר או כלי",
+      "ar": "مادة أو أداة"
+    },
+    "proj_material_search": {
+      "en": "Search the catalogue",
+      "he": "חיפוש בקטלוג",
+      "ar": "ابحث في الكتالوج"
+    },
+    "proj_quantity": {
+      "en": "Quantity",
+      "he": "כמות",
+      "ar": "الكمية"
+    },
+    "proj_unit": {
+      "en": "Unit",
+      "he": "יחידה",
+      "ar": "الوحدة"
+    },
     "photo_section": {
       "c": "Project section holding the site plan and progress photos",
       "en": "Plans and photos",
@@ -582,6 +622,135 @@
       "en": "Photo of this item",
       "he": "תמונה של הפריט",
       "ar": "صورة الصنف"
+    },
+    "trade_add": {
+      "c": "Create a trade the app does not ship a catalogue for",
+      "en": "Add a trade",
+      "he": "הוספת תחום עבודה",
+      "ar": "إضافة مهنة"
+    },
+    "trade_add_hint": {
+      "en": "For work the app does not cover yet — roofing, landscaping, glazing. It starts empty and you add your own items to it.",
+      "he": "לעבודה שהאפליקציה עדיין לא מכסה — גגות, גינון, זגגות. התחום מתחיל ריק ומוסיפים אליו פריטים משלך.",
+      "ar": "لعمل لا يغطيه التطبيق بعد — أسطح، تنسيق حدائق، زجاج. تبدأ فارغة وتضيف إليها أصنافك."
+    },
+    "trade_name": {
+      "en": "Trade name",
+      "he": "שם התחום",
+      "ar": "اسم المهنة"
+    },
+    "trade_custom": {
+      "c": "Badge marking a trade the user created",
+      "en": "Yours",
+      "he": "שלך",
+      "ar": "خاصتك"
+    },
+    "proj_blank": {
+      "en": "Empty project",
+      "he": "פרויקט ריק",
+      "ar": "مشروع فارغ"
+    },
+    "proj_kind": {
+      "c": "What sort of place the job is — house, floor, room",
+      "en": "Type of place",
+      "he": "סוג המקום",
+      "ar": "نوع المكان"
+    },
+    "proj_kind_other": {
+      "en": "Something else",
+      "he": "משהו אחר",
+      "ar": "شيء آخر"
+    },
+    "proj_create": {
+      "en": "Create",
+      "he": "יצירה",
+      "ar": "إنشاء"
+    },
+    "proj_start_from": {
+      "en": "Start from",
+      "he": "להתחיל מ־",
+      "ar": "ابدأ من"
+    },
+    "proj_blank_hint": {
+      "en": "No task list and no materials — a job you fill in yourself.",
+      "he": "בלי רשימת משימות ובלי חומרים — עבודה שאתה ממלא בעצמך.",
+      "ar": "بدون قائمة مهام وبدون مواد — عمل تملؤه بنفسك."
+    },
+    "proj_view_grid": {
+      "en": "Show as cards",
+      "he": "תצוגת כרטיסים",
+      "ar": "عرض كبطاقات"
+    },
+    "proj_view_list": {
+      "en": "Show as list",
+      "he": "תצוגת רשימה",
+      "ar": "عرض كقائمة"
+    },
+    "proj_kind_other_hint": {
+      "en": "What is this place called?",
+      "he": "איך קוראים למקום הזה?",
+      "ar": "ما اسم هذا المكان؟"
+    },
+    "update_title": {
+      "en": "App updates",
+      "he": "עדכוני אפליקציה",
+      "ar": "تحديثات التطبيق"
+    },
+    "update_installed": {
+      "en": "Installed version",
+      "he": "הגרסה המותקנת",
+      "ar": "النسخة المثبّتة"
+    },
+    "update_check": {
+      "en": "Check for updates",
+      "he": "בדיקת עדכונים",
+      "ar": "التحقق من التحديثات"
+    },
+    "update_checking": {
+      "en": "Checking…",
+      "he": "בודק…",
+      "ar": "جارٍ التحقق…"
+    },
+    "update_current": {
+      "en": "You are on the latest version",
+      "he": "מותקנת הגרסה העדכנית ביותר",
+      "ar": "لديك أحدث نسخة"
+    },
+    "update_available": {
+      "en": "A new version is available",
+      "he": "קיימת גרסה חדשה",
+      "ar": "تتوفر نسخة جديدة"
+    },
+    "update_download": {
+      "en": "Download and install",
+      "he": "הורדה והתקנה",
+      "ar": "تنزيل وتثبيت"
+    },
+    "update_downloading": {
+      "en": "Downloading…",
+      "he": "מוריד…",
+      "ar": "جارٍ التنزيل…"
+    },
+    "update_install": {
+      "en": "Install",
+      "he": "התקנה",
+      "ar": "تثبيت"
+    },
+    "update_failed": {
+      "en": "Could not check for updates. Try again when you have a signal.",
+      "he": "לא ניתן היה לבדוק עדכונים. נסה שוב כשיש קליטה.",
+      "ar": "تعذّر التحقق من التحديثات. حاول مجددًا عند توفر إشارة."
+    },
+    "update_permission": {
+      "c": "Android asks the user to allow this app to install apps",
+      "en": "Android will ask you to allow this app to install updates. That permission is only used for this app's own updates.",
+      "he": "אנדרואיד יבקש לאשר לאפליקציה להתקין עדכונים. ההרשאה משמשת אך ורק לעדכוני האפליקציה עצמה.",
+      "ar": "سيطلب أندرويد السماح لهذا التطبيق بتثبيت التحديثات. تُستخدم هذه الصلاحية لتحديثات التطبيق نفسه فقط."
+    },
+    "update_notes": {
+      "en": "What changed",
+      "he": "מה השתנה",
+      "ar": "ما الذي تغيّر"
     },
     "sch_title": {
       "en": "Schedule",

@@ -3,6 +3,7 @@ package il.co.tradesmanager.ui.projects
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import android.net.Uri
+import il.co.tradesmanager.data.local.entity.CatalogItemEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
@@ -92,6 +93,42 @@ class ProjectDetailViewModel(
 
     fun deletePhoto(photo: PhotoEntity) = viewModelScope.launch {
         container.photos.delete(photo, container.settings.settings.first().actorName)
+    }
+
+    /**
+     * Catalogue matches for the add-material dialog. Returns the raw rows so
+     * the caller resolves names in whatever language is on screen — the same
+     * search in Hebrew and in Arabic hits the same rows.
+     */
+    suspend fun searchCatalog(query: String): List<CatalogItemEntity> {
+        if (query.isBlank()) return emptyList()
+        val tradeIds = container.catalogDao.selectedTradeIds()
+        return container.catalogDao.searchCatalogItems(tradeIds, query.trim())
+    }
+
+    fun addMaterial(label: String, unit: String, quantity: Double, catalogItemId: String?) =
+        viewModelScope.launch {
+            val actor = container.settings.settings.first().actorName
+            container.projects.addMaterial(
+                projectId = projectId,
+                label = label,
+                unit = unit,
+                quantity = quantity,
+                catalogItemId = catalogItemId,
+                actorName = actor,
+            )
+        }
+
+    fun removeMaterial(material: ProjectMaterialEntity) = viewModelScope.launch {
+        container.projects.removeMaterial(material, container.settings.settings.first().actorName)
+    }
+
+    fun addTask(title: String) = viewModelScope.launch {
+        container.projects.addTask(projectId, title, container.settings.settings.first().actorName)
+    }
+
+    fun removeTask(task: ProjectTaskEntity) = viewModelScope.launch {
+        container.projects.removeTask(task, container.settings.settings.first().actorName)
     }
 
     fun setTaskDone(taskId: String, done: Boolean) = viewModelScope.launch {

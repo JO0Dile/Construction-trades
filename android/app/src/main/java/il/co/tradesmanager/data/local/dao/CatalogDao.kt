@@ -28,6 +28,10 @@ interface CatalogDao {
     @Query("SELECT id FROM trades WHERE isSelected = 1")
     suspend fun selectedTradeIds(): List<String>
 
+    /** Only ever called for a user's own trade — see TradeRepository. */
+    @Query("DELETE FROM trades WHERE id = :tradeId")
+    suspend fun deleteTrade(tradeId: String)
+
     @Query("UPDATE trades SET isSelected = :selected WHERE id = :tradeId")
     suspend fun setTradeSelected(tradeId: String, selected: Boolean)
 

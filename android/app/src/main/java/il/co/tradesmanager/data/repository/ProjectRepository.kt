@@ -3,6 +3,7 @@ package il.co.tradesmanager.data.repository
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.catalog.CatalogItemFile
 import il.co.tradesmanager.data.catalog.CatalogSource
+import il.co.tradesmanager.data.catalog.ProjectKind
 import il.co.tradesmanager.data.catalog.ProjectTemplateDto
 import il.co.tradesmanager.data.catalog.TemplateFile
 import il.co.tradesmanager.data.local.dao.ProjectDao
@@ -46,6 +47,94 @@ class ProjectRepository(
     suspend fun setTaskDone(taskId: String, done: Boolean, actorName: String) {
         dao.setTaskDone(taskId, done, if (done) System.currentTimeMillis() else null, actorName.ifBlank { null })
         audit.record("project_task", taskId, AuditTrail.Action.UPDATE, actorName, if (done) "done" else "reopened")
+    }
+
+    /**
+     * The kinds of place a job can be — house, lobby, stairwell, roof. These
+     * are suggestions read from the catalogue, not a fixed set: [createBlank]
+     * takes whatever label it is handed, so a site that calls a place
+     * something else can just type it.
+     */
+    suspend fun projectKinds(): List<ProjectKind> = withContext(Dispatchers.IO) {
+        source.manifest().projectKinds
+    }
+
+    /**
+     * A job with nothing in it.
+     *
+     * Templates only cover work the app already knows about, and most jobs are
+     * not that. An empty project is the honest starting point: a name, what
+     * sort of place it is, and the user adds the materials and tasks the job
+     * actually needs.
+     */
+    suspend fun createBlank(
+        name: String,
+        kindLabel: String,
+        actorName: String,
+    ): ProjectEntity = withContext(Dispatchers.IO) {
+        val now = System.currentTimeMillis()
+        val project = ProjectEntity(
+            id = UUID.randomUUID().toString(),
+            name = name.trim(),
+            kindLabel = kindLabel.trim(),
+            status = Status.PLANNED,
+            createdAt = now,
+            updatedAt = now,
+        )
+        dao.upsert(project)
+        audit.record(ENTITY, project.id, AuditTrail.Action.CREATE, actorName, project.name)
+        project
+    }
+
+    /**
+     * Adds a material line the user typed.
+     *
+     * [catalogItemId] is optional on purpose. A template line points at the
+     * catalogue and gets an icon and a unit for free, but plenty of what goes
+     * into a job has no catalogue entry — offcuts, a length of hose, whatever
+     * the merchant had. Those still belong on the sheet.
+     */
+    suspend fun addMaterial(
+        projectId: String,
+        label: String,
+        unit: String,
+        quantity: Double,
+        catalogItemId: String? = null,
+        actorName: String,
+    ) {
+        val line = ProjectMaterialEntity(
+            id = UUID.randomUUID().toString(),
+            projectId = projectId,
+            inventoryItemId = null,
+            catalogItemId = catalogItemId,
+            label = label.trim(),
+            unit = unit,
+            requiredQuantity = quantity,
+            sortOrder = dao.nextMaterialSortOrder(projectId),
+        )
+        dao.upsertMaterials(listOf(line))
+        audit.record("project_material", line.id, AuditTrail.Action.CREATE, actorName, line.label)
+    }
+
+    suspend fun removeMaterial(material: ProjectMaterialEntity, actorName: String) {
+        dao.deleteMaterial(material)
+        audit.record("project_material", material.id, AuditTrail.Action.DELETE, actorName, material.label)
+    }
+
+    suspend fun addTask(projectId: String, title: String, actorName: String) {
+        val task = ProjectTaskEntity(
+            id = UUID.randomUUID().toString(),
+            projectId = projectId,
+            title = title.trim(),
+            sortOrder = dao.nextTaskSortOrder(projectId),
+        )
+        dao.upsertTasks(listOf(task))
+        audit.record("project_task", task.id, AuditTrail.Action.CREATE, actorName, task.title)
+    }
+
+    suspend fun removeTask(task: ProjectTaskEntity, actorName: String) {
+        dao.deleteTask(task.id)
+        audit.record("project_task", task.id, AuditTrail.Action.DELETE, actorName, task.title)
     }
 
     /** Templates for the trades the user works in, read straight from assets. */

@@ -53,6 +53,128 @@
     "waterproofing": "waterproofing",
     "wires": "wire"
   },
+  "projectKinds": [
+    {
+      "id": "house",
+      "names": {
+        "en": "House",
+        "he": "בית",
+        "ar": "منزل"
+      }
+    },
+    {
+      "id": "apartment",
+      "names": {
+        "en": "Apartment",
+        "he": "דירה",
+        "ar": "شقة"
+      }
+    },
+    {
+      "id": "building",
+      "names": {
+        "en": "Building",
+        "he": "בניין",
+        "ar": "مبنى"
+      }
+    },
+    {
+      "id": "floor",
+      "names": {
+        "en": "Floor",
+        "he": "קומה",
+        "ar": "طابق"
+      }
+    },
+    {
+      "id": "room",
+      "names": {
+        "en": "Room",
+        "he": "חדר",
+        "ar": "غرفة"
+      }
+    },
+    {
+      "id": "kitchen",
+      "names": {
+        "en": "Kitchen",
+        "he": "מטבח",
+        "ar": "مطبخ"
+      }
+    },
+    {
+      "id": "bathroom",
+      "names": {
+        "en": "Bathroom",
+        "he": "חדר רחצה",
+        "ar": "حمّام"
+      }
+    },
+    {
+      "id": "lobby",
+      "names": {
+        "en": "Lobby",
+        "he": "לובי",
+        "ar": "ردهة"
+      }
+    },
+    {
+      "id": "stairwell",
+      "names": {
+        "en": "Stairwell",
+        "he": "חדר מדרגות",
+        "ar": "بيت الدرج"
+      }
+    },
+    {
+      "id": "roof",
+      "names": {
+        "en": "Roof",
+        "he": "גג",
+        "ar": "سطح"
+      }
+    },
+    {
+      "id": "basement",
+      "names": {
+        "en": "Basement",
+        "he": "מרתף",
+        "ar": "قبو"
+      }
+    },
+    {
+      "id": "shop",
+      "names": {
+        "en": "Shop",
+        "he": "חנות",
+        "ar": "محل"
+      }
+    },
+    {
+      "id": "office",
+      "names": {
+        "en": "Office",
+        "he": "משרד",
+        "ar": "مكتب"
+      }
+    },
+    {
+      "id": "warehouse",
+      "names": {
+        "en": "Warehouse",
+        "he": "מחסן",
+        "ar": "مستودع"
+      }
+    },
+    {
+      "id": "outdoor",
+      "names": {
+        "en": "Outdoor area",
+        "he": "שטח חוץ",
+        "ar": "منطقة خارجية"
+      }
+    }
+  ],
   "trades": [
     {
       "id": "electrical",

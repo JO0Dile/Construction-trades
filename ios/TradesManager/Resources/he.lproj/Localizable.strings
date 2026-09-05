@@ -104,6 +104,14 @@
 "proj_empty" = "אין עדיין פרויקטים";
 "proj_add_material" = "הוספת חומר";
 "proj_required_qty" = "נדרש";
+"proj_add_task" = "הוספת משימה";
+"proj_task_title" = "מה צריך לעשות";
+"proj_tasks_empty" = "אין עדיין משימות.";
+"proj_materials_empty" = "עדיין לא נרשם כלום. הוסיפו את מה שהעבודה דורשת.";
+"proj_material_name" = "חומר או כלי";
+"proj_material_search" = "חיפוש בקטלוג";
+"proj_quantity" = "כמות";
+"proj_unit" = "יחידה";
 /* Project section holding the site plan and progress photos */
 "photo_section" = "תוכניות ותמונות";
 "photo_add" = "הוספת תוכנית או תמונה";
@@ -117,6 +125,35 @@
 "photo_failed" = "לא ניתן היה לשמור את התמונה";
 /* Photograph of the user's own stock, replacing the category icon */
 "item_photo" = "תמונה של הפריט";
+/* Create a trade the app does not ship a catalogue for */
+"trade_add" = "הוספת תחום עבודה";
+"trade_add_hint" = "לעבודה שהאפליקציה עדיין לא מכסה — גגות, גינון, זגגות. התחום מתחיל ריק ומוסיפים אליו פריטים משלך.";
+"trade_name" = "שם התחום";
+/* Badge marking a trade the user created */
+"trade_custom" = "שלך";
+"proj_blank" = "פרויקט ריק";
+/* What sort of place the job is — house, floor, room */
+"proj_kind" = "סוג המקום";
+"proj_kind_other" = "משהו אחר";
+"proj_create" = "יצירה";
+"proj_start_from" = "להתחיל מ־";
+"proj_blank_hint" = "בלי רשימת משימות ובלי חומרים — עבודה שאתה ממלא בעצמך.";
+"proj_view_grid" = "תצוגת כרטיסים";
+"proj_view_list" = "תצוגת רשימה";
+"proj_kind_other_hint" = "איך קוראים למקום הזה?";
+"update_title" = "עדכוני אפליקציה";
+"update_installed" = "הגרסה המותקנת";
+"update_check" = "בדיקת עדכונים";
+"update_checking" = "בודק…";
+"update_current" = "מותקנת הגרסה העדכנית ביותר";
+"update_available" = "קיימת גרסה חדשה";
+"update_download" = "הורדה והתקנה";
+"update_downloading" = "מוריד…";
+"update_install" = "התקנה";
+"update_failed" = "לא ניתן היה לבדוק עדכונים. נסה שוב כשיש קליטה.";
+/* Android asks the user to allow this app to install apps */
+"update_permission" = "אנדרואיד יבקש לאשר לאפליקציה להתקין עדכונים. ההרשאה משמשת אך ורק לעדכוני האפליקציה עצמה.";
+"update_notes" = "מה השתנה";
 "sch_title" = "לוח זמנים";
 "sch_new_block" = "משבצת זמן חדשה";
 "sch_start" = "התחלה";

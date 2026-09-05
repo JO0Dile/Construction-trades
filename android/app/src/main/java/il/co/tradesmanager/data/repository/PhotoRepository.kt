@@ -53,6 +53,21 @@ class PhotoRepository(
     fun observeForOwners(ownerType: String, ownerIds: List<String>): Flow<List<PhotoEntity>> =
         dao.observeForOwners(ownerType, ownerIds)
 
+    /**
+     * A cover image per project: the site plan if there is one, otherwise the
+     * newest photo. The plan is the picture a person recognises a job by —
+     * that is what they were looking at when they walked the site.
+     */
+    fun observeProjectCovers(): Flow<Map<String, String>> =
+        dao.observeAllOfTypes(Owner.projectAny).map { photos ->
+            val covers = mutableMapOf<String, String>()
+            // Newest first, so a plain photo only fills a gap.
+            photos.forEach { covers.putIfAbsent(it.ownerId, it.uri) }
+            photos.filter { it.ownerType == Owner.PROJECT_PLAN }
+                .forEach { covers[it.ownerId] = it.uri }
+            covers
+        }
+
     /** Newest photo per item, for stock thumbnails. */
     fun observeItemThumbnails(): Flow<Map<String, String>> =
         dao.observeAllOfType(Owner.INVENTORY_ITEM).map { photos ->

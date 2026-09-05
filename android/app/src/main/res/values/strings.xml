@@ -105,6 +105,14 @@
     <string name="proj_empty">No projects yet</string>
     <string name="proj_add_material">Add material</string>
     <string name="proj_required_qty">Required</string>
+    <string name="proj_add_task">Add task</string>
+    <string name="proj_task_title">What has to be done</string>
+    <string name="proj_tasks_empty">No tasks yet.</string>
+    <string name="proj_materials_empty">Nothing listed yet. Add what this job needs.</string>
+    <string name="proj_material_name">Material or tool</string>
+    <string name="proj_material_search">Search the catalogue</string>
+    <string name="proj_quantity">Quantity</string>
+    <string name="proj_unit">Unit</string>
     <!-- Project section holding the site plan and progress photos -->
     <string name="photo_section">Plans and photos</string>
     <string name="photo_add">Add a plan or photo</string>
@@ -118,6 +126,35 @@
     <string name="photo_failed">That image could not be saved</string>
     <!-- Photograph of the user's own stock, replacing the category icon -->
     <string name="item_photo">Photo of this item</string>
+    <!-- Create a trade the app does not ship a catalogue for -->
+    <string name="trade_add">Add a trade</string>
+    <string name="trade_add_hint">For work the app does not cover yet — roofing, landscaping, glazing. It starts empty and you add your own items to it.</string>
+    <string name="trade_name">Trade name</string>
+    <!-- Badge marking a trade the user created -->
+    <string name="trade_custom">Yours</string>
+    <string name="proj_blank">Empty project</string>
+    <!-- What sort of place the job is — house, floor, room -->
+    <string name="proj_kind">Type of place</string>
+    <string name="proj_kind_other">Something else</string>
+    <string name="proj_create">Create</string>
+    <string name="proj_start_from">Start from</string>
+    <string name="proj_blank_hint">No task list and no materials — a job you fill in yourself.</string>
+    <string name="proj_view_grid">Show as cards</string>
+    <string name="proj_view_list">Show as list</string>
+    <string name="proj_kind_other_hint">What is this place called?</string>
+    <string name="update_title">App updates</string>
+    <string name="update_installed">Installed version</string>
+    <string name="update_check">Check for updates</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_current">You are on the latest version</string>
+    <string name="update_available">A new version is available</string>
+    <string name="update_download">Download and install</string>
+    <string name="update_downloading">Downloading…</string>
+    <string name="update_install">Install</string>
+    <string name="update_failed">Could not check for updates. Try again when you have a signal.</string>
+    <!-- Android asks the user to allow this app to install apps -->
+    <string name="update_permission">Android will ask you to allow this app to install updates. That permission is only used for this app\'s own updates.</string>
+    <string name="update_notes">What changed</string>
     <string name="sch_title">Schedule</string>
     <string name="sch_new_block">New time block</string>
     <string name="sch_start">Start</string>

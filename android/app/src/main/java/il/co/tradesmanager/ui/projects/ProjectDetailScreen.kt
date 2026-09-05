@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AddAPhoto
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -56,6 +57,8 @@ import il.co.tradesmanager.ui.components.ItemThumbnail
 import il.co.tradesmanager.ui.components.PhotoViewer
 import il.co.tradesmanager.ui.components.rememberImageAdder
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
+import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.export.ExportDocument
@@ -75,6 +78,8 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
     val layoutDirection = LocalLayoutDirection.current
     val project = state.project
     var viewing by remember { mutableStateOf<PhotoEntity?>(null) }
+    var addingMaterial by remember { mutableStateOf(false) }
+    var addingTask by remember { mutableStateOf(false) }
     val addImage = rememberImageAdder(
         newCameraTarget = viewModel::newCameraTarget,
         onCaptured = viewModel::onCaptured,
@@ -152,49 +157,101 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
                         )
                     }
                 }
-                item { SectionHeader(stringResource(R.string.proj_tasks)) }
-                items(state.tasks, key = { it.id }) { task ->
-                    ListItem(
-                        headlineContent = { Text(task.title) },
-                        leadingContent = {
-                            Checkbox(
-                                checked = task.isDone,
-                                onCheckedChange = { viewModel.setTaskDone(task.id, it) },
-                            )
-                        },
-                    )
-                }
             }
 
-            if (state.materials.isNotEmpty()) {
-                item { SectionHeader(stringResource(R.string.proj_materials)) }
-                items(state.materials, key = { it.id }) { material ->
-                    ListItem(
-                        leadingContent = {
-                            ItemThumbnail(
-                                category = state.categoryOf(material),
-                                kind = "MATERIAL",
-                                size = 36,
+            // Both sections are drawn whether or not they hold anything. A job
+            // started from nothing has to be fillable, and a section that only
+            // appears once it has content can never be the thing you add to.
+            item {
+                SectionHeaderWithAdd(
+                    title = stringResource(R.string.proj_tasks),
+                    contentDescription = stringResource(R.string.proj_add_task),
+                    onAdd = { addingTask = true },
+                )
+            }
+            if (state.tasks.isEmpty()) {
+                item { SectionPlaceholder(stringResource(R.string.proj_tasks_empty)) }
+            }
+            items(state.tasks, key = { it.id }) { task ->
+                ListItem(
+                    headlineContent = { Text(task.title) },
+                    leadingContent = {
+                        Checkbox(
+                            checked = task.isDone,
+                            onCheckedChange = { viewModel.setTaskDone(task.id, it) },
+                        )
+                    },
+                    trailingContent = {
+                        IconButton(onClick = { viewModel.removeTask(task) }) {
+                            Icon(
+                                Icons.Filled.Close,
+                                contentDescription = stringResource(R.string.action_delete),
                             )
-                        },
-                        headlineContent = { Text(material.label) },
-                        supportingContent = {
-                            Text(
-                                stringResource(R.string.proj_required_qty) + ": " +
-                                    Formats.quantity(material.requiredQuantity, locale) + " " +
-                                    stringResource(unitLabel(material.unit)),
+                        }
+                    },
+                )
+            }
+
+            item {
+                SectionHeaderWithAdd(
+                    title = stringResource(R.string.proj_materials),
+                    contentDescription = stringResource(R.string.proj_add_material),
+                    onAdd = { addingMaterial = true },
+                )
+            }
+            if (state.materials.isEmpty()) {
+                item { SectionPlaceholder(stringResource(R.string.proj_materials_empty)) }
+            }
+            items(state.materials, key = { it.id }) { material ->
+                ListItem(
+                    leadingContent = {
+                        ItemThumbnail(
+                            category = state.categoryOf(material),
+                            kind = "MATERIAL",
+                            size = 36,
+                        )
+                    },
+                    headlineContent = { Text(material.label) },
+                    supportingContent = {
+                        Text(
+                            stringResource(R.string.proj_required_qty) + ": " +
+                                Formats.quantity(material.requiredQuantity, locale) + " " +
+                                stringResource(unitLabel(material.unit)),
+                        )
+                    },
+                    trailingContent = {
+                        IconButton(onClick = { viewModel.removeMaterial(material) }) {
+                            Icon(
+                                Icons.Filled.Close,
+                                contentDescription = stringResource(R.string.action_delete),
                             )
-                        },
-                        trailingContent = {
-                            Text(
-                                Formats.quantity(material.allocatedQuantity, locale),
-                                style = MaterialTheme.typography.labelLarge,
-                            )
-                        },
-                    )
-                }
+                        }
+                    },
+                )
             }
         }
+    }
+
+    if (addingMaterial) {
+        AddMaterialDialog(
+            languageTag = languageTag,
+            search = viewModel::searchCatalog,
+            onDismiss = { addingMaterial = false },
+            onAdd = { label, unit, quantity, catalogItemId ->
+                viewModel.addMaterial(label, unit, quantity, catalogItemId)
+                addingMaterial = false
+            },
+        )
+    }
+
+    if (addingTask) {
+        AddTaskDialog(
+            onDismiss = { addingTask = false },
+            onAdd = {
+                viewModel.addTask(it)
+                addingTask = false
+            },
+        )
     }
 
     viewing?.let { photo ->

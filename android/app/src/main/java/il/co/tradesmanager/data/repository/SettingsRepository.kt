@@ -23,6 +23,8 @@ class SettingsRepository(private val context: Context) {
         val encryptDatabase: Boolean = true,
         val actorName: String = "",
         val seededCatalogVersion: Int = 0,
+        /** Projects as picture cards rather than as rows. */
+        val projectsAsGrid: Boolean = true,
     )
 
     val settings: Flow<Settings> = context.dataStore.data.map { prefs ->
@@ -34,6 +36,7 @@ class SettingsRepository(private val context: Context) {
             encryptDatabase = prefs[KEY_ENCRYPT] ?: true,
             actorName = prefs[KEY_ACTOR] ?: "",
             seededCatalogVersion = prefs[KEY_SEEDED_VERSION] ?: 0,
+            projectsAsGrid = prefs[KEY_PROJECTS_GRID] ?: true,
         )
     }
 
@@ -43,6 +46,7 @@ class SettingsRepository(private val context: Context) {
     suspend fun setEncryptDatabase(value: Boolean) = put { it[KEY_ENCRYPT] = value }
     suspend fun setActorName(name: String) = put { it[KEY_ACTOR] = name }
     suspend fun setSeededCatalogVersion(version: Int) = put { it[KEY_SEEDED_VERSION] = version }
+    suspend fun setProjectsAsGrid(value: Boolean) = put { it[KEY_PROJECTS_GRID] = value }
 
     /** Account deletion, as both stores require it to be offered in-app. */
     suspend fun clearAll() {
@@ -60,5 +64,6 @@ class SettingsRepository(private val context: Context) {
         val KEY_ENCRYPT = booleanPreferencesKey("encrypt_database")
         val KEY_ACTOR = stringPreferencesKey("actor_name")
         val KEY_SEEDED_VERSION = intPreferencesKey("seeded_catalog_version")
+        val KEY_PROJECTS_GRID = booleanPreferencesKey("projects_as_grid")
     }
 }

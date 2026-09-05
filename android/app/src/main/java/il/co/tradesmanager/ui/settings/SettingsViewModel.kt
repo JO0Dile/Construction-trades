@@ -5,11 +5,13 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.i18n.LocaleController
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.repository.SettingsRepository
+import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -43,6 +45,22 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
         // removes stock, because the quantities are the user's own record.
         if (selected) container.seeder.stockTrades(listOf(tradeId))
     }
+
+    /**
+     * A trade the app ships nothing for. It arrives selected and empty, and
+     * the user stocks it from their own items — which is the only honest
+     * thing to do, since we have no catalogue to give them for it.
+     */
+    fun addTrade(name: String, languageTag: String) = viewModelScope.launch {
+        val actor = container.settings.settings.first().actorName
+        container.trades.createCustom(name, languageTag, actor)
+    }
+
+    fun deleteTrade(trade: TradeEntity) = viewModelScope.launch {
+        container.trades.delete(trade, container.settings.settings.first().actorName)
+    }
+
+    fun isCustom(trade: TradeEntity): Boolean = TradeRepository.isCustom(trade)
 
     fun reseed() = viewModelScope.launch {
         val ids = container.catalogDao.selectedTradeIds()
