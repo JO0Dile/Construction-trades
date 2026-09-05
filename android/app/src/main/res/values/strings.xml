@@ -355,6 +355,7 @@
     <string name="po_status_cancelled">Cancelled</string>
     <string name="po_cancel">Cancel the order</string>
     <string name="po_draft_note">A draft costs nothing. Place it and it counts against the job.</string>
+    <string name="update_none">No version has been published yet.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

@@ -347,6 +347,7 @@
     <string name="po_status_cancelled">أُلغيت</string>
     <string name="po_cancel">إلغاء الطلبية</string>
     <string name="po_draft_note">المسودة لا تُحتسب. أرسلها لتُحتسب على العمل.</string>
+    <string name="update_none">لم تُنشر أي نسخة بعد.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

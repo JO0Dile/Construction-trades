@@ -354,3 +354,4 @@
 "po_status_cancelled" = "Cancelled";
 "po_cancel" = "Cancel the order";
 "po_draft_note" = "A draft costs nothing. Place it and it counts against the job.";
+"update_none" = "No version has been published yet.";

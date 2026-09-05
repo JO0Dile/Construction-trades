@@ -347,6 +347,7 @@
     <string name="po_status_cancelled">בוטל</string>
     <string name="po_cancel">ביטול הזמנה</string>
     <string name="po_draft_note">טיוטה לא נספרת. שלחו אותה והיא תיזקף לעבודה.</string>
+    <string name="update_none">עדיין לא פורסמה גרסה.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

@@ -12,6 +12,30 @@ dependency for anything.
 
 ---
 
+## Get it on a phone
+
+**[Download the latest APK](https://github.com/JO0Dile/Construction-trades/releases/latest)**
+— open that on the phone, take `app-universal-debug.apk`, and tap it. Android
+will ask once whether to allow installing from this app; that permission is
+only used for this app's own updates.
+
+`app-universal-debug.apk` runs on every phone. The `arm64-v8a` and
+`armeabi-v7a` files beside it are smaller builds for one chip each — take the
+universal one unless you know which you want.
+
+After that the app updates itself: **Settings → App updates → Check for
+updates**. There is no need to come back here.
+
+> Install **over** an existing copy rather than uninstalling first. The app
+> migrates its database forward and keeps your jobs, stock and photos; an
+> uninstall throws them away.
+
+Building it yourself, running it on an emulator, and getting a crash log are
+all in **[docs/TESTING.md](docs/TESTING.md)**. Publishing a new version is one
+`git tag` — **[docs/UPDATES.md](docs/UPDATES.md)**.
+
+---
+
 ## What makes it usable on day one
 
 The app ships with the catalogues already written:
