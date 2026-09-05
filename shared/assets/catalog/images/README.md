@@ -1,7 +1,12 @@
 # Item photographs
 
-Drop an image in here named after the catalogue item id and it appears in both
-apps. No code change, no registration, no list to update.
+Drop an image in here named after the catalogue item id and it appears in the
+app. No code change, no registration, no list to update.
+
+Live on Android today: the directory is listed once at startup and the id is
+looked up per row. The iOS target bundles the same directory, but its stock
+rows do not draw thumbnails yet, so the pictures are shipped and unused there
+until they do.
 
 ```
 shared/assets/catalog/images/

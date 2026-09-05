@@ -70,6 +70,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
      * (a few KB) that a lazy synchronous read costs nothing, and it must be
      * available synchronously because list rows draw with it.
      */
+    /** Pictures shipped with the app, keyed by catalogue item id. */
+    val bundledImages: Map<String, String> by lazy { catalogSource.bundledImages() }
+
     val categoryIcons: Map<String, String> by lazy {
         runCatching { catalogSource.manifest().categoryIcons }.getOrDefault(emptyMap())
     }

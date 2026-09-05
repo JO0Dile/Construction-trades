@@ -13,7 +13,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import il.co.tradesmanager.R
 import il.co.tradesmanager.TradesManagerApp
 import il.co.tradesmanager.data.repository.SettingsRepository
-import il.co.tradesmanager.ui.components.ProvideCategoryIcons
+import il.co.tradesmanager.ui.components.ProvideCatalogImagery
 import il.co.tradesmanager.ui.nav.AppNavHost
 import il.co.tradesmanager.ui.theme.TradesManagerTheme
 import kotlinx.coroutines.flow.SharingStarted
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val settings by settingsFlow.collectAsStateWithLifecycle()
             TradesManagerTheme(themeMode = settings.themeMode, largeText = settings.largeText) {
-                ProvideCategoryIcons(container.categoryIcons) {
+                ProvideCatalogImagery(container.categoryIcons, container.bundledImages) {
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colorScheme.background,

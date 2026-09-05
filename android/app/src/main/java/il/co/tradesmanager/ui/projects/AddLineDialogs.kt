@@ -105,7 +105,12 @@ fun AddMaterialDialog(
                                     if (spec.isNotBlank()) Text(spec)
                                 },
                                 leadingContent = {
-                                    ItemThumbnail(category = item.category, kind = item.kind, size = 32)
+                                    ItemThumbnail(
+                                        category = item.category,
+                                        kind = item.kind,
+                                        catalogItemId = item.id,
+                                        size = 32,
+                                    )
                                 },
                                 modifier = Modifier.clickable {
                                     label = item.names.resolve(languageTag)

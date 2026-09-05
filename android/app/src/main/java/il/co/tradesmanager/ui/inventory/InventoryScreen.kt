@@ -184,6 +184,7 @@ fun InventoryScreen(
                                     category = item.category,
                                     kind = item.kind,
                                     photoUri = photoByItem[item.id],
+                                    catalogItemId = item.catalogItemId,
                                 )
                             },
                             headlineContent = { Text(item.names.resolve(languageTag)) },

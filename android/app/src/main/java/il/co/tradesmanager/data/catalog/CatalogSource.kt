@@ -43,6 +43,23 @@ class CatalogSource(
         return if (downloaded.isFile) downloaded.readText() else readAsset("$ROOT/$relativePath")
     }
 
+    /**
+     * Catalogue item id -> the bundled picture of it, if one has been added.
+     *
+     * The whole directory is listed once rather than probing three filenames
+     * per item: a stock list draws forty rows, and forty misses per scroll on
+     * an asset manager is not free. Filename is the item id, extension is
+     * whatever the picture was saved as — see shared/assets/catalog/images.
+     */
+    fun bundledImages(): Map<String, String> = runCatching {
+        context.assets.list(IMAGES).orEmpty()
+            .filter { name -> IMAGE_EXTENSIONS.any { name.endsWith(it, ignoreCase = true) } }
+            .associateBy(
+                keySelector = { it.substringBeforeLast('.') },
+                valueTransform = { "file:///android_asset/$IMAGES/$it" },
+            )
+    }.getOrDefault(emptyMap())
+
     private fun readAsset(path: String): String =
         context.assets.open(path).bufferedReader().use { it.readText() }
 
@@ -53,5 +70,7 @@ class CatalogSource(
         const val ROOT = "catalog"
         const val MANIFEST = "catalog/manifest.json"
         const val DOWNLOADED_DIR = "catalog-update"
+        const val IMAGES = "catalog/images"
+        val IMAGE_EXTENSIONS = listOf(".webp", ".jpg", ".jpeg", ".png")
     }
 }

@@ -208,6 +208,7 @@ fun ProjectDetailScreen(container: AppContainer, projectId: String, onBack: () -
                         ItemThumbnail(
                             category = state.categoryOf(material),
                             kind = "MATERIAL",
+                            catalogItemId = material.catalogItemId,
                             size = 36,
                         )
                     },

@@ -58,24 +58,41 @@ import coil.compose.AsyncImage
 val LocalCategoryIcons: ProvidableCompositionLocal<Map<String, String>> =
     compositionLocalOf { emptyMap() }
 
+/**
+ * Catalogue item id -> a picture shipped in the app's assets. Listed once at
+ * startup, because probing the asset manager per row per scroll is not free.
+ */
+val LocalBundledImages: ProvidableCompositionLocal<Map<String, String>> =
+    compositionLocalOf { emptyMap() }
+
 @Composable
-fun ProvideCategoryIcons(icons: Map<String, String>, content: @Composable () -> Unit) {
-    CompositionLocalProvider(LocalCategoryIcons provides icons, content = content)
+fun ProvideCatalogImagery(
+    icons: Map<String, String>,
+    images: Map<String, String>,
+    content: @Composable () -> Unit,
+) {
+    CompositionLocalProvider(
+        LocalCategoryIcons provides icons,
+        LocalBundledImages provides images,
+        content = content,
+    )
 }
 
 /**
  * The picture for a stock row.
  *
- * A photograph the user took of their own item always wins — it is their
- * actual stock, on their actual van, which is more use than any stock image.
- * Failing that, the item's category picks an icon, tinted by what kind of
- * thing it is, so a list is scannable at arm's length without reading a word.
+ * Three sources, in this order. A photograph the user took of their own item
+ * always wins: it is their actual stock, on their actual van, in the state it
+ * is in. Failing that, the picture shipped for that catalogue item. Failing
+ * that, the category's icon, tinted by what kind of thing it is, so a list is
+ * still scannable at arm's length without reading a word.
  */
 @Composable
 fun ItemThumbnail(
     category: String,
     kind: String,
     photoUri: String? = null,
+    catalogItemId: String? = null,
     size: Int = 44,
     modifier: Modifier = Modifier,
 ) {
@@ -86,9 +103,10 @@ fun ItemThumbnail(
             .background(tint.copy(alpha = 0.15f), RoundedCornerShape(10.dp)),
         contentAlignment = Alignment.Center,
     ) {
-        if (photoUri != null) {
+        val image = photoUri ?: catalogItemId?.let { LocalBundledImages.current[it] }
+        if (image != null) {
             AsyncImage(
-                model = photoUri,
+                model = image,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(size.dp).padding(0.dp),
