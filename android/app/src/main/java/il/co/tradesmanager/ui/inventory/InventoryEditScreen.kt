@@ -51,7 +51,7 @@ import il.co.tradesmanager.ui.components.rememberImageAdder
 fun InventoryEditScreen(
     container: AppContainer,
     itemId: String?,
-    onDone: () -> Unit,
+    onDone: (savedItemId: String?) -> Unit,
 ) {
     val languageTag = currentLanguageTag()
     val viewModel: InventoryEditViewModel = viewModel(
@@ -77,7 +77,7 @@ fun InventoryEditScreen(
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = onDone) {
+                    IconButton(onClick = { onDone(null) }) {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.action_back),
@@ -146,7 +146,7 @@ fun InventoryEditScreen(
             Field(form.tags, viewModel::setTags, R.string.inv_tags)
 
             Button(
-                onClick = { viewModel.save(onDone) },
+                onClick = { viewModel.save { id -> onDone(id) } },
                 enabled = !form.nameError,
                 modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
             ) {
@@ -155,7 +155,7 @@ fun InventoryEditScreen(
 
             if (itemId != null) {
                 OutlinedButton(
-                    onClick = { viewModel.delete(onDone) },
+                    onClick = { viewModel.delete { onDone(null) } },
                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
                 ) {
                     Text(stringResource(R.string.action_delete))

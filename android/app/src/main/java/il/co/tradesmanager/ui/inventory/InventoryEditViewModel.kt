@@ -116,7 +116,15 @@ class InventoryEditViewModel(
     fun setPrice(value: String) { _form.value = _form.value.copy(price = value) }
     fun setTags(value: String) { _form.value = _form.value.copy(tags = value) }
 
-    fun save(onDone: () -> Unit) {
+    /**
+     * Saves, then hands back which item it was.
+     *
+     * The list needs the id to find the thing you just typed: with a
+     * search or a filter still on, or with low-stock rows above it, a new
+     * item lands somewhere off screen and the screen looks like it did
+     * nothing.
+     */
+    fun save(onDone: (String) -> Unit) {
         val form = _form.value
         if (form.name.isBlank()) {
             _form.value = form.copy(nameError = true)
@@ -147,7 +155,7 @@ class InventoryEditViewModel(
             )
             val actor = container.settings.settings.first().actorName
             container.inventory.save(item, actor)
-            onDone()
+            onDone(item.id)
         }
     }
 

@@ -42,6 +42,17 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
     val photoByItem: StateFlow<Map<String, String>> = container.photos.observeItemThumbnails()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
+    /**
+     * Drops every filter.
+     *
+     * Used when somebody has just added an item the current view would
+     * hide — searching for "cable", finding none, adding one called
+     * something else, and being shown the same empty search. Showing them
+     * the thing they just made matters more than keeping a search they
+     * have already acted on.
+     */
+    fun clearFilters() { _filters.value = Filters() }
+
     fun setQuery(value: String) { _filters.value = _filters.value.copy(query = value) }
 
     fun setKind(kind: String?) { _filters.value = _filters.value.copy(kind = kind) }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
@@ -25,6 +26,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -32,6 +34,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -99,6 +104,49 @@ fun InventoryScreen(
         savedStateHandle[Routes.SCAN_RESULT] = null
         val match = viewModel.findByBarcode(code)
         if (match != null) onEditItem(match.id) else onAddItem()
+    }
+
+    // Finding the item you just saved.
+    //
+    // Four things could hide it, and all four happen in ordinary use: a search
+    // still showing "cable" when you have just added something else, a kind
+    // filter, the low-stock filter, or simply the sort — low stock first, then
+    // newest — which puts a new row below every low-stock row and off the
+    // bottom of the screen. Any of them makes the app look as though the save
+    // did nothing.
+    val listState = rememberLazyListState()
+    val saved by savedStateHandle
+        .getStateFlow<String?>(Routes.SAVED_ITEM, null)
+        .collectAsStateWithLifecycle()
+    var justSaved by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(saved, items) {
+        val id = saved ?: return@LaunchedEffect
+        val index = items.indexOfFirst { it.id == id }
+        if (index < 0) {
+            if (filters != InventoryViewModel.Filters()) {
+                // Not in this view because something is filtering it out. Drop
+                // the filters; this runs again when the list is rebuilt.
+                viewModel.clearFilters()
+            } else {
+                // Nothing is filtering and it is still not here, so it is gone
+                // — deleted, most likely. Stop looking rather than re-checking
+                // on every future change to the list.
+                savedStateHandle[Routes.SAVED_ITEM] = null
+            }
+            return@LaunchedEffect
+        }
+        savedStateHandle[Routes.SAVED_ITEM] = null
+        justSaved = id
+        listState.animateScrollToItem(index)
+    }
+
+    // Long enough to catch the eye, short enough not to become decoration.
+    LaunchedEffect(justSaved) {
+        if (justSaved != null) {
+            kotlinx.coroutines.delay(2_000)
+            justSaved = null
+        }
     }
 
     Scaffold(
@@ -194,9 +242,16 @@ fun InventoryScreen(
                     onAction = onAddItem,
                 )
             } else {
-                LazyColumn(Modifier.fillMaxWidth()) {
+                LazyColumn(state = listState, modifier = Modifier.fillMaxWidth()) {
                     items(items, key = { it.id }) { item ->
                         ListItem(
+                            colors = if (item.id == justSaved) {
+                                ListItemDefaults.colors(
+                                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                                )
+                            } else {
+                                ListItemDefaults.colors()
+                            },
                             leadingContent = {
                                 ItemThumbnail(
                                     category = item.category,
