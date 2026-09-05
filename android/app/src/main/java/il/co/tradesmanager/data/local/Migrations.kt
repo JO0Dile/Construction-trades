@@ -47,8 +47,20 @@ object Migrations {
         }
     }
 
-    val ALL: Array<Migration> =
-        arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
+    /** Adds purchase orders and their lines. */
+    val MIGRATION_5_6 = object : Migration(5, 6) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_5_6.forEach(db::execSQL)
+        }
+    }
+
+    val ALL: Array<Migration> = arrayOf(
+        MIGRATION_1_2,
+        MIGRATION_2_3,
+        MIGRATION_3_4,
+        MIGRATION_4_5,
+        MIGRATION_5_6,
+    )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
     val SQL_1_2: List<String> = listOf(
@@ -112,5 +124,31 @@ object Migrations {
             "ON `equipment` (`assignedProjectId`)",
         "CREATE INDEX IF NOT EXISTS `index_equipment_supplierId` " +
             "ON `equipment` (`supplierId`)",
+    )
+
+    val SQL_5_6: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `purchase_orders` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT, `supplierId` TEXT, " +
+            "`supplierName` TEXT NOT NULL, `status` TEXT NOT NULL, " +
+            "`orderedOn` INTEGER, `expectedOn` INTEGER, `notes` TEXT, " +
+            "`createdBy` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_purchase_orders_projectId` " +
+            "ON `purchase_orders` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_purchase_orders_supplierId` " +
+            "ON `purchase_orders` (`supplierId`)",
+        "CREATE INDEX IF NOT EXISTS `index_purchase_orders_status` " +
+            "ON `purchase_orders` (`status`)",
+        "CREATE TABLE IF NOT EXISTS `purchase_order_lines` (`id` TEXT NOT NULL, " +
+            "`orderId` TEXT NOT NULL, `catalogItemId` TEXT, `inventoryItemId` TEXT, " +
+            "`label` TEXT NOT NULL, `unit` TEXT NOT NULL, " +
+            "`quantityOrdered` REAL NOT NULL, `quantityReceived` REAL NOT NULL, " +
+            "`unitPrice` REAL NOT NULL, `sortOrder` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`), FOREIGN KEY(`orderId`) REFERENCES " +
+            "`purchase_orders`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_purchase_order_lines_orderId` " +
+            "ON `purchase_order_lines` (`orderId`)",
+        "CREATE INDEX IF NOT EXISTS `index_purchase_order_lines_catalogItemId` " +
+            "ON `purchase_order_lines` (`catalogItemId`)",
     )
 }

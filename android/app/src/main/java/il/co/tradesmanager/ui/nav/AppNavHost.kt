@@ -34,6 +34,8 @@ import il.co.tradesmanager.ui.inventory.InventoryEditScreen
 import il.co.tradesmanager.ui.inventory.InventoryScreen
 import il.co.tradesmanager.ui.money.MoneyScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
+import il.co.tradesmanager.ui.orders.OrderDetailScreen
+import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
@@ -57,6 +59,8 @@ object Routes {
     const val PEOPLE = "people"
     const val MONEY = "money"
     const val PLANT = "plant"
+    const val ORDERS = "orders"
+    const val ORDER_DETAIL = "orders/detail"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
 
@@ -66,6 +70,7 @@ object Routes {
     fun inventoryEdit(itemId: String?) = "$INVENTORY_EDIT?itemId=${itemId.orEmpty()}"
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
     fun money(projectId: String) = "$MONEY/$projectId"
+    fun orderDetail(orderId: String) = "$ORDER_DETAIL/$orderId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
 }
 
@@ -157,6 +162,7 @@ fun AppNavHost(
                     onEditItem = { navController.navigate(Routes.inventoryEdit(it)) },
                     onScan = { navController.navigate(Routes.SCANNER) },
                     onOpenPlant = { navController.navigate(Routes.PLANT) },
+                    onOpenOrders = { navController.navigate(Routes.ORDERS) },
                     // The scanner hands its result back through this entry's
                     // saved state, which survives the process being killed
                     // behind the camera on a low-memory phone. The screen
@@ -209,6 +215,20 @@ fun AppNavHost(
             composable(Routes.PEOPLE) { PeopleScreen(container = container) }
             composable(Routes.PLANT) {
                 PlantScreen(container = container, onBack = { navController.popBackStack() })
+            }
+            composable(Routes.ORDERS) {
+                OrdersScreen(
+                    container = container,
+                    onOpenOrder = { navController.navigate(Routes.orderDetail(it)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.ORDER_DETAIL}/{orderId}") { entry ->
+                OrderDetailScreen(
+                    container = container,
+                    orderId = entry.arguments?.getString("orderId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
             }
             composable(Routes.SAFETY) {
                 SafetyScreen(

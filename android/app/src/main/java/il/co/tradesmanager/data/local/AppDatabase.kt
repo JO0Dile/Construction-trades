@@ -12,6 +12,7 @@ import il.co.tradesmanager.data.local.dao.InventoryDao
 import il.co.tradesmanager.data.local.dao.MoneyDao
 import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.dao.ProjectDao
+import il.co.tradesmanager.data.local.dao.PurchasingDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
 import il.co.tradesmanager.data.local.dao.ScheduleDao
 import il.co.tradesmanager.data.local.entity.AccountEntity
@@ -34,6 +35,8 @@ import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
+import il.co.tradesmanager.data.local.entity.PurchaseOrderEntity
+import il.co.tradesmanager.data.local.entity.PurchaseOrderLineEntity
 import il.co.tradesmanager.data.local.entity.StockMovementEntity
 import il.co.tradesmanager.data.local.entity.SupplierEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
@@ -71,8 +74,10 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         InvoiceEntity::class,
         CertificationEntity::class,
         EquipmentEntity::class,
+        PurchaseOrderEntity::class,
+        PurchaseOrderLineEntity::class,
     ],
-    version = 5,
+    version = 6,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -88,6 +93,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun moneyDao(): MoneyDao
     abstract fun certificationDao(): CertificationDao
     abstract fun equipmentDao(): EquipmentDao
+    abstract fun purchasingDao(): PurchasingDao
 
     companion object {
         const val NAME = "tradesmanager.db"

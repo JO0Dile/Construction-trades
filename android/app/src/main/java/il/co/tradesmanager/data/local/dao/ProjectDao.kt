@@ -55,6 +55,10 @@ interface ProjectDao {
     @Query("SELECT * FROM project_materials WHERE projectId = :projectId ORDER BY sortOrder")
     fun observeMaterials(projectId: String): Flow<List<ProjectMaterialEntity>>
 
+    /** A one-shot read, for booking a delivery against the job's own lines. */
+    @Query("SELECT * FROM project_materials WHERE projectId = :projectId ORDER BY sortOrder")
+    suspend fun materialsFor(projectId: String): List<ProjectMaterialEntity>
+
     @Delete
     suspend fun deleteMaterial(material: ProjectMaterialEntity)
 

@@ -1641,6 +1641,116 @@
       "en": "Hire so far",
       "he": "עלות השכרה עד כה",
       "ar": "تكلفة الاستئجار حتى الآن"
+    },
+    "po_title": {
+      "en": "Orders",
+      "he": "הזמנות",
+      "ar": "الطلبيات"
+    },
+    "po_new": {
+      "en": "New order",
+      "he": "הזמנה חדשה",
+      "ar": "طلبية جديدة"
+    },
+    "po_empty": {
+      "en": "No orders yet. Raise one when you order materials.",
+      "he": "אין הזמנות. פתחו הזמנה כשמזמינים חומרים.",
+      "ar": "لا توجد طلبيات. افتح واحدة عند طلب المواد."
+    },
+    "po_supplier": {
+      "en": "Supplier",
+      "he": "ספק",
+      "ar": "المورّد"
+    },
+    "po_for_job": {
+      "en": "For which job",
+      "he": "עבור איזו עבודה",
+      "ar": "لأي عمل"
+    },
+    "po_yard": {
+      "en": "The yard",
+      "he": "המחסן",
+      "ar": "المستودع"
+    },
+    "po_lines": {
+      "en": "What you are ordering",
+      "he": "מה מזמינים",
+      "ar": "ما الذي تطلبه"
+    },
+    "po_lines_empty": {
+      "en": "Nothing on this order yet.",
+      "he": "עדיין אין פריטים בהזמנה.",
+      "ar": "لا توجد أصناف في الطلبية بعد."
+    },
+    "po_add_line": {
+      "en": "Add a line",
+      "he": "הוספת שורה",
+      "ar": "إضافة سطر"
+    },
+    "po_unit_price": {
+      "en": "Price each",
+      "he": "מחיר ליחידה",
+      "ar": "سعر الوحدة"
+    },
+    "po_place": {
+      "en": "Place the order",
+      "he": "שליחת הזמנה",
+      "ar": "إرسال الطلبية"
+    },
+    "po_receive": {
+      "en": "Book in a delivery",
+      "he": "רישום משלוח",
+      "ar": "تسجيل توريد"
+    },
+    "po_received_of": {
+      "en": "received of",
+      "he": "התקבלו מתוך",
+      "ar": "وصلت من أصل"
+    },
+    "po_total": {
+      "en": "Order total",
+      "he": "סך ההזמנה",
+      "ar": "إجمالي الطلبية"
+    },
+    "po_outstanding": {
+      "en": "Still to come",
+      "he": "טרם הגיע",
+      "ar": "لم يصل بعد"
+    },
+    "po_status_draft": {
+      "en": "Draft",
+      "he": "טיוטה",
+      "ar": "مسودة"
+    },
+    "po_status_ordered": {
+      "en": "Ordered",
+      "he": "הוזמן",
+      "ar": "تم الطلب"
+    },
+    "po_status_part": {
+      "en": "Part delivered",
+      "he": "התקבל חלקית",
+      "ar": "وصلت جزئيًا"
+    },
+    "po_status_received": {
+      "en": "Delivered",
+      "he": "התקבל",
+      "ar": "وصلت"
+    },
+    "po_status_cancelled": {
+      "en": "Cancelled",
+      "he": "בוטל",
+      "ar": "أُلغيت"
+    },
+    "po_cancel": {
+      "en": "Cancel the order",
+      "he": "ביטול הזמנה",
+      "ar": "إلغاء الطلبية"
+    },
+    "po_draft_note": {
+      "en": "A draft costs nothing. Place it and it counts against the job.",
+      "he": "טיוטה לא נספרת. שלחו אותה והיא תיזקף לעבודה.",
+      "ar": "المسودة لا تُحتسب. أرسلها لتُحتسب على العمل."
     }
   },
   "plurals": {

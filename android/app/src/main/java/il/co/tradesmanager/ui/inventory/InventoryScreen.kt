@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material.icons.filled.Construction
 import androidx.compose.material.icons.filled.QrCodeScanner
+import androidx.compose.material.icons.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Badge
@@ -72,6 +73,7 @@ fun InventoryScreen(
     onEditItem: (String) -> Unit,
     onScan: () -> Unit,
     onOpenPlant: () -> Unit,
+    onOpenOrders: () -> Unit,
     savedStateHandle: SavedStateHandle,
 ) {
     val viewModel: InventoryViewModel = viewModel(
@@ -106,6 +108,12 @@ fun InventoryScreen(
                 actions = {
                     // Plant lives beside stock rather than in its own tab: it
                     // is the same lens, asking a different question about it.
+                    IconButton(onClick = onOpenOrders) {
+                        Icon(
+                            Icons.Filled.ReceiptLong,
+                            contentDescription = stringResource(R.string.po_title),
+                        )
+                    }
                     IconButton(onClick = onOpenPlant) {
                         Icon(
                             Icons.Filled.Construction,

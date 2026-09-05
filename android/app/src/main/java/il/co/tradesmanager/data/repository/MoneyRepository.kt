@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.combine
 class MoneyRepository(
     private val dao: MoneyDao,
     private val equipment: EquipmentRepository,
+    private val purchasing: PurchasingRepository,
     private val audit: AuditTrail,
 ) {
 
@@ -40,16 +41,18 @@ class MoneyRepository(
         dao.observeTotals(projectId),
         dao.observeCommittedMaterials(projectId),
         equipment.observeCommittedHire(projectId),
-    ) { budget, totals, materials, hire ->
+        purchasing.observeOutstanding(projectId),
+    ) { budget, totals, materials, hire, onOrder ->
         JobFinancials(
             contractValue = budget?.contractValue ?: 0.0,
             approvedVariations = totals.approvedVariations,
             proposedVariations = totals.proposedVariations,
             costToDate = totals.costToDate,
-            // Priced materials still to buy, plus what hired plant has run up.
-            // Both are commitments the job has made and neither is a cost line
-            // yet; the supplier's invoice is what becomes one.
-            committedCosts = materials + hire,
+            // Three ways a job commits money before anyone is invoiced for it:
+            // materials still to buy, plant on hire, and goods on order. They
+            // do not overlap — the materials figure subtracts anything already
+            // on an open order, so the same steel is never counted twice.
+            committedCosts = materials + hire + onOrder,
             invoiced = totals.invoiced,
             paid = totals.paid,
             vatRate = budget?.vatRate ?: JobFinancials.ISRAELI_VAT,

@@ -141,21 +141,43 @@ interface MoneyDao {
     fun observePortfolio(): Flow<PortfolioTotals>
 
     /**
-     * What the job sheet says it still needs, priced from stock.
+     * What the job sheet still needs and nobody has ordered yet, priced from
+     * stock.
      *
-     * This is the whole "data is entered once" promise made concrete: material
-     * lines a foreman put on the job in the Stuff lens become a committed cost
-     * in the Money lens with nobody typing a number twice. Only the quantity
-     * not yet allocated counts — what is already on site has been bought and
-     * belongs in a cost line, not a forecast.
+     * This is the "data is entered once" promise made concrete: material lines
+     * a foreman put on the job in the Stuff lens become a committed cost in the
+     * Money lens with nobody typing a number twice.
+     *
+     * Three things are subtracted, and each one is a way the figure would
+     * otherwise be wrong:
+     *
+     *  - what is already allocated, because it is on site and has been bought;
+     *  - what is on an open purchase order, because that is counted separately
+     *    at the price actually agreed rather than estimated from stock — this
+     *    is the subtraction that stops a job showing the same steel twice, once
+     *    as an intention and once as an order;
+     *  - anything below zero, so an over-delivery does not credit the job.
      */
     @Query(
         """
         SELECT COALESCE(SUM(
-            MAX(pm.requiredQuantity - pm.allocatedQuantity, 0) * i.purchasePrice
+            MAX(
+                pm.requiredQuantity - pm.allocatedQuantity - COALESCE(ordered.quantity, 0),
+                0
+            ) * i.purchasePrice
         ), 0)
         FROM project_materials pm
         JOIN inventory_items i ON i.id = pm.inventoryItemId
+        LEFT JOIN (
+            SELECT l.catalogItemId AS itemId,
+                   o.projectId AS projectId,
+                   SUM(MAX(l.quantityOrdered - l.quantityReceived, 0)) AS quantity
+            FROM purchase_order_lines l
+            JOIN purchase_orders o ON o.id = l.orderId
+            WHERE o.status IN ('ORDERED', 'PART_RECEIVED')
+            GROUP BY l.catalogItemId, o.projectId
+        ) ordered
+            ON ordered.itemId = pm.catalogItemId AND ordered.projectId = pm.projectId
         WHERE pm.projectId = :projectId AND i.purchasePrice IS NOT NULL
         """,
     )

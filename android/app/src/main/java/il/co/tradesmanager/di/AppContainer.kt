@@ -12,6 +12,7 @@ import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
@@ -67,7 +68,14 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val equipment = EquipmentRepository(database.equipmentDao(), auditTrail)
 
-    val money = MoneyRepository(database.moneyDao(), equipment, auditTrail)
+    val purchasing = PurchasingRepository(
+        dao = database.purchasingDao(),
+        projects = database.projectDao(),
+        inventory = inventory,
+        audit = auditTrail,
+    )
+
+    val money = MoneyRepository(database.moneyDao(), equipment, purchasing, auditTrail)
 
     val schedule = ScheduleRepository(database.scheduleDao(), auditTrail)
 
