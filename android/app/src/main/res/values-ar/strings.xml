@@ -467,6 +467,13 @@
     <string name="ind_sup_incidents_body">أبلغ في اليوم نفسه. صوّر أولًا ورتّب بعد ذلك — التحقيق يبدأ مما كان موجودًا فعلًا.</string>
     <string name="ind_sup_emergency">حالات الطوارئ</string>
     <string name="ind_sup_emergency_body">الإسعاف 101. الإطفاء 102. اعرف نقطة التجمّع ومن هو المسعف قبل اليوم الذي تحتاجهما فيه.</string>
+    <string name="comp_switch">أين تعمل</string>
+    <string name="comp_switch_hint">يمكن أن تكون مسجّلًا لدى أكثر من شركة. هذا يحدد أعمال من ترى وما المسموح لك.</string>
+    <string name="comp_own">أعمالك الخاصة</string>
+    <string name="comp_own_hint">أعمال تخصّك وحدك.</string>
+    <string name="comp_add">إنشاء شركة أخرى</string>
+    <string name="comp_add_hint">شركة جديدة على الهاتف نفسه، بأعمالها وطاقمها. هويتك وصورتك وتعليماتك تنتقل معك.</string>
+    <string name="comp_none">لست مسجّلًا لدى أي شركة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

@@ -16,9 +16,6 @@ interface AccountDao {
     @Query("SELECT * FROM companies WHERE id = :id")
     suspend fun company(id: String): CompanyEntity?
 
-    @Query("SELECT * FROM companies LIMIT 1")
-    fun observeCompany(): Flow<CompanyEntity?>
-
     @Upsert
     suspend fun upsert(account: AccountEntity)
 
@@ -68,13 +65,6 @@ interface AccountDao {
 
     @Query("SELECT COUNT(*) FROM accounts WHERE deletedAt IS NULL")
     suspend fun accountCount(): Int
-
-    /**
-     * How many people can still administer the company. Used to refuse the
-     * removal or demotion that would lock everyone out of their own data.
-     */
-    @Query("SELECT COUNT(*) FROM accounts WHERE deletedAt IS NULL AND role = :role")
-    suspend fun countWithRole(role: String): Int
 
     /** Whether an ID number is already spoken for, so sign-up can say so. */
     @Query(

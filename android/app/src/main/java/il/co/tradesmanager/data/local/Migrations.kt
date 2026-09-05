@@ -75,6 +75,28 @@ object Migrations {
         }
     }
 
+    /**
+     * Splits identity from membership.
+     *
+     * Everything that says what somebody may do moves out of the account row
+     * and into its own table, because the same person is a site manager for
+     * one firm and on the tools for another and the account row could only
+     * hold one answer. Every existing account is backfilled with exactly the
+     * membership it already had, so nobody's permissions change across the
+     * upgrade — including people who had been removed, who get a membership
+     * they have already left.
+     *
+     * Jobs gain a company at the same time. Without it, switching firms would
+     * change your role and still show you the other firm's work, which is
+     * worse than not being able to switch at all.
+     */
+    val MIGRATION_8_9 = object : Migration(8, 9) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_8_9.forEach(db::execSQL)
+            BACKFILL_8_9.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -83,6 +105,7 @@ object Migrations {
         MIGRATION_5_6,
         MIGRATION_6_7,
         MIGRATION_7_8,
+        MIGRATION_8_9,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -220,5 +243,36 @@ object Migrations {
         "ALTER TABLE `accounts` ADD COLUMN `idNumber` TEXT",
         "ALTER TABLE `accounts` ADD COLUMN `inductionSignature` TEXT",
         "ALTER TABLE `accounts` ADD COLUMN `inductedAt` INTEGER",
+    )
+
+    val SQL_8_9: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `memberships` (`id` TEXT NOT NULL, " +
+            "`accountId` TEXT NOT NULL, `companyId` TEXT, `role` TEXT NOT NULL, " +
+            "`joinedAt` INTEGER NOT NULL, `leftAt` INTEGER, PRIMARY KEY(`id`), " +
+            "FOREIGN KEY(`accountId`) REFERENCES `accounts`(`id`) " +
+            "ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_memberships_accountId` " +
+            "ON `memberships` (`accountId`)",
+        "CREATE INDEX IF NOT EXISTS `index_memberships_companyId` " +
+            "ON `memberships` (`companyId`)",
+        "ALTER TABLE `projects` ADD COLUMN `companyId` TEXT",
+        "CREATE INDEX IF NOT EXISTS `index_projects_companyId` ON `projects` (`companyId`)",
+    )
+
+    /**
+     * Data, not schema — kept apart from [SQL_8_9] so the CI check compares
+     * only the statements that decide whether Room will open the database.
+     *
+     * A removed account becomes a membership with the same leftAt, rather than
+     * no membership at all: the audit trail names those people, and a register
+     * that cannot say what somebody's role was in March is not a register.
+     */
+    val BACKFILL_8_9: List<String> = listOf(
+        "INSERT INTO memberships (id, accountId, companyId, role, joinedAt, leftAt) " +
+            "SELECT lower(hex(randomblob(16))), id, companyId, role, createdAt, deletedAt " +
+            "FROM accounts",
+        // One company per device until now, so every job belongs to it. A
+        // personal account has none, and its jobs stay company-less.
+        "UPDATE projects SET companyId = (SELECT id FROM companies LIMIT 1)",
     )
 }

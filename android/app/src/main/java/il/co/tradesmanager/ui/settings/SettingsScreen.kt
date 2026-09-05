@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -136,6 +138,41 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                             }
                         },
                     )
+                }
+
+                // Only worth a section when there is a choice to make. One
+                // membership is not a switcher, it is a row saying where you
+                // already are.
+                if (signedIn.switchable.size > 1) {
+                    item { SectionHeader(stringResource(R.string.comp_switch)) }
+                    item {
+                        Text(
+                            text = stringResource(R.string.comp_switch_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(horizontal = 16.dp),
+                        )
+                    }
+                    items(signedIn.switchable, key = { it.id }) { membership ->
+                        val company = signedIn.companyNamed(membership.companyId)
+                        ListItem(
+                            headlineContent = {
+                                Text(company?.name ?: stringResource(R.string.comp_own))
+                            },
+                            supportingContent = {
+                                Text(stringResource(roleLabel(membership.role)))
+                            },
+                            trailingContent = {
+                                RadioButton(
+                                    selected = membership.id == signedIn.active?.id,
+                                    onClick = { viewModel.switchCompany(membership.companyId) },
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                viewModel.switchCompany(membership.companyId)
+                            },
+                        )
+                    }
                 }
             }
 

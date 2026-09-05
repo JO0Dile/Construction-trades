@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.Flow
  */
 class AccountRepository(
     private val dao: AccountDao,
+    private val memberships: MembershipRepository,
     private val audit: AuditTrail,
 ) {
 
@@ -48,7 +49,6 @@ class AccountRepository(
 
     fun observeAccounts(): Flow<List<AccountEntity>> = dao.observeAccounts()
     fun observeAccount(id: String): Flow<AccountEntity?> = dao.observeAccount(id)
-    fun observeCompany(): Flow<CompanyEntity?> = dao.observeCompany()
 
     suspend fun hasAnyAccount(): Boolean = dao.accountCount() > 0
 
@@ -73,6 +73,9 @@ class AccountRepository(
             passcode = passcode,
             username = username,
             idNumber = idNumber,
+            // Their own tools: a membership with no company behind it, so
+            // every permission check has exactly one shape to read.
+            joinCompanyId = null,
         )
 
     /**
@@ -105,70 +108,53 @@ class AccountRepository(
             passcode = passcode,
             username = ownerUsername,
             idNumber = ownerIdNumber,
+            joinCompanyId = company.id,
         )
     }
 
     /** Adds a member. Only an owner or HR gets here — see [Role.canManageMembers]. */
+    /**
+     * Adds somebody to the company the person adding them is working in.
+     *
+     * [actorRole] and [companyId] come from the caller's active membership,
+     * not from the actor's account row: whoever is adding a member may be an
+     * owner here and on the tools somewhere else, and only the membership in
+     * force can say which.
+     */
     suspend fun addMember(
-        actor: AccountEntity,
+        actorRole: Role,
+        actorName: String,
+        companyId: String?,
         name: String,
         role: Role,
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
     ): Result<AccountEntity> {
-        if (!Role.parse(actor.role).canManageMembers) {
+        if (!actorRole.canManageMembers) {
             return Result.failure(RefusedException(Refusal.NotPermitted))
         }
         return Result.success(
             create(
                 name = name,
-                companyId = actor.companyId,
+                companyId = companyId,
                 role = role,
                 passcode = passcode,
                 username = username,
                 idNumber = idNumber,
-                actorName = actor.displayName,
+                joinCompanyId = companyId,
+                actorName = actorName,
             ),
         )
     }
 
     /**
-     * Changes what someone may see.
-     *
-     * Refuses to remove the last administrator. Locking every person out of
-     * their own company's data is not a permission decision, it is a data-loss
-     * event with a permissions-shaped cause.
+     * Changing a role and taking somebody off the books both moved to
+     * [MembershipRepository]. They are things that happen to a person *in a
+     * company*, and once somebody can be in two, an account-level answer is
+     * the wrong shape — demoting a manager on one site must not touch what
+     * they are on another.
      */
-    suspend fun setRole(actor: AccountEntity, target: AccountEntity, role: Role): Result<Unit> {
-        if (!Role.parse(actor.role).canManageMembers) {
-            return Result.failure(RefusedException(Refusal.NotPermitted))
-        }
-        if (wouldStrandTheCompany(target, role)) {
-            return Result.failure(RefusedException(Refusal.LastAdministrator))
-        }
-        dao.setRole(target.id, role.name)
-        audit.record(
-            ENTITY, target.id, AuditTrail.Action.UPDATE, actor.displayName,
-            "${target.displayName} is now ${role.name.lowercase()}",
-        )
-        return Result.success(Unit)
-    }
-
-    suspend fun remove(actor: AccountEntity, target: AccountEntity): Result<Unit> {
-        if (!Role.parse(actor.role).canManageMembers) {
-            return Result.failure(RefusedException(Refusal.NotPermitted))
-        }
-        if (wouldStrandTheCompany(target, newRole = null)) {
-            return Result.failure(RefusedException(Refusal.LastAdministrator))
-        }
-        // Soft delete: the audit trail names people, so their rows have to stay.
-        dao.softDelete(target.id, System.currentTimeMillis())
-        audit.record(
-            ENTITY, target.id, AuditTrail.Action.DELETE, actor.displayName, target.displayName,
-        )
-        return Result.success(Unit)
-    }
 
     suspend fun setPasscode(account: AccountEntity, passcode: String?) {
         val hashed = passcode?.takeIf { it.isNotBlank() }?.let { Passcode.hash(it) }
@@ -250,17 +236,6 @@ class AccountRepository(
         audit.record(ENTITY, account.id, AuditTrail.Action.UPDATE, account.displayName, "ID number set")
     }
 
-    /**
-     * True when this change would leave nobody able to administer the company.
-     * A personal account cannot strand anyone, so it is always free to change.
-     */
-    private suspend fun wouldStrandTheCompany(target: AccountEntity, newRole: Role?): Boolean {
-        if (target.companyId == null) return false
-        if (Role.parse(target.role) != Role.OWNER) return false
-        if (newRole == Role.OWNER) return false
-        return dao.countWithRole(Role.OWNER.name) <= 1
-    }
-
     private suspend fun create(
         name: String,
         companyId: String?,
@@ -268,6 +243,7 @@ class AccountRepository(
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
+        joinCompanyId: String? = null,
         actorName: String = name.trim(),
     ): AccountEntity {
         val hashed = passcode?.takeIf { it.isNotBlank() }?.let { Passcode.hash(it) }
@@ -289,6 +265,15 @@ class AccountRepository(
             inductedAt = null,
         )
         dao.upsert(account)
+        // The membership, not the account row, is what says what they may
+        // do — and it is written on the same code path, so an account without
+        // one would have to be a deliberate edit rather than an oversight.
+        memberships.join(
+            accountId = account.id,
+            companyId = joinCompanyId,
+            role = role,
+            actorName = actorName,
+        )
         audit.record(
             ENTITY, account.id, AuditTrail.Action.CREATE, actorName,
             "${account.displayName} (${role.name.lowercase()})",

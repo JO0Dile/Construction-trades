@@ -33,6 +33,11 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
             SessionRepository.State.Loading,
         )
 
+    /** Switching which company's work is on screen. */
+    fun switchCompany(companyId: String?) = viewModelScope.launch {
+        container.session.switchCompany(companyId)
+    }
+
     fun signOut() = viewModelScope.launch { container.session.signOut() }
 
     private val _reseedResult = MutableStateFlow<Int?>(null)

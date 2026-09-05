@@ -11,6 +11,7 @@ import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
+import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
@@ -18,6 +19,8 @@ import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.sync.NoOpSyncEngine
@@ -51,14 +54,34 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val auditTrail = AuditTrail(database.auditDao())
 
-    val accounts = AccountRepository(database.accountDao(), auditTrail)
+    /** Which companies somebody belongs to, and their role in each. */
+    val memberships = MembershipRepository(database.membershipDao(), auditTrail)
+
+    val accounts = AccountRepository(database.accountDao(), memberships, auditTrail)
 
     /** Who is signed in, and which lenses that opens. */
-    val session = SessionRepository(settings, accounts)
+    val session = SessionRepository(settings, accounts, memberships)
 
     val inventory = InventoryRepository(database.inventoryDao(), auditTrail)
 
-    val projects = ProjectRepository(database.projectDao(), catalogSource, auditTrail)
+    /**
+     * The company whose work is on screen, as a flow.
+     *
+     * Derived from the session rather than read from settings directly: a
+     * preference naming a firm somebody has been taken off must not scope
+     * anything to it. distinctUntilChanged so an unrelated settings change
+     * does not re-run every job query in the app.
+     */
+    private val activeCompanyId: kotlinx.coroutines.flow.Flow<String?> = session.state
+        .map { (it as? SessionRepository.State.SignedIn)?.active?.companyId }
+        .distinctUntilChanged()
+
+    val projects = ProjectRepository(
+        dao = database.projectDao(),
+        source = catalogSource,
+        audit = auditTrail,
+        activeCompanyId = activeCompanyId,
+    )
 
     val photos = PhotoRepository(appContext, database.photoDao(), auditTrail)
 

@@ -1,13 +1,18 @@
 package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.access.Membership
+import il.co.tradesmanager.core.access.Memberships
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.safety.Induction
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.CompanyEntity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
 /**
@@ -21,6 +26,7 @@ import kotlinx.coroutines.flow.map
 class SessionRepository(
     private val settings: SettingsRepository,
     private val accounts: AccountRepository,
+    private val memberships: MembershipRepository,
 ) {
 
     /**
@@ -34,12 +40,35 @@ class SessionRepository(
         data object Loading : State
         data object NeedsSetup : State
         data object SignedOut : State
+        /**
+         * Somebody is signed in, in one of the companies they belong to.
+         *
+         * The account is who they are; the membership is where they are. The
+         * role comes from the membership and never from the account, because
+         * the same person is a site manager for one firm and on the tools for
+         * another and there is no single answer to store on a person.
+         */
         data class SignedIn(
             val account: AccountEntity,
-            val company: CompanyEntity?,
+            val memberships: List<Membership>,
+            val companies: List<CompanyEntity>,
+            /** What they last chose. Only counts while it is still current. */
+            val activeCompanyId: String?,
         ) : State {
-            val role: Role get() = Role.parse(account.role)
-            val isCompany: Boolean get() = company != null
+            val active: Membership? get() = Memberships.active(memberships, activeCompanyId)
+
+            val role: Role get() = Memberships.roleFor(memberships, activeCompanyId)
+
+            val company: CompanyEntity?
+                get() = active?.companyId?.let { id -> companies.firstOrNull { it.id == id } }
+
+            val isCompany: Boolean get() = active?.companyId != null
+
+            /** The companies they can switch between, newest first. */
+            val switchable: List<Membership> get() = Memberships.switchable(memberships)
+
+            fun companyNamed(id: String?): CompanyEntity? =
+                id?.let { wanted -> companies.firstOrNull { it.id == wanted } }
 
             /**
              * True until this person has read and signed the safety induction.
@@ -61,20 +90,44 @@ class SessionRepository(
         }
     }
 
+/**
+     * Memberships are looked up per signed-in account rather than for
+     * everybody, so the flow does not churn every time somebody else's row
+     * changes. flatMapLatest because who is signed in decides which
+     * memberships to watch, and that can change underneath us.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
     val state: Flow<State> = combine(
-        settings.settings.map { it.signedInAccountId },
+        settings.settings,
         accounts.observeAccounts(),
-        accounts.observeCompany(),
-    ) { signedInId, allAccounts, company ->
-        when {
-            allAccounts.isEmpty() -> State.NeedsSetup
-            signedInId == null -> State.SignedOut
-            else -> allAccounts.firstOrNull { it.id == signedInId }
-                // The signed-in account was removed while they were using it.
-                ?.let { State.SignedIn(it, company) }
-                ?: State.SignedOut
+        memberships.observeCompanies(),
+    ) { current, allAccounts, companies -> Triple(current, allAccounts, companies) }
+        .flatMapLatest { (current, allAccounts, companies) ->
+            val signedInId = current.signedInAccountId
+            val account = signedInId?.let { id -> allAccounts.firstOrNull { it.id == id } }
+            when {
+                allAccounts.isEmpty() -> flowOf(State.NeedsSetup)
+                // Signed out, or the account was removed while they were using it.
+                account == null -> flowOf(State.SignedOut)
+                else -> memberships.observeFor(account.id).map { rows ->
+                    State.SignedIn(
+                        account = account,
+                        memberships = rows,
+                        companies = companies,
+                        activeCompanyId = current.activeCompanyId,
+                    )
+                }
+            }
         }
-    }
+
+    /**
+     * Switches which company somebody is working in.
+     *
+     * Only a preference is written. Whether it takes effect is decided by
+     * [Memberships.active] against the memberships that are actually current,
+     * so choosing a firm you have been taken off does nothing.
+     */
+    suspend fun switchCompany(companyId: String?) = settings.setActiveCompany(companyId)
 
     suspend fun signIn(accountId: String, passcode: String): AccountRepository.SignIn {
         val result = accounts.signIn(accountId, passcode)

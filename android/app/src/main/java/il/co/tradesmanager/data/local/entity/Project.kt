@@ -9,7 +9,10 @@ import androidx.room.PrimaryKey
  * A job. [parentProjectId] gives sub-projects and zones — a building holds
  * floors, a floor holds rooms — without a second table.
  */
-@Entity(tableName = "projects", indices = [Index("status"), Index("parentProjectId")])
+@Entity(
+    tableName = "projects",
+    indices = [Index("status"), Index("parentProjectId"), Index("companyId")],
+)
 data class ProjectEntity(
     @PrimaryKey val id: String,
     val name: String,
@@ -31,6 +34,15 @@ data class ProjectEntity(
     val createdAt: Long,
     val updatedAt: Long,
     val deletedAt: Long? = null,
+    /**
+     * Whose job this is.
+     *
+     * Null means it belongs to whoever owns the device rather than to a
+     * firm — a sole trader's own work. Everything hanging off a job (its
+     * tasks, materials, money, permits) is scoped by this through the job,
+     * so one column does the work of a dozen.
+     */
+    val companyId: String? = null,
 )
 
 /** A material or tool the job needs, and how much of it is already allocated. */
