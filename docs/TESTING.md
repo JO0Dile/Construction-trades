@@ -45,6 +45,11 @@ cd android
 
 ---
 
+## Sending catalogue content, terms and photos
+
+See [CONTENT.md](CONTENT.md) — the formats, the naming rule for photographs,
+and why prices should wait for Phase 3.
+
 ## Updating a phone that already has it
 
 Settings → App updates → Check for updates. To publish the update people will
@@ -244,6 +249,28 @@ app claims to get right:
       it stays at zero, never negative.
 - [ ] Set a low-stock threshold above the quantity; the row gets a *Low* flag
       and Home counts it.
+
+**Accounts and roles — the new gate**
+- [ ] First launch after installing this build: it asks who is using the
+      device. Pick **A company**, name it, name yourself, set a 4-digit
+      passcode. You land in the app as **Owner** and see all six tabs.
+- [ ] Settings → *People* tab → **+**. Add someone as **Finance**, give them a
+      different passcode.
+- [ ] Settings → **Sign out**, then sign in as that Finance person.
+- [ ] They should have **no Schedule tab** — finance sees Money everywhere and
+      Plan nowhere. Open a job: the tasks section is gone, materials are there
+      but read-only (no **+**, no delete), photos are visible but cannot be
+      added.
+- [ ] Sign back in as the owner. Try to remove yourself in People — you can't,
+      and there is no button to do it. Sign out is in Settings instead.
+- [ ] Wrong passcode says so and does not let you in.
+
+**Upgrading, not reinstalling** — this is the one worth doing carefully
+- [ ] Do **not** uninstall the old build first. Install this APK over it.
+- [ ] It should open with your existing stock, jobs and photos intact, then ask
+      who is using the device. If it crashes on launch, that is a migration
+      bug — tell me and do not clear the app's data, the crash log is worth
+      more than the recovery.
 
 **Jobs — the ones that are not a template**
 - [ ] Projects → **+**. Name it, pick **Lobby** as the type of place, leave
