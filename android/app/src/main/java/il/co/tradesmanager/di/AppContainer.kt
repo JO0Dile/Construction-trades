@@ -5,12 +5,14 @@ import il.co.tradesmanager.data.catalog.CatalogSeeder
 import il.co.tradesmanager.data.catalog.CatalogSource
 import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DatabaseFactory
+import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.sync.NoOpSyncEngine
@@ -43,6 +45,11 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val updates = UpdateRepository(appContext)
 
     val auditTrail = AuditTrail(database.auditDao())
+
+    val accounts = AccountRepository(database.accountDao(), auditTrail)
+
+    /** Who is signed in, and which lenses that opens. */
+    val session = SessionRepository(settings, accounts)
 
     val inventory = InventoryRepository(database.inventoryDao(), auditTrail)
 

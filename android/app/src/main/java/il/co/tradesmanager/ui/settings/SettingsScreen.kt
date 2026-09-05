@@ -39,9 +39,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.AppLanguages
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.SettingsRepository.ThemeMode
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.account.roleLabel
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
 import il.co.tradesmanager.ui.components.currentLanguageTag
@@ -56,6 +58,7 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
     val trades by viewModel.trades.collectAsStateWithLifecycle()
     var addingTrade by remember { mutableStateOf(false) }
     val updateState by viewModel.update.collectAsStateWithLifecycle()
+    val session by viewModel.session.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
     val context = LocalContext.current
     val languages = remember(languageTag) { AppLanguages.supported(context) }
@@ -114,15 +117,26 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 )
             }
 
-            item { SectionHeader(stringResource(R.string.saf_signed_by)) }
-            item {
-                OutlinedTextField(
-                    value = settings.actorName,
-                    onValueChange = viewModel::setActorName,
-                    label = { Text(stringResource(R.string.saf_signed_by)) },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                )
+            (session as? SessionRepository.State.SignedIn)?.let { signedIn ->
+                item {
+                    ListItem(
+                        overlineContent = { Text(stringResource(R.string.acc_signed_in_as)) },
+                        headlineContent = { Text(signedIn.account.displayName) },
+                        supportingContent = {
+                            Text(
+                                listOfNotNull(
+                                    signedIn.company?.name,
+                                    stringResource(roleLabel(signedIn.role)),
+                                ).joinToString(" · "),
+                            )
+                        },
+                        trailingContent = {
+                            TextButton(onClick = viewModel::signOut) {
+                                Text(stringResource(R.string.acc_sign_out))
+                            }
+                        },
+                    )
+                }
             }
 
             item { SectionHeader(stringResource(R.string.update_title)) }

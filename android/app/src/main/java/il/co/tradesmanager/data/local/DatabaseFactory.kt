@@ -22,6 +22,10 @@ object DatabaseFactory {
 
     fun create(context: Context, encrypt: Boolean = true): Result {
         val builder = Room.databaseBuilder(context, AppDatabase::class.java, AppDatabase.NAME)
+            // No destructive fallback, deliberately. Quantities, job sheets and
+            // signed-off checklists are a record; an upgrade that quietly
+            // empties them is worse than one that refuses to open.
+            .addMigrations(*Migrations.ALL)
 
         if (!encrypt) return Result(builder.build(), encrypted = false)
 

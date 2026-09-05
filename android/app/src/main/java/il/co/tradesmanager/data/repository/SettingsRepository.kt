@@ -25,6 +25,8 @@ class SettingsRepository(private val context: Context) {
         val seededCatalogVersion: Int = 0,
         /** Projects as picture cards rather than as rows. */
         val projectsAsGrid: Boolean = true,
+        /** Who is signed in on this device, or null when nobody is. */
+        val signedInAccountId: String? = null,
     )
 
     val settings: Flow<Settings> = context.dataStore.data.map { prefs ->
@@ -37,6 +39,7 @@ class SettingsRepository(private val context: Context) {
             actorName = prefs[KEY_ACTOR] ?: "",
             seededCatalogVersion = prefs[KEY_SEEDED_VERSION] ?: 0,
             projectsAsGrid = prefs[KEY_PROJECTS_GRID] ?: true,
+            signedInAccountId = prefs[KEY_ACCOUNT]?.takeIf { it.isNotBlank() },
         )
     }
 
@@ -47,6 +50,22 @@ class SettingsRepository(private val context: Context) {
     suspend fun setActorName(name: String) = put { it[KEY_ACTOR] = name }
     suspend fun setSeededCatalogVersion(version: Int) = put { it[KEY_SEEDED_VERSION] = version }
     suspend fun setProjectsAsGrid(value: Boolean) = put { it[KEY_PROJECTS_GRID] = value }
+
+    /**
+     * Signing in also sets the actor name, so every audit entry written from
+     * here on names the person who is actually holding the phone. Signing out
+     * clears both rather than leaving the last person's name on someone else's
+     * work.
+     */
+    suspend fun setSignedInAccount(id: String, actorName: String) = put {
+        it[KEY_ACCOUNT] = id
+        it[KEY_ACTOR] = actorName
+    }
+
+    suspend fun signOut() = put {
+        it.remove(KEY_ACCOUNT)
+        it.remove(KEY_ACTOR)
+    }
 
     /** Account deletion, as both stores require it to be offered in-app. */
     suspend fun clearAll() {
@@ -65,5 +84,6 @@ class SettingsRepository(private val context: Context) {
         val KEY_ACTOR = stringPreferencesKey("actor_name")
         val KEY_SEEDED_VERSION = intPreferencesKey("seeded_catalog_version")
         val KEY_PROJECTS_GRID = booleanPreferencesKey("projects_as_grid")
+        val KEY_ACCOUNT = stringPreferencesKey("signed_in_account")
     }
 }

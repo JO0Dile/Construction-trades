@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.HealthAndSafety
+import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Work
 import androidx.compose.material3.Icon
@@ -24,12 +25,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.home.HomeScreen
 import il.co.tradesmanager.ui.inventory.InventoryEditScreen
 import il.co.tradesmanager.ui.inventory.InventoryScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
+import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
 import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
@@ -48,6 +52,7 @@ object Routes {
     const val SCHEDULE = "schedule"
     const val SAFETY = "safety"
     const val CHECKLIST_RUN = "safety/run"
+    const val PEOPLE = "people"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
 
@@ -59,31 +64,52 @@ object Routes {
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
 }
 
-private data class Tab(val route: String, val labelRes: Int, val icon: ImageVector)
+/**
+ * A tab, and the lenses that justify showing it.
+ *
+ * [lenses] is an any-of: a job is all five lenses at once, so Projects earns
+ * its place for anyone who can read any part of one, and the sections inside a
+ * job are gated individually. A tab with no lenses is always shown.
+ */
+private data class Tab(
+    val route: String,
+    val labelRes: Int,
+    val icon: ImageVector,
+    val lenses: Set<Lens> = emptySet(),
+)
 
 private val TABS = listOf(
     Tab(Routes.HOME, R.string.nav_home, Icons.Filled.Dashboard),
-    Tab(Routes.INVENTORY, R.string.nav_inventory, Icons.Filled.Inventory2),
-    Tab(Routes.PROJECTS, R.string.nav_projects, Icons.Filled.Work),
-    Tab(Routes.SCHEDULE, R.string.nav_schedule, Icons.Filled.CalendarMonth),
-    Tab(Routes.SAFETY, R.string.nav_safety, Icons.Filled.HealthAndSafety),
+    Tab(Routes.INVENTORY, R.string.nav_inventory, Icons.Filled.Inventory2, setOf(Lens.STUFF)),
+    Tab(
+        Routes.PROJECTS, R.string.nav_projects, Icons.Filled.Work,
+        setOf(Lens.PLAN, Lens.STUFF, Lens.EVIDENCE, Lens.MONEY),
+    ),
+    Tab(Routes.SCHEDULE, R.string.nav_schedule, Icons.Filled.CalendarMonth, setOf(Lens.PLAN)),
+    Tab(Routes.SAFETY, R.string.nav_safety, Icons.Filled.HealthAndSafety, setOf(Lens.EVIDENCE)),
+    Tab(Routes.PEOPLE, R.string.people_title, Icons.Filled.Groups, setOf(Lens.PEOPLE)),
 )
+
+private fun Tab.isVisibleTo(role: Role): Boolean =
+    lenses.isEmpty() || lenses.any(role::canRead)
 
 @Composable
 fun AppNavHost(
     container: AppContainer,
     settings: SettingsRepository.Settings,
+    role: Role,
     navController: NavHostController = rememberNavController(),
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
-    val showBottomBar = currentRoute in TABS.map { it.route }
+    val tabs = TABS.filter { it.isVisibleTo(role) }
+    val showBottomBar = currentRoute in tabs.map { it.route }
 
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
                 NavigationBar {
-                    TABS.forEach { tab ->
+                    tabs.forEach { tab ->
                         NavigationBarItem(
                             selected = currentRoute == tab.route,
                             onClick = { navController.switchTab(tab.route) },
@@ -164,6 +190,7 @@ fun AppNavHost(
                 )
             }
             composable(Routes.SCHEDULE) { ScheduleScreen(container = container) }
+            composable(Routes.PEOPLE) { PeopleScreen(container = container) }
             composable(Routes.SAFETY) {
                 SafetyScreen(
                     container = container,

@@ -3,6 +3,7 @@ package il.co.tradesmanager.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import il.co.tradesmanager.data.local.dao.AccountDao
 import il.co.tradesmanager.data.local.dao.AuditDao
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
@@ -10,8 +11,10 @@ import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.dao.ProjectDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
 import il.co.tradesmanager.data.local.dao.ScheduleDao
+import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
+import il.co.tradesmanager.data.local.entity.CompanyEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunItemEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
@@ -51,8 +54,10 @@ import il.co.tradesmanager.data.local.entity.TradeEntity
         IncidentEntity::class,
         TeamMemberEntity::class,
         AuditLogEntity::class,
+        CompanyEntity::class,
+        AccountEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -64,6 +69,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun safetyDao(): SafetyDao
     abstract fun auditDao(): AuditDao
     abstract fun photoDao(): PhotoDao
+    abstract fun accountDao(): AccountDao
 
     companion object {
         const val NAME = "tradesmanager.db"

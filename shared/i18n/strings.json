@@ -1056,6 +1056,191 @@
       "en": "Signed",
       "he": "נחתם",
       "ar": "وُقِّع"
+    },
+    "acc_welcome": {
+      "en": "Set up this device",
+      "he": "הגדרת המכשיר",
+      "ar": "إعداد هذا الجهاز"
+    },
+    "acc_welcome_hint": {
+      "en": "Everything stays on this phone and works with no signal. You can add people later.",
+      "he": "הכול נשאר בטלפון הזה ועובד גם בלי קליטה. אפשר להוסיף אנשים בהמשך.",
+      "ar": "كل شيء يبقى على هذا الهاتف ويعمل بدون إشارة. يمكنك إضافة أشخاص لاحقًا."
+    },
+    "acc_personal": {
+      "en": "Just me",
+      "he": "רק אני",
+      "ar": "أنا فقط"
+    },
+    "acc_personal_hint": {
+      "en": "One person, your own tools and jobs.",
+      "he": "אדם אחד, הכלים והעבודות שלך.",
+      "ar": "شخص واحد، أدواتك وأعمالك."
+    },
+    "acc_company": {
+      "en": "A company",
+      "he": "חברה",
+      "ar": "شركة"
+    },
+    "acc_company_hint": {
+      "en": "Several people, each seeing the part of the work that is theirs.",
+      "he": "כמה אנשים, כל אחד רואה את החלק שלו בעבודה.",
+      "ar": "عدة أشخاص، كل منهم يرى الجزء الخاص به من العمل."
+    },
+    "acc_your_name": {
+      "en": "Your name",
+      "he": "השם שלך",
+      "ar": "اسمك"
+    },
+    "acc_company_name": {
+      "en": "Company name",
+      "he": "שם החברה",
+      "ar": "اسم الشركة"
+    },
+    "acc_reg_number": {
+      "en": "Company number (optional)",
+      "he": "ח.פ. / ע.מ. (לא חובה)",
+      "ar": "رقم الشركة (اختياري)"
+    },
+    "acc_reg_hint": {
+      "en": "Goes on invoices. You can add it later.",
+      "he": "מופיע בחשבוניות. אפשר להוסיף מאוחר יותר.",
+      "ar": "يظهر في الفواتير. يمكن إضافته لاحقًا."
+    },
+    "acc_passcode": {
+      "en": "Passcode",
+      "he": "קוד כניסה",
+      "ar": "رمز الدخول"
+    },
+    "acc_passcode_hint": {
+      "en": "At least 4 digits. Leave empty for no passcode.",
+      "he": "לפחות 4 ספרות. השאירו ריק כדי לא להשתמש בקוד.",
+      "ar": "٤ أرقام على الأقل. اتركه فارغًا لعدم استخدام رمز."
+    },
+    "acc_passcode_short": {
+      "en": "At least 4 digits.",
+      "he": "לפחות 4 ספרות.",
+      "ar": "٤ أرقام على الأقل."
+    },
+    "acc_create": {
+      "en": "Create",
+      "he": "יצירה",
+      "ar": "إنشاء"
+    },
+    "acc_sign_in": {
+      "en": "Sign in",
+      "he": "כניסה",
+      "ar": "تسجيل الدخول"
+    },
+    "acc_sign_in_as": {
+      "en": "Who is using this device?",
+      "he": "מי משתמש במכשיר?",
+      "ar": "من يستخدم هذا الجهاز؟"
+    },
+    "acc_sign_out": {
+      "en": "Sign out",
+      "he": "יציאה",
+      "ar": "تسجيل الخروج"
+    },
+    "acc_wrong_passcode": {
+      "en": "That passcode is not right.",
+      "he": "קוד הכניסה שגוי.",
+      "ar": "رمز الدخول غير صحيح."
+    },
+    "acc_signed_in_as": {
+      "en": "Signed in as",
+      "he": "מחובר כ־",
+      "ar": "مسجّل الدخول باسم"
+    },
+    "acc_no_passcode": {
+      "en": "No passcode",
+      "he": "בלי קוד כניסה",
+      "ar": "بدون رمز دخول"
+    },
+    "people_title": {
+      "en": "People",
+      "he": "אנשים",
+      "ar": "الأشخاص"
+    },
+    "people_add": {
+      "en": "Add someone",
+      "he": "הוספת אדם",
+      "ar": "إضافة شخص"
+    },
+    "people_role": {
+      "en": "What they do",
+      "he": "התפקיד",
+      "ar": "الدور"
+    },
+    "people_remove": {
+      "en": "Remove from company",
+      "he": "הסרה מהחברה",
+      "ar": "إزالة من الشركة"
+    },
+    "people_last_admin": {
+      "en": "There has to be one owner left, or nobody can reach the company's data.",
+      "he": "חייב להישאר בעלים אחד, אחרת אף אחד לא יוכל להגיע לנתוני החברה.",
+      "ar": "يجب أن يبقى مالك واحد، وإلا لن يصل أحد إلى بيانات الشركة."
+    },
+    "people_empty": {
+      "en": "Only you so far. Add the people who work with you.",
+      "he": "בינתיים רק אתם. הוסיפו את מי שעובד אתכם.",
+      "ar": "أنت فقط حتى الآن. أضف من يعمل معك."
+    },
+    "role_owner": {
+      "en": "Owner",
+      "he": "בעלים",
+      "ar": "مالك"
+    },
+    "role_owner_hint": {
+      "en": "Everything, including who else is here.",
+      "he": "הכול, כולל מי עוד נמצא כאן.",
+      "ar": "كل شيء، بما في ذلك من يوجد هنا."
+    },
+    "role_manager": {
+      "en": "Manager",
+      "he": "מנהל עבודה",
+      "ar": "مدير"
+    },
+    "role_manager_hint": {
+      "en": "Runs the jobs. Sees costs, does not change them.",
+      "he": "מנהל את העבודות. רואה עלויות, לא משנה אותן.",
+      "ar": "يدير الأعمال. يرى التكاليف ولا يغيّرها."
+    },
+    "role_finance": {
+      "en": "Finance",
+      "he": "כספים",
+      "ar": "المالية"
+    },
+    "role_finance_hint": {
+      "en": "The money work. Does not see the schedule.",
+      "he": "עבודת הכספים. לא רואה את לוח הזמנים.",
+      "ar": "العمل المالي. لا يرى الجدول الزمني."
+    },
+    "role_hr": {
+      "en": "Human resources",
+      "he": "משאבי אנוש",
+      "ar": "الموارد البشرية"
+    },
+    "role_hr_hint": {
+      "en": "People and their certifications.",
+      "he": "אנשים וההסמכות שלהם.",
+      "ar": "الأشخاص وشهاداتهم."
+    },
+    "role_worker": {
+      "en": "On the tools",
+      "he": "עובד בשטח",
+      "ar": "عامل في الموقع"
+    },
+    "role_worker_hint": {
+      "en": "Does the work and records it.",
+      "he": "מבצע את העבודה ומתעד אותה.",
+      "ar": "ينفّذ العمل ويوثّقه."
+    },
+    "lens_locked": {
+      "en": "Not part of your work",
+      "he": "לא חלק מהעבודה שלך",
+      "ar": "ليس جزءًا من عملك"
     }
   },
   "plurals": {

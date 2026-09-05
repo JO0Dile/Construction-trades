@@ -9,6 +9,7 @@ import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -51,6 +52,14 @@ class ProjectDetailViewModel(
     ) { project, materials, tasks, categories, images ->
         State(project, materials, tasks, categories.associate { it.id to it.category }, images)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())
+
+    /** What the person looking at this job is allowed to see and change. */
+    val session: StateFlow<SessionRepository.State> = container.session.state
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5_000),
+            SessionRepository.State.Loading,
+        )
 
     fun newCameraTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
 

@@ -12,7 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import il.co.tradesmanager.R
 import il.co.tradesmanager.TradesManagerApp
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
+import il.co.tradesmanager.ui.account.AccountGateScreen
 import il.co.tradesmanager.ui.components.ProvideCatalogImagery
 import il.co.tradesmanager.ui.nav.AppNavHost
 import il.co.tradesmanager.ui.theme.TradesManagerTheme
@@ -42,16 +44,38 @@ class MainActivity : AppCompatActivity() {
             started = SharingStarted.Eagerly,
             initialValue = SettingsRepository.Settings(),
         )
+        val sessionFlow = container.session.state.stateIn(
+            scope = lifecycleScope,
+            started = SharingStarted.Eagerly,
+            initialValue = SessionRepository.State.Loading,
+        )
 
         setContent {
             val settings by settingsFlow.collectAsStateWithLifecycle()
+            val session by sessionFlow.collectAsStateWithLifecycle()
             TradesManagerTheme(themeMode = settings.themeMode, largeText = settings.largeText) {
                 ProvideCatalogImagery(container.categoryIcons, container.bundledImages) {
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colorScheme.background,
                     ) {
-                        AppNavHost(container = container, settings = settings)
+                        // Who is holding the phone is settled before anything
+                        // else, because it decides what the app even contains.
+                        when (val state = session) {
+                            SessionRepository.State.Loading -> Unit
+
+                            SessionRepository.State.NeedsSetup ->
+                                AccountGateScreen(container, needsSetup = true)
+
+                            SessionRepository.State.SignedOut ->
+                                AccountGateScreen(container, needsSetup = false)
+
+                            is SessionRepository.State.SignedIn -> AppNavHost(
+                                container = container,
+                                settings = settings,
+                                role = state.role,
+                            )
+                        }
                     }
                 }
             }

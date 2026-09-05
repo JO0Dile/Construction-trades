@@ -43,6 +43,12 @@ jobs:
         working-directory: android
         run: ./gradlew --no-daemon :app:lintDebug
 
+      # A migration whose CREATE TABLE differs from the entity compiles, lints
+      # and passes the unit tests, then crashes on launch for everyone who
+      # already has the app. Nothing else in this pipeline catches it.
+      - name: Migration SQL matches the schema Room expects
+        run: python3 tools/check-migration.py
+
       - name: Assemble debug APK
         working-directory: android
         run: ./gradlew --no-daemon :app:assembleDebug

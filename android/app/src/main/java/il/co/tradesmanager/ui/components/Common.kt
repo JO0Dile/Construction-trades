@@ -60,9 +60,13 @@ fun SectionHeader(text: String, modifier: Modifier = Modifier) {
  * The add action sits on the heading rather than on a single floating button,
  * because a project holds two different lists and a screen-corner "+" cannot
  * say which one it means.
+ *
+ * A null [onAdd] is read-only: the heading stays, the button goes. Someone
+ * whose role does not extend to writing here should see that the section
+ * exists and what is in it, not a button that refuses them.
  */
 @Composable
-fun SectionHeaderWithAdd(title: String, contentDescription: String, onAdd: () -> Unit) {
+fun SectionHeaderWithAdd(title: String, contentDescription: String, onAdd: (() -> Unit)?) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -73,8 +77,10 @@ fun SectionHeaderWithAdd(title: String, contentDescription: String, onAdd: () ->
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.weight(1f).padding(vertical = 8.dp),
         )
-        IconButton(onClick = onAdd) {
-            Icon(Icons.Filled.Add, contentDescription = contentDescription)
+        if (onAdd != null) {
+            IconButton(onClick = onAdd) {
+                Icon(Icons.Filled.Add, contentDescription = contentDescription)
+            }
         }
     }
 }

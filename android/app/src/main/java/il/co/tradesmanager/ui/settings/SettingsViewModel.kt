@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.i18n.LocaleController
 import il.co.tradesmanager.data.local.entity.TradeEntity
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.update.UpdateRepository
@@ -25,6 +26,15 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
     val trades: StateFlow<List<TradeEntity>> = container.catalogDao.observeTrades()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
+    val session: StateFlow<SessionRepository.State> = container.session.state
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5_000),
+            SessionRepository.State.Loading,
+        )
+
+    fun signOut() = viewModelScope.launch { container.session.signOut() }
+
     private val _reseedResult = MutableStateFlow<Int?>(null)
     val reseedResult: StateFlow<Int?> = _reseedResult.asStateFlow()
 
@@ -38,8 +48,6 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
     }
 
     fun setLargeText(value: Boolean) = viewModelScope.launch { container.settings.setLargeText(value) }
-
-    fun setActorName(name: String) = viewModelScope.launch { container.settings.setActorName(name) }
 
     fun toggleTrade(tradeId: String, selected: Boolean) = viewModelScope.launch {
         container.catalogDao.setTradeSelected(tradeId, selected)
