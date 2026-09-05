@@ -294,6 +294,18 @@ app claims to get right:
       it back, because the work stopping and the area being checked are two
       different events.
 
+**Adding to Stock — finding what you just added**
+- [ ] Stock → **+**, add an item, save. The list should scroll to it and hold
+      it highlighted for a couple of seconds.
+- [ ] Now the case that was broken: **search for something**, get no results,
+      tap **+** and add an item with a different name. The search clears itself
+      and the new item is shown — rather than leaving you looking at an empty
+      search for a word you have already moved on from.
+- [ ] Same with the **Low stock** filter on, and with a kind filter on.
+- [ ] With several low-stock items on the books, add a normal one. It sorts
+      below all of them — and the screen goes to it instead of leaving you at
+      the top wondering.
+
 **Stamped photographs**
 - [ ] Photograph something inside a job. The picture should come back with the
       date, time, coordinates and your name burned into a dark band along the

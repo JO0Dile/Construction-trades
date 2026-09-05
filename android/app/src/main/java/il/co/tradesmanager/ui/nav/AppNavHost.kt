@@ -82,6 +82,9 @@ object Routes {
     /** Key the scanner writes its result under, read by whoever launched it. */
     const val SCAN_RESULT = "scan_result"
 
+    /** Key the item editor reports the item it saved under. */
+    const val SAVED_ITEM = "saved_item"
+
     fun inventoryEdit(itemId: String?) = "$INVENTORY_EDIT?itemId=${itemId.orEmpty()}"
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
     fun money(projectId: String) = "$MONEY/$projectId"
@@ -215,7 +218,14 @@ fun AppNavHost(
                 InventoryEditScreen(
                     container = container,
                     itemId = entry.arguments?.getString("itemId")?.takeIf { it.isNotBlank() },
-                    onDone = { navController.popBackStack() },
+                    onDone = { savedItemId ->
+                        // Handed back to the list so it can find the row, even
+                        // when a filter or the sort order would have hidden it.
+                        navController.previousBackStackEntry
+                            ?.savedStateHandle
+                            ?.set(Routes.SAVED_ITEM, savedItemId)
+                        navController.popBackStack()
+                    },
                 )
             }
             composable(Routes.PROJECTS) {
