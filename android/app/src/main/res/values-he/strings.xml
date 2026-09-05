@@ -504,6 +504,29 @@
     <string name="acc_id_add">הוספת מספר תעודת זהות</string>
     <string name="acc_id_locked">נקבע פעם אחת ונשמר. משרד האתר מזהה אתכם לפיו, ולכן אי אפשר לשנות אותו בשקט.</string>
     <string name="acc_id_missing">אין לכם עדיין מספר תעודת זהות, ולכן אפשר להיכנס רק עם שם המשתמש. הוסיפו מספר ושניהם יעבדו.</string>
+    <string name="log_title">יומן עבודה</string>
+    <string name="log_empty">עדיין לא נרשמו ימים. היומן של היום מחכה.</string>
+    <string name="log_today">היום</string>
+    <string name="log_gathered">מה שנרשם היום</string>
+    <string name="log_gathered_hint">נספר ממה שנרשם בפועל. תיקון הרישום מתקן גם כאן.</string>
+    <string name="log_quiet">לא נרשם דבר בעבודה הזאת היום. אם בוצעה עבודה, היא לא הגיעה לאפליקציה.</string>
+    <string name="log_tasks_done">משימות שהושלמו</string>
+    <string name="log_deliveries">משלוחים שנרשמו</string>
+    <string name="log_permits">היתרים שהונפקו</string>
+    <string name="log_talks">שיחות בטיחות</string>
+    <string name="log_snags">ליקויים שנפתחו</string>
+    <string name="log_incidents">אירועי בטיחות</string>
+    <string name="log_typed">מה שרק אתם יודעים</string>
+    <string name="log_weather">מזג אוויר</string>
+    <string name="log_headcount">כמות עובדים באתר</string>
+    <string name="log_notes">איך עבר היום</string>
+    <string name="log_notes_hint">עיכובים, מבקרים, וכל דבר שמפקח או עורך דין ירצו לדעת בהמשך.</string>
+    <string name="log_sign">חתימה על היום</string>
+    <string name="log_signed_by">נחתם על ידי</string>
+    <string name="log_locked">נחתם ונסגר. יומן שאפשר לערוך בדיעבד אינו מהווה ראיה.</string>
+    <string name="log_must_sign">יש לחתום לפני סגירת היום.</string>
+    <string name="log_state_draft">לא נחתם</string>
+    <string name="log_state_signed">נחתם</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -563,5 +586,11 @@
         <item quantity="two">שני ליקויים פתוחים</item>
         <item quantity="many">%d ליקויים פתוחים</item>
         <item quantity="other">%d ליקויים פתוחים</item>
+    </plurals>
+    <plurals name="log_workers">
+        <item quantity="one">עובד אחד באתר</item>
+        <item quantity="two">שני עובדים באתר</item>
+        <item quantity="many">%d עובדים באתר</item>
+        <item quantity="other">%d עובדים באתר</item>
     </plurals>
 </resources>

@@ -2537,6 +2537,121 @@
       "en": "You have no ID number yet, so you can only sign in with your username. Add one and either will work.",
       "he": "אין לכם עדיין מספר תעודת זהות, ולכן אפשר להיכנס רק עם שם המשתמש. הוסיפו מספר ושניהם יעבדו.",
       "ar": "لا يوجد لديك رقم هوية بعد، لذا يمكنك الدخول باسم المستخدم فقط. أضف رقمًا وسيعمل كلاهما."
+    },
+    "log_title": {
+      "en": "Daily log",
+      "he": "יומן עבודה",
+      "ar": "يومية العمل"
+    },
+    "log_empty": {
+      "en": "No days logged yet. Today's is ready when you are.",
+      "he": "עדיין לא נרשמו ימים. היומן של היום מחכה.",
+      "ar": "لم تُسجَّل أيام بعد. يومية اليوم جاهزة."
+    },
+    "log_today": {
+      "en": "Today",
+      "he": "היום",
+      "ar": "اليوم"
+    },
+    "log_gathered": {
+      "en": "What the app recorded today",
+      "he": "מה שנרשם היום",
+      "ar": "ما سجّله التطبيق اليوم"
+    },
+    "log_gathered_hint": {
+      "en": "Counted from what was actually entered. Correct the entry and this corrects itself.",
+      "he": "נספר ממה שנרשם בפועל. תיקון הרישום מתקן גם כאן.",
+      "ar": "محسوب مما أُدخل فعلًا. صحّح الإدخال وسيُصحَّح هنا."
+    },
+    "log_quiet": {
+      "en": "Nothing was recorded on this job today. If work happened, it did not reach the app.",
+      "he": "לא נרשם דבר בעבודה הזאת היום. אם בוצעה עבודה, היא לא הגיעה לאפליקציה.",
+      "ar": "لم يُسجَّل شيء في هذا العمل اليوم. إن جرى عمل، فهو لم يصل إلى التطبيق."
+    },
+    "log_tasks_done": {
+      "en": "Tasks finished",
+      "he": "משימות שהושלמו",
+      "ar": "مهام أُنجزت"
+    },
+    "log_deliveries": {
+      "en": "Deliveries booked in",
+      "he": "משלוחים שנרשמו",
+      "ar": "توريدات مسجّلة"
+    },
+    "log_permits": {
+      "en": "Permits issued",
+      "he": "היתרים שהונפקו",
+      "ar": "تصاريح صادرة"
+    },
+    "log_talks": {
+      "en": "Safety talks",
+      "he": "שיחות בטיחות",
+      "ar": "محادثات سلامة"
+    },
+    "log_snags": {
+      "en": "Snags raised",
+      "he": "ליקויים שנפתחו",
+      "ar": "عيوب فُتحت"
+    },
+    "log_incidents": {
+      "en": "Incidents",
+      "he": "אירועי בטיחות",
+      "ar": "حوادث"
+    },
+    "log_typed": {
+      "en": "What only you know",
+      "he": "מה שרק אתם יודעים",
+      "ar": "ما تعرفه أنت وحدك"
+    },
+    "log_weather": {
+      "en": "Weather",
+      "he": "מזג אוויר",
+      "ar": "الطقس"
+    },
+    "log_headcount": {
+      "en": "People on site",
+      "he": "כמות עובדים באתר",
+      "ar": "عدد العمال في الموقع"
+    },
+    "log_notes": {
+      "en": "How the day went",
+      "he": "איך עבר היום",
+      "ar": "كيف مضى اليوم"
+    },
+    "log_notes_hint": {
+      "en": "Delays, visitors, anything an inspector or a solicitor would want to know later.",
+      "he": "עיכובים, מבקרים, וכל דבר שמפקח או עורך דין ירצו לדעת בהמשך.",
+      "ar": "تأخيرات، زوار، وأي شيء قد يسأل عنه مفتش أو محامٍ لاحقًا."
+    },
+    "log_sign": {
+      "en": "Sign the day off",
+      "he": "חתימה על היום",
+      "ar": "توقيع اليوم"
+    },
+    "log_signed_by": {
+      "en": "Signed by",
+      "he": "נחתם על ידי",
+      "ar": "وقّعه"
+    },
+    "log_locked": {
+      "en": "Signed and closed. A daily log that can be tidied up afterwards is evidence of nothing.",
+      "he": "נחתם ונסגר. יומן שאפשר לערוך בדיעבד אינו מהווה ראיה.",
+      "ar": "مُوقَّع ومغلق. يومية يمكن تعديلها لاحقًا لا تصلح دليلًا."
+    },
+    "log_must_sign": {
+      "en": "Draw a signature before signing the day off.",
+      "he": "יש לחתום לפני סגירת היום.",
+      "ar": "وقّع قبل إغلاق اليوم."
+    },
+    "log_state_draft": {
+      "en": "Not signed",
+      "he": "לא נחתם",
+      "ar": "غير موقّع"
+    },
+    "log_state_signed": {
+      "en": "Signed",
+      "he": "נחתם",
+      "ar": "موقّع"
     }
   },
   "plurals": {
@@ -2748,6 +2863,27 @@
         "few": "%d عيوب مفتوحة",
         "many": "%d عيبًا مفتوحًا",
         "other": "%d عيب مفتوح"
+      }
+    },
+    "log_workers": {
+      "c": "How many people were on site on a given day",
+      "en": {
+        "one": "%d on site",
+        "other": "%d on site"
+      },
+      "he": {
+        "one": "עובד אחד באתר",
+        "two": "שני עובדים באתר",
+        "many": "%d עובדים באתר",
+        "other": "%d עובדים באתר"
+      },
+      "ar": {
+        "zero": "لا عمال في الموقع",
+        "one": "عامل واحد في الموقع",
+        "two": "عاملان في الموقع",
+        "few": "%d عمال في الموقع",
+        "many": "%d عاملًا في الموقع",
+        "other": "%d عامل في الموقع"
       }
     }
   }

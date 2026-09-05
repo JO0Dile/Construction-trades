@@ -9,6 +9,7 @@ import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.CertificationRepository
+import il.co.tradesmanager.data.repository.DailyLogRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
@@ -91,6 +92,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
         CertificationRepository(database.certificationDao(), catalogSource, auditTrail)
 
     val equipment = EquipmentRepository(database.equipmentDao(), auditTrail)
+
+    /** The daily site log — the יומן עבודה a site manager has to keep. */
+    val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)
 
     /** Toolbox talks and permits to work. */
     val evidence = EvidenceRepository(database.evidenceDao(), auditTrail)

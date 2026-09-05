@@ -163,5 +163,21 @@
             <string>%d outstanding</string>
         </dict>
     </dict>
+    <key>log_workers</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d on site</string>
+            <key>other</key>
+            <string>%d on site</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

@@ -243,5 +243,29 @@
             <string>%d عيب مفتوح</string>
         </dict>
     </dict>
+    <key>log_workers</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا عمال في الموقع</string>
+            <key>one</key>
+            <string>عامل واحد في الموقع</string>
+            <key>two</key>
+            <string>عاملان في الموقع</string>
+            <key>few</key>
+            <string>%d عمال في الموقع</string>
+            <key>many</key>
+            <string>%d عاملًا في الموقع</string>
+            <key>other</key>
+            <string>%d عامل في الموقع</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

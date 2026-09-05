@@ -115,6 +115,21 @@ Handover readiness is a separate number from the outstanding count, because a
 scuff to touch up next week is a real snag that should stay on the list without
 pretending to hold up a building.
 
+**Phase 4e — the daily log. Done.**
+The יומן עבודה an Israeli site manager is required to keep, and the clearest
+case in the app for entering things once. By five o'clock the app already knows
+which tasks closed, what was delivered, which permits were issued, which
+briefings were given and what went wrong — it watched all of it. The log counts
+that back and asks only for the three things a person knows: the weather, the
+headcount, and what the day was actually like. Then it is signed, and it stops
+being editable, because a daily log somebody can tidy up after an accident is
+evidence of nothing.
+
+The day window is local midnight to local midnight rather than a fixed
+twenty-four hours. Israel moves its clocks in March and October, so two days a
+year are twenty-three and twenty-five hours long, and a fixed window either
+loses an hour of work off one or steals an hour from the next.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -139,6 +154,26 @@ permits to work, one person belonging to several companies, and snagging.
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
 section, another screen — which is what the four phases above were for.
+
+## The 350, honestly
+
+A full list of 350 wanted features exists. Sorted by what it would actually
+take to build them, it comes out roughly:
+
+| | About | |
+| --- | ---: | --- |
+| Built | 35 | |
+| Buildable here — on the device, no server | 150 | where the work is |
+| Needs a server | 60 | sync, chat, push-to-talk, client portal |
+| Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
+| Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
+| Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
+
+So about half of the list cannot be built into this app however long anybody
+works at it, because it needs a signed agreement, a server, a device that does
+not exist yet, or a team-year. That is not an argument against the list — it is
+an argument for spending the time on the hundred and fifty that are real, since
+those are the ones that make the app worth opening on a site tomorrow.
 
 ## The rule for anything not on the list
 

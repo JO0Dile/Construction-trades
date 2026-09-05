@@ -76,6 +76,7 @@ fun ProjectDetailScreen(
     container: AppContainer,
     projectId: String,
     onOpenMoney: () -> Unit,
+    onOpenDailyLog: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -122,7 +123,8 @@ fun ProjectDetailScreen(
     val listState = rememberLazyListState()
     val rowsAboveTasks = (if (project != null) 1 else 0) +
         (if (canSeeMoney) 1 else 0) +
-        (if (canSeeEvidence) 1 else 0) +
+        // Two rows for Evidence: the daily log, then the photographs.
+        (if (canSeeEvidence) 2 else 0) +
         (if (state.tasks.isNotEmpty() && canSeePlan) 1 else 0)
     val firstTaskRow = rowsAboveTasks + 1
     val firstMaterialRow = firstTaskRow +
@@ -229,6 +231,18 @@ fun ProjectDetailScreen(
                             )
                         },
                         modifier = Modifier.clickable(onClick = onOpenMoney),
+                    )
+                }
+            }
+
+            // The day's log lives beside the money for the same reason: it is
+            // too much to inline and too important to bury in a menu.
+            if (canSeeEvidence) {
+                item {
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.log_title)) },
+                        supportingContent = { Text(stringResource(R.string.log_notes_hint)) },
+                        modifier = Modifier.clickable(onClick = onOpenDailyLog),
                     )
                 }
             }

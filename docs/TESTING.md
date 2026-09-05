@@ -294,6 +294,20 @@ app claims to get right:
       it back, because the work stopping and the area being checked are two
       different events.
 
+**The daily log** — open a job → *Daily log*
+- [ ] It opens on today with a date at the top and *Not signed*.
+- [ ] The top half counts what the app already recorded. Do something on the
+      job — tick a task off, book a delivery in, hold a toolbox talk — then
+      come back. The count should have gone up **without you typing anything**.
+- [ ] On a job where nothing has been recorded today it says so plainly rather
+      than showing six zeros and leaving you to work it out.
+- [ ] Fill in the weather, the headcount and how the day went. Leave the screen
+      and come back: it is still there. There is no Save button on purpose.
+- [ ] Sign it. Everything above goes read-only and there is no way to edit it —
+      that is the point of signing, not an oversight.
+- [ ] Reopen an older day from the list at the bottom. A signed one stays
+      locked.
+
 **Snags** — Safety → the checklist icon in the top bar
 - [ ] **+** → describe a defect, say where it is, who has to fix it, and leave
       *Holds up handover* on. Create.
@@ -385,8 +399,8 @@ app claims to get right:
       who is using the device. If it crashes on launch, that is a migration
       bug — tell me and do not clear the app's data, the crash log is worth
       more than the recovery.
-- [ ] The database is at version 10, so a device coming from the first build
-      runs **nine** migrations back to back. CI proves each one's SQL matches
+- [ ] The database is at version 11, so a device coming from the first build
+      runs **ten** migrations back to back. CI proves each one's SQL matches
       what the app expects; only a real upgrade proves they run in order, on
       real data, on a real phone.
 

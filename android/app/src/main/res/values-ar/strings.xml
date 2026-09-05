@@ -504,6 +504,29 @@
     <string name="acc_id_add">أضف رقم هويتك</string>
     <string name="acc_id_locked">يُحدَّد مرة واحدة ويُحفظ. مكتب الموقع يعرفك به، لذا لا يمكن تغييره بهدوء.</string>
     <string name="acc_id_missing">لا يوجد لديك رقم هوية بعد، لذا يمكنك الدخول باسم المستخدم فقط. أضف رقمًا وسيعمل كلاهما.</string>
+    <string name="log_title">يومية العمل</string>
+    <string name="log_empty">لم تُسجَّل أيام بعد. يومية اليوم جاهزة.</string>
+    <string name="log_today">اليوم</string>
+    <string name="log_gathered">ما سجّله التطبيق اليوم</string>
+    <string name="log_gathered_hint">محسوب مما أُدخل فعلًا. صحّح الإدخال وسيُصحَّح هنا.</string>
+    <string name="log_quiet">لم يُسجَّل شيء في هذا العمل اليوم. إن جرى عمل، فهو لم يصل إلى التطبيق.</string>
+    <string name="log_tasks_done">مهام أُنجزت</string>
+    <string name="log_deliveries">توريدات مسجّلة</string>
+    <string name="log_permits">تصاريح صادرة</string>
+    <string name="log_talks">محادثات سلامة</string>
+    <string name="log_snags">عيوب فُتحت</string>
+    <string name="log_incidents">حوادث</string>
+    <string name="log_typed">ما تعرفه أنت وحدك</string>
+    <string name="log_weather">الطقس</string>
+    <string name="log_headcount">عدد العمال في الموقع</string>
+    <string name="log_notes">كيف مضى اليوم</string>
+    <string name="log_notes_hint">تأخيرات، زوار، وأي شيء قد يسأل عنه مفتش أو محامٍ لاحقًا.</string>
+    <string name="log_sign">توقيع اليوم</string>
+    <string name="log_signed_by">وقّعه</string>
+    <string name="log_locked">مُوقَّع ومغلق. يومية يمكن تعديلها لاحقًا لا تصلح دليلًا.</string>
+    <string name="log_must_sign">وقّع قبل إغلاق اليوم.</string>
+    <string name="log_state_draft">غير موقّع</string>
+    <string name="log_state_signed">موقّع</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -583,5 +606,13 @@
         <item quantity="few">%d عيوب مفتوحة</item>
         <item quantity="many">%d عيبًا مفتوحًا</item>
         <item quantity="other">%d عيب مفتوح</item>
+    </plurals>
+    <plurals name="log_workers">
+        <item quantity="zero">لا عمال في الموقع</item>
+        <item quantity="one">عامل واحد في الموقع</item>
+        <item quantity="two">عاملان في الموقع</item>
+        <item quantity="few">%d عمال في الموقع</item>
+        <item quantity="many">%d عاملًا في الموقع</item>
+        <item quantity="other">%d عامل في الموقع</item>
     </plurals>
 </resources>

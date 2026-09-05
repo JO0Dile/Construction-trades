@@ -171,3 +171,41 @@ data class SnagEntity(
     val verifyNotes: String?,
     val updatedAt: Long,
 )
+
+/**
+ * One day on one job — the יומן עבודה an Israeli site manager has to keep.
+ *
+ * Only the columns here are typed. Everything else in the log is gathered from
+ * what the app already watched happen that day, so the manager is not asked to
+ * remember at five o'clock what was delivered at nine.
+ *
+ * [logDate] is a day number rather than a timestamp, so a log for the fifth of
+ * September stays the fifth of September when the record is opened in another
+ * country years later. Unique per job per day: two logs for one day is two
+ * accounts of it, which is worse than none.
+ */
+@Entity(
+    tableName = "daily_logs",
+    indices = [
+        Index(value = ["projectId", "logDate"], unique = true),
+        Index("logDate"),
+    ],
+)
+data class DailyLogEntity(
+    @PrimaryKey val id: String,
+    val projectId: String,
+    /** Days since 1970-01-01, in the site's local calendar. */
+    val logDate: Long,
+    /** DRAFT or SIGNED — see core.evidence.DailyLog. */
+    val status: String,
+    val weather: String?,
+    /** What a clock-in system would know. Until there is one, somebody counts. */
+    val workforceCount: Int?,
+    val notes: String?,
+    val preparedByName: String,
+    val preparedById: String?,
+    val signature: String?,
+    val signedAt: Long?,
+    val createdAt: Long,
+    val updatedAt: Long,
+)
