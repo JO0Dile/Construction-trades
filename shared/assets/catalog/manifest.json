@@ -175,6 +175,104 @@
       }
     }
   ],
+  "certificationKinds": [
+    {
+      "id": "height",
+      "names": {
+        "en": "Work at height",
+        "he": "עבודה בגובה",
+        "ar": "العمل على ارتفاع"
+      }
+    },
+    {
+      "id": "site-manager",
+      "names": {
+        "en": "Site manager",
+        "he": "מנהל עבודה",
+        "ar": "مدير عمل"
+      }
+    },
+    {
+      "id": "electrician",
+      "names": {
+        "en": "Licensed electrician",
+        "he": "חשמלאי מוסמך",
+        "ar": "كهربائي مرخّص"
+      }
+    },
+    {
+      "id": "crane",
+      "names": {
+        "en": "Crane operator",
+        "he": "מפעיל מנוף",
+        "ar": "مشغّل رافعة"
+      }
+    },
+    {
+      "id": "forklift",
+      "names": {
+        "en": "Forklift operator",
+        "he": "מפעיל מלגזה",
+        "ar": "مشغّل رافعة شوكية"
+      }
+    },
+    {
+      "id": "welding",
+      "names": {
+        "en": "Welding",
+        "he": "ריתוך",
+        "ar": "لحام"
+      }
+    },
+    {
+      "id": "confined",
+      "names": {
+        "en": "Confined spaces",
+        "he": "עבודה בחלל מוקף",
+        "ar": "أماكن مغلقة"
+      }
+    },
+    {
+      "id": "first-aid",
+      "names": {
+        "en": "First aid",
+        "he": "עזרה ראשונה",
+        "ar": "إسعاف أولي"
+      }
+    },
+    {
+      "id": "gas",
+      "names": {
+        "en": "Gas work",
+        "he": "עבודות גז",
+        "ar": "أعمال الغاز"
+      }
+    },
+    {
+      "id": "scaffold",
+      "names": {
+        "en": "Scaffolding",
+        "he": "פיגומים",
+        "ar": "سقالات"
+      }
+    },
+    {
+      "id": "asbestos",
+      "names": {
+        "en": "Asbestos",
+        "he": "אסבסט",
+        "ar": "أسبستوس"
+      }
+    },
+    {
+      "id": "driving",
+      "names": {
+        "en": "Driving licence",
+        "he": "רישיון נהיגה",
+        "ar": "رخصة قيادة"
+      }
+    }
+  ],
   "trades": [
     {
       "id": "electrical",

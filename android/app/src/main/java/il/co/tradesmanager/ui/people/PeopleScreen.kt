@@ -40,6 +40,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.repository.AccountRepository
@@ -67,6 +68,8 @@ fun PeopleScreen(container: AppContainer) {
     val members by viewModel.members.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
+    val certifications by viewModel.certifications.collectAsStateWithLifecycle()
+    val kinds by viewModel.kinds.collectAsStateWithLifecycle()
     var adding by remember { mutableStateOf(false) }
     var editing by remember { mutableStateOf<AccountEntity?>(null) }
 
@@ -95,7 +98,29 @@ fun PeopleScreen(container: AppContainer) {
                     val role = Role.parse(member.role)
                     ListItem(
                         headlineContent = { Text(member.displayName) },
-                        supportingContent = { Text(stringResource(roleLabel(role))) },
+                        supportingContent = {
+                            val tickets = certifications[member.id].orEmpty()
+                            val worst = tickets.minByOrNull {
+                                Expiry.urgency(it.expiresOn, System.currentTimeMillis())
+                            }
+                            val state = Expiry.state(worst?.expiresOn, System.currentTimeMillis())
+                            Text(
+                                text = when (state) {
+                                    Expiry.State.EXPIRED ->
+                                        stringResource(roleLabel(role)) + " · " +
+                                            stringResource(R.string.cert_expired)
+                                    Expiry.State.EXPIRING_SOON ->
+                                        stringResource(roleLabel(role)) + " · " +
+                                            stringResource(R.string.cert_attention)
+                                    else -> stringResource(roleLabel(role))
+                                },
+                                color = when (state) {
+                                    Expiry.State.EXPIRED -> MaterialTheme.colorScheme.error
+                                    Expiry.State.EXPIRING_SOON -> AmberWarning
+                                    else -> MaterialTheme.colorScheme.onSurfaceVariant
+                                },
+                            )
+                        },
                         trailingContent = {
                             // You cannot remove yourself: signing out is the
                             // thing someone actually wants there, and it is in
@@ -111,13 +136,9 @@ fun PeopleScreen(container: AppContainer) {
                                 }
                             }
                         },
-                        // Tapping a person is how their role is changed; there
-                        // is nothing else to open, so no extra affordance.
-                        modifier = if (canManage && member.id != signedIn?.account?.id) {
-                            Modifier.fillMaxWidth().clickable { editing = member }
-                        } else {
-                            Modifier.fillMaxWidth()
-                        },
+                        // Every row opens, including your own: tickets are worth
+                        // seeing whether or not you may change anybody's role.
+                        modifier = Modifier.fillMaxWidth().clickable { editing = member },
                     )
                 }
             }
@@ -135,13 +156,18 @@ fun PeopleScreen(container: AppContainer) {
     }
 
     editing?.let { member ->
-        RoleDialog(
-            current = Role.parse(member.role),
+        PersonSheet(
+            person = member,
+            certifications = certifications[member.id].orEmpty(),
+            suggestedKinds = kinds,
+            // You may look at your own tickets; you may not re-role yourself.
+            canManage = canManage && member.id != signedIn?.account?.id,
             onDismiss = { editing = null },
-            onPick = {
-                viewModel.setRole(member, it)
-                editing = null
+            onSetRole = { viewModel.setRole(member, it) },
+            onAddCertification = { title, reference, expiresOn ->
+                viewModel.addCertification(member.id, title, reference, expiresOn)
             },
+            onRemoveCertification = viewModel::removeCertification,
         )
     }
 
@@ -248,25 +274,5 @@ private fun AddMemberDialog(
     )
 }
 
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun RoleDialog(current: Role, onDismiss: () -> Unit, onPick: (Role) -> Unit) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.people_role)) },
-        text = {
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Role.assignable.forEach { option ->
-                    FilterChip(
-                        selected = current == option,
-                        onClick = { onPick(option) },
-                        label = { Text(stringResource(roleLabel(option))) },
-                    )
-                }
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
-        },
-    )
-}
+/** Amber: still legal, but book the renewal course. Not an error yet. */
+private val AmberWarning = androidx.compose.ui.graphics.Color(0xFFB9770E)

@@ -10,7 +10,6 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 
 /**
  * The Money lens: what a job is worth, what it has cost, what is still owed.
@@ -58,12 +57,6 @@ class MoneyRepository(
     fun observeInvoices(projectId: String): Flow<List<InvoiceEntity>> = dao.observeInvoices(projectId)
     fun observeCostsByCategory(projectId: String): Flow<List<CostByCategory>> =
         dao.observeCostsByCategory(projectId)
-
-    /** Whether this job has any money on it at all, for the job-detail summary. */
-    fun observeHasMoney(projectId: String): Flow<Boolean> =
-        observeFinancials(projectId).map {
-            it.contractValue != 0.0 || it.costToDate != 0.0 || it.invoiced != 0.0
-        }
 
     suspend fun setBudget(
         projectId: String,

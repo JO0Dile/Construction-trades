@@ -290,6 +290,17 @@
     <string name="cost_plant">השכרת ציוד</string>
     <string name="cost_subcontractor">קבלן משנה</string>
     <string name="cost_other">אחר</string>
+    <string name="cert_title">הסמכות</string>
+    <string name="cert_add">הוספת הסמכה</string>
+    <string name="cert_name">עבור מה</string>
+    <string name="cert_reference">מספר תעודה (לא חובה)</string>
+    <string name="cert_expires">בתוקף עד</string>
+    <string name="cert_expires_hint">DD/MM/YYYY. השאירו ריק אם אין תפוגה.</string>
+    <string name="cert_no_expiry">ללא תפוגה</string>
+    <string name="cert_expired">פג תוקף</string>
+    <string name="cert_empty">לא נרשמו הסמכות.</string>
+    <string name="cert_attention">הסמכות שדורשות טיפול</string>
+    <string name="cert_date_bad">יש להזין DD/MM/YYYY.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -307,5 +318,10 @@
         <item quantity="two">שני פריטים במלאי נמוך</item>
         <item quantity="many">%d פריטים במלאי נמוך</item>
         <item quantity="other">%d פריטים במלאי נמוך</item>
+    </plurals>
+    <plurals name="cert_expiring_days">
+        <item quantity="one">פג בעוד יום</item>
+        <item quantity="two">פג בעוד יומיים</item>
+        <item quantity="other">פג בעוד %d ימים</item>
     </plurals>
 </resources>

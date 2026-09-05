@@ -298,6 +298,17 @@
     <string name="cost_plant">Plant hire</string>
     <string name="cost_subcontractor">Subcontractor</string>
     <string name="cost_other">Other</string>
+    <string name="cert_title">Tickets</string>
+    <string name="cert_add">Add a ticket</string>
+    <string name="cert_name">What it is for</string>
+    <string name="cert_reference">Certificate number (optional)</string>
+    <string name="cert_expires">Expires</string>
+    <string name="cert_expires_hint">DD/MM/YYYY. Leave empty if it does not expire.</string>
+    <string name="cert_no_expiry">No expiry</string>
+    <string name="cert_expired">Expired</string>
+    <string name="cert_empty">No tickets recorded.</string>
+    <string name="cert_attention">Tickets needing attention</string>
+    <string name="cert_date_bad">Use DD/MM/YYYY.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -309,5 +320,9 @@
     <plurals name="low_stock_count">
         <item quantity="one">%d item running low</item>
         <item quantity="other">%d items running low</item>
+    </plurals>
+    <plurals name="cert_expiring_days">
+        <item quantity="one">Expires in %d day</item>
+        <item quantity="other">Expires in %d days</item>
     </plurals>
 </resources>

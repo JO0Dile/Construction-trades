@@ -1466,6 +1466,61 @@
       "en": "Other",
       "he": "אחר",
       "ar": "أخرى"
+    },
+    "cert_title": {
+      "en": "Tickets",
+      "he": "הסמכות",
+      "ar": "الشهادات"
+    },
+    "cert_add": {
+      "en": "Add a ticket",
+      "he": "הוספת הסמכה",
+      "ar": "إضافة شهادة"
+    },
+    "cert_name": {
+      "en": "What it is for",
+      "he": "עבור מה",
+      "ar": "لماذا هي"
+    },
+    "cert_reference": {
+      "en": "Certificate number (optional)",
+      "he": "מספר תעודה (לא חובה)",
+      "ar": "رقم الشهادة (اختياري)"
+    },
+    "cert_expires": {
+      "en": "Expires",
+      "he": "בתוקף עד",
+      "ar": "صالحة حتى"
+    },
+    "cert_expires_hint": {
+      "en": "DD/MM/YYYY. Leave empty if it does not expire.",
+      "he": "DD/MM/YYYY. השאירו ריק אם אין תפוגה.",
+      "ar": "يوم/شهر/سنة. اتركه فارغًا إن كانت لا تنتهي."
+    },
+    "cert_no_expiry": {
+      "en": "No expiry",
+      "he": "ללא תפוגה",
+      "ar": "بدون انتهاء"
+    },
+    "cert_expired": {
+      "en": "Expired",
+      "he": "פג תוקף",
+      "ar": "منتهية"
+    },
+    "cert_empty": {
+      "en": "No tickets recorded.",
+      "he": "לא נרשמו הסמכות.",
+      "ar": "لم تُسجَّل شهادات."
+    },
+    "cert_attention": {
+      "en": "Tickets needing attention",
+      "he": "הסמכות שדורשות טיפול",
+      "ar": "شهادات تحتاج انتباهًا"
+    },
+    "cert_date_bad": {
+      "en": "Use DD/MM/YYYY.",
+      "he": "יש להזין DD/MM/YYYY.",
+      "ar": "استخدم يوم/شهر/سنة."
     }
   },
   "plurals": {
@@ -1530,6 +1585,22 @@
         "few": "%d أصناف منخفضة",
         "many": "%d صنفًا منخفضًا",
         "other": "%d صنف منخفض"
+      }
+    },
+    "cert_expiring_days": {
+      "en": {
+        "one": "Expires in %d day",
+        "other": "Expires in %d days"
+      },
+      "he": {
+        "one": "פג בעוד יום",
+        "two": "פג בעוד יומיים",
+        "other": "פג בעוד %d ימים"
+      },
+      "ar": {
+        "one": "تنتهي خلال يوم",
+        "two": "تنتهي خلال يومين",
+        "other": "تنتهي خلال %d أيام"
       }
     }
   }

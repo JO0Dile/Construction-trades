@@ -297,3 +297,14 @@
 "cost_plant" = "Plant hire";
 "cost_subcontractor" = "Subcontractor";
 "cost_other" = "Other";
+"cert_title" = "Tickets";
+"cert_add" = "Add a ticket";
+"cert_name" = "What it is for";
+"cert_reference" = "Certificate number (optional)";
+"cert_expires" = "Expires";
+"cert_expires_hint" = "DD/MM/YYYY. Leave empty if it does not expire.";
+"cert_no_expiry" = "No expiry";
+"cert_expired" = "Expired";
+"cert_empty" = "No tickets recorded.";
+"cert_attention" = "Tickets needing attention";
+"cert_date_bad" = "Use DD/MM/YYYY.";

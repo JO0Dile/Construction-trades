@@ -18,6 +18,7 @@ object Formats {
     val ILS: Currency = Currency.getInstance("ILS")
 
     private const val DATE_PATTERN = "dd/MM/yyyy"
+    private const val PARSE_PATTERN = "dd/MM/uuuu"
     private const val TIME_PATTERN = "HH:mm"
 
     fun date(date: LocalDate, locale: Locale): String =
@@ -25,6 +26,26 @@ object Formats {
 
     fun time(time: LocalTime, locale: Locale): String =
         DateTimeFormatter.ofPattern(TIME_PATTERN, locale).format(time)
+
+    /**
+     * Reads a date somebody typed as DD/MM/YYYY.
+     *
+     * Parsed under [Locale.ROOT] and strictly: the pattern is fixed Israeli
+     * convention rather than the device's, and 31/02 has to fail rather than
+     * quietly become 3 March. Null means "that is not a date", which the
+     * caller shows as an error instead of storing a wrong one.
+     */
+    fun parseDate(text: String): LocalDate? = runCatching {
+        LocalDate.parse(
+            text.trim(),
+            // "uuuu", not "yyyy": under a strict resolver, year-of-era needs an
+            // era field and every date would fail to parse. This is the one
+            // difference between the display pattern and the parse pattern.
+            DateTimeFormatter.ofPattern(PARSE_PATTERN, Locale.ROOT)
+                .withResolverStyle(java.time.format.ResolverStyle.STRICT)
+                .withChronology(java.time.chrono.IsoChronology.INSTANCE),
+        )
+    }.getOrNull()
 
     fun dateTime(date: LocalDate, time: LocalTime, locale: Locale): String =
         "${date(date, locale)} ${time(time, locale)}"

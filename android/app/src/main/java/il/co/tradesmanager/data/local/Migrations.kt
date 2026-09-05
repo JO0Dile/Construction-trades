@@ -33,7 +33,14 @@ object Migrations {
         }
     }
 
-    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3)
+    /** Adds certifications: the tickets people hold, and when they lapse. */
+    val MIGRATION_3_4 = object : Migration(3, 4) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_3_4.forEach(db::execSQL)
+        }
+    }
+
+    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
 
     /** Exposed so the CI check can read the same strings the migration runs. */
     val SQL_1_2: List<String> = listOf(
@@ -74,5 +81,14 @@ object Migrations {
             "`vatRate` REAL NOT NULL, `issuedOn` INTEGER NOT NULL, `dueOn` INTEGER, " +
             "`paidOn` INTEGER, `status` TEXT NOT NULL, `notes` TEXT, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_invoices_projectId` ON `invoices` (`projectId`)",
+    )
+
+    val SQL_3_4: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `certifications` (`id` TEXT NOT NULL, " +
+            "`accountId` TEXT NOT NULL, `title` TEXT NOT NULL, `reference` TEXT, " +
+            "`issuedOn` INTEGER, `expiresOn` INTEGER, `notes` TEXT, " +
+            "`createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_certifications_accountId` " +
+            "ON `certifications` (`accountId`)",
     )
 }

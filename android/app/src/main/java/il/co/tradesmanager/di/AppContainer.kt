@@ -8,6 +8,7 @@ import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.InventoryRepository
+import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
@@ -59,6 +60,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val photos = PhotoRepository(appContext, database.photoDao(), auditTrail)
 
     val money = MoneyRepository(database.moneyDao(), auditTrail)
+
+    val certifications =
+        CertificationRepository(database.certificationDao(), catalogSource, auditTrail)
 
     val schedule = ScheduleRepository(database.scheduleDao(), auditTrail)
 

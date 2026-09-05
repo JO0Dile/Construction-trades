@@ -125,6 +125,25 @@ class CatalogIntegrityTest {
     }
 
     @Test
+    fun `every ticket the app suggests is named in all shipped languages`() {
+        assertTrue("no certification kinds in the manifest", manifest.certificationKinds.isNotEmpty())
+
+        val missing = manifest.certificationKinds.flatMap { kind ->
+            languages.filter { kind.names[it].isNullOrBlank() }.map { "${kind.id}:$it" }
+        }
+        assertEquals(
+            "a ticket suggested only in English is no suggestion to a Hebrew or " +
+                "Arabic speaking foreman",
+            emptyList<String>(),
+            missing,
+        )
+
+        val duplicates = manifest.certificationKinds
+            .groupBy { it.id }.filterValues { it.size > 1 }.keys
+        assertEquals(emptySet<String>(), duplicates)
+    }
+
+    @Test
     fun `every safety check is written in all shipped languages`() {
         val missing = manifest.trades.mapNotNull { it.safetyFile }.flatMap { path ->
             json.decodeFromString<SafetyFile>(read(path)).checklists.flatMap { list ->

@@ -51,5 +51,21 @@
             <string>%d items running low</string>
         </dict>
     </dict>
+    <key>cert_expiring_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>Expires in %d day</string>
+            <key>other</key>
+            <string>Expires in %d days</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

@@ -63,5 +63,23 @@
             <string>%d פריטים במלאי נמוך</string>
         </dict>
     </dict>
+    <key>cert_expiring_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>פג בעוד יום</string>
+            <key>two</key>
+            <string>פג בעוד יומיים</string>
+            <key>other</key>
+            <string>פג בעוד %d ימים</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

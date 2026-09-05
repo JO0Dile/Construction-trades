@@ -297,3 +297,14 @@
 "cost_plant" = "השכרת ציוד";
 "cost_subcontractor" = "קבלן משנה";
 "cost_other" = "אחר";
+"cert_title" = "הסמכות";
+"cert_add" = "הוספת הסמכה";
+"cert_name" = "עבור מה";
+"cert_reference" = "מספר תעודה (לא חובה)";
+"cert_expires" = "בתוקף עד";
+"cert_expires_hint" = "DD/MM/YYYY. השאירו ריק אם אין תפוגה.";
+"cert_no_expiry" = "ללא תפוגה";
+"cert_expired" = "פג תוקף";
+"cert_empty" = "לא נרשמו הסמכות.";
+"cert_attention" = "הסמכות שדורשות טיפול";
+"cert_date_bad" = "יש להזין DD/MM/YYYY.";

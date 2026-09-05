@@ -290,6 +290,17 @@
     <string name="cost_plant">تأجير معدات</string>
     <string name="cost_subcontractor">مقاول من الباطن</string>
     <string name="cost_other">أخرى</string>
+    <string name="cert_title">الشهادات</string>
+    <string name="cert_add">إضافة شهادة</string>
+    <string name="cert_name">لماذا هي</string>
+    <string name="cert_reference">رقم الشهادة (اختياري)</string>
+    <string name="cert_expires">صالحة حتى</string>
+    <string name="cert_expires_hint">يوم/شهر/سنة. اتركه فارغًا إن كانت لا تنتهي.</string>
+    <string name="cert_no_expiry">بدون انتهاء</string>
+    <string name="cert_expired">منتهية</string>
+    <string name="cert_empty">لم تُسجَّل شهادات.</string>
+    <string name="cert_attention">شهادات تحتاج انتباهًا</string>
+    <string name="cert_date_bad">استخدم يوم/شهر/سنة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -313,5 +324,10 @@
         <item quantity="few">%d أصناف منخفضة</item>
         <item quantity="many">%d صنفًا منخفضًا</item>
         <item quantity="other">%d صنف منخفض</item>
+    </plurals>
+    <plurals name="cert_expiring_days">
+        <item quantity="one">تنتهي خلال يوم</item>
+        <item quantity="two">تنتهي خلال يومين</item>
+        <item quantity="other">تنتهي خلال %d أيام</item>
     </plurals>
 </resources>

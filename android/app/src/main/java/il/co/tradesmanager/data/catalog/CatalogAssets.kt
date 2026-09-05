@@ -29,6 +29,11 @@ data class CatalogManifest(
      * does not offer.
      */
     val projectKinds: List<ProjectKind> = emptyList(),
+    /**
+     * Tickets people commonly hold on an Israeli site. Suggestions, not a
+     * fixed set — a certificate the list does not name is still typed in.
+     */
+    val certificationKinds: List<ProjectKind> = emptyList(),
     val trades: List<CatalogTrade> = emptyList(),
 )
 
