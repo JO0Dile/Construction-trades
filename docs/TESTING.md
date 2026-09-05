@@ -487,6 +487,43 @@ Now the striking gate. You will need a pour on this job — record one under
 - [ ] Set the days back to 14 and add another item with **no** pour tied to it
       — edge protection, say. Releasing it is enough; there is nothing curing.
 
+**Excavations** — open a job → *Excavations*
+
+Two things kill people in trenches and they are not the same thing: the sides
+coming in, and what was already in the ground. The second is settled before the
+first spade, which is why it is a gate and not a checklist item.
+
+- [ ] **+** → give it a location, depth **2**, sides *Nothing*. Create.
+- [ ] It opens red with three reasons at once: nobody has found out what is
+      buried there, it is deep enough to need the sides held and nothing is
+      holding them, and it has never been inspected.
+- [ ] Change the depth to **1.1** and save. The support blocker clears — at one
+      metre twenty it is required, below that nobody is obliged to have
+      decided. Put it back to 2 and choose *Boxes or props*; it clears that way
+      too.
+- [ ] *Record what is buried here* and type how it was established — the
+      utility's drawings, a cable scan, trial holes. That blocker clears and
+      the register shows who established it.
+- [ ] *Inspect it*, mark it safe, sign, save. Now it reads safe to enter.
+- [ ] *Something has changed it* — rain, say. It goes straight back to red:
+      whatever the inspection said this morning, it was an inspection of a
+      different trench.
+- [ ] Inspect it again, passed. That clears the disturbance, because this one
+      was of the trench as it now stands.
+- [ ] Record an inspection marked **not safe**, with a defect. It stays red
+      until one passes — a failed inspection is not redeemed by being today's.
+
+The day window is the part worth testing properly, and it needs the clock:
+
+- [ ] With a trench reading safe, change the phone's date to tomorrow and
+      reopen the screen. It now reads *not inspected today*. A trench inspected
+      at seven last night is not inspected for the shift starting at six this
+      morning, and the app will not pretend a rolling twenty-four hours is the
+      same thing.
+- [ ] Put the date back. Inspect it again and it is safe.
+- [ ] *Filled in*. The row greys out, keeps its history, and stops counting
+      towards the banner.
+
 **Snags** — Safety → the checklist icon in the top bar
 - [ ] **+** → describe a defect, say where it is, who has to fix it, and leave
       *Holds up handover* on. Create.

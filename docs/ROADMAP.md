@@ -226,6 +226,26 @@ that number out and does not have an opinion about the concrete; it defaults to
 fourteen days because that errs towards leaving props in, and the engineer's
 number replaces it.
 
+**Phase 4k — excavations. Done.**
+Two things kill people in trenches and they are not the same thing. The sides
+come in — a cubic metre of soil weighs about a tonne and a half, and somebody
+buried to the chest cannot be pulled out by hand. Or what was already in the
+ground is struck: a live cable, a gas main, a water main that fills the trench
+with the man still in it.
+
+The second is settled before the first spade goes in and cannot be undone
+afterwards, so locating services is a gate here rather than a line on a
+checklist somewhere else. A trench cut too steep can be battered back; a cable
+that has been cut has been cut.
+
+The inspection window is a **day**, not the scaffold register's week. It rains
+overnight, the sides dry and crack, a lorry parks near the edge — and the man
+climbing in at six in the morning is relying on somebody having looked since all
+of that. Yesterday's inspection is not an inspection of today's trench, and the
+app counts calendar days in the site's own zone rather than a rolling
+twenty-four hours, which would say a seven-o'clock inspection last night still
+covered a six-o'clock start.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -247,7 +267,8 @@ Since that list was written, eight of its rows have landed and are no longer on
 it: the plant register, purchase orders with goods received, toolbox talks with
 permits to work, one person belonging to several companies, snagging, the
 concrete half of "concrete and structural", the scaffold register, lifting
-operations, and temporary works.
+operations, temporary works, and excavations — leaving "underground" on that
+row meaning services diversions and tunnelling rather than trenches.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
@@ -260,8 +281,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 53 | |
-| Buildable here — on the device, no server | 132 | where the work is |
+| Built | 57 | |
+| Buildable here — on the device, no server | 128 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

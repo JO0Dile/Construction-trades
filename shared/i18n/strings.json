@@ -3507,6 +3507,201 @@
       "en": "Nobody has released it",
       "he": "איש לא אישר לפירוק",
       "ar": "لم يأذن أحد بالفك"
+    },
+    "exc_title": {
+      "en": "Excavations",
+      "he": "חפירות",
+      "ar": "الحفريات"
+    },
+    "exc_row_hint": {
+      "en": "Trenches: what is buried there, and who may go in today.",
+      "he": "תעלות: מה טמון שם, ומי מורשה להיכנס היום.",
+      "ar": "الخنادق: ما المدفون هناك، ومن يجوز له النزول اليوم."
+    },
+    "exc_new": {
+      "en": "Add an excavation",
+      "he": "הוספת חפירה",
+      "ar": "إضافة حفرية"
+    },
+    "exc_empty": {
+      "en": "No excavations on the register.",
+      "he": "אין חפירות בפנקס.",
+      "ar": "لا حفريات في السجل."
+    },
+    "exc_location": {
+      "en": "Where it is",
+      "he": "מיקום",
+      "ar": "الموقع"
+    },
+    "exc_location_hint": {
+      "en": "In the words used on the radio: along the north boundary, grid B4.",
+      "he": "במילים שאומרים בקשר: לאורך הגבול הצפוני, משבצת B4.",
+      "ar": "بالكلمات التي تُقال في اللاسلكي: على طول الحد الشمالي، المربع B4."
+    },
+    "exc_depth": {
+      "en": "How deep (m)",
+      "he": "עומק (מ׳)",
+      "ar": "العمق (م)"
+    },
+    "exc_depth_hint": {
+      "en": "At one metre twenty the sides have to be held back somehow. Ground collapses at less than that too — this is the depth below which nobody is required to have decided, not the depth below which nothing can happen.",
+      "he": "במטר ועשרים יש להחזיק את הדפנות באופן כלשהו. קרקע קורסת גם בפחות מכך — זהו העומק שמתחתיו אין חובה להחליט, לא העומק שמתחתיו לא יקרה דבר.",
+      "ar": "عند متر وعشرين يجب تثبيت الجوانب بطريقة ما. التربة تنهار عند أقل من ذلك أيضًا — هذا هو العمق الذي لا يُلزم أحدًا بالقرار دونه، لا العمق الذي لا يحدث شيء دونه."
+    },
+    "exc_support": {
+      "en": "How the sides are held",
+      "he": "כיצד מוחזקות הדפנות",
+      "ar": "كيف تُثبَّت الجوانب"
+    },
+    "exc_support_none": {
+      "en": "Nothing",
+      "he": "ללא",
+      "ar": "بدون"
+    },
+    "exc_support_battered": {
+      "en": "Cut back",
+      "he": "שיפוע",
+      "ar": "ميلان"
+    },
+    "exc_support_shored": {
+      "en": "Boxes or props",
+      "he": "דיפון",
+      "ar": "صناديق أو دعائم"
+    },
+    "exc_support_piled": {
+      "en": "Sheet piles",
+      "he": "כלונסאות",
+      "ar": "خوازيق"
+    },
+    "exc_services": {
+      "en": "What is buried here",
+      "he": "מה טמון כאן",
+      "ar": "ما المدفون هنا"
+    },
+    "exc_services_record": {
+      "en": "Record what is buried here",
+      "he": "רישום התשתיות הטמונות",
+      "ar": "تسجيل ما هو مدفون هنا"
+    },
+    "exc_services_hint": {
+      "en": "Drawings from the utility, a cable scan, trial holes. The one thing on this screen that cannot be put right afterwards: a trench cut too steep can be battered back, but a cable that has been cut has been cut.",
+      "he": "תוכניות מחברת התשתית, סריקת כבלים, בורות בדיקה. הדבר היחיד במסך הזה שאי אפשר לתקן בדיעבד: תעלה תלולה מדי אפשר להשכיב, אבל כבל שנחתך — נחתך.",
+      "ar": "مخططات من شركة البنية التحتية، مسح الكابلات، حفر اختبارية. الأمر الوحيد في هذه الشاشة الذي لا يمكن إصلاحه لاحقًا: الخندق شديد الانحدار يمكن تمييله، أما الكابل المقطوع فقد قُطع."
+    },
+    "exc_services_none": {
+      "en": "Nobody has looked",
+      "he": "איש לא בדק",
+      "ar": "لم يتحقق أحد"
+    },
+    "exc_services_by": {
+      "en": "Located by",
+      "he": "אותר על ידי",
+      "ar": "حدّده"
+    },
+    "exc_inspect": {
+      "en": "Inspect it",
+      "he": "בדיקה",
+      "ar": "فحصها"
+    },
+    "exc_inspections": {
+      "en": "Inspections",
+      "he": "בדיקות",
+      "ar": "الفحوصات"
+    },
+    "exc_no_inspections": {
+      "en": "Nothing recorded yet.",
+      "he": "עדיין לא נרשם דבר.",
+      "ar": "لم يُسجَّل شيء بعد."
+    },
+    "exc_passed": {
+      "en": "Safe to enter",
+      "he": "מותר להיכנס",
+      "ar": "آمنة للدخول"
+    },
+    "exc_failed": {
+      "en": "Not safe — nobody in",
+      "he": "לא בטוח — אין להיכנס",
+      "ar": "غير آمنة — ممنوع الدخول"
+    },
+    "exc_defects": {
+      "en": "What is wrong",
+      "he": "מה הליקוי",
+      "ar": "ما هو العطل"
+    },
+    "exc_action": {
+      "en": "What was done about it",
+      "he": "מה נעשה בעניין",
+      "ar": "ما الذي جرى بشأنه"
+    },
+    "exc_must_sign": {
+      "en": "Sign before recording the inspection.",
+      "he": "יש לחתום לפני רישום הבדיקה.",
+      "ar": "وقّع قبل تسجيل الفحص."
+    },
+    "exc_disturbed": {
+      "en": "Something has changed it",
+      "he": "משהו שינה אותה",
+      "ar": "طرأ عليها تغيير"
+    },
+    "exc_disturbed_hint": {
+      "en": "Rain, a collapse, vibration, a load put near the edge. It comes out of use until somebody has looked again.",
+      "he": "גשם, מפולת, רעידות, עומס שהונח סמוך לשפה. יוצאת מכלל שימוש עד לבדיקה חוזרת.",
+      "ar": "مطر، انهيار، اهتزازات، حمل وُضع قرب الحافة. تخرج من الخدمة حتى يعاود أحد فحصها."
+    },
+    "exc_backfill": {
+      "en": "Filled in",
+      "he": "הוחזרה",
+      "ar": "رُدمت"
+    },
+    "exc_backfilled": {
+      "en": "Backfilled",
+      "he": "מוחזרת",
+      "ar": "مردومة"
+    },
+    "exc_may_enter": {
+      "en": "Safe to enter.",
+      "he": "מותר להיכנס.",
+      "ar": "يجوز الدخول."
+    },
+    "exc_may_not_enter": {
+      "en": "Nobody goes in",
+      "he": "אין להיכנס",
+      "ar": "ممنوع الدخول"
+    },
+    "exc_block_services": {
+      "en": "Nobody has found out what is buried here",
+      "he": "איש לא בירר מה טמון כאן",
+      "ar": "لم يتحقق أحد مما هو مدفون هنا"
+    },
+    "exc_block_support": {
+      "en": "Deep enough to need the sides held, and nothing is holding them",
+      "he": "עמוקה דיה כדי לחייב החזקת דפנות, ואין דבר שמחזיק אותן",
+      "ar": "عميقة بما يكفي لتتطلب تثبيت الجوانب، ولا شيء يثبّتها"
+    },
+    "exc_block_never": {
+      "en": "Never inspected",
+      "he": "לא נבדקה מעולם",
+      "ar": "لم تُفحص قط"
+    },
+    "exc_block_today": {
+      "en": "Not inspected today",
+      "he": "לא נבדקה היום",
+      "ar": "لم تُفحص اليوم"
+    },
+    "exc_block_failed": {
+      "en": "The last inspection failed",
+      "he": "הבדיקה האחרונה נכשלה",
+      "ar": "الفحص الأخير لم ينجح"
+    },
+    "exc_block_disturbed": {
+      "en": "Something has changed it since the last inspection",
+      "he": "משהו שינה אותה מאז הבדיקה האחרונה",
+      "ar": "طرأ عليها تغيير منذ الفحص الأخير"
+    },
+    "exc_block_backfilled": {
+      "en": "It has been filled in",
+      "he": "הוחזרה",
+      "ar": "رُدمت"
     }
   },
   "plurals": {
