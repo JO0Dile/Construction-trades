@@ -155,6 +155,26 @@ is kept as a row, with the reason, and never counted towards the volume that
 went in: a pour that quietly does not add up is worse than one that visibly
 does not.
 
+**Phase 4h — the scaffold register. Done.**
+Israeli regulations require a scaffold to be inspected before first use, after
+any alteration, after weather that could have affected it, and at least once
+every seven days, with the result written down. The register is not paperwork
+about the scaffold: on a lapsed inspection it is the reason nobody may climb
+it.
+
+So the states are not a traffic light with an amber that means carry on
+carefully. There are two things a person at the bottom of a scaffold needs —
+may I go up, or not — and everything else hangs off that one answer. An
+alteration voids a passing inspection with days still left on it, because a
+scaffold that has been changed is a different scaffold. A failed inspection is
+not redeemed by being recent. And a scaffold that has just gone up reads "never
+inspected", not a blank row.
+
+Inspections are inserted and never updated, the same rule as the daily log and
+for the same reason. The seven days are seven calendar days in the site's own
+zone rather than a fixed 168 hours: one week a year in Israel is 167 hours
+long, and a fixed span would move the deadline.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -172,10 +192,10 @@ Whole categories still at zero, in roughly the order they are worth doing:
 | Israeli government and accounting integrations | the edge, Phase 5 |
 | Site security, structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
 
-Since that list was written, six of its rows have landed and are no longer on
+Since that list was written, seven of its rows have landed and are no longer on
 it: the plant register, purchase orders with goods received, toolbox talks with
-permits to work, one person belonging to several companies, snagging, and the
-concrete half of "concrete and structural".
+permits to work, one person belonging to several companies, snagging, the
+concrete half of "concrete and structural", and the scaffold register.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
@@ -188,8 +208,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 40 | |
-| Buildable here — on the device, no server | 145 | where the work is |
+| Built | 44 | |
+| Buildable here — on the device, no server | 141 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

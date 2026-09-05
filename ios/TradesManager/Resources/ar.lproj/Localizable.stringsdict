@@ -291,5 +291,29 @@
             <string>بقيت %d دقيقة</string>
         </dict>
     </dict>
+    <key>scf_days_over</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>انتهت الصلاحية اليوم</string>
+            <key>one</key>
+            <string>انتهت الصلاحية منذ يوم</string>
+            <key>two</key>
+            <string>انتهت الصلاحية منذ يومين</string>
+            <key>few</key>
+            <string>انتهت الصلاحية منذ %d أيام</string>
+            <key>many</key>
+            <string>انتهت الصلاحية منذ %d يومًا</string>
+            <key>other</key>
+            <string>انتهت الصلاحية منذ %d يوم</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

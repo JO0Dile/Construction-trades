@@ -2837,6 +2837,191 @@
       "en": "Recorded because it cannot be seen afterwards. The engineer should know.",
       "he": "נרשם משום שאי אפשר לראות זאת בדיעבד. יש ליידע את המהנדס.",
       "ar": "يُسجَّل لأنه لا يُرى لاحقًا. يجب إعلام المهندس."
+    },
+    "scf_title": {
+      "en": "Scaffolds",
+      "he": "פיגומים",
+      "ar": "السقالات"
+    },
+    "scf_row_hint": {
+      "en": "The seven-day register, and which ones may be climbed today.",
+      "he": "פנקס הבדיקה השבועית, ואילו פיגומים מותר לטפס עליהם היום.",
+      "ar": "سجل الفحص الأسبوعي، وأي السقالات يُسمح بتسلقها اليوم."
+    },
+    "scf_new": {
+      "en": "Add a scaffold",
+      "he": "הוספת פיגום",
+      "ar": "إضافة سقالة"
+    },
+    "scf_empty": {
+      "en": "No scaffolds on the register.",
+      "he": "אין פיגומים בפנקס.",
+      "ar": "لا سقالات في السجل."
+    },
+    "scf_location": {
+      "en": "Where it is",
+      "he": "מיקום",
+      "ar": "الموقع"
+    },
+    "scf_location_hint": {
+      "en": "In the words somebody would use on the radio: north elevation, stairwell 2.",
+      "he": "במילים שאומרים בקשר: חזית צפונית, חדר מדרגות 2.",
+      "ar": "بالكلمات التي تُقال في اللاسلكي: الواجهة الشمالية، بيت الدرج 2."
+    },
+    "scf_type": {
+      "en": "Kind of scaffold",
+      "he": "סוג הפיגום",
+      "ar": "نوع السقالة"
+    },
+    "scf_type_hint": {
+      "en": "Independent tied, birdcage, mobile tower.",
+      "he": "פיגום זקפים, פיגום שולחן, מגדל נייד.",
+      "ar": "سقالة مستقلة مربوطة، سقالة قفصية، برج متنقل."
+    },
+    "scf_erected_by": {
+      "en": "Put up by",
+      "he": "הוקם על ידי",
+      "ar": "أقامها"
+    },
+    "scf_inspect": {
+      "en": "Record an inspection",
+      "he": "רישום בדיקה",
+      "ar": "تسجيل فحص"
+    },
+    "scf_inspections": {
+      "en": "Inspections",
+      "he": "בדיקות",
+      "ar": "الفحوصات"
+    },
+    "scf_no_inspections": {
+      "en": "Nothing recorded yet.",
+      "he": "עדיין לא נרשם דבר.",
+      "ar": "لم يُسجَّل شيء بعد."
+    },
+    "scf_passed": {
+      "en": "Passed — safe to use",
+      "he": "עבר — מותר לשימוש",
+      "ar": "اجتازت — صالحة للاستخدام"
+    },
+    "scf_failed": {
+      "en": "Failed — do not use",
+      "he": "נכשל — אין להשתמש",
+      "ar": "لم تجتز — ممنوع الاستخدام"
+    },
+    "scf_defects": {
+      "en": "What is wrong",
+      "he": "מה הליקוי",
+      "ar": "ما هو العطل"
+    },
+    "scf_action": {
+      "en": "What was done about it",
+      "he": "מה נעשה בעניין",
+      "ar": "ما الذي جرى بشأنه"
+    },
+    "scf_inspector": {
+      "en": "Inspector",
+      "he": "הבודק",
+      "ar": "الفاحص"
+    },
+    "scf_reason": {
+      "en": "Why this inspection",
+      "he": "סיבת הבדיקה",
+      "ar": "سبب الفحص"
+    },
+    "scf_reason_weekly": {
+      "en": "The weekly one",
+      "he": "הבדיקה השבועית",
+      "ar": "الفحص الأسبوعي"
+    },
+    "scf_reason_first": {
+      "en": "Before first use",
+      "he": "לפני שימוש ראשון",
+      "ar": "قبل الاستخدام الأول"
+    },
+    "scf_reason_altered": {
+      "en": "After it was changed",
+      "he": "אחרי שינוי",
+      "ar": "بعد تعديلها"
+    },
+    "scf_reason_weather": {
+      "en": "After the weather",
+      "he": "אחרי מזג אוויר",
+      "ar": "بعد الطقس"
+    },
+    "scf_altered": {
+      "en": "Mark it changed",
+      "he": "סימון כשונה",
+      "ar": "وسمها كمعدَّلة"
+    },
+    "scf_altered_hint": {
+      "en": "Moved, added to, or hit by weather. It comes out of use until it is inspected again.",
+      "he": "הוזז, הורחב או נפגע ממזג אוויר. יוצא מכלל שימוש עד לבדיקה חוזרת.",
+      "ar": "نُقلت أو أُضيف إليها أو تضررت من الطقس. تخرج من الخدمة حتى فحصها من جديد."
+    },
+    "scf_dismantle": {
+      "en": "Struck down",
+      "he": "פורק",
+      "ar": "فُكّت"
+    },
+    "scf_dismantled": {
+      "en": "Dismantled",
+      "he": "מפורק",
+      "ar": "مفكوكة"
+    },
+    "scf_state_safe": {
+      "en": "Safe to climb",
+      "he": "מותר לטפס",
+      "ar": "يُسمح بالتسلق"
+    },
+    "scf_state_due": {
+      "en": "Inspection due",
+      "he": "הבדיקה מתקרבת",
+      "ar": "الفحص مستحق قريبًا"
+    },
+    "scf_state_overdue": {
+      "en": "Out of date — do not climb",
+      "he": "פג תוקף — אין לטפס",
+      "ar": "انتهت صلاحيته — ممنوع التسلق"
+    },
+    "scf_state_failed": {
+      "en": "Failed inspection — do not climb",
+      "he": "נכשל בבדיקה — אין לטפס",
+      "ar": "لم تجتز الفحص — ممنوع التسلق"
+    },
+    "scf_state_altered": {
+      "en": "Changed since it was passed — do not climb",
+      "he": "שונה מאז האישור — אין לטפס",
+      "ar": "عُدّلت بعد اعتمادها — ممنوع التسلق"
+    },
+    "scf_state_never": {
+      "en": "Never inspected — do not climb",
+      "he": "לא נבדק מעולם — אין לטפס",
+      "ar": "لم تُفحص قط — ممنوع التسلق"
+    },
+    "scf_last_inspected": {
+      "en": "Last inspected",
+      "he": "נבדק לאחרונה",
+      "ar": "آخر فحص"
+    },
+    "scf_next_due": {
+      "en": "Next inspection",
+      "he": "הבדיקה הבאה",
+      "ar": "الفحص القادم"
+    },
+    "scf_must_sign": {
+      "en": "Sign before recording the inspection.",
+      "he": "יש לחתום לפני רישום הבדיקה.",
+      "ar": "وقّع قبل تسجيل الفحص."
+    },
+    "scf_unusable": {
+      "en": "Not to be climbed",
+      "he": "אסורים לטיפוס",
+      "ar": "ممنوع تسلقها"
+    },
+    "scf_all_clear": {
+      "en": "Every scaffold on this job is in date.",
+      "he": "כל הפיגומים באתר בתוקף.",
+      "ar": "جميع السقالات في هذا الموقع سارية."
     }
   },
   "plurals": {
@@ -3090,6 +3275,27 @@
         "few": "بقيت %d دقائق",
         "many": "بقيت %d دقيقة",
         "other": "بقيت %d دقيقة"
+      }
+    },
+    "scf_days_over": {
+      "c": "How long a scaffold's weekly inspection has been out of date",
+      "en": {
+        "one": "%d day out of date",
+        "other": "%d days out of date"
+      },
+      "he": {
+        "one": "פג תוקף לפני יום",
+        "two": "פג תוקף לפני יומיים",
+        "many": "פג תוקף לפני %d ימים",
+        "other": "פג תוקף לפני %d ימים"
+      },
+      "ar": {
+        "zero": "انتهت الصلاحية اليوم",
+        "one": "انتهت الصلاحية منذ يوم",
+        "two": "انتهت الصلاحية منذ يومين",
+        "few": "انتهت الصلاحية منذ %d أيام",
+        "many": "انتهت الصلاحية منذ %d يومًا",
+        "other": "انتهت الصلاحية منذ %d يوم"
       }
     }
   }

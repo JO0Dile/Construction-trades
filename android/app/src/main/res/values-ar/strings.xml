@@ -564,6 +564,43 @@
     <string name="tick_state_placed">مصبوب</string>
     <string name="tick_late">صُبّ متأخرًا</string>
     <string name="tick_late_hint">يُسجَّل لأنه لا يُرى لاحقًا. يجب إعلام المهندس.</string>
+    <string name="scf_title">السقالات</string>
+    <string name="scf_row_hint">سجل الفحص الأسبوعي، وأي السقالات يُسمح بتسلقها اليوم.</string>
+    <string name="scf_new">إضافة سقالة</string>
+    <string name="scf_empty">لا سقالات في السجل.</string>
+    <string name="scf_location">الموقع</string>
+    <string name="scf_location_hint">بالكلمات التي تُقال في اللاسلكي: الواجهة الشمالية، بيت الدرج 2.</string>
+    <string name="scf_type">نوع السقالة</string>
+    <string name="scf_type_hint">سقالة مستقلة مربوطة، سقالة قفصية، برج متنقل.</string>
+    <string name="scf_erected_by">أقامها</string>
+    <string name="scf_inspect">تسجيل فحص</string>
+    <string name="scf_inspections">الفحوصات</string>
+    <string name="scf_no_inspections">لم يُسجَّل شيء بعد.</string>
+    <string name="scf_passed">اجتازت — صالحة للاستخدام</string>
+    <string name="scf_failed">لم تجتز — ممنوع الاستخدام</string>
+    <string name="scf_defects">ما هو العطل</string>
+    <string name="scf_action">ما الذي جرى بشأنه</string>
+    <string name="scf_inspector">الفاحص</string>
+    <string name="scf_reason">سبب الفحص</string>
+    <string name="scf_reason_weekly">الفحص الأسبوعي</string>
+    <string name="scf_reason_first">قبل الاستخدام الأول</string>
+    <string name="scf_reason_altered">بعد تعديلها</string>
+    <string name="scf_reason_weather">بعد الطقس</string>
+    <string name="scf_altered">وسمها كمعدَّلة</string>
+    <string name="scf_altered_hint">نُقلت أو أُضيف إليها أو تضررت من الطقس. تخرج من الخدمة حتى فحصها من جديد.</string>
+    <string name="scf_dismantle">فُكّت</string>
+    <string name="scf_dismantled">مفكوكة</string>
+    <string name="scf_state_safe">يُسمح بالتسلق</string>
+    <string name="scf_state_due">الفحص مستحق قريبًا</string>
+    <string name="scf_state_overdue">انتهت صلاحيته — ممنوع التسلق</string>
+    <string name="scf_state_failed">لم تجتز الفحص — ممنوع التسلق</string>
+    <string name="scf_state_altered">عُدّلت بعد اعتمادها — ممنوع التسلق</string>
+    <string name="scf_state_never">لم تُفحص قط — ممنوع التسلق</string>
+    <string name="scf_last_inspected">آخر فحص</string>
+    <string name="scf_next_due">الفحص القادم</string>
+    <string name="scf_must_sign">وقّع قبل تسجيل الفحص.</string>
+    <string name="scf_unusable">ممنوع تسلقها</string>
+    <string name="scf_all_clear">جميع السقالات في هذا الموقع سارية.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -659,5 +696,13 @@
         <item quantity="few">بقيت %d دقائق</item>
         <item quantity="many">بقيت %d دقيقة</item>
         <item quantity="other">بقيت %d دقيقة</item>
+    </plurals>
+    <plurals name="scf_days_over">
+        <item quantity="zero">انتهت الصلاحية اليوم</item>
+        <item quantity="one">انتهت الصلاحية منذ يوم</item>
+        <item quantity="two">انتهت الصلاحية منذ يومين</item>
+        <item quantity="few">انتهت الصلاحية منذ %d أيام</item>
+        <item quantity="many">انتهت الصلاحية منذ %d يومًا</item>
+        <item quantity="other">انتهت الصلاحية منذ %d يوم</item>
     </plurals>
 </resources>

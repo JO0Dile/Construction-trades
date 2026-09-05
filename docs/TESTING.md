@@ -366,6 +366,37 @@ run out looks exactly like a good one.
 - [ ] Leave the screen open for a minute without touching it. The countdown
       moves on its own.
 
+**Scaffolds** — open a job → *Scaffolds*
+
+A scaffold whose weekly inspection has lapsed looks exactly like one whose has
+not. The register is the only thing on site that can tell anybody, so the test
+is whether it says so plainly.
+
+- [ ] **+** → add one. Give it a location. Create.
+- [ ] It opens reading **Never inspected — do not climb**, not a blank row and
+      not a green tick. A scaffold that has just gone up has not been checked.
+- [ ] Go back to the list. The banner at the top counts it as one not to be
+      climbed.
+- [ ] Open it → *Record an inspection*. The form appears **on the page**, not
+      in a dialog — a signature pad does not fit in one.
+- [ ] Leave it on *The weekly one* and *Passed*, but do not sign. The save
+      button stays disabled and the screen says why.
+- [ ] Sign, then save. The banner goes green, the row reads **Safe to climb**
+      with the days left, and the register lists the inspection with your name
+      and the date.
+- [ ] *Mark it changed*. It goes straight back to **do not climb** — the
+      inspection that passed the old scaffold says nothing about the altered
+      one, whatever days were left on it.
+- [ ] Record another inspection, passed. That clears the alteration, because
+      this one was of the scaffold as it now stands.
+- [ ] Record one as **Failed**, with a defect and what was done. The scaffold
+      goes red and stays red until an inspection passes — a failed inspection
+      is not redeemed by being the most recent thing that happened.
+- [ ] Add a second scaffold and leave it uninspected. On the list the two
+      unusable ones sit **above** any usable one.
+- [ ] *Struck down* on one. It greys out, keeps its row and its history, and
+      stops counting towards the banner.
+
 **Snags** — Safety → the checklist icon in the top bar
 - [ ] **+** → describe a defect, say where it is, who has to fix it, and leave
       *Holds up handover* on. Create.

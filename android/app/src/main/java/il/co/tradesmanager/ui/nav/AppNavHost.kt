@@ -42,6 +42,7 @@ import il.co.tradesmanager.ui.plant.PlantScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
+import il.co.tradesmanager.ui.scaffold.ScaffoldRegisterScreen
 import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
 import il.co.tradesmanager.ui.evidence.DailyLogScreen
 import il.co.tradesmanager.ui.evidence.PermitDetailScreen
@@ -73,6 +74,7 @@ object Routes {
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
+    const val SCAFFOLDS = "projects/scaffolds"
     const val PEOPLE = "people"
     const val MONEY = "money"
     const val PLANT = "plant"
@@ -97,6 +99,7 @@ object Routes {
     fun snagDetail(snagId: String) = "$SNAG_DETAIL/$snagId"
     fun dailyLog(projectId: String) = "$DAILY_LOG/$projectId"
     fun concrete(projectId: String) = "$CONCRETE/$projectId"
+    fun scaffolds(projectId: String) = "$SCAFFOLDS/$projectId"
 }
 
 /**
@@ -245,6 +248,7 @@ fun AppNavHost(
                     onOpenMoney = { navController.navigate(Routes.money(id)) },
                     onOpenDailyLog = { navController.navigate(Routes.dailyLog(id)) },
                     onOpenConcrete = { navController.navigate(Routes.concrete(id)) },
+                    onOpenScaffolds = { navController.navigate(Routes.scaffolds(id)) },
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -320,6 +324,13 @@ fun AppNavHost(
             }
             composable("${Routes.CONCRETE}/{projectId}") { entry ->
                 ConcreteScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.SCAFFOLDS}/{projectId}") { entry ->
+                ScaffoldRegisterScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },
