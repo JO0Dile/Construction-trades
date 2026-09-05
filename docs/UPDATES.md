@@ -27,6 +27,20 @@ Bump both numbers in `android/app/build.gradle.kts`:
 A tag that does not parse as a version (`latest`, `test`) is ignored by the
 check rather than offered to everyone — see `UpdateVersionTest`.
 
+## "Could not check for updates"
+
+Two different things used to say this, and only one of them was true.
+
+GitHub answers **404** for a repository that has published no releases at all,
+which at the HTTP level is indistinguishable from a repository it will not
+show us. The app treated both as a failure and told people to check their
+signal — so a perfectly working phone on full 4G was told to find better
+reception, when the real answer was "nobody has published a version yet".
+
+Those are now separate. No releases published says so; a genuine network
+failure still says try again with a signal. If you see the first one, the fix
+is to publish a release, not to move nearer a window.
+
 ## Three things that will bite
 
 **The repository has to be public** — it currently is, so the check works as

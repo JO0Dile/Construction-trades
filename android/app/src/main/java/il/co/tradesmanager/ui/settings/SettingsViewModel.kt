@@ -81,6 +81,9 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
         data object Idle : UpdateState
         data object Checking : UpdateState
         data object UpToDate : UpdateState
+
+        /** The feed answered and is empty — not the same as no signal. */
+        data object NoReleases : UpdateState
         data object Failed : UpdateState
         data class Available(val release: UpdateRepository.Release) : UpdateState
         data class Downloading(val release: UpdateRepository.Release, val fraction: Float) : UpdateState
@@ -95,6 +98,7 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
         _update.value = when (val result = container.updates.check()) {
             is UpdateRepository.Result.Available -> UpdateState.Available(result.release)
             UpdateRepository.Result.UpToDate -> UpdateState.UpToDate
+            UpdateRepository.Result.NoReleases -> UpdateState.NoReleases
             UpdateRepository.Result.Unavailable -> UpdateState.Failed
         }
     }

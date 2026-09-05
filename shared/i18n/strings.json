@@ -1751,6 +1751,11 @@
       "en": "A draft costs nothing. Place it and it counts against the job.",
       "he": "טיוטה לא נספרת. שלחו אותה והיא תיזקף לעבודה.",
       "ar": "المسودة لا تُحتسب. أرسلها لتُحتسب على العمل."
+    },
+    "update_none": {
+      "en": "No version has been published yet.",
+      "he": "עדיין לא פורסמה גרסה.",
+      "ar": "لم تُنشر أي نسخة بعد."
     }
   },
   "plurals": {

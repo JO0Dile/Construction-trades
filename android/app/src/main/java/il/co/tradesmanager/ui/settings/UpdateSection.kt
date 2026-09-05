@@ -63,6 +63,11 @@ fun UpdateSection(
                 CheckButton(onCheck)
             }
 
+            is SettingsViewModel.UpdateState.NoReleases -> {
+                StatusLine(stringResource(R.string.update_none))
+                CheckButton(onCheck)
+            }
+
             is SettingsViewModel.UpdateState.Failed -> {
                 StatusLine(stringResource(R.string.update_failed))
                 CheckButton(onCheck)

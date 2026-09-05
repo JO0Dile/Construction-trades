@@ -36,6 +36,19 @@ class UpdateRepository(private val context: Context) {
     sealed interface Result {
         data object UpToDate : Result
         data class Available(val release: Release) : Result
+
+        /**
+         * The feed answered, and there is nothing in it.
+         *
+         * Told apart from [Unavailable] deliberately. GitHub returns 404 for a
+         * repository with no releases published, which is indistinguishable
+         * from a missing repository at the HTTP level but means something
+         * completely different to a user: "nobody has published a version yet"
+         * is not "your phone has no signal", and saying the second when the
+         * first is true sends people to check their reception.
+         */
+        data object NoReleases : Result
+
         /** Network down, rate limited, or the repository is not public. */
         data object Unavailable : Result
     }
@@ -69,18 +82,26 @@ class UpdateRepository(private val context: Context) {
     suspend fun check(): Result = withContext(Dispatchers.IO) {
         if (!BuildConfig.SELF_UPDATE) return@withContext Result.UpToDate
 
-        val body = runCatching { get(BuildConfig.RELEASES_API) }.getOrNull()
-            ?: return@withContext Result.Unavailable
+        val response = fetch(BuildConfig.RELEASES_API)
+        val body = when (response) {
+            is Response.Body -> response.text
+            Response.Empty -> return@withContext Result.NoReleases
+            Response.Failed -> return@withContext Result.Unavailable
+        }
+
         val dto = runCatching { json.decodeFromString<ReleaseDto>(body) }.getOrNull()
             ?: return@withContext Result.Unavailable
-        if (dto.draft) return@withContext Result.UpToDate
+        // A draft is not published, so from out here it does not exist.
+        if (dto.draft) return@withContext Result.NoReleases
 
         // The build splits per ABI, so a release carries several APKs. The
         // universal one runs everywhere, which is the right default for
         // someone tapping "install" without knowing what a CPU ABI is.
         val asset = dto.assets.filter { it.name.endsWith(".apk", ignoreCase = true) }
             .let { apks -> apks.firstOrNull { it.name.contains("universal") } ?: apks.firstOrNull() }
-            ?: return@withContext Result.Unavailable
+        // A release with no APK on it is a release nobody can install: the
+        // same thing, to a user, as no release at all.
+            ?: return@withContext Result.NoReleases
 
         val remote = normalise(dto.tagName)
         if (!isNewer(remote, normalise(BuildConfig.VERSION_NAME))) {
@@ -110,6 +131,10 @@ class UpdateRepository(private val context: Context) {
 
             runCatching {
                 val connection = open(release.downloadUrl)
+                if (connection.responseCode !in 200..299) {
+                    connection.disconnect()
+                    error("HTTP ${connection.responseCode}")
+                }
                 val total = connection.contentLengthLong.takeIf { it > 0 } ?: release.sizeBytes
                 connection.inputStream.use { input ->
                     target.outputStream().use { output ->
@@ -146,10 +171,30 @@ class UpdateRepository(private val context: Context) {
         }
     }
 
-    private fun get(url: String): String = open(url).run {
-        val text = inputStream.bufferedReader().use { it.readText() }
-        disconnect()
-        text
+    /** What came back, in the three shapes the caller actually cares about. */
+    private sealed interface Response {
+        data class Body(val text: String) : Response
+        /** The feed answered "there is nothing here" — a 404 with no release. */
+        data object Empty : Response
+        data object Failed : Response
+    }
+
+    private fun fetch(url: String): Response {
+        var connection: HttpURLConnection? = null
+        return runCatching {
+            val opened = open(url)
+            connection = opened
+            when (opened.responseCode) {
+                in 200..299 -> Response.Body(
+                    opened.inputStream.bufferedReader().use { it.readText() },
+                )
+                // GitHub answers 404 both for a repository with no releases
+                // and for one it will not show us. The first is by far the
+                // likelier here and the honest thing to report.
+                HttpURLConnection.HTTP_NOT_FOUND -> Response.Empty
+                else -> Response.Failed
+            }
+        }.getOrElse { Response.Failed }.also { connection?.disconnect() }
     }
 
     private fun open(url: String): HttpURLConnection =
@@ -159,10 +204,6 @@ class UpdateRepository(private val context: Context) {
             instanceFollowRedirects = true
             setRequestProperty("Accept", "application/vnd.github+json")
             setRequestProperty("User-Agent", "TradesWorkManager/${BuildConfig.VERSION_NAME}")
-            if (responseCode !in 200..299) {
-                disconnect()
-                error("HTTP $responseCode for $url")
-            }
         }
 
     internal companion object {
