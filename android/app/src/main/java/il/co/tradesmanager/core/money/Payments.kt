@@ -64,6 +64,9 @@ object Payments {
      * the previous applications over-certified: the work has been re-measured
      * downwards, or something has been rejected. Clamping it to zero would hide
      * that, and the money has to come back one way or another.
+     *
+     * [previouslyPaidNet] belongs to [previouslyPaidNet]. Passing a figure that
+     * was worked out earlier and kept is how this comes out wrong.
      */
     fun assess(
         grossToDate: Double,
@@ -99,6 +102,66 @@ object Payments {
         val uncapped = grossToDate * retentionRate
         if (contractSum <= 0.0) return uncapped
         return minOf(uncapped, contractSum * retentionLimit)
+    }
+
+    /**
+     * One earlier application, reduced to what the running total needs of it.
+     *
+     * A bare figure would not do. The retention rate and its limit are stored
+     * per application because they are what was agreed when that one was
+     * raised; running today's rate over all of them would restate every cheque
+     * already banked on a job whose retention was renegotiated halfway through.
+     */
+    data class Settled(
+        /** Its place in the sequence. Applications are numbered from one. */
+        val number: Int,
+        /**
+         * Which sequence it belongs to.
+         *
+         * Our applications to the client and a subcontractor's to us are two
+         * sequences that both start at one. Left as free text because this
+         * file has no business knowing what the directions are called — only
+         * that two applications in different ones never measure each other.
+         */
+        val direction: String,
+        /** The figure that was certified on it — not the figure claimed. */
+        val certifiedGrossToDate: Double,
+        val retentionRate: Double = DEFAULT_RETENTION,
+        val retentionLimit: Double = DEFAULT_RETENTION_LIMIT,
+    )
+
+    /**
+     * What has already been paid out on everything before application [number].
+     *
+     * Worked out, never remembered. Applications are raised in one order and
+     * paid in another: under שוטף + 30 the next one is always raised before the
+     * previous one is paid, so an application that wrote down "nothing has been
+     * paid yet" on the day it was raised would still be saying it a month later
+     * when it was certified — and would ask for every shekel of the job to date
+     * a second time. That is the exact mistake this whole file exists to stop,
+     * and storing the answer is how it gets made.
+     *
+     * [paid] is every application on the job that has actually been paid, in
+     * either direction. Only the highest-numbered one below [number] in the
+     * same [direction] counts: the applications are cumulative, so the earlier
+     * ones of that sequence are already inside it. Order does not matter, and
+     * neither do gaps.
+     */
+    fun previouslyPaidNet(
+        number: Int,
+        direction: String,
+        paid: List<Settled>,
+        contractSum: Double,
+    ): Double {
+        val previous = paid
+            .filter { it.direction == direction && it.number < number }
+            .maxByOrNull { it.number } ?: return 0.0
+        return previous.certifiedGrossToDate - retentionOn(
+            grossToDate = previous.certifiedGrossToDate,
+            contractSum = contractSum,
+            retentionRate = previous.retentionRate,
+            retentionLimit = previous.retentionLimit,
+        )
     }
 
     /**

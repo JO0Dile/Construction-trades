@@ -141,6 +141,7 @@ fun PaymentsScreen(
                 items(applications, key = { it.id }) { application ->
                     ApplicationRow(
                         application = application,
+                        applications = applications,
                         contractSum = contractSum,
                         now = now,
                         zone = zone,
@@ -152,7 +153,7 @@ fun PaymentsScreen(
             return@Scaffold
         }
 
-        val assessment = PaymentsViewModel.assess(current, contractSum)
+        val assessment = PaymentsViewModel.assess(current, applications, contractSum)
         val capped = contractSum > 0.0 &&
             assessment.retentionHeld >= contractSum * current.retentionLimit
 
@@ -191,7 +192,10 @@ fun PaymentsScreen(
                     )
                     DetailRow(
                         stringResource(R.string.pay_previously_paid),
-                        Formats.money(current.previouslyPaidNet, locale),
+                        Formats.money(
+                            PaymentsViewModel.previouslyPaidNet(current, applications, contractSum),
+                            locale,
+                        ),
                     )
                 }
             }
@@ -379,13 +383,14 @@ private fun DueNowBanner(dueNow: Double, locale: Locale) {
 @Composable
 private fun ApplicationRow(
     application: PaymentApplicationEntity,
+    applications: List<PaymentApplicationEntity>,
     contractSum: Double,
     now: Long,
     zone: ZoneId,
     locale: Locale,
     onOpen: () -> Unit,
 ) {
-    val assessment = PaymentsViewModel.assess(application, contractSum)
+    val assessment = PaymentsViewModel.assess(application, applications, contractSum)
     val overdueDays = application.dueOn
         ?.takeIf { application.paidAt == null }
         ?.let {

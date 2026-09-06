@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.timesheet
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.money.Timesheet
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import il.co.tradesmanager.data.repository.SessionRepository
@@ -68,7 +69,7 @@ class TimesheetViewModel(
         Reconciliation(
             fromHours = Timesheet.totalCost(personDays),
             fromCostLines = byCategory
-                .firstOrNull { it.category == LABOUR }
+                .firstOrNull { it.category == JobFinancials.CostCategory.LABOUR }
                 ?.total
                 ?: 0.0,
             anyUnpriced = Timesheet.hasUnpricedDays(personDays),
@@ -86,9 +87,6 @@ class TimesheetViewModel(
             SessionRepository.State.Loading,
         )
 
-    private companion object {
-        const val LABOUR = "LABOUR"
-    }
 }
 
 /** Null when the shift is still open: an unfinished shift has no hours yet. */
