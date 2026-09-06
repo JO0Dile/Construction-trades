@@ -39,6 +39,10 @@ import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
 import il.co.tradesmanager.data.local.entity.ExcavationEntity
+import il.co.tradesmanager.data.local.entity.AssignmentEntity
+import il.co.tradesmanager.data.local.entity.ContractAmendmentEntity
+import il.co.tradesmanager.data.local.entity.ContractEntity
+import il.co.tradesmanager.data.local.entity.EngagementEntity
 import il.co.tradesmanager.data.local.entity.ExcavationInspectionEntity
 import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
@@ -119,8 +123,12 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         ExcavationEntity::class,
         ExcavationInspectionEntity::class,
         PaymentApplicationEntity::class,
+        EngagementEntity::class,
+        ContractEntity::class,
+        ContractAmendmentEntity::class,
+        AssignmentEntity::class,
     ],
-    version = 18,
+    version = 19,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
