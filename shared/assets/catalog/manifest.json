@@ -397,7 +397,8 @@
         "ar": "بناء وطوب"
       },
       "itemsFile": "items/masonry.json",
-      "safetyFile": "safety/masonry.json"
+      "safetyFile": "safety/masonry.json",
+      "templatesFile": "templates/masonry.json"
     },
     {
       "id": "elv",
@@ -409,7 +410,8 @@
         "ar": "التيار الخفيف"
       },
       "itemsFile": "items/elv.json",
-      "safetyFile": "safety/elv.json"
+      "safetyFile": "safety/elv.json",
+      "templatesFile": "templates/elv.json"
     },
     {
       "id": "waterproofing",
@@ -421,7 +423,8 @@
         "ar": "عزل مائي وحراري"
       },
       "itemsFile": "items/waterproofing.json",
-      "safetyFile": "safety/waterproofing.json"
+      "safetyFile": "safety/waterproofing.json",
+      "templatesFile": "templates/waterproofing.json"
     },
     {
       "id": "plastering",
@@ -433,7 +436,8 @@
         "ar": "لياسة ومونة"
       },
       "itemsFile": "items/plastering.json",
-      "safetyFile": "safety/plastering.json"
+      "safetyFile": "safety/plastering.json",
+      "templatesFile": "templates/plastering.json"
     },
     {
       "id": "tiling",
@@ -445,7 +449,8 @@
         "ar": "بلاط ورخام"
       },
       "itemsFile": "items/tiling.json",
-      "safetyFile": "safety/tiling.json"
+      "safetyFile": "safety/tiling.json",
+      "templatesFile": "templates/tiling.json"
     },
     {
       "id": "drywall",
@@ -457,7 +462,8 @@
         "ar": "جبصين وأسقف"
       },
       "itemsFile": "items/drywall.json",
-      "safetyFile": "safety/drywall.json"
+      "safetyFile": "safety/drywall.json",
+      "templatesFile": "templates/drywall.json"
     },
     {
       "id": "stonework",

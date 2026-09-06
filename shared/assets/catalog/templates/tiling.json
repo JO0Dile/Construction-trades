@@ -1,0 +1,114 @@
+{
+  "tradeId": "tiling",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.tl.bathroom",
+      "estimatedDays": 4,
+      "names": {
+        "en": "Bathroom, floor and walls",
+        "he": "חדר רחצה — רצפה וקירות",
+        "ar": "حمّام — أرضية وحيطان"
+      },
+      "descriptions": {
+        "en": "Wet-area waterproofing, then porcelain floor and ceramic walls, grouted and sealed.",
+        "he": "איטום אזור רטוב, ואז רצפת פורצלן וקירות קרמיקה, רובה ואיטום.",
+        "ar": "عزل المنطقة الرطبة، ثم أرضية بورسلان وحيطان سيراميك، قصارة وإغلاق."
+      },
+      "materials": [
+        {
+          "itemId": "tl.tile.porcelain.60x60",
+          "quantity": 6
+        },
+        {
+          "itemId": "tl.tile.ceramic.wall",
+          "quantity": 22
+        },
+        {
+          "itemId": "tl.adhesive.c2te",
+          "quantity": 8
+        },
+        {
+          "itemId": "tl.grout.epoxy",
+          "quantity": 5
+        },
+        {
+          "itemId": "tl.silicone.sanitary",
+          "quantity": 3
+        },
+        {
+          "itemId": "tl.profile.schluter",
+          "quantity": 12
+        },
+        {
+          "itemId": "tl.levelling.clips",
+          "quantity": 200
+        },
+        {
+          "itemId": "wp.liquid.cement",
+          "quantity": 15
+        },
+        {
+          "itemId": "wp.tape.corner",
+          "quantity": 14
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.tl.bt.1",
+          "order": 1,
+          "titles": {
+            "en": "Check the substrate is flat and the falls run to the drain",
+            "he": "בדיקת מישוריות המצע ושיפועים למחסום",
+            "ar": "فحص استواء الأساس والميول باتجاه المصرف"
+          }
+        },
+        {
+          "id": "tpl.tl.bt.2",
+          "order": 2,
+          "titles": {
+            "en": "Waterproof, taping every corner and wall-to-floor junction",
+            "he": "איטום, עם סרט בכל פינה ומפגש קיר-רצפה",
+            "ar": "عزل مع شريط في كل زاوية ووصلة حيط-أرضية"
+          }
+        },
+        {
+          "id": "tpl.tl.bt.3",
+          "order": 3,
+          "titles": {
+            "en": "Flood test 24 hours and look at the ceiling below",
+            "he": "בדיקת הצפה 24 שעות ובדיקת התקרה שמתחת",
+            "ar": "فحص غمر 24 ساعة والنظر للسقف تحته"
+          }
+        },
+        {
+          "id": "tpl.tl.bt.4",
+          "order": 4,
+          "titles": {
+            "en": "Set out from the most visible corner, not the door",
+            "he": "סימון מהפינה הבולטת ביותר, לא מהדלת",
+            "ar": "التعليم من الزاوية الأبرز، لا من الباب"
+          }
+        },
+        {
+          "id": "tpl.tl.bt.5",
+          "order": 5,
+          "titles": {
+            "en": "Tile walls, then floor",
+            "he": "ריצוף קירות ואז רצפה",
+            "ar": "تبليط الحيطان ثم الأرضية"
+          }
+        },
+        {
+          "id": "tpl.tl.bt.6",
+          "order": 6,
+          "titles": {
+            "en": "Grout, then silicone every movement joint",
+            "he": "רובה, ואז סיליקון בכל מישק תנועה",
+            "ar": "قصارة، ثم سيليكون في كل فاصل حركة"
+          }
+        }
+      ]
+    }
+  ]
+}
