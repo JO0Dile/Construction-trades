@@ -1,0 +1,67 @@
+{
+  "tradeId": "aluminium",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.al.glass",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Handling glass",
+        "he": "טיפול בזכוכית",
+        "ar": "التعامل مع الزجاج"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007"
+      ],
+      "items": [
+        {
+          "id": "sf.al.glass.1",
+          "critical": true,
+          "texts": {
+            "en": "Suction lifter tested on the day and its seals checked",
+            "he": "מרים ואקום נבדק ביום העבודה ואטמיו נבדקו",
+            "ar": "رافعة الشفط مفحوصة اليوم وجلدها مفحوص"
+          }
+        },
+        {
+          "id": "sf.al.glass.2",
+          "critical": true,
+          "texts": {
+            "en": "Cut-resistant gloves and arm protection worn",
+            "he": "כפפות עמידות חיתוך ומגן זרוע",
+            "ar": "قفازات مقاومة للقطع وواقي ذراع"
+          }
+        },
+        {
+          "id": "sf.al.glass.3",
+          "critical": true,
+          "texts": {
+            "en": "Nobody below the opening while a pane is being placed",
+            "he": "אין איש מתחת לפתח בעת הצבת זכוכית",
+            "ar": "لا أحد تحت الفتحة أثناء تركيب اللوح"
+          }
+        },
+        {
+          "id": "sf.al.glass.4",
+          "critical": true,
+          "texts": {
+            "en": "Edge protection stays until the frame and glass are both fixed",
+            "he": "הגנת קצה נשארת עד שהמסגרת והזכוכית מקובעות",
+            "ar": "حماية الحافة تبقى حتى تُثبّت الحلقة والزجاج"
+          }
+        },
+        {
+          "id": "sf.al.glass.5",
+          "critical": false,
+          "texts": {
+            "en": "Wind checked — a pane is a sail",
+            "he": "הרוח נבדקה — לוח זכוכית הוא מפרש",
+            "ar": "الرياح مفحوصة — لوح الزجاج شراع"
+          }
+        }
+      ]
+    }
+  ]
+}

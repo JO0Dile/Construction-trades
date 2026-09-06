@@ -348,7 +348,8 @@
         "he": "עבודות עפר והריסה",
         "ar": "أعمال الحفر والهدم"
       },
-      "itemsFile": "items/earthworks.json"
+      "itemsFile": "items/earthworks.json",
+      "safetyFile": "safety/earthworks.json"
     },
     {
       "id": "rebar",
@@ -359,7 +360,8 @@
         "he": "ברזל ותבניות",
         "ar": "حدادة وطوبار"
       },
-      "itemsFile": "items/rebar.json"
+      "itemsFile": "items/rebar.json",
+      "safetyFile": "safety/rebar.json"
     },
     {
       "id": "concrete",
@@ -370,7 +372,8 @@
         "he": "עבודות בטון",
         "ar": "أعمال الباطون"
       },
-      "itemsFile": "items/concrete.json"
+      "itemsFile": "items/concrete.json",
+      "safetyFile": "safety/concrete.json"
     },
     {
       "id": "steelwork",
@@ -381,7 +384,8 @@
         "he": "קונסטרוקציית פלדה",
         "ar": "هياكل حديدية"
       },
-      "itemsFile": "items/steelwork.json"
+      "itemsFile": "items/steelwork.json",
+      "safetyFile": "safety/steelwork.json"
     },
     {
       "id": "masonry",
@@ -392,7 +396,8 @@
         "he": "בנייה בבלוקים",
         "ar": "بناء وطوب"
       },
-      "itemsFile": "items/masonry.json"
+      "itemsFile": "items/masonry.json",
+      "safetyFile": "safety/masonry.json"
     },
     {
       "id": "elv",
@@ -403,7 +408,8 @@
         "he": "מתח נמוך מאוד",
         "ar": "التيار الخفيف"
       },
-      "itemsFile": "items/elv.json"
+      "itemsFile": "items/elv.json",
+      "safetyFile": "safety/elv.json"
     },
     {
       "id": "waterproofing",
@@ -414,7 +420,8 @@
         "he": "איטום ובידוד",
         "ar": "عزل مائي وحراري"
       },
-      "itemsFile": "items/waterproofing.json"
+      "itemsFile": "items/waterproofing.json",
+      "safetyFile": "safety/waterproofing.json"
     },
     {
       "id": "plastering",
@@ -425,7 +432,8 @@
         "he": "טיח ומדות",
         "ar": "لياسة ومونة"
       },
-      "itemsFile": "items/plastering.json"
+      "itemsFile": "items/plastering.json",
+      "safetyFile": "safety/plastering.json"
     },
     {
       "id": "tiling",
@@ -436,7 +444,8 @@
         "he": "ריצוף וחיפוי",
         "ar": "بلاط ورخام"
       },
-      "itemsFile": "items/tiling.json"
+      "itemsFile": "items/tiling.json",
+      "safetyFile": "safety/tiling.json"
     },
     {
       "id": "drywall",
@@ -447,7 +456,8 @@
         "he": "גבס ותקרות",
         "ar": "جبصين وأسقف"
       },
-      "itemsFile": "items/drywall.json"
+      "itemsFile": "items/drywall.json",
+      "safetyFile": "safety/drywall.json"
     },
     {
       "id": "stonework",
@@ -458,7 +468,8 @@
         "he": "אבן וחיפוי חזיתות",
         "ar": "نحاتة وتحجير"
       },
-      "itemsFile": "items/stonework.json"
+      "itemsFile": "items/stonework.json",
+      "safetyFile": "safety/stonework.json"
     },
     {
       "id": "aluminium",
@@ -469,7 +480,8 @@
         "he": "אלומיניום וזיגוג",
         "ar": "ألمنيوم وزجاج"
       },
-      "itemsFile": "items/aluminium.json"
+      "itemsFile": "items/aluminium.json",
+      "safetyFile": "safety/aluminium.json"
     },
     {
       "id": "metalwork",
@@ -480,7 +492,8 @@
         "he": "מסגרות ומעקות",
         "ar": "حدادة ودرابزين"
       },
-      "itemsFile": "items/metalwork.json"
+      "itemsFile": "items/metalwork.json",
+      "safetyFile": "safety/metalwork.json"
     },
     {
       "id": "firefighting",
@@ -491,7 +504,8 @@
         "he": "מערכות כיבוי אש",
         "ar": "أنظمة إطفاء الحريق"
       },
-      "itemsFile": "items/firefighting.json"
+      "itemsFile": "items/firefighting.json",
+      "safetyFile": "safety/firefighting.json"
     },
     {
       "id": "elevators",
@@ -502,7 +516,8 @@
         "he": "מעליות ודרגנועים",
         "ar": "مصاعد ودرجات متحركة"
       },
-      "itemsFile": "items/elevators.json"
+      "itemsFile": "items/elevators.json",
+      "safetyFile": "safety/elevators.json"
     },
     {
       "id": "landscape",
@@ -513,7 +528,8 @@
         "he": "פיתוח וריצוף חוץ",
         "ar": "تنسيق وتبليط خارجي"
       },
-      "itemsFile": "items/landscape.json"
+      "itemsFile": "items/landscape.json",
+      "safetyFile": "safety/landscape.json"
     },
     {
       "id": "general",

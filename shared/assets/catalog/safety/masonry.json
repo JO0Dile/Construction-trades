@@ -1,0 +1,58 @@
+{
+  "tradeId": "masonry",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.ms.wall",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Building a wall",
+        "he": "בניית קיר",
+        "ar": "بناء حائط"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (גיהות תעסוקתית ובריאות העובדים באבק מזיק)",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"
+      ],
+      "items": [
+        {
+          "id": "sf.ms.wall.1",
+          "critical": true,
+          "texts": {
+            "en": "Freshly built wall propped or tied before it is left",
+            "he": "קיר טרי נתמך או נקשר לפני עזיבתו",
+            "ar": "الحائط الجديد مدعوم أو مربوط قبل تركه"
+          }
+        },
+        {
+          "id": "sf.ms.wall.2",
+          "critical": true,
+          "texts": {
+            "en": "Block cutting done wet or with extraction",
+            "he": "חיתוך בלוקים ברטוב או עם שאיבה",
+            "ar": "قص البلوك مبلّلاً أو بشفط"
+          }
+        },
+        {
+          "id": "sf.ms.wall.3",
+          "critical": true,
+          "texts": {
+            "en": "Working platform used above 2 m, not the wall being built",
+            "he": "פלטפורמת עבודה מעל 2 מ׳, לא הקיר הנבנה",
+            "ar": "منصة عمل فوق مترين، لا الحائط الجاري بناؤه"
+          }
+        },
+        {
+          "id": "sf.ms.wall.4",
+          "critical": false,
+          "texts": {
+            "en": "Blocks stacked at a height that will not topple",
+            "he": "בלוקים מוערמים בגובה שאינו קורס",
+            "ar": "البلوك مكدّس بارتفاع لا ينهار"
+          }
+        }
+      ]
+    }
+  ]
+}
