@@ -39,4 +39,24 @@ interface ScheduleDao {
 
     @Query("SELECT * FROM time_entries WHERE projectId = :projectId ORDER BY checkInAt DESC")
     fun observeTimeEntries(projectId: String): Flow<List<TimeEntryEntity>>
+
+    /**
+     * Finished entries on a job, oldest first.
+     *
+     * Only the ones somebody has clocked out of: an open entry has no hours
+     * yet, and counting a shift that has not ended would put a cost on the job
+     * that changes every time the screen is looked at.
+     *
+     * Ordered oldest first because the timesheet groups them into days and
+     * weeks, and the overtime bands depend on which day an hour fell in.
+     */
+    @Query(
+        """
+        SELECT * FROM time_entries
+        WHERE projectId = :projectId AND checkOutAt IS NOT NULL
+        ORDER BY checkInAt
+        LIMIT 2000
+        """,
+    )
+    fun observeCompletedTimeEntries(projectId: String): Flow<List<TimeEntryEntity>>
 }

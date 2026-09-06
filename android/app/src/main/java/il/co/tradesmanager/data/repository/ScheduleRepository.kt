@@ -19,6 +19,10 @@ class ScheduleRepository(
 
     fun observeOpenTimeEntry(): Flow<TimeEntryEntity?> = dao.observeOpenTimeEntry()
 
+    /** Clocked-out entries on a job — the raw material of a timesheet. */
+    fun observeCompletedTimeEntries(projectId: String): Flow<List<TimeEntryEntity>> =
+        dao.observeCompletedTimeEntries(projectId)
+
     suspend fun save(block: TaskBlockEntity, actorName: String): TaskBlockEntity {
         val now = System.currentTimeMillis()
         val stored = block.copy(
