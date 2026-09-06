@@ -365,6 +365,29 @@ the hours all along without ever using them.
       disagree. It must never add them together: they are two accounts of the
       same money, and summing them doubles the job's labour.
 
+**Handover** — open a job → *Handover*
+
+Nine registers, and until now nothing that could say what was still open across
+all of them at once.
+
+- [ ] On a job with nothing recorded, it reads **nothing outstanding** and
+      offers a final pack.
+- [ ] Now leave things open, one per register: a snag marked *holds up
+      handover*, a permit issued and not signed back, a scaffold not
+      dismantled, propping not struck, a trench not backfilled, a lift plan
+      not marked done, a pour not finished, a daily log not signed.
+- [ ] The screen lists each with its count, and reads **interim**. It does not
+      refuse to produce the pack — an interim pack is a real thing.
+- [ ] Registers with nothing open are **not** listed as zero. Three blocking
+      snags in a wall of "0 open permits" is how a list stops being read.
+- [ ] *Produce the pack* → share it. Open the CSV on a computer: the **first
+      row** says whether the job was complete or interim, who produced it and
+      when. A pack that gets skimmed rather than read still says which it is.
+- [ ] Open the PDF in Hebrew mode. The columns run right to left, and the same
+      rows are in it as in the CSV — they come from one table, so the printout
+      and the spreadsheet cannot disagree.
+- [ ] Close everything and produce it again. Now it reads complete.
+
 **Adding to Stock — finding what you just added**
 - [ ] Stock → **+**, add an item, save. The list should scroll to it and hold
       it highlighted for a couple of seconds.

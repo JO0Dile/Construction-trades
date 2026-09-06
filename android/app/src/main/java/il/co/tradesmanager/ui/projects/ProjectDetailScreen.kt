@@ -101,6 +101,7 @@ fun ProjectDetailScreen(
     onOpenLifts: () -> Unit,
     onOpenTemporaryWorks: () -> Unit,
     onOpenExcavations: () -> Unit,
+    onOpenHandover: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -159,6 +160,8 @@ fun ProjectDetailScreen(
             add(JobLink(R.string.lift_title, R.string.lift_row_hint, onOpenLifts))
             add(JobLink(R.string.tw_title, R.string.tw_row_hint, onOpenTemporaryWorks))
             add(JobLink(R.string.exc_title, R.string.exc_row_hint, onOpenExcavations))
+            // Last, because it is the one that reads all the others.
+            add(JobLink(R.string.hv_title, R.string.hv_row_hint, onOpenHandover))
         }
     }
 
