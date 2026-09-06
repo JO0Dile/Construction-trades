@@ -1,0 +1,89 @@
+{
+  "tradeId": "firefighting",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.ff.sprinkler",
+      "estimatedDays": 5,
+      "names": {
+        "en": "Sprinkler zone, one floor",
+        "he": "אזור ספרינקלרים — קומה",
+        "ar": "منطقة رشاشات — طابق"
+      },
+      "descriptions": {
+        "en": "Steel main and branches, pressure tested and signed before any ceiling closes over it.",
+        "he": "קו ראשי וסעיפים בפלדה, בדיקת לחץ ואישור לפני סגירת תקרה.",
+        "ar": "خط رئيسي وتفريعات حديد، فحص ضغط واعتماد قبل إغلاق أي سقف."
+      },
+      "materials": [
+        {
+          "itemId": "ff.pipe.steel.sch40",
+          "quantity": 180
+        },
+        {
+          "itemId": "ff.sprinkler.pendent",
+          "quantity": 42
+        },
+        {
+          "itemId": "ff.valve.alarm",
+          "quantity": 1
+        },
+        {
+          "itemId": "ff.hose.reel",
+          "quantity": 2
+        },
+        {
+          "itemId": "ff.cabinet.hydrant",
+          "quantity": 2
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.ff.st.1",
+          "order": 1,
+          "titles": {
+            "en": "Coordinate the route with ducts and trays before cutting steel",
+            "he": "תיאום המסלול עם תעלות ומגשים לפני חיתוך פלדה",
+            "ar": "تنسيق المسار مع الدكت والترايات قبل قص الحديد"
+          }
+        },
+        {
+          "id": "tpl.ff.st.2",
+          "order": 2,
+          "titles": {
+            "en": "Hang the main with supports at the spacing the standard sets",
+            "he": "תליית הקו הראשי בתמיכות במרווח שהתקן קובע",
+            "ar": "تعليق الخط الرئيسي بحوامل بالمسافة التي تحددها المواصفة"
+          }
+        },
+        {
+          "id": "tpl.ff.st.3",
+          "order": 3,
+          "titles": {
+            "en": "Branch out and set head positions against the ceiling grid",
+            "he": "הסתעפות וקביעת מיקומי ראשים מול שלד התקרה",
+            "ar": "التفريع وضبط مواقع الرؤوس مقابل شبكة السقف"
+          }
+        },
+        {
+          "id": "tpl.ff.st.4",
+          "order": 4,
+          "titles": {
+            "en": "Pressure test and hold it for the full period",
+            "he": "בדיקת לחץ והחזקה למשך המלא",
+            "ar": "فحص الضغط والاحتفاظ به للمدة الكاملة"
+          }
+        },
+        {
+          "id": "tpl.ff.st.5",
+          "order": 5,
+          "titles": {
+            "en": "Sign it off, then let the ceiling close",
+            "he": "אישור, ורק אז סגירת התקרה",
+            "ar": "الاعتماد، وعندها فقط يُغلق السقف"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -349,7 +349,8 @@
         "ar": "أعمال الحفر والهدم"
       },
       "itemsFile": "items/earthworks.json",
-      "safetyFile": "safety/earthworks.json"
+      "safetyFile": "safety/earthworks.json",
+      "templatesFile": "templates/earthworks.json"
     },
     {
       "id": "rebar",
@@ -361,7 +362,8 @@
         "ar": "حدادة وطوبار"
       },
       "itemsFile": "items/rebar.json",
-      "safetyFile": "safety/rebar.json"
+      "safetyFile": "safety/rebar.json",
+      "templatesFile": "templates/rebar.json"
     },
     {
       "id": "concrete",
@@ -475,7 +477,8 @@
         "ar": "نحاتة وتحجير"
       },
       "itemsFile": "items/stonework.json",
-      "safetyFile": "safety/stonework.json"
+      "safetyFile": "safety/stonework.json",
+      "templatesFile": "templates/stonework.json"
     },
     {
       "id": "aluminium",
@@ -487,7 +490,8 @@
         "ar": "ألمنيوم وزجاج"
       },
       "itemsFile": "items/aluminium.json",
-      "safetyFile": "safety/aluminium.json"
+      "safetyFile": "safety/aluminium.json",
+      "templatesFile": "templates/aluminium.json"
     },
     {
       "id": "metalwork",
@@ -511,7 +515,8 @@
         "ar": "أنظمة إطفاء الحريق"
       },
       "itemsFile": "items/firefighting.json",
-      "safetyFile": "safety/firefighting.json"
+      "safetyFile": "safety/firefighting.json",
+      "templatesFile": "templates/firefighting.json"
     },
     {
       "id": "elevators",
