@@ -75,6 +75,7 @@ fun MoneyScreen(
     container: AppContainer,
     projectId: String,
     onOpenPayments: () -> Unit,
+    onOpenTimesheet: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: MoneyViewModel = viewModel(
@@ -121,6 +122,16 @@ fun MoneyScreen(
                     headlineContent = { Text(stringResource(R.string.pay_title)) },
                     supportingContent = { Text(stringResource(R.string.pay_row_hint)) },
                     modifier = Modifier.clickable(onClick = onOpenPayments),
+                )
+            }
+
+            // The hours beside the applications, because both are money the
+            // job has earned or owes that no cost line has been typed for.
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.ts_title)) },
+                    supportingContent = { Text(stringResource(R.string.ts_row_hint)) },
+                    modifier = Modifier.clickable(onClick = onOpenTimesheet),
                 )
             }
 

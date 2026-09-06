@@ -337,6 +337,34 @@ it refuse.
       Retention stops at 100,000 and says it is at the limit, rather than
       climbing with the claim.
 
+**Timesheet** — open a job → *Money* → *Timesheet*
+
+Labour is usually the biggest number on a job, and the app has been recording
+the hours all along without ever using them.
+
+- [ ] Schedule → clock in, then clock out. Come back here: the shift appears
+      under *By day* and under *By person*.
+- [ ] Clock in and **stay clocked in**. It does not appear — an open shift has
+      no hours yet, and counting it would give a cost that changed every time
+      you looked at the screen.
+- [ ] Record two shifts on the same day, five hours each. It must show **ten
+      hours with two of them at ×1.25**, not two separate five-hour days with
+      no overtime. Overtime is a daily question, and this is the case that gets
+      it wrong.
+- [ ] Record a shift starting at 22:00 and ending at 06:00. It lands on the day
+      it **started**, as one eight-hour night — not two short days.
+- [ ] Record two nine-hour days. The person's total reads sixteen ordinary
+      hours and two at ×1.25. It must **not** read eighteen hours with eight in
+      the top band, which is what summing the week and splitting once would
+      give.
+- [ ] Clock a shift with **no hourly rate** on it. The row says no rate
+      recorded and the total says part of the hours are unpriced — it is never
+      shown as free, because that would make the job look profitable.
+- [ ] Add a **labour cost line** under Money for a figure that does not match
+      the hours. The top of the timesheet shows both numbers and says they
+      disagree. It must never add them together: they are two accounts of the
+      same money, and summing them doubles the job's labour.
+
 **Adding to Stock — finding what you just added**
 - [ ] Stock → **+**, add an item, save. The list should scroll to it and hold
       it highlighted for a couple of seconds.

@@ -788,3 +788,17 @@
 "pay_status_rejected" = "Rejected";
 "pay_release_completion" = "Released at practical completion";
 "pay_release_defects" = "Released when the defects period ends";
+"ts_title" = "Timesheet";
+"ts_row_hint" = "Hours clocked on this job, and what they came to.";
+"ts_empty" = "Nobody has clocked any hours on this job.";
+"ts_empty_hint" = "Hours appear here once somebody has clocked out of a shift.";
+"ts_by_person" = "By person";
+"ts_by_day" = "By day";
+"ts_hours" = "hours";
+"ts_rest_day" = "Day of rest";
+"ts_from_hours" = "From the hours clocked";
+"ts_from_costs" = "From labour cost lines";
+"ts_disagree" = "These two do not agree. They are two accounts of the same money, so the app keeps them apart rather than adding them — the gap is either hours nobody costed or a cost line nobody worked.";
+"ts_unpriced" = "Some days have no hourly rate against them and are not counted.";
+"ts_no_rate" = "No rate recorded";
+"ts_partial" = "Part of these hours has no rate, so this figure is short.";

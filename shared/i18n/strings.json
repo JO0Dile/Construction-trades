@@ -3917,6 +3917,76 @@
       "en": "Released when the defects period ends",
       "he": "ישוחרר בתום תקופת הבדק",
       "ar": "يُفرج عنه عند انتهاء فترة الضمان"
+    },
+    "ts_title": {
+      "en": "Timesheet",
+      "he": "דוח שעות",
+      "ar": "سجل الساعات"
+    },
+    "ts_row_hint": {
+      "en": "Hours clocked on this job, and what they came to.",
+      "he": "השעות שנרשמו בפרויקט, וכמה הן עולות.",
+      "ar": "الساعات المسجّلة في هذا المشروع، وكم تكلّف."
+    },
+    "ts_empty": {
+      "en": "Nobody has clocked any hours on this job.",
+      "he": "לא נרשמו שעות בפרויקט זה.",
+      "ar": "لم يسجّل أحد ساعات في هذا المشروع."
+    },
+    "ts_empty_hint": {
+      "en": "Hours appear here once somebody has clocked out of a shift.",
+      "he": "שעות מופיעות כאן לאחר החתמת יציאה ממשמרת.",
+      "ar": "تظهر الساعات هنا بعد تسجيل الخروج من وردية."
+    },
+    "ts_by_person": {
+      "en": "By person",
+      "he": "לפי עובד",
+      "ar": "حسب العامل"
+    },
+    "ts_by_day": {
+      "en": "By day",
+      "he": "לפי יום",
+      "ar": "حسب اليوم"
+    },
+    "ts_hours": {
+      "en": "hours",
+      "he": "שעות",
+      "ar": "ساعة"
+    },
+    "ts_rest_day": {
+      "en": "Day of rest",
+      "he": "יום מנוחה",
+      "ar": "يوم راحة"
+    },
+    "ts_from_hours": {
+      "en": "From the hours clocked",
+      "he": "מהשעות שנרשמו",
+      "ar": "من الساعات المسجّلة"
+    },
+    "ts_from_costs": {
+      "en": "From labour cost lines",
+      "he": "משורות עלות עבודה",
+      "ar": "من بنود تكلفة العمل"
+    },
+    "ts_disagree": {
+      "en": "These two do not agree. They are two accounts of the same money, so the app keeps them apart rather than adding them — the gap is either hours nobody costed or a cost line nobody worked.",
+      "he": "השניים אינם תואמים. אלה שני תיעודים של אותו כסף, ולכן האפליקציה מפרידה ביניהם ואינה מחברת אותם — הפער הוא או שעות שלא תומחרו או שורת עלות שאיש לא עבד.",
+      "ar": "الرقمان غير متطابقين. هذان سجلّان للمال نفسه، لذا يفصل بينهما التطبيق ولا يجمعهما — والفارق إما ساعات لم تُسعَّر أو بند تكلفة لم يعمله أحد."
+    },
+    "ts_unpriced": {
+      "en": "Some days have no hourly rate against them and are not counted.",
+      "he": "לימים מסוימים לא נרשם תעריף שעתי והם אינם נספרים.",
+      "ar": "بعض الأيام بلا أجر بالساعة ولا تُحتسب."
+    },
+    "ts_no_rate": {
+      "en": "No rate recorded",
+      "he": "לא נרשם תעריף",
+      "ar": "لم يُسجَّل أجر"
+    },
+    "ts_partial": {
+      "en": "Part of these hours has no rate, so this figure is short.",
+      "he": "לחלק מהשעות אין תעריף, ולכן הסכום חלקי.",
+      "ar": "جزء من هذه الساعات بلا أجر، لذا هذا المبلغ ناقص."
     }
   },
   "plurals": {

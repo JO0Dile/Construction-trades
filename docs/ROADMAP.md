@@ -298,6 +298,32 @@ A negative "due this time" is shown as money owed back rather than as zero. It
 means the earlier applications certified more than the work turned out to be
 worth, and it has to come back one way or another.
 
+**Phase 4n — the hours reach the money. Done.**
+The app has recorded clock-ins with an hourly rate against them since the
+schedule was built, and has never once used them. Labour is usually the largest
+number on a job, and it was arriving in the Money lens only when somebody
+remembered to type a cost line — which is to say, entered twice or not at all.
+
+Overtime is a **daily** question, so the hours are gathered into person-days
+before any band is applied. Two nine-hour days are two hours of overtime; one
+eighteen-hour day is eight. Summing a week and splitting once gets a larger
+answer and survives review, because the total hours are right and only the money
+is wrong. A shift is attributed to the day it started, so a night shift is one
+long night rather than two short days with no overtime in either.
+
+The statutory multipliers are constants; the length of an ordinary day is not,
+and neither is which day is a rest day. A collective agreement can be more
+generous than the law, and on a site with Jewish, Muslim and Christian crews the
+day of rest is three different days — hard-coding Saturday would underpay two of
+the three.
+
+The figure is deliberately **not** added to the job's costs. Labour clocked and
+labour typed are two accounts of the same money and summing them doubles it, so
+both are shown and the screen says when they disagree. The gap is the useful
+part: either hours nobody costed, or a cost line nobody worked. A day with no
+rate against it is shown as unpriced rather than as free, because free is the
+direction a cost screen must never be wrong in.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -333,8 +359,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 62 | |
-| Buildable here — on the device, no server | 123 | where the work is |
+| Built | 65 | |
+| Buildable here — on the device, no server | 120 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
