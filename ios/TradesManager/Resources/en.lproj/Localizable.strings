@@ -881,3 +881,10 @@
 "party_hint" = "What your firm is on this job, which is not what it is on the next one.";
 /* Subtitle on the project screen link */
 "wp_row_hint" = "What was handed out and what was taken on";
+"eng_title" = "Firms on this job";
+"eng_add" = "Bring a firm onto the job";
+"eng_name" = "Firm name";
+"eng_scope" = "What they are here to do";
+"eng_refused" = "Your position on this job cannot bring that one on.";
+"wp_payee" = "Who is doing it";
+"wp_title_field" = "What the package is";

@@ -870,6 +870,13 @@
     <string name="party_title">תפקיד בעבודה הזו</string>
     <string name="party_hint">מה החברה שלכם בעבודה הזו, וזה לא בהכרח מה שהיא בעבודה הבאה.</string>
     <string name="wp_row_hint">מה נמסר ומה התקבל</string>
+    <string name="eng_title">חברות בעבודה הזו</string>
+    <string name="eng_add">הוספת חברה לעבודה</string>
+    <string name="eng_name">שם החברה</string>
+    <string name="eng_scope">מה תפקידם</string>
+    <string name="eng_refused">התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.</string>
+    <string name="wp_payee">מי מבצע</string>
+    <string name="wp_title_field">מהי החבילה</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

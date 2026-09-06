@@ -882,6 +882,13 @@
     <string name="party_hint">What your firm is on this job, which is not what it is on the next one.</string>
     <!-- Subtitle on the project screen link -->
     <string name="wp_row_hint">What was handed out and what was taken on</string>
+    <string name="eng_title">Firms on this job</string>
+    <string name="eng_add">Bring a firm onto the job</string>
+    <string name="eng_name">Firm name</string>
+    <string name="eng_scope">What they are here to do</string>
+    <string name="eng_refused">Your position on this job cannot bring that one on.</string>
+    <string name="wp_payee">Who is doing it</string>
+    <string name="wp_title_field">What the package is</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

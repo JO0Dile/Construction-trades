@@ -3,6 +3,7 @@ package il.co.tradesmanager.di
 import android.content.Context
 import il.co.tradesmanager.data.catalog.CatalogSeeder
 import il.co.tradesmanager.data.catalog.CatalogSource
+import il.co.tradesmanager.data.catalog.ScopeCatalog
 import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
@@ -55,6 +56,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val database: AppDatabase = databaseResult.database
 
     val catalogSource = CatalogSource(appContext)
+
+    /** Stages and scopes of work. Read-only reference data, never seeded. */
+    val scopes = ScopeCatalog(catalogSource)
 
     val settings = SettingsRepository(appContext)
 

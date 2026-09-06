@@ -9,11 +9,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,13 +38,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.access.Party
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.work.Assignment
+import il.co.tradesmanager.data.catalog.WorkScope
+import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.AssignmentEntity
+import il.co.tradesmanager.data.local.entity.EngagementEntity
 import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -76,18 +88,37 @@ fun WorkPackagesScreen(
     val orgId by viewModel.orgId.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
     val photos by viewModel.proofPhotos.collectAsStateWithLifecycle()
+    val engagements by viewModel.engagements.collectAsStateWithLifecycle()
+    val myParty by viewModel.myParty.collectAsStateWithLifecycle()
+    val language = currentLocale().toLanguageTag()
     val locale = currentLocale()
 
     var rejecting by remember { mutableStateOf(false) }
+    var engaging by remember { mutableStateOf(false) }
+    var creating by remember { mutableStateOf(false) }
     val current = open
 
     Scaffold(
+        floatingActionButton = {
+            // A package needs somebody to give it to, so the button offers
+            // whichever step is actually available: bring a firm on first,
+            // hand out work once there is one.
+            if (current == null && myParty?.canSubcontract == true) {
+                FloatingActionButton(
+                    onClick = { if (engagements.size <= 1) engaging = true else creating = true },
+                ) {
+                    Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.wp_new))
+                }
+            }
+        },
         topBar = {
             TopAppBar(
                 title = { Text(current?.reference ?: stringResource(R.string.wp_title)) },
                 navigationIcon = {
                     IconButton(
-                        onClick = { if (current != null) viewModel.openPackage(null) else onBack() },
+                        onClick = {
+                            if (current != null) viewModel.openPackage(null) else onBack()
+                        },
                     ) {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
@@ -107,6 +138,14 @@ fun WorkPackagesScreen(
                 return@Scaffold
             }
             LazyColumn(Modifier.padding(padding)) {
+                if (engagements.isNotEmpty()) {
+                    item { SectionHeader(stringResource(R.string.eng_title)) }
+                    items(engagements, key = { "eng-" + it.id }) { row ->
+                        DetailRow(row.orgName, stringResource(partyLabel(row.party)))
+                    }
+                    item { HorizontalDivider() }
+                    item { SectionHeader(stringResource(R.string.wp_title)) }
+                }
                 items(packages, key = { it.id }) { item ->
                     PackageRow(
                         item = item,
@@ -128,6 +167,12 @@ fun WorkPackagesScreen(
                         stringResource(R.string.wp_amount),
                         Formats.money(current.amount, locale),
                     )
+                    viewModel.stageName(current.stageId, language)?.let {
+                        DetailRow(stringResource(R.string.wp_stage), it)
+                    }
+                    viewModel.scopeName(current.scopeId, language)?.let {
+                        DetailRow(stringResource(R.string.wp_scope), it)
+                    }
                     current.location?.let { DetailRow(stringResource(R.string.wp_location), it) }
                     DetailRow(
                         stringResource(R.string.proj_status),
@@ -136,7 +181,11 @@ fun WorkPackagesScreen(
                     DetailRow(
                         stringResource(R.string.party_title),
                         stringResource(
-                            if (side == Assignment.Side.PAYER) R.string.wp_given else R.string.wp_taken,
+                            if (side == Assignment.Side.PAYER) {
+                                R.string.wp_given
+                            } else {
+                                R.string.wp_taken
+                            },
                         ),
                     )
                 }
@@ -232,6 +281,34 @@ fun WorkPackagesScreen(
                 }
             }
         }
+    }
+
+    if (engaging) {
+        EngageDialog(
+            // Only positions this firm may actually engage are offered. A
+            // list that showed every position and refused four of them would
+            // be teaching people that the app says no for no reason.
+            offered = myParty?.mayEngage().orEmpty().toList().sortedBy { it.depth },
+            onDismiss = { engaging = false },
+            onEngage = { name, party, scope ->
+                engaging = false
+                viewModel.engage(name, party, scope)
+            },
+        )
+    }
+
+    if (creating) {
+        CreateDialog(
+            engagements = engagements.filter { it.orgId != orgId && it.endedAt == null },
+            stages = viewModel.stages,
+            scopesFor = viewModel::scopesFor,
+            language = language,
+            onDismiss = { creating = false },
+            onCreate = { title, amount, payee, stageId, scopeId, location ->
+                creating = false
+                viewModel.create(title, amount, payee, stageId, scopeId, location)
+            },
+        )
     }
 
     if (rejecting) {
@@ -368,4 +445,180 @@ private fun refusalLabel(refusal: EngagementRepository.Refusal): Int = when (ref
     EngagementRepository.Refusal.NO_EVIDENCE -> R.string.wp_need_photo
     EngagementRepository.Refusal.INCOMPLETE -> R.string.wp_reject_hint
     else -> R.string.wp_refused_state
+}
+
+@Composable
+private fun EngageDialog(
+    offered: List<Party>,
+    onDismiss: () -> Unit,
+    onEngage: (String, Party, String?) -> Unit,
+) {
+    var name by remember { mutableStateOf("") }
+    var scope by remember { mutableStateOf("") }
+    var party by remember { mutableStateOf(offered.firstOrNull()) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.eng_add)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text(stringResource(R.string.eng_name)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Text(
+                    text = stringResource(R.string.party_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                offered.forEach { option ->
+                    FilterChip(
+                        selected = party == option,
+                        onClick = { party = option },
+                        label = { Text(stringResource(partyLabel(option.name))) },
+                    )
+                }
+                OutlinedTextField(
+                    value = scope,
+                    onValueChange = { scope = it },
+                    label = { Text(stringResource(R.string.eng_scope)) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                enabled = name.isNotBlank() && party != null,
+                onClick = { party?.let { onEngage(name, it, scope) } },
+            ) { Text(stringResource(R.string.action_save)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+@Composable
+private fun CreateDialog(
+    engagements: List<EngagementEntity>,
+    stages: List<WorkStage>,
+    scopesFor: (String?) -> List<WorkScope>,
+    language: String,
+    onDismiss: () -> Unit,
+    onCreate: (String, Double, String, String?, String?, String?) -> Unit,
+) {
+    var title by remember { mutableStateOf("") }
+    var amount by remember { mutableStateOf("") }
+    var location by remember { mutableStateOf("") }
+    var payee by remember { mutableStateOf(engagements.firstOrNull()) }
+    var stageId by remember { mutableStateOf<String?>(null) }
+    var scopeId by remember { mutableStateOf<String?>(null) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.wp_new)) },
+        text = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                OutlinedTextField(
+                    value = title,
+                    onValueChange = { title = it },
+                    label = { Text(stringResource(R.string.wp_title_field)) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = amount,
+                    onValueChange = { amount = it },
+                    label = { Text(stringResource(R.string.wp_amount)) },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+
+                Text(stringResource(R.string.wp_payee), style = MaterialTheme.typography.labelLarge)
+                engagements.forEach { row ->
+                    FilterChip(
+                        selected = payee?.id == row.id,
+                        onClick = { payee = row },
+                        label = { Text(row.orgName) },
+                    )
+                }
+
+                Text(stringResource(R.string.wp_stage), style = MaterialTheme.typography.labelLarge)
+                stages.forEach { stage ->
+                    FilterChip(
+                        selected = stageId == stage.id,
+                        onClick = {
+                            stageId = stage.id
+                            // A scope belongs to a stage. Keeping the old one
+                            // after the stage changes files the package under
+                            // a combination that does not exist.
+                            scopeId = null
+                        },
+                        label = { Text(stage.names.resolve(language)) },
+                    )
+                }
+
+                if (stageId != null) {
+                    Text(
+                        stringResource(R.string.wp_scope),
+                        style = MaterialTheme.typography.labelLarge,
+                    )
+                    scopesFor(stageId).forEach { scope ->
+                        FilterChip(
+                            selected = scopeId == scope.id,
+                            onClick = { scopeId = scope.id },
+                            label = { Text(scope.names.resolve(language)) },
+                        )
+                    }
+                }
+
+                OutlinedTextField(
+                    value = location,
+                    onValueChange = { location = it },
+                    label = { Text(stringResource(R.string.wp_location)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                // toDoubleOrNull, not a locale-aware parse: the field is typed
+                // on a phone whose keyboard may offer a comma, and a comma
+                // parsed as a thousands separator turns 7,5 into 75.
+                enabled = title.isNotBlank() && payee != null &&
+                    (amount.toDoubleOrNull() ?: -1.0) >= 0.0,
+                onClick = {
+                    val target = payee ?: return@TextButton
+                    onCreate(
+                        title,
+                        amount.toDoubleOrNull() ?: 0.0,
+                        target.orgId,
+                        stageId,
+                        scopeId,
+                        location.takeIf { it.isNotBlank() },
+                    )
+                },
+            ) { Text(stringResource(R.string.action_save)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+@StringRes
+private fun partyLabel(party: String): Int = when (Party.parse(party)) {
+    Party.CLIENT -> R.string.party_client
+    Party.GENERAL_CONTRACTOR -> R.string.party_gc
+    Party.FIRST_TIER -> R.string.party_first
+    Party.SECOND_TIER -> R.string.party_second
+    Party.SUPPLIER -> R.string.party_supplier
+    Party.CONSULTANT -> R.string.party_consultant
 }

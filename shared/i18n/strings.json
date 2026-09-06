@@ -4370,6 +4370,41 @@
       "en": "What was handed out and what was taken on",
       "he": "מה נמסר ומה התקבל",
       "ar": "ما أُسند لغيرنا وما أُسند إلينا"
+    },
+    "eng_title": {
+      "en": "Firms on this job",
+      "he": "חברות בעבודה הזו",
+      "ar": "الشركات في هذا المشروع"
+    },
+    "eng_add": {
+      "en": "Bring a firm onto the job",
+      "he": "הוספת חברה לעבודה",
+      "ar": "إضافة شركة للمشروع"
+    },
+    "eng_name": {
+      "en": "Firm name",
+      "he": "שם החברה",
+      "ar": "اسم الشركة"
+    },
+    "eng_scope": {
+      "en": "What they are here to do",
+      "he": "מה תפקידם",
+      "ar": "ما الذي جاؤوا لعمله"
+    },
+    "eng_refused": {
+      "en": "Your position on this job cannot bring that one on.",
+      "he": "התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.",
+      "ar": "موقعك في هذا المشروع لا يسمح بإضافة هذا الموقع."
+    },
+    "wp_payee": {
+      "en": "Who is doing it",
+      "he": "מי מבצע",
+      "ar": "من سينفّذه"
+    },
+    "wp_title_field": {
+      "en": "What the package is",
+      "he": "מהי החבילה",
+      "ar": "ما هي الحزمة"
     }
   },
   "plurals": {

@@ -870,6 +870,13 @@
     <string name="party_title">الموقع في هذا المشروع</string>
     <string name="party_hint">ما هي شركتك في هذا المشروع، وهذا ليس بالضرورة ما هي عليه في المشروع التالي.</string>
     <string name="wp_row_hint">ما أُسند لغيرنا وما أُسند إلينا</string>
+    <string name="eng_title">الشركات في هذا المشروع</string>
+    <string name="eng_add">إضافة شركة للمشروع</string>
+    <string name="eng_name">اسم الشركة</string>
+    <string name="eng_scope">ما الذي جاؤوا لعمله</string>
+    <string name="eng_refused">موقعك في هذا المشروع لا يسمح بإضافة هذا الموقع.</string>
+    <string name="wp_payee">من سينفّذه</string>
+    <string name="wp_title_field">ما هي الحزمة</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
