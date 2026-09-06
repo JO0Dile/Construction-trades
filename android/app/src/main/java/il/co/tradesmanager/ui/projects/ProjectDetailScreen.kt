@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.projects
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -70,6 +71,24 @@ import il.co.tradesmanager.ui.export.ExportDocument
 import il.co.tradesmanager.ui.export.Exporter
 import il.co.tradesmanager.ui.components.unitLabel
 
+/**
+ * A way from a job into one of its registers.
+ *
+ * Exists so that the list of them is a value rather than a run of near
+ * identical `if` blocks: the screen has to know how many rows sit above the
+ * task list in order to scroll to a line somebody just added, and working that
+ * out by hand beside the blocks it mirrored is how it went wrong five times.
+ *
+ * [titleRes] doubles as the lazy key. Two links cannot share a title, and a
+ * resource id is stable across recomposition and configuration changes in a
+ * way an index is not.
+ */
+private data class JobLink(
+    @StringRes val titleRes: Int,
+    @StringRes val subtitleRes: Int,
+    val onOpen: () -> Unit,
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProjectDetailScreen(
@@ -114,26 +133,41 @@ fun ProjectDetailScreen(
         onPicked = viewModel::onPicked,
     )
 
-    // Typed explicitly: a null add-action is what turns a section read-only,
-    // and inferring that through a chain is the kind of thing that quietly
-    // becomes non-null again during a refactor.
     // Adding to a job sheet appends, so on a list of any length the line you
     // just typed lands below the fold and the screen looks like it ignored
     // you. Scrolling to it is the difference between "that did not work" and
-    // "there it is".
+    // "there it is" — and Compose cannot be asked where a lazy row ended up
+    // while it is off screen, so the index has to be worked out.
     //
-    // The row counts below mirror the LazyColumn's sections. If a section is
-    // added or moved there, it has to move here too — there is no way in
-    // Compose to ask a lazy list where a key ended up when it is off screen.
+    // It used to be worked out by hand, in an expression that mirrored the
+    // sections below and had to be edited alongside them. It drifted every
+    // time a section was added — five times running, once per register. The
+    // links are a list now: rendered from it, counted from it, so adding a row
+    // is one entry and the arithmetic follows on its own.
+    val links = buildList {
+        // The day's log lives beside the money for the same reason: too much
+        // to inline, too important to bury in a menu.
+        if (canSeeEvidence) add(JobLink(R.string.log_title, R.string.log_notes_hint, onOpenDailyLog))
+        // Concrete is under Stuff, not Evidence: it is material arriving on a
+        // lorry, and whoever books it in books in everything else delivered.
+        if (canSeeStuff) add(JobLink(R.string.pour_title, R.string.pour_row_hint, onOpenConcrete))
+        if (canSeeEvidence) {
+            // The registers are Evidence: each row is a record that somebody
+            // competent looked and what they found, not a note that a thing
+            // turned up on site.
+            add(JobLink(R.string.scf_title, R.string.scf_row_hint, onOpenScaffolds))
+            add(JobLink(R.string.lift_title, R.string.lift_row_hint, onOpenLifts))
+            add(JobLink(R.string.tw_title, R.string.tw_row_hint, onOpenTemporaryWorks))
+            add(JobLink(R.string.exc_title, R.string.exc_row_hint, onOpenExcavations))
+        }
+    }
+
     val listState = rememberLazyListState()
     val rowsAboveTasks = (if (project != null) 1 else 0) +
         (if (canSeeMoney) 1 else 0) +
-        // The daily log, concrete, the scaffold register, the lift plans, the
-        // temporary works register, the excavations, then the photographs.
-        // Concrete is a delivery, so it follows Stuff; the rest are Evidence.
+        links.size +
+        // The photographs, which are Evidence but not a link to another screen.
         (if (canSeeEvidence) 1 else 0) +
-        (if (canSeeStuff) 1 else 0) +
-        (if (canSeeEvidence) 5 else 0) +
         (if (state.tasks.isNotEmpty() && canSeePlan) 1 else 0)
     val firstTaskRow = rowsAboveTasks + 1
     val firstMaterialRow = firstTaskRow +
@@ -157,6 +191,9 @@ fun ProjectDetailScreen(
         }
     }
 
+    // Typed explicitly: a null add-action is what turns a section read-only,
+    // and inferring that through a chain is the kind of thing that quietly
+    // becomes non-null again during a refactor.
     val addTaskAction: (() -> Unit)? = if (canEditPlan) {
         { addingTask = true }
     } else {
@@ -244,75 +281,15 @@ fun ProjectDetailScreen(
                 }
             }
 
-            // The day's log lives beside the money for the same reason: it is
-            // too much to inline and too important to bury in a menu.
-            if (canSeeEvidence) {
-                item {
-                    ListItem(
-                        headlineContent = { Text(stringResource(R.string.log_title)) },
-                        supportingContent = { Text(stringResource(R.string.log_notes_hint)) },
-                        modifier = Modifier.clickable(onClick = onOpenDailyLog),
-                    )
-                }
-            }
-
-            // Concrete is under Stuff, not Evidence: it is material arriving
-            // on a lorry, and the person who books it in is the one who books
-            // in everything else that gets delivered.
-            if (canSeeStuff) {
-                item {
-                    ListItem(
-                        headlineContent = { Text(stringResource(R.string.pour_title)) },
-                        supportingContent = { Text(stringResource(R.string.pour_row_hint)) },
-                        modifier = Modifier.clickable(onClick = onOpenConcrete),
-                    )
-                }
-            }
-
-            // The scaffold register sits under Evidence, not Stuff: nobody
-            // is booking a scaffold in, they are recording that somebody
-            // competent looked at it and what they found.
-            if (canSeeEvidence) {
-                item {
-                    ListItem(
-                        headlineContent = { Text(stringResource(R.string.scf_title)) },
-                        supportingContent = { Text(stringResource(R.string.scf_row_hint)) },
-                        modifier = Modifier.clickable(onClick = onOpenScaffolds),
-                    )
-                }
-            }
-
-            // Lifts are Evidence for the same reason scaffolds are: the row
-            // is a record that somebody worked out the numbers and named the
-            // three people, not a note that a crane turned up.
-            if (canSeeEvidence) {
-                item {
-                    ListItem(
-                        headlineContent = { Text(stringResource(R.string.lift_title)) },
-                        supportingContent = { Text(stringResource(R.string.lift_row_hint)) },
-                        modifier = Modifier.clickable(onClick = onOpenLifts),
-                    )
-                }
-            }
-
-            if (canSeeEvidence) {
-                item {
-                    ListItem(
-                        headlineContent = { Text(stringResource(R.string.tw_title)) },
-                        supportingContent = { Text(stringResource(R.string.tw_row_hint)) },
-                        modifier = Modifier.clickable(onClick = onOpenTemporaryWorks),
-                    )
-                }
-            }
-
-            if (canSeeEvidence) {
-                item {
-                    ListItem(
-                        headlineContent = { Text(stringResource(R.string.exc_title)) },
-                        supportingContent = { Text(stringResource(R.string.exc_row_hint)) },
-                        modifier = Modifier.clickable(onClick = onOpenExcavations),
-                    )
-                }
+            // The same list the row count above is derived from, in the same
+            // order. Adding a way into a job means adding an entry to it, and
+            // nothing else on this screen has to know.
+            items(links, key = { it.titleRes }) { link ->
+                ListItem(
+                    headlineContent = { Text(stringResource(link.titleRes)) },
+                    supportingContent = { Text(stringResource(link.subtitleRes)) },
+                    modifier = Modifier.clickable(onClick = link.onOpen),
+                )
             }
 
             if (canSeeEvidence) {
