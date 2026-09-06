@@ -91,14 +91,14 @@ class CommercialTest {
     fun `margin is answered for the firm in the middle and nobody else`() {
         assertEquals(
             3_000.0,
-            Commercial.margin(main, mainMoney, listOf(sub to subMoney), first)!!,
+            Commercial.margin(listOf(main to mainMoney), listOf(sub to subMoney), first)!!,
             0.005,
         )
         // Null rather than zero. Zero is an answer, and this must not be
         // answerable from either side.
-        assertNull(Commercial.margin(main, mainMoney, listOf(sub to subMoney), gc))
-        assertNull(Commercial.margin(main, mainMoney, listOf(sub to subMoney), crew))
-        assertNull(Commercial.margin(main, mainMoney, listOf(sub to subMoney), ""))
+        assertNull(Commercial.margin(listOf(main to mainMoney), listOf(sub to subMoney), gc))
+        assertNull(Commercial.margin(listOf(main to mainMoney), listOf(sub to subMoney), crew))
+        assertNull(Commercial.margin(listOf(main to mainMoney), listOf(sub to subMoney), ""))
     }
 
     @Test
@@ -107,8 +107,17 @@ class CommercialTest {
         // looks like a margin and is not one.
         val other = Commercial.Agreement("a.other", payerOrgId = gc, payeeOrgId = "org.x")
         assertNull(
-            Commercial.margin(main, mainMoney, listOf(sub to subMoney, other to subMoney), first),
+            Commercial.margin(
+                listOf(main to mainMoney),
+                listOf(sub to subMoney, other to subMoney),
+                first,
+            ),
         )
+    }
+
+    @Test
+    fun `margin refuses a receivable the viewer is not paid on`() {
+        assertNull(Commercial.margin(listOf(sub to subMoney), emptyList(), first))
     }
 
     @Test
@@ -117,8 +126,38 @@ class CommercialTest {
         val secondMoney = Commercial.Money(2_000.0, 1_500.0, 0.0)
         assertEquals(
             10_000.0 - 7_000.0 - 1_500.0,
-            Commercial.margin(main, mainMoney, listOf(sub to subMoney, second to secondMoney), first)!!,
+            Commercial.margin(
+                listOf(main to mainMoney),
+                listOf(sub to subMoney, second to secondMoney),
+                first,
+            )!!,
             0.005,
         )
+    }
+
+    @Test
+    fun `a firm with two packages from the same client counts both`() {
+        // The frame and the fit-out, let separately by the same general
+        // contractor. Netting off against only the first understates the
+        // margin by the whole of the second — a wrong number that looks
+        // entirely plausible.
+        val extra = Commercial.Agreement("a.main2", payerOrgId = gc, payeeOrgId = first)
+        val extraMoney = Commercial.Money(4_000.0, 4_000.0, 0.0)
+        assertEquals(
+            10_000.0 + 4_000.0 - 7_000.0,
+            Commercial.margin(
+                listOf(main to mainMoney, extra to extraMoney),
+                listOf(sub to subMoney),
+                first,
+            )!!,
+            0.005,
+        )
+    }
+
+    @Test
+    fun `a firm that is paid on nothing has no margin`() {
+        // Not zero. A crew with only outgoings on this job has not made a
+        // margin of nothing, it has no margin to speak of.
+        assertNull(Commercial.margin(emptyList(), listOf(sub to subMoney), first))
     }
 }

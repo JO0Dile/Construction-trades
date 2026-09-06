@@ -99,20 +99,33 @@ object Commercial {
      * The margin between what a firm is paid and what it pays out.
      *
      * Only ever answered for the firm in the middle. It is not a field on an
-     * agreement — it is the difference between two of them, and the whole
-     * point is that the two are never both visible to anybody else. Returns
-     * null rather than zero when the viewer is not that firm, because zero is
-     * an answer and this must not be answerable.
+     * agreement — it is the difference between two sets of them, and the whole
+     * point is that both sets are never visible to anybody else. Returns null
+     * rather than zero when the viewer is not that firm, because zero is an
+     * answer and this must not be answerable.
+     *
+     * [receivables] is a list rather than one agreement because a firm
+     * commonly holds more than one package from the same client on one job —
+     * the frame and the fit-out, let through separately. Netting off against
+     * only the first of them understates the margin by the whole of the
+     * second, which is a wrong number that looks entirely plausible.
+     *
+     * Every receivable must be one this firm is paid on and every payable one
+     * it pays on. A list with somebody else's agreement in it produces a
+     * figure that looks like a margin and is not one, so it is refused rather
+     * than filtered — silently dropping a row would answer a different
+     * question from the one asked.
      */
     fun margin(
-        receivable: Agreement,
-        receivableMoney: Money,
+        receivables: List<Pair<Agreement, Money>>,
         payables: List<Pair<Agreement, Money>>,
         viewerOrgId: String,
     ): Double? {
         if (viewerOrgId.isBlank()) return null
-        if (receivable.payeeOrgId != viewerOrgId) return null
+        if (receivables.isEmpty()) return null
+        if (receivables.any { (agreement, _) -> agreement.payeeOrgId != viewerOrgId }) return null
         if (payables.any { (agreement, _) -> agreement.payerOrgId != viewerOrgId }) return null
-        return receivableMoney.certifiedToDate - payables.sumOf { it.second.certifiedToDate }
+        return receivables.sumOf { it.second.certifiedToDate } -
+            payables.sumOf { it.second.certifiedToDate }
     }
 }

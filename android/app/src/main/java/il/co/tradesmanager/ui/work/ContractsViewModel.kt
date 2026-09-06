@@ -83,12 +83,13 @@ class ContractsViewModel(
      */
     val margin: StateFlow<Double?> = combine(contracts, orgId) { all, org ->
         if (org.isBlank()) return@combine null
-        val receivable = all.firstOrNull { it.payeeOrgId == org } ?: return@combine null
-        val payables = all.filter { it.payerOrgId == org }
         Commercial.margin(
-            receivable = receivable.asAgreement(),
-            receivableMoney = receivable.asMoney(),
-            payables = payables.map { it.asAgreement() to it.asMoney() },
+            // Every contract this firm is paid on, not just the first. A firm
+            // commonly holds two packages from the same client on one job.
+            receivables = all.filter { it.payeeOrgId == org }
+                .map { it.asAgreement() to it.asMoney() },
+            payables = all.filter { it.payerOrgId == org }
+                .map { it.asAgreement() to it.asMoney() },
             viewerOrgId = org,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
