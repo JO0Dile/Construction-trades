@@ -287,12 +287,25 @@ app claims to get right:
       screen. This is the part worth watching: leave the list open.
 - [ ] Raise a second permit and issue it for 4 hours starting **Tomorrow
       07:00**. It reads *Not started yet* and does not authorise anything.
-- [ ] **Sign the permit back** on the first one, with a note. It moves to
-      *Signed back* and drops below the live ones.
+- [ ] **The fire watch.** On the hot work permit, *Sign the permit back* is
+      disabled and the screen says how many minutes of fire watch are still
+      owed. Press *The work has stopped* — the hour starts from there, counts
+      down on its own, and only then does signing back become possible. Hot
+      work fires mostly start after the torch goes out, from a spark that fell
+      into a void an hour earlier; the permit going back is what tells everyone
+      the area is safe to leave.
+- [ ] Raise a permit that is **not** hot work — working at height, say — and
+      issue it. There is no fire watch and it signs back as soon as the work
+      has stopped, because nothing is left smouldering.
+- [ ] **Sign the permit back**, with a note. It moves to *Signed back* and
+      drops below the live ones.
 - [ ] If you can, change the phone's clock forward past a live permit's end
       time. It must go red and say *work must stop* — and still let you sign
       it back, because the work stopping and the area being checked are two
-      different events.
+      different events. On hot work with no stop time recorded, the fire watch
+      hour runs from the end of the window instead: the latest the work could
+      have gone on for, which can only ever hold the permit open longer than
+      the truth rather than close it sooner.
 
 **Adding to Stock — finding what you just added**
 - [ ] Stock → **+**, add an item, save. The list should scroll to it and hold

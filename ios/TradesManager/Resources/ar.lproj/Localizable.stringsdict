@@ -339,5 +339,29 @@
             <string>%d يوم إضافي</string>
         </dict>
     </dict>
+    <key>ptw_watch_minutes</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لم تبقَ دقيقة مراقبة</string>
+            <key>one</key>
+            <string>بقيت دقيقة مراقبة</string>
+            <key>two</key>
+            <string>بقيت دقيقتا مراقبة</string>
+            <key>few</key>
+            <string>بقيت %d دقائق مراقبة</string>
+            <key>many</key>
+            <string>بقيت %d دقيقة مراقبة</string>
+            <key>other</key>
+            <string>بقيت %d دقيقة مراقبة</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

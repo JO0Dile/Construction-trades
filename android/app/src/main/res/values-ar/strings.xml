@@ -737,6 +737,9 @@
     <string name="exc_block_failed">الفحص الأخير لم ينجح</string>
     <string name="exc_block_disturbed">طرأ عليها تغيير منذ الفحص الأخير</string>
     <string name="exc_block_backfilled">رُدمت</string>
+    <string name="ptw_work_stopped">توقف العمل</string>
+    <string name="ptw_fire_watch">مراقبة الحريق</string>
+    <string name="ptw_fire_watch_hint">حرائق الأعمال الساخنة تبدأ غالبًا بعد إطفاء اللهب، من شرارة سقطت في فراغ قبل ساعة وظلت تتّقد. يبقى شخص للمراقبة؛ ولا يمكن إغلاق التصريح قبل انقضاء المدة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -848,5 +851,13 @@
         <item quantity="few">%d أيام إضافية</item>
         <item quantity="many">%d يومًا إضافيًا</item>
         <item quantity="other">%d يوم إضافي</item>
+    </plurals>
+    <plurals name="ptw_watch_minutes">
+        <item quantity="zero">لم تبقَ دقيقة مراقبة</item>
+        <item quantity="one">بقيت دقيقة مراقبة</item>
+        <item quantity="two">بقيت دقيقتا مراقبة</item>
+        <item quantity="few">بقيت %d دقائق مراقبة</item>
+        <item quantity="many">بقيت %d دقيقة مراقبة</item>
+        <item quantity="other">بقيت %d دقيقة مراقبة</item>
     </plurals>
 </resources>

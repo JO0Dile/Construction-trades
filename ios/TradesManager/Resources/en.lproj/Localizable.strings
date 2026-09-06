@@ -745,3 +745,6 @@
 "exc_block_failed" = "The last inspection failed";
 "exc_block_disturbed" = "Something has changed it since the last inspection";
 "exc_block_backfilled" = "It has been filled in";
+"ptw_work_stopped" = "The work has stopped";
+"ptw_fire_watch" = "Fire watch";
+"ptw_fire_watch_hint" = "Hot work fires mostly start after the torch goes out, from a spark that fell into a void an hour ago and has been smouldering since. Somebody stays and watches; the permit cannot be signed back until they have.";

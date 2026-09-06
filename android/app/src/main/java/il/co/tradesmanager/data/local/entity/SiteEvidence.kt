@@ -87,6 +87,14 @@ data class PermitEntity(
     val validTo: Long?,
     val issuedAt: Long?,
     val issuerSignature: String?,
+    /**
+     * When the work actually stopped, which is not when the permit runs out.
+     *
+     * On hot work it is the moment the fire watch starts, and the reason it is
+     * stored separately: a welder who finishes at two on a permit that runs to
+     * five has an hour to be watched from two, not from five.
+     */
+    val workStoppedAt: Long?,
     val closedAt: Long?,
     val closedByName: String?,
     val closeNotes: String?,

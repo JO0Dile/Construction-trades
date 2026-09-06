@@ -151,6 +151,7 @@ class EvidenceRepository(
             validTo = null,
             issuedAt = null,
             issuerSignature = null,
+            workStoppedAt = null,
             closedAt = null,
             closedByName = null,
             closeNotes = null,
@@ -230,13 +231,42 @@ class EvidenceRepository(
     }
 
     /**
+     * Records the moment the work stopped, which starts the fire watch.
+     *
+     * Separate from closing the permit, and that separation is the whole
+     * feature: on hot work an hour has to pass between the two, and collapsing
+     * them into one button is what the old model did.
+     */
+    suspend fun recordWorkStopped(permitId: String, actorName: String): Boolean {
+        val permit = dao.permit(permitId) ?: return false
+        if (permit.status != Permits.Status.ISSUED || permit.workStoppedAt != null) return false
+
+        val now = System.currentTimeMillis()
+        dao.upsertPermit(permit.copy(workStoppedAt = now, updatedAt = now))
+        audit.record(
+            PERMIT, permitId, AuditTrail.Action.UPDATE, actorName,
+            "${permit.reference} work stopped",
+        )
+        return true
+    }
+
+    /**
      * Signs the permit back: the work is finished and the area has been made
      * safe. An expired permit can still be closed, and normally has to be —
      * work stopping and the area being checked are two different events.
+     *
+     * On hot work the fire watch has to have been kept for its hour first.
      */
     suspend fun close(permitId: String, closedByName: String, notes: String?): Boolean {
         val permit = dao.permit(permitId) ?: return false
-        if (!Permits.canClose(permit.status)) return false
+        val allowed = Permits.canClose(
+            status = permit.status,
+            type = permit.type,
+            workStoppedAt = permit.workStoppedAt,
+            validTo = permit.validTo,
+            now = System.currentTimeMillis(),
+        )
+        if (!allowed) return false
 
         val now = System.currentTimeMillis()
         dao.upsertPermit(

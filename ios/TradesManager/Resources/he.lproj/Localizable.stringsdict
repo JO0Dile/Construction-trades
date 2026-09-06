@@ -283,5 +283,25 @@
             <string>עוד %d ימים</string>
         </dict>
     </dict>
+    <key>ptw_watch_minutes</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נותרה דקה של שמירה</string>
+            <key>two</key>
+            <string>נותרו שתי דקות של שמירה</string>
+            <key>many</key>
+            <string>נותרו %d דקות של שמירה</string>
+            <key>other</key>
+            <string>נותרו %d דקות של שמירה</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
