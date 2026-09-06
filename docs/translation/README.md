@@ -36,6 +36,27 @@ formal name — so a foreman typing `العقدة` finds slab conduit, and `ال
 differs from the formal one, put it in `street_yours`; the field takes any
 language.
 
+## interface.csv — 901 strings
+
+Every word the app itself says: buttons, labels, hints, warnings, error
+messages. Same shape as the others — `hebrew_yours` and `arabic_yours` are the
+columns to fill, and blank means the draft is fine.
+
+`where_it_appears` is a note about the context, present on the strings where
+it matters. Read it: "Sign" on a contract and "Sign" on a permit are different
+words in Hebrew, and this is where that gets caught.
+
+Two things not to change:
+
+* **`key`** is what the code looks the string up by. Changing it breaks the
+  screen.
+* **Anything in `{}` or `%s`** is a value the app substitutes in — a name, a
+  number, a date. It has to survive into the translation, though it may move
+  within the sentence.
+
+This is the largest of the three and the least urgent. The item names are what
+the photography waits on; the interface can be corrected in passes.
+
 ## Terms flagged for confirmation
 
 Three items were named from a spoken description and should be checked before
