@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.export
 
 import android.content.Context
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
@@ -13,6 +14,7 @@ import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.components.unitLabel
+import java.time.LocalDate
 import java.util.Locale
 
 /**
@@ -38,6 +40,21 @@ sealed interface ExportDocument {
         val run: ChecklistRunEntity,
         val checks: List<ChecklistTemplateItemEntity>,
         val answers: Map<String, String>,
+    ) : ExportDocument
+
+    /**
+     * The state of a job at handover, as a document somebody files.
+     *
+     * One table with a section column rather than a new multi-section exporter,
+     * following [ProjectSheet]. The CSV and the PDF come from the same table
+     * either way, which is the property that matters: an audit trail is worth
+     * nothing if the spreadsheet and the printout disagree.
+     */
+    data class Handover(
+        val project: ProjectEntity,
+        val readiness: HandoverPack.Readiness,
+        val producedByName: String,
+        val producedOn: LocalDate,
     ) : ExportDocument
 
     data class Table(val title: String, val headers: List<String>, val rows: List<List<String>>)
@@ -90,6 +107,34 @@ sealed interface ExportDocument {
             },
         )
 
+        is Handover -> Table(
+            title = project.name,
+            headers = listOf(
+                context.getString(R.string.action_filter),
+                context.getString(R.string.hv_outstanding),
+                context.getString(R.string.hv_produced_on),
+            ),
+            // The first row is the verdict, so a pack that is skimmed rather
+            // than read still says whether the job was finished when it was
+            // printed. A pack that buries that under a list is a pack somebody
+            // files believing it says the opposite.
+            rows = listOf(
+                listOf(
+                    context.getString(R.string.hv_title),
+                    context.getString(
+                        if (readiness.isComplete) R.string.hv_complete else R.string.hv_interim,
+                    ),
+                    Formats.date(producedOn, locale) + " · " + producedByName,
+                ),
+            ) + readiness.outstanding.map { outstanding ->
+                listOf(
+                    context.getString(R.string.hv_outstanding),
+                    context.getString(handoverItemLabel(outstanding.item)),
+                    outstanding.count.toString(),
+                )
+            },
+        )
+
         is Checklist -> Table(
             title = template.titles.resolve(languageTag),
             headers = listOf(
@@ -118,6 +163,7 @@ sealed interface ExportDocument {
             is Inventory -> "inventory"
             is ProjectSheet -> project.name
             is Checklist -> template.id
+            is Handover -> "handover-" + project.name
         },
     )
 
@@ -128,4 +174,22 @@ sealed interface ExportDocument {
         else -> "—"
     }
 
+}
+
+/**
+ * The words for each kind of outstanding item.
+ *
+ * Outside the interface so it can be shared with the screen: the pack and the
+ * screen must call the same thing by the same name, or somebody reads "3
+ * scaffolds standing" on one and something else on the other.
+ */
+internal fun handoverItemLabel(item: HandoverPack.Item): Int = when (item) {
+    HandoverPack.Item.BLOCKING_SNAGS -> R.string.hv_blocking_snags
+    HandoverPack.Item.OPEN_PERMITS -> R.string.hv_open_permits
+    HandoverPack.Item.SCAFFOLDS_STANDING -> R.string.hv_scaffolds
+    HandoverPack.Item.TEMPORARY_WORKS_STANDING -> R.string.hv_temporary_works
+    HandoverPack.Item.EXCAVATIONS_OPEN -> R.string.hv_excavations
+    HandoverPack.Item.LIFTS_INCOMPLETE -> R.string.hv_lifts
+    HandoverPack.Item.POURS_UNFINISHED -> R.string.hv_pours
+    HandoverPack.Item.UNSIGNED_DAILY_LOGS -> R.string.hv_daily_logs
 }

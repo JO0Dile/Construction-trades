@@ -324,6 +324,31 @@ part: either hours nobody costed, or a cost line nobody worked. A day with no
 rate against it is shown as unpriced rather than as free, because free is the
 direction a cost screen must never be wrong in.
 
+**Phase 4o — the pack that leaves the app. Done.**
+Nine registers had been recording evidence, and every one of them could only be
+read inside the app. Evidence that cannot leave is evidence of nothing — the
+same argument the photograph watermarks are built on, applied to everything
+else.
+
+Two things were missing. Nobody could see what was still open **across** a job:
+each register answers its own question, and at handover the question is all of
+them at once. And nothing assembled any of it into something a client could be
+handed.
+
+The pack does not refuse to print while things are outstanding. An interim pack
+is a real thing — a client asks for the file at the end of a phase, a
+subcontractor leaves and wants their part of it. What it does instead is record
+what was outstanding at the moment it was produced, on the **first row** of the
+document, so a pack that is skimmed rather than read still says whether the job
+was finished when it was printed. A document that quietly omits the eleven
+permits nobody closed is worse than no document, because somebody will file it
+and believe it.
+
+Zero counts are left out rather than listed: three blocking snags buried in a
+wall of "0 open permits" is how a list stops being read. And the order is what
+matters at handover rather than what is biggest, so twenty unsigned logs do not
+sort above one scaffold left standing in the street.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -359,8 +384,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 65 | |
-| Buildable here — on the device, no server | 120 | where the work is |
+| Built | 67 | |
+| Buildable here — on the device, no server | 118 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

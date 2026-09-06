@@ -3987,6 +3987,91 @@
       "en": "Part of these hours has no rate, so this figure is short.",
       "he": "לחלק מהשעות אין תעריף, ולכן הסכום חלקי.",
       "ar": "جزء من هذه الساعات بلا أجر، لذا هذا المبلغ ناقص."
+    },
+    "hv_title": {
+      "en": "Handover",
+      "he": "מסירה",
+      "ar": "التسليم"
+    },
+    "hv_row_hint": {
+      "en": "What is still open across the whole job, and the pack to hand over.",
+      "he": "מה עדיין פתוח בכל הפרויקט, והתיק למסירה.",
+      "ar": "ما زال مفتوحًا في المشروع كله، والملف الذي يُسلَّم."
+    },
+    "hv_complete": {
+      "en": "Nothing outstanding",
+      "he": "אין פתוחים",
+      "ar": "لا يوجد ما هو معلّق"
+    },
+    "hv_complete_hint": {
+      "en": "Every register on this job is clear. The pack can go out as a final one.",
+      "he": "כל הפנקסים בפרויקט נקיים. אפשר להוציא את התיק כסופי.",
+      "ar": "جميع السجلات في هذا المشروع خالية. يمكن إصدار الملف كنهائي."
+    },
+    "hv_interim": {
+      "en": "Interim — things are still open",
+      "he": "ביניים — יש דברים פתוחים",
+      "ar": "مرحلي — ما زالت أمور مفتوحة"
+    },
+    "hv_interim_hint": {
+      "en": "The pack still prints, because an interim one is a real thing — a client asks for the file at the end of a phase, or a subcontractor leaves and wants their part of it. It records what was outstanding at the moment it was produced, so it reads as interim rather than looking final.",
+      "he": "התיק עדיין מופק, משום שתיק ביניים הוא דבר אמיתי — לקוח מבקש את התיק בתום שלב, או שקבלן משנה עוזב ורוצה את חלקו. התיק מתעד מה היה פתוח ברגע ההפקה, כך שהוא נקרא כתיק ביניים ולא נראה סופי.",
+      "ar": "يُطبع الملف رغم ذلك، لأن الملف المرحلي أمر واقعي — يطلب العميل الملف في نهاية مرحلة، أو يغادر مقاول من الباطن ويريد نصيبه منه. يسجّل الملف ما كان معلّقًا لحظة إصداره، فيُقرأ كملف مرحلي لا كنهائي."
+    },
+    "hv_outstanding": {
+      "en": "Still open",
+      "he": "עדיין פתוח",
+      "ar": "ما زال مفتوحًا"
+    },
+    "hv_produced_on": {
+      "en": "Produced",
+      "he": "הופק",
+      "ar": "أُصدر"
+    },
+    "hv_export": {
+      "en": "Produce the pack",
+      "he": "הפקת התיק",
+      "ar": "إصدار الملف"
+    },
+    "hv_blocking_snags": {
+      "en": "Defects holding up handover",
+      "he": "ליקויים המעכבים מסירה",
+      "ar": "عيوب تؤخّر التسليم"
+    },
+    "hv_open_permits": {
+      "en": "Permits never signed back",
+      "he": "היתרים שלא הוחזרו",
+      "ar": "تصاريح لم تُغلق"
+    },
+    "hv_scaffolds": {
+      "en": "Scaffolds still standing",
+      "he": "פיגומים שטרם פורקו",
+      "ar": "سقالات ما زالت قائمة"
+    },
+    "hv_temporary_works": {
+      "en": "Propping not yet struck",
+      "he": "תמיכות שטרם פורקו",
+      "ar": "دعائم لم تُفكّ بعد"
+    },
+    "hv_excavations": {
+      "en": "Trenches not backfilled",
+      "he": "תעלות שלא הוחזרו",
+      "ar": "خنادق لم تُردم"
+    },
+    "hv_lifts": {
+      "en": "Lifts never marked done",
+      "he": "הרמות שלא סומנו כהושלמו",
+      "ar": "عمليات رفع لم تُعلَّم كمنتهية"
+    },
+    "hv_pours": {
+      "en": "Pours never finished",
+      "he": "יציקות שלא נסגרו",
+      "ar": "صبّات لم تُنهَ"
+    },
+    "hv_daily_logs": {
+      "en": "Daily logs never signed",
+      "he": "יומני עבודה שלא נחתמו",
+      "ar": "يوميات عمل لم تُوقَّع"
     }
   },
   "plurals": {
