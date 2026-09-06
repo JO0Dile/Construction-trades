@@ -1,0 +1,138 @@
+{
+  "tradeId": "landscape",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "ls.paver.interlock",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Interlock paver",
+        "he": "אבן משתלבת",
+        "ar": "بلاط انترلوك"
+      },
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "id": "ls.kerb.concrete",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "M",
+      "names": {
+        "en": "Concrete kerb",
+        "he": "אבן שפה",
+        "ar": "بردورة باطون"
+      },
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "id": "ls.tactile.paving",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Tactile warning paving",
+        "he": "ריצוף אזהרה מישושי",
+        "ar": "بلاط تحذير ملموس"
+      },
+      "spec": {
+        "en": "Required at every crossing and stair head under Israeli accessibility rules.",
+        "he": "נדרש בכל מעבר וראש מדרגות לפי תקנות הנגישות.",
+        "ar": "مطلوب عند كل معبر ورأس درج بموجب أنظمة إمكانية الوصول."
+      },
+      "tags": [
+        "accessibility",
+        "paving"
+      ]
+    },
+    {
+      "id": "ls.irrigation.dripline",
+      "kind": "MATERIAL",
+      "category": "pipes",
+      "unit": "M",
+      "names": {
+        "en": "Drip irrigation line",
+        "he": "טפטפות",
+        "ar": "خط ري بالتنقيط"
+      },
+      "tags": [
+        "irrigation"
+      ]
+    },
+    {
+      "id": "ls.irrigation.controller",
+      "kind": "MATERIAL",
+      "category": "controls",
+      "unit": "PCS",
+      "names": {
+        "en": "Irrigation controller",
+        "he": "בקר השקיה",
+        "ar": "وحدة تحكم الري"
+      },
+      "tags": [
+        "irrigation"
+      ]
+    },
+    {
+      "id": "ls.topsoil",
+      "kind": "MATERIAL",
+      "category": "aggregates",
+      "unit": "M3",
+      "names": {
+        "en": "Topsoil",
+        "he": "אדמת גן",
+        "ar": "تربة زراعية"
+      },
+      "tags": [
+        "planting"
+      ]
+    },
+    {
+      "id": "ls.tree.stake",
+      "kind": "MATERIAL",
+      "category": "timber",
+      "unit": "PCS",
+      "names": {
+        "en": "Tree stake and tie",
+        "he": "סמוכה לעץ",
+        "ar": "دعامة شجرة"
+      },
+      "tags": [
+        "planting"
+      ]
+    },
+    {
+      "id": "ls.tool.compactor.paving",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Paving compactor with pad",
+        "he": "מהדק לריצוף עם רפידה",
+        "ar": "دكّاكة بلاط مع لبادة"
+      },
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "id": "ls.tool.splitter.block",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Block splitter",
+        "he": "מפצל אבן משתלבת",
+        "ar": "مقصلة انترلوك"
+      },
+      "tags": [
+        "paving"
+      ]
+    }
+  ]
+}

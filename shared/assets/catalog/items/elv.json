@@ -1,0 +1,418 @@
+{
+  "tradeId": "elv",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "elv.cable.cat6",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": {
+        "en": "Cat6 U/UTP data cable",
+        "he": "כבל תקשורת Cat6",
+        "ar": "كابل شبكة Cat6"
+      },
+      "attributes": {
+        "category": "Cat6"
+      },
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "id": "elv.cable.cat6a.ftp",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": {
+        "en": "Cat6A F/UTP data cable",
+        "he": "כבל תקשורת Cat6A מסוכך",
+        "ar": "كابل شبكة Cat6A مدرّع"
+      },
+      "attributes": {
+        "category": "Cat6A"
+      },
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "id": "elv.cable.coax.rg6",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": {
+        "en": "Coaxial cable RG6",
+        "he": "כבל קואקסיאלי RG6",
+        "ar": "كابل كواكسيال RG6"
+      },
+      "tags": [
+        "tv"
+      ]
+    },
+    {
+      "id": "elv.cable.fire.alarm",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": {
+        "en": "Fire-resistant alarm cable",
+        "he": "כבל גילוי אש חסין אש",
+        "ar": "كابل إنذار مقاوم للحريق"
+      },
+      "spec": {
+        "en": "Keeps working while it burns, which is the only time it matters.",
+        "he": "ממשיך לעבוד בזמן שריפה, וזה הזמן היחיד שבו זה חשוב.",
+        "ar": "يظل يعمل أثناء الحريق، وهو الوقت الوحيد الذي يهمّ فيه."
+      },
+      "tags": [
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "elv.cable.fibre.om4",
+      "kind": "MATERIAL",
+      "category": "cables",
+      "unit": "M",
+      "names": {
+        "en": "Fibre optic, OM4 multimode",
+        "he": "סיב אופטי OM4",
+        "ar": "ألياف ضوئية OM4"
+      },
+      "tags": [
+        "data",
+        "backbone"
+      ]
+    },
+    {
+      "id": "elv.patch.panel.24",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": {
+        "en": "Patch panel, 24 port",
+        "he": "פאנל תקשורת 24 יציאות",
+        "ar": "باتش بانل 24 مخرج"
+      },
+      "tags": [
+        "data",
+        "rack"
+      ]
+    },
+    {
+      "id": "elv.rack.19.42u",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": {
+        "en": "19\" cabinet, 42U",
+        "he": "ארון תקשורת 19\" ‏42U",
+        "ar": "كابينة 19 إنش ‏42U"
+      },
+      "tags": [
+        "data",
+        "rack"
+      ]
+    },
+    {
+      "id": "elv.outlet.rj45",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "RJ45 data outlet",
+        "he": "שקע תקשורת RJ45",
+        "ar": "بريزة شبكة RJ45"
+      },
+      "tags": [
+        "data",
+        "white-work"
+      ]
+    },
+    {
+      "id": "elv.camera.dome.ip",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "IP dome camera",
+        "he": "מצלמת IP כיפה",
+        "ar": "كاميرا IP قبّة"
+      },
+      "tags": [
+        "cctv"
+      ]
+    },
+    {
+      "id": "elv.camera.bullet.ip",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "IP bullet camera",
+        "he": "מצלמת IP צינור",
+        "ar": "كاميرا IP بوليت"
+      },
+      "tags": [
+        "cctv"
+      ]
+    },
+    {
+      "id": "elv.nvr.16ch",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Network video recorder, 16 channel",
+        "he": "מקליט וידאו רשת 16 ערוצים",
+        "ar": "مسجّل شبكي 16 قناة"
+      },
+      "tags": [
+        "cctv"
+      ]
+    },
+    {
+      "id": "elv.intercom.panel",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Entry intercom panel",
+        "he": "לוח אינטרקום כניסה",
+        "ar": "لوحة إنترکوم المدخل"
+      },
+      "tags": [
+        "intercom",
+        "lobby"
+      ]
+    },
+    {
+      "id": "elv.intercom.handset",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Intercom handset",
+        "he": "שפופרת אינטרקום",
+        "ar": "سمّاعة إنترکوم"
+      },
+      "tags": [
+        "intercom"
+      ]
+    },
+    {
+      "id": "elv.fire.detector.smoke",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Addressable smoke detector",
+        "he": "גלאי עשן כתובתי",
+        "ar": "كاشف دخان معنون"
+      },
+      "tags": [
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "elv.fire.detector.heat",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Addressable heat detector",
+        "he": "גלאי חום כתובתי",
+        "ar": "كاشف حرارة معنون"
+      },
+      "tags": [
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "elv.fire.sounder",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Sounder / beacon",
+        "he": "צופר ונצנץ",
+        "ar": "صفارة وفلاش إنذار"
+      },
+      "tags": [
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "elv.fire.callpoint",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Manual call point",
+        "he": "לחצן אזעקה ידני",
+        "ar": "زر إنذار يدوي"
+      },
+      "tags": [
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "elv.fire.panel",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Fire alarm control panel",
+        "he": "רכזת גילוי אש",
+        "ar": "لوحة تحكم إنذار الحريق"
+      },
+      "tags": [
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "elv.access.reader",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Access control reader",
+        "he": "קורא בקרת כניסה",
+        "ar": "قارئ تحكم بالدخول"
+      },
+      "tags": [
+        "access-control",
+        "lobby"
+      ]
+    },
+    {
+      "id": "elv.access.maglock",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Magnetic door lock",
+        "he": "מנעול מגנטי",
+        "ar": "قفل مغناطيسي"
+      },
+      "tags": [
+        "access-control"
+      ]
+    },
+    {
+      "id": "elv.tv.amplifier",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "TV distribution amplifier",
+        "he": "מגבר טלוויזיה",
+        "ar": "مضخّم توزيع تلفزيون"
+      },
+      "tags": [
+        "tv"
+      ]
+    },
+    {
+      "id": "elv.tool.lan.tester",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "LAN cable tester",
+        "he": "בודק כבלי רשת",
+        "ar": "فاحص كابلات شبكة"
+      },
+      "tags": [
+        "testing",
+        "data"
+      ]
+    },
+    {
+      "id": "elv.tool.certifier",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Cable certifier (Cat6A)",
+        "he": "מאשר תשתית תקשורת",
+        "ar": "جهاز اعتماد الكابلات Cat6A"
+      },
+      "spec": {
+        "en": "Prints the certificate the client asks for at handover. A continuity tester is not this.",
+        "he": "מדפיס את התעודה שהלקוח מבקש במסירה. בודק רציפות אינו זה.",
+        "ar": "يطبع الشهادة التي يطلبها الزبون بالتسليم. فاحص الاستمرارية ليس بديلاً."
+      },
+      "tags": [
+        "testing",
+        "commissioning",
+        "data"
+      ]
+    },
+    {
+      "id": "elv.tool.punch.down",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Punch-down tool (110/krone)",
+        "he": "כלי נעיצה 110",
+        "ar": "أداة تثبيت 110/كرون"
+      },
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "id": "elv.tool.crimp.rj45",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "RJ45 crimping tool",
+        "he": "מלחץ RJ45",
+        "ar": "كماشة كبس RJ45"
+      },
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "id": "elv.tool.fibre.splicer",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Fusion splicer",
+        "he": "מחבר סיבים בהיתוך",
+        "ar": "جهاز لحام ألياف ضوئية"
+      },
+      "tags": [
+        "data",
+        "fibre"
+      ]
+    },
+    {
+      "id": "elv.tool.otdr",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "OTDR",
+        "he": "מודד OTDR",
+        "ar": "جهاز OTDR"
+      },
+      "tags": [
+        "data",
+        "fibre",
+        "testing"
+      ]
+    }
+  ]
+}

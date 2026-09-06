@@ -1,0 +1,134 @@
+{
+  "tradeId": "elevators",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "lf.guide.rail",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "M",
+      "names": {
+        "en": "Elevator guide rail",
+        "he": "מסילת מוביל למעלית",
+        "ar": "سكة توجيه المصعد"
+      },
+      "tags": [
+        "elevator"
+      ]
+    },
+    {
+      "id": "lf.machine.gearless",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Gearless traction machine",
+        "he": "מנוע גירלס",
+        "ar": "ماكينة جر بدون تروس"
+      },
+      "tags": [
+        "elevator"
+      ]
+    },
+    {
+      "id": "lf.rope.traction",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "M",
+      "names": {
+        "en": "Traction rope / belt",
+        "he": "כבל משיכה",
+        "ar": "حبل جر"
+      },
+      "tags": [
+        "elevator"
+      ]
+    },
+    {
+      "id": "lf.controller",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Elevator controller",
+        "he": "בקר מעלית",
+        "ar": "لوحة تحكم المصعد"
+      },
+      "tags": [
+        "elevator"
+      ]
+    },
+    {
+      "id": "lf.door.landing",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Landing door assembly",
+        "he": "דלת פיר",
+        "ar": "باب الطابق للمصعد"
+      },
+      "tags": [
+        "elevator"
+      ]
+    },
+    {
+      "id": "lf.buffer",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Pit buffer",
+        "he": "בולם בור",
+        "ar": "مصدّ الحفرة"
+      },
+      "tags": [
+        "elevator",
+        "safety"
+      ]
+    },
+    {
+      "id": "lf.governor",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Overspeed governor",
+        "he": "מווסת מהירות יתר",
+        "ar": "منظّم السرعة الزائدة"
+      },
+      "tags": [
+        "elevator",
+        "safety"
+      ]
+    },
+    {
+      "id": "lf.tool.plumb.shaft",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Shaft plumbing kit",
+        "he": "ערכת אנך לפיר",
+        "ar": "طقم شاقول البئر"
+      },
+      "tags": [
+        "setting-out"
+      ]
+    },
+    {
+      "id": "lf.tool.tension.meter",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Rope tension meter",
+        "he": "מד מתיחות כבלים",
+        "ar": "مقياس شد الحبال"
+      },
+      "tags": [
+        "commissioning"
+      ]
+    }
+  ]
+}

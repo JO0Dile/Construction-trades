@@ -1,326 +1,922 @@
 {
   "tradeId": "plumbing",
-  "catalogVersion": 1,
+  "catalogVersion": 2,
   "items": [
     {
       "id": "pl.pipe.pex.16",
       "kind": "MATERIAL",
       "category": "pipes",
       "unit": "M",
-      "names": { "en": "PEX pipe 16 mm", "he": "צינור פקסגול 16 מ״מ", "ar": "أنبوب بيكس 16 ملم" },
-      "spec": { "en": "Cross-linked polyethylene, hot and cold water, in sleeve.", "he": "פוליאתילן מצולב, מים חמים וקרים, בתוך שרוול.", "ar": "بولي إيثيلين متشابك، ماء حار وبارد، داخل غلاف." },
-      "attributes": { "diameterMm": "16", "standard": "הל״ת" },
-      "tags": ["pipe", "water"]
+      "names": {
+        "en": "PEX pipe 16 mm",
+        "he": "צינור פקסגול 16 מ״מ",
+        "ar": "أنبوب بيكس 16 ملم"
+      },
+      "spec": {
+        "en": "Cross-linked polyethylene, hot and cold water, in sleeve.",
+        "he": "פוליאתילן מצולב, מים חמים וקרים, בתוך שרוול.",
+        "ar": "بولي إيثيلين متشابك، ماء حار وبارد، داخل غلاف."
+      },
+      "attributes": {
+        "diameterMm": "16",
+        "standard": "הל״ת"
+      },
+      "tags": [
+        "pipe",
+        "water"
+      ]
     },
     {
       "id": "pl.pipe.pex.20",
       "kind": "MATERIAL",
       "category": "pipes",
       "unit": "M",
-      "names": { "en": "PEX pipe 20 mm", "he": "צינור פקסגול 20 מ״מ", "ar": "أنبوب بيكس 20 ملم" },
-      "spec": { "en": "Main branch runs to manifold.", "he": "הזנות ראשיות למחלק.", "ar": "خطوط رئيسية إلى الموزّع." },
-      "attributes": { "diameterMm": "20", "standard": "הל״ת" },
-      "tags": ["pipe", "water"]
+      "names": {
+        "en": "PEX pipe 20 mm",
+        "he": "צינור פקסגול 20 מ״מ",
+        "ar": "أنبوب بيكس 20 ملم"
+      },
+      "spec": {
+        "en": "Main branch runs to manifold.",
+        "he": "הזנות ראשיות למחלק.",
+        "ar": "خطوط رئيسية إلى الموزّع."
+      },
+      "attributes": {
+        "diameterMm": "20",
+        "standard": "הל״ת"
+      },
+      "tags": [
+        "pipe",
+        "water"
+      ]
     },
     {
       "id": "pl.pipe.copper.15",
       "kind": "MATERIAL",
       "category": "pipes",
       "unit": "M",
-      "names": { "en": "Copper pipe 15 mm", "he": "צינור נחושת 15 מ״מ", "ar": "أنبوب نحاس 15 ملم" },
-      "spec": { "en": "Soldered copper for solar and heater connections.", "he": "נחושת בהלחמה לחיבורי דוד ומערכת סולארית.", "ar": "نحاس باللحام لتوصيلات السخان والنظام الشمسي." },
-      "attributes": { "diameterMm": "15" },
-      "tags": ["pipe", "copper", "hot-work"]
+      "names": {
+        "en": "Copper pipe 15 mm",
+        "he": "צינור נחושת 15 מ״מ",
+        "ar": "أنبوب نحاس 15 ملم"
+      },
+      "spec": {
+        "en": "Soldered copper for solar and heater connections.",
+        "he": "נחושת בהלחמה לחיבורי דוד ומערכת סולארית.",
+        "ar": "نحاس باللحام لتوصيلات السخان والنظام الشمسي."
+      },
+      "attributes": {
+        "diameterMm": "15"
+      },
+      "tags": [
+        "pipe",
+        "copper",
+        "hot-work"
+      ]
     },
     {
       "id": "pl.pipe.copper.22",
       "kind": "MATERIAL",
       "category": "pipes",
       "unit": "M",
-      "names": { "en": "Copper pipe 22 mm", "he": "צינור נחושת 22 מ״מ", "ar": "أنبوب نحاس 22 ملم" },
-      "spec": { "en": "Primary circuit to the solar collector.", "he": "מעגל ראשי לקולט השמש.", "ar": "الدائرة الرئيسية للمجمّع الشمسي." },
-      "attributes": { "diameterMm": "22" },
-      "tags": ["pipe", "copper"]
+      "names": {
+        "en": "Copper pipe 22 mm",
+        "he": "צינור נחושת 22 מ״מ",
+        "ar": "أنبوب نحاس 22 ملم"
+      },
+      "spec": {
+        "en": "Primary circuit to the solar collector.",
+        "he": "מעגל ראשי לקולט השמש.",
+        "ar": "الدائرة الرئيسية للمجمّع الشمسي."
+      },
+      "attributes": {
+        "diameterMm": "22"
+      },
+      "tags": [
+        "pipe",
+        "copper"
+      ]
     },
     {
       "id": "pl.pipe.pvc.50",
       "kind": "MATERIAL",
       "category": "drainage",
       "unit": "M",
-      "names": { "en": "PVC waste pipe 50 mm", "he": "צינור דלוחין PVC ‏50 מ״מ", "ar": "أنبوب صرف PVC ‏50 ملم" },
-      "spec": { "en": "Sink, basin and shower waste.", "he": "דלוחין מכיור, אמבט ומקלחת.", "ar": "صرف المغسلة والبانيو والدش." },
-      "attributes": { "diameterMm": "50", "standard": "ת״י 1205" },
-      "tags": ["pipe", "drainage"]
+      "names": {
+        "en": "PVC waste pipe 50 mm",
+        "he": "צינור דלוחין PVC ‏50 מ״מ",
+        "ar": "أنبوب صرف PVC ‏50 ملم"
+      },
+      "spec": {
+        "en": "Sink, basin and shower waste.",
+        "he": "דלוחין מכיור, אמבט ומקלחת.",
+        "ar": "صرف المغسلة والبانيو والدش."
+      },
+      "attributes": {
+        "diameterMm": "50",
+        "standard": "ת״י 1205"
+      },
+      "tags": [
+        "pipe",
+        "drainage"
+      ]
     },
     {
       "id": "pl.pipe.pvc.110",
       "kind": "MATERIAL",
       "category": "drainage",
       "unit": "M",
-      "names": { "en": "PVC soil pipe 110 mm", "he": "צינור ביוב PVC ‏110 מ״מ", "ar": "أنبوب مجاري PVC ‏110 ملم" },
-      "spec": { "en": "Toilet branch and stack.", "he": "הסתעפות אסלה וקולטן.", "ar": "تفريعة المرحاض والعمود الرأسي." },
-      "attributes": { "diameterMm": "110", "standard": "ת״י 1205" },
-      "tags": ["pipe", "drainage"]
+      "names": {
+        "en": "PVC soil pipe 110 mm",
+        "he": "צינור ביוב PVC ‏110 מ״מ",
+        "ar": "أنبوب مجاري PVC ‏110 ملم"
+      },
+      "spec": {
+        "en": "Toilet branch and stack.",
+        "he": "הסתעפות אסלה וקולטן.",
+        "ar": "تفريعة المرحاض والعمود الرأسي."
+      },
+      "attributes": {
+        "diameterMm": "110",
+        "standard": "ת״י 1205"
+      },
+      "tags": [
+        "pipe",
+        "drainage"
+      ]
     },
     {
       "id": "pl.fit.elbow.90.pvc.50",
       "kind": "MATERIAL",
       "category": "fittings",
       "unit": "PCS",
-      "names": { "en": "PVC elbow 90° 50 mm", "he": "זווית PVC ‏90° ‏50 מ״מ", "ar": "كوع PVC ‏90° ‏50 ملم" },
-      "spec": { "en": "Solvent-weld drainage elbow.", "he": "זווית ניקוז בהדבקה.", "ar": "كوع صرف باللصق." },
-      "attributes": { "angle": "90", "diameterMm": "50" },
-      "tags": ["fitting", "drainage"]
+      "names": {
+        "en": "PVC elbow 90° 50 mm",
+        "he": "זווית PVC ‏90° ‏50 מ״מ",
+        "ar": "كوع PVC ‏90° ‏50 ملم"
+      },
+      "spec": {
+        "en": "Solvent-weld drainage elbow.",
+        "he": "זווית ניקוז בהדבקה.",
+        "ar": "كوع صرف باللصق."
+      },
+      "attributes": {
+        "angle": "90",
+        "diameterMm": "50"
+      },
+      "tags": [
+        "fitting",
+        "drainage"
+      ]
     },
     {
       "id": "pl.fit.tee.pvc.110",
       "kind": "MATERIAL",
       "category": "fittings",
       "unit": "PCS",
-      "names": { "en": "PVC tee 110 mm", "he": "טי PVC ‏110 מ״מ", "ar": "وصلة T من PVC ‏110 ملم" },
-      "spec": { "en": "Branch connection on the soil stack.", "he": "הסתעפות בקולטן הביוב.", "ar": "تفريعة على عمود المجاري." },
-      "attributes": { "diameterMm": "110" },
-      "tags": ["fitting", "drainage"]
+      "names": {
+        "en": "PVC tee 110 mm",
+        "he": "טי PVC ‏110 מ״מ",
+        "ar": "وصلة T من PVC ‏110 ملم"
+      },
+      "spec": {
+        "en": "Branch connection on the soil stack.",
+        "he": "הסתעפות בקולטן הביוב.",
+        "ar": "تفريعة على عمود المجاري."
+      },
+      "attributes": {
+        "diameterMm": "110"
+      },
+      "tags": [
+        "fitting",
+        "drainage"
+      ]
     },
     {
       "id": "pl.fit.coupling.pex.16",
       "kind": "MATERIAL",
       "category": "fittings",
       "unit": "PCS",
-      "names": { "en": "PEX coupling 16 mm", "he": "מופה לפקסגול 16 מ״מ", "ar": "وصلة بيكس 16 ملم" },
-      "spec": { "en": "Compression or press coupling.", "he": "מופת הידוק או לחיצה.", "ar": "وصلة ربط أو ضغط." },
-      "attributes": { "diameterMm": "16" },
-      "tags": ["fitting", "water"]
+      "names": {
+        "en": "PEX coupling 16 mm",
+        "he": "מופה לפקסגול 16 מ״מ",
+        "ar": "وصلة بيكس 16 ملم"
+      },
+      "spec": {
+        "en": "Compression or press coupling.",
+        "he": "מופת הידוק או לחיצה.",
+        "ar": "وصلة ربط أو ضغط."
+      },
+      "attributes": {
+        "diameterMm": "16"
+      },
+      "tags": [
+        "fitting",
+        "water"
+      ]
     },
     {
       "id": "pl.fit.manifold.4way",
       "kind": "MATERIAL",
       "category": "fittings",
       "unit": "PCS",
-      "names": { "en": "Water manifold, 4 outlets", "he": "מחלק מים 4 יציאות", "ar": "موزّع مياه 4 مخارج" },
-      "spec": { "en": "Brass manifold with isolating valves, in a service niche.", "he": "מחלק פליז עם ברזי ניתוק, בנישת שירות.", "ar": "موزّع نحاسي مع محابس عزل، في كوّة الخدمة." },
-      "attributes": { "outlets": "4" },
-      "tags": ["fitting", "water"]
+      "names": {
+        "en": "Water manifold, 4 outlets",
+        "he": "מחלק מים 4 יציאות",
+        "ar": "موزّع مياه 4 مخارج"
+      },
+      "spec": {
+        "en": "Brass manifold with isolating valves, in a service niche.",
+        "he": "מחלק פליז עם ברזי ניתוק, בנישת שירות.",
+        "ar": "موزّع نحاسي مع محابس عزل، في كوّة الخدمة."
+      },
+      "attributes": {
+        "outlets": "4"
+      },
+      "tags": [
+        "fitting",
+        "water"
+      ]
     },
     {
       "id": "pl.valve.ball.1_2",
       "kind": "MATERIAL",
       "category": "valves",
       "unit": "PCS",
-      "names": { "en": "Ball valve 1/2\"", "he": "ברז כדורי ״1/2", "ar": "محبس كروي 1/2 إنش" },
-      "spec": { "en": "Full-bore brass isolating valve.", "he": "ברז ניתוק פליז במעבר מלא.", "ar": "محبس عزل نحاسي بفتحة كاملة." },
-      "attributes": { "size": "1/2\"" },
-      "tags": ["valve"]
+      "names": {
+        "en": "Ball valve 1/2\"",
+        "he": "ברז כדורי ״1/2",
+        "ar": "محبس كروي 1/2 إنش"
+      },
+      "spec": {
+        "en": "Full-bore brass isolating valve.",
+        "he": "ברז ניתוק פליז במעבר מלא.",
+        "ar": "محبس عزل نحاسي بفتحة كاملة."
+      },
+      "attributes": {
+        "size": "1/2\""
+      },
+      "tags": [
+        "valve"
+      ]
     },
     {
       "id": "pl.valve.check.3_4",
       "kind": "MATERIAL",
       "category": "valves",
       "unit": "PCS",
-      "names": { "en": "Check valve 3/4\"", "he": "שסתום אל־חוזר ״3/4", "ar": "صمام لا رجعي 3/4 إنش" },
-      "spec": { "en": "Prevents backflow into the mains.", "he": "מונע זרימה חוזרת לקו הראשי.", "ar": "يمنع التدفق العكسي إلى الخط الرئيسي." },
-      "attributes": { "size": "3/4\"" },
-      "tags": ["valve"]
+      "names": {
+        "en": "Check valve 3/4\"",
+        "he": "שסתום אל־חוזר ״3/4",
+        "ar": "صمام لا رجعي 3/4 إنش"
+      },
+      "spec": {
+        "en": "Prevents backflow into the mains.",
+        "he": "מונע זרימה חוזרת לקו הראשי.",
+        "ar": "يمنع التدفق العكسي إلى الخط الرئيسي."
+      },
+      "attributes": {
+        "size": "3/4\""
+      },
+      "tags": [
+        "valve"
+      ]
     },
     {
       "id": "pl.valve.prv",
       "kind": "MATERIAL",
       "category": "valves",
       "unit": "PCS",
-      "names": { "en": "Pressure reducing valve", "he": "מפחית לחץ", "ar": "منظّم ضغط" },
-      "spec": { "en": "Set at the meter to protect fittings from mains pressure.", "he": "מותקן במד המים כדי להגן על האביזרים מלחץ הרשת.", "ar": "يُركَّب عند العدّاد لحماية القطع من ضغط الشبكة." },
+      "names": {
+        "en": "Pressure reducing valve",
+        "he": "מפחית לחץ",
+        "ar": "منظّم ضغط"
+      },
+      "spec": {
+        "en": "Set at the meter to protect fittings from mains pressure.",
+        "he": "מותקן במד המים כדי להגן על האביזרים מלחץ הרשת.",
+        "ar": "يُركَّب عند العدّاد لحماية القطع من ضغط الشبكة."
+      },
       "attributes": {},
-      "tags": ["valve"]
+      "tags": [
+        "valve"
+      ]
     },
     {
       "id": "pl.fixture.toilet",
       "kind": "MATERIAL",
       "category": "fixtures",
       "unit": "PCS",
-      "names": { "en": "WC pan and cistern", "he": "אסלה ומיכל הדחה", "ar": "مرحاض وخزّان طرد" },
-      "spec": { "en": "Dual-flush cistern, 3/6 litre.", "he": "מיכל הדחה דו־כמותי, 3/6 ליטר.", "ar": "خزّان طرد مزدوج، 3/6 لتر." },
-      "attributes": { "flushLitres": "3/6" },
-      "tags": ["fixture"]
+      "names": {
+        "en": "WC pan and cistern",
+        "he": "אסלה ומיכל הדחה",
+        "ar": "مرحاض وخزّان طرد"
+      },
+      "spec": {
+        "en": "Dual-flush cistern, 3/6 litre.",
+        "he": "מיכל הדחה דו־כמותי, 3/6 ליטר.",
+        "ar": "خزّان طرد مزدوج، 3/6 لتر."
+      },
+      "attributes": {
+        "flushLitres": "3/6"
+      },
+      "tags": [
+        "fixture"
+      ]
     },
     {
       "id": "pl.fixture.basin",
       "kind": "MATERIAL",
       "category": "fixtures",
       "unit": "PCS",
-      "names": { "en": "Wash basin", "he": "כיור רחצה", "ar": "مغسلة" },
-      "spec": { "en": "Ceramic basin with bracket or countertop mounting.", "he": "כיור קרמי על מתלה או שיש.", "ar": "مغسلة سيراميك على حامل أو رخام." },
+      "names": {
+        "en": "Wash basin",
+        "he": "כיור רחצה",
+        "ar": "مغسلة"
+      },
+      "spec": {
+        "en": "Ceramic basin with bracket or countertop mounting.",
+        "he": "כיור קרמי על מתלה או שיש.",
+        "ar": "مغسلة سيراميك على حامل أو رخام."
+      },
       "attributes": {},
-      "tags": ["fixture"]
+      "tags": [
+        "fixture"
+      ]
     },
     {
       "id": "pl.fixture.faucet.kitchen",
       "kind": "MATERIAL",
       "category": "fixtures",
       "unit": "PCS",
-      "names": { "en": "Kitchen mixer tap", "he": "ברז מטבח", "ar": "خلاط مطبخ" },
-      "spec": { "en": "Single-lever mixer with flexible hoses.", "he": "ברז ידית אחת עם צנרת גמישה.", "ar": "خلاط بمقبض واحد مع خراطيم مرنة." },
+      "names": {
+        "en": "Kitchen mixer tap",
+        "he": "ברז מטבח",
+        "ar": "خلاط مطبخ"
+      },
+      "spec": {
+        "en": "Single-lever mixer with flexible hoses.",
+        "he": "ברז ידית אחת עם צנרת גמישה.",
+        "ar": "خلاط بمقبض واحد مع خراطيم مرنة."
+      },
       "attributes": {},
-      "tags": ["fixture"]
+      "tags": [
+        "fixture"
+      ]
     },
     {
       "id": "pl.fixture.trap.bottle",
       "kind": "MATERIAL",
       "category": "fixtures",
       "unit": "PCS",
-      "names": { "en": "Bottle trap", "he": "סיפון בקבוק", "ar": "سيفون زجاجي" },
-      "spec": { "en": "Basin trap with water seal against sewer gas.", "he": "סיפון לכיור עם אטם מים נגד ריחות ביוב.", "ar": "سيفون للمغسلة بختم مائي ضد روائح المجاري." },
+      "names": {
+        "en": "Bottle trap",
+        "he": "סיפון בקבוק",
+        "ar": "سيفون زجاجي"
+      },
+      "spec": {
+        "en": "Basin trap with water seal against sewer gas.",
+        "he": "סיפון לכיור עם אטם מים נגד ריחות ביוב.",
+        "ar": "سيفون للمغسلة بختم مائي ضد روائح المجاري."
+      },
       "attributes": {},
-      "tags": ["fixture"]
+      "tags": [
+        "fixture"
+      ]
     },
     {
       "id": "pl.heater.electric.150",
       "kind": "MATERIAL",
       "category": "hot-water",
       "unit": "PCS",
-      "names": { "en": "Electric water heater 150 L", "he": "דוד חשמל 150 ליטר", "ar": "سخان مياه كهربائي 150 لتر" },
-      "spec": { "en": "Enamelled cylinder with anode and safety valve.", "he": "מיכל מצופה אמייל עם אנודה ושסתום ביטחון.", "ar": "خزّان مطلي بالمينا مع أنود وصمام أمان." },
-      "attributes": { "capacityL": "150" },
-      "tags": ["hot-water"]
+      "names": {
+        "en": "Electric water heater 150 L",
+        "he": "דוד חשמל 150 ליטר",
+        "ar": "سخان مياه كهربائي 150 لتر"
+      },
+      "spec": {
+        "en": "Enamelled cylinder with anode and safety valve.",
+        "he": "מיכל מצופה אמייל עם אנודה ושסתום ביטחון.",
+        "ar": "خزّان مطلي بالمينا مع أنود وصمام أمان."
+      },
+      "attributes": {
+        "capacityL": "150"
+      },
+      "tags": [
+        "hot-water"
+      ]
     },
     {
       "id": "pl.heater.solar.collector",
       "kind": "MATERIAL",
       "category": "hot-water",
       "unit": "PCS",
-      "names": { "en": "Solar collector panel", "he": "קולט שמש", "ar": "مجمّع شمسي" },
-      "spec": { "en": "Flat-plate collector for a domestic solar heater.", "he": "קולט שטוח לדוד שמש ביתי.", "ar": "مجمّع مسطّح لسخان شمسي منزلي." },
+      "names": {
+        "en": "Solar collector panel",
+        "he": "קולט שמש",
+        "ar": "مجمّع شمسي"
+      },
+      "spec": {
+        "en": "Flat-plate collector for a domestic solar heater.",
+        "he": "קולט שטוח לדוד שמש ביתי.",
+        "ar": "مجمّع مسطّح لسخان شمسي منزلي."
+      },
       "attributes": {},
-      "tags": ["hot-water", "solar"]
+      "tags": [
+        "hot-water",
+        "solar"
+      ]
     },
     {
       "id": "pl.meter.water",
       "kind": "MATERIAL",
       "category": "metering",
       "unit": "PCS",
-      "names": { "en": "Water meter", "he": "מד מים", "ar": "عدّاد مياه" },
-      "spec": { "en": "Replaced only by the utility or an authorised installer.", "he": "מוחלף רק על ידי תאגיד המים או מתקין מורשה.", "ar": "يُستبدل فقط بواسطة شركة المياه أو مركّب مرخّص." },
+      "names": {
+        "en": "Water meter",
+        "he": "מד מים",
+        "ar": "عدّاد مياه"
+      },
+      "spec": {
+        "en": "Replaced only by the utility or an authorised installer.",
+        "he": "מוחלף רק על ידי תאגיד המים או מתקין מורשה.",
+        "ar": "يُستبدل فقط بواسطة شركة المياه أو مركّب مرخّص."
+      },
       "attributes": {},
-      "tags": ["metering"]
+      "tags": [
+        "metering"
+      ]
     },
     {
       "id": "pl.consum.teflon",
       "kind": "CONSUMABLE",
       "category": "consumables",
       "unit": "ROLL",
-      "names": { "en": "PTFE thread tape", "he": "סרט טפלון", "ar": "شريط تفلون" },
-      "spec": { "en": "Thread sealing tape for threaded joints.", "he": "סרט אטימה להברגות.", "ar": "شريط إحكام للوصلات اللولبية." },
+      "names": {
+        "en": "PTFE thread tape",
+        "he": "סרט טפלון",
+        "ar": "شريط تفلون"
+      },
+      "spec": {
+        "en": "Thread sealing tape for threaded joints.",
+        "he": "סרט אטימה להברגות.",
+        "ar": "شريط إحكام للوصلات اللولبية."
+      },
       "attributes": {},
-      "tags": ["consumable"]
+      "tags": [
+        "consumable"
+      ]
     },
     {
       "id": "pl.consum.pvc_glue",
       "kind": "CONSUMABLE",
       "category": "consumables",
       "unit": "PCS",
-      "names": { "en": "PVC solvent cement", "he": "דבק PVC", "ar": "غراء PVC" },
-      "spec": { "en": "Solvent weld for drainage joints. Ventilate the space.", "he": "הדבקה כימית לחיבורי ניקוז. יש לאוורר את החלל.", "ar": "لصق كيميائي لوصلات الصرف. يجب تهوية المكان." },
+      "names": {
+        "en": "PVC solvent cement",
+        "he": "דבק PVC",
+        "ar": "غراء PVC"
+      },
+      "spec": {
+        "en": "Solvent weld for drainage joints. Ventilate the space.",
+        "he": "הדבקה כימית לחיבורי ניקוז. יש לאוורר את החלל.",
+        "ar": "لصق كيميائي لوصلات الصرف. يجب تهوية المكان."
+      },
       "attributes": {},
-      "tags": ["consumable", "ventilation"]
+      "tags": [
+        "consumable",
+        "ventilation"
+      ]
     },
     {
       "id": "pl.consum.pipe_clip",
       "kind": "CONSUMABLE",
       "category": "consumables",
       "unit": "PCS",
-      "names": { "en": "Pipe clip", "he": "חבק לצינור", "ar": "مشبك أنبوب" },
-      "spec": { "en": "Rubber-lined clamp with a plug and screw.", "he": "חבק עם בטנת גומי, דיבל ובורג.", "ar": "مشبك ببطانة مطاطية مع فيشة وبرغي." },
+      "names": {
+        "en": "Pipe clip",
+        "he": "חבק לצינור",
+        "ar": "مشبك أنبوب"
+      },
+      "spec": {
+        "en": "Rubber-lined clamp with a plug and screw.",
+        "he": "חבק עם בטנת גומי, דיבל ובורג.",
+        "ar": "مشبك ببطانة مطاطية مع فيشة وبرغي."
+      },
       "attributes": {},
-      "tags": ["consumable"]
+      "tags": [
+        "consumable"
+      ]
     },
     {
       "id": "pl.tool.pipe_wrench",
       "kind": "TOOL",
       "category": "hand-tools",
       "unit": "PCS",
-      "names": { "en": "Pipe wrench", "he": "מפתח צינורות", "ar": "مفتاح مواسير" },
-      "spec": { "en": "Stillson wrench, 14\" and 18\".", "he": "מפתח שוודי, ״14 ו־״18.", "ar": "مفتاح سويدي، 14 و18 إنش." },
-      "attributes": { "sizes": "14\", 18\"" },
-      "tags": ["tool"]
+      "names": {
+        "en": "Pipe wrench",
+        "he": "מפתח צינורות",
+        "ar": "مفتاح مواسير"
+      },
+      "spec": {
+        "en": "Stillson wrench, 14\" and 18\".",
+        "he": "מפתח שוודי, ״14 ו־״18.",
+        "ar": "مفتاح سويدي، 14 و18 إنش."
+      },
+      "attributes": {
+        "sizes": "14\", 18\""
+      },
+      "tags": [
+        "tool"
+      ]
     },
     {
       "id": "pl.tool.pipe_cutter",
       "kind": "TOOL",
       "category": "hand-tools",
       "unit": "PCS",
-      "names": { "en": "Pipe cutter", "he": "חותך צינורות", "ar": "قاطع أنابيب" },
-      "spec": { "en": "Rotary cutter for copper and plastic pipe.", "he": "חותך סיבובי לצינורות נחושת ופלסטיק.", "ar": "قاطع دوّار لأنابيب النحاس والبلاستيك." },
+      "names": {
+        "en": "Pipe cutter",
+        "he": "חותך צינורות",
+        "ar": "قاطع أنابيب"
+      },
+      "spec": {
+        "en": "Rotary cutter for copper and plastic pipe.",
+        "he": "חותך סיבובי לצינורות נחושת ופלסטיק.",
+        "ar": "قاطع دوّار لأنابيب النحاس والبلاستيك."
+      },
       "attributes": {},
-      "tags": ["tool"]
+      "tags": [
+        "tool"
+      ]
     },
     {
       "id": "pl.tool.ppr_welder",
       "kind": "TOOL",
       "category": "power-tools",
       "unit": "PCS",
-      "names": { "en": "PPR socket welder", "he": "מכונת ריתוך פוליפרופילן", "ar": "آلة لحام بولي بروبيلين" },
-      "spec": { "en": "Heated-socket welder with 20/25/32 mm dies.", "he": "מכשיר ריתוך בחום עם ראשים 20/25/32 מ״מ.", "ar": "جهاز لحام حراري برؤوس 20/25/32 ملم." },
-      "attributes": { "dies": "20/25/32 mm" },
-      "tags": ["tool", "hot-work"]
+      "names": {
+        "en": "PPR socket welder",
+        "he": "מכונת ריתוך פוליפרופילן",
+        "ar": "آلة لحام بولي بروبيلين"
+      },
+      "spec": {
+        "en": "Heated-socket welder with 20/25/32 mm dies.",
+        "he": "מכשיר ריתוך בחום עם ראשים 20/25/32 מ״מ.",
+        "ar": "جهاز لحام حراري برؤوس 20/25/32 ملم."
+      },
+      "attributes": {
+        "dies": "20/25/32 mm"
+      },
+      "tags": [
+        "tool",
+        "hot-work"
+      ]
     },
     {
       "id": "pl.tool.torch",
       "kind": "TOOL",
       "category": "power-tools",
       "unit": "PCS",
-      "names": { "en": "Brazing torch", "he": "מבער להלחמה", "ar": "شعلة لحام" },
-      "spec": { "en": "Gas torch for copper joints. Hot-work permit required.", "he": "מבער גז לחיבורי נחושת. נדרש היתר עבודה חמה.", "ar": "شعلة غاز لوصلات النحاس. مطلوب تصريح عمل ساخن." },
+      "names": {
+        "en": "Brazing torch",
+        "he": "מבער להלחמה",
+        "ar": "شعلة لحام"
+      },
+      "spec": {
+        "en": "Gas torch for copper joints. Hot-work permit required.",
+        "he": "מבער גז לחיבורי נחושת. נדרש היתר עבודה חמה.",
+        "ar": "شعلة غاز لوصلات النحاس. مطلوب تصريح عمل ساخن."
+      },
       "attributes": {},
-      "tags": ["tool", "hot-work"]
+      "tags": [
+        "tool",
+        "hot-work"
+      ]
     },
     {
       "id": "pl.tool.drain_snake",
       "kind": "TOOL",
       "category": "hand-tools",
       "unit": "PCS",
-      "names": { "en": "Drain auger", "he": "ספירלה לפתיחת סתימות", "ar": "زنبرك تسليك المجاري" },
-      "spec": { "en": "Hand or drill-driven auger, 5–10 m.", "he": "ספירלה ידנית או למקדחה, ‏5–10 מ׳.", "ar": "زنبرك يدوي أو للمثقاب، ‏5–10 م." },
-      "attributes": { "lengthM": "5-10" },
-      "tags": ["tool", "drainage"]
+      "names": {
+        "en": "Drain auger",
+        "he": "ספירלה לפתיחת סתימות",
+        "ar": "زنبرك تسليك المجاري"
+      },
+      "spec": {
+        "en": "Hand or drill-driven auger, 5–10 m.",
+        "he": "ספירלה ידנית או למקדחה, ‏5–10 מ׳.",
+        "ar": "زنبرك يدوي أو للمثقاب، ‏5–10 م."
+      },
+      "attributes": {
+        "lengthM": "5-10"
+      },
+      "tags": [
+        "tool",
+        "drainage"
+      ]
     },
     {
       "id": "pl.tool.pressure_gauge",
       "kind": "TOOL",
       "category": "measuring",
       "unit": "PCS",
-      "names": { "en": "Pressure test pump and gauge", "he": "משאבת אטימות ומד לחץ", "ar": "مضخة اختبار ضغط ومقياس" },
-      "spec": { "en": "Pressure test before closing walls; record the reading.", "he": "בדיקת אטימות לפני סגירת קירות; מתעדים את התוצאה.", "ar": "اختبار الضغط قبل إغلاق الجدران؛ يُوثَّق القياس." },
+      "names": {
+        "en": "Pressure test pump and gauge",
+        "he": "משאבת אטימות ומד לחץ",
+        "ar": "مضخة اختبار ضغط ومقياس"
+      },
+      "spec": {
+        "en": "Pressure test before closing walls; record the reading.",
+        "he": "בדיקת אטימות לפני סגירת קירות; מתעדים את התוצאה.",
+        "ar": "اختبار الضغط قبل إغلاق الجدران؛ يُوثَّق القياس."
+      },
       "attributes": {},
-      "tags": ["tool", "testing", "handover"]
+      "tags": [
+        "tool",
+        "testing",
+        "handover"
+      ]
     },
     {
       "id": "pl.tool.leak_detector",
       "kind": "TOOL",
       "category": "measuring",
       "unit": "PCS",
-      "names": { "en": "Acoustic leak detector", "he": "גלאי נזילות אקוסטי", "ar": "كاشف تسرّب صوتي" },
-      "spec": { "en": "Locates concealed leaks without opening finishes.", "he": "מאתר נזילות סמויות בלי לפרק גמר.", "ar": "يحدّد التسريبات المخفية دون فك التشطيبات." },
+      "names": {
+        "en": "Acoustic leak detector",
+        "he": "גלאי נזילות אקוסטי",
+        "ar": "كاشف تسرّب صوتي"
+      },
+      "spec": {
+        "en": "Locates concealed leaks without opening finishes.",
+        "he": "מאתר נזילות סמויות בלי לפרק גמר.",
+        "ar": "يحدّد التسريبات المخفية دون فك التشطيبات."
+      },
       "attributes": {},
-      "tags": ["tool", "diagnostics"]
+      "tags": [
+        "tool",
+        "diagnostics"
+      ]
     },
     {
       "id": "pl.safety.gas_detector",
       "kind": "SAFETY",
       "category": "ppe",
       "unit": "PCS",
-      "names": { "en": "Confined space gas detector", "he": "גלאי גזים לחלל מוקף", "ar": "كاشف غازات للأماكن المغلقة" },
-      "spec": { "en": "Four-gas monitor, calibrated, worn before entering a manhole.", "he": "גלאי ארבעה גזים מכויל, נלבש לפני כניסה לשוחה.", "ar": "كاشف أربعة غازات معاير، يُلبَس قبل دخول الغرفة." },
-      "attributes": { "gases": "O2, CO, H2S, LEL" },
-      "tags": ["ppe", "safety", "confined-space"]
+      "names": {
+        "en": "Confined space gas detector",
+        "he": "גלאי גזים לחלל מוקף",
+        "ar": "كاشف غازات للأماكن المغلقة"
+      },
+      "spec": {
+        "en": "Four-gas monitor, calibrated, worn before entering a manhole.",
+        "he": "גלאי ארבעה גזים מכויל, נלבש לפני כניסה לשוחה.",
+        "ar": "كاشف أربعة غازات معاير، يُلبَس قبل دخول الغرفة."
+      },
+      "attributes": {
+        "gases": "O2, CO, H2S, LEL"
+      },
+      "tags": [
+        "ppe",
+        "safety",
+        "confined-space"
+      ]
     },
     {
       "id": "pl.safety.gloves.nitrile",
       "kind": "SAFETY",
       "category": "ppe",
       "unit": "PAIR",
-      "names": { "en": "Chemical resistant gloves", "he": "כפפות עמידות לכימיקלים", "ar": "قفازات مقاومة للمواد الكيميائية" },
-      "spec": { "en": "Nitrile gloves for solvent cement and drain work.", "he": "כפפות ניטריל לעבודה עם דבק ובביוב.", "ar": "قفازات نيتريل للعمل بالغراء والمجاري." },
+      "names": {
+        "en": "Chemical resistant gloves",
+        "he": "כפפות עמידות לכימיקלים",
+        "ar": "قفازات مقاومة للمواد الكيميائية"
+      },
+      "spec": {
+        "en": "Nitrile gloves for solvent cement and drain work.",
+        "he": "כפפות ניטריל לעבודה עם דבק ובביוב.",
+        "ar": "قفازات نيتريل للعمل بالغراء والمجاري."
+      },
       "attributes": {},
-      "tags": ["ppe", "safety"]
+      "tags": [
+        "ppe",
+        "safety"
+      ]
+    },
+    {
+      "id": "pl.pipe.ppr.25",
+      "kind": "MATERIAL",
+      "category": "pipes",
+      "unit": "M",
+      "names": {
+        "en": "PPR pipe 25 mm",
+        "he": "צינור PPR ‏25 מ״מ",
+        "ar": "ماسورة PPR ‏25 ملم"
+      },
+      "attributes": {
+        "diameterMm": "25"
+      },
+      "tags": [
+        "supply"
+      ]
+    },
+    {
+      "id": "pl.pipe.hdpe.drain",
+      "kind": "MATERIAL",
+      "category": "drainage",
+      "unit": "M",
+      "names": {
+        "en": "HDPE drainage pipe",
+        "he": "צינור ניקוז HDPE",
+        "ar": "ماسورة صرف HDPE"
+      },
+      "tags": [
+        "drainage"
+      ]
+    },
+    {
+      "id": "pl.manifold.underfloor",
+      "kind": "MATERIAL",
+      "category": "fittings",
+      "unit": "PCS",
+      "names": {
+        "en": "Manifold, underfloor / PEX",
+        "he": "מפלג PEX",
+        "ar": "مجمّع PEX"
+      },
+      "tags": [
+        "supply"
+      ]
+    },
+    {
+      "id": "pl.trap.floor.drain",
+      "kind": "MATERIAL",
+      "category": "drainage",
+      "unit": "PCS",
+      "names": {
+        "en": "Floor drain / gully",
+        "he": "מחסום רצפה",
+        "ar": "سيفون أرضية"
+      },
+      "tags": [
+        "drainage",
+        "wet-area"
+      ]
+    },
+    {
+      "id": "pl.tank.roof.polyethylene",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Roof water tank",
+        "he": "מיכל מים לגג",
+        "ar": "خزان ماء للسطح"
+      },
+      "tags": [
+        "tank"
+      ]
+    },
+    {
+      "id": "pl.pump.booster",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Booster pump set",
+        "he": "מערכת משאבות הגברה",
+        "ar": "مجموعة مضخات ضغط"
+      },
+      "tags": [
+        "pump"
+      ]
+    },
+    {
+      "id": "pl.heater.solar",
+      "kind": "MATERIAL",
+      "category": "hot-water",
+      "unit": "PCS",
+      "names": {
+        "en": "Solar water heater (dud shemesh)",
+        "he": "דוד שמש",
+        "ar": "سخّان شمسي (دود شيمش)"
+      },
+      "spec": {
+        "en": "Required on most Israeli residential buildings. Its collector and tank both need access for service.",
+        "he": "נדרש ברוב הבניינים למגורים בישראל. הקולט והדוד דורשים גישה לתחזוקה.",
+        "ar": "مطلوب في معظم المباني السكنية في إسرائيل. اللاقط والخزان يحتاجان وصولاً للصيانة."
+      },
+      "tags": [
+        "hot-water",
+        "regulated"
+      ]
+    },
+    {
+      "id": "pl.backflow.preventer",
+      "kind": "MATERIAL",
+      "category": "valves",
+      "unit": "PCS",
+      "names": {
+        "en": "Backflow preventer",
+        "he": "מונע זרימה חוזרת",
+        "ar": "مانع تدفّق عكسي"
+      },
+      "tags": [
+        "valve",
+        "regulated"
+      ]
+    },
+    {
+      "id": "pl.mixer.basin",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Basin mixer tap",
+        "he": "ברז מיקסר לכיור",
+        "ar": "خلاط مغسلة"
+      },
+      "tags": [
+        "sanitaryware"
+      ]
+    },
+    {
+      "id": "pl.shower.tray",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Shower tray",
+        "he": "אגן מקלחת",
+        "ar": "قاعدة دش"
+      },
+      "tags": [
+        "sanitaryware"
+      ]
+    },
+    {
+      "id": "pl.tool.press.jaw",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Press-fit tool with jaws",
+        "he": "מכבש לחיבורי לחיצה",
+        "ar": "ماكينة كبس وصلات"
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "pl.tool.welder.ppr",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "PPR socket fusion welder",
+        "he": "מלחם PPR",
+        "ar": "ماكينة لحام PPR"
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "pl.tool.drain.camera",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Drain inspection camera",
+        "he": "מצלמת ביוב",
+        "ar": "كاميرا فحص الصرف"
+      },
+      "tags": [
+        "inspection"
+      ]
+    },
+    {
+      "id": "pl.tool.pressure.gauge",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Pressure test gauge and pump",
+        "he": "מד לחץ ומשאבת בדיקה",
+        "ar": "ساعة ضغط ومضخة فحص"
+      },
+      "spec": {
+        "en": "The rough-in is not finished until it holds pressure. Plaster over an untested joint and it is a wall rebuild.",
+        "he": "התשתית לא גמורה עד שהיא מחזיקה לחץ. טיח מעל חיבור לא בדוק הוא בנייה מחדש של קיר.",
+        "ar": "التأسيس ما بينتهي حتى يمسك الضغط. اللياسة فوق وصلة غير مفحوصة تعني هدم الحيط من جديد."
+      },
+      "tags": [
+        "testing",
+        "commissioning"
+      ]
     }
   ]
 }

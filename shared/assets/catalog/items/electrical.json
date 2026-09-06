@@ -1,6 +1,6 @@
 {
   "tradeId": "electrical",
-  "catalogVersion": 1,
+  "catalogVersion": 2,
   "items": [
     {
       "id": "el.cable.nyy.3x1_5",
@@ -776,6 +776,927 @@
         "ppe",
         "safety",
         "lockout"
+      ]
+    },
+    {
+      "id": "el.tool.breaker.sds_max",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Demolition hammer, SDS-max (kongo)",
+        "he": "פטישון SDS-max",
+        "ar": "كونجو (شاكوش هدم) SDS-max"
+      },
+      "spec": {
+        "en": "The big breaker. Chasing block and concrete for boxes and conduit runs.",
+        "he": "הפטישון הגדול. חציבת בלוק ובטון לקופסאות ולתעלות.",
+        "ar": "الشاكوش الكبير. لتكسير الباطون والبلوك لزرع العلب وتمديد المواسير."
+      },
+      "attributes": {
+        "chuck": "SDS-max",
+        "classTypical": "5-10 kg"
+      },
+      "tags": [
+        "kongo",
+        "chasing",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.tool.rotary.sds_plus",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Rotary hammer drill, SDS-plus",
+        "he": "מקדחת רוטרי SDS-plus",
+        "ar": "دريل باتشون (مطرقة دوّارة) SDS-plus"
+      },
+      "spec": {
+        "en": "Percussion drilling into concrete for anchors and small boxes.",
+        "he": "קידוח הקשה בבטון לעוגנים ולקופסאות קטנות.",
+        "ar": "ثقب بالطرق في الباطون للفيشر والعلب الصغيرة."
+      },
+      "attributes": {
+        "chuck": "SDS-plus"
+      },
+      "tags": [
+        "drill",
+        "percussion",
+        "fixing"
+      ]
+    },
+    {
+      "id": "el.tool.wall.chaser",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Wall chaser",
+        "he": "מחרץ קירות",
+        "ar": "قطاعة تفنيص الجدران"
+      },
+      "spec": {
+        "en": "Twin-blade chaser that cuts the conduit groove in one pass, with extraction.",
+        "he": "מחרץ דו־דיסקי החורץ תעלה במעבר אחד, עם שאיבת אבק.",
+        "ar": "قطاعة بقرصين تحفر مجرى الماسورة بمرّة واحدة، مع شفط الغبار."
+      },
+      "tags": [
+        "chasing",
+        "black-work",
+        "dust"
+      ]
+    },
+    {
+      "id": "el.tool.socket.tester",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Socket tester",
+        "he": "בודק שקעים",
+        "ar": "فاحص أباريز"
+      },
+      "spec": {
+        "en": "Plugs into a finished socket and shows live, neutral and earth wiring faults.",
+        "he": "מתחבר לשקע גמור ומראה תקלות פאזה, אפס והארקה.",
+        "ar": "يُركّب في البريزة الجاهزة ويُظهر أخطاء الفاز والنيوترال والأرضي."
+      },
+      "tags": [
+        "white-work",
+        "testing",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "el.tool.socket.tester.rcd",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Socket tester with RCD trip test",
+        "he": "בודק שקעים עם בדיקת ממסר פחת",
+        "ar": "فاحص أباريز مع فحص قاطع التسريب"
+      },
+      "spec": {
+        "en": "As the plain tester, and trips the RCD to time it. The test the handover pack wants.",
+        "he": "כמו הבודק הרגיל, ומפיל את מפסק הפחת ומודד זמן. הבדיקה שתיק המסירה דורש.",
+        "ar": "مثل الفاحص العادي، ويُسقط قاطع التسريب ويقيس الزمن. الفحص المطلوب لملف التسليم."
+      },
+      "tags": [
+        "white-work",
+        "testing",
+        "rcd",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "el.tool.cable.tracer",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Cable tracer (tone generator and probe)",
+        "he": "גשש כבלים (מחולל צליל וגלאי)",
+        "ar": "مزمار (مولّد نغمة ومجس)"
+      },
+      "spec": {
+        "en": "One half clips to the board, the other follows the wire and buzzes. Finds which cable in the wall is which.",
+        "he": "חלק אחד מתחבר ללוח, השני עוקב אחר המוליך ומצפצף. מזהה איזה כבל בקיר הוא איזה.",
+        "ar": "طرف يُربط باللوحة والثاني يتتبّع السلك ويزمّر. يعرّف أي سلك في الحيط هو أي."
+      },
+      "tags": [
+        "mazmar",
+        "tracing",
+        "fault-finding"
+      ]
+    },
+    {
+      "id": "el.tool.clamp.meter",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Clamp meter",
+        "he": "אמפרמטר מלקחיים",
+        "ar": "كلامب ميتر (أمبير)"
+      },
+      "spec": {
+        "en": "Reads current without breaking the circuit. How a loaded phase gets checked.",
+        "he": "מודד זרם בלי לנתק את המעגל. כך בודקים פאזה עמוסה.",
+        "ar": "يقيس التيار دون فصل الدارة. هكذا يُفحص الفاز المحمّل."
+      },
+      "tags": [
+        "testing",
+        "load"
+      ]
+    },
+    {
+      "id": "el.tool.voltage.pen",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Non-contact voltage pen",
+        "he": "עט מתח ללא מגע",
+        "ar": "قلم كشف الفولت (بدون تلامس)"
+      },
+      "spec": {
+        "en": "First check before touching anything. Never the only check.",
+        "he": "הבדיקה הראשונה לפני נגיעה. לעולם לא הבדיקה היחידה.",
+        "ar": "الفحص الأول قبل لمس أي شيء. وليس الفحص الوحيد أبداً."
+      },
+      "tags": [
+        "safety",
+        "testing"
+      ]
+    },
+    {
+      "id": "el.tool.insulation.tester",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Insulation resistance tester (megger)",
+        "he": "בודק התנגדות בידוד (מגר)",
+        "ar": "مقياس عزل (ميجر)"
+      },
+      "spec": {
+        "en": "The 500 V test that proves a circuit is not leaking to earth. Required before energising.",
+        "he": "בדיקת 500 וולט המוכיחה שהמעגל אינו דולף להארקה. נדרשת לפני הפעלה.",
+        "ar": "فحص 500 فولت الذي يثبت أن الدارة لا تسرّب للأرضي. مطلوب قبل التشغيل."
+      },
+      "attributes": {
+        "testVoltage": "500 V"
+      },
+      "tags": [
+        "testing",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "el.tool.earth.tester",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Earth loop / earth resistance tester",
+        "he": "בודק לולאת תקלה והתנגדות הארקה",
+        "ar": "فاحص مقاومة التأريض"
+      },
+      "spec": {
+        "en": "Proves the earth electrode and loop impedance. Goes in the handover file.",
+        "he": "מוכיח את אלקטרודת ההארקה ואת עכבת הלולאה. נכנס לתיק המסירה.",
+        "ar": "يثبت قطب التأريض وممانعة الدارة. يدخل في ملف التسليم."
+      },
+      "tags": [
+        "testing",
+        "earthing",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "el.tool.fish.tape",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Fish tape / draw wire",
+        "he": "חוט משיכה",
+        "ar": "سلك سحب (شريط تمرير)"
+      },
+      "spec": {
+        "en": "Steel or nylon tape pushed through conduit to pull the cable back.",
+        "he": "סרט פלדה או ניילון הנדחף בצינור כדי למשוך את הכבל.",
+        "ar": "شريط حديد أو نايلون يُدفع في الماسورة لسحب الكابل."
+      },
+      "tags": [
+        "cable-pulling",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.tool.conduit.bender",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Conduit bending spring",
+        "he": "קפיץ כיפוף לצינור",
+        "ar": "نابض ثني المواسير"
+      },
+      "spec": {
+        "en": "Keeps a PVC conduit round through a bend instead of kinking it shut.",
+        "he": "שומר על צינור PVC עגול בכיפוף במקום למעוך אותו.",
+        "ar": "يحافظ على استدارة الماسورة عند الثني بدل أن تُسدّ."
+      },
+      "tags": [
+        "conduit",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.tool.hole.saw",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Box hole saw set (68 mm)",
+        "he": "מקדח כוס לקופסאות 68 מ״מ",
+        "ar": "منشار علب 68 ملم"
+      },
+      "spec": {
+        "en": "The standard wall-box diameter. A set covers 68 mm boxes and downlight cut-outs.",
+        "he": "קוטר קופסה תקני. ערכה מכסה קופסאות 68 מ״מ וחיתוכי גופי שקוע.",
+        "ar": "قطر العلبة القياسي. الطقم يغطي علب 68 ملم وفتحات السبوتات."
+      },
+      "attributes": {
+        "diameterMm": "68"
+      },
+      "tags": [
+        "boxes",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.tool.crimper.ferrule",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Ferrule crimping tool",
+        "he": "מלחץ שרוולים",
+        "ar": "كماشة كبس أطراف (فيرول)"
+      },
+      "spec": {
+        "en": "Square crimp on bootlace ferrules. A twisted stranded core in a terminal works loose and heats.",
+        "he": "הידוק מרובע על שרוולי קצה. גיד שזור מפותל במהדק משתחרר ומתחמם.",
+        "ar": "كبس مربّع على أطراف الفيرول. السلك المجدول في القاعدة يرتخي ويسخن."
+      },
+      "tags": [
+        "boards",
+        "termination"
+      ]
+    },
+    {
+      "id": "el.tool.pliers.side",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Side cutters",
+        "he": "חותכן צד",
+        "ar": "قاطعة جانبية (زرديّة قص)"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "el.tool.screwdriver.insulated",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Insulated screwdriver set 1000 V",
+        "he": "ערכת מברגים מבודדים 1000V",
+        "ar": "طقم مفكات معزولة 1000 فولت"
+      },
+      "spec": {
+        "en": "VDE 1000 V rating. The only screwdrivers that belong near a live board.",
+        "he": "תקן VDE 1000 וולט. המברגים היחידים שמותרים ליד לוח חי.",
+        "ar": "مطابقة VDE 1000 فولت. المفكات الوحيدة المسموحة قرب لوحة حيّة."
+      },
+      "attributes": {
+        "rating": "1000 V VDE"
+      },
+      "tags": [
+        "safety",
+        "boards"
+      ]
+    },
+    {
+      "id": "el.tool.lockout.kit",
+      "kind": "TOOL",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Lock-out / tag-out kit",
+        "he": "ערכת נעילה ותיוג",
+        "ar": "طقم إقفال ووسم (LOTO)"
+      },
+      "spec": {
+        "en": "Padlocks the breaker off with your own key while you work downstream of it.",
+        "he": "נועל את המפסק במפתח שלך בזמן שאתה עובד אחריו.",
+        "ar": "يقفل القاطع بمفتاحك أنت بينما تعمل بعده."
+      },
+      "tags": [
+        "safety",
+        "isolation"
+      ]
+    },
+    {
+      "id": "el.tool.laser.level",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Cross-line laser level",
+        "he": "פלס לייזר צולב",
+        "ar": "ليزر تسوية متقاطع"
+      },
+      "spec": {
+        "en": "Sets socket and switch heights straight across a whole wall.",
+        "he": "מיישר גובה שקעים ומפסקים לאורך קיר שלם.",
+        "ar": "يضبط ارتفاع الأباريز والمفاتيح على طول الحائط كله."
+      },
+      "tags": [
+        "setting-out",
+        "white-work"
+      ]
+    },
+    {
+      "id": "el.tool.thermal.camera",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Thermal imaging camera",
+        "he": "מצלמה תרמית",
+        "ar": "كاميرا حرارية"
+      },
+      "spec": {
+        "en": "Finds the loose terminal in a board before it becomes a fire.",
+        "he": "מאתרת מהדק רופף בלוח לפני שהוא הופך לשריפה.",
+        "ar": "تكشف القاعدة المرتخية في اللوحة قبل أن تصير حريقاً."
+      },
+      "tags": [
+        "inspection",
+        "boards",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "el.tool.phase.rotation",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Phase rotation meter",
+        "he": "בודק סדר פאזות",
+        "ar": "فاحص ترتيب الأطوار"
+      },
+      "spec": {
+        "en": "Three-phase motors run backwards on the wrong rotation. Checked before the pump starts.",
+        "he": "מנועים תלת־פאזיים מסתובבים הפוך בסדר שגוי. נבדק לפני הפעלת המשאבה.",
+        "ar": "المحركات ثلاثية الطور تدور بالعكس بترتيب خاطئ. يُفحص قبل تشغيل المضخة."
+      },
+      "tags": [
+        "three-phase",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "el.box.wall.68",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": {
+        "en": "Wall box, 68 mm round",
+        "he": "קופסת קיר עגולה 68 מ״מ",
+        "ar": "علبة حائط دائرية 68 ملم"
+      },
+      "spec": {
+        "en": "The standard single box, set flush before plaster.",
+        "he": "הקופסה הבודדת התקנית, מוטבעת לפני טיח.",
+        "ar": "العلبة المفردة القياسية، تُغرز قبل اللياسة."
+      },
+      "attributes": {
+        "diameterMm": "68"
+      },
+      "tags": [
+        "black-work",
+        "boxes"
+      ]
+    },
+    {
+      "id": "el.box.wall.gang3",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": {
+        "en": "Wall box, 3-gang",
+        "he": "קופסת קיר משולשת",
+        "ar": "علبة حائط ثلاثية"
+      },
+      "tags": [
+        "black-work",
+        "boxes"
+      ]
+    },
+    {
+      "id": "el.box.junction.ip55",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": {
+        "en": "Junction box IP55, surface",
+        "he": "קופסת הסתעפות IP55 חיצונית",
+        "ar": "علبة تفريعات IP55 ظاهرة"
+      },
+      "spec": {
+        "en": "Wet areas, roofs and car parks. Lobbies get these assembled on site.",
+        "he": "אזורים רטובים, גגות וחניונים. בלובי מרכיבים אותן באתר.",
+        "ar": "المناطق الرطبة والأسطح والمواقف. في اللوبي تُجمّع في الموقع."
+      },
+      "attributes": {
+        "ingress": "IP55"
+      },
+      "tags": [
+        "black-work",
+        "lobby"
+      ]
+    },
+    {
+      "id": "el.box.slab.deep",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": {
+        "en": "Slab box, deep (pre-pour)",
+        "he": "קופסה ליציקה, עמוקה",
+        "ar": "علبة صبّة عميقة (قبل الصب)"
+      },
+      "spec": {
+        "en": "Cast into the slab at the aqda stage, before the concrete goes on.",
+        "he": "נוצקת בתקרה בשלב העקדה, לפני הבטון.",
+        "ar": "تُصبّ في السقف بمرحلة العقدة، قبل ما ينزل الباطون."
+      },
+      "tags": [
+        "slab",
+        "aqda",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.conduit.pvc.16",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": {
+        "en": "Flexible PVC conduit 16 mm",
+        "he": "שרשורי PVC ‏16 מ״מ",
+        "ar": "ماسورة مرنة PVC ‏16 ملم"
+      },
+      "spec": {
+        "en": "Lighting drops and switch legs.",
+        "he": "ירידות תאורה ורגלי מפסק.",
+        "ar": "نزلات الإنارة وأرجل المفاتيح."
+      },
+      "attributes": {
+        "diameterMm": "16"
+      },
+      "tags": [
+        "conduit",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.conduit.pvc.20",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": {
+        "en": "Flexible PVC conduit 20 mm",
+        "he": "שרשורי PVC ‏20 מ״מ",
+        "ar": "ماسورة مرنة PVC ‏20 ملم"
+      },
+      "spec": {
+        "en": "The general-purpose wall run.",
+        "he": "המהלך הכללי בקיר.",
+        "ar": "التمديد العام في الحيط."
+      },
+      "attributes": {
+        "diameterMm": "20"
+      },
+      "tags": [
+        "conduit",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.conduit.pvc.25",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": {
+        "en": "Flexible PVC conduit 25 mm",
+        "he": "שרשורי PVC ‏25 מ״מ",
+        "ar": "ماسورة مرنة PVC ‏25 ملم"
+      },
+      "attributes": {
+        "diameterMm": "25"
+      },
+      "tags": [
+        "conduit",
+        "black-work"
+      ]
+    },
+    {
+      "id": "el.conduit.hdpe.slab",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": {
+        "en": "HDPE slab conduit",
+        "he": "שרשורי HDPE ליציקה",
+        "ar": "ماسورة HDPE للصبّة"
+      },
+      "spec": {
+        "en": "Tough enough to take the weight of a rebar crew walking on it before the pour.",
+        "he": "חזק מספיק לשאת צוות ברזל הדורך עליו לפני היציקה.",
+        "ar": "قوية بما يكفي لتتحمّل مشي طاقم الحديد فوقها قبل الصب."
+      },
+      "tags": [
+        "slab",
+        "aqda"
+      ]
+    },
+    {
+      "id": "el.trunking.pvc.60",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": {
+        "en": "PVC trunking 60×40",
+        "he": "תעלת PVC ‏60×40",
+        "ar": "مجرى PVC ‏60×40"
+      },
+      "spec": {
+        "en": "Surface work where chasing is not allowed.",
+        "he": "עבודה חיצונית היכן שאסור לחצוב.",
+        "ar": "عمل ظاهر حيث لا يُسمح بالتفنيص."
+      },
+      "tags": [
+        "surface",
+        "lobby"
+      ]
+    },
+    {
+      "id": "el.tray.cable.200",
+      "kind": "MATERIAL",
+      "category": "conduit",
+      "unit": "M",
+      "names": {
+        "en": "Cable tray 200 mm, hot-dip galvanised",
+        "he": "תעלת כבלים 200 מ״מ מגולוונת",
+        "ar": "ترايّ كابلات 200 ملم مجلفن"
+      },
+      "spec": {
+        "en": "Car parks, plant rooms and risers.",
+        "he": "חניונים, חדרי מכונות ושאכטות.",
+        "ar": "المواقف وغرف المكائن والمناور."
+      },
+      "attributes": {
+        "widthMm": "200"
+      },
+      "tags": [
+        "tray",
+        "infrastructure"
+      ]
+    },
+    {
+      "id": "el.socket.schuko.single",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Socket outlet, single (Israeli/Schuko)",
+        "he": "שקע יחיד",
+        "ar": "بريزة مفردة (إسرائيلي/شوكو)"
+      },
+      "spec": {
+        "en": "SI 32 pattern. Fitted at trim-out once the wall is painted.",
+        "he": "תבנית ת״י 32. מותקן בגמר אחרי צביעת הקיר.",
+        "ar": "نمط المواصفة 32. يُركّب بالتشطيب بعد دهان الحيط."
+      },
+      "attributes": {
+        "standard": "ת״י 32"
+      },
+      "tags": [
+        "white-work",
+        "sockets"
+      ]
+    },
+    {
+      "id": "el.socket.schuko.double",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Socket outlet, double",
+        "he": "שקע כפול",
+        "ar": "بريزة مزدوجة"
+      },
+      "tags": [
+        "white-work",
+        "sockets"
+      ]
+    },
+    {
+      "id": "el.socket.usb",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Socket with USB-A/C charger",
+        "he": "שקע עם מטען USB",
+        "ar": "بريزة مع شاحن USB"
+      },
+      "tags": [
+        "white-work",
+        "sockets"
+      ]
+    },
+    {
+      "id": "el.socket.floor.box",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Floor socket box",
+        "he": "קופסת רצפה לשקעים",
+        "ar": "علبة أرضية للأباريز"
+      },
+      "spec": {
+        "en": "Open-plan offices, where the desk is nowhere near a wall.",
+        "he": "משרדים פתוחים, שבהם השולחן רחוק מכל קיר.",
+        "ar": "المكاتب المفتوحة، حيث الطاولة بعيدة عن أي حيط."
+      },
+      "tags": [
+        "white-work",
+        "office"
+      ]
+    },
+    {
+      "id": "el.switch.dimmer",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Dimmer switch",
+        "he": "דימר",
+        "ar": "مفتاح ديمر"
+      },
+      "tags": [
+        "white-work",
+        "switches"
+      ]
+    },
+    {
+      "id": "el.plate.blank",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Blank plate",
+        "he": "מכסה עיוור",
+        "ar": "غطاء أعمى"
+      },
+      "tags": [
+        "white-work"
+      ]
+    },
+    {
+      "id": "el.light.downlight.led",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "LED downlight, recessed",
+        "he": "גוף תאורה שקוע LED",
+        "ar": "سبوت LED غاطس"
+      },
+      "tags": [
+        "white-work",
+        "lighting"
+      ]
+    },
+    {
+      "id": "el.light.panel.60x60",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "LED panel 60×60",
+        "he": "פאנל LED ‏60×60",
+        "ar": "بانل LED ‏60×60"
+      },
+      "spec": {
+        "en": "The office ceiling grid light.",
+        "he": "גוף התאורה של תקרת המשרד.",
+        "ar": "إنارة سقف المكتب المعلّق."
+      },
+      "tags": [
+        "white-work",
+        "lighting",
+        "office"
+      ]
+    },
+    {
+      "id": "el.light.emergency",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Emergency light, 90 min",
+        "he": "גוף תאורת חירום 90 דק׳",
+        "ar": "إنارة طوارئ 90 دقيقة"
+      },
+      "spec": {
+        "en": "Escape routes and stairwells. Its duration test goes in the handover pack.",
+        "he": "דרכי מילוט וחדרי מדרגות. בדיקת העמידה נכנסת לתיק המסירה.",
+        "ar": "مسارات الهروب وبيوت الدرج. فحص مدّتها يدخل ملف التسليم."
+      },
+      "attributes": {
+        "durationMin": "90"
+      },
+      "tags": [
+        "white-work",
+        "life-safety",
+        "lobby"
+      ]
+    },
+    {
+      "id": "el.light.exit.sign",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Illuminated exit sign",
+        "he": "שלט יציאה מואר",
+        "ar": "لافتة مخرج مضاءة"
+      },
+      "tags": [
+        "life-safety",
+        "lobby"
+      ]
+    },
+    {
+      "id": "el.db.consumer.12way",
+      "kind": "MATERIAL",
+      "category": "distribution-boards",
+      "unit": "PCS",
+      "names": {
+        "en": "Distribution board, 12-way",
+        "he": "לוח חלוקה 12 מקומות",
+        "ar": "لوحة توزيع 12 خط"
+      },
+      "tags": [
+        "boards"
+      ]
+    },
+    {
+      "id": "el.db.consumer.36way",
+      "kind": "MATERIAL",
+      "category": "distribution-boards",
+      "unit": "PCS",
+      "names": {
+        "en": "Distribution board, 36-way",
+        "he": "לוח חלוקה 36 מקומות",
+        "ar": "لوحة توزيع 36 خط"
+      },
+      "tags": [
+        "boards",
+        "office"
+      ]
+    },
+    {
+      "id": "el.mcb.c16",
+      "kind": "MATERIAL",
+      "category": "protection",
+      "unit": "PCS",
+      "names": {
+        "en": "MCB, C16",
+        "he": "מא״ז C16",
+        "ar": "قاطع C16"
+      },
+      "attributes": {
+        "curve": "C",
+        "ratingA": "16"
+      },
+      "tags": [
+        "boards",
+        "protection"
+      ]
+    },
+    {
+      "id": "el.rcbo.c16",
+      "kind": "MATERIAL",
+      "category": "protection",
+      "unit": "PCS",
+      "names": {
+        "en": "RCBO, C16 / 30 mA",
+        "he": "מא״ז מגן C16 ‏30mA",
+        "ar": "قاطع مدمج مع تسريب C16 ‏30 مللي أمبير"
+      },
+      "spec": {
+        "en": "Overcurrent and earth leakage in one module, so one faulty circuit does not kill the flat.",
+        "he": "הגנת זרם יתר ודלף בהתקן אחד, כך שמעגל תקול אחד לא מחשיך את הדירה.",
+        "ar": "حماية التيار الزائد والتسريب بوحدة واحدة، فلا يُطفئ خطٌ واحد الشقة كلها."
+      },
+      "attributes": {
+        "ratingA": "16",
+        "leakageMa": "30"
+      },
+      "tags": [
+        "boards",
+        "protection",
+        "safety"
+      ]
+    },
+    {
+      "id": "el.surge.spd.t2",
+      "kind": "MATERIAL",
+      "category": "protection",
+      "unit": "PCS",
+      "names": {
+        "en": "Surge protective device, type 2",
+        "he": "מגן ברקים סוג 2",
+        "ar": "جهاز حماية من الصواعق نوع 2"
+      },
+      "tags": [
+        "boards",
+        "protection"
+      ]
+    },
+    {
+      "id": "el.earth.rod",
+      "kind": "MATERIAL",
+      "category": "earthing",
+      "unit": "PCS",
+      "names": {
+        "en": "Earth rod, copper-bonded",
+        "he": "אלקטרודת הארקה מצופה נחושת",
+        "ar": "قضيب تأريض مطلي نحاس"
+      },
+      "tags": [
+        "earthing"
+      ]
+    },
+    {
+      "id": "el.earth.busbar",
+      "kind": "MATERIAL",
+      "category": "earthing",
+      "unit": "PCS",
+      "names": {
+        "en": "Main earthing busbar",
+        "he": "פס השוואת פוטנציאלים",
+        "ar": "بار تأريض رئيسي"
+      },
+      "tags": [
+        "earthing"
       ]
     }
   ]

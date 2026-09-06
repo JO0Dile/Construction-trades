@@ -1,0 +1,174 @@
+{
+  "tradeId": "waterproofing",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "wp.membrane.bitumen",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M2",
+      "names": {
+        "en": "Torch-on bitumen membrane",
+        "he": "יריעה ביטומנית",
+        "ar": "رول بيتومين بالحرق"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    {
+      "id": "wp.membrane.tpo",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M2",
+      "names": {
+        "en": "TPO single-ply membrane",
+        "he": "יריעת TPO",
+        "ar": "غشاء TPO"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    {
+      "id": "wp.liquid.cement",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "KG",
+      "names": {
+        "en": "Cementitious waterproofing slurry",
+        "he": "איטום צמנטי",
+        "ar": "عزل إسمنتي"
+      },
+      "tags": [
+        "wet-area"
+      ]
+    },
+    {
+      "id": "wp.liquid.polyurethane",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "KG",
+      "names": {
+        "en": "Liquid polyurethane membrane",
+        "he": "איטום פוליאוריטן נוזלי",
+        "ar": "عزل بولي يوريثان سائل"
+      },
+      "tags": [
+        "roof",
+        "wet-area"
+      ]
+    },
+    {
+      "id": "wp.primer.bitumen",
+      "kind": "MATERIAL",
+      "category": "primer",
+      "unit": "L",
+      "names": {
+        "en": "Bitumen primer",
+        "he": "יסוד ביטומני",
+        "ar": "برايمر بيتوميني"
+      },
+      "tags": [
+        "preparation"
+      ]
+    },
+    {
+      "id": "wp.tape.corner",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M",
+      "names": {
+        "en": "Sealing tape for corners",
+        "he": "סרט איטום לפינות",
+        "ar": "شريط عزل الزوايا"
+      },
+      "spec": {
+        "en": "Wall-to-floor junctions leak first. The membrane alone does not bridge a moving corner.",
+        "he": "מפגש קיר־רצפה דולף ראשון. היריעה לבדה אינה מגשרת על פינה נעה.",
+        "ar": "وصلة الحيط بالأرضية تسرّب أولاً. الغشاء وحده لا يجسر زاوية متحرّكة."
+      },
+      "tags": [
+        "wet-area",
+        "detail"
+      ]
+    },
+    {
+      "id": "wp.insulation.xps",
+      "kind": "MATERIAL",
+      "category": "insulation",
+      "unit": "M2",
+      "names": {
+        "en": "XPS insulation board",
+        "he": "לוח בידוד XPS",
+        "ar": "لوح عزل XPS"
+      },
+      "tags": [
+        "thermal"
+      ]
+    },
+    {
+      "id": "wp.drain.roof",
+      "kind": "MATERIAL",
+      "category": "drainage",
+      "unit": "PCS",
+      "names": {
+        "en": "Roof drain outlet",
+        "he": "מחסום גג",
+        "ar": "مصرف سطح"
+      },
+      "tags": [
+        "roof",
+        "drainage"
+      ]
+    },
+    {
+      "id": "wp.tool.torch.gas",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Roofing gas torch",
+        "he": "מבער גז לאיטום",
+        "ar": "شعّالة غاز للعزل"
+      },
+      "tags": [
+        "hot-work"
+      ]
+    },
+    {
+      "id": "wp.tool.roller.spike",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Spiked roller",
+        "he": "גלגלת קוצים",
+        "ar": "رول مسنّن"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "wp.tool.flood.test",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Flood test kit",
+        "he": "ערכת בדיקת הצפה",
+        "ar": "طقم فحص الغمر"
+      },
+      "spec": {
+        "en": "Fill it, leave it 24 hours, look at the ceiling below. The only test that counts.",
+        "he": "למלא, להשאיר 24 שעות, להסתכל בתקרה שמתחת. הבדיקה היחידה שנחשבת.",
+        "ar": "املأه واتركه 24 ساعة وانظر للسقف تحته. الفحص الوحيد الذي يُعتدّ به."
+      },
+      "tags": [
+        "testing",
+        "commissioning"
+      ]
+    }
+  ]
+}

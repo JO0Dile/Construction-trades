@@ -1,0 +1,185 @@
+{
+  "tradeId": "masonry",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "ms.block.concrete.20",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete block 20 cm",
+        "he": "בלוק בטון 20 ס״מ",
+        "ar": "بلوك باطون 20 سم"
+      },
+      "attributes": {
+        "widthCm": "20"
+      },
+      "tags": [
+        "block"
+      ]
+    },
+    {
+      "id": "ms.block.concrete.10",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete block 10 cm",
+        "he": "בלוק בטון 10 ס״מ",
+        "ar": "بلوك باطون 10 سم"
+      },
+      "attributes": {
+        "widthCm": "10"
+      },
+      "tags": [
+        "block",
+        "partition"
+      ]
+    },
+    {
+      "id": "ms.block.thermal",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Thermal block (ytong/aerated)",
+        "he": "בלוק תרמי / איטונג",
+        "ar": "بلوك حراري (يتونغ)"
+      },
+      "tags": [
+        "block",
+        "thermal"
+      ]
+    },
+    {
+      "id": "ms.block.hollow.clay",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Hollow clay block",
+        "he": "בלוק חרס חלול",
+        "ar": "طوب فخار مفرّغ"
+      },
+      "tags": [
+        "block"
+      ]
+    },
+    {
+      "id": "ms.brick.silicate",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Silicate brick",
+        "he": "לבנת סיליקט",
+        "ar": "طوب سيليكات"
+      },
+      "tags": [
+        "block"
+      ]
+    },
+    {
+      "id": "ms.mortar.masonry",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Masonry mortar",
+        "he": "טיט בנייה",
+        "ar": "مونة بناء"
+      },
+      "tags": [
+        "mortar"
+      ]
+    },
+    {
+      "id": "ms.lintel.precast",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Precast lintel",
+        "he": "משקוף טרומי",
+        "ar": "عتب جاهز"
+      },
+      "tags": [
+        "opening"
+      ]
+    },
+    {
+      "id": "ms.tie.wall",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Wall tie / connector",
+        "he": "מקשר קיר",
+        "ar": "رابط حائط"
+      },
+      "tags": [
+        "fixing"
+      ]
+    },
+    {
+      "id": "ms.tool.trowel.brick",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Brick trowel",
+        "he": "כף בנאי",
+        "ar": "مالج بناء"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "ms.tool.line.block",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PAIR",
+      "names": {
+        "en": "Line blocks and string",
+        "he": "בלוקי חוט ומיתר",
+        "ar": "بكرات خيط البناء"
+      },
+      "tags": [
+        "setting-out"
+      ]
+    },
+    {
+      "id": "ms.tool.saw.block",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Block saw",
+        "he": "מסור בלוקים",
+        "ar": "منشار بلوك"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "ms.tool.level.spirit",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Spirit level 120 cm",
+        "he": "פלס 120 ס״מ",
+        "ar": "ميزان ماء 120 سم"
+      },
+      "attributes": {
+        "lengthCm": "120"
+      },
+      "tags": [
+        "measuring"
+      ]
+    }
+  ]
+}

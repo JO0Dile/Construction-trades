@@ -1,0 +1,223 @@
+{
+  "tradeId": "plastering",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "ps.mortar.render.base",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Base render mortar",
+        "he": "טיט הרבצה",
+        "ar": "مونة لياسة أساس"
+      },
+      "tags": [
+        "render"
+      ]
+    },
+    {
+      "id": "ps.mortar.render.finish",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Finish render",
+        "he": "טיח גמר",
+        "ar": "لياسة تشطيب"
+      },
+      "tags": [
+        "render"
+      ]
+    },
+    {
+      "id": "ps.plaster.gypsum",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Gypsum plaster",
+        "he": "טיח גבס",
+        "ar": "جبصين لياسة"
+      },
+      "tags": [
+        "render",
+        "interior"
+      ]
+    },
+    {
+      "id": "ps.skim.filler",
+      "kind": "MATERIAL",
+      "category": "preparation",
+      "unit": "BAG",
+      "names": {
+        "en": "Skim / fine filler",
+        "he": "שפכטל גמר",
+        "ar": "معجون تشطيب ناعم"
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "ps.bonding.agent",
+      "kind": "MATERIAL",
+      "category": "primer",
+      "unit": "L",
+      "names": {
+        "en": "Bonding agent / key coat",
+        "he": "יסוד הצמדה",
+        "ar": "مادة ربط (بونديج)"
+      },
+      "tags": [
+        "preparation"
+      ]
+    },
+    {
+      "id": "ps.mesh.render",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "M2",
+      "names": {
+        "en": "Render reinforcing mesh",
+        "he": "רשת חיזוק לטיח",
+        "ar": "شبك تقوية اللياسة"
+      },
+      "spec": {
+        "en": "Over every joint between two materials. That is where the crack starts.",
+        "he": "מעל כל מפגש בין שני חומרים. שם מתחיל הסדק.",
+        "ar": "فوق كل وصلة بين مادتين. من هناك يبدأ الشرخ."
+      },
+      "tags": [
+        "reinforcement",
+        "cracking"
+      ]
+    },
+    {
+      "id": "ps.bead.corner.render",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M",
+      "names": {
+        "en": "Render corner bead",
+        "he": "פינת טיח",
+        "ar": "زاوية لياسة"
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "ps.screed.floor",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Floor screed",
+        "he": "מדה לרצפה",
+        "ar": "مونة أرضيات (سكريد)"
+      },
+      "tags": [
+        "floor"
+      ]
+    },
+    {
+      "id": "ps.screed.self.level",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Self-levelling compound",
+        "he": "מדה מתפלסת",
+        "ar": "مونة ذاتية التسوية"
+      },
+      "tags": [
+        "floor"
+      ]
+    },
+    {
+      "id": "ps.tool.hawk",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Plasterer’s hawk",
+        "he": "לוח נשיאה",
+        "ar": "لوح حمل المونة"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "ps.tool.trowel.finish",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Finishing trowel",
+        "he": "כף גמר",
+        "ar": "مالج تشطيب"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "ps.tool.darby",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Darby / straight edge",
+        "he": "סרגל יישור",
+        "ar": "قدّة تسوية"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "ps.tool.sponge.float",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Sponge float",
+        "he": "מגלף ספוג",
+        "ar": "مالج إسفنج"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "ps.tool.render.pump",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Render spray pump",
+        "he": "משאבת התזת טיח",
+        "ar": "مضخة رشّ لياسة"
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "ps.tool.mixer.forced",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Forced-action mixer",
+        "he": "מערבל כפוי",
+        "ar": "خلّاطة قسرية"
+      },
+      "tags": [
+        "mixing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "tradeId": "metalwork",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "mw.balustrade.steel",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M",
+      "names": {
+        "en": "Steel balustrade",
+        "he": "מעקה פלדה",
+        "ar": "درابزين حديد"
+      },
+      "tags": [
+        "balustrade",
+        "safety"
+      ]
+    },
+    {
+      "id": "mw.balustrade.glass",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M",
+      "names": {
+        "en": "Glass balustrade",
+        "he": "מעקה זכוכית",
+        "ar": "درابزين زجاج"
+      },
+      "tags": [
+        "balustrade",
+        "safety"
+      ]
+    },
+    {
+      "id": "mw.handrail.stainless",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M",
+      "names": {
+        "en": "Stainless handrail",
+        "he": "מאחז יד נירוסטה",
+        "ar": "مسكة يد ستانلس"
+      },
+      "tags": [
+        "balustrade",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "mw.gate.steel",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Steel gate",
+        "he": "שער פלדה",
+        "ar": "بوابة حديد"
+      },
+      "tags": [
+        "gate"
+      ]
+    },
+    {
+      "id": "mw.grating.steel",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M2",
+      "names": {
+        "en": "Steel floor grating",
+        "he": "סורג רצפה פלדה",
+        "ar": "مشبك أرضية حديد"
+      },
+      "tags": [
+        "grating"
+      ]
+    },
+    {
+      "id": "mw.tool.grinder.125",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Angle grinder 125 mm",
+        "he": "משחזת זווית 125 מ״מ",
+        "ar": "جلّاخة 125 ملم"
+      },
+      "attributes": {
+        "discMm": "125"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "mw.tool.bender.pipe",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Pipe/tube bender",
+        "he": "מכופף צינורות",
+        "ar": "ثنّاية مواسير"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "mw.tool.clamp.welding",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Welding clamp set",
+        "he": "ערכת מלחציים לריתוך",
+        "ar": "طقم ملازم لحام"
+      },
+      "tags": [
+        "welding"
+      ]
+    }
+  ]
+}

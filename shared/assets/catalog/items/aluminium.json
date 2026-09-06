@@ -1,0 +1,207 @@
+{
+  "tradeId": "aluminium",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "al.window.casement",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "M2",
+      "names": {
+        "en": "Aluminium casement window",
+        "he": "חלון אלומיניום ציר",
+        "ar": "شباك ألمنيوم مفصلي"
+      },
+      "tags": [
+        "window"
+      ]
+    },
+    {
+      "id": "al.window.sliding",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "M2",
+      "names": {
+        "en": "Aluminium sliding window",
+        "he": "חלון הזזה אלומיניום",
+        "ar": "شباك ألمنيوم سحّاب"
+      },
+      "tags": [
+        "window"
+      ]
+    },
+    {
+      "id": "al.door.entrance",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Aluminium entrance door",
+        "he": "דלת כניסה אלומיניום",
+        "ar": "باب مدخل ألمنيوم"
+      },
+      "tags": [
+        "door",
+        "lobby"
+      ]
+    },
+    {
+      "id": "al.curtain.wall",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Curtain wall system",
+        "he": "קיר מסך",
+        "ar": "كيرتن وول"
+      },
+      "tags": [
+        "facade"
+      ]
+    },
+    {
+      "id": "al.acp.panel",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Aluminium composite panel",
+        "he": "לוח קומפוזיט אלומיניום",
+        "ar": "بانل ألمنيوم مركّب (ACP)"
+      },
+      "tags": [
+        "facade"
+      ]
+    },
+    {
+      "id": "al.glass.double",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Double glazed unit",
+        "he": "זכוכית בידודית",
+        "ar": "زجاج دبل (عازل)"
+      },
+      "tags": [
+        "glazing"
+      ]
+    },
+    {
+      "id": "al.glass.laminated",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Laminated safety glass",
+        "he": "זכוכית רב־שכבתית",
+        "ar": "زجاج مصفّح (لامينيت)"
+      },
+      "tags": [
+        "glazing",
+        "safety"
+      ]
+    },
+    {
+      "id": "al.glass.tempered",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Tempered glass",
+        "he": "זכוכית מחוסמת",
+        "ar": "زجاج مقسّى (سيكوريت)"
+      },
+      "tags": [
+        "glazing",
+        "safety"
+      ]
+    },
+    {
+      "id": "al.shutter.rolling",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M2",
+      "names": {
+        "en": "Rolling shutter (trisol)",
+        "he": "תריס גלילה",
+        "ar": "شيش رول (تريسول)"
+      },
+      "tags": [
+        "shutter"
+      ]
+    },
+    {
+      "id": "al.gasket.epdm",
+      "kind": "MATERIAL",
+      "category": "consumables",
+      "unit": "M",
+      "names": {
+        "en": "EPDM glazing gasket",
+        "he": "אטם EPDM לזיגוג",
+        "ar": "جلدة EPDM للزجاج"
+      },
+      "tags": [
+        "sealing"
+      ]
+    },
+    {
+      "id": "al.sealant.structural",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Structural silicone",
+        "he": "סיליקון מבני",
+        "ar": "سيليكون إنشائي"
+      },
+      "tags": [
+        "sealing",
+        "facade"
+      ]
+    },
+    {
+      "id": "al.tool.saw.mitre",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Aluminium mitre saw",
+        "he": "מסור גרונג לאלומיניום",
+        "ar": "منشار زاوية للألمنيوم"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "al.tool.glass.suction",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Glass suction lifter",
+        "he": "כוס ואקום לזכוכית",
+        "ar": "كأس شفط زجاج"
+      },
+      "tags": [
+        "lifting",
+        "safety"
+      ]
+    },
+    {
+      "id": "al.tool.gun.sealant",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Sealant gun",
+        "he": "אקדח סיליקון",
+        "ar": "مسدس سيليكون"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    }
+  ]
+}

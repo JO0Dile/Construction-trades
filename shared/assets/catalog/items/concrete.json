@@ -1,0 +1,237 @@
+{
+  "tradeId": "concrete",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "cn.readymix.b30",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "M3",
+      "names": {
+        "en": "Ready-mix concrete B30",
+        "he": "בטון מובא ב-30",
+        "ar": "باطون جاهز B30"
+      },
+      "attributes": {
+        "grade": "B30"
+      },
+      "tags": [
+        "concrete"
+      ]
+    },
+    {
+      "id": "cn.readymix.b40",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "M3",
+      "names": {
+        "en": "Ready-mix concrete B40",
+        "he": "בטון מובא ב-40",
+        "ar": "باطون جاهز B40"
+      },
+      "attributes": {
+        "grade": "B40"
+      },
+      "tags": [
+        "concrete"
+      ]
+    },
+    {
+      "id": "cn.formwork.panel",
+      "kind": "MATERIAL",
+      "category": "timber",
+      "unit": "M2",
+      "names": {
+        "en": "Formwork panel",
+        "he": "לוח תבנית",
+        "ar": "لوح طوبار"
+      },
+      "tags": [
+        "formwork"
+      ]
+    },
+    {
+      "id": "cn.formwork.prop",
+      "kind": "MATERIAL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Adjustable prop",
+        "he": "תמוכה מתכווננת",
+        "ar": "دعامة قابلة للضبط"
+      },
+      "tags": [
+        "formwork",
+        "temporary-works"
+      ]
+    },
+    {
+      "id": "cn.formwork.tie",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Formwork tie rod",
+        "he": "מוט קשירה לתבנית",
+        "ar": "قضيب ربط الطوبار"
+      },
+      "tags": [
+        "formwork"
+      ]
+    },
+    {
+      "id": "cn.release.agent",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "L",
+      "names": {
+        "en": "Formwork release agent",
+        "he": "שמן תבניות",
+        "ar": "زيت طوبار"
+      },
+      "tags": [
+        "formwork"
+      ]
+    },
+    {
+      "id": "cn.admix.plasticiser",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "L",
+      "names": {
+        "en": "Plasticiser admixture",
+        "he": "מוסף מפלסטיסייזר",
+        "ar": "مادة ملدّنة"
+      },
+      "spec": {
+        "en": "Adds workability without adding water. Water added on the truck is strength thrown away.",
+        "he": "מוסיף סחירות בלי להוסיף מים. מים שמוסיפים במערבל הם חוזק שנזרק.",
+        "ar": "تزيد القابلية للتشغيل دون ماء. الماء المضاف على المكسر هو قوة مرمية."
+      },
+      "tags": [
+        "admixture",
+        "quality"
+      ]
+    },
+    {
+      "id": "cn.curing.compound",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "L",
+      "names": {
+        "en": "Curing compound",
+        "he": "חומר אשפרה",
+        "ar": "مادة معالجة الباطون"
+      },
+      "tags": [
+        "curing"
+      ]
+    },
+    {
+      "id": "cn.waterstop.pvc",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M",
+      "names": {
+        "en": "PVC waterstop",
+        "he": "ווטרסטופ PVC",
+        "ar": "ووتر ستوب PVC"
+      },
+      "tags": [
+        "joint",
+        "waterproofing"
+      ]
+    },
+    {
+      "id": "cn.tool.vibrator.poker",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete poker vibrator",
+        "he": "ויברטור מחט",
+        "ar": "هزّاز باطون (إبرة)"
+      },
+      "tags": [
+        "pour"
+      ]
+    },
+    {
+      "id": "cn.tool.power.float",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Power float",
+        "he": "מחליק בטון",
+        "ar": "هيليكوبتر تنعيم الباطون"
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "cn.tool.screed.vibrating",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Vibrating screed",
+        "he": "סרגל רוטט",
+        "ar": "قدّة هزّازة"
+      },
+      "tags": [
+        "pour"
+      ]
+    },
+    {
+      "id": "cn.tool.slump.cone",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Slump cone set",
+        "he": "ערכת קונוס שקיעה",
+        "ar": "طقم مخروط الهبوط (سلامب)"
+      },
+      "spec": {
+        "en": "The test taken off the truck before it discharges, not after.",
+        "he": "הבדיקה הנלקחת מהמערבל לפני הפריקה, לא אחריה.",
+        "ar": "الفحص يُؤخذ من المكسر قبل التفريغ، لا بعده."
+      },
+      "tags": [
+        "quality",
+        "testing"
+      ]
+    },
+    {
+      "id": "cn.tool.cube.mould",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete cube mould",
+        "he": "תבנית קובייה לבדיקה",
+        "ar": "قالب مكعّب فحص"
+      },
+      "tags": [
+        "quality",
+        "testing"
+      ]
+    },
+    {
+      "id": "cn.tool.core.drill",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Diamond core drill",
+        "he": "מקדח ליבה יהלום",
+        "ar": "دريل كور ألماس"
+      },
+      "tags": [
+        "cutting"
+      ]
+    }
+  ]
+}
