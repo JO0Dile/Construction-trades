@@ -1,0 +1,210 @@
+{
+  "tradeId": "rebar",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "rb.bar.ribbed.12",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "KG",
+      "names": {
+        "en": "Ribbed rebar Ø12",
+        "he": "מוט מצולע Ø12",
+        "ar": "حديد مضلّع Ø12"
+      },
+      "attributes": {
+        "diameterMm": "12"
+      },
+      "tags": [
+        "rebar"
+      ]
+    },
+    {
+      "id": "rb.bar.ribbed.16",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "KG",
+      "names": {
+        "en": "Ribbed rebar Ø16",
+        "he": "מוט מצולע Ø16",
+        "ar": "حديد مضلّع Ø16"
+      },
+      "attributes": {
+        "diameterMm": "16"
+      },
+      "tags": [
+        "rebar"
+      ]
+    },
+    {
+      "id": "rb.bar.ribbed.20",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "KG",
+      "names": {
+        "en": "Ribbed rebar Ø20",
+        "he": "מוט מצולע Ø20",
+        "ar": "حديد مضلّع Ø20"
+      },
+      "attributes": {
+        "diameterMm": "20"
+      },
+      "tags": [
+        "rebar"
+      ]
+    },
+    {
+      "id": "rb.mesh.welded",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "M2",
+      "names": {
+        "en": "Welded reinforcement mesh",
+        "he": "רשת ברזל מרותכת",
+        "ar": "شبك حديد ملحوم"
+      },
+      "tags": [
+        "rebar"
+      ]
+    },
+    {
+      "id": "rb.stirrup",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "PCS",
+      "names": {
+        "en": "Stirrup (link)",
+        "he": "חישוק",
+        "ar": "كانة (استربة)"
+      },
+      "tags": [
+        "rebar"
+      ]
+    },
+    {
+      "id": "rb.spacer.concrete",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete spacer / chair",
+        "he": "שומר מרחק בטון",
+        "ar": "فاصل باطون (بسكوت)"
+      },
+      "spec": {
+        "en": "Holds the cover. Rebar cast against the form rusts and spalls the concrete off within a decade.",
+        "he": "שומר על הכיסוי. ברזל שנוצק צמוד לתבנית מחליד ומפיל את הבטון בתוך עשור.",
+        "ar": "يحافظ على الغطاء الخرساني. الحديد الملاصق للطوبار يصدأ ويفلّش الباطون خلال عشر سنين."
+      },
+      "tags": [
+        "cover",
+        "durability"
+      ]
+    },
+    {
+      "id": "rb.wire.tying",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "KG",
+      "names": {
+        "en": "Tying wire",
+        "he": "חוט קשירה",
+        "ar": "سلك ربط"
+      },
+      "tags": [
+        "consumable"
+      ]
+    },
+    {
+      "id": "rb.coupler.threaded",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "PCS",
+      "names": {
+        "en": "Threaded rebar coupler",
+        "he": "מצמד הברגה למוט",
+        "ar": "وصلة حديد ملولبة"
+      },
+      "tags": [
+        "rebar",
+        "splice"
+      ]
+    },
+    {
+      "id": "rb.dowel.chemical",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Chemical anchor / rebar dowel",
+        "he": "עוגן כימי",
+        "ar": "مثبّت كيماوي (شناكل)"
+      },
+      "tags": [
+        "anchor"
+      ]
+    },
+    {
+      "id": "rb.tool.bender.bar",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Rebar bender",
+        "he": "מכופף ברזל",
+        "ar": "ثنّاية حديد"
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "rb.tool.cutter.bar",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Rebar cutter",
+        "he": "חותך ברזל",
+        "ar": "قصّاصة حديد"
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "rb.tool.tying.hook",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Tying hook / twister",
+        "he": "וו קשירה",
+        "ar": "خطّاف ربط الحديد"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "rb.tool.cover.meter",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Cover meter / rebar scanner",
+        "he": "גלאי ברזל ומדידת כיסוי",
+        "ar": "جهاز كشف الحديد وقياس الغطاء"
+      },
+      "spec": {
+        "en": "Finds the bar before the core drill does.",
+        "he": "מאתר את הברזל לפני שהמקדח עושה זאת.",
+        "ar": "يجد الحديد قبل ما يجده منشار الكور."
+      },
+      "tags": [
+        "inspection",
+        "safety"
+      ]
+    }
+  ]
+}

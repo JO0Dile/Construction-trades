@@ -1,0 +1,290 @@
+{
+  "tradeId": "stonework",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "st.stone.jerusalem.slab",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Jerusalem stone slab, sawn",
+        "he": "לוח אבן ירושלמית מנוסרת",
+        "ar": "لوح حجر قدسي منشور"
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ]
+    },
+    {
+      "id": "st.stone.tobzeh",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Tobzeh (bush-hammered) stone",
+        "he": "אבן טובזה",
+        "ar": "حجر طبزة"
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ]
+    },
+    {
+      "id": "st.stone.msamsam",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Msamsam (chiselled) stone",
+        "he": "אבן מסמסם",
+        "ar": "حجر مسمسم"
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ]
+    },
+    {
+      "id": "st.stone.mafjar",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Mafjar (split-face) stone",
+        "he": "אבן מפג׳ר",
+        "ar": "حجر مفجّر"
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ]
+    },
+    {
+      "id": "st.stone.marble.slab",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Marble slab",
+        "he": "לוח שיש",
+        "ar": "لوح رخام"
+      },
+      "tags": [
+        "interior",
+        "stone"
+      ]
+    },
+    {
+      "id": "st.stone.granite.slab",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Granite slab",
+        "he": "לוח גרניט",
+        "ar": "لوح جرانيت"
+      },
+      "tags": [
+        "interior",
+        "stone"
+      ]
+    },
+    {
+      "id": "st.sill.window.stone",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M",
+      "names": {
+        "en": "Stone window sill",
+        "he": "אדן חלון אבן",
+        "ar": "عتبة شباك حجر"
+      },
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "id": "st.anchor.stainless",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Stainless steel stone anchor",
+        "he": "עוגן אבן נירוסטה",
+        "ar": "مثبّت حجر ستانلس"
+      },
+      "spec": {
+        "en": "Mechanical fixing. A facade stone held on mortar alone comes off the building eventually.",
+        "he": "עיגון מכני. אבן חיפוי המוחזקת בטיט בלבד יורדת מהבניין בסופו של דבר.",
+        "ar": "تثبيت ميكانيكي. حجر الواجهة المثبّت بالمونة وحدها يقع عن المبنى في النهاية."
+      },
+      "attributes": {
+        "material": "AISI 316"
+      },
+      "tags": [
+        "facade",
+        "fixing",
+        "safety"
+      ]
+    },
+    {
+      "id": "st.mortar.stone",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Stone-setting mortar",
+        "he": "טיט לאבן",
+        "ar": "مونة تثبيت الحجر"
+      },
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "id": "st.grout.stone",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Stone pointing grout",
+        "he": "רובה לאבן",
+        "ar": "قصارة فواصل الحجر"
+      },
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "id": "st.sealer.stone",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "L",
+      "names": {
+        "en": "Stone impregnating sealer",
+        "he": "אימפרגנציה לאבן",
+        "ar": "مادة حماية للحجر"
+      },
+      "tags": [
+        "protection"
+      ]
+    },
+    {
+      "id": "st.tool.grinder.230",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Angle grinder 230 mm",
+        "he": "משחזת זווית 230 מ״מ",
+        "ar": "جلّاخة 230 ملم"
+      },
+      "attributes": {
+        "discMm": "230"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "st.tool.saw.bridge",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Bridge saw",
+        "he": "מסור גשר",
+        "ar": "منشار جسري"
+      },
+      "tags": [
+        "cutting",
+        "workshop"
+      ]
+    },
+    {
+      "id": "st.tool.chisel.set",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Stone chisel set",
+        "he": "ערכת אזמלי אבן",
+        "ar": "طقم أزاميل حجر"
+      },
+      "tags": [
+        "hand-tool",
+        "carving"
+      ]
+    },
+    {
+      "id": "st.tool.bush.hammer",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Bush hammer",
+        "he": "פטיש טובזה",
+        "ar": "شاكوش طبزة"
+      },
+      "tags": [
+        "carving"
+      ]
+    },
+    {
+      "id": "st.tool.blade.diamond",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Diamond blade for stone",
+        "he": "דיסק יהלום לאבן",
+        "ar": "قرص ألماس للحجر"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "st.tool.vacuum.lifter",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Vacuum slab lifter",
+        "he": "מרים ואקום ללוחות",
+        "ar": "رافعة شفط للألواح"
+      },
+      "tags": [
+        "lifting",
+        "safety"
+      ]
+    },
+    {
+      "id": "st.ppe.dust.mask.p3",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Respirator P3 (silica)",
+        "he": "מסכת נשימה P3",
+        "ar": "كمامة P3 (سيليكا)"
+      },
+      "spec": {
+        "en": "Cutting stone dry makes respirable silica. This is the difference between a career and silicosis.",
+        "he": "חיתוך אבן יבש מייצר צורן נשים. זה ההבדל בין קריירה לסיליקוזיס.",
+        "ar": "قص الحجر الجاف يُنتج سيليكا تُستنشق. هذا الفرق بين مهنة وبين تليّف الرئة."
+      },
+      "attributes": {
+        "rating": "P3"
+      },
+      "tags": [
+        "ppe",
+        "silica",
+        "health"
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package il.co.tradesmanager.di
 import android.content.Context
 import il.co.tradesmanager.data.catalog.CatalogSeeder
 import il.co.tradesmanager.data.catalog.CatalogSource
+import il.co.tradesmanager.data.catalog.ScopeCatalog
 import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
@@ -17,6 +18,7 @@ import il.co.tradesmanager.data.repository.EvidenceRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
+import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
@@ -54,6 +56,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val database: AppDatabase = databaseResult.database
 
     val catalogSource = CatalogSource(appContext)
+
+    /** Stages and scopes of work. Read-only reference data, never seeded. */
+    val scopes = ScopeCatalog(catalogSource)
 
     val settings = SettingsRepository(appContext)
 
@@ -112,6 +117,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val excavations = ExcavationRepository(database.excavationDao(), auditTrail)
 
     val payments = PaymentsRepository(database.paymentsDao(), auditTrail)
+
+    /** Who is on a job, what they agreed, and what they were asked to do. */
+    val engagements = EngagementRepository(database.engagementDao(), auditTrail)
 
     /** The daily site log — the יומן עבודה a site manager has to keep. */
     val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)

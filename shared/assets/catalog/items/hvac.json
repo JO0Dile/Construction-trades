@@ -1,118 +1,814 @@
 {
   "tradeId": "hvac",
-  "catalogVersion": 1,
+  "catalogVersion": 2,
   "items": [
-    { "id": "hv.unit.split.1_5hp", "kind": "MATERIAL", "category": "units", "unit": "PCS",
-      "names": { "en": "Split air conditioner 1.5 HP", "he": "מזגן עילי 1.5 כ״ס", "ar": "مكيّف سبليت 1.5 حصان" },
-      "spec": { "en": "Wall-mounted indoor unit with outdoor condenser.", "he": "יחידה פנימית על קיר עם מעבה חיצוני.", "ar": "وحدة داخلية على الحائط مع مكثّف خارجي." },
-      "attributes": { "capacityHp": "1.5", "standard": "ת״י 994" }, "tags": ["unit"] },
-    { "id": "hv.unit.minicentral", "kind": "MATERIAL", "category": "units", "unit": "PCS",
-      "names": { "en": "Mini-central air handler", "he": "מזגן מיני מרכזי", "ar": "مكيّف مركزي صغير" },
-      "spec": { "en": "Ducted indoor unit above a false ceiling.", "he": "יחידה פנימית מוסתרת מעל תקרה אקוסטית.", "ar": "وحدة داخلية مخفية فوق سقف مستعار." },
-      "attributes": { "standard": "ת״י 994" }, "tags": ["unit", "ducted"] },
-    { "id": "hv.unit.condenser", "kind": "MATERIAL", "category": "units", "unit": "PCS",
-      "names": { "en": "Outdoor condensing unit", "he": "מעבה (יחידה חיצונית)", "ar": "وحدة تكثيف خارجية" },
-      "spec": { "en": "Mounted on brackets with anti-vibration pads.", "he": "מותקן על מתלים עם בולמי רעידות.", "ar": "يُركَّب على حوامل مع عوازل اهتزاز." },
-      "attributes": {}, "tags": ["unit"] },
-    { "id": "hv.pipe.cu.1_4", "kind": "MATERIAL", "category": "refrigerant-lines", "unit": "M",
-      "names": { "en": "Refrigerant copper pipe 1/4\"", "he": "צינור נחושת לגז ״1/4", "ar": "أنبوب نحاس للتبريد 1/4 إنش" },
-      "spec": { "en": "Liquid line, soft annealed copper.", "he": "קו נוזל, נחושת רכה.", "ar": "خط السائل، نحاس طري." },
-      "attributes": { "size": "1/4\"", "line": "liquid" }, "tags": ["pipe", "refrigerant"] },
-    { "id": "hv.pipe.cu.1_2", "kind": "MATERIAL", "category": "refrigerant-lines", "unit": "M",
-      "names": { "en": "Refrigerant copper pipe 1/2\"", "he": "צינור נחושת לגז ״1/2", "ar": "أنبوب نحاس للتبريد 1/2 إنش" },
-      "spec": { "en": "Suction line, soft annealed copper.", "he": "קו יניקה, נחושת רכה.", "ar": "خط السحب، نحاس طري." },
-      "attributes": { "size": "1/2\"", "line": "suction" }, "tags": ["pipe", "refrigerant"] },
-    { "id": "hv.insulation.elastomeric", "kind": "MATERIAL", "category": "insulation", "unit": "M",
-      "names": { "en": "Elastomeric pipe insulation", "he": "בידוד גמיש לצנרת", "ar": "عازل مطاطي للأنابيب" },
-      "spec": { "en": "Closed-cell sleeve, 9–13 mm wall, taped at joints.", "he": "שרוול תאים סגורים, דופן 9–13 מ״מ, עטוף בסרט בחיבורים.", "ar": "غلاف خلايا مغلقة، سماكة 9–13 ملم، ملفوف بشريط عند الوصلات." },
-      "attributes": { "wallMm": "9-13", "standard": "ת״י 1045" }, "tags": ["insulation"] },
-    { "id": "hv.refrigerant.r32", "kind": "MATERIAL", "category": "refrigerant", "unit": "KG",
-      "names": { "en": "Refrigerant R32", "he": "גז קירור R32", "ar": "غاز تبريد R32" },
-      "spec": { "en": "Mildly flammable (A2L). Recover, never vent.", "he": "דליק במידה מסוימת (A2L). יש לשאוב ולא לשחרר לאוויר.", "ar": "قابل للاشتعال جزئيًا (A2L). يُسترجع ولا يُطلق في الهواء." },
-      "attributes": { "class": "A2L" }, "tags": ["refrigerant", "hazard"] },
-    { "id": "hv.refrigerant.r410a", "kind": "MATERIAL", "category": "refrigerant", "unit": "KG",
-      "names": { "en": "Refrigerant R410A", "he": "גז קירור R410A", "ar": "غاز تبريد R410A" },
-      "spec": { "en": "High pressure blend; charge by weight only.", "he": "תערובת בלחץ גבוה; מילוי לפי משקל בלבד.", "ar": "خليط بضغط عالٍ؛ الشحن بالوزن فقط." },
-      "attributes": {}, "tags": ["refrigerant", "hazard"] },
-    { "id": "hv.drain.pipe.25", "kind": "MATERIAL", "category": "condensate", "unit": "M",
-      "names": { "en": "Condensate drain pipe 25 mm", "he": "צינור ניקוז מזגן 25 מ״מ", "ar": "أنبوب تصريف مكيّف 25 ملم" },
-      "spec": { "en": "Laid to a continuous fall, no sagging loops.", "he": "מונח בשיפוע רציף, בלי שקיעות.", "ar": "يُمدّ بميل مستمر، دون تهدّل." },
-      "attributes": { "diameterMm": "25" }, "tags": ["condensate"] },
-    { "id": "hv.drain.pump", "kind": "MATERIAL", "category": "condensate", "unit": "PCS",
-      "names": { "en": "Condensate pump", "he": "משאבת ניקוז", "ar": "مضخة تصريف" },
-      "spec": { "en": "Where gravity drainage is not possible.", "he": "כשאין אפשרות לניקוז בכוח הכובד.", "ar": "عند تعذّر التصريف بالجاذبية." },
-      "attributes": {}, "tags": ["condensate"] },
-    { "id": "hv.thermostat.programmable", "kind": "MATERIAL", "category": "controls", "unit": "PCS",
-      "names": { "en": "Programmable thermostat", "he": "תרמוסטט מתוכנת", "ar": "ثرموستات قابل للبرمجة" },
-      "spec": { "en": "Weekly schedule, wired or wireless.", "he": "תכנית שבועית, קווי או אלחוטי.", "ar": "برنامج أسبوعي، سلكي أو لاسلكي." },
-      "attributes": {}, "tags": ["controls"] },
-    { "id": "hv.duct.flexible.8", "kind": "MATERIAL", "category": "ducting", "unit": "M",
-      "names": { "en": "Insulated flexible duct 8\"", "he": "תעלה גמישה מבודדת ״8", "ar": "مجرى هواء مرن معزول 8 إنش" },
-      "spec": { "en": "Supply run from air handler to diffuser.", "he": "הזנה מהיחידה למפזר.", "ar": "تغذية من الوحدة إلى فتحة التوزيع." },
-      "attributes": { "size": "8\"" }, "tags": ["duct"] },
-    { "id": "hv.diffuser.linear", "kind": "MATERIAL", "category": "ducting", "unit": "PCS",
-      "names": { "en": "Linear supply diffuser", "he": "מפזר אוויר קווי", "ar": "فتحة توزيع هواء خطية" },
-      "spec": { "en": "Aluminium slot diffuser for a false ceiling.", "he": "מפזר אלומיניום לתקרה אקוסטית.", "ar": "فتحة ألمنيوم لسقف مستعار." },
-      "attributes": {}, "tags": ["duct"] },
-    { "id": "hv.grille.return", "kind": "MATERIAL", "category": "ducting", "unit": "PCS",
-      "names": { "en": "Return air grille with filter", "he": "גריל חוזר עם מסנן", "ar": "شبك هواء راجع مع فلتر" },
-      "spec": { "en": "Hinged grille giving access to the filter.", "he": "גריל על ציר לגישה למסנן.", "ar": "شبك بمفصّلة للوصول إلى الفلتر." },
-      "attributes": {}, "tags": ["duct", "filter"] },
-    { "id": "hv.filter.g4", "kind": "CONSUMABLE", "category": "consumables", "unit": "PCS",
-      "names": { "en": "Air filter G4", "he": "מסנן אוויר G4", "ar": "فلتر هواء G4" },
-      "spec": { "en": "Washable pre-filter, replaced at service.", "he": "מסנן ראשוני שטיף, מוחלף בטיפול.", "ar": "فلتر أولي قابل للغسل، يُستبدل في الصيانة." },
-      "attributes": { "grade": "G4" }, "tags": ["consumable", "service"] },
-    { "id": "hv.consum.flare_nuts", "kind": "CONSUMABLE", "category": "consumables", "unit": "PCS",
-      "names": { "en": "Flare nuts and caps", "he": "אומי פלייר ופקקים", "ar": "صواميل تفليج وسدادات" },
-      "spec": { "en": "Replaced, never reused, on every reconnection.", "he": "מוחלפים בכל חיבור מחדש, אין להשתמש שוב.", "ar": "تُستبدل عند كل إعادة توصيل، لا يُعاد استخدامها." },
-      "attributes": {}, "tags": ["consumable"] },
-    { "id": "hv.tool.vacuum_pump", "kind": "TOOL", "category": "service", "unit": "PCS",
-      "names": { "en": "Vacuum pump", "he": "משאבת ואקום", "ar": "مضخة تفريغ" },
-      "spec": { "en": "Two-stage pump; evacuate to 500 microns before charging.", "he": "משאבה דו־שלבית; ואקום עד 500 מיקרון לפני מילוי גז.", "ar": "مضخة ثنائية المرحلة؛ تفريغ حتى 500 ميكرون قبل الشحن." },
-      "attributes": { "target": "500 microns" }, "tags": ["tool", "commissioning"] },
-    { "id": "hv.tool.manifold_gauges", "kind": "TOOL", "category": "service", "unit": "PCS",
-      "names": { "en": "Manifold gauge set", "he": "סט מדי לחץ (מנומטרים)", "ar": "طقم مقاييس ضغط (مانيفولد)" },
-      "spec": { "en": "Refrigerant-specific gauges with hoses.", "he": "מדים לפי סוג הגז עם צינורות.", "ar": "مقاييس حسب نوع الغاز مع خراطيم." },
-      "attributes": {}, "tags": ["tool"] },
-    { "id": "hv.tool.recovery_machine", "kind": "TOOL", "category": "service", "unit": "PCS",
-      "names": { "en": "Refrigerant recovery machine", "he": "מכונת שאיבת גז", "ar": "آلة استرجاع غاز التبريد" },
-      "spec": { "en": "Recovers refrigerant into a rated cylinder before opening a system.", "he": "שואבת את הגז למכל מאושר לפני פתיחת מערכת.", "ar": "تسترجع الغاز إلى أسطوانة معتمدة قبل فتح النظام." },
-      "attributes": {}, "tags": ["tool", "environment"] },
-    { "id": "hv.tool.flaring", "kind": "TOOL", "category": "hand-tools", "unit": "PCS",
-      "names": { "en": "Flaring tool set", "he": "ערכת פלייר", "ar": "طقم تفليج" },
-      "spec": { "en": "Eccentric flaring tool with a deburrer.", "he": "מכשיר פלייר אקסצנטרי עם משייף.", "ar": "أداة تفليج لامركزية مع مبرد إزالة الحواف." },
-      "attributes": {}, "tags": ["tool"] },
-    { "id": "hv.tool.tube_bender", "kind": "TOOL", "category": "hand-tools", "unit": "PCS",
-      "names": { "en": "Tube bender", "he": "מכופף צנרת", "ar": "ثنّاية أنابيب" },
-      "spec": { "en": "Lever bender for 1/4\"–5/8\" soft copper.", "he": "מכופף ידני ל־״1/4 עד ״5/8 נחושת רכה.", "ar": "ثنّاية يدوية لـ 1/4–5/8 إنش نحاس طري." },
-      "attributes": {}, "tags": ["tool"] },
-    { "id": "hv.tool.clamp_meter", "kind": "TOOL", "category": "measuring", "unit": "PCS",
-      "names": { "en": "Clamp meter", "he": "מלקחי אמפר", "ar": "كماشة أمبير" },
-      "spec": { "en": "Measures running current on the compressor.", "he": "מודד זרם עבודה של המדחס.", "ar": "يقيس تيار التشغيل للضاغط." },
-      "attributes": {}, "tags": ["tool", "testing"] },
-    { "id": "hv.tool.leak_detector", "kind": "TOOL", "category": "measuring", "unit": "PCS",
-      "names": { "en": "Electronic leak detector", "he": "גלאי דליפות גז אלקטרוני", "ar": "كاشف تسرّب غاز إلكتروني" },
-      "spec": { "en": "Checks every flare and braze before insulating.", "he": "בודק כל חיבור פלייר והלחמה לפני בידוד.", "ar": "يفحص كل وصلة تفليج ولحام قبل العزل." },
-      "attributes": {}, "tags": ["tool", "testing"] },
-    { "id": "hv.tool.digital_scale", "kind": "TOOL", "category": "measuring", "unit": "PCS",
-      "names": { "en": "Refrigerant charging scale", "he": "משקל דיגיטלי לגז", "ar": "ميزان شحن الغاز" },
-      "spec": { "en": "Charge is weighed to the nameplate figure.", "he": "המילוי נשקל לפי הערך שעל לוחית היצרן.", "ar": "يُوزن الشحن حسب القيمة على لوحة الشركة." },
-      "attributes": {}, "tags": ["tool", "commissioning"] },
-    { "id": "hv.tool.anemometer", "kind": "TOOL", "category": "measuring", "unit": "PCS",
-      "names": { "en": "Anemometer", "he": "מד ספיקת אוויר", "ar": "مقياس تدفق الهواء" },
-      "spec": { "en": "Air flow at the diffuser during balancing.", "he": "ספיקת אוויר במפזר בעת איזון המערכת.", "ar": "تدفق الهواء عند الفتحة أثناء الموازنة." },
-      "attributes": {}, "tags": ["tool", "commissioning"] },
-    { "id": "hv.safety.gloves.cryo", "kind": "SAFETY", "category": "ppe", "unit": "PAIR",
-      "names": { "en": "Refrigerant handling gloves", "he": "כפפות לטיפול בגז קירור", "ar": "قفازات للتعامل مع غاز التبريد" },
-      "spec": { "en": "Protect against cold burns from liquid refrigerant.", "he": "מגנות מכוויות קור מגז נוזלי.", "ar": "تحمي من حروق البرودة الناتجة عن الغاز السائل." },
-      "attributes": {}, "tags": ["ppe", "safety"] },
-    { "id": "hv.safety.goggles", "kind": "SAFETY", "category": "ppe", "unit": "PCS",
-      "names": { "en": "Sealed safety goggles", "he": "משקפי מגן אטומים", "ar": "نظارات واقية محكمة" },
-      "spec": { "en": "Worn whenever a refrigerant circuit is opened.", "he": "נלבשות בכל פתיחה של מעגל גז.", "ar": "تُلبس عند كل فتح لدائرة الغاز." },
-      "attributes": {}, "tags": ["ppe", "safety"] },
-    { "id": "hv.safety.ladder.fiber", "kind": "SAFETY", "category": "access", "unit": "PCS",
-      "names": { "en": "Fibreglass step ladder", "he": "סולם פיברגלס", "ar": "سلّم فايبرجلاس" },
-      "spec": { "en": "Non-conductive ladder for work near live circuits.", "he": "סולם לא־מוליך לעבודה בקרבת מעגלים חיים.", "ar": "سلّم غير موصل للعمل قرب دوائر حية." },
-      "attributes": {}, "tags": ["access", "safety"] }
+    {
+      "id": "hv.unit.split.1_5hp",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Split air conditioner 1.5 HP",
+        "he": "מזגן עילי 1.5 כ״ס",
+        "ar": "مكيّف سبليت 1.5 حصان"
+      },
+      "spec": {
+        "en": "Wall-mounted indoor unit with outdoor condenser.",
+        "he": "יחידה פנימית על קיר עם מעבה חיצוני.",
+        "ar": "وحدة داخلية على الحائط مع مكثّف خارجي."
+      },
+      "attributes": {
+        "capacityHp": "1.5",
+        "standard": "ת״י 994"
+      },
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "id": "hv.unit.minicentral",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Mini-central air handler",
+        "he": "מזגן מיני מרכזי",
+        "ar": "مكيّف مركزي صغير"
+      },
+      "spec": {
+        "en": "Ducted indoor unit above a false ceiling.",
+        "he": "יחידה פנימית מוסתרת מעל תקרה אקוסטית.",
+        "ar": "وحدة داخلية مخفية فوق سقف مستعار."
+      },
+      "attributes": {
+        "standard": "ת״י 994"
+      },
+      "tags": [
+        "unit",
+        "ducted"
+      ]
+    },
+    {
+      "id": "hv.unit.condenser",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Outdoor condensing unit",
+        "he": "מעבה (יחידה חיצונית)",
+        "ar": "وحدة تكثيف خارجية"
+      },
+      "spec": {
+        "en": "Mounted on brackets with anti-vibration pads.",
+        "he": "מותקן על מתלים עם בולמי רעידות.",
+        "ar": "يُركَّب على حوامل مع عوازل اهتزاز."
+      },
+      "attributes": {},
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "id": "hv.pipe.cu.1_4",
+      "kind": "MATERIAL",
+      "category": "refrigerant-lines",
+      "unit": "M",
+      "names": {
+        "en": "Refrigerant copper pipe 1/4\"",
+        "he": "צינור נחושת לגז ״1/4",
+        "ar": "أنبوب نحاس للتبريد 1/4 إنش"
+      },
+      "spec": {
+        "en": "Liquid line, soft annealed copper.",
+        "he": "קו נוזל, נחושת רכה.",
+        "ar": "خط السائل، نحاس طري."
+      },
+      "attributes": {
+        "size": "1/4\"",
+        "line": "liquid"
+      },
+      "tags": [
+        "pipe",
+        "refrigerant"
+      ]
+    },
+    {
+      "id": "hv.pipe.cu.1_2",
+      "kind": "MATERIAL",
+      "category": "refrigerant-lines",
+      "unit": "M",
+      "names": {
+        "en": "Refrigerant copper pipe 1/2\"",
+        "he": "צינור נחושת לגז ״1/2",
+        "ar": "أنبوب نحاس للتبريد 1/2 إنش"
+      },
+      "spec": {
+        "en": "Suction line, soft annealed copper.",
+        "he": "קו יניקה, נחושת רכה.",
+        "ar": "خط السحب، نحاس طري."
+      },
+      "attributes": {
+        "size": "1/2\"",
+        "line": "suction"
+      },
+      "tags": [
+        "pipe",
+        "refrigerant"
+      ]
+    },
+    {
+      "id": "hv.insulation.elastomeric",
+      "kind": "MATERIAL",
+      "category": "insulation",
+      "unit": "M",
+      "names": {
+        "en": "Elastomeric pipe insulation",
+        "he": "בידוד גמיש לצנרת",
+        "ar": "عازل مطاطي للأنابيب"
+      },
+      "spec": {
+        "en": "Closed-cell sleeve, 9–13 mm wall, taped at joints.",
+        "he": "שרוול תאים סגורים, דופן 9–13 מ״מ, עטוף בסרט בחיבורים.",
+        "ar": "غلاف خلايا مغلقة، سماكة 9–13 ملم، ملفوف بشريط عند الوصلات."
+      },
+      "attributes": {
+        "wallMm": "9-13",
+        "standard": "ת״י 1045"
+      },
+      "tags": [
+        "insulation"
+      ]
+    },
+    {
+      "id": "hv.refrigerant.r32",
+      "kind": "MATERIAL",
+      "category": "refrigerant",
+      "unit": "KG",
+      "names": {
+        "en": "Refrigerant R32",
+        "he": "גז קירור R32",
+        "ar": "غاز تبريد R32"
+      },
+      "spec": {
+        "en": "Mildly flammable (A2L). Recover, never vent.",
+        "he": "דליק במידה מסוימת (A2L). יש לשאוב ולא לשחרר לאוויר.",
+        "ar": "قابل للاشتعال جزئيًا (A2L). يُسترجع ولا يُطلق في الهواء."
+      },
+      "attributes": {
+        "class": "A2L"
+      },
+      "tags": [
+        "refrigerant",
+        "hazard"
+      ]
+    },
+    {
+      "id": "hv.refrigerant.r410a",
+      "kind": "MATERIAL",
+      "category": "refrigerant",
+      "unit": "KG",
+      "names": {
+        "en": "Refrigerant R410A",
+        "he": "גז קירור R410A",
+        "ar": "غاز تبريد R410A"
+      },
+      "spec": {
+        "en": "High pressure blend; charge by weight only.",
+        "he": "תערובת בלחץ גבוה; מילוי לפי משקל בלבד.",
+        "ar": "خليط بضغط عالٍ؛ الشحن بالوزن فقط."
+      },
+      "attributes": {},
+      "tags": [
+        "refrigerant",
+        "hazard"
+      ]
+    },
+    {
+      "id": "hv.drain.pipe.25",
+      "kind": "MATERIAL",
+      "category": "condensate",
+      "unit": "M",
+      "names": {
+        "en": "Condensate drain pipe 25 mm",
+        "he": "צינור ניקוז מזגן 25 מ״מ",
+        "ar": "أنبوب تصريف مكيّف 25 ملم"
+      },
+      "spec": {
+        "en": "Laid to a continuous fall, no sagging loops.",
+        "he": "מונח בשיפוע רציף, בלי שקיעות.",
+        "ar": "يُمدّ بميل مستمر، دون تهدّل."
+      },
+      "attributes": {
+        "diameterMm": "25"
+      },
+      "tags": [
+        "condensate"
+      ]
+    },
+    {
+      "id": "hv.drain.pump",
+      "kind": "MATERIAL",
+      "category": "condensate",
+      "unit": "PCS",
+      "names": {
+        "en": "Condensate pump",
+        "he": "משאבת ניקוז",
+        "ar": "مضخة تصريف"
+      },
+      "spec": {
+        "en": "Where gravity drainage is not possible.",
+        "he": "כשאין אפשרות לניקוז בכוח הכובד.",
+        "ar": "عند تعذّر التصريف بالجاذبية."
+      },
+      "attributes": {},
+      "tags": [
+        "condensate"
+      ]
+    },
+    {
+      "id": "hv.thermostat.programmable",
+      "kind": "MATERIAL",
+      "category": "controls",
+      "unit": "PCS",
+      "names": {
+        "en": "Programmable thermostat",
+        "he": "תרמוסטט מתוכנת",
+        "ar": "ثرموستات قابل للبرمجة"
+      },
+      "spec": {
+        "en": "Weekly schedule, wired or wireless.",
+        "he": "תכנית שבועית, קווי או אלחוטי.",
+        "ar": "برنامج أسبوعي، سلكي أو لاسلكي."
+      },
+      "attributes": {},
+      "tags": [
+        "controls"
+      ]
+    },
+    {
+      "id": "hv.duct.flexible.8",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "M",
+      "names": {
+        "en": "Insulated flexible duct 8\"",
+        "he": "תעלה גמישה מבודדת ״8",
+        "ar": "مجرى هواء مرن معزول 8 إنش"
+      },
+      "spec": {
+        "en": "Supply run from air handler to diffuser.",
+        "he": "הזנה מהיחידה למפזר.",
+        "ar": "تغذية من الوحدة إلى فتحة التوزيع."
+      },
+      "attributes": {
+        "size": "8\""
+      },
+      "tags": [
+        "duct"
+      ]
+    },
+    {
+      "id": "hv.diffuser.linear",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "PCS",
+      "names": {
+        "en": "Linear supply diffuser",
+        "he": "מפזר אוויר קווי",
+        "ar": "فتحة توزيع هواء خطية"
+      },
+      "spec": {
+        "en": "Aluminium slot diffuser for a false ceiling.",
+        "he": "מפזר אלומיניום לתקרה אקוסטית.",
+        "ar": "فتحة ألمنيوم لسقف مستعار."
+      },
+      "attributes": {},
+      "tags": [
+        "duct"
+      ]
+    },
+    {
+      "id": "hv.grille.return",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "PCS",
+      "names": {
+        "en": "Return air grille with filter",
+        "he": "גריל חוזר עם מסנן",
+        "ar": "شبك هواء راجع مع فلتر"
+      },
+      "spec": {
+        "en": "Hinged grille giving access to the filter.",
+        "he": "גריל על ציר לגישה למסנן.",
+        "ar": "شبك بمفصّلة للوصول إلى الفلتر."
+      },
+      "attributes": {},
+      "tags": [
+        "duct",
+        "filter"
+      ]
+    },
+    {
+      "id": "hv.filter.g4",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Air filter G4",
+        "he": "מסנן אוויר G4",
+        "ar": "فلتر هواء G4"
+      },
+      "spec": {
+        "en": "Washable pre-filter, replaced at service.",
+        "he": "מסנן ראשוני שטיף, מוחלף בטיפול.",
+        "ar": "فلتر أولي قابل للغسل، يُستبدل في الصيانة."
+      },
+      "attributes": {
+        "grade": "G4"
+      },
+      "tags": [
+        "consumable",
+        "service"
+      ]
+    },
+    {
+      "id": "hv.consum.flare_nuts",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Flare nuts and caps",
+        "he": "אומי פלייר ופקקים",
+        "ar": "صواميل تفليج وسدادات"
+      },
+      "spec": {
+        "en": "Replaced, never reused, on every reconnection.",
+        "he": "מוחלפים בכל חיבור מחדש, אין להשתמש שוב.",
+        "ar": "تُستبدل عند كل إعادة توصيل، لا يُعاد استخدامها."
+      },
+      "attributes": {},
+      "tags": [
+        "consumable"
+      ]
+    },
+    {
+      "id": "hv.tool.vacuum_pump",
+      "kind": "TOOL",
+      "category": "service",
+      "unit": "PCS",
+      "names": {
+        "en": "Vacuum pump",
+        "he": "משאבת ואקום",
+        "ar": "مضخة تفريغ"
+      },
+      "spec": {
+        "en": "Two-stage pump; evacuate to 500 microns before charging.",
+        "he": "משאבה דו־שלבית; ואקום עד 500 מיקרון לפני מילוי גז.",
+        "ar": "مضخة ثنائية المرحلة؛ تفريغ حتى 500 ميكرون قبل الشحن."
+      },
+      "attributes": {
+        "target": "500 microns"
+      },
+      "tags": [
+        "tool",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "hv.tool.manifold_gauges",
+      "kind": "TOOL",
+      "category": "service",
+      "unit": "PCS",
+      "names": {
+        "en": "Manifold gauge set",
+        "he": "סט מדי לחץ (מנומטרים)",
+        "ar": "طقم مقاييس ضغط (مانيفولد)"
+      },
+      "spec": {
+        "en": "Refrigerant-specific gauges with hoses.",
+        "he": "מדים לפי סוג הגז עם צינורות.",
+        "ar": "مقاييس حسب نوع الغاز مع خراطيم."
+      },
+      "attributes": {},
+      "tags": [
+        "tool"
+      ]
+    },
+    {
+      "id": "hv.tool.recovery_machine",
+      "kind": "TOOL",
+      "category": "service",
+      "unit": "PCS",
+      "names": {
+        "en": "Refrigerant recovery machine",
+        "he": "מכונת שאיבת גז",
+        "ar": "آلة استرجاع غاز التبريد"
+      },
+      "spec": {
+        "en": "Recovers refrigerant into a rated cylinder before opening a system.",
+        "he": "שואבת את הגז למכל מאושר לפני פתיחת מערכת.",
+        "ar": "تسترجع الغاز إلى أسطوانة معتمدة قبل فتح النظام."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "environment"
+      ]
+    },
+    {
+      "id": "hv.tool.flaring",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Flaring tool set",
+        "he": "ערכת פלייר",
+        "ar": "طقم تفليج"
+      },
+      "spec": {
+        "en": "Eccentric flaring tool with a deburrer.",
+        "he": "מכשיר פלייר אקסצנטרי עם משייף.",
+        "ar": "أداة تفليج لامركزية مع مبرد إزالة الحواف."
+      },
+      "attributes": {},
+      "tags": [
+        "tool"
+      ]
+    },
+    {
+      "id": "hv.tool.tube_bender",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Tube bender",
+        "he": "מכופף צנרת",
+        "ar": "ثنّاية أنابيب"
+      },
+      "spec": {
+        "en": "Lever bender for 1/4\"–5/8\" soft copper.",
+        "he": "מכופף ידני ל־״1/4 עד ״5/8 נחושת רכה.",
+        "ar": "ثنّاية يدوية لـ 1/4–5/8 إنش نحاس طري."
+      },
+      "attributes": {},
+      "tags": [
+        "tool"
+      ]
+    },
+    {
+      "id": "hv.tool.clamp_meter",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Clamp meter",
+        "he": "מלקחי אמפר",
+        "ar": "كماشة أمبير"
+      },
+      "spec": {
+        "en": "Measures running current on the compressor.",
+        "he": "מודד זרם עבודה של המדחס.",
+        "ar": "يقيس تيار التشغيل للضاغط."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "testing"
+      ]
+    },
+    {
+      "id": "hv.tool.leak_detector",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Electronic leak detector",
+        "he": "גלאי דליפות גז אלקטרוני",
+        "ar": "كاشف تسرّب غاز إلكتروني"
+      },
+      "spec": {
+        "en": "Checks every flare and braze before insulating.",
+        "he": "בודק כל חיבור פלייר והלחמה לפני בידוד.",
+        "ar": "يفحص كل وصلة تفليج ولحام قبل العزل."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "testing"
+      ]
+    },
+    {
+      "id": "hv.tool.digital_scale",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Refrigerant charging scale",
+        "he": "משקל דיגיטלי לגז",
+        "ar": "ميزان شحن الغاز"
+      },
+      "spec": {
+        "en": "Charge is weighed to the nameplate figure.",
+        "he": "המילוי נשקל לפי הערך שעל לוחית היצרן.",
+        "ar": "يُوزن الشحن حسب القيمة على لوحة الشركة."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "hv.tool.anemometer",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Anemometer",
+        "he": "מד ספיקת אוויר",
+        "ar": "مقياس تدفق الهواء"
+      },
+      "spec": {
+        "en": "Air flow at the diffuser during balancing.",
+        "he": "ספיקת אוויר במפזר בעת איזון המערכת.",
+        "ar": "تدفق الهواء عند الفتحة أثناء الموازنة."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "commissioning"
+      ]
+    },
+    {
+      "id": "hv.safety.gloves.cryo",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PAIR",
+      "names": {
+        "en": "Refrigerant handling gloves",
+        "he": "כפפות לטיפול בגז קירור",
+        "ar": "قفازات للتعامل مع غاز التبريد"
+      },
+      "spec": {
+        "en": "Protect against cold burns from liquid refrigerant.",
+        "he": "מגנות מכוויות קור מגז נוזלי.",
+        "ar": "تحمي من حروق البرودة الناتجة عن الغاز السائل."
+      },
+      "attributes": {},
+      "tags": [
+        "ppe",
+        "safety"
+      ]
+    },
+    {
+      "id": "hv.safety.goggles",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Sealed safety goggles",
+        "he": "משקפי מגן אטומים",
+        "ar": "نظارات واقية محكمة"
+      },
+      "spec": {
+        "en": "Worn whenever a refrigerant circuit is opened.",
+        "he": "נלבשות בכל פתיחה של מעגל גז.",
+        "ar": "تُلبس عند كل فتح لدائرة الغاز."
+      },
+      "attributes": {},
+      "tags": [
+        "ppe",
+        "safety"
+      ]
+    },
+    {
+      "id": "hv.safety.ladder.fiber",
+      "kind": "SAFETY",
+      "category": "access",
+      "unit": "PCS",
+      "names": {
+        "en": "Fibreglass step ladder",
+        "he": "סולם פיברגלס",
+        "ar": "سلّم فايبرجلاس"
+      },
+      "spec": {
+        "en": "Non-conductive ladder for work near live circuits.",
+        "he": "סולם לא־מוליך לעבודה בקרבת מעגלים חיים.",
+        "ar": "سلّم غير موصل للعمل قرب دوائر حية."
+      },
+      "attributes": {},
+      "tags": [
+        "access",
+        "safety"
+      ]
+    },
+    {
+      "id": "hv.sleeve.wall",
+      "kind": "MATERIAL",
+      "category": "accessories",
+      "unit": "PCS",
+      "names": {
+        "en": "Wall sleeve (jerab)",
+        "he": "שרוול קיר",
+        "ar": "جراب (سليفة) حيط"
+      },
+      "spec": {
+        "en": "Cast or cored before the finish. Drilling a 90 mm hole through a finished facade is a different job.",
+        "he": "נוצק או נקדח לפני הגמר. קידוח 90 מ״מ בחזית גמורה הוא עבודה אחרת.",
+        "ar": "يُصبّ أو يُثقب قبل التشطيب. ثقب 90 ملم في واجهة جاهزة شغل ثاني."
+      },
+      "tags": [
+        "sleeve",
+        "rough-in"
+      ]
+    },
+    {
+      "id": "hv.duct.galvanised",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "M2",
+      "names": {
+        "en": "Galvanised sheet duct",
+        "he": "תעלת פח מגולוון",
+        "ar": "دكت صاج مجلفن"
+      },
+      "tags": [
+        "duct"
+      ]
+    },
+    {
+      "id": "hv.duct.preinsulated",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "M2",
+      "names": {
+        "en": "Pre-insulated panel duct",
+        "he": "תעלה מבודדת מראש",
+        "ar": "دكت بانل معزول"
+      },
+      "tags": [
+        "duct"
+      ]
+    },
+    {
+      "id": "hv.duct.flexible",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "M",
+      "names": {
+        "en": "Flexible insulated duct",
+        "he": "תעלה גמישה מבודדת",
+        "ar": "دكت مرن معزول"
+      },
+      "tags": [
+        "duct"
+      ]
+    },
+    {
+      "id": "hv.damper.fire",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "PCS",
+      "names": {
+        "en": "Fire damper",
+        "he": "מדף אש",
+        "ar": "دامبر حريق"
+      },
+      "tags": [
+        "duct",
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "hv.damper.volume",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "PCS",
+      "names": {
+        "en": "Volume control damper",
+        "he": "מדף ויסות",
+        "ar": "دامبر تنظيم"
+      },
+      "tags": [
+        "duct",
+        "balancing"
+      ]
+    },
+    {
+      "id": "hv.grille.supply",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "PCS",
+      "names": {
+        "en": "Supply grille",
+        "he": "גריל אספקה",
+        "ar": "جريل تغذية"
+      },
+      "tags": [
+        "grille",
+        "second-fix"
+      ]
+    },
+    {
+      "id": "hv.diffuser.swirl",
+      "kind": "MATERIAL",
+      "category": "ducting",
+      "unit": "PCS",
+      "names": {
+        "en": "Swirl diffuser",
+        "he": "מפזר סחרור",
+        "ar": "مبثّ دوّار"
+      },
+      "tags": [
+        "grille",
+        "second-fix"
+      ]
+    },
+    {
+      "id": "hv.unit.vrf.indoor",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "VRF indoor unit",
+        "he": "יחידה פנימית VRF",
+        "ar": "وحدة داخلية VRF"
+      },
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "id": "hv.unit.vrf.outdoor",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "VRF outdoor unit",
+        "he": "יחידה חיצונית VRF",
+        "ar": "وحدة خارجية VRF"
+      },
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "id": "hv.unit.fcu.ceiling",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Ceiling fan coil unit",
+        "he": "יחידת מאוורר־סליל תקרתית",
+        "ar": "وحدة فان كويل سقفية"
+      },
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "id": "hv.unit.fresh.air",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Fresh air / heat recovery unit",
+        "he": "יחידת אוויר צח עם השבת חום",
+        "ar": "وحدة هواء نقي مع استرجاع حراري"
+      },
+      "tags": [
+        "unit",
+        "ventilation"
+      ]
+    },
+    {
+      "id": "hv.tool.micron.gauge",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Micron gauge",
+        "he": "מד מיקרון",
+        "ar": "مقياس ميكرون"
+      },
+      "tags": [
+        "commissioning"
+      ]
+    },
+    {
+      "id": "hv.tool.manifold.gauge",
+      "kind": "TOOL",
+      "category": "service",
+      "unit": "PCS",
+      "names": {
+        "en": "Refrigerant manifold gauges",
+        "he": "סט מדי לחץ לגז קירור",
+        "ar": "مانيفولد قياس غاز التبريد"
+      },
+      "tags": [
+        "service"
+      ]
+    }
   ]
 }

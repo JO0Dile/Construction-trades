@@ -62,6 +62,40 @@ with networks:
 **A device identity.** Minted once per installation and kept, because a device
 that gets a new id every launch loses every argument it has already won.
 
+## The rule the server exists to enforce
+
+Sync is not the only reason to want a server. The other one is that **some
+rules cannot be enforced on a phone at all.**
+
+`core/access/Commercial.kt` decides who may be told what a job is worth. On
+one device, running one firm's data, it is a display rule. The moment two
+firms share a job it becomes an access rule, and an access rule that lives in
+the client is not an access rule — anybody can read a response body, and a
+phone in somebody's hand is not a trusted place to keep a secret.
+
+So when the server is built:
+
+* it runs `Commercial.maySeeMoney` on **every** read that carries a figure,
+  keyed on the authenticated organisation, not on a parameter in the request
+* a field the caller may not see is **absent from the response**, not null and
+  not zero
+* `Commercial.margin` is never a stored column. It is the difference between
+  two agreements, and the whole point is that no third party sees both
+
+Concretely, for a second-tier crew:
+
+```json
+{ "agreementId": "a.sub", "money": { "contractSum": 7000 } }
+```
+
+and never `{"mainContractAmount": 10000, "firstTierProfit": 3000, …}` with the
+client hiding the first two. See `docs/COMPLIANCE.md`.
+
+The same applies to `core/work/Assignment.mayMove`. A crew that could POST
+`status: APPROVED` on its own work needs no inspection, whatever the app's
+buttons allow, so the transition table and the side that owns each transition
+are checked server-side on every write.
+
 ## What is not built, and cannot be
 
 - **The transport.** There is nothing to talk to.

@@ -1,0 +1,105 @@
+{
+  "tradeId": "rebar",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.rb.slab",
+      "estimatedDays": 4,
+      "names": {
+        "en": "Suspended slab, formwork and steel",
+        "he": "תקרה — תבניות וברזל",
+        "ar": "سقف — طوبار وحديد"
+      },
+      "descriptions": {
+        "en": "Formwork, propping and reinforcement, with everybody's conduit cast in before the pour.",
+        "he": "תבניות, תמיכות וזיון, עם צנרת כולם מוטמעת לפני היציקה.",
+        "ar": "طوبار ودعامات وحديد، مع مواسير الجميع مدفونة قبل الصبّة."
+      },
+      "materials": [
+        {
+          "itemId": "cn.formwork.panel",
+          "quantity": 120
+        },
+        {
+          "itemId": "cn.formwork.prop",
+          "quantity": 90
+        },
+        {
+          "itemId": "cn.release.agent",
+          "quantity": 25
+        },
+        {
+          "itemId": "rb.bar.ribbed.12",
+          "quantity": 2200
+        },
+        {
+          "itemId": "rb.mesh.welded",
+          "quantity": 120
+        },
+        {
+          "itemId": "rb.spacer.concrete",
+          "quantity": 500
+        },
+        {
+          "itemId": "rb.wire.tying",
+          "quantity": 25
+        },
+        {
+          "itemId": "el.conduit.hdpe.slab",
+          "quantity": 200
+        },
+        {
+          "itemId": "el.box.slab.deep",
+          "quantity": 30
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.rb.st.1",
+          "order": 1,
+          "titles": {
+            "en": "Formwork and props to the design, checked by a competent person",
+            "he": "תבניות ותמוכות לפי התכנון, בבדיקת אדם מוסמך",
+            "ar": "الطوبار والدعامات حسب التصميم، بفحص شخص مؤهل"
+          }
+        },
+        {
+          "id": "tpl.rb.st.2",
+          "order": 2,
+          "titles": {
+            "en": "Bottom steel with spacers under every bar",
+            "he": "ברזל תחתון עם שומרי מרחק מתחת לכל מוט",
+            "ar": "الحديد السفلي مع فواصل تحت كل قضيب"
+          }
+        },
+        {
+          "id": "tpl.rb.st.3",
+          "order": 3,
+          "titles": {
+            "en": "Call in every trade for the aqda — conduit, sleeves and drains",
+            "he": "זימון כל בעלי המקצוע לעקדה — צנרת, שרוולים וניקוז",
+            "ar": "استدعاء كل المهن للعقدة — مواسير وأجربة وتصريف"
+          }
+        },
+        {
+          "id": "tpl.rb.st.4",
+          "order": 4,
+          "titles": {
+            "en": "Top steel, then walk the deck and cap every upstand",
+            "he": "ברזל עליון, ואז מעבר על התקרה וכיסוי כל מוט זקוף",
+            "ar": "الحديد العلوي، ثم المرور على السقف وتغطية كل قضيب قائم"
+          }
+        },
+        {
+          "id": "tpl.rb.st.5",
+          "order": 5,
+          "titles": {
+            "en": "Sign off cover and spacing before the pour is ordered",
+            "he": "אישור כיסוי ומרווחים לפני הזמנת היציקה",
+            "ar": "اعتماد الغطاء والتباعد قبل طلب الصبّة"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -160,6 +160,20 @@ object Migrations {
         }
     }
 
+    /**
+     * The firm's own profile, and the contracting chain above and below it.
+     *
+     * Four tables and eleven columns. The columns give a company something to
+     * publish and a per-field say in who sees it; the tables give a job more
+     * than one firm on it, which is what every tier rule in `core/access` and
+     * `core/work` has been written against.
+     */
+    val MIGRATION_18_19 = object : Migration(18, 19) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_18_19.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -178,6 +192,7 @@ object Migrations {
         MIGRATION_15_16,
         MIGRATION_16_17,
         MIGRATION_17_18,
+        MIGRATION_18_19,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -516,5 +531,72 @@ object Migrations {
             "ON `payment_applications` (`projectId`)",
         "CREATE INDEX IF NOT EXISTS `index_payment_applications_dueOn` " +
             "ON `payment_applications` (`dueOn`)",
+    )
+
+    val SQL_18_19: List<String> = listOf(
+        // The firm's own profile. Nullable throughout: a one-person operation
+        // signing up on a Tuesday should not be stopped at a field they would
+        // have to go and look up.
+        "ALTER TABLE `companies` ADD COLUMN `logoUri` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `email` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `phone` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `website` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `addressLine` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `contractorLicenceNumber` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `contractorClassification` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `licenceExpiresOn` INTEGER",
+        // Empty, not null: every existing firm has published nothing, which
+        // is the only safe reading of a row written before the question existed.
+        "ALTER TABLE `companies` ADD COLUMN `publishedToWorkforce` TEXT NOT NULL DEFAULT ''",
+
+        "CREATE TABLE IF NOT EXISTS `engagements` (`id` TEXT NOT NULL, " +
+            "`projectId` TEXT NOT NULL, `orgId` TEXT NOT NULL, " +
+            "`orgName` TEXT NOT NULL, `party` TEXT NOT NULL, " +
+            "`engagedByOrgId` TEXT, `scopeSummary` TEXT, `startedAt` INTEGER, " +
+            "`endedAt` INTEGER, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_projectId` ON `engagements` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_orgId` ON `engagements` (`orgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_engagedByOrgId` " +
+            "ON `engagements` (`engagedByOrgId`)",
+
+        "CREATE TABLE IF NOT EXISTS `contracts` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`payerOrgId` TEXT NOT NULL, `payeeOrgId` TEXT NOT NULL, " +
+            "`title` TEXT NOT NULL, `amount` REAL NOT NULL, `terms` TEXT NOT NULL, " +
+            "`retentionRate` REAL NOT NULL, `retentionLimit` REAL NOT NULL, " +
+            "`signedAt` INTEGER, `signedByPayerName` TEXT, `signedByPayeeName` TEXT, " +
+            "`disclosedToOrgIds` TEXT NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_projectId` ON `contracts` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_payerOrgId` ON `contracts` (`payerOrgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_payeeOrgId` ON `contracts` (`payeeOrgId`)",
+
+        "CREATE TABLE IF NOT EXISTS `contract_amendments` (`id` TEXT NOT NULL, " +
+            "`contractId` TEXT NOT NULL, `version` INTEGER NOT NULL, " +
+            "`previousAmount` REAL NOT NULL, `newAmount` REAL NOT NULL, " +
+            "`reason` TEXT NOT NULL, `status` TEXT NOT NULL, " +
+            "`proposedByOrgId` TEXT NOT NULL, `proposedByName` TEXT NOT NULL, " +
+            "`proposedAt` INTEGER NOT NULL, `decidedByOrgId` TEXT, " +
+            "`decidedByName` TEXT, `decidedAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_contract_amendments_contractId` " +
+            "ON `contract_amendments` (`contractId`)",
+
+        "CREATE TABLE IF NOT EXISTS `assignments` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`contractId` TEXT, `payerOrgId` TEXT NOT NULL, " +
+            "`payeeOrgId` TEXT NOT NULL, `title` TEXT NOT NULL, `stageId` TEXT, " +
+            "`scopeId` TEXT, `location` TEXT, `amount` REAL NOT NULL, " +
+            "`status` TEXT NOT NULL, `offeredAt` INTEGER, `acceptedAt` INTEGER, " +
+            "`submittedAt` INTEGER, `decidedAt` INTEGER, `decidedByName` TEXT, " +
+            "`rejectionReason` TEXT, `invoicedAt` INTEGER, " +
+            "`createdByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_projectId` ON `assignments` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_contractId` ON `assignments` (`contractId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_payeeOrgId` " +
+            "ON `assignments` (`payeeOrgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_status` ON `assignments` (`status`)",
     )
 }

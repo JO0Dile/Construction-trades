@@ -1,0 +1,219 @@
+{
+  "tradeId": "steelwork",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "sw.beam.ipe",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "KG",
+      "names": {
+        "en": "Steel beam IPE",
+        "he": "קורת פלדה IPE",
+        "ar": "جسر حديد IPE"
+      },
+      "tags": [
+        "structure"
+      ]
+    },
+    {
+      "id": "sw.hollow.section",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "KG",
+      "names": {
+        "en": "Rectangular hollow section",
+        "he": "פרופיל מלבני חלול",
+        "ar": "بروفيل مجوّف مستطيل"
+      },
+      "tags": [
+        "structure"
+      ]
+    },
+    {
+      "id": "sw.plate.base",
+      "kind": "MATERIAL",
+      "category": "reinforcement",
+      "unit": "PCS",
+      "names": {
+        "en": "Base plate",
+        "he": "לוחית בסיס",
+        "ar": "بليتة قاعدة"
+      },
+      "tags": [
+        "structure"
+      ]
+    },
+    {
+      "id": "sw.bolt.hsfg",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "High-strength structural bolt",
+        "he": "בורג מבני בעל חוזק גבוה",
+        "ar": "برغي إنشائي عالي المقاومة"
+      },
+      "attributes": {
+        "grade": "8.8"
+      },
+      "tags": [
+        "fixing"
+      ]
+    },
+    {
+      "id": "sw.deck.metal",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Metal deck sheet",
+        "he": "פח לרצפה משתפת",
+        "ar": "صاج ديك معدني"
+      },
+      "tags": [
+        "structure"
+      ]
+    },
+    {
+      "id": "sw.paint.intumescent",
+      "kind": "MATERIAL",
+      "category": "paint",
+      "unit": "L",
+      "names": {
+        "en": "Intumescent fire paint",
+        "he": "צבע תופח נגד אש",
+        "ar": "دهان منتفخ مقاوم للحريق"
+      },
+      "spec": {
+        "en": "Swells into a char layer in a fire and buys the steel its rated minutes.",
+        "he": "תופח לשכבת פחם בשריפה וקונה לפלדה את הדקות שלה.",
+        "ar": "ينتفخ لطبقة فحمية في الحريق ويكسب الحديد دقائقه المصنّفة."
+      },
+      "tags": [
+        "fire",
+        "protection"
+      ]
+    },
+    {
+      "id": "sw.primer.zinc",
+      "kind": "MATERIAL",
+      "category": "primer",
+      "unit": "L",
+      "names": {
+        "en": "Zinc-rich primer",
+        "he": "יסוד עשיר אבץ",
+        "ar": "برايمر غني بالزنك"
+      },
+      "tags": [
+        "protection"
+      ]
+    },
+    {
+      "id": "sw.tool.welder.mig",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "MIG welder",
+        "he": "מכונת ריתוך MIG",
+        "ar": "ماكينة لحام MIG"
+      },
+      "tags": [
+        "welding"
+      ]
+    },
+    {
+      "id": "sw.tool.welder.stick",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Stick (MMA) welder",
+        "he": "מכונת ריתוך אלקטרודה",
+        "ar": "ماكينة لحام إلكترود"
+      },
+      "tags": [
+        "welding"
+      ]
+    },
+    {
+      "id": "sw.consum.electrode",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "KG",
+      "names": {
+        "en": "Welding electrodes",
+        "he": "אלקטרודות ריתוך",
+        "ar": "إلكترودات لحام"
+      },
+      "tags": [
+        "welding"
+      ]
+    },
+    {
+      "id": "sw.tool.torque.wrench",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Torque wrench",
+        "he": "מפתח מומנט",
+        "ar": "مفتاح عزم"
+      },
+      "tags": [
+        "fixing",
+        "quality"
+      ]
+    },
+    {
+      "id": "sw.tool.mag.drill",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Magnetic base drill",
+        "he": "מקדחה מגנטית",
+        "ar": "دريل بقاعدة مغناطيسية"
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "sw.ppe.welding.mask",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Auto-darkening welding mask",
+        "he": "מסכת ריתוך אוטומטית",
+        "ar": "قناع لحام أوتوماتيكي"
+      },
+      "tags": [
+        "ppe",
+        "welding"
+      ]
+    },
+    {
+      "id": "sw.ppe.fire.blanket",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Welding fire blanket",
+        "he": "שמיכת אש לריתוך",
+        "ar": "بطانية حريق للحام"
+      },
+      "spec": {
+        "en": "Goes under the work before the arc strikes. Hot work permit asks for it by name.",
+        "he": "מונחת מתחת לעבודה לפני הצתת הקשת. היתר עבודה חמה דורש אותה בשמה.",
+        "ar": "تُفرش تحت الشغل قبل إشعال القوس. تصريح الشغل الساخن يطلبها بالاسم."
+      },
+      "tags": [
+        "ppe",
+        "hot-work"
+      ]
+    }
+  ]
+}

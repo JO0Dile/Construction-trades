@@ -726,7 +726,7 @@ The day window is the part worth testing properly, and it needs the clock:
       should be accepted exactly as typed, in any language.
 - [ ] Settings → Trades → **+**. Add a trade the app does not ship, e.g.
       *Roofing*. It appears in the list marked **Yours**, switched on, and only
-      that one has a delete button — the six shipped trades do not.
+      that one has a delete button — the twenty-two shipped trades do not.
 
 **Projects as pictures**
 - [ ] Photograph a floor plan inside a job (Photos → camera or gallery).

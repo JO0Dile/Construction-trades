@@ -1,0 +1,268 @@
+{
+  "tradeId": "tiling",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "tl.tile.porcelain.60x60",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Porcelain tile 60×60",
+        "he": "אריח פורצלן 60×60",
+        "ar": "بلاط بورسلان 60×60"
+      },
+      "tags": [
+        "floor"
+      ]
+    },
+    {
+      "id": "tl.tile.porcelain.120x60",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Porcelain tile 120×60",
+        "he": "אריח פורצלן 120×60",
+        "ar": "بلاط بورسلان 120×60"
+      },
+      "tags": [
+        "floor"
+      ]
+    },
+    {
+      "id": "tl.tile.ceramic.wall",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Ceramic wall tile",
+        "he": "אריח קרמיקה לקיר",
+        "ar": "سيراميك حيطان"
+      },
+      "tags": [
+        "wall"
+      ]
+    },
+    {
+      "id": "tl.tile.mosaic",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Mosaic sheet",
+        "he": "פסיפס",
+        "ar": "فسيفساء (موزاييك)"
+      },
+      "tags": [
+        "wall"
+      ]
+    },
+    {
+      "id": "tl.tile.terrazzo",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Terrazzo tile",
+        "he": "אריח טראצו",
+        "ar": "بلاط تيرازو"
+      },
+      "tags": [
+        "floor"
+      ]
+    },
+    {
+      "id": "tl.adhesive.c2te",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Tile adhesive C2TE",
+        "he": "דבק אריחים C2TE",
+        "ar": "لاصق بلاط C2TE"
+      },
+      "spec": {
+        "en": "C2 = improved cement, T = no slip, E = extended open time. Large-format tile needs all three.",
+        "he": "C2 = מלט משופר, T = ללא החלקה, E = זמן פתוח מוארך. אריח גדול דורש את שלושתם.",
+        "ar": "C2 = إسمنت محسّن، T = بدون انزلاق، E = وقت فتح ممتد. البلاط الكبير يحتاجها كلها."
+      },
+      "attributes": {
+        "class": "C2TE"
+      },
+      "tags": [
+        "adhesive"
+      ]
+    },
+    {
+      "id": "tl.grout.cg2",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Tile grout CG2",
+        "he": "רובה CG2",
+        "ar": "قصارة بلاط CG2"
+      },
+      "tags": [
+        "grout"
+      ]
+    },
+    {
+      "id": "tl.grout.epoxy",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "KG",
+      "names": {
+        "en": "Epoxy grout",
+        "he": "רובה אפוקסי",
+        "ar": "قصارة إيبوكسي"
+      },
+      "tags": [
+        "grout",
+        "wet-area"
+      ]
+    },
+    {
+      "id": "tl.silicone.sanitary",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Sanitary silicone",
+        "he": "סיליקון סניטרי",
+        "ar": "سيليكون صحي"
+      },
+      "tags": [
+        "sealant",
+        "wet-area"
+      ]
+    },
+    {
+      "id": "tl.profile.schluter",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M",
+      "names": {
+        "en": "Tile trim profile",
+        "he": "פרופיל סיום לאריח",
+        "ar": "بروفيل إنهاء البلاط"
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "tl.uncoupling.membrane",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M2",
+      "names": {
+        "en": "Uncoupling membrane",
+        "he": "יריעת ניתוק",
+        "ar": "غشاء فصل الحركة"
+      },
+      "tags": [
+        "substrate"
+      ]
+    },
+    {
+      "id": "tl.levelling.clips",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Levelling clips and wedges",
+        "he": "קליפסים ליישור אריחים",
+        "ar": "مشابك وأسافين تسوية"
+      },
+      "tags": [
+        "setting"
+      ]
+    },
+    {
+      "id": "tl.tool.cutter.manual",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Manual tile cutter",
+        "he": "חותך אריחים ידני",
+        "ar": "قصّاصة بلاط يدوية"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "tl.tool.saw.wet",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Wet tile saw",
+        "he": "מסור אריחים רטוב",
+        "ar": "منشار بلاط مبلّل"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "tl.tool.trowel.notched",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Notched trowel",
+        "he": "כף משוננת",
+        "ar": "مالج مسنّن"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "tl.tool.mixer.paddle",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Mixing drill with paddle",
+        "he": "מערבל עם מוט ערבוב",
+        "ar": "دريل خلط مع ريشة"
+      },
+      "tags": [
+        "mixing"
+      ]
+    },
+    {
+      "id": "tl.tool.suction.cup",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Tile suction cup",
+        "he": "כוס ואקום לאריח",
+        "ar": "كأس شفط بلاط"
+      },
+      "tags": [
+        "handling"
+      ]
+    },
+    {
+      "id": "tl.tool.laser.floor",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Floor laser / level",
+        "he": "לייזר לרצפה",
+        "ar": "ليزر أرضيات"
+      },
+      "tags": [
+        "setting-out"
+      ]
+    }
+  ]
+}

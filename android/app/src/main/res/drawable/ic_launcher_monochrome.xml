@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The themed-icon layer. Android tints this to one flat colour, so it
+     carries the tool silhouette only: a flag rendered in a single tint is a
+     blob, and a blob of the wrong colour is worse than no flag. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path android:fillColor="#FFFFFF" android:pathData="M30,72 L30,64 L62,64 L62,72 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M62,72 L62,64 L78,38 L85,42 L69,68 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,30 A11,11 0 0,0 55,44 L72,61 A5,5 0 0,0 79,54 L62,37 A11,11 0 0,0 48,22 L55,29 L51,37 L43,37 Z" />
+</vector>

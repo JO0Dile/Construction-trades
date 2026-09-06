@@ -361,21 +361,44 @@ Whole categories still at zero, in roughly the order they are worth doing:
 
 | Not started | Lens it will land in |
 | ----------- | -------------------- |
-| Subcontract ledgers | Money |
 | Sync between devices | every lens, one mechanism |
 | Israeli government and accounting integrations | the edge, Phase 5 |
-| Site security, structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
+| Site security, structural, underground, façade, green building, legal, PR, weather, AI | not yet placed |
 
-Since that list was written, ten of its rows have landed and are no longer on
-it: the plant register, purchase orders with goods received, toolbox talks with
-permits to work, one person belonging to several companies, snagging, the
+Since that list was written, twelve of its rows have landed and are no longer
+on it: the plant register, purchase orders with goods received, toolbox talks
+with permits to work, one person belonging to several companies, snagging, the
 concrete half of "concrete and structural", the scaffold register, lifting
-operations, temporary works, and excavations — leaving "underground" on that
-row meaning services diversions and tunnelling rather than trenches.
+operations, temporary works, excavations, subcontract ledgers, and
+commissioning as a stage of work — leaving "underground" on that row meaning
+services diversions and tunnelling rather than trenches.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
 section, another screen — which is what the four phases above were for.
+
+## More than one firm on a job
+
+Everything above was written for a firm running its own work. The multi-tier
+model changes what the app is: a general contractor, the subcontractor it
+engaged, and that subcontractor's crew can all be on the same job in the same
+database, and none of them may see what the others agreed.
+
+Three rules carry it, all in `core/` with tests, all deliberately small:
+
+* **`access/Party`** — what a firm is *on this job*, which is not what it is on
+  the next one. Engagement runs downward only, so the chain stays a chain.
+* **`access/Commercial`** — a commercial figure may be sent only to a party to
+  the contract it belongs to. Everything else is a consequence of that one
+  sentence.
+* **`work/Assignment`** — the lifecycle, with a side that owns each move. Only
+  the crew accepts and submits; only the payer approves and cancels.
+
+The part that is **not** built, and is the reason `docs/SERVER.md` exists: on
+one device these are display rules. The moment two firms share a job they are
+access rules, and an access rule that lives in the client is not an access
+rule. Until there is a server running the same functions, this is a model that
+is correct and unenforced.
 
 ## The 350, honestly
 
@@ -384,8 +407,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 67 | |
-| Buildable here — on the device, no server | 118 | where the work is |
+| Built | 76 | |
+| Buildable here — on the device, no server | 109 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

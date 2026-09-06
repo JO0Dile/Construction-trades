@@ -4072,6 +4072,464 @@
       "en": "Daily logs never signed",
       "he": "יומני עבודה שלא נחתמו",
       "ar": "يوميات عمل لم تُوقَّع"
+    },
+    "about_flag": {
+      "c": "Alt text for the flag in the settings footer",
+      "en": "Flag of Israel",
+      "he": "דגל ישראל",
+      "ar": "علم إسرائيل"
+    },
+    "about_edition": {
+      "c": "Under the app name in the settings footer",
+      "en": "Israel edition — built to Israeli standards, terms and site rules",
+      "he": "מהדורת ישראל — לפי התקנים, תנאי התשלום ונהלי האתר הישראליים",
+      "ar": "إصدار إسرائيل — وفق المواصفات وشروط الدفع وأنظمة المواقع الإسرائيلية"
+    },
+    "wp_title": {
+      "en": "Work packages",
+      "he": "חבילות עבודה",
+      "ar": "حزم العمل"
+    },
+    "wp_empty": {
+      "en": "No work packages on this job yet",
+      "he": "אין עדיין חבילות עבודה בעבודה הזו",
+      "ar": "لا توجد حزم عمل في هذا المشروع بعد"
+    },
+    "wp_new": {
+      "en": "New work package",
+      "he": "חבילת עבודה חדשה",
+      "ar": "حزمة عمل جديدة"
+    },
+    "wp_given": {
+      "en": "Given out",
+      "he": "נמסר",
+      "ar": "مُسند لغيرنا"
+    },
+    "wp_taken": {
+      "en": "Taken on",
+      "he": "התקבל",
+      "ar": "مُسند إلينا"
+    },
+    "wp_amount": {
+      "en": "Agreed amount",
+      "he": "סכום מוסכם",
+      "ar": "المبلغ المتفق عليه"
+    },
+    "wp_stage": {
+      "en": "Stage",
+      "he": "שלב",
+      "ar": "المرحلة"
+    },
+    "wp_scope": {
+      "en": "Scope of work",
+      "he": "תחום עבודה",
+      "ar": "نطاق العمل"
+    },
+    "wp_location": {
+      "en": "Where",
+      "he": "היכן",
+      "ar": "المكان"
+    },
+    "wp_accept": {
+      "en": "Accept",
+      "he": "קבלה",
+      "ar": "قبول"
+    },
+    "wp_decline": {
+      "en": "Decline",
+      "he": "דחייה",
+      "ar": "رفض المهمة"
+    },
+    "wp_start": {
+      "en": "Start work",
+      "he": "התחלת עבודה",
+      "ar": "بدء العمل"
+    },
+    "wp_submit": {
+      "en": "Submit for inspection",
+      "he": "הגשה לבדיקה",
+      "ar": "تقديم للفحص"
+    },
+    "wp_approve": {
+      "en": "Approve",
+      "he": "אישור",
+      "ar": "اعتماد"
+    },
+    "wp_reject": {
+      "en": "Send back",
+      "he": "החזרה לתיקון",
+      "ar": "إرجاع للتصحيح"
+    },
+    "wp_reject_reason": {
+      "en": "What needs correcting",
+      "he": "מה צריך לתקן",
+      "ar": "ما الذي يجب تصحيحه"
+    },
+    "wp_reject_hint": {
+      "en": "A crew sent back with no reason has nothing to fix.",
+      "he": "צוות שמוחזר בלי סיבה לא יודע מה לתקן.",
+      "ar": "الطاقم الذي يُرجع بدون سبب لا يعرف ما الذي يصلحه."
+    },
+    "wp_rejected_because": {
+      "en": "Sent back:",
+      "he": "הוחזר:",
+      "ar": "أُرجع:"
+    },
+    "wp_need_photo": {
+      "en": "Add a photograph before submitting",
+      "he": "יש לצרף תמונה לפני הגשה",
+      "ar": "أضف صورة قبل التقديم"
+    },
+    "wp_need_photo_hint": {
+      "en": "Approval happens in an office days later, by which time the wall is plastered.",
+      "he": "האישור נעשה במשרד ימים אחר כך, כשהקיר כבר מטויח.",
+      "ar": "الاعتماد يتم في المكتب بعد أيام، وعندها يكون الحيط قد لُيّس."
+    },
+    "wp_invoice": {
+      "en": "Raise the application",
+      "he": "הגשת חשבון",
+      "ar": "رفع مطالبة مالية"
+    },
+    "wp_approved_not_paid": {
+      "en": "Approved. Not paid — the application still has to run its terms.",
+      "he": "אושר. לא שולם — החשבון עדיין כפוף לתנאי התשלום.",
+      "ar": "مُعتمد. غير مدفوع — المطالبة ما زالت خاضعة لشروط الدفع."
+    },
+    "wp_status_draft": {
+      "en": "Draft",
+      "he": "טיוטה",
+      "ar": "مسودة"
+    },
+    "wp_status_offered": {
+      "en": "Offered",
+      "he": "הוצע",
+      "ar": "مُقترح"
+    },
+    "wp_status_accepted": {
+      "en": "Accepted",
+      "he": "התקבל",
+      "ar": "مقبول"
+    },
+    "wp_status_declined": {
+      "en": "Declined",
+      "he": "נדחה",
+      "ar": "مرفوض"
+    },
+    "wp_status_progress": {
+      "en": "In progress",
+      "he": "בעבודה",
+      "ar": "قيد التنفيذ"
+    },
+    "wp_status_submitted": {
+      "en": "Awaiting inspection",
+      "he": "ממתין לבדיקה",
+      "ar": "بانتظار الفحص"
+    },
+    "wp_status_rejected": {
+      "en": "Sent back",
+      "he": "הוחזר",
+      "ar": "مُرجع"
+    },
+    "wp_status_approved": {
+      "en": "Approved",
+      "he": "אושר",
+      "ar": "معتمد"
+    },
+    "wp_status_cancelled": {
+      "en": "Cancelled",
+      "he": "בוטל",
+      "ar": "ملغى"
+    },
+    "wp_refused_side": {
+      "en": "Only the other side can do that",
+      "he": "רק הצד השני יכול לעשות זאת",
+      "ar": "الطرف الآخر فقط يستطيع ذلك"
+    },
+    "wp_refused_state": {
+      "en": "Not possible from here",
+      "he": "לא אפשרי מהמצב הזה",
+      "ar": "غير ممكن من هذه الحالة"
+    },
+    "wp_refused_party": {
+      "en": "This is not your agreement",
+      "he": "זה אינו ההסכם שלך",
+      "ar": "هذه ليست اتفاقيتك"
+    },
+    "co_title": {
+      "en": "Company profile",
+      "he": "פרופיל החברה",
+      "ar": "ملف الشركة"
+    },
+    "co_logo": {
+      "en": "Company mark",
+      "he": "סמל החברה",
+      "ar": "شعار الشركة"
+    },
+    "co_name": {
+      "en": "Company name",
+      "he": "שם החברה",
+      "ar": "اسم الشركة"
+    },
+    "co_reg": {
+      "en": "Registration number",
+      "he": "ח.פ. / ע.מ.",
+      "ar": "رقم التسجيل"
+    },
+    "co_email": {
+      "en": "Email",
+      "he": "דוא״ל",
+      "ar": "البريد الإلكتروني"
+    },
+    "co_phone": {
+      "en": "Phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "co_website": {
+      "en": "Website",
+      "he": "אתר",
+      "ar": "الموقع الإلكتروني"
+    },
+    "co_address": {
+      "en": "Address",
+      "he": "כתובת",
+      "ar": "العنوان"
+    },
+    "co_licence": {
+      "en": "Contractor licence number",
+      "he": "מספר רישיון קבלן",
+      "ar": "رقم رخصة المقاول"
+    },
+    "co_classification": {
+      "en": "Classification",
+      "he": "סיווג",
+      "ar": "التصنيف"
+    },
+    "co_licence_expires": {
+      "en": "Licence valid until",
+      "he": "הרישיון בתוקף עד",
+      "ar": "الرخصة سارية حتى"
+    },
+    "co_visible_to_workers": {
+      "en": "Show to the crew",
+      "he": "להציג לצוות",
+      "ar": "إظهار للطاقم"
+    },
+    "co_visible_hint": {
+      "en": "Off means only management sees it. Nothing is published unless you turn it on.",
+      "he": "כבוי פירושו שרק ההנהלה רואה. שום דבר אינו מפורסם עד שתדליק.",
+      "ar": "مطفأ يعني أن الإدارة فقط تراه. لا يُنشر شيء حتى تشغّله."
+    },
+    "co_verified_note": {
+      "en": "Recording a licence marks you verified on this app. It is not a statement that you are licensed to do the work — that is between you and the regulator.",
+      "he": "רישום רישיון מסמן אתכם כמאומתים באפליקציה. אין בכך קביעה שאתם מורשים לבצע את העבודה — זה עניין שבינכם לבין הרגולטור.",
+      "ar": "تسجيل الرخصة يضعك كمُوثّق داخل التطبيق. وهذا ليس إقراراً بأنك مرخّص لتنفيذ العمل — تلك مسألة بينك وبين الجهة المنظِّمة."
+    },
+    "party_client": {
+      "en": "Developer / client",
+      "he": "יזם / מזמין",
+      "ar": "مطوّر / مالك المشروع"
+    },
+    "party_gc": {
+      "en": "General contractor",
+      "he": "קבלן ראשי",
+      "ar": "مقاول عام"
+    },
+    "party_first": {
+      "en": "First-tier subcontractor",
+      "he": "קבלן משנה ראשי",
+      "ar": "مقاول باطن من الدرجة الأولى"
+    },
+    "party_second": {
+      "en": "Crew leader / labour-only",
+      "he": "ראש צוות / קבלן כוח אדם",
+      "ar": "رئيس طاقم / مقاول عمالة"
+    },
+    "party_supplier": {
+      "en": "Supplier",
+      "he": "ספק",
+      "ar": "مورّد"
+    },
+    "party_consultant": {
+      "en": "Consultant / supervisor",
+      "he": "יועץ / מפקח",
+      "ar": "استشاري / مشرف"
+    },
+    "party_title": {
+      "en": "Position on this job",
+      "he": "תפקיד בעבודה הזו",
+      "ar": "الموقع في هذا المشروع"
+    },
+    "party_hint": {
+      "en": "What your firm is on this job, which is not what it is on the next one.",
+      "he": "מה החברה שלכם בעבודה הזו, וזה לא בהכרח מה שהיא בעבודה הבאה.",
+      "ar": "ما هي شركتك في هذا المشروع، وهذا ليس بالضرورة ما هي عليه في المشروع التالي."
+    },
+    "wp_row_hint": {
+      "c": "Subtitle on the project screen link",
+      "en": "What was handed out and what was taken on",
+      "he": "מה נמסר ומה התקבל",
+      "ar": "ما أُسند لغيرنا وما أُسند إلينا"
+    },
+    "eng_title": {
+      "en": "Firms on this job",
+      "he": "חברות בעבודה הזו",
+      "ar": "الشركات في هذا المشروع"
+    },
+    "eng_add": {
+      "en": "Bring a firm onto the job",
+      "he": "הוספת חברה לעבודה",
+      "ar": "إضافة شركة للمشروع"
+    },
+    "eng_name": {
+      "en": "Firm name",
+      "he": "שם החברה",
+      "ar": "اسم الشركة"
+    },
+    "eng_scope": {
+      "en": "What they are here to do",
+      "he": "מה תפקידם",
+      "ar": "ما الذي جاؤوا لعمله"
+    },
+    "eng_refused": {
+      "en": "Your position on this job cannot bring that one on.",
+      "he": "התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.",
+      "ar": "موقعك في هذا المشروع لا يسمح بإضافة هذا الموقع."
+    },
+    "wp_payee": {
+      "en": "Who is doing it",
+      "he": "מי מבצע",
+      "ar": "من سينفّذه"
+    },
+    "wp_title_field": {
+      "en": "What the package is",
+      "he": "מהי החבילה",
+      "ar": "ما هي الحزمة"
+    },
+    "eng_self": {
+      "en": "What is your firm on this job?",
+      "he": "מה החברה שלכם בעבודה הזו?",
+      "ar": "ما هي شركتكم في هذا المشروع؟"
+    },
+    "eng_self_hint": {
+      "en": "Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.",
+      "he": "ענו על כך לפני הכול. אף אחד אחר לא יכול לענות במקומכם, וכל עוד לא עניתם לא תוכלו להוסיף חברה נוספת.",
+      "ar": "أجب على هذا أولاً. لا أحد غيرك يستطيع تحديده، وحتى تُجيب لا تستطيع إضافة شركة أخرى."
+    },
+    "ct_title": {
+      "en": "Contracts",
+      "he": "חוזים",
+      "ar": "العقود"
+    },
+    "ct_empty": {
+      "en": "No contracts on this job yet",
+      "he": "אין עדיין חוזים בעבודה הזו",
+      "ar": "لا توجد عقود في هذا المشروع بعد"
+    },
+    "ct_new": {
+      "en": "New contract",
+      "he": "חוזה חדש",
+      "ar": "عقد جديد"
+    },
+    "ct_row_hint": {
+      "en": "What was agreed, and with whom",
+      "he": "מה סוכם ועם מי",
+      "ar": "ما تم الاتفاق عليه ومع من"
+    },
+    "ct_scope": {
+      "en": "What it covers",
+      "he": "מה הוא כולל",
+      "ar": "ما الذي يغطيه"
+    },
+    "ct_original": {
+      "en": "Original amount",
+      "he": "סכום מקורי",
+      "ar": "المبلغ الأصلي"
+    },
+    "ct_current": {
+      "en": "Amount in force",
+      "he": "הסכום התקף",
+      "ar": "المبلغ الساري"
+    },
+    "ct_receivable": {
+      "en": "You are paid on this",
+      "he": "אתם מקבלים על זה",
+      "ar": "أنتم تُدفعون على هذا"
+    },
+    "ct_payable": {
+      "en": "You pay on this",
+      "he": "אתם משלמים על זה",
+      "ar": "أنتم تدفعون على هذا"
+    },
+    "ct_sign": {
+      "en": "Sign",
+      "he": "חתימה",
+      "ar": "توقيع"
+    },
+    "ct_signed_by": {
+      "en": "Signed by",
+      "he": "נחתם על ידי",
+      "ar": "وقّع عليه"
+    },
+    "ct_unsigned": {
+      "en": "Not signed by both sides yet",
+      "he": "טרם נחתם על ידי שני הצדדים",
+      "ar": "لم يوقّعه الطرفان بعد"
+    },
+    "ct_amend": {
+      "en": "Propose a change",
+      "he": "הצעת שינוי",
+      "ar": "اقتراح تعديل"
+    },
+    "ct_amend_amount": {
+      "en": "New amount",
+      "he": "סכום חדש",
+      "ar": "المبلغ الجديد"
+    },
+    "ct_amend_reason": {
+      "en": "Why",
+      "he": "סיבה",
+      "ar": "السبب"
+    },
+    "ct_amend_reason_hint": {
+      "en": "Somebody will ask in three years why this contract is worth what it is worth, and they were not there.",
+      "he": "בעוד שלוש שנים מישהו ישאל למה החוזה שווה מה שהוא שווה, והוא לא היה שם.",
+      "ar": "بعد ثلاث سنوات سيسأل أحدهم لماذا قيمة هذا العقد هي كذا، وهو لم يكن حاضراً."
+    },
+    "ct_amend_history": {
+      "en": "Every figure this contract has been",
+      "he": "כל סכום שהחוזה היה",
+      "ar": "كل مبلغ كان عليه هذا العقد"
+    },
+    "ct_amend_accept": {
+      "en": "Accept the change",
+      "he": "אישור השינוי",
+      "ar": "قبول التعديل"
+    },
+    "ct_amend_reject": {
+      "en": "Refuse the change",
+      "he": "דחיית השינוי",
+      "ar": "رفض التعديل"
+    },
+    "ct_amend_pending": {
+      "en": "Waiting on the other side",
+      "he": "ממתין לצד השני",
+      "ar": "بانتظار الطرف الآخر"
+    },
+    "ct_amend_yours": {
+      "en": "You proposed this. The other side accepts or refuses it.",
+      "he": "אתם הצעתם זאת. הצד השני מאשר או דוחה.",
+      "ar": "أنتم اقترحتم هذا. الطرف الآخر يقبل أو يرفض."
+    },
+    "ct_margin": {
+      "en": "Your margin on this job",
+      "he": "המרווח שלכם בעבודה הזו",
+      "ar": "هامشكم في هذا المشروع"
+    },
+    "ct_margin_hint": {
+      "en": "What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.",
+      "he": "מה שאתם מקבלים, פחות מה שאתם משלמים. רק אתם רואים זאת — זה לא מופיע במסך של אף אחד אחר.",
+      "ar": "ما تقبضونه ناقص ما تدفعونه. أنتم فقط ترون هذا — لا يظهر على شاشة أي أحد آخر."
     }
   },
   "plurals": {

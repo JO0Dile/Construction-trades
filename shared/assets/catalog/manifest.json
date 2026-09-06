@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": 1,
-  "revisedOn": "2026-09-03",
+  "catalogVersion": 2,
+  "revisedOn": "2026-09-06",
   "sourceNote": {
     "en": "Trade catalogues compiled for the Israeli market. Standard references are pointers for the site file, not a substitute for the published standard.",
     "he": "קטלוגים מקצועיים שנערכו לשוק הישראלי. אזכורי התקנים הם הפניה לתיק האתר ואינם תחליף לתקן המלא.",
@@ -340,6 +340,209 @@
       "templatesFile": "templates/carpentry.json"
     },
     {
+      "id": "earthworks",
+      "icon": "landscape",
+      "colorHex": "#8D6E63",
+      "names": {
+        "en": "Earthworks & demolition",
+        "he": "עבודות עפר והריסה",
+        "ar": "أعمال الحفر والهدم"
+      },
+      "itemsFile": "items/earthworks.json",
+      "safetyFile": "safety/earthworks.json",
+      "templatesFile": "templates/earthworks.json"
+    },
+    {
+      "id": "rebar",
+      "icon": "grid_on",
+      "colorHex": "#795548",
+      "names": {
+        "en": "Rebar & formwork",
+        "he": "ברזל ותבניות",
+        "ar": "حدادة وطوبار"
+      },
+      "itemsFile": "items/rebar.json",
+      "safetyFile": "safety/rebar.json",
+      "templatesFile": "templates/rebar.json"
+    },
+    {
+      "id": "concrete",
+      "icon": "foundation",
+      "colorHex": "#90A4AE",
+      "names": {
+        "en": "Concrete works",
+        "he": "עבודות בטון",
+        "ar": "أعمال الباطون"
+      },
+      "itemsFile": "items/concrete.json",
+      "safetyFile": "safety/concrete.json"
+    },
+    {
+      "id": "steelwork",
+      "icon": "architecture",
+      "colorHex": "#546E7A",
+      "names": {
+        "en": "Structural steel",
+        "he": "קונסטרוקציית פלדה",
+        "ar": "هياكل حديدية"
+      },
+      "itemsFile": "items/steelwork.json",
+      "safetyFile": "safety/steelwork.json"
+    },
+    {
+      "id": "masonry",
+      "icon": "wall",
+      "colorHex": "#A1887F",
+      "names": {
+        "en": "Masonry & blockwork",
+        "he": "בנייה בבלוקים",
+        "ar": "بناء وطوب"
+      },
+      "itemsFile": "items/masonry.json",
+      "safetyFile": "safety/masonry.json",
+      "templatesFile": "templates/masonry.json"
+    },
+    {
+      "id": "elv",
+      "icon": "settings_input_antenna",
+      "colorHex": "#26A69A",
+      "names": {
+        "en": "Low voltage & ELV",
+        "he": "מתח נמוך מאוד",
+        "ar": "التيار الخفيف"
+      },
+      "itemsFile": "items/elv.json",
+      "safetyFile": "safety/elv.json",
+      "templatesFile": "templates/elv.json"
+    },
+    {
+      "id": "waterproofing",
+      "icon": "water_damage",
+      "colorHex": "#0288D1",
+      "names": {
+        "en": "Waterproofing & insulation",
+        "he": "איטום ובידוד",
+        "ar": "عزل مائي وحراري"
+      },
+      "itemsFile": "items/waterproofing.json",
+      "safetyFile": "safety/waterproofing.json",
+      "templatesFile": "templates/waterproofing.json"
+    },
+    {
+      "id": "plastering",
+      "icon": "texture",
+      "colorHex": "#BCAAA4",
+      "names": {
+        "en": "Plastering & screed",
+        "he": "טיח ומדות",
+        "ar": "لياسة ومونة"
+      },
+      "itemsFile": "items/plastering.json",
+      "safetyFile": "safety/plastering.json",
+      "templatesFile": "templates/plastering.json"
+    },
+    {
+      "id": "tiling",
+      "icon": "grid_4x4",
+      "colorHex": "#5D4037",
+      "names": {
+        "en": "Tiling & marble",
+        "he": "ריצוף וחיפוי",
+        "ar": "بلاط ورخام"
+      },
+      "itemsFile": "items/tiling.json",
+      "safetyFile": "safety/tiling.json",
+      "templatesFile": "templates/tiling.json"
+    },
+    {
+      "id": "drywall",
+      "icon": "dashboard",
+      "colorHex": "#9E9E9E",
+      "names": {
+        "en": "Drywall & gypsum",
+        "he": "גבס ותקרות",
+        "ar": "جبصين وأسقف"
+      },
+      "itemsFile": "items/drywall.json",
+      "safetyFile": "safety/drywall.json",
+      "templatesFile": "templates/drywall.json"
+    },
+    {
+      "id": "stonework",
+      "icon": "terrain",
+      "colorHex": "#6D4C41",
+      "names": {
+        "en": "Stonework & cladding",
+        "he": "אבן וחיפוי חזיתות",
+        "ar": "نحاتة وتحجير"
+      },
+      "itemsFile": "items/stonework.json",
+      "safetyFile": "safety/stonework.json",
+      "templatesFile": "templates/stonework.json"
+    },
+    {
+      "id": "aluminium",
+      "icon": "window",
+      "colorHex": "#78909C",
+      "names": {
+        "en": "Aluminium & glazing",
+        "he": "אלומיניום וזיגוג",
+        "ar": "ألمنيوم وزجاج"
+      },
+      "itemsFile": "items/aluminium.json",
+      "safetyFile": "safety/aluminium.json",
+      "templatesFile": "templates/aluminium.json"
+    },
+    {
+      "id": "metalwork",
+      "icon": "handyman",
+      "colorHex": "#607D8B",
+      "names": {
+        "en": "Metalwork & balustrades",
+        "he": "מסגרות ומעקות",
+        "ar": "حدادة ودرابزين"
+      },
+      "itemsFile": "items/metalwork.json",
+      "safetyFile": "safety/metalwork.json"
+    },
+    {
+      "id": "firefighting",
+      "icon": "local_fire_department",
+      "colorHex": "#E53935",
+      "names": {
+        "en": "Firefighting systems",
+        "he": "מערכות כיבוי אש",
+        "ar": "أنظمة إطفاء الحريق"
+      },
+      "itemsFile": "items/firefighting.json",
+      "safetyFile": "safety/firefighting.json",
+      "templatesFile": "templates/firefighting.json"
+    },
+    {
+      "id": "elevators",
+      "icon": "elevator",
+      "colorHex": "#455A64",
+      "names": {
+        "en": "Elevators & escalators",
+        "he": "מעליות ודרגנועים",
+        "ar": "مصاعد ودرجات متحركة"
+      },
+      "itemsFile": "items/elevators.json",
+      "safetyFile": "safety/elevators.json"
+    },
+    {
+      "id": "landscape",
+      "icon": "park",
+      "colorHex": "#7CB342",
+      "names": {
+        "en": "Landscape & paving",
+        "he": "פיתוח וריצוף חוץ",
+        "ar": "تنسيق وتبليط خارجي"
+      },
+      "itemsFile": "items/landscape.json",
+      "safetyFile": "safety/landscape.json"
+    },
+    {
       "id": "general",
       "icon": "construction",
       "colorHex": "#7F8C8D",
@@ -352,5 +555,6 @@
       "safetyFile": "safety/general.json",
       "templatesFile": "templates/general.json"
     }
-  ]
+  ],
+  "scopesFile": "scopes.json"
 }

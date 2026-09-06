@@ -1,0 +1,155 @@
+{
+  "tradeId": "firefighting",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "ff.pipe.steel.sch40",
+      "kind": "MATERIAL",
+      "category": "pipes",
+      "unit": "M",
+      "names": {
+        "en": "Black steel pipe SCH40",
+        "he": "צינור פלדה שחור SCH40",
+        "ar": "ماسورة حديد أسود SCH40"
+      },
+      "tags": [
+        "sprinkler"
+      ]
+    },
+    {
+      "id": "ff.sprinkler.pendent",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Pendent sprinkler head",
+        "he": "ראש ספרינקלר תלוי",
+        "ar": "رشّاش معلّق"
+      },
+      "tags": [
+        "sprinkler"
+      ]
+    },
+    {
+      "id": "ff.sprinkler.upright",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Upright sprinkler head",
+        "he": "ראש ספרינקלר זקוף",
+        "ar": "رشّاش قائم"
+      },
+      "tags": [
+        "sprinkler"
+      ]
+    },
+    {
+      "id": "ff.valve.alarm",
+      "kind": "MATERIAL",
+      "category": "valves",
+      "unit": "PCS",
+      "names": {
+        "en": "Alarm check valve",
+        "he": "שסתום התראה",
+        "ar": "محبس إنذار"
+      },
+      "tags": [
+        "sprinkler"
+      ]
+    },
+    {
+      "id": "ff.hose.reel",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Fire hose reel",
+        "he": "גלגלון כיבוי",
+        "ar": "بكرة خرطوم حريق"
+      },
+      "tags": [
+        "hose"
+      ]
+    },
+    {
+      "id": "ff.cabinet.hydrant",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Fire hydrant cabinet",
+        "he": "ארון הידרנט",
+        "ar": "خزانة حريق"
+      },
+      "tags": [
+        "hydrant"
+      ]
+    },
+    {
+      "id": "ff.extinguisher.6kg",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Dry powder extinguisher 6 kg",
+        "he": "מטף אבקה 6 ק״ג",
+        "ar": "طفاية بودرة 6 كغم"
+      },
+      "attributes": {
+        "massKg": "6"
+      },
+      "tags": [
+        "extinguisher"
+      ]
+    },
+    {
+      "id": "ff.pump.jockey",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Jockey pump",
+        "he": "משאבת ג׳וקי",
+        "ar": "مضخة جوكي"
+      },
+      "tags": [
+        "pump"
+      ]
+    },
+    {
+      "id": "ff.tool.groove.roller",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Pipe grooving machine",
+        "he": "מכונת חריצה לצינור",
+        "ar": "ماكينة تخديد المواسير"
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "ff.tool.pressure.test",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Hydrostatic test pump",
+        "he": "משאבת בדיקת לחץ",
+        "ar": "مضخة فحص ضغط"
+      },
+      "spec": {
+        "en": "Two hours at the test pressure with no drop. Signed off before the ceiling closes.",
+        "he": "שעתיים בלחץ בדיקה בלי ירידה. נחתם לפני סגירת התקרה.",
+        "ar": "ساعتان على ضغط الفحص دون هبوط. يُعتمد قبل إغلاق السقف."
+      },
+      "tags": [
+        "testing",
+        "commissioning"
+      ]
+    }
+  ]
+}

@@ -102,6 +102,7 @@ fun ProjectDetailScreen(
     onOpenTemporaryWorks: () -> Unit,
     onOpenExcavations: () -> Unit,
     onOpenHandover: () -> Unit,
+    onOpenWorkPackages: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -146,6 +147,11 @@ fun ProjectDetailScreen(
     // links are a list now: rendered from it, counted from it, so adding a row
     // is one entry and the arithmetic follows on its own.
     val links = buildList {
+        // Work packages sit under Plan: they are what has been agreed will
+        // happen, before anything has. Above the registers because on a job
+        // with more than one firm this is the first screen a crew leader
+        // opens in the morning.
+        if (canSeePlan) add(JobLink(R.string.wp_title, R.string.wp_row_hint, onOpenWorkPackages))
         // The day's log lives beside the money for the same reason: too much
         // to inline, too important to bury in a menu.
         if (canSeeEvidence) add(JobLink(R.string.log_title, R.string.log_notes_hint, onOpenDailyLog))

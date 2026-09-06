@@ -1,0 +1,102 @@
+{
+  "tradeId": "stonework",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.st.facade",
+      "estimatedDays": 6,
+      "names": {
+        "en": "Stone cladding, one elevation",
+        "he": "חיפוי אבן לחזית אחת",
+        "ar": "تحجير واجهة واحدة"
+      },
+      "descriptions": {
+        "en": "Mechanically anchored stone with a pointed joint, sealed after the mortar has cured.",
+        "he": "אבן מעוגנת מכנית עם מישק, אטומה לאחר התקשות הטיט.",
+        "ar": "حجر مثبّت ميكانيكياً بفاصل مقصور، يُغلق بعد شدّ المونة."
+      },
+      "materials": [
+        {
+          "itemId": "st.stone.tobzeh",
+          "quantity": 90
+        },
+        {
+          "itemId": "st.anchor.stainless",
+          "quantity": 360
+        },
+        {
+          "itemId": "st.mortar.stone",
+          "quantity": 40
+        },
+        {
+          "itemId": "st.grout.stone",
+          "quantity": 18
+        },
+        {
+          "itemId": "st.sealer.stone",
+          "quantity": 20
+        },
+        {
+          "itemId": "st.tool.blade.diamond",
+          "quantity": 6
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.st.ft.1",
+          "order": 1,
+          "titles": {
+            "en": "Survey the wall — stone hides nothing, it follows what is behind it",
+            "he": "מדידת הקיר — אבן אינה מסתירה דבר, היא הולכת אחרי מה שמאחוריה",
+            "ar": "مسح الحائط — الحجر لا يخفي شيئاً، يتبع ما خلفه"
+          }
+        },
+        {
+          "id": "tpl.st.ft.2",
+          "order": 2,
+          "titles": {
+            "en": "Set out courses from the openings, not from the ground",
+            "he": "סימון נדבכים מהפתחים, לא מהקרקע",
+            "ar": "تعليم المداميك من الفتحات، لا من الأرض"
+          }
+        },
+        {
+          "id": "tpl.st.ft.3",
+          "order": 3,
+          "titles": {
+            "en": "Drill and fix anchors to the engineer's spacing",
+            "he": "קדיחה וקיבוע עוגנים במרווחים שקבע המהנדס",
+            "ar": "ثقب وتثبيت المثبّتات بالمسافات التي حدّدها المهندس"
+          }
+        },
+        {
+          "id": "tpl.st.ft.4",
+          "order": 4,
+          "titles": {
+            "en": "Hang stone, checking plumb every course",
+            "he": "תליית אבן ובדיקת אנך בכל נדבך",
+            "ar": "تعليق الحجر وفحص الشاقول كل مدماك"
+          }
+        },
+        {
+          "id": "tpl.st.ft.5",
+          "order": 5,
+          "titles": {
+            "en": "Point the joints once the anchors have taken the load",
+            "he": "מילוי מישקים לאחר שהעוגנים נושאים את העומס",
+            "ar": "قصر الفواصل بعد أن تحمل المثبّتات الوزن"
+          }
+        },
+        {
+          "id": "tpl.st.ft.6",
+          "order": 6,
+          "titles": {
+            "en": "Seal, and only once the wall is dry through",
+            "he": "אטימה, ורק כשהקיר יבש לעומק",
+            "ar": "الإغلاق، وفقط عندما يجفّ الحائط للعمق"
+          }
+        }
+      ]
+    }
+  ]
+}

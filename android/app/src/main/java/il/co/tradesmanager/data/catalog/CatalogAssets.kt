@@ -35,6 +35,12 @@ data class CatalogManifest(
      */
     val certificationKinds: List<ProjectKind> = emptyList(),
     val trades: List<CatalogTrade> = emptyList(),
+    /**
+     * Where the work breakdown lives — stages, phases and scopes of work.
+     * A separate file because it is read by every lens, not just the stock
+     * list, and because it changes on a different clock from the trades.
+     */
+    val scopesFile: String? = null,
 )
 
 @Serializable
@@ -124,4 +130,55 @@ data class TemplateTaskDto(
     val id: String,
     @SerialName("order") val sortOrder: Int = 0,
     val titles: LocalizedText,
+)
+
+/**
+ * The work breakdown: what part of a job a task belongs to.
+ *
+ * Two dimensions, and they are not the same one. A [WorkStage] is *when* —
+ * how far up the building has got, from the frame to the handover. A
+ * [WorkScope] is *what* — the trade operation being carried out. "Electrical,
+ * third floor" is not a job; it is four jobs a month apart, each with its own
+ * crew, its own price and its own inspection, and a system that cannot say
+ * which one is being paid for cannot say anything useful about the money.
+ */
+@Serializable
+data class ScopeFile(
+    val schemaVersion: Int,
+    val catalogVersion: Int,
+    val note: String = "",
+    val stages: List<WorkStage> = emptyList(),
+    val phases: List<WorkPhase> = emptyList(),
+    val scopes: List<WorkScope> = emptyList(),
+)
+
+@Serializable
+data class WorkStage(
+    val id: String,
+    val names: LocalizedText,
+    /**
+     * What the crew calls it, which is frequently not what the contract calls
+     * it. Searching for "الشغل الأسود" has to find the rough-in stage, and
+     * "العقدة" has to find the slab conduit one, or the search is decoration.
+     */
+    val colloquial: LocalizedText = emptyMap(),
+    val descriptions: LocalizedText = emptyMap(),
+)
+
+@Serializable
+data class WorkPhase(
+    val id: String,
+    val names: LocalizedText,
+)
+
+@Serializable
+data class WorkScope(
+    val id: String,
+    val phaseId: String,
+    val stageId: String,
+    /** The trade that usually carries it. A suggestion, never a restriction. */
+    val tradeId: String = "",
+    val names: LocalizedText,
+    val colloquial: LocalizedText = emptyMap(),
+    val descriptions: LocalizedText = emptyMap(),
 )

@@ -25,12 +25,12 @@ shared/assets/catalog/images/
 To see every id that still has no picture, grouped by trade:
 
 ```bash
-python3 tools/image-coverage.py           # 0 of 178 today
+python3 tools/image-coverage.py           # 0 of 497 today
 python3 tools/image-coverage.py --ids     # just the ids, one per line
 ```
 
 If your files are named after the things rather than the ids — `RCD 40A.jpg`,
-`צינור פקס 16.png` — don't rename 178 files by hand:
+`צינור פקס 16.png` — don't rename 497 files by hand:
 
 ```bash
 python3 tools/prepare-images.py ~/photos --dry-run   # see what it would match
@@ -42,8 +42,10 @@ converts to WebP at 512×512, and **lists what it could not match rather than
 guessing**. Anything on that list needs renaming by hand or is an item we do
 not have.
 
-Target about 40–60 KB each; 178 of them is then roughly 8 MB, which the app can
-carry without thinking about it.
+Target about 40–60 KB each; 497 of them is then roughly 25 MB. That is more
+than the app used to carry and worth a decision rather than a shrug: either
+ship the lot, or ship the trades most customers switch on and let the rest
+come down with a catalogue refresh.
 
 **One thing to be careful about:** a photograph from a supplier's catalogue or
 website is their copyright, and shipping it inside an app is redistribution. If

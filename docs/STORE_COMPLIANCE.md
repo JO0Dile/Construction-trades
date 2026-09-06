@@ -180,5 +180,11 @@ Then, by hand:
 - [ ] Fill in the Play Data safety form and the App Store privacy answers from
       section 2 and 3 above, not from memory.
 - [ ] Check the privacy policy and terms are reachable and translated.
+      Drafts are in `legal/`: `PRIVACY.md`, `TERMS.md`, `ACCESSIBILITY.md`.
+      Both stores want a **URL**, not a file, so they have to be published
+      somewhere before submission — GitHub Pages off this repository is
+      enough. All three are marked as needing a lawyer's review, and the
+      accessibility statement needs an audit and a named contact, which is
+      deliberately left blank rather than invented.
 - [ ] Re-read the two **verify** items: Play's current `targetSdk` minimum and
       Apple's current 4.8 and 3.1.1 wording.

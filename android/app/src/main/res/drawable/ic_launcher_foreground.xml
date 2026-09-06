@@ -23,4 +23,18 @@
     <path
         android:fillColor="#E0E4E8"
         android:pathData="M40,30 A11,11 0 0,0 55,44 L72,61 A5,5 0 0,0 79,54 L62,37 A11,11 0 0,0 48,22 L55,29 L51,37 L43,37 Z" />
+
+    <!-- The flag, along the bottom.
+
+         Sized to survive the mask. A circular launcher shows only the centre
+         66 of this 108 viewport, so every point below is inside a radius of
+         33 from (54,54): the far corners (43,84) and (65,84) sit at 31.95,
+         and the star at radius 4 from (54,78) is nowhere near an edge. Put it
+         in the corner where it looks best on a desk and half of it is gone on
+         a Pixel. -->
+    <path android:fillColor="#FFFFFF" android:pathData="M43,72h22v12h-22z" />
+    <path android:fillColor="#0038B8" android:pathData="M43,72h22v1.5h-22z" />
+    <path android:fillColor="#0038B8" android:pathData="M43,82.5h22v1.5h-22z" />
+    <path android:fillColor="#0038B8" android:pathData="M54,74 L57.46,80 L50.54,80 Z" />
+    <path android:fillColor="#0038B8" android:pathData="M54,82 L50.54,76 L57.46,76 Z" />
 </vector>

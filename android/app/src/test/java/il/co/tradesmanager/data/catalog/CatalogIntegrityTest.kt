@@ -60,19 +60,83 @@ class CatalogIntegrityTest {
     }
 
     @Test
-    fun `every catalogue item is named and specified in all shipped languages`() {
+    fun `every catalogue item is named in all shipped languages`() {
         val missing = manifest.trades.flatMap { trade ->
             json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items.flatMap { item ->
-                languages.mapNotNull { lang ->
-                    when {
-                        item.names[lang].isNullOrBlank() -> "${item.id}: missing $lang name"
-                        item.spec[lang].isNullOrBlank() -> "${item.id}: missing $lang spec"
-                        else -> null
-                    }
-                }
+                languages.filter { item.names[it].isNullOrBlank() }
+                    .map { "${item.id}: missing $it name" }
             }
         }
         assertEquals(emptyList<String>(), missing)
+    }
+
+    /**
+     * A spec is optional — "Side cutters" needs no sentence explaining it, and
+     * inventing one in three languages produces filler rather than help. What
+     * is not optional is finishing the job: an item with an English spec and
+     * no Hebrew one reads as half-translated on the phone it matters on.
+     */
+    @Test
+    fun `an item with a spec has it in every shipped language`() {
+        val partial = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .filter { item -> item.spec.values.any { it.isNotBlank() } }
+                .flatMap { item ->
+                    languages.filter { item.spec[it].isNullOrBlank() }
+                        .map { "${item.id}: missing $it spec" }
+                }
+        }
+        assertEquals(emptyList<String>(), partial)
+    }
+
+    @Test
+    fun `the work breakdown is complete and its references resolve`() {
+        val path = manifest.scopesFile
+        assertTrue("the manifest names no scopes file", path != null)
+        val doc = json.decodeFromString<ScopeFile>(read(path!!))
+
+        assertTrue("no stages", doc.stages.isNotEmpty())
+        assertTrue("no scopes", doc.scopes.isNotEmpty())
+
+        val missing = (
+            doc.stages.flatMap { stage ->
+                languages.filter { stage.names[it].isNullOrBlank() }
+                    .map { "stage ${stage.id}: missing $it" }
+            } + doc.phases.flatMap { phase ->
+                languages.filter { phase.names[it].isNullOrBlank() }
+                    .map { "phase ${phase.id}: missing $it" }
+            } + doc.scopes.flatMap { scope ->
+                languages.filter { scope.names[it].isNullOrBlank() }
+                    .map { "scope ${scope.id}: missing $it" }
+            }
+            )
+        assertEquals(
+            "an untranslated scope is a task nobody on a mixed site can read",
+            emptyList<String>(),
+            missing,
+        )
+
+        val stageIds = doc.stages.map { it.id }.toSet()
+        val phaseIds = doc.phases.map { it.id }.toSet()
+        val tradeIds = manifest.trades.map { it.id }.toSet()
+        val dangling = doc.scopes.flatMap { scope ->
+            listOfNotNull(
+                "${scope.id} -> stage ${scope.stageId}".takeIf { scope.stageId !in stageIds },
+                "${scope.id} -> phase ${scope.phaseId}".takeIf { scope.phaseId !in phaseIds },
+                "${scope.id} -> trade ${scope.tradeId}".takeIf {
+                    scope.tradeId.isNotEmpty() && scope.tradeId !in tradeIds
+                },
+            )
+        }
+        assertEquals(
+            "a scope pointing at a stage, phase or trade that does not exist " +
+                "cannot be filtered, priced or assigned",
+            emptyList<String>(),
+            dangling,
+        )
+
+        val duplicates = doc.scopes.groupBy { it.id }.filterValues { it.size > 1 }.keys
+        assertEquals(emptySet<String>(), duplicates)
     }
 
     @Test
@@ -86,6 +150,44 @@ class CatalogIntegrityTest {
             emptySet<String>(),
             duplicates,
         )
+    }
+
+    /**
+     * The id prefix is a per-trade namespace, and the databases already
+     * installed on phones are keyed on it. Two trades reaching into the same
+     * prefix is how one trade's edit silently renames another's item.
+     */
+    @Test
+    fun `each id prefix belongs to exactly one trade`() {
+        val owners = mutableMapOf<String, MutableSet<String>>()
+        manifest.trades.forEach { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items.forEach { item ->
+                owners.getOrPut(item.id.substringBefore('.')) { mutableSetOf() } += trade.id
+            }
+        }
+        assertEquals(
+            emptyMap<String, Set<String>>(),
+            owners.filterValues { it.size > 1 },
+        )
+    }
+
+    /**
+     * Across trades a shared tool is fine — an HVAC engineer stocks their own
+     * clamp meter, and each trade's list has to stand alone. Twice within one
+     * trade is a stock list that shows the same thing twice and counts it
+     * twice.
+     */
+    @Test
+    fun `no trade lists the same thing twice`() {
+        val repeated = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .groupingBy { it.names["en"].orEmpty().lowercase() }
+                .eachCount()
+                .filterValues { it > 1 }
+                .keys
+                .map { "${trade.id}: $it" }
+        }
+        assertEquals(emptyList<String>(), repeated)
     }
 
     @Test

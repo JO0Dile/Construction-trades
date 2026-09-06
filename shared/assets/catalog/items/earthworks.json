@@ -1,0 +1,163 @@
+{
+  "tradeId": "earthworks",
+  "catalogVersion": 2,
+  "items": [
+    {
+      "id": "ew.aggregate.base",
+      "kind": "MATERIAL",
+      "category": "aggregates",
+      "unit": "M3",
+      "names": {
+        "en": "Crushed base course",
+        "he": "מצע סוג א׳",
+        "ar": "بيسة أساس مكسّرة"
+      },
+      "tags": [
+        "subbase"
+      ]
+    },
+    {
+      "id": "ew.sand.fill",
+      "kind": "MATERIAL",
+      "category": "aggregates",
+      "unit": "M3",
+      "names": {
+        "en": "Fill sand",
+        "he": "חול מילוי",
+        "ar": "رمل ردم"
+      },
+      "tags": [
+        "fill"
+      ]
+    },
+    {
+      "id": "ew.geotextile",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M2",
+      "names": {
+        "en": "Geotextile separation fabric",
+        "he": "בד גיאוטכני",
+        "ar": "قماش جيوتكستايل"
+      },
+      "tags": [
+        "separation"
+      ]
+    },
+    {
+      "id": "ew.pipe.drain.perf",
+      "kind": "MATERIAL",
+      "category": "drainage",
+      "unit": "M",
+      "names": {
+        "en": "Perforated drainage pipe",
+        "he": "צינור ניקוז מחורר",
+        "ar": "ماسورة تصريف مثقّبة"
+      },
+      "tags": [
+        "drainage"
+      ]
+    },
+    {
+      "id": "ew.shoring.trench.box",
+      "kind": "MATERIAL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Trench shoring box",
+        "he": "תיבת דיפון לתעלה",
+        "ar": "صندوق تدعيم الخندق"
+      },
+      "spec": {
+        "en": "A trench over 1.2 m deep is a grave without one. Israeli safety regulations are explicit.",
+        "he": "תעלה עמוקה מ־1.2 מ׳ היא קבר בלעדיה. תקנות הבטיחות מפורשות.",
+        "ar": "خندق أعمق من 1.2 م هو قبر بدونه. أنظمة السلامة صريحة بهذا."
+      },
+      "attributes": {
+        "depthTriggerM": "1.2"
+      },
+      "tags": [
+        "shoring",
+        "safety",
+        "excavation"
+      ]
+    },
+    {
+      "id": "ew.plate.road",
+      "kind": "MATERIAL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Road plate",
+        "he": "לוח פלדה לכביש",
+        "ar": "بليتة طريق"
+      },
+      "tags": [
+        "temporary-works"
+      ]
+    },
+    {
+      "id": "ew.tool.compactor.plate",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Plate compactor",
+        "he": "מהדק פלטה",
+        "ar": "دكّاكة صفيحة"
+      },
+      "tags": [
+        "compaction"
+      ]
+    },
+    {
+      "id": "ew.tool.compactor.rammer",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Trench rammer",
+        "he": "מהדק תעלות",
+        "ar": "دكّاكة خنادق (ضفدع)"
+      },
+      "tags": [
+        "compaction"
+      ]
+    },
+    {
+      "id": "ew.tool.level.rotary",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Rotary laser and staff",
+        "he": "לייזר סיבובי ומוט",
+        "ar": "ليزر دوّار مع مسطرة"
+      },
+      "tags": [
+        "setting-out"
+      ]
+    },
+    {
+      "id": "ew.tool.cat.genny",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Cable avoidance tool (CAT & genny)",
+        "he": "גלאי תשתיות תת־קרקעיות",
+        "ar": "جهاز كشف الخدمات تحت الأرض"
+      },
+      "spec": {
+        "en": "Scanned before any dig. Hitting a live cable or a gas main is how excavation kills.",
+        "he": "סורקים לפני כל חפירה. פגיעה בכבל חי או בקו גז היא הדרך שבה חפירה הורגת.",
+        "ar": "يُمسح قبل أي حفر. ضرب كابل حيّ أو خط غاز هو كيف يقتل الحفر."
+      },
+      "tags": [
+        "safety",
+        "excavation",
+        "survey"
+      ]
+    }
+  ]
+}

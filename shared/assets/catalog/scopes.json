@@ -1,0 +1,779 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": 2,
+  "note": "Work breakdown for an Israeli construction job. Two dimensions: the stage a job passes through, and the scope of work being done. A task carries both, so 'electrical' on the third floor is not one job but four — slab conduit, rough-in, trim-out, and commissioning — each with its own crew, its own money, and its own inspection.",
+  "stages": [
+    {
+      "id": "civil",
+      "names": {
+        "en": "Civil / structural",
+        "he": "שלב שלד",
+        "ar": "المرحلة الإنشائية / العظم"
+      },
+      "colloquial": {
+        "ar": "شغل العظم"
+      },
+      "descriptions": {
+        "en": "Ground, foundations, frame and slabs. Nothing hidden in a wall yet."
+      }
+    },
+    {
+      "id": "slab",
+      "names": {
+        "en": "Slab conduit (העקדה)",
+        "he": "צנרת ביציקה",
+        "ar": "التأسيس داخل الصبة (العقدة)"
+      },
+      "colloquial": {
+        "ar": "العقدة / تأسيس الصبة"
+      },
+      "descriptions": {
+        "en": "Services buried in the slab before it is cast. Missing it means chasing the whole building later."
+      }
+    },
+    {
+      "id": "rough-in",
+      "names": {
+        "en": "Rough-in / first fix",
+        "he": "גס / שלב ראשון",
+        "ar": "التأسيس (الشغل الأسود)"
+      },
+      "colloquial": {
+        "ar": "الشغل الأسود"
+      },
+      "descriptions": {
+        "en": "Chasing, boxes, conduit and pipe inside walls, before plaster."
+      }
+    },
+    {
+      "id": "second-fix",
+      "names": {
+        "en": "Finish / second fix",
+        "he": "גמר / שלב שני",
+        "ar": "التشطيب (الشغل الأبيض)"
+      },
+      "colloquial": {
+        "ar": "الشغل الأبيض / النظيف"
+      },
+      "descriptions": {
+        "en": "Everything that is seen and touched: fixtures, plates, trim, sanitaryware."
+      }
+    },
+    {
+      "id": "commissioning",
+      "names": {
+        "en": "Testing & commissioning",
+        "he": "בדיקות והרצה",
+        "ar": "الفحص والتشغيل"
+      },
+      "colloquial": {
+        "ar": "الفحص والتشغيل"
+      },
+      "descriptions": {
+        "en": "Proving the installation works and is safe before anybody relies on it."
+      }
+    },
+    {
+      "id": "handover",
+      "names": {
+        "en": "Handover & snagging",
+        "he": "מסירה וליקויים",
+        "ar": "التسليم ومعالجة الملاحظات"
+      },
+      "colloquial": {
+        "ar": "التسليم والملاحظات"
+      },
+      "descriptions": {
+        "en": "Walking the job with the client, listing what is wrong, closing it out."
+      }
+    }
+  ],
+  "phases": [
+    {
+      "id": "site-civil",
+      "names": {
+        "en": "Site preparation & civil",
+        "he": "הכשרת אתר ועבודות עפר",
+        "ar": "تجهيز الموقع والأعمال المدنية"
+      }
+    },
+    {
+      "id": "structural",
+      "names": {
+        "en": "Structural (core & shell)",
+        "he": "שלד",
+        "ar": "أعمال العظم والهيكل الإنشائي"
+      }
+    },
+    {
+      "id": "electrical",
+      "names": {
+        "en": "Electrical trades",
+        "he": "עבודות חשמל",
+        "ar": "أعمال الحرفة الكهربائية"
+      }
+    },
+    {
+      "id": "plumbing",
+      "names": {
+        "en": "Plumbing & drainage",
+        "he": "אינסטלציה וניקוז",
+        "ar": "أعمال السباكة والصرف الصحي"
+      }
+    },
+    {
+      "id": "hvac",
+      "names": {
+        "en": "HVAC & ventilation",
+        "he": "מיזוג אוויר ואוורור",
+        "ar": "أعمال التكييف والتهوية"
+      }
+    },
+    {
+      "id": "waterproofing",
+      "names": {
+        "en": "Waterproofing & insulation",
+        "he": "איטום ובידוד",
+        "ar": "أعمال العزل المائي والحراري"
+      }
+    },
+    {
+      "id": "finishing",
+      "names": {
+        "en": "Architectural finishing",
+        "he": "גמר אדריכלי",
+        "ar": "أعمال التشطيبات المعمارية والداخلية"
+      }
+    },
+    {
+      "id": "openings",
+      "names": {
+        "en": "Doors, windows & fit-out",
+        "he": "פתחים ונגרות",
+        "ar": "النجارة والألومنيوم والزجاج"
+      }
+    },
+    {
+      "id": "specialist",
+      "names": {
+        "en": "Specialist systems & utilities",
+        "he": "מערכות מיוחדות ותשתיות",
+        "ar": "الأنظمة الخاصة وشبكات البنية التحتية"
+      }
+    }
+  ],
+  "scopes": [
+    {
+      "id": "demolition",
+      "phaseId": "site-civil",
+      "stageId": "civil",
+      "tradeId": "earthworks",
+      "names": {
+        "en": "Demolition",
+        "he": "הריסה",
+        "ar": "أعمال الهدم"
+      },
+      "colloquial": {
+        "ar": "الهدد / الإزالة"
+      },
+      "descriptions": {
+        "en": "Tearing down existing structures, clearing debris, and preparing bare ground."
+      }
+    },
+    {
+      "id": "earthworks",
+      "phaseId": "site-civil",
+      "stageId": "civil",
+      "tradeId": "earthworks",
+      "names": {
+        "en": "Excavation & Earthworks",
+        "he": "חפירה ועבודות עפר",
+        "ar": "أعمال الحفر والردم"
+      },
+      "colloquial": {
+        "ar": "الحفر والدك"
+      },
+      "descriptions": {
+        "en": "Digging trenches, moving soil, leveling the ground, and compacting the base dirt."
+      }
+    },
+    {
+      "id": "shoring",
+      "phaseId": "site-civil",
+      "stageId": "civil",
+      "tradeId": "earthworks",
+      "names": {
+        "en": "Shoring & Dewatering",
+        "he": "דיפון וניקוז מי תהום",
+        "ar": "أعمال السند ونزح المياه"
+      },
+      "colloquial": {
+        "ar": "تدعيم الجوانب وسحب الموية"
+      },
+      "descriptions": {
+        "en": "Supporting deep excavation walls to prevent collapse and pumping out groundwater."
+      }
+    },
+    {
+      "id": "piling",
+      "phaseId": "site-civil",
+      "stageId": "civil",
+      "tradeId": "earthworks",
+      "names": {
+        "en": "Piling & Deep Foundations",
+        "he": "כלונסאות וביסוס עמוק",
+        "ar": "أعمال الخوازيق والأساسات العميقة"
+      },
+      "colloquial": {
+        "ar": "الخوازيق / الجسات"
+      },
+      "descriptions": {
+        "en": "Drilling and pouring heavy concrete deep piles for skyscrapers or weak soil layouts."
+      }
+    },
+    {
+      "id": "formwork-rebar",
+      "phaseId": "structural",
+      "stageId": "civil",
+      "tradeId": "rebar",
+      "names": {
+        "en": "Formwork & Rebar Framework",
+        "he": "תבניות וברזל זיון",
+        "ar": "أعمال النجارة والحدادة المسلحة"
+      },
+      "colloquial": {
+        "ar": "شد خشب وتمليح حديد"
+      },
+      "descriptions": {
+        "en": "Building wooden/metal molds and tying steel rebar reinforcement before pouring concrete."
+      }
+    },
+    {
+      "id": "concrete-pour",
+      "phaseId": "structural",
+      "stageId": "civil",
+      "tradeId": "concrete",
+      "names": {
+        "en": "Concrete Pouring & Casting",
+        "he": "יציקת בטון",
+        "ar": "صب الخرسانة (القواعد، الأعمدة، الأسقف)"
+      },
+      "colloquial": {
+        "ar": "صبة الخرسانة / الريديمكس"
+      },
+      "descriptions": {
+        "en": "Pouring ready-mix concrete into foundations, columns, beams, and overhead floor slabs."
+      }
+    },
+    {
+      "id": "precast",
+      "phaseId": "structural",
+      "stageId": "civil",
+      "tradeId": "concrete",
+      "names": {
+        "en": "Precast Concrete Installation",
+        "he": "הרכבת אלמנטים טרומיים",
+        "ar": "تركيب الخرسانة مسبقة الصنع"
+      },
+      "colloquial": {
+        "ar": "تركيب بريكاست"
+      },
+      "descriptions": {
+        "en": "Assembling pre-made concrete walls, panels, and stairs on-site using heavy cranes."
+      }
+    },
+    {
+      "id": "steelwork",
+      "phaseId": "structural",
+      "stageId": "civil",
+      "tradeId": "steelwork",
+      "names": {
+        "en": "Structural Steelwork",
+        "he": "קונסטרוקציית פלדה",
+        "ar": "أعمال الهياكل الحديدية والمعدنية"
+      },
+      "colloquial": {
+        "ar": "تركيب حديد هانجر / ستيل"
+      },
+      "descriptions": {
+        "en": "Erecting structural steel beams, columns, and trusses for warehouses or modern high-rises."
+      }
+    },
+    {
+      "id": "masonry",
+      "phaseId": "structural",
+      "stageId": "civil",
+      "tradeId": "masonry",
+      "names": {
+        "en": "Masonry & Blockwork",
+        "he": "בנייה בבלוקים",
+        "ar": "أعمال المباني والطوب"
+      },
+      "colloquial": {
+        "ar": "شغل الطوب / البلوك"
+      },
+      "descriptions": {
+        "en": "Laying perimeter walls and interior partitions using concrete, clay, or thermal blocks."
+      }
+    },
+    {
+      "id": "slab-conduit",
+      "phaseId": "electrical",
+      "stageId": "slab",
+      "tradeId": "electrical",
+      "names": {
+        "en": "Slab Conduit Piping",
+        "he": "צנרת חשמל ביציקה",
+        "ar": "تمديد أنابيب الأسقف (قبل الصب)"
+      },
+      "colloquial": {
+        "ar": "تأسيس الصبة / ليات السقف"
+      },
+      "descriptions": {
+        "en": "Laying plastic pipes inside structural slabs before the concrete is cast."
+      }
+    },
+    {
+      "id": "electrical-rough",
+      "phaseId": "electrical",
+      "stageId": "rough-in",
+      "tradeId": "electrical",
+      "names": {
+        "en": "Electrical Rough-In",
+        "he": "חשמל גס",
+        "ar": "تأسيس الكهرباء (الحوائط)"
+      },
+      "colloquial": {
+        "ar": "الشغل الأسود / زرع العلب"
+      },
+      "descriptions": {
+        "en": "Chasing/digging block walls, mounting wall boxes, and installing conduit pipes inside walls."
+      }
+    },
+    {
+      "id": "cable-pulling",
+      "phaseId": "electrical",
+      "stageId": "rough-in",
+      "tradeId": "electrical",
+      "names": {
+        "en": "Cable Pulling & Wiring",
+        "he": "השחלת מוליכים ולוחות",
+        "ar": "سحب الأسلاك والكابلات الرئيسية"
+      },
+      "colloquial": {
+        "ar": "سحب السلك واللوحات"
+      },
+      "descriptions": {
+        "en": "Pulling copper circuits through conduits and installing main distribution boards (DBs)."
+      }
+    },
+    {
+      "id": "electrical-trim",
+      "phaseId": "electrical",
+      "stageId": "second-fix",
+      "tradeId": "electrical",
+      "names": {
+        "en": "Electrical Trim-Out & Fixtures",
+        "he": "גמר חשמל וגופי תאורה",
+        "ar": "تشطيب الكهرباء والتركيبات"
+      },
+      "colloquial": {
+        "ar": "الشغل الأبيض / تركيب الأفياش والإنارة"
+      },
+      "descriptions": {
+        "en": "Installing light switches, wall outlets, decorative light fixtures, spotlights, and chandeliers."
+      }
+    },
+    {
+      "id": "elv",
+      "phaseId": "electrical",
+      "stageId": "rough-in",
+      "tradeId": "elv",
+      "names": {
+        "en": "Low Voltage Systems (ELV)",
+        "he": "מתח נמוך מאוד",
+        "ar": "التيار الخفيف (كاميرات، شبكات، إنذار)"
+      },
+      "colloquial": {
+        "ar": "تأسيس وتشطيب التيار الخفيف"
+      },
+      "descriptions": {
+        "en": "Wiring and setting up CCTV security, internet data networks, intercoms, and fire alarms."
+      }
+    },
+    {
+      "id": "drainage-underground",
+      "phaseId": "plumbing",
+      "stageId": "civil",
+      "tradeId": "plumbing",
+      "names": {
+        "en": "Underground Drainage Piping",
+        "he": "ניקוז תת־קרקעי",
+        "ar": "تأسيس الصرف الصحي تحت الأرض"
+      },
+      "colloquial": {
+        "ar": "تأسيس شبكة المجاري / المزراب"
+      },
+      "descriptions": {
+        "en": "Laying heavy-duty PVC or cast-iron lines underground for main building waste outflow."
+      }
+    },
+    {
+      "id": "plumbing-rough",
+      "phaseId": "plumbing",
+      "stageId": "rough-in",
+      "tradeId": "plumbing",
+      "names": {
+        "en": "Plumbing Rough-In",
+        "he": "אינסטלציה גסה",
+        "ar": "تأسيس السباكة والتغذية الحائطية"
+      },
+      "colloquial": {
+        "ar": "تأسيس الحمامات والمطابخ (الشغل الأسود)"
+      },
+      "descriptions": {
+        "en": "Installing water supply lines (PPR/PEX) and drainage loops inside bathroom and kitchen walls."
+      }
+    },
+    {
+      "id": "tanks-pumps",
+      "phaseId": "plumbing",
+      "stageId": "second-fix",
+      "tradeId": "plumbing",
+      "names": {
+        "en": "Water Tanks & Pump Setup",
+        "he": "מיכלים ומשאבות",
+        "ar": "تركيب الخزانات والمضخات الرئيسية"
+      },
+      "colloquial": {
+        "ar": "تركيب دينامو ومصفيات الموية وخزانات"
+      },
+      "descriptions": {
+        "en": "Mounting roof/basement water storage systems, booster pumps, and pressure filters."
+      }
+    },
+    {
+      "id": "sanitaryware",
+      "phaseId": "plumbing",
+      "stageId": "second-fix",
+      "tradeId": "plumbing",
+      "names": {
+        "en": "Sanitaryware & Fixtures Installation",
+        "he": "כלים סניטריים",
+        "ar": "تركيب الأدوات الصحية والتشطيب"
+      },
+      "colloquial": {
+        "ar": "تشطيب السباكة / تركيب الخلاطات والمراحيض"
+      },
+      "descriptions": {
+        "en": "Installing final toilets, sinks, mixers, shower zones, bathtubs, and water heaters."
+      }
+    },
+    {
+      "id": "copper-sleeves",
+      "phaseId": "hvac",
+      "stageId": "rough-in",
+      "tradeId": "hvac",
+      "names": {
+        "en": "Copper Pipe & Sleeve Laying",
+        "he": "צנרת נחושת ושרוולים",
+        "ar": "زرع السليفات وتمديد مواسير النحاس"
+      },
+      "colloquial": {
+        "ar": "تأسيس مواسير النحاس والجراب"
+      },
+      "descriptions": {
+        "en": "Drilling wall passages (sleeves) and running copper lines from indoor spaces to the roof."
+      }
+    },
+    {
+      "id": "ductwork",
+      "phaseId": "hvac",
+      "stageId": "rough-in",
+      "tradeId": "hvac",
+      "names": {
+        "en": "Ductwork Fabrication & Hanging",
+        "he": "תעלות מיזוג",
+        "ar": "تفصيل وتركيب مجاري الهواء (الدكتات)"
+      },
+      "colloquial": {
+        "ar": "تركيب الدكت / صاج التكييف"
+      },
+      "descriptions": {
+        "en": "Manufacturing and mounting galvanized iron sheets or pre-insulated panels for central/ducted AC."
+      }
+    },
+    {
+      "id": "ac-units",
+      "phaseId": "hvac",
+      "stageId": "second-fix",
+      "tradeId": "hvac",
+      "names": {
+        "en": "AC Unit Mounting",
+        "he": "התקנת יחידות מיזוג",
+        "ar": "تركيب الماكينات الداخلية والخارجية"
+      },
+      "colloquial": {
+        "ar": "تعليق الفانات والكمبروسرات"
+      },
+      "descriptions": {
+        "en": "Hanging indoor FCUs, concealed packages, and installing outdoor condensing condenser units."
+      }
+    },
+    {
+      "id": "grilles",
+      "phaseId": "hvac",
+      "stageId": "second-fix",
+      "tradeId": "hvac",
+      "names": {
+        "en": "Grilles & Diffusers Installation",
+        "he": "מפזרים וגרילים",
+        "ar": "تركيب فتحات الهواء ومخارج التكييف"
+      },
+      "colloquial": {
+        "ar": "تركيب الجريلات وفلتر الهواء"
+      },
+      "descriptions": {
+        "en": "Installing final visible linear slots, supply grilles, and exhaust vents in finished ceilings."
+      }
+    },
+    {
+      "id": "roof-waterproofing",
+      "phaseId": "waterproofing",
+      "stageId": "civil",
+      "tradeId": "waterproofing",
+      "names": {
+        "en": "Roof Waterproofing & Insulation",
+        "he": "איטום ובידוד גגות",
+        "ar": "العزل المائي والحراري للأسطح"
+      },
+      "colloquial": {
+        "ar": "عزل السطح / تركيب الرولات"
+      },
+      "descriptions": {
+        "en": "Applying bitumen membranes and extruded polystyrene boards to block rain leaks and sun heat."
+      }
+    },
+    {
+      "id": "wet-waterproofing",
+      "phaseId": "waterproofing",
+      "stageId": "rough-in",
+      "tradeId": "waterproofing",
+      "names": {
+        "en": "Wet Area Waterproofing",
+        "he": "איטום חדרים רטובים",
+        "ar": "عزل دورات المياه والمطابخ والمسابح"
+      },
+      "colloquial": {
+        "ar": "عزل الحمامات والمطابخ والبيتومين السائل"
+      },
+      "descriptions": {
+        "en": "Coating concrete floors of bathrooms, kitchens, and pools with elastic waterproofing before tiling."
+      }
+    },
+    {
+      "id": "plastering",
+      "phaseId": "finishing",
+      "stageId": "rough-in",
+      "tradeId": "plastering",
+      "names": {
+        "en": "Internal & External Plastering",
+        "he": "טיח פנים וחוץ",
+        "ar": "أعمال اللياسة الداخلية والخارجية"
+      },
+      "colloquial": {
+        "ar": "المحارة / اللياسة / تلييس جدران"
+      },
+      "descriptions": {
+        "en": "Applying cement-sand mortar matrix to convert rough bricks into dead-straight, smooth gray surfaces."
+      }
+    },
+    {
+      "id": "tiling",
+      "phaseId": "finishing",
+      "stageId": "second-fix",
+      "tradeId": "tiling",
+      "names": {
+        "en": "Wall & Floor Tiling",
+        "he": "ריצוף וחיפוי",
+        "ar": "أعمال تركيب البلاط والسيراميك والرخام"
+      },
+      "colloquial": {
+        "ar": "تركيب سيراميك وبورسلان وبلاط أرضيات"
+      },
+      "descriptions": {
+        "en": "Laying porcelain, ceramic, or natural marble floors using specialized tile adhesives or cement bed."
+      }
+    },
+    {
+      "id": "drywall",
+      "phaseId": "finishing",
+      "stageId": "second-fix",
+      "tradeId": "drywall",
+      "names": {
+        "en": "False Ceilings & Drywall",
+        "he": "תקרות אקוסטיות וגבס",
+        "ar": "الأسقف المستعارة والجبس بورد"
+      },
+      "colloquial": {
+        "ar": "تركيب ديكورات جبس / جبسمبورد معلق"
+      },
+      "descriptions": {
+        "en": "Suspending metallic grids and installing gypsum boards, sound panels, or wooden panels."
+      }
+    },
+    {
+      "id": "painting",
+      "phaseId": "finishing",
+      "stageId": "second-fix",
+      "tradeId": "painting",
+      "names": {
+        "en": "Painting & Surface Decoration",
+        "he": "צבע וגמר",
+        "ar": "أعمال الدهانات والتشطيب الديكوري"
+      },
+      "colloquial": {
+        "ar": "شغل البوية / معجون ودهان الحوائط"
+      },
+      "descriptions": {
+        "en": "Applying internal primer coats, fine sand putty matrices, and final weather-resistant finish coatings."
+      }
+    },
+    {
+      "id": "cladding",
+      "phaseId": "finishing",
+      "stageId": "second-fix",
+      "tradeId": "stonework",
+      "names": {
+        "en": "Facade Cladding (Glass/Stone)",
+        "he": "חיפוי חזיתות",
+        "ar": "تشطيب واجهات المباني (حجر، زجاج، كيرتن وول)"
+      },
+      "colloquial": {
+        "ar": "تركيب كيرتن وول / تكسية واجهات حجر طبيعي"
+      },
+      "descriptions": {
+        "en": "Installing massive outer curtain glass walls, aluminum composite panel (ACP) sheets, or mechanical stone anchors."
+      }
+    },
+    {
+      "id": "aluminium",
+      "phaseId": "openings",
+      "stageId": "second-fix",
+      "tradeId": "aluminium",
+      "names": {
+        "en": "Aluminum & Glazing (Windows)",
+        "he": "אלומיניום וזיגוג",
+        "ar": "أعمال الألومنيوم والزجاج والشبابيك"
+      },
+      "colloquial": {
+        "ar": "تركيب شبابيك ألومنيوم وقطاعات زجاج دبل"
+      },
+      "descriptions": {
+        "en": "Fabricating and sealing double-glazed external windows, slide systems, and structural framing panels."
+      }
+    },
+    {
+      "id": "joinery",
+      "phaseId": "openings",
+      "stageId": "second-fix",
+      "tradeId": "carpentry",
+      "names": {
+        "en": "Wooden Joinery & Doors",
+        "he": "נגרות ודלתות",
+        "ar": "أعمال النجارة وتركيب الأبواب الخشبية"
+      },
+      "colloquial": {
+        "ar": "تركيب أبواب خشب وحواجب وإطارات"
+      },
+      "descriptions": {
+        "en": "Hanging interior solid wood doors, installing wooden architraves, custom walk-in closets, and vanities."
+      }
+    },
+    {
+      "id": "balustrades",
+      "phaseId": "openings",
+      "stageId": "second-fix",
+      "tradeId": "metalwork",
+      "names": {
+        "en": "Metal Balustrades & Railings",
+        "he": "מעקות ומסגרות",
+        "ar": "أعمال الحديد المشغول والدرابزينات"
+      },
+      "colloquial": {
+        "ar": "تركيب درابزين حديد أو ستانلس للدرج وبلكونات"
+      },
+      "descriptions": {
+        "en": "Welding and polishing decorative steel, stainless iron, or thick structural safety glass sheets on staircases."
+      }
+    },
+    {
+      "id": "firefighting",
+      "phaseId": "specialist",
+      "stageId": "rough-in",
+      "tradeId": "firefighting",
+      "names": {
+        "en": "Firefighting Pipelines & Sprinklers",
+        "he": "כיבוי אש וספרינקלרים",
+        "ar": "تمديد شبكات الحريق والرشاشات التلقائية"
+      },
+      "colloquial": {
+        "ar": "تأسيس مواسير حريق وشبكة الرش الآلي"
+      },
+      "descriptions": {
+        "en": "Running thick black seamless carbon steel pipes, mounting emergency fire boxes, and zoning ceiling sprinkler nozzles."
+      }
+    },
+    {
+      "id": "elevators",
+      "phaseId": "specialist",
+      "stageId": "commissioning",
+      "tradeId": "elevators",
+      "names": {
+        "en": "Elevators & Escalators Installation",
+        "he": "מעליות ודרגנועים",
+        "ar": "تركيب المصاعد والسلالم الكهربائية"
+      },
+      "colloquial": {
+        "ar": "تركيب أسانسير وماكينات المصاعد وجدران الكابينة"
+      },
+      "descriptions": {
+        "en": "Bolting heavy mechanical rails down elevator structural shafts, hanging steel cables, and fine-tuning motor blocks."
+      }
+    },
+    {
+      "id": "external-infra",
+      "phaseId": "specialist",
+      "stageId": "civil",
+      "tradeId": "earthworks",
+      "names": {
+        "en": "External Infrastructure Integration",
+        "he": "תשתיות חוץ",
+        "ar": "أعمال شبكات البنية التحتية (خارج المبنى)"
+      },
+      "colloquial": {
+        "ar": "تمديد خطوط الصرف الخارجي وكابلات الضغط العالي للموقع"
+      },
+      "descriptions": {
+        "en": "Hooking the entire structure up to urban grid electric cells, storm water networks, and clean water city lines."
+      }
+    },
+    {
+      "id": "landscape",
+      "phaseId": "specialist",
+      "stageId": "second-fix",
+      "tradeId": "landscape",
+      "names": {
+        "en": "Landscape & External Paving",
+        "he": "פיתוח ונוף",
+        "ar": "تنسيق الحدائق والأرصفة والمشايات"
+      },
+      "colloquial": {
+        "ar": "تركيب انترلوك / لاندسكيب وأعمال البلدورات زراعة"
+      },
+      "descriptions": {
+        "en": "Laying heavy concrete interlock bricks for parking garages, building sidewalks, and assembling localized irrigation drip networks."
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -19,6 +20,33 @@ data class CompanyEntity(
     val registrationNumber: String?,
     val createdAt: Long,
     val updatedAt: Long,
+    /** The firm's mark, as a content URI. Shown to everyone who can see it at all. */
+    val logoUri: String? = null,
+    val email: String? = null,
+    val phone: String? = null,
+    val website: String? = null,
+    val addressLine: String? = null,
+    /**
+     * Contractor registration, as issued. Recording it makes the firm
+     * verified **on this platform**; it does not make it legally qualified to
+     * carry out regulated work, and no screen may let one read as the other.
+     * See docs/COMPLIANCE.md.
+     */
+    val contractorLicenceNumber: String? = null,
+    val contractorClassification: String? = null,
+    val licenceExpiresOn: Long? = null,
+    /**
+     * Which contact fields the firm chose to publish to its workforce, as a
+     * comma-separated list of [il.co.tradesmanager.core.access.CompanyProfile.Field]
+     * names.
+     *
+     * Empty means nothing is published, and that is the default. A firm that
+     * skipped the question has published nothing, which is the outcome it can
+     * live with; a default of "visible" that somebody meant to change and
+     * forgot cannot be taken back.
+     */
+    @ColumnInfo(defaultValue = "''")
+    val publishedToWorkforce: String = "",
 )
 
 /**

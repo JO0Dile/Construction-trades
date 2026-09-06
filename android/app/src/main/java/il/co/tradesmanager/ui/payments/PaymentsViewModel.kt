@@ -86,11 +86,11 @@ class PaymentsViewModel(
     }
 
     fun certify(certifiedGrossToDate: Double) = withOpen { application, actor ->
-        container.payments.certify(application, certifiedGrossToDate, actor)
+        container.payments.certify(application, certifiedGrossToDate, contractSum.value, actor)
     }
 
     fun markPaid() = withOpen { application, actor ->
-        container.payments.markPaid(application, actor)
+        container.payments.markPaid(application, contractSum.value, actor)
     }
 
     fun reject(notes: String?) = withOpen { application, actor ->
@@ -111,17 +111,55 @@ class PaymentsViewModel(
          * Assessed on the certified figure once there is one, and on the claim
          * until then — so a draft shows what it would be worth if it were
          * agreed in full, which is the number somebody raising it wants.
+         *
+         * [applications] is the whole sequence on this job, because what is due
+         * this time cannot be read off one application on its own. See
+         * [previouslyPaidNet].
          */
         fun assess(
             application: PaymentApplicationEntity,
+            applications: List<PaymentApplicationEntity>,
             contractSum: Double,
         ): Payments.Assessment = Payments.assess(
             grossToDate = application.certifiedGrossToDate ?: application.claimedGrossToDate,
-            previouslyPaidNet = application.previouslyPaidNet,
+            previouslyPaidNet = previouslyPaidNet(application, applications, contractSum),
             contractSum = contractSum,
             retentionRate = application.retentionRate,
             retentionLimit = application.retentionLimit,
         )
+
+        /**
+         * What had been paid before this application, as things stand now.
+         *
+         * Read off the sequence on screen rather than out of the application's
+         * own row. The row carries a copy, written when it was raised, and by
+         * the time it is certified a month later that copy is usually a payment
+         * out of date — which would put the previous application's work back
+         * into this one's cheque.
+         */
+        fun previouslyPaidNet(
+            application: PaymentApplicationEntity,
+            applications: List<PaymentApplicationEntity>,
+            contractSum: Double,
+        ): Double = Payments.previouslyPaidNet(
+            number = application.applicationNumber,
+            direction = application.direction,
+            paid = applications.mapNotNull { it.settled() },
+            contractSum = contractSum,
+        )
+
+        /** This application as money that has gone out, or null if it has not. */
+        private fun PaymentApplicationEntity.settled(): Payments.Settled? {
+            if (paidAt == null) return null
+            val certified = certifiedGrossToDate ?: return null
+            return Payments.Settled(
+                number = applicationNumber,
+                direction = direction,
+                certifiedGrossToDate = certified,
+                retentionRate = retentionRate,
+                retentionLimit = retentionLimit,
+            )
+        }
 
         fun termsOf(application: PaymentApplicationEntity): Payments.Terms =
             runCatching { Payments.Terms.valueOf(application.terms) }

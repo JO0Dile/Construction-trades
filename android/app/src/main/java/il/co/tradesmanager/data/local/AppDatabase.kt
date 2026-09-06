@@ -11,6 +11,7 @@ import il.co.tradesmanager.data.local.dao.ConcreteDao
 import il.co.tradesmanager.data.local.dao.DailyLogDao
 import il.co.tradesmanager.data.local.dao.EquipmentDao
 import il.co.tradesmanager.data.local.dao.EvidenceDao
+import il.co.tradesmanager.data.local.dao.EngagementDao
 import il.co.tradesmanager.data.local.dao.ExcavationDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
 import il.co.tradesmanager.data.local.dao.LiftingDao
@@ -39,6 +40,10 @@ import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
 import il.co.tradesmanager.data.local.entity.ExcavationEntity
+import il.co.tradesmanager.data.local.entity.AssignmentEntity
+import il.co.tradesmanager.data.local.entity.ContractAmendmentEntity
+import il.co.tradesmanager.data.local.entity.ContractEntity
+import il.co.tradesmanager.data.local.entity.EngagementEntity
 import il.co.tradesmanager.data.local.entity.ExcavationInspectionEntity
 import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
@@ -119,8 +124,12 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         ExcavationEntity::class,
         ExcavationInspectionEntity::class,
         PaymentApplicationEntity::class,
+        EngagementEntity::class,
+        ContractEntity::class,
+        ContractAmendmentEntity::class,
+        AssignmentEntity::class,
     ],
-    version = 18,
+    version = 19,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -151,6 +160,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun excavationDao(): ExcavationDao
 
     abstract fun paymentsDao(): PaymentsDao
+
+    abstract fun engagementDao(): EngagementDao
 
     companion object {
         const val NAME = "tradesmanager.db"

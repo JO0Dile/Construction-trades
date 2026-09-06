@@ -1,0 +1,106 @@
+{
+  "tradeId": "elv",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.elv.office",
+      "estimatedDays": 5,
+      "names": {
+        "en": "Office data and CCTV, one floor",
+        "he": "תקשורת ומצלמות למשרד — קומה",
+        "ar": "شبكة وكاميرات لمكتب — طابق"
+      },
+      "descriptions": {
+        "en": "Structured cabling back to one cabinet, plus cameras on the entries. Every run certified.",
+        "he": "כבילה מובנית לארון אחד, ומצלמות בכניסות. כל מהלך מאושר בבדיקה.",
+        "ar": "كبلنة منظّمة إلى كابينة واحدة، مع كاميرات على المداخل. كل تمديد معتمد بفحص."
+      },
+      "materials": [
+        {
+          "itemId": "elv.cable.cat6a.ftp",
+          "quantity": 900
+        },
+        {
+          "itemId": "elv.outlet.rj45",
+          "quantity": 40
+        },
+        {
+          "itemId": "elv.patch.panel.24",
+          "quantity": 2
+        },
+        {
+          "itemId": "elv.rack.19.42u",
+          "quantity": 1
+        },
+        {
+          "itemId": "elv.camera.dome.ip",
+          "quantity": 6
+        },
+        {
+          "itemId": "elv.nvr.16ch",
+          "quantity": 1
+        },
+        {
+          "itemId": "elv.cable.fibre.om4",
+          "quantity": 60
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.elv.ot.1",
+          "order": 1,
+          "titles": {
+            "en": "Agree the cabinet position and its power before pulling anything",
+            "he": "סיכום מיקום הארון והזנתו לפני משיכת כבלים",
+            "ar": "الاتفاق على موقع الكابينة وتغذيتها قبل سحب أي كابل"
+          }
+        },
+        {
+          "id": "tpl.elv.ot.2",
+          "order": 2,
+          "titles": {
+            "en": "Pull cable, keeping data clear of mains",
+            "he": "משיכת כבלים בהפרדה ממתח רשת",
+            "ar": "سحب الكابلات مع فصلها عن تيار القوى"
+          }
+        },
+        {
+          "id": "tpl.elv.ot.3",
+          "order": 3,
+          "titles": {
+            "en": "Terminate both ends and label to a scheme, not from memory",
+            "he": "חיבור שני הקצוות וסימון לפי שיטה, לא מהזיכרון",
+            "ar": "توصيل الطرفين والترقيم وفق نظام، لا من الذاكرة"
+          }
+        },
+        {
+          "id": "tpl.elv.ot.4",
+          "order": 4,
+          "titles": {
+            "en": "Certify every run and keep the printout",
+            "he": "אישור כל מהלך ושמירת ההדפסה",
+            "ar": "اعتماد كل تمديد والاحتفاظ بالتقرير"
+          }
+        },
+        {
+          "id": "tpl.elv.ot.5",
+          "order": 5,
+          "titles": {
+            "en": "Fire-stop every wall and floor the cable passed through",
+            "he": "אטימת אש בכל קיר ורצפה שהכבל עבר",
+            "ar": "سدّ الحريق في كل حائط وأرضية مرّ بها الكابل"
+          }
+        },
+        {
+          "id": "tpl.elv.ot.6",
+          "order": 6,
+          "titles": {
+            "en": "Set up cameras and prove the recording, not just the picture",
+            "he": "הגדרת מצלמות והוכחת ההקלטה, לא רק התמונה",
+            "ar": "ضبط الكاميرات وإثبات التسجيل، لا الصورة فقط"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,114 +1,883 @@
 {
   "tradeId": "carpentry",
-  "catalogVersion": 1,
+  "catalogVersion": 2,
   "items": [
-    { "id": "ca.board.mdf.16", "kind": "MATERIAL", "category": "boards", "unit": "M2",
-      "names": { "en": "MDF board 16 mm", "he": "לוח MDF ‏16 מ״מ", "ar": "لوح MDF ‏16 ملم" },
-      "spec": { "en": "Carcase and door panels. Cut with extraction — MDF dust is fine.", "he": "גוף ארון ודלתות. לנסר עם שאיבה — אבק MDF דק מאוד.", "ar": "هيكل الخزائن والأبواب. يُقص مع شفط — غبار MDF ناعم جدًا." },
-      "attributes": { "thicknessMm": "16" }, "tags": ["board", "dust"] },
-    { "id": "ca.board.melamine.18", "kind": "MATERIAL", "category": "boards", "unit": "M2",
-      "names": { "en": "Melamine faced board 18 mm", "he": "לוח סנדוויץ׳ מלמין 18 מ״מ", "ar": "لوح ميلامين 18 ملم" },
-      "spec": { "en": "Pre-finished particle board for kitchen carcases.", "he": "לוח סיבית מצופה לגופי מטבח.", "ar": "لوح مضغوط مكسو لهياكل المطبخ." },
-      "attributes": { "thicknessMm": "18" }, "tags": ["board"] },
-    { "id": "ca.board.plywood.12", "kind": "MATERIAL", "category": "boards", "unit": "M2",
-      "names": { "en": "Plywood 12 mm", "he": "דיקט 12 מ״מ", "ar": "خشب أبلكاش 12 ملم" },
-      "spec": { "en": "Drawer bottoms, backs and site jigs.", "he": "תחתיות מגירות, גב ארון ותבניות באתר.", "ar": "قواعد الأدراج والظهور وقوالب الموقع." },
-      "attributes": { "thicknessMm": "12" }, "tags": ["board"] },
-    { "id": "ca.timber.pine.2x4", "kind": "MATERIAL", "category": "timber", "unit": "M",
-      "names": { "en": "Pine batten 50×100 mm", "he": "קורת אורן 50×100 מ״מ", "ar": "عارضة صنوبر 50×100 ملم" },
-      "spec": { "en": "Framing, battens and temporary works.", "he": "שלד, סרגלים ועבודות זמניות.", "ar": "هيكل وعوارض وأعمال مؤقتة." },
-      "attributes": { "sectionMm": "50x100", "species": "pine" }, "tags": ["timber"] },
-    { "id": "ca.timber.oak.solid", "kind": "MATERIAL", "category": "timber", "unit": "M2",
-      "names": { "en": "Solid oak panel", "he": "לוח אלון מלא", "ar": "لوح بلوط مصمت" },
-      "spec": { "en": "Worktops and exposed shelves.", "he": "משטחי עבודה ומדפים גלויים.", "ar": "أسطح عمل ورفوف ظاهرة." },
-      "attributes": { "species": "oak" }, "tags": ["timber"] },
-    { "id": "ca.edge.banding.pvc", "kind": "MATERIAL", "category": "finishing", "unit": "M",
-      "names": { "en": "PVC edge banding", "he": "קנט PVC", "ar": "شريط حواف PVC" },
-      "spec": { "en": "Iron-on or hot-melt edging, 22 mm.", "he": "קנט בהדבקה חמה, 22 מ״מ.", "ar": "شريط حواف باللصق الحراري، 22 ملم." },
-      "attributes": { "widthMm": "22" }, "tags": ["finishing"] },
-    { "id": "ca.veneer.oak", "kind": "MATERIAL", "category": "finishing", "unit": "M2",
-      "names": { "en": "Oak veneer", "he": "פורניר אלון", "ar": "قشرة بلوط" },
-      "spec": { "en": "Sheet veneer for doors and panels.", "he": "פורניר בגיליונות לדלתות ולפאנלים.", "ar": "قشرة بألواح للأبواب والألواح." },
-      "attributes": {}, "tags": ["finishing"] },
-    { "id": "ca.screw.wood.4x40", "kind": "CONSUMABLE", "category": "fixings", "unit": "PCS",
-      "names": { "en": "Wood screw 4×40 mm", "he": "בורג לעץ 4×40 מ״מ", "ar": "برغي خشب 4×40 ملم" },
-      "spec": { "en": "Countersunk, pozidriv head.", "he": "ראש שקוע, חריץ פוזידרייב.", "ar": "رأس غاطس، شق بوزيدرايف." },
-      "attributes": { "sizeMm": "4x40" }, "tags": ["fixing"] },
-    { "id": "ca.screw.confirmat", "kind": "CONSUMABLE", "category": "fixings", "unit": "PCS",
-      "names": { "en": "Confirmat screw 7×50 mm", "he": "בורג קונפירמט 7×50 מ״מ", "ar": "برغي كونفيرمات 7×50 ملم" },
-      "spec": { "en": "Carcase assembly in particle board.", "he": "הרכבת גוף ארון בסיבית.", "ar": "تجميع هيكل الخزائن في اللوح المضغوط." },
-      "attributes": { "sizeMm": "7x50" }, "tags": ["fixing"] },
-    { "id": "ca.nail.finish.50", "kind": "CONSUMABLE", "category": "fixings", "unit": "PCS",
-      "names": { "en": "Finish nail 50 mm", "he": "מסמר גמר 50 מ״מ", "ar": "مسمار تشطيب 50 ملم" },
-      "spec": { "en": "Brad nails for trim and beading.", "he": "מסמרים דקים לפרופילים ולסרגלים.", "ar": "مسامير رفيعة للبروفيلات والأشرطة." },
-      "attributes": { "lengthMm": "50" }, "tags": ["fixing"] },
-    { "id": "ca.glue.pva", "kind": "CONSUMABLE", "category": "consumables", "unit": "L",
-      "names": { "en": "Wood glue (PVA D3)", "he": "דבק נגרים D3", "ar": "غراء خشب D3" },
-      "spec": { "en": "Water-resistant PVA for joints and laminating.", "he": "דבק PVA עמיד למים לחיבורים והדבקות.", "ar": "غراء PVA مقاوم للماء للوصلات والتصفيح." },
-      "attributes": { "grade": "D3" }, "tags": ["consumable"] },
-    { "id": "ca.hinge.softclose", "kind": "MATERIAL", "category": "hardware", "unit": "PCS",
-      "names": { "en": "Soft-close concealed hinge", "he": "ציר נסתר עם בלימה", "ar": "مفصّلة مخفية بإغلاق ناعم" },
-      "spec": { "en": "35 mm cup hinge with integrated damper.", "he": "ציר כוס 35 מ״מ עם בולם מובנה.", "ar": "مفصّلة كوب 35 ملم مع مخمّد مدمج." },
-      "attributes": { "cupMm": "35" }, "tags": ["hardware"] },
-    { "id": "ca.slide.undermount", "kind": "MATERIAL", "category": "hardware", "unit": "PAIR",
-      "names": { "en": "Undermount drawer slides", "he": "מסילות מגירה נסתרות", "ar": "سكك أدراج مخفية" },
-      "spec": { "en": "Full extension with soft close, 450 mm.", "he": "פתיחה מלאה עם בלימה, 450 מ״מ.", "ar": "فتح كامل مع إغلاق ناعم، 450 ملم." },
-      "attributes": { "lengthMm": "450" }, "tags": ["hardware"] },
-    { "id": "ca.handle.bar", "kind": "MATERIAL", "category": "hardware", "unit": "PCS",
-      "names": { "en": "Bar handle", "he": "ידית מוט", "ar": "مقبض عمودي" },
-      "spec": { "en": "Aluminium or steel pull, 128/160 mm centres.", "he": "ידית אלומיניום או נירוסטה, מרכזים 128/160 מ״מ.", "ar": "مقبض ألمنيوم أو ستانلس، مسافة 128/160 ملم." },
-      "attributes": { "centresMm": "128/160" }, "tags": ["hardware"] },
-    { "id": "ca.tool.circular_saw", "kind": "TOOL", "category": "power-tools", "unit": "PCS",
-      "names": { "en": "Circular saw", "he": "מסור עגול", "ar": "منشار دائري" },
-      "spec": { "en": "Riving knife and lower guard checked before every cut.", "he": "בודקים סכין מפצל ומגן תחתון לפני כל חיתוך.", "ar": "يُفحص سكين الشق والواقي السفلي قبل كل قطع." },
-      "attributes": {}, "tags": ["tool", "power", "guarded"] },
-    { "id": "ca.tool.table_saw", "kind": "TOOL", "category": "power-tools", "unit": "PCS",
-      "names": { "en": "Table saw", "he": "שולחן ניסור", "ar": "منشار طاولة" },
-      "spec": { "en": "Push stick and crown guard in place; never free-hand a rip.", "he": "מוט דחיפה ומגן עליון במקומם; אין לנסר ביד חופשית.", "ar": "عصا الدفع والواقي العلوي في مكانهما؛ لا يُنشر باليد الحرة." },
-      "attributes": {}, "tags": ["tool", "power", "guarded"] },
-    { "id": "ca.tool.jigsaw", "kind": "TOOL", "category": "power-tools", "unit": "PCS",
-      "names": { "en": "Jigsaw", "he": "מסור אנכי", "ar": "منشار عمودي (أركيت)" },
-      "spec": { "en": "Curved cuts and sink cut-outs.", "he": "חיתוכים מעוגלים ופתחי כיור.", "ar": "قصّات منحنية وفتحات المغاسل." },
-      "attributes": {}, "tags": ["tool", "power"] },
-    { "id": "ca.tool.router", "kind": "TOOL", "category": "power-tools", "unit": "PCS",
-      "names": { "en": "Router", "he": "ראוטר (קופיה)", "ar": "راوتر (فرايز)" },
-      "spec": { "en": "Edge profiles, grooves and hinge recesses.", "he": "פרופילי קצה, חריצים ושקעי צירים.", "ar": "بروفيلات الحواف والأخاديد ومجالس المفصّلات." },
-      "attributes": {}, "tags": ["tool", "power"] },
-    { "id": "ca.tool.drill_driver", "kind": "TOOL", "category": "power-tools", "unit": "PCS",
-      "names": { "en": "Cordless drill / driver", "he": "מברגה־מקדחה נטענת", "ar": "مثقاب ومفك شحن" },
-      "spec": { "en": "18 V with clutch and two batteries.", "he": "18 וולט עם מצמד ושתי סוללות.", "ar": "18 فولت مع قابض وبطاريتين." },
-      "attributes": { "voltage": "18V" }, "tags": ["tool", "power"] },
-    { "id": "ca.tool.orbital_sander", "kind": "TOOL", "category": "power-tools", "unit": "PCS",
-      "names": { "en": "Random orbit sander", "he": "מלטשת אקסצנטרית", "ar": "جلاخة مدارية عشوائية" },
-      "spec": { "en": "125 mm pad with dust extraction.", "he": "צלחת 125 מ״מ עם שאיבת אבק.", "ar": "قرص 125 ملم مع شفط الغبار." },
-      "attributes": { "padMm": "125" }, "tags": ["tool", "power", "dust"] },
-    { "id": "ca.tool.chisel_set", "kind": "TOOL", "category": "hand-tools", "unit": "PCS",
-      "names": { "en": "Chisel set", "he": "סט אזמלים", "ar": "طقم أزاميل" },
-      "spec": { "en": "6/12/18/25 mm bevel-edge chisels.", "he": "אזמלים 6/12/18/25 מ״מ.", "ar": "أزاميل 6/12/18/25 ملم." },
-      "attributes": {}, "tags": ["tool"] },
-    { "id": "ca.tool.clamps", "kind": "TOOL", "category": "hand-tools", "unit": "PCS",
-      "names": { "en": "Bar clamps", "he": "מלחציים מוט", "ar": "مشابك عمودية" },
-      "spec": { "en": "600–1200 mm clamps for glue-ups.", "he": "מלחציים 600–1200 מ״מ להדבקות.", "ar": "مشابك 600–1200 ملم للصق." },
-      "attributes": {}, "tags": ["tool"] },
-    { "id": "ca.tool.square", "kind": "TOOL", "category": "measuring", "unit": "PCS",
-      "names": { "en": "Try square", "he": "זווית נגרים", "ar": "زاوية نجّار" },
-      "spec": { "en": "Engineer's square, 300 mm.", "he": "זווית מדויקת, 300 מ״מ.", "ar": "زاوية دقيقة، 300 ملم." },
-      "attributes": {}, "tags": ["tool", "measuring"] },
-    { "id": "ca.tool.tape", "kind": "TOOL", "category": "measuring", "unit": "PCS",
-      "names": { "en": "Tape measure 5 m", "he": "סרט מדידה 5 מ׳", "ar": "شريط قياس 5 م" },
-      "spec": { "en": "Class II accuracy, metric.", "he": "דיוק דרגה II, מטרי.", "ar": "دقة درجة II، متري." },
-      "attributes": { "lengthM": "5" }, "tags": ["tool", "measuring"] },
-    { "id": "ca.safety.goggles", "kind": "SAFETY", "category": "ppe", "unit": "PCS",
-      "names": { "en": "Safety glasses", "he": "משקפי מגן", "ar": "نظارات أمان" },
-      "spec": { "en": "Worn for every powered cut.", "he": "נלבשות בכל חיתוך ממוכן.", "ar": "تُلبس عند كل قص آلي." },
-      "attributes": {}, "tags": ["ppe", "safety"] },
-    { "id": "ca.safety.ear_defenders", "kind": "SAFETY", "category": "ppe", "unit": "PCS",
-      "names": { "en": "Ear defenders", "he": "אוזניות מגן", "ar": "واقيات أذن" },
-      "spec": { "en": "SNR 27 dB or better for saw and router work.", "he": "הנחתה SNR 27 dB ומעלה לעבודת מסור וראוטר.", "ar": "خفض SNR 27 ديسيبل فأكثر لأعمال المنشار والراوتر." },
-      "attributes": { "snrDb": "27" }, "tags": ["ppe", "safety", "noise"] },
-    { "id": "ca.safety.dust_extractor", "kind": "SAFETY", "category": "ppe", "unit": "PCS",
-      "names": { "en": "M-class dust extractor", "he": "שואב אבק דרגה M", "ar": "شافط غبار درجة M" },
-      "spec": { "en": "Connected to every cutting and sanding tool.", "he": "מחובר לכל כלי חיתוך וליטוש.", "ar": "موصول بكل أداة قص وصنفرة." },
-      "attributes": { "class": "M" }, "tags": ["ppe", "safety", "dust"] }
+    {
+      "id": "ca.board.mdf.16",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "MDF board 16 mm",
+        "he": "לוח MDF ‏16 מ״מ",
+        "ar": "لوح MDF ‏16 ملم"
+      },
+      "spec": {
+        "en": "Carcase and door panels. Cut with extraction — MDF dust is fine.",
+        "he": "גוף ארון ודלתות. לנסר עם שאיבה — אבק MDF דק מאוד.",
+        "ar": "هيكل الخزائن والأبواب. يُقص مع شفط — غبار MDF ناعم جدًا."
+      },
+      "attributes": {
+        "thicknessMm": "16"
+      },
+      "tags": [
+        "board",
+        "dust"
+      ]
+    },
+    {
+      "id": "ca.board.melamine.18",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Melamine faced board 18 mm",
+        "he": "לוח סנדוויץ׳ מלמין 18 מ״מ",
+        "ar": "لوح ميلامين 18 ملم"
+      },
+      "spec": {
+        "en": "Pre-finished particle board for kitchen carcases.",
+        "he": "לוח סיבית מצופה לגופי מטבח.",
+        "ar": "لوح مضغوط مكسو لهياكل المطبخ."
+      },
+      "attributes": {
+        "thicknessMm": "18"
+      },
+      "tags": [
+        "board"
+      ]
+    },
+    {
+      "id": "ca.board.plywood.12",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Plywood 12 mm",
+        "he": "דיקט 12 מ״מ",
+        "ar": "خشب أبلكاش 12 ملم"
+      },
+      "spec": {
+        "en": "Drawer bottoms, backs and site jigs.",
+        "he": "תחתיות מגירות, גב ארון ותבניות באתר.",
+        "ar": "قواعد الأدراج والظهور وقوالب الموقع."
+      },
+      "attributes": {
+        "thicknessMm": "12"
+      },
+      "tags": [
+        "board"
+      ]
+    },
+    {
+      "id": "ca.timber.pine.2x4",
+      "kind": "MATERIAL",
+      "category": "timber",
+      "unit": "M",
+      "names": {
+        "en": "Pine batten 50×100 mm",
+        "he": "קורת אורן 50×100 מ״מ",
+        "ar": "عارضة صنوبر 50×100 ملم"
+      },
+      "spec": {
+        "en": "Framing, battens and temporary works.",
+        "he": "שלד, סרגלים ועבודות זמניות.",
+        "ar": "هيكل وعوارض وأعمال مؤقتة."
+      },
+      "attributes": {
+        "sectionMm": "50x100",
+        "species": "pine"
+      },
+      "tags": [
+        "timber"
+      ]
+    },
+    {
+      "id": "ca.timber.oak.solid",
+      "kind": "MATERIAL",
+      "category": "timber",
+      "unit": "M2",
+      "names": {
+        "en": "Solid oak panel",
+        "he": "לוח אלון מלא",
+        "ar": "لوح بلوط مصمت"
+      },
+      "spec": {
+        "en": "Worktops and exposed shelves.",
+        "he": "משטחי עבודה ומדפים גלויים.",
+        "ar": "أسطح عمل ورفوف ظاهرة."
+      },
+      "attributes": {
+        "species": "oak"
+      },
+      "tags": [
+        "timber"
+      ]
+    },
+    {
+      "id": "ca.edge.banding.pvc",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M",
+      "names": {
+        "en": "PVC edge banding",
+        "he": "קנט PVC",
+        "ar": "شريط حواف PVC"
+      },
+      "spec": {
+        "en": "Iron-on or hot-melt edging, 22 mm.",
+        "he": "קנט בהדבקה חמה, 22 מ״מ.",
+        "ar": "شريط حواف باللصق الحراري، 22 ملم."
+      },
+      "attributes": {
+        "widthMm": "22"
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "ca.veneer.oak",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M2",
+      "names": {
+        "en": "Oak veneer",
+        "he": "פורניר אלון",
+        "ar": "قشرة بلوط"
+      },
+      "spec": {
+        "en": "Sheet veneer for doors and panels.",
+        "he": "פורניר בגיליונות לדלתות ולפאנלים.",
+        "ar": "قشرة بألواح للأبواب والألواح."
+      },
+      "attributes": {},
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "ca.screw.wood.4x40",
+      "kind": "CONSUMABLE",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Wood screw 4×40 mm",
+        "he": "בורג לעץ 4×40 מ״מ",
+        "ar": "برغي خشب 4×40 ملم"
+      },
+      "spec": {
+        "en": "Countersunk, pozidriv head.",
+        "he": "ראש שקוע, חריץ פוזידרייב.",
+        "ar": "رأس غاطس، شق بوزيدرايف."
+      },
+      "attributes": {
+        "sizeMm": "4x40"
+      },
+      "tags": [
+        "fixing"
+      ]
+    },
+    {
+      "id": "ca.screw.confirmat",
+      "kind": "CONSUMABLE",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Confirmat screw 7×50 mm",
+        "he": "בורג קונפירמט 7×50 מ״מ",
+        "ar": "برغي كونفيرمات 7×50 ملم"
+      },
+      "spec": {
+        "en": "Carcase assembly in particle board.",
+        "he": "הרכבת גוף ארון בסיבית.",
+        "ar": "تجميع هيكل الخزائن في اللوح المضغوط."
+      },
+      "attributes": {
+        "sizeMm": "7x50"
+      },
+      "tags": [
+        "fixing"
+      ]
+    },
+    {
+      "id": "ca.nail.finish.50",
+      "kind": "CONSUMABLE",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Finish nail 50 mm",
+        "he": "מסמר גמר 50 מ״מ",
+        "ar": "مسمار تشطيب 50 ملم"
+      },
+      "spec": {
+        "en": "Brad nails for trim and beading.",
+        "he": "מסמרים דקים לפרופילים ולסרגלים.",
+        "ar": "مسامير رفيعة للبروفيلات والأشرطة."
+      },
+      "attributes": {
+        "lengthMm": "50"
+      },
+      "tags": [
+        "fixing"
+      ]
+    },
+    {
+      "id": "ca.glue.pva",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "L",
+      "names": {
+        "en": "Wood glue (PVA D3)",
+        "he": "דבק נגרים D3",
+        "ar": "غراء خشب D3"
+      },
+      "spec": {
+        "en": "Water-resistant PVA for joints and laminating.",
+        "he": "דבק PVA עמיד למים לחיבורים והדבקות.",
+        "ar": "غراء PVA مقاوم للماء للوصلات والتصفيح."
+      },
+      "attributes": {
+        "grade": "D3"
+      },
+      "tags": [
+        "consumable"
+      ]
+    },
+    {
+      "id": "ca.hinge.softclose",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Soft-close concealed hinge",
+        "he": "ציר נסתר עם בלימה",
+        "ar": "مفصّلة مخفية بإغلاق ناعم"
+      },
+      "spec": {
+        "en": "35 mm cup hinge with integrated damper.",
+        "he": "ציר כוס 35 מ״מ עם בולם מובנה.",
+        "ar": "مفصّلة كوب 35 ملم مع مخمّد مدمج."
+      },
+      "attributes": {
+        "cupMm": "35"
+      },
+      "tags": [
+        "hardware"
+      ]
+    },
+    {
+      "id": "ca.slide.undermount",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PAIR",
+      "names": {
+        "en": "Undermount drawer slides",
+        "he": "מסילות מגירה נסתרות",
+        "ar": "سكك أدراج مخفية"
+      },
+      "spec": {
+        "en": "Full extension with soft close, 450 mm.",
+        "he": "פתיחה מלאה עם בלימה, 450 מ״מ.",
+        "ar": "فتح كامل مع إغلاق ناعم، 450 ملم."
+      },
+      "attributes": {
+        "lengthMm": "450"
+      },
+      "tags": [
+        "hardware"
+      ]
+    },
+    {
+      "id": "ca.handle.bar",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Bar handle",
+        "he": "ידית מוט",
+        "ar": "مقبض عمودي"
+      },
+      "spec": {
+        "en": "Aluminium or steel pull, 128/160 mm centres.",
+        "he": "ידית אלומיניום או נירוסטה, מרכזים 128/160 מ״מ.",
+        "ar": "مقبض ألمنيوم أو ستانلس، مسافة 128/160 ملم."
+      },
+      "attributes": {
+        "centresMm": "128/160"
+      },
+      "tags": [
+        "hardware"
+      ]
+    },
+    {
+      "id": "ca.tool.circular_saw",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Circular saw",
+        "he": "מסור עגול",
+        "ar": "منشار دائري"
+      },
+      "spec": {
+        "en": "Riving knife and lower guard checked before every cut.",
+        "he": "בודקים סכין מפצל ומגן תחתון לפני כל חיתוך.",
+        "ar": "يُفحص سكين الشق والواقي السفلي قبل كل قطع."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "power",
+        "guarded"
+      ]
+    },
+    {
+      "id": "ca.tool.table_saw",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Table saw",
+        "he": "שולחן ניסור",
+        "ar": "منشار طاولة"
+      },
+      "spec": {
+        "en": "Push stick and crown guard in place; never free-hand a rip.",
+        "he": "מוט דחיפה ומגן עליון במקומם; אין לנסר ביד חופשית.",
+        "ar": "عصا الدفع والواقي العلوي في مكانهما؛ لا يُنشر باليد الحرة."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "power",
+        "guarded"
+      ]
+    },
+    {
+      "id": "ca.tool.jigsaw",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Jigsaw",
+        "he": "מסור אנכי",
+        "ar": "منشار عمودي (أركيت)"
+      },
+      "spec": {
+        "en": "Curved cuts and sink cut-outs.",
+        "he": "חיתוכים מעוגלים ופתחי כיור.",
+        "ar": "قصّات منحنية وفتحات المغاسل."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "power"
+      ]
+    },
+    {
+      "id": "ca.tool.router",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Router",
+        "he": "ראוטר (קופיה)",
+        "ar": "راوتر (فرايز)"
+      },
+      "spec": {
+        "en": "Edge profiles, grooves and hinge recesses.",
+        "he": "פרופילי קצה, חריצים ושקעי צירים.",
+        "ar": "بروفيلات الحواف والأخاديد ومجالس المفصّلات."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "power"
+      ]
+    },
+    {
+      "id": "ca.tool.drill_driver",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Cordless drill / driver",
+        "he": "מברגה־מקדחה נטענת",
+        "ar": "مثقاب ومفك شحن"
+      },
+      "spec": {
+        "en": "18 V with clutch and two batteries.",
+        "he": "18 וולט עם מצמד ושתי סוללות.",
+        "ar": "18 فولت مع قابض وبطاريتين."
+      },
+      "attributes": {
+        "voltage": "18V"
+      },
+      "tags": [
+        "tool",
+        "power"
+      ]
+    },
+    {
+      "id": "ca.tool.orbital_sander",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Random orbit sander",
+        "he": "מלטשת אקסצנטרית",
+        "ar": "جلاخة مدارية عشوائية"
+      },
+      "spec": {
+        "en": "125 mm pad with dust extraction.",
+        "he": "צלחת 125 מ״מ עם שאיבת אבק.",
+        "ar": "قرص 125 ملم مع شفط الغبار."
+      },
+      "attributes": {
+        "padMm": "125"
+      },
+      "tags": [
+        "tool",
+        "power",
+        "dust"
+      ]
+    },
+    {
+      "id": "ca.tool.chisel_set",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Chisel set",
+        "he": "סט אזמלים",
+        "ar": "طقم أزاميل"
+      },
+      "spec": {
+        "en": "6/12/18/25 mm bevel-edge chisels.",
+        "he": "אזמלים 6/12/18/25 מ״מ.",
+        "ar": "أزاميل 6/12/18/25 ملم."
+      },
+      "attributes": {},
+      "tags": [
+        "tool"
+      ]
+    },
+    {
+      "id": "ca.tool.clamps",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Bar clamps",
+        "he": "מלחציים מוט",
+        "ar": "مشابك عمودية"
+      },
+      "spec": {
+        "en": "600–1200 mm clamps for glue-ups.",
+        "he": "מלחציים 600–1200 מ״מ להדבקות.",
+        "ar": "مشابك 600–1200 ملم للصق."
+      },
+      "attributes": {},
+      "tags": [
+        "tool"
+      ]
+    },
+    {
+      "id": "ca.tool.square",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Try square",
+        "he": "זווית נגרים",
+        "ar": "زاوية نجّار"
+      },
+      "spec": {
+        "en": "Engineer's square, 300 mm.",
+        "he": "זווית מדויקת, 300 מ״מ.",
+        "ar": "زاوية دقيقة، 300 ملم."
+      },
+      "attributes": {},
+      "tags": [
+        "tool",
+        "measuring"
+      ]
+    },
+    {
+      "id": "ca.tool.tape",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Tape measure 5 m",
+        "he": "סרט מדידה 5 מ׳",
+        "ar": "شريط قياس 5 م"
+      },
+      "spec": {
+        "en": "Class II accuracy, metric.",
+        "he": "דיוק דרגה II, מטרי.",
+        "ar": "دقة درجة II، متري."
+      },
+      "attributes": {
+        "lengthM": "5"
+      },
+      "tags": [
+        "tool",
+        "measuring"
+      ]
+    },
+    {
+      "id": "ca.safety.goggles",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Safety glasses",
+        "he": "משקפי מגן",
+        "ar": "نظارات أمان"
+      },
+      "spec": {
+        "en": "Worn for every powered cut.",
+        "he": "נלבשות בכל חיתוך ממוכן.",
+        "ar": "تُلبس عند كل قص آلي."
+      },
+      "attributes": {},
+      "tags": [
+        "ppe",
+        "safety"
+      ]
+    },
+    {
+      "id": "ca.safety.ear_defenders",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Ear defenders",
+        "he": "אוזניות מגן",
+        "ar": "واقيات أذن"
+      },
+      "spec": {
+        "en": "SNR 27 dB or better for saw and router work.",
+        "he": "הנחתה SNR 27 dB ומעלה לעבודת מסור וראוטר.",
+        "ar": "خفض SNR 27 ديسيبل فأكثر لأعمال المنشار والراوتر."
+      },
+      "attributes": {
+        "snrDb": "27"
+      },
+      "tags": [
+        "ppe",
+        "safety",
+        "noise"
+      ]
+    },
+    {
+      "id": "ca.safety.dust_extractor",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "M-class dust extractor",
+        "he": "שואב אבק דרגה M",
+        "ar": "شافط غبار درجة M"
+      },
+      "spec": {
+        "en": "Connected to every cutting and sanding tool.",
+        "he": "מחובר לכל כלי חיתוך וליטוש.",
+        "ar": "موصول بكل أداة قص وصنفرة."
+      },
+      "attributes": {
+        "class": "M"
+      },
+      "tags": [
+        "ppe",
+        "safety",
+        "dust"
+      ]
+    },
+    {
+      "id": "ca.door.internal.solid",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Internal door, solid core",
+        "he": "דלת פנים מלאה",
+        "ar": "باب داخلي مصمت"
+      },
+      "tags": [
+        "door"
+      ]
+    },
+    {
+      "id": "ca.door.internal.hollow",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Internal door, hollow core",
+        "he": "דלת פנים חלולה",
+        "ar": "باب داخلي مفرّغ"
+      },
+      "tags": [
+        "door"
+      ]
+    },
+    {
+      "id": "ca.door.fire.60",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Fire door, 60 minutes",
+        "he": "דלת אש 60 דקות",
+        "ar": "باب حريق 60 دقيقة"
+      },
+      "spec": {
+        "en": "Its rating is void without the right frame, intumescent strip and self-closer. All three or none.",
+        "he": "הדירוג בטל בלי המשקוף הנכון, פס תופח ומחזיר. שלושתם או כלום.",
+        "ar": "تصنيفه لاغٍ بدون الحلق الصحيح والشريط المنتفخ والمغلاق. الثلاثة أو لا شيء."
+      },
+      "attributes": {
+        "ratingMin": "60"
+      },
+      "tags": [
+        "door",
+        "fire",
+        "life-safety"
+      ]
+    },
+    {
+      "id": "ca.door.security.steel",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Security entrance door",
+        "he": "דלת ביטחון",
+        "ar": "باب أمان (حديد)"
+      },
+      "tags": [
+        "door",
+        "security"
+      ]
+    },
+    {
+      "id": "ca.frame.door.metal",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Metal door frame",
+        "he": "משקוף מתכת",
+        "ar": "حلق باب حديد"
+      },
+      "tags": [
+        "door"
+      ]
+    },
+    {
+      "id": "ca.frame.door.wood",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Timber door frame",
+        "he": "משקוף עץ",
+        "ar": "حلق باب خشب"
+      },
+      "tags": [
+        "door"
+      ]
+    },
+    {
+      "id": "ca.architrave",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M",
+      "names": {
+        "en": "Architrave / casing",
+        "he": "חיפוי משקוף",
+        "ar": "براويز الباب"
+      },
+      "tags": [
+        "door",
+        "finishing"
+      ]
+    },
+    {
+      "id": "ca.hinge.door",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Door hinge",
+        "he": "ציר דלת",
+        "ar": "مفصلة باب"
+      },
+      "tags": [
+        "door",
+        "hardware"
+      ]
+    },
+    {
+      "id": "ca.lock.cylinder",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Cylinder lock",
+        "he": "מנעול צילינדר",
+        "ar": "قفل سلندر"
+      },
+      "tags": [
+        "door",
+        "hardware"
+      ]
+    },
+    {
+      "id": "ca.closer.door",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Door closer",
+        "he": "מחזיר שמן",
+        "ar": "مغلاق باب (زنبرك)"
+      },
+      "tags": [
+        "door",
+        "fire"
+      ]
+    },
+    {
+      "id": "ca.strip.intumescent",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M",
+      "names": {
+        "en": "Intumescent seal strip",
+        "he": "פס תופח לדלת אש",
+        "ar": "شريط منتفخ لباب الحريق"
+      },
+      "tags": [
+        "door",
+        "fire"
+      ]
+    },
+    {
+      "id": "ca.threshold.drop",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Drop-down threshold seal",
+        "he": "אטם סף נשלף",
+        "ar": "عتبة عزل منسدلة"
+      },
+      "tags": [
+        "door",
+        "acoustic"
+      ]
+    },
+    {
+      "id": "ca.skirting.mdf",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M",
+      "names": {
+        "en": "MDF skirting",
+        "he": "פנל MDF",
+        "ar": "وزرة MDF"
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "ca.kitchen.carcass",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "M",
+      "names": {
+        "en": "Kitchen carcass unit",
+        "he": "גוף ארון מטבח",
+        "ar": "هيكل خزانة مطبخ"
+      },
+      "tags": [
+        "joinery"
+      ]
+    },
+    {
+      "id": "ca.worktop.laminate",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M",
+      "names": {
+        "en": "Laminate worktop",
+        "he": "משטח עבודה למינציה",
+        "ar": "سطح عمل لامينيت"
+      },
+      "tags": [
+        "joinery"
+      ]
+    },
+    {
+      "id": "ca.tool.jig.hinge",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Hinge jig",
+        "he": "תבנית לצירים",
+        "ar": "قالب المفصلات"
+      },
+      "tags": [
+        "door"
+      ]
+    },
+    {
+      "id": "ca.tool.saw.track",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Plunge saw with track",
+        "he": "מסור שקיעה עם מסילה",
+        "ar": "منشار غاطس مع سكة"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "ca.tool.clamp.sash",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Sash clamp",
+        "he": "מלחציים ארוכים",
+        "ar": "ملزمة طويلة"
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "ca.tool.planer.door",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Door planer",
+        "he": "מקצועה חשמלית",
+        "ar": "مسحاج كهربائي"
+      },
+      "tags": [
+        "door"
+      ]
+    }
   ]
 }
