@@ -902,6 +902,11 @@
     <string name="ct_amend_yours">אתם הצעתם זאת. הצד השני מאשר או דוחה.</string>
     <string name="ct_margin">המרווח שלכם בעבודה הזו</string>
     <string name="ct_margin_hint">מה שאתם מקבלים, פחות מה שאתם משלמים. רק אתם רואים זאת — זה לא מופיע במסך של אף אחד אחר.</string>
+    <string name="wp_claim_title">אושר וטרם נדרש תשלום</string>
+    <string name="wp_claim_raise">הגשת חשבון</string>
+    <string name="wp_claim_total">החשבון ידרוש</string>
+    <string name="wp_claim_cumulative">כל מה שאושר עד היום, לא רק מה שנוסף כעת. הסכום לתשלום הוא זה פחות עיכבון ופחות מה ששולם כבר.</string>
+    <string name="wp_claim_none">לא אושר דבר חדש מאז החשבון הקודם</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

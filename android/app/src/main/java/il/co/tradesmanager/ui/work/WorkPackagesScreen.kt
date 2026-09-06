@@ -59,6 +59,7 @@ import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.PhotoStrip
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLocale
+import java.util.Locale
 
 /**
  * Work packages on one job.
@@ -91,6 +92,7 @@ fun WorkPackagesScreen(
     val photos by viewModel.proofPhotos.collectAsStateWithLifecycle()
     val engagements by viewModel.engagements.collectAsStateWithLifecycle()
     val myParty by viewModel.myParty.collectAsStateWithLifecycle()
+    val claimable by viewModel.claimable.collectAsStateWithLifecycle()
     val language = currentLocale().toLanguageTag()
     val locale = currentLocale()
 
@@ -170,6 +172,16 @@ fun WorkPackagesScreen(
                     }
                     item { HorizontalDivider() }
                     item { SectionHeader(stringResource(R.string.wp_title)) }
+                }
+                if (Assignment.canRaiseApplication(claimable)) {
+                    item {
+                        ClaimCard(
+                            total = Assignment.claimToDate(claimable),
+                            ready = Assignment.readyToClaim(claimable).size,
+                            locale = locale,
+                            onRaise = viewModel::raiseApplication,
+                        )
+                    }
                 }
                 items(packages, key = { it.id }) { item ->
                     PackageRow(
@@ -293,16 +305,20 @@ fun WorkPackagesScreen(
                 }
             }
 
-            if (Assignment.canInvoice(current.status, current.invoicedAt != null) &&
-                side == Assignment.Side.PAYEE
-            ) {
+            if (current.status == Assignment.Status.APPROVED && side == Assignment.Side.PAYEE) {
                 item {
-                    Column(Modifier.padding(16.dp)) {
-                        OutlinedButton(
-                            onClick = { viewModel.markInvoiced() },
-                            modifier = Modifier.fillMaxWidth(),
-                        ) { Text(stringResource(R.string.wp_invoice)) }
-                    }
+                    Text(
+                        text = stringResource(
+                            if (current.invoicedAt != null) {
+                                R.string.wp_invoice
+                            } else {
+                                R.string.wp_claim_title
+                            },
+                        ),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                    )
                 }
             }
         }
@@ -393,7 +409,7 @@ fun WorkPackagesScreen(
 private fun PackageRow(
     item: AssignmentEntity,
     orgId: String,
-    locale: java.util.Locale,
+    locale: Locale,
     onOpen: () -> Unit,
 ) {
     val side = WorkPackagesViewModel.sideOf(item, orgId)
@@ -676,6 +692,45 @@ private fun DeclareSelfCard(onDeclare: (Party) -> Unit) {
                     onClick = { onDeclare(option) },
                     modifier = Modifier.fillMaxWidth(),
                 ) { Text(stringResource(partyLabel(option.name))) }
+            }
+        }
+    }
+}
+
+/**
+ * What a payment application raised now would claim.
+ *
+ * On the list rather than on a package, because an application covers the job
+ * and not whichever package happens to be open. The total shown is cumulative
+ * and says so: the number people expect to see is the new work, and the number
+ * that goes on the application is everything approved to date.
+ */
+@Composable
+private fun ClaimCard(total: Double, ready: Int, locale: Locale, onRaise: () -> Unit) {
+    Surface(
+        color = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+    ) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text(
+                stringResource(R.string.wp_claim_title) + " · " + ready,
+                style = MaterialTheme.typography.labelMedium,
+            )
+            Text(
+                stringResource(R.string.wp_claim_total),
+                style = MaterialTheme.typography.bodySmall,
+            )
+            Text(
+                Formats.money(total, locale),
+                style = MaterialTheme.typography.headlineSmall,
+            )
+            Text(
+                stringResource(R.string.wp_claim_cumulative),
+                style = MaterialTheme.typography.bodySmall,
+            )
+            Button(onClick = onRaise, modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.wp_claim_raise))
             }
         }
     }

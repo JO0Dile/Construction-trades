@@ -114,4 +114,53 @@ object Assignment {
      */
     fun canInvoice(status: String, alreadyInvoiced: Boolean): Boolean =
         status == Status.APPROVED && !alreadyInvoiced
+
+    /**
+     * One package, as the claim arithmetic sees it.
+     *
+     * [amount] is what was agreed for this package alone. A package is a
+     * discrete piece of work; a payment application is not. Keeping the two
+     * apart is the entire point of the functions below.
+     */
+    data class Claimable(
+        val id: String,
+        val amount: Double,
+        val status: String,
+        val invoiced: Boolean,
+    )
+
+    /** The packages an application raised now would newly cover. */
+    fun readyToClaim(packages: List<Claimable>): List<Claimable> =
+        packages.filter { canInvoice(it.status, it.invoiced) }
+
+    /**
+     * What an application raised now should claim — **cumulative**.
+     *
+     * This is the one place the two shapes meet, and it is where the mistake
+     * would be made. A package is worth what it is worth on its own; an
+     * application says what the work is worth **in total to date**, and the
+     * difference between that and what has already been paid is the cheque.
+     * Claiming one package's amount on application three would ask for that
+     * package and hand back everything claimed on one and two.
+     *
+     * So every approved package counts, whether it was invoiced on an earlier
+     * application or is being invoiced on this one. Approved-but-not-yet-
+     * claimed work is work done to date; leaving it out would understate the
+     * claim by exactly the packages this application exists to cover.
+     *
+     * Packages that are not approved are excluded. Work that has not been
+     * signed off is not work to date, whatever the crew thinks of it.
+     */
+    fun claimToDate(packages: List<Claimable>): Double =
+        packages.filter { it.status == Status.APPROVED }.sumOf { it.amount }
+
+    /**
+     * Whether raising an application from these packages is worth doing.
+     *
+     * False when nothing new has been approved since the last one. An
+     * application for nothing is a document somebody has to read, decline and
+     * file, and it makes the next real one look like more of the same.
+     */
+    fun canRaiseApplication(packages: List<Claimable>): Boolean =
+        readyToClaim(packages).isNotEmpty()
 }

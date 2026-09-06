@@ -13,6 +13,7 @@ import il.co.tradesmanager.data.local.entity.AssignmentEntity
 import il.co.tradesmanager.data.local.entity.EngagementEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.repository.EngagementRepository
+import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -244,13 +245,69 @@ class WorkPackagesViewModel(
             }
     }
 
-    fun markInvoiced() = viewModelScope.launch {
-        val assignment = open.value ?: return@launch
+    /** Everything approved on this job that this firm is owed for. */
+    val claimable: StateFlow<List<Assignment.Claimable>> = combine(packages, orgId) { all, org ->
+        all.filter { it.payeeOrgId == org }
+            .map { Assignment.Claimable(it.id, it.amount, it.status, it.invoicedAt != null) }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /**
+     * Turns approved work into a payment application.
+     *
+     * The one join between a discrete package and a cumulative claim, and the
+     * place the arithmetic would go wrong. The application claims **everything
+     * approved to date**, not the packages being added to it — see
+     * `Assignment.claimToDate`. What is actually due follows from that in
+     * `core.money.Payments`, less retention and less what has already been
+     * paid, and it will not be due for another six weeks under שוטף + 30.
+     *
+     * Every package it covers is marked before the application is raised. If
+     * one of them refuses — somebody else invoiced it on another device — the
+     * application is not raised at all, because a claim covering packages that
+     * are already on somebody else's application is worse than no claim.
+     */
+    fun raiseApplication() = viewModelScope.launch {
+        val org = orgId.value
+        val ready = Assignment.readyToClaim(claimable.value)
+        if (ready.isEmpty()) return@launch
         val actor = container.settings.settings.first().actorName
-        container.engagements.markInvoiced(assignment, orgId.value, actor).onFailure { failure ->
-            _refusal.value = (failure as? EngagementRepository.Refused)?.refusal
+
+        val covered = ready.mapNotNull { row -> packages.value.firstOrNull { it.id == row.id } }
+        for (assignment in covered) {
+            val marked = container.engagements.markInvoiced(assignment, org, actor)
+            if (marked.isFailure) {
+                _refusal.value =
+                    (marked.exceptionOrNull() as? EngagementRepository.Refused)?.refusal
+                return@launch
+            }
         }
+
+        // The payer of the packages is who this claim goes to. Taken from the
+        // packages rather than from a field, so it cannot name the wrong firm.
+        val payer = covered.firstOrNull()?.payerOrgId.orEmpty()
+        val payerName = engagements.value
+            .firstOrNull { it.orgId == payer }?.orgName
+            ?: payer
+        container.payments.raise(
+            projectId = projectId,
+            direction = PaymentsRepository.Direction.RECEIVABLE,
+            partyName = payerName,
+            claimedGrossToDate = Assignment.claimToDate(claimable.value),
+            contractSum = contractSum.value,
+            actorName = actor,
+        )
     }
+
+    /**
+     * The revised contract, which is what the retention limit is a share of.
+     *
+     * Read from the Money lens rather than summed from the packages: retention
+     * is capped against the value of the job, and the packages this firm holds
+     * are not the job.
+     */
+    val contractSum: StateFlow<Double> = container.money.observeFinancials(projectId)
+        .map { it.revisedContract }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0.0)
 
     companion object {
 

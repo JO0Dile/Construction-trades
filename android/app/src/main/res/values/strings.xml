@@ -914,6 +914,11 @@
     <string name="ct_amend_yours">You proposed this. The other side accepts or refuses it.</string>
     <string name="ct_margin">Your margin on this job</string>
     <string name="ct_margin_hint">What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.</string>
+    <string name="wp_claim_title">Approved and not yet claimed</string>
+    <string name="wp_claim_raise">Raise a payment application</string>
+    <string name="wp_claim_total">This application will claim</string>
+    <string name="wp_claim_cumulative">Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.</string>
+    <string name="wp_claim_none">Nothing new approved since the last application</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

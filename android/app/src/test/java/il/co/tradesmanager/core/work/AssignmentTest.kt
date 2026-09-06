@@ -79,6 +79,57 @@ class AssignmentTest {
         assertFalse(Assignment.canInvoice(S.SUBMITTED, alreadyInvoiced = false))
     }
 
+    // Raising the application. Where a discrete package meets a cumulative
+    // claim, which is the join the whole payments feature exists to get right.
+
+    private fun claimable(id: String, amount: Double, status: String, invoiced: Boolean) =
+        Assignment.Claimable(id, amount, status, invoiced)
+
+    @Test
+    fun `a claim is the total of approved work, not the packages being added`() {
+        val packages = listOf(
+            claimable("a", 7_000.0, S.APPROVED, invoiced = true),
+            claimable("b", 4_000.0, S.APPROVED, invoiced = false),
+        )
+        // 11,000, not 4,000. An application says what the work is worth in
+        // total; claiming only the new package would ask for it and hand back
+        // everything claimed last month.
+        assertEquals(11_000.0, Assignment.claimToDate(packages), 0.005)
+        assertEquals(listOf("b"), Assignment.readyToClaim(packages).map { it.id })
+    }
+
+    @Test
+    fun `work that is not signed off is not work to date`() {
+        val packages = listOf(
+            claimable("a", 7_000.0, S.APPROVED, invoiced = false),
+            claimable("b", 4_000.0, S.SUBMITTED, invoiced = false),
+            claimable("c", 2_000.0, S.IN_PROGRESS, invoiced = false),
+            claimable("d", 9_000.0, S.REJECTED, invoiced = false),
+        )
+        assertEquals(7_000.0, Assignment.claimToDate(packages), 0.005)
+        assertEquals(listOf("a"), Assignment.readyToClaim(packages).map { it.id })
+    }
+
+    @Test
+    fun `nothing new approved means no application to raise`() {
+        val allClaimed = listOf(claimable("a", 7_000.0, S.APPROVED, invoiced = true))
+        assertFalse(Assignment.canRaiseApplication(allClaimed))
+        // But what was claimed before still counts toward the running total.
+        assertEquals(7_000.0, Assignment.claimToDate(allClaimed), 0.005)
+
+        assertTrue(
+            Assignment.canRaiseApplication(
+                allClaimed + claimable("b", 1.0, S.APPROVED, invoiced = false),
+            ),
+        )
+    }
+
+    @Test
+    fun `a job with no packages claims nothing and raises nothing`() {
+        assertEquals(0.0, Assignment.claimToDate(emptyList()), 0.005)
+        assertFalse(Assignment.canRaiseApplication(emptyList()))
+    }
+
     @Test
     fun `every state is reachable from draft`() {
         val seen = mutableSetOf(S.DRAFT)

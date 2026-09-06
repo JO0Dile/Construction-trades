@@ -4530,6 +4530,31 @@
       "en": "What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.",
       "he": "מה שאתם מקבלים, פחות מה שאתם משלמים. רק אתם רואים זאת — זה לא מופיע במסך של אף אחד אחר.",
       "ar": "ما تقبضونه ناقص ما تدفعونه. أنتم فقط ترون هذا — لا يظهر على شاشة أي أحد آخر."
+    },
+    "wp_claim_title": {
+      "en": "Approved and not yet claimed",
+      "he": "אושר וטרם נדרש תשלום",
+      "ar": "معتمد ولم يُطالَب به بعد"
+    },
+    "wp_claim_raise": {
+      "en": "Raise a payment application",
+      "he": "הגשת חשבון",
+      "ar": "رفع مطالبة مالية"
+    },
+    "wp_claim_total": {
+      "en": "This application will claim",
+      "he": "החשבון ידרוש",
+      "ar": "هذه المطالبة ستطالب بـ"
+    },
+    "wp_claim_cumulative": {
+      "en": "Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.",
+      "he": "כל מה שאושר עד היום, לא רק מה שנוסף כעת. הסכום לתשלום הוא זה פחות עיכבון ופחות מה ששולם כבר.",
+      "ar": "كل ما اعتُمد حتى اليوم، لا ما يُضاف الآن فقط. المستحق فعلياً هو ذلك ناقص المحتجز وناقص ما دُفع سابقاً."
+    },
+    "wp_claim_none": {
+      "en": "Nothing new approved since the last application",
+      "he": "לא אושר דבר חדש מאז החשבון הקודם",
+      "ar": "لا شيء جديد اعتُمد منذ المطالبة السابقة"
     }
   },
   "plurals": {

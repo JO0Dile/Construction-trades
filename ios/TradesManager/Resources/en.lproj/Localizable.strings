@@ -913,3 +913,8 @@
 "ct_amend_yours" = "You proposed this. The other side accepts or refuses it.";
 "ct_margin" = "Your margin on this job";
 "ct_margin_hint" = "What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.";
+"wp_claim_title" = "Approved and not yet claimed";
+"wp_claim_raise" = "Raise a payment application";
+"wp_claim_total" = "This application will claim";
+"wp_claim_cumulative" = "Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.";
+"wp_claim_none" = "Nothing new approved since the last application";
