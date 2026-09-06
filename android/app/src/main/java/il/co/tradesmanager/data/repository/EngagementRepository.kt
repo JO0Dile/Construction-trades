@@ -349,11 +349,31 @@ class EngagementRepository(
         return Result.success(updated)
     }
 
-    /** Records that an approved package has had its application raised. */
+    /**
+     * Records that an approved package has had its application raised.
+     *
+     * The crew's move, not the payer's: the party being paid is the one that
+     * raises the claim. Checked here rather than left to the screen that hides
+     * the button, because the screen is not the enforcement — this is the same
+     * repository whose whole point is that a rule an interface holds is a rule
+     * an API call walks past.
+     */
     suspend fun markInvoiced(
         assignment: AssignmentEntity,
+        byOrgId: String,
         actorName: String,
     ): Result<AssignmentEntity> {
+        if (byOrgId.isBlank() || byOrgId != assignment.payeeOrgId) {
+            return Result.failure(
+                Refused(
+                    if (byOrgId == assignment.payerOrgId) {
+                        Refusal.WRONG_SIDE
+                    } else {
+                        Refusal.NOT_A_PARTY
+                    },
+                ),
+            )
+        }
         if (!Assignment.canInvoice(assignment.status, assignment.invoicedAt != null)) {
             return Result.failure(Refused(Refusal.WRONG_STATE))
         }

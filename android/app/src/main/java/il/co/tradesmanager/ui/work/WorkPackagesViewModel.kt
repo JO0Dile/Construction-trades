@@ -247,7 +247,7 @@ class WorkPackagesViewModel(
     fun markInvoiced() = viewModelScope.launch {
         val assignment = open.value ?: return@launch
         val actor = container.settings.settings.first().actorName
-        container.engagements.markInvoiced(assignment, actor).onFailure { failure ->
+        container.engagements.markInvoiced(assignment, orgId.value, actor).onFailure { failure ->
             _refusal.value = (failure as? EngagementRepository.Refused)?.refusal
         }
     }
