@@ -1,6 +1,6 @@
 # Translation and photography worksheets
 
-Two spreadsheets. Both are UTF-8 with a byte-order mark, so Excel opens them
+Four spreadsheets. All are UTF-8 with a byte-order mark, so Excel opens them
 in Hebrew and Arabic without mangling anything.
 
 ## items.csv — 497 catalogue items
@@ -56,6 +56,26 @@ Two things not to change:
 
 This is the largest of the three and the least urgent. The item names are what
 the photography waits on; the interface can be corrected in passes.
+
+## safety-and-templates.csv — 404 rows
+
+The text inside the checklists and the job templates: 46 checklist titles, 193
+safety checks, and the names, descriptions and 117 task steps of the 24
+templates.
+
+This one is worth more care than its size suggests. A safety check is read on
+a site by somebody deciding whether to sign it, and the `context` column says
+which ones carry weight:
+
+* **CRITICAL — blocks sign-off** means the check cannot be waved through. If
+  the Hebrew or Arabic is softer than the English, it stops working.
+* **must be done before work** on a checklist title means the app will not let
+  the job start until it is signed.
+
+The wording matters more than the grammar. "Wet cement burns through skin over
+hours, painlessly at first" is written that way because the painlessness is
+the reason people ignore it. If the local phrasing carries that better,
+use the local phrasing.
 
 ## Terms flagged for confirmation
 
