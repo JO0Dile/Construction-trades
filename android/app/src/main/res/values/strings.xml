@@ -820,6 +820,10 @@
     <string name="hv_lifts">Lifts never marked done</string>
     <string name="hv_pours">Pours never finished</string>
     <string name="hv_daily_logs">Daily logs never signed</string>
+    <!-- Alt text for the flag in the settings footer -->
+    <string name="about_flag">Flag of Israel</string>
+    <!-- Under the app name in the settings footer -->
+    <string name="about_edition">Israel edition — built to Israeli standards, terms and site rules</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

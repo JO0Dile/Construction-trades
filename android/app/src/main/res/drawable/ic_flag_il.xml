@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The flag of Israel, at its own 11:8 proportion.
+
+     Drawn rather than shipped as a bitmap so it stays sharp at every density
+     and takes no space. The blue is the flag's own #0038B8; the field is left
+     as an explicit white rather than a theme colour, because a flag that goes
+     dark-grey in dark mode is not the flag. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="44dp"
+    android:height="32dp"
+    android:viewportWidth="220"
+    android:viewportHeight="160">
+
+    <path android:fillColor="#FFFFFF" android:pathData="M0,0h220v160h-220z" />
+
+    <path android:fillColor="#0038B8" android:pathData="M0,24h220v18h-220z" />
+    <path android:fillColor="#0038B8" android:pathData="M0,118h220v18h-220z" />
+
+    <!-- Magen David: two overlapping equilateral triangles, drawn as
+         outlines so the interlace reads at small sizes. -->
+    <path
+        android:strokeColor="#0038B8"
+        android:strokeWidth="7"
+        android:fillColor="#00000000"
+        android:pathData="M110,46 L134,88 L86,88 Z" />
+    <path
+        android:strokeColor="#0038B8"
+        android:strokeWidth="7"
+        android:fillColor="#00000000"
+        android:pathData="M110,114 L86,72 L134,72 Z" />
+</vector>

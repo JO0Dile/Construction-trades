@@ -811,6 +811,8 @@
     <string name="hv_lifts">عمليات رفع لم تُعلَّم كمنتهية</string>
     <string name="hv_pours">صبّات لم تُنهَ</string>
     <string name="hv_daily_logs">يوميات عمل لم تُوقَّع</string>
+    <string name="about_flag">علم إسرائيل</string>
+    <string name="about_edition">إصدار إسرائيل — وفق المواصفات وشروط الدفع وأنظمة المواقع الإسرائيلية</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

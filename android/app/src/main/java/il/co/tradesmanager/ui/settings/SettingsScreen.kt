@@ -1,11 +1,15 @@
 package il.co.tradesmanager.ui.settings
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -34,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -269,15 +274,7 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 }
             }
 
-            item {
-                Text(
-                    text = stringResource(R.string.set_catalog_version) + ": " +
-                        settings.seededCatalogVersion,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(16.dp),
-                )
-            }
+            item { AboutFooter(catalogVersion = settings.seededCatalogVersion) }
         }
     }
 
@@ -407,5 +404,45 @@ private fun IdNumberRow(idNumber: String?, onSet: (String) -> Unit) {
                 Text(stringResource(R.string.action_save))
             }
         }
+    }
+}
+
+/**
+ * What the app is, at the bottom of settings.
+ *
+ * The flag is here rather than only on the launcher icon because the icon is
+ * seen once and then never looked at again, and this is a product built for
+ * one country's rules — its standards, its payment terms, its site register,
+ * its holidays. Saying so in the app is honest rather than decorative.
+ */
+@Composable
+private fun AboutFooter(catalogVersion: Int) {
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Image(
+            painter = painterResource(R.drawable.ic_flag_il),
+            // Named, not decorative: a screen reader announcing nothing here
+            // would leave the one statement this footer makes unsaid.
+            contentDescription = stringResource(R.string.about_flag),
+            modifier = Modifier.size(width = 44.dp, height = 32.dp),
+        )
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.titleSmall,
+        )
+        Text(
+            text = stringResource(R.string.about_edition),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = stringResource(R.string.set_catalog_version) + ": " + catalogVersion,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
     }
 }

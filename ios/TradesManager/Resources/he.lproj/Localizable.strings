@@ -819,3 +819,7 @@
 "hv_lifts" = "הרמות שלא סומנו כהושלמו";
 "hv_pours" = "יציקות שלא נסגרו";
 "hv_daily_logs" = "יומני עבודה שלא נחתמו";
+/* Alt text for the flag in the settings footer */
+"about_flag" = "דגל ישראל";
+/* Under the app name in the settings footer */
+"about_edition" = "מהדורת ישראל — לפי התקנים, תנאי התשלום ונהלי האתר הישראליים";

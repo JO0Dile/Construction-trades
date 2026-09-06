@@ -4072,6 +4072,18 @@
       "en": "Daily logs never signed",
       "he": "יומני עבודה שלא נחתמו",
       "ar": "يوميات عمل لم تُوقَّع"
+    },
+    "about_flag": {
+      "c": "Alt text for the flag in the settings footer",
+      "en": "Flag of Israel",
+      "he": "דגל ישראל",
+      "ar": "علم إسرائيل"
+    },
+    "about_edition": {
+      "c": "Under the app name in the settings footer",
+      "en": "Israel edition — built to Israeli standards, terms and site rules",
+      "he": "מהדורת ישראל — לפי התקנים, תנאי התשלום ונהלי האתר הישראליים",
+      "ar": "إصدار إسرائيل — وفق المواصفات وشروط الدفع وأنظمة المواقع الإسرائيلية"
     }
   },
   "plurals": {
