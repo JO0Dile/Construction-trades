@@ -1,7 +1,6 @@
 package il.co.tradesmanager.data.local.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import il.co.tradesmanager.data.local.entity.AssignmentEntity
@@ -10,14 +9,30 @@ import il.co.tradesmanager.data.local.entity.ContractEntity
 import il.co.tradesmanager.data.local.entity.EngagementEntity
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Reading and writing the contracting chain.
+ *
+ * **Nothing here deletes.** That is deliberate rather than unfinished:
+ *
+ * - A work package carries proof photographs keyed on its id, so removing the
+ *   row would leave the pictures behind with nothing pointing at them — and
+ *   those pictures are the evidence the work was done.
+ * - An amendment is the record of what a price went from and to. A contract
+ *   that could be deleted would take its own price history with it, which is
+ *   the exact failure the amendment workflow exists to prevent.
+ * - Who was on a job in March is asked in September, usually with a solicitor
+ *   in the room. An engagement ends with `endedAt`, not by vanishing.
+ *
+ * Anything that genuinely has to go — a package raised against the wrong firm
+ * — is cancelled through `core.work.Assignment`, which leaves a row saying so.
+ * If a delete is ever needed, it needs a retention rule and an audit entry
+ * first, not an `@Delete` annotation.
+ */
 @Dao
 interface EngagementDao {
 
     @Upsert
     suspend fun upsert(engagement: EngagementEntity)
-
-    @Delete
-    suspend fun delete(engagement: EngagementEntity)
 
     /**
      * Everyone on the job, still engaged first.
@@ -107,9 +122,6 @@ interface EngagementDao {
 
     @Upsert
     suspend fun upsert(assignment: AssignmentEntity)
-
-    @Delete
-    suspend fun delete(assignment: AssignmentEntity)
 
     @Query("SELECT * FROM assignments WHERE id = :id")
     fun observeAssignment(id: String): Flow<AssignmentEntity?>
