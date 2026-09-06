@@ -4405,6 +4405,16 @@
       "en": "What the package is",
       "he": "מהי החבילה",
       "ar": "ما هي الحزمة"
+    },
+    "eng_self": {
+      "en": "What is your firm on this job?",
+      "he": "מה החברה שלכם בעבודה הזו?",
+      "ar": "ما هي شركتكم في هذا المشروع؟"
+    },
+    "eng_self_hint": {
+      "en": "Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.",
+      "he": "ענו על כך לפני הכול. אף אחד אחר לא יכול לענות במקומכם, וכל עוד לא עניתם לא תוכלו להוסיף חברה נוספת.",
+      "ar": "أجب على هذا أولاً. لا أحد غيرك يستطيع تحديده، وحتى تُجيب لا تستطيع إضافة شركة أخرى."
     }
   },
   "plurals": {

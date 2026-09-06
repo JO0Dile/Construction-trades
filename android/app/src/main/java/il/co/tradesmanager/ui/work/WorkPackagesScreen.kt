@@ -130,7 +130,9 @@ fun WorkPackagesScreen(
         },
     ) { padding ->
         if (current == null) {
-            if (packages.isEmpty()) {
+            // The empty state used to return early, which hid the one thing a
+            // firm on a fresh job actually has to do first.
+            if (packages.isEmpty() && engagements.isEmpty() && myParty != null) {
                 EmptyState(
                     message = stringResource(R.string.wp_empty),
                     modifier = Modifier.padding(padding),
@@ -138,6 +140,11 @@ fun WorkPackagesScreen(
                 return@Scaffold
             }
             LazyColumn(Modifier.padding(padding)) {
+                if (myParty == null) {
+                    item {
+                        DeclareSelfCard(onDeclare = viewModel::declareSelf)
+                    }
+                }
                 if (engagements.isNotEmpty()) {
                     item { SectionHeader(stringResource(R.string.eng_title)) }
                     items(engagements, key = { "eng-" + it.id }) { row ->
@@ -621,4 +628,37 @@ private fun partyLabel(party: String): Int = when (Party.parse(party)) {
     Party.SECOND_TIER -> R.string.party_second
     Party.SUPPLIER -> R.string.party_supplier
     Party.CONSULTANT -> R.string.party_consultant
+}
+
+/**
+ * The first thing on a job with more than one firm: saying what you are.
+ *
+ * Every position is offered here and nothing is filtered, because this is a
+ * firm describing itself rather than appointing anybody. The downward-only
+ * rule governs who you may bring on, not what you may be.
+ */
+@Composable
+private fun DeclareSelfCard(onDeclare: (Party) -> Unit) {
+    Surface(
+        color = MaterialTheme.colorScheme.secondaryContainer,
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+    ) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text(
+                stringResource(R.string.eng_self),
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                stringResource(R.string.eng_self_hint),
+                style = MaterialTheme.typography.bodySmall,
+            )
+            Party.entries.sortedBy { it.depth }.forEach { option ->
+                OutlinedButton(
+                    onClick = { onDeclare(option) },
+                    modifier = Modifier.fillMaxWidth(),
+                ) { Text(stringResource(partyLabel(option.name))) }
+            }
+        }
+    }
 }

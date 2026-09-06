@@ -877,6 +877,8 @@
     <string name="eng_refused">התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.</string>
     <string name="wp_payee">מי מבצע</string>
     <string name="wp_title_field">מהי החבילה</string>
+    <string name="eng_self">מה החברה שלכם בעבודה הזו?</string>
+    <string name="eng_self_hint">ענו על כך לפני הכול. אף אחד אחר לא יכול לענות במקומכם, וכל עוד לא עניתם לא תוכלו להוסיף חברה נוספת.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

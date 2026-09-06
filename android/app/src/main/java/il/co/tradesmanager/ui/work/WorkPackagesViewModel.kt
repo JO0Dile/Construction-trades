@@ -144,6 +144,37 @@ class WorkPackagesViewModel(
      * disabled button — the same call arriving from a future API has to meet
      * it too.
      */
+    /**
+     * Records what this firm is on this job.
+     *
+     * Nobody else can do it. A general contractor cannot be added to a job by
+     * the crew it has not hired yet, so the first engagement on any job is
+     * always a firm saying what it is — and until it has, [myParty] is null
+     * and it may bring nobody on.
+     *
+     * Passed with no engager, which is what makes it self-declared rather than
+     * appointed: the downward-only check in the repository applies to
+     * appointing somebody else, and there is nobody above to check against.
+     */
+    fun declareSelf(party: Party) = viewModelScope.launch {
+        val org = orgId.value
+        if (org.isBlank()) return@launch
+        val signedIn = session.value as? SessionRepository.State.SignedIn ?: return@launch
+        val actor = container.settings.settings.first().actorName
+        container.engagements.engage(
+            projectId = projectId,
+            orgId = org,
+            orgName = signedIn.company?.name ?: signedIn.account.displayName,
+            party = party,
+            engagedByOrgId = null,
+            engagedByParty = null,
+            scopeSummary = null,
+            actorName = actor,
+        ).onFailure { failure ->
+            _refusal.value = (failure as? EngagementRepository.Refused)?.refusal
+        }
+    }
+
     fun engage(orgName: String, party: Party, scopeSummary: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
         container.engagements.engage(

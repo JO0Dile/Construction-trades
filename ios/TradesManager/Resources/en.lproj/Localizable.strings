@@ -888,3 +888,5 @@
 "eng_refused" = "Your position on this job cannot bring that one on.";
 "wp_payee" = "Who is doing it";
 "wp_title_field" = "What the package is";
+"eng_self" = "What is your firm on this job?";
+"eng_self_hint" = "Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.";
