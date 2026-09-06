@@ -41,6 +41,7 @@ import il.co.tradesmanager.ui.money.MoneyScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
+import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
 import il.co.tradesmanager.ui.work.WorkPackagesScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
@@ -94,6 +95,7 @@ object Routes {
     const val ORDERS = "orders"
     const val ORDER_DETAIL = "orders/detail"
     const val WORK_PACKAGES = "work_packages"
+    const val COMPANY_PROFILE = "company_profile"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
 
@@ -290,6 +292,12 @@ fun AppNavHost(
                     onBack = { navController.popBackStack() },
                 )
             }
+            composable(Routes.COMPANY_PROFILE) {
+                CompanyProfileScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
             composable("${Routes.WORK_PACKAGES}/{projectId}") { entry ->
                 WorkPackagesScreen(
                     container = container,
@@ -438,7 +446,13 @@ fun AppNavHost(
                 )
             }
             composable(Routes.SETTINGS) {
-                SettingsScreen(container = container, onBack = { navController.popBackStack() })
+                SettingsScreen(
+                    container = container,
+                    onOpenCompanyProfile = {
+                        navController.navigate(Routes.COMPANY_PROFILE)
+                    },
+                    onBack = { navController.popBackStack() },
+                )
             }
         }
     }

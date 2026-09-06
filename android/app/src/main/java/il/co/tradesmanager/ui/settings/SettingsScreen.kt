@@ -57,7 +57,11 @@ import il.co.tradesmanager.ui.components.currentLanguageTag
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
+fun SettingsScreen(
+    container: AppContainer,
+    onOpenCompanyProfile: () -> Unit,
+    onBack: () -> Unit,
+) {
     val viewModel: SettingsViewModel = viewModel(
         factory = ViewModelFactory(container) { SettingsViewModel(it) },
     )
@@ -247,6 +251,26 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(top = 4.dp),
                     )
+                }
+            }
+
+            // Only a company has a profile. A sole trader has a name and
+            // nobody to publish it to.
+            if ((session as? SessionRepository.State.SignedIn)?.isCompany == true) {
+                item {
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .clickable(onClick = onOpenCompanyProfile)
+                            .padding(16.dp),
+                    ) {
+                        Text(stringResource(R.string.co_title))
+                        Text(
+                            text = stringResource(R.string.co_visible_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                 }
             }
 

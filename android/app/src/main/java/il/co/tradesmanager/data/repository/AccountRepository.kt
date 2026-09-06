@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.access.CompanyProfile
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.core.security.Signature
@@ -110,6 +111,56 @@ class AccountRepository(
             idNumber = ownerIdNumber,
             joinCompanyId = company.id,
         )
+    }
+
+    /**
+     * Saves the firm's own details, and its per-field say in who sees them.
+     *
+     * [published] is the whole point of the screen this comes from. A firm
+     * wants its name and mark where the crew will see it every morning; it
+     * does not necessarily want the owner's mobile number on the same screen
+     * in forty people's hands. So it is asked field by field, and anything
+     * not in this set is not published.
+     */
+    suspend fun updateCompanyProfile(
+        company: CompanyEntity,
+        name: String,
+        registrationNumber: String?,
+        logoUri: String?,
+        email: String?,
+        phone: String?,
+        website: String?,
+        addressLine: String?,
+        contractorLicenceNumber: String?,
+        contractorClassification: String?,
+        licenceExpiresOn: Long?,
+        published: Set<CompanyProfile.Field>,
+        actorName: String,
+    ): CompanyEntity {
+        fun clean(value: String?) = value?.trim()?.takeIf { it.isNotEmpty() }
+        val updated = company.copy(
+            name = name.trim().ifEmpty { company.name },
+            registrationNumber = clean(registrationNumber),
+            logoUri = clean(logoUri),
+            email = clean(email),
+            phone = clean(phone),
+            website = clean(website),
+            addressLine = clean(addressLine),
+            contractorLicenceNumber = clean(contractorLicenceNumber),
+            contractorClassification = clean(contractorClassification),
+            licenceExpiresOn = licenceExpiresOn,
+            // Sorted so the stored string does not churn on every save just
+            // because a set iterated in a different order.
+            publishedToWorkforce = published.map { it.name }.sorted().joinToString(","),
+            updatedAt = System.currentTimeMillis(),
+        )
+        dao.upsertCompany(updated)
+        audit.record(
+            "company", company.id, AuditTrail.Action.UPDATE, actorName,
+            "profile updated; published to crew: " +
+                published.map { it.name }.sorted().joinToString(",").ifEmpty { "nothing" },
+        )
+        return updated
     }
 
     /** Adds a member. Only an owner or HR gets here — see [Role.canManageMembers]. */
