@@ -59,7 +59,12 @@ object Amendment {
      * amendment could raise the price of its own subcontract on a Friday
      * afternoon, and the two-signature requirement would be decoration.
      */
-    fun canAccept(proposedByOrgId: String, payerOrgId: String, payeeOrgId: String, orgId: String): Boolean {
+    fun canAccept(
+        proposedByOrgId: String,
+        payerOrgId: String,
+        payeeOrgId: String,
+        orgId: String,
+    ): Boolean {
         if (orgId.isBlank() || orgId == proposedByOrgId) return false
         return orgId == payerOrgId || orgId == payeeOrgId
     }

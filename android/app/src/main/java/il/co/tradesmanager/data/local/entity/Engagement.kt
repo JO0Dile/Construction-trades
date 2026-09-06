@@ -68,7 +68,14 @@ data class ContractEntity(
     val signedAt: Long? = null,
     val signedByPayerName: String? = null,
     val signedByPayeeName: String? = null,
-    /** Comma-separated org ids. Empty is the normal case. */
+    /**
+     * Org ids, comma-delimited **with the outer commas** — `,org.a,org.b,`.
+     * Empty is the normal case.
+     *
+     * The bounding commas are load-bearing: the query matches `,id,`, and a
+     * bare substring match would disclose a contract to any firm whose id
+     * happened to be a prefix of a disclosed one.
+     */
     val disclosedToOrgIds: String = "",
     val createdAt: Long,
     val updatedAt: Long,

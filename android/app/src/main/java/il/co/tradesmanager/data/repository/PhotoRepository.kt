@@ -57,6 +57,15 @@ class PhotoRepository(
         const val SNAG_FIXED = "snag.fixed"
 
         const val ACCOUNT_PHOTO = "account.photo"
+
+        /**
+         * Proof that a work package was actually done.
+         *
+         * Demanded at submission rather than at approval, because approval
+         * happens in an office days later and by then the wall is plastered
+         * and there is nothing left to photograph.
+         */
+        const val WORK_PACKAGE = "assignment.proof"
         const val ACCOUNT_ID_DOCUMENT = "account.id_document"
 
         val projectAny = listOf(PROJECT_PLAN, PROJECT_PHOTO)

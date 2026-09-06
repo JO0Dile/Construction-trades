@@ -42,6 +42,7 @@ import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
+import il.co.tradesmanager.ui.work.WorkPackagesScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
@@ -92,6 +93,7 @@ object Routes {
     const val PLANT = "plant"
     const val ORDERS = "orders"
     const val ORDER_DETAIL = "orders/detail"
+    const val WORK_PACKAGES = "work_packages"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
 
@@ -105,6 +107,7 @@ object Routes {
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
     fun money(projectId: String) = "$MONEY/$projectId"
     fun payments(projectId: String) = "$PAYMENTS/$projectId"
+    fun workPackages(projectId: String) = "$WORK_PACKAGES/$projectId"
     fun timesheet(projectId: String) = "$TIMESHEET/$projectId"
     fun orderDetail(orderId: String) = "$ORDER_DETAIL/$orderId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
@@ -273,6 +276,7 @@ fun AppNavHost(
                     },
                     onOpenExcavations = { navController.navigate(Routes.excavations(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
+                    onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -283,6 +287,13 @@ fun AppNavHost(
                     projectId = id,
                     onOpenPayments = { navController.navigate(Routes.payments(id)) },
                     onOpenTimesheet = { navController.navigate(Routes.timesheet(id)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.WORK_PACKAGES}/{projectId}") { entry ->
+                WorkPackagesScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },
                 )
             }

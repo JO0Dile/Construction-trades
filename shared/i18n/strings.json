@@ -4084,6 +4084,292 @@
       "en": "Israel edition — built to Israeli standards, terms and site rules",
       "he": "מהדורת ישראל — לפי התקנים, תנאי התשלום ונהלי האתר הישראליים",
       "ar": "إصدار إسرائيل — وفق المواصفات وشروط الدفع وأنظمة المواقع الإسرائيلية"
+    },
+    "wp_title": {
+      "en": "Work packages",
+      "he": "חבילות עבודה",
+      "ar": "حزم العمل"
+    },
+    "wp_empty": {
+      "en": "No work packages on this job yet",
+      "he": "אין עדיין חבילות עבודה בעבודה הזו",
+      "ar": "لا توجد حزم عمل في هذا المشروع بعد"
+    },
+    "wp_new": {
+      "en": "New work package",
+      "he": "חבילת עבודה חדשה",
+      "ar": "حزمة عمل جديدة"
+    },
+    "wp_given": {
+      "en": "Given out",
+      "he": "נמסר",
+      "ar": "مُسند لغيرنا"
+    },
+    "wp_taken": {
+      "en": "Taken on",
+      "he": "התקבל",
+      "ar": "مُسند إلينا"
+    },
+    "wp_amount": {
+      "en": "Agreed amount",
+      "he": "סכום מוסכם",
+      "ar": "المبلغ المتفق عليه"
+    },
+    "wp_stage": {
+      "en": "Stage",
+      "he": "שלב",
+      "ar": "المرحلة"
+    },
+    "wp_scope": {
+      "en": "Scope of work",
+      "he": "תחום עבודה",
+      "ar": "نطاق العمل"
+    },
+    "wp_location": {
+      "en": "Where",
+      "he": "היכן",
+      "ar": "المكان"
+    },
+    "wp_accept": {
+      "en": "Accept",
+      "he": "קבלה",
+      "ar": "قبول"
+    },
+    "wp_decline": {
+      "en": "Decline",
+      "he": "דחייה",
+      "ar": "رفض المهمة"
+    },
+    "wp_start": {
+      "en": "Start work",
+      "he": "התחלת עבודה",
+      "ar": "بدء العمل"
+    },
+    "wp_submit": {
+      "en": "Submit for inspection",
+      "he": "הגשה לבדיקה",
+      "ar": "تقديم للفحص"
+    },
+    "wp_approve": {
+      "en": "Approve",
+      "he": "אישור",
+      "ar": "اعتماد"
+    },
+    "wp_reject": {
+      "en": "Send back",
+      "he": "החזרה לתיקון",
+      "ar": "إرجاع للتصحيح"
+    },
+    "wp_reject_reason": {
+      "en": "What needs correcting",
+      "he": "מה צריך לתקן",
+      "ar": "ما الذي يجب تصحيحه"
+    },
+    "wp_reject_hint": {
+      "en": "A crew sent back with no reason has nothing to fix.",
+      "he": "צוות שמוחזר בלי סיבה לא יודע מה לתקן.",
+      "ar": "الطاقم الذي يُرجع بدون سبب لا يعرف ما الذي يصلحه."
+    },
+    "wp_rejected_because": {
+      "en": "Sent back:",
+      "he": "הוחזר:",
+      "ar": "أُرجع:"
+    },
+    "wp_need_photo": {
+      "en": "Add a photograph before submitting",
+      "he": "יש לצרף תמונה לפני הגשה",
+      "ar": "أضف صورة قبل التقديم"
+    },
+    "wp_need_photo_hint": {
+      "en": "Approval happens in an office days later, by which time the wall is plastered.",
+      "he": "האישור נעשה במשרד ימים אחר כך, כשהקיר כבר מטויח.",
+      "ar": "الاعتماد يتم في المكتب بعد أيام، وعندها يكون الحيط قد لُيّس."
+    },
+    "wp_invoice": {
+      "en": "Raise the application",
+      "he": "הגשת חשבון",
+      "ar": "رفع مطالبة مالية"
+    },
+    "wp_approved_not_paid": {
+      "en": "Approved. Not paid — the application still has to run its terms.",
+      "he": "אושר. לא שולם — החשבון עדיין כפוף לתנאי התשלום.",
+      "ar": "مُعتمد. غير مدفوع — المطالبة ما زالت خاضعة لشروط الدفع."
+    },
+    "wp_status_draft": {
+      "en": "Draft",
+      "he": "טיוטה",
+      "ar": "مسودة"
+    },
+    "wp_status_offered": {
+      "en": "Offered",
+      "he": "הוצע",
+      "ar": "مُقترح"
+    },
+    "wp_status_accepted": {
+      "en": "Accepted",
+      "he": "התקבל",
+      "ar": "مقبول"
+    },
+    "wp_status_declined": {
+      "en": "Declined",
+      "he": "נדחה",
+      "ar": "مرفوض"
+    },
+    "wp_status_progress": {
+      "en": "In progress",
+      "he": "בעבודה",
+      "ar": "قيد التنفيذ"
+    },
+    "wp_status_submitted": {
+      "en": "Awaiting inspection",
+      "he": "ממתין לבדיקה",
+      "ar": "بانتظار الفحص"
+    },
+    "wp_status_rejected": {
+      "en": "Sent back",
+      "he": "הוחזר",
+      "ar": "مُرجع"
+    },
+    "wp_status_approved": {
+      "en": "Approved",
+      "he": "אושר",
+      "ar": "معتمد"
+    },
+    "wp_status_cancelled": {
+      "en": "Cancelled",
+      "he": "בוטל",
+      "ar": "ملغى"
+    },
+    "wp_refused_side": {
+      "en": "Only the other side can do that",
+      "he": "רק הצד השני יכול לעשות זאת",
+      "ar": "الطرف الآخر فقط يستطيع ذلك"
+    },
+    "wp_refused_state": {
+      "en": "Not possible from here",
+      "he": "לא אפשרי מהמצב הזה",
+      "ar": "غير ممكن من هذه الحالة"
+    },
+    "wp_refused_party": {
+      "en": "This is not your agreement",
+      "he": "זה אינו ההסכם שלך",
+      "ar": "هذه ليست اتفاقيتك"
+    },
+    "co_title": {
+      "en": "Company profile",
+      "he": "פרופיל החברה",
+      "ar": "ملف الشركة"
+    },
+    "co_logo": {
+      "en": "Company mark",
+      "he": "סמל החברה",
+      "ar": "شعار الشركة"
+    },
+    "co_name": {
+      "en": "Company name",
+      "he": "שם החברה",
+      "ar": "اسم الشركة"
+    },
+    "co_reg": {
+      "en": "Registration number",
+      "he": "ח.פ. / ע.מ.",
+      "ar": "رقم التسجيل"
+    },
+    "co_email": {
+      "en": "Email",
+      "he": "דוא״ל",
+      "ar": "البريد الإلكتروني"
+    },
+    "co_phone": {
+      "en": "Phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "co_website": {
+      "en": "Website",
+      "he": "אתר",
+      "ar": "الموقع الإلكتروني"
+    },
+    "co_address": {
+      "en": "Address",
+      "he": "כתובת",
+      "ar": "العنوان"
+    },
+    "co_licence": {
+      "en": "Contractor licence number",
+      "he": "מספר רישיון קבלן",
+      "ar": "رقم رخصة المقاول"
+    },
+    "co_classification": {
+      "en": "Classification",
+      "he": "סיווג",
+      "ar": "التصنيف"
+    },
+    "co_licence_expires": {
+      "en": "Licence valid until",
+      "he": "הרישיון בתוקף עד",
+      "ar": "الرخصة سارية حتى"
+    },
+    "co_visible_to_workers": {
+      "en": "Show to the crew",
+      "he": "להציג לצוות",
+      "ar": "إظهار للطاقم"
+    },
+    "co_visible_hint": {
+      "en": "Off means only management sees it. Nothing is published unless you turn it on.",
+      "he": "כבוי פירושו שרק ההנהלה רואה. שום דבר אינו מפורסם עד שתדליק.",
+      "ar": "مطفأ يعني أن الإدارة فقط تراه. لا يُنشر شيء حتى تشغّله."
+    },
+    "co_verified_note": {
+      "en": "Recording a licence marks you verified on this app. It is not a statement that you are licensed to do the work — that is between you and the regulator.",
+      "he": "רישום רישיון מסמן אתכם כמאומתים באפליקציה. אין בכך קביעה שאתם מורשים לבצע את העבודה — זה עניין שבינכם לבין הרגולטור.",
+      "ar": "تسجيل الرخصة يضعك كمُوثّق داخل التطبيق. وهذا ليس إقراراً بأنك مرخّص لتنفيذ العمل — تلك مسألة بينك وبين الجهة المنظِّمة."
+    },
+    "party_client": {
+      "en": "Developer / client",
+      "he": "יזם / מזמין",
+      "ar": "مطوّر / مالك المشروع"
+    },
+    "party_gc": {
+      "en": "General contractor",
+      "he": "קבלן ראשי",
+      "ar": "مقاول عام"
+    },
+    "party_first": {
+      "en": "First-tier subcontractor",
+      "he": "קבלן משנה ראשי",
+      "ar": "مقاول باطن من الدرجة الأولى"
+    },
+    "party_second": {
+      "en": "Crew leader / labour-only",
+      "he": "ראש צוות / קבלן כוח אדם",
+      "ar": "رئيس طاقم / مقاول عمالة"
+    },
+    "party_supplier": {
+      "en": "Supplier",
+      "he": "ספק",
+      "ar": "مورّد"
+    },
+    "party_consultant": {
+      "en": "Consultant / supervisor",
+      "he": "יועץ / מפקח",
+      "ar": "استشاري / مشرف"
+    },
+    "party_title": {
+      "en": "Position on this job",
+      "he": "תפקיד בעבודה הזו",
+      "ar": "الموقع في هذا المشروع"
+    },
+    "party_hint": {
+      "en": "What your firm is on this job, which is not what it is on the next one.",
+      "he": "מה החברה שלכם בעבודה הזו, וזה לא בהכרח מה שהיא בעבודה הבאה.",
+      "ar": "ما هي شركتك في هذا المشروع، وهذا ليس بالضرورة ما هي عليه في المشروع التالي."
+    },
+    "wp_row_hint": {
+      "c": "Subtitle on the project screen link",
+      "en": "What was handed out and what was taken on",
+      "he": "מה נמסר ומה התקבל",
+      "ar": "ما أُسند لغيرنا وما أُسند إلينا"
     }
   },
   "plurals": {

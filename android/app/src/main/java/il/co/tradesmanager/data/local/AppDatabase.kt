@@ -11,6 +11,7 @@ import il.co.tradesmanager.data.local.dao.ConcreteDao
 import il.co.tradesmanager.data.local.dao.DailyLogDao
 import il.co.tradesmanager.data.local.dao.EquipmentDao
 import il.co.tradesmanager.data.local.dao.EvidenceDao
+import il.co.tradesmanager.data.local.dao.EngagementDao
 import il.co.tradesmanager.data.local.dao.ExcavationDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
 import il.co.tradesmanager.data.local.dao.LiftingDao
@@ -159,6 +160,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun excavationDao(): ExcavationDao
 
     abstract fun paymentsDao(): PaymentsDao
+
+    abstract fun engagementDao(): EngagementDao
 
     companion object {
         const val NAME = "tradesmanager.db"
