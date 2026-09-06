@@ -153,6 +153,13 @@ object Migrations {
         }
     }
 
+    /** Adds payment applications: what was claimed, agreed, and when it is due. */
+    val MIGRATION_17_18 = object : Migration(17, 18) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_17_18.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -170,6 +177,7 @@ object Migrations {
         MIGRATION_14_15,
         MIGRATION_15_16,
         MIGRATION_16_17,
+        MIGRATION_17_18,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -489,5 +497,24 @@ object Migrations {
 
     val SQL_16_17: List<String> = listOf(
         "ALTER TABLE `permits` ADD COLUMN `workStoppedAt` INTEGER",
+    )
+
+    val SQL_17_18: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `payment_applications` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`direction` TEXT NOT NULL, `partyName` TEXT NOT NULL, " +
+            "`applicationNumber` INTEGER NOT NULL, `periodEndsOn` INTEGER, " +
+            "`status` TEXT NOT NULL, `claimedGrossToDate` REAL NOT NULL, " +
+            "`certifiedGrossToDate` REAL, `previouslyPaidNet` REAL NOT NULL, " +
+            "`retentionRate` REAL NOT NULL, `retentionLimit` REAL NOT NULL, " +
+            "`terms` TEXT NOT NULL, `submittedAt` INTEGER, `certifiedAt` INTEGER, " +
+            "`certifiedByName` TEXT, `dueOn` INTEGER, `paidAt` INTEGER, " +
+            "`notes` TEXT, `createdByName` TEXT NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_payment_applications_projectId` " +
+            "ON `payment_applications` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_payment_applications_dueOn` " +
+            "ON `payment_applications` (`dueOn`)",
     )
 }

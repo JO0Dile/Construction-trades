@@ -749,6 +749,46 @@
     <string name="ptw_work_stopped">The work has stopped</string>
     <string name="ptw_fire_watch">Fire watch</string>
     <string name="ptw_fire_watch_hint">Hot work fires mostly start after the torch goes out, from a spark that fell into a void an hour ago and has been smouldering since. Somebody stays and watches; the permit cannot be signed back until they have.</string>
+    <string name="pay_title">Payment applications</string>
+    <string name="pay_row_hint">What has been claimed, what was agreed, and when the money is due.</string>
+    <string name="pay_new">Raise an application</string>
+    <string name="pay_empty">No applications on this job.</string>
+    <string name="pay_direction">Which way the money goes</string>
+    <string name="pay_receivable">We are claiming</string>
+    <string name="pay_payable">A subcontractor is claiming</string>
+    <string name="pay_party">From whom</string>
+    <string name="pay_number">Application number</string>
+    <string name="pay_claimed">Claimed, for all work to date</string>
+    <string name="pay_claimed_hint">The total the work is worth at this point in the job, not what was done this month. That is how applications are written, and paying the figure on the face of each one in turn pays for the same work twice.</string>
+    <string name="pay_certified">Agreed, for all work to date</string>
+    <string name="pay_previously_paid">Already paid</string>
+    <string name="pay_retention">Retention held</string>
+    <string name="pay_retention_rate">Retention</string>
+    <string name="pay_retention_capped">At the limit of retention</string>
+    <string name="pay_net">Net to date</string>
+    <string name="pay_due_now">Due this time</string>
+    <string name="pay_due_back">Owed back</string>
+    <string name="pay_due_back_hint">The applications before this one certified more than the work turned out to be worth. It has to come back one way or another, so the screen says so rather than showing nothing.</string>
+    <string name="pay_terms">Payment terms</string>
+    <string name="pay_terms_hint">Shotef plus counts from the end of the month the invoice falls in, not from the invoice date. An invoice on the 3rd of March under shotef+30 is due on the 30th of April.</string>
+    <string name="pay_terms_immediate">On presentation</string>
+    <string name="pay_terms_30">Shotef + 30</string>
+    <string name="pay_terms_60">Shotef + 60</string>
+    <string name="pay_terms_90">Shotef + 90</string>
+    <string name="pay_terms_120">Shotef + 120</string>
+    <string name="pay_due_on">Due on</string>
+    <string name="pay_submit">Send it</string>
+    <string name="pay_certify">Agree a figure</string>
+    <string name="pay_certify_hint">What is actually agreed, which need not be what was claimed. The difference between the two is the conversation, so both are kept.</string>
+    <string name="pay_mark_paid">The money has arrived</string>
+    <string name="pay_reject">Reject it</string>
+    <string name="pay_status_draft">Being prepared</string>
+    <string name="pay_status_submitted">Waiting to be assessed</string>
+    <string name="pay_status_certified">Agreed, not yet paid</string>
+    <string name="pay_status_paid">Paid</string>
+    <string name="pay_status_rejected">Rejected</string>
+    <string name="pay_release_completion">Released at practical completion</string>
+    <string name="pay_release_defects">Released when the defects period ends</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -808,5 +848,9 @@
     <plurals name="ptw_watch_minutes">
         <item quantity="one">%d minute still to watch</item>
         <item quantity="other">%d minutes still to watch</item>
+    </plurals>
+    <plurals name="pay_days_overdue">
+        <item quantity="one">%d day overdue</item>
+        <item quantity="other">%d days overdue</item>
     </plurals>
 </resources>

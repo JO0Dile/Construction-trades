@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.money
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -70,7 +71,12 @@ import java.util.Locale
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MoneyScreen(container: AppContainer, projectId: String, onBack: () -> Unit) {
+fun MoneyScreen(
+    container: AppContainer,
+    projectId: String,
+    onOpenPayments: () -> Unit,
+    onBack: () -> Unit,
+) {
     val viewModel: MoneyViewModel = viewModel(
         factory = ViewModelFactory(container) { MoneyViewModel(it, projectId) },
     )
@@ -105,6 +111,18 @@ fun MoneyScreen(container: AppContainer, projectId: String, onBack: () -> Unit) 
     ) { padding ->
         LazyColumn(Modifier.padding(padding)) {
             item { Summary(money, locale, canEdit) { editingBudget = true } }
+
+            // Applications sit under the summary rather than beside the costs:
+            // what has been claimed and certified is a different question from
+            // what the job has spent, and mixing them is how a surveyor ends up
+            // reading a cost line as an application.
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.pay_title)) },
+                    supportingContent = { Text(stringResource(R.string.pay_row_hint)) },
+                    modifier = Modifier.clickable(onClick = onOpenPayments),
+                )
+            }
 
             item {
                 SectionHeaderWithAdd(

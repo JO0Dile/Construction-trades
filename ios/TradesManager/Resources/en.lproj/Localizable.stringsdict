@@ -243,5 +243,21 @@
             <string>%d minutes still to watch</string>
         </dict>
     </dict>
+    <key>pay_days_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d day overdue</string>
+            <key>other</key>
+            <string>%d days overdue</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
