@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -44,6 +45,7 @@ data class CompanyEntity(
      * live with; a default of "visible" that somebody meant to change and
      * forgot cannot be taken back.
      */
+    @ColumnInfo(defaultValue = "''")
     val publishedToWorkforce: String = "",
 )
 

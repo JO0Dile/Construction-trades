@@ -566,7 +566,7 @@ object Migrations {
             "`title` TEXT NOT NULL, `amount` REAL NOT NULL, `terms` TEXT NOT NULL, " +
             "`retentionRate` REAL NOT NULL, `retentionLimit` REAL NOT NULL, " +
             "`signedAt` INTEGER, `signedByPayerName` TEXT, `signedByPayeeName` TEXT, " +
-            "`disclosedToOrgIds` TEXT NOT NULL DEFAULT '', " +
+            "`disclosedToOrgIds` TEXT NOT NULL, " +
             "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
             "PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_contracts_projectId` ON `contracts` (`projectId`)",
