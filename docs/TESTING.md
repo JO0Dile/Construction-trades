@@ -307,6 +307,36 @@ app claims to get right:
       have gone on for, which can only ever hold the permit open longer than
       the truth rather than close it sooner.
 
+**Payment applications** — open a job → *Money* → *Payment applications*
+
+The screen exists to stop one arithmetic mistake, so make the mistake and watch
+it refuse.
+
+- [ ] Set the job's contract value to **2,000,000** first, under *Money*.
+- [ ] **+** → *We are claiming*, name the client, claim **400,000**, retention
+      5, shotef+30. Create.
+- [ ] It shows 20,000 held, 380,000 net, and **380,000 due this time**.
+- [ ] *Send it*, then *Agree a figure* — it opens on the 400,000 already
+      claimed, because agreeing in full is the common case. Accept. Then
+      *The money has arrived*.
+- [ ] **+** again, same client, claim **900,000**. This is the whole test: the
+      application says 900,000 because that is what the work is worth in total,
+      and the screen must show **475,000 due this time**, not 855,000. Already
+      paid reads 380,000 and you did not type it.
+- [ ] Agree **820,000** instead of the 900,000 claimed. Due this time drops to
+      399,000, and both figures stay on the record — the difference between
+      them is the conversation.
+- [ ] Raise a third for **700,000** — a re-measure downwards. It reads **owed
+      back**, in red, not zero.
+- [ ] Certify one and look at *Due on*. Certified today, on shotef+30, it must
+      be the **end of this month plus thirty days** — not thirty days from
+      today. If today is the 3rd of March it says the 30th of April.
+- [ ] Leave an unpaid certified application until its due date passes (or move
+      the phone's clock forward). The row goes red and counts the days late.
+- [ ] Claim more than the contract is worth — 2,500,000 on a 2,000,000 job.
+      Retention stops at 100,000 and says it is at the limit, rather than
+      climbing with the claim.
+
 **Adding to Stock — finding what you just added**
 - [ ] Stock → **+**, add an item, save. The list should scroll to it and hold
       it highlighted for a couple of seconds.

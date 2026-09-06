@@ -363,5 +363,29 @@
             <string>بقيت %d دقيقة مراقبة</string>
         </dict>
     </dict>
+    <key>pay_days_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا تأخير</string>
+            <key>one</key>
+            <string>متأخر يومًا</string>
+            <key>two</key>
+            <string>متأخر يومين</string>
+            <key>few</key>
+            <string>متأخر %d أيام</string>
+            <key>many</key>
+            <string>متأخر %d يومًا</string>
+            <key>other</key>
+            <string>متأخر %d يوم</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

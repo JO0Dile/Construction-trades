@@ -40,6 +40,7 @@ import il.co.tradesmanager.ui.money.MoneyScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
+import il.co.tradesmanager.ui.payments.PaymentsScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
@@ -83,6 +84,7 @@ object Routes {
     const val EXCAVATIONS = "projects/excavations"
     const val PEOPLE = "people"
     const val MONEY = "money"
+    const val PAYMENTS = "money/applications"
     const val PLANT = "plant"
     const val ORDERS = "orders"
     const val ORDER_DETAIL = "orders/detail"
@@ -98,6 +100,7 @@ object Routes {
     fun inventoryEdit(itemId: String?) = "$INVENTORY_EDIT?itemId=${itemId.orEmpty()}"
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
     fun money(projectId: String) = "$MONEY/$projectId"
+    fun payments(projectId: String) = "$PAYMENTS/$projectId"
     fun orderDetail(orderId: String) = "$ORDER_DETAIL/$orderId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
     fun talkDetail(talkId: String) = "$TALK_DETAIL/$talkId"
@@ -267,7 +270,16 @@ fun AppNavHost(
                 )
             }
             composable("${Routes.MONEY}/{projectId}") { entry ->
+                val id = entry.arguments?.getString("projectId").orEmpty()
                 MoneyScreen(
+                    container = container,
+                    projectId = id,
+                    onOpenPayments = { navController.navigate(Routes.payments(id)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.PAYMENTS}/{projectId}") { entry ->
+                PaymentsScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

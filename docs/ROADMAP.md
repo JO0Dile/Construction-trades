@@ -268,6 +268,36 @@ The two numbers look alike and pull opposite ways: flooring the window is
 generous in the safe direction, and flooring the watch would say "nothing left
 to wait" with thirty seconds still to stand there.
 
+**Phase 4m — payment applications and retention. Done.**
+The row that has sat at the top of "what is not built" the whole time, while
+six safety registers went past it.
+
+Two things in it are got wrong constantly and both cost real money. The first
+is that applications are **cumulative**: number three says what the work is
+worth in total, not what was done since number two. Paying the figure on the
+face of each one in turn pays for the same work twice, and it happens because
+the number printed largest is the number nobody should be paying. So the app
+works out the running total itself, from the last application that was actually
+paid, and shows the difference as the answer with the three figures it came
+from above it.
+
+The second is what "שוטף + 30" means. The clock starts at the end of the month
+the invoice falls in, not on the invoice date, so an invoice dated the 3rd of
+March is due on the 30th of April — and one dated the 31st of March is due on
+the same day. A subcontractor budgeting from "net 30" is a month out and short
+of cash. The due date is worked out once, at certification, and stored, so
+changing the terms on a job later does not restate when last March's money was
+owed.
+
+Retention is held with a limit, because a flat percentage on every application
+would keep growing with the job and end up holding back more than was ever
+agreed. It comes back in two halves: one at practical completion, one when the
+defects period ends.
+
+A negative "due this time" is shown as money owed back rather than as zero. It
+means the earlier applications certified more than the work turned out to be
+worth, and it has to come back one way or another.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -280,12 +310,12 @@ Whole categories still at zero, in roughly the order they are worth doing:
 
 | Not started | Lens it will land in |
 | ----------- | -------------------- |
-| Payment applications, retention, subcontract ledgers | Money |
+| Subcontract ledgers | Money |
 | Sync between devices | every lens, one mechanism |
 | Israeli government and accounting integrations | the edge, Phase 5 |
 | Site security, structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
 
-Since that list was written, eight of its rows have landed and are no longer on
+Since that list was written, ten of its rows have landed and are no longer on
 it: the plant register, purchase orders with goods received, toolbox talks with
 permits to work, one person belonging to several companies, snagging, the
 concrete half of "concrete and structural", the scaffold register, lifting
@@ -303,8 +333,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 58 | |
-| Buildable here — on the device, no server | 127 | where the work is |
+| Built | 62 | |
+| Buildable here — on the device, no server | 123 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

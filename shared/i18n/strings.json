@@ -3717,6 +3717,206 @@
       "en": "Hot work fires mostly start after the torch goes out, from a spark that fell into a void an hour ago and has been smouldering since. Somebody stays and watches; the permit cannot be signed back until they have.",
       "he": "שריפות בעבודה חמה מתחילות בדרך כלל אחרי כיבוי הלהבה, מניצוץ שנפל לחלל לפני שעה והתעמעם שם. מישהו נשאר ומשגיח; אי אפשר להחזיר את ההיתר עד שהשמירה הושלמה.",
       "ar": "حرائق الأعمال الساخنة تبدأ غالبًا بعد إطفاء اللهب، من شرارة سقطت في فراغ قبل ساعة وظلت تتّقد. يبقى شخص للمراقبة؛ ولا يمكن إغلاق التصريح قبل انقضاء المدة."
+    },
+    "pay_title": {
+      "en": "Payment applications",
+      "he": "חשבונות",
+      "ar": "طلبات الدفع"
+    },
+    "pay_row_hint": {
+      "en": "What has been claimed, what was agreed, and when the money is due.",
+      "he": "מה נדרש, מה אושר, ומתי הכסף אמור להגיע.",
+      "ar": "ما طُولب به، وما تمت الموافقة عليه، ومتى يُستحق المال."
+    },
+    "pay_new": {
+      "en": "Raise an application",
+      "he": "פתיחת חשבון",
+      "ar": "فتح طلب دفع"
+    },
+    "pay_empty": {
+      "en": "No applications on this job.",
+      "he": "אין חשבונות בפרויקט זה.",
+      "ar": "لا طلبات دفع في هذا المشروع."
+    },
+    "pay_direction": {
+      "en": "Which way the money goes",
+      "he": "כיוון התשלום",
+      "ar": "اتجاه الدفع"
+    },
+    "pay_receivable": {
+      "en": "We are claiming",
+      "he": "אנחנו דורשים",
+      "ar": "نحن نطالب"
+    },
+    "pay_payable": {
+      "en": "A subcontractor is claiming",
+      "he": "קבלן משנה דורש",
+      "ar": "مقاول من الباطن يطالب"
+    },
+    "pay_party": {
+      "en": "From whom",
+      "he": "ממי",
+      "ar": "من مَن"
+    },
+    "pay_number": {
+      "en": "Application number",
+      "he": "מספר חשבון",
+      "ar": "رقم الطلب"
+    },
+    "pay_claimed": {
+      "en": "Claimed, for all work to date",
+      "he": "נדרש, עבור כל העבודה עד כה",
+      "ar": "المطالَب به، عن كل العمل حتى تاريخه"
+    },
+    "pay_claimed_hint": {
+      "en": "The total the work is worth at this point in the job, not what was done this month. That is how applications are written, and paying the figure on the face of each one in turn pays for the same work twice.",
+      "he": "הסכום הכולל ששווה העבודה בנקודה זו בפרויקט, לא מה שבוצע החודש. כך נכתבים חשבונות, ותשלום הסכום הנקוב בכל חשבון בנפרד משלם פעמיים על אותה עבודה.",
+      "ar": "المبلغ الإجمالي لقيمة العمل عند هذه النقطة من المشروع، لا ما أُنجز هذا الشهر. هكذا تُكتب طلبات الدفع، ودفع الرقم الظاهر على كل طلب على حدة يدفع مرتين عن العمل نفسه."
+    },
+    "pay_certified": {
+      "en": "Agreed, for all work to date",
+      "he": "אושר, עבור כל העבודה עד כה",
+      "ar": "المعتمَد، عن كل العمل حتى تاريخه"
+    },
+    "pay_previously_paid": {
+      "en": "Already paid",
+      "he": "שולם עד כה",
+      "ar": "دُفع حتى الآن"
+    },
+    "pay_retention": {
+      "en": "Retention held",
+      "he": "עיכבון",
+      "ar": "المحتجَز"
+    },
+    "pay_retention_rate": {
+      "en": "Retention",
+      "he": "שיעור עיכבון",
+      "ar": "نسبة الاحتجاز"
+    },
+    "pay_retention_capped": {
+      "en": "At the limit of retention",
+      "he": "הגיע לתקרת העיכבון",
+      "ar": "بلغ سقف الاحتجاز"
+    },
+    "pay_net": {
+      "en": "Net to date",
+      "he": "נטו עד כה",
+      "ar": "الصافي حتى تاريخه"
+    },
+    "pay_due_now": {
+      "en": "Due this time",
+      "he": "לתשלום הפעם",
+      "ar": "المستحق هذه المرة"
+    },
+    "pay_due_back": {
+      "en": "Owed back",
+      "he": "להחזר",
+      "ar": "واجب الإرجاع"
+    },
+    "pay_due_back_hint": {
+      "en": "The applications before this one certified more than the work turned out to be worth. It has to come back one way or another, so the screen says so rather than showing nothing.",
+      "he": "בחשבונות הקודמים אושר יותר משהעבודה שווה בפועל. ההפרש חייב לחזור כך או אחרת, ולכן המסך אומר זאת במפורש ולא מציג אפס.",
+      "ar": "الطلبات السابقة اعتمدت أكثر مما تبيّن أن العمل يستحقه. يجب أن يعود الفرق بطريقة ما، لذا تقول الشاشة ذلك بدل إظهار صفر."
+    },
+    "pay_terms": {
+      "en": "Payment terms",
+      "he": "תנאי תשלום",
+      "ar": "شروط الدفع"
+    },
+    "pay_terms_hint": {
+      "en": "Shotef plus counts from the end of the month the invoice falls in, not from the invoice date. An invoice on the 3rd of March under shotef+30 is due on the 30th of April.",
+      "he": "שוטף פלוס נספר מסוף החודש שבו הוצאה החשבונית, לא מתאריך החשבונית. חשבונית מ־3 במרץ בשוטף+30 תשולם ב־30 באפריל.",
+      "ar": "شوطيف زائد يُحسب من نهاية الشهر الذي صدرت فيه الفاتورة، لا من تاريخ الفاتورة. فاتورة بتاريخ 3 مارس بشوطيف+30 تُستحق في 30 أبريل."
+    },
+    "pay_terms_immediate": {
+      "en": "On presentation",
+      "he": "מיידי",
+      "ar": "عند التقديم"
+    },
+    "pay_terms_30": {
+      "en": "Shotef + 30",
+      "he": "שוטף + 30",
+      "ar": "شوطيف + 30"
+    },
+    "pay_terms_60": {
+      "en": "Shotef + 60",
+      "he": "שוטף + 60",
+      "ar": "شوطيف + 60"
+    },
+    "pay_terms_90": {
+      "en": "Shotef + 90",
+      "he": "שוטף + 90",
+      "ar": "شوطيف + 90"
+    },
+    "pay_terms_120": {
+      "en": "Shotef + 120",
+      "he": "שוטף + 120",
+      "ar": "شوطيف + 120"
+    },
+    "pay_due_on": {
+      "en": "Due on",
+      "he": "תאריך תשלום",
+      "ar": "تاريخ الاستحقاق"
+    },
+    "pay_submit": {
+      "en": "Send it",
+      "he": "שליחה",
+      "ar": "إرسال"
+    },
+    "pay_certify": {
+      "en": "Agree a figure",
+      "he": "אישור סכום",
+      "ar": "اعتماد مبلغ"
+    },
+    "pay_certify_hint": {
+      "en": "What is actually agreed, which need not be what was claimed. The difference between the two is the conversation, so both are kept.",
+      "he": "מה שאושר בפועל, שאינו חייב להיות מה שנדרש. הפער בין השניים הוא הדיון עצמו, ולכן שניהם נשמרים.",
+      "ar": "ما تمت الموافقة عليه فعلًا، وليس بالضرورة ما طُولب به. الفارق بينهما هو النقاش نفسه، لذا يُحفظ الاثنان."
+    },
+    "pay_mark_paid": {
+      "en": "The money has arrived",
+      "he": "הכסף התקבל",
+      "ar": "وصل المال"
+    },
+    "pay_reject": {
+      "en": "Reject it",
+      "he": "דחייה",
+      "ar": "رفض"
+    },
+    "pay_status_draft": {
+      "en": "Being prepared",
+      "he": "בהכנה",
+      "ar": "قيد الإعداد"
+    },
+    "pay_status_submitted": {
+      "en": "Waiting to be assessed",
+      "he": "ממתין לאישור",
+      "ar": "بانتظار التقييم"
+    },
+    "pay_status_certified": {
+      "en": "Agreed, not yet paid",
+      "he": "אושר, טרם שולם",
+      "ar": "معتمد، لم يُدفع بعد"
+    },
+    "pay_status_paid": {
+      "en": "Paid",
+      "he": "שולם",
+      "ar": "مدفوع"
+    },
+    "pay_status_rejected": {
+      "en": "Rejected",
+      "he": "נדחה",
+      "ar": "مرفوض"
+    },
+    "pay_release_completion": {
+      "en": "Released at practical completion",
+      "he": "ישוחרר במסירה",
+      "ar": "يُفرج عنه عند التسليم"
+    },
+    "pay_release_defects": {
+      "en": "Released when the defects period ends",
+      "he": "ישוחרר בתום תקופת הבדק",
+      "ar": "يُفرج عنه عند انتهاء فترة الضمان"
     }
   },
   "plurals": {
@@ -4033,6 +4233,27 @@
         "few": "بقيت %d دقائق مراقبة",
         "many": "بقيت %d دقيقة مراقبة",
         "other": "بقيت %d دقيقة مراقبة"
+      }
+    },
+    "pay_days_overdue": {
+      "c": "How long a certified payment has been overdue",
+      "en": {
+        "one": "%d day overdue",
+        "other": "%d days overdue"
+      },
+      "he": {
+        "one": "באיחור של יום",
+        "two": "באיחור של יומיים",
+        "many": "באיחור של %d ימים",
+        "other": "באיחור של %d ימים"
+      },
+      "ar": {
+        "zero": "لا تأخير",
+        "one": "متأخر يومًا",
+        "two": "متأخر يومين",
+        "few": "متأخر %d أيام",
+        "many": "متأخر %d يومًا",
+        "other": "متأخر %d يوم"
       }
     }
   }

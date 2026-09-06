@@ -303,5 +303,25 @@
             <string>נותרו %d דקות של שמירה</string>
         </dict>
     </dict>
+    <key>pay_days_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>באיחור של יום</string>
+            <key>two</key>
+            <string>באיחור של יומיים</string>
+            <key>many</key>
+            <string>באיחור של %d ימים</string>
+            <key>other</key>
+            <string>באיחור של %d ימים</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
