@@ -146,6 +146,13 @@ object Migrations {
         }
     }
 
+    /** Records when hot work stopped, so the fire watch can be timed from it. */
+    val MIGRATION_16_17 = object : Migration(16, 17) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_16_17.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -162,6 +169,7 @@ object Migrations {
         MIGRATION_13_14,
         MIGRATION_14_15,
         MIGRATION_15_16,
+        MIGRATION_16_17,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -477,5 +485,9 @@ object Migrations {
             "ON `excavation_inspections` (`excavationId`)",
         "CREATE INDEX IF NOT EXISTS `index_excavation_inspections_inspectedAt` " +
             "ON `excavation_inspections` (`inspectedAt`)",
+    )
+
+    val SQL_16_17: List<String> = listOf(
+        "ALTER TABLE `permits` ADD COLUMN `workStoppedAt` INTEGER",
     )
 }

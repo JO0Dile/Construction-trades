@@ -3702,6 +3702,21 @@
       "en": "It has been filled in",
       "he": "הוחזרה",
       "ar": "رُدمت"
+    },
+    "ptw_work_stopped": {
+      "en": "The work has stopped",
+      "he": "העבודה הופסקה",
+      "ar": "توقف العمل"
+    },
+    "ptw_fire_watch": {
+      "en": "Fire watch",
+      "he": "שמירת אש",
+      "ar": "مراقبة الحريق"
+    },
+    "ptw_fire_watch_hint": {
+      "en": "Hot work fires mostly start after the torch goes out, from a spark that fell into a void an hour ago and has been smouldering since. Somebody stays and watches; the permit cannot be signed back until they have.",
+      "he": "שריפות בעבודה חמה מתחילות בדרך כלל אחרי כיבוי הלהבה, מניצוץ שנפל לחלל לפני שעה והתעמעם שם. מישהו נשאר ומשגיח; אי אפשר להחזיר את ההיתר עד שהשמירה הושלמה.",
+      "ar": "حرائق الأعمال الساخنة تبدأ غالبًا بعد إطفاء اللهب، من شرارة سقطت في فراغ قبل ساعة وظلت تتّقد. يبقى شخص للمراقبة؛ ولا يمكن إغلاق التصريح قبل انقضاء المدة."
     }
   },
   "plurals": {
@@ -3997,6 +4012,27 @@
         "few": "%d أيام إضافية",
         "many": "%d يومًا إضافيًا",
         "other": "%d يوم إضافي"
+      }
+    },
+    "ptw_watch_minutes": {
+      "c": "Minutes of fire watch still owed before a hot work permit may be closed",
+      "en": {
+        "one": "%d minute still to watch",
+        "other": "%d minutes still to watch"
+      },
+      "he": {
+        "one": "נותרה דקה של שמירה",
+        "two": "נותרו שתי דקות של שמירה",
+        "many": "נותרו %d דקות של שמירה",
+        "other": "נותרו %d דקות של שמירה"
+      },
+      "ar": {
+        "zero": "لم تبقَ دقيقة مراقبة",
+        "one": "بقيت دقيقة مراقبة",
+        "two": "بقيت دقيقتا مراقبة",
+        "few": "بقيت %d دقائق مراقبة",
+        "many": "بقيت %d دقيقة مراقبة",
+        "other": "بقيت %d دقيقة مراقبة"
       }
     }
   }

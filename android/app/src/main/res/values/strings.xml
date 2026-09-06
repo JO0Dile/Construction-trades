@@ -746,6 +746,9 @@
     <string name="exc_block_failed">The last inspection failed</string>
     <string name="exc_block_disturbed">Something has changed it since the last inspection</string>
     <string name="exc_block_backfilled">It has been filled in</string>
+    <string name="ptw_work_stopped">The work has stopped</string>
+    <string name="ptw_fire_watch">Fire watch</string>
+    <string name="ptw_fire_watch_hint">Hot work fires mostly start after the torch goes out, from a spark that fell into a void an hour ago and has been smouldering since. Somebody stays and watches; the permit cannot be signed back until they have.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -801,5 +804,9 @@
     <plurals name="tw_days_owed">
         <item quantity="one">%d more day</item>
         <item quantity="other">%d more days</item>
+    </plurals>
+    <plurals name="ptw_watch_minutes">
+        <item quantity="one">%d minute still to watch</item>
+        <item quantity="other">%d minutes still to watch</item>
     </plurals>
 </resources>

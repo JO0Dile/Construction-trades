@@ -97,6 +97,22 @@ fun PermitDetailScreen(
         validTo = now + 1,
     )
 
+    // The fire watch, on the kinds of work that leave something behind. Ticks
+    // with the clock, so a permit held open on screen becomes closable on its
+    // own rather than needing somebody to back out and come in again.
+    val watchMinutesLeft = if (current != null && Permits.needsFireWatch(current.type)) {
+        Permits.fireWatchMinutesLeft(current.workStoppedAt, current.validTo, now)
+    } else {
+        0L
+    }
+    val canCloseNow = current != null && canEdit && Permits.canClose(
+        status = current.status,
+        type = current.type,
+        workStoppedAt = current.workStoppedAt,
+        validTo = current.validTo,
+        now = now,
+    )
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -183,9 +199,34 @@ fun PermitDetailScreen(
                             Text(stringResource(R.string.ptw_issue))
                         }
                     }
-                    if (Permits.canClose(current.status) && canEdit) {
+                    if (current.status == Permits.Status.ISSUED && canEdit) {
+                        // Two buttons where there used to be one. On hot work
+                        // the hour between them is the fire watch, and the
+                        // whole point is that they are not the same act.
+                        if (current.workStoppedAt == null) {
+                            Button(
+                                onClick = { viewModel.recordWorkStopped() },
+                                modifier = Modifier.fillMaxWidth(),
+                            ) {
+                                Text(stringResource(R.string.ptw_work_stopped))
+                            }
+                        }
+                        if (watchMinutesLeft > 0L) {
+                            Text(
+                                text = stringResource(R.string.ptw_fire_watch) + " · " +
+                                    pluralCount(R.plurals.ptw_watch_minutes, watchMinutesLeft),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.error,
+                            )
+                            Text(
+                                text = stringResource(R.string.ptw_fire_watch_hint),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
                         Button(
                             onClick = { closing = true },
+                            enabled = canCloseNow,
                             modifier = Modifier.fillMaxWidth(),
                         ) {
                             Text(stringResource(R.string.ptw_close))

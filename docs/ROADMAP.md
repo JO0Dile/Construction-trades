@@ -246,6 +246,28 @@ app counts calendar days in the site's own zone rather than a rolling
 twenty-four hours, which would say a seven-o'clock inspection last night still
 covered a six-o'clock start.
 
+**Phase 4l — the fire watch. Done.**
+Not a new register: a hole in one that was already there. Permits to work
+already covered hot work, and a hot work permit could be signed back the instant
+the welding stopped.
+
+That is the wrong instant. Hot work fires do not mostly start while the torch is
+lit — they start afterwards, from a spark that fell into a void an hour ago and
+has been smouldering since. The welding stopping is the moment the danger
+becomes invisible, not the moment it ends, and signing the permit back is what
+tells everybody the area is safe to leave.
+
+So the permit now records when the work actually stopped — which is not when
+the permit runs out, since a welder who finishes at two on a permit that runs
+to five is owed his hour from two — and will not close until the hour has been
+kept. With no stop time recorded the hour runs from the end of the window
+instead, which can only hold the permit open longer than the truth.
+
+The minutes owed round **up**, where the permit's own countdown rounds down.
+The two numbers look alike and pull opposite ways: flooring the window is
+generous in the safe direction, and flooring the watch would say "nothing left
+to wait" with thirty seconds still to stand there.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -281,8 +303,8 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 57 | |
-| Buildable here — on the device, no server | 128 | where the work is |
+| Built | 58 | |
+| Buildable here — on the device, no server | 127 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |

@@ -52,6 +52,11 @@ class PermitDetailViewModel(
         )
     }
 
+    fun recordWorkStopped() = viewModelScope.launch {
+        val actor = container.settings.settings.first().actorName
+        container.evidence.recordWorkStopped(permitId, actor)
+    }
+
     fun close(notes: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
         container.evidence.close(permitId, actor, notes)

@@ -117,7 +117,7 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         ExcavationEntity::class,
         ExcavationInspectionEntity::class,
     ],
-    version = 16,
+    version = 17,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
