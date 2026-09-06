@@ -4415,6 +4415,121 @@
       "en": "Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.",
       "he": "ענו על כך לפני הכול. אף אחד אחר לא יכול לענות במקומכם, וכל עוד לא עניתם לא תוכלו להוסיף חברה נוספת.",
       "ar": "أجب على هذا أولاً. لا أحد غيرك يستطيع تحديده، وحتى تُجيب لا تستطيع إضافة شركة أخرى."
+    },
+    "ct_title": {
+      "en": "Contracts",
+      "he": "חוזים",
+      "ar": "العقود"
+    },
+    "ct_empty": {
+      "en": "No contracts on this job yet",
+      "he": "אין עדיין חוזים בעבודה הזו",
+      "ar": "لا توجد عقود في هذا المشروع بعد"
+    },
+    "ct_new": {
+      "en": "New contract",
+      "he": "חוזה חדש",
+      "ar": "عقد جديد"
+    },
+    "ct_row_hint": {
+      "en": "What was agreed, and with whom",
+      "he": "מה סוכם ועם מי",
+      "ar": "ما تم الاتفاق عليه ومع من"
+    },
+    "ct_scope": {
+      "en": "What it covers",
+      "he": "מה הוא כולל",
+      "ar": "ما الذي يغطيه"
+    },
+    "ct_original": {
+      "en": "Original amount",
+      "he": "סכום מקורי",
+      "ar": "المبلغ الأصلي"
+    },
+    "ct_current": {
+      "en": "Amount in force",
+      "he": "הסכום התקף",
+      "ar": "المبلغ الساري"
+    },
+    "ct_receivable": {
+      "en": "You are paid on this",
+      "he": "אתם מקבלים על זה",
+      "ar": "أنتم تُدفعون على هذا"
+    },
+    "ct_payable": {
+      "en": "You pay on this",
+      "he": "אתם משלמים על זה",
+      "ar": "أنتم تدفعون على هذا"
+    },
+    "ct_sign": {
+      "en": "Sign",
+      "he": "חתימה",
+      "ar": "توقيع"
+    },
+    "ct_signed_by": {
+      "en": "Signed by",
+      "he": "נחתם על ידי",
+      "ar": "وقّع عليه"
+    },
+    "ct_unsigned": {
+      "en": "Not signed by both sides yet",
+      "he": "טרם נחתם על ידי שני הצדדים",
+      "ar": "لم يوقّعه الطرفان بعد"
+    },
+    "ct_amend": {
+      "en": "Propose a change",
+      "he": "הצעת שינוי",
+      "ar": "اقتراح تعديل"
+    },
+    "ct_amend_amount": {
+      "en": "New amount",
+      "he": "סכום חדש",
+      "ar": "المبلغ الجديد"
+    },
+    "ct_amend_reason": {
+      "en": "Why",
+      "he": "סיבה",
+      "ar": "السبب"
+    },
+    "ct_amend_reason_hint": {
+      "en": "Somebody will ask in three years why this contract is worth what it is worth, and they were not there.",
+      "he": "בעוד שלוש שנים מישהו ישאל למה החוזה שווה מה שהוא שווה, והוא לא היה שם.",
+      "ar": "بعد ثلاث سنوات سيسأل أحدهم لماذا قيمة هذا العقد هي كذا، وهو لم يكن حاضراً."
+    },
+    "ct_amend_history": {
+      "en": "Every figure this contract has been",
+      "he": "כל סכום שהחוזה היה",
+      "ar": "كل مبلغ كان عليه هذا العقد"
+    },
+    "ct_amend_accept": {
+      "en": "Accept the change",
+      "he": "אישור השינוי",
+      "ar": "قبول التعديل"
+    },
+    "ct_amend_reject": {
+      "en": "Refuse the change",
+      "he": "דחיית השינוי",
+      "ar": "رفض التعديل"
+    },
+    "ct_amend_pending": {
+      "en": "Waiting on the other side",
+      "he": "ממתין לצד השני",
+      "ar": "بانتظار الطرف الآخر"
+    },
+    "ct_amend_yours": {
+      "en": "You proposed this. The other side accepts or refuses it.",
+      "he": "אתם הצעתם זאת. הצד השני מאשר או דוחה.",
+      "ar": "أنتم اقترحتم هذا. الطرف الآخر يقبل أو يرفض."
+    },
+    "ct_margin": {
+      "en": "Your margin on this job",
+      "he": "המרווח שלכם בעבודה הזו",
+      "ar": "هامشكم في هذا المشروع"
+    },
+    "ct_margin_hint": {
+      "en": "What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.",
+      "he": "מה שאתם מקבלים, פחות מה שאתם משלמים. רק אתם רואים זאת — זה לא מופיע במסך של אף אחד אחר.",
+      "ar": "ما تقبضونه ناقص ما تدفعونه. أنتم فقط ترون هذا — لا يظهر على شاشة أي أحد آخر."
     }
   },
   "plurals": {

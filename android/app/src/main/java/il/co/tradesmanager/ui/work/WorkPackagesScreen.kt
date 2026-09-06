@@ -78,6 +78,7 @@ import il.co.tradesmanager.ui.components.currentLocale
 fun WorkPackagesScreen(
     container: AppContainer,
     projectId: String,
+    onOpenContracts: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: WorkPackagesViewModel = viewModel(
@@ -146,6 +147,23 @@ fun WorkPackagesScreen(
                     }
                 }
                 if (engagements.isNotEmpty()) {
+                    item {
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable(onClick = onOpenContracts),
+                        ) {
+                            Column(Modifier.padding(16.dp)) {
+                                Text(stringResource(R.string.ct_title))
+                                Text(
+                                    text = stringResource(R.string.ct_row_hint),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
+                    }
+                    item { HorizontalDivider() }
                     item { SectionHeader(stringResource(R.string.eng_title)) }
                     items(engagements, key = { "eng-" + it.id }) { row ->
                         DetailRow(row.orgName, stringResource(partyLabel(row.party)))

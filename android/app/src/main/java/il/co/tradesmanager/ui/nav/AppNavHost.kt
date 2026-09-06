@@ -43,6 +43,7 @@ import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
+import il.co.tradesmanager.ui.work.ContractsScreen
 import il.co.tradesmanager.ui.work.WorkPackagesScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
@@ -96,6 +97,7 @@ object Routes {
     const val ORDER_DETAIL = "orders/detail"
     const val WORK_PACKAGES = "work_packages"
     const val COMPANY_PROFILE = "company_profile"
+    const val CONTRACTS = "contracts"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
 
@@ -110,6 +112,7 @@ object Routes {
     fun money(projectId: String) = "$MONEY/$projectId"
     fun payments(projectId: String) = "$PAYMENTS/$projectId"
     fun workPackages(projectId: String) = "$WORK_PACKAGES/$projectId"
+    fun contracts(projectId: String) = "$CONTRACTS/$projectId"
     fun timesheet(projectId: String) = "$TIMESHEET/$projectId"
     fun orderDetail(orderId: String) = "$ORDER_DETAIL/$orderId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
@@ -299,7 +302,16 @@ fun AppNavHost(
                 )
             }
             composable("${Routes.WORK_PACKAGES}/{projectId}") { entry ->
+                val id = entry.arguments?.getString("projectId").orEmpty()
                 WorkPackagesScreen(
+                    container = container,
+                    projectId = id,
+                    onOpenContracts = { navController.navigate(Routes.contracts(id)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.CONTRACTS}/{projectId}") { entry ->
+                ContractsScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },
