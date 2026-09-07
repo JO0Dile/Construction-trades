@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.9.0 — and what to try first
+## What is new in 0.9.1 — and what to try first
 
 The whole point of this release is that it can be installed and prodded. Tap
 **Check for updates** in Settings and it will offer itself.
@@ -131,6 +131,17 @@ without this app.** Settings → *Audit trail* → the share button, top right.
       the checker does not trust the file, and does not need the app.
 - [ ] `docs/AUDIT.md` says exactly what is hashed, and what the chain
       cannot see.
+
+### Fixed in 0.9.1
+
+**Settings → Security now says whether your records are actually encrypted.**
+
+- [ ] It should read *On — the records on this device are encrypted*. That is
+      the normal case: the key lives in the phone's secure hardware.
+- [ ] If it ever reads *Off*, in red, that is real and worth acting on. It
+      means this device could not load the encryption library, so ID numbers,
+      photographs and signatures are stored unprotected. It used to say
+      "Something went wrong", which told you nothing.
 
 ### What is not in it
 
