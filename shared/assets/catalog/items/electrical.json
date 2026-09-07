@@ -1,6 +1,6 @@
 {
   "tradeId": "electrical",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "el.cable.nyy.3x1_5",
@@ -25,6 +25,9 @@
       "tags": [
         "cable",
         "lighting"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -50,6 +53,9 @@
       "tags": [
         "cable",
         "sockets"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -75,6 +81,9 @@
       "tags": [
         "cable",
         "three-phase"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -100,6 +109,9 @@
       "tags": [
         "cable",
         "feeder"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -125,6 +137,9 @@
       "tags": [
         "cable",
         "heavy-load"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -149,6 +164,9 @@
       "tags": [
         "wire",
         "conduit"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -173,6 +191,10 @@
       "tags": [
         "conduit",
         "concealed"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -197,6 +219,10 @@
       "tags": [
         "conduit",
         "concealed"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -220,6 +246,10 @@
       "tags": [
         "conduit",
         "surface"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -244,6 +274,10 @@
       "tags": [
         "trunking",
         "surface"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -269,6 +303,9 @@
       "tags": [
         "breaker",
         "board"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -295,6 +332,9 @@
         "breaker",
         "board",
         "three-phase"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -321,6 +361,9 @@
         "rcd",
         "safety",
         "board"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -344,6 +387,10 @@
       },
       "tags": [
         "board"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -367,6 +414,10 @@
       },
       "tags": [
         "board"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -390,6 +441,9 @@
       },
       "tags": [
         "socket"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -413,6 +467,9 @@
       "tags": [
         "socket",
         "outdoor"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -435,6 +492,9 @@
       },
       "tags": [
         "switch"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -458,6 +518,9 @@
       },
       "tags": [
         "switch"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -480,6 +543,9 @@
       },
       "tags": [
         "box"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -502,6 +568,9 @@
       },
       "tags": [
         "connector"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -524,6 +593,10 @@
       },
       "tags": [
         "earthing"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1218,6 +1291,9 @@
       "tags": [
         "black-work",
         "boxes"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1233,6 +1309,9 @@
       "tags": [
         "black-work",
         "boxes"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1256,6 +1335,9 @@
       "tags": [
         "black-work",
         "lobby"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1277,6 +1359,9 @@
         "slab",
         "aqda",
         "black-work"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1300,6 +1385,10 @@
       "tags": [
         "conduit",
         "black-work"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1323,6 +1412,10 @@
       "tags": [
         "conduit",
         "black-work"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1341,6 +1434,10 @@
       "tags": [
         "conduit",
         "black-work"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1361,6 +1458,10 @@
       "tags": [
         "slab",
         "aqda"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1381,6 +1482,10 @@
       "tags": [
         "surface",
         "lobby"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1404,6 +1509,10 @@
       "tags": [
         "tray",
         "infrastructure"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1427,6 +1536,9 @@
       "tags": [
         "white-work",
         "sockets"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1442,6 +1554,9 @@
       "tags": [
         "white-work",
         "sockets"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1457,6 +1572,9 @@
       "tags": [
         "white-work",
         "sockets"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1477,6 +1595,9 @@
       "tags": [
         "white-work",
         "office"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1492,6 +1613,9 @@
       "tags": [
         "white-work",
         "switches"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1506,6 +1630,9 @@
       },
       "tags": [
         "white-work"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1521,6 +1648,9 @@
       "tags": [
         "white-work",
         "lighting"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1542,6 +1672,9 @@
         "white-work",
         "lighting",
         "office"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1566,6 +1699,9 @@
         "white-work",
         "life-safety",
         "lobby"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1581,6 +1717,9 @@
       "tags": [
         "life-safety",
         "lobby"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1595,6 +1734,10 @@
       },
       "tags": [
         "boards"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -1610,6 +1753,10 @@
       "tags": [
         "boards",
         "office"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -1629,6 +1776,9 @@
       "tags": [
         "boards",
         "protection"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1654,6 +1804,9 @@
         "boards",
         "protection",
         "safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1669,6 +1822,9 @@
       "tags": [
         "boards",
         "protection"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -1683,6 +1839,10 @@
       },
       "tags": [
         "earthing"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -1697,6 +1857,175 @@
       },
       "tags": [
         "earthing"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
+      ]
+    },
+    {
+      "id": "el.tool.driver.cordless",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Cordless drill / driver",
+        "he": "מברגה־מקדחה נטענת",
+        "ar": "مثقاب ومفك شحن"
+      },
+      "spec": {
+        "en": "18 V. The tool that is in an electrician's hand all day.",
+        "he": "18 וולט. הכלי שנמצא ביד של החשמלאי כל היום.",
+        "ar": "18 فولت. الأداة التي تبقى بيد الكهربائي طوال اليوم."
+      },
+      "attributes": {},
+      "tags": [
+        "drill",
+        "driver",
+        "cordless"
+      ],
+      "colloquial": {
+        "he": "מברגה",
+        "ar": "مفريغا"
+      }
+    },
+    {
+      "id": "el.tool.driver.impact",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Impact driver",
+        "he": "מברגת אימפקט",
+        "ar": "مفك صدمي"
+      },
+      "spec": {
+        "en": "For fixing boards and trunking without stalling.",
+        "he": "לקיבוע לוחות ותעלות בלי להיתקע.",
+        "ar": "لتثبيت الألواح والقنوات دون توقّف."
+      },
+      "attributes": {},
+      "tags": [
+        "driver",
+        "impact"
+      ],
+      "colloquial": {
+        "he": "אימפקט",
+        "ar": "إمباكت"
+      }
+    },
+    {
+      "id": "el.tool.pliers.combination",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Combination pliers, insulated",
+        "he": "פלייר מבודד",
+        "ar": "زرديّة معزولة"
+      },
+      "spec": {
+        "en": "1000 V rated.",
+        "he": "מדורג 1000 וולט.",
+        "ar": "معتمدة حتى 1000 فولت."
+      },
+      "attributes": {},
+      "tags": [
+        "pliers",
+        "insulated"
+      ],
+      "colloquial": {
+        "he": "פלייר",
+        "ar": "بلاير"
+      }
+    },
+    {
+      "id": "el.tool.pliers.longnose",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Long-nose pliers, insulated",
+        "he": "פלייר חרטום מבודד",
+        "ar": "زرديّة أنف طويل معزولة"
+      },
+      "spec": {
+        "en": "For working inside a board or a back box.",
+        "he": "לעבודה בתוך לוח או קופסה.",
+        "ar": "للعمل داخل اللوحة أو علبة التأسيس."
+      },
+      "attributes": {},
+      "tags": [
+        "pliers",
+        "insulated"
+      ],
+      "colloquial": {
+        "ar": "زرديّة أنف"
+      }
+    },
+    {
+      "id": "el.tool.knife.cable",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Cable stripping knife",
+        "he": "סכין לקילוף כבלים",
+        "ar": "سكين تقشير كابلات"
+      },
+      "spec": {
+        "en": "Hooked blade, so the conductor is not nicked.",
+        "he": "להב מעוקל, כדי לא לפגוע במוליך.",
+        "ar": "شفرة معقوفة، حتى لا يُجرح الموصل."
+      },
+      "attributes": {},
+      "tags": [
+        "knife",
+        "stripping"
+      ],
+      "colloquial": {
+        "ar": "سكين كابلات"
+      }
+    },
+    {
+      "id": "el.tool.rods.conduit",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Conduit rod set",
+        "he": "מוטות דחיפה לצנרת",
+        "ar": "طقم قضبان دفع للمواسير"
+      },
+      "spec": {
+        "en": "10 m of jointed rods with a hook and a bullet end.",
+        "he": "10 מ׳ מוטות מתברגים עם וו וראש כדור.",
+        "ar": "10 م قضبان متصلة مع خطّاف ورأس كروي."
+      },
+      "attributes": {},
+      "tags": [
+        "rods",
+        "conduit"
+      ]
+    },
+    {
+      "id": "el.tool.torch.head",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Head torch",
+        "he": "פנס ראש",
+        "ar": "كشاف رأس"
+      },
+      "spec": {
+        "en": "Both hands free in a riser or a ceiling void.",
+        "he": "שתי ידיים פנויות בפיר או בחלל תקרה.",
+        "ar": "كلتا اليدين حرّتان داخل المنور أو فراغ السقف."
+      },
+      "attributes": {},
+      "tags": [
+        "light"
       ]
     }
   ]

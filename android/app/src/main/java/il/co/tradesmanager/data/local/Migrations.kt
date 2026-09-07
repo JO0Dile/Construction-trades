@@ -250,6 +250,21 @@ object Migrations {
         }
     }
 
+    /**
+     * Which stages of the job a catalogue item is for.
+     *
+     * The default is an empty JSON array, matching @ColumnInfo on
+     * CatalogItemEntity, and it means "every stage". Existing rows keep
+     * showing up under every filter until the next catalogue load fills them
+     * in, which is the right way round: a column that arrived empty must not
+     * make a plumber's pipes vanish from their own list.
+     */
+    val MIGRATION_25_26 = object : Migration(25, 26) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_25_26.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -275,6 +290,7 @@ object Migrations {
         MIGRATION_22_23,
         MIGRATION_23_24,
         MIGRATION_24_25,
+        MIGRATION_25_26,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -733,5 +749,9 @@ object Migrations {
 
     val SQL_24_25: List<String> = listOf(
         "ALTER TABLE `incidents` ADD COLUMN `costAmount` REAL",
+    )
+
+    val SQL_25_26: List<String> = listOf(
+        "ALTER TABLE `catalog_items` ADD COLUMN `stages` TEXT NOT NULL DEFAULT '[]'",
     )
 }

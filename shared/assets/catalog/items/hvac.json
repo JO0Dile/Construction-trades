@@ -1,6 +1,6 @@
 {
   "tradeId": "hvac",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "hv.unit.split.1_5hp",
@@ -23,6 +23,9 @@
       },
       "tags": [
         "unit"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -46,6 +49,9 @@
       "tags": [
         "unit",
         "ducted"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -66,6 +72,9 @@
       "attributes": {},
       "tags": [
         "unit"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -90,6 +99,9 @@
       "tags": [
         "pipe",
         "refrigerant"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -114,6 +126,9 @@
       "tags": [
         "pipe",
         "refrigerant"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -137,6 +152,9 @@
       },
       "tags": [
         "insulation"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -160,6 +178,9 @@
       "tags": [
         "refrigerant",
         "hazard"
+      ],
+      "stages": [
+        "commissioning"
       ]
     },
     {
@@ -181,6 +202,9 @@
       "tags": [
         "refrigerant",
         "hazard"
+      ],
+      "stages": [
+        "commissioning"
       ]
     },
     {
@@ -203,6 +227,9 @@
       },
       "tags": [
         "condensate"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -223,6 +250,9 @@
       "attributes": {},
       "tags": [
         "condensate"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -243,6 +273,10 @@
       "attributes": {},
       "tags": [
         "controls"
+      ],
+      "stages": [
+        "second-fix",
+        "commissioning"
       ]
     },
     {
@@ -265,6 +299,9 @@
       },
       "tags": [
         "duct"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -285,6 +322,9 @@
       "attributes": {},
       "tags": [
         "duct"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -306,6 +346,9 @@
       "tags": [
         "duct",
         "filter"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -372,6 +415,10 @@
       "tags": [
         "tool",
         "commissioning"
+      ],
+      "stages": [
+        "commissioning",
+        "handover"
       ]
     },
     {
@@ -392,6 +439,10 @@
       "attributes": {},
       "tags": [
         "tool"
+      ],
+      "stages": [
+        "commissioning",
+        "handover"
       ]
     },
     {
@@ -413,6 +464,10 @@
       "tags": [
         "tool",
         "environment"
+      ],
+      "stages": [
+        "commissioning",
+        "handover"
       ]
     },
     {
@@ -620,6 +675,9 @@
       "tags": [
         "sleeve",
         "rough-in"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -634,6 +692,9 @@
       },
       "tags": [
         "duct"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -648,6 +709,9 @@
       },
       "tags": [
         "duct"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -662,6 +726,9 @@
       },
       "tags": [
         "duct"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -678,6 +745,9 @@
         "duct",
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -693,6 +763,9 @@
       "tags": [
         "duct",
         "balancing"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -708,6 +781,9 @@
       "tags": [
         "grille",
         "second-fix"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -723,6 +799,9 @@
       "tags": [
         "grille",
         "second-fix"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -737,6 +816,9 @@
       },
       "tags": [
         "unit"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -751,6 +833,9 @@
       },
       "tags": [
         "unit"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -765,6 +850,9 @@
       },
       "tags": [
         "unit"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -780,6 +868,9 @@
       "tags": [
         "unit",
         "ventilation"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -808,6 +899,10 @@
       },
       "tags": [
         "service"
+      ],
+      "stages": [
+        "commissioning",
+        "handover"
       ]
     }
   ]

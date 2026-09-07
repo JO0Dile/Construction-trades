@@ -1,6 +1,6 @@
 {
   "tradeId": "stonework",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "st.stone.jerusalem.slab",
@@ -15,6 +15,9 @@
       "tags": [
         "facade",
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -30,6 +33,9 @@
       "tags": [
         "facade",
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -45,6 +51,9 @@
       "tags": [
         "facade",
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -60,6 +69,9 @@
       "tags": [
         "facade",
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -75,6 +87,9 @@
       "tags": [
         "interior",
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -90,6 +105,9 @@
       "tags": [
         "interior",
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -104,6 +122,9 @@
       },
       "tags": [
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -128,6 +149,9 @@
         "facade",
         "fixing",
         "safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -142,6 +166,9 @@
       },
       "tags": [
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -156,6 +183,9 @@
       },
       "tags": [
         "stone"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -170,6 +200,9 @@
       },
       "tags": [
         "protection"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {

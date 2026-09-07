@@ -162,6 +162,7 @@ class CatalogSeeder(
         tags = tags,
         catalogVersion = version,
         searchIndex = buildSearchIndex(),
+        stages = stages,
     )
 
     private fun CatalogItemDto.toInventoryRow(tradeId: String, now: Long) = InventoryItemEntity(
@@ -190,6 +191,10 @@ class CatalogSeeder(
     private fun CatalogItemDto.buildSearchIndex(): String =
         buildString {
             append(names.searchable()).append(' ')
+            // Beside the formal names, not instead of them. Somebody hunting
+            // for a מברגה types מברגה, not "cordless screwdriver-drill", and
+            // an Arabic-speaking crew types مفريغا for the same tool.
+            append(colloquial.searchable()).append(' ')
             append(spec.searchable()).append(' ')
             append(tags.joinToString(" ") { it.lowercase() }).append(' ')
             append(category.lowercase()).append(' ')

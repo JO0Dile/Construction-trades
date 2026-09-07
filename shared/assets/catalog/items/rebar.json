@@ -1,6 +1,6 @@
 {
   "tradeId": "rebar",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "rb.bar.ribbed.12",
@@ -17,6 +17,9 @@
       },
       "tags": [
         "rebar"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -34,6 +37,9 @@
       },
       "tags": [
         "rebar"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -51,6 +57,9 @@
       },
       "tags": [
         "rebar"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -65,6 +74,9 @@
       },
       "tags": [
         "rebar"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -79,6 +91,9 @@
       },
       "tags": [
         "rebar"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -99,6 +114,9 @@
       "tags": [
         "cover",
         "durability"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -128,6 +146,9 @@
       "tags": [
         "rebar",
         "splice"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -142,6 +163,9 @@
       },
       "tags": [
         "anchor"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -205,6 +229,30 @@
         "inspection",
         "safety"
       ]
+    },
+    {
+      "id": "rb.tool.nipper.tying",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Tying nippers",
+        "he": "צבת קשירה",
+        "ar": "كماشة ربط الحديد"
+      },
+      "spec": {
+        "en": "250 mm, for tie wire.",
+        "he": "250 מ״מ, לחוט קשירה.",
+        "ar": "250 ملم، لسلك الربط."
+      },
+      "attributes": {},
+      "tags": [
+        "nippers",
+        "tying"
+      ],
+      "colloquial": {
+        "ar": "كماشة ربط"
+      }
     }
   ]
 }

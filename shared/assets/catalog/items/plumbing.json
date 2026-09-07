@@ -1,6 +1,6 @@
 {
   "tradeId": "plumbing",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "pl.pipe.pex.16",
@@ -24,6 +24,10 @@
       "tags": [
         "pipe",
         "water"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -48,6 +52,10 @@
       "tags": [
         "pipe",
         "water"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -72,6 +80,10 @@
         "pipe",
         "copper",
         "hot-work"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -95,6 +107,10 @@
       "tags": [
         "pipe",
         "copper"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -119,6 +135,10 @@
       "tags": [
         "pipe",
         "drainage"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -143,6 +163,10 @@
       "tags": [
         "pipe",
         "drainage"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -167,6 +191,9 @@
       "tags": [
         "fitting",
         "drainage"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -190,6 +217,9 @@
       "tags": [
         "fitting",
         "drainage"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -213,6 +243,9 @@
       "tags": [
         "fitting",
         "water"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -236,6 +269,9 @@
       "tags": [
         "fitting",
         "water"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -258,6 +294,10 @@
       },
       "tags": [
         "valve"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -280,6 +320,10 @@
       },
       "tags": [
         "valve"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -300,6 +344,10 @@
       "attributes": {},
       "tags": [
         "valve"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -322,6 +370,9 @@
       },
       "tags": [
         "fixture"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -342,6 +393,9 @@
       "attributes": {},
       "tags": [
         "fixture"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -362,6 +416,9 @@
       "attributes": {},
       "tags": [
         "fixture"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -382,6 +439,9 @@
       "attributes": {},
       "tags": [
         "fixture"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -404,6 +464,9 @@
       },
       "tags": [
         "hot-water"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -425,6 +488,9 @@
       "tags": [
         "hot-water",
         "solar"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -445,6 +511,10 @@
       "attributes": {},
       "tags": [
         "metering"
+      ],
+      "stages": [
+        "second-fix",
+        "commissioning"
       ]
     },
     {
@@ -720,6 +790,10 @@
       },
       "tags": [
         "supply"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -734,6 +808,10 @@
       },
       "tags": [
         "drainage"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -748,6 +826,9 @@
       },
       "tags": [
         "supply"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -763,6 +844,10 @@
       "tags": [
         "drainage",
         "wet-area"
+      ],
+      "stages": [
+        "slab",
+        "rough-in"
       ]
     },
     {
@@ -777,6 +862,9 @@
       },
       "tags": [
         "tank"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -791,6 +879,9 @@
       },
       "tags": [
         "pump"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -811,6 +902,9 @@
       "tags": [
         "hot-water",
         "regulated"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -826,6 +920,10 @@
       "tags": [
         "valve",
         "regulated"
+      ],
+      "stages": [
+        "rough-in",
+        "second-fix"
       ]
     },
     {
@@ -840,6 +938,9 @@
       },
       "tags": [
         "sanitaryware"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -854,6 +955,9 @@
       },
       "tags": [
         "sanitaryware"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -917,6 +1021,75 @@
         "testing",
         "commissioning"
       ]
+    },
+    {
+      "id": "pl.tool.driver.cordless",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Cordless drill / driver",
+        "he": "מברגה־מקדחה נטענת",
+        "ar": "مثقاب ومفك شحن"
+      },
+      "spec": {
+        "en": "18 V, for brackets and clips.",
+        "he": "18 וולט, לתליות ולמהדקים.",
+        "ar": "18 فولت، للحوامل والمشابك."
+      },
+      "attributes": {},
+      "tags": [
+        "drill",
+        "driver"
+      ],
+      "colloquial": {
+        "he": "מברגה",
+        "ar": "مفريغا"
+      }
+    },
+    {
+      "id": "pl.tool.wrench.basin",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Basin wrench",
+        "he": "מפתח כיור",
+        "ar": "مفتاح مغاسل"
+      },
+      "spec": {
+        "en": "Reaches the nut behind a basin that nothing else will.",
+        "he": "מגיע לאום מאחורי הכיור ששום כלי אחר לא מגיע אליו.",
+        "ar": "يصل إلى الصامولة خلف المغسلة التي لا تصلها أداة أخرى."
+      },
+      "attributes": {},
+      "tags": [
+        "wrench"
+      ]
+    },
+    {
+      "id": "pl.tool.level.spirit",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Spirit level 60 cm",
+        "he": "פלס 60 ס״מ",
+        "ar": "ميزان مياه 60 سم"
+      },
+      "spec": {
+        "en": "Short enough for a fall on a waste run.",
+        "he": "קצר מספיק לשיפוע בקו ניקוז.",
+        "ar": "قصير بما يكفي لضبط الميل في خط الصرف."
+      },
+      "attributes": {},
+      "tags": [
+        "level"
+      ],
+      "colloquial": {
+        "he": "פלס",
+        "ar": "ميزان"
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "tradeId": "landscape",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "ls.paver.interlock",
@@ -14,6 +14,9 @@
       },
       "tags": [
         "paving"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -28,6 +31,9 @@
       },
       "tags": [
         "paving"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -48,6 +54,9 @@
       "tags": [
         "accessibility",
         "paving"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -62,6 +71,9 @@
       },
       "tags": [
         "irrigation"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -76,6 +88,9 @@
       },
       "tags": [
         "irrigation"
+      ],
+      "stages": [
+        "commissioning"
       ]
     },
     {
@@ -90,6 +105,9 @@
       },
       "tags": [
         "planting"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -104,6 +122,9 @@
       },
       "tags": [
         "planting"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {

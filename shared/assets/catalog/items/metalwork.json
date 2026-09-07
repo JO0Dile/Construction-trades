@@ -1,6 +1,6 @@
 {
   "tradeId": "metalwork",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "mw.balustrade.steel",
@@ -15,6 +15,9 @@
       "tags": [
         "balustrade",
         "safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -30,6 +33,9 @@
       "tags": [
         "balustrade",
         "safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -45,6 +51,9 @@
       "tags": [
         "balustrade",
         "accessibility"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -59,6 +68,9 @@
       },
       "tags": [
         "gate"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -73,6 +85,9 @@
       },
       "tags": [
         "grating"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -119,6 +134,29 @@
       "tags": [
         "welding"
       ]
+    },
+    {
+      "id": "mw.tool.vice.bench",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Bench vice",
+        "he": "מלחציים שולחן",
+        "ar": "ملزمة طاولة"
+      },
+      "spec": {
+        "en": "125 mm jaws.",
+        "he": "לסתות 125 מ״מ.",
+        "ar": "فكّان 125 ملم."
+      },
+      "attributes": {},
+      "tags": [
+        "vice"
+      ],
+      "colloquial": {
+        "ar": "ملزمة"
+      }
     }
   ]
 }

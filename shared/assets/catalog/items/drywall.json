@@ -1,6 +1,6 @@
 {
   "tradeId": "drywall",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "gb.board.standard.12_5",
@@ -17,6 +17,9 @@
       },
       "tags": [
         "board"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -40,6 +43,9 @@
       "tags": [
         "board",
         "wet-area"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -58,6 +64,9 @@
       "tags": [
         "board",
         "fire"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -73,6 +82,9 @@
       "tags": [
         "board",
         "acoustic"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -89,6 +101,9 @@
         "board",
         "wet-area",
         "facade"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -167,6 +182,9 @@
       "tags": [
         "ceiling",
         "office"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -181,6 +199,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -195,6 +216,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -209,6 +233,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -223,6 +250,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -263,6 +293,9 @@
       "tags": [
         "acoustic",
         "insulation"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -366,6 +399,54 @@
         "access",
         "risk"
       ]
+    },
+    {
+      "id": "gb.tool.knife.utility",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Utility knife",
+        "he": "סכין יפנית",
+        "ar": "سكين قصّ"
+      },
+      "spec": {
+        "en": "Snap-off blade; a dull blade tears the paper.",
+        "he": "להב נשבר; להב קהה קורע את הנייר.",
+        "ar": "شفرة قابلة للكسر؛ الشفرة الكليلة تمزّق الورق."
+      },
+      "attributes": {},
+      "tags": [
+        "knife"
+      ],
+      "colloquial": {
+        "he": "יפנית",
+        "ar": "أوليمبي"
+      }
+    },
+    {
+      "id": "gb.tool.level.spirit",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Spirit level 120 cm",
+        "he": "פלס 120 ס״מ",
+        "ar": "ميزان مياه 120 سم"
+      },
+      "spec": {
+        "en": "For setting the track before anything is boarded.",
+        "he": "לישור הפרופיל לפני שמלבישים לוחות.",
+        "ar": "لضبط المجرى قبل تركيب أي لوح."
+      },
+      "attributes": {},
+      "tags": [
+        "level"
+      ],
+      "colloquial": {
+        "he": "פלס",
+        "ar": "ميزان"
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "tradeId": "carpentry",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "ca.board.mdf.16",
@@ -23,6 +23,9 @@
       "tags": [
         "board",
         "dust"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -45,6 +48,9 @@
       },
       "tags": [
         "board"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -67,6 +73,9 @@
       },
       "tags": [
         "board"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -90,6 +99,10 @@
       },
       "tags": [
         "timber"
+      ],
+      "stages": [
+        "civil",
+        "rough-in"
       ]
     },
     {
@@ -112,6 +125,10 @@
       },
       "tags": [
         "timber"
+      ],
+      "stages": [
+        "civil",
+        "rough-in"
       ]
     },
     {
@@ -134,6 +151,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -154,6 +174,9 @@
       "attributes": {},
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -264,6 +287,9 @@
       },
       "tags": [
         "hardware"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -286,6 +312,9 @@
       },
       "tags": [
         "hardware"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -308,6 +337,9 @@
       },
       "tags": [
         "hardware"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -608,6 +640,9 @@
       },
       "tags": [
         "door"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -622,6 +657,9 @@
       },
       "tags": [
         "door"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -646,6 +684,9 @@
         "door",
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -661,6 +702,9 @@
       "tags": [
         "door",
         "security"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -675,6 +719,9 @@
       },
       "tags": [
         "door"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -689,6 +736,9 @@
       },
       "tags": [
         "door"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -704,6 +754,9 @@
       "tags": [
         "door",
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -719,6 +772,9 @@
       "tags": [
         "door",
         "hardware"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -734,6 +790,9 @@
       "tags": [
         "door",
         "hardware"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -749,6 +808,9 @@
       "tags": [
         "door",
         "fire"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -764,6 +826,9 @@
       "tags": [
         "door",
         "fire"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -779,6 +844,9 @@
       "tags": [
         "door",
         "acoustic"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -793,6 +861,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -807,6 +878,9 @@
       },
       "tags": [
         "joinery"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -821,6 +895,9 @@
       },
       "tags": [
         "joinery"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -878,6 +955,31 @@
       "tags": [
         "door"
       ]
+    },
+    {
+      "id": "ca.tool.driver.impact",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Impact driver",
+        "he": "מברגת אימפקט",
+        "ar": "مفك صدمي"
+      },
+      "spec": {
+        "en": "For long screws into timber without pilot holes.",
+        "he": "לברגים ארוכים בעץ בלי קידוח מקדים.",
+        "ar": "للبراغي الطويلة في الخشب دون ثقب تمهيدي."
+      },
+      "attributes": {},
+      "tags": [
+        "driver",
+        "impact"
+      ],
+      "colloquial": {
+        "he": "אימפקט",
+        "ar": "إمباكت"
+      }
     }
   ]
 }

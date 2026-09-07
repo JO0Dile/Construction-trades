@@ -1,6 +1,6 @@
 {
   "tradeId": "firefighting",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "ff.pipe.steel.sch40",
@@ -14,6 +14,9 @@
       },
       "tags": [
         "sprinkler"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -28,6 +31,9 @@
       },
       "tags": [
         "sprinkler"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -42,6 +48,9 @@
       },
       "tags": [
         "sprinkler"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -56,6 +65,9 @@
       },
       "tags": [
         "sprinkler"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -70,6 +82,9 @@
       },
       "tags": [
         "hose"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -84,6 +99,9 @@
       },
       "tags": [
         "hydrant"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -101,6 +119,9 @@
       },
       "tags": [
         "extinguisher"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -115,6 +136,10 @@
       },
       "tags": [
         "pump"
+      ],
+      "stages": [
+        "second-fix",
+        "commissioning"
       ]
     },
     {

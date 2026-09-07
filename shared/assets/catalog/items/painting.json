@@ -1,6 +1,6 @@
 {
   "tradeId": "painting",
-  "catalogVersion": 1,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "pa.paint.acrylic.interior",
@@ -25,6 +25,9 @@
       "tags": [
         "paint",
         "interior"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -48,6 +51,9 @@
       "tags": [
         "paint",
         "exterior"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -73,6 +79,9 @@
         "paint",
         "solvent",
         "ventilation"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -94,6 +103,9 @@
       "tags": [
         "paint",
         "interior"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -114,6 +126,9 @@
       "attributes": {},
       "tags": [
         "primer"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -135,6 +150,9 @@
       "tags": [
         "primer",
         "metal"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -155,6 +173,9 @@
       "attributes": {},
       "tags": [
         "preparation"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -175,6 +196,9 @@
       "attributes": {},
       "tags": [
         "preparation"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {

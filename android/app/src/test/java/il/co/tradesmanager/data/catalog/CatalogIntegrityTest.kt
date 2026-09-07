@@ -191,6 +191,86 @@ class CatalogIntegrityTest {
     }
 
     @Test
+    fun `every stage an item claims is a stage the work breakdown declares`() {
+        // A typo here does not fail anything at runtime: the item simply never
+        // matches a filter and quietly leaves the list, which is the one thing
+        // this feature must not do.
+        val declared = json.decodeFromString<ScopeFile>(read(manifest.scopesFile!!))
+            .stages.map { it.id }.toSet()
+
+        val unknown = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .flatMap { item -> (item.stages.toSet() - declared).map { "${item.id}: $it" } }
+        }
+        assertEquals(emptyList<String>(), unknown)
+    }
+
+    @Test
+    fun `an item claims each of its stages once`() {
+        val repeated = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .filter { it.stages.size != it.stages.toSet().size }
+                .map { it.id }
+        }
+        assertEquals(emptyList<String>(), repeated)
+    }
+
+    @Test
+    fun `the tools are left on every stage`() {
+        // Not a stylistic rule. A tagged tool disappears from the list of
+        // somebody who is holding it, and there is no stage of a job where a
+        // screwdriver is the wrong thing to own.
+        val alwaysOn = setOf("hand-tools", "power-tools", "measuring", "ppe", "consumables")
+        val tagged = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .filter { it.category in alwaysOn && it.stages.isNotEmpty() }
+                .map { "${it.id} (${it.category})" }
+        }
+        assertEquals(emptyList<String>(), tagged)
+    }
+
+    @Test
+    fun `a colloquial name is given in a language the app ships`() {
+        // These are searched, not displayed, so a stray language key would be
+        // a word nobody could ever type their way to.
+        val stray = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .flatMap { item ->
+                    (item.colloquial.keys - languages.toSet()).map { "${item.id}: $it" }
+                }
+        }
+        assertEquals(emptyList<String>(), stray)
+    }
+
+    @Test
+    fun `a colloquial name is not just the formal one again`() {
+        // A duplicate adds a row to maintain and finds nothing the formal name
+        // would not have found already.
+        val echoes = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .flatMap { item ->
+                    item.colloquial
+                        .filter { (lang, word) -> word.equals(item.names[lang], true) }
+                        .map { (lang, _) -> "${item.id}: $lang" }
+                }
+        }
+        assertEquals(emptyList<String>(), echoes)
+    }
+
+    @Test
+    fun `the tool every site calls a mavrega is in the catalogue`() {
+        // The complaint this came from, kept as a test rather than a memory.
+        // Nobody asks for a cordless screwdriver-drill; they ask for a מברגה,
+        // and on an Arabic-speaking crew for a مفريغا.
+        val spoken = manifest.trades.flatMap { trade ->
+            json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items
+                .flatMap { it.colloquial.values }
+        }
+        assertTrue("no item is known as a מברגה", spoken.any { it.contains("מברגה") })
+        assertTrue("no item is known as a مفريغا", spoken.any { it.contains("مفريغا") })
+    }
+
+    @Test
     fun `every catalogue category has an icon`() {
         val categories = manifest.trades.flatMap { trade ->
             json.decodeFromString<CatalogItemFile>(read(trade.itemsFile)).items.map { it.category }

@@ -1,6 +1,6 @@
 {
   "tradeId": "concrete",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "cn.readymix.b30",
@@ -17,6 +17,9 @@
       },
       "tags": [
         "concrete"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -34,6 +37,9 @@
       },
       "tags": [
         "concrete"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -48,6 +54,9 @@
       },
       "tags": [
         "formwork"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -111,6 +120,9 @@
       "tags": [
         "admixture",
         "quality"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -125,6 +137,9 @@
       },
       "tags": [
         "curing"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {
@@ -140,6 +155,9 @@
       "tags": [
         "joint",
         "waterproofing"
+      ],
+      "stages": [
+        "civil"
       ]
     },
     {

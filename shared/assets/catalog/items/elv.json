@@ -1,6 +1,6 @@
 {
   "tradeId": "elv",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "elv.cable.cat6",
@@ -17,6 +17,9 @@
       },
       "tags": [
         "data"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -34,6 +37,9 @@
       },
       "tags": [
         "data"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -48,6 +54,9 @@
       },
       "tags": [
         "tv"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -68,6 +77,9 @@
       "tags": [
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -83,6 +95,9 @@
       "tags": [
         "data",
         "backbone"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -98,6 +113,9 @@
       "tags": [
         "data",
         "rack"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -113,6 +131,9 @@
       "tags": [
         "data",
         "rack"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -128,6 +149,9 @@
       "tags": [
         "data",
         "white-work"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -142,6 +166,9 @@
       },
       "tags": [
         "cctv"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -156,6 +183,9 @@
       },
       "tags": [
         "cctv"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -170,6 +200,10 @@
       },
       "tags": [
         "cctv"
+      ],
+      "stages": [
+        "second-fix",
+        "commissioning"
       ]
     },
     {
@@ -185,6 +219,9 @@
       "tags": [
         "intercom",
         "lobby"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -199,6 +236,9 @@
       },
       "tags": [
         "intercom"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -214,6 +254,9 @@
       "tags": [
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -229,6 +272,9 @@
       "tags": [
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -244,6 +290,9 @@
       "tags": [
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -259,6 +308,9 @@
       "tags": [
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -274,6 +326,10 @@
       "tags": [
         "fire",
         "life-safety"
+      ],
+      "stages": [
+        "second-fix",
+        "commissioning"
       ]
     },
     {
@@ -289,6 +345,9 @@
       "tags": [
         "access-control",
         "lobby"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -317,6 +376,10 @@
       },
       "tags": [
         "tv"
+      ],
+      "stages": [
+        "second-fix",
+        "commissioning"
       ]
     },
     {

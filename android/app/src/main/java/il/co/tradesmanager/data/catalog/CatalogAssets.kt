@@ -77,6 +77,32 @@ data class CatalogItemDto(
     val spec: LocalizedText = emptyMap(),
     val attributes: Map<String, String> = emptyMap(),
     val tags: List<String> = emptyList(),
+    /**
+     * What the trade actually calls it, as opposed to what a catalogue calls
+     * it.
+     *
+     * Nobody on an Israeli site asks for a cordless screwdriver-drill. They
+     * ask for a מברגה, and on an Arabic-speaking crew for a مفريغا, which is
+     * the same Hebrew word worn down. Same with كونجو for a demolition
+     * hammer and صاروخ for an angle grinder. These go into the search index
+     * beside the formal names, so typing the word somebody would actually say
+     * finds the thing.
+     *
+     * A separate field rather than more [names], because the formal name is
+     * what a register, an order and an invoice should read.
+     */
+    val colloquial: LocalizedText = emptyMap(),
+    /**
+     * Which stages of the job this is for, by `scopes.json` stage id.
+     *
+     * Empty means every stage, and that is the default on purpose. An item
+     * with no stage stays visible under every filter, so a mistake in this
+     * data makes the list longer rather than making a tool disappear on
+     * somebody who needs it. Tools are mostly left empty for the same reason:
+     * a screwdriver is used on the day the slab is poured and on the day the
+     * keys are handed over.
+     */
+    val stages: List<String> = emptyList(),
 )
 
 @Serializable

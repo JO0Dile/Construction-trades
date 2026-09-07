@@ -1,6 +1,6 @@
 {
   "tradeId": "plastering",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "ps.mortar.render.base",
@@ -14,6 +14,9 @@
       },
       "tags": [
         "render"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -28,6 +31,9 @@
       },
       "tags": [
         "render"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -43,6 +49,9 @@
       "tags": [
         "render",
         "interior"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -57,6 +66,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -71,6 +83,9 @@
       },
       "tags": [
         "preparation"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -91,6 +106,9 @@
       "tags": [
         "reinforcement",
         "cracking"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -105,6 +123,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -119,6 +140,9 @@
       },
       "tags": [
         "floor"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -133,6 +157,9 @@
       },
       "tags": [
         "floor"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {

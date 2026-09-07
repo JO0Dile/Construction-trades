@@ -1,6 +1,6 @@
 {
   "tradeId": "tiling",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "tl.tile.porcelain.60x60",
@@ -14,6 +14,9 @@
       },
       "tags": [
         "floor"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -28,6 +31,9 @@
       },
       "tags": [
         "floor"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -42,6 +48,9 @@
       },
       "tags": [
         "wall"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -56,6 +65,9 @@
       },
       "tags": [
         "wall"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -70,6 +82,9 @@
       },
       "tags": [
         "floor"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -92,6 +107,9 @@
       },
       "tags": [
         "adhesive"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -106,6 +124,9 @@
       },
       "tags": [
         "grout"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -121,6 +142,9 @@
       "tags": [
         "grout",
         "wet-area"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -150,6 +174,9 @@
       },
       "tags": [
         "finishing"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -164,6 +191,9 @@
       },
       "tags": [
         "substrate"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -263,6 +293,30 @@
       "tags": [
         "setting-out"
       ]
+    },
+    {
+      "id": "tl.tool.level.spirit",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Spirit level 100 cm",
+        "he": "פלס 100 ס״מ",
+        "ar": "ميزان مياه 100 سم"
+      },
+      "spec": {
+        "en": "Checked on every course, not at the end.",
+        "he": "בודקים בכל שורה, לא בסוף.",
+        "ar": "يُفحص عند كل مدماك، لا في النهاية."
+      },
+      "attributes": {},
+      "tags": [
+        "level"
+      ],
+      "colloquial": {
+        "he": "פלס",
+        "ar": "ميزان"
+      }
     }
   ]
 }

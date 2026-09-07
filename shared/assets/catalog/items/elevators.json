@@ -1,6 +1,6 @@
 {
   "tradeId": "elevators",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "items": [
     {
       "id": "lf.guide.rail",
@@ -14,6 +14,9 @@
       },
       "tags": [
         "elevator"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -28,6 +31,9 @@
       },
       "tags": [
         "elevator"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -42,6 +48,9 @@
       },
       "tags": [
         "elevator"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -56,6 +65,9 @@
       },
       "tags": [
         "elevator"
+      ],
+      "stages": [
+        "rough-in"
       ]
     },
     {
@@ -70,6 +82,9 @@
       },
       "tags": [
         "elevator"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -85,6 +100,9 @@
       "tags": [
         "elevator",
         "safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
@@ -100,6 +118,9 @@
       "tags": [
         "elevator",
         "safety"
+      ],
+      "stages": [
+        "second-fix"
       ]
     },
     {
