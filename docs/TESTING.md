@@ -9,7 +9,44 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.12.1 — and what to try first
+## What is new in 0.13.0 — and what to try first
+
+### Backup, and the one thing worth testing hardest
+
+Everything is on this phone and nothing is on a server. That is right for a
+site with no signal, and it means a lost phone has until now been a lost site
+diary. **Settings → Backup.**
+
+**This is the least tested thing in the app and the most dangerous if it is
+wrong.** It replaces the database. Please try it on a phone whose data you do
+not mind losing, or after taking a backup you have already checked, before it
+protects anything real.
+
+- [ ] Back up. It asks for a passphrase twice — twelve characters, six of them
+      different — and says plainly that nobody can reset it, because nobody
+      can. Write it down before you type it.
+- [ ] Look at the file it wrote. The name carries the date, so a file listing
+      answers "how old is my backup" without opening anything.
+- [ ] Try to restore a file that is not a backup — any photograph will do. It
+      says *that is not a backup from this app* rather than telling you the
+      passphrase is wrong.
+- [ ] Restore with the wrong passphrase. One message, deliberately: it will
+      not tell you whether the passphrase was wrong or the file was damaged,
+      because it cannot tell and guessing would be a lie.
+- [ ] Restore properly. Notice that **nothing changes yet** — it says to close
+      the app completely and open it again. The swap happens at the next
+      launch, when nothing is holding the database open.
+- [ ] Change your mind before restarting and tap *do not restore after all*.
+      Everything should be exactly as it was.
+- [ ] Do a real one: back up, add a job and a photograph, restore, and check
+      the job is gone and the older photographs are back. **Check the
+      photographs, not just the rows** — a database whose pictures are missing
+      is not a restore.
+- [ ] Settings → the audit trail. There should be a line saying it was
+      restored, and it should be the newest one. That entry is what tells
+      somebody reading the trail later that it was rewound on purpose rather
+      than cut about.
+
 
 This one is about the people on a site rather than the paperwork about them.
 Tap **Check for updates** in Settings and it will offer itself.
