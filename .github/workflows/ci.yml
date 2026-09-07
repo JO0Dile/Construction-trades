@@ -40,6 +40,13 @@ jobs:
       - name: Every DAO method carries exactly one Room annotation
         run: python3 tools/check-dao.py
 
+      # The change feed is filtered by lens, and a kind of record nobody has
+      # classified is shown to nobody. That is the safe direction and a silent
+      # one: a new register would simply never appear in anybody's feed, and
+      # nobody would find out for a release or two.
+      - name: Every audited kind of change is classified by lens
+        run: python3 tools/check-audit-lens.py
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.

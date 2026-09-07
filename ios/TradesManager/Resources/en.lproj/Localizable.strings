@@ -1063,3 +1063,5 @@
 "crew_no_violations" = "Nothing confirmed against them.";
 /* Entry point that opens the crew list, by trade, with faces. */
 "crew_open" = "Find someone by trade";
+/* Section header on the dashboard: recent changes this person may see */
+"home_changes" = "What changed";

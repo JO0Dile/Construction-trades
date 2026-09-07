@@ -1063,3 +1063,5 @@
 "crew_no_violations" = "لا توجد مخالفات مؤكدة بحقهم.";
 /* Entry point that opens the crew list, by trade, with faces. */
 "crew_open" = "ابحث عن شخص حسب المهنة";
+/* Section header on the dashboard: recent changes this person may see */
+"home_changes" = "ما الذي تغيّر";

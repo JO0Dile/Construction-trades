@@ -1063,3 +1063,5 @@
 "crew_no_violations" = "לא אושרה נגדם אף הפרה.";
 /* Entry point that opens the crew list, by trade, with faces. */
 "crew_open" = "חיפוש לפי מקצוע";
+/* Section header on the dashboard: recent changes this person may see */
+"home_changes" = "מה השתנה";

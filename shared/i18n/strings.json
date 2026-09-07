@@ -5136,6 +5136,12 @@
       "en": "Find someone by trade",
       "he": "חיפוש לפי מקצוע",
       "ar": "ابحث عن شخص حسب المهنة"
+    },
+    "home_changes": {
+      "c": "Section header on the dashboard: recent changes this person may see",
+      "en": "What changed",
+      "he": "מה השתנה",
+      "ar": "ما الذي تغيّر"
     }
   },
   "plurals": {

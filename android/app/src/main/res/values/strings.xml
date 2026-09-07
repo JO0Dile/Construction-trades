@@ -1064,6 +1064,8 @@
     <string name="crew_no_violations">Nothing confirmed against them.</string>
     <!-- Entry point that opens the crew list, by trade, with faces. -->
     <string name="crew_open">Find someone by trade</string>
+    <!-- Section header on the dashboard: recent changes this person may see -->
+    <string name="home_changes">What changed</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

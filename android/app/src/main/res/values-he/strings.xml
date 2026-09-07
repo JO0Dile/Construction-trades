@@ -1016,6 +1016,7 @@
     <string name="crew_no_money">אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.</string>
     <string name="crew_no_violations">לא אושרה נגדם אף הפרה.</string>
     <string name="crew_open">חיפוש לפי מקצוע</string>
+    <string name="home_changes">מה השתנה</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
