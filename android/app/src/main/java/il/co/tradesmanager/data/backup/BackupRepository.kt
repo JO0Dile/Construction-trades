@@ -128,7 +128,7 @@ class BackupRepository(
     suspend fun inspect(source: Uri): Inspection = withContext(Dispatchers.IO) {
         val header = runCatching {
             context.contentResolver.openInputStream(source)?.use { stream ->
-                BackupArchive.readHeader(DataInputStream(stream))
+                BackupArchive.open(DataInputStream(stream))?.header
             }
         }.getOrNull()
         if (header == null) {
@@ -168,8 +168,9 @@ class BackupRepository(
                 dir.deleteRecursively()
                 context.contentResolver.openInputStream(source)?.use { stream ->
                     val data = DataInputStream(stream)
-                    val header = BackupArchive.readHeader(data) ?: error("not a backup")
-                    val unpacked = BackupArchive.read(data, passphrase, dir)
+                    val opening = BackupArchive.open(data) ?: error("not a backup")
+                    val header = opening.header
+                    val unpacked = BackupArchive.read(data, opening, passphrase, dir)
                     val db = unpacked.database ?: error("the archive holds no database")
                     // The platform's SQLite: what is in the archive is
                     // plaintext, so this needs no key and no native library.
@@ -218,14 +219,16 @@ class BackupRepository(
                 unpackDir.deleteRecursively()
                 context.contentResolver.openInputStream(source)?.use { stream ->
                     val data = DataInputStream(stream)
-                    val header = BackupArchive.readHeader(data)
+                    val opening = BackupArchive.open(data)
                         ?: error("not a backup")
+                    val header = opening.header
                     Backup.blocksRestore(header, DATABASE_VERSION)?.let {
                         error("cannot restore: $it")
                     }
-                    // Throws on a wrong passphrase: GCM fails its tag rather
-                    // than handing back plausible rubbish.
-                    val unpacked = BackupArchive.read(data, passphrase, unpackDir)
+                    // Throws on a wrong passphrase, on a file somebody has
+                    // altered, and on one whose end has been removed. Nothing
+                    // is staged unless the whole of it opened.
+                    val unpacked = BackupArchive.read(data, opening, passphrase, unpackDir)
                     val db = unpacked.database ?: error("the archive holds no database")
                     StagedRestore.stage(
                         context = context,

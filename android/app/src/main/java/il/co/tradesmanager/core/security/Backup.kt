@@ -36,8 +36,13 @@ object Backup {
      * Written into every file so that a version of this app years from now can
      * tell what it is looking at before it tries to read it. Bumped only when
      * the container changes shape, which should be almost never.
+     *
+     * 1 sealed the whole archive as one AES-GCM message, which cannot be read
+     * back without holding all of it in memory at once -- so a backup big
+     * enough to matter could not be restored at all. 2 seals it in frames.
+     * Files written as 1 are still read; see `data.backup.BackupArchive`.
      */
-    const val FORMAT_VERSION = 1
+    const val FORMAT_VERSION = 2
 
     /** Marks the file as ours before anything tries to decrypt it. */
     const val MAGIC = "TRADESMGR-BACKUP"

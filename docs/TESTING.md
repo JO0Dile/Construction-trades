@@ -9,7 +9,27 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.13.0 — and what to try first
+## What is new in 0.13.1 — and what to try first
+
+### The backup format changed, and why you should care
+
+0.13.0 sealed the whole backup as a single encrypted message. That turns out
+not to work on a real site's worth of photographs: unlocking it requires
+holding all of it in memory at once, so **a backup big enough to matter could
+not be restored** — and the big ones belong to the sites that have been running
+longest, which are exactly the ones that cannot afford to lose anything.
+
+0.13.1 seals it in small pieces instead, so a backup of any size opens without
+the phone having to hold it. It also closes two things the old shape could not
+see: a file with its end cut off is now refused rather than restored as a
+diary that quietly stops in March, and the details written on the front of the
+file can no longer be edited without breaking it.
+
+- [ ] If you made a backup with 0.13.0, it still restores — nothing you have
+      already taken is stranded. Use **Check a backup** on it to see that.
+- [ ] Take a fresh one after updating. A backup taken with 0.13.1 cannot be
+      restored by a phone still on 0.13.0; it will say it is from a newer
+      version rather than failing strangely.
 
 ### Backup, and the one thing worth testing hardest
 
