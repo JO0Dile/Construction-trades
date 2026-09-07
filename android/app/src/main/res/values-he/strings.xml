@@ -910,6 +910,9 @@
     <string name="task_stage">שלב בעבודה</string>
     <string name="task_stage_none">ללא שלב</string>
     <string name="task_stage_hint">רשות. שווה לקבוע כשאותה משימה חוזרת בכמה קומות — השלב הוא מה שמבדיל ביניהן.</string>
+    <string name="pay_breakdown">ממה מורכבת התביעה</string>
+    <string name="pay_breakdown_hint">כל חבילת עבודה מאושרת שנספרה בסכום שלמעלה. תביעה היא מצטברת, ולכן חבילות מבקשות קודמות מופיעות שוב.</string>
+    <string name="pay_breakdown_none">הופקה ידנית — ללא חבילות עבודה מצורפות.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

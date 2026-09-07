@@ -922,6 +922,9 @@
     <string name="task_stage">Stage of the job</string>
     <string name="task_stage_none">No stage</string>
     <string name="task_stage_hint">Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.</string>
+    <string name="pay_breakdown">What this claim covers</string>
+    <string name="pay_breakdown_hint">Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.</string>
+    <string name="pay_breakdown_none">Raised by hand — no work packages attached.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

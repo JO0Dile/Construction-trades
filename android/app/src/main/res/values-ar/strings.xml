@@ -910,6 +910,9 @@
     <string name="task_stage">مرحلة العمل</string>
     <string name="task_stage_none">بدون مرحلة</string>
     <string name="task_stage_hint">اختياري. يستحق التحديد عندما تتكرر نفس المهمة في عدة طوابق — المرحلة هي ما يميّزها.</string>
+    <string name="pay_breakdown">مما تتكون هذه المطالبة</string>
+    <string name="pay_breakdown_hint">كل حزمة عمل معتمدة محسوبة في المبلغ أعلاه. المطالبة تراكمية، لذلك تظهر حزم المطالبات السابقة مرة أخرى.</string>
+    <string name="pay_breakdown_none">أُنشئت يدويًا — بدون حزم عمل مرفقة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

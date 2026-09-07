@@ -921,3 +921,6 @@
 "task_stage" = "Stage of the job";
 "task_stage_none" = "No stage";
 "task_stage_hint" = "Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.";
+"pay_breakdown" = "What this claim covers";
+"pay_breakdown_hint" = "Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.";
+"pay_breakdown_none" = "Raised by hand — no work packages attached.";

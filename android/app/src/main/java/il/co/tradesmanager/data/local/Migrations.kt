@@ -187,6 +187,19 @@ object Migrations {
         }
     }
 
+    /**
+     * An application can say what it is made of.
+     *
+     * A new table rather than a column: an application covers many packages,
+     * and a comma-joined list of ids in a column is a join table with the
+     * safety removed.
+     */
+    val MIGRATION_20_21 = object : Migration(20, 21) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_20_21.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -207,6 +220,7 @@ object Migrations {
         MIGRATION_17_18,
         MIGRATION_18_19,
         MIGRATION_19_20,
+        MIGRATION_20_21,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -617,5 +631,16 @@ object Migrations {
     val SQL_19_20: List<String> = listOf(
         "ALTER TABLE `project_tasks` ADD COLUMN `stageId` TEXT",
         "ALTER TABLE `project_tasks` ADD COLUMN `scopeId` TEXT",
+    )
+
+    val SQL_20_21: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `payment_application_lines` (`id` TEXT NOT NULL, " +
+            "`applicationId` TEXT NOT NULL, `assignmentId` TEXT NOT NULL, " +
+            "`title` TEXT NOT NULL, `amount` REAL NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_payment_application_lines_applicationId` " +
+            "ON `payment_application_lines` (`applicationId`)",
+        "CREATE INDEX IF NOT EXISTS `index_payment_application_lines_assignmentId` " +
+            "ON `payment_application_lines` (`assignmentId`)",
     )
 }

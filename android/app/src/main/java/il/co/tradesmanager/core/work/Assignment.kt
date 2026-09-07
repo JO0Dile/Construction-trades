@@ -152,7 +152,19 @@ object Assignment {
      * signed off is not work to date, whatever the crew thinks of it.
      */
     fun claimToDate(packages: List<Claimable>): Double =
-        packages.filter { it.status == Status.APPROVED }.sumOf { it.amount }
+        claimedBy(packages).sumOf { it.amount }
+
+    /**
+     * The packages a cumulative claim is made of.
+     *
+     * [claimToDate] is the sum of exactly these, and the breakdown stored on
+     * an application is exactly these, because they come from here. Two
+     * filters would eventually disagree, and the day they did, an application
+     * would show a total its own breakdown did not add up to — which is worse
+     * than showing no breakdown at all.
+     */
+    fun claimedBy(packages: List<Claimable>): List<Claimable> =
+        packages.filter { it.status == Status.APPROVED }
 
     /**
      * Whether raising an application from these packages is worth doing.

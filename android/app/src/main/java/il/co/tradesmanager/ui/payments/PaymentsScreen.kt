@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -55,6 +54,7 @@ import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberNow
 import il.co.tradesmanager.ui.evidence.pluralCount
@@ -88,6 +88,7 @@ fun PaymentsScreen(
     )
     val applications by viewModel.applications.collectAsStateWithLifecycle()
     val open by viewModel.open.collectAsStateWithLifecycle()
+    val lines by viewModel.lines.collectAsStateWithLifecycle()
     val contractSum by viewModel.contractSum.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
@@ -223,6 +224,25 @@ fun PaymentsScreen(
                     current.certifiedByName?.let {
                         DetailRow(stringResource(R.string.pay_certify), it)
                     }
+                }
+            }
+
+            // A cumulative figure with nothing behind it is the thing every
+            // dispute starts from. This is what the number is made of.
+            item { SectionHeader(stringResource(R.string.pay_breakdown)) }
+            if (lines.isEmpty()) {
+                item { SectionPlaceholder(stringResource(R.string.pay_breakdown_none)) }
+            } else {
+                item {
+                    Text(
+                        text = stringResource(R.string.pay_breakdown_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                    )
+                }
+                items(lines, key = { it.id }) { line ->
+                    DetailRow(line.title, Formats.money(line.amount, locale))
                 }
             }
 

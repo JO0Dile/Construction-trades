@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
+import il.co.tradesmanager.data.local.entity.PaymentApplicationLineEntity
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -36,6 +37,20 @@ class PaymentsViewModel(
     val open: StateFlow<PaymentApplicationEntity?> = _openId
         .flatMapLatest { id -> if (id == null) flowOf(null) else container.payments.observe(id) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /**
+     * What the open application is made of, package by package.
+     *
+     * Empty for an application somebody typed a figure into, which is a real
+     * and allowed way to raise one — the screen says so rather than showing an
+     * empty list and letting it read as a claim for nothing.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val lines: StateFlow<List<PaymentApplicationLineEntity>> = _openId
+        .flatMapLatest { id ->
+            if (id == null) flowOf(emptyList()) else container.payments.observeLines(id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     /**
      * The revised contract, which is what the retention limit is a share of.

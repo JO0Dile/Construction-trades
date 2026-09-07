@@ -4570,6 +4570,21 @@
       "en": "Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.",
       "he": "רשות. שווה לקבוע כשאותה משימה חוזרת בכמה קומות — השלב הוא מה שמבדיל ביניהן.",
       "ar": "اختياري. يستحق التحديد عندما تتكرر نفس المهمة في عدة طوابق — المرحلة هي ما يميّزها."
+    },
+    "pay_breakdown": {
+      "en": "What this claim covers",
+      "he": "ממה מורכבת התביעה",
+      "ar": "مما تتكون هذه المطالبة"
+    },
+    "pay_breakdown_hint": {
+      "en": "Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.",
+      "he": "כל חבילת עבודה מאושרת שנספרה בסכום שלמעלה. תביעה היא מצטברת, ולכן חבילות מבקשות קודמות מופיעות שוב.",
+      "ar": "كل حزمة عمل معتمدة محسوبة في المبلغ أعلاه. المطالبة تراكمية، لذلك تظهر حزم المطالبات السابقة مرة أخرى."
+    },
+    "pay_breakdown_none": {
+      "en": "Raised by hand — no work packages attached.",
+      "he": "הופקה ידנית — ללא חבילות עבודה מצורפות.",
+      "ar": "أُنشئت يدويًا — بدون حزم عمل مرفقة."
     }
   },
   "plurals": {

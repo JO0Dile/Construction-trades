@@ -41,8 +41,10 @@ ADD_COLUMN = re.compile(
 SQL_BLOCK = re.compile(r"val\s+SQL_(\d+)_(\d+)\s*:\s*List<String>\s*=\s*listOf\(")
 # "val MIGRATION_7_8 = object : Migration(7, 8)" -> (7, 8)
 MIGRATION_OBJECT = re.compile(r"Migration\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)")
-# "version = 9," in the @Database annotation
+# "version = 9," in the @Database annotation, or the constant it names:
+# "version = DATABASE_VERSION," alongside "const val DATABASE_VERSION = 9".
 DB_VERSION = re.compile(r"\bversion\s*=\s*(\d+)")
+DB_VERSION_CONST = re.compile(r"\bversion\s*=\s*([A-Z_][A-Z0-9_]*)\s*,")
 
 
 def normalise(sql: str) -> str:
@@ -238,10 +240,28 @@ def check_version_chain(source: str) -> list[str]:
     This file was written to catch launch crashes and did not catch that one,
     because it only ever compared SQL. It compares the numbers now too.
     """
-    declared = DB_VERSION.search(DATABASE.read_text(encoding="utf-8"))
-    if not declared:
-        return [f"No `version = N` found in {DATABASE.name}."]
-    version = int(declared.group(1))
+    database = DATABASE.read_text(encoding="utf-8")
+    declared = DB_VERSION.search(database)
+    if declared:
+        version = int(declared.group(1))
+    else:
+        # The version may be a constant so that a unit test can read it.
+        # Follow it rather than giving up: this check failing is how the
+        # schema drifts, and a checker that stops looking is worse than one
+        # that never existed.
+        named = DB_VERSION_CONST.search(database)
+        if not named:
+            return [f"No `version = N` found in {DATABASE.name}."]
+        constant = re.search(
+            rf"\b(?:const\s+)?val\s+{re.escape(named.group(1))}\s*(?::\s*Int\s*)?=\s*(\d+)",
+            database,
+        )
+        if not constant:
+            return [
+                f"{DATABASE.name} says `version = {named.group(1)}`, "
+                f"but no `val {named.group(1)} = N` is declared in the same file."
+            ]
+        version = int(constant.group(1))
 
     steps = sorted(
         {(int(a), int(b)) for a, b in MIGRATION_OBJECT.findall(COMMENTS.sub("", source))}

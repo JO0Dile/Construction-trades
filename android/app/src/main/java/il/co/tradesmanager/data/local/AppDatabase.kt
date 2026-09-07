@@ -54,6 +54,7 @@ import il.co.tradesmanager.data.local.entity.LiftPlanEntity
 import il.co.tradesmanager.data.local.entity.MembershipEntity
 import il.co.tradesmanager.data.local.entity.MilestoneEntity
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
+import il.co.tradesmanager.data.local.entity.PaymentApplicationLineEntity
 import il.co.tradesmanager.data.local.entity.PermitEntity
 import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
@@ -85,7 +86,7 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 20
+const val DATABASE_VERSION = 21
 
 @Database(
     entities = [
@@ -135,6 +136,7 @@ const val DATABASE_VERSION = 20
         ExcavationEntity::class,
         ExcavationInspectionEntity::class,
         PaymentApplicationEntity::class,
+        PaymentApplicationLineEntity::class,
         EngagementEntity::class,
         ContractEntity::class,
         ContractAmendmentEntity::class,

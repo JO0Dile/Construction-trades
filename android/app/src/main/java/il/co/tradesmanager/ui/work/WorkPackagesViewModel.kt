@@ -288,12 +288,26 @@ class WorkPackagesViewModel(
         val payerName = engagements.value
             .firstOrNull { it.orgId == payer }?.orgName
             ?: payer
+        // The breakdown lists everything the claim is made of, which is every
+        // approved package and not only the ones marked above. The claim is
+        // cumulative; a breakdown showing only this month's packages would not
+        // add up to the figure printed beside it, and somebody would spend an
+        // afternoon finding out why.
+        val covers = Assignment.claimedBy(claimable.value).mapNotNull { row ->
+            val assignment = packages.value.firstOrNull { it.id == row.id } ?: return@mapNotNull null
+            PaymentsRepository.Cover(
+                assignmentId = assignment.id,
+                title = assignment.title,
+                amount = row.amount,
+            )
+        }
         container.payments.raise(
             projectId = projectId,
             direction = PaymentsRepository.Direction.RECEIVABLE,
             partyName = payerName,
             claimedGrossToDate = Assignment.claimToDate(claimable.value),
             contractSum = contractSum.value,
+            covers = covers,
             actorName = actor,
         )
     }

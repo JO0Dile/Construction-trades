@@ -131,6 +131,51 @@ class AssignmentTest {
     }
 
     @Test
+    fun `the breakdown lists exactly what the total is made of`() {
+        val packages = listOf(
+            claimable("a", 7_000.0, S.APPROVED, invoiced = true),
+            claimable("b", 4_000.0, S.APPROVED, invoiced = false),
+            claimable("c", 9_000.0, S.SUBMITTED, invoiced = false),
+        )
+        // Both applications from earlier and the one being added, because the
+        // figure beside the breakdown is cumulative. Leaving "a" out would
+        // print 11,000 above a list adding to 4,000.
+        assertEquals(listOf("a", "b"), Assignment.claimedBy(packages).map { it.id })
+        assertEquals(
+            "the breakdown must add up to the claim",
+            Assignment.claimToDate(packages),
+            Assignment.claimedBy(packages).sumOf { it.amount },
+            0.005,
+        )
+    }
+
+    @Test
+    fun `the breakdown adds up to the claim whatever the packages are`() {
+        val states = listOf(
+            S.DRAFT, S.OFFERED, S.ACCEPTED, S.DECLINED, S.IN_PROGRESS,
+            S.SUBMITTED, S.REJECTED, S.APPROVED, S.CANCELLED,
+        )
+        // Every state, both invoiced flags, a spread of awkward amounts. The
+        // property is the one that matters: a total and a breakdown that came
+        // from two different filters would agree on the easy cases and part
+        // company on exactly the job somebody disputes.
+        val packages = states.flatMapIndexed { index, status ->
+            listOf(true, false).map { invoiced ->
+                claimable("$status-$invoiced", 1_000.0 + index * 333.33, status, invoiced)
+            }
+        }
+        assertEquals(
+            Assignment.claimToDate(packages),
+            Assignment.claimedBy(packages).sumOf { it.amount },
+            0.005,
+        )
+        assertTrue(
+            "everything in the breakdown is approved",
+            Assignment.claimedBy(packages).all { it.status == S.APPROVED },
+        )
+    }
+
+    @Test
     fun `every state is reachable from draft`() {
         val seen = mutableSetOf(S.DRAFT)
         val queue = ArrayDeque(listOf(S.DRAFT))

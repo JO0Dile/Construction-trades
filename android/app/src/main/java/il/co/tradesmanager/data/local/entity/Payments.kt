@@ -69,3 +69,39 @@ data class PaymentApplicationEntity(
     val createdAt: Long,
     val updatedAt: Long,
 )
+
+/**
+ * One work package on one payment application.
+ *
+ * An application says a job is worth 11,000 to date. Without these rows,
+ * nobody — not the surveyor certifying it, not an auditor two years later,
+ * not the crew leader who raised it — can say what the 11,000 is made of.
+ * The packages are in the database and the figure is in the database and
+ * nothing joins them, which is the shape of every dispute that ends in a
+ * spreadsheet built from memory.
+ *
+ * [title] and [amount] are copied rather than read back from the package.
+ * A package can be amended after it has been claimed, and a line that
+ * recomputed itself would restate an application somebody already certified
+ * — the same reason the retention terms are copied onto the application
+ * rather than read from the job.
+ *
+ * There is no foreign key to the assignment on purpose. Nothing in this app
+ * deletes a work package, but a line that vanished with its package would
+ * take the explanation of a certified figure with it, which is precisely
+ * what these rows exist to prevent.
+ */
+@Entity(
+    tableName = "payment_application_lines",
+    indices = [Index("applicationId"), Index("assignmentId")],
+)
+data class PaymentApplicationLineEntity(
+    @PrimaryKey val id: String,
+    val applicationId: String,
+    val assignmentId: String,
+    /** What the package was called when it was claimed. */
+    val title: String,
+    /** What it was worth when it was claimed. */
+    val amount: Double,
+    val createdAt: Long,
+)

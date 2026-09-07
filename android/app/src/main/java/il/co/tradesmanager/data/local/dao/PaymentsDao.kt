@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
+import il.co.tradesmanager.data.local.entity.PaymentApplicationLineEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -12,6 +13,35 @@ interface PaymentsDao {
 
     @Upsert
     suspend fun upsert(application: PaymentApplicationEntity)
+
+    @Upsert
+    suspend fun upsertLines(lines: List<PaymentApplicationLineEntity>)
+
+    /**
+     * What one application is made of, in the order it was assembled.
+     *
+     * Ordered by when the line was written rather than by amount or title:
+     * a breakdown that reorders itself between two readings of the same
+     * certified application is a breakdown somebody stops trusting.
+     */
+    @Query(
+        """
+        SELECT * FROM payment_application_lines
+        WHERE applicationId = :applicationId
+        ORDER BY createdAt, id
+        """,
+    )
+    fun observeLines(applicationId: String): Flow<List<PaymentApplicationLineEntity>>
+
+    /**
+     * Whether a package has already been claimed, and on which application.
+     *
+     * The work packages table carries an invoiced flag, but the flag cannot
+     * say where the money went. When a crew leader asks why a package they
+     * finished is not on this month's claim, this is the answer.
+     */
+    @Query("SELECT * FROM payment_application_lines WHERE assignmentId = :assignmentId")
+    suspend fun linesForAssignment(assignmentId: String): List<PaymentApplicationLineEntity>
 
     @Delete
     suspend fun delete(application: PaymentApplicationEntity)
