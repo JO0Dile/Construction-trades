@@ -149,6 +149,22 @@ class PhotoRepository(
     }
 
     /** Copies a gallery pick into app storage and records it. */
+    /** What a stored file is. Kept beside the row; see PhotoEntity.mediaType. */
+    object MediaType {
+        const val IMAGE = "image"
+        const val VIDEO = "video"
+    }
+
+    /**
+     * Copies something the user picked into the app's own storage.
+     *
+     * Whether it is a still or a video is asked of the content resolver rather
+     * than taken as a parameter. A caller that says "this is a photograph"
+     * about an mp4 would have it written to a .jpg and put through the
+     * watermarker, and the evidence a violation rests on would arrive
+     * corrupted — the caller being wrong is not a hypothetical in this
+     * codebase.
+     */
     suspend fun importPhoto(
         source: Uri,
         ownerType: String,
@@ -156,8 +172,16 @@ class PhotoRepository(
         actorName: String,
         note: String? = null,
     ): PhotoEntity? = withContext(Dispatchers.IO) {
+        val mime = context.contentResolver.getType(source).orEmpty()
+        val isVideo = mime.startsWith("video/")
+        val extension = when {
+            isVideo -> mime.substringAfter('/')
+                .takeIf { it.isNotBlank() && it.all(Char::isLetterOrDigit) }
+                ?: "mp4"
+            else -> "jpg"
+        }
         val id = UUID.randomUUID().toString()
-        val file = File(photoDir, "$id.jpg")
+        val file = File(photoDir, "$id.$extension")
         val copied = runCatching {
             context.contentResolver.openInputStream(source)?.use { input ->
                 file.outputStream().use { output -> input.copyTo(output) }
@@ -169,7 +193,17 @@ class PhotoRepository(
             file.delete()
             return@withContext null
         }
-        store(id, file, ownerType, ownerId, actorName, note, null, null)
+        store(
+            id = id,
+            file = file,
+            ownerType = ownerType,
+            ownerId = ownerId,
+            actorName = actorName,
+            note = note,
+            latitude = null,
+            longitude = null,
+            mediaType = if (isVideo) MediaType.VIDEO else MediaType.IMAGE,
+        )
     }
 
     private suspend fun store(
@@ -181,6 +215,7 @@ class PhotoRepository(
         note: String?,
         latitude: Double?,
         longitude: Double?,
+        mediaType: String = MediaType.IMAGE,
     ): PhotoEntity {
         val capturedAt = System.currentTimeMillis()
 
@@ -189,7 +224,12 @@ class PhotoRepository(
         // emailed to a loss adjuster arrives as a picture of a wall unless the
         // date and place came with it. Identity photographs are left alone;
         // see PhotoStamp.appliesTo.
-        if (PhotoStamp.appliesTo(ownerType)) {
+        // Video is never watermarked. Watermark.burn decodes a bitmap and
+        // writes it back; handed an mp4 it would destroy the file, which for a
+        // violation is the evidence itself. A video therefore carries no
+        // burnt-in stamp and its provenance rests on the row beside it —
+        // worth knowing before anybody relies on one in an argument.
+        if (mediaType != MediaType.VIDEO && PhotoStamp.appliesTo(ownerType)) {
             Watermark.burn(
                 file = file,
                 lines = PhotoStamp.lines(
@@ -212,6 +252,7 @@ class PhotoRepository(
             latitude = latitude,
             longitude = longitude,
             note = note,
+            mediaType = mediaType,
         )
         dao.upsert(photo)
         audit.record("photo", id, AuditTrail.Action.CREATE, actorName, "$ownerType $ownerId")

@@ -4830,6 +4830,96 @@
       "en": "Records violations and incidents against named people. Sees who somebody is, never what they are paid.",
       "he": "רושם הפרות ואירועים על שם אנשים מזוהים. רואה מי האדם, לעולם לא כמה הוא מקבל.",
       "ar": "يسجّل المخالفات والحوادث بأسماء أشخاص محددين. يرى هوية الشخص، ولا يرى أجره أبدًا."
+    },
+    "find_by_id": {
+      "en": "ID number",
+      "he": "מספר זהות",
+      "ar": "رقم الهوية"
+    },
+    "find_by_id_hint": {
+      "en": "Type the number from their card. Names on a site repeat; this does not.",
+      "he": "הקלידו את המספר מהתעודה. שמות באתר חוזרים על עצמם, המספר לא.",
+      "ar": "اكتب الرقم من بطاقته. الأسماء في الموقع تتكرر، وهذا الرقم لا يتكرر."
+    },
+    "find_nobody": {
+      "en": "No one has that ID number. They have to create an account before they can be added.",
+      "he": "אין אף אחד עם מספר הזהות הזה. עליו ליצור חשבון לפני שניתן להוסיף אותו.",
+      "ar": "لا يوجد أحد بهذا الرقم. عليه إنشاء حساب قبل أن يمكن إضافته."
+    },
+    "vio_title": {
+      "en": "Violations",
+      "he": "הפרות",
+      "ar": "المخالفات"
+    },
+    "vio_new": {
+      "en": "Record a violation",
+      "he": "רישום הפרה",
+      "ar": "تسجيل مخالفة"
+    },
+    "vio_none": {
+      "en": "Nothing recorded.",
+      "he": "לא נרשם דבר.",
+      "ar": "لم يُسجَّل شيء."
+    },
+    "vio_what": {
+      "en": "What was wrong",
+      "he": "מה הייתה ההפרה",
+      "ar": "ما هي المخالفة"
+    },
+    "vio_cost": {
+      "en": "Cost, if any",
+      "he": "עלות, אם יש",
+      "ar": "التكلفة، إن وُجدت"
+    },
+    "vio_cost_hint": {
+      "en": "Leave empty for no charge. Empty and zero are not the same.",
+      "he": "השאירו ריק אם אין חיוב. ריק ואפס אינם אותו דבר.",
+      "ar": "اتركه فارغًا إذا لا توجد تكلفة. الفارغ والصفر ليسا سواء."
+    },
+    "vio_evidence": {
+      "en": "Photograph or video",
+      "he": "תמונה או סרטון",
+      "ar": "صورة أو فيديو"
+    },
+    "vio_confirm": {
+      "en": "Confirm",
+      "he": "אישור",
+      "ar": "تأكيد"
+    },
+    "vio_confirm_warning": {
+      "en": "Once confirmed this cannot be changed or withdrawn, and the person it names will see it.",
+      "he": "לאחר אישור לא ניתן לשנות או לבטל, והאדם ששמו רשום יראה זאת.",
+      "ar": "بعد التأكيد لا يمكن التغيير أو السحب، والشخص المذكور سيراها."
+    },
+    "vio_draft": {
+      "en": "Draft — only you can see this",
+      "he": "טיוטה — רק אתם רואים זאת",
+      "ar": "مسودة — أنت وحدك تراها"
+    },
+    "vio_confirmed": {
+      "en": "Confirmed",
+      "he": "אושר",
+      "ar": "مؤكَّدة"
+    },
+    "vio_cancelled": {
+      "en": "Cancelled",
+      "he": "בוטל",
+      "ar": "مُلغاة"
+    },
+    "vio_need_person": {
+      "en": "Choose who this is against.",
+      "he": "בחרו נגד מי ההפרה.",
+      "ar": "اختر ضد من هذه المخالفة."
+    },
+    "vio_need_evidence": {
+      "en": "Attach a photograph or a video. A violation with a cost and nothing to show is one person's word.",
+      "he": "צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.",
+      "ar": "أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد."
+    },
+    "vio_need_description": {
+      "en": "Write what was wrong.",
+      "he": "כתבו מה הייתה ההפרה.",
+      "ar": "اكتب ما هي المخالفة."
     }
   },
   "plurals": {
