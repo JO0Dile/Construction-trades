@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.7.0 — and what to try first
+## What is new in 0.8.0 — and what to try first
 
 The whole point of this release is that it can be installed and prodded. Tap
 **Check for updates** in Settings and it will offer itself.
@@ -95,6 +95,26 @@ packages, approve some work, raise a claim, then open it in Money → Payments.
 - [ ] Raise an application by hand instead (Money → Payments → new). It says
       "Raised by hand — no work packages attached" rather than showing an
       empty list.
+
+### Added in 0.8.0
+
+**The audit trail, which you can now read — and check.** Settings → *Audit
+trail*.
+
+- [ ] Do a few things first: create a job, add a task, approve some work. Then
+      open the trail. Every one of them is there, numbered, with who and when.
+- [ ] Press **Check the trail**. It says how many entries it verified.
+- [ ] It says *not checked* until you press it. A tick it had not earned would
+      be worse than nothing.
+- [ ] If you upgraded from 0.7.0, it will also say how many older entries
+      carry no signature. That is honest: they were written before this
+      version and nothing can now vouch for them.
+
+Each entry is signed against the one before it, so altering a row, deleting
+one, or slipping one in all show up as a break. What it cannot see is the
+newest entries being deleted — nothing has committed to them yet. That needs
+a server holding the end of the chain, and `docs/SERVER.md` says so rather
+than pretending otherwise.
 
 ### What is not in it
 
