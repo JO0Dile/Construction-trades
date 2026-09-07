@@ -228,6 +228,21 @@ object Migrations {
         }
     }
 
+    /**
+     * What the gate records: who admitted somebody, and their signature.
+     *
+     * All three columns are nullable and none of them carries a default,
+     * because null is the true answer for every membership that already
+     * exists — nobody stood on a gate for the firm's first owner. Giving them
+     * a default would be inventing an induction that never happened, on rows
+     * that may one day be read out in an argument about whether it did.
+     */
+    val MIGRATION_23_24 = object : Migration(23, 24) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_23_24.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -251,6 +266,7 @@ object Migrations {
         MIGRATION_20_21,
         MIGRATION_21_22,
         MIGRATION_22_23,
+        MIGRATION_23_24,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -699,5 +715,11 @@ object Migrations {
         "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
             "ON `violations` (`againstAccountId`)",
         "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
+    )
+
+    val SQL_23_24: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `admittedByAccountId` TEXT",
+        "ALTER TABLE `memberships` ADD COLUMN `admittedByName` TEXT",
+        "ALTER TABLE `memberships` ADD COLUMN `admissionSignature` TEXT",
     )
 }

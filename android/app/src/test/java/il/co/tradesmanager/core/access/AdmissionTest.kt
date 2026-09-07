@@ -11,10 +11,16 @@ import org.junit.Test
 class AdmissionTest {
 
     private fun gate(
+        keeper: Role = Role.SAFETY_OFFICER,
         found: String = "acc-1",
         signed: Boolean = true,
         alreadyIn: Boolean = false,
-    ) = AtTheGate(found, signed, alreadyIn)
+    ) = AtTheGate(
+        gateKeeperRole = keeper,
+        foundAccountId = found,
+        signed = signed,
+        alreadyIn = alreadyIn,
+    )
 
     @Test
     fun `somebody found, not yet in, who has signed, gets in`() {
@@ -47,6 +53,58 @@ class AdmissionTest {
             Blocker.NOT_FOUND,
             Admission.blocksAdmission(gate(found = "", signed = false)),
         )
+    }
+
+    @Test
+    fun `standing is reported before anything the gate keeper could fix`() {
+        // Telling somebody with no business on the gate which field they left
+        // empty invites them to fill it in.
+        assertEquals(
+            Blocker.NOT_ON_THE_GATE,
+            Admission.blocksAdmission(gate(keeper = Role.WORKER, found = "", signed = false)),
+        )
+    }
+
+    @Test
+    fun `the gate is worked by whoever can see a face and record a signature`() {
+        // Read off the lens grid rather than kept as a second list of roles.
+        // Reading People is how an ID number comes back as a face; writing
+        // Evidence is where the signature goes.
+        Role.entries.forEach { role ->
+            val expected = role.canRead(Lens.PEOPLE) && role.canWrite(Lens.EVIDENCE)
+            assertEquals(
+                "mayWorkTheGate disagrees with the lens grid for $role",
+                expected,
+                Admission.mayWorkTheGate(role),
+            )
+        }
+    }
+
+    @Test
+    fun `the owner, the manager and the safety officer work the gate`() {
+        assertTrue(Admission.mayWorkTheGate(Role.OWNER))
+        assertTrue(Admission.mayWorkTheGate(Role.MANAGER))
+        assertTrue(Admission.mayWorkTheGate(Role.SAFETY_OFFICER))
+    }
+
+    @Test
+    fun `a worker cannot sign people onto the site`() {
+        // Otherwise anybody already through the gate could bring anybody else
+        // through it, which is the one thing a gate is for.
+        assertFalse(Admission.mayWorkTheGate(Role.WORKER))
+    }
+
+    @Test
+    fun `HR is not on the gate`() {
+        // Not an omission. HR moves people between roles from an office; the
+        // point of the gate is that the person is standing there signing, and
+        // HR cannot record that signature.
+        assertFalse(Admission.mayWorkTheGate(Role.HR))
+    }
+
+    @Test
+    fun `finance is not on the gate`() {
+        assertFalse(Admission.mayWorkTheGate(Role.FINANCE))
     }
 
     // The part that matters most.

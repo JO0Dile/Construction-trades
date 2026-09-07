@@ -32,6 +32,7 @@ import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.concrete.ConcreteScreen
 import il.co.tradesmanager.ui.excavation.ExcavationScreen
+import il.co.tradesmanager.ui.gate.GateScreen
 import il.co.tradesmanager.ui.handover.HandoverScreen
 import il.co.tradesmanager.ui.home.HomeScreen
 import il.co.tradesmanager.ui.inventory.InventoryEditScreen
@@ -94,6 +95,7 @@ object Routes {
     const val EXCAVATIONS = "projects/excavations"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
+    const val GATE = "people/gate"
     const val MONEY = "money"
     const val PAYMENTS = "money/applications"
     const val TIMESHEET = "money/timesheet"
@@ -344,7 +346,18 @@ fun AppNavHost(
                 )
             }
             composable(Routes.SCHEDULE) { ScheduleScreen(container = container) }
-            composable(Routes.PEOPLE) { PeopleScreen(container = container) }
+            composable(Routes.PEOPLE) {
+                PeopleScreen(
+                    container = container,
+                    onOpenGate = { navController.navigate(Routes.GATE) },
+                )
+            }
+            composable(Routes.GATE) {
+                GateScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
             composable(Routes.PLANT) {
                 PlantScreen(container = container, onBack = { navController.popBackStack() })
             }

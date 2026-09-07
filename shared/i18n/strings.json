@@ -4920,6 +4920,84 @@
       "en": "Write what was wrong.",
       "he": "כתבו מה הייתה ההפרה.",
       "ar": "اكتب ما هي المخالفة."
+    },
+    "gate_title": {
+      "c": "Screen title: signing people onto the site at the gate",
+      "en": "Site entry",
+      "he": "כניסה לאתר",
+      "ar": "الدخول إلى الموقع"
+    },
+    "gate_find": {
+      "c": "Section header above the ID number field",
+      "en": "Who is at the gate",
+      "he": "מי בשער",
+      "ar": "من على البوابة"
+    },
+    "gate_find_hint": {
+      "c": "Under the ID field. Says the number is checked against a face.",
+      "en": "The number on their card. Their photograph comes back with it.",
+      "he": "המספר שעל התעודה. התמונה שלהם מוצגת יחד איתו.",
+      "ar": "الرقم المدوّن على بطاقتهم. صورتهم تظهر معه."
+    },
+    "gate_not_found": {
+      "c": "No account has that ID number.",
+      "en": "Nobody has that ID number. They sign up on their own phone first, then come back.",
+      "he": "אין אף אחד עם מספר זהות זה. שיירשמו קודם בטלפון שלהם ויחזרו.",
+      "ar": "لا يوجد أحد بهذا رقم الهوية. عليهم التسجيل أولاً من هاتفهم ثم العودة."
+    },
+    "gate_grants": {
+      "c": "Under the found person's card. %1$s is a role name, e.g. Worker.",
+      "en": "Will be signed onto the site as: %1$s. Their rank is set afterwards by whoever engaged them.",
+      "he": "ייכנס לאתר בתור: %1$s. הדרגה נקבעת לאחר מכן על ידי מי שהעסיק אותו.",
+      "ar": "سيُسجَّل في الموقع بصفة: %1$s. أما رتبته فيحددها لاحقاً من كلّفه بالعمل."
+    },
+    "gate_already_in": {
+      "c": "The person found is already on this company's books.",
+      "en": "Already signed onto this site. Nothing to do.",
+      "he": "כבר רשום באתר הזה. אין מה לעשות.",
+      "ar": "مسجَّل في هذا الموقع مسبقاً. لا حاجة لأي إجراء."
+    },
+    "gate_sign": {
+      "c": "Section header above the signature pad",
+      "en": "Their signature",
+      "he": "החתימה שלהם",
+      "ar": "توقيعهم"
+    },
+    "gate_sign_body": {
+      "c": "Explains what the person at the gate is signing for.",
+      "en": "Hand them the phone. They sign to say they have been briefed on this site's safety rules.",
+      "he": "מסרו להם את הטלפון. הם חותמים על כך שקיבלו תדריך בטיחות לאתר הזה.",
+      "ar": "أعطهم الهاتف. يوقّعون إقراراً بأنهم تلقّوا تعليمات السلامة الخاصة بهذا الموقع."
+    },
+    "gate_need_signature": {
+      "c": "Why the admit button is disabled.",
+      "en": "Not signed yet.",
+      "he": "עדיין לא חתמו.",
+      "ar": "لم يوقّعوا بعد."
+    },
+    "gate_admit": {
+      "c": "The button that puts the person onto the site.",
+      "en": "Sign them onto the site",
+      "he": "הכניסו לאתר",
+      "ar": "سجّلهم في الموقع"
+    },
+    "gate_admitted": {
+      "c": "Confirmation after an admission. %1$s is the person's name.",
+      "en": "%1$s is on the site.",
+      "he": "%1$s נמצא באתר.",
+      "ar": "%1$s أصبح في الموقع."
+    },
+    "gate_not_yours": {
+      "c": "Shown to a role that may not admit people.",
+      "en": "Signing people onto the site is not one of yours. The site manager or the safety officer does it.",
+      "he": "הכנסת אנשים לאתר אינה בסמכותכם. מנהל העבודה או ממונה הבטיחות עושה זאת.",
+      "ar": "تسجيل الأشخاص في الموقع ليس من صلاحياتك. يقوم بذلك مدير الموقع أو مسؤول السلامة."
+    },
+    "people_gate": {
+      "c": "Entry point on the People screen that opens the gate.",
+      "en": "Sign someone onto the site",
+      "he": "הכניסו מישהו לאתר",
+      "ar": "سجّل شخصاً في الموقع"
     }
   },
   "plurals": {

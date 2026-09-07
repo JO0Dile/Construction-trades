@@ -992,6 +992,32 @@
     <string name="vio_need_person">Choose who this is against.</string>
     <string name="vio_need_evidence">Attach a photograph or a video. A violation with a cost and nothing to show is one person\'s word.</string>
     <string name="vio_need_description">Write what was wrong.</string>
+    <!-- Screen title: signing people onto the site at the gate -->
+    <string name="gate_title">Site entry</string>
+    <!-- Section header above the ID number field -->
+    <string name="gate_find">Who is at the gate</string>
+    <!-- Under the ID field. Says the number is checked against a face. -->
+    <string name="gate_find_hint">The number on their card. Their photograph comes back with it.</string>
+    <!-- No account has that ID number. -->
+    <string name="gate_not_found">Nobody has that ID number. They sign up on their own phone first, then come back.</string>
+    <!-- Under the found person's card. %1$s is a role name, e.g. Worker. -->
+    <string name="gate_grants">Will be signed onto the site as: %1$s. Their rank is set afterwards by whoever engaged them.</string>
+    <!-- The person found is already on this company's books. -->
+    <string name="gate_already_in">Already signed onto this site. Nothing to do.</string>
+    <!-- Section header above the signature pad -->
+    <string name="gate_sign">Their signature</string>
+    <!-- Explains what the person at the gate is signing for. -->
+    <string name="gate_sign_body">Hand them the phone. They sign to say they have been briefed on this site\'s safety rules.</string>
+    <!-- Why the admit button is disabled. -->
+    <string name="gate_need_signature">Not signed yet.</string>
+    <!-- The button that puts the person onto the site. -->
+    <string name="gate_admit">Sign them onto the site</string>
+    <!-- Confirmation after an admission. %1$s is the person's name. -->
+    <string name="gate_admitted">%1$s is on the site.</string>
+    <!-- Shown to a role that may not admit people. -->
+    <string name="gate_not_yours">Signing people onto the site is not one of yours. The site manager or the safety officer does it.</string>
+    <!-- Entry point on the People screen that opens the gate. -->
+    <string name="people_gate">Sign someone onto the site</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

@@ -20,8 +20,10 @@ package il.co.tradesmanager.core.access
  */
 object Admission {
 
-    /** What a person must have produced before the gate can admit them. */
+    /** One admission: who is doing it, to whom, and what has been produced. */
     data class AtTheGate(
+        /** What the person doing the admitting is in this company. */
+        val gateKeeperRole: Role,
         /** The account found by ID number. Blank means nobody was found. */
         val foundAccountId: String,
         /** They have signed, on this device, now. */
@@ -30,8 +32,19 @@ object Admission {
         val alreadyIn: Boolean,
     )
 
-    /** Null when they may be admitted; otherwise why not. */
+    /**
+     * Null when they may be admitted; otherwise why not.
+     *
+     * Ordered so the message is the useful one. Standing comes first, because
+     * telling somebody with no business on the gate which field they left
+     * empty invites them to fill it in. Then whether there is anybody to
+     * admit, then whether they are already in, then the signature — which is
+     * last because it is the only one the person at the gate can fix by doing
+     * something, and it should be what the screen is still asking for once
+     * everything else is settled.
+     */
     fun blocksAdmission(gate: AtTheGate): Blocker? = when {
+        !mayWorkTheGate(gate.gateKeeperRole) -> Blocker.NOT_ON_THE_GATE
         gate.foundAccountId.isBlank() -> Blocker.NOT_FOUND
         gate.alreadyIn -> Blocker.ALREADY_IN
         !gate.signed -> Blocker.NOT_SIGNED
@@ -39,6 +52,14 @@ object Admission {
     }
 
     enum class Blocker {
+        /**
+         * The person doing the admitting is not one of the people who may.
+         *
+         * See [mayWorkTheGate]. This is checked in the repository as well as
+         * the screen, because a screen that is never shown is not a rule.
+         */
+        NOT_ON_THE_GATE,
+
         /**
          * No account for that ID number.
          *
@@ -78,4 +99,24 @@ object Admission {
      * rule fails a test rather than a review if anybody widens it.
      */
     fun gateMayGrant(role: Role): Boolean = role == Role.onAdmission
+
+    /**
+     * Whether somebody may stand on the gate, read out of the lens grid
+     * rather than kept as a second list of roles that would drift from it.
+     *
+     * Two things are needed and both are needed. Reading People is how the ID
+     * number comes back as a face, without which the gate is a text field that
+     * admits whoever was typed. Writing Evidence is where the signature goes:
+     * an induction nobody recorded is one nobody can produce afterwards, which
+     * is the only time anybody asks for it.
+     *
+     * That is the owner, the manager and the safety officer. HR is not on the
+     * list, and that is the rule working rather than an omission — HR moves
+     * people between roles from an office, and the point of the gate is that
+     * the person is standing in front of you signing. HR can still put
+     * somebody on the books the ordinary way; what they cannot do is produce a
+     * signature on that person's behalf.
+     */
+    fun mayWorkTheGate(role: Role): Boolean =
+        role.canRead(Lens.PEOPLE) && role.canWrite(Lens.EVIDENCE)
 }

@@ -43,11 +43,6 @@ class PhotoRepository(
         const val INCIDENT = "incident"
 
         /**
-         * The two identity pictures: a face for the gate, and the ID document
-         * itself. Both stay on the device — the app has no server to send them
-         * to, and an ID document is not something to be casual about.
-         */
-        /**
          * A snag's two pictures: the one that raised it, and the one that says
          * it was put right. Two owner types on the same table rather than two
          * columns on the snag, so a defect can carry three photos of an awkward
@@ -56,7 +51,13 @@ class PhotoRepository(
         const val SNAG_RAISED = "snag.raised"
         const val SNAG_FIXED = "snag.fixed"
 
+        /**
+         * The two identity pictures: a face for the gate, and the ID document
+         * itself. Both stay on the device — the app has no server to send them
+         * to, and an ID document is not something to be casual about.
+         */
         const val ACCOUNT_PHOTO = "account.photo"
+        const val ACCOUNT_ID_DOCUMENT = "account.id_document"
 
         /**
          * What a violation rests on. A still or a video; see
@@ -72,7 +73,6 @@ class PhotoRepository(
          * and there is nothing left to photograph.
          */
         const val WORK_PACKAGE = "assignment.proof"
-        const val ACCOUNT_ID_DOCUMENT = "account.id_document"
 
         val projectAny = listOf(PROJECT_PLAN, PROJECT_PHOTO)
     }
@@ -89,6 +89,18 @@ class PhotoRepository(
     /** How many pictures or videos one thing has, straight from the table. */
     suspend fun countFor(ownerType: String, ownerId: String): Int =
         dao.countFor(ownerType, ownerId)
+
+    /**
+     * Somebody's face, as a URI, or null if they never took one.
+     *
+     * Here rather than at each screen because three places ask the same
+     * question -- the gate, the violation register and the People list -- and
+     * a screen that answers it for itself is a screen that can answer it with
+     * null forever without anybody noticing, which is what both identity cards
+     * in this app did until this existed.
+     */
+    suspend fun faceOf(accountId: String): String? =
+        if (accountId.isBlank()) null else dao.newestFor(Owner.ACCOUNT_PHOTO, accountId)?.uri
 
     fun observeForOwners(ownerType: String, ownerIds: List<String>): Flow<List<PhotoEntity>> =
         dao.observeForOwners(ownerType, ownerIds)

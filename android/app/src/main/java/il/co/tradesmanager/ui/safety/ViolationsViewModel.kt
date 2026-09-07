@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -55,6 +56,17 @@ class ViolationsViewModel(
     private val _found = MutableStateFlow<AccountEntity?>(null)
     val found: StateFlow<AccountEntity?> = _found.asStateFlow()
 
+    /**
+     * The found person's photograph.
+     *
+     * The reason the officer types an ID at all. Five men on a site in the
+     * same hi-vis are not told apart by a name, and this card showed no face
+     * at all until it was wired to one — a person card that never loads a
+     * person is the failure this app keeps having.
+     */
+    private val _foundFace = MutableStateFlow<String?>(null)
+    val foundFace: StateFlow<String?> = _foundFace.asStateFlow()
+
     /** True once a search has run and come back with nobody. */
     private val _searchedInVain = MutableStateFlow(false)
     val searchedInVain: StateFlow<Boolean> = _searchedInVain.asStateFlow()
@@ -62,11 +74,13 @@ class ViolationsViewModel(
     fun search(idNumber: String) = viewModelScope.launch {
         val match = container.accounts.findByIdNumber(idNumber)
         _found.value = match
+        _foundFace.value = match?.let { container.photos.faceOf(it.id) }
         _searchedInVain.value = match == null && idNumber.isNotBlank()
     }
 
     fun clearSearch() {
         _found.value = null
+        _foundFace.value = null
         _searchedInVain.value = false
     }
 
@@ -89,6 +103,12 @@ class ViolationsViewModel(
             }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** The face of whoever the open draft is written against. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val openFace: StateFlow<String?> = open
+        .mapLatest { draft -> draft?.let { container.photos.faceOf(it.againstAccountId) } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
     private val _refusal = MutableStateFlow<ViolationRepository.Refusal?>(null)
     val refusal: StateFlow<ViolationRepository.Refusal?> = _refusal.asStateFlow()

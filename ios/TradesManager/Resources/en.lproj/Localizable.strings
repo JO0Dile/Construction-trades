@@ -991,3 +991,29 @@
 "vio_need_person" = "Choose who this is against.";
 "vio_need_evidence" = "Attach a photograph or a video. A violation with a cost and nothing to show is one person's word.";
 "vio_need_description" = "Write what was wrong.";
+/* Screen title: signing people onto the site at the gate */
+"gate_title" = "Site entry";
+/* Section header above the ID number field */
+"gate_find" = "Who is at the gate";
+/* Under the ID field. Says the number is checked against a face. */
+"gate_find_hint" = "The number on their card. Their photograph comes back with it.";
+/* No account has that ID number. */
+"gate_not_found" = "Nobody has that ID number. They sign up on their own phone first, then come back.";
+/* Under the found person's card. %1$s is a role name, e.g. Worker. */
+"gate_grants" = "Will be signed onto the site as: %1$s. Their rank is set afterwards by whoever engaged them.";
+/* The person found is already on this company's books. */
+"gate_already_in" = "Already signed onto this site. Nothing to do.";
+/* Section header above the signature pad */
+"gate_sign" = "Their signature";
+/* Explains what the person at the gate is signing for. */
+"gate_sign_body" = "Hand them the phone. They sign to say they have been briefed on this site's safety rules.";
+/* Why the admit button is disabled. */
+"gate_need_signature" = "Not signed yet.";
+/* The button that puts the person onto the site. */
+"gate_admit" = "Sign them onto the site";
+/* Confirmation after an admission. %1$s is the person's name. */
+"gate_admitted" = "%1$s is on the site.";
+/* Shown to a role that may not admit people. */
+"gate_not_yours" = "Signing people onto the site is not one of yours. The site manager or the safety officer does it.";
+/* Entry point on the People screen that opens the gate. */
+"people_gate" = "Sign someone onto the site";

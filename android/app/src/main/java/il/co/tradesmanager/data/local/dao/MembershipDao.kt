@@ -42,6 +42,28 @@ interface MembershipDao {
     @Query("SELECT * FROM memberships WHERE companyId = :companyId")
     suspend fun forCompany(companyId: String): List<MembershipEntity>
 
+    /**
+     * Somebody's current membership of one company, or null.
+     *
+     * What the gate asks before admitting anybody, so a second tap on the
+     * button does not produce a second membership. Current only: a spell that
+     * ended is history and must not stop them coming back.
+     *
+     * The null-safe companyId comparison is the same shape as
+     * [observeForCompany] and for the same reason -- `companyId = NULL` is
+     * never true in SQL, so a personal membership would never be found.
+     */
+    @Query(
+        """
+        SELECT * FROM memberships
+        WHERE accountId = :accountId
+          AND leftAt IS NULL
+          AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+        LIMIT 1
+        """,
+    )
+    suspend fun currentFor(accountId: String, companyId: String?): MembershipEntity?
+
     @Query("SELECT * FROM companies ORDER BY name")
     fun observeCompanies(): Flow<List<CompanyEntity>>
 

@@ -65,9 +65,11 @@ fun ViolationsScreen(
     )
     val violations by viewModel.violations.collectAsStateWithLifecycle()
     val found by viewModel.found.collectAsStateWithLifecycle()
+    val face by viewModel.foundFace.collectAsStateWithLifecycle()
     val inVain by viewModel.searchedInVain.collectAsStateWithLifecycle()
     val open by viewModel.open.collectAsStateWithLifecycle()
     val evidence by viewModel.evidence.collectAsStateWithLifecycle()
+    val openFace by viewModel.openFace.collectAsStateWithLifecycle()
     val locale = currentLocale()
     var idNumber by remember { mutableStateOf("") }
 
@@ -94,6 +96,7 @@ fun ViolationsScreen(
                 cost = draft.costAmount,
                 againstName = draft.againstName,
                 againstIdNumber = draft.againstIdNumber,
+                againstFace = openFace,
                 evidenceCount = evidence.size,
                 modifier = Modifier.padding(padding),
             )
@@ -142,7 +145,7 @@ fun ViolationsScreen(
                             PersonCard(
                                 name = person.displayName,
                                 idNumber = person.idNumber,
-                                photoUri = null,
+                                photoUri = face,
                             )
                             Button(
                                 onClick = {
@@ -196,6 +199,7 @@ private fun DraftForm(
     cost: Double?,
     againstName: String,
     againstIdNumber: String,
+    againstFace: String?,
     evidenceCount: Int,
     modifier: Modifier = Modifier,
 ) {
@@ -220,7 +224,7 @@ private fun DraftForm(
                     PersonCard(
                         name = againstName,
                         idNumber = againstIdNumber,
-                        photoUri = null,
+                        photoUri = againstFace,
                     )
                 }
             }

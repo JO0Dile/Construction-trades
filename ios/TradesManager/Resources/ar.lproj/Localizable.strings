@@ -991,3 +991,29 @@
 "vio_need_person" = "اختر ضد من هذه المخالفة.";
 "vio_need_evidence" = "أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد.";
 "vio_need_description" = "اكتب ما هي المخالفة.";
+/* Screen title: signing people onto the site at the gate */
+"gate_title" = "الدخول إلى الموقع";
+/* Section header above the ID number field */
+"gate_find" = "من على البوابة";
+/* Under the ID field. Says the number is checked against a face. */
+"gate_find_hint" = "الرقم المدوّن على بطاقتهم. صورتهم تظهر معه.";
+/* No account has that ID number. */
+"gate_not_found" = "لا يوجد أحد بهذا رقم الهوية. عليهم التسجيل أولاً من هاتفهم ثم العودة.";
+/* Under the found person's card. %1$s is a role name, e.g. Worker. */
+"gate_grants" = "سيُسجَّل في الموقع بصفة: %1$s. أما رتبته فيحددها لاحقاً من كلّفه بالعمل.";
+/* The person found is already on this company's books. */
+"gate_already_in" = "مسجَّل في هذا الموقع مسبقاً. لا حاجة لأي إجراء.";
+/* Section header above the signature pad */
+"gate_sign" = "توقيعهم";
+/* Explains what the person at the gate is signing for. */
+"gate_sign_body" = "أعطهم الهاتف. يوقّعون إقراراً بأنهم تلقّوا تعليمات السلامة الخاصة بهذا الموقع.";
+/* Why the admit button is disabled. */
+"gate_need_signature" = "لم يوقّعوا بعد.";
+/* The button that puts the person onto the site. */
+"gate_admit" = "سجّلهم في الموقع";
+/* Confirmation after an admission. %1$s is the person's name. */
+"gate_admitted" = "%1$s أصبح في الموقع.";
+/* Shown to a role that may not admit people. */
+"gate_not_yours" = "تسجيل الأشخاص في الموقع ليس من صلاحياتك. يقوم بذلك مدير الموقع أو مسؤول السلامة.";
+/* Entry point on the People screen that opens the gate. */
+"people_gate" = "سجّل شخصاً في الموقع";

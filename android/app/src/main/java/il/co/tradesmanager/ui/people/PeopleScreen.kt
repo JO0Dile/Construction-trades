@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.HowToReg
 import androidx.compose.material.icons.filled.PersonRemove
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.access.Admission
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.security.Passcode
@@ -61,7 +63,10 @@ import il.co.tradesmanager.ui.components.EmptyState
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PeopleScreen(container: AppContainer) {
+fun PeopleScreen(
+    container: AppContainer,
+    onOpenGate: () -> Unit,
+) {
     val viewModel: PeopleViewModel = viewModel(
         factory = ViewModelFactory(container) { PeopleViewModel(it) },
     )
@@ -75,9 +80,28 @@ fun PeopleScreen(container: AppContainer) {
 
     val signedIn = session as? SessionRepository.State.SignedIn
     val canManage = signedIn?.canManageMembers == true
+    val myRole = signedIn?.role ?: Role.WORKER
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text(stringResource(R.string.people_title)) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.people_title)) },
+                actions = {
+                    // The gate, not the member list. Adding somebody here is
+                    // an office act; the gate is a person standing in front of
+                    // you signing, and the two are different enough that
+                    // sharing one button would make one of them wrong.
+                    if (Admission.mayWorkTheGate(myRole)) {
+                        IconButton(onClick = onOpenGate) {
+                            Icon(
+                                Icons.Filled.HowToReg,
+                                contentDescription = stringResource(R.string.people_gate),
+                            )
+                        }
+                    }
+                },
+            )
+        },
         floatingActionButton = {
             if (canManage) {
                 FloatingActionButton(onClick = { adding = true }) {

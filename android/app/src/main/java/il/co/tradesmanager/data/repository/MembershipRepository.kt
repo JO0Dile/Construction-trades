@@ -1,9 +1,11 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.access.Admission
 import il.co.tradesmanager.core.access.Membership
 import il.co.tradesmanager.core.access.Memberships
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.data.local.dao.MembershipDao
+import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.CompanyEntity
 import il.co.tradesmanager.data.local.entity.MembershipEntity
 import java.util.UUID
@@ -37,6 +39,17 @@ class MembershipRepository(
         dao.forAccount(accountId).map(::toDomain)
 
     /**
+     * Whether somebody is currently on one company's books.
+     *
+     * Asked by the gate before anybody is put through the trouble of signing.
+     * [admit] asks the database again for itself rather than being told the
+     * answer, so this being stale is a worse message and never a second
+     * membership.
+     */
+    suspend fun isCurrentMember(accountId: String, companyId: String?): Boolean =
+        dao.currentFor(accountId, companyId) != null
+
+    /**
      * Puts somebody on a company's books.
      *
      * Rejoining a firm somebody has left creates a second row rather than
@@ -64,6 +77,67 @@ class MembershipRepository(
         )
         return toDomain(membership)
     }
+
+    /**
+     * Admits somebody at the gate: on the books, as a worker, having signed.
+     *
+     * Separate from [join] rather than a flag on it, because the two are
+     * different acts by different people. [join] is an office putting somebody
+     * on the books in whatever role was agreed. This is the person on the gate
+     * establishing that the man in front of them is who he says he is and has
+     * accepted the site's rules, and it grants exactly one role no matter who
+     * calls it: see [Admission.grantedRole].
+     *
+     * [account] is a row already read out of the database, not an id somebody
+     * typed. Whether they are already in is worked out here rather than passed
+     * in, because a caller that has to be trusted about it is a caller that can
+     * be wrong about it, and the cost of being wrong is two memberships and a
+     * People list with the same man on it twice.
+     */
+    suspend fun admit(
+        gateKeeperRole: Role,
+        gateKeeperName: String,
+        gateKeeperAccountId: String,
+        companyId: String?,
+        account: AccountEntity,
+        signature: String,
+    ): Result<Membership> {
+        val gate = Admission.AtTheGate(
+            gateKeeperRole = gateKeeperRole,
+            foundAccountId = account.id,
+            signed = signature.isNotBlank(),
+            alreadyIn = dao.currentFor(account.id, companyId) != null,
+        )
+        Admission.blocksAdmission(gate)?.let { return Result.failure(NotAdmitted(it)) }
+
+        val role = Admission.grantedRole()
+        // Asserted rather than assumed. If a later edit ever makes
+        // grantedRole() return something else, this fails here, in the one
+        // place that writes the row, instead of quietly promoting people.
+        check(Admission.gateMayGrant(role)) { "the gate may not grant $role" }
+
+        val membership = MembershipEntity(
+            id = UUID.randomUUID().toString(),
+            accountId = account.id,
+            companyId = companyId,
+            role = role.name,
+            joinedAt = System.currentTimeMillis(),
+            leftAt = null,
+            admittedByAccountId = gateKeeperAccountId,
+            admittedByName = gateKeeperName,
+            admissionSignature = signature,
+        )
+        dao.upsert(membership)
+        audit.record(
+            ENTITY, membership.id, AuditTrail.Action.CREATE, gateKeeperName,
+            "Admitted ${account.displayName} at the gate as ${role.name.lowercase()}",
+        )
+        return Result.success(toDomain(membership))
+    }
+
+    /** Why an admission was refused, carrying the rule that refused it. */
+    class NotAdmitted(val blocker: Admission.Blocker) :
+        IllegalStateException("admission refused: $blocker")
 
     /**
      * Changes what somebody may do in one company.
