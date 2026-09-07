@@ -239,6 +239,11 @@ object BackupArchive {
      * keeps only the last segment cannot be wrong about any of them.
      */
     internal fun mediaLeaf(name: String): String? {
+        // A directory entry names no file. Left in, `media/` would be written
+        // as an empty file called "media" -- harmless in itself, but it would
+        // be counted and shown to somebody as one of their photographs, and a
+        // count that is wrong is the one thing a check of a backup must not be.
+        if (name.endsWith("/")) return null
         val leaf = File(name).name
         return if (leaf.isBlank() || leaf == "." || leaf == "..") null else leaf
     }
