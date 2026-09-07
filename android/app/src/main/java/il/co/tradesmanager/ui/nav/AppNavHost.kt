@@ -43,6 +43,7 @@ import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.audit.AuditScreen
 import il.co.tradesmanager.ui.safety.IncidentsScreen
+import il.co.tradesmanager.ui.safety.ViolationsScreen
 import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
 import il.co.tradesmanager.ui.work.ContractsScreen
@@ -83,6 +84,7 @@ object Routes {
     const val PERMIT_DETAIL = "safety/permits/detail"
     const val SNAGS = "safety/snags"
     const val INCIDENTS = "safety/incidents"
+    const val VIOLATIONS = "safety/violations"
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
@@ -368,6 +370,7 @@ fun AppNavHost(
                     onOpenPermits = { navController.navigate(Routes.PERMITS) },
                     onOpenSnags = { navController.navigate(Routes.SNAGS) },
                     onOpenIncidents = { navController.navigate(Routes.INCIDENTS) },
+                    onOpenViolations = { navController.navigate(Routes.VIOLATIONS) },
                 )
             }
             composable(Routes.TALKS) {
@@ -444,6 +447,12 @@ fun AppNavHost(
                 HandoverScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.VIOLATIONS) {
+                ViolationsScreen(
+                    container = container,
                     onBack = { navController.popBackStack() },
                 )
             }

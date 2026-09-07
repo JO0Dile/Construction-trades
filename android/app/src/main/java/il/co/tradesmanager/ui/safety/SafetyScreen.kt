@@ -8,9 +8,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Assignment
 import androidx.compose.material.icons.filled.ChecklistRtl
-import androidx.compose.material.icons.filled.ReportProblem
+import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HealthAndSafety
+import androidx.compose.material.icons.filled.ReportProblem
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -28,7 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
@@ -43,9 +46,16 @@ fun SafetyScreen(
     onOpenPermits: () -> Unit,
     onOpenSnags: () -> Unit,
     onOpenIncidents: () -> Unit,
+    onOpenViolations: () -> Unit,
 ) {
     val viewModel: SafetyViewModel = viewModel(factory = ViewModelFactory(container) { SafetyViewModel(it) })
     val templates by viewModel.templates.collectAsStateWithLifecycle()
+    val session by viewModel.session.collectAsStateWithLifecycle()
+    // Writing Evidence is what a violation is. The role model already decides
+    // who may, so this asks it rather than naming SAFETY_OFFICER here — an
+    // owner walking their own site should be able to write one too.
+    val canRecordViolations =
+        (session as? SessionRepository.State.SignedIn)?.role?.canWrite(Lens.EVIDENCE) == true
     val languageTag = currentLanguageTag()
 
     Scaffold(
@@ -78,6 +88,17 @@ fun SafetyScreen(
                             Icons.Filled.ReportProblem,
                             contentDescription = stringResource(R.string.inc_title),
                         )
+                    }
+                    // Only for the officer. Everybody else opening this would
+                    // find a register they cannot write to, which reads as the
+                    // app being broken rather than as a role they do not hold.
+                    if (canRecordViolations) {
+                        IconButton(onClick = onOpenViolations) {
+                            Icon(
+                                Icons.Filled.Gavel,
+                                contentDescription = stringResource(R.string.vio_title),
+                            )
+                        }
                     }
                 },
             )

@@ -126,6 +126,21 @@ class ViolationsViewModel(
         }
     }
 
+    /** Where the camera should write, when the officer photographs it there. */
+    fun newEvidenceTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
+
+    /** The camera came back with a picture. */
+    fun evidenceCaptured(photoId: String) = viewModelScope.launch {
+        val draft = open.value ?: return@launch
+        val actor = container.settings.settings.first().actorName
+        container.photos.recordCameraPhoto(
+            id = photoId,
+            ownerType = PhotoRepository.Owner.VIOLATION,
+            ownerId = draft.id,
+            actorName = actor,
+        )
+    }
+
     /**
      * Attaches a still or a video.
      *
