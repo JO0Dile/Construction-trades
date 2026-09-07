@@ -214,6 +214,20 @@ object Migrations {
         }
     }
 
+    /**
+     * Violations, and photos that know whether they are videos.
+     *
+     * The mediaType default here is 'image' and the entity declares the same
+     * one. A default on one side and not the other is what broke three
+     * releases: Room revalidates on the first open and a column it did not
+     * expect is a crash on launch for everybody who already had the app.
+     */
+    val MIGRATION_22_23 = object : Migration(22, 23) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_22_23.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -236,6 +250,7 @@ object Migrations {
         MIGRATION_19_20,
         MIGRATION_20_21,
         MIGRATION_21_22,
+        MIGRATION_22_23,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -667,5 +682,22 @@ object Migrations {
         "ALTER TABLE `audit_log` ADD COLUMN `sequence` INTEGER NOT NULL DEFAULT 0",
         "ALTER TABLE `audit_log` ADD COLUMN `previousHash` TEXT NOT NULL DEFAULT ''",
         "ALTER TABLE `audit_log` ADD COLUMN `hash` TEXT NOT NULL DEFAULT ''",
+    )
+
+    val SQL_22_23: List<String> = listOf(
+        "ALTER TABLE `photos` ADD COLUMN `mediaType` TEXT NOT NULL DEFAULT 'image'",
+        "CREATE TABLE IF NOT EXISTS `violations` (`id` TEXT NOT NULL, " +
+            "`companyId` TEXT NOT NULL, `projectId` TEXT, " +
+            "`againstAccountId` TEXT NOT NULL, `againstName` TEXT NOT NULL, " +
+            "`againstIdNumber` TEXT NOT NULL, `description` TEXT NOT NULL, " +
+            "`costAmount` REAL, `status` TEXT NOT NULL, " +
+            "`recordedByAccountId` TEXT NOT NULL, `recordedByName` TEXT NOT NULL, " +
+            "`recordedAt` INTEGER NOT NULL, `confirmedAt` INTEGER, " +
+            "`cancelledAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_violations_companyId` " +
+            "ON `violations` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
+            "ON `violations` (`againstAccountId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
     )
 }

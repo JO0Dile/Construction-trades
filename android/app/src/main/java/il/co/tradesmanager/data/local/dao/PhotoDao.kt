@@ -25,6 +25,17 @@ interface PhotoDao {
     )
     fun observeForAny(ownerId: String, ownerTypes: List<String>): Flow<List<PhotoEntity>>
 
+    /**
+     * How many pictures one thing has.
+     *
+     * Asked of the database rather than counted from a list the caller is
+     * holding. A rule that rests on "there is evidence" must not be satisfied
+     * by a caller's own arithmetic — that is exactly how the work-package
+     * submit rule passed for weeks while the screen handed it a one.
+     */
+    @Query("SELECT COUNT(*) FROM photos WHERE ownerType = :ownerType AND ownerId = :ownerId")
+    suspend fun countFor(ownerType: String, ownerId: String): Int
+
     @Query("SELECT * FROM photos WHERE id = :id")
     suspend fun photo(id: String): PhotoEntity?
 

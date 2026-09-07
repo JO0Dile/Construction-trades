@@ -8,33 +8,34 @@ import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
-import il.co.tradesmanager.data.repository.ExcavationRepository
-import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
+import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
+import il.co.tradesmanager.data.repository.ExcavationRepository
+import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
-import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
-import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
+import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TemporaryWorksRepository
+import il.co.tradesmanager.data.repository.TradeRepository
+import il.co.tradesmanager.data.repository.ViolationRepository
+import il.co.tradesmanager.data.sync.NoOpSyncEngine
+import il.co.tradesmanager.data.sync.SyncEngine
+import il.co.tradesmanager.data.update.UpdateRepository
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import il.co.tradesmanager.data.repository.SettingsRepository
-import il.co.tradesmanager.data.repository.TradeRepository
-import il.co.tradesmanager.data.sync.NoOpSyncEngine
-import il.co.tradesmanager.data.update.UpdateRepository
-import il.co.tradesmanager.data.sync.SyncEngine
 
 /**
  * Hand-rolled dependency container.
@@ -139,6 +140,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val schedule = ScheduleRepository(database.scheduleDao(), auditTrail)
 
     val safety = SafetyRepository(database.safetyDao(), database.catalogDao(), auditTrail)
+
+    val violations = ViolationRepository(database.violationDao(), photos, auditTrail)
 
     val catalogDao = database.catalogDao()
 

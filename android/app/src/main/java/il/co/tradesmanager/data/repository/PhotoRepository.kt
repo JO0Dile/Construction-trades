@@ -59,6 +59,12 @@ class PhotoRepository(
         const val ACCOUNT_PHOTO = "account.photo"
 
         /**
+         * What a violation rests on. A still or a video; see
+         * PhotoEntity.mediaType.
+         */
+        const val VIOLATION = "violation"
+
+        /**
          * Proof that a work package was actually done.
          *
          * Demanded at submission rather than at approval, because approval
@@ -79,6 +85,10 @@ class PhotoRepository(
 
     fun observeFor(ownerType: String, ownerId: String): Flow<List<PhotoEntity>> =
         dao.observeFor(ownerType, ownerId)
+
+    /** How many pictures or videos one thing has, straight from the table. */
+    suspend fun countFor(ownerType: String, ownerId: String): Int =
+        dao.countFor(ownerType, ownerId)
 
     fun observeForOwners(ownerType: String, ownerIds: List<String>): Flow<List<PhotoEntity>> =
         dao.observeForOwners(ownerType, ownerIds)
