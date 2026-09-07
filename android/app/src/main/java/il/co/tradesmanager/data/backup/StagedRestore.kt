@@ -172,18 +172,26 @@ object StagedRestore {
     /**
      * SQLite's own opinion of the file, before anything is replaced on its say-so.
      *
-     * Opened with an empty key: what is staged is always plaintext, because
-     * the archive it came out of was locked with the person's passphrase and
-     * not with any device's key. That is the whole reason a backup restores
-     * onto a phone that has never seen the one it was taken from.
+     * Read with the platform's SQLite rather than SQLCipher, because what is
+     * staged is always plaintext: the archive it came out of was locked with
+     * the person's passphrase, never with any device's key. That is the whole
+     * reason a backup restores onto a phone that has never seen the one it was
+     * taken from, and it means the check needs no key and no native library.
+     *
+     * Anything that throws is a no. A file that cannot be opened at all is
+     * exactly as unusable as one that fails the check, and this is the last
+     * moment before the real database is moved.
      */
     private fun isSound(file: File): Boolean = runCatching {
-        SQLiteDatabase.openDatabase(file.absolutePath, "", null, SQLiteDatabase.OPEN_READONLY)
-            .use { db ->
-                db.rawQuery("PRAGMA integrity_check", null).use { cursor ->
-                    cursor.moveToFirst() && cursor.getString(0).equals("ok", ignoreCase = true)
-                }
+        android.database.sqlite.SQLiteDatabase.openDatabase(
+            file.absolutePath,
+            null,
+            android.database.sqlite.SQLiteDatabase.OPEN_READONLY,
+        ).use { db ->
+            db.rawQuery("PRAGMA integrity_check", null).use { cursor ->
+                cursor.moveToFirst() && cursor.getString(0).equals("ok", ignoreCase = true)
             }
+        }
     }.getOrDefault(false)
 
     /**
@@ -195,8 +203,21 @@ object StagedRestore {
      * with a header stuck on it.
      */
     private fun exportEncrypted(staged: File, target: File, key: ByteArray) {
-        SQLiteDatabase.openDatabase(staged.absolutePath, "", null, SQLiteDatabase.OPEN_READONLY)
-            .use { plain ->
+        // Opened with no key at all. The staged file is plaintext, and this
+        // overload is the one that takes no password -- SQLCipher reads an
+        // unencrypted database perfectly well when none is set, which is what
+        // makes it the right connection to run the export *from*.
+        //
+        // The direction matters: sqlcipher_export copies main into the schema
+        // it is given, so main has to be the plaintext side and the encrypted
+        // file the attached one. The reverse of what BackupRepository does on
+        // the way out, for the same reason.
+        SQLiteDatabase.openDatabase(
+            staged.absolutePath,
+            null as SQLiteDatabase.CursorFactory?,
+            SQLiteDatabase.OPEN_READONLY,
+            null,
+        ).use { plain ->
                 plain.execSQL("ATTACH DATABASE ? AS encrypted KEY ?", arrayOf(target.absolutePath, key))
                 plain.rawQuery("SELECT sqlcipher_export('encrypted')", null).use { it.moveToFirst() }
                 // The schema version does not travel with sqlcipher_export.
