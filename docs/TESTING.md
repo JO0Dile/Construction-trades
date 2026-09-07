@@ -9,177 +9,132 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.11.0 — and what to try first
+## What is new in 0.12.0 — and what to try first
 
-The whole point of this release is that it can be installed and prodded. Tap
-**Check for updates** in Settings and it will offer itself.
+This one is about the people on a site rather than the paperwork about them.
+Tap **Check for updates** in Settings and it will offer itself.
 
-**Twenty-two trades instead of six.** Settings → *My trades*. Gypsum,
-stonework, tiling, plastering, aluminium, rebar, waterproofing, firefighting,
-lifts, landscape and the rest are all there now. Switch one on and its stock
-list appears — 497 items across the app, up from 403, including the tools that
-were missing by name: the breaker (كونجו), the percussion drill, the wall
-chaser, the socket tester with and without an RCD trip, and the cable tracer
-(مزمار).
+The quickest way to see what these changes actually do is to make three
+accounts and sign in as each: an **owner**, a **safety officer**, and a
+**worker**. Most of what follows is about what each of them is shown, and you
+cannot see that from one account.
 
-- [ ] Switch on **Drywall & gypsum**. Its items appear in Inventory.
-- [ ] Switch on **Stonework & cladding** and look at its safety checklist —
-      the silica one. Every new trade has one now; 46 checklists, 193 checks.
-- [ ] Start a job from the **Bathroom, floor and walls** template. Its third
-      task is a 24-hour flood test *before* a single tile goes down.
+### Getting onto a site
 
-**More than one firm on a job.** Open a job → **Work packages**.
+Every site has a person you meet before you meet the site. That is now a
+screen: **People → the person-with-tick icon** in the top bar.
 
-- [ ] The first thing it asks is what your firm is on this job. Nothing else
-      is possible until that is answered — and nobody else can answer it for
-      you.
-- [ ] Say **First-tier subcontractor**. Now you can bring a crew on. Notice
-      that the positions offered are only the ones you may actually engage; a
-      crew leader is offered nobody.
-- [ ] Hand the crew a package against a **stage** and a **scope**. The stage
-      list is the one that matters: slab conduit (העקדה / العقدة), rough-in
-      (الشغل الأسود), second fix (الشغل الأبيض), commissioning, handover.
-- [ ] Try to accept the package as the contractor. It refuses — only the crew
-      accepts.
-- [ ] Try to submit it without a photograph. The button is disabled, and the
-      photo strip is directly above it.
-- [ ] Approve it. Read what the screen says: **approved is not paid.**
-- [ ] Back on the list, a card appears saying what a payment application would
-      claim. The figure is **cumulative** — everything approved to date, not
-      the package you just approved — and the card says so.
+- [ ] As the owner, open it. Type somebody's ID number. Their **photograph**
+      comes back with their name — that is the point of asking for the number
+      rather than the name.
+- [ ] Notice it says what they will be signed on **as**, before anything is
+      written. It is always *worker*. There is no role picker, and there is
+      not meant to be: whoever is on the gate signs people onto the site, and
+      who you answer to is decided afterwards by the firm that engaged you.
+- [ ] Hand the phone over and sign. The button will not enable until somebody
+      has.
+- [ ] Try the same ID again. It says they are already on and does not ask for
+      a second signature.
+- [ ] Type an ID nobody has. It refuses rather than creating an account — a
+      stranger's number must not bring into existence a person who never
+      agreed to it.
+- [ ] Sign in as the **worker** and open People. The gate icon is not there.
 
-**Contracts.** Work packages → *Contracts*.
+### The safety officer
 
-- [ ] A contract needs both signatures before its figure stops being editable.
-      Sign as one side and it stays an offer.
-- [ ] Change an agreed price. It goes through an amendment with a reason, the
-      other side decides, and every figure the contract has ever been stays on
-      screen. You cannot accept your own.
-- [ ] If your firm sits between two contracts, the margin is at the top of the
-      list. It is the number nobody else on the job can see.
+A new role. Give somebody **Safety officer** in People, then sign in as them.
 
-**Company profile.** Settings → *Company profile*.
+- [ ] Look at the bottom navigation. They have People and Evidence and **no
+      Money at all** — that is the role, not an oversight. Somebody with the
+      standing to accuse a worker and put a cost on it must not also be
+      reading what that worker earns.
+- [ ] Safety → the **gavel** icon. Type an ID, see the face, write down what
+      was wrong, put a cost on it if you know one.
+- [ ] Attach a **video**, not just a photograph. A still of a man on a ladder
+      does not always show what was wrong with how he was standing on it.
+- [ ] Try to confirm before attaching anything. The button says which of the
+      two things is missing rather than sitting dead.
+- [ ] **Cancel** the draft. It goes, no questions — a draft nobody has been
+      told about should be cheap to throw away.
+- [ ] Write another and **confirm** it. Read the warning. After that it cannot
+      be changed or withdrawn.
 
-- [ ] Add a mark, a phone number, an email. Each one has its own **Show to the
-      crew** switch, off by default.
-- [ ] Read what the licence section says about being "verified". It is
-      deliberate: recording a licence marks you verified in this app and is
-      not a statement that you are licensed to do the work.
+### Finding the man who walked off
 
-**The flag** is on the launcher icon and at the foot of Settings.
+The officer's real problem: he walked away, you saw his face, you know he was
+on the electrics, and you do **not** know his name. A search box is no help —
+not knowing it is the whole difficulty.
 
-### Added in 0.7.0
+**People → the group icon**, or the same icon inside the violations screen.
 
-**A task can say which stage of the job it belongs to.** Open a job → the
-task list.
+- [ ] Press a trade. You get the people on that trade with their faces, to
+      look down.
+- [ ] Tap one. Their profile: trade, rank, who they answer to, their tickets
+      with expired ones in red, when they were inducted, and what has been
+      **confirmed** against them. Drafts are not on it.
+- [ ] Look for wages on it. There are none, and the screen says so out loud
+      rather than leaving you to wonder whether the record is incomplete.
+- [ ] Notice the count at the bottom of anybody with no trade recorded. They
+      are on none of these lists, and it says so rather than quietly leaving
+      them out.
+- [ ] As the **owner**, open the same profile. Now there is a row of trade
+      chips at the bottom — only somebody above them in the chain may say what
+      a person does.
 
-- [ ] Tap a task. Pick a stage: slab conduit (העקדה / العقدة), rough-in
-      (الشغل الأسود), second fix (الشغل الأبيض), commissioning, handover.
-      The stage appears under the task title.
-- [ ] Leave one task with **no stage**. That is a real answer — calling the
-      crane company is not rough-in — and the picker offers it first.
-- [ ] Export the job sheet from the top of the screen. The stage is a column
-      in the CSV and on the printout. A stage that lives only on a phone is
-      a stage that disappears the moment somebody files the paperwork.
+### Wages, up the chain only
 
-**A payment application can say what it is made of.** Open a job → Work
-packages, approve some work, raise a claim, then open it in Money → Payments.
+The rule: **your own money is yours, and otherwise only somebody above you in
+the chain of command sees it.**
 
-- [ ] Under the figure, a **What this claim covers** section: one line per
-      work package, with what it was called and what it was worth.
-- [ ] The lines add up to the claimed figure. They include packages from
-      earlier applications, because the claim is cumulative — the section
-      says so directly, above the list.
-- [ ] Amend a package after claiming it. The line does **not** move. An
-      application already certified must not restate itself.
-- [ ] Raise an application by hand instead (Money → Payments → new). It says
-      "Raised by hand — no work packages attached" rather than showing an
-      empty list.
+- [ ] In People, tap somebody and set **Answers to**. That is the line that
+      decides who sees their pay, and the screen says so under the heading.
+- [ ] Try to set your *own*. You cannot — whoever you answer to does that.
+- [ ] Try to put your own manager under somebody who answers to them. It
+      refuses and tells you it would make a circle.
+- [ ] Open a job's **Timesheet** as somebody partway up the chain. It says how
+      many people on the job are not yours to price, and it withholds the
+      reconciliation rather than showing a total over half the labour — a gap
+      between costed labour and the hours of the few people you are senior to
+      is a wrong number that looks entirely plausible.
+- [ ] Sign in as a labourer and open the same timesheet. Their own hours are
+      there. Nobody else's are.
 
-### Added in 0.8.0
+### The stock list knows what you are doing today
 
-**The audit trail, which you can now read — and check.** Settings → *Audit
-trail*.
+- [ ] Inventory. Under the kind chips there is a second row: **slab, rough-in,
+      second fix, commissioning**. Pick slab.
+- [ ] The conduit and the earthing stay. The light fittings and sockets go.
+      Your tools stay too — a screwdriver is used on the day the slab is
+      poured and on the day the keys are handed over, so nothing tagged as a
+      tool ever disappears from a filter.
+- [ ] Anything you added yourself stays under every stage. It has no catalogue
+      row to take a stage from, and the safe answer is to show it.
 
-- [ ] Do a few things first: create a job, add a task, approve some work. Then
-      open the trail. Every one of them is there, numbered, with who and when.
-- [ ] Press **Check the trail**. It says how many entries it verified.
-- [ ] It says *not checked* until you press it. A tick it had not earned would
-      be worse than nothing.
-- [ ] If you upgraded from 0.7.0, it will also say how many older entries
-      carry no signature. That is honest: they were written before this
-      version and nothing can now vouch for them.
+### The tools, under the names sites use
 
-Each entry is signed against the one before it, so altering a row, deleting
-one, or slipping one in all show up as a break. What it cannot see is the
-newest entries being deleted — nothing has committed to them yet. That needs
-a server holding the end of the chain, and `docs/SERVER.md` says so rather
-than pretending otherwise.
+- [ ] Search **מברגה**. Or **مفريغا**. It is there now, and so are the other
+      basics that turned out to be missing with it: hammer, pliers, adjustable
+      spanner, utility knife, wrecking bar, extension reel, work light.
+- [ ] Search **אימפקט**, **בלאייר**, **שוודי**, **יפנית**. The formal name is
+      still what an order and an invoice print; these are what people say.
 
-### Added in 0.9.0
+### What changed
 
-**You can hand the audit trail to somebody else, and they can check it
-without this app.** Settings → *Audit trail* → the share button, top right.
+At the foot of the dashboard.
 
-- [ ] It verifies first, then shares two files. The **PDF** is the one to
-      print or email — six columns, readable. The **CSV** is the one to check.
-- [ ] Send yourself the CSV and run, on any computer with Python:
-      `python3 tools/verify-audit-export.py audit-trail-<date>.csv`
-      It should say *The trail verifies.*
-- [ ] Now open the CSV, change a word in the *What happened* column, save, and
-      run it again. It names the entry and refuses. That is the whole point:
-      the checker does not trust the file, and does not need the app.
-- [ ] `docs/AUDIT.md` says exactly what is hashed, and what the chain
-      cannot see.
+- [ ] As the owner, change something — move a task, add a cost line, replace a
+      drawing. It appears.
+- [ ] Sign in as a **labourer** and look at the same feed. The task and the
+      drawing are there. **The cost line is not.**
 
-### Fixed in 0.9.1
+### Incidents
 
-**Settings → Security now says whether your records are actually encrypted.**
-
-- [ ] It should read *On — the records on this device are encrypted*. That is
-      the normal case: the key lives in the phone's secure hardware.
-- [ ] If it ever reads *Off*, in red, that is real and worth acting on. It
-      means this device could not load the encryption library, so ID numbers,
-      photographs and signatures are stored unprotected. It used to say
-      "Something went wrong", which told you nothing.
-
-### Added in 0.10.0
-
-**How long the audit trail is kept is now yours to decide.** Settings →
-*Audit trail*, under the entries.
-
-- [ ] It says **Keep everything**, and that is the default. Nothing is ever
-      deleted until you choose otherwise.
-- [ ] Pick a period. An **Apply now** button appears — applying is a separate
-      action on purpose, because deleting records should take a decision and
-      then take another one.
-- [ ] Apply it. It tells you how many entries went, and the purge writes its
-      own entry into the trail saying what it cut. Check the trail afterwards:
-      it still verifies.
-
-The app deliberately does not choose a period for you. How long records must
-be held differs for a payment application, a safety inspection and a worker's
-ID number, and that is a legal question for whoever runs the app.
-
-### Added in 0.11.0
-
-**You can report an accident.** Safety → the warning triangle, top right.
-
-Until this build there was no way to. The table and the repository existed
-from early on and nothing could reach either: no screen to record an incident,
-no screen to read one back.
-
-- [ ] Report a **near miss**. It goes on the same list as injuries, because a
-      near miss is the same accident with better luck.
-- [ ] Now pick **Serious** or **Fatal**. A note appears *while you are still
-      choosing*, saying this may have to be reported to a regulator too. It is
-      a prompt, not an assurance — what the law requires is not something this
-      app is in a position to tell you.
-- [ ] The register reads newest first, and worst first within the same moment.
-
-No location is recorded. Somebody reporting an incident is standing where it
-happened; taking a coordinate off their phone to prove it is surveillance the
-job does not need.
+- [ ] Safety → the warning triangle → add. It will not file without a
+      photograph or a video. By the time an incident is argued about, the
+      ladder has been moved and the spill mopped.
+- [ ] The cost is optional and stays optional. Leaving it empty is a real
+      answer; a forced figure would be answered with zero, which is a claim
+      that it cost nothing.
 
 ### What is not in it
 
@@ -187,9 +142,11 @@ job does not need.
   release is for.
 - The Hebrew and Arabic on everything new are **drafts**. The worksheets in
   `docs/translation/` are where the real wording goes.
-- The confidentiality rules run on this device only. Two firms genuinely
-  sharing a job needs a server — see `docs/SERVER.md`.
-
+- The confidentiality rules — both the one between firms and the one between
+  people — run on this device only, where they are display rules. They become
+  access rules when a server runs the same functions; see `docs/SERVER.md`.
+- There is no payment of any kind. `docs/PRICING.md` is a proposal waiting on
+  a decision, not code.
 ---
 
 ## Android — the path that needs nothing but a phone
