@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.10.0 — and what to try first
+## What is new in 0.11.0 — and what to try first
 
 The whole point of this release is that it can be installed and prodded. Tap
 **Check for updates** in Settings and it will offer itself.
@@ -160,6 +160,26 @@ without this app.** Settings → *Audit trail* → the share button, top right.
 The app deliberately does not choose a period for you. How long records must
 be held differs for a payment application, a safety inspection and a worker's
 ID number, and that is a legal question for whoever runs the app.
+
+### Added in 0.11.0
+
+**You can report an accident.** Safety → the warning triangle, top right.
+
+Until this build there was no way to. The table and the repository existed
+from early on and nothing could reach either: no screen to record an incident,
+no screen to read one back.
+
+- [ ] Report a **near miss**. It goes on the same list as injuries, because a
+      near miss is the same accident with better luck.
+- [ ] Now pick **Serious** or **Fatal**. A note appears *while you are still
+      choosing*, saying this may have to be reported to a regulator too. It is
+      a prompt, not an assurance — what the law requires is not something this
+      app is in a position to tell you.
+- [ ] The register reads newest first, and worst first within the same moment.
+
+No location is recorded. Somebody reporting an incident is standing where it
+happened; taking a coordinate off their phone to prove it is surveillance the
+job does not need.
 
 ### What is not in it
 
