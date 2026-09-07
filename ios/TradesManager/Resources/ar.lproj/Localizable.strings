@@ -1017,3 +1017,15 @@
 "gate_not_yours" = "تسجيل الأشخاص في الموقع ليس من صلاحياتك. يقوم بذلك مدير الموقع أو مسؤول السلامة.";
 /* Entry point on the People screen that opens the gate. */
 "people_gate" = "سجّل شخصاً في الموقع";
+/* Button that attaches a photo or video to an incident. %1$d is how many are attached. */
+"inc_evidence" = "صورة أو فيديو (%1$d)";
+/* Why the save button is disabled: no photo or video attached yet. */
+"inc_need_evidence" = "أرفق صورة أو فيديو. بحلول وقت الجدال حول ما جرى، يكون السلّم قد نُقل.";
+/* Why the save button is disabled: nothing written. */
+"inc_need_description" = "اكتب ما الذي حدث.";
+/* Optional cost field on an incident report. */
+"inc_cost" = "التكلفة، إن كانت معروفة";
+/* Under the cost field. Explains that blank and zero differ. */
+"inc_cost_hint" = "اتركه فارغًا إن لم يُعرف بعد. الفارغ والصفر ليسا سواء.";
+/* The cost field holds something that is not a number, or is negative. */
+"inc_bad_cost" = "هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف.";

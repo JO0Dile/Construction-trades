@@ -993,6 +993,12 @@
     <string name="gate_admitted">%1$s נמצא באתר.</string>
     <string name="gate_not_yours">הכנסת אנשים לאתר אינה בסמכותכם. מנהל העבודה או ממונה הבטיחות עושה זאת.</string>
     <string name="people_gate">הכניסו מישהו לאתר</string>
+    <string name="inc_evidence">תמונה או סרטון (%1$d)</string>
+    <string name="inc_need_evidence">צרפו תמונה או סרטון. עד שיתווכחו על זה, הסולם כבר יוזז.</string>
+    <string name="inc_need_description">כתבו מה קרה.</string>
+    <string name="inc_cost">עלות, אם ידועה</string>
+    <string name="inc_cost_hint">השאירו ריק אם עדיין לא ידוע. ריק ואפס אינם אותו דבר.</string>
+    <string name="inc_bad_cost">זה אינו סכום. השאירו ריק אם אינכם יודעים.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

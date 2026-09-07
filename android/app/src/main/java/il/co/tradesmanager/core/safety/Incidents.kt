@@ -60,4 +60,49 @@ object Incidents {
     /** Stored as the enum name; unknown text reads as the least assuming value. */
     fun parse(stored: String?): Severity =
         Severity.entries.firstOrNull { it.name == stored } ?: Severity.NEAR_MISS
+
+    /** A report being written, and everything the rule below needs to judge it. */
+    data class Report(
+        val description: String,
+        /** Photographs and videos attached so far. */
+        val evidenceCount: Int,
+        /** What it cost, when anybody has put a figure on it. */
+        val cost: Double?,
+    )
+
+    /** Null when the report can be filed; otherwise what is missing. */
+    fun blocksReporting(report: Report): Blocker? = when {
+        report.description.isBlank() -> Blocker.NOT_DESCRIBED
+        report.evidenceCount <= 0 -> Blocker.NO_EVIDENCE
+        !acceptableCost(report.cost) -> Blocker.BAD_COST
+        else -> null
+    }
+
+    enum class Blocker {
+        /** Nothing written. A severity chip on its own says nothing. */
+        NOT_DESCRIBED,
+
+        /**
+         * No photograph and no video.
+         *
+         * Required rather than encouraged. An incident is argued about weeks
+         * later by people who were not there, and a description on its own is
+         * one person's word — the ladder is moved, the spill is mopped, the
+         * guard rail goes back on, and the only thing left is what somebody
+         * photographed while they were standing in front of it.
+         */
+        NO_EVIDENCE,
+
+        /** A negative figure. Blank is fine; less than nothing is not. */
+        BAD_COST,
+    }
+
+    fun canReport(report: Report): Boolean = blocksReporting(report) == null
+
+    /**
+     * Whether a cost may be stored. Null is a real answer -- most reports are
+     * filed by somebody who has no idea yet what it will come to, and forcing
+     * a number would get zero, which is a claim rather than a blank.
+     */
+    fun acceptableCost(cost: Double?): Boolean = cost == null || cost >= 0.0
 }

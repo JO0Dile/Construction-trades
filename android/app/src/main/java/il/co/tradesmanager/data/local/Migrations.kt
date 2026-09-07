@@ -243,6 +243,13 @@ object Migrations {
         }
     }
 
+    /** What an incident cost, when somebody knows. Null until they do. */
+    val MIGRATION_24_25 = object : Migration(24, 25) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_24_25.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -267,6 +274,7 @@ object Migrations {
         MIGRATION_21_22,
         MIGRATION_22_23,
         MIGRATION_23_24,
+        MIGRATION_24_25,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -721,5 +729,9 @@ object Migrations {
         "ALTER TABLE `memberships` ADD COLUMN `admittedByAccountId` TEXT",
         "ALTER TABLE `memberships` ADD COLUMN `admittedByName` TEXT",
         "ALTER TABLE `memberships` ADD COLUMN `admissionSignature` TEXT",
+    )
+
+    val SQL_24_25: List<String> = listOf(
+        "ALTER TABLE `incidents` ADD COLUMN `costAmount` REAL",
     )
 }

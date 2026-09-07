@@ -1018,6 +1018,18 @@
     <string name="gate_not_yours">Signing people onto the site is not one of yours. The site manager or the safety officer does it.</string>
     <!-- Entry point on the People screen that opens the gate. -->
     <string name="people_gate">Sign someone onto the site</string>
+    <!-- Button that attaches a photo or video to an incident. %1$d is how many are attached. -->
+    <string name="inc_evidence">Photograph or video (%1$d)</string>
+    <!-- Why the save button is disabled: no photo or video attached yet. -->
+    <string name="inc_need_evidence">Attach a photograph or a video. By the time this is argued about, the ladder has been moved.</string>
+    <!-- Why the save button is disabled: nothing written. -->
+    <string name="inc_need_description">Write what happened.</string>
+    <!-- Optional cost field on an incident report. -->
+    <string name="inc_cost">Cost, if known</string>
+    <!-- Under the cost field. Explains that blank and zero differ. -->
+    <string name="inc_cost_hint">Leave it empty if nobody knows yet. Empty and zero are not the same.</string>
+    <!-- The cost field holds something that is not a number, or is negative. -->
+    <string name="inc_bad_cost">That is not an amount. Leave it empty if you do not know.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

@@ -1017,3 +1017,15 @@
 "gate_not_yours" = "Signing people onto the site is not one of yours. The site manager or the safety officer does it.";
 /* Entry point on the People screen that opens the gate. */
 "people_gate" = "Sign someone onto the site";
+/* Button that attaches a photo or video to an incident. %1$d is how many are attached. */
+"inc_evidence" = "Photograph or video (%1$d)";
+/* Why the save button is disabled: no photo or video attached yet. */
+"inc_need_evidence" = "Attach a photograph or a video. By the time this is argued about, the ladder has been moved.";
+/* Why the save button is disabled: nothing written. */
+"inc_need_description" = "Write what happened.";
+/* Optional cost field on an incident report. */
+"inc_cost" = "Cost, if known";
+/* Under the cost field. Explains that blank and zero differ. */
+"inc_cost_hint" = "Leave it empty if nobody knows yet. Empty and zero are not the same.";
+/* The cost field holds something that is not a number, or is negative. */
+"inc_bad_cost" = "That is not an amount. Leave it empty if you do not know.";

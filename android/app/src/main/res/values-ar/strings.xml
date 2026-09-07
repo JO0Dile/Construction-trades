@@ -993,6 +993,12 @@
     <string name="gate_admitted">%1$s أصبح في الموقع.</string>
     <string name="gate_not_yours">تسجيل الأشخاص في الموقع ليس من صلاحياتك. يقوم بذلك مدير الموقع أو مسؤول السلامة.</string>
     <string name="people_gate">سجّل شخصاً في الموقع</string>
+    <string name="inc_evidence">صورة أو فيديو (%1$d)</string>
+    <string name="inc_need_evidence">أرفق صورة أو فيديو. بحلول وقت الجدال حول ما جرى، يكون السلّم قد نُقل.</string>
+    <string name="inc_need_description">اكتب ما الذي حدث.</string>
+    <string name="inc_cost">التكلفة، إن كانت معروفة</string>
+    <string name="inc_cost_hint">اتركه فارغًا إن لم يُعرف بعد. الفارغ والصفر ليسا سواء.</string>
+    <string name="inc_bad_cost">هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

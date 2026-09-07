@@ -4998,6 +4998,42 @@
       "en": "Sign someone onto the site",
       "he": "הכניסו מישהו לאתר",
       "ar": "سجّل شخصاً في الموقع"
+    },
+    "inc_evidence": {
+      "c": "Button that attaches a photo or video to an incident. %1$d is how many are attached.",
+      "en": "Photograph or video (%1$d)",
+      "he": "תמונה או סרטון (%1$d)",
+      "ar": "صورة أو فيديو (%1$d)"
+    },
+    "inc_need_evidence": {
+      "c": "Why the save button is disabled: no photo or video attached yet.",
+      "en": "Attach a photograph or a video. By the time this is argued about, the ladder has been moved.",
+      "he": "צרפו תמונה או סרטון. עד שיתווכחו על זה, הסולם כבר יוזז.",
+      "ar": "أرفق صورة أو فيديو. بحلول وقت الجدال حول ما جرى، يكون السلّم قد نُقل."
+    },
+    "inc_need_description": {
+      "c": "Why the save button is disabled: nothing written.",
+      "en": "Write what happened.",
+      "he": "כתבו מה קרה.",
+      "ar": "اكتب ما الذي حدث."
+    },
+    "inc_cost": {
+      "c": "Optional cost field on an incident report.",
+      "en": "Cost, if known",
+      "he": "עלות, אם ידועה",
+      "ar": "التكلفة، إن كانت معروفة"
+    },
+    "inc_cost_hint": {
+      "c": "Under the cost field. Explains that blank and zero differ.",
+      "en": "Leave it empty if nobody knows yet. Empty and zero are not the same.",
+      "he": "השאירו ריק אם עדיין לא ידוע. ריק ואפס אינם אותו דבר.",
+      "ar": "اتركه فارغًا إن لم يُعرف بعد. الفارغ والصفر ليسا سواء."
+    },
+    "inc_bad_cost": {
+      "c": "The cost field holds something that is not a number, or is negative.",
+      "en": "That is not an amount. Leave it empty if you do not know.",
+      "he": "זה אינו סכום. השאירו ריק אם אינכם יודעים.",
+      "ar": "هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف."
     }
   },
   "plurals": {

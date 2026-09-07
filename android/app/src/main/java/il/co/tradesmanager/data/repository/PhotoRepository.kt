@@ -160,7 +160,6 @@ class PhotoRepository(
         store(id, file, ownerType, ownerId, actorName, note, latitude, longitude)
     }
 
-    /** Copies a gallery pick into app storage and records it. */
     /** What a stored file is. Kept beside the row; see PhotoEntity.mediaType. */
     object MediaType {
         const val IMAGE = "image"

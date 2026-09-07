@@ -1017,3 +1017,15 @@
 "gate_not_yours" = "הכנסת אנשים לאתר אינה בסמכותכם. מנהל העבודה או ממונה הבטיחות עושה זאת.";
 /* Entry point on the People screen that opens the gate. */
 "people_gate" = "הכניסו מישהו לאתר";
+/* Button that attaches a photo or video to an incident. %1$d is how many are attached. */
+"inc_evidence" = "תמונה או סרטון (%1$d)";
+/* Why the save button is disabled: no photo or video attached yet. */
+"inc_need_evidence" = "צרפו תמונה או סרטון. עד שיתווכחו על זה, הסולם כבר יוזז.";
+/* Why the save button is disabled: nothing written. */
+"inc_need_description" = "כתבו מה קרה.";
+/* Optional cost field on an incident report. */
+"inc_cost" = "עלות, אם ידועה";
+/* Under the cost field. Explains that blank and zero differ. */
+"inc_cost_hint" = "השאירו ריק אם עדיין לא ידוע. ריק ואפס אינם אותו דבר.";
+/* The cost field holds something that is not a number, or is negative. */
+"inc_bad_cost" = "זה אינו סכום. השאירו ריק אם אינכם יודעים.";

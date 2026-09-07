@@ -88,7 +88,7 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 24
+const val DATABASE_VERSION = 25
 
 @Database(
     entities = [
