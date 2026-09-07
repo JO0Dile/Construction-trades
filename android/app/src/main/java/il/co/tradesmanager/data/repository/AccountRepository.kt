@@ -276,6 +276,19 @@ class AccountRepository(
     }
 
     /** Whether an ID number is already spoken for, so sign-up can say so. */
+    /**
+     * Look somebody up by the number on their card.
+     *
+     * Blank finds nobody rather than the first row: an empty search box must
+     * not put a stranger's face on the screen of somebody about to write a
+     * violation.
+     */
+    suspend fun findByIdNumber(idNumber: String): AccountEntity? {
+        val trimmed = idNumber.trim()
+        if (trimmed.isEmpty()) return null
+        return dao.byIdNumber(trimmed)
+    }
+
     suspend fun isIdNumberTaken(idNumber: String): Boolean =
         idNumber.isNotBlank() && dao.countWithIdNumber(idNumber) > 0
 
