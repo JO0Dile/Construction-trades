@@ -4820,6 +4820,16 @@
       "en": "There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.",
       "he": "אין עדיין חשבונות בטלפון הזה. החשבונות נשמרים במכשיר, ולכן חשבון שנוצר בטלפון אחר אינו נגיש מכאן עד שתהיה לחברה שרת. צרו חשבון כדי להתחיל.",
       "ar": "لا توجد حسابات على هذا الهاتف بعد. الحسابات محفوظة على الجهاز، لذلك لا يمكن الوصول من هنا إلى حساب أُنشئ على هاتف آخر حتى يكون للشركة خادم. أنشئ حسابًا للبدء."
+    },
+    "role_safety_officer": {
+      "en": "Safety officer",
+      "he": "ממונה בטיחות",
+      "ar": "مسؤول السلامة"
+    },
+    "role_safety_officer_hint": {
+      "en": "Records violations and incidents against named people. Sees who somebody is, never what they are paid.",
+      "he": "רושם הפרות ואירועים על שם אנשים מזוהים. רואה מי האדם, לעולם לא כמה הוא מקבל.",
+      "ar": "يسجّل المخالفات والحوادث بأسماء أشخاص محددين. يرى هوية الشخص، ولا يرى أجره أبدًا."
     }
   },
   "plurals": {

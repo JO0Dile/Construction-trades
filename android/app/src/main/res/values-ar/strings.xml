@@ -960,6 +960,8 @@
     <string name="inc_reported_by">أبلغ عنه</string>
     <string name="acc_have_account">لدي حساب بالفعل</string>
     <string name="acc_none_on_device">لا توجد حسابات على هذا الهاتف بعد. الحسابات محفوظة على الجهاز، لذلك لا يمكن الوصول من هنا إلى حساب أُنشئ على هاتف آخر حتى يكون للشركة خادم. أنشئ حسابًا للبدء.</string>
+    <string name="role_safety_officer">مسؤول السلامة</string>
+    <string name="role_safety_officer_hint">يسجّل المخالفات والحوادث بأسماء أشخاص محددين. يرى هوية الشخص، ولا يرى أجره أبدًا.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

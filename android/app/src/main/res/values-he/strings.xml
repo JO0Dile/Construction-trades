@@ -960,6 +960,8 @@
     <string name="inc_reported_by">דווח על ידי</string>
     <string name="acc_have_account">כבר יש לי חשבון</string>
     <string name="acc_none_on_device">אין עדיין חשבונות בטלפון הזה. החשבונות נשמרים במכשיר, ולכן חשבון שנוצר בטלפון אחר אינו נגיש מכאן עד שתהיה לחברה שרת. צרו חשבון כדי להתחיל.</string>
+    <string name="role_safety_officer">ממונה בטיחות</string>
+    <string name="role_safety_officer_hint">רושם הפרות ואירועים על שם אנשים מזוהים. רואה מי האדם, לעולם לא כמה הוא מקבל.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

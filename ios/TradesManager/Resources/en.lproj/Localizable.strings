@@ -971,3 +971,5 @@
 "inc_reported_by" = "Reported by";
 "acc_have_account" = "I already have an account";
 "acc_none_on_device" = "There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.";
+"role_safety_officer" = "Safety officer";
+"role_safety_officer_hint" = "Records violations and incidents against named people. Sees who somebody is, never what they are paid.";

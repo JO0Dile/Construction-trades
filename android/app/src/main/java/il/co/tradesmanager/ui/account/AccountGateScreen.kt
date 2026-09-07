@@ -474,12 +474,21 @@ private fun PasscodeField(value: String, onChange: (String) -> Unit, acceptable:
     )
 }
 
-/** Role -> the words a site actually uses for it. */
+/**
+ * Role -> the words a site actually uses for it.
+ *
+ * Exhaustive with no `else`, deliberately. Adding SAFETY_OFFICER broke this
+ * and the hint below, which is the compiler asking the one question worth
+ * asking: what does a site call this person. An `else` would have answered it
+ * with silence, and the role after this one would have inherited that silence
+ * without anybody noticing.
+ */
 fun roleLabel(role: Role): Int = when (role) {
     Role.OWNER -> R.string.role_owner
     Role.MANAGER -> R.string.role_manager
     Role.FINANCE -> R.string.role_finance
     Role.HR -> R.string.role_hr
+    Role.SAFETY_OFFICER -> R.string.role_safety_officer
     Role.WORKER -> R.string.role_worker
 }
 
@@ -489,5 +498,6 @@ fun roleHint(role: Role): Int = when (role) {
     Role.MANAGER -> R.string.role_manager_hint
     Role.FINANCE -> R.string.role_finance_hint
     Role.HR -> R.string.role_hr_hint
+    Role.SAFETY_OFFICER -> R.string.role_safety_officer_hint
     Role.WORKER -> R.string.role_worker_hint
 }

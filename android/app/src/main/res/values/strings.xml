@@ -972,6 +972,8 @@
     <string name="inc_reported_by">Reported by</string>
     <string name="acc_have_account">I already have an account</string>
     <string name="acc_none_on_device">There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.</string>
+    <string name="role_safety_officer">Safety officer</string>
+    <string name="role_safety_officer_hint">Records violations and incidents against named people. Sees who somebody is, never what they are paid.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
