@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.6.0 — and what to try first
+## What is new in 0.7.0 — and what to try first
 
 The whole point of this release is that it can be installed and prodded. Tap
 **Check for updates** in Settings and it will offer itself.
@@ -67,6 +67,34 @@ chaser, the socket tester with and without an RCD trip, and the cable tracer
       not a statement that you are licensed to do the work.
 
 **The flag** is on the launcher icon and at the foot of Settings.
+
+### Added in 0.7.0
+
+**A task can say which stage of the job it belongs to.** Open a job → the
+task list.
+
+- [ ] Tap a task. Pick a stage: slab conduit (העקדה / العقدة), rough-in
+      (الشغل الأسود), second fix (الشغل الأبيض), commissioning, handover.
+      The stage appears under the task title.
+- [ ] Leave one task with **no stage**. That is a real answer — calling the
+      crane company is not rough-in — and the picker offers it first.
+- [ ] Export the job sheet from the top of the screen. The stage is a column
+      in the CSV and on the printout. A stage that lives only on a phone is
+      a stage that disappears the moment somebody files the paperwork.
+
+**A payment application can say what it is made of.** Open a job → Work
+packages, approve some work, raise a claim, then open it in Money → Payments.
+
+- [ ] Under the figure, a **What this claim covers** section: one line per
+      work package, with what it was called and what it was worth.
+- [ ] The lines add up to the claimed figure. They include packages from
+      earlier applications, because the claim is cumulative — the section
+      says so directly, above the list.
+- [ ] Amend a package after claiming it. The line does **not** move. An
+      application already certified must not restate itself.
+- [ ] Raise an application by hand instead (Money → Payments → new). It says
+      "Raised by hand — no work packages attached" rather than showing an
+      empty list.
 
 ### What is not in it
 
