@@ -229,6 +229,40 @@ def check_added_column(table: str, column: str, definition: str, room: str) -> l
     return []
 
 
+def declared_version() -> tuple[int | None, str]:
+    """The version AppDatabase declares, whether a literal or a constant.
+
+    One function because there were two readers of it and only one of them was
+    updated when the literal became a constant. The other crashed with a
+    traceback on CI, which is a strictly worse failure than the drift this file
+    exists to catch: a checker that dies looks the same as a checker that has
+    nothing to say.
+
+    Returns the version, or None and a sentence saying what is wrong.
+    """
+    database = DATABASE.read_text(encoding="utf-8")
+
+    literal = DB_VERSION.search(database)
+    if literal:
+        return int(literal.group(1)), ""
+
+    # The version may be a constant so that a unit test can read it.
+    named = DB_VERSION_CONST.search(database)
+    if not named:
+        return None, f"No `version = N` found in {DATABASE.name}."
+
+    constant = re.search(
+        rf"\b(?:const\s+)?val\s+{re.escape(named.group(1))}\s*(?::\s*Int\s*)?=\s*(\d+)",
+        database,
+    )
+    if not constant:
+        return None, (
+            f"{DATABASE.name} says `version = {named.group(1)}`, but no "
+            f"`val {named.group(1)} = N` is declared in the same file."
+        )
+    return int(constant.group(1)), ""
+
+
 def check_version_chain(source: str) -> list[str]:
     """The migrations must reach the version the database says it is.
 
@@ -240,28 +274,9 @@ def check_version_chain(source: str) -> list[str]:
     This file was written to catch launch crashes and did not catch that one,
     because it only ever compared SQL. It compares the numbers now too.
     """
-    database = DATABASE.read_text(encoding="utf-8")
-    declared = DB_VERSION.search(database)
-    if declared:
-        version = int(declared.group(1))
-    else:
-        # The version may be a constant so that a unit test can read it.
-        # Follow it rather than giving up: this check failing is how the
-        # schema drifts, and a checker that stops looking is worse than one
-        # that never existed.
-        named = DB_VERSION_CONST.search(database)
-        if not named:
-            return [f"No `version = N` found in {DATABASE.name}."]
-        constant = re.search(
-            rf"\b(?:const\s+)?val\s+{re.escape(named.group(1))}\s*(?::\s*Int\s*)?=\s*(\d+)",
-            database,
-        )
-        if not constant:
-            return [
-                f"{DATABASE.name} says `version = {named.group(1)}`, "
-                f"but no `val {named.group(1)} = N` is declared in the same file."
-            ]
-        version = int(constant.group(1))
+    version, complaint = declared_version()
+    if version is None:
+        return [complaint]
 
     steps = sorted(
         {(int(a), int(b)) for a, b in MIGRATION_OBJECT.findall(COMMENTS.sub("", source))}
@@ -362,7 +377,7 @@ def main() -> int:
             print(f"  {problem}\n")
         return 1
 
-    version = DB_VERSION.search(DATABASE.read_text(encoding="utf-8")).group(1)
+    version, _ = declared_version()
     print(
         f"Migration SQL matches the schema Room expects at version {version} "
         f"({', '.join(sorted(checked))})."

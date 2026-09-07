@@ -294,7 +294,8 @@ class WorkPackagesViewModel(
         // add up to the figure printed beside it, and somebody would spend an
         // afternoon finding out why.
         val covers = Assignment.claimedBy(claimable.value).mapNotNull { row ->
-            val assignment = packages.value.firstOrNull { it.id == row.id } ?: return@mapNotNull null
+            val assignment = packages.value.firstOrNull { it.id == row.id }
+                ?: return@mapNotNull null
             PaymentsRepository.Cover(
                 assignmentId = assignment.id,
                 title = assignment.title,

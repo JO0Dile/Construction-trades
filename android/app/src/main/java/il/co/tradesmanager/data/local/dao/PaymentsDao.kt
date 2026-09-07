@@ -33,16 +33,6 @@ interface PaymentsDao {
     )
     fun observeLines(applicationId: String): Flow<List<PaymentApplicationLineEntity>>
 
-    /**
-     * Whether a package has already been claimed, and on which application.
-     *
-     * The work packages table carries an invoiced flag, but the flag cannot
-     * say where the money went. When a crew leader asks why a package they
-     * finished is not on this month's claim, this is the answer.
-     */
-    @Query("SELECT * FROM payment_application_lines WHERE assignmentId = :assignmentId")
-    suspend fun linesForAssignment(assignmentId: String): List<PaymentApplicationLineEntity>
-
     @Delete
     suspend fun delete(application: PaymentApplicationEntity)
 
