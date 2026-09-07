@@ -74,10 +74,6 @@ class ConcreteRepository(
         audit.record(POUR, pour.id, AuditTrail.Action.SIGN_OFF, actorName, "${pour.reference} finished")
     }
 
-    suspend fun removePour(pour: ConcretePourEntity, actorName: String) {
-        dao.deletePour(pour)
-        audit.record(POUR, pour.id, AuditTrail.Action.DELETE, actorName, pour.reference)
-    }
 
     /**
      * Books a truck in.
@@ -149,10 +145,6 @@ class ConcreteRepository(
         )
     }
 
-    suspend fun removeTicket(ticket: ConcreteTicketEntity, actorName: String) {
-        dao.deleteTicket(ticket)
-        audit.record(TICKET, ticket.id, AuditTrail.Action.DELETE, actorName, ticket.ticketNumber.orEmpty())
-    }
 
     private companion object {
         const val POUR = "concrete_pour"

@@ -49,6 +49,14 @@ jobs:
       - name: Migration SQL matches the schema Room expects
         run: python3 tools/check-migration.py
 
+      # A repository method nothing calls is how this app shipped with no way
+      # to report an accident: the table, the DAO and the repository were all
+      # there and no screen could reach any of them. Four features had been
+      # described by a name and a comment and performed by nothing. This holds
+      # the count where the last review left it.
+      - name: No new unreachable code in core and repositories
+        run: python3 tools/find-unused.py --check
+
       - name: Assemble debug APK
         working-directory: android
         run: ./gradlew --no-daemon :app:assembleDebug

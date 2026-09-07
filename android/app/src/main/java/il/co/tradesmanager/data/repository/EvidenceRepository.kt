@@ -102,12 +102,8 @@ class EvidenceRepository(
         audit.record(TALK, attendee.talkId, AuditTrail.Action.UPDATE, actorName, "Removed ${attendee.name}")
     }
 
-    suspend fun removeTalk(talk: ToolboxTalkEntity, actorName: String) {
-        dao.deleteTalk(talk)
-        audit.record(TALK, talk.id, AuditTrail.Action.DELETE, actorName, talk.topic)
-    }
 
-    /** A briefing nobody attended records nothing. Used to mark the row unfinished. */
+    /** A briefing nobody attended records nothing. Nothing reads this yet. */
     suspend fun isRegisterEmpty(talkId: String): Boolean = dao.attendeeCount(talkId) == 0
 
     // ---- Permits to work ----
@@ -297,10 +293,6 @@ class EvidenceRepository(
         audit.record(PERMIT, permit.id, AuditTrail.Action.UPDATE, actorName, "${permit.reference} cancelled")
     }
 
-    suspend fun removePermit(permit: PermitEntity, actorName: String) {
-        dao.deletePermit(permit)
-        audit.record(PERMIT, permit.id, AuditTrail.Action.DELETE, actorName, permit.reference)
-    }
 
     // ---- Snagging ----
 
@@ -404,10 +396,6 @@ class EvidenceRepository(
         return true
     }
 
-    suspend fun removeSnag(snag: SnagEntity, actorName: String) {
-        dao.deleteSnag(snag)
-        audit.record(SNAG, snag.id, AuditTrail.Action.DELETE, actorName, snag.reference)
-    }
 
     private companion object {
         const val TALK = "toolbox_talk"
