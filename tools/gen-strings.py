@@ -32,11 +32,14 @@ IOS_RES = ROOT / "ios" / "TradesManager" / "Resources"
 # Store-facing permission strings. Both platforms must explain, in the user's
 # language, why a permission is wanted: Apple reads these from InfoPlist.strings
 # at review time, Android shows them in the app's own rationale screen.
+# Microphone and speech recognition were declared here for dictating task
+# notes. Neither platform has any speech code, so both stores would have been
+# asked to approve a use that could not be demonstrated. They come back with
+# the feature. Location stays: iOS genuinely stamps a check-in with a fix
+# (see LocationStamp in ScheduleView), even though Android never did.
 IOS_INFO_PLIST_KEYS = {
     "NSCameraUsageDescription": "perm_camera_body",
     "NSPhotoLibraryUsageDescription": "perm_camera_body",
-    "NSMicrophoneUsageDescription": "perm_mic_body",
-    "NSSpeechRecognitionUsageDescription": "perm_mic_body",
     "NSLocationWhenInUseUsageDescription": "perm_location_body",
 }
 

@@ -41,7 +41,6 @@ import il.co.tradesmanager.core.time.TimeOfDay
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
-import il.co.tradesmanager.ui.components.rememberPermissionRequest
 import il.co.tradesmanager.ui.components.currentLocale
 import java.time.LocalTime
 
@@ -57,14 +56,16 @@ fun ScheduleScreen(container: AppContainer) {
     val locale = currentLocale()
     var showAdd by remember { mutableStateOf(false) }
 
-    // Location is asked for at the moment of a check-in, with a reason, and a
-    // refusal still records the check-in — just without the GPS stamp.
-    val requestLocation = rememberPermissionRequest(
-        permission = android.Manifest.permission.ACCESS_COARSE_LOCATION,
-        titleRes = R.string.perm_location_title,
-        bodyRes = R.string.perm_location_body,
-        onResult = { viewModel.toggleCheckIn(null, null) },
-    )
+    // There is no location prompt here any more, and there was never a GPS
+    // stamp. The prompt passed null coordinates to the check-in whatever the
+    // answer was, so it asked a worker for their position every time they
+    // started a shift and did nothing with the reply — the comment that used
+    // to sit here claimed a refusal cost you the stamp, when accepting cost
+    // you it too. Nothing in the app reads a location.
+    //
+    // The columns on the time entry stay, so a real GPS stamp can be added
+    // later with the permission it needs. Asking first and using it never is
+    // the wrong order.
 
     Scaffold(
         topBar = {
@@ -102,7 +103,7 @@ fun ScheduleScreen(container: AppContainer) {
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Button(
-                        onClick = { if (openEntry == null) requestLocation() else viewModel.toggleCheckIn(null, null) },
+                        onClick = { viewModel.toggleCheckIn(null, null) },
                         modifier = Modifier.weight(1f),
                     ) {
                         Text(
