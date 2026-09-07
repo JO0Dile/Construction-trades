@@ -970,6 +970,8 @@
     <string name="inc_fatal">Fatal</string>
     <string name="inc_escalate">This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.</string>
     <string name="inc_reported_by">Reported by</string>
+    <string name="acc_have_account">I already have an account</string>
+    <string name="acc_none_on_device">There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

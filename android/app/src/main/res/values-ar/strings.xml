@@ -958,6 +958,8 @@
     <string name="inc_fatal">مميت</string>
     <string name="inc_escalate">قد يتطلب هذا الحادث إبلاغ الجهة الرقابية إضافة إلى تسجيله هنا. تحقّق من التزاماتك — التطبيق لا يقرر ذلك نيابة عنك.</string>
     <string name="inc_reported_by">أبلغ عنه</string>
+    <string name="acc_have_account">لدي حساب بالفعل</string>
+    <string name="acc_none_on_device">لا توجد حسابات على هذا الهاتف بعد. الحسابات محفوظة على الجهاز، لذلك لا يمكن الوصول من هنا إلى حساب أُنشئ على هاتف آخر حتى يكون للشركة خادم. أنشئ حسابًا للبدء.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

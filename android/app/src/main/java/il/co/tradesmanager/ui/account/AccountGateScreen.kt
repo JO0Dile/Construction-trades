@@ -62,16 +62,34 @@ fun AccountGateScreen(container: AppContainer, needsSetup: Boolean) {
     // a door.
     var creating by remember { mutableStateOf(false) }
 
+    // And a fresh install used to offer no way in at all — only sign up. That
+    // is technically true today, because accounts live on the device and a
+    // phone with none has nothing to sign in to. It is not what somebody
+    // holding the phone believes, and hiding the door does not explain why.
+    // So both routes are offered and the sign-in screen says plainly what it
+    // cannot reach yet.
+    var signingIn by remember { mutableStateOf(false) }
+
     Surface(Modifier.fillMaxSize()) {
-        if (needsSetup || creating) {
-            FirstRun(
+        when {
+            needsSetup && signingIn -> SignIn(
+                wrongCredentials = wrongCredentials,
+                noAccountsOnDevice = true,
+                onTyping = viewModel::clearError,
+                onSignIn = viewModel::signIn,
+                onCreateAccount = { signingIn = false },
+            )
+
+            needsSetup || creating -> FirstRun(
                 onPersonal = viewModel::createPersonal,
                 onCompany = viewModel::createCompany,
                 onCancel = if (needsSetup) null else ({ creating = false }),
+                onSignIn = if (needsSetup) ({ signingIn = true }) else null,
             )
-        } else {
-            SignIn(
+
+            else -> SignIn(
                 wrongCredentials = wrongCredentials,
+                noAccountsOnDevice = false,
                 onTyping = viewModel::clearError,
                 onSignIn = viewModel::signIn,
                 onCreateAccount = { creating = true },
@@ -97,6 +115,8 @@ private fun FirstRun(
     ) -> Unit,
     /** Null on a device with no accounts: there is nowhere to go back to. */
     onCancel: (() -> Unit)?,
+    /** Offered only on a fresh install, where sign in is not otherwise shown. */
+    onSignIn: (() -> Unit)?,
 ) {
     var step by remember { mutableStateOf(Setup.CHOOSE) }
 
@@ -140,6 +160,12 @@ private fun FirstRun(
                     hint = stringResource(R.string.acc_company_hint),
                     onClick = { step = Setup.COMPANY },
                 )
+                onSignIn?.let { signIn ->
+                    Spacer(Modifier.height(12.dp))
+                    TextButton(onClick = signIn, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.acc_have_account))
+                    }
+                }
             }
 
             Setup.PERSONAL -> PersonalForm(onPersonal)
@@ -204,7 +230,8 @@ private fun PersonalForm(
                     passcode.takeIf { it.isNotEmpty() },
                 )
             },
-            enabled = name.isNotBlank() && passcodeOk,
+            enabled = name.isNotBlank() && username.isNotBlank() &&
+                idNumber.isNotBlank() && passcodeOk,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.acc_create))
@@ -215,9 +242,16 @@ private fun PersonalForm(
 /**
  * The two things that identify one person out of five on a site.
  *
- * Both optional. A sole trader setting the app up on a Tuesday morning should
- * not be stopped at a field they have to go and look up, and a manager filling
- * in a crew has every reason to fill both in.
+ * Both required. They were optional, on the reasoning that a sole trader
+ * setting up on a Tuesday morning should not be stopped at a field they have
+ * to go and look up. That reasoning does not survive the rest of the app: a
+ * safety officer records a violation by typing an ID number and getting back
+ * a face and a name, and an account with no ID number cannot be found that
+ * way — so the person it belongs to is invisible to the register exactly when
+ * it matters. Signing in needs the username for the same reason.
+ *
+ * Filling them in once at sign-up costs a minute. Not having them costs a
+ * violation that cannot be written against anybody.
  */
 @Composable
 private fun IdentityFields(
@@ -304,7 +338,8 @@ private fun CompanyForm(
                     passcode.takeIf { it.isNotEmpty() },
                 )
             },
-            enabled = companyName.isNotBlank() && ownerName.isNotBlank() && passcodeOk,
+            enabled = companyName.isNotBlank() && ownerName.isNotBlank() &&
+                username.isNotBlank() && idNumber.isNotBlank() && passcodeOk,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.acc_create))
@@ -330,6 +365,14 @@ private fun CompanyForm(
 @Composable
 private fun SignIn(
     wrongCredentials: Boolean,
+    /**
+     * True on a fresh install, where no credentials can possibly work.
+     *
+     * Without this the screen would answer every attempt with "wrong username
+     * or password", which is a lie: nothing is wrong with what they typed,
+     * there is simply nothing on this phone to check it against.
+     */
+    noAccountsOnDevice: Boolean,
     onTyping: () -> Unit,
     onSignIn: (identifier: String, password: String) -> Unit,
     onCreateAccount: () -> Unit,
@@ -347,6 +390,14 @@ private fun SignIn(
             text = stringResource(R.string.acc_sign_in_title),
             style = MaterialTheme.typography.headlineMedium,
         )
+
+        if (noAccountsOnDevice) {
+            Text(
+                text = stringResource(R.string.acc_none_on_device),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
 
         OutlinedTextField(
             value = identifier,

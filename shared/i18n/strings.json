@@ -4810,6 +4810,16 @@
       "en": "Reported by",
       "he": "דווח על ידי",
       "ar": "أبلغ عنه"
+    },
+    "acc_have_account": {
+      "en": "I already have an account",
+      "he": "כבר יש לי חשבון",
+      "ar": "لدي حساب بالفعل"
+    },
+    "acc_none_on_device": {
+      "en": "There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.",
+      "he": "אין עדיין חשבונות בטלפון הזה. החשבונות נשמרים במכשיר, ולכן חשבון שנוצר בטלפון אחר אינו נגיש מכאן עד שתהיה לחברה שרת. צרו חשבון כדי להתחיל.",
+      "ar": "لا توجد حسابات على هذا الهاتف بعد. الحسابات محفوظة على الجهاز، لذلك لا يمكن الوصول من هنا إلى حساب أُنشئ على هاتف آخر حتى يكون للشركة خادم. أنشئ حسابًا للبدء."
     }
   },
   "plurals": {

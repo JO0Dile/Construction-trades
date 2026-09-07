@@ -958,6 +958,8 @@
     <string name="inc_fatal">קטלני</string>
     <string name="inc_escalate">ייתכן שיש לדווח על אירוע זה גם לרשות המפקחת, ולא רק לתעד אותו כאן. בדקו את חובותיכם — האפליקציה אינה מכריעה בכך עבורכם.</string>
     <string name="inc_reported_by">דווח על ידי</string>
+    <string name="acc_have_account">כבר יש לי חשבון</string>
+    <string name="acc_none_on_device">אין עדיין חשבונות בטלפון הזה. החשבונות נשמרים במכשיר, ולכן חשבון שנוצר בטלפון אחר אינו נגיש מכאן עד שתהיה לחברה שרת. צרו חשבון כדי להתחיל.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
