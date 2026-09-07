@@ -42,6 +42,7 @@ import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.audit.AuditScreen
+import il.co.tradesmanager.ui.safety.IncidentsScreen
 import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
 import il.co.tradesmanager.ui.work.ContractsScreen
@@ -81,6 +82,7 @@ object Routes {
     const val PERMITS = "safety/permits"
     const val PERMIT_DETAIL = "safety/permits/detail"
     const val SNAGS = "safety/snags"
+    const val INCIDENTS = "safety/incidents"
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
@@ -365,6 +367,7 @@ fun AppNavHost(
                     onOpenTalks = { navController.navigate(Routes.TALKS) },
                     onOpenPermits = { navController.navigate(Routes.PERMITS) },
                     onOpenSnags = { navController.navigate(Routes.SNAGS) },
+                    onOpenIncidents = { navController.navigate(Routes.INCIDENTS) },
                 )
             }
             composable(Routes.TALKS) {
@@ -441,6 +444,16 @@ fun AppNavHost(
                 HandoverScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.INCIDENTS) {
+                IncidentsScreen(
+                    container = container,
+                    // Not scoped to a job: an incident is reported by whoever
+                    // saw it, and making them find the right project first is
+                    // how a near miss goes unrecorded.
+                    projectId = null,
                     onBack = { navController.popBackStack() },
                 )
             }

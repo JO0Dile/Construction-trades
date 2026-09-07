@@ -957,3 +957,15 @@
 "ret_apply" = "Apply now";
 "ret_applied" = "Removed %1$d entries. The purge is itself recorded in the trail.";
 "ret_nothing" = "Nothing was old enough to remove.";
+"inc_title" = "Incidents";
+"inc_add" = "Report an incident";
+"inc_empty" = "Nothing reported.";
+"inc_hint" = "Write it down while it is fresh, including the near misses. A near miss is the same accident with better luck.";
+"inc_what" = "What happened";
+"inc_severity" = "How bad";
+"inc_near_miss" = "Near miss";
+"inc_minor" = "Minor — first aid";
+"inc_serious" = "Serious — hospital or off work";
+"inc_fatal" = "Fatal";
+"inc_escalate" = "This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.";
+"inc_reported_by" = "Reported by";

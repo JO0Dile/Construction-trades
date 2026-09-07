@@ -4750,6 +4750,66 @@
       "en": "Nothing was old enough to remove.",
       "he": "לא נמצאו רשומות ישנות מספיק להסרה.",
       "ar": "لا توجد سجلات قديمة بما يكفي للإزالة."
+    },
+    "inc_title": {
+      "en": "Incidents",
+      "he": "אירועים",
+      "ar": "الحوادث"
+    },
+    "inc_add": {
+      "en": "Report an incident",
+      "he": "דיווח על אירוע",
+      "ar": "الإبلاغ عن حادث"
+    },
+    "inc_empty": {
+      "en": "Nothing reported.",
+      "he": "לא דווח דבר.",
+      "ar": "لم يُبلَّغ عن شيء."
+    },
+    "inc_hint": {
+      "en": "Write it down while it is fresh, including the near misses. A near miss is the same accident with better luck.",
+      "he": "תעדו בזמן אמת, כולל כמעט-תאונות. כמעט-תאונה היא אותה תאונה עם קצת יותר מזל.",
+      "ar": "سجّل الحادث فور وقوعه، بما في ذلك ما كاد أن يقع. ما كاد أن يقع هو نفس الحادث بحظ أوفر."
+    },
+    "inc_what": {
+      "en": "What happened",
+      "he": "מה קרה",
+      "ar": "ما الذي حدث"
+    },
+    "inc_severity": {
+      "en": "How bad",
+      "he": "חומרה",
+      "ar": "الخطورة"
+    },
+    "inc_near_miss": {
+      "en": "Near miss",
+      "he": "כמעט תאונה",
+      "ar": "كاد أن يقع"
+    },
+    "inc_minor": {
+      "en": "Minor — first aid",
+      "he": "קל — עזרה ראשונה",
+      "ar": "طفيف — إسعاف أولي"
+    },
+    "inc_serious": {
+      "en": "Serious — hospital or off work",
+      "he": "חמור — בית חולים או היעדרות",
+      "ar": "خطير — مستشفى أو انقطاع عن العمل"
+    },
+    "inc_fatal": {
+      "en": "Fatal",
+      "he": "קטלני",
+      "ar": "مميت"
+    },
+    "inc_escalate": {
+      "en": "This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.",
+      "he": "ייתכן שיש לדווח על אירוע זה גם לרשות המפקחת, ולא רק לתעד אותו כאן. בדקו את חובותיכם — האפליקציה אינה מכריעה בכך עבורכם.",
+      "ar": "قد يتطلب هذا الحادث إبلاغ الجهة الرقابية إضافة إلى تسجيله هنا. تحقّق من التزاماتك — التطبيق لا يقرر ذلك نيابة عنك."
+    },
+    "inc_reported_by": {
+      "en": "Reported by",
+      "he": "דווח על ידי",
+      "ar": "أبلغ عنه"
     }
   },
   "plurals": {
