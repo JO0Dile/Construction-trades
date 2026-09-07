@@ -20,8 +20,12 @@ data class TeamMemberEntity(
  *
  * There is no update or delete DAO method for this table on purpose: a
  * government tender asks for a log that the app itself cannot rewrite. Export
- * is read-only, and retention is enforced by a scheduled purge that records
- * its own purge event rather than by editing rows.
+ * is read-only, and the only deletion is the retention purge, which records
+ * its own purge event rather than editing rows.
+ *
+ * The purge does not run on a schedule and nothing is deleted by default. How
+ * long records must be held is a legal question the operator answers; see
+ * `core.security.Retention` for why the app declines to answer it.
  */
 @Entity(
     tableName = "audit_log",

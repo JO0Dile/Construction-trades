@@ -4705,6 +4705,51 @@
       "en": "This device could not load the encryption library, so the app opened the records unprotected rather than refuse to start. ID numbers, photographs and signatures can be read by anyone with access to this phone's files. Report this device before using it for personnel data.",
       "he": "המכשיר לא הצליח לטעון את ספריית ההצפנה, ולכן האפליקציה נפתחה ללא הגנה במקום לסרב לפעול. מספרי זהות, תמונות וחתימות ניתנים לקריאה בידי כל מי שיש לו גישה לקבצי המכשיר. דווחו על מכשיר זה לפני שימוש בנתוני עובדים.",
       "ar": "تعذّر على هذا الجهاز تحميل مكتبة التشفير، لذلك فتح التطبيق البيانات دون حماية بدلًا من رفض التشغيل. أرقام الهوية والصور والتواقيع يمكن لأي شخص لديه وصول إلى ملفات هذا الهاتف قراءتها. أبلغ عن هذا الجهاز قبل استخدامه لبيانات العاملين."
+    },
+    "ret_title": {
+      "en": "Keep the audit trail for",
+      "he": "שמירת יומן הביקורת למשך",
+      "ar": "مدة الاحتفاظ بسجل التدقيق"
+    },
+    "ret_hint": {
+      "en": "How long records must be kept is a legal question, and the answer differs for a payment record, a safety inspection and a worker's ID number. The app does not choose for you: nothing is ever deleted until you set a period, and a purge records what it removed.",
+      "he": "משך שמירת הרשומות הוא שאלה משפטית, והתשובה שונה עבור רשומת תשלום, בדיקת בטיחות ומספר זהות של עובד. האפליקציה אינה בוחרת עבורכם: דבר אינו נמחק עד שתגדירו תקופה, וכל מחיקה נרשמת.",
+      "ar": "مدة الاحتفاظ بالسجلات مسألة قانونية، والإجابة تختلف بين سجل دفع وفحص سلامة ورقم هوية عامل. التطبيق لا يختار عنك: لا يُحذف شيء حتى تحدّد مدة، وكل حذف يُسجَّل."
+    },
+    "ret_keep_all": {
+      "en": "Keep everything",
+      "he": "לשמור הכל",
+      "ar": "الاحتفاظ بكل شيء"
+    },
+    "ret_1_year": {
+      "en": "1 year",
+      "he": "שנה",
+      "ar": "سنة"
+    },
+    "ret_3_years": {
+      "en": "3 years",
+      "he": "3 שנים",
+      "ar": "3 سنوات"
+    },
+    "ret_7_years": {
+      "en": "7 years",
+      "he": "7 שנים",
+      "ar": "7 سنوات"
+    },
+    "ret_apply": {
+      "en": "Apply now",
+      "he": "החל כעת",
+      "ar": "تطبيق الآن"
+    },
+    "ret_applied": {
+      "en": "Removed %1$d entries. The purge is itself recorded in the trail.",
+      "he": "הוסרו %1$d רשומות. המחיקה עצמה נרשמה ביומן.",
+      "ar": "أُزيل %1$d سجلات. عملية الحذف نفسها مسجّلة في السجل."
+    },
+    "ret_nothing": {
+      "en": "Nothing was old enough to remove.",
+      "he": "לא נמצאו רשומות ישנות מספיק להסרה.",
+      "ar": "لا توجد سجلات قديمة بما يكفي للإزالة."
     }
   },
   "plurals": {

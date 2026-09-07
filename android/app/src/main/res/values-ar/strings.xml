@@ -937,6 +937,15 @@
     <string name="sec_encrypted_detail">المفتاح محفوظ في العتاد الآمن لهذا الجهاز ولا يغادره. لا يمكن قراءة ملف البيانات خارج الهاتف.</string>
     <string name="sec_not_encrypted">غير مفعّل — البيانات على هذا الجهاز غير مشفّرة</string>
     <string name="sec_not_encrypted_detail">تعذّر على هذا الجهاز تحميل مكتبة التشفير، لذلك فتح التطبيق البيانات دون حماية بدلًا من رفض التشغيل. أرقام الهوية والصور والتواقيع يمكن لأي شخص لديه وصول إلى ملفات هذا الهاتف قراءتها. أبلغ عن هذا الجهاز قبل استخدامه لبيانات العاملين.</string>
+    <string name="ret_title">مدة الاحتفاظ بسجل التدقيق</string>
+    <string name="ret_hint">مدة الاحتفاظ بالسجلات مسألة قانونية، والإجابة تختلف بين سجل دفع وفحص سلامة ورقم هوية عامل. التطبيق لا يختار عنك: لا يُحذف شيء حتى تحدّد مدة، وكل حذف يُسجَّل.</string>
+    <string name="ret_keep_all">الاحتفاظ بكل شيء</string>
+    <string name="ret_1_year">سنة</string>
+    <string name="ret_3_years">3 سنوات</string>
+    <string name="ret_7_years">7 سنوات</string>
+    <string name="ret_apply">تطبيق الآن</string>
+    <string name="ret_applied">أُزيل %1$d سجلات. عملية الحذف نفسها مسجّلة في السجل.</string>
+    <string name="ret_nothing">لا توجد سجلات قديمة بما يكفي للإزالة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

@@ -949,6 +949,15 @@
     <string name="sec_encrypted_detail">The key is held in this device\'s secure hardware and never leaves it. The database file cannot be read off the phone.</string>
     <string name="sec_not_encrypted">Off — the records on this device are NOT encrypted</string>
     <string name="sec_not_encrypted_detail">This device could not load the encryption library, so the app opened the records unprotected rather than refuse to start. ID numbers, photographs and signatures can be read by anyone with access to this phone\'s files. Report this device before using it for personnel data.</string>
+    <string name="ret_title">Keep the audit trail for</string>
+    <string name="ret_hint">How long records must be kept is a legal question, and the answer differs for a payment record, a safety inspection and a worker\'s ID number. The app does not choose for you: nothing is ever deleted until you set a period, and a purge records what it removed.</string>
+    <string name="ret_keep_all">Keep everything</string>
+    <string name="ret_1_year">1 year</string>
+    <string name="ret_3_years">3 years</string>
+    <string name="ret_7_years">7 years</string>
+    <string name="ret_apply">Apply now</string>
+    <string name="ret_applied">Removed %1$d entries. The purge is itself recorded in the trail.</string>
+    <string name="ret_nothing">Nothing was old enough to remove.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

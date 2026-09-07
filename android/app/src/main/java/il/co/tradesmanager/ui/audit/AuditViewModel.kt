@@ -3,6 +3,7 @@ package il.co.tradesmanager.ui.audit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.security.AuditChain
+import il.co.tradesmanager.core.security.Retention
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.di.AppContainer
@@ -10,6 +11,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -70,4 +73,39 @@ class AuditViewModel(private val container: AppContainer) : ViewModel() {
     fun exportHandled() {
         _pendingExport.value = null
     }
+
+    /** How long the trail is kept. Zero means everything, and is the default. */
+    val retentionDays: StateFlow<Int> = container.settings.settings
+        .map { it.auditRetentionDays }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    /**
+     * How many entries the last purge removed, or null before one has run.
+     *
+     * Kept for as long as the screen is open rather than cleared on a timer:
+     * it is a receipt for a deletion, and a receipt that vanishes while
+     * somebody is reading it is worse than no receipt.
+     */
+    private val _purged = MutableStateFlow<Int?>(null)
+    val purged: StateFlow<Int?> = _purged.asStateFlow()
+
+    fun setRetention(days: Int) = viewModelScope.launch {
+        container.settings.setAuditRetentionDays(days)
+    }
+
+    /**
+     * Applies the period now, rather than on a schedule.
+     *
+     * Deleting records is not something to do quietly in the background while
+     * somebody is looking at another screen. The period is a decision and so
+     * is acting on it, and the purge writes its own entry saying what it cut.
+     */
+    fun applyRetention() = viewModelScope.launch {
+        val days = container.settings.settings.first().auditRetentionDays
+        val cutoff = Retention.cutoff(System.currentTimeMillis(), days) ?: return@launch
+        val actor = container.settings.settings.first().actorName
+        _purged.value = container.auditTrail.purgeOlderThan(cutoff, actor)
+        _verdict.value = null
+    }
+
 }

@@ -2,8 +2,10 @@ package il.co.tradesmanager.ui.audit
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -16,6 +18,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -34,8 +37,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.security.AuditChain
+import il.co.tradesmanager.core.security.Retention
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
@@ -71,6 +76,8 @@ fun AuditScreen(
     val context = LocalContext.current
     val layoutDirection = LocalLayoutDirection.current
     val pending by viewModel.pendingExport.collectAsStateWithLifecycle()
+    val retention by viewModel.retentionDays.collectAsStateWithLifecycle()
+    val purged by viewModel.purged.collectAsStateWithLifecycle()
 
     // Writing the file and opening the share sheet is the screen's job: both
     // need a Context, and a view model holding one outlives the screen that
@@ -148,6 +155,60 @@ fun AuditScreen(
                 }
             }
 
+            item { SectionHeader(stringResource(R.string.ret_title)) }
+            item {
+                Text(
+                    text = stringResource(R.string.ret_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                )
+            }
+            item {
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
+                ) {
+                    items(Retention.CHOICES) { days ->
+                        FilterChip(
+                            selected = retention == days,
+                            onClick = { viewModel.setRetention(days) },
+                            label = { Text(stringResource(retentionLabel(days))) },
+                        )
+                    }
+                }
+            }
+            // Only offered once a period is set: "apply" with nothing to apply
+            // is a button that either does nothing or, worse, looks like it
+            // did something.
+            if (retention > 0) {
+                item {
+                    OutlinedButton(
+                        onClick = { viewModel.applyRetention() },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                    ) {
+                        Text(stringResource(R.string.ret_apply))
+                    }
+                }
+            }
+            purged?.let { count ->
+                item {
+                    Text(
+                        text = if (count > 0) {
+                            stringResource(R.string.ret_applied, count)
+                        } else {
+                            stringResource(R.string.ret_nothing)
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                    )
+                }
+            }
+
+            item { SectionHeader(stringResource(R.string.audit_title)) }
+
             if (entries.isEmpty()) {
                 item { SectionPlaceholder(stringResource(R.string.audit_empty)) }
             }
@@ -176,6 +237,14 @@ fun AuditScreen(
             }
         }
     }
+}
+
+/** The words for each retention choice. */
+private fun retentionLabel(days: Int): Int = when (days) {
+    0 -> R.string.ret_keep_all
+    365 -> R.string.ret_1_year
+    3 * 365 -> R.string.ret_3_years
+    else -> R.string.ret_7_years
 }
 
 /**

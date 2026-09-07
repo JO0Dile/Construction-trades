@@ -937,6 +937,15 @@
     <string name="sec_encrypted_detail">המפתח נשמר בחומרה המאובטחת של המכשיר ואינו יוצא ממנה. לא ניתן לקרוא את קובץ הנתונים מחוץ למכשיר.</string>
     <string name="sec_not_encrypted">כבוי — הנתונים במכשיר זה אינם מוצפנים</string>
     <string name="sec_not_encrypted_detail">המכשיר לא הצליח לטעון את ספריית ההצפנה, ולכן האפליקציה נפתחה ללא הגנה במקום לסרב לפעול. מספרי זהות, תמונות וחתימות ניתנים לקריאה בידי כל מי שיש לו גישה לקבצי המכשיר. דווחו על מכשיר זה לפני שימוש בנתוני עובדים.</string>
+    <string name="ret_title">שמירת יומן הביקורת למשך</string>
+    <string name="ret_hint">משך שמירת הרשומות הוא שאלה משפטית, והתשובה שונה עבור רשומת תשלום, בדיקת בטיחות ומספר זהות של עובד. האפליקציה אינה בוחרת עבורכם: דבר אינו נמחק עד שתגדירו תקופה, וכל מחיקה נרשמת.</string>
+    <string name="ret_keep_all">לשמור הכל</string>
+    <string name="ret_1_year">שנה</string>
+    <string name="ret_3_years">3 שנים</string>
+    <string name="ret_7_years">7 שנים</string>
+    <string name="ret_apply">החל כעת</string>
+    <string name="ret_applied">הוסרו %1$d רשומות. המחיקה עצמה נרשמה ביומן.</string>
+    <string name="ret_nothing">לא נמצאו רשומות ישנות מספיק להסרה.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

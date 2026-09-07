@@ -40,6 +40,26 @@ Two further limits, stated because they bound what a verified export proves:
   reported as unverifiable rather than counted as intact, because "intact"
   over a log that was never signed is the more dangerous answer.
 
+## How long the trail is kept
+
+Nothing is deleted by default. **Settings → Audit trail** offers a retention
+period — keep everything, one year, three years, seven years — and applying it
+is a separate, deliberate action rather than something that happens quietly in
+the background while somebody is on another screen.
+
+The app supplies the mechanism and declines to supply the policy. How long
+site records must be held is a legal question with different answers for a
+payment application, a scaffold inspection and a worker's ID number, and it is
+answered by the organisation running the app, not by whoever wrote the code. A
+period invented in the source would destroy evidence on somebody else's job,
+months later, with nobody having decided anything.
+
+A purge writes its own entry recording how many entries it removed, the cutoff
+it used, and the sequence and previous hash of the oldest entry that survived.
+That last part matters: the first surviving entry points at something that is
+no longer there, which is the one break verification cannot tell from a
+deletion. The `PURGE` row is what explains it.
+
 ## What is hashed
 
 SHA-256 over these values, in this order, each prefixed with its length in
