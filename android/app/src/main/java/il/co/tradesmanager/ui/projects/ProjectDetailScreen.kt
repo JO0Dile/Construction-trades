@@ -8,21 +8,25 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AddAPhoto
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.IosShare
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
@@ -31,6 +35,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -54,22 +59,25 @@ import coil.compose.AsyncImage
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.data.catalog.WorkStage
+import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
-import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.ItemThumbnail
 import il.co.tradesmanager.ui.components.PhotoViewer
-import il.co.tradesmanager.ui.components.rememberImageAdder
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
 import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
+import il.co.tradesmanager.ui.components.rememberImageAdder
+import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.export.ExportDocument
 import il.co.tradesmanager.ui.export.Exporter
-import il.co.tradesmanager.ui.components.unitLabel
 
 /**
  * A way from a job into one of its registers.
@@ -171,6 +179,9 @@ fun ProjectDetailScreen(
         }
     }
 
+    var stagingTask by remember { mutableStateOf<ProjectTaskEntity?>(null) }
+    val language = currentLocale().toLanguageTag()
+
     val listState = rememberLazyListState()
     val rowsAboveTasks = (if (project != null) 1 else 0) +
         (if (canSeeMoney) 1 else 0) +
@@ -227,7 +238,15 @@ fun ProjectDetailScreen(
                             if (project == null) return@IconButton
                             val result = Exporter.write(
                                 context = context,
-                                document = ExportDocument.ProjectSheet(project, state.tasks, state.materials),
+                                document = ExportDocument.ProjectSheet(
+                                    project = project,
+                                    tasks = state.tasks,
+                                    materials = state.materials,
+                                    taskStages = state.tasks.mapNotNull { task ->
+                                        viewModel.stageName(task.stageId, language)
+                                            ?.let { task.id to it }
+                                    }.toMap(),
+                                ),
                                 languageTag = languageTag,
                                 locale = locale,
                                 rightToLeft = layoutDirection == LayoutDirection.Rtl,
@@ -343,8 +362,14 @@ fun ProjectDetailScreen(
                     item { SectionPlaceholder(stringResource(R.string.proj_tasks_empty)) }
                 }
                 items(state.tasks, key = { it.id }) { task ->
+                    val stage = viewModel.stageName(task.stageId, language)
                     ListItem(
                         headlineContent = { Text(task.title) },
+                        // The stage under the title rather than beside it: the
+                        // title is what somebody reads, and three tasks that
+                        // read the same on three floors are the reason the
+                        // stage is worth showing at all.
+                        supportingContent = stage?.let { { Text(it) } },
                         leadingContent = {
                             Checkbox(
                                 checked = task.isDone,
@@ -361,6 +386,11 @@ fun ProjectDetailScreen(
                                     )
                                 }
                             }
+                        },
+                        modifier = if (canEditPlan) {
+                            Modifier.clickable { stagingTask = task }
+                        } else {
+                            Modifier
                         },
                     )
                 }
@@ -429,6 +459,19 @@ fun ProjectDetailScreen(
             onAdd = {
                 viewModel.addTask(it)
                 addingTask = false
+            },
+        )
+    }
+
+    stagingTask?.let { task ->
+        StagePicker(
+            task = task,
+            stages = viewModel.stages,
+            language = language,
+            onDismiss = { stagingTask = null },
+            onChoose = { stageId ->
+                stagingTask = null
+                viewModel.setTaskStage(task, stageId)
             },
         )
     }
@@ -532,4 +575,52 @@ private fun ProjectImages(
             }
         }
     }
+}
+
+/**
+ * Which stage of the job a task belongs to.
+ *
+ * Every stage is offered plus "no stage", because plenty of tasks belong to
+ * none — "call the crane company" is not rough-in — and a picker with no way
+ * out would force a wrong answer rather than accept an empty one.
+ */
+@Composable
+private fun StagePicker(
+    task: ProjectTaskEntity,
+    stages: List<WorkStage>,
+    language: String,
+    onDismiss: () -> Unit,
+    onChoose: (String?) -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.task_stage)) },
+        text = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                Text(
+                    text = stringResource(R.string.task_stage_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                FilterChip(
+                    selected = task.stageId == null,
+                    onClick = { onChoose(null) },
+                    label = { Text(stringResource(R.string.task_stage_none)) },
+                )
+                stages.forEach { stage ->
+                    FilterChip(
+                        selected = task.stageId == stage.id,
+                        onClick = { onChoose(stage.id) },
+                        label = { Text(stage.names.resolve(language)) },
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
 }

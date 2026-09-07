@@ -76,6 +76,17 @@ import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.local.entity.VariationEntity
 
+/**
+ * The schema version the code expects.
+ *
+ * A constant rather than a literal inside the annotation so that a test can
+ * read it. Three releases in a row shipped a migration that did not match the
+ * entities it was meant to produce, and each one only surfaced when the
+ * database refused to open on a phone that already had data. The chain is
+ * checked against this now, in a unit test that runs on every push.
+ */
+const val DATABASE_VERSION = 20
+
 @Database(
     entities = [
         TradeEntity::class,
@@ -129,7 +140,7 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         ContractAmendmentEntity::class,
         AssignmentEntity::class,
     ],
-    version = 19,
+    version = DATABASE_VERSION,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)

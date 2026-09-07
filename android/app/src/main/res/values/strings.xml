@@ -919,6 +919,9 @@
     <string name="wp_claim_total">This application will claim</string>
     <string name="wp_claim_cumulative">Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.</string>
     <string name="wp_claim_none">Nothing new approved since the last application</string>
+    <string name="task_stage">Stage of the job</string>
+    <string name="task_stage_none">No stage</string>
+    <string name="task_stage_hint">Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

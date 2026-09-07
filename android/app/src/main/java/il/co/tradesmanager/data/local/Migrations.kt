@@ -174,6 +174,19 @@ object Migrations {
         }
     }
 
+    /**
+     * A task can say where in the job it sits.
+     *
+     * Nullable, so every task already on a phone stays exactly as it is. A
+     * migration that invented a stage for existing rows would be guessing, and
+     * a guessed stage is worse than none — it reads as fact.
+     */
+    val MIGRATION_19_20 = object : Migration(19, 20) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_19_20.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -193,6 +206,7 @@ object Migrations {
         MIGRATION_16_17,
         MIGRATION_17_18,
         MIGRATION_18_19,
+        MIGRATION_19_20,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -598,5 +612,10 @@ object Migrations {
         "CREATE INDEX IF NOT EXISTS `index_assignments_payeeOrgId` " +
             "ON `assignments` (`payeeOrgId`)",
         "CREATE INDEX IF NOT EXISTS `index_assignments_status` ON `assignments` (`status`)",
+    )
+
+    val SQL_19_20: List<String> = listOf(
+        "ALTER TABLE `project_tasks` ADD COLUMN `stageId` TEXT",
+        "ALTER TABLE `project_tasks` ADD COLUMN `scopeId` TEXT",
     )
 }

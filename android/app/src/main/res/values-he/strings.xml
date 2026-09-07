@@ -907,6 +907,9 @@
     <string name="wp_claim_total">החשבון ידרוש</string>
     <string name="wp_claim_cumulative">כל מה שאושר עד היום, לא רק מה שנוסף כעת. הסכום לתשלום הוא זה פחות עיכבון ופחות מה ששולם כבר.</string>
     <string name="wp_claim_none">לא אושר דבר חדש מאז החשבון הקודם</string>
+    <string name="task_stage">שלב בעבודה</string>
+    <string name="task_stage_none">ללא שלב</string>
+    <string name="task_stage_hint">רשות. שווה לקבוע כשאותה משימה חוזרת בכמה קומות — השלב הוא מה שמבדיל ביניהן.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

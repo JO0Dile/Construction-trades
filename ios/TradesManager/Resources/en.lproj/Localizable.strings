@@ -918,3 +918,6 @@
 "wp_claim_total" = "This application will claim";
 "wp_claim_cumulative" = "Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.";
 "wp_claim_none" = "Nothing new approved since the last application";
+"task_stage" = "Stage of the job";
+"task_stage_none" = "No stage";
+"task_stage_hint" = "Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.";

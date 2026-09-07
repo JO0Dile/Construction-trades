@@ -29,10 +29,21 @@ sealed interface ExportDocument {
 
     data class Inventory(val items: List<InventoryItemEntity>) : ExportDocument
 
+    /**
+     * A job sheet: what has to happen, and what has to be there for it.
+     *
+     * [taskStages] maps a task id to the stage it belongs to, already
+     * resolved into the reader's language. The stage names live in the
+     * catalogue rather than the database, and an exporter that reached into
+     * the catalogue would be an exporter that needs a container — so the
+     * screen that already knows the language resolves them and hands them
+     * over. A task with no stage is simply absent from the map.
+     */
     data class ProjectSheet(
         val project: ProjectEntity,
         val tasks: List<ProjectTaskEntity>,
         val materials: List<ProjectMaterialEntity>,
+        val taskStages: Map<String, String> = emptyMap(),
     ) : ExportDocument
 
     data class Checklist(
@@ -89,6 +100,7 @@ sealed interface ExportDocument {
                 context.getString(R.string.inv_name),
                 context.getString(R.string.proj_required_qty),
                 context.getString(R.string.inv_unit),
+                context.getString(R.string.task_stage),
             ),
             rows = tasks.map { task ->
                 listOf(
@@ -96,6 +108,7 @@ sealed interface ExportDocument {
                     task.title,
                     context.getString(if (task.isDone) R.string.saf_pass else R.string.saf_fail),
                     "",
+                    taskStages[task.id].orEmpty(),
                 )
             } + materials.map { material ->
                 listOf(
@@ -103,6 +116,7 @@ sealed interface ExportDocument {
                     material.label,
                     Formats.quantity(material.requiredQuantity, locale),
                     context.getString(unitLabel(material.unit)),
+                    "",
                 )
             },
         )

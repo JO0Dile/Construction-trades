@@ -4555,6 +4555,21 @@
       "en": "Nothing new approved since the last application",
       "he": "לא אושר דבר חדש מאז החשבון הקודם",
       "ar": "لا شيء جديد اعتُمد منذ المطالبة السابقة"
+    },
+    "task_stage": {
+      "en": "Stage of the job",
+      "he": "שלב בעבודה",
+      "ar": "مرحلة العمل"
+    },
+    "task_stage_none": {
+      "en": "No stage",
+      "he": "ללא שלב",
+      "ar": "بدون مرحلة"
+    },
+    "task_stage_hint": {
+      "en": "Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.",
+      "he": "רשות. שווה לקבוע כשאותה משימה חוזרת בכמה קומות — השלב הוא מה שמבדיל ביניהן.",
+      "ar": "اختياري. يستحق التحديد عندما تتكرر نفس المهمة في عدة طوابق — المرحلة هي ما يميّزها."
     }
   },
   "plurals": {

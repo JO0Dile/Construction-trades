@@ -907,6 +907,9 @@
     <string name="wp_claim_total">هذه المطالبة ستطالب بـ</string>
     <string name="wp_claim_cumulative">كل ما اعتُمد حتى اليوم، لا ما يُضاف الآن فقط. المستحق فعلياً هو ذلك ناقص المحتجز وناقص ما دُفع سابقاً.</string>
     <string name="wp_claim_none">لا شيء جديد اعتُمد منذ المطالبة السابقة</string>
+    <string name="task_stage">مرحلة العمل</string>
+    <string name="task_stage_none">بدون مرحلة</string>
+    <string name="task_stage_hint">اختياري. يستحق التحديد عندما تتكرر نفس المهمة في عدة طوابق — المرحلة هي ما يميّزها.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

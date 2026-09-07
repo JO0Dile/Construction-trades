@@ -1,15 +1,17 @@
 package il.co.tradesmanager.ui.projects
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import android.net.Uri
+import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.money.JobFinancials
+import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
-import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.SharingStarted
@@ -137,8 +139,28 @@ class ProjectDetailViewModel(
         container.projects.removeMaterial(material, container.settings.settings.first().actorName)
     }
 
-    fun addTask(title: String) = viewModelScope.launch {
-        container.projects.addTask(projectId, title, container.settings.settings.first().actorName)
+    fun addTask(title: String, stageId: String? = null) = viewModelScope.launch {
+        container.projects.addTask(
+            projectId = projectId,
+            title = title,
+            actorName = container.settings.settings.first().actorName,
+            stageId = stageId,
+        )
+    }
+
+    /** The stages of a job, for the picker. Read-only reference data. */
+    val stages: List<WorkStage> get() = container.scopes.stages
+
+    fun stageName(id: String?, languageTag: String): String? =
+        container.scopes.stage(id)?.names?.resolve(languageTag)
+
+    fun setTaskStage(task: ProjectTaskEntity, stageId: String?) = viewModelScope.launch {
+        container.projects.setTaskStage(
+            task = task,
+            stageId = stageId,
+            scopeId = task.scopeId.takeIf { stageId != null },
+            actorName = container.settings.settings.first().actorName,
+        )
     }
 
     fun removeTask(task: ProjectTaskEntity) = viewModelScope.launch {
