@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.12.0 — and what to try first
+## What is new in 0.12.1 — and what to try first
 
 This one is about the people on a site rather than the paperwork about them.
 Tap **Check for updates** in Settings and it will offer itself.
