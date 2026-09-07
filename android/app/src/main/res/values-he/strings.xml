@@ -17,9 +17,7 @@
     <string name="action_filter">סינון</string>
     <string name="action_export">ייצוא</string>
     <string name="state_loading">טוען…</string>
-    <string name="state_saved">נשמר</string>
     <string name="state_deleted">נמחק</string>
-    <string name="error_generic">משהו השתבש</string>
     <string name="error_required">שדה חובה</string>
     <string name="error_number">יש להזין מספר</string>
     <string name="onboarding_welcome_title">התאמת האפליקציה לתחום שלך</string>
@@ -935,6 +933,10 @@
     <string name="audit_col_signature">חתימה</string>
     <string name="audit_export_checked">נבדק בעת הייצוא</string>
     <string name="audit_export_note">החתימות מקוצרות ב-PDF. קובץ ה-CSV מכיל אותן במלואן, ו-docs/AUDIT.md מסביר כיצד לחשב אותן מחדש.</string>
+    <string name="sec_encrypted">פעיל — הנתונים במכשיר זה מוצפנים</string>
+    <string name="sec_encrypted_detail">המפתח נשמר בחומרה המאובטחת של המכשיר ואינו יוצא ממנה. לא ניתן לקרוא את קובץ הנתונים מחוץ למכשיר.</string>
+    <string name="sec_not_encrypted">כבוי — הנתונים במכשיר זה אינם מוצפנים</string>
+    <string name="sec_not_encrypted_detail">המכשיר לא הצליח לטעון את ספריית ההצפנה, ולכן האפליקציה נפתחה ללא הגנה במקום לסרב לפעול. מספרי זהות, תמונות וחתימות ניתנים לקריאה בידי כל מי שיש לו גישה לקבצי המכשיר. דווחו על מכשיר זה לפני שימוש בנתוני עובדים.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

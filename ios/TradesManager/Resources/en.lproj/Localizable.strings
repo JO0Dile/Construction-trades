@@ -17,9 +17,7 @@
 "action_filter" = "Filter";
 "action_export" = "Export";
 "state_loading" = "Loading…";
-"state_saved" = "Saved";
 "state_deleted" = "Deleted";
-"error_generic" = "Something went wrong";
 "error_required" = "This field is required";
 "error_number" = "Enter a number";
 "onboarding_welcome_title" = "Set the app up for your trade";
@@ -946,3 +944,7 @@
 "audit_col_signature" = "Signature";
 "audit_export_checked" = "Checked at export";
 "audit_export_note" = "Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.";
+"sec_encrypted" = "On — the records on this device are encrypted";
+"sec_encrypted_detail" = "The key is held in this device's secure hardware and never leaves it. The database file cannot be read off the phone.";
+"sec_not_encrypted" = "Off — the records on this device are NOT encrypted";
+"sec_not_encrypted_detail" = "This device could not load the encryption library, so the app opened the records unprotected rather than refuse to start. ID numbers, photographs and signatures can be read by anyone with access to this phone's files. Report this device before using it for personnel data.";

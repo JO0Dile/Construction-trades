@@ -95,20 +95,10 @@
       "he": "טוען…",
       "ar": "جارٍ التحميل…"
     },
-    "state_saved": {
-      "en": "Saved",
-      "he": "נשמר",
-      "ar": "تم الحفظ"
-    },
     "state_deleted": {
       "en": "Deleted",
       "he": "נמחק",
       "ar": "تم الحذف"
-    },
-    "error_generic": {
-      "en": "Something went wrong",
-      "he": "משהו השתבש",
-      "ar": "حدث خطأ ما"
     },
     "error_required": {
       "en": "This field is required",
@@ -4695,6 +4685,26 @@
       "en": "Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.",
       "he": "החתימות מקוצרות ב-PDF. קובץ ה-CSV מכיל אותן במלואן, ו-docs/AUDIT.md מסביר כיצד לחשב אותן מחדש.",
       "ar": "التواقيع مختصرة في ملف PDF. ملف CSV يحملها كاملة، و docs/AUDIT.md يوضح كيفية إعادة حسابها."
+    },
+    "sec_encrypted": {
+      "en": "On — the records on this device are encrypted",
+      "he": "פעיל — הנתונים במכשיר זה מוצפנים",
+      "ar": "مفعّل — البيانات على هذا الجهاز مشفّرة"
+    },
+    "sec_encrypted_detail": {
+      "en": "The key is held in this device's secure hardware and never leaves it. The database file cannot be read off the phone.",
+      "he": "המפתח נשמר בחומרה המאובטחת של המכשיר ואינו יוצא ממנה. לא ניתן לקרוא את קובץ הנתונים מחוץ למכשיר.",
+      "ar": "المفتاح محفوظ في العتاد الآمن لهذا الجهاز ولا يغادره. لا يمكن قراءة ملف البيانات خارج الهاتف."
+    },
+    "sec_not_encrypted": {
+      "en": "Off — the records on this device are NOT encrypted",
+      "he": "כבוי — הנתונים במכשיר זה אינם מוצפנים",
+      "ar": "غير مفعّل — البيانات على هذا الجهاز غير مشفّرة"
+    },
+    "sec_not_encrypted_detail": {
+      "en": "This device could not load the encryption library, so the app opened the records unprotected rather than refuse to start. ID numbers, photographs and signatures can be read by anyone with access to this phone's files. Report this device before using it for personnel data.",
+      "he": "המכשיר לא הצליח לטעון את ספריית ההצפנה, ולכן האפליקציה נפתחה ללא הגנה במקום לסרב לפעול. מספרי זהות, תמונות וחתימות ניתנים לקריאה בידי כל מי שיש לו גישה לקבצי המכשיר. דווחו על מכשיר זה לפני שימוש בנתוני עובדים.",
+      "ar": "تعذّر على هذا الجهاز تحميل مكتبة التشفير، لذلك فتح التطبيق البيانات دون حماية بدلًا من رفض التشغيل. أرقام الهوية والصور والتواقيع يمكن لأي شخص لديه وصول إلى ملفات هذا الهاتف قراءتها. أبلغ عن هذا الجهاز قبل استخدامه لبيانات العاملين."
     }
   },
   "plurals": {

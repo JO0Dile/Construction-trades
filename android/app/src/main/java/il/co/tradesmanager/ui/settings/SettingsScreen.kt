@@ -294,15 +294,48 @@ fun SettingsScreen(
                     )
                 }
             }
+            // The encryption status said "Saved" when it was on and "Something
+            // went wrong" when it was off. Off means ID numbers, photographs
+            // and signatures are sitting unprotected on the phone, and a
+            // generic error string is not how you tell somebody that. The
+            // failure case is coloured and spelled out, because a person who
+            // does not notice it has no way to find out.
             item {
+                val encrypted = viewModel.databaseIsEncrypted
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.set_encrypt)) },
                     supportingContent = {
-                        Text(
-                            stringResource(
-                                if (viewModel.databaseIsEncrypted) R.string.state_saved else R.string.error_generic,
-                            ),
-                        )
+                        Column {
+                            Text(
+                                text = stringResource(
+                                    if (encrypted) {
+                                        R.string.sec_encrypted
+                                    } else {
+                                        R.string.sec_not_encrypted
+                                    },
+                                ),
+                                color = if (encrypted) {
+                                    MaterialTheme.colorScheme.onSurface
+                                } else {
+                                    MaterialTheme.colorScheme.error
+                                },
+                            )
+                            Text(
+                                text = stringResource(
+                                    if (encrypted) {
+                                        R.string.sec_encrypted_detail
+                                    } else {
+                                        R.string.sec_not_encrypted_detail
+                                    },
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = if (encrypted) {
+                                    MaterialTheme.colorScheme.onSurfaceVariant
+                                } else {
+                                    MaterialTheme.colorScheme.error
+                                },
+                            )
+                        }
                     },
                 )
             }

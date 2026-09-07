@@ -17,9 +17,7 @@
     <string name="action_filter">تصفية</string>
     <string name="action_export">تصدير</string>
     <string name="state_loading">جارٍ التحميل…</string>
-    <string name="state_saved">تم الحفظ</string>
     <string name="state_deleted">تم الحذف</string>
-    <string name="error_generic">حدث خطأ ما</string>
     <string name="error_required">هذا الحقل مطلوب</string>
     <string name="error_number">أدخل رقمًا</string>
     <string name="onboarding_welcome_title">إعداد التطبيق لمهنتك</string>
@@ -935,6 +933,10 @@
     <string name="audit_col_signature">توقيع</string>
     <string name="audit_export_checked">فُحص عند التصدير</string>
     <string name="audit_export_note">التواقيع مختصرة في ملف PDF. ملف CSV يحملها كاملة، و docs/AUDIT.md يوضح كيفية إعادة حسابها.</string>
+    <string name="sec_encrypted">مفعّل — البيانات على هذا الجهاز مشفّرة</string>
+    <string name="sec_encrypted_detail">المفتاح محفوظ في العتاد الآمن لهذا الجهاز ولا يغادره. لا يمكن قراءة ملف البيانات خارج الهاتف.</string>
+    <string name="sec_not_encrypted">غير مفعّل — البيانات على هذا الجهاز غير مشفّرة</string>
+    <string name="sec_not_encrypted_detail">تعذّر على هذا الجهاز تحميل مكتبة التشفير، لذلك فتح التطبيق البيانات دون حماية بدلًا من رفض التشغيل. أرقام الهوية والصور والتواقيع يمكن لأي شخص لديه وصول إلى ملفات هذا الهاتف قراءتها. أبلغ عن هذا الجهاز قبل استخدامه لبيانات العاملين.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
