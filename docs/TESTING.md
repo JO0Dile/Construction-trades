@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.8.0 — and what to try first
+## What is new in 0.9.0 — and what to try first
 
 The whole point of this release is that it can be installed and prodded. Tap
 **Check for updates** in Settings and it will offer itself.
@@ -115,6 +115,22 @@ one, or slipping one in all show up as a break. What it cannot see is the
 newest entries being deleted — nothing has committed to them yet. That needs
 a server holding the end of the chain, and `docs/SERVER.md` says so rather
 than pretending otherwise.
+
+### Added in 0.9.0
+
+**You can hand the audit trail to somebody else, and they can check it
+without this app.** Settings → *Audit trail* → the share button, top right.
+
+- [ ] It verifies first, then shares two files. The **PDF** is the one to
+      print or email — six columns, readable. The **CSV** is the one to check.
+- [ ] Send yourself the CSV and run, on any computer with Python:
+      `python3 tools/verify-audit-export.py audit-trail-<date>.csv`
+      It should say *The trail verifies.*
+- [ ] Now open the CSV, change a word in the *What happened* column, save, and
+      run it again. It names the entry and refuses. That is the whole point:
+      the checker does not trust the file, and does not need the app.
+- [ ] `docs/AUDIT.md` says exactly what is hashed, and what the chain
+      cannot see.
 
 ### What is not in it
 
