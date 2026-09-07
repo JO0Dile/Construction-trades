@@ -35,6 +35,7 @@ object StagedRestore {
     private const val DATABASE = "database.db"
     private const val MEDIA = "media"
     private const val REPLACED_SUFFIX = ".replaced"
+    private const val PHOTOS = "photos"
     private const val NOTE = "note"
 
     /**
@@ -138,12 +139,27 @@ object StagedRestore {
 
         val live = context.getDatabasePath(AppDatabase.NAME)
         val setAside = File(live.parentFile, live.name + REPLACED_SUFFIX)
-        val journals = journalsOf(live)
+        val photos = File(context.filesDir, PHOTOS)
+        val photosSetAside = File(context.filesDir, PHOTOS + REPLACED_SUFFIX)
 
         live.parentFile?.mkdirs()
         setAside.delete()
-        val hadOne = live.exists() && live.renameTo(setAside)
-        journals.forEach { it.delete() }
+        photosSetAside.deleteRecursively()
+
+        // Both moved aside before anything is written, and the move has to
+        // succeed. An earlier version carried on when the rename failed, which
+        // left the old database in place for sqlcipher_export to write its
+        // tables into on top of -- a collision at best, and at worst a file
+        // holding half of each. Nothing has changed yet at this point, so
+        // giving up here costs the restore and nothing else.
+        val hadDatabase = live.exists()
+        if (hadDatabase && !live.renameTo(setAside)) return Outcome.ROLLED_BACK
+        val hadPhotos = photos.isDirectory
+        if (hadPhotos && !photos.renameTo(photosSetAside)) {
+            if (hadDatabase) setAside.renameTo(live)
+            return Outcome.ROLLED_BACK
+        }
+        journalsOf(live).forEach { it.delete() }
 
         val ok = runCatching {
             if (encrypt) {
@@ -151,11 +167,12 @@ object StagedRestore {
             } else {
                 staged.copyTo(live, overwrite = true)
             }
-            replaceMedia(context, File(dir, MEDIA))
+            copyMedia(File(dir, MEDIA), photos)
         }.isSuccess
 
         return if (ok) {
             setAside.delete()
+            photosSetAside.deleteRecursively()
             // Carried out of the staging directory before it is deleted, so
             // the next thing the app does can write the audit entry that
             // explains what happened to the trail.
@@ -163,7 +180,7 @@ object StagedRestore {
             discard(context)
             Outcome.RESTORED
         } else {
-            rollBack(live, setAside, hadOne)
+            rollBack(live, setAside, hadDatabase, photos, photosSetAside, hadPhotos)
             discard(context)
             Outcome.ROLLED_BACK
         }
@@ -233,19 +250,35 @@ object StagedRestore {
             if (cursor.moveToFirst()) cursor.getInt(0) else 0
         }
 
-    private fun replaceMedia(context: Context, from: File) {
-        val target = File(context.filesDir, "photos")
-        target.deleteRecursively()
+    private fun copyMedia(from: File, target: File) {
         target.mkdirs()
         if (from.isDirectory) {
             from.listFiles()?.forEach { it.copyTo(File(target, it.name), overwrite = true) }
         }
     }
 
-    private fun rollBack(live: File, setAside: File, hadOne: Boolean) {
+    /**
+     * Puts back what was moved aside, database and photographs together.
+     *
+     * The photographs matter as much as the rows: a database whose rows point
+     * at pictures that are no longer there is not the thing anybody had before
+     * the restore, and an earlier version of this restored one and not the
+     * other.
+     */
+    private fun rollBack(
+        live: File,
+        setAside: File,
+        hadDatabase: Boolean,
+        photos: File,
+        photosSetAside: File,
+        hadPhotos: Boolean,
+    ) {
         live.delete()
         journalsOf(live).forEach { it.delete() }
-        if (hadOne) setAside.renameTo(live)
+        if (hadDatabase) setAside.renameTo(live)
+
+        photos.deleteRecursively()
+        if (hadPhotos) photosSetAside.renameTo(photos)
     }
 
     /**
