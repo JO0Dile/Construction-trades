@@ -1029,3 +1029,23 @@
 "inc_cost_hint" = "اتركه فارغًا إن لم يُعرف بعد. الفارغ والصفر ليسا سواء.";
 /* The cost field holds something that is not a number, or is negative. */
 "inc_bad_cost" = "هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف.";
+/* The reconciliation covers only the people this viewer may price. */
+"ts_not_whole_job" = "هذا يشمل فقط من يحقّ لك الاطلاع على أجورهم، فهو ليس كامل العمالة في المشروع.";
+/* Empty state when every person on the job is above this viewer in the chain. */
+"ts_all_withheld" = "لا شيء من ساعات هذا المشروع من صلاحيتك تسعيره.";
+/* Under the empty state: explains the chain of command rule. */
+"ts_withheld_hint" = "ترى أجور من هم تحت إمرتك، وأجرك أنت. ولا أحد يرى أجر من هو فوقه.";
+/* Label on the member sheet: who this person answers to. */
+"people_reports_to" = "يتبع لـ";
+/* Shown when a member has no manager set. */
+"people_reports_to_nobody" = "لا أحد بعد — المالك";
+/* Explains what setting a manager does. */
+"people_reports_hint" = "من يتبع له الشخص يرى أجره. ولا يراه أحد غيره، لا زملاؤه ولا من هم فوقه.";
+/* Refusal: the actor is not above this person in the chain. */
+"people_chain_not_yours" = "لا ينقلهم إلا من هو فوقهم، ولست كذلك.";
+/* Refusal: you cannot change who you answer to. */
+"people_chain_yourself" = "لا يمكنك نقل نفسك. من تتبع له هو من يفعل ذلك.";
+/* Refusal: the move would put a circle in the chain. */
+"people_chain_loop" = "هذا سيُنشئ حلقة مغلقة: هم بالفعل فوق الشخص الذي اخترته.";
+/* Refusal: the person or the manager is not on this company's books. */
+"people_chain_unknown" = "غير مسجّل في دفاتر هذه الشركة.";

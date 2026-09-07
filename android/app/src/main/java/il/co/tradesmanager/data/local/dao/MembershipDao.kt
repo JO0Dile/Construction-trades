@@ -73,6 +73,21 @@ interface MembershipDao {
     @Query("UPDATE memberships SET role = :role WHERE id = :id")
     suspend fun setRole(id: String, role: String)
 
+    /** Moves somebody onto another crew. Null puts them back at the top. */
+    @Query("UPDATE memberships SET reportsToMembershipId = :bossId WHERE id = :id")
+    suspend fun setReportsTo(id: String, bossId: String?)
+
+    /**
+     * Everybody who was reporting to a membership that is ending.
+     *
+     * Read before the membership is closed, so their crew can be lifted to
+     * whoever the leaver answered to rather than left pointing at somebody who
+     * is no longer here. A dangling link is not harmless: it is a branch whose
+     * pay nobody above can see.
+     */
+    @Query("SELECT * FROM memberships WHERE reportsToMembershipId = :bossId AND leftAt IS NULL")
+    suspend fun reportingTo(bossId: String): List<MembershipEntity>
+
     /** Coming off the books, not being deleted from history. */
     @Query("UPDATE memberships SET leftAt = :at WHERE id = :id")
     suspend fun markLeft(id: String, at: Long)

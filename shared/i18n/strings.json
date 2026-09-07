@@ -5034,6 +5034,66 @@
       "en": "That is not an amount. Leave it empty if you do not know.",
       "he": "זה אינו סכום. השאירו ריק אם אינכם יודעים.",
       "ar": "هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف."
+    },
+    "ts_not_whole_job": {
+      "c": "The reconciliation covers only the people this viewer may price.",
+      "en": "This covers only the people whose pay you may see, so it is not the job's whole labour.",
+      "he": "זה מכסה רק את מי שאתם רשאים לראות את שכרם, ולכן אינו כל העבודה בפרויקט.",
+      "ar": "هذا يشمل فقط من يحقّ لك الاطلاع على أجورهم، فهو ليس كامل العمالة في المشروع."
+    },
+    "ts_all_withheld": {
+      "c": "Empty state when every person on the job is above this viewer in the chain.",
+      "en": "None of the hours on this job are yours to price.",
+      "he": "אף אחת מהשעות בפרויקט זה אינה בסמכותכם לתמחר.",
+      "ar": "لا شيء من ساعات هذا المشروع من صلاحيتك تسعيره."
+    },
+    "ts_withheld_hint": {
+      "c": "Under the empty state: explains the chain of command rule.",
+      "en": "You see the pay of the people who answer to you, and your own. Nobody sees their own boss's.",
+      "he": "אתם רואים את שכרם של מי שכפוף לכם, ואת שלכם. איש אינו רואה את שכר הממונה עליו.",
+      "ar": "ترى أجور من هم تحت إمرتك، وأجرك أنت. ولا أحد يرى أجر من هو فوقه."
+    },
+    "people_reports_to": {
+      "c": "Label on the member sheet: who this person answers to.",
+      "en": "Answers to",
+      "he": "כפוף ל",
+      "ar": "يتبع لـ"
+    },
+    "people_reports_to_nobody": {
+      "c": "Shown when a member has no manager set.",
+      "en": "Nobody yet — the owner",
+      "he": "עדיין אף אחד — הבעלים",
+      "ar": "لا أحد بعد — المالك"
+    },
+    "people_reports_hint": {
+      "c": "Explains what setting a manager does.",
+      "en": "Whoever someone answers to can see what they are paid. Nobody else can, including people beside them and above them.",
+      "he": "מי שאדם כפוף לו רואה את שכרו. אף אחד אחר לא, לרבות עמיתים והממונים עליו.",
+      "ar": "من يتبع له الشخص يرى أجره. ولا يراه أحد غيره، لا زملاؤه ولا من هم فوقه."
+    },
+    "people_chain_not_yours": {
+      "c": "Refusal: the actor is not above this person in the chain.",
+      "en": "Only somebody above them can move them, and you are not.",
+      "he": "רק מי שמעליהם יכול להעביר אותם, ואתם לא.",
+      "ar": "لا ينقلهم إلا من هو فوقهم، ولست كذلك."
+    },
+    "people_chain_yourself": {
+      "c": "Refusal: you cannot change who you answer to.",
+      "en": "You cannot move yourself. Whoever you answer to does that.",
+      "he": "אינכם יכולים להעביר את עצמכם. מי שאתם כפופים לו עושה זאת.",
+      "ar": "لا يمكنك نقل نفسك. من تتبع له هو من يفعل ذلك."
+    },
+    "people_chain_loop": {
+      "c": "Refusal: the move would put a circle in the chain.",
+      "en": "That would put a circle in the chain: they are already above the person you picked.",
+      "he": "זה ייצור מעגל בשרשרת: הם כבר מעל האדם שבחרתם.",
+      "ar": "هذا سيُنشئ حلقة مغلقة: هم بالفعل فوق الشخص الذي اخترته."
+    },
+    "people_chain_unknown": {
+      "c": "Refusal: the person or the manager is not on this company's books.",
+      "en": "Not on this company's books.",
+      "he": "לא רשומים בחברה זו.",
+      "ar": "غير مسجّل في دفاتر هذه الشركة."
     }
   },
   "plurals": {
@@ -5371,6 +5431,27 @@
         "few": "متأخر %d أيام",
         "many": "متأخر %d يومًا",
         "other": "متأخر %d يوم"
+      }
+    },
+    "ts_withheld": {
+      "c": "How many people on a job this viewer may not be shown the money of",
+      "en": {
+        "one": "%d person on this job is not yours to price.",
+        "other": "%d people on this job are not yours to price."
+      },
+      "he": {
+        "one": "אדם אחד בפרויקט זה אינו בסמכותכם לתמחר.",
+        "two": "שני אנשים בפרויקט זה אינם בסמכותכם לתמחר.",
+        "many": "%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.",
+        "other": "%d אנשים בפרויקט זה אינם בסמכותכם לתמחר."
+      },
+      "ar": {
+        "zero": "لا أحد في هذا المشروع خارج صلاحيتك.",
+        "one": "شخص واحد في هذا المشروع ليس من صلاحيتك تسعيره.",
+        "two": "شخصان في هذا المشروع ليسا من صلاحيتك تسعيرهما.",
+        "few": "%d أشخاص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.",
+        "many": "%d شخصًا في هذا المشروع ليسوا من صلاحيتك تسعيرهم.",
+        "other": "%d شخص في هذا المشروع ليسوا من صلاحيتك تسعيرهم."
       }
     }
   }

@@ -65,4 +65,21 @@ data class MembershipEntity(
      * moment somebody needs it.
      */
     val admissionSignature: String? = null,
+    /**
+     * The membership this one answers to, or null for somebody at the top.
+     *
+     * The chain of command, one link at a time. It decides who may be shown
+     * what a person is paid -- see [il.co.tradesmanager.core.access.Chain] --
+     * so it is a permission, not an org chart drawn for tidiness.
+     *
+     * Another membership rather than an account, because the same person is a
+     * foreman for one firm and on the tools for another, and being somebody's
+     * boss on one job says nothing about the next.
+     *
+     * Null is the normal starting state and not a gap. The gate admits people
+     * and deliberately does not rank them; rank is set afterwards by whoever
+     * engaged them. Until then they answer to whoever owns the firm, which is
+     * true whether or not anybody has drawn the chart.
+     */
+    val reportsToMembershipId: String? = null,
 )

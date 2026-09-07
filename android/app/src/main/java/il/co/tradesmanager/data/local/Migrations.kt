@@ -265,6 +265,20 @@ object Migrations {
         }
     }
 
+    /**
+     * The chain of command, and a shift that knows whose it was.
+     *
+     * Both nullable with no default, because null is the true answer for
+     * every row that already exists: nobody drew a chart before this, and no
+     * shift recorded who worked it. Filling either in with a guess would put
+     * a name on somebody's wages that nobody put there.
+     */
+    val MIGRATION_26_27 = object : Migration(26, 27) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_26_27.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -291,6 +305,7 @@ object Migrations {
         MIGRATION_23_24,
         MIGRATION_24_25,
         MIGRATION_25_26,
+        MIGRATION_26_27,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -753,5 +768,10 @@ object Migrations {
 
     val SQL_25_26: List<String> = listOf(
         "ALTER TABLE `catalog_items` ADD COLUMN `stages` TEXT NOT NULL DEFAULT '[]'",
+    )
+
+    val SQL_26_27: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `reportsToMembershipId` TEXT",
+        "ALTER TABLE `time_entries` ADD COLUMN `workerMembershipId` TEXT",
     )
 }

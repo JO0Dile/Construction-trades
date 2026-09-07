@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import il.co.tradesmanager.core.time.TimeOfDay
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import java.time.LocalDate
 import java.util.UUID
@@ -71,11 +72,23 @@ class ScheduleViewModel(private val container: AppContainer) : ViewModel() {
      */
     fun toggleCheckIn(latitude: Double?, longitude: Double?) = viewModelScope.launch {
         val open = openTimeEntry.value
-        val actor = container.settings.settings.first().actorName
-        if (open == null) {
-            container.schedule.checkIn(actor.ifBlank { "worker" }, null, latitude, longitude)
-        } else {
+        if (open != null) {
             container.schedule.checkOut(open)
+            return@launch
         }
+        // Who is signed in, not what somebody typed into settings. The name is
+        // still recorded beside the ids so the register reads years later, but
+        // it is no longer the only thing identifying the shift.
+        val signedIn = container.session.state.first() as? SessionRepository.State.SignedIn
+        val actor = container.settings.settings.first().actorName
+        container.schedule.checkIn(
+            workerName = signedIn?.account?.displayName?.ifBlank { null }
+                ?: actor.ifBlank { "worker" },
+            projectId = null,
+            latitude = latitude,
+            longitude = longitude,
+            workerAccountId = signedIn?.account?.id,
+            workerMembershipId = signedIn?.active?.id,
+        )
     }
 }

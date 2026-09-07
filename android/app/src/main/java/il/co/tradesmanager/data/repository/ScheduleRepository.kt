@@ -61,15 +61,29 @@ class ScheduleRepository(
         audit.record(ENTITY, to.toString(), AuditTrail.Action.CREATE, actorName, "Copied ${from.size} blocks")
     }
 
+    /**
+     * Somebody starts a shift.
+     *
+     * [workerAccountId] and [workerMembershipId] are who they are, beside the
+     * name. The name alone is what this recorded before, and a timesheet keyed
+     * on typed text is one where two men called Hammam are a single row and no
+     * rule can tell whose wages it is showing. Both are nullable because a
+     * sole trader has no company and no membership, and their own timesheet
+     * has nobody to keep it from.
+     */
     suspend fun checkIn(
         workerName: String,
         projectId: String?,
         latitude: Double?,
         longitude: Double?,
+        workerAccountId: String? = null,
+        workerMembershipId: String? = null,
     ): TimeEntryEntity {
         val entry = TimeEntryEntity(
             id = UUID.randomUUID().toString(),
             projectId = projectId,
+            workerId = workerAccountId,
+            workerMembershipId = workerMembershipId,
             workerName = workerName,
             checkInAt = System.currentTimeMillis(),
             latitude = latitude,

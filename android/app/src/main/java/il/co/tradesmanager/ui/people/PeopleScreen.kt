@@ -41,6 +41,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Admission
+import il.co.tradesmanager.core.access.Chain
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.security.Passcode
@@ -73,6 +74,7 @@ fun PeopleScreen(
     val members by viewModel.members.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
+    val chainRefusal by viewModel.chainRefusal.collectAsStateWithLifecycle()
     val certifications by viewModel.certifications.collectAsStateWithLifecycle()
     val kinds by viewModel.kinds.collectAsStateWithLifecycle()
     var adding by remember { mutableStateOf(false) }
@@ -189,7 +191,10 @@ fun PeopleScreen(
             suggestedKinds = kinds,
             // You may look at your own tickets; you may not re-role yourself.
             canManage = canManage && member.account.id != signedIn?.account?.id,
+            reportsToName = viewModel.reportsToName(member),
+            candidates = viewModel.candidatesFor(member),
             onDismiss = { editing = null },
+            onSetReportsTo = { viewModel.setReportsTo(member, it) },
             onSetRole = { viewModel.setRole(member, it) },
             onAddCertification = { title, reference, expiresOn ->
                 viewModel.addCertification(member.account.id, title, reference, expiresOn)
@@ -220,6 +225,34 @@ fun PeopleScreen(
             },
         )
     }
+
+    // The chain has its own refusals and its own words for them. Folding them
+    // into the sentence above would tell somebody they lack permission when
+    // what actually happened is that the move would have made a circle.
+    chainRefusal?.let { blocker ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearChainRefusal,
+            title = { Text(stringResource(R.string.people_reports_to)) },
+            text = { Text(stringResource(chainBlockerText(blocker))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearChainRefusal) {
+                    Text(stringResource(R.string.action_ok))
+                }
+            },
+        )
+    }
+}
+
+/**
+ * The sentence for each refusal along the chain. Exhaustive with no `else`, so
+ * the next blocker somebody adds cannot become a blank dialog.
+ */
+private fun chainBlockerText(blocker: Chain.Blocker): Int = when (blocker) {
+    Chain.Blocker.UNKNOWN -> R.string.people_chain_unknown
+    Chain.Blocker.NOT_YOURS -> R.string.people_chain_not_yours
+    Chain.Blocker.YOURSELF -> R.string.people_chain_yourself
+    Chain.Blocker.THEMSELVES -> R.string.people_chain_yourself
+    Chain.Blocker.A_LOOP -> R.string.people_chain_loop
 }
 
 @OptIn(ExperimentalLayoutApi::class)

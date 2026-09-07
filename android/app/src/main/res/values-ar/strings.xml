@@ -999,6 +999,16 @@
     <string name="inc_cost">التكلفة، إن كانت معروفة</string>
     <string name="inc_cost_hint">اتركه فارغًا إن لم يُعرف بعد. الفارغ والصفر ليسا سواء.</string>
     <string name="inc_bad_cost">هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف.</string>
+    <string name="ts_not_whole_job">هذا يشمل فقط من يحقّ لك الاطلاع على أجورهم، فهو ليس كامل العمالة في المشروع.</string>
+    <string name="ts_all_withheld">لا شيء من ساعات هذا المشروع من صلاحيتك تسعيره.</string>
+    <string name="ts_withheld_hint">ترى أجور من هم تحت إمرتك، وأجرك أنت. ولا أحد يرى أجر من هو فوقه.</string>
+    <string name="people_reports_to">يتبع لـ</string>
+    <string name="people_reports_to_nobody">لا أحد بعد — المالك</string>
+    <string name="people_reports_hint">من يتبع له الشخص يرى أجره. ولا يراه أحد غيره، لا زملاؤه ولا من هم فوقه.</string>
+    <string name="people_chain_not_yours">لا ينقلهم إلا من هو فوقهم، ولست كذلك.</string>
+    <string name="people_chain_yourself">لا يمكنك نقل نفسك. من تتبع له هو من يفعل ذلك.</string>
+    <string name="people_chain_loop">هذا سيُنشئ حلقة مغلقة: هم بالفعل فوق الشخص الذي اخترته.</string>
+    <string name="people_chain_unknown">غير مسجّل في دفاتر هذه الشركة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -1126,5 +1136,13 @@
         <item quantity="few">متأخر %d أيام</item>
         <item quantity="many">متأخر %d يومًا</item>
         <item quantity="other">متأخر %d يوم</item>
+    </plurals>
+    <plurals name="ts_withheld">
+        <item quantity="zero">لا أحد في هذا المشروع خارج صلاحيتك.</item>
+        <item quantity="one">شخص واحد في هذا المشروع ليس من صلاحيتك تسعيره.</item>
+        <item quantity="two">شخصان في هذا المشروع ليسا من صلاحيتك تسعيرهما.</item>
+        <item quantity="few">%d أشخاص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</item>
+        <item quantity="many">%d شخصًا في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</item>
+        <item quantity="other">%d شخص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</item>
     </plurals>
 </resources>

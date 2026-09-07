@@ -1030,6 +1030,26 @@
     <string name="inc_cost_hint">Leave it empty if nobody knows yet. Empty and zero are not the same.</string>
     <!-- The cost field holds something that is not a number, or is negative. -->
     <string name="inc_bad_cost">That is not an amount. Leave it empty if you do not know.</string>
+    <!-- The reconciliation covers only the people this viewer may price. -->
+    <string name="ts_not_whole_job">This covers only the people whose pay you may see, so it is not the job\'s whole labour.</string>
+    <!-- Empty state when every person on the job is above this viewer in the chain. -->
+    <string name="ts_all_withheld">None of the hours on this job are yours to price.</string>
+    <!-- Under the empty state: explains the chain of command rule. -->
+    <string name="ts_withheld_hint">You see the pay of the people who answer to you, and your own. Nobody sees their own boss\'s.</string>
+    <!-- Label on the member sheet: who this person answers to. -->
+    <string name="people_reports_to">Answers to</string>
+    <!-- Shown when a member has no manager set. -->
+    <string name="people_reports_to_nobody">Nobody yet — the owner</string>
+    <!-- Explains what setting a manager does. -->
+    <string name="people_reports_hint">Whoever someone answers to can see what they are paid. Nobody else can, including people beside them and above them.</string>
+    <!-- Refusal: the actor is not above this person in the chain. -->
+    <string name="people_chain_not_yours">Only somebody above them can move them, and you are not.</string>
+    <!-- Refusal: you cannot change who you answer to. -->
+    <string name="people_chain_yourself">You cannot move yourself. Whoever you answer to does that.</string>
+    <!-- Refusal: the move would put a circle in the chain. -->
+    <string name="people_chain_loop">That would put a circle in the chain: they are already above the person you picked.</string>
+    <!-- Refusal: the person or the manager is not on this company's books. -->
+    <string name="people_chain_unknown">Not on this company\'s books.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -1093,5 +1113,9 @@
     <plurals name="pay_days_overdue">
         <item quantity="one">%d day overdue</item>
         <item quantity="other">%d days overdue</item>
+    </plurals>
+    <plurals name="ts_withheld">
+        <item quantity="one">%d person on this job is not yours to price.</item>
+        <item quantity="other">%d people on this job are not yours to price.</item>
     </plurals>
 </resources>

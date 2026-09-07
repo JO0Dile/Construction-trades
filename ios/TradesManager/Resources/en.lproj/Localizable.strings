@@ -1029,3 +1029,23 @@
 "inc_cost_hint" = "Leave it empty if nobody knows yet. Empty and zero are not the same.";
 /* The cost field holds something that is not a number, or is negative. */
 "inc_bad_cost" = "That is not an amount. Leave it empty if you do not know.";
+/* The reconciliation covers only the people this viewer may price. */
+"ts_not_whole_job" = "This covers only the people whose pay you may see, so it is not the job's whole labour.";
+/* Empty state when every person on the job is above this viewer in the chain. */
+"ts_all_withheld" = "None of the hours on this job are yours to price.";
+/* Under the empty state: explains the chain of command rule. */
+"ts_withheld_hint" = "You see the pay of the people who answer to you, and your own. Nobody sees their own boss's.";
+/* Label on the member sheet: who this person answers to. */
+"people_reports_to" = "Answers to";
+/* Shown when a member has no manager set. */
+"people_reports_to_nobody" = "Nobody yet — the owner";
+/* Explains what setting a manager does. */
+"people_reports_hint" = "Whoever someone answers to can see what they are paid. Nobody else can, including people beside them and above them.";
+/* Refusal: the actor is not above this person in the chain. */
+"people_chain_not_yours" = "Only somebody above them can move them, and you are not.";
+/* Refusal: you cannot change who you answer to. */
+"people_chain_yourself" = "You cannot move yourself. Whoever you answer to does that.";
+/* Refusal: the move would put a circle in the chain. */
+"people_chain_loop" = "That would put a circle in the chain: they are already above the person you picked.";
+/* Refusal: the person or the manager is not on this company's books. */
+"people_chain_unknown" = "Not on this company's books.";

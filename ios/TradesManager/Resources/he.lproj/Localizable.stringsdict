@@ -323,5 +323,25 @@
             <string>באיחור של %d ימים</string>
         </dict>
     </dict>
+    <key>ts_withheld</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>אדם אחד בפרויקט זה אינו בסמכותכם לתמחר.</string>
+            <key>two</key>
+            <string>שני אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+            <key>many</key>
+            <string>%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+            <key>other</key>
+            <string>%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
