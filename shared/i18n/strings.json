@@ -5142,6 +5142,132 @@
       "en": "What changed",
       "he": "מה השתנה",
       "ar": "ما الذي تغيّر"
+    },
+    "backup_title": {
+      "c": "Settings section: taking the record off the phone and putting it back",
+      "en": "Backup",
+      "he": "גיבוי",
+      "ar": "النسخ الاحتياطي"
+    },
+    "backup_why": {
+      "c": "Explains why a backup matters when everything is on one device.",
+      "en": "Everything is on this phone and nothing is on a server. Lose the phone and you lose the site diary, unless you have a backup.",
+      "he": "הכול נמצא בטלפון הזה ודבר אינו בשרת. אובדן הטלפון הוא אובדן יומן העבודה, אלא אם יש גיבוי.",
+      "ar": "كل شيء على هذا الهاتف ولا شيء على خادم. فقدان الهاتف يعني فقدان يوميات الموقع، إلا إذا كان لديك نسخة احتياطية."
+    },
+    "backup_take": {
+      "c": "Button that writes a backup file.",
+      "en": "Back up",
+      "he": "גיבוי",
+      "ar": "أنشئ نسخة"
+    },
+    "backup_restore": {
+      "c": "Button that opens a backup file to restore from.",
+      "en": "Restore",
+      "he": "שחזור",
+      "ar": "استعادة"
+    },
+    "backup_working": {
+      "c": "Shown while a backup or restore is running.",
+      "en": "Working. This takes a while, because the photographs go in too.",
+      "he": "בעבודה. זה לוקח זמן, כי גם התמונות נכללות.",
+      "ar": "جارٍ العمل. يستغرق هذا وقتًا، لأن الصور مُضمَّنة أيضًا."
+    },
+    "backup_done": {
+      "c": "Backup written. %1$d is how many photos and videos went in.",
+      "en": "Backed up, with %1$d photographs and videos. Keep the file somewhere that is not this phone.",
+      "he": "הגיבוי הושלם, כולל %1$d תמונות וסרטונים. שמרו את הקובץ במקום שאינו הטלפון הזה.",
+      "ar": "تم النسخ، مع %1$d صورة وفيديو. احتفظ بالملف في مكان غير هذا الهاتف."
+    },
+    "backup_staged": {
+      "c": "A restore is unpacked and waiting for a restart. %1$s is when the backup was taken.",
+      "en": "Ready to restore the backup from %1$s. Close the app completely and open it again to finish. Nothing has changed yet.",
+      "he": "מוכן לשחזור הגיבוי מ־%1$s. סגרו את האפליקציה לגמרי ופתחו אותה שוב כדי לסיים. עדיין לא השתנה דבר.",
+      "ar": "جاهز لاستعادة النسخة من %1$s. أغلق التطبيق تمامًا ثم افتحه مجددًا لإتمام العملية. لم يتغيّر شيء بعد."
+    },
+    "backup_older_version": {
+      "c": "The backup predates the installed version; migrations will run.",
+      "en": "It was taken by an older version. It will be brought up to date as it is restored.",
+      "he": "הגיבוי נלקח בגרסה ישנה יותר. הוא יעודכן במהלך השחזור.",
+      "ar": "أُخذت النسخة بإصدار أقدم. سيجري تحديثها أثناء الاستعادة."
+    },
+    "backup_cancel_restore": {
+      "c": "Abandons a staged restore before the restart.",
+      "en": "Do not restore after all",
+      "he": "ביטול השחזור",
+      "ar": "تراجع عن الاستعادة"
+    },
+    "backup_restored": {
+      "c": "Shown at launch after a restore was applied.",
+      "en": "Restored from a backup.",
+      "he": "שוחזר מגיבוי.",
+      "ar": "تمت الاستعادة من نسخة احتياطية."
+    },
+    "backup_refused_file": {
+      "c": "The chosen file is not a backup from this app.",
+      "en": "That is not a backup from this app.",
+      "he": "זה אינו קובץ גיבוי של האפליקציה הזו.",
+      "ar": "هذا ليس ملف نسخة احتياطية من هذا التطبيق."
+    },
+    "backup_newer_app": {
+      "c": "The backup was written by a newer version of the app.",
+      "en": "That backup was made by a newer version of the app. Update first, then restore it.",
+      "he": "הגיבוי נוצר בגרסה חדשה יותר של האפליקציה. עדכנו תחילה ואז שחזרו.",
+      "ar": "أُنشئت هذه النسخة بإصدار أحدث من التطبيق. حدّث أولًا ثم استعِد."
+    },
+    "backup_rolled_back": {
+      "c": "The restore failed part way and the original was put back.",
+      "en": "The restore did not finish, and everything you had is still here. Try again.",
+      "he": "השחזור לא הושלם, וכל מה שהיה לכם עדיין כאן. נסו שוב.",
+      "ar": "لم تكتمل الاستعادة، وكل ما لديك ما زال موجودًا. حاول مرة أخرى."
+    },
+    "backup_failed": {
+      "c": "Generic failure: wrong passphrase or damaged file, deliberately not distinguished.",
+      "en": "That did not work. Either the passphrase is wrong or the file is damaged.",
+      "he": "זה לא הצליח. או שביטוי הסיסמה שגוי או שהקובץ פגום.",
+      "ar": "لم تنجح العملية. إما أن عبارة المرور خاطئة أو أن الملف تالف."
+    },
+    "backup_passphrase": {
+      "c": "Label for the backup passphrase field.",
+      "en": "Passphrase",
+      "he": "ביטוי סיסמה",
+      "ar": "عبارة المرور"
+    },
+    "backup_passphrase_again": {
+      "c": "Second passphrase field, to catch a typo.",
+      "en": "Type it again",
+      "he": "הקלידו שוב",
+      "ar": "أعد كتابتها"
+    },
+    "backup_passphrase_open": {
+      "c": "Dialog title when opening a backup.",
+      "en": "The passphrase for this backup",
+      "he": "ביטוי הסיסמה של הגיבוי הזה",
+      "ar": "عبارة المرور لهذه النسخة"
+    },
+    "backup_passphrase_warning": {
+      "c": "There is no recovery. Said plainly, before the field.",
+      "en": "Write this down somewhere safe. Nobody can reset it, and without it the backup cannot be opened by anyone, including us.",
+      "he": "רשמו אותו במקום בטוח. אף אחד אינו יכול לאפס אותו, ובלעדיו איש אינו יכול לפתוח את הגיבוי, כולל אנחנו.",
+      "ar": "دوّنها في مكان آمن. لا يمكن لأحد إعادة تعيينها، وبدونها لا يستطيع أحد فتح النسخة، بمن فيهم نحن."
+    },
+    "backup_too_short": {
+      "c": "Passphrase below the minimum length.",
+      "en": "At least 12 characters. This locks a file somebody could copy and take away.",
+      "he": "לפחות 12 תווים. זה נועל קובץ שאפשר להעתיק ולקחת.",
+      "ar": "12 حرفًا على الأقل. هذا يقفل ملفًا يمكن نسخه وأخذه."
+    },
+    "backup_no_match": {
+      "c": "The two passphrase fields differ.",
+      "en": "The two do not match.",
+      "he": "השניים אינם תואמים.",
+      "ar": "العبارتان غير متطابقتين."
+    },
+    "backup_too_plain": {
+      "c": "Long but with too few distinct characters.",
+      "en": "Too few different characters. Length alone is not strength.",
+      "he": "מעט מדי תווים שונים. אורך לבדו אינו חוזק.",
+      "ar": "عدد الأحرف المختلفة قليل جدًا. الطول وحده ليس قوة."
     }
   },
   "plurals": {

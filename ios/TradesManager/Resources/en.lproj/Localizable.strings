@@ -1065,3 +1065,45 @@
 "crew_open" = "Find someone by trade";
 /* Section header on the dashboard: recent changes this person may see */
 "home_changes" = "What changed";
+/* Settings section: taking the record off the phone and putting it back */
+"backup_title" = "Backup";
+/* Explains why a backup matters when everything is on one device. */
+"backup_why" = "Everything is on this phone and nothing is on a server. Lose the phone and you lose the site diary, unless you have a backup.";
+/* Button that writes a backup file. */
+"backup_take" = "Back up";
+/* Button that opens a backup file to restore from. */
+"backup_restore" = "Restore";
+/* Shown while a backup or restore is running. */
+"backup_working" = "Working. This takes a while, because the photographs go in too.";
+/* Backup written. %1$d is how many photos and videos went in. */
+"backup_done" = "Backed up, with %1$d photographs and videos. Keep the file somewhere that is not this phone.";
+/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
+"backup_staged" = "Ready to restore the backup from %1$s. Close the app completely and open it again to finish. Nothing has changed yet.";
+/* The backup predates the installed version; migrations will run. */
+"backup_older_version" = "It was taken by an older version. It will be brought up to date as it is restored.";
+/* Abandons a staged restore before the restart. */
+"backup_cancel_restore" = "Do not restore after all";
+/* Shown at launch after a restore was applied. */
+"backup_restored" = "Restored from a backup.";
+/* The chosen file is not a backup from this app. */
+"backup_refused_file" = "That is not a backup from this app.";
+/* The backup was written by a newer version of the app. */
+"backup_newer_app" = "That backup was made by a newer version of the app. Update first, then restore it.";
+/* The restore failed part way and the original was put back. */
+"backup_rolled_back" = "The restore did not finish, and everything you had is still here. Try again.";
+/* Generic failure: wrong passphrase or damaged file, deliberately not distinguished. */
+"backup_failed" = "That did not work. Either the passphrase is wrong or the file is damaged.";
+/* Label for the backup passphrase field. */
+"backup_passphrase" = "Passphrase";
+/* Second passphrase field, to catch a typo. */
+"backup_passphrase_again" = "Type it again";
+/* Dialog title when opening a backup. */
+"backup_passphrase_open" = "The passphrase for this backup";
+/* There is no recovery. Said plainly, before the field. */
+"backup_passphrase_warning" = "Write this down somewhere safe. Nobody can reset it, and without it the backup cannot be opened by anyone, including us.";
+/* Passphrase below the minimum length. */
+"backup_too_short" = "At least 12 characters. This locks a file somebody could copy and take away.";
+/* The two passphrase fields differ. */
+"backup_no_match" = "The two do not match.";
+/* Long but with too few distinct characters. */
+"backup_too_plain" = "Too few different characters. Length alone is not strength.";

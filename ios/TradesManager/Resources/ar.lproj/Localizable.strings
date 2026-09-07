@@ -1065,3 +1065,45 @@
 "crew_open" = "ابحث عن شخص حسب المهنة";
 /* Section header on the dashboard: recent changes this person may see */
 "home_changes" = "ما الذي تغيّر";
+/* Settings section: taking the record off the phone and putting it back */
+"backup_title" = "النسخ الاحتياطي";
+/* Explains why a backup matters when everything is on one device. */
+"backup_why" = "كل شيء على هذا الهاتف ولا شيء على خادم. فقدان الهاتف يعني فقدان يوميات الموقع، إلا إذا كان لديك نسخة احتياطية.";
+/* Button that writes a backup file. */
+"backup_take" = "أنشئ نسخة";
+/* Button that opens a backup file to restore from. */
+"backup_restore" = "استعادة";
+/* Shown while a backup or restore is running. */
+"backup_working" = "جارٍ العمل. يستغرق هذا وقتًا، لأن الصور مُضمَّنة أيضًا.";
+/* Backup written. %1$d is how many photos and videos went in. */
+"backup_done" = "تم النسخ، مع %1$d صورة وفيديو. احتفظ بالملف في مكان غير هذا الهاتف.";
+/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
+"backup_staged" = "جاهز لاستعادة النسخة من %1$s. أغلق التطبيق تمامًا ثم افتحه مجددًا لإتمام العملية. لم يتغيّر شيء بعد.";
+/* The backup predates the installed version; migrations will run. */
+"backup_older_version" = "أُخذت النسخة بإصدار أقدم. سيجري تحديثها أثناء الاستعادة.";
+/* Abandons a staged restore before the restart. */
+"backup_cancel_restore" = "تراجع عن الاستعادة";
+/* Shown at launch after a restore was applied. */
+"backup_restored" = "تمت الاستعادة من نسخة احتياطية.";
+/* The chosen file is not a backup from this app. */
+"backup_refused_file" = "هذا ليس ملف نسخة احتياطية من هذا التطبيق.";
+/* The backup was written by a newer version of the app. */
+"backup_newer_app" = "أُنشئت هذه النسخة بإصدار أحدث من التطبيق. حدّث أولًا ثم استعِد.";
+/* The restore failed part way and the original was put back. */
+"backup_rolled_back" = "لم تكتمل الاستعادة، وكل ما لديك ما زال موجودًا. حاول مرة أخرى.";
+/* Generic failure: wrong passphrase or damaged file, deliberately not distinguished. */
+"backup_failed" = "لم تنجح العملية. إما أن عبارة المرور خاطئة أو أن الملف تالف.";
+/* Label for the backup passphrase field. */
+"backup_passphrase" = "عبارة المرور";
+/* Second passphrase field, to catch a typo. */
+"backup_passphrase_again" = "أعد كتابتها";
+/* Dialog title when opening a backup. */
+"backup_passphrase_open" = "عبارة المرور لهذه النسخة";
+/* There is no recovery. Said plainly, before the field. */
+"backup_passphrase_warning" = "دوّنها في مكان آمن. لا يمكن لأحد إعادة تعيينها، وبدونها لا يستطيع أحد فتح النسخة، بمن فيهم نحن.";
+/* Passphrase below the minimum length. */
+"backup_too_short" = "12 حرفًا على الأقل. هذا يقفل ملفًا يمكن نسخه وأخذه.";
+/* The two passphrase fields differ. */
+"backup_no_match" = "العبارتان غير متطابقتين.";
+/* Long but with too few distinct characters. */
+"backup_too_plain" = "عدد الأحرف المختلفة قليل جدًا. الطول وحده ليس قوة.";

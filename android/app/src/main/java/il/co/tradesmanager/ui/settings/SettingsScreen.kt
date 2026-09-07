@@ -68,6 +68,7 @@ fun SettingsScreen(
     )
     val settings by viewModel.settings.collectAsStateWithLifecycle()
     val trades by viewModel.trades.collectAsStateWithLifecycle()
+    val backupState by viewModel.backup.collectAsStateWithLifecycle()
     var addingTrade by remember { mutableStateOf(false) }
     val updateState by viewModel.update.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
@@ -191,6 +192,19 @@ fun SettingsScreen(
                         )
                     }
                 }
+            }
+
+            item { SectionHeader(stringResource(R.string.backup_title)) }
+            item {
+                BackupSection(
+                    state = backupState,
+                    restoreOutcome = viewModel.restoreOutcome,
+                    suggestedName = viewModel.backupFileName(),
+                    onBackUp = viewModel::backUp,
+                    onRestore = viewModel::restore,
+                    onCancelRestore = viewModel::cancelRestore,
+                    onDismiss = viewModel::clearBackupState,
+                )
             }
 
             item { SectionHeader(stringResource(R.string.update_title)) }

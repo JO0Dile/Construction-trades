@@ -373,6 +373,11 @@ operations, temporary works, excavations, subcontract ledgers, and
 commissioning as a stage of work — leaving "underground" on that row meaning
 services diversions and tunnelling rather than trenches.
 
+Backup and restore has since landed and is off that list. It is not sync —
+it is one phone's record, taken deliberately to a file the person keeps — but
+it closes the gap that mattered most: everything lived on one device and a lost
+device lost all of it.
+
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
 section, another screen — which is what the four phases above were for.

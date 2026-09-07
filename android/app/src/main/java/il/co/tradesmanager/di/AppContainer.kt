@@ -1,6 +1,8 @@
 package il.co.tradesmanager.di
 
 import android.content.Context
+import il.co.tradesmanager.data.backup.BackupRepository
+import il.co.tradesmanager.data.backup.StagedRestore
 import il.co.tradesmanager.data.catalog.CatalogSeeder
 import il.co.tradesmanager.data.catalog.CatalogSource
 import il.co.tradesmanager.data.catalog.ScopeCatalog
@@ -55,6 +57,16 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val databaseIsEncrypted: Boolean = databaseResult.encrypted
 
     val database: AppDatabase = databaseResult.database
+
+    /**
+     * What a restore staged in the last session did on the way into this one.
+     *
+     * Read once, at launch, and shown in Settings. A restore that silently
+     * worked and a restore that silently did not look identical from the
+     * outside, and the second one leaves somebody believing they have their
+     * site diary back.
+     */
+    val restoreOutcome: StagedRestore.Outcome = databaseResult.restore
 
     val catalogSource = CatalogSource(appContext)
 
@@ -142,6 +154,17 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val safety = SafetyRepository(database.safetyDao(), database.catalogDao(), auditTrail)
 
     val violations = ViolationRepository(database.violationDao(), photos, auditTrail)
+
+    /**
+     * Taking the record off the phone and putting it back.
+     *
+     * Needs to know whether the database it is copying is encrypted, because
+     * that decides how a plaintext copy is made of it — see BackupRepository.
+     * The archive is always locked by the person's passphrase either way; the
+     * device's own key never leaves the device and would be no use on another
+     * phone if it did.
+     */
+    val backups = BackupRepository(appContext, database, auditTrail, databaseIsEncrypted)
 
     val catalogDao = database.catalogDao()
 

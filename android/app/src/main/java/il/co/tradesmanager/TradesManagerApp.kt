@@ -19,6 +19,7 @@ class TradesManagerApp : Application() {
     override fun onCreate() {
         super.onCreate()
         container = AppContainer(this)
+        recordAnyRestore()
         loadCatalogueIfNeeded()
     }
 
@@ -28,6 +29,21 @@ class TradesManagerApp : Application() {
      * catalogue refresh. It only ever touches the read-only catalogue tables,
      * so it is safe to run at launch while the user is already on a screen.
      */
+    /**
+     * Writes the entry explaining a restore that happened on the way into this
+     * launch, before anything else touches the trail.
+     *
+     * First, deliberately. The entry has to be the one that chains onto the
+     * restored head, and anything else appending before it would sit between
+     * a rewound trail and the line that explains why it was rewound.
+     */
+    private fun recordAnyRestore() = appScope.launch {
+        runCatching {
+            val actor = container.settings.settings.first().actorName
+            container.backups.recordRestoreIfAny(actor.ifBlank { "unknown" })
+        }
+    }
+
     private fun loadCatalogueIfNeeded() = appScope.launch {
         runCatching {
             val settings = container.settings.settings.first()

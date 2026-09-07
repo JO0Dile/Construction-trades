@@ -1065,3 +1065,45 @@
 "crew_open" = "חיפוש לפי מקצוע";
 /* Section header on the dashboard: recent changes this person may see */
 "home_changes" = "מה השתנה";
+/* Settings section: taking the record off the phone and putting it back */
+"backup_title" = "גיבוי";
+/* Explains why a backup matters when everything is on one device. */
+"backup_why" = "הכול נמצא בטלפון הזה ודבר אינו בשרת. אובדן הטלפון הוא אובדן יומן העבודה, אלא אם יש גיבוי.";
+/* Button that writes a backup file. */
+"backup_take" = "גיבוי";
+/* Button that opens a backup file to restore from. */
+"backup_restore" = "שחזור";
+/* Shown while a backup or restore is running. */
+"backup_working" = "בעבודה. זה לוקח זמן, כי גם התמונות נכללות.";
+/* Backup written. %1$d is how many photos and videos went in. */
+"backup_done" = "הגיבוי הושלם, כולל %1$d תמונות וסרטונים. שמרו את הקובץ במקום שאינו הטלפון הזה.";
+/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
+"backup_staged" = "מוכן לשחזור הגיבוי מ־%1$s. סגרו את האפליקציה לגמרי ופתחו אותה שוב כדי לסיים. עדיין לא השתנה דבר.";
+/* The backup predates the installed version; migrations will run. */
+"backup_older_version" = "הגיבוי נלקח בגרסה ישנה יותר. הוא יעודכן במהלך השחזור.";
+/* Abandons a staged restore before the restart. */
+"backup_cancel_restore" = "ביטול השחזור";
+/* Shown at launch after a restore was applied. */
+"backup_restored" = "שוחזר מגיבוי.";
+/* The chosen file is not a backup from this app. */
+"backup_refused_file" = "זה אינו קובץ גיבוי של האפליקציה הזו.";
+/* The backup was written by a newer version of the app. */
+"backup_newer_app" = "הגיבוי נוצר בגרסה חדשה יותר של האפליקציה. עדכנו תחילה ואז שחזרו.";
+/* The restore failed part way and the original was put back. */
+"backup_rolled_back" = "השחזור לא הושלם, וכל מה שהיה לכם עדיין כאן. נסו שוב.";
+/* Generic failure: wrong passphrase or damaged file, deliberately not distinguished. */
+"backup_failed" = "זה לא הצליח. או שביטוי הסיסמה שגוי או שהקובץ פגום.";
+/* Label for the backup passphrase field. */
+"backup_passphrase" = "ביטוי סיסמה";
+/* Second passphrase field, to catch a typo. */
+"backup_passphrase_again" = "הקלידו שוב";
+/* Dialog title when opening a backup. */
+"backup_passphrase_open" = "ביטוי הסיסמה של הגיבוי הזה";
+/* There is no recovery. Said plainly, before the field. */
+"backup_passphrase_warning" = "רשמו אותו במקום בטוח. אף אחד אינו יכול לאפס אותו, ובלעדיו איש אינו יכול לפתוח את הגיבוי, כולל אנחנו.";
+/* Passphrase below the minimum length. */
+"backup_too_short" = "לפחות 12 תווים. זה נועל קובץ שאפשר להעתיק ולקחת.";
+/* The two passphrase fields differ. */
+"backup_no_match" = "השניים אינם תואמים.";
+/* Long but with too few distinct characters. */
+"backup_too_plain" = "מעט מדי תווים שונים. אורך לבדו אינו חוזק.";

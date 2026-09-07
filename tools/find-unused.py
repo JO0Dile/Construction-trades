@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Find public functions in core/ and data/repository/ that nothing calls.
+"""Find public functions in core/, data/repository/ and data/backup/ that nothing calls.
 
 Four times in this repository a name and a doc comment described something no
 code performed:
@@ -40,7 +40,11 @@ TESTS = ROOT / "android" / "app" / "src" / "test"
 # Layers where an uncalled public function means something. UI files are
 # excluded: a composable is called by the framework and by preview tooling,
 # and a sweep that flagged every screen would be ignored within a week.
-LAYERS = ("/core/", "/data/repository/")
+# data/backup is in here for the same reason the other two are: it is the
+# layer that gets written ahead of the screen that will use it, and a
+# backup nothing calls is the worst version of this whole failure -- it
+# looks like the app has a backup and does not.
+LAYERS = ("/core/", "/data/repository/", "/data/backup/")
 
 # Accepted at the last review. See the module docstring before changing it.
 BASELINE = 13
@@ -77,7 +81,8 @@ def main(argv: list[str]) -> int:
         if uses <= 0:
             unused.append((path, line, name))
 
-    print(f"{len(declared)} public functions in core/ and data/repository/.")
+    where = ", ".join(layer.strip("/") for layer in LAYERS)
+    print(f"{len(declared)} public functions in {where}.")
     print(f"{len(unused)} with no call site anywhere, including tests:\n")
     for path, line, name in sorted(unused, key=lambda row: str(row[0])):
         print(f"  {path.relative_to(ROOT)}:{line}  {name}()")

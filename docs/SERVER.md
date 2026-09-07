@@ -117,6 +117,30 @@ The same applies to `core/work/Assignment.mayMove`. A crew that could POST
 buttons allow, so the transition table and the side that owns each transition
 are checked server-side on every write.
 
+## What a backup does instead, until then
+
+There is now a backup: Settings, **Backup**, to a file the person chooses.
+It is not sync and it does not pretend to be — it is one phone's record, taken
+deliberately, to somewhere that is not that phone.
+
+Three things about it are worth knowing before the server exists:
+
+* **The archive is locked with the person's passphrase, not the device key.**
+  The database key lives in this device's Keystore and dies with a factory
+  reset, so a file locked with it would be unreadable on exactly the two
+  occasions a backup exists for. `sqlcipher_export` makes a plaintext copy on
+  the way out and another on the way back in.
+* **There is no recovery.** Nobody holds a key to reset. The screen says so
+  before the field, because the alternative is somebody discovering it on the
+  day the phone went into the concrete.
+* **A restore is applied at the next launch, not live**, and the database it
+  replaces is moved aside rather than deleted. If anything fails part way, the
+  original goes back. See `StagedRestore`.
+
+When the server arrives it does not replace this. A backup a person holds is
+the thing that survives the server being unreachable, or the account being
+closed, or the company that runs it going away.
+
 ## What is not built, and cannot be
 
 - **The transport.** There is nothing to talk to.

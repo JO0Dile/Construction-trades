@@ -91,6 +91,12 @@ object Changes {
         // lens says a role may read hours at all and says nothing about whose.
         "time_entry" to Lens.MONEY,
 
+        // A copy of every ID number and wage in the firm leaving the device,
+        // or coming back onto it. Filed under People because that is what it
+        // is a copy of, and because the people who manage people are the ones
+        // who should see that it happened.
+        "backup" to Lens.PEOPLE,
+
         // The trail's own housekeeping, filed under People rather than hidden.
         // A purge entry says how many records were deleted and by whom, which
         // is exactly what somebody would want to see and exactly what whoever
