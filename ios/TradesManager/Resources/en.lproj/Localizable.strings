@@ -1107,3 +1107,9 @@
 "backup_no_match" = "The two do not match.";
 /* Long but with too few distinct characters. */
 "backup_too_plain" = "Too few different characters. Length alone is not strength.";
+/* Button that opens a backup to see what is in it, without restoring. */
+"backup_check" = "Check a backup";
+/* What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. */
+"backup_contents" = "Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.";
+/* The archive opened but the database inside failed SQLite's integrity check. */
+"backup_damaged" = "The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.";

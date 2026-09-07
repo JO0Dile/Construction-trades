@@ -1038,6 +1038,9 @@
     <string name="backup_too_short">לפחות 12 תווים. זה נועל קובץ שאפשר להעתיק ולקחת.</string>
     <string name="backup_no_match">השניים אינם תואמים.</string>
     <string name="backup_too_plain">מעט מדי תווים שונים. אורך לבדו אינו חוזק.</string>
+    <string name="backup_check">בדיקת גיבוי</string>
+    <string name="backup_contents">נלקח ב־%1$s: %2$d פרויקטים, %3$d אנשים, %4$d תמונות וסרטונים.</string>
+    <string name="backup_damaged">הקובץ נפתח אך מסד הנתונים שבתוכו פגום. אל תסתמכו עליו — צרו גיבוי חדש.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

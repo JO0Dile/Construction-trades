@@ -25,6 +25,11 @@ protects anything real.
 - [ ] Back up. It asks for a passphrase twice — twelve characters, six of them
       different — and says plainly that nobody can reset it, because nobody
       can. Write it down before you type it.
+- [ ] **Check a backup.** This is the one to use often. It opens the file,
+      counts what is inside and throws the copy away without touching
+      anything: *taken 7 September: 6 jobs, 14 people, 312 photographs*. Those
+      numbers are there to be argued with — if you run six jobs and it says
+      two, you have learned something on a day it costs you nothing.
 - [ ] Look at the file it wrote. The name carries the date, so a file listing
       answers "how old is my backup" without opening anything.
 - [ ] Try to restore a file that is not a backup — any photograph will do. It

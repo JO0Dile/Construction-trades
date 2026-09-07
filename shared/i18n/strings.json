@@ -5268,6 +5268,24 @@
       "en": "Too few different characters. Length alone is not strength.",
       "he": "מעט מדי תווים שונים. אורך לבדו אינו חוזק.",
       "ar": "عدد الأحرف المختلفة قليل جدًا. الطول وحده ليس قوة."
+    },
+    "backup_check": {
+      "c": "Button that opens a backup to see what is in it, without restoring.",
+      "en": "Check a backup",
+      "he": "בדיקת גיבוי",
+      "ar": "افحص نسخة احتياطية"
+    },
+    "backup_contents": {
+      "c": "What a checked backup holds. %1$s is when it was taken, then jobs, people, photos.",
+      "en": "Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.",
+      "he": "נלקח ב־%1$s: %2$d פרויקטים, %3$d אנשים, %4$d תמונות וסרטונים.",
+      "ar": "أُخذت في %1$s: %2$d مشاريع، %3$d أشخاص، %4$d صورة وفيديو."
+    },
+    "backup_damaged": {
+      "c": "The archive opened but the database inside failed SQLite's integrity check.",
+      "en": "The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.",
+      "he": "הקובץ נפתח אך מסד הנתונים שבתוכו פגום. אל תסתמכו עליו — צרו גיבוי חדש.",
+      "ar": "فُتح الملف لكن قاعدة البيانات داخله تالفة. لا تعتمد عليه — أنشئ نسخة جديدة."
     }
   },
   "plurals": {

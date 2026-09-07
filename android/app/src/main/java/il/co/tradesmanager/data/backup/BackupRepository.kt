@@ -139,6 +139,72 @@ class BackupRepository(
     }
 
     /**
+     * What is actually inside a backup, without restoring anything.
+     *
+     * The reason this exists: a backup nobody has opened is a promise, not a
+     * record, and the day you find out it was empty or damaged is by
+     * definition the worst day you could find out. Restoring to check would
+     * mean replacing a working database to test the thing protecting it,
+     * which nobody sane will do — so this opens it in the cache, counts what
+     * it holds, and throws the copy away.
+     *
+     * The counts are the ones somebody can sanity-check against what they
+     * know: six jobs, fourteen people, three hundred photographs. A row count
+     * of the whole database would be a number nobody could argue with.
+     */
+    data class Contents(
+        val header: Backup.Header,
+        val projects: Int,
+        val people: Int,
+        val media: Int,
+        /** SQLite's own verdict on the file inside. */
+        val sound: Boolean,
+    )
+
+    suspend fun check(source: Uri, passphrase: CharArray): Result<Contents> =
+        withContext(Dispatchers.IO) {
+            val dir = File(workDir, "checking")
+            runCatching {
+                dir.deleteRecursively()
+                context.contentResolver.openInputStream(source)?.use { stream ->
+                    val data = DataInputStream(stream)
+                    val header = BackupArchive.readHeader(data) ?: error("not a backup")
+                    val unpacked = BackupArchive.read(data, passphrase, dir)
+                    val db = unpacked.database ?: error("the archive holds no database")
+                    // The platform's SQLite: what is in the archive is
+                    // plaintext, so this needs no key and no native library.
+                    android.database.sqlite.SQLiteDatabase.openDatabase(
+                        db.absolutePath,
+                        null,
+                        android.database.sqlite.SQLiteDatabase.OPEN_READONLY,
+                    ).use { opened ->
+                        Contents(
+                            header = header,
+                            projects = opened.count("projects"),
+                            people = opened.count("accounts"),
+                            media = unpacked.media.size,
+                            sound = opened.isSound(),
+                        )
+                    }
+                } ?: error("could not open the file for reading")
+            }.also { dir.deleteRecursively() }
+        }
+
+    private fun android.database.sqlite.SQLiteDatabase.count(table: String): Int =
+        runCatching {
+            rawQuery("SELECT COUNT(*) FROM $table", null).use { cursor ->
+                if (cursor.moveToFirst()) cursor.getInt(0) else 0
+            }
+        }.getOrDefault(0)
+
+    private fun android.database.sqlite.SQLiteDatabase.isSound(): Boolean =
+        runCatching {
+            rawQuery("PRAGMA integrity_check", null).use { cursor ->
+                cursor.moveToFirst() && cursor.getString(0).equals("ok", ignoreCase = true)
+            }
+        }.getOrDefault(false)
+
+    /**
      * Unpacks a backup and leaves it ready for the next launch.
      *
      * Nothing on the device changes here. The staged copy is checked and

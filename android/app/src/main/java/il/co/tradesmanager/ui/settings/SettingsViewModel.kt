@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.i18n.LocaleController
 import il.co.tradesmanager.core.security.Backup
+import il.co.tradesmanager.data.backup.BackupRepository
 import il.co.tradesmanager.data.backup.StagedRestore
 import il.co.tradesmanager.data.local.DATABASE_VERSION
 import il.co.tradesmanager.data.local.entity.TradeEntity
@@ -48,6 +49,15 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
          * still undoes it. The restart is where it actually happens.
          */
         data class Staged(val takenAt: Long, val needsMigrating: Boolean) : BackupState
+
+        /**
+         * What a backup holds, looked at without restoring it.
+         *
+         * The counts are there to be argued with: somebody who knows they run
+         * six jobs and sees two has learned something, and learned it on a day
+         * that costs them nothing.
+         */
+        data class Checked(val contents: BackupRepository.Contents) : BackupState
 
         /** The file is not one of ours, or is from a newer version. */
         data class Refused(val blocker: Backup.Blocker) : BackupState
@@ -112,6 +122,29 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
                         needsMigrating = Backup.needsMigrating(header, DATABASE_VERSION),
                     )
                 },
+                onFailure = { BackupState.Failed },
+            )
+    }
+
+    /**
+     * Opens a backup, counts what is in it, and throws the copy away.
+     *
+     * Nothing on the device is touched. A backup nobody has opened is a
+     * promise rather than a record, and restoring in order to check would
+     * mean replacing a working database to test the thing protecting it.
+     */
+    fun check(source: Uri, passphrase: String) = viewModelScope.launch {
+        _backup.value = BackupState.Working
+        val inspection = container.backups.inspect(source)
+        val blocker = inspection.blocker
+        if (blocker != null) {
+            _backup.value = BackupState.Refused(blocker)
+            return@launch
+        }
+        _backup.value = container.backups
+            .check(source, passphrase.toCharArray())
+            .fold(
+                onSuccess = { BackupState.Checked(it) },
                 onFailure = { BackupState.Failed },
             )
     }

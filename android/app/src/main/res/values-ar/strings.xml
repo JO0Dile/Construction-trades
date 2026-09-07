@@ -1038,6 +1038,9 @@
     <string name="backup_too_short">12 حرفًا على الأقل. هذا يقفل ملفًا يمكن نسخه وأخذه.</string>
     <string name="backup_no_match">العبارتان غير متطابقتين.</string>
     <string name="backup_too_plain">عدد الأحرف المختلفة قليل جدًا. الطول وحده ليس قوة.</string>
+    <string name="backup_check">افحص نسخة احتياطية</string>
+    <string name="backup_contents">أُخذت في %1$s: %2$d مشاريع، %3$d أشخاص، %4$d صورة وفيديو.</string>
+    <string name="backup_damaged">فُتح الملف لكن قاعدة البيانات داخله تالفة. لا تعتمد عليه — أنشئ نسخة جديدة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

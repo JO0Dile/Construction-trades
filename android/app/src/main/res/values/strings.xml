@@ -1108,6 +1108,12 @@
     <string name="backup_no_match">The two do not match.</string>
     <!-- Long but with too few distinct characters. -->
     <string name="backup_too_plain">Too few different characters. Length alone is not strength.</string>
+    <!-- Button that opens a backup to see what is in it, without restoring. -->
+    <string name="backup_check">Check a backup</string>
+    <!-- What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. -->
+    <string name="backup_contents">Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.</string>
+    <!-- The archive opened but the database inside failed SQLite's integrity check. -->
+    <string name="backup_damaged">The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

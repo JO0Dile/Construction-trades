@@ -53,6 +53,7 @@ fun BackupSection(
     suggestedName: String,
     onBackUp: (android.net.Uri, String) -> Unit,
     onRestore: (android.net.Uri, String) -> Unit,
+    onCheck: (android.net.Uri, String) -> Unit,
     onCancelRestore: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -68,6 +69,10 @@ fun BackupSection(
     val open = rememberLauncherForActivityResult(
         ActivityResultContracts.OpenDocument(),
     ) { uri -> uri?.let { pending = Asking.RESTORE to it } }
+
+    val inspect = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument(),
+    ) { uri -> uri?.let { pending = Asking.CHECK to it } }
 
     Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Text(
@@ -108,6 +113,18 @@ fun BackupSection(
             }
         }
 
+        // On its own row, below the two that change things. Checking a backup
+        // is the safe one and the one to reach for often, and putting it
+        // beside Restore would be putting a harmless button next to the one
+        // that replaces the database.
+        OutlinedButton(
+            onClick = { inspect.launch(arrayOf("*/*")) },
+            enabled = state !is SettingsViewModel.BackupState.Working,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(stringResource(R.string.backup_check))
+        }
+
         when (state) {
             SettingsViewModel.BackupState.Idle -> Unit
             SettingsViewModel.BackupState.Working ->
@@ -133,6 +150,26 @@ fun BackupSection(
                     Text(stringResource(R.string.backup_cancel_restore))
                 }
             }
+            is SettingsViewModel.BackupState.Checked -> {
+                val at = Instant.ofEpochMilli(state.contents.header.createdAt)
+                    .atZone(ZoneId.systemDefault())
+                Note(
+                    stringResource(
+                        R.string.backup_contents,
+                        Formats.dateTime(at.toLocalDate(), at.toLocalTime(), locale),
+                        state.contents.projects,
+                        state.contents.people,
+                        state.contents.media,
+                    ),
+                    error = false,
+                )
+                // A file that decrypts and then fails SQLite's own check is
+                // the case worth shouting about: it looks like a backup right
+                // up until the day it is needed.
+                if (!state.contents.sound) {
+                    Note(stringResource(R.string.backup_damaged), error = true)
+                }
+            }
             is SettingsViewModel.BackupState.Refused ->
                 Note(stringResource(blockerText(state.blocker)), error = true)
             SettingsViewModel.BackupState.Failed ->
@@ -150,13 +187,14 @@ fun BackupSection(
                 when (what) {
                     Asking.BACK_UP -> onBackUp(uri, passphrase)
                     Asking.RESTORE -> onRestore(uri, passphrase)
+                    Asking.CHECK -> onCheck(uri, passphrase)
                 }
             },
         )
     }
 }
 
-private enum class Asking { BACK_UP, RESTORE }
+private enum class Asking { BACK_UP, RESTORE, CHECK }
 
 /**
  * Asks for the passphrase — twice when making a backup, once when opening one.
@@ -230,7 +268,18 @@ private fun PassphraseDialog(
         },
         confirmButton = {
             TextButton(onClick = { onConfirm(passphrase) }, enabled = ready) {
-                Text(stringResource(if (making) R.string.backup_take else R.string.backup_restore))
+                // The button says what is about to happen, not "OK". Restore
+                // and check ask the same question and do very different
+                // things, and this is the last moment to tell them apart.
+                Text(
+                    stringResource(
+                        when (asking) {
+                            Asking.BACK_UP -> R.string.backup_take
+                            Asking.RESTORE -> R.string.backup_restore
+                            Asking.CHECK -> R.string.backup_check
+                        },
+                    ),
+                )
             }
         },
         dismissButton = {

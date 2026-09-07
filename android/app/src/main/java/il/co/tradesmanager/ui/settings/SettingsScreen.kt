@@ -202,6 +202,7 @@ fun SettingsScreen(
                     suggestedName = viewModel.backupFileName(),
                     onBackUp = viewModel::backUp,
                     onRestore = viewModel::restore,
+                    onCheck = viewModel::check,
                     onCancelRestore = viewModel::cancelRestore,
                     onDismiss = viewModel::clearBackupState,
                 )

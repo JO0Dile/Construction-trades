@@ -1107,3 +1107,9 @@
 "backup_no_match" = "العبارتان غير متطابقتين.";
 /* Long but with too few distinct characters. */
 "backup_too_plain" = "عدد الأحرف المختلفة قليل جدًا. الطول وحده ليس قوة.";
+/* Button that opens a backup to see what is in it, without restoring. */
+"backup_check" = "افحص نسخة احتياطية";
+/* What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. */
+"backup_contents" = "أُخذت في %1$s: %2$d مشاريع، %3$d أشخاص، %4$d صورة وفيديو.";
+/* The archive opened but the database inside failed SQLite's integrity check. */
+"backup_damaged" = "فُتح الملف لكن قاعدة البيانات داخله تالفة. لا تعتمد عليه — أنشئ نسخة جديدة.";

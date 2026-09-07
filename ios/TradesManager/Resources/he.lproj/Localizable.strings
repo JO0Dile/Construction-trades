@@ -1107,3 +1107,9 @@
 "backup_no_match" = "השניים אינם תואמים.";
 /* Long but with too few distinct characters. */
 "backup_too_plain" = "מעט מדי תווים שונים. אורך לבדו אינו חוזק.";
+/* Button that opens a backup to see what is in it, without restoring. */
+"backup_check" = "בדיקת גיבוי";
+/* What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. */
+"backup_contents" = "נלקח ב־%1$s: %2$d פרויקטים, %3$d אנשים, %4$d תמונות וסרטונים.";
+/* The archive opened but the database inside failed SQLite's integrity check. */
+"backup_damaged" = "הקובץ נפתח אך מסד הנתונים שבתוכו פגום. אל תסתמכו עליו — צרו גיבוי חדש.";
