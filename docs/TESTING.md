@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.9.1 — and what to try first
+## What is new in 0.10.0 — and what to try first
 
 The whole point of this release is that it can be installed and prodded. Tap
 **Check for updates** in Settings and it will offer itself.
@@ -142,6 +142,24 @@ without this app.** Settings → *Audit trail* → the share button, top right.
       means this device could not load the encryption library, so ID numbers,
       photographs and signatures are stored unprotected. It used to say
       "Something went wrong", which told you nothing.
+
+### Added in 0.10.0
+
+**How long the audit trail is kept is now yours to decide.** Settings →
+*Audit trail*, under the entries.
+
+- [ ] It says **Keep everything**, and that is the default. Nothing is ever
+      deleted until you choose otherwise.
+- [ ] Pick a period. An **Apply now** button appears — applying is a separate
+      action on purpose, because deleting records should take a decision and
+      then take another one.
+- [ ] Apply it. It tells you how many entries went, and the purge writes its
+      own entry into the trail saying what it cut. Check the trail afterwards:
+      it still verifies.
+
+The app deliberately does not choose a period for you. How long records must
+be held differs for a payment application, a safety inspection and a worker's
+ID number, and that is a legal question for whoever runs the app.
 
 ### What is not in it
 
