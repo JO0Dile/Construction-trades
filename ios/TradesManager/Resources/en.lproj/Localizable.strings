@@ -1049,3 +1049,17 @@
 "people_chain_loop" = "That would put a circle in the chain: they are already above the person you picked.";
 /* Refusal: the person or the manager is not on this company's books. */
 "people_chain_unknown" = "Not on this company's books.";
+/* Screen title: the crew, listed by trade, with faces */
+"crew_title" = "Who is on site";
+/* No one on the books matches the chosen trade. */
+"crew_none" = "Nobody on the books for that trade.";
+/* Label for the trade a person works in. */
+"crew_trade" = "Trade";
+/* Label for the date somebody signed the safety induction. */
+"crew_inducted" = "Inducted";
+/* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
+"crew_no_money" = "Nothing about pay here. Only somebody above them in the chain of command sees that.";
+/* Nobody has confirmed a violation against this person. */
+"crew_no_violations" = "Nothing confirmed against them.";
+/* Entry point that opens the crew list, by trade, with faces. */
+"crew_open" = "Find someone by trade";

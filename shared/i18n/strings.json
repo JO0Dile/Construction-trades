@@ -5094,6 +5094,48 @@
       "en": "Not on this company's books.",
       "he": "לא רשומים בחברה זו.",
       "ar": "غير مسجّل في دفاتر هذه الشركة."
+    },
+    "crew_title": {
+      "c": "Screen title: the crew, listed by trade, with faces",
+      "en": "Who is on site",
+      "he": "מי באתר",
+      "ar": "من في الموقع"
+    },
+    "crew_none": {
+      "c": "No one on the books matches the chosen trade.",
+      "en": "Nobody on the books for that trade.",
+      "he": "אין אף אחד רשום למקצוע הזה.",
+      "ar": "لا أحد مسجّل لهذه المهنة."
+    },
+    "crew_trade": {
+      "c": "Label for the trade a person works in.",
+      "en": "Trade",
+      "he": "מקצוע",
+      "ar": "المهنة"
+    },
+    "crew_inducted": {
+      "c": "Label for the date somebody signed the safety induction.",
+      "en": "Inducted",
+      "he": "תודרך",
+      "ar": "تلقّى التدريب"
+    },
+    "crew_no_money": {
+      "c": "Says plainly why a profile shows no wages, so an absence is not read as a gap.",
+      "en": "Nothing about pay here. Only somebody above them in the chain of command sees that.",
+      "he": "אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.",
+      "ar": "لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة."
+    },
+    "crew_no_violations": {
+      "c": "Nobody has confirmed a violation against this person.",
+      "en": "Nothing confirmed against them.",
+      "he": "לא אושרה נגדם אף הפרה.",
+      "ar": "لا توجد مخالفات مؤكدة بحقهم."
+    },
+    "crew_open": {
+      "c": "Entry point that opens the crew list, by trade, with faces.",
+      "en": "Find someone by trade",
+      "he": "חיפוש לפי מקצוע",
+      "ar": "ابحث عن شخص حسب المهنة"
     }
   },
   "plurals": {
@@ -5452,6 +5494,27 @@
         "few": "%d أشخاص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.",
         "many": "%d شخصًا في هذا المشروع ليسوا من صلاحيتك تسعيرهم.",
         "other": "%d شخص في هذا المشروع ليسوا من صلاحيتك تسعيرهم."
+      }
+    },
+    "crew_no_trade": {
+      "c": "How many people have no trade recorded and so appear on no trade list",
+      "en": {
+        "one": "%d person has no trade recorded and is on none of these lists.",
+        "other": "%d people have no trade recorded and are on none of these lists."
+      },
+      "he": {
+        "one": "לאדם אחד לא נרשם מקצוע והוא אינו באף אחת מהרשימות.",
+        "two": "לשני אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.",
+        "many": "ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.",
+        "other": "ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות."
+      },
+      "ar": {
+        "zero": "الجميع لديهم مهنة مسجّلة.",
+        "one": "شخص واحد بلا مهنة مسجّلة ولا يظهر في أي من هذه القوائم.",
+        "two": "شخصان بلا مهنة مسجّلة ولا يظهران في أي من هذه القوائم.",
+        "few": "%d أشخاص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.",
+        "many": "%d شخصًا بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.",
+        "other": "%d شخص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم."
       }
     }
   }

@@ -1009,6 +1009,13 @@
     <string name="people_chain_yourself">لا يمكنك نقل نفسك. من تتبع له هو من يفعل ذلك.</string>
     <string name="people_chain_loop">هذا سيُنشئ حلقة مغلقة: هم بالفعل فوق الشخص الذي اخترته.</string>
     <string name="people_chain_unknown">غير مسجّل في دفاتر هذه الشركة.</string>
+    <string name="crew_title">من في الموقع</string>
+    <string name="crew_none">لا أحد مسجّل لهذه المهنة.</string>
+    <string name="crew_trade">المهنة</string>
+    <string name="crew_inducted">تلقّى التدريب</string>
+    <string name="crew_no_money">لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة.</string>
+    <string name="crew_no_violations">لا توجد مخالفات مؤكدة بحقهم.</string>
+    <string name="crew_open">ابحث عن شخص حسب المهنة</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -1144,5 +1151,13 @@
         <item quantity="few">%d أشخاص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</item>
         <item quantity="many">%d شخصًا في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</item>
         <item quantity="other">%d شخص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</item>
+    </plurals>
+    <plurals name="crew_no_trade">
+        <item quantity="zero">الجميع لديهم مهنة مسجّلة.</item>
+        <item quantity="one">شخص واحد بلا مهنة مسجّلة ولا يظهر في أي من هذه القوائم.</item>
+        <item quantity="two">شخصان بلا مهنة مسجّلة ولا يظهران في أي من هذه القوائم.</item>
+        <item quantity="few">%d أشخاص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</item>
+        <item quantity="many">%d شخصًا بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</item>
+        <item quantity="other">%d شخص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</item>
     </plurals>
 </resources>

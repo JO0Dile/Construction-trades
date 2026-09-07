@@ -1009,6 +1009,13 @@
     <string name="people_chain_yourself">אינכם יכולים להעביר את עצמכם. מי שאתם כפופים לו עושה זאת.</string>
     <string name="people_chain_loop">זה ייצור מעגל בשרשרת: הם כבר מעל האדם שבחרתם.</string>
     <string name="people_chain_unknown">לא רשומים בחברה זו.</string>
+    <string name="crew_title">מי באתר</string>
+    <string name="crew_none">אין אף אחד רשום למקצוע הזה.</string>
+    <string name="crew_trade">מקצוע</string>
+    <string name="crew_inducted">תודרך</string>
+    <string name="crew_no_money">אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.</string>
+    <string name="crew_no_violations">לא אושרה נגדם אף הפרה.</string>
+    <string name="crew_open">חיפוש לפי מקצוע</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -1110,5 +1117,11 @@
         <item quantity="two">שני אנשים בפרויקט זה אינם בסמכותכם לתמחר.</item>
         <item quantity="many">%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</item>
         <item quantity="other">%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</item>
+    </plurals>
+    <plurals name="crew_no_trade">
+        <item quantity="one">לאדם אחד לא נרשם מקצוע והוא אינו באף אחת מהרשימות.</item>
+        <item quantity="two">לשני אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</item>
+        <item quantity="many">ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</item>
+        <item quantity="other">ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</item>
     </plurals>
 </resources>

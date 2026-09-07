@@ -229,6 +229,34 @@ class MembershipRepository(
         return Result.success(Unit)
     }
 
+    /**
+     * Records what trade somebody works in here.
+     *
+     * Same standing as moving them along the chain, and for the same reason:
+     * a trade is what a safety officer walks the site with. Somebody who could
+     * write it for a person they have no business with could put a labourer on
+     * the list of certified electricians.
+     */
+    suspend fun setTrade(
+        actorMembershipId: String,
+        membershipId: String,
+        tradeId: String?,
+        actorName: String,
+    ): Result<Unit> {
+        val target = dao.membership(membershipId)
+            ?: return Result.failure(NotReassigned(Chain.Blocker.UNKNOWN))
+        val company = chainOf(target.companyId)
+        if (!Chain.mayArrange(company, actorMembershipId, membershipId)) {
+            return Result.failure(NotReassigned(Chain.Blocker.NOT_YOURS))
+        }
+        dao.setTrade(membershipId, tradeId)
+        audit.record(
+            ENTITY, membershipId, AuditTrail.Action.UPDATE, actorName,
+            if (tradeId == null) "Trade cleared" else "Trade set to $tradeId",
+        )
+        return Result.success(Unit)
+    }
+
     /** Why a move along the chain was refused, carrying the rule that refused it. */
     class NotReassigned(val blocker: Chain.Blocker) :
         IllegalStateException("chain change refused: $blocker")

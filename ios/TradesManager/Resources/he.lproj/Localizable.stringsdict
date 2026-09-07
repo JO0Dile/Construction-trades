@@ -343,5 +343,25 @@
             <string>%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
         </dict>
     </dict>
+    <key>crew_no_trade</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>לאדם אחד לא נרשם מקצוע והוא אינו באף אחת מהרשימות.</string>
+            <key>two</key>
+            <string>לשני אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+            <key>many</key>
+            <string>ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+            <key>other</key>
+            <string>ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

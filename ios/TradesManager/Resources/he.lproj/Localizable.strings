@@ -1049,3 +1049,17 @@
 "people_chain_loop" = "זה ייצור מעגל בשרשרת: הם כבר מעל האדם שבחרתם.";
 /* Refusal: the person or the manager is not on this company's books. */
 "people_chain_unknown" = "לא רשומים בחברה זו.";
+/* Screen title: the crew, listed by trade, with faces */
+"crew_title" = "מי באתר";
+/* No one on the books matches the chosen trade. */
+"crew_none" = "אין אף אחד רשום למקצוע הזה.";
+/* Label for the trade a person works in. */
+"crew_trade" = "מקצוע";
+/* Label for the date somebody signed the safety induction. */
+"crew_inducted" = "תודרך";
+/* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
+"crew_no_money" = "אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.";
+/* Nobody has confirmed a violation against this person. */
+"crew_no_violations" = "לא אושרה נגדם אף הפרה.";
+/* Entry point that opens the crew list, by trade, with faces. */
+"crew_open" = "חיפוש לפי מקצוע";

@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -59,6 +60,7 @@ import il.co.tradesmanager.ui.components.rememberImageAdder
 fun ViolationsScreen(
     container: AppContainer,
     onBack: () -> Unit,
+    onOpenCrew: () -> Unit,
 ) {
     val viewModel: ViolationsViewModel = viewModel(
         factory = ViewModelFactory(container) { ViolationsViewModel(it) },
@@ -82,6 +84,19 @@ fun ViolationsScreen(
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.action_back),
+                        )
+                    }
+                },
+                actions = {
+                    // The other way of finding somebody, next to the ID field
+                    // because it is the same job. You type the number off a
+                    // card when you have the card; you look down a column of
+                    // faces when the man has walked off and all you have is
+                    // that he was on the electrics.
+                    IconButton(onClick = onOpenCrew) {
+                        Icon(
+                            Icons.Filled.Groups,
+                            contentDescription = stringResource(R.string.crew_open),
                         )
                     }
                 },

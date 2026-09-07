@@ -77,6 +77,10 @@ interface MembershipDao {
     @Query("UPDATE memberships SET reportsToMembershipId = :bossId WHERE id = :id")
     suspend fun setReportsTo(id: String, bossId: String?)
 
+    /** Records what trade somebody works in here. Null unsays it. */
+    @Query("UPDATE memberships SET tradeId = :tradeId WHERE id = :id")
+    suspend fun setTrade(id: String, tradeId: String?)
+
     /**
      * Everybody who was reporting to a membership that is ending.
      *

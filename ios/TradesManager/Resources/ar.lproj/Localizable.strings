@@ -1049,3 +1049,17 @@
 "people_chain_loop" = "هذا سيُنشئ حلقة مغلقة: هم بالفعل فوق الشخص الذي اخترته.";
 /* Refusal: the person or the manager is not on this company's books. */
 "people_chain_unknown" = "غير مسجّل في دفاتر هذه الشركة.";
+/* Screen title: the crew, listed by trade, with faces */
+"crew_title" = "من في الموقع";
+/* No one on the books matches the chosen trade. */
+"crew_none" = "لا أحد مسجّل لهذه المهنة.";
+/* Label for the trade a person works in. */
+"crew_trade" = "المهنة";
+/* Label for the date somebody signed the safety induction. */
+"crew_inducted" = "تلقّى التدريب";
+/* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
+"crew_no_money" = "لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة.";
+/* Nobody has confirmed a violation against this person. */
+"crew_no_violations" = "لا توجد مخالفات مؤكدة بحقهم.";
+/* Entry point that opens the crew list, by trade, with faces. */
+"crew_open" = "ابحث عن شخص حسب المهنة";

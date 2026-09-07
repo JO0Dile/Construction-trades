@@ -27,7 +27,7 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE,
         ),
     ],
-    indices = [Index("accountId"), Index("companyId")],
+    indices = [Index("accountId"), Index("companyId"), Index("tradeId")],
 )
 data class MembershipEntity(
     @PrimaryKey val id: String,
@@ -82,4 +82,17 @@ data class MembershipEntity(
      * true whether or not anybody has drawn the chart.
      */
     val reportsToMembershipId: String? = null,
+    /**
+     * The trade this person works in, for this firm.
+     *
+     * A catalogue trade id, or null when nobody has said. Null is honest and
+     * common: the gate admits people without asking what they do, and a guess
+     * would put somebody on a list of electricians who is not one.
+     *
+     * On the membership rather than the account, like everything else here. A
+     * man is a chippy for the firm that took him on as one and a general
+     * labourer for the one that did not, and the whole point of a trade list
+     * is that it is this site's answer.
+     */
+    val tradeId: String? = null,
 )

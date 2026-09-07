@@ -50,6 +50,7 @@ import il.co.tradesmanager.ui.payments.PaymentsScreen
 import il.co.tradesmanager.ui.work.ContractsScreen
 import il.co.tradesmanager.ui.work.WorkPackagesScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
+import il.co.tradesmanager.ui.people.CrewScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
@@ -96,6 +97,7 @@ object Routes {
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
     const val GATE = "people/gate"
+    const val CREW = "people/crew"
     const val MONEY = "money"
     const val PAYMENTS = "money/applications"
     const val TIMESHEET = "money/timesheet"
@@ -350,10 +352,17 @@ fun AppNavHost(
                 PeopleScreen(
                     container = container,
                     onOpenGate = { navController.navigate(Routes.GATE) },
+                    onOpenCrew = { navController.navigate(Routes.CREW) },
                 )
             }
             composable(Routes.GATE) {
                 GateScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.CREW) {
+                CrewScreen(
                     container = container,
                     onBack = { navController.popBackStack() },
                 )
@@ -467,6 +476,7 @@ fun AppNavHost(
                 ViolationsScreen(
                     container = container,
                     onBack = { navController.popBackStack() },
+                    onOpenCrew = { navController.navigate(Routes.CREW) },
                 )
             }
             composable(Routes.INCIDENTS) {

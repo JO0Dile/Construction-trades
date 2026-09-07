@@ -122,9 +122,29 @@ class PhotoRepository(
 
     /** Newest photo per item, for stock thumbnails. */
     fun observeItemThumbnails(): Flow<Map<String, String>> =
-        dao.observeAllOfType(Owner.INVENTORY_ITEM).map { photos ->
-            // Already ordered newest first, so the first per owner wins.
-            photos.associate { it.ownerId to it.uri }
+        newestPerOwner(Owner.INVENTORY_ITEM)
+
+    /**
+     * Account id -> that person's face, for a list of them.
+     *
+     * One query for the whole list rather than one per row. A list of faces
+     * where each row fetches its own flickers its way down the screen, which
+     * is the opposite of useful when somebody is scanning it for a man who has
+     * just walked away from them.
+     */
+    fun observeFaces(): Flow<Map<String, String>> = newestPerOwner(Owner.ACCOUNT_PHOTO)
+
+    /**
+     * The newest picture each owner has, or nothing.
+     *
+     * The rows arrive newest first, and the first of each owner is the answer.
+     * `associate` was doing this and getting it backwards -- it keeps the last
+     * entry for a repeated key, so every item that had ever been
+     * re-photographed showed the picture it was replacing, permanently.
+     */
+    private fun newestPerOwner(ownerType: String): Flow<Map<String, String>> =
+        dao.observeAllOfType(ownerType).map { photos ->
+            photos.groupBy { it.ownerId }.mapValues { (_, theirs) -> theirs.first().uri }
         }
 
     /**

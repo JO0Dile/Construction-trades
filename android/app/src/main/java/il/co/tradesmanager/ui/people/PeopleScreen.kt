@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HowToReg
 import androidx.compose.material.icons.filled.PersonRemove
 import androidx.compose.material3.AlertDialog
@@ -67,6 +68,7 @@ import il.co.tradesmanager.ui.components.EmptyState
 fun PeopleScreen(
     container: AppContainer,
     onOpenGate: () -> Unit,
+    onOpenCrew: () -> Unit,
 ) {
     val viewModel: PeopleViewModel = viewModel(
         factory = ViewModelFactory(container) { PeopleViewModel(it) },
@@ -89,6 +91,15 @@ fun PeopleScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.people_title)) },
                 actions = {
+                    // Available to everybody who can open this tab. Finding a
+                    // face is not a management act — it is what somebody does
+                    // when they have to speak to a man they cannot name.
+                    IconButton(onClick = onOpenCrew) {
+                        Icon(
+                            Icons.Filled.Groups,
+                            contentDescription = stringResource(R.string.crew_open),
+                        )
+                    }
                     // The gate, not the member list. Adding somebody here is
                     // an office act; the gate is a person standing in front of
                     // you signing, and the two are different enough that

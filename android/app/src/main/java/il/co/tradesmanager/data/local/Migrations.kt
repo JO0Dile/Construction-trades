@@ -279,6 +279,19 @@ object Migrations {
         }
     }
 
+    /**
+     * What trade somebody works in, for this firm.
+     *
+     * Nullable with no default. Null means nobody has said, which is the true
+     * answer for every existing row, and a guess would put a man on a list of
+     * electricians that a safety officer then walks the site with.
+     */
+    val MIGRATION_27_28 = object : Migration(27, 28) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_27_28.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -306,6 +319,7 @@ object Migrations {
         MIGRATION_24_25,
         MIGRATION_25_26,
         MIGRATION_26_27,
+        MIGRATION_27_28,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -773,5 +787,10 @@ object Migrations {
     val SQL_26_27: List<String> = listOf(
         "ALTER TABLE `memberships` ADD COLUMN `reportsToMembershipId` TEXT",
         "ALTER TABLE `time_entries` ADD COLUMN `workerMembershipId` TEXT",
+    )
+
+    val SQL_27_28: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `tradeId` TEXT",
+        "CREATE INDEX IF NOT EXISTS `index_memberships_tradeId` ON `memberships` (`tradeId`)",
     )
 }

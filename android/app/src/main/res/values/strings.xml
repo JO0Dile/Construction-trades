@@ -1050,6 +1050,20 @@
     <string name="people_chain_loop">That would put a circle in the chain: they are already above the person you picked.</string>
     <!-- Refusal: the person or the manager is not on this company's books. -->
     <string name="people_chain_unknown">Not on this company\'s books.</string>
+    <!-- Screen title: the crew, listed by trade, with faces -->
+    <string name="crew_title">Who is on site</string>
+    <!-- No one on the books matches the chosen trade. -->
+    <string name="crew_none">Nobody on the books for that trade.</string>
+    <!-- Label for the trade a person works in. -->
+    <string name="crew_trade">Trade</string>
+    <!-- Label for the date somebody signed the safety induction. -->
+    <string name="crew_inducted">Inducted</string>
+    <!-- Says plainly why a profile shows no wages, so an absence is not read as a gap. -->
+    <string name="crew_no_money">Nothing about pay here. Only somebody above them in the chain of command sees that.</string>
+    <!-- Nobody has confirmed a violation against this person. -->
+    <string name="crew_no_violations">Nothing confirmed against them.</string>
+    <!-- Entry point that opens the crew list, by trade, with faces. -->
+    <string name="crew_open">Find someone by trade</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -1117,5 +1131,9 @@
     <plurals name="ts_withheld">
         <item quantity="one">%d person on this job is not yours to price.</item>
         <item quantity="other">%d people on this job are not yours to price.</item>
+    </plurals>
+    <plurals name="crew_no_trade">
+        <item quantity="one">%d person has no trade recorded and is on none of these lists.</item>
+        <item quantity="other">%d people have no trade recorded and are on none of these lists.</item>
     </plurals>
 </resources>

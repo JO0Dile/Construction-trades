@@ -91,6 +91,27 @@ Concretely, for a second-tier crew:
 and never `{"mainContractAmount": 10000, "firstTierProfit": 3000, …}` with the
 client hiding the first two. See `docs/COMPLIANCE.md`.
 
+`core/access/Chain.kt` is the same rule one level down, between people
+instead of firms: a person's own money is theirs, and otherwise may be shown
+only to somebody above them in the chain of command. It needs the server for
+exactly the same reason, and rather more urgently — a labourer and their
+foreman are commonly on the same site with the same app, and the labourer
+tapping through to a payroll endpoint is not a hypothetical.
+
+So the server:
+
+* runs `Chain.maySeePay` on **every** read that carries a rate, an hours
+  total or a pay figure, keyed on the authenticated membership
+* sends a withheld person's row **absent**, not blanked — a row with a null
+  rate says "nobody recorded one", which is a different and misleading fact
+* never sends a job total computed over people the caller may not price. A
+  gap between a job's costed labour and the hours of the few people somebody
+  happens to be senior to is a wrong number that reads as money nobody
+  worked for, and it discloses a rate by subtraction
+
+The chain is per company and is read from `memberships.reportsToMembershipId`,
+so a foreman for one firm gets nothing extra on another firm's job.
+
 The same applies to `core/work/Assignment.mayMove`. A crew that could POST
 `status: APPROVED` on its own work needs no inspection, whatever the app's
 buttons allow, so the transition table and the side that owns each transition
