@@ -241,6 +241,34 @@ class BackupArchiveTest {
     }
 
     @Test
+    fun `a backup that failed half way through will not open`() {
+        // A photograph that has gone missing since it was listed, or a card
+        // that fills up. The caller is told the backup failed -- but the file
+        // it half wrote is sitting there looking like a backup, and the day it
+        // is needed is not the day to find out it stops in March. Sealing
+        // happens only on the way out of a write that finished, so a partial
+        // file is refused exactly as a truncated one is.
+        val database = file("database.db", blob(seed = 13, size = 2 * frame))
+        val good = file("photo.jpg", blob(seed = 14, size = frame))
+        val vanished = File(folder.newFolder("gone${made++}"), "vanished.jpg")
+
+        val partial = ByteArrayOutputStream()
+        val failure = runCatching {
+            BackupArchive.write(
+                partial,
+                header(mediaCount = 2),
+                passphrase(),
+                database,
+                listOf(good, vanished),
+            )
+        }.exceptionOrNull()
+
+        assertTrue("writing a backup of a file that is not there should fail", failure != null)
+        assertTrue("nothing was written before it failed", partial.size() > frame)
+        assertTrue("a half-written backup opened", failureFrom(partial.toByteArray()) != null)
+    }
+
+    @Test
     fun `two backups of the same data are not the same file`() {
         // Salt and nonce prefix are drawn fresh every time. If either were
         // fixed, the same database under the same passphrase would produce the

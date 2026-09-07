@@ -145,19 +145,27 @@ object BackupArchive {
         stream.flush()
 
         // Nothing here closes `output`: it belongs to the caller, who opened it
-        // from a content URI and has to be the one to let it go. Closing the
-        // zip closes the frames beneath it, which seals the last one.
+        // from a content URI and has to be the one to let it go.
         val frames = FrameOutput(stream, keyOf(passphrase, salt), prefix, headerBytes)
-        ZipOutputStream(frames).use { zip ->
-            zip.putNextEntry(ZipEntry(DATABASE_ENTRY))
-            database.inputStream().use { it.copyTo(zip) }
+        val zip = ZipOutputStream(frames)
+        zip.putNextEntry(ZipEntry(DATABASE_ENTRY))
+        database.inputStream().use { it.copyTo(zip) }
+        zip.closeEntry()
+        media.forEach { file ->
+            zip.putNextEntry(ZipEntry(MEDIA_PREFIX + file.name))
+            file.inputStream().use { it.copyTo(zip) }
             zip.closeEntry()
-            media.forEach { file ->
-                zip.putNextEntry(ZipEntry(MEDIA_PREFIX + file.name))
-                file.inputStream().use { it.copyTo(zip) }
-                zip.closeEntry()
-            }
         }
+
+        // Deliberately not `use`, and deliberately not in a `finally`. Closing
+        // the zip closes the frames beneath it, which seals the last one --
+        // and the last frame is what says the file ends here on purpose. If a
+        // photograph goes missing half way through, or the card fills up, the
+        // caller is told the backup failed; sealing the part that got written
+        // would leave a file that opens and reads as a site diary that stops
+        // in March. Left unsealed, it will not open at all, which is the same
+        // refusal as a backup somebody truncated and is what it deserves.
+        zip.close()
     }
 
     /**
