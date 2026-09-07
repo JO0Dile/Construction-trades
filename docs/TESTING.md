@@ -9,6 +9,76 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
+## What is new in 0.6.0 — and what to try first
+
+The whole point of this release is that it can be installed and prodded. Tap
+**Check for updates** in Settings and it will offer itself.
+
+**Twenty-two trades instead of six.** Settings → *My trades*. Gypsum,
+stonework, tiling, plastering, aluminium, rebar, waterproofing, firefighting,
+lifts, landscape and the rest are all there now. Switch one on and its stock
+list appears — 497 items across the app, up from 403, including the tools that
+were missing by name: the breaker (كونجו), the percussion drill, the wall
+chaser, the socket tester with and without an RCD trip, and the cable tracer
+(مزمار).
+
+- [ ] Switch on **Drywall & gypsum**. Its items appear in Inventory.
+- [ ] Switch on **Stonework & cladding** and look at its safety checklist —
+      the silica one. Every new trade has one now; 46 checklists, 193 checks.
+- [ ] Start a job from the **Bathroom, floor and walls** template. Its third
+      task is a 24-hour flood test *before* a single tile goes down.
+
+**More than one firm on a job.** Open a job → **Work packages**.
+
+- [ ] The first thing it asks is what your firm is on this job. Nothing else
+      is possible until that is answered — and nobody else can answer it for
+      you.
+- [ ] Say **First-tier subcontractor**. Now you can bring a crew on. Notice
+      that the positions offered are only the ones you may actually engage; a
+      crew leader is offered nobody.
+- [ ] Hand the crew a package against a **stage** and a **scope**. The stage
+      list is the one that matters: slab conduit (העקדה / العقدة), rough-in
+      (الشغل الأسود), second fix (الشغل الأبيض), commissioning, handover.
+- [ ] Try to accept the package as the contractor. It refuses — only the crew
+      accepts.
+- [ ] Try to submit it without a photograph. The button is disabled, and the
+      photo strip is directly above it.
+- [ ] Approve it. Read what the screen says: **approved is not paid.**
+- [ ] Back on the list, a card appears saying what a payment application would
+      claim. The figure is **cumulative** — everything approved to date, not
+      the package you just approved — and the card says so.
+
+**Contracts.** Work packages → *Contracts*.
+
+- [ ] A contract needs both signatures before its figure stops being editable.
+      Sign as one side and it stays an offer.
+- [ ] Change an agreed price. It goes through an amendment with a reason, the
+      other side decides, and every figure the contract has ever been stays on
+      screen. You cannot accept your own.
+- [ ] If your firm sits between two contracts, the margin is at the top of the
+      list. It is the number nobody else on the job can see.
+
+**Company profile.** Settings → *Company profile*.
+
+- [ ] Add a mark, a phone number, an email. Each one has its own **Show to the
+      crew** switch, off by default.
+- [ ] Read what the licence section says about being "verified". It is
+      deliberate: recording a licence marks you verified in this app and is
+      not a statement that you are licensed to do the work.
+
+**The flag** is on the launcher icon and at the foot of Settings.
+
+### What is not in it
+
+- Nothing here has been tested on a phone by anybody. That is what this
+  release is for.
+- The Hebrew and Arabic on everything new are **drafts**. The worksheets in
+  `docs/translation/` are where the real wording goes.
+- The confidentiality rules run on this device only. Two firms genuinely
+  sharing a job needs a server — see `docs/SERVER.md`.
+
+---
+
 ## Android — the path that needs nothing but a phone
 
 Every push builds a debug APK in GitHub Actions. That artifact is the app.
