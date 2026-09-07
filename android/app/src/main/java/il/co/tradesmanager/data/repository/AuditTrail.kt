@@ -61,6 +61,12 @@ class AuditTrail(private val dao: AuditDao) {
         // a hash.
         val previousHash = previous?.hash?.takeIf { it.isNotBlank() } ?: AuditChain.GENESIS
         val actor = actorName.ifBlank { "unknown" }
+        // An empty payload is stored as absent. The hash distinguishes the two
+        // — null encodes differently from "" on purpose — but an exported CSV
+        // writes both as an empty cell, so a checker outside the app could not
+        // tell them apart and would fail a row nobody had touched. Collapsing
+        // them here means an empty cell always means absent.
+        val payload = payloadJson?.ifBlank { null }
         val occurredAt = System.currentTimeMillis()
         dao.insert(
             AuditLogEntity(
@@ -71,7 +77,7 @@ class AuditTrail(private val dao: AuditDao) {
                 actorId = null,
                 actorName = actor,
                 summary = summary,
-                payloadJson = payloadJson,
+                payloadJson = payload,
                 occurredAt = occurredAt,
                 sequence = sequence,
                 previousHash = previousHash,
@@ -84,7 +90,7 @@ class AuditTrail(private val dao: AuditDao) {
                     actorId = null,
                     actorName = actor,
                     summary = summary,
-                    payloadJson = payloadJson,
+                    payloadJson = payload,
                     occurredAt = occurredAt,
                 ),
             ),
@@ -92,20 +98,37 @@ class AuditTrail(private val dao: AuditDao) {
     }
 
     /**
-     * Whether the trail still adds up.
+     * The rows and the verdict on exactly those rows.
      *
-     * Checks the most recent [window] entries. The answer is about that
-     * window, and the screen that shows it says so rather than implying the
-     * whole history was examined.
+     * One function because the two must describe the same set. Read
+     * separately, an export could carry five hundred rows under a verdict
+     * taken over a different five hundred — a document asserting an integrity
+     * check it did not perform on the pages it is attached to, which is worse
+     * than one making no claim at all.
+     *
+     * Covers the most recent [window] entries. The answer is about that
+     * window, and both the screen and the exported document say so rather than
+     * implying the whole history was examined.
      */
+    suspend fun snapshot(window: Int = VERIFY_WINDOW): Snapshot {
+        val rows = dao.newestFirst(window).asReversed()
+        return Snapshot(rows, AuditChain.verify(rows.map { it.asChainEntry() }))
+    }
+
+    /** A set of entries and what verification made of that same set. */
+    data class Snapshot(
+        val entries: List<AuditLogEntity>,
+        val verdict: AuditChain.Verdict,
+    )
+
+    /** Whether the trail still adds up. */
     suspend fun verify(window: Int = VERIFY_WINDOW): AuditChain.Verdict =
-        AuditChain.verify(dao.newestFirst(window).asReversed().map { it.asChainEntry() })
+        snapshot(window).verdict
 
     fun recent(limit: Int = 500): Flow<List<AuditLogEntity>> = dao.observeRecent(limit)
 
     fun forEntity(type: String, id: String): Flow<List<AuditLogEntity>> = dao.observeFor(type, id)
 
-    suspend fun exportSince(since: Long): List<AuditLogEntity> = dao.exportSince(since)
 
     /**
      * Applies a retention policy. The purge is itself logged, so a gap in the

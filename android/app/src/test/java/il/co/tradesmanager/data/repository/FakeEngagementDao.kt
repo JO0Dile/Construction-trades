@@ -145,9 +145,6 @@ class FakeAuditDao : AuditDao {
     override fun observeFor(type: String, id: String): Flow<List<AuditLogEntity>> =
         MutableStateFlow(entries.filter { it.entityType == type && it.entityId == id })
 
-    override suspend fun exportSince(since: Long): List<AuditLogEntity> =
-        entries.filter { it.occurredAt >= since }
-
     override suspend fun purgeOlderThan(cutoff: Long): Int {
         val before = entries.size
         entries.removeAll { it.occurredAt < cutoff }

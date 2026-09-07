@@ -4650,6 +4650,51 @@
       "en": "Not checked yet.",
       "he": "טרם נבדק.",
       "ar": "لم يُفحص بعد."
+    },
+    "audit_export": {
+      "en": "Export the trail",
+      "he": "ייצוא היומן",
+      "ar": "تصدير السجل"
+    },
+    "audit_col_seq": {
+      "en": "No.",
+      "he": "מס'",
+      "ar": "رقم"
+    },
+    "audit_col_when": {
+      "en": "When",
+      "he": "מתי",
+      "ar": "متى"
+    },
+    "audit_col_who": {
+      "en": "Who",
+      "he": "מי",
+      "ar": "من"
+    },
+    "audit_col_action": {
+      "en": "Action",
+      "he": "פעולה",
+      "ar": "إجراء"
+    },
+    "audit_col_what": {
+      "en": "What happened",
+      "he": "מה קרה",
+      "ar": "ما الذي حدث"
+    },
+    "audit_col_signature": {
+      "en": "Signature",
+      "he": "חתימה",
+      "ar": "توقيع"
+    },
+    "audit_export_checked": {
+      "en": "Checked at export",
+      "he": "נבדק בעת הייצוא",
+      "ar": "فُحص عند التصدير"
+    },
+    "audit_export_note": {
+      "en": "Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.",
+      "he": "החתימות מקוצרות ב-PDF. קובץ ה-CSV מכיל אותן במלואן, ו-docs/AUDIT.md מסביר כיצד לחשב אותן מחדש.",
+      "ar": "التواقيع مختصرة في ملف PDF. ملف CSV يحملها كاملة، و docs/AUDIT.md يوضح كيفية إعادة حسابها."
     }
   },
   "plurals": {

@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,9 +21,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -32,8 +37,12 @@ import il.co.tradesmanager.core.security.AuditChain
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.SectionPlaceholder
+import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
+import il.co.tradesmanager.ui.export.ExportDocument
+import il.co.tradesmanager.ui.export.Exporter
 import java.time.Instant
+import java.time.LocalDate
 import java.time.ZoneId
 
 /**
@@ -57,7 +66,31 @@ fun AuditScreen(
     val verdict by viewModel.verdict.collectAsStateWithLifecycle()
     val checking by viewModel.checking.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val languageTag = currentLanguageTag()
     val zone = ZoneId.systemDefault()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
+    val pending by viewModel.pendingExport.collectAsStateWithLifecycle()
+
+    // Writing the file and opening the share sheet is the screen's job: both
+    // need a Context, and a view model holding one outlives the screen that
+    // gave it.
+    LaunchedEffect(pending) {
+        val snapshot = pending ?: return@LaunchedEffect
+        val result = Exporter.write(
+            context = context,
+            document = ExportDocument.AuditTrail(
+                entries = snapshot.entries,
+                verdict = snapshot.verdict,
+                exportedOn = LocalDate.now(),
+            ),
+            languageTag = languageTag,
+            locale = locale,
+            rightToLeft = layoutDirection == LayoutDirection.Rtl,
+        )
+        context.startActivity(Exporter.shareIntent(context, result))
+        viewModel.exportHandled()
+    }
 
     Scaffold(
         topBar = {
@@ -68,6 +101,14 @@ fun AuditScreen(
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.action_back),
+                        )
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { viewModel.export() }, enabled = !checking) {
+                        Icon(
+                            Icons.Filled.IosShare,
+                            contentDescription = stringResource(R.string.audit_export),
                         )
                     }
                 },
@@ -85,6 +126,15 @@ fun AuditScreen(
             }
 
             item { VerdictCard(verdict, viewModel.window) }
+
+            item {
+                Text(
+                    text = stringResource(R.string.audit_export_note),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                )
+            }
 
             item {
                 OutlinedButton(

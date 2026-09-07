@@ -938,6 +938,15 @@
     <string name="audit_fault_missing">An entry before %1$d is gone.</string>
     <string name="audit_window">Checks the most recent %1$d entries.</string>
     <string name="audit_not_checked">Not checked yet.</string>
+    <string name="audit_export">Export the trail</string>
+    <string name="audit_col_seq">No.</string>
+    <string name="audit_col_when">When</string>
+    <string name="audit_col_who">Who</string>
+    <string name="audit_col_action">Action</string>
+    <string name="audit_col_what">What happened</string>
+    <string name="audit_col_signature">Signature</string>
+    <string name="audit_export_checked">Checked at export</string>
+    <string name="audit_export_note">Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

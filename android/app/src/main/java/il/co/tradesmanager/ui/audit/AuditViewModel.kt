@@ -35,9 +35,39 @@ class AuditViewModel(private val container: AppContainer) : ViewModel() {
 
     val window: Int get() = AuditTrail.VERIFY_WINDOW
 
+    /**
+     * Set when a snapshot is ready to be written to a file.
+     *
+     * The view model does not touch the file system or the share sheet — both
+     * need a Context, and a view model holding one outlives the screen that
+     * gave it. So it prepares the snapshot and the screen writes it, then
+     * calls [exportHandled] so a rotation does not export a second time.
+     */
+    private val _pendingExport = MutableStateFlow<AuditTrail.Snapshot?>(null)
+    val pendingExport: StateFlow<AuditTrail.Snapshot?> = _pendingExport.asStateFlow()
+
     fun check() = viewModelScope.launch {
         _checking.value = true
         _verdict.value = container.auditTrail.verify()
         _checking.value = false
+    }
+
+    /**
+     * Verifies, then hands the same rows and verdict to the screen.
+     *
+     * Exporting always checks first. A trail exported without one would go
+     * into a tender folder saying nothing about whether it holds up, and the
+     * person filing it would reasonably assume somebody had looked.
+     */
+    fun export() = viewModelScope.launch {
+        _checking.value = true
+        val snapshot = container.auditTrail.snapshot()
+        _verdict.value = snapshot.verdict
+        _checking.value = false
+        _pendingExport.value = snapshot
+    }
+
+    fun exportHandled() {
+        _pendingExport.value = null
     }
 }

@@ -5,6 +5,8 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.security.AuditChain
+import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
@@ -14,7 +16,9 @@ import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.components.unitLabel
+import java.time.Instant
 import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Locale
 
 /**
@@ -68,7 +72,49 @@ sealed interface ExportDocument {
         val producedOn: LocalDate,
     ) : ExportDocument
 
-    data class Table(val title: String, val headers: List<String>, val rows: List<List<String>>)
+    /**
+     * The audit trail, as a document somebody outside the app can check.
+     *
+     * The signature travels with each row. That is the whole point: a
+     * tamper-evident log an inspector cannot take away is only evidence while
+     * they are standing next to the phone. With the hashes in the file, a
+     * third party can recompute the chain themselves and does not have to take
+     * the app's word for the verdict.
+     *
+     * [verdict] is what the app made of it at the moment of export, and lands
+     * in the first row — following the handover pack, because a document that
+     * is skimmed rather than read should still say whether it holds up.
+     */
+    data class AuditTrail(
+        val entries: List<AuditLogEntity>,
+        val verdict: AuditChain.Verdict,
+        val exportedOn: LocalDate,
+    ) : ExportDocument
+
+    /**
+     * A table, plus columns only the machine-readable copy carries.
+     *
+     * [extraHeaders] and [extraCells] are appended to each CSV row and left
+     * out of the PDF. The audit trail is why they exist: verifying a hash
+     * needs every field the hash was taken over, including ones nobody reads
+     * — the previous entry's hash, the raw millisecond timestamp, the payload.
+     * Eleven columns on A4 is an unreadable printout, and a printout is what
+     * an inspector actually reads. So the PDF keeps the six a person wants and
+     * the CSV carries what a checker needs.
+     *
+     * Both still come from one Table, which is the property that mattered: the
+     * two files cannot disagree about a value, only about how much they show.
+     *
+     * A row with no matching entry in [extraCells] is padded rather than
+     * dropped, so a mismatch cannot silently shorten the export.
+     */
+    data class Table(
+        val title: String,
+        val headers: List<String>,
+        val rows: List<List<String>>,
+        val extraHeaders: List<String> = emptyList(),
+        val extraCells: List<List<String>> = emptyList(),
+    )
 
     fun table(context: Context, languageTag: String, locale: Locale): Table = when (this) {
         is Inventory -> Table(
@@ -117,6 +163,63 @@ sealed interface ExportDocument {
                     Formats.quantity(material.requiredQuantity, locale),
                     context.getString(unitLabel(material.unit)),
                     "",
+                )
+            },
+        )
+
+        is AuditTrail -> Table(
+            title = context.getString(R.string.audit_title),
+            headers = listOf(
+                context.getString(R.string.audit_col_seq),
+                context.getString(R.string.audit_col_when),
+                context.getString(R.string.audit_col_who),
+                context.getString(R.string.audit_col_action),
+                context.getString(R.string.audit_col_what),
+                context.getString(R.string.audit_col_signature),
+            ),
+            rows = listOf(
+                listOf(
+                    "",
+                    Formats.date(exportedOn, locale),
+                    context.getString(R.string.audit_export_checked),
+                    verdictWord(context),
+                    verdictDetail(context),
+                    "",
+                ),
+            ) + entries.map { entry ->
+                val at = Instant.ofEpochMilli(entry.occurredAt).atZone(ZoneId.systemDefault())
+                listOf(
+                    entry.sequence.toString(),
+                    Formats.dateTime(at.toLocalDate(), at.toLocalTime(), locale),
+                    entry.actorName,
+                    entry.action,
+                    entry.summary,
+                    // Blank rather than a placeholder on an unsigned row: an
+                    // entry written before the chain existed has no signature,
+                    // and inventing a dash for it would read like one.
+                    entry.hash,
+                )
+            },
+            // Everything else the signature was taken over, so that a third
+            // party can recompute it without the app. The visible "When"
+            // column is formatted for reading; occurredAtMillis is the value
+            // that was actually hashed, and a checker must use that one.
+            extraHeaders = listOf(
+                "previousHash",
+                "entityType",
+                "entityId",
+                "actorId",
+                "payloadJson",
+                "occurredAtMillis",
+            ),
+            extraCells = listOf(List(6) { "" }) + entries.map { entry ->
+                listOf(
+                    entry.previousHash,
+                    entry.entityType,
+                    entry.entityId,
+                    entry.actorId.orEmpty(),
+                    entry.payloadJson.orEmpty(),
+                    entry.occurredAt.toString(),
                 )
             },
         )
@@ -178,8 +281,39 @@ sealed interface ExportDocument {
             is ProjectSheet -> project.name
             is Checklist -> template.id
             is Handover -> "handover-" + project.name
+            is AuditTrail -> "audit-trail-" + exportedOn
         },
     )
+
+    /** The verdict in one word, for the first cell somebody reads. */
+    private fun AuditTrail.verdictWord(context: Context): String = when (verdict) {
+        is AuditChain.Verdict.Intact -> context.getString(R.string.audit_intact)
+        is AuditChain.Verdict.Failed -> context.getString(R.string.audit_failed)
+        AuditChain.Verdict.Empty -> context.getString(R.string.audit_empty)
+    }
+
+    /** And the sentence under it, including what could not be checked. */
+    private fun AuditTrail.verdictDetail(context: Context): String = when (val v = verdict) {
+        is AuditChain.Verdict.Intact -> {
+            val checked = context.getString(R.string.audit_intact_detail, v.checked)
+            if (v.unchained > 0) {
+                checked + " " + context.getString(R.string.audit_unchained, v.unchained)
+            } else {
+                checked
+            }
+        }
+
+        is AuditChain.Verdict.Failed -> context.getString(
+            when (v.fault) {
+                AuditChain.Fault.ALTERED -> R.string.audit_fault_altered
+                AuditChain.Fault.BROKEN_LINK -> R.string.audit_fault_broken
+                AuditChain.Fault.MISSING -> R.string.audit_fault_missing
+            },
+            v.sequence,
+        )
+
+        AuditChain.Verdict.Empty -> context.getString(R.string.audit_empty)
+    }
 
     private fun answerLabel(context: Context, state: String?): String = when (state) {
         SafetyRepository.State.PASS -> context.getString(R.string.saf_pass)

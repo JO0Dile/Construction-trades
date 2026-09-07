@@ -937,3 +937,12 @@
 "audit_fault_missing" = "רשומה שלפני %1$d חסרה.";
 "audit_window" = "בודק את %1$d הרשומות האחרונות.";
 "audit_not_checked" = "טרם נבדק.";
+"audit_export" = "ייצוא היומן";
+"audit_col_seq" = "מס'";
+"audit_col_when" = "מתי";
+"audit_col_who" = "מי";
+"audit_col_action" = "פעולה";
+"audit_col_what" = "מה קרה";
+"audit_col_signature" = "חתימה";
+"audit_export_checked" = "נבדק בעת הייצוא";
+"audit_export_note" = "החתימות מקוצרות ב-PDF. קובץ ה-CSV מכיל אותן במלואן, ו-docs/AUDIT.md מסביר כיצד לחשב אותן מחדש.";

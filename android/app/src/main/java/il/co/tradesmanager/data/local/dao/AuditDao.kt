@@ -23,9 +23,6 @@ interface AuditDao {
     @Query("SELECT * FROM audit_log WHERE entityType = :type AND entityId = :id ORDER BY occurredAt DESC")
     fun observeFor(type: String, id: String): Flow<List<AuditLogEntity>>
 
-    @Query("SELECT * FROM audit_log WHERE occurredAt >= :since ORDER BY occurredAt")
-    suspend fun exportSince(since: Long): List<AuditLogEntity>
-
     /**
      * The end of the chain: what a new entry has to follow.
      *

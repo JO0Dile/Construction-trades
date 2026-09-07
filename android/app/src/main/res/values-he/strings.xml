@@ -926,6 +926,15 @@
     <string name="audit_fault_missing">רשומה שלפני %1$d חסרה.</string>
     <string name="audit_window">בודק את %1$d הרשומות האחרונות.</string>
     <string name="audit_not_checked">טרם נבדק.</string>
+    <string name="audit_export">ייצוא היומן</string>
+    <string name="audit_col_seq">מס\'</string>
+    <string name="audit_col_when">מתי</string>
+    <string name="audit_col_who">מי</string>
+    <string name="audit_col_action">פעולה</string>
+    <string name="audit_col_what">מה קרה</string>
+    <string name="audit_col_signature">חתימה</string>
+    <string name="audit_export_checked">נבדק בעת הייצוא</string>
+    <string name="audit_export_note">החתימות מקוצרות ב-PDF. קובץ ה-CSV מכיל אותן במלואן, ו-docs/AUDIT.md מסביר כיצד לחשב אותן מחדש.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

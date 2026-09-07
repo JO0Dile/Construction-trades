@@ -926,6 +926,15 @@
     <string name="audit_fault_missing">سجل قبل %1$d مفقود.</string>
     <string name="audit_window">يفحص أحدث %1$d سجلات.</string>
     <string name="audit_not_checked">لم يُفحص بعد.</string>
+    <string name="audit_export">تصدير السجل</string>
+    <string name="audit_col_seq">رقم</string>
+    <string name="audit_col_when">متى</string>
+    <string name="audit_col_who">من</string>
+    <string name="audit_col_action">إجراء</string>
+    <string name="audit_col_what">ما الذي حدث</string>
+    <string name="audit_col_signature">توقيع</string>
+    <string name="audit_export_checked">فُحص عند التصدير</string>
+    <string name="audit_export_note">التواقيع مختصرة في ملف PDF. ملف CSV يحملها كاملة، و docs/AUDIT.md يوضح كيفية إعادة حسابها.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

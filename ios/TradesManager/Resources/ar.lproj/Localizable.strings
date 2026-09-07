@@ -937,3 +937,12 @@
 "audit_fault_missing" = "سجل قبل %1$d مفقود.";
 "audit_window" = "يفحص أحدث %1$d سجلات.";
 "audit_not_checked" = "لم يُفحص بعد.";
+"audit_export" = "تصدير السجل";
+"audit_col_seq" = "رقم";
+"audit_col_when" = "متى";
+"audit_col_who" = "من";
+"audit_col_action" = "إجراء";
+"audit_col_what" = "ما الذي حدث";
+"audit_col_signature" = "توقيع";
+"audit_export_checked" = "فُحص عند التصدير";
+"audit_export_note" = "التواقيع مختصرة في ملف PDF. ملف CSV يحملها كاملة، و docs/AUDIT.md يوضح كيفية إعادة حسابها.";

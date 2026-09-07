@@ -937,3 +937,12 @@
 "audit_fault_missing" = "An entry before %1$d is gone.";
 "audit_window" = "Checks the most recent %1$d entries.";
 "audit_not_checked" = "Not checked yet.";
+"audit_export" = "Export the trail";
+"audit_col_seq" = "No.";
+"audit_col_when" = "When";
+"audit_col_who" = "Who";
+"audit_col_action" = "Action";
+"audit_col_what" = "What happened";
+"audit_col_signature" = "Signature";
+"audit_export_checked" = "Checked at export";
+"audit_export_note" = "Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.";
