@@ -41,6 +41,7 @@ import il.co.tradesmanager.ui.money.MoneyScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
+import il.co.tradesmanager.ui.audit.AuditScreen
 import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
 import il.co.tradesmanager.ui.work.ContractsScreen
@@ -97,6 +98,7 @@ object Routes {
     const val ORDER_DETAIL = "orders/detail"
     const val WORK_PACKAGES = "work_packages"
     const val COMPANY_PROFILE = "company_profile"
+    const val AUDIT = "audit"
     const val CONTRACTS = "contracts"
     const val SETTINGS = "settings"
     const val SCANNER = "scanner"
@@ -301,6 +303,12 @@ fun AppNavHost(
                     onBack = { navController.popBackStack() },
                 )
             }
+            composable(Routes.AUDIT) {
+                AuditScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
             composable("${Routes.WORK_PACKAGES}/{projectId}") { entry ->
                 val id = entry.arguments?.getString("projectId").orEmpty()
                 WorkPackagesScreen(
@@ -463,6 +471,7 @@ fun AppNavHost(
                     onOpenCompanyProfile = {
                         navController.navigate(Routes.COMPANY_PROFILE)
                     },
+                    onOpenAudit = { navController.navigate(Routes.AUDIT) },
                     onBack = { navController.popBackStack() },
                 )
             }

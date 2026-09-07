@@ -116,12 +116,28 @@ class FakeEngagementDao : EngagementDao {
     fun engagementRows(): List<EngagementEntity> = engagements.value
 }
 
-/** Collects audit rows so a test can assert that a change was recorded. */
+/**
+ * Collects audit rows so a test can assert that a change was recorded.
+ *
+ * The ordering in [lastEntry], [oldestEntry] and [newestFirst] is
+ * reimplemented rather than faked, because the hash chain depends on it: a
+ * fake that returned the most recently inserted row would hide a real query
+ * that ordered by timestamp and broke every time a clock went backwards.
+ */
 class FakeAuditDao : AuditDao {
 
     val entries = mutableListOf<AuditLogEntity>()
 
     override suspend fun insert(entry: AuditLogEntity) { entries += entry }
+
+    override suspend fun lastEntry(): AuditLogEntity? = entries.maxByOrNull { it.sequence }
+
+    override suspend fun oldestEntry(): AuditLogEntity? = entries.minByOrNull { it.sequence }
+
+    override suspend fun newestFirst(limit: Int): List<AuditLogEntity> =
+        entries.sortedWith(
+            compareByDescending<AuditLogEntity> { it.sequence }.thenByDescending { it.occurredAt },
+        ).take(limit)
 
     override fun observeRecent(limit: Int): Flow<List<AuditLogEntity>> =
         MutableStateFlow(entries.toList())

@@ -4585,6 +4585,71 @@
       "en": "Raised by hand — no work packages attached.",
       "he": "הופקה ידנית — ללא חבילות עבודה מצורפות.",
       "ar": "أُنشئت يدويًا — بدون حزم عمل مرفقة."
+    },
+    "audit_title": {
+      "en": "Audit trail",
+      "he": "יומן ביקורת",
+      "ar": "سجل التدقيق"
+    },
+    "audit_hint": {
+      "en": "Every change of consequence, in the order it happened. The trail cannot be edited from inside the app.",
+      "he": "כל שינוי בעל משמעות, לפי סדר התרחשותו. לא ניתן לערוך את היומן מתוך האפליקציה.",
+      "ar": "كل تغيير ذي أثر، بترتيب حدوثه. لا يمكن تعديل السجل من داخل التطبيق."
+    },
+    "audit_empty": {
+      "en": "Nothing recorded yet.",
+      "he": "עדיין לא נרשם דבר.",
+      "ar": "لم يُسجَّل شيء بعد."
+    },
+    "audit_verify": {
+      "en": "Check the trail",
+      "he": "בדיקת היומן",
+      "ar": "فحص السجل"
+    },
+    "audit_intact": {
+      "en": "Intact",
+      "he": "תקין",
+      "ar": "سليم"
+    },
+    "audit_intact_detail": {
+      "en": "%1$d entries checked and every one adds up.",
+      "he": "נבדקו %1$d רשומות וכולן מתאימות.",
+      "ar": "تم فحص %1$d سجلات وجميعها متطابقة."
+    },
+    "audit_unchained": {
+      "en": "%1$d older entries carry no signature and cannot be checked. They were written before this version.",
+      "he": "%1$d רשומות ישנות יותר אינן חתומות ולא ניתן לבדוק אותן. הן נכתבו לפני גרסה זו.",
+      "ar": "%1$d سجلات أقدم بلا توقيع ولا يمكن فحصها. كُتبت قبل هذا الإصدار."
+    },
+    "audit_failed": {
+      "en": "The trail does not add up",
+      "he": "היומן אינו מתאים",
+      "ar": "السجل غير متطابق"
+    },
+    "audit_fault_altered": {
+      "en": "Entry %1$d says something other than what was signed.",
+      "he": "רשומה %1$d אומרת דבר שונה ממה שנחתם.",
+      "ar": "السجل %1$d يقول شيئًا غير ما تم توقيعه."
+    },
+    "audit_fault_broken": {
+      "en": "Entry %1$d does not follow the one before it. Something was removed or replaced.",
+      "he": "רשומה %1$d אינה עוקבת אחר קודמתה. משהו הוסר או הוחלף.",
+      "ar": "السجل %1$d لا يتبع ما قبله. أُزيل شيء أو استُبدل."
+    },
+    "audit_fault_missing": {
+      "en": "An entry before %1$d is gone.",
+      "he": "רשומה שלפני %1$d חסרה.",
+      "ar": "سجل قبل %1$d مفقود."
+    },
+    "audit_window": {
+      "en": "Checks the most recent %1$d entries.",
+      "he": "בודק את %1$d הרשומות האחרונות.",
+      "ar": "يفحص أحدث %1$d سجلات."
+    },
+    "audit_not_checked": {
+      "en": "Not checked yet.",
+      "he": "טרם נבדק.",
+      "ar": "لم يُفحص بعد."
     }
   },
   "plurals": {

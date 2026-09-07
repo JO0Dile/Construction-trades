@@ -60,6 +60,7 @@ import il.co.tradesmanager.ui.components.currentLanguageTag
 fun SettingsScreen(
     container: AppContainer,
     onOpenCompanyProfile: () -> Unit,
+    onOpenAudit: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: SettingsViewModel = viewModel(
@@ -275,6 +276,24 @@ fun SettingsScreen(
             }
 
             item { SectionHeader(stringResource(R.string.set_security)) }
+            // Under security rather than an "advanced" drawer: the trail is
+            // the answer to "who changed this", and the person asking that is
+            // rarely the person who knows where a developer filed it.
+            item {
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .clickable(onClick = onOpenAudit)
+                        .padding(16.dp),
+                ) {
+                    Text(stringResource(R.string.audit_title))
+                    Text(
+                        text = stringResource(R.string.audit_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
             item {
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.set_encrypt)) },

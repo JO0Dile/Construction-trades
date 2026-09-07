@@ -148,7 +148,7 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
         source = catalogSource,
         catalogDao = catalogDao,
         inventoryDao = database.inventoryDao(),
-        auditDao = database.auditDao(),
+        audit = auditTrail,
     )
 
     /**

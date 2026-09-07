@@ -200,6 +200,20 @@ object Migrations {
         }
     }
 
+    /**
+     * The audit trail becomes tamper-evident.
+     *
+     * Existing rows get sequence 0 and no hashes, which is honest: they were
+     * written before anything was signed and nothing can now vouch for them.
+     * Back-filling a chain over them would produce a log that verified without
+     * ever having been protected, which is worse than one that admits the gap.
+     */
+    val MIGRATION_21_22 = object : Migration(21, 22) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_21_22.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -221,6 +235,7 @@ object Migrations {
         MIGRATION_18_19,
         MIGRATION_19_20,
         MIGRATION_20_21,
+        MIGRATION_21_22,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -642,5 +657,15 @@ object Migrations {
             "ON `payment_application_lines` (`applicationId`)",
         "CREATE INDEX IF NOT EXISTS `index_payment_application_lines_assignmentId` " +
             "ON `payment_application_lines` (`assignmentId`)",
+    )
+
+    // NOT NULL columns added by ALTER need a default, and the entity has to
+    // declare the same one: Room revalidates on the first open and a default
+    // it did not expect is a crash on launch for everyone who already has the
+    // app. That has shipped three times. See @ColumnInfo on AuditLogEntity.
+    val SQL_21_22: List<String> = listOf(
+        "ALTER TABLE `audit_log` ADD COLUMN `sequence` INTEGER NOT NULL DEFAULT 0",
+        "ALTER TABLE `audit_log` ADD COLUMN `previousHash` TEXT NOT NULL DEFAULT ''",
+        "ALTER TABLE `audit_log` ADD COLUMN `hash` TEXT NOT NULL DEFAULT ''",
     )
 }

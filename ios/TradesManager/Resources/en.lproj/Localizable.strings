@@ -924,3 +924,16 @@
 "pay_breakdown" = "What this claim covers";
 "pay_breakdown_hint" = "Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.";
 "pay_breakdown_none" = "Raised by hand — no work packages attached.";
+"audit_title" = "Audit trail";
+"audit_hint" = "Every change of consequence, in the order it happened. The trail cannot be edited from inside the app.";
+"audit_empty" = "Nothing recorded yet.";
+"audit_verify" = "Check the trail";
+"audit_intact" = "Intact";
+"audit_intact_detail" = "%1$d entries checked and every one adds up.";
+"audit_unchained" = "%1$d older entries carry no signature and cannot be checked. They were written before this version.";
+"audit_failed" = "The trail does not add up";
+"audit_fault_altered" = "Entry %1$d says something other than what was signed.";
+"audit_fault_broken" = "Entry %1$d does not follow the one before it. Something was removed or replaced.";
+"audit_fault_missing" = "An entry before %1$d is gone.";
+"audit_window" = "Checks the most recent %1$d entries.";
+"audit_not_checked" = "Not checked yet.";
