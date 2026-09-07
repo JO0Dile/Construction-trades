@@ -73,6 +73,8 @@ interface AccountDao {
         WHERE deletedAt IS NULL AND TRIM(idNumber) = TRIM(:idNumber) COLLATE NOCASE
         """,
     )
+    suspend fun countWithIdNumber(idNumber: String): Int
+
     /**
      * The one person with this ID number, or nobody.
      *
@@ -90,8 +92,6 @@ interface AccountDao {
         """,
     )
     suspend fun byIdNumber(idNumber: String): AccountEntity?
-
-    suspend fun countWithIdNumber(idNumber: String): Int
 
     @Query("UPDATE accounts SET lastSignInAt = :at WHERE id = :id")
     suspend fun recordSignIn(id: String, at: Long)

@@ -32,6 +32,14 @@ jobs:
       - name: Translations are complete and generated files are current
         run: python3 tools/gen-strings.py --check
 
+      # A Room annotation binds to whatever function follows it. Slip a KDoc
+      # between the two and the query lands on the next method instead, which
+      # is how a lookup by ID number came to declare it returned COUNT(*).
+      # Both halves of that mistake fail KSP; this catches them in a second
+      # instead of forty.
+      - name: Every DAO method carries exactly one Room annotation
+        run: python3 tools/check-dao.py
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.
