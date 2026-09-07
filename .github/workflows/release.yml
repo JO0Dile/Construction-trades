@@ -60,9 +60,29 @@ jobs:
         with:
           tag_name: ${{ inputs.version || github.ref_name }}
           name: ${{ inputs.version || github.ref_name }}
+          # The commit the tag lands on. Without this the action defaults to
+          # the repository's default branch, so a release built from a feature
+          # branch attached the right APK to a tag pointing at main: the binary
+          # was correct and `git log v0.6.0` showed none of the code in it.
+          # Anyone auditing the release by its tag would have concluded the
+          # build did not contain what it plainly contained.
+          target_commitish: ${{ github.sha }}
           files: |
             android/app/build/outputs/apk/debug/app-universal-debug.apk
             android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
             android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk
+          # Auto notes compare against the previous tag, which is only
+          # meaningful for a release cut from the default branch. The body
+          # says where to look either way, and is appended to rather than
+          # replaced by the generated list.
+          body: |
+            Install `app-universal-debug.apk` below — it runs on any phone.
+            A phone that already has the app will be offered this build by
+            **Settings → Check for updates**.
+
+            What is new and what to try with it is written up in
+            [`docs/TESTING.md`](https://github.com/JO0Dile/Construction-trades/blob/${{ github.sha }}/docs/TESTING.md).
+
+            Built from `${{ github.sha }}`.
           generate_release_notes: true
           fail_on_unmatched_files: true
