@@ -172,6 +172,29 @@ class ViolationRepository(
         return Result.success(confirmed)
     }
 
+    /**
+     * Says which job it happened on, or takes that back.
+     *
+     * A column that existed, was indexed, was documented as "the job, when it
+     * was on one" — and was passed null by the only caller there has ever
+     * been. So every violation this app has recorded belongs to no job, and a
+     * firm running twelve sites could not tell which one any of them was on.
+     *
+     * Draft only. A confirmed violation is a record somebody stood behind,
+     * and moving it to a different site afterwards is not a correction.
+     */
+    suspend fun setProject(
+        violation: ViolationEntity,
+        projectId: String?,
+    ): Result<ViolationEntity> {
+        if (violation.status != Violations.Status.DRAFT.name) {
+            return Result.failure(Refused(Refusal.NOT_A_DRAFT))
+        }
+        val updated = violation.copy(projectId = projectId)
+        dao.upsert(updated)
+        return Result.success(updated)
+    }
+
     /** Drops a draft. Kept and marked rather than deleted. */
     suspend fun cancel(violation: ViolationEntity): Result<ViolationEntity> {
         if (!Violations.canCancel(Violations.Status.valueOf(violation.status))) {

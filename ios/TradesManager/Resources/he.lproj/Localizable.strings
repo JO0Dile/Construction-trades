@@ -1023,6 +1023,10 @@
 "vio_need_person" = "בחרו נגד מי ההפרה.";
 "vio_need_evidence" = "צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.";
 "vio_need_description" = "כתבו מה הייתה ההפרה.";
+/* Row on the violation draft: which job it happened on */
+"vio_job" = "באיזו עבודה";
+/* The violation was not on a job — a yard, a van, the road */
+"vio_no_job" = "לא בעבודה מסוימת";
 /* Dialog: the account may not write violations for this company */
 "vio_refused_officer" = "אין לכם הרשאה לרשום הפרות כאן.";
 /* Dialog: signed in, but a member of no company at all */

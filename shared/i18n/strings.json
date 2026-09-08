@@ -5081,6 +5081,18 @@
       "he": "כתבו מה הייתה ההפרה.",
       "ar": "اكتب ما هي المخالفة."
     },
+    "vio_job": {
+      "c": "Row on the violation draft: which job it happened on",
+      "en": "Which job",
+      "he": "באיזו עבודה",
+      "ar": "في أي عمل"
+    },
+    "vio_no_job": {
+      "c": "The violation was not on a job — a yard, a van, the road",
+      "en": "Not on a job",
+      "he": "לא בעבודה מסוימת",
+      "ar": "ليست ضمن عمل"
+    },
     "vio_refused_officer": {
       "c": "Dialog: the account may not write violations for this company",
       "en": "You are not allowed to record violations here.",

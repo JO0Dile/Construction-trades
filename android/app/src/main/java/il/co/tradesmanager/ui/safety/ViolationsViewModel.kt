@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.safety.Violations
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ViolationEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
@@ -172,6 +173,22 @@ class ViolationsViewModel(
             _openId.value = it.id
             clearSearch()
         }.onFailure(::refuse)
+    }
+
+    /**
+     * The jobs a violation can be put against.
+     *
+     * Every job, not only the top-level ones. A violation happens on the
+     * twelfth floor, and the twelfth floor is a part of a tower — offering
+     * only the tower would be offering the wrong answer politely.
+     */
+    val jobs: StateFlow<List<ProjectEntity>> = container.projects.observeProjects()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** Puts the open draft against a job, or takes it off one. */
+    fun setProject(projectId: String?) = viewModelScope.launch {
+        val draft = open.value ?: return@launch
+        container.violations.setProject(draft, projectId).onFailure(::refuse)
     }
 
     fun edit(description: String, cost: Double?) = viewModelScope.launch {

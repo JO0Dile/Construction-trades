@@ -1012,6 +1012,8 @@
     <string name="vio_need_person">בחרו נגד מי ההפרה.</string>
     <string name="vio_need_evidence">צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.</string>
     <string name="vio_need_description">כתבו מה הייתה ההפרה.</string>
+    <string name="vio_job">באיזו עבודה</string>
+    <string name="vio_no_job">לא בעבודה מסוימת</string>
     <string name="vio_refused_officer">אין לכם הרשאה לרשום הפרות כאן.</string>
     <string name="vio_refused_books">אינכם רשומים באף חברה. פתחו חברה או הצטרפו לאחת, ואז רשמו את ההפרה.</string>
     <string name="vio_refused_state">הפרה זו כבר אושרה או בוטלה. לא ניתן לשנות אותה.</string>

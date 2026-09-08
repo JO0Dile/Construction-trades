@@ -1023,6 +1023,10 @@
 "vio_need_person" = "اختر ضد من هذه المخالفة.";
 "vio_need_evidence" = "أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد.";
 "vio_need_description" = "اكتب ما هي المخالفة.";
+/* Row on the violation draft: which job it happened on */
+"vio_job" = "في أي عمل";
+/* The violation was not on a job — a yard, a van, the road */
+"vio_no_job" = "ليست ضمن عمل";
 /* Dialog: the account may not write violations for this company */
 "vio_refused_officer" = "لا تملك صلاحية تسجيل المخالفات هنا.";
 /* Dialog: signed in, but a member of no company at all */

@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.safety
 
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -41,6 +44,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.safety.Violations
+import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.ViolationRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -76,6 +80,7 @@ fun ViolationsScreen(
     val evidence by viewModel.evidence.collectAsStateWithLifecycle()
     val openFace by viewModel.openFace.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
+    val jobs by viewModel.jobs.collectAsStateWithLifecycle()
     val locale = currentLocale()
     var idNumber by remember { mutableStateOf("") }
 
@@ -117,6 +122,8 @@ fun ViolationsScreen(
                 againstIdNumber = draft.againstIdNumber,
                 againstFace = openFace,
                 evidenceCount = evidence.size,
+                projectId = draft.projectId,
+                jobs = jobs,
                 modifier = Modifier.padding(padding),
             )
             return@Scaffold
@@ -225,8 +232,11 @@ private fun DraftForm(
     againstIdNumber: String,
     againstFace: String?,
     evidenceCount: Int,
+    projectId: String?,
+    jobs: List<ProjectEntity>,
     modifier: Modifier = Modifier,
 ) {
+    var choosingJob by remember { mutableStateOf(false) }
     var text by remember(description) { mutableStateOf(description) }
     var costText by remember(cost) { mutableStateOf(cost?.toString().orEmpty()) }
     // Locale-independent: what is typed is what is stored, and a decimal comma
@@ -289,6 +299,22 @@ private fun DraftForm(
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
             )
         }
+        // Which site it happened on. The column has always been there and
+        // was always null, so a firm running twelve jobs could not tell one
+        // register from another.
+        item {
+            ListItem(
+                overlineContent = { Text(stringResource(R.string.vio_job)) },
+                headlineContent = {
+                    Text(
+                        jobs.firstOrNull { it.id == projectId }?.name
+                            ?: stringResource(R.string.vio_no_job),
+                    )
+                },
+                modifier = Modifier.clickable { choosingJob = true },
+            )
+        }
+
         item {
             OutlinedButton(
                 onClick = addEvidence,
@@ -336,6 +362,40 @@ private fun DraftForm(
                 }
             }
         }
+    }
+
+    if (choosingJob) {
+        AlertDialog(
+            onDismissRequest = { choosingJob = false },
+            title = { Text(stringResource(R.string.sch_which_job)) },
+            text = {
+                Column(Modifier.verticalScroll(rememberScrollState())) {
+                    // First, and always offered. Plenty of violations are not
+                    // on a job at all: a yard, a van, the road outside.
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.vio_no_job)) },
+                        modifier = Modifier.clickable {
+                            viewModel.setProject(null)
+                            choosingJob = false
+                        },
+                    )
+                    jobs.forEach { job ->
+                        ListItem(
+                            headlineContent = { Text(job.name) },
+                            modifier = Modifier.clickable {
+                                viewModel.setProject(job.id)
+                                choosingJob = false
+                            },
+                        )
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { choosingJob = false }) {
+                    Text(stringResource(R.string.action_cancel))
+                }
+            },
+        )
     }
 }
 

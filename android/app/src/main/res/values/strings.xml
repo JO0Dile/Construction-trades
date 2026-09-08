@@ -1024,6 +1024,10 @@
     <string name="vio_need_person">Choose who this is against.</string>
     <string name="vio_need_evidence">Attach a photograph or a video. A violation with a cost and nothing to show is one person\'s word.</string>
     <string name="vio_need_description">Write what was wrong.</string>
+    <!-- Row on the violation draft: which job it happened on -->
+    <string name="vio_job">Which job</string>
+    <!-- The violation was not on a job — a yard, a van, the road -->
+    <string name="vio_no_job">Not on a job</string>
     <!-- Dialog: the account may not write violations for this company -->
     <string name="vio_refused_officer">You are not allowed to record violations here.</string>
     <!-- Dialog: signed in, but a member of no company at all -->

@@ -1023,6 +1023,10 @@
 "vio_need_person" = "Choose who this is against.";
 "vio_need_evidence" = "Attach a photograph or a video. A violation with a cost and nothing to show is one person's word.";
 "vio_need_description" = "Write what was wrong.";
+/* Row on the violation draft: which job it happened on */
+"vio_job" = "Which job";
+/* The violation was not on a job — a yard, a van, the road */
+"vio_no_job" = "Not on a job";
 /* Dialog: the account may not write violations for this company */
 "vio_refused_officer" = "You are not allowed to record violations here.";
 /* Dialog: signed in, but a member of no company at all */
