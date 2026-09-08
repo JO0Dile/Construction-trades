@@ -112,7 +112,7 @@ def written_somewhere() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="fail past the baseline")
-    parser.add_argument("--baseline", type=int, default=1)
+    parser.add_argument("--baseline", type=int, default=0)
     args = parser.parse_args()
 
     columns = nullable_columns()

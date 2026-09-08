@@ -6,10 +6,12 @@ import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
+import il.co.tradesmanager.core.time.DayPlan
 import il.co.tradesmanager.core.time.TimeOfDay
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import java.time.LocalDate
+import java.time.LocalTime
 import java.util.UUID
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -151,6 +153,36 @@ class ScheduleViewModel(private val container: AppContainer) : ViewModel() {
             longitude = null,
             workerAccountId = signedIn?.account?.id,
             workerMembershipId = signedIn?.active?.id,
+            blockId = blockNow(signedIn?.account?.id, projectId),
+        )
+    }
+
+    /**
+     * Which piece of the day's plan this shift is against, if any.
+     *
+     * Today's blocks, not the day on screen. Somebody looking at next week's
+     * plan and pressing check-in is starting work now, and matching against
+     * whatever day they happened to be scrolled to would file the shift under
+     * a block that has not happened yet.
+     *
+     * The rule itself is in core.time.DayPlan, where it can be tested.
+     */
+    private suspend fun blockNow(workerId: String?, projectId: String?): String? {
+        if (workerId == null) return null
+        val today = container.schedule.observeDay(LocalDate.now()).first()
+        return DayPlan.blockForShift(
+            blocks = today.map { block ->
+                DayPlan.Block(
+                    id = block.id,
+                    projectId = block.projectId,
+                    assigneeId = block.assigneeId,
+                    startMinute = block.startMinute,
+                    endMinute = block.endMinute,
+                )
+            },
+            workerId = workerId,
+            projectId = projectId,
+            minuteOfDay = LocalTime.now().let { it.hour * 60 + it.minute },
         )
     }
 }

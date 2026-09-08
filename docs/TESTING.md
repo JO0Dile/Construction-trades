@@ -34,6 +34,26 @@ the register read as empty besides.
       write in Evidence — you get a sentence saying which, in your language,
       instead of a button that appears to be broken.
 
+### A shift knows which piece of the plan it was worked against
+
+`blockId` on a time entry had existed since the schedule was built and nothing
+had ever written to it. The job was fixed earlier; this is the other half.
+"Eight hours on the tower" and "eight hours on the third-floor slab, which was
+planned as six" are different sentences, and only the second tells anybody
+anything.
+
+- [ ] **Schedule → hand a block to yourself** (the assign button on the row),
+      then press check-in and pick that job. Nothing extra is asked — a man
+      walking on at ten to seven with his gloves on will not answer a second
+      question.
+- [ ] Check in before the block starts. It still lands on it: arriving early
+      is most of a site most mornings.
+- [ ] Check in on a job with no block of yours on it. The shift records the
+      job and no block, which is honest — plenty of work is not on anybody's
+      plan.
+- [ ] A block handed to somebody else is never taken, even on the same job at
+      the same hour. A shift on the wrong block is worse than one on none.
+
 ### An order can say when the delivery is due
 
 `expectedOn` was on the purchase order table with an index beside it and

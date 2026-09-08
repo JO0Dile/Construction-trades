@@ -78,9 +78,20 @@ class ScheduleRepository(
         longitude: Double?,
         workerAccountId: String? = null,
         workerMembershipId: String? = null,
+        /**
+         * The piece of the day's plan this shift is against, when one fits.
+         *
+         * Worked out rather than asked, by `core.time.DayPlan`. A man walking
+         * onto a site at ten to seven with his gloves on will not answer a
+         * second question, and a check-in that takes two taps is a check-in
+         * people stop doing. Null is the ordinary answer and an honest one:
+         * plenty of work is not on anybody's plan.
+         */
+        blockId: String? = null,
     ): TimeEntryEntity {
         val entry = TimeEntryEntity(
             id = UUID.randomUUID().toString(),
+            blockId = blockId,
             projectId = projectId,
             workerId = workerAccountId,
             workerMembershipId = workerMembershipId,
