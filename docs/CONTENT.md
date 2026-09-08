@@ -11,6 +11,10 @@ the repository, on a branch, and CI checks them the moment they land.
 | Supplier part lists | `shared/assets/catalog/items/<trade>.json` | `CatalogIntegrityTest` |
 | Prices | not yet — see below | — |
 
+The privacy notice is generated too: `docs/PRIVACY.md` comes off the same
+catalogue keys as the screen in the app, so the page a store links to and the
+page a user reads cannot drift apart. Edit the `priv_*` strings, not the file.
+
 ## 1. The photographs
 
 **The filename is the item id.** That is the entire rule.

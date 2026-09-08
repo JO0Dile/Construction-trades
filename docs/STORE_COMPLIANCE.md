@@ -188,8 +188,12 @@ Then, by hand:
 - [ ] Terms of service. `set_terms` is written and translated and nothing
       shows it, because terms are the half of this that is genuinely a legal
       document rather than a description of behaviour.
-- [ ] Put the same privacy text at a public URL. Play wants one in the store
-      listing, and an in-app page does not satisfy that field.
+- [x] The same text at a public URL: `docs/PRIVACY.md`, generated from the
+      same catalogue keys as the screen so the two cannot drift, with all
+      three languages on the one page. Paste this into the Play listing's
+      privacy policy field:
+      `https://github.com/JO0Dile/Construction-trades/blob/main/docs/PRIVACY.md`
+      — it works today; move it to your own domain when you have one.
       Drafts are in `legal/`: `PRIVACY.md`, `TERMS.md`, `ACCESSIBILITY.md`.
       Both stores want a **URL**, not a file, so they have to be published
       somewhere before submission — GitHub Pages off this repository is
