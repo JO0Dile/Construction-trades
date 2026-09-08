@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.13.3 — and what to try first
+## What is new in 0.13.4 — and what to try first
 
 ### The backup format changed, and why you should care
 
@@ -62,6 +62,13 @@ file can no longer be edited without breaking it.
 
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
+
+### A snag showed the photograph it replaced
+
+- [ ] Raise a snag with a photo, then add a second photo of the same defect.
+      The thumbnail in the list should be the **newer** one. It used to be the
+      older one, permanently — the same fault that was fixed for stock
+      photographs, written the same wrong way in a second place.
 
 ### The day plan can say who is doing it
 
