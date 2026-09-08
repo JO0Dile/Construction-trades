@@ -24,6 +24,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -38,6 +41,7 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
+import il.co.tradesmanager.ui.components.SignaturePad
 import il.co.tradesmanager.ui.export.ExportDocument
 import il.co.tradesmanager.ui.export.Exporter
 
@@ -52,6 +56,7 @@ fun ChecklistRunScreen(container: AppContainer, templateId: String, onDone: () -
     val locale = currentLocale()
     val context = LocalContext.current
     val layoutDirection = LocalLayoutDirection.current
+    var signature by remember { mutableStateOf("") }
 
     Scaffold(
         topBar = {
@@ -166,12 +171,32 @@ fun ChecklistRunScreen(container: AppContainer, templateId: String, onDone: () -
                         enabled = !state.signed,
                         modifier = Modifier.fillMaxWidth(),
                     )
+                    // A hand on the screen, not a name in a box. The column
+                    // for this has been here since checklists were built and
+                    // the caller passed null, so a completed checklist was a
+                    // typed word -- and a typed word is what somebody writes
+                    // when they did not walk the scaffold.
+                    if (!state.signed) {
+                        Text(
+                            text = stringResource(R.string.saf_sign_here),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(top = 12.dp),
+                        )
+                        SignaturePad(
+                            onSignatureChange = { signature = it },
+                            height = 140.dp,
+                        )
+                    }
                     Button(
-                        onClick = { viewModel.signOff { signed -> if (signed) onDone() } },
+                        onClick = {
+                            viewModel.signOff(signature) { signed -> if (signed) onDone() }
+                        },
                         // Disabled rather than hidden: the worker can see the
                         // sign-off exists and that a critical check is why it
                         // is not available yet.
-                        enabled = !state.blocked && !state.signed && state.signerName.isNotBlank(),
+                        enabled = !state.blocked && !state.signed &&
+                            state.signerName.isNotBlank() && signature.isNotBlank(),
                         modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
                     ) {
                         Text(stringResource(R.string.saf_sign_off))

@@ -181,6 +181,7 @@
     <string name="saf_fail">לא בוצע</string>
     <string name="saf_na">לא רלוונטי</string>
     <string name="saf_sign_off">חתימה</string>
+    <string name="saf_sign_here">חתמו כאן</string>
     <string name="saf_signed_by">נחתם על ידי</string>
     <string name="saf_blocked">פריט קריטי לא בוצע. אין להתחיל בעבודה.</string>
     <string name="saf_references">תקנים ותקנות</string>
@@ -386,6 +387,7 @@
     <string name="ptw_issued_by">מנפיק ההיתר</string>
     <string name="ptw_precautions">לפני תחילת העבודה</string>
     <string name="ptw_issue">הנפקת ההיתר</string>
+    <string name="ptw_sign">חתמו כדי להנפיק</string>
     <string name="ptw_issue_blocked">יש לסמן את כל אמצעי הזהירות לפני הנפקת ההיתר.</string>
     <string name="ptw_valid_from">בתוקף מ</string>
     <string name="ptw_valid_to">בתוקף עד</string>

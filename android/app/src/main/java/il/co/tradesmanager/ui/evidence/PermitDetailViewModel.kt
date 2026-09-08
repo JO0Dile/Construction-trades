@@ -41,14 +41,23 @@ class PermitDetailViewModel(
      * the result, because there is no sensible screen for "the rule you can
      * see on this page was broken" — its purpose is that no code path skips it.
      */
-    fun issue(validFrom: Long, validTo: Long) = viewModelScope.launch {
+    /**
+     * Issues the permit, signed.
+     *
+     * The signature parameter has been here since permits were built and every
+     * caller passed null, so the document that authorises hot work, confined
+     * space and work at height carried a typed name and nothing else. A permit
+     * is not paperwork about the work -- it is the authority to do it, and an
+     * authority nobody put their hand to is one nobody has to stand behind.
+     */
+    fun issue(validFrom: Long, validTo: Long, signature: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
         container.evidence.issue(
             permitId = permitId,
             validFrom = validFrom,
             validTo = validTo,
             issuedByName = actor,
-            signatureStrokes = null,
+            signatureStrokes = signature,
         )
     }
 

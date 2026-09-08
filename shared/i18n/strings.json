@@ -922,6 +922,11 @@
       "he": "חתימה",
       "ar": "توقيع"
     },
+    "saf_sign_here": {
+      "en": "Sign here",
+      "he": "חתמו כאן",
+      "ar": "وقّع هنا"
+    },
     "saf_signed_by": {
       "en": "Signed by",
       "he": "נחתם על ידי",
@@ -1946,6 +1951,11 @@
       "en": "Issue the permit",
       "he": "הנפקת ההיתר",
       "ar": "إصدار التصريح"
+    },
+    "ptw_sign": {
+      "en": "Sign to issue",
+      "he": "חתמו כדי להנפיק",
+      "ar": "وقّع للإصدار"
     },
     "ptw_issue_blocked": {
       "en": "Every precaution has to be ticked before this permit can be issued.",

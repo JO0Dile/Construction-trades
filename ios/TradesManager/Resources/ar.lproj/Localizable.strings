@@ -188,6 +188,7 @@
 "saf_fail" = "لم يتم";
 "saf_na" = "غير منطبق";
 "saf_sign_off" = "توقيع";
+"saf_sign_here" = "وقّع هنا";
 "saf_signed_by" = "وقّعه";
 "saf_blocked" = "بند حرج لم يُنفَّذ. يُمنع بدء العمل.";
 "saf_references" = "المواصفات والأنظمة";
@@ -393,6 +394,7 @@
 "ptw_issued_by" = "مُصدِر التصريح";
 "ptw_precautions" = "قبل بدء العمل";
 "ptw_issue" = "إصدار التصريح";
+"ptw_sign" = "وقّع للإصدار";
 "ptw_issue_blocked" = "يجب وضع علامة على كل إجراءات الوقاية قبل إصدار التصريح.";
 "ptw_valid_from" = "ساري من";
 "ptw_valid_to" = "ساري حتى";

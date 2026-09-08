@@ -188,6 +188,7 @@
 "saf_fail" = "לא בוצע";
 "saf_na" = "לא רלוונטי";
 "saf_sign_off" = "חתימה";
+"saf_sign_here" = "חתמו כאן";
 "saf_signed_by" = "נחתם על ידי";
 "saf_blocked" = "פריט קריטי לא בוצע. אין להתחיל בעבודה.";
 "saf_references" = "תקנים ותקנות";
@@ -393,6 +394,7 @@
 "ptw_issued_by" = "מנפיק ההיתר";
 "ptw_precautions" = "לפני תחילת העבודה";
 "ptw_issue" = "הנפקת ההיתר";
+"ptw_sign" = "חתמו כדי להנפיק";
 "ptw_issue_blocked" = "יש לסמן את כל אמצעי הזהירות לפני הנפקת ההיתר.";
 "ptw_valid_from" = "בתוקף מ";
 "ptw_valid_to" = "בתוקף עד";

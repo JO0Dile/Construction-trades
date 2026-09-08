@@ -181,6 +181,7 @@
     <string name="saf_fail">لم يتم</string>
     <string name="saf_na">غير منطبق</string>
     <string name="saf_sign_off">توقيع</string>
+    <string name="saf_sign_here">وقّع هنا</string>
     <string name="saf_signed_by">وقّعه</string>
     <string name="saf_blocked">بند حرج لم يُنفَّذ. يُمنع بدء العمل.</string>
     <string name="saf_references">المواصفات والأنظمة</string>
@@ -386,6 +387,7 @@
     <string name="ptw_issued_by">مُصدِر التصريح</string>
     <string name="ptw_precautions">قبل بدء العمل</string>
     <string name="ptw_issue">إصدار التصريح</string>
+    <string name="ptw_sign">وقّع للإصدار</string>
     <string name="ptw_issue_blocked">يجب وضع علامة على كل إجراءات الوقاية قبل إصدار التصريح.</string>
     <string name="ptw_valid_from">ساري من</string>
     <string name="ptw_valid_to">ساري حتى</string>

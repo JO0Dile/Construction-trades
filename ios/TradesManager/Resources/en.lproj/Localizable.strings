@@ -188,6 +188,7 @@
 "saf_fail" = "Not done";
 "saf_na" = "Not applicable";
 "saf_sign_off" = "Sign off";
+"saf_sign_here" = "Sign here";
 "saf_signed_by" = "Signed by";
 "saf_blocked" = "A critical item is not done. Work must not start.";
 "saf_references" = "Standards and regulations";
@@ -393,6 +394,7 @@
 "ptw_issued_by" = "Issued by";
 "ptw_precautions" = "Before work starts";
 "ptw_issue" = "Issue the permit";
+"ptw_sign" = "Sign to issue";
 "ptw_issue_blocked" = "Every precaution has to be ticked before this permit can be issued.";
 "ptw_valid_from" = "Valid from";
 "ptw_valid_to" = "Valid until";

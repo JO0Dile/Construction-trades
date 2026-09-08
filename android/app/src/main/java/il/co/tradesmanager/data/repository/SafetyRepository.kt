@@ -90,13 +90,28 @@ class SafetyRepository(
      * critical check is outstanding — the regulation the checklist encodes is
      * not something a signature is allowed to override.
      */
-    suspend fun signOff(runId: String, signerName: String, signatureStrokes: String?): Boolean {
+    suspend fun signOff(
+        runId: String,
+        signerName: String,
+        signatureStrokes: String?,
+        /**
+         * The account that signed, when somebody is signed in.
+         *
+         * `signedById` has been on the table since checklists were built and
+         * nothing has ever written to it, so a run was signed by a typed name
+         * and nothing else. Two men on a site share a name often enough that
+         * the name alone cannot say which of them walked the scaffold, and the
+         * whole value of the record is that it can.
+         */
+        signedById: String? = null,
+    ): Boolean {
         if (refreshBlockedState(runId)) return false
         val run = safetyDao.run(runId) ?: return false
         safetyDao.upsertRun(
             run.copy(
                 completedAt = System.currentTimeMillis(),
                 signedByName = signerName,
+                signedById = signedById,
                 signatureStrokes = signatureStrokes,
                 blocked = false,
             ),

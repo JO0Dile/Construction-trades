@@ -7,6 +7,7 @@ import il.co.tradesmanager.data.local.entity.ChecklistRunItemEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -76,11 +77,26 @@ class ChecklistRunViewModel(
      * false when a critical check is outstanding, so the screen can say why
      * instead of silently doing nothing.
      */
-    fun signOff(onSigned: (Boolean) -> Unit) {
+    fun signOff(signature: String?, onSigned: (Boolean) -> Unit) {
         val id = runId.value ?: return onSigned(false)
         viewModelScope.launch {
-            val name = loaded.value.signerName.ifBlank { "unknown" }
-            onSigned(container.safety.signOff(id, name, null))
+            // Who is signed in, not only what was typed into the box. The
+            // typed name stays -- a register has to read years later without
+            // the account table beside it -- but the id is what ties the
+            // signature to a person the app can actually check.
+            val signedIn = container.session.state.first()
+                as? SessionRepository.State.SignedIn
+            val name = loaded.value.signerName
+                .ifBlank { signedIn?.account?.displayName.orEmpty() }
+                .ifBlank { "unknown" }
+            onSigned(
+                container.safety.signOff(
+                    runId = id,
+                    signerName = name,
+                    signatureStrokes = signature,
+                    signedById = signedIn?.account?.id,
+                ),
+            )
         }
     }
 
