@@ -9,7 +9,67 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.14.3 — and what to try first
+## What is new in 0.15.0 — and what to try first
+
+### Recording a violation now works, and says so when it will not
+
+Both of the things reported off a real phone are in this build.
+
+Pressing **تسجيل مخالفة / רישום הפרה / Record a violation** after finding
+somebody did nothing at all. There were five ways for that to happen and not
+one of them put a word on the screen. The main one: a violation insisted on a
+company, and somebody working on their own — a personal account — has no
+company on their membership, so the write was refused before it started and
+the register read as empty besides.
+
+- [ ] **Safety → the violations icon.** Type an ID number, press search, and
+      press **Record a violation** on the card that comes back. The draft
+      form should open.
+- [ ] Try it on a personal account (one that never made a company). It works
+      now; it could not before.
+- [ ] Any violation you recorded on an older version is still there, with the
+      company it had. The table was rebuilt to allow the empty case and every
+      row was copied across.
+- [ ] If it ever refuses — you are on nobody's books, or your role cannot
+      write in Evidence — you get a sentence saying which, in your language,
+      instead of a button that appears to be broken.
+
+### A violation can say which job it was on
+
+`projectId` on a violation had a column, an index, and a comment reading "the
+job, when it was on one". The only caller that has ever existed passed null,
+so every violation ever recorded belonged to no job, and a firm running twelve
+sites could not tell one register from another.
+
+- [ ] Open a violation draft. There is a **Which job** row above the
+      photograph button. Tap it and pick one.
+- [ ] **Not on a job** is the first option and stays available: plenty of them
+      happen in a yard, in a van, or on the road outside.
+- [ ] Parts of a job are on the list too, not only the jobs themselves. A
+      violation happens on the twelfth floor, and the twelfth floor is a part.
+
+### The office can correct the crew list
+
+Most people on a site never open this app. Somebody on the gate put them on
+the books with a name heard once and a number read off a scrap of paper, and
+until now there was nowhere to fix either.
+
+- [ ] **People → the crew icon → tap somebody → Correct these details.** The
+      button appears only if you are an owner or HR in the company you are
+      working in. A manager or a safety officer reads this screen; neither of
+      them is the office.
+- [ ] Change the name, the phone number or the email and save. The profile
+      updates behind the dialog.
+- [ ] Try a phone number that is not one. It refuses with the same words the
+      sign-up form uses, because it is the same rule and now literally the
+      same code.
+- [ ] **The ID number is the exception.** Open somebody who has none: you can
+      fill it in. Open somebody who has one: it is shown but not editable,
+      with a line saying why. That number is on the gate list and on the
+      induction record, and a quiet edit is how one person ends up standing
+      behind another person's paperwork.
+- [ ] Try filling in an ID number that somebody else already holds. It
+      refuses and says so.
 
 ### The backup format changed, and why you should care
 
