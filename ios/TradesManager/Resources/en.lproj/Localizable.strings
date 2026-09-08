@@ -161,6 +161,9 @@
 "update_notes" = "What changed";
 "sch_title" = "Schedule";
 "sch_new_block" = "New time block";
+"sch_assign" = "Assign";
+"sch_nobody" = "Nobody yet";
+"sch_unassign" = "Nobody";
 "sch_start" = "Start";
 "sch_end" = "End";
 "sch_task" = "Task";

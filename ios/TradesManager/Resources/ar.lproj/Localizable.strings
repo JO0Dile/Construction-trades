@@ -161,6 +161,9 @@
 "update_notes" = "ما الذي تغيّر";
 "sch_title" = "الجدول";
 "sch_new_block" = "فترة زمنية جديدة";
+"sch_assign" = "إسناد";
+"sch_nobody" = "لا أحد بعد";
+"sch_unassign" = "لا أحد";
 "sch_start" = "البداية";
 "sch_end" = "النهاية";
 "sch_task" = "المهمة";

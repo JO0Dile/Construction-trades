@@ -154,6 +154,9 @@
     <string name="update_notes">מה השתנה</string>
     <string name="sch_title">לוח זמנים</string>
     <string name="sch_new_block">משבצת זמן חדשה</string>
+    <string name="sch_assign">שיוך</string>
+    <string name="sch_nobody">עדיין אף אחד</string>
+    <string name="sch_unassign">אף אחד</string>
     <string name="sch_start">התחלה</string>
     <string name="sch_end">סיום</string>
     <string name="sch_task">משימה</string>

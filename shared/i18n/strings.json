@@ -787,6 +787,21 @@
       "he": "משבצת זמן חדשה",
       "ar": "فترة زمنية جديدة"
     },
+    "sch_assign": {
+      "en": "Assign",
+      "he": "שיוך",
+      "ar": "إسناد"
+    },
+    "sch_nobody": {
+      "en": "Nobody yet",
+      "he": "עדיין אף אחד",
+      "ar": "لا أحد بعد"
+    },
+    "sch_unassign": {
+      "en": "Nobody",
+      "he": "אף אחד",
+      "ar": "لا أحد"
+    },
     "sch_start": {
       "en": "Start",
       "he": "התחלה",

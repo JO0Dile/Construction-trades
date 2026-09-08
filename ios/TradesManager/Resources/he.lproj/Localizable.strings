@@ -161,6 +161,9 @@
 "update_notes" = "מה השתנה";
 "sch_title" = "לוח זמנים";
 "sch_new_block" = "משבצת זמן חדשה";
+"sch_assign" = "שיוך";
+"sch_nobody" = "עדיין אף אחד";
+"sch_unassign" = "אף אחד";
 "sch_start" = "התחלה";
 "sch_end" = "סיום";
 "sch_task" = "משימה";

@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.schedule
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import il.co.tradesmanager.core.time.TimeOfDay
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
@@ -32,7 +34,50 @@ class ScheduleViewModel(private val container: AppContainer) : ViewModel() {
     val openTimeEntry: StateFlow<TimeEntryEntity?> = container.schedule.observeOpenTimeEntry()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
+    /**
+     * Who the work can be handed to: the people in the firm you are signed in
+     * to, and nobody else.
+     *
+     * A personal account has no company, so the list is empty and the screen
+     * does not offer to hand anything to anybody -- which is right, since
+     * there is nobody to hand it to.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val crew: StateFlow<List<AccountEntity>> = container.session.state
+        .flatMapLatest { state ->
+            val signedIn = state as? SessionRepository.State.SignedIn
+            if (signedIn?.active?.companyId == null) {
+                kotlinx.coroutines.flow.flowOf(emptyList())
+            } else {
+                combine(
+                    container.memberships.observeForCompany(signedIn.active?.companyId),
+                    container.accounts.observeAccounts(),
+                ) { rows, accounts ->
+                    rows.mapNotNull { row -> accounts.firstOrNull { it.id == row.accountId } }
+                        .sortedBy { it.displayName }
+                }
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
     fun shiftDay(days: Long) { _date.value = _date.value.plusDays(days) }
+
+    /**
+     * Hands a block to somebody, or takes it back when [accountId] is null.
+     *
+     * The column has existed since the schedule was built and nothing has ever
+     * written to it, so every block on every phone has been nobody's. A day
+     * plan where each line is nobody's is a list of what ought to happen
+     * rather than an answer to who is doing it, which is the question asked
+     * at seven in the morning.
+     */
+    fun setAssignee(blockId: String, accountId: String?) = viewModelScope.launch {
+        val block = blocks.value.firstOrNull { it.id == blockId } ?: return@launch
+        container.schedule.save(
+            block.copy(assigneeId = accountId),
+            actorName = container.settings.settings.first().actorName,
+        )
+    }
 
     fun addBlock(title: String, startMinute: Int, endMinute: Int) = viewModelScope.launch {
         if (title.isBlank()) return@launch

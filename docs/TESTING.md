@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.13.2 — and what to try first
+## What is new in 0.13.3 — and what to try first
 
 ### The backup format changed, and why you should care
 
@@ -62,6 +62,23 @@ file can no longer be edited without breaking it.
 
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
+
+### The day plan can say who is doing it
+
+The schedule has had an assignee column since it was built and nothing ever
+wrote to it, so every block on every phone has been nobody's. A plan where
+every line is nobody's answers what ought to happen, not who is doing it —
+which is the question actually asked at seven in the morning.
+
+- [ ] Sign in to a **company** account and open the schedule. Each block has
+      an **Assign** button; the name shows on the row itself, next to the
+      hours, so you do not have to open anything to read the plan.
+- [ ] Hand a block back with **Nobody**. Work gets handed back as often as it
+      gets handed out, and a picker you can only add to leaves the wrong name
+      on the job until somebody deletes the block and retypes it.
+- [ ] Sign in to a **personal** account. No Assign button, and no name on the
+      row — there is nobody to hand anything to, and a button that opens an
+      empty list teaches people not to press buttons.
 
 ### A job now has an address and a client
 

@@ -1,7 +1,11 @@
 package il.co.tradesmanager.ui.schedule
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,6 +23,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.RadioButton
+import il.co.tradesmanager.data.local.entity.AccountEntity
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -53,8 +59,10 @@ fun ScheduleScreen(container: AppContainer) {
     val date by viewModel.date.collectAsStateWithLifecycle()
     val blocks by viewModel.blocks.collectAsStateWithLifecycle()
     val openEntry by viewModel.openTimeEntry.collectAsStateWithLifecycle()
+    val crew by viewModel.crew.collectAsStateWithLifecycle()
     val locale = currentLocale()
     var showAdd by remember { mutableStateOf(false) }
+    var assigning by remember { mutableStateOf<String?>(null) }
 
     // There is no location prompt here any more, and there was never a GPS
     // stamp. The prompt passed null coordinates to the check-in whatever the
@@ -131,13 +139,26 @@ fun ScheduleScreen(container: AppContainer) {
                 }
             } else {
                 items(blocks, key = { it.id }) { block ->
+                    val assignee = crew.firstOrNull { it.id == block.assigneeId }
                     ListItem(
                         headlineContent = { Text(block.title) },
                         supportingContent = {
+                            val hours = Formats.time(LocalTime.ofSecondOfDay(block.startMinute * 60L), locale) +
+                                " – " +
+                                Formats.time(LocalTime.ofSecondOfDay(block.endMinute * 60L), locale)
+                            // Named on the row rather than a tap away. The
+                            // question at seven in the morning is who is doing
+                            // it, and an answer you have to open something to
+                            // read is not on the list at all.
                             Text(
-                                Formats.time(LocalTime.ofSecondOfDay(block.startMinute * 60L), locale) +
-                                    " – " +
-                                    Formats.time(LocalTime.ofSecondOfDay(block.endMinute * 60L), locale),
+                                if (crew.isEmpty()) {
+                                    hours
+                                } else {
+                                    hours + " · " + (
+                                        assignee?.displayName
+                                            ?: stringResource(R.string.sch_nobody)
+                                        )
+                                },
                             )
                         },
                         leadingContent = {
@@ -147,14 +168,37 @@ fun ScheduleScreen(container: AppContainer) {
                             )
                         },
                         trailingContent = {
-                            TextButton(onClick = { viewModel.delete(block.id) }) {
-                                Text(stringResource(R.string.action_delete))
+                            Row {
+                                // Offered only where there is somebody to hand
+                                // it to. A sole trader has no crew, and a
+                                // button that opens an empty list is a button
+                                // that teaches people not to press buttons.
+                                if (crew.isNotEmpty()) {
+                                    TextButton(onClick = { assigning = block.id }) {
+                                        Text(stringResource(R.string.sch_assign))
+                                    }
+                                }
+                                TextButton(onClick = { viewModel.delete(block.id) }) {
+                                    Text(stringResource(R.string.action_delete))
+                                }
                             }
                         },
                     )
                 }
             }
         }
+    }
+
+    assigning?.let { blockId ->
+        AssignDialog(
+            crew = crew,
+            current = blocks.firstOrNull { it.id == blockId }?.assigneeId,
+            onDismiss = { assigning = null },
+            onPick = { accountId ->
+                viewModel.setAssignee(blockId, accountId)
+                assigning = null
+            },
+        )
     }
 
     if (showAdd) {
@@ -217,3 +261,49 @@ private fun AddBlockDialog(onDismiss: () -> Unit, onConfirm: (String, Int, Int) 
     )
 }
 
+/**
+ * Who is doing this block.
+ *
+ * "Nobody" is the first row rather than a missing option. Work gets handed
+ * back as often as it gets handed out -- somebody is off sick, somebody is
+ * needed on the other floor -- and a picker you can only add to leaves the
+ * wrong name against the job until somebody deletes the block and retypes it.
+ */
+@Composable
+private fun AssignDialog(
+    crew: List<AccountEntity>,
+    current: String?,
+    onDismiss: () -> Unit,
+    onPick: (String?) -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.sch_assignee)) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.sch_unassign)) },
+                    leadingContent = {
+                        RadioButton(selected = current == null, onClick = { onPick(null) })
+                    },
+                    modifier = Modifier.clickable { onPick(null) },
+                )
+                crew.forEach { person ->
+                    ListItem(
+                        headlineContent = { Text(person.displayName) },
+                        leadingContent = {
+                            RadioButton(
+                                selected = current == person.id,
+                                onClick = { onPick(person.id) },
+                            )
+                        },
+                        modifier = Modifier.clickable { onPick(person.id) },
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}

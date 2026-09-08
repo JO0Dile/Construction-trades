@@ -162,6 +162,9 @@
     <string name="update_notes">What changed</string>
     <string name="sch_title">Schedule</string>
     <string name="sch_new_block">New time block</string>
+    <string name="sch_assign">Assign</string>
+    <string name="sch_nobody">Nobody yet</string>
+    <string name="sch_unassign">Nobody</string>
     <string name="sch_start">Start</string>
     <string name="sch_end">End</string>
     <string name="sch_task">Task</string>
