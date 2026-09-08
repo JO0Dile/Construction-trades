@@ -167,3 +167,57 @@ closed, or the company that runs it going away.
 Do not start with real-time. Nothing on a building site needs to be
 instantaneous, and a sync that runs when the phone finds Wi-Fi is both simpler
 and better suited to a place where signal comes and goes.
+
+## Sending a code to the phone number somebody signed up with
+
+Asked for, and not built, because it cannot be built into the app. It is
+written down here rather than left as a gap somebody rediscovers later.
+
+The number is collected at sign-up and required. What is missing is the part
+that proves the person typing it is holding that phone.
+
+**Why the app cannot do it on its own.** An SMS has to be sent by something
+that is not the phone receiving it.
+
+- Sending it from the app itself, with `SEND_SMS`, would have the phone text
+  itself. That proves nothing — anyone can type a number and then read the
+  code off their own screen, whoever the number belongs to — and it costs the
+  user a message. Google Play also treats `SEND_SMS` as a restricted
+  permission and would need a justification this use could not honestly give.
+- Calling an SMS gateway straight from the app means the gateway's API key is
+  inside the APK. An APK is a zip file that anybody can download from the
+  releases page and unzip. Whoever does that can send messages on the
+  account until the bill is noticed, and changing the key means shipping a
+  new version to every phone. This is not a theoretical risk; it is the
+  ordinary outcome.
+
+**What it needs.** The smallest possible endpoint, on the machine
+`docs/SERVER.md` is already about:
+
+1. `POST /verify/start` — takes a number, generates a six-digit code, stores
+   it with an expiry of about ten minutes and a per-number rate limit, and
+   asks an SMS provider to send it. In Israel that is a local carrier gateway
+   or an international one (Twilio and similar) with Israeli sender-ID
+   registration, which is a paid account and a form, not a code change.
+2. `POST /verify/check` — takes the number and the code, and answers yes or
+   no. A wrong code must cost an attempt; five wrong codes must cost the
+   number a cooling-off period, or the six digits are guessable in an
+   afternoon.
+3. The app stores `phoneVerifiedAt` when the server says yes.
+
+**Two things not to get wrong when it is built.**
+
+The rate limit is the whole security of a six-digit code, and it belongs on
+the server. A limit enforced in the app is not a limit — the app is the thing
+being attacked.
+
+And verification must not become a gate on anything safety-related. An
+unverified number is a number that has not been confirmed, not a person who
+may not report a near miss or sign an induction. The same rule as
+`docs/PRICING.md`: nothing that keeps somebody safe waits on anything.
+
+**What the app should do until then.** Nothing that pretends. There is no
+"enter the code we sent you" screen, because no code was sent, and a screen
+that asks for one teaches people the app lies to them. The number is
+collected, stored and used for what it is actually for today: ringing
+somebody.
