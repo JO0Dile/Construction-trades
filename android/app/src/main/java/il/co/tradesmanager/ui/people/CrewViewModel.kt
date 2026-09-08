@@ -9,6 +9,7 @@ import il.co.tradesmanager.data.local.entity.CertificationEntity
 import il.co.tradesmanager.data.local.entity.MembershipEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.local.entity.ViolationEntity
+import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -206,5 +207,67 @@ class CrewViewModel(
             me.active?.id.orEmpty(),
             person.membership.id,
         )
+    }
+
+    /* --------------------------------------------- correcting what it says */
+
+    private val _notCorrected = MutableStateFlow<AccountRepository.NotCorrected?>(null)
+    val notCorrected: StateFlow<AccountRepository.NotCorrected?> = _notCorrected.asStateFlow()
+
+    fun clearNotCorrected() {
+        _notCorrected.value = null
+    }
+
+    /**
+     * Whether this viewer may correct what the books say about somebody.
+     *
+     * The same rule as adding them: if you can put a person on these books,
+     * you can fix what they say. A safety officer reads this screen and a
+     * site manager staffs it, but neither of them is the office, and a name
+     * or an ID number is the office's record to keep.
+     *
+     * Not the chain rule that governs the trade chips, deliberately. That one
+     * excludes yourself, which is right for "who do you answer to" and wrong
+     * here: the owner is the likeliest person on the list to have their own
+     * number mistyped, and nowhere else in the app fixes it.
+     */
+    fun mayCorrect(person: Person): Boolean {
+        val me = signedIn ?: return false
+        return me.role.canManageMembers && everyone.value.any { it.account.id == person.account.id }
+    }
+
+    /**
+     * Writes the correction, and says so when it will not.
+     *
+     * The ID number goes in as typed and comes back refused if it is already
+     * set — the repository owns that rule, not this, and a screen that
+     * decided for itself would be a second copy of it to keep in step.
+     */
+    fun correct(
+        person: Person,
+        name: String,
+        phone: String,
+        email: String,
+        idNumber: String,
+    ) = viewModelScope.launch {
+        val me = signedIn ?: return@launch
+        // runCatching as well as the Result, so that a refusal and a thrown
+        // error both end in a sentence. Only one of the two was handled, and
+        // the other would have taken the screen down without saying why.
+        runCatching {
+            container.accounts.correctDetails(
+                actorRole = me.role,
+                actorName = me.account.displayName,
+                companyId = me.active?.companyId,
+                accountId = person.account.id,
+                displayName = name,
+                phone = phone,
+                email = email,
+                idNumber = idNumber,
+            ).getOrThrow()
+        }.onFailure { failure ->
+            _notCorrected.value = (failure as? AccountRepository.NotCorrectedException)?.reason
+                ?: AccountRepository.NotCorrected.Unknown
+        }
     }
 }

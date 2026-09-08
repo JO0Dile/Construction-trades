@@ -1057,6 +1057,12 @@
     <string name="crew_whatsapp">וואטסאפ</string>
     <string name="crew_email">אימייל</string>
     <string name="crew_no_phone">אין מספר טלפון רשום לאדם הזה.</string>
+    <string name="crew_correct">תיקון הפרטים</string>
+    <string name="crew_id_locked">מספר תעודת הזהות כבר נקבע ולא ניתן לשנותו כאן. הוא מופיע ברשימת הכניסה וברישום ההדרכה — פנו למשרד.</string>
+    <string name="crew_need_name">נדרש שם. שורה בלי שם היא שורה שאיש לא יכול לקרוא.</string>
+    <string name="crew_not_on_books">הם אינם רשומים בחברה הזו.</string>
+    <string name="crew_no_such_person">לא נמצא רישום עבור אדם זה.</string>
+    <string name="crew_correct_failed">לא ניתן היה לשמור.</string>
     <string name="crew_no_violations">לא אושרה נגדם אף הפרה.</string>
     <string name="crew_open">חיפוש לפי מקצוע</string>
     <string name="home_changes">מה השתנה</string>

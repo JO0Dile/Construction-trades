@@ -5346,6 +5346,42 @@
       "he": "אין מספר טלפון רשום לאדם הזה.",
       "ar": "لا يوجد رقم هاتف مسجل لهذا الشخص."
     },
+    "crew_correct": {
+      "c": "Button and dialog title: fix what the crew list says about somebody",
+      "en": "Correct these details",
+      "he": "תיקון הפרטים",
+      "ar": "تصحيح التفاصيل"
+    },
+    "crew_id_locked": {
+      "c": "Why the ID number cannot be edited once it is set",
+      "en": "The ID number is set and cannot be changed here. It is on the gate list and on the induction record — ask the office.",
+      "he": "מספר תעודת הזהות כבר נקבע ולא ניתן לשנותו כאן. הוא מופיע ברשימת הכניסה וברישום ההדרכה — פנו למשרד.",
+      "ar": "رقم الهوية مثبَّت ولا يمكن تغييره هنا. فهو مدرج في قائمة البوابة وفي سجل التوجيه — راجع المكتب."
+    },
+    "crew_need_name": {
+      "c": "Refusal: the name field was left empty",
+      "en": "A name is needed. A row with nobody's name on it is a row nobody can read.",
+      "he": "נדרש שם. שורה בלי שם היא שורה שאיש לא יכול לקרוא.",
+      "ar": "الاسم مطلوب. سطر بلا اسم هو سطر لا يستطيع أحد قراءته."
+    },
+    "crew_not_on_books": {
+      "c": "Refusal: that person is not a member of the company being worked in",
+      "en": "They are not on this company's books.",
+      "he": "הם אינם רשומים בחברה הזו.",
+      "ar": "هذا الشخص ليس مسجَّلًا في هذه الشركة."
+    },
+    "crew_no_such_person": {
+      "c": "Refusal: the account has gone, or was removed",
+      "en": "That person's record could not be found.",
+      "he": "לא נמצא רישום עבור אדם זה.",
+      "ar": "تعذّر العثور على سجل هذا الشخص."
+    },
+    "crew_correct_failed": {
+      "c": "Refusal: the correction failed for a reason with no better sentence",
+      "en": "That could not be saved.",
+      "he": "לא ניתן היה לשמור.",
+      "ar": "تعذّر الحفظ."
+    },
     "crew_no_violations": {
       "c": "Nobody has confirmed a violation against this person.",
       "en": "Nothing confirmed against them.",

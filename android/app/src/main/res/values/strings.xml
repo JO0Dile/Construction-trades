@@ -1109,6 +1109,18 @@
     <string name="crew_whatsapp">WhatsApp</string>
     <string name="crew_email">Email</string>
     <string name="crew_no_phone">No phone number on file for this person.</string>
+    <!-- Button and dialog title: fix what the crew list says about somebody -->
+    <string name="crew_correct">Correct these details</string>
+    <!-- Why the ID number cannot be edited once it is set -->
+    <string name="crew_id_locked">The ID number is set and cannot be changed here. It is on the gate list and on the induction record — ask the office.</string>
+    <!-- Refusal: the name field was left empty -->
+    <string name="crew_need_name">A name is needed. A row with nobody\'s name on it is a row nobody can read.</string>
+    <!-- Refusal: that person is not a member of the company being worked in -->
+    <string name="crew_not_on_books">They are not on this company\'s books.</string>
+    <!-- Refusal: the account has gone, or was removed -->
+    <string name="crew_no_such_person">That person\'s record could not be found.</string>
+    <!-- Refusal: the correction failed for a reason with no better sentence -->
+    <string name="crew_correct_failed">That could not be saved.</string>
     <!-- Nobody has confirmed a violation against this person. -->
     <string name="crew_no_violations">Nothing confirmed against them.</string>
     <!-- Entry point that opens the crew list, by trade, with faces. -->

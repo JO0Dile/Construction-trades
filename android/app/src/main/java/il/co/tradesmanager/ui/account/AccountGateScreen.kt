@@ -1,6 +1,5 @@
 package il.co.tradesmanager.ui.account
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -41,6 +40,7 @@ import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.ContactFields
 
 /**
  * The door.
@@ -304,71 +304,6 @@ private fun IdentityFields(
         singleLine = true,
         modifier = Modifier.fillMaxWidth(),
     )
-}
-
-/**
- * How the site reaches this person.
- *
- * The phone number is required and the email address is not, which is the way
- * round a site works rather than the way round a form usually is. Everybody
- * on a site has a phone and is reached on it within the hour; plenty of them
- * have never had an email address, and requiring one would be requiring the
- * part that is optional in real life.
- *
- * The error appears only once something has been typed. A box somebody has
- * not reached yet is not a mistake they have made, and a form that is already
- * shouting when it opens teaches people to ignore it.
- */
-@Composable
-private fun ContactFields(
-    phone: String,
-    onPhone: (String) -> Unit,
-    email: String,
-    onEmail: (String) -> Unit,
-) {
-    val phoneFault = Contact.blocksPhone(phone).takeIf { phone.isNotBlank() }
-    val emailFault = Contact.blocksEmail(email)
-
-    OutlinedTextField(
-        value = phone,
-        onValueChange = onPhone,
-        label = { Text(stringResource(R.string.acc_phone)) },
-        isError = phoneFault != null,
-        supportingText = {
-            Text(stringResource(phoneFault?.let(::phoneMessage) ?: R.string.acc_phone_hint))
-        },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-        singleLine = true,
-        modifier = Modifier.fillMaxWidth(),
-    )
-    OutlinedTextField(
-        value = email,
-        onValueChange = onEmail,
-        label = { Text(stringResource(R.string.acc_email)) },
-        isError = emailFault != null,
-        supportingText = {
-            if (emailFault != null) Text(stringResource(R.string.acc_email_bad))
-        },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-        singleLine = true,
-        modifier = Modifier.fillMaxWidth(),
-    )
-}
-
-/**
- * One message per fault, and no `else`.
- *
- * A fault added later has to be given words here or this stops compiling,
- * which is the point: the alternative is a new kind of wrong number showing
- * a blank line under the box.
- */
-@StringRes
-private fun phoneMessage(fault: Contact.PhoneFault): Int = when (fault) {
-    Contact.PhoneFault.MISSING -> R.string.acc_phone_missing
-    Contact.PhoneFault.NOT_A_NUMBER -> R.string.acc_phone_not_a_number
-    Contact.PhoneFault.TOO_SHORT -> R.string.acc_phone_too_short
-    Contact.PhoneFault.TOO_LONG -> R.string.acc_phone_too_long
-    Contact.PhoneFault.ONE_DIGIT_REPEATED -> R.string.acc_phone_repeated
 }
 
 @Composable

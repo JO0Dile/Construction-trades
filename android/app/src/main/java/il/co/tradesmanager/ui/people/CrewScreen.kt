@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.people
 
 import android.content.Intent
 import android.net.Uri
+import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +19,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
@@ -27,12 +29,17 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
@@ -44,16 +51,20 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.people.Corrections
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.data.local.entity.TradeEntity
+import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.account.roleLabel
+import il.co.tradesmanager.ui.components.ContactFields
 import il.co.tradesmanager.ui.components.PersonCard
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
+import il.co.tradesmanager.ui.components.phoneMessage
 import java.time.Instant
 import java.time.ZoneId
 
@@ -188,6 +199,8 @@ private fun CrewProfileSheet(
     val violations by viewModel.openViolations.collectAsStateWithLifecycle()
     val reportsTo by viewModel.openReportsTo.collectAsStateWithLifecycle()
     val mayPrice by viewModel.mayPrice.collectAsStateWithLifecycle()
+    val notCorrected by viewModel.notCorrected.collectAsStateWithLifecycle()
+    var correcting by remember(person.account.id) { mutableStateOf(false) }
     val locale = currentLocale()
     val languageTag = currentLanguageTag()
     val zone = ZoneId.systemDefault()
@@ -224,6 +237,17 @@ private fun CrewProfileSheet(
             }
 
             ContactSection(phone = person.account.phone, email = person.account.email)
+
+            // Most people on a site never open this app. They were put on the
+            // books at the gate by whoever was standing on it, with a name
+            // heard once and a number read off a scrap of paper, and until
+            // now there was nowhere at all to fix either.
+            if (viewModel.mayCorrect(person)) {
+                OutlinedButton(
+                    onClick = { correcting = true },
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                ) { Text(stringResource(R.string.crew_correct)) }
+            }
 
             // Said out loud rather than left as an absence. An officer looking
             // at a profile with no wages on it should know that is the rule
@@ -283,6 +307,134 @@ private fun CrewProfileSheet(
             }
         }
     }
+
+    if (correcting) {
+        CorrectDetailsDialog(
+            person = person,
+            onDismiss = { correcting = false },
+            onSave = { name, phone, email, idNumber ->
+                viewModel.correct(person, name, phone, email, idNumber)
+                correcting = false
+            },
+        )
+    }
+
+    notCorrected?.let { reason ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearNotCorrected,
+            text = { Text(stringResource(notCorrectedLabel(reason))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearNotCorrected) {
+                    Text(stringResource(R.string.action_ok))
+                }
+            },
+        )
+    }
+}
+
+/**
+ * The office correcting what the books say.
+ *
+ * Name, number and address, which are the three that go wrong and the three
+ * that matter when somebody has to be reached. The trade is a chip row on the
+ * sheet already and the role belongs on the People screen, where the chain
+ * and the last-administrator rule live.
+ *
+ * The ID number is the exception, and deliberately: it can be filled in when
+ * it is missing and not changed once it is there. It goes on the gate list
+ * and on the induction record, so a quiet edit is how one person ends up
+ * standing behind another person's paperwork. The screen says that out loud
+ * rather than showing a field that silently does nothing.
+ */
+@Composable
+private fun CorrectDetailsDialog(
+    person: CrewViewModel.Person,
+    onDismiss: () -> Unit,
+    onSave: (name: String, phone: String, email: String, idNumber: String) -> Unit,
+) {
+    var name by remember { mutableStateOf(person.account.displayName) }
+    var phone by remember { mutableStateOf(person.account.phone.orEmpty()) }
+    var email by remember { mutableStateOf(person.account.email.orEmpty()) }
+    var idNumber by remember { mutableStateOf(person.account.idNumber.orEmpty()) }
+    val idIsSet = !person.account.idNumber.isNullOrBlank()
+
+    // The same rules the repository will apply, asked here so the button can
+    // be grey for a reason the person can read rather than for none.
+    val phoneOk = phone.isBlank() || Contact.blocksPhone(phone) == null
+    val emailOk = Contact.blocksEmail(email) == null
+    val canSave = name.isNotBlank() && phoneOk && emailOk
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.crew_correct)) },
+        text = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text(stringResource(R.string.acc_your_name)) },
+                    isError = name.isBlank(),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+
+                ContactFields(phone, { phone = it }, email, { email = it })
+
+                if (idIsSet) {
+                    DetailLine(stringResource(R.string.acc_id_number), idNumber)
+                    Text(
+                        text = stringResource(R.string.crew_id_locked),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                } else {
+                    OutlinedTextField(
+                        value = idNumber,
+                        onValueChange = { idNumber = it },
+                        label = { Text(stringResource(R.string.acc_id_number)) },
+                        supportingText = { Text(stringResource(R.string.acc_id_number_hint)) },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = { onSave(name, phone, email, idNumber) },
+                enabled = canSave,
+            ) { Text(stringResource(R.string.action_save)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+/**
+ * The sentence for each way a correction can be refused. Exhaustive with no
+ * `else`, so a reason added to the repository cannot arrive as a blank dialog.
+ */
+@StringRes
+private fun notCorrectedLabel(reason: AccountRepository.NotCorrected): Int = when (reason) {
+    AccountRepository.NotCorrected.NotPermitted -> R.string.lens_locked
+    AccountRepository.NotCorrected.NoSuchPerson -> R.string.crew_no_such_person
+    AccountRepository.NotCorrected.NotOnTheseBooks -> R.string.crew_not_on_books
+    AccountRepository.NotCorrected.IdNumberTaken -> R.string.acc_id_taken
+    AccountRepository.NotCorrected.Unknown -> R.string.crew_correct_failed
+    is AccountRepository.NotCorrected.Rejected -> faultLabel(reason.fault)
+}
+
+/** The sentence for each way the details themselves are wrong. */
+@StringRes
+private fun faultLabel(fault: Corrections.Fault): Int = when (fault) {
+    Corrections.Fault.NameIsBlank -> R.string.crew_need_name
+    is Corrections.Fault.BadPhone -> phoneMessage(fault.fault)
+    is Corrections.Fault.BadEmail -> R.string.acc_email_bad
+    Corrections.Fault.IdNumberIsSet -> R.string.crew_id_locked
 }
 
 /**

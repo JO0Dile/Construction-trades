@@ -1057,6 +1057,12 @@
     <string name="crew_whatsapp">واتساب</string>
     <string name="crew_email">البريد الإلكتروني</string>
     <string name="crew_no_phone">لا يوجد رقم هاتف مسجل لهذا الشخص.</string>
+    <string name="crew_correct">تصحيح التفاصيل</string>
+    <string name="crew_id_locked">رقم الهوية مثبَّت ولا يمكن تغييره هنا. فهو مدرج في قائمة البوابة وفي سجل التوجيه — راجع المكتب.</string>
+    <string name="crew_need_name">الاسم مطلوب. سطر بلا اسم هو سطر لا يستطيع أحد قراءته.</string>
+    <string name="crew_not_on_books">هذا الشخص ليس مسجَّلًا في هذه الشركة.</string>
+    <string name="crew_no_such_person">تعذّر العثور على سجل هذا الشخص.</string>
+    <string name="crew_correct_failed">تعذّر الحفظ.</string>
     <string name="crew_no_violations">لا توجد مخالفات مؤكدة بحقهم.</string>
     <string name="crew_open">ابحث عن شخص حسب المهنة</string>
     <string name="home_changes">ما الذي تغيّر</string>

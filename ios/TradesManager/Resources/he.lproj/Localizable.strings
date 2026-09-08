@@ -1108,6 +1108,18 @@
 "crew_whatsapp" = "וואטסאפ";
 "crew_email" = "אימייל";
 "crew_no_phone" = "אין מספר טלפון רשום לאדם הזה.";
+/* Button and dialog title: fix what the crew list says about somebody */
+"crew_correct" = "תיקון הפרטים";
+/* Why the ID number cannot be edited once it is set */
+"crew_id_locked" = "מספר תעודת הזהות כבר נקבע ולא ניתן לשנותו כאן. הוא מופיע ברשימת הכניסה וברישום ההדרכה — פנו למשרד.";
+/* Refusal: the name field was left empty */
+"crew_need_name" = "נדרש שם. שורה בלי שם היא שורה שאיש לא יכול לקרוא.";
+/* Refusal: that person is not a member of the company being worked in */
+"crew_not_on_books" = "הם אינם רשומים בחברה הזו.";
+/* Refusal: the account has gone, or was removed */
+"crew_no_such_person" = "לא נמצא רישום עבור אדם זה.";
+/* Refusal: the correction failed for a reason with no better sentence */
+"crew_correct_failed" = "לא ניתן היה לשמור.";
 /* Nobody has confirmed a violation against this person. */
 "crew_no_violations" = "לא אושרה נגדם אף הפרה.";
 /* Entry point that opens the crew list, by trade, with faces. */

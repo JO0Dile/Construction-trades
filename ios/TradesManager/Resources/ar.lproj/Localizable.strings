@@ -1108,6 +1108,18 @@
 "crew_whatsapp" = "واتساب";
 "crew_email" = "البريد الإلكتروني";
 "crew_no_phone" = "لا يوجد رقم هاتف مسجل لهذا الشخص.";
+/* Button and dialog title: fix what the crew list says about somebody */
+"crew_correct" = "تصحيح التفاصيل";
+/* Why the ID number cannot be edited once it is set */
+"crew_id_locked" = "رقم الهوية مثبَّت ولا يمكن تغييره هنا. فهو مدرج في قائمة البوابة وفي سجل التوجيه — راجع المكتب.";
+/* Refusal: the name field was left empty */
+"crew_need_name" = "الاسم مطلوب. سطر بلا اسم هو سطر لا يستطيع أحد قراءته.";
+/* Refusal: that person is not a member of the company being worked in */
+"crew_not_on_books" = "هذا الشخص ليس مسجَّلًا في هذه الشركة.";
+/* Refusal: the account has gone, or was removed */
+"crew_no_such_person" = "تعذّر العثور على سجل هذا الشخص.";
+/* Refusal: the correction failed for a reason with no better sentence */
+"crew_correct_failed" = "تعذّر الحفظ.";
 /* Nobody has confirmed a violation against this person. */
 "crew_no_violations" = "لا توجد مخالفات مؤكدة بحقهم.";
 /* Entry point that opens the crew list, by trade, with faces. */
