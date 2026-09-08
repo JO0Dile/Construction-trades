@@ -3,6 +3,7 @@ package il.co.tradesmanager.ui.schedule
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.data.local.entity.AccountEntity
+import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import il.co.tradesmanager.core.time.TimeOfDay
@@ -111,11 +112,27 @@ class ScheduleViewModel(private val container: AppContainer) : ViewModel() {
     }
 
     /**
-     * Check-in without location: the GPS stamp is added by the screen only
-     * once the user has granted the permission, so a refused permission costs
-     * the stamp and nothing else.
+     * Every job, including the parts of one, because a man works on the
+     * twelfth floor rather than on the tower.
      */
-    fun toggleCheckIn(latitude: Double?, longitude: Double?) = viewModelScope.launch {
+    val jobs: StateFlow<List<ProjectEntity>> = container.projects.observeProjects()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /**
+     * Starts or ends a shift, against the job it was worked on.
+     *
+     * [projectId] is the whole of this. Every check-in the app has ever
+     * recorded passed null, and the timesheet reads
+     * `WHERE projectId = :projectId` -- null matches nothing, so every job's
+     * timesheet has been empty and the labour figures built on top of it have
+     * been arithmetic over an empty list. Hours were being collected and
+     * could not reach the money they were the largest part of.
+     *
+     * The two coordinate parameters that used to be here are gone. The screen
+     * passed null for both, always; the comment claimed a refused permission
+     * cost the stamp, when there was no stamp to cost.
+     */
+    fun toggleCheckIn(projectId: String?) = viewModelScope.launch {
         val open = openTimeEntry.value
         if (open != null) {
             container.schedule.checkOut(open)
@@ -129,9 +146,9 @@ class ScheduleViewModel(private val container: AppContainer) : ViewModel() {
         container.schedule.checkIn(
             workerName = signedIn?.account?.displayName?.ifBlank { null }
                 ?: actor.ifBlank { "worker" },
-            projectId = null,
-            latitude = latitude,
-            longitude = longitude,
+            projectId = projectId,
+            latitude = null,
+            longitude = null,
             workerAccountId = signedIn?.account?.id,
             workerMembershipId = signedIn?.active?.id,
         )

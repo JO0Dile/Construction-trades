@@ -60,9 +60,11 @@ fun ScheduleScreen(container: AppContainer) {
     val blocks by viewModel.blocks.collectAsStateWithLifecycle()
     val openEntry by viewModel.openTimeEntry.collectAsStateWithLifecycle()
     val crew by viewModel.crew.collectAsStateWithLifecycle()
+    val jobs by viewModel.jobs.collectAsStateWithLifecycle()
     val locale = currentLocale()
     var showAdd by remember { mutableStateOf(false) }
     var assigning by remember { mutableStateOf<String?>(null) }
+    var choosingJob by remember { mutableStateOf(false) }
 
     // There is no location prompt here any more, and there was never a GPS
     // stamp. The prompt passed null coordinates to the check-in whatever the
@@ -111,7 +113,18 @@ fun ScheduleScreen(container: AppContainer) {
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Button(
-                        onClick = { viewModel.toggleCheckIn(null, null) },
+                        // Checking out never asks: the shift already knows
+                        // which job it was. Checking in asks only when there
+                        // is a choice to make -- one job is not a question,
+                        // and a man clocking on at six does not want one.
+                        onClick = {
+                            when {
+                                openEntry != null -> viewModel.toggleCheckIn(null)
+                                jobs.size == 1 -> viewModel.toggleCheckIn(jobs.first().id)
+                                jobs.isEmpty() -> viewModel.toggleCheckIn(null)
+                                else -> choosingJob = true
+                            }
+                        },
                         modifier = Modifier.weight(1f),
                     ) {
                         Text(
@@ -187,6 +200,32 @@ fun ScheduleScreen(container: AppContainer) {
                 }
             }
         }
+    }
+
+    if (choosingJob) {
+        AlertDialog(
+            onDismissRequest = { choosingJob = false },
+            title = { Text(stringResource(R.string.sch_which_job)) },
+            text = {
+                Column(Modifier.verticalScroll(rememberScrollState())) {
+                    jobs.forEach { job ->
+                        ListItem(
+                            headlineContent = { Text(job.name) },
+                            supportingContent = { Text(job.kindLabel) },
+                            modifier = Modifier.clickable {
+                                choosingJob = false
+                                viewModel.toggleCheckIn(job.id)
+                            },
+                        )
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { choosingJob = false }) {
+                    Text(stringResource(R.string.action_cancel))
+                }
+            },
+        )
     }
 
     assigning?.let { blockId ->

@@ -168,6 +168,7 @@
     <string name="sch_assignee">مُسنَد إلى</string>
     <string name="sch_project">المشروع</string>
     <string name="sch_check_in">تسجيل دخول</string>
+    <string name="sch_which_job">على أي عمل؟</string>
     <string name="sch_check_out">تسجيل خروج</string>
     <string name="sch_checked_in">تم تسجيل الدخول</string>
     <string name="sch_empty">لا شيء مجدول</string>

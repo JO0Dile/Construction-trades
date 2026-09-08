@@ -175,6 +175,7 @@
 "sch_assignee" = "Assigned to";
 "sch_project" = "Project";
 "sch_check_in" = "Check in";
+"sch_which_job" = "Which job?";
 "sch_check_out" = "Check out";
 "sch_checked_in" = "Checked in";
 "sch_empty" = "Nothing scheduled";

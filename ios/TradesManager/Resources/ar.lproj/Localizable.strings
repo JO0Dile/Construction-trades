@@ -175,6 +175,7 @@
 "sch_assignee" = "مُسنَد إلى";
 "sch_project" = "المشروع";
 "sch_check_in" = "تسجيل دخول";
+"sch_which_job" = "على أي عمل؟";
 "sch_check_out" = "تسجيل خروج";
 "sch_checked_in" = "تم تسجيل الدخول";
 "sch_empty" = "لا شيء مجدول";

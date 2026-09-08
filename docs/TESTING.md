@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.14.1 — and what to try first
+## What is new in 0.14.2 — and what to try first
 
 ### The backup format changed, and why you should care
 
@@ -62,6 +62,24 @@ file can no longer be edited without breaking it.
 
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
+
+### Hours can finally reach a job
+
+Every check-in the app has ever recorded was filed against **no job**, and
+the timesheet reads `WHERE projectId = :projectId`. Null matches nothing, so
+every job's timesheet has been empty and the labour costs built on top of it
+— person-days, overtime bands, the comparison against typed cost lines — have
+been arithmetic over an empty list. Hours were being collected and could not
+reach the money they are the largest part of.
+
+- [ ] **Check in** from the schedule. With one job it just starts, no
+      question. With several it asks which — one tap, and it is the difference
+      between the timesheet working and not.
+- [ ] **Check out.** It never asks: the shift already knows which job it was.
+- [ ] Open that job → **Timesheet**. The shift is there. Before this it never
+      would have been, on any job, ever.
+- [ ] Shifts recorded before this update stay unattached. There is no honest
+      way to guess which job they were on.
 
 ### The permit, the checklist and the talk are signed now
 

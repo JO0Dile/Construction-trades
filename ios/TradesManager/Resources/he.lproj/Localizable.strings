@@ -175,6 +175,7 @@
 "sch_assignee" = "משויך ל";
 "sch_project" = "פרויקט";
 "sch_check_in" = "כניסה";
+"sch_which_job" = "לאיזו עבודה?";
 "sch_check_out" = "יציאה";
 "sch_checked_in" = "נרשמה כניסה";
 "sch_empty" = "אין משימות מתוכננות";

@@ -176,6 +176,7 @@
     <string name="sch_assignee">Assigned to</string>
     <string name="sch_project">Project</string>
     <string name="sch_check_in">Check in</string>
+    <string name="sch_which_job">Which job?</string>
     <string name="sch_check_out">Check out</string>
     <string name="sch_checked_in">Checked in</string>
     <string name="sch_empty">Nothing scheduled</string>
