@@ -445,6 +445,31 @@
       "he": "לקוח",
       "ar": "الزبون"
     },
+    "proj_parts": {
+      "en": "Parts of this job",
+      "he": "חלקים של העבודה",
+      "ar": "أجزاء هذا العمل"
+    },
+    "proj_add_part": {
+      "en": "Add a part",
+      "he": "הוספת חלק",
+      "ar": "إضافة جزء"
+    },
+    "proj_part_of": {
+      "en": "Part of",
+      "he": "חלק מתוך",
+      "ar": "جزء من"
+    },
+    "proj_no_parts": {
+      "en": "Not broken into parts.",
+      "he": "לא מחולק לחלקים.",
+      "ar": "غير مقسم إلى أجزاء."
+    },
+    "proj_part_hint": {
+      "en": "A floor, a flat, a plot — whatever this job is made of.",
+      "he": "קומה, דירה, מגרש — ממה שהעבודה מורכבת.",
+      "ar": "طابق أو شقة أو قطعة — مما يتكوّن هذا العمل."
+    },
     "proj_street": {
       "en": "Street and number",
       "he": "רחוב ומספר",

@@ -87,6 +87,11 @@
 "proj_name" = "Project name";
 "proj_address" = "Address";
 "proj_client" = "Client";
+"proj_parts" = "Parts of this job";
+"proj_add_part" = "Add a part";
+"proj_part_of" = "Part of";
+"proj_no_parts" = "Not broken into parts.";
+"proj_part_hint" = "A floor, a flat, a plot — whatever this job is made of.";
 "proj_street" = "Street and number";
 "proj_city" = "City";
 "proj_postal_code" = "Postal code";

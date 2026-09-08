@@ -88,6 +88,11 @@
     <string name="proj_name">Project name</string>
     <string name="proj_address">Address</string>
     <string name="proj_client">Client</string>
+    <string name="proj_parts">Parts of this job</string>
+    <string name="proj_add_part">Add a part</string>
+    <string name="proj_part_of">Part of</string>
+    <string name="proj_no_parts">Not broken into parts.</string>
+    <string name="proj_part_hint">A floor, a flat, a plot — whatever this job is made of.</string>
     <string name="proj_street">Street and number</string>
     <string name="proj_city">City</string>
     <string name="proj_postal_code">Postal code</string>

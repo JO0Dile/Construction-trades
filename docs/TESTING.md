@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.13.4 — and what to try first
+## What is new in 0.14.0 — and what to try first
 
 ### The backup format changed, and why you should care
 
@@ -62,6 +62,27 @@ file can no longer be edited without breaking it.
 
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
+
+### A job can be made of parts
+
+A twenty-storey tower is one job with twenty floors in it. The database has
+allowed that since the beginning — `parentProjectId` — and nothing has ever
+set it, so every job has been flat.
+
+- [ ] Open a job → **Add a part**. Name a floor, a flat, a plot. It asks two
+      questions and no more; everything else a part needs it gets from the job
+      it is inside.
+- [ ] Tap the part. It is a full job: its own tasks, materials, photographs,
+      snags, permits. At the top it says which job it is **part of**, and that
+      is tappable to go back up.
+- [ ] Look at the **jobs list**. Parts are not in it — the tower is one row,
+      not twenty-one. A list where the floors sit beside the buildings is one
+      where the job you want is the one you cannot find.
+- [ ] Now raise a **snag**, or a permit, or a delivery. The job picker there
+      *does* offer the parts, because a snag belongs to the twelfth floor and
+      not to the tower.
+- [ ] A part has no **Add a part** button of its own. One level deep on
+      purpose; deeper is a tree somebody can bury a floor in.
 
 ### A snag showed the photograph it replaced
 

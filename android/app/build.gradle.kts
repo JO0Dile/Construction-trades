@@ -15,8 +15,8 @@ android {
         // Android 8.0 — the floor the tender documents ask for.
         minSdk = 26
         targetSdk = 35
-        versionCode = 21
-        versionName = "0.13.4"
+        versionCode = 22
+        versionName = "0.14.0"
 
         // Where the in-app update check looks. Read through BuildConfig so a
         // fork points at its own repository without touching Kotlin.

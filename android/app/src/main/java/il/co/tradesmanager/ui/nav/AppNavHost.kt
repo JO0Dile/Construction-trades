@@ -292,6 +292,9 @@ fun AppNavHost(
                     onOpenExcavations = { navController.navigate(Routes.excavations(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
+                    // A part, or the job it belongs to. Same screen, so the
+                    // back stack reads the way somebody walked in.
+                    onOpenProject = { navController.navigate(Routes.projectDetail(it)) },
                     onBack = { navController.popBackStack() },
                 )
             }

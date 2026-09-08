@@ -49,6 +49,12 @@ class ProjectRepository(
     fun observeProjects(): Flow<List<ProjectEntity>> =
         activeCompanyId.flatMapLatest { dao.observeProjects(it) }
 
+    /** For the list of jobs. Parts are reached through the job they belong to. */
+    fun observeTopLevel(): Flow<List<ProjectEntity>> =
+        activeCompanyId.flatMapLatest { dao.observeTopLevelProjects(it) }
+
+    fun observeParts(parentId: String): Flow<List<ProjectEntity>> = dao.observeParts(parentId)
+
     fun observeActive(): Flow<List<ProjectEntity>> =
         activeCompanyId.flatMapLatest { dao.observeProjectsByStatus(Status.ACTIVE, it) }
     fun observeProject(id: String): Flow<ProjectEntity?> = dao.observeProject(id)
@@ -95,12 +101,23 @@ class ProjectRepository(
         name: String,
         kindLabel: String,
         actorName: String,
+        /**
+         * The job this is a part of, if it is one.
+         *
+         * The column has been here since the beginning with nothing setting
+         * it. A twenty-storey tower is one job with twenty floors in it, and
+         * every floor has its own tasks, materials, photographs and snags --
+         * flattening that into twenty jobs loses which building they are in,
+         * and keeping it as one loses which floor anything happened on.
+         */
+        parentProjectId: String? = null,
     ): ProjectEntity = withContext(Dispatchers.IO) {
         val now = System.currentTimeMillis()
         val project = ProjectEntity(
             id = UUID.randomUUID().toString(),
             name = name.trim(),
             kindLabel = kindLabel.trim(),
+            parentProjectId = parentProjectId,
             status = Status.PLANNED,
             createdAt = now,
             updatedAt = now,

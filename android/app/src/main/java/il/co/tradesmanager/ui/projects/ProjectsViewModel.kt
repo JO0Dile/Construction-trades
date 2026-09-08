@@ -20,7 +20,9 @@ class ProjectsViewModel(
     private val languageTag: String,
 ) : ViewModel() {
 
-    val projects: StateFlow<List<ProjectEntity>> = container.projects.observeProjects()
+    // Top level only: a tower's floors are reached through the tower, not
+    // listed beside it. Pickers elsewhere still offer every part.
+    val projects: StateFlow<List<ProjectEntity>> = container.projects.observeTopLevel()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     /** Project id -> how far through its task list it is. */

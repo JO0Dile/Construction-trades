@@ -87,6 +87,11 @@
     <string name="proj_name">שם הפרויקט</string>
     <string name="proj_address">כתובת</string>
     <string name="proj_client">לקוח</string>
+    <string name="proj_parts">חלקים של העבודה</string>
+    <string name="proj_add_part">הוספת חלק</string>
+    <string name="proj_part_of">חלק מתוך</string>
+    <string name="proj_no_parts">לא מחולק לחלקים.</string>
+    <string name="proj_part_hint">קומה, דירה, מגרש — ממה שהעבודה מורכבת.</string>
     <string name="proj_street">רחוב ומספר</string>
     <string name="proj_city">עיר</string>
     <string name="proj_postal_code">מיקוד</string>

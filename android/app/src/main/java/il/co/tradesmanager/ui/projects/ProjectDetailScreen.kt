@@ -118,6 +118,7 @@ fun ProjectDetailScreen(
     onOpenExcavations: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
+    onOpenProject: (String) -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -126,6 +127,8 @@ fun ProjectDetailScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val money by viewModel.financials.collectAsStateWithLifecycle()
+    val parts by viewModel.parts.collectAsStateWithLifecycle()
+    val parent by viewModel.parent.collectAsStateWithLifecycle()
     // A job is all five lenses at once, so each section asks separately. A
     // finance clerk opening a job sees what it cost, not the task list.
     val signedIn = session as? SessionRepository.State.SignedIn
@@ -144,6 +147,7 @@ fun ProjectDetailScreen(
     var viewing by remember { mutableStateOf<PhotoEntity?>(null) }
     var addingMaterial by remember { mutableStateOf(false) }
     var showPlaceEditor by remember { mutableStateOf(false) }
+    var addingPart by remember { mutableStateOf(false) }
     var addingTask by remember { mutableStateOf(false) }
     val addImage = rememberImageAdder(
         newCameraTarget = viewModel::newCameraTarget,
@@ -284,10 +288,44 @@ fun ProjectDetailScreen(
                 item {
                     Column(Modifier.padding(vertical = 8.dp)) {
                         DetailRow(stringResource(R.string.proj_status), stringResource(statusLabel(project.status)))
+                        // Said before anything else on the screen. Somebody
+                        // opening the twelfth floor needs to know which tower
+                        // they are in before they read a single task.
+                        parent?.let {
+                            ListItem(
+                                headlineContent = { Text(it.name) },
+                                overlineContent = { Text(stringResource(R.string.proj_part_of)) },
+                                modifier = Modifier.clickable { onOpenProject(it.id) },
+                            )
+                        }
                         PlaceAndClient(
                             project = project,
                             onEdit = { showPlaceEditor = true },
                         )
+                    }
+                }
+
+                item {
+                    SectionHeader(stringResource(R.string.proj_parts))
+                }
+                if (parts.isEmpty()) {
+                    item { SectionPlaceholder(stringResource(R.string.proj_no_parts)) }
+                }
+                items(parts, key = { "part-" + it.id }) { part ->
+                    ListItem(
+                        headlineContent = { Text(part.name) },
+                        supportingContent = { Text(part.kindLabel) },
+                        modifier = Modifier.clickable { onOpenProject(part.id) },
+                    )
+                }
+                // Offered only on a whole job. A part that can be broken up is
+                // a tree somebody can bury a floor four taps down; if nesting
+                // deeper is ever needed it should be built on purpose.
+                if (project.parentProjectId == null) {
+                    item {
+                        TextButton(onClick = { addingPart = true }) {
+                            Text(stringResource(R.string.proj_add_part))
+                        }
                     }
                 }
             }
@@ -449,6 +487,16 @@ fun ProjectDetailScreen(
                 }
             }
         }
+    }
+
+    if (addingPart) {
+        AddPartDialog(
+            onDismiss = { addingPart = false },
+            onAdd = { name, kind ->
+                viewModel.addPart(name, kind)
+                addingPart = false
+            },
+        )
     }
 
     if (showPlaceEditor) {
@@ -779,6 +827,53 @@ private fun PlaceAndClientDialog(
                 enabled = phoneFault == null,
                 onClick = { onSave(street, city, postalCode, clientName, clientPhone) },
             ) { Text(stringResource(R.string.action_save)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+/**
+ * A part of a job: a floor, a flat, a plot.
+ *
+ * Two boxes and no more. Everything else a part needs -- its address, its
+ * client, its dates -- it inherits by being inside the job, and asking for
+ * them again at the moment somebody is adding a twelfth floor is how twenty
+ * floors never get added.
+ */
+@Composable
+private fun AddPartDialog(onDismiss: () -> Unit, onAdd: (String, String) -> Unit) {
+    var name by remember { mutableStateOf("") }
+    var kind by remember { mutableStateOf("") }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.proj_add_part)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text(stringResource(R.string.proj_name)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = kind,
+                    onValueChange = { kind = it },
+                    label = { Text(stringResource(R.string.proj_kind)) },
+                    supportingText = { Text(stringResource(R.string.proj_part_hint)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                enabled = name.isNotBlank(),
+                onClick = { onAdd(name, kind) },
+            ) { Text(stringResource(R.string.action_add)) }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }

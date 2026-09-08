@@ -87,6 +87,11 @@
     <string name="proj_name">اسم المشروع</string>
     <string name="proj_address">العنوان</string>
     <string name="proj_client">الزبون</string>
+    <string name="proj_parts">أجزاء هذا العمل</string>
+    <string name="proj_add_part">إضافة جزء</string>
+    <string name="proj_part_of">جزء من</string>
+    <string name="proj_no_parts">غير مقسم إلى أجزاء.</string>
+    <string name="proj_part_hint">طابق أو شقة أو قطعة — مما يتكوّن هذا العمل.</string>
     <string name="proj_street">الشارع والرقم</string>
     <string name="proj_city">المدينة</string>
     <string name="proj_postal_code">الرمز البريدي</string>

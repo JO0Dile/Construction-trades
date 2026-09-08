@@ -87,6 +87,11 @@
 "proj_name" = "שם הפרויקט";
 "proj_address" = "כתובת";
 "proj_client" = "לקוח";
+"proj_parts" = "חלקים של העבודה";
+"proj_add_part" = "הוספת חלק";
+"proj_part_of" = "חלק מתוך";
+"proj_no_parts" = "לא מחולק לחלקים.";
+"proj_part_hint" = "קומה, דירה, מגרש — ממה שהעבודה מורכבת.";
 "proj_street" = "רחוב ומספר";
 "proj_city" = "עיר";
 "proj_postal_code" = "מיקוד";

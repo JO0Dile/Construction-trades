@@ -15,8 +15,13 @@ import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -55,6 +60,46 @@ class ProjectDetailViewModel(
     ) { project, materials, tasks, categories, images ->
         State(project, materials, tasks, categories.associate { it.id to it.category }, images)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())
+
+    /**
+     * The parts this job is made of: its floors, its flats, its plots.
+     *
+     * Each is a job in its own right with its own tasks, materials,
+     * photographs and snags -- which is the point. Twenty floors flattened
+     * into one job cannot say which floor anything happened on, and twenty
+     * separate jobs cannot say which building they are in.
+     */
+    val parts: StateFlow<List<ProjectEntity>> = container.projects.observeParts(projectId)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** The job this one is a part of, when it is one. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val parent: StateFlow<ProjectEntity?> = state
+        .map { it.project?.parentProjectId }
+        .distinctUntilChanged()
+        .flatMapLatest { id ->
+            if (id == null) flowOf(null) else container.projects.observeProject(id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /**
+     * Adds a part to this job.
+     *
+     * Only one level deep is offered: a part cannot itself be broken up here.
+     * A site with buildings with floors with rooms is four levels the data
+     * allows, and a screen that lets somebody build one is a screen where the
+     * job they are looking for is four taps from where they expected it. If
+     * that turns out to be needed it should be built deliberately.
+     */
+    fun addPart(name: String, kindLabel: String) = viewModelScope.launch {
+        if (name.isBlank()) return@launch
+        container.projects.createBlank(
+            name = name,
+            kindLabel = kindLabel,
+            actorName = container.settings.settings.first().actorName,
+            parentProjectId = projectId,
+        )
+    }
 
     /** Enough of the Money lens for the one line that opens it. */
     val financials: StateFlow<JobFinancials> = container.money.observeFinancials(projectId)

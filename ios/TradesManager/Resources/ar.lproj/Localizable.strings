@@ -87,6 +87,11 @@
 "proj_name" = "اسم المشروع";
 "proj_address" = "العنوان";
 "proj_client" = "الزبون";
+"proj_parts" = "أجزاء هذا العمل";
+"proj_add_part" = "إضافة جزء";
+"proj_part_of" = "جزء من";
+"proj_no_parts" = "غير مقسم إلى أجزاء.";
+"proj_part_hint" = "طابق أو شقة أو قطعة — مما يتكوّن هذا العمل.";
 "proj_street" = "الشارع والرقم";
 "proj_city" = "المدينة";
 "proj_postal_code" = "الرمز البريدي";
