@@ -1070,6 +1070,11 @@
 "crew_inducted" = "تلقّى التدريب";
 /* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
 "crew_no_money" = "لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة.";
+"crew_contact" = "الاتصال";
+"crew_call" = "اتصال";
+"crew_whatsapp" = "واتساب";
+"crew_email" = "البريد الإلكتروني";
+"crew_no_phone" = "لا يوجد رقم هاتف مسجل لهذا الشخص.";
 /* Nobody has confirmed a violation against this person. */
 "crew_no_violations" = "لا توجد مخالفات مؤكدة بحقهم.";
 /* Entry point that opens the crew list, by trade, with faces. */

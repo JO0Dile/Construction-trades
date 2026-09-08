@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.13.1 — and what to try first
+## What is new in 0.13.2 — and what to try first
 
 ### The backup format changed, and why you should care
 
@@ -46,6 +46,19 @@ file can no longer be edited without breaking it.
       both optional — the office at the barrier at six in the morning may not
       have the number yet, and a man waiting to sign an induction is not
       somebody to hold up over a form field.
+
+- [ ] **People → the crew icon → tap somebody.** Their number is on the
+      profile with a **Call** button. It opens the dialler with the number in
+      it and waits for you to press the green button — it does not ring
+      anybody by itself, so a mis-tap with a glove on costs nothing.
+- [ ] A **WhatsApp** button appears only when the number was saved with its
+      country code (`+972…`, `+40…`). That is deliberate: `0501234567` is
+      Israeli to an Israeli and Romanian to a Romanian, and guessing wrong
+      would open a chat with a stranger. Save a number with the `+` and the
+      button appears.
+- [ ] Open somebody who signed up before this version. It should say there is
+      no number on file, rather than showing a blank — that is a record made
+      before the app asked, not a man with no phone.
 
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.

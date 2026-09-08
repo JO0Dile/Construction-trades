@@ -74,6 +74,35 @@ object Contact {
         }
     }
 
+    /**
+     * The number as a dialler wants it: the digits, and the `+` if there was
+     * one. Punctuation a person types is for a person to read.
+     */
+    fun dialable(raw: String): String {
+        val text = raw.trim()
+        val digits = text.filter { it.isDigit() }
+        return if (text.startsWith("+")) "+$digits" else digits
+    }
+
+    /**
+     * The number in full international form, or null when it does not carry a
+     * country code.
+     *
+     * Null is the important half. A number written `0501234567` is Israeli to
+     * an Israeli and Romanian to a Romanian -- both countries write mobiles
+     * with a leading zero -- and this app is used by crews from both. Guessing
+     * the country would silently address a message to a stranger who happens
+     * to hold that number somewhere else, which is a worse outcome than not
+     * offering the button. Dialling is safe without this, because the dialler
+     * only ever gets the number put in front of a person who presses the
+     * button themselves.
+     */
+    fun international(raw: String): String? {
+        val text = raw.trim()
+        if (!text.startsWith("+")) return null
+        return text.filter { it.isDigit() }.takeIf { it.isNotEmpty() }
+    }
+
     /** Null when [raw] is blank -- it is optional -- or looks like an address. */
     fun blocksEmail(raw: String?): EmailFault? {
         val text = raw?.trim().orEmpty()

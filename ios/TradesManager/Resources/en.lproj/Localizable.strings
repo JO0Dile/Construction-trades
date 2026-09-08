@@ -1070,6 +1070,11 @@
 "crew_inducted" = "Inducted";
 /* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
 "crew_no_money" = "Nothing about pay here. Only somebody above them in the chain of command sees that.";
+"crew_contact" = "Contact";
+"crew_call" = "Call";
+"crew_whatsapp" = "WhatsApp";
+"crew_email" = "Email";
+"crew_no_phone" = "No phone number on file for this person.";
 /* Nobody has confirmed a violation against this person. */
 "crew_no_violations" = "Nothing confirmed against them.";
 /* Entry point that opens the crew list, by trade, with faces. */

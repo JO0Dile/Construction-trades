@@ -68,6 +68,25 @@ class ContactTest {
     }
 
     @Test
+    fun `a number is handed to the dialler as digits`() {
+        assertEquals("0501234567", Contact.dialable("050-123-4567"))
+        assertEquals("+972501234567", Contact.dialable("+972 50 123 4567"))
+        assertEquals("031234567", Contact.dialable("(03) 1234567"))
+    }
+
+    @Test
+    fun `only a number carrying its country code may be messaged`() {
+        // The whole point of the rule. 0501234567 is Israeli to an Israeli and
+        // Romanian to a Romanian, and both work this site. Guessing would
+        // address a message to whoever holds that number in the country we
+        // guessed.
+        assertEquals("972501234567", Contact.international("+972-50-1234567"))
+        assertEquals("40721234567", Contact.international("+40 721 234 567"))
+        assertNull(Contact.international("0501234567"))
+        assertNull(Contact.international("03-1234567"))
+    }
+
+    @Test
     fun `no email is a complete answer`() {
         // It is optional, and plenty of people on a site have never had one.
         assertNull(Contact.blocksEmail(""))

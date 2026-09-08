@@ -1,5 +1,7 @@
 package il.co.tradesmanager.ui.people
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +23,8 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
@@ -30,6 +34,7 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -37,6 +42,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.data.local.entity.TradeEntity
@@ -217,6 +223,8 @@ private fun CrewProfileSheet(
                 DetailLine(stringResource(R.string.crew_inducted), Formats.date(day, locale))
             }
 
+            ContactSection(phone = person.account.phone, email = person.account.email)
+
             // Said out loud rather than left as an absence. An officer looking
             // at a profile with no wages on it should know that is the rule
             // working, not the record being incomplete.
@@ -274,6 +282,63 @@ private fun CrewProfileSheet(
                 }
             }
         }
+    }
+}
+
+/**
+ * Ringing somebody, which is the reason the number was asked for.
+ *
+ * A number collected and never shown is a field people learn to lie in. The
+ * question on a site is nearly always "where is he" and the answer is nearly
+ * always a phone call, so the call is a button rather than a number to copy
+ * out with a glove on.
+ *
+ * An account made before the number was asked for has none, and says so.
+ * Blank would read as a person with no phone rather than a record made before
+ * the app asked.
+ */
+@Composable
+private fun ContactSection(phone: String?, email: String?) {
+    val context = LocalContext.current
+    SectionHeader(stringResource(R.string.crew_contact))
+
+    if (phone.isNullOrBlank()) {
+        SectionPlaceholder(stringResource(R.string.crew_no_phone))
+    } else {
+        DetailLine(stringResource(R.string.acc_phone), phone)
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            // ACTION_DIAL, not ACTION_CALL. It puts the number in the dialler
+            // and lets the person press the button themselves: no CALL_PHONE
+            // permission to ask for, and no call placed by a mis-tap on a
+            // screen being scrolled with a glove on.
+            FilledTonalButton(
+                onClick = {
+                    val number = Contact.dialable(phone)
+                    runCatching {
+                        context.startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number")))
+                    }
+                },
+            ) { Text(stringResource(R.string.crew_call)) }
+
+            // Only when the number carries its own country code. See
+            // Contact.international: guessing the country would open a
+            // conversation with whoever holds that number somewhere else.
+            Contact.international(phone)?.let { international ->
+                OutlinedButton(
+                    onClick = {
+                        runCatching {
+                            context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/$international")),
+                            )
+                        }
+                    },
+                ) { Text(stringResource(R.string.crew_whatsapp)) }
+            }
+        }
+    }
+
+    if (!email.isNullOrBlank()) {
+        DetailLine(stringResource(R.string.crew_email), email)
     }
 }
 

@@ -1025,6 +1025,11 @@
     <string name="crew_trade">المهنة</string>
     <string name="crew_inducted">تلقّى التدريب</string>
     <string name="crew_no_money">لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة.</string>
+    <string name="crew_contact">الاتصال</string>
+    <string name="crew_call">اتصال</string>
+    <string name="crew_whatsapp">واتساب</string>
+    <string name="crew_email">البريد الإلكتروني</string>
+    <string name="crew_no_phone">لا يوجد رقم هاتف مسجل لهذا الشخص.</string>
     <string name="crew_no_violations">لا توجد مخالفات مؤكدة بحقهم.</string>
     <string name="crew_open">ابحث عن شخص حسب المهنة</string>
     <string name="home_changes">ما الذي تغيّر</string>

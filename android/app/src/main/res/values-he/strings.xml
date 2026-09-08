@@ -1025,6 +1025,11 @@
     <string name="crew_trade">מקצוע</string>
     <string name="crew_inducted">תודרך</string>
     <string name="crew_no_money">אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.</string>
+    <string name="crew_contact">יצירת קשר</string>
+    <string name="crew_call">התקשר</string>
+    <string name="crew_whatsapp">וואטסאפ</string>
+    <string name="crew_email">אימייל</string>
+    <string name="crew_no_phone">אין מספר טלפון רשום לאדם הזה.</string>
     <string name="crew_no_violations">לא אושרה נגדם אף הפרה.</string>
     <string name="crew_open">חיפוש לפי מקצוע</string>
     <string name="home_changes">מה השתנה</string>

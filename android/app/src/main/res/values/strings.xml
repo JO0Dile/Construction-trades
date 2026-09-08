@@ -1071,6 +1071,11 @@
     <string name="crew_inducted">Inducted</string>
     <!-- Says plainly why a profile shows no wages, so an absence is not read as a gap. -->
     <string name="crew_no_money">Nothing about pay here. Only somebody above them in the chain of command sees that.</string>
+    <string name="crew_contact">Contact</string>
+    <string name="crew_call">Call</string>
+    <string name="crew_whatsapp">WhatsApp</string>
+    <string name="crew_email">Email</string>
+    <string name="crew_no_phone">No phone number on file for this person.</string>
     <!-- Nobody has confirmed a violation against this person. -->
     <string name="crew_no_violations">Nothing confirmed against them.</string>
     <!-- Entry point that opens the crew list, by trade, with faces. -->

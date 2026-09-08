@@ -5180,6 +5180,31 @@
       "he": "אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.",
       "ar": "لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة."
     },
+    "crew_contact": {
+      "en": "Contact",
+      "he": "יצירת קשר",
+      "ar": "الاتصال"
+    },
+    "crew_call": {
+      "en": "Call",
+      "he": "התקשר",
+      "ar": "اتصال"
+    },
+    "crew_whatsapp": {
+      "en": "WhatsApp",
+      "he": "וואטסאפ",
+      "ar": "واتساب"
+    },
+    "crew_email": {
+      "en": "Email",
+      "he": "אימייל",
+      "ar": "البريد الإلكتروني"
+    },
+    "crew_no_phone": {
+      "en": "No phone number on file for this person.",
+      "he": "אין מספר טלפון רשום לאדם הזה.",
+      "ar": "لا يوجد رقم هاتف مسجل لهذا الشخص."
+    },
     "crew_no_violations": {
       "c": "Nobody has confirmed a violation against this person.",
       "en": "Nothing confirmed against them.",
