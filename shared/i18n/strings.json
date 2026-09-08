@@ -445,6 +445,41 @@
       "he": "לקוח",
       "ar": "الزبون"
     },
+    "proj_street": {
+      "en": "Street and number",
+      "he": "רחוב ומספר",
+      "ar": "الشارع والرقم"
+    },
+    "proj_city": {
+      "en": "City",
+      "he": "עיר",
+      "ar": "المدينة"
+    },
+    "proj_postal_code": {
+      "en": "Postal code",
+      "he": "מיקוד",
+      "ar": "الرمز البريدي"
+    },
+    "proj_client_phone": {
+      "en": "Client phone",
+      "he": "טלפון הלקוח",
+      "ar": "هاتف الزبون"
+    },
+    "proj_where_and_who": {
+      "en": "Where it is, and who it is for",
+      "he": "איפה זה ולמי",
+      "ar": "أين هو ولمن"
+    },
+    "proj_no_address": {
+      "en": "No address yet.",
+      "he": "עדיין אין כתובת.",
+      "ar": "لا يوجد عنوان بعد."
+    },
+    "proj_open_map": {
+      "en": "Map",
+      "he": "מפה",
+      "ar": "خريطة"
+    },
     "proj_status": {
       "en": "Status",
       "he": "סטטוס",

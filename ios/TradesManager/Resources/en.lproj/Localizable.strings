@@ -87,6 +87,13 @@
 "proj_name" = "Project name";
 "proj_address" = "Address";
 "proj_client" = "Client";
+"proj_street" = "Street and number";
+"proj_city" = "City";
+"proj_postal_code" = "Postal code";
+"proj_client_phone" = "Client phone";
+"proj_where_and_who" = "Where it is, and who it is for";
+"proj_no_address" = "No address yet.";
+"proj_open_map" = "Map";
 "proj_status" = "Status";
 "proj_start" = "Start date";
 "proj_due" = "Due date";

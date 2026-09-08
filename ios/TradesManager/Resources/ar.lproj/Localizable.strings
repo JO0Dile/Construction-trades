@@ -87,6 +87,13 @@
 "proj_name" = "اسم المشروع";
 "proj_address" = "العنوان";
 "proj_client" = "الزبون";
+"proj_street" = "الشارع والرقم";
+"proj_city" = "المدينة";
+"proj_postal_code" = "الرمز البريدي";
+"proj_client_phone" = "هاتف الزبون";
+"proj_where_and_who" = "أين هو ولمن";
+"proj_no_address" = "لا يوجد عنوان بعد.";
+"proj_open_map" = "خريطة";
 "proj_status" = "الحالة";
 "proj_start" = "تاريخ البدء";
 "proj_due" = "تاريخ الاستحقاق";

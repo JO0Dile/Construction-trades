@@ -87,6 +87,13 @@
     <string name="proj_name">שם הפרויקט</string>
     <string name="proj_address">כתובת</string>
     <string name="proj_client">לקוח</string>
+    <string name="proj_street">רחוב ומספר</string>
+    <string name="proj_city">עיר</string>
+    <string name="proj_postal_code">מיקוד</string>
+    <string name="proj_client_phone">טלפון הלקוח</string>
+    <string name="proj_where_and_who">איפה זה ולמי</string>
+    <string name="proj_no_address">עדיין אין כתובת.</string>
+    <string name="proj_open_map">מפה</string>
     <string name="proj_status">סטטוס</string>
     <string name="proj_start">תאריך התחלה</string>
     <string name="proj_due">תאריך יעד</string>

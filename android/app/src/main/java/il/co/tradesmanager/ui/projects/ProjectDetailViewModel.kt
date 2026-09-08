@@ -95,6 +95,35 @@ class ProjectDetailViewModel(
         )
     }
 
+    /**
+     * Where the job is and who it is for.
+     *
+     * All optional and all editable after the fact, because a job is usually
+     * created in ten seconds when it is won and filled in properly later.
+     * Blank clears the field rather than keeping the old value: somebody who
+     * empties a box means it, and a form that quietly refuses to forget is
+     * one nobody trusts with a correction.
+     */
+    fun setPlaceAndClient(
+        street: String,
+        city: String,
+        postalCode: String,
+        clientName: String,
+        clientPhone: String,
+    ) = viewModelScope.launch {
+        val project = state.value.project ?: return@launch
+        container.projects.save(
+            project.copy(
+                street = street.trim().takeIf { it.isNotEmpty() },
+                city = city.trim().takeIf { it.isNotEmpty() },
+                postalCode = postalCode.trim().takeIf { it.isNotEmpty() },
+                clientName = clientName.trim().takeIf { it.isNotEmpty() },
+                clientPhone = clientPhone.trim().takeIf { it.isNotEmpty() },
+            ),
+            actorName = container.settings.settings.first().actorName,
+        )
+    }
+
     private fun ownerTypeForNewImage(): String =
         if (state.value.plan == null) {
             PhotoRepository.Owner.PROJECT_PLAN

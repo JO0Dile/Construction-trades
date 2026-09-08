@@ -1,9 +1,12 @@
 package il.co.tradesmanager.ui.projects
 
+import android.content.Intent
+import android.net.Uri
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -29,10 +32,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -62,6 +67,7 @@ import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -75,6 +81,7 @@ import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberImageAdder
+import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.export.ExportDocument
 import il.co.tradesmanager.ui.export.Exporter
@@ -136,6 +143,7 @@ fun ProjectDetailScreen(
     val project = state.project
     var viewing by remember { mutableStateOf<PhotoEntity?>(null) }
     var addingMaterial by remember { mutableStateOf(false) }
+    var showPlaceEditor by remember { mutableStateOf(false) }
     var addingTask by remember { mutableStateOf(false) }
     val addImage = rememberImageAdder(
         newCameraTarget = viewModel::newCameraTarget,
@@ -276,8 +284,10 @@ fun ProjectDetailScreen(
                 item {
                     Column(Modifier.padding(vertical = 8.dp)) {
                         DetailRow(stringResource(R.string.proj_status), stringResource(statusLabel(project.status)))
-                        project.city?.let { DetailRow(stringResource(R.string.proj_address), it) }
-                        project.clientName?.let { DetailRow(stringResource(R.string.proj_client), it) }
+                        PlaceAndClient(
+                            project = project,
+                            onEdit = { showPlaceEditor = true },
+                        )
                     }
                 }
             }
@@ -438,6 +448,19 @@ fun ProjectDetailScreen(
                     )
                 }
             }
+        }
+    }
+
+    if (showPlaceEditor) {
+        state.project?.let { project ->
+            PlaceAndClientDialog(
+                project = project,
+                onDismiss = { showPlaceEditor = false },
+                onSave = { street, city, postalCode, clientName, clientPhone ->
+                    viewModel.setPlaceAndClient(street, city, postalCode, clientName, clientPhone)
+                    showPlaceEditor = false
+                },
+            )
         }
     }
 
@@ -620,6 +643,144 @@ private fun StagePicker(
             }
         },
         confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+/**
+ * Where the job is, and who it is for.
+ *
+ * These columns have been in the database since the beginning and no screen
+ * ever wrote to them, so the detail page has been showing an Address row and
+ * a Client row that could not appear. A job with no address is one a
+ * subcontractor cannot drive to and a client nobody can ring, which is most of
+ * what a contractor needs a job record for.
+ *
+ * The address is one line built from the parts, because that is how somebody
+ * reads it and how a maps app wants it. The parts are kept separate in the
+ * database all the same: a postcode glued into a string cannot be searched on
+ * later, and pulling it back out of one is guesswork.
+ */
+@Composable
+private fun PlaceAndClient(project: ProjectEntity, onEdit: () -> Unit) {
+    val context = LocalContext.current
+    val address = listOfNotNull(
+        project.street?.takeIf { it.isNotBlank() },
+        project.city?.takeIf { it.isNotBlank() },
+        project.postalCode?.takeIf { it.isNotBlank() },
+    ).joinToString(", ")
+
+    if (address.isBlank()) {
+        DetailRow(stringResource(R.string.proj_address), stringResource(R.string.proj_no_address))
+    } else {
+        DetailRow(stringResource(R.string.proj_address), address)
+    }
+    project.clientName?.takeIf { it.isNotBlank() }
+        ?.let { DetailRow(stringResource(R.string.proj_client), it) }
+    project.clientPhone?.takeIf { it.isNotBlank() }
+        ?.let { DetailRow(stringResource(R.string.proj_client_phone), it) }
+
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        if (address.isNotBlank()) {
+            // geo: with a query, rather than coordinates the app does not
+            // have. Any maps app on the phone answers it, which matters
+            // because not every site phone has Google's.
+            OutlinedButton(
+                onClick = {
+                    val query = Uri.encode(address)
+                    runCatching {
+                        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$query")))
+                    }
+                },
+            ) { Text(stringResource(R.string.proj_open_map)) }
+        }
+        project.clientPhone?.takeIf { it.isNotBlank() }?.let { phone ->
+            FilledTonalButton(
+                onClick = {
+                    val number = Contact.dialable(phone)
+                    runCatching {
+                        context.startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number")))
+                    }
+                },
+            ) { Text(stringResource(R.string.crew_call)) }
+        }
+        TextButton(onClick = onEdit) { Text(stringResource(R.string.action_edit)) }
+    }
+}
+
+@Composable
+private fun PlaceAndClientDialog(
+    project: ProjectEntity,
+    onDismiss: () -> Unit,
+    onSave: (
+        street: String,
+        city: String,
+        postalCode: String,
+        clientName: String,
+        clientPhone: String,
+    ) -> Unit,
+) {
+    var street by remember { mutableStateOf(project.street.orEmpty()) }
+    var city by remember { mutableStateOf(project.city.orEmpty()) }
+    var postalCode by remember { mutableStateOf(project.postalCode.orEmpty()) }
+    var clientName by remember { mutableStateOf(project.clientName.orEmpty()) }
+    var clientPhone by remember { mutableStateOf(project.clientPhone.orEmpty()) }
+
+    // Every field optional. A job is usually created in ten seconds when it is
+    // won, and the address turns up in a message that evening.
+    val phoneFault = Contact.blocksPhone(clientPhone).takeIf { clientPhone.isNotBlank() }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.proj_where_and_who)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedTextField(
+                    value = street,
+                    onValueChange = { street = it },
+                    label = { Text(stringResource(R.string.proj_street)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = city,
+                    onValueChange = { city = it },
+                    label = { Text(stringResource(R.string.proj_city)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = postalCode,
+                    onValueChange = { postalCode = it },
+                    label = { Text(stringResource(R.string.proj_postal_code)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = clientName,
+                    onValueChange = { clientName = it },
+                    label = { Text(stringResource(R.string.proj_client)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = clientPhone,
+                    onValueChange = { clientPhone = it },
+                    label = { Text(stringResource(R.string.proj_client_phone)) },
+                    isError = phoneFault != null,
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                enabled = phoneFault == null,
+                onClick = { onSave(street, city, postalCode, clientName, clientPhone) },
+            ) { Text(stringResource(R.string.action_save)) }
+        },
+        dismissButton = {
             TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
         },
     )
