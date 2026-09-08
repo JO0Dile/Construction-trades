@@ -5081,6 +5081,24 @@
       "he": "כתבו מה הייתה ההפרה.",
       "ar": "اكتب ما هي المخالفة."
     },
+    "saf_what_is_wrong": {
+      "c": "Field on a failed checklist row: describe the failure",
+      "en": "What is wrong",
+      "he": "מה לא תקין",
+      "ar": "ما هو الخلل"
+    },
+    "saf_fail_needs_words": {
+      "c": "Hint under the field on a failed check",
+      "en": "A failed check with no words is a row nobody can act on six months later.",
+      "he": "כשל בלי הסבר הוא שורה שאי אפשר לפעול לפיה כעבור חצי שנה.",
+      "ar": "بند راسب بلا شرح هو سطر لا يمكن التصرف بناءً عليه بعد ستة أشهر."
+    },
+    "saf_photograph": {
+      "c": "Button on a failed checklist row: attach a photograph",
+      "en": "Photograph it",
+      "he": "צילום",
+      "ar": "صوّرها"
+    },
     "vio_job": {
       "c": "Row on the violation draft: which job it happened on",
       "en": "Which job",

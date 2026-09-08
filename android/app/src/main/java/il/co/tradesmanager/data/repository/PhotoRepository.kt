@@ -52,6 +52,16 @@ class PhotoRepository(
         const val SNAG_FIXED = "snag.fixed"
 
         /**
+         * What a failed check rests on.
+         *
+         * An owner type rather than a column on the row — the same call the
+         * snags made two entries up, for the same reason. An inspector
+         * photographs one bad scaffold tie three times from three angles,
+         * and a schema with room for one of them throws two away.
+         */
+        const val CHECKLIST_FAIL = "checklist.fail"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

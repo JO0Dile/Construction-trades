@@ -55,6 +55,15 @@ sealed interface ExportDocument {
         val run: ChecklistRunEntity,
         val checks: List<ChecklistTemplateItemEntity>,
         val answers: Map<String, String>,
+        /**
+         * What was wrong, per check.
+         *
+         * The document this exists to produce is the one handed to a
+         * regulator, and a column of the word FAIL with nothing beside it is
+         * the version of it that helps nobody. Keyed by check, empty for the
+         * ones that passed.
+         */
+        val notes: Map<String, String> = emptyMap(),
     ) : ExportDocument
 
     /**
@@ -258,18 +267,21 @@ sealed interface ExportDocument {
                 context.getString(R.string.saf_title),
                 context.getString(R.string.saf_critical),
                 context.getString(R.string.saf_pass),
+                context.getString(R.string.saf_what_is_wrong),
             ),
             rows = checks.map { check ->
                 listOf(
                     check.texts.resolve(languageTag),
                     if (check.critical) context.getString(R.string.saf_critical) else "",
                     answerLabel(context, answers[check.id]),
+                    notes[check.id].orEmpty(),
                 )
             } + listOf(
                 listOf(
                     context.getString(R.string.saf_signed_by),
                     "",
                     run.signedByName.orEmpty(),
+                    "",
                 ),
             ),
         )

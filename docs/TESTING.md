@@ -34,6 +34,28 @@ the register read as empty besides.
       write in Evidence — you get a sentence saying which, in your language,
       instead of a button that appears to be broken.
 
+### A failed check can say what was wrong, and show it
+
+`note` and a photograph were both on the checklist row from the day
+checklists were built. The only caller passed the note null and nothing ever
+wrote a photograph, so a failed check on an inspection said FAIL and not one
+word more — the row somebody reads six months later, in front of a regulator,
+and cannot act on.
+
+- [ ] **Safety → run a checklist → mark a check as fail.** A **What is wrong**
+      box and a **Photograph it** button appear under that check, and only
+      under that one. Nobody writes a paragraph about a scaffold that was
+      fine.
+- [ ] Type into the box. It saves as you type — a person halfway up a
+      scaffold does not come back to press Save.
+- [ ] Photograph it. The picture appears under the note. Take a second one
+      and the newest shows; both are kept.
+- [ ] Change the answer from fail to pass and back. **The note survives.** It
+      used to be wiped on every tap.
+- [ ] Export the checklist from the share button. The note is a column in the
+      document — a page of the word FAIL with nothing beside it is the version
+      that helps nobody.
+
 ### A violation can say which job it was on
 
 `projectId` on a violation had a column, an index, and a comment reading "the

@@ -1023,6 +1023,12 @@
 "vio_need_person" = "בחרו נגד מי ההפרה.";
 "vio_need_evidence" = "צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.";
 "vio_need_description" = "כתבו מה הייתה ההפרה.";
+/* Field on a failed checklist row: describe the failure */
+"saf_what_is_wrong" = "מה לא תקין";
+/* Hint under the field on a failed check */
+"saf_fail_needs_words" = "כשל בלי הסבר הוא שורה שאי אפשר לפעול לפיה כעבור חצי שנה.";
+/* Button on a failed checklist row: attach a photograph */
+"saf_photograph" = "צילום";
 /* Row on the violation draft: which job it happened on */
 "vio_job" = "באיזו עבודה";
 /* The violation was not on a job — a yard, a van, the road */

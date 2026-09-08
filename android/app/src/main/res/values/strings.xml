@@ -1024,6 +1024,12 @@
     <string name="vio_need_person">Choose who this is against.</string>
     <string name="vio_need_evidence">Attach a photograph or a video. A violation with a cost and nothing to show is one person\'s word.</string>
     <string name="vio_need_description">Write what was wrong.</string>
+    <!-- Field on a failed checklist row: describe the failure -->
+    <string name="saf_what_is_wrong">What is wrong</string>
+    <!-- Hint under the field on a failed check -->
+    <string name="saf_fail_needs_words">A failed check with no words is a row nobody can act on six months later.</string>
+    <!-- Button on a failed checklist row: attach a photograph -->
+    <string name="saf_photograph">Photograph it</string>
     <!-- Row on the violation draft: which job it happened on -->
     <string name="vio_job">Which job</string>
     <!-- The violation was not on a job — a yard, a van, the road -->

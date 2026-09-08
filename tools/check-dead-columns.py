@@ -56,6 +56,13 @@ ALLOWED = {
     # A repeating day-plan block. The column is the hook for a feature nobody
     # has asked for yet; nothing reads it, so nothing is quietly wrong.
     "recurrenceRule",
+    # Superseded rather than unfilled. A failed check does carry photographs
+    # now, hung off the photo table under Owner.CHECKLIST_FAIL — the same call
+    # the snags made, so one bad scaffold tie can be photographed from three
+    # angles instead of one. This single-photo pointer is what that replaced.
+    # Not dropped, because rebuilding a table on every phone in the country to
+    # remove an unused nullable column is the worse half of that trade.
+    "photoId",
 }
 
 ENTITY_CLASS = re.compile(r"@Entity\b.*?data class (\w+)\s*\(", re.DOTALL)
@@ -105,7 +112,7 @@ def written_somewhere() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="fail past the baseline")
-    parser.add_argument("--baseline", type=int, default=3)
+    parser.add_argument("--baseline", type=int, default=2)
     args = parser.parse_args()
 
     columns = nullable_columns()

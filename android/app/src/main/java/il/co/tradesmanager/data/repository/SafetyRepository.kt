@@ -47,12 +47,25 @@ class SafetyRepository(
         return run
     }
 
+    /**
+     * The row a single check answers to.
+     *
+     * Deterministic, so answering the same check twice replaces the answer
+     * instead of leaving two contradictory rows behind — and so a photograph
+     * can be filed against a check before anybody has answered it, which is
+     * the order an inspector actually works in: you see the thing, you
+     * photograph the thing, then you write it down.
+     *
+     * Exposed rather than rebuilt at each call site, because two places
+     * deriving the same id from the same rule is one place for them to stop
+     * agreeing.
+     */
+    fun runItemId(runId: String, templateItemId: String): String = "$runId:$templateItemId"
+
     suspend fun answer(runId: String, templateItemId: String, state: String, note: String?) {
         safetyDao.upsertRunItem(
             ChecklistRunItemEntity(
-                // Deterministic id: answering the same check twice replaces the
-                // answer instead of leaving two contradictory rows behind.
-                id = "$runId:$templateItemId",
+                id = runItemId(runId, templateItemId),
                 runId = runId,
                 templateItemId = templateItemId,
                 state = state,
