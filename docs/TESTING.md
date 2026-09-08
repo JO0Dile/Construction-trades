@@ -63,6 +63,23 @@ file can no longer be edited without breaking it.
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
 
+### A job now has an address and a client
+
+Those five columns have been in the database since the beginning with
+nothing ever writing to them, so the job screen has been showing an Address
+row and a Client row that could never appear.
+
+- [ ] Open a job → **Edit** under the address. Fill in street, city, postal
+      code, client name and client number. All optional; a job is created in
+      ten seconds when it is won and filled in properly that evening.
+- [ ] **Map** opens the address in whatever maps app is on the phone. It uses
+      a plain `geo:` search rather than coordinates, so it works without
+      Google Maps installed.
+- [ ] **Call** rings the client, the same way it does on a worker's profile.
+- [ ] Empty a box and save. It should clear — somebody who empties a field
+      means it, and a form that refuses to forget is one nobody trusts with a
+      correction.
+
 ### Backup, and the one thing worth testing hardest
 
 Everything is on this phone and nothing is on a server. That is right for a
