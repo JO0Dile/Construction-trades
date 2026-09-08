@@ -29,6 +29,16 @@ class ViolationRepository(
         /** The person writing it is not a safety officer here. */
         NOT_AN_OFFICER,
 
+        /**
+         * Signed in, but not on anybody's books — no firm, not even their own.
+         *
+         * Set by the caller rather than raised here, because the repository
+         * never sees a session. It lives in this enum anyway so that a screen
+         * has one list of reasons to put a sentence against, instead of one
+         * list it shows and another it swallows.
+         */
+        NOT_ON_ANY_BOOKS,
+
         /** No such violation. */
         UNKNOWN,
 
@@ -44,7 +54,8 @@ class ViolationRepository(
 
     class Refused(val refusal: Refusal) : Exception(refusal.name)
 
-    fun observeForCompany(companyId: String): Flow<List<ViolationEntity>> =
+    /** Null is the one-man band, not everybody. See ViolationDao. */
+    fun observeForCompany(companyId: String?): Flow<List<ViolationEntity>> =
         dao.observeForCompany(companyId)
 
     /**
@@ -70,7 +81,7 @@ class ViolationRepository(
      */
     suspend fun startDraft(
         role: Role,
-        companyId: String,
+        companyId: String?,
         projectId: String?,
         againstAccountId: String,
         againstName: String,

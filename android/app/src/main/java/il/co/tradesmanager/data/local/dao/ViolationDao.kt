@@ -28,18 +28,25 @@ interface ViolationDao {
     /**
      * Everything on one firm's site, newest first.
      *
+     * The null arm is not a special case, it is the one-man band: somebody
+     * working alone has a membership with no company on it, and their
+     * violations carry no company either. `companyId = NULL` matches nothing
+     * in SQL, so without the first clause their own register reads as empty
+     * to them. The same shape as ProjectDao.observeProjects, for the same
+     * reason.
+     *
      * Bounded: an officer walking a large site for two years writes a lot of
      * these, and reading every one to draw a list is how a screen freezes.
      */
     @Query(
         """
         SELECT * FROM violations
-        WHERE companyId = :companyId
+        WHERE (:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId
         ORDER BY recordedAt DESC
         LIMIT :limit
         """,
     )
-    fun observeForCompany(companyId: String, limit: Int = 300): Flow<List<ViolationEntity>>
+    fun observeForCompany(companyId: String?, limit: Int = 300): Flow<List<ViolationEntity>>
 
     /**
      * What is on one person's name.

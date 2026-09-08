@@ -64,6 +64,13 @@ jobs:
       - name: Migration SQL matches the schema Room expects
         run: python3 tools/check-migration.py
 
+      # The check above compares two pieces of text and cannot see an INSERT
+      # at all. SQLite will not loosen a NOT NULL in place, so changing one
+      # means rebuilding the table and copying the rows across — and a copy
+      # that misses a column leaves the schema perfect and the data gone.
+      - name: The migrations run, and no rebuild loses its rows
+        run: python3 tools/run-migrations.py
+
       # A repository method nothing calls is how this app shipped with no way
       # to report an accident: the table, the DAO and the repository were all
       # there and no screen could reach any of them. Four features had been

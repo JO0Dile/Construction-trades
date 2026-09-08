@@ -3,7 +3,6 @@ package il.co.tradesmanager.ui.safety
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.safety.Violations
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
@@ -39,15 +38,24 @@ class ViolationsViewModel(
     private val signedIn: SessionRepository.State.SignedIn?
         get() = session.value as? SessionRepository.State.SignedIn
 
-    private val companyId: String? get() = signedIn?.active?.companyId
-
-    private val role: Role get() = signedIn?.role ?: Role.WORKER
-
+    /**
+     * The register, scoped to whoever is looking at it.
+     *
+     * Keyed on the membership, not on its company. Those are two different
+     * questions and this asked the wrong one: no current membership means
+     * nobody's books and nothing to show, while a membership with no company
+     * is a person working alone, whose own register is theirs to read. Asking
+     * only about the company answered "nothing" to both.
+     */
     @OptIn(ExperimentalCoroutinesApi::class)
     val violations: StateFlow<List<ViolationEntity>> = session
         .flatMapLatest { state ->
-            val id = (state as? SessionRepository.State.SignedIn)?.active?.companyId
-            if (id == null) flowOf(emptyList()) else container.violations.observeForCompany(id)
+            val active = (state as? SessionRepository.State.SignedIn)?.active
+            if (active == null) {
+                flowOf(emptyList())
+            } else {
+                container.violations.observeForCompany(active.companyId)
+            }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
@@ -117,33 +125,58 @@ class ViolationsViewModel(
         _refusal.value = null
     }
 
-    /** Opens a draft against whoever the search found. */
+    /**
+     * Puts a sentence on a failure, whatever it turned out to be.
+     *
+     * The three callers each used to write `(failure as? Refused)?.refusal`,
+     * which reads as careful and is the bug: anything that is not a Refused —
+     * a disk that is full, a row that vanished — cast to null, cleared the
+     * refusal, and left the screen looking like nothing had happened.
+     */
+    private fun refuse(failure: Throwable) {
+        _refusal.value = (failure as? ViolationRepository.Refused)?.refusal
+            ?: ViolationRepository.Refusal.UNKNOWN
+    }
+
+    /**
+     * Opens a draft against whoever the search found.
+     *
+     * Every way this can fail now says so. It used to have four silent exits
+     * — three `?: return` guards and a swallowed failure — so pressing the
+     * button on an account that could not write one did exactly nothing, and
+     * nothing is indistinguishable from a broken app.
+     */
     fun startAgainstFound() = viewModelScope.launch {
+        // The only guard left without a sentence: the button lives inside the
+        // card that the found person draws, so there is no screen on which
+        // this can be null and no reader to explain it to.
         val person = _found.value ?: return@launch
-        val company = companyId ?: return@launch
-        val me = signedIn?.account ?: return@launch
+        val me = signedIn
+        val active = me?.active
+        if (me == null || active == null) {
+            _refusal.value = ViolationRepository.Refusal.NOT_ON_ANY_BOOKS
+            return@launch
+        }
         container.violations.startDraft(
-            role = role,
-            companyId = company,
+            // Read off the session already in hand, not fetched again. Two
+            // reads are two chances to disagree with each other.
+            role = me.role,
+            companyId = active.companyId,
             projectId = null,
             againstAccountId = person.id,
             againstName = person.displayName,
             againstIdNumber = person.idNumber.orEmpty(),
-            recordedByAccountId = me.id,
-            recordedByName = me.displayName,
+            recordedByAccountId = me.account.id,
+            recordedByName = me.account.displayName,
         ).onSuccess {
             _openId.value = it.id
             clearSearch()
-        }.onFailure { failure ->
-            _refusal.value = (failure as? ViolationRepository.Refused)?.refusal
-        }
+        }.onFailure(::refuse)
     }
 
     fun edit(description: String, cost: Double?) = viewModelScope.launch {
         val draft = open.value ?: return@launch
-        container.violations.updateDraft(draft, description, cost).onFailure { failure ->
-            _refusal.value = (failure as? ViolationRepository.Refused)?.refusal
-        }
+        container.violations.updateDraft(draft, description, cost).onFailure(::refuse)
     }
 
     /** Where the camera should write, when the officer photographs it there. */
@@ -204,14 +237,14 @@ class ViolationsViewModel(
         val actor = container.settings.settings.first().actorName
         container.violations.confirm(draft, actor)
             .onSuccess { _openId.value = null }
-            .onFailure { failure ->
-                _refusal.value = (failure as? ViolationRepository.Refused)?.refusal
-            }
+            .onFailure(::refuse)
     }
 
     fun cancel() = viewModelScope.launch {
         val draft = open.value ?: return@launch
-        container.violations.cancel(draft).onSuccess { _openId.value = null }
+        container.violations.cancel(draft)
+            .onSuccess { _openId.value = null }
+            .onFailure(::refuse)
     }
 
     fun openDraft(id: String?) {

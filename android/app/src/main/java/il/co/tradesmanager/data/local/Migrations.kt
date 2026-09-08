@@ -298,6 +298,24 @@ object Migrations {
         }
     }
 
+    /**
+     * A violation no longer needs a firm behind it.
+     *
+     * The only table in the schema that insisted on a company, which made
+     * recording one impossible for somebody working alone — their membership
+     * carries no company, so the write was refused before it started and the
+     * button did nothing at all.
+     *
+     * SQLite cannot drop NOT NULL from a column, so the table is rebuilt and
+     * the rows copied across. Every existing row keeps the company it already
+     * had; nothing is invented and nothing is lost.
+     */
+    val MIGRATION_29_30 = object : Migration(29, 30) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_29_30.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -327,6 +345,7 @@ object Migrations {
         MIGRATION_26_27,
         MIGRATION_27_28,
         MIGRATION_28_29,
+        MIGRATION_29_30,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -812,5 +831,43 @@ object Migrations {
     val SQL_28_29: List<String> = listOf(
         "ALTER TABLE `accounts` ADD COLUMN `phone` TEXT",
         "ALTER TABLE `accounts` ADD COLUMN `email` TEXT",
+    )
+
+    /**
+     * Rebuilds `violations` with a nullable `companyId`.
+     *
+     * The twelve-step dance SQLite documents for changing a column: build the
+     * new table, copy the rows, drop the old one, rename. The columns are
+     * listed by name in the INSERT rather than left to `SELECT *`, so this
+     * still does the right thing if a later version adds a column to one side
+     * and not the other.
+     *
+     * Dropping a table drops its indexes with it, so all three are recreated
+     * afterwards rather than only the one that changed.
+     */
+    val SQL_29_30: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `violations_new` (`id` TEXT NOT NULL, " +
+            "`companyId` TEXT, `projectId` TEXT, " +
+            "`againstAccountId` TEXT NOT NULL, `againstName` TEXT NOT NULL, " +
+            "`againstIdNumber` TEXT NOT NULL, `description` TEXT NOT NULL, " +
+            "`costAmount` REAL, `status` TEXT NOT NULL, " +
+            "`recordedByAccountId` TEXT NOT NULL, `recordedByName` TEXT NOT NULL, " +
+            "`recordedAt` INTEGER NOT NULL, `confirmedAt` INTEGER, " +
+            "`cancelledAt` INTEGER, PRIMARY KEY(`id`))",
+        "INSERT INTO `violations_new` (`id`, `companyId`, `projectId`, " +
+            "`againstAccountId`, `againstName`, `againstIdNumber`, `description`, " +
+            "`costAmount`, `status`, `recordedByAccountId`, `recordedByName`, " +
+            "`recordedAt`, `confirmedAt`, `cancelledAt`) " +
+            "SELECT `id`, `companyId`, `projectId`, " +
+            "`againstAccountId`, `againstName`, `againstIdNumber`, `description`, " +
+            "`costAmount`, `status`, `recordedByAccountId`, `recordedByName`, " +
+            "`recordedAt`, `confirmedAt`, `cancelledAt` FROM `violations`",
+        "DROP TABLE `violations`",
+        "ALTER TABLE `violations_new` RENAME TO `violations`",
+        "CREATE INDEX IF NOT EXISTS `index_violations_companyId` " +
+            "ON `violations` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
+            "ON `violations` (`againstAccountId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
     )
 }

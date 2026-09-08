@@ -5081,6 +5081,42 @@
       "he": "כתבו מה הייתה ההפרה.",
       "ar": "اكتب ما هي المخالفة."
     },
+    "vio_refused_officer": {
+      "c": "Dialog: the account may not write violations for this company",
+      "en": "You are not allowed to record violations here.",
+      "he": "אין לכם הרשאה לרשום הפרות כאן.",
+      "ar": "لا تملك صلاحية تسجيل المخالفات هنا."
+    },
+    "vio_refused_books": {
+      "c": "Dialog: signed in, but a member of no company at all",
+      "en": "You are not on any company's books. Create a company or join one, then record it.",
+      "he": "אינכם רשומים באף חברה. פתחו חברה או הצטרפו לאחת, ואז רשמו את ההפרה.",
+      "ar": "لست مسجَّلًا في أي شركة. أنشئ شركة أو انضم إلى واحدة، ثم سجّل المخالفة."
+    },
+    "vio_refused_state": {
+      "c": "Dialog: the violation is already confirmed or cancelled",
+      "en": "This one has already been confirmed or cancelled. It cannot be changed.",
+      "he": "הפרה זו כבר אושרה או בוטלה. לא ניתן לשנות אותה.",
+      "ar": "هذه المخالفة أُكِّدت أو أُلغيت بالفعل. لا يمكن تغييرها."
+    },
+    "vio_refused_incomplete": {
+      "c": "Dialog: confirm was refused because something is missing",
+      "en": "Something is still missing: who it is against, what was wrong, and a photograph or a video.",
+      "he": "עדיין חסר משהו: נגד מי ההפרה, מה הייתה ההפרה, ותמונה או סרטון.",
+      "ar": "لا يزال هناك نقص: ضد من هي المخالفة، وما هي، وصورة أو فيديو."
+    },
+    "vio_refused_cost": {
+      "c": "Dialog: a negative cost was rejected",
+      "en": "A cost cannot be less than zero. Leave it empty for no charge.",
+      "he": "עלות אינה יכולה להיות שלילית. השאירו ריק אם אין חיוב.",
+      "ar": "لا يمكن أن تكون التكلفة أقل من صفر. اتركها فارغة إذا لا يوجد مبلغ."
+    },
+    "vio_refused_unknown": {
+      "c": "Dialog: the write failed for a reason the app has no better sentence for",
+      "en": "That could not be saved.",
+      "he": "לא ניתן היה לשמור.",
+      "ar": "تعذّر الحفظ."
+    },
     "gate_title": {
       "c": "Screen title: signing people onto the site at the gate",
       "en": "Site entry",

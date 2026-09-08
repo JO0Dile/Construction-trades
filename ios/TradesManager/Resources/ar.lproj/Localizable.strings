@@ -1023,6 +1023,18 @@
 "vio_need_person" = "اختر ضد من هذه المخالفة.";
 "vio_need_evidence" = "أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد.";
 "vio_need_description" = "اكتب ما هي المخالفة.";
+/* Dialog: the account may not write violations for this company */
+"vio_refused_officer" = "لا تملك صلاحية تسجيل المخالفات هنا.";
+/* Dialog: signed in, but a member of no company at all */
+"vio_refused_books" = "لست مسجَّلًا في أي شركة. أنشئ شركة أو انضم إلى واحدة، ثم سجّل المخالفة.";
+/* Dialog: the violation is already confirmed or cancelled */
+"vio_refused_state" = "هذه المخالفة أُكِّدت أو أُلغيت بالفعل. لا يمكن تغييرها.";
+/* Dialog: confirm was refused because something is missing */
+"vio_refused_incomplete" = "لا يزال هناك نقص: ضد من هي المخالفة، وما هي، وصورة أو فيديو.";
+/* Dialog: a negative cost was rejected */
+"vio_refused_cost" = "لا يمكن أن تكون التكلفة أقل من صفر. اتركها فارغة إذا لا يوجد مبلغ.";
+/* Dialog: the write failed for a reason the app has no better sentence for */
+"vio_refused_unknown" = "تعذّر الحفظ.";
 /* Screen title: signing people onto the site at the gate */
 "gate_title" = "الدخول إلى الموقع";
 /* Section header above the ID number field */

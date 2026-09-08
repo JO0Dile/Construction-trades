@@ -1012,6 +1012,12 @@
     <string name="vio_need_person">اختر ضد من هذه المخالفة.</string>
     <string name="vio_need_evidence">أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد.</string>
     <string name="vio_need_description">اكتب ما هي المخالفة.</string>
+    <string name="vio_refused_officer">لا تملك صلاحية تسجيل المخالفات هنا.</string>
+    <string name="vio_refused_books">لست مسجَّلًا في أي شركة. أنشئ شركة أو انضم إلى واحدة، ثم سجّل المخالفة.</string>
+    <string name="vio_refused_state">هذه المخالفة أُكِّدت أو أُلغيت بالفعل. لا يمكن تغييرها.</string>
+    <string name="vio_refused_incomplete">لا يزال هناك نقص: ضد من هي المخالفة، وما هي، وصورة أو فيديو.</string>
+    <string name="vio_refused_cost">لا يمكن أن تكون التكلفة أقل من صفر. اتركها فارغة إذا لا يوجد مبلغ.</string>
+    <string name="vio_refused_unknown">تعذّر الحفظ.</string>
     <string name="gate_title">الدخول إلى الموقع</string>
     <string name="gate_find">من على البوابة</string>
     <string name="gate_find_hint">الرقم المدوّن على بطاقتهم. صورتهم تظهر معه.</string>

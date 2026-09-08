@@ -1023,6 +1023,18 @@
 "vio_need_person" = "בחרו נגד מי ההפרה.";
 "vio_need_evidence" = "צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.";
 "vio_need_description" = "כתבו מה הייתה ההפרה.";
+/* Dialog: the account may not write violations for this company */
+"vio_refused_officer" = "אין לכם הרשאה לרשום הפרות כאן.";
+/* Dialog: signed in, but a member of no company at all */
+"vio_refused_books" = "אינכם רשומים באף חברה. פתחו חברה או הצטרפו לאחת, ואז רשמו את ההפרה.";
+/* Dialog: the violation is already confirmed or cancelled */
+"vio_refused_state" = "הפרה זו כבר אושרה או בוטלה. לא ניתן לשנות אותה.";
+/* Dialog: confirm was refused because something is missing */
+"vio_refused_incomplete" = "עדיין חסר משהו: נגד מי ההפרה, מה הייתה ההפרה, ותמונה או סרטון.";
+/* Dialog: a negative cost was rejected */
+"vio_refused_cost" = "עלות אינה יכולה להיות שלילית. השאירו ריק אם אין חיוב.";
+/* Dialog: the write failed for a reason the app has no better sentence for */
+"vio_refused_unknown" = "לא ניתן היה לשמור.";
 /* Screen title: signing people onto the site at the gate */
 "gate_title" = "כניסה לאתר";
 /* Section header above the ID number field */

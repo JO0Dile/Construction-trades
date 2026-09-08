@@ -31,8 +31,15 @@ import androidx.room.PrimaryKey
 )
 data class ViolationEntity(
     @PrimaryKey val id: String,
-    /** The firm whose site it happened on, and which appointed the officer. */
-    val companyId: String,
+    /**
+     * The firm whose site it happened on, or null for somebody working alone.
+     *
+     * Nullable like every other companyId in the schema. This one was not,
+     * and that single word made the whole feature dead for a personal
+     * account: a self-employed tradesman has a membership with no company on
+     * it, so the screen offered a button that could never write a row.
+     */
+    val companyId: String? = null,
     /** The job, when it was on one. Not every violation is. */
     val projectId: String? = null,
     val againstAccountId: String,

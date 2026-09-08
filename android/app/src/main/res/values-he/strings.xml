@@ -1012,6 +1012,12 @@
     <string name="vio_need_person">בחרו נגד מי ההפרה.</string>
     <string name="vio_need_evidence">צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.</string>
     <string name="vio_need_description">כתבו מה הייתה ההפרה.</string>
+    <string name="vio_refused_officer">אין לכם הרשאה לרשום הפרות כאן.</string>
+    <string name="vio_refused_books">אינכם רשומים באף חברה. פתחו חברה או הצטרפו לאחת, ואז רשמו את ההפרה.</string>
+    <string name="vio_refused_state">הפרה זו כבר אושרה או בוטלה. לא ניתן לשנות אותה.</string>
+    <string name="vio_refused_incomplete">עדיין חסר משהו: נגד מי ההפרה, מה הייתה ההפרה, ותמונה או סרטון.</string>
+    <string name="vio_refused_cost">עלות אינה יכולה להיות שלילית. השאירו ריק אם אין חיוב.</string>
+    <string name="vio_refused_unknown">לא ניתן היה לשמור.</string>
     <string name="gate_title">כניסה לאתר</string>
     <string name="gate_find">מי בשער</string>
     <string name="gate_find_hint">המספר שעל התעודה. התמונה שלהם מוצגת יחד איתו.</string>

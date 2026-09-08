@@ -1,6 +1,7 @@
 package il.co.tradesmanager.ui.safety
 
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Groups
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,6 +41,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.safety.Violations
+import il.co.tradesmanager.data.repository.ViolationRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.PersonCard
@@ -72,6 +75,7 @@ fun ViolationsScreen(
     val open by viewModel.open.collectAsStateWithLifecycle()
     val evidence by viewModel.evidence.collectAsStateWithLifecycle()
     val openFace by viewModel.openFace.collectAsStateWithLifecycle()
+    val refusal by viewModel.refusal.collectAsStateWithLifecycle()
     val locale = currentLocale()
     var idNumber by remember { mutableStateOf("") }
 
@@ -197,6 +201,11 @@ fun ViolationsScreen(
             }
         }
     }
+
+    // Outside the Scaffold on purpose. Its content lambda returns early to
+    // draw the draft form, so a dialog placed inside would be raised on one
+    // half of this screen and not the other.
+    RefusalDialog(refusal = refusal, onDismiss = viewModel::clearRefusal)
 }
 
 /**
@@ -341,4 +350,42 @@ private fun blockerLabel(blocker: Violations.Blocker): Int = when (blocker) {
     Violations.Blocker.NOBODY_NAMED -> R.string.vio_need_person
     Violations.Blocker.NO_EVIDENCE -> R.string.vio_need_evidence
     Violations.Blocker.NOT_DESCRIBED -> R.string.vio_need_description
+}
+
+/**
+ * Why nothing happened.
+ *
+ * This screen had none. Recording a violation could be refused five different
+ * ways and every one of them looked identical from the outside: the button
+ * moved and the screen did not, which is how somebody decides an app is
+ * broken and stops using it.
+ */
+@Composable
+private fun RefusalDialog(
+    refusal: ViolationRepository.Refusal?,
+    onDismiss: () -> Unit,
+) {
+    if (refusal == null) return
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        text = { Text(stringResource(refusalLabel(refusal))) },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_ok)) }
+        },
+    )
+}
+
+/**
+ * The sentence for each refusal. Exhaustive with no `else`, so a reason added
+ * to the repository cannot reach the screen without somebody writing the
+ * words for it.
+ */
+@StringRes
+private fun refusalLabel(refusal: ViolationRepository.Refusal): Int = when (refusal) {
+    ViolationRepository.Refusal.NOT_AN_OFFICER -> R.string.vio_refused_officer
+    ViolationRepository.Refusal.NOT_ON_ANY_BOOKS -> R.string.vio_refused_books
+    ViolationRepository.Refusal.NOT_A_DRAFT -> R.string.vio_refused_state
+    ViolationRepository.Refusal.INCOMPLETE -> R.string.vio_refused_incomplete
+    ViolationRepository.Refusal.BAD_COST -> R.string.vio_refused_cost
+    ViolationRepository.Refusal.UNKNOWN -> R.string.vio_refused_unknown
 }

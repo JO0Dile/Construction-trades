@@ -1023,6 +1023,18 @@
 "vio_need_person" = "Choose who this is against.";
 "vio_need_evidence" = "Attach a photograph or a video. A violation with a cost and nothing to show is one person's word.";
 "vio_need_description" = "Write what was wrong.";
+/* Dialog: the account may not write violations for this company */
+"vio_refused_officer" = "You are not allowed to record violations here.";
+/* Dialog: signed in, but a member of no company at all */
+"vio_refused_books" = "You are not on any company's books. Create a company or join one, then record it.";
+/* Dialog: the violation is already confirmed or cancelled */
+"vio_refused_state" = "This one has already been confirmed or cancelled. It cannot be changed.";
+/* Dialog: confirm was refused because something is missing */
+"vio_refused_incomplete" = "Something is still missing: who it is against, what was wrong, and a photograph or a video.";
+/* Dialog: a negative cost was rejected */
+"vio_refused_cost" = "A cost cannot be less than zero. Leave it empty for no charge.";
+/* Dialog: the write failed for a reason the app has no better sentence for */
+"vio_refused_unknown" = "That could not be saved.";
 /* Screen title: signing people onto the site at the gate */
 "gate_title" = "Site entry";
 /* Section header above the ID number field */
