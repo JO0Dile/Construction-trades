@@ -490,6 +490,21 @@
       "he": "טלפון הלקוח",
       "ar": "هاتف الزبون"
     },
+    "proj_when": {
+      "en": "When it runs",
+      "he": "מתי היא רצה",
+      "ar": "متى يجري"
+    },
+    "proj_no_date": {
+      "en": "Not set",
+      "he": "לא נקבע",
+      "ar": "غير محدد"
+    },
+    "action_clear": {
+      "en": "Clear",
+      "he": "ניקוי",
+      "ar": "مسح"
+    },
     "proj_where_and_who": {
       "en": "Where it is, and who it is for",
       "he": "איפה זה ולמי",

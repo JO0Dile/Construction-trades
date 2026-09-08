@@ -96,6 +96,9 @@
 "proj_city" = "المدينة";
 "proj_postal_code" = "الرمز البريدي";
 "proj_client_phone" = "هاتف الزبون";
+"proj_when" = "متى يجري";
+"proj_no_date" = "غير محدد";
+"action_clear" = "مسح";
 "proj_where_and_who" = "أين هو ولمن";
 "proj_no_address" = "لا يوجد عنوان بعد.";
 "proj_open_map" = "خريطة";

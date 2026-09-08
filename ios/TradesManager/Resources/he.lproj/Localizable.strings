@@ -96,6 +96,9 @@
 "proj_city" = "עיר";
 "proj_postal_code" = "מיקוד";
 "proj_client_phone" = "טלפון הלקוח";
+"proj_when" = "מתי היא רצה";
+"proj_no_date" = "לא נקבע";
+"action_clear" = "ניקוי";
 "proj_where_and_who" = "איפה זה ולמי";
 "proj_no_address" = "עדיין אין כתובת.";
 "proj_open_map" = "מפה";

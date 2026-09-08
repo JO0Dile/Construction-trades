@@ -52,7 +52,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "android" / "app" / "src" / "main" / "java" / "il" / "co" / "tradesmanager"
 
 # The count accepted at the last review. Raise it deliberately, with a reason.
-BASELINE = 9
+# One argument per line is the house style and also what this can read: a
+# `copy(a = x, b = y)` folded onto one line hides both from it. That cost a
+# false positive the first time it ran, which is a fair price for not needing
+# a parser.
+BASELINE = 7
 
 # `name = null,` or `name = null)` as a named argument.
 NULL_ARG = re.compile(r"^\s*(\w+)\s*=\s*null\s*[,)]?\s*$")

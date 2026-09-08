@@ -96,6 +96,9 @@
     <string name="proj_city">المدينة</string>
     <string name="proj_postal_code">الرمز البريدي</string>
     <string name="proj_client_phone">هاتف الزبون</string>
+    <string name="proj_when">متى يجري</string>
+    <string name="proj_no_date">غير محدد</string>
+    <string name="action_clear">مسح</string>
     <string name="proj_where_and_who">أين هو ولمن</string>
     <string name="proj_no_address">لا يوجد عنوان بعد.</string>
     <string name="proj_open_map">خريطة</string>

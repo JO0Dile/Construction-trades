@@ -28,6 +28,8 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -38,6 +40,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -148,6 +151,8 @@ fun ProjectDetailScreen(
     var addingMaterial by remember { mutableStateOf(false) }
     var showPlaceEditor by remember { mutableStateOf(false) }
     var addingPart by remember { mutableStateOf(false) }
+    var pickingStart by remember { mutableStateOf(false) }
+    var pickingDue by remember { mutableStateOf(false) }
     var addingTask by remember { mutableStateOf(false) }
     val addImage = rememberImageAdder(
         newCameraTarget = viewModel::newCameraTarget,
@@ -301,6 +306,23 @@ fun ProjectDetailScreen(
                         PlaceAndClient(
                             project = project,
                             onEdit = { showPlaceEditor = true },
+                        )
+                        // Both dates have been columns since the beginning
+                        // with nothing writing to either, so the dashboard
+                        // tile for jobs running late has always been empty and
+                        // the list's ORDER BY dueDate has been ordering by
+                        // nothing.
+                        DetailRow(
+                            stringResource(R.string.proj_start),
+                            project.startDate?.let { asDate(it, locale) }
+                                ?: stringResource(R.string.proj_no_date),
+                            Modifier.clickable { pickingStart = true },
+                        )
+                        DetailRow(
+                            stringResource(R.string.proj_due),
+                            project.dueDate?.let { asDate(it, locale) }
+                                ?: stringResource(R.string.proj_no_date),
+                            Modifier.clickable { pickingDue = true },
                         )
                     }
                 }
@@ -486,6 +508,32 @@ fun ProjectDetailScreen(
                     )
                 }
             }
+        }
+    }
+
+    if (pickingStart) {
+        state.project?.let { project ->
+            PickDate(
+                initial = project.startDate,
+                onDismiss = { pickingStart = false },
+                onPick = { chosen ->
+                    pickingStart = false
+                    viewModel.setDates(chosen, project.dueDate)
+                },
+            )
+        }
+    }
+
+    if (pickingDue) {
+        state.project?.let { project ->
+            PickDate(
+                initial = project.dueDate,
+                onDismiss = { pickingDue = false },
+                onPick = { chosen ->
+                    pickingDue = false
+                    viewModel.setDates(project.startDate, chosen)
+                },
+            )
         }
     }
 
@@ -879,4 +927,45 @@ private fun AddPartDialog(onDismiss: () -> Unit, onAdd: (String, String) -> Unit
             TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
         },
     )
+}
+
+private fun asDate(millis: Long, locale: java.util.Locale): String =
+    Formats.date(
+        java.time.Instant.ofEpochMilli(millis).atZone(java.time.ZoneId.systemDefault()).toLocalDate(),
+        locale,
+    )
+
+/**
+ * A calendar, which is the one place in this app that wants one.
+ *
+ * Everywhere else a date is picked from chips -- now, tomorrow morning, four
+ * hours -- because a permit runs for an afternoon and a man in gloves should
+ * not be scrolling months. A job runs until March, so it gets the calendar.
+ *
+ * Clear is offered beside Save because "no date" is a real answer. Plenty of
+ * work is open-ended until somebody signs something, and a date put in by
+ * mistake has to be able to come back out.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun PickDate(initial: Long?, onDismiss: () -> Unit, onPick: (Long?) -> Unit) {
+    val state = rememberDatePickerState(initialSelectedDateMillis = initial)
+    DatePickerDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            TextButton(onClick = { onPick(state.selectedDateMillis) }) {
+                Text(stringResource(R.string.action_save))
+            }
+        },
+        dismissButton = {
+            Row {
+                TextButton(onClick = { onPick(null) }) {
+                    Text(stringResource(R.string.action_clear))
+                }
+                TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+            }
+        },
+    ) {
+        DatePicker(state = state)
+    }
 }

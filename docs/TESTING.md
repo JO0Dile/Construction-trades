@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.14.2 — and what to try first
+## What is new in 0.14.3 — and what to try first
 
 ### The backup format changed, and why you should care
 
@@ -62,6 +62,21 @@ file can no longer be edited without breaking it.
 
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
+
+### A job can be given dates, so "running late" can mean something
+
+Start and due dates have been columns since the beginning with nothing ever
+writing to either. The dashboard tile that answers *which jobs have run late*
+filters `dueDate IS NOT NULL` against a column where it never was, so it has
+always been empty; the job list's sort by due date has been sorting by nothing.
+
+- [ ] Open a job. **Starts** and **Due** are rows you can tap. They open a
+      calendar — the one place in the app that gets one, because a permit runs
+      for an afternoon and a job runs until March.
+- [ ] Set a due date in the past. The job should appear on the dashboard as
+      running late. Until now that tile could never show anything.
+- [ ] Tap a date and press **Clear**. "No date" is a real answer, and a date
+      put in by mistake has to be able to come back out.
 
 ### Hours can finally reach a job
 

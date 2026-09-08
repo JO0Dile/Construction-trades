@@ -96,6 +96,9 @@
 "proj_city" = "City";
 "proj_postal_code" = "Postal code";
 "proj_client_phone" = "Client phone";
+"proj_when" = "When it runs";
+"proj_no_date" = "Not set";
+"action_clear" = "Clear";
 "proj_where_and_who" = "Where it is, and who it is for";
 "proj_no_address" = "No address yet.";
 "proj_open_map" = "Map";

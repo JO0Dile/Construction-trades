@@ -141,6 +141,31 @@ class ProjectDetailViewModel(
     }
 
     /**
+     * When the job runs.
+     *
+     * Both columns have been on the table since the beginning and nothing has
+     * ever written to either, which is why `observeOverdue` -- the dashboard
+     * tile that answers "which jobs have run late" -- filters
+     * `dueDate IS NOT NULL` against a column where it never is, and has
+     * therefore always been empty. The job list's `ORDER BY dueDate` has been
+     * ordering by nothing too.
+     *
+     * Null clears. A job whose date was set by mistake has to be able to go
+     * back to having none, and "no date" is a real answer -- plenty of work is
+     * open-ended until somebody signs something.
+     */
+    fun setDates(startDate: Long?, dueDate: Long?) = viewModelScope.launch {
+        val project = state.value.project ?: return@launch
+        container.projects.save(
+            project.copy(
+                startDate = startDate,
+                dueDate = dueDate,
+            ),
+            actorName = container.settings.settings.first().actorName,
+        )
+    }
+
+    /**
      * Where the job is and who it is for.
      *
      * All optional and all editable after the fact, because a job is usually

@@ -97,6 +97,9 @@
     <string name="proj_city">City</string>
     <string name="proj_postal_code">Postal code</string>
     <string name="proj_client_phone">Client phone</string>
+    <string name="proj_when">When it runs</string>
+    <string name="proj_no_date">Not set</string>
+    <string name="action_clear">Clear</string>
     <string name="proj_where_and_who">Where it is, and who it is for</string>
     <string name="proj_no_address">No address yet.</string>
     <string name="proj_open_map">Map</string>
