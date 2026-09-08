@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.15.1 — and what to try first
+## What is new in 0.15.2 — and what to try first
 
 ### Recording a violation now works, and says so when it will not
 
