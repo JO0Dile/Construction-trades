@@ -82,6 +82,13 @@ jobs:
       - name: No new arguments that are only ever passed null
         run: python3 tools/check-null-args.py --check
 
+      # The same fault asked of the column instead of the argument: a field
+      # with an index, a comment and a DAO query written against it, and no
+      # caller that ever puts anything in it. That is what an empty timesheet
+      # and an unsigned permit both looked like from the inside.
+      - name: No new columns that nothing ever fills
+        run: python3 tools/check-dead-columns.py --check
+
       # The release build had never been run. Only assembleDebug was, and
       # debug does not minify — so R8 stripping something Room, SQLCipher or
       # kotlinx.serialization loads reflectively would have surfaced for the
