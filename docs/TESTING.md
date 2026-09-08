@@ -63,6 +63,17 @@ file can no longer be edited without breaking it.
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
 
+### Two more the guard found
+
+- [ ] **A lift plan can be given a date.** `plannedFor` had a column, a
+      translated label and a sort order in the query — whose comment explains
+      that a plan with no date sorts last, which was every plan. There is now a
+      **Planned for** field beside the certificate expiry.
+- [ ] **The daily log records who signed it**, not only the typed name. The
+      יומן עבודה is a record a site manager is required to keep, and a typed
+      name cannot tell one of two men with the same name from the other on the
+      one document that says who was answerable for the day.
+
 ### A job can be given dates, so "running late" can mean something
 
 Start and due dates have been columns since the beginning with nothing ever

@@ -56,7 +56,7 @@ SOURCE = ROOT / "android" / "app" / "src" / "main" / "java" / "il" / "co" / "tra
 # `copy(a = x, b = y)` folded onto one line hides both from it. That cost a
 # false positive the first time it ran, which is a fair price for not needing
 # a parser.
-BASELINE = 7
+BASELINE = 5
 
 # `name = null,` or `name = null)` as a named argument.
 NULL_ARG = re.compile(r"^\s*(\w+)\s*=\s*null\s*[,)]?\s*$")

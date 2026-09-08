@@ -71,6 +71,10 @@ class DailyLogViewModel(
     fun sign(signature: String) = viewModelScope.launch {
         val id = _logId.value ?: return@launch
         val actor = container.settings.settings.first().actorName
-        container.dailyLogs.sign(id, actor, signature)
+        // Who is signed in, beside the typed name. The name stays because the
+        // register has to read years later without the account table next to
+        // it; the id is what lets anything check who that was.
+        val signedIn = container.session.state.first() as? SessionRepository.State.SignedIn
+        container.dailyLogs.sign(id, actor, signature, signedIn?.account?.id)
     }
 }
