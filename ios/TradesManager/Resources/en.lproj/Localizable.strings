@@ -954,6 +954,10 @@
 "pay_breakdown" = "What this claim covers";
 "pay_breakdown_hint" = "Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.";
 "pay_breakdown_none" = "Raised by hand — no work packages attached.";
+/* Audit action: a record was exported out of the app */
+"audit_exported" = "Exported";
+/* Audit action: old entries were removed */
+"audit_purged" = "Purged";
 "audit_title" = "Audit trail";
 "audit_hint" = "Every change of consequence, in the order it happened. The trail cannot be edited from inside the app.";
 "audit_empty" = "Nothing recorded yet.";

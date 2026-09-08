@@ -943,6 +943,8 @@
     <string name="pay_breakdown">ממה מורכבת התביעה</string>
     <string name="pay_breakdown_hint">כל חבילת עבודה מאושרת שנספרה בסכום שלמעלה. תביעה היא מצטברת, ולכן חבילות מבקשות קודמות מופיעות שוב.</string>
     <string name="pay_breakdown_none">הופקה ידנית — ללא חבילות עבודה מצורפות.</string>
+    <string name="audit_exported">יוצא</string>
+    <string name="audit_purged">נוקה</string>
     <string name="audit_title">יומן ביקורת</string>
     <string name="audit_hint">כל שינוי בעל משמעות, לפי סדר התרחשותו. לא ניתן לערוך את היומן מתוך האפליקציה.</string>
     <string name="audit_empty">עדיין לא נרשם דבר.</string>

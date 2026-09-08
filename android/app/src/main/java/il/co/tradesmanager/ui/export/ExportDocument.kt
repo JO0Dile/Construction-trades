@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.export
 
 import android.content.Context
 import il.co.tradesmanager.R
+import il.co.tradesmanager.ui.audit.auditActionLabel
 import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
@@ -201,7 +202,13 @@ sealed interface ExportDocument {
                     entry.sequence.toString(),
                     Formats.dateTime(at.toLocalDate(), at.toLocalTime(), locale),
                     entry.actorName,
-                    entry.action,
+                    // The same word the screen shows, falling back to the
+                    // stored value for an action this version has no sentence
+                    // for. A document handed to a regulator should not be the
+                    // one place the app still speaks in constants.
+                    auditActionLabel(entry.action)
+                        ?.let { context.getString(it) }
+                        ?: entry.action,
                     entry.summary,
                     // Blank rather than a placeholder on an unsigned row: an
                     // entry written before the chain existed has no signature,

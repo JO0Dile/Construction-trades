@@ -943,6 +943,8 @@
     <string name="pay_breakdown">مما تتكون هذه المطالبة</string>
     <string name="pay_breakdown_hint">كل حزمة عمل معتمدة محسوبة في المبلغ أعلاه. المطالبة تراكمية، لذلك تظهر حزم المطالبات السابقة مرة أخرى.</string>
     <string name="pay_breakdown_none">أُنشئت يدويًا — بدون حزم عمل مرفقة.</string>
+    <string name="audit_exported">صُدِّر</string>
+    <string name="audit_purged">طُهِّر</string>
     <string name="audit_title">سجل التدقيق</string>
     <string name="audit_hint">كل تغيير ذي أثر، بترتيب حدوثه. لا يمكن تعديل السجل من داخل التطبيق.</string>
     <string name="audit_empty">لم يُسجَّل شيء بعد.</string>

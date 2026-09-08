@@ -4736,6 +4736,18 @@
       "he": "הופקה ידנית — ללא חבילות עבודה מצורפות.",
       "ar": "أُنشئت يدويًا — بدون حزم عمل مرفقة."
     },
+    "audit_exported": {
+      "c": "Audit action: a record was exported out of the app",
+      "en": "Exported",
+      "he": "יוצא",
+      "ar": "صُدِّر"
+    },
+    "audit_purged": {
+      "c": "Audit action: old entries were removed",
+      "en": "Purged",
+      "he": "נוקה",
+      "ar": "طُهِّر"
+    },
     "audit_title": {
       "en": "Audit trail",
       "he": "יומן ביקורת",

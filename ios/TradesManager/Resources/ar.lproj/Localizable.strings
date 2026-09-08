@@ -954,6 +954,10 @@
 "pay_breakdown" = "مما تتكون هذه المطالبة";
 "pay_breakdown_hint" = "كل حزمة عمل معتمدة محسوبة في المبلغ أعلاه. المطالبة تراكمية، لذلك تظهر حزم المطالبات السابقة مرة أخرى.";
 "pay_breakdown_none" = "أُنشئت يدويًا — بدون حزم عمل مرفقة.";
+/* Audit action: a record was exported out of the app */
+"audit_exported" = "صُدِّر";
+/* Audit action: old entries were removed */
+"audit_purged" = "طُهِّر";
 "audit_title" = "سجل التدقيق";
 "audit_hint" = "كل تغيير ذي أثر، بترتيب حدوثه. لا يمكن تعديل السجل من داخل التطبيق.";
 "audit_empty" = "لم يُسجَّل شيء بعد.";

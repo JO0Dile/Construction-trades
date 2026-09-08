@@ -218,7 +218,13 @@ fun AuditScreen(
                     // The sequence number in front, because the thing worth
                     // noticing on this screen is a gap in it.
                     overlineContent = {
-                        Text("#${entry.sequence} · ${entry.action}")
+                        // The word, not the constant. This printed SIGN_OFF
+                        // and STOCK_CHANGE at a Hebrew-speaking site manager
+                        // while the translations sat unused in the catalogue.
+                        val what = auditActionLabel(entry.action)
+                            ?.let { stringResource(it) }
+                            ?: entry.action
+                        Text("#${entry.sequence} · $what")
                     },
                     headlineContent = { Text(entry.summary) },
                     supportingContent = {

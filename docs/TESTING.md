@@ -34,6 +34,19 @@ the register read as empty besides.
       write in Evidence — you get a sentence saying which, in your language,
       instead of a button that appears to be broken.
 
+### The audit trail is in your language now
+
+It printed `SIGN_OFF` and `STOCK_CHANGE` — the constants out of the database —
+at a screen whose whole point is that a Hebrew- or Arabic-speaking site manager
+can read it. The words existed and were translated into all three languages
+from the day the trail was built. Nothing referenced them.
+
+- [ ] **Settings → Audit trail.** Every row says what happened in words:
+      נוצר / أُنشئ / Created, נחתם / وُقِّع / Signed.
+- [ ] **Export the trail.** The Action column in the document is words too. A
+      page handed to a regulator should not be the one place the app still
+      speaks in constants.
+
 ### A shift knows which piece of the plan it was worked against
 
 `blockId` on a time entry had existed since the schedule was built and nothing
