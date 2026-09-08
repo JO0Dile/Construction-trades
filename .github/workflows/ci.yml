@@ -72,6 +72,9 @@ jobs:
       - name: No new unreachable code in core and repositories
         run: python3 tools/find-unused.py --check
 
+      - name: No new arguments that are only ever passed null
+        run: python3 tools/check-null-args.py --check
+
       # The release build had never been run. Only assembleDebug was, and
       # debug does not minify — so R8 stripping something Room, SQLCipher or
       # kotlinx.serialization loads reflectively would have surfaced for the
