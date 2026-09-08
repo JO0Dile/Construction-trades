@@ -1023,6 +1023,12 @@
 "vio_need_person" = "Choose who this is against.";
 "vio_need_evidence" = "Attach a photograph or a video. A violation with a cost and nothing to show is one person's word.";
 "vio_need_description" = "Write what was wrong.";
+/* Row on a purchase order: when the delivery is expected */
+"po_due" = "Due";
+/* The supplier has not said when it is coming */
+"po_no_due" = "The supplier has not said";
+/* Dialog title when placing an order: ask for the delivery date */
+"po_when_due" = "When is it due?";
 /* Field on a failed checklist row: describe the failure */
 "saf_what_is_wrong" = "What is wrong";
 /* Hint under the field on a failed check */

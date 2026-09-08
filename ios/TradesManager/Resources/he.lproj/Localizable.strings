@@ -1023,6 +1023,12 @@
 "vio_need_person" = "בחרו נגד מי ההפרה.";
 "vio_need_evidence" = "צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.";
 "vio_need_description" = "כתבו מה הייתה ההפרה.";
+/* Row on a purchase order: when the delivery is expected */
+"po_due" = "צפוי להגיע";
+/* The supplier has not said when it is coming */
+"po_no_due" = "הספק לא אמר";
+/* Dialog title when placing an order: ask for the delivery date */
+"po_when_due" = "מתי זה אמור להגיע?";
 /* Field on a failed checklist row: describe the failure */
 "saf_what_is_wrong" = "מה לא תקין";
 /* Hint under the field on a failed check */

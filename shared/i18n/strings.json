@@ -5081,6 +5081,24 @@
       "he": "כתבו מה הייתה ההפרה.",
       "ar": "اكتب ما هي المخالفة."
     },
+    "po_due": {
+      "c": "Row on a purchase order: when the delivery is expected",
+      "en": "Due",
+      "he": "צפוי להגיע",
+      "ar": "موعد الوصول"
+    },
+    "po_no_due": {
+      "c": "The supplier has not said when it is coming",
+      "en": "The supplier has not said",
+      "he": "הספק לא אמר",
+      "ar": "المورّد لم يحدّد"
+    },
+    "po_when_due": {
+      "c": "Dialog title when placing an order: ask for the delivery date",
+      "en": "When is it due?",
+      "he": "מתי זה אמור להגיע?",
+      "ar": "متى من المفترض أن تصل؟"
+    },
     "saf_what_is_wrong": {
       "c": "Field on a failed checklist row: describe the failure",
       "en": "What is wrong",

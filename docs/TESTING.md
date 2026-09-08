@@ -34,6 +34,24 @@ the register read as empty besides.
       write in Evidence — you get a sentence saying which, in your language,
       instead of a button that appears to be broken.
 
+### An order can say when the delivery is due
+
+`expectedOn` was on the purchase order table with an index beside it and
+`expectedOn = null` written into the one place an order is ever created. So
+the question a site asks every morning — when is the concrete coming — had a
+column in the database and lived on somebody's scrap of paper.
+
+- [ ] **Orders → open a draft → Place the order.** A calendar opens first and
+      asks when it is due. That is the one moment anybody knows: you ring the
+      merchant, they say Thursday.
+- [ ] Press **Clear** on the calendar instead. The order is still placed, with
+      no date. Plenty of suppliers will not commit to one, and an app that
+      refused to place the order would be an app people work around.
+- [ ] The placed order shows a **Due** row. Tap it to change the date — a
+      merchant who said Thursday rings back on Wednesday and says next week.
+- [ ] Once everything is received, the row is still there and no longer
+      tappable. A delivery that has arrived has no date still to come.
+
 ### A failed check can say what was wrong, and show it
 
 `note` and a photograph were both on the checklist row from the day

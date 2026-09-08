@@ -1012,6 +1012,9 @@
     <string name="vio_need_person">בחרו נגד מי ההפרה.</string>
     <string name="vio_need_evidence">צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.</string>
     <string name="vio_need_description">כתבו מה הייתה ההפרה.</string>
+    <string name="po_due">צפוי להגיע</string>
+    <string name="po_no_due">הספק לא אמר</string>
+    <string name="po_when_due">מתי זה אמור להגיע?</string>
     <string name="saf_what_is_wrong">מה לא תקין</string>
     <string name="saf_fail_needs_words">כשל בלי הסבר הוא שורה שאי אפשר לפעול לפיה כעבור חצי שנה.</string>
     <string name="saf_photograph">צילום</string>

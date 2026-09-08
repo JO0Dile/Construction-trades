@@ -1024,6 +1024,12 @@
     <string name="vio_need_person">Choose who this is against.</string>
     <string name="vio_need_evidence">Attach a photograph or a video. A violation with a cost and nothing to show is one person\'s word.</string>
     <string name="vio_need_description">Write what was wrong.</string>
+    <!-- Row on a purchase order: when the delivery is expected -->
+    <string name="po_due">Due</string>
+    <!-- The supplier has not said when it is coming -->
+    <string name="po_no_due">The supplier has not said</string>
+    <!-- Dialog title when placing an order: ask for the delivery date -->
+    <string name="po_when_due">When is it due?</string>
     <!-- Field on a failed checklist row: describe the failure -->
     <string name="saf_what_is_wrong">What is wrong</string>
     <!-- Hint under the field on a failed check -->

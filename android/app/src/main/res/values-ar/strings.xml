@@ -1012,6 +1012,9 @@
     <string name="vio_need_person">اختر ضد من هذه المخالفة.</string>
     <string name="vio_need_evidence">أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد.</string>
     <string name="vio_need_description">اكتب ما هي المخالفة.</string>
+    <string name="po_due">موعد الوصول</string>
+    <string name="po_no_due">المورّد لم يحدّد</string>
+    <string name="po_when_due">متى من المفترض أن تصل؟</string>
     <string name="saf_what_is_wrong">ما هو الخلل</string>
     <string name="saf_fail_needs_words">بند راسب بلا شرح هو سطر لا يمكن التصرف بناءً عليه بعد ستة أشهر.</string>
     <string name="saf_photograph">صوّرها</string>

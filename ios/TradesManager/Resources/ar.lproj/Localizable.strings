@@ -1023,6 +1023,12 @@
 "vio_need_person" = "اختر ضد من هذه المخالفة.";
 "vio_need_evidence" = "أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد.";
 "vio_need_description" = "اكتب ما هي المخالفة.";
+/* Row on a purchase order: when the delivery is expected */
+"po_due" = "موعد الوصول";
+/* The supplier has not said when it is coming */
+"po_no_due" = "المورّد لم يحدّد";
+/* Dialog title when placing an order: ask for the delivery date */
+"po_when_due" = "متى من المفترض أن تصل؟";
 /* Field on a failed checklist row: describe the failure */
 "saf_what_is_wrong" = "ما هو الخلل";
 /* Hint under the field on a failed check */
