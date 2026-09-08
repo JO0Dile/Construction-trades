@@ -212,6 +212,22 @@
 "set_audit_log" = "Activity log";
 "set_export" = "Export my data";
 "set_delete_data" = "Delete my account and data";
+/* Privacy screen: the whole of it in one sentence */
+"priv_lead" = "Everything you record stays on this phone.";
+"priv_where_title" = "Where your work is kept";
+"priv_where_body" = "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.";
+"priv_network_title" = "The one thing that leaves the phone";
+"priv_network_body" = "When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.";
+"priv_none_title" = "What the app does not do";
+"priv_none_body" = "No analytics, no advertising and no tracking of any kind. Nothing is shared with anybody, because there is nowhere for it to go.";
+"priv_perm_title" = "What the permissions are for";
+"priv_perm_body" = "The camera takes the photographs you attach to a job, a snag or a violation, and they are saved on this phone. Internet access is used only for the update check above.";
+"priv_crew_title" = "If your firm installed this";
+"priv_crew_body" = "What you record can be seen by the people your role in the firm allows — that is what the roles are for. It is still only on the phones it was entered on.";
+"priv_delete_title" = "Removing it";
+"priv_delete_body" = "Settings → Delete everything empties the database on this phone. Because nothing ever left it, there is nothing anywhere else to ask for. A backup you took is a file you hold; delete it wherever you put it.";
+"priv_future_title" = "When this changes";
+"priv_future_body" = "A server is planned, so that phones can sync and a lost phone is not a lost site. Nothing goes to one until it exists, and this page will say so before anything does.";
 "set_privacy" = "Privacy policy";
 "set_terms" = "Terms of service";
 "set_about" = "About";

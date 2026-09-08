@@ -1042,6 +1042,82 @@
       "he": "מחיקת החשבון והנתונים שלי",
       "ar": "حذف حسابي وبياناتي"
     },
+    "priv_lead": {
+      "c": "Privacy screen: the whole of it in one sentence",
+      "en": "Everything you record stays on this phone.",
+      "he": "כל מה שאתם רושמים נשאר בטלפון הזה.",
+      "ar": "كل ما تُسجّله يبقى على هذا الهاتف."
+    },
+    "priv_where_title": {
+      "en": "Where your work is kept",
+      "he": "היכן נשמרת העבודה שלכם",
+      "ar": "أين يُحفظ عملك"
+    },
+    "priv_where_body": {
+      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.",
+      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
+      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
+    },
+    "priv_network_title": {
+      "en": "The one thing that leaves the phone",
+      "he": "הדבר היחיד שיוצא מהטלפון",
+      "ar": "الشيء الوحيد الذي يغادر الهاتف"
+    },
+    "priv_network_body": {
+      "en": "When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.",
+      "he": "כשלוחצים על בדיקת עדכונים, האפליקציה שואלת את GitHub אם פורסמה גרסה חדשה. בבקשה הזו אין דבר על העבודות, הצוות או האתר שלכם. היא נשלחת רק בלחיצה על הכפתור ולא בשום מועד אחר.",
+      "ar": "عند الضغط على التحقق من التحديثات، يسأل التطبيق GitHub إن كانت هناك نسخة أحدث. هذا الطلب لا يحمل شيئًا عن أعمالك أو طاقمك أو موقعك. ويحدث عند الضغط على الزر فقط."
+    },
+    "priv_none_title": {
+      "en": "What the app does not do",
+      "he": "מה האפליקציה אינה עושה",
+      "ar": "ما لا يفعله التطبيق"
+    },
+    "priv_none_body": {
+      "en": "No analytics, no advertising and no tracking of any kind. Nothing is shared with anybody, because there is nowhere for it to go.",
+      "he": "אין איסוף נתוני שימוש, אין פרסומות ואין מעקב מכל סוג. שום דבר אינו משותף עם אף אחד, כי אין לאן.",
+      "ar": "لا تحليلات ولا إعلانات ولا تتبّع من أي نوع. لا تُشارَك أي معلومة مع أحد، لأنه لا يوجد مكان تذهب إليه."
+    },
+    "priv_perm_title": {
+      "en": "What the permissions are for",
+      "he": "לשם מה ההרשאות",
+      "ar": "لماذا الأذونات"
+    },
+    "priv_perm_body": {
+      "en": "The camera takes the photographs you attach to a job, a snag or a violation, and they are saved on this phone. Internet access is used only for the update check above.",
+      "he": "המצלמה מצלמת את התמונות שאתם מצרפים לעבודה, לליקוי או להפרה, והן נשמרות בטלפון הזה. הגישה לאינטרנט משמשת רק לבדיקת העדכונים שלמעלה.",
+      "ar": "الكاميرا تلتقط الصور التي ترفقها بعمل أو ملاحظة أو مخالفة، وتُحفظ على هذا الهاتف. الوصول إلى الإنترنت يُستخدم فقط لفحص التحديثات أعلاه."
+    },
+    "priv_crew_title": {
+      "en": "If your firm installed this",
+      "he": "אם החברה שלכם התקינה את זה",
+      "ar": "إذا ثبّتت شركتك هذا التطبيق"
+    },
+    "priv_crew_body": {
+      "en": "What you record can be seen by the people your role in the firm allows — that is what the roles are for. It is still only on the phones it was entered on.",
+      "he": "מה שאתם רושמים גלוי לאנשים שהתפקיד שלכם בחברה מתיר — לשם כך קיימים התפקידים. עדיין, הכול נמצא רק במכשירים שבהם הוזן.",
+      "ar": "ما تُسجّله يمكن أن يراه من يسمح لهم دورك في الشركة — لهذا وُجدت الأدوار. ومع ذلك يبقى فقط على الأجهزة التي أُدخل فيها."
+    },
+    "priv_delete_title": {
+      "en": "Removing it",
+      "he": "מחיקה",
+      "ar": "الحذف"
+    },
+    "priv_delete_body": {
+      "en": "Settings → Delete everything empties the database on this phone. Because nothing ever left it, there is nothing anywhere else to ask for. A backup you took is a file you hold; delete it wherever you put it.",
+      "he": "הגדרות ← מחיקת הכול מרוקנת את מסד הנתונים בטלפון הזה. מכיוון ששום דבר לא יצא ממנו, אין ממה לבקש מחיקה במקום אחר. גיבוי שיצרתם הוא קובץ שלכם; מחקו אותו במקום שבו שמרתם אותו.",
+      "ar": "الإعدادات ← حذف كل شيء يُفرغ قاعدة البيانات على هذا الهاتف. وبما أن شيئًا لم يغادره، لا يوجد مكان آخر تطلب منه الحذف. النسخة الاحتياطية التي أخذتها ملف بحوزتك؛ احذفه حيث وضعته."
+    },
+    "priv_future_title": {
+      "en": "When this changes",
+      "he": "מתי זה ישתנה",
+      "ar": "متى يتغيّر هذا"
+    },
+    "priv_future_body": {
+      "en": "A server is planned, so that phones can sync and a lost phone is not a lost site. Nothing goes to one until it exists, and this page will say so before anything does.",
+      "he": "מתוכנן שרת, כדי שמכשירים יוכלו להסתנכרן וטלפון שאבד לא יהיה אתר שאבד. שום דבר לא יישלח לשרת עד שיהיה קיים, והדף הזה יעודכן לפני כן.",
+      "ar": "هناك خادم مخطَّط له، كي تتزامن الأجهزة ولا يعني فقدان الهاتف فقدان الموقع. لن يذهب شيء إليه قبل وجوده، وستُحدَّث هذه الصفحة قبل ذلك."
+    },
     "set_privacy": {
       "en": "Privacy policy",
       "he": "מדיניות פרטיות",

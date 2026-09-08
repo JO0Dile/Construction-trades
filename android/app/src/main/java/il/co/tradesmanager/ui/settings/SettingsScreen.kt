@@ -61,6 +61,7 @@ fun SettingsScreen(
     container: AppContainer,
     onOpenCompanyProfile: () -> Unit,
     onOpenAudit: () -> Unit,
+    onOpenPrivacy: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: SettingsViewModel = viewModel(
@@ -363,6 +364,18 @@ fun SettingsScreen(
                         Text(stringResource(R.string.set_delete_data))
                     }
                 }
+            }
+
+            item { SectionHeader(stringResource(R.string.set_about)) }
+            // Both stores require this and the app did not have it. The words
+            // were written and translated the day the settings screen was
+            // built; no screen ever showed them.
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.set_privacy)) },
+                    supportingContent = { Text(stringResource(R.string.priv_lead)) },
+                    modifier = Modifier.clickable(onClick = onOpenPrivacy),
+                )
             }
 
             item { AboutFooter(catalogVersion = settings.seededCatalogVersion) }

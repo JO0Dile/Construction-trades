@@ -34,6 +34,15 @@ the register read as empty besides.
       write in Evidence — you get a sentence saying which, in your language,
       instead of a button that appears to be broken.
 
+### There is a privacy notice, and a calendar that says what it wants
+
+- [ ] **Settings → About → Privacy policy.** Both stores require this and the
+      app did not have it — the words were written and translated the day the
+      settings screen was built, and no screen ever showed them. Read it in
+      Hebrew and Arabic too; it is short because the honest version is short.
+- [ ] **Orders → place an order.** The calendar now says *When is it due?* at
+      the top. It used to appear with no question on it.
+
 ### The audit trail is in your language now
 
 It printed `SIGN_OFF` and `STOCK_CHANGE` — the constants out of the database —

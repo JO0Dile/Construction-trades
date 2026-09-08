@@ -242,6 +242,7 @@ fun OrderDetailScreen(
                 viewModel.place(due)
                 askingDueOnPlace = false
             },
+            title = stringResource(R.string.po_when_due),
         )
     }
 
@@ -253,6 +254,7 @@ fun OrderDetailScreen(
                 viewModel.setExpected(due)
                 changingDue = false
             },
+            title = stringResource(R.string.po_when_due),
         )
     }
 }
