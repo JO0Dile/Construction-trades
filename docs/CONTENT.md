@@ -25,9 +25,23 @@ shared/assets/catalog/images/
 To see every id that still has no picture, grouped by trade:
 
 ```bash
-python3 tools/image-coverage.py           # 0 of 497 today
+python3 tools/image-coverage.py           # 0 of 527 today
 python3 tools/image-coverage.py --ids     # just the ids, one per line
 ```
+
+An id is the right answer for a build check and the wrong one for a person
+about to go and take five hundred photographs: `el.rcd.40a.30ma` says nothing
+about what the thing is. For that, there is a spreadsheet:
+
+```bash
+python3 tools/photo-worklist.py     # -> docs/translation/items-needing-photos.csv
+```
+
+One row per item still missing, carrying the name in all three languages, the
+word a site would actually shout for it where the catalogue records one
+(מברגה / مفريغا), a line saying what the thing is for, and the exact filename
+to save the picture as. It opens in Excel with the Hebrew and Arabic intact,
+which a plain UTF-8 CSV does not.
 
 If your files are named after the things rather than the ids — `RCD 40A.jpg`,
 `צינור פקס 16.png` — don't rename 497 files by hand:

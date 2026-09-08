@@ -1,0 +1,528 @@
+﻿trade,kind,what the photo shows,english,hebrew,arabic,also called on site,what it is,save the file as
+Electrical,MATERIAL,"product shot, plain background",NYY cable 3×1.5 mm²,כבל NYY ‎3×1.5 ממ״ר,كابل NYY ‏3×1.5 ملم²,,"Lighting circuits. 3 cores, 1.5 mm².",el.cable.nyy.3x1_5.webp
+Electrical,MATERIAL,"product shot, plain background",NYY cable 3×2.5 mm²,כבל NYY ‎3×2.5 ממ״ר,كابل NYY ‏3×2.5 ملم²,,"Socket circuits. 3 cores, 2.5 mm².",el.cable.nyy.3x2_5.webp
+Electrical,MATERIAL,"product shot, plain background",NYY cable 5×1.5 mm²,כבל NYY ‎5×1.5 ממ״ר,كابل NYY ‏5×1.5 ملم²,,Three-phase control and switched lighting.,el.cable.nyy.5x1_5.webp
+Electrical,MATERIAL,"product shot, plain background",NYY cable 5×4 mm²,כבל NYY ‎5×4 ממ״ר,كابل NYY ‏5×4 ملم²,,Three-phase feeder to a sub-board.,el.cable.nyy.5x4.webp
+Electrical,MATERIAL,"product shot, plain background",NYY cable 3×6 mm²,כבל NYY ‎3×6 ממ״ר,كابل NYY ‏3×6 ملم²,,Water heater and oven circuits.,el.cable.nyy.3x6.webp
+Electrical,MATERIAL,"product shot, plain background",Single insulated wire 1.5 mm²,חוט מבודד חד־גידי 1.5 ממ״ר,سلك مفرد معزول 1.5 ملم²,,Pulled into conduit. Colour per phase / neutral / earth.,el.wire.h07vu.1_5.webp
+Electrical,MATERIAL,"product shot, plain background",Corrugated conduit 16 mm,צינור שרשורי 16 מ״מ,خرطوم مموج 16 ملم,,Flexible PVC conduit for concealed lighting runs.,el.conduit.flex.16.webp
+Electrical,MATERIAL,"product shot, plain background",Corrugated conduit 23 mm,צינור שרשורי 23 מ״מ,خرطوم مموج 23 ملم,,Flexible PVC conduit for socket and feeder runs.,el.conduit.flex.23.webp
+Electrical,MATERIAL,"product shot, plain background",Rigid PVC conduit 25 mm,צינור PVC קשיח 25 מ״מ,أنبوب PVC صلب 25 ملم,,Surface-mounted runs and risers.,el.conduit.rigid.pvc.25.webp
+Electrical,MATERIAL,"product shot, plain background",PVC trunking 20×10 mm,תעלת PVC ‎20×10 מ״מ,مجرى PVC ‏20×10 ملم,,Surface cable trunking with adhesive back.,el.trunking.pvc.20x10.webp
+Electrical,MATERIAL,"product shot, plain background",MCB 1P C16,מא״ז חד־פאזי C16,قاطع مصغّر أحادي C16,,"Miniature circuit breaker, curve C, 16 A, 1 pole.",el.mcb.c16.1p.webp
+Electrical,MATERIAL,"product shot, plain background",MCB 3P C25,מא״ז תלת־פאזי C25,قاطع مصغّر ثلاثي C25,,"Miniature circuit breaker, curve C, 25 A, 3 poles.",el.mcb.c25.3p.webp
+Electrical,MATERIAL,"product shot, plain background",RCD 40 A / 30 mA,מפסק פחת 40 אמפר / 30 מ״א,قاطع تسرّب أرضي 40 أمبير / 30 مللي أمبير,,Residual current device. Mandatory on domestic circuits; test button pressed at handover.,el.rcd.40a.30ma.webp
+Electrical,MATERIAL,"product shot, plain background","Distribution board, 12 modules",לוח חשמל 12 מקומות,لوحة توزيع 12 وحدة,,Flush or surface DIN board with door and busbar.,el.board.din.12.webp
+Electrical,MATERIAL,"product shot, plain background","Distribution board, 24 modules",לוח חשמל 24 מקומות,لوحة توزيع 24 وحدة,,Two-row DIN board for a full apartment.,el.board.din.24.webp
+Electrical,MATERIAL,"product shot, plain background","Socket outlet, earthed",שקע מוארק,مقبس مؤرّض,,"16 A earthed socket, flush box mounting.",el.socket.schuko.webp
+Electrical,MATERIAL,"product shot, plain background",Weatherproof socket IP44,שקע מוגן מים IP44,مقبس مقاوم للماء IP44,,"For balconies, bathrooms and outdoor walls.",el.socket.ip44.webp
+Electrical,MATERIAL,"product shot, plain background","Light switch, single",מפסק תאורה חד־קוטבי,مفتاح إنارة مفرد,,One-gang one-way switch.,el.switch.1way.webp
+Electrical,MATERIAL,"product shot, plain background",Two-way switch,מפסק מחליף,مفتاح مبادل,,Stairwell switching from two positions.,el.switch.2way.webp
+Electrical,MATERIAL,"product shot, plain background",Round junction box,קופסת הסתעפות עגולה,علبة تفريعات دائرية,,Concealed box for joints and ceiling points.,el.junction.box.round.webp
+Electrical,MATERIAL,"product shot, plain background",Lever wire connector,מחבר מהיר עם ידית,وصلة أسلاك بذراع,,Reusable 3-way connector for solid and stranded wire.,el.connector.leverlock.webp
+Electrical,MATERIAL,"product shot, plain background",Earth busbar,פס הארקה,قضيب تأريض,,Board earth bar with brass terminals.,el.earth.bar.webp
+Electrical,CONSUMABLE,,Insulating tape,סרט בידוד,شريط عازل,,"PVC electrical tape, 19 mm × 20 m.",el.tape.insulating.webp
+Electrical,TOOL,"the tool itself, whole",Multimeter,רב־מודד,مقياس متعدد (أفوميتر),,"True-RMS meter, CAT III 600 V minimum.",el.tool.multimeter.webp
+Electrical,TOOL,"the tool itself, whole",Two-pole voltage tester,בודק מתח דו־קוטבי,كاشف جهد ثنائي القطب,,Proves dead before work. Checked on a live source first.,el.tool.voltage_tester.webp
+Electrical,TOOL,"the tool itself, whole",Insulation resistance tester,בודק התנגדות בידוד (מגר),جهاز فحص مقاومة العزل (ميجر),,500 V / 1000 V megohmmeter for handover testing.,el.tool.insulation_tester.webp
+Electrical,TOOL,"the tool itself, whole",Wire stripper,קולפן חוטים,مقشّرة أسلاك,,"Automatic stripper, 0.5–6 mm².",el.tool.wire_stripper.webp
+Electrical,TOOL,"the tool itself, whole",Side cutting pliers,צבת חיתוך,كماشة قطع جانبية,,VDE 1000 V insulated handles.,el.tool.side_cutter.webp
+Electrical,TOOL,"the tool itself, whole",Draw wire / fish tape,חוט משיכה,سلك سحب,,"Nylon or steel draw wire, 20–30 m.",el.tool.fish_tape.webp
+Electrical,TOOL,"the tool itself, whole",Hammer drill (SDS),פטישון SDS,مثقاب دقّاق SDS,,SDS-Plus rotary hammer for chasing and anchor holes.,el.tool.hammer_drill.webp
+Electrical,TOOL,"the tool itself, whole",Hole saw 70 mm,מקדח כוס 70 מ״מ,منشار كؤوس 70 ملم,,For junction and switch boxes in block or plaster.,el.tool.hole_saw.70.webp
+Electrical,SAFETY,the item as worn or used,Insulating gloves 1000 V,כפפות מבודדות 1000 וולט,قفازات عازلة 1000 فولت,,"Class 0 electrical gloves, inspected before each use.",el.safety.gloves.1000v.webp
+Electrical,SAFETY,the item as worn or used,Lockout / tagout kit,ערכת נעילה ותיוג,طقم إقفال ووسم,,"Breaker locks, padlock and warning tags for isolation.",el.safety.lockout_kit.webp
+Electrical,TOOL,"the tool itself, whole","Demolition hammer, SDS-max (kongo)",פטישון SDS-max,كونجو (شاكوش هدم) SDS-max,,The big breaker. Chasing block and concrete for boxes and conduit runs.,el.tool.breaker.sds_max.webp
+Electrical,TOOL,"the tool itself, whole","Rotary hammer drill, SDS-plus",מקדחת רוטרי SDS-plus,دريل باتشون (مطرقة دوّارة) SDS-plus,,Percussion drilling into concrete for anchors and small boxes.,el.tool.rotary.sds_plus.webp
+Electrical,TOOL,"the tool itself, whole",Wall chaser,מחרץ קירות,قطاعة تفنيص الجدران,,"Twin-blade chaser that cuts the conduit groove in one pass, with extraction.",el.tool.wall.chaser.webp
+Electrical,TOOL,"the tool itself, whole",Socket tester,בודק שקעים,فاحص أباريز,,"Plugs into a finished socket and shows live, neutral and earth wiring faults.",el.tool.socket.tester.webp
+Electrical,TOOL,"the tool itself, whole",Socket tester with RCD trip test,בודק שקעים עם בדיקת ממסר פחת,فاحص أباريز مع فحص قاطع التسريب,,"As the plain tester, and trips the RCD to time it. The test the handover pack wants.",el.tool.socket.tester.rcd.webp
+Electrical,TOOL,"the tool itself, whole",Cable tracer (tone generator and probe),גשש כבלים (מחולל צליל וגלאי),مزمار (مولّد نغمة ومجس),,"One half clips to the board, the other follows the wire and buzzes. Finds which cable in the wall is which.",el.tool.cable.tracer.webp
+Electrical,TOOL,"the tool itself, whole",Clamp meter,אמפרמטר מלקחיים,كلامب ميتر (أمبير),,Reads current without breaking the circuit. How a loaded phase gets checked.,el.tool.clamp.meter.webp
+Electrical,TOOL,"the tool itself, whole",Non-contact voltage pen,עט מתח ללא מגע,قلم كشف الفولت (بدون تلامس),,First check before touching anything. Never the only check.,el.tool.voltage.pen.webp
+Electrical,TOOL,"the tool itself, whole",Insulation resistance tester (megger),בודק התנגדות בידוד (מגר),مقياس عزل (ميجر),,The 500 V test that proves a circuit is not leaking to earth. Required before energising.,el.tool.insulation.tester.webp
+Electrical,TOOL,"the tool itself, whole",Earth loop / earth resistance tester,בודק לולאת תקלה והתנגדות הארקה,فاحص مقاومة التأريض,,Proves the earth electrode and loop impedance. Goes in the handover file.,el.tool.earth.tester.webp
+Electrical,TOOL,"the tool itself, whole",Fish tape / draw wire,חוט משיכה,سلك سحب (شريط تمرير),,Steel or nylon tape pushed through conduit to pull the cable back.,el.tool.fish.tape.webp
+Electrical,TOOL,"the tool itself, whole",Conduit bending spring,קפיץ כיפוף לצינור,نابض ثني المواسير,,Keeps a PVC conduit round through a bend instead of kinking it shut.,el.tool.conduit.bender.webp
+Electrical,TOOL,"the tool itself, whole",Box hole saw set (68 mm),מקדח כוס לקופסאות 68 מ״מ,منشار علب 68 ملم,,The standard wall-box diameter. A set covers 68 mm boxes and downlight cut-outs.,el.tool.hole.saw.webp
+Electrical,TOOL,"the tool itself, whole",Ferrule crimping tool,מלחץ שרוולים,كماشة كبس أطراف (فيرول),,Square crimp on bootlace ferrules. A twisted stranded core in a terminal works loose and heats.,el.tool.crimper.ferrule.webp
+Electrical,TOOL,"the tool itself, whole",Side cutters,חותכן צד,قاطعة جانبية (زرديّة قص),,,el.tool.pliers.side.webp
+Electrical,TOOL,"the tool itself, whole",Insulated screwdriver set 1000 V,ערכת מברגים מבודדים 1000V,طقم مفكات معزولة 1000 فولت,,VDE 1000 V rating. The only screwdrivers that belong near a live board.,el.tool.screwdriver.insulated.webp
+Electrical,TOOL,"the tool itself, whole",Lock-out / tag-out kit,ערכת נעילה ותיוג,طقم إقفال ووسم (LOTO),,Padlocks the breaker off with your own key while you work downstream of it.,el.tool.lockout.kit.webp
+Electrical,TOOL,"the tool itself, whole",Cross-line laser level,פלס לייזר צולב,ليزر تسوية متقاطع,,Sets socket and switch heights straight across a whole wall.,el.tool.laser.level.webp
+Electrical,TOOL,"the tool itself, whole",Thermal imaging camera,מצלמה תרמית,كاميرا حرارية,,Finds the loose terminal in a board before it becomes a fire.,el.tool.thermal.camera.webp
+Electrical,TOOL,"the tool itself, whole",Phase rotation meter,בודק סדר פאזות,فاحص ترتيب الأطوار,,Three-phase motors run backwards on the wrong rotation. Checked before the pump starts.,el.tool.phase.rotation.webp
+Electrical,MATERIAL,"product shot, plain background","Wall box, 68 mm round",קופסת קיר עגולה 68 מ״מ,علبة حائط دائرية 68 ملم,,"The standard single box, set flush before plaster.",el.box.wall.68.webp
+Electrical,MATERIAL,"product shot, plain background","Wall box, 3-gang",קופסת קיר משולשת,علبة حائط ثلاثية,,,el.box.wall.gang3.webp
+Electrical,MATERIAL,"product shot, plain background","Junction box IP55, surface",קופסת הסתעפות IP55 חיצונית,علبة تفريعات IP55 ظاهرة,,"Wet areas, roofs and car parks. Lobbies get these assembled on site.",el.box.junction.ip55.webp
+Electrical,MATERIAL,"product shot, plain background","Slab box, deep (pre-pour)","קופסה ליציקה, עמוקה",علبة صبّة عميقة (قبل الصب),,"Cast into the slab at the aqda stage, before the concrete goes on.",el.box.slab.deep.webp
+Electrical,MATERIAL,"product shot, plain background",Flexible PVC conduit 16 mm,שרשורי PVC ‏16 מ״מ,ماسورة مرنة PVC ‏16 ملم,,Lighting drops and switch legs.,el.conduit.pvc.16.webp
+Electrical,MATERIAL,"product shot, plain background",Flexible PVC conduit 20 mm,שרשורי PVC ‏20 מ״מ,ماسورة مرنة PVC ‏20 ملم,,The general-purpose wall run.,el.conduit.pvc.20.webp
+Electrical,MATERIAL,"product shot, plain background",Flexible PVC conduit 25 mm,שרשורי PVC ‏25 מ״מ,ماسورة مرنة PVC ‏25 ملم,,,el.conduit.pvc.25.webp
+Electrical,MATERIAL,"product shot, plain background",HDPE slab conduit,שרשורי HDPE ליציקה,ماسورة HDPE للصبّة,,Tough enough to take the weight of a rebar crew walking on it before the pour.,el.conduit.hdpe.slab.webp
+Electrical,MATERIAL,"product shot, plain background",PVC trunking 60×40,תעלת PVC ‏60×40,مجرى PVC ‏60×40,,Surface work where chasing is not allowed.,el.trunking.pvc.60.webp
+Electrical,MATERIAL,"product shot, plain background","Cable tray 200 mm, hot-dip galvanised",תעלת כבלים 200 מ״מ מגולוונת,ترايّ كابلات 200 ملم مجلفن,,"Car parks, plant rooms and risers.",el.tray.cable.200.webp
+Electrical,MATERIAL,"product shot, plain background","Socket outlet, single (Israeli/Schuko)",שקע יחיד,بريزة مفردة (إسرائيلي/شوكو),,SI 32 pattern. Fitted at trim-out once the wall is painted.,el.socket.schuko.single.webp
+Electrical,MATERIAL,"product shot, plain background","Socket outlet, double",שקע כפול,بريزة مزدوجة,,,el.socket.schuko.double.webp
+Electrical,MATERIAL,"product shot, plain background",Socket with USB-A/C charger,שקע עם מטען USB,بريزة مع شاحن USB,,,el.socket.usb.webp
+Electrical,MATERIAL,"product shot, plain background",Floor socket box,קופסת רצפה לשקעים,علبة أرضية للأباريز,,"Open-plan offices, where the desk is nowhere near a wall.",el.socket.floor.box.webp
+Electrical,MATERIAL,"product shot, plain background",Dimmer switch,דימר,مفتاح ديمر,,,el.switch.dimmer.webp
+Electrical,MATERIAL,"product shot, plain background",Blank plate,מכסה עיוור,غطاء أعمى,,,el.plate.blank.webp
+Electrical,MATERIAL,"product shot, plain background","LED downlight, recessed",גוף תאורה שקוע LED,سبوت LED غاطس,,,el.light.downlight.led.webp
+Electrical,MATERIAL,"product shot, plain background",LED panel 60×60,פאנל LED ‏60×60,بانل LED ‏60×60,,The office ceiling grid light.,el.light.panel.60x60.webp
+Electrical,MATERIAL,"product shot, plain background","Emergency light, 90 min",גוף תאורת חירום 90 דק׳,إنارة طوارئ 90 دقيقة,,Escape routes and stairwells. Its duration test goes in the handover pack.,el.light.emergency.webp
+Electrical,MATERIAL,"product shot, plain background",Illuminated exit sign,שלט יציאה מואר,لافتة مخرج مضاءة,,,el.light.exit.sign.webp
+Electrical,MATERIAL,"product shot, plain background","Distribution board, 12-way",לוח חלוקה 12 מקומות,لوحة توزيع 12 خط,,,el.db.consumer.12way.webp
+Electrical,MATERIAL,"product shot, plain background","Distribution board, 36-way",לוח חלוקה 36 מקומות,لوحة توزيع 36 خط,,,el.db.consumer.36way.webp
+Electrical,MATERIAL,"product shot, plain background","MCB, C16",מא״ז C16,قاطع C16,,,el.mcb.c16.webp
+Electrical,MATERIAL,"product shot, plain background","RCBO, C16 / 30 mA",מא״ז מגן C16 ‏30mA,قاطع مدمج مع تسريب C16 ‏30 مللي أمبير,,"Overcurrent and earth leakage in one module, so one faulty circuit does not kill the flat.",el.rcbo.c16.webp
+Electrical,MATERIAL,"product shot, plain background","Surge protective device, type 2",מגן ברקים סוג 2,جهاز حماية من الصواعق نوع 2,,,el.surge.spd.t2.webp
+Electrical,MATERIAL,"product shot, plain background","Earth rod, copper-bonded",אלקטרודת הארקה מצופה נחושת,قضيب تأريض مطلي نحاس,,,el.earth.rod.webp
+Electrical,MATERIAL,"product shot, plain background",Main earthing busbar,פס השוואת פוטנציאלים,بار تأريض رئيسي,,,el.earth.busbar.webp
+Electrical,TOOL,"the tool itself, whole",Cordless drill / driver,מברגה־מקדחה נטענת,مثقاب ومفك شحن,מברגה / مفريغا,18 V. The tool that is in an electrician's hand all day.,el.tool.driver.cordless.webp
+Electrical,TOOL,"the tool itself, whole",Impact driver,מברגת אימפקט,مفك صدمي,אימפקט / إمباكت,For fixing boards and trunking without stalling.,el.tool.driver.impact.webp
+Electrical,TOOL,"the tool itself, whole","Combination pliers, insulated",פלייר מבודד,زرديّة معزولة,פלייר / بلاير,1000 V rated.,el.tool.pliers.combination.webp
+Electrical,TOOL,"the tool itself, whole","Long-nose pliers, insulated",פלייר חרטום מבודד,زرديّة أنف طويل معزولة,زرديّة أنف,For working inside a board or a back box.,el.tool.pliers.longnose.webp
+Electrical,TOOL,"the tool itself, whole",Cable stripping knife,סכין לקילוף כבלים,سكين تقشير كابلات,سكين كابلات,"Hooked blade, so the conductor is not nicked.",el.tool.knife.cable.webp
+Electrical,TOOL,"the tool itself, whole",Conduit rod set,מוטות דחיפה לצנרת,طقم قضبان دفع للمواسير,,10 m of jointed rods with a hook and a bullet end.,el.tool.rods.conduit.webp
+Electrical,TOOL,"the tool itself, whole",Head torch,פנס ראש,كشاف رأس,,Both hands free in a riser or a ceiling void.,el.tool.torch.head.webp
+Plumbing,MATERIAL,"product shot, plain background",PEX pipe 16 mm,צינור פקסגול 16 מ״מ,أنبوب بيكس 16 ملم,,"Cross-linked polyethylene, hot and cold water, in sleeve.",pl.pipe.pex.16.webp
+Plumbing,MATERIAL,"product shot, plain background",PEX pipe 20 mm,צינור פקסגול 20 מ״מ,أنبوب بيكس 20 ملم,,Main branch runs to manifold.,pl.pipe.pex.20.webp
+Plumbing,MATERIAL,"product shot, plain background",Copper pipe 15 mm,צינור נחושת 15 מ״מ,أنبوب نحاس 15 ملم,,Soldered copper for solar and heater connections.,pl.pipe.copper.15.webp
+Plumbing,MATERIAL,"product shot, plain background",Copper pipe 22 mm,צינור נחושת 22 מ״מ,أنبوب نحاس 22 ملم,,Primary circuit to the solar collector.,pl.pipe.copper.22.webp
+Plumbing,MATERIAL,"product shot, plain background",PVC waste pipe 50 mm,צינור דלוחין PVC ‏50 מ״מ,أنبوب صرف PVC ‏50 ملم,,"Sink, basin and shower waste.",pl.pipe.pvc.50.webp
+Plumbing,MATERIAL,"product shot, plain background",PVC soil pipe 110 mm,צינור ביוב PVC ‏110 מ״מ,أنبوب مجاري PVC ‏110 ملم,,Toilet branch and stack.,pl.pipe.pvc.110.webp
+Plumbing,MATERIAL,"product shot, plain background",PVC elbow 90° 50 mm,זווית PVC ‏90° ‏50 מ״מ,كوع PVC ‏90° ‏50 ملم,,Solvent-weld drainage elbow.,pl.fit.elbow.90.pvc.50.webp
+Plumbing,MATERIAL,"product shot, plain background",PVC tee 110 mm,טי PVC ‏110 מ״מ,وصلة T من PVC ‏110 ملم,,Branch connection on the soil stack.,pl.fit.tee.pvc.110.webp
+Plumbing,MATERIAL,"product shot, plain background",PEX coupling 16 mm,מופה לפקסגול 16 מ״מ,وصلة بيكس 16 ملم,,Compression or press coupling.,pl.fit.coupling.pex.16.webp
+Plumbing,MATERIAL,"product shot, plain background","Water manifold, 4 outlets",מחלק מים 4 יציאות,موزّع مياه 4 مخارج,,"Brass manifold with isolating valves, in a service niche.",pl.fit.manifold.4way.webp
+Plumbing,MATERIAL,"product shot, plain background","Ball valve 1/2""",ברז כדורי ״1/2,محبس كروي 1/2 إنش,,Full-bore brass isolating valve.,pl.valve.ball.1_2.webp
+Plumbing,MATERIAL,"product shot, plain background","Check valve 3/4""",שסתום אל־חוזר ״3/4,صمام لا رجعي 3/4 إنش,,Prevents backflow into the mains.,pl.valve.check.3_4.webp
+Plumbing,MATERIAL,"product shot, plain background",Pressure reducing valve,מפחית לחץ,منظّم ضغط,,Set at the meter to protect fittings from mains pressure.,pl.valve.prv.webp
+Plumbing,MATERIAL,"product shot, plain background",WC pan and cistern,אסלה ומיכל הדחה,مرحاض وخزّان طرد,,"Dual-flush cistern, 3/6 litre.",pl.fixture.toilet.webp
+Plumbing,MATERIAL,"product shot, plain background",Wash basin,כיור רחצה,مغسلة,,Ceramic basin with bracket or countertop mounting.,pl.fixture.basin.webp
+Plumbing,MATERIAL,"product shot, plain background",Kitchen mixer tap,ברז מטבח,خلاط مطبخ,,Single-lever mixer with flexible hoses.,pl.fixture.faucet.kitchen.webp
+Plumbing,MATERIAL,"product shot, plain background",Bottle trap,סיפון בקבוק,سيفون زجاجي,,Basin trap with water seal against sewer gas.,pl.fixture.trap.bottle.webp
+Plumbing,MATERIAL,"product shot, plain background",Electric water heater 150 L,דוד חשמל 150 ליטר,سخان مياه كهربائي 150 لتر,,Enamelled cylinder with anode and safety valve.,pl.heater.electric.150.webp
+Plumbing,MATERIAL,"product shot, plain background",Solar collector panel,קולט שמש,مجمّع شمسي,,Flat-plate collector for a domestic solar heater.,pl.heater.solar.collector.webp
+Plumbing,MATERIAL,"product shot, plain background",Water meter,מד מים,عدّاد مياه,,Replaced only by the utility or an authorised installer.,pl.meter.water.webp
+Plumbing,CONSUMABLE,,PTFE thread tape,סרט טפלון,شريط تفلون,,Thread sealing tape for threaded joints.,pl.consum.teflon.webp
+Plumbing,CONSUMABLE,,PVC solvent cement,דבק PVC,غراء PVC,,Solvent weld for drainage joints. Ventilate the space.,pl.consum.pvc_glue.webp
+Plumbing,CONSUMABLE,,Pipe clip,חבק לצינור,مشبك أنبوب,,Rubber-lined clamp with a plug and screw.,pl.consum.pipe_clip.webp
+Plumbing,TOOL,"the tool itself, whole",Pipe wrench,מפתח צינורות,مفتاح مواسير,,"Stillson wrench, 14"" and 18"".",pl.tool.pipe_wrench.webp
+Plumbing,TOOL,"the tool itself, whole",Pipe cutter,חותך צינורות,قاطع أنابيب,,Rotary cutter for copper and plastic pipe.,pl.tool.pipe_cutter.webp
+Plumbing,TOOL,"the tool itself, whole",PPR socket welder,מכונת ריתוך פוליפרופילן,آلة لحام بولي بروبيلين,,Heated-socket welder with 20/25/32 mm dies.,pl.tool.ppr_welder.webp
+Plumbing,TOOL,"the tool itself, whole",Brazing torch,מבער להלחמה,شعلة لحام,,Gas torch for copper joints. Hot-work permit required.,pl.tool.torch.webp
+Plumbing,TOOL,"the tool itself, whole",Drain auger,ספירלה לפתיחת סתימות,زنبرك تسليك المجاري,,"Hand or drill-driven auger, 5–10 m.",pl.tool.drain_snake.webp
+Plumbing,TOOL,"the tool itself, whole",Pressure test pump and gauge,משאבת אטימות ומד לחץ,مضخة اختبار ضغط ومقياس,,Pressure test before closing walls; record the reading.,pl.tool.pressure_gauge.webp
+Plumbing,TOOL,"the tool itself, whole",Acoustic leak detector,גלאי נזילות אקוסטי,كاشف تسرّب صوتي,,Locates concealed leaks without opening finishes.,pl.tool.leak_detector.webp
+Plumbing,SAFETY,the item as worn or used,Confined space gas detector,גלאי גזים לחלל מוקף,كاشف غازات للأماكن المغلقة,,"Four-gas monitor, calibrated, worn before entering a manhole.",pl.safety.gas_detector.webp
+Plumbing,SAFETY,the item as worn or used,Chemical resistant gloves,כפפות עמידות לכימיקלים,قفازات مقاومة للمواد الكيميائية,,Nitrile gloves for solvent cement and drain work.,pl.safety.gloves.nitrile.webp
+Plumbing,MATERIAL,"product shot, plain background",PPR pipe 25 mm,צינור PPR ‏25 מ״מ,ماسورة PPR ‏25 ملم,,,pl.pipe.ppr.25.webp
+Plumbing,MATERIAL,"product shot, plain background",HDPE drainage pipe,צינור ניקוז HDPE,ماسورة صرف HDPE,,,pl.pipe.hdpe.drain.webp
+Plumbing,MATERIAL,"product shot, plain background","Manifold, underfloor / PEX",מפלג PEX,مجمّع PEX,,,pl.manifold.underfloor.webp
+Plumbing,MATERIAL,"product shot, plain background",Floor drain / gully,מחסום רצפה,سيفون أرضية,,,pl.trap.floor.drain.webp
+Plumbing,MATERIAL,"product shot, plain background",Roof water tank,מיכל מים לגג,خزان ماء للسطح,,,pl.tank.roof.polyethylene.webp
+Plumbing,MATERIAL,"product shot, plain background",Booster pump set,מערכת משאבות הגברה,مجموعة مضخات ضغط,,,pl.pump.booster.webp
+Plumbing,MATERIAL,"product shot, plain background",Solar water heater (dud shemesh),דוד שמש,سخّان شمسي (دود شيمش),,Required on most Israeli residential buildings. Its collector and tank both need access for service.,pl.heater.solar.webp
+Plumbing,MATERIAL,"product shot, plain background",Backflow preventer,מונע זרימה חוזרת,مانع تدفّق عكسي,,,pl.backflow.preventer.webp
+Plumbing,MATERIAL,"product shot, plain background",Basin mixer tap,ברז מיקסר לכיור,خلاط مغسلة,,,pl.mixer.basin.webp
+Plumbing,MATERIAL,"product shot, plain background",Shower tray,אגן מקלחת,قاعدة دش,,,pl.shower.tray.webp
+Plumbing,TOOL,"the tool itself, whole",Press-fit tool with jaws,מכבש לחיבורי לחיצה,ماكينة كبس وصلات,,,pl.tool.press.jaw.webp
+Plumbing,TOOL,"the tool itself, whole",PPR socket fusion welder,מלחם PPR,ماكينة لحام PPR,,,pl.tool.welder.ppr.webp
+Plumbing,TOOL,"the tool itself, whole",Drain inspection camera,מצלמת ביוב,كاميرا فحص الصرف,,,pl.tool.drain.camera.webp
+Plumbing,TOOL,"the tool itself, whole",Pressure test gauge and pump,מד לחץ ומשאבת בדיקה,ساعة ضغط ومضخة فحص,,The rough-in is not finished until it holds pressure. Plaster over an untested joint and it is a wall rebuild.,pl.tool.pressure.gauge.webp
+Plumbing,TOOL,"the tool itself, whole",Cordless drill / driver,מברגה־מקדחה נטענת,مثقاب ومفك شحن,מברגה / مفريغا,"18 V, for brackets and clips.",pl.tool.driver.cordless.webp
+Plumbing,TOOL,"the tool itself, whole",Basin wrench,מפתח כיור,مفتاح مغاسل,,Reaches the nut behind a basin that nothing else will.,pl.tool.wrench.basin.webp
+Plumbing,TOOL,"the tool itself, whole",Spirit level 60 cm,פלס 60 ס״מ,ميزان مياه 60 سم,פלס / ميزان,Short enough for a fall on a waste run.,pl.tool.level.spirit.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Split air conditioner 1.5 HP,מזגן עילי 1.5 כ״ס,مكيّف سبليت 1.5 حصان,,Wall-mounted indoor unit with outdoor condenser.,hv.unit.split.1_5hp.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Mini-central air handler,מזגן מיני מרכזי,مكيّف مركزي صغير,,Ducted indoor unit above a false ceiling.,hv.unit.minicentral.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Outdoor condensing unit,מעבה (יחידה חיצונית),وحدة تكثيف خارجية,,Mounted on brackets with anti-vibration pads.,hv.unit.condenser.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background","Refrigerant copper pipe 1/4""",צינור נחושת לגז ״1/4,أنبوب نحاس للتبريد 1/4 إنش,,"Liquid line, soft annealed copper.",hv.pipe.cu.1_4.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background","Refrigerant copper pipe 1/2""",צינור נחושת לגז ״1/2,أنبوب نحاس للتبريد 1/2 إنش,,"Suction line, soft annealed copper.",hv.pipe.cu.1_2.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Elastomeric pipe insulation,בידוד גמיש לצנרת,عازل مطاطي للأنابيب,,"Closed-cell sleeve, 9–13 mm wall, taped at joints.",hv.insulation.elastomeric.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Refrigerant R32,גז קירור R32,غاز تبريد R32,,"Mildly flammable (A2L). Recover, never vent.",hv.refrigerant.r32.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Refrigerant R410A,גז קירור R410A,غاز تبريد R410A,,High pressure blend; charge by weight only.,hv.refrigerant.r410a.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Condensate drain pipe 25 mm,צינור ניקוז מזגן 25 מ״מ,أنبوب تصريف مكيّف 25 ملم,,"Laid to a continuous fall, no sagging loops.",hv.drain.pipe.25.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Condensate pump,משאבת ניקוז,مضخة تصريف,,Where gravity drainage is not possible.,hv.drain.pump.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Programmable thermostat,תרמוסטט מתוכנת,ثرموستات قابل للبرمجة,,"Weekly schedule, wired or wireless.",hv.thermostat.programmable.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background","Insulated flexible duct 8""",תעלה גמישה מבודדת ״8,مجرى هواء مرن معزول 8 إنش,,Supply run from air handler to diffuser.,hv.duct.flexible.8.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Linear supply diffuser,מפזר אוויר קווי,فتحة توزيع هواء خطية,,Aluminium slot diffuser for a false ceiling.,hv.diffuser.linear.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Return air grille with filter,גריל חוזר עם מסנן,شبك هواء راجع مع فلتر,,Hinged grille giving access to the filter.,hv.grille.return.webp
+HVAC & Refrigeration,CONSUMABLE,,Air filter G4,מסנן אוויר G4,فلتر هواء G4,,"Washable pre-filter, replaced at service.",hv.filter.g4.webp
+HVAC & Refrigeration,CONSUMABLE,,Flare nuts and caps,אומי פלייר ופקקים,صواميل تفليج وسدادات,,"Replaced, never reused, on every reconnection.",hv.consum.flare_nuts.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Vacuum pump,משאבת ואקום,مضخة تفريغ,,Two-stage pump; evacuate to 500 microns before charging.,hv.tool.vacuum_pump.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Manifold gauge set,סט מדי לחץ (מנומטרים),طقم مقاييس ضغط (مانيفولد),,Refrigerant-specific gauges with hoses.,hv.tool.manifold_gauges.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Refrigerant recovery machine,מכונת שאיבת גז,آلة استرجاع غاز التبريد,,Recovers refrigerant into a rated cylinder before opening a system.,hv.tool.recovery_machine.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Flaring tool set,ערכת פלייר,طقم تفليج,,Eccentric flaring tool with a deburrer.,hv.tool.flaring.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Tube bender,מכופף צנרת,ثنّاية أنابيب,,"Lever bender for 1/4""–5/8"" soft copper.",hv.tool.tube_bender.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Clamp meter,מלקחי אמפר,كماشة أمبير,,Measures running current on the compressor.,hv.tool.clamp_meter.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Electronic leak detector,גלאי דליפות גז אלקטרוני,كاشف تسرّب غاز إلكتروني,,Checks every flare and braze before insulating.,hv.tool.leak_detector.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Refrigerant charging scale,משקל דיגיטלי לגז,ميزان شحن الغاز,,Charge is weighed to the nameplate figure.,hv.tool.digital_scale.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Anemometer,מד ספיקת אוויר,مقياس تدفق الهواء,,Air flow at the diffuser during balancing.,hv.tool.anemometer.webp
+HVAC & Refrigeration,SAFETY,the item as worn or used,Refrigerant handling gloves,כפפות לטיפול בגז קירור,قفازات للتعامل مع غاز التبريد,,Protect against cold burns from liquid refrigerant.,hv.safety.gloves.cryo.webp
+HVAC & Refrigeration,SAFETY,the item as worn or used,Sealed safety goggles,משקפי מגן אטומים,نظارات واقية محكمة,,Worn whenever a refrigerant circuit is opened.,hv.safety.goggles.webp
+HVAC & Refrigeration,SAFETY,the item as worn or used,Fibreglass step ladder,סולם פיברגלס,سلّم فايبرجلاس,,Non-conductive ladder for work near live circuits.,hv.safety.ladder.fiber.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Wall sleeve (jerab),שרוול קיר,جراب (سليفة) حيط,,Cast or cored before the finish. Drilling a 90 mm hole through a finished facade is a different job.,hv.sleeve.wall.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Galvanised sheet duct,תעלת פח מגולוון,دكت صاج مجلفن,,,hv.duct.galvanised.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Pre-insulated panel duct,תעלה מבודדת מראש,دكت بانل معزول,,,hv.duct.preinsulated.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Flexible insulated duct,תעלה גמישה מבודדת,دكت مرن معزول,,,hv.duct.flexible.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Fire damper,מדף אש,دامبر حريق,,,hv.damper.fire.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Volume control damper,מדף ויסות,دامبر تنظيم,,,hv.damper.volume.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Supply grille,גריל אספקה,جريل تغذية,,,hv.grille.supply.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Swirl diffuser,מפזר סחרור,مبثّ دوّار,,,hv.diffuser.swirl.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",VRF indoor unit,יחידה פנימית VRF,وحدة داخلية VRF,,,hv.unit.vrf.indoor.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",VRF outdoor unit,יחידה חיצונית VRF,وحدة خارجية VRF,,,hv.unit.vrf.outdoor.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Ceiling fan coil unit,יחידת מאוורר־סליל תקרתית,وحدة فان كويل سقفية,,,hv.unit.fcu.ceiling.webp
+HVAC & Refrigeration,MATERIAL,"product shot, plain background",Fresh air / heat recovery unit,יחידת אוויר צח עם השבת חום,وحدة هواء نقي مع استرجاع حراري,,,hv.unit.fresh.air.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Micron gauge,מד מיקרון,مقياس ميكرون,,,hv.tool.micron.gauge.webp
+HVAC & Refrigeration,TOOL,"the tool itself, whole",Refrigerant manifold gauges,סט מדי לחץ לגז קירור,مانيفولد قياس غاز التبريد,,,hv.tool.manifold.gauge.webp
+Painting,MATERIAL,"product shot, plain background",Interior acrylic paint,צבע אקרילי לפנים,دهان أكريليك داخلي,,"Water-based wall paint, matt. Two coats over primer.",pa.paint.acrylic.interior.webp
+Painting,MATERIAL,"product shot, plain background",Exterior acrylic paint,צבע אקרילי לחוץ,دهان أكريليك خارجي,,UV and rain resistant elastomeric wall paint.,pa.paint.acrylic.exterior.webp
+Painting,MATERIAL,"product shot, plain background",Synthetic (oil) enamel,צבע סינטטי (שמן),دهان زيتي (إينامل),,Solvent-based gloss for metal and joinery. Ventilate.,pa.paint.synthetic.webp
+Painting,MATERIAL,"product shot, plain background",Anti-mould paint,צבע נגד עובש,دهان مضاد للعفن,,"For bathrooms, kitchens and damp north walls.",pa.paint.antimould.webp
+Painting,MATERIAL,"product shot, plain background",Wall primer,יסוד לקירות,برايمر للجدران,,Binds dusty plaster and evens absorption.,pa.primer.wall.webp
+Painting,MATERIAL,"product shot, plain background",Anti-rust primer,יסוד נגד חלודה,أساس مضاد للصدأ,,"For railings, gates and steel sections.",pa.primer.antirust.webp
+Painting,MATERIAL,"product shot, plain background",Wall filler,מרק שפכטל,معجون جدران,,Fills cracks and screw holes before sanding.,pa.filler.wall.webp
+Painting,MATERIAL,"product shot, plain background",Skim coat plaster,שליכט טיח דק,قصارة تنعيم,,Thin finish coat over blockwork before painting.,pa.filler.plaster_skim.webp
+Painting,MATERIAL,"product shot, plain background",Paint thinner,מדלל,مخفّف (تنر),,Solvent for oil paints. Flammable — store outside the room.,pa.thinner.webp
+Painting,CONSUMABLE,,Masking tape,סרט מיסוך,شريط تغطية,,"Low-tack tape, 25 mm and 48 mm.",pa.tape.masking.webp
+Painting,CONSUMABLE,,Protective drop sheet,יריעת הגנה,نايلون حماية,,Polythene sheeting for floors and furniture.,pa.sheet.protection.webp
+Painting,CONSUMABLE,,Sandpaper P120,נייר לטש P120,ورق صنفرة P120,,Between-coat sanding on filler and plaster.,pa.sandpaper.120.webp
+Painting,CONSUMABLE,,Sandpaper P220,נייר לטש P220,ورق صنفرة P220,,Fine finish sanding before the top coat.,pa.sandpaper.220.webp
+Painting,TOOL,"the tool itself, whole",Paint roller 25 cm,רולר צבע 25 ס״מ,رول دهان 25 سم,,Medium pile sleeve for walls and ceilings.,pa.tool.roller.25.webp
+Painting,TOOL,"the tool itself, whole",Small roller 10 cm,רולר קטן 10 ס״מ,رول صغير 10 سم,,Behind radiators and in tight corners.,pa.tool.roller.10.webp
+Painting,TOOL,"the tool itself, whole",Brush set,סט מברשות,طقم فرش,,"Cutting-in brushes, 25/50/75 mm.",pa.tool.brush.set.webp
+Painting,TOOL,"the tool itself, whole",Paint tray with grid,מגש צבע עם רשת,صينية دهان مع شبك,,Tray and disposable liners.,pa.tool.tray.webp
+Painting,TOOL,"the tool itself, whole",Filling knife set,סט שפכטלים,طقم سكاكين معجون,,"Steel blades, 5/10/25 cm.",pa.tool.spatula.webp
+Painting,TOOL,"the tool itself, whole",Telescopic extension pole,מוט הארכה טלסקופי,عصا تمديد تلسكوبية,,"Reaches ceilings without a ladder, 1.5–3 m.",pa.tool.extension_pole.webp
+Painting,TOOL,"the tool itself, whole",Airless paint sprayer,מרסס צבע אירלס,رشّاش دهان بدون هواء,,High pressure — never point at skin. Trigger lock on when idle.,pa.tool.airless_sprayer.webp
+Painting,TOOL,"the tool itself, whole",Orbital sander with extraction,מלטשת אקסצנטרית עם שאיבה,جلاخة مدارية مع شفط,,Dust extraction connected — plaster dust is a respiratory hazard.,pa.tool.sander.orbital.webp
+Painting,TOOL,"the tool itself, whole",Inspection work light,פנס עבודה לבדיקת גמר,كشّاف عمل لفحص التشطيب,,Raking light shows roller marks before the client does.,pa.tool.wet_edge_light.webp
+Painting,SAFETY,the item as worn or used,Respirator A2-P3,מסכת נשימה A2-P3,كمّامة تنفس A2-P3,,Organic vapour and particulate filters for spraying and solvents.,pa.safety.respirator.a2p3.webp
+Painting,SAFETY,the item as worn or used,Dust mask FFP2,מסכת אבק FFP2,كمّامة غبار FFP2,,For sanding filler and plaster.,pa.safety.dust_mask.ffp2.webp
+Painting,SAFETY,the item as worn or used,Safety goggles,משקפי מגן,نظارات واقية,,Overhead rolling and spraying.,pa.safety.goggles.webp
+Painting,SAFETY,the item as worn or used,Platform step ladder,סולם עם משטח עמידה,سلّم بمنصّة وقوف,,Stable platform with a guard rail for long ceiling work.,pa.safety.ladder.platform.webp
+Carpentry,MATERIAL,"product shot, plain background",MDF board 16 mm,לוח MDF ‏16 מ״מ,لوح MDF ‏16 ملم,,Carcase and door panels. Cut with extraction — MDF dust is fine.,ca.board.mdf.16.webp
+Carpentry,MATERIAL,"product shot, plain background",Melamine faced board 18 mm,לוח סנדוויץ׳ מלמין 18 מ״מ,لوح ميلامين 18 ملم,,Pre-finished particle board for kitchen carcases.,ca.board.melamine.18.webp
+Carpentry,MATERIAL,"product shot, plain background",Plywood 12 mm,דיקט 12 מ״מ,خشب أبلكاش 12 ملم,,"Drawer bottoms, backs and site jigs.",ca.board.plywood.12.webp
+Carpentry,MATERIAL,"product shot, plain background",Pine batten 50×100 mm,קורת אורן 50×100 מ״מ,عارضة صنوبر 50×100 ملم,,"Framing, battens and temporary works.",ca.timber.pine.2x4.webp
+Carpentry,MATERIAL,"product shot, plain background",Solid oak panel,לוח אלון מלא,لوح بلوط مصمت,,Worktops and exposed shelves.,ca.timber.oak.solid.webp
+Carpentry,MATERIAL,"product shot, plain background",PVC edge banding,קנט PVC,شريط حواف PVC,,"Iron-on or hot-melt edging, 22 mm.",ca.edge.banding.pvc.webp
+Carpentry,MATERIAL,"product shot, plain background",Oak veneer,פורניר אלון,قشرة بلوط,,Sheet veneer for doors and panels.,ca.veneer.oak.webp
+Carpentry,CONSUMABLE,,Wood screw 4×40 mm,בורג לעץ 4×40 מ״מ,برغي خشب 4×40 ملم,,"Countersunk, pozidriv head.",ca.screw.wood.4x40.webp
+Carpentry,CONSUMABLE,,Confirmat screw 7×50 mm,בורג קונפירמט 7×50 מ״מ,برغي كونفيرمات 7×50 ملم,,Carcase assembly in particle board.,ca.screw.confirmat.webp
+Carpentry,CONSUMABLE,,Finish nail 50 mm,מסמר גמר 50 מ״מ,مسمار تشطيب 50 ملم,,Brad nails for trim and beading.,ca.nail.finish.50.webp
+Carpentry,CONSUMABLE,,Wood glue (PVA D3),דבק נגרים D3,غراء خشب D3,,Water-resistant PVA for joints and laminating.,ca.glue.pva.webp
+Carpentry,MATERIAL,"product shot, plain background",Soft-close concealed hinge,ציר נסתר עם בלימה,مفصّلة مخفية بإغلاق ناعم,,35 mm cup hinge with integrated damper.,ca.hinge.softclose.webp
+Carpentry,MATERIAL,"product shot, plain background",Undermount drawer slides,מסילות מגירה נסתרות,سكك أدراج مخفية,,"Full extension with soft close, 450 mm.",ca.slide.undermount.webp
+Carpentry,MATERIAL,"product shot, plain background",Bar handle,ידית מוט,مقبض عمودي,,"Aluminium or steel pull, 128/160 mm centres.",ca.handle.bar.webp
+Carpentry,TOOL,"the tool itself, whole",Circular saw,מסור עגול,منشار دائري,,Riving knife and lower guard checked before every cut.,ca.tool.circular_saw.webp
+Carpentry,TOOL,"the tool itself, whole",Table saw,שולחן ניסור,منشار طاولة,,Push stick and crown guard in place; never free-hand a rip.,ca.tool.table_saw.webp
+Carpentry,TOOL,"the tool itself, whole",Jigsaw,מסור אנכי,منشار عمودي (أركيت),,Curved cuts and sink cut-outs.,ca.tool.jigsaw.webp
+Carpentry,TOOL,"the tool itself, whole",Router,ראוטר (קופיה),راوتر (فرايز),,"Edge profiles, grooves and hinge recesses.",ca.tool.router.webp
+Carpentry,TOOL,"the tool itself, whole",Cordless drill / driver,מברגה־מקדחה נטענת,مثقاب ومفك شحن,,18 V with clutch and two batteries.,ca.tool.drill_driver.webp
+Carpentry,TOOL,"the tool itself, whole",Random orbit sander,מלטשת אקסצנטרית,جلاخة مدارية عشوائية,,125 mm pad with dust extraction.,ca.tool.orbital_sander.webp
+Carpentry,TOOL,"the tool itself, whole",Chisel set,סט אזמלים,طقم أزاميل,,6/12/18/25 mm bevel-edge chisels.,ca.tool.chisel_set.webp
+Carpentry,TOOL,"the tool itself, whole",Bar clamps,מלחציים מוט,مشابك عمودية,,600–1200 mm clamps for glue-ups.,ca.tool.clamps.webp
+Carpentry,TOOL,"the tool itself, whole",Try square,זווית נגרים,زاوية نجّار,,"Engineer's square, 300 mm.",ca.tool.square.webp
+Carpentry,TOOL,"the tool itself, whole",Tape measure 5 m,סרט מדידה 5 מ׳,شريط قياس 5 م,,"Class II accuracy, metric.",ca.tool.tape.webp
+Carpentry,SAFETY,the item as worn or used,Safety glasses,משקפי מגן,نظارات أمان,,Worn for every powered cut.,ca.safety.goggles.webp
+Carpentry,SAFETY,the item as worn or used,Ear defenders,אוזניות מגן,واقيات أذن,,SNR 27 dB or better for saw and router work.,ca.safety.ear_defenders.webp
+Carpentry,SAFETY,the item as worn or used,M-class dust extractor,שואב אבק דרגה M,شافط غبار درجة M,,Connected to every cutting and sanding tool.,ca.safety.dust_extractor.webp
+Carpentry,MATERIAL,"product shot, plain background","Internal door, solid core",דלת פנים מלאה,باب داخلي مصمت,,,ca.door.internal.solid.webp
+Carpentry,MATERIAL,"product shot, plain background","Internal door, hollow core",דלת פנים חלולה,باب داخلي مفرّغ,,,ca.door.internal.hollow.webp
+Carpentry,MATERIAL,"product shot, plain background","Fire door, 60 minutes",דלת אש 60 דקות,باب حريق 60 دقيقة,,"Its rating is void without the right frame, intumescent strip and self-closer. All three or none.",ca.door.fire.60.webp
+Carpentry,MATERIAL,"product shot, plain background",Security entrance door,דלת ביטחון,باب أمان (حديد),,,ca.door.security.steel.webp
+Carpentry,MATERIAL,"product shot, plain background",Metal door frame,משקוף מתכת,حلق باب حديد,,,ca.frame.door.metal.webp
+Carpentry,MATERIAL,"product shot, plain background",Timber door frame,משקוף עץ,حلق باب خشب,,,ca.frame.door.wood.webp
+Carpentry,MATERIAL,"product shot, plain background",Architrave / casing,חיפוי משקוף,براويز الباب,,,ca.architrave.webp
+Carpentry,MATERIAL,"product shot, plain background",Door hinge,ציר דלת,مفصلة باب,,,ca.hinge.door.webp
+Carpentry,MATERIAL,"product shot, plain background",Cylinder lock,מנעול צילינדר,قفل سلندر,,,ca.lock.cylinder.webp
+Carpentry,MATERIAL,"product shot, plain background",Door closer,מחזיר שמן,مغلاق باب (زنبرك),,,ca.closer.door.webp
+Carpentry,MATERIAL,"product shot, plain background",Intumescent seal strip,פס תופח לדלת אש,شريط منتفخ لباب الحريق,,,ca.strip.intumescent.webp
+Carpentry,MATERIAL,"product shot, plain background",Drop-down threshold seal,אטם סף נשלף,عتبة عزل منسدلة,,,ca.threshold.drop.webp
+Carpentry,MATERIAL,"product shot, plain background",MDF skirting,פנל MDF,وزرة MDF,,,ca.skirting.mdf.webp
+Carpentry,MATERIAL,"product shot, plain background",Kitchen carcass unit,גוף ארון מטבח,هيكل خزانة مطبخ,,,ca.kitchen.carcass.webp
+Carpentry,MATERIAL,"product shot, plain background",Laminate worktop,משטח עבודה למינציה,سطح عمل لامينيت,,,ca.worktop.laminate.webp
+Carpentry,TOOL,"the tool itself, whole",Hinge jig,תבנית לצירים,قالب المفصلات,,,ca.tool.jig.hinge.webp
+Carpentry,TOOL,"the tool itself, whole",Plunge saw with track,מסור שקיעה עם מסילה,منشار غاطس مع سكة,,,ca.tool.saw.track.webp
+Carpentry,TOOL,"the tool itself, whole",Sash clamp,מלחציים ארוכים,ملزمة طويلة,,,ca.tool.clamp.sash.webp
+Carpentry,TOOL,"the tool itself, whole",Door planer,מקצועה חשמלית,مسحاج كهربائي,,,ca.tool.planer.door.webp
+Carpentry,TOOL,"the tool itself, whole",Impact driver,מברגת אימפקט,مفك صدمي,אימפקט / إمباكت,For long screws into timber without pilot holes.,ca.tool.driver.impact.webp
+Earthworks & demolition,MATERIAL,"product shot, plain background",Crushed base course,מצע סוג א׳,بيسة أساس مكسّرة,,,ew.aggregate.base.webp
+Earthworks & demolition,MATERIAL,"product shot, plain background",Fill sand,חול מילוי,رمل ردم,,,ew.sand.fill.webp
+Earthworks & demolition,MATERIAL,"product shot, plain background",Geotextile separation fabric,בד גיאוטכני,قماش جيوتكستايل,,,ew.geotextile.webp
+Earthworks & demolition,MATERIAL,"product shot, plain background",Perforated drainage pipe,צינור ניקוז מחורר,ماسورة تصريف مثقّبة,,,ew.pipe.drain.perf.webp
+Earthworks & demolition,MATERIAL,"product shot, plain background",Trench shoring box,תיבת דיפון לתעלה,صندوق تدعيم الخندق,,A trench over 1.2 m deep is a grave without one. Israeli safety regulations are explicit.,ew.shoring.trench.box.webp
+Earthworks & demolition,MATERIAL,"product shot, plain background",Road plate,לוח פלדה לכביש,بليتة طريق,,,ew.plate.road.webp
+Earthworks & demolition,TOOL,"the tool itself, whole",Plate compactor,מהדק פלטה,دكّاكة صفيحة,,,ew.tool.compactor.plate.webp
+Earthworks & demolition,TOOL,"the tool itself, whole",Trench rammer,מהדק תעלות,دكّاكة خنادق (ضفدع),,,ew.tool.compactor.rammer.webp
+Earthworks & demolition,TOOL,"the tool itself, whole",Rotary laser and staff,לייזר סיבובי ומוט,ليزر دوّار مع مسطرة,,,ew.tool.level.rotary.webp
+Earthworks & demolition,TOOL,"the tool itself, whole",Cable avoidance tool (CAT & genny),גלאי תשתיות תת־קרקעיות,جهاز كشف الخدمات تحت الأرض,,Scanned before any dig. Hitting a live cable or a gas main is how excavation kills.,ew.tool.cat.genny.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Ribbed rebar Ø12,מוט מצולע Ø12,حديد مضلّع Ø12,,,rb.bar.ribbed.12.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Ribbed rebar Ø16,מוט מצולע Ø16,حديد مضلّع Ø16,,,rb.bar.ribbed.16.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Ribbed rebar Ø20,מוט מצולע Ø20,حديد مضلّع Ø20,,,rb.bar.ribbed.20.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Welded reinforcement mesh,רשת ברזל מרותכת,شبك حديد ملحوم,,,rb.mesh.welded.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Stirrup (link),חישוק,كانة (استربة),,,rb.stirrup.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Concrete spacer / chair,שומר מרחק בטון,فاصل باطون (بسكوت),,Holds the cover. Rebar cast against the form rusts and spalls the concrete off within a decade.,rb.spacer.concrete.webp
+Rebar & formwork,CONSUMABLE,,Tying wire,חוט קשירה,سلك ربط,,,rb.wire.tying.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Threaded rebar coupler,מצמד הברגה למוט,وصلة حديد ملولبة,,,rb.coupler.threaded.webp
+Rebar & formwork,MATERIAL,"product shot, plain background",Chemical anchor / rebar dowel,עוגן כימי,مثبّت كيماوي (شناكل),,,rb.dowel.chemical.webp
+Rebar & formwork,TOOL,"the tool itself, whole",Rebar bender,מכופף ברזל,ثنّاية حديد,,,rb.tool.bender.bar.webp
+Rebar & formwork,TOOL,"the tool itself, whole",Rebar cutter,חותך ברזל,قصّاصة حديد,,,rb.tool.cutter.bar.webp
+Rebar & formwork,TOOL,"the tool itself, whole",Tying hook / twister,וו קשירה,خطّاف ربط الحديد,,,rb.tool.tying.hook.webp
+Rebar & formwork,TOOL,"the tool itself, whole",Cover meter / rebar scanner,גלאי ברזל ומדידת כיסוי,جهاز كشف الحديد وقياس الغطاء,,Finds the bar before the core drill does.,rb.tool.cover.meter.webp
+Rebar & formwork,TOOL,"the tool itself, whole",Tying nippers,צבת קשירה,كماشة ربط الحديد,كماشة ربط,"250 mm, for tie wire.",rb.tool.nipper.tying.webp
+Concrete works,MATERIAL,"product shot, plain background",Ready-mix concrete B30,בטון מובא ב-30,باطون جاهز B30,,,cn.readymix.b30.webp
+Concrete works,MATERIAL,"product shot, plain background",Ready-mix concrete B40,בטון מובא ב-40,باطون جاهز B40,,,cn.readymix.b40.webp
+Concrete works,MATERIAL,"product shot, plain background",Formwork panel,לוח תבנית,لوح طوبار,,,cn.formwork.panel.webp
+Concrete works,MATERIAL,"product shot, plain background",Adjustable prop,תמוכה מתכווננת,دعامة قابلة للضبط,,,cn.formwork.prop.webp
+Concrete works,MATERIAL,"product shot, plain background",Formwork tie rod,מוט קשירה לתבנית,قضيب ربط الطوبار,,,cn.formwork.tie.webp
+Concrete works,CONSUMABLE,,Formwork release agent,שמן תבניות,زيت طوبار,,,cn.release.agent.webp
+Concrete works,MATERIAL,"product shot, plain background",Plasticiser admixture,מוסף מפלסטיסייזר,مادة ملدّنة,,Adds workability without adding water. Water added on the truck is strength thrown away.,cn.admix.plasticiser.webp
+Concrete works,MATERIAL,"product shot, plain background",Curing compound,חומר אשפרה,مادة معالجة الباطون,,,cn.curing.compound.webp
+Concrete works,MATERIAL,"product shot, plain background",PVC waterstop,ווטרסטופ PVC,ووتر ستوب PVC,,,cn.waterstop.pvc.webp
+Concrete works,TOOL,"the tool itself, whole",Concrete poker vibrator,ויברטור מחט,هزّاز باطون (إبرة),,,cn.tool.vibrator.poker.webp
+Concrete works,TOOL,"the tool itself, whole",Power float,מחליק בטון,هيليكوبتر تنعيم الباطون,,,cn.tool.power.float.webp
+Concrete works,TOOL,"the tool itself, whole",Vibrating screed,סרגל רוטט,قدّة هزّازة,,,cn.tool.screed.vibrating.webp
+Concrete works,TOOL,"the tool itself, whole",Slump cone set,ערכת קונוס שקיעה,طقم مخروط الهبوط (سلامب),,"The test taken off the truck before it discharges, not after.",cn.tool.slump.cone.webp
+Concrete works,TOOL,"the tool itself, whole",Concrete cube mould,תבנית קובייה לבדיקה,قالب مكعّب فحص,,,cn.tool.cube.mould.webp
+Concrete works,TOOL,"the tool itself, whole",Diamond core drill,מקדח ליבה יהלום,دريل كور ألماس,,,cn.tool.core.drill.webp
+Structural steel,MATERIAL,"product shot, plain background",Steel beam IPE,קורת פלדה IPE,جسر حديد IPE,,,sw.beam.ipe.webp
+Structural steel,MATERIAL,"product shot, plain background",Rectangular hollow section,פרופיל מלבני חלול,بروفيل مجوّف مستطيل,,,sw.hollow.section.webp
+Structural steel,MATERIAL,"product shot, plain background",Base plate,לוחית בסיס,بليتة قاعدة,,,sw.plate.base.webp
+Structural steel,MATERIAL,"product shot, plain background",High-strength structural bolt,בורג מבני בעל חוזק גבוה,برغي إنشائي عالي المقاومة,,,sw.bolt.hsfg.webp
+Structural steel,MATERIAL,"product shot, plain background",Metal deck sheet,פח לרצפה משתפת,صاج ديك معدني,,,sw.deck.metal.webp
+Structural steel,MATERIAL,"product shot, plain background",Intumescent fire paint,צבע תופח נגד אש,دهان منتفخ مقاوم للحريق,,Swells into a char layer in a fire and buys the steel its rated minutes.,sw.paint.intumescent.webp
+Structural steel,MATERIAL,"product shot, plain background",Zinc-rich primer,יסוד עשיר אבץ,برايمر غني بالزنك,,,sw.primer.zinc.webp
+Structural steel,TOOL,"the tool itself, whole",MIG welder,מכונת ריתוך MIG,ماكينة لحام MIG,,,sw.tool.welder.mig.webp
+Structural steel,TOOL,"the tool itself, whole",Stick (MMA) welder,מכונת ריתוך אלקטרודה,ماكينة لحام إلكترود,,,sw.tool.welder.stick.webp
+Structural steel,CONSUMABLE,,Welding electrodes,אלקטרודות ריתוך,إلكترودات لحام,,,sw.consum.electrode.webp
+Structural steel,TOOL,"the tool itself, whole",Torque wrench,מפתח מומנט,مفتاح عزم,,,sw.tool.torque.wrench.webp
+Structural steel,TOOL,"the tool itself, whole",Magnetic base drill,מקדחה מגנטית,دريل بقاعدة مغناطيسية,,,sw.tool.mag.drill.webp
+Structural steel,SAFETY,the item as worn or used,Auto-darkening welding mask,מסכת ריתוך אוטומטית,قناع لحام أوتوماتيكي,,,sw.ppe.welding.mask.webp
+Structural steel,SAFETY,the item as worn or used,Welding fire blanket,שמיכת אש לריתוך,بطانية حريق للحام,,Goes under the work before the arc strikes. Hot work permit asks for it by name.,sw.ppe.fire.blanket.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Concrete block 20 cm,בלוק בטון 20 ס״מ,بلوك باطون 20 سم,,,ms.block.concrete.20.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Concrete block 10 cm,בלוק בטון 10 ס״מ,بلوك باطون 10 سم,,,ms.block.concrete.10.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Thermal block (ytong/aerated),בלוק תרמי / איטונג,بلوك حراري (يتونغ),,,ms.block.thermal.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Hollow clay block,בלוק חרס חלול,طوب فخار مفرّغ,,,ms.block.hollow.clay.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Silicate brick,לבנת סיליקט,طوب سيليكات,,,ms.brick.silicate.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Masonry mortar,טיט בנייה,مونة بناء,,,ms.mortar.masonry.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Precast lintel,משקוף טרומי,عتب جاهز,,,ms.lintel.precast.webp
+Masonry & blockwork,MATERIAL,"product shot, plain background",Wall tie / connector,מקשר קיר,رابط حائط,,,ms.tie.wall.webp
+Masonry & blockwork,TOOL,"the tool itself, whole",Brick trowel,כף בנאי,مالج بناء,,,ms.tool.trowel.brick.webp
+Masonry & blockwork,TOOL,"the tool itself, whole",Line blocks and string,בלוקי חוט ומיתר,بكرات خيط البناء,,,ms.tool.line.block.webp
+Masonry & blockwork,TOOL,"the tool itself, whole",Block saw,מסור בלוקים,منشار بلوك,,,ms.tool.saw.block.webp
+Masonry & blockwork,TOOL,"the tool itself, whole",Spirit level 120 cm,פלס 120 ס״מ,ميزان ماء 120 سم,,,ms.tool.level.spirit.webp
+Masonry & blockwork,TOOL,"the tool itself, whole",Club hammer,פטיש כבד,شاكوش دقّ,شاكوش دق,"1.5 kg, for chasing and setting blocks.",ms.tool.hammer.club.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Cat6 U/UTP data cable,כבל תקשורת Cat6,كابل شبكة Cat6,,,elv.cable.cat6.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Cat6A F/UTP data cable,כבל תקשורת Cat6A מסוכך,كابل شبكة Cat6A مدرّع,,,elv.cable.cat6a.ftp.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Coaxial cable RG6,כבל קואקסיאלי RG6,كابل كواكسيال RG6,,,elv.cable.coax.rg6.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Fire-resistant alarm cable,כבל גילוי אש חסין אש,كابل إنذار مقاوم للحريق,,"Keeps working while it burns, which is the only time it matters.",elv.cable.fire.alarm.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background","Fibre optic, OM4 multimode",סיב אופטי OM4,ألياف ضوئية OM4,,,elv.cable.fibre.om4.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background","Patch panel, 24 port",פאנל תקשורת 24 יציאות,باتش بانل 24 مخرج,,,elv.patch.panel.24.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background","19"" cabinet, 42U","ארון תקשורת 19"" ‏42U",كابينة 19 إنش ‏42U,,,elv.rack.19.42u.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",RJ45 data outlet,שקע תקשורת RJ45,بريزة شبكة RJ45,,,elv.outlet.rj45.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",IP dome camera,מצלמת IP כיפה,كاميرا IP قبّة,,,elv.camera.dome.ip.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",IP bullet camera,מצלמת IP צינור,كاميرا IP بوليت,,,elv.camera.bullet.ip.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background","Network video recorder, 16 channel",מקליט וידאו רשת 16 ערוצים,مسجّل شبكي 16 قناة,,,elv.nvr.16ch.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Entry intercom panel,לוח אינטרקום כניסה,لوحة إنترکوم المدخل,,,elv.intercom.panel.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Intercom handset,שפופרת אינטרקום,سمّاعة إنترکوم,,,elv.intercom.handset.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Addressable smoke detector,גלאי עשן כתובתי,كاشف دخان معنون,,,elv.fire.detector.smoke.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Addressable heat detector,גלאי חום כתובתי,كاشف حرارة معنون,,,elv.fire.detector.heat.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Sounder / beacon,צופר ונצנץ,صفارة وفلاش إنذار,,,elv.fire.sounder.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Manual call point,לחצן אזעקה ידני,زر إنذار يدوي,,,elv.fire.callpoint.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Fire alarm control panel,רכזת גילוי אש,لوحة تحكم إنذار الحريق,,,elv.fire.panel.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Access control reader,קורא בקרת כניסה,قارئ تحكم بالدخول,,,elv.access.reader.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",Magnetic door lock,מנעול מגנטי,قفل مغناطيسي,,,elv.access.maglock.webp
+Low voltage & ELV,MATERIAL,"product shot, plain background",TV distribution amplifier,מגבר טלוויזיה,مضخّم توزيع تلفزيون,,,elv.tv.amplifier.webp
+Low voltage & ELV,TOOL,"the tool itself, whole",LAN cable tester,בודק כבלי רשת,فاحص كابلات شبكة,,,elv.tool.lan.tester.webp
+Low voltage & ELV,TOOL,"the tool itself, whole",Cable certifier (Cat6A),מאשר תשתית תקשורת,جهاز اعتماد الكابلات Cat6A,,Prints the certificate the client asks for at handover. A continuity tester is not this.,elv.tool.certifier.webp
+Low voltage & ELV,TOOL,"the tool itself, whole",Punch-down tool (110/krone),כלי נעיצה 110,أداة تثبيت 110/كرون,,,elv.tool.punch.down.webp
+Low voltage & ELV,TOOL,"the tool itself, whole",RJ45 crimping tool,מלחץ RJ45,كماشة كبس RJ45,,,elv.tool.crimp.rj45.webp
+Low voltage & ELV,TOOL,"the tool itself, whole",Fusion splicer,מחבר סיבים בהיתוך,جهاز لحام ألياف ضوئية,,,elv.tool.fibre.splicer.webp
+Low voltage & ELV,TOOL,"the tool itself, whole",OTDR,מודד OTDR,جهاز OTDR,,,elv.tool.otdr.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",Torch-on bitumen membrane,יריעה ביטומנית,رول بيتومين بالحرق,,,wp.membrane.bitumen.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",TPO single-ply membrane,יריעת TPO,غشاء TPO,,,wp.membrane.tpo.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",Cementitious waterproofing slurry,איטום צמנטי,عزل إسمنتي,,,wp.liquid.cement.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",Liquid polyurethane membrane,איטום פוליאוריטן נוזלי,عزل بولي يوريثان سائل,,,wp.liquid.polyurethane.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",Bitumen primer,יסוד ביטומני,برايمر بيتوميني,,,wp.primer.bitumen.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",Sealing tape for corners,סרט איטום לפינות,شريط عزل الزوايا,,Wall-to-floor junctions leak first. The membrane alone does not bridge a moving corner.,wp.tape.corner.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",XPS insulation board,לוח בידוד XPS,لوح عزل XPS,,,wp.insulation.xps.webp
+Waterproofing & insulation,MATERIAL,"product shot, plain background",Roof drain outlet,מחסום גג,مصرف سطح,,,wp.drain.roof.webp
+Waterproofing & insulation,TOOL,"the tool itself, whole",Roofing gas torch,מבער גז לאיטום,شعّالة غاز للعزل,,,wp.tool.torch.gas.webp
+Waterproofing & insulation,TOOL,"the tool itself, whole",Spiked roller,גלגלת קוצים,رول مسنّن,,,wp.tool.roller.spike.webp
+Waterproofing & insulation,TOOL,"the tool itself, whole",Flood test kit,ערכת בדיקת הצפה,طقم فحص الغمر,,"Fill it, leave it 24 hours, look at the ceiling below. The only test that counts.",wp.tool.flood.test.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Base render mortar,טיט הרבצה,مونة لياسة أساس,,,ps.mortar.render.base.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Finish render,טיח גמר,لياسة تشطيب,,,ps.mortar.render.finish.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Gypsum plaster,טיח גבס,جبصين لياسة,,,ps.plaster.gypsum.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Skim / fine filler,שפכטל גמר,معجون تشطيب ناعم,,,ps.skim.filler.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Bonding agent / key coat,יסוד הצמדה,مادة ربط (بونديج),,,ps.bonding.agent.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Render reinforcing mesh,רשת חיזוק לטיח,شبك تقوية اللياسة,,Over every joint between two materials. That is where the crack starts.,ps.mesh.render.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Render corner bead,פינת טיח,زاوية لياسة,,,ps.bead.corner.render.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Floor screed,מדה לרצפה,مونة أرضيات (سكريد),,,ps.screed.floor.webp
+Plastering & screed,MATERIAL,"product shot, plain background",Self-levelling compound,מדה מתפלסת,مونة ذاتية التسوية,,,ps.screed.self.level.webp
+Plastering & screed,TOOL,"the tool itself, whole",Plasterer’s hawk,לוח נשיאה,لوح حمل المونة,,,ps.tool.hawk.webp
+Plastering & screed,TOOL,"the tool itself, whole",Finishing trowel,כף גמר,مالج تشطيب,,,ps.tool.trowel.finish.webp
+Plastering & screed,TOOL,"the tool itself, whole",Darby / straight edge,סרגל יישור,قدّة تسوية,,,ps.tool.darby.webp
+Plastering & screed,TOOL,"the tool itself, whole",Sponge float,מגלף ספוג,مالج إسفنج,,,ps.tool.sponge.float.webp
+Plastering & screed,TOOL,"the tool itself, whole",Render spray pump,משאבת התזת טיח,مضخة رشّ لياسة,,,ps.tool.render.pump.webp
+Plastering & screed,TOOL,"the tool itself, whole",Forced-action mixer,מערבל כפוי,خلّاطة قسرية,,,ps.tool.mixer.forced.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Porcelain tile 60×60,אריח פורצלן 60×60,بلاط بورسلان 60×60,,,tl.tile.porcelain.60x60.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Porcelain tile 120×60,אריח פורצלן 120×60,بلاط بورسلان 120×60,,,tl.tile.porcelain.120x60.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Ceramic wall tile,אריח קרמיקה לקיר,سيراميك حيطان,,,tl.tile.ceramic.wall.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Mosaic sheet,פסיפס,فسيفساء (موزاييك),,,tl.tile.mosaic.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Terrazzo tile,אריח טראצו,بلاط تيرازو,,,tl.tile.terrazzo.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Tile adhesive C2TE,דבק אריחים C2TE,لاصق بلاط C2TE,,"C2 = improved cement, T = no slip, E = extended open time. Large-format tile needs all three.",tl.adhesive.c2te.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Tile grout CG2,רובה CG2,قصارة بلاط CG2,,,tl.grout.cg2.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Epoxy grout,רובה אפוקסי,قصارة إيبوكسي,,,tl.grout.epoxy.webp
+Tiling & marble,CONSUMABLE,,Sanitary silicone,סיליקון סניטרי,سيليكون صحي,,,tl.silicone.sanitary.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Tile trim profile,פרופיל סיום לאריח,بروفيل إنهاء البلاط,,,tl.profile.schluter.webp
+Tiling & marble,MATERIAL,"product shot, plain background",Uncoupling membrane,יריעת ניתוק,غشاء فصل الحركة,,,tl.uncoupling.membrane.webp
+Tiling & marble,CONSUMABLE,,Levelling clips and wedges,קליפסים ליישור אריחים,مشابك وأسافين تسوية,,,tl.levelling.clips.webp
+Tiling & marble,TOOL,"the tool itself, whole",Manual tile cutter,חותך אריחים ידני,قصّاصة بلاط يدوية,,,tl.tool.cutter.manual.webp
+Tiling & marble,TOOL,"the tool itself, whole",Wet tile saw,מסור אריחים רטוב,منشار بلاط مبلّل,,,tl.tool.saw.wet.webp
+Tiling & marble,TOOL,"the tool itself, whole",Notched trowel,כף משוננת,مالج مسنّن,,,tl.tool.trowel.notched.webp
+Tiling & marble,TOOL,"the tool itself, whole",Mixing drill with paddle,מערבל עם מוט ערבוב,دريل خلط مع ريشة,,,tl.tool.mixer.paddle.webp
+Tiling & marble,TOOL,"the tool itself, whole",Tile suction cup,כוס ואקום לאריח,كأس شفط بلاط,,,tl.tool.suction.cup.webp
+Tiling & marble,TOOL,"the tool itself, whole",Floor laser / level,לייזר לרצפה,ليزر أرضيات,,,tl.tool.laser.floor.webp
+Tiling & marble,TOOL,"the tool itself, whole",Spirit level 100 cm,פלס 100 ס״מ,ميزان مياه 100 سم,פלס / ميزان,"Checked on every course, not at the end.",tl.tool.level.spirit.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background","Plasterboard, standard 12.5 mm",לוח גבס רגיל 12.5 מ״מ,لوح جبس عادي 12.5 ملم,,,gb.board.standard.12_5.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background","Plasterboard, moisture-resistant (green)",לוח גבס עמיד לחות (ירוק),لوح جبس مقاوم للرطوبة (أخضر),,Bathrooms and kitchens. Not a substitute for waterproofing behind tile.,gb.board.moisture.12_5.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background","Plasterboard, fire-rated (pink) 15 mm",לוח גבס חסין אש (ורוד) 15 מ״מ,لوح جبس مقاوم للحريق (وردي) 15 ملم,,,gb.board.fire.15.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Acoustic plasterboard,לוח גבס אקוסטי,لوح جبس عازل للصوت,,,gb.board.acoustic.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Cement board,לוח צמנטבורד,لوح سمنت بورد,,,gb.board.cement.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Metal stud C-70,פרופיל C-70,بروفيل C-70,,,gb.stud.c.70.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Metal track U-70,מסילה U-70,مسار U-70,,,gb.track.u.70.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Ceiling hanger and spring clip,תלייה לתקרה עם קפיץ,علّاقة سقف مع زنبرك,,,gb.hanger.ceiling.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background","Suspended ceiling grid, T24",שלד תקרה אקוסטית T24,شبكة سقف معلّق T24,,,gb.grid.t24.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Mineral ceiling tile 60×60,אריח תקרה מינרלי 60×60,بلاطة سقف معدنية 60×60,,,gb.tile.mineral.60x60.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Corner bead,פינת מגן,زاوية حماية (كورنر),,,gb.corner.bead.webp
+Drywall & gypsum,CONSUMABLE,,"Joint tape, paper",סרט חיזוק לרובה,شريط تقوية ورقي,,,gb.tape.paper.webp
+Drywall & gypsum,CONSUMABLE,,"Joint tape, fibreglass mesh",סרט רשת פיברגלס,شريط شبك فايبر,,,gb.tape.mesh.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Jointing compound,שפכטל למישקים,معجون فواصل (جبصين),,,gb.compound.joint.webp
+Drywall & gypsum,CONSUMABLE,,Drywall screw 25 mm,בורג גבס 25 מ״מ,برغي جبس 25 ملم,,,gb.screw.drywall.25.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background","Rock wool infill, 50 mm",צמר סלעים 50 מ״מ,صوف صخري 50 ملم,,Goes inside the partition. Half of what a plasterboard wall is for is the noise.,gb.insulation.rockwool.webp
+Drywall & gypsum,MATERIAL,"product shot, plain background",Ceiling access hatch,דלת שירות לתקרה,فتحة صيانة للسقف,,"Every valve and damper above a sealed ceiling needs one, or the ceiling comes down at the first fault.",gb.access.hatch.webp
+Drywall & gypsum,TOOL,"the tool itself, whole",Drywall screwgun with depth stop,מברגת גבס עם עומק,دريل جبس بمحدّد عمق,,,gb.tool.screwgun.webp
+Drywall & gypsum,TOOL,"the tool itself, whole",Panel lifter,מרים לוחות,رافعة ألواح,,"A ceiling board is a two-man lift, or one man and this.",gb.tool.board.lifter.webp
+Drywall & gypsum,TOOL,"the tool itself, whole",Board rasp / edge plane,משוף לוחות,مبرد ألواح,,,gb.tool.rasp.webp
+Drywall & gypsum,TOOL,"the tool itself, whole",Taping knife set,ערכת סכיני שפכטל,طقم سكاكين معجون,,,gb.tool.knife.taping.webp
+Drywall & gypsum,TOOL,"the tool itself, whole",Drywall stilts,קביים לגבס,ركائز جبس (ستيلتس),,Faster than a hop-up and far easier to fall off. Check the site rules before they come out of the van.,gb.tool.stilts.webp
+Drywall & gypsum,TOOL,"the tool itself, whole",Utility knife,סכין יפנית,سكين قصّ,יפנית / أوليمبي,Snap-off blade; a dull blade tears the paper.,gb.tool.knife.utility.webp
+Drywall & gypsum,TOOL,"the tool itself, whole",Spirit level 120 cm,פלס 120 ס״מ,ميزان مياه 120 سم,פלס / ميزان,For setting the track before anything is boarded.,gb.tool.level.spirit.webp
+Stonework & cladding,MATERIAL,"product shot, plain background","Jerusalem stone slab, sawn",לוח אבן ירושלמית מנוסרת,لوح حجر قدسي منشور,,,st.stone.jerusalem.slab.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Tobzeh (bush-hammered) stone,אבן טובזה,حجر طبزة,,,st.stone.tobzeh.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Msamsam (chiselled) stone,אבן מסמסם,حجر مسمسم,,,st.stone.msamsam.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Mafjar (split-face) stone,אבן מפג׳ר,حجر مفجّر,,,st.stone.mafjar.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Marble slab,לוח שיש,لوح رخام,,,st.stone.marble.slab.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Granite slab,לוח גרניט,لوح جرانيت,,,st.stone.granite.slab.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Stone window sill,אדן חלון אבן,عتبة شباك حجر,,,st.sill.window.stone.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Stainless steel stone anchor,עוגן אבן נירוסטה,مثبّت حجر ستانلس,,Mechanical fixing. A facade stone held on mortar alone comes off the building eventually.,st.anchor.stainless.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Stone-setting mortar,טיט לאבן,مونة تثبيت الحجر,,,st.mortar.stone.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Stone pointing grout,רובה לאבן,قصارة فواصل الحجر,,,st.grout.stone.webp
+Stonework & cladding,MATERIAL,"product shot, plain background",Stone impregnating sealer,אימפרגנציה לאבן,مادة حماية للحجر,,,st.sealer.stone.webp
+Stonework & cladding,TOOL,"the tool itself, whole",Angle grinder 230 mm,משחזת זווית 230 מ״מ,جلّاخة 230 ملم,,,st.tool.grinder.230.webp
+Stonework & cladding,TOOL,"the tool itself, whole",Bridge saw,מסור גשר,منشار جسري,,,st.tool.saw.bridge.webp
+Stonework & cladding,TOOL,"the tool itself, whole",Stone chisel set,ערכת אזמלי אבן,طقم أزاميل حجر,,,st.tool.chisel.set.webp
+Stonework & cladding,TOOL,"the tool itself, whole",Bush hammer,פטיש טובזה,شاكوش طبزة,,,st.tool.bush.hammer.webp
+Stonework & cladding,CONSUMABLE,,Diamond blade for stone,דיסק יהלום לאבן,قرص ألماس للحجر,,,st.tool.blade.diamond.webp
+Stonework & cladding,TOOL,"the tool itself, whole",Vacuum slab lifter,מרים ואקום ללוחות,رافعة شفط للألواح,,,st.tool.vacuum.lifter.webp
+Stonework & cladding,SAFETY,the item as worn or used,Respirator P3 (silica),מסכת נשימה P3,كمامة P3 (سيليكا),,Cutting stone dry makes respirable silica. This is the difference between a career and silicosis.,st.ppe.dust.mask.p3.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Aluminium casement window,חלון אלומיניום ציר,شباك ألمنيوم مفصلي,,,al.window.casement.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Aluminium sliding window,חלון הזזה אלומיניום,شباك ألمنيوم سحّاب,,,al.window.sliding.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Aluminium entrance door,דלת כניסה אלומיניום,باب مدخل ألمنيوم,,,al.door.entrance.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Curtain wall system,קיר מסך,كيرتن وول,,,al.curtain.wall.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Aluminium composite panel,לוח קומפוזיט אלומיניום,بانل ألمنيوم مركّب (ACP),,,al.acp.panel.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Double glazed unit,זכוכית בידודית,زجاج دبل (عازل),,,al.glass.double.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Laminated safety glass,זכוכית רב־שכבתית,زجاج مصفّح (لامينيت),,,al.glass.laminated.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Tempered glass,זכוכית מחוסמת,زجاج مقسّى (سيكوريت),,,al.glass.tempered.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",Rolling shutter (trisol),תריס גלילה,شيش رول (تريسول),,,al.shutter.rolling.webp
+Aluminium & glazing,MATERIAL,"product shot, plain background",EPDM glazing gasket,אטם EPDM לזיגוג,جلدة EPDM للزجاج,,,al.gasket.epdm.webp
+Aluminium & glazing,CONSUMABLE,,Structural silicone,סיליקון מבני,سيليكون إنشائي,,,al.sealant.structural.webp
+Aluminium & glazing,TOOL,"the tool itself, whole",Aluminium mitre saw,מסור גרונג לאלומיניום,منشار زاوية للألمنيوم,,,al.tool.saw.mitre.webp
+Aluminium & glazing,TOOL,"the tool itself, whole",Glass suction lifter,כוס ואקום לזכוכית,كأس شفط زجاج,,,al.tool.glass.suction.webp
+Aluminium & glazing,TOOL,"the tool itself, whole",Sealant gun,אקדח סיליקון,مسدس سيليكون,,,al.tool.gun.sealant.webp
+Metalwork & balustrades,MATERIAL,"product shot, plain background",Steel balustrade,מעקה פלדה,درابزين حديد,,,mw.balustrade.steel.webp
+Metalwork & balustrades,MATERIAL,"product shot, plain background",Glass balustrade,מעקה זכוכית,درابزين زجاج,,,mw.balustrade.glass.webp
+Metalwork & balustrades,MATERIAL,"product shot, plain background",Stainless handrail,מאחז יד נירוסטה,مسكة يد ستانلس,,,mw.handrail.stainless.webp
+Metalwork & balustrades,MATERIAL,"product shot, plain background",Steel gate,שער פלדה,بوابة حديد,,,mw.gate.steel.webp
+Metalwork & balustrades,MATERIAL,"product shot, plain background",Steel floor grating,סורג רצפה פלדה,مشبك أرضية حديد,,,mw.grating.steel.webp
+Metalwork & balustrades,TOOL,"the tool itself, whole",Angle grinder 125 mm,משחזת זווית 125 מ״מ,جلّاخة 125 ملم,,,mw.tool.grinder.125.webp
+Metalwork & balustrades,TOOL,"the tool itself, whole",Pipe/tube bender,מכופף צינורות,ثنّاية مواسير,,,mw.tool.bender.pipe.webp
+Metalwork & balustrades,TOOL,"the tool itself, whole",Welding clamp set,ערכת מלחציים לריתוך,طقم ملازم لحام,,,mw.tool.clamp.welding.webp
+Metalwork & balustrades,TOOL,"the tool itself, whole",Bench vice,מלחציים שולחן,ملزمة طاولة,ملزمة,125 mm jaws.,mw.tool.vice.bench.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Black steel pipe SCH40,צינור פלדה שחור SCH40,ماسورة حديد أسود SCH40,,,ff.pipe.steel.sch40.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Pendent sprinkler head,ראש ספרינקלר תלוי,رشّاش معلّق,,,ff.sprinkler.pendent.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Upright sprinkler head,ראש ספרינקלר זקוף,رشّاش قائم,,,ff.sprinkler.upright.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Alarm check valve,שסתום התראה,محبس إنذار,,,ff.valve.alarm.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Fire hose reel,גלגלון כיבוי,بكرة خرطوم حريق,,,ff.hose.reel.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Fire hydrant cabinet,ארון הידרנט,خزانة حريق,,,ff.cabinet.hydrant.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Dry powder extinguisher 6 kg,מטף אבקה 6 ק״ג,طفاية بودرة 6 كغم,,,ff.extinguisher.6kg.webp
+Firefighting systems,MATERIAL,"product shot, plain background",Jockey pump,משאבת ג׳וקי,مضخة جوكي,,,ff.pump.jockey.webp
+Firefighting systems,TOOL,"the tool itself, whole",Pipe grooving machine,מכונת חריצה לצינור,ماكينة تخديد المواسير,,,ff.tool.groove.roller.webp
+Firefighting systems,TOOL,"the tool itself, whole",Hydrostatic test pump,משאבת בדיקת לחץ,مضخة فحص ضغط,,Two hours at the test pressure with no drop. Signed off before the ceiling closes.,ff.tool.pressure.test.webp
+Elevators & escalators,MATERIAL,"product shot, plain background",Elevator guide rail,מסילת מוביל למעלית,سكة توجيه المصعد,,,lf.guide.rail.webp
+Elevators & escalators,MATERIAL,"product shot, plain background",Gearless traction machine,מנוע גירלס,ماكينة جر بدون تروس,,,lf.machine.gearless.webp
+Elevators & escalators,MATERIAL,"product shot, plain background",Traction rope / belt,כבל משיכה,حبل جر,,,lf.rope.traction.webp
+Elevators & escalators,MATERIAL,"product shot, plain background",Elevator controller,בקר מעלית,لوحة تحكم المصعد,,,lf.controller.webp
+Elevators & escalators,MATERIAL,"product shot, plain background",Landing door assembly,דלת פיר,باب الطابق للمصعد,,,lf.door.landing.webp
+Elevators & escalators,MATERIAL,"product shot, plain background",Pit buffer,בולם בור,مصدّ الحفرة,,,lf.buffer.webp
+Elevators & escalators,MATERIAL,"product shot, plain background",Overspeed governor,מווסת מהירות יתר,منظّم السرعة الزائدة,,,lf.governor.webp
+Elevators & escalators,TOOL,"the tool itself, whole",Shaft plumbing kit,ערכת אנך לפיר,طقم شاقول البئر,,,lf.tool.plumb.shaft.webp
+Elevators & escalators,TOOL,"the tool itself, whole",Rope tension meter,מד מתיחות כבלים,مقياس شد الحبال,,,lf.tool.tension.meter.webp
+Landscape & paving,MATERIAL,"product shot, plain background",Interlock paver,אבן משתלבת,بلاط انترلوك,,,ls.paver.interlock.webp
+Landscape & paving,MATERIAL,"product shot, plain background",Concrete kerb,אבן שפה,بردورة باطون,,,ls.kerb.concrete.webp
+Landscape & paving,MATERIAL,"product shot, plain background",Tactile warning paving,ריצוף אזהרה מישושי,بلاط تحذير ملموس,,Required at every crossing and stair head under Israeli accessibility rules.,ls.tactile.paving.webp
+Landscape & paving,MATERIAL,"product shot, plain background",Drip irrigation line,טפטפות,خط ري بالتنقيط,,,ls.irrigation.dripline.webp
+Landscape & paving,MATERIAL,"product shot, plain background",Irrigation controller,בקר השקיה,وحدة تحكم الري,,,ls.irrigation.controller.webp
+Landscape & paving,MATERIAL,"product shot, plain background",Topsoil,אדמת גן,تربة زراعية,,,ls.topsoil.webp
+Landscape & paving,MATERIAL,"product shot, plain background",Tree stake and tie,סמוכה לעץ,دعامة شجرة,,,ls.tree.stake.webp
+Landscape & paving,TOOL,"the tool itself, whole",Paving compactor with pad,מהדק לריצוף עם רפידה,دكّاكة بلاط مع لبادة,,,ls.tool.compactor.paving.webp
+Landscape & paving,TOOL,"the tool itself, whole",Block splitter,מפצל אבן משתלבת,مقصلة انترلوك,,,ls.tool.splitter.block.webp
+General construction,MATERIAL,"product shot, plain background","Portland cement, 50 kg","מלט פורטלנד, 50 ק״ג",إسمنت بورتلاندي، 50 كغ,,CEM I 42.5. Store off the ground and dry.,ge.cement.portland.webp
+General construction,MATERIAL,"product shot, plain background",Washed sand,חול רחוץ,رمل مغسول,,For mortar and screed.,ge.sand.washed.webp
+General construction,MATERIAL,"product shot, plain background",Gravel 20 mm,חצץ 20 מ״מ,حصى 20 ملم,,Coarse aggregate for site-mixed concrete.,ge.gravel.20.webp
+General construction,MATERIAL,"product shot, plain background",Ready-mix concrete B30,בטון מובא ב־30,باطون جاهز ب-30,,Delivery note kept with the site file for the engineer.,ge.concrete.b30.webp
+General construction,MATERIAL,"product shot, plain background",Concrete block 20 cm,בלוק בטון 20 ס״מ,بلوك باطون 20 سم,,Hollow block for partition and external walls.,ge.block.concrete.20.webp
+General construction,MATERIAL,"product shot, plain background",Aerated concrete block 10 cm,בלוק איטונג 10 ס״מ,بلوك خرساني خلوي 10 سم,,"Light partition block, glue-mortar bedded.",ge.block.ytong.10.webp
+General construction,MATERIAL,"product shot, plain background",Reinforcing bar Ø12 mm,מוט זיון קוטר 12 מ״מ,حديد تسليح قطر 12 ملم,,Ribbed bar; laps and covers per the structural drawing.,ge.rebar.12.webp
+General construction,MATERIAL,"product shot, plain background",Reinforcement mesh,רשת זיון,شبك تسليح,,Welded mesh for slabs and screeds.,ge.mesh.reinforcement.webp
+General construction,MATERIAL,"product shot, plain background",Base coat plaster,טיח שכבה ראשונה,قصارة الطبقة الأولى,,Machine or hand applied over blockwork.,ge.plaster.base.webp
+General construction,MATERIAL,"product shot, plain background",Tile adhesive C2TE,דבק אריחים C2TE,غراء بلاط C2TE,,Flexible adhesive for large-format porcelain.,ge.tile.adhesive.webp
+General construction,MATERIAL,"product shot, plain background",Tile grout,רובה לאריחים,روبة للبلاط,,"Cement grout, 2–8 mm joints.",ge.grout.webp
+General construction,MATERIAL,"product shot, plain background",Porcelain tile 60×60,אריח פורצלן 60×60,بلاط بورسلان 60×60,,Slip rating checked for wet areas.,ge.tile.porcelain.60.webp
+General construction,MATERIAL,"product shot, plain background",Bituminous waterproofing membrane,יריעת איטום ביטומנית,لفافة عزل مائي بيتومينية,,Torch-applied membrane for roofs. Hot-work permit required.,ge.waterproof.bitumen.webp
+General construction,MATERIAL,"product shot, plain background",Cementitious waterproofing,איטום צמנטי,عزل مائي إسمنتي,,Two-component slurry for wet rooms and balconies.,ge.waterproof.cement.webp
+General construction,TOOL,"the tool itself, whole",Concrete mixer,מערבל בטון,خلاطة باطون,,"Site mixer, 120–160 L drum.",ge.tool.mixer.webp
+General construction,TOOL,"the tool itself, whole",Angle grinder 230 mm,משחזת זווית 230 מ״מ,جلاخة زاوية 230 ملم,,Guard fitted and disc rated above tool speed. Hot-work permit for sparks.,ge.tool.angle_grinder.webp
+General construction,TOOL,"the tool itself, whole",Demolition breaker,פטיש חוצב,مطرقة هدم,,Vibration exposure limited; anti-vibration gloves worn.,ge.tool.breaker.webp
+General construction,TOOL,"the tool itself, whole",Brick trowel,כף בנאי,مالج بنّاء,,Steel trowel for bedding mortar.,ge.tool.trowel.webp
+General construction,TOOL,"the tool itself, whole",Spirit level 120 cm,פלס 120 ס״מ,ميزان ماء 120 سم,,Aluminium level with three vials.,ge.tool.level.spirit.webp
+General construction,TOOL,"the tool itself, whole",Cross-line laser level,מפלס לייזר צלב,ميزان ليزر صليبي,,"Self-levelling, with tripod. Class 2 laser.",ge.tool.laser_level.webp
+General construction,TOOL,"the tool itself, whole",Tape measure 8 m,סרט מדידה 8 מ׳,شريط قياس 8 م,,Metric tape with a magnetic hook.,ge.tool.tape.8m.webp
+General construction,TOOL,"the tool itself, whole",Wheelbarrow,מריצה,عربة يد,,"Steel barrow, 90 L.",ge.tool.wheelbarrow.webp
+General construction,TOOL,"the tool itself, whole",Chalk line,חוט סימון,خيط تعليم,,Snap line for setting out walls and tiles.,ge.tool.chalk_line.webp
+General construction,MATERIAL,"product shot, plain background",Scaffold frame section,מסגרת פיגום,إطار سقالة,,"Erected, altered and dismantled by a competent person only.",ge.access.scaffold.frame.webp
+General construction,MATERIAL,"product shot, plain background",Extension ladder,סולם הארכה,سلّم تمديد,,"Tied at the top, 1 m above the landing, 1:4 angle.",ge.access.ladder.extension.webp
+General construction,SAFETY,the item as worn or used,Safety helmet,קסדת מגן,خوذة أمان,,With chin strap; replaced after any impact.,ge.safety.helmet.webp
+General construction,SAFETY,the item as worn or used,Safety boots S3,נעלי בטיחות S3,حذاء أمان S3,,Steel toe and penetration-resistant midsole.,ge.safety.boots.webp
+General construction,SAFETY,the item as worn or used,High-visibility vest,אפוד זוהר,سترة عاكسة,,"Class 2 vest, worn at all times on site.",ge.safety.vest.webp
+General construction,SAFETY,the item as worn or used,Full body harness and lanyard,רתמת בטיחות מלאה וחבל קשירה,حزام أمان كامل مع حبل ربط,,Work at height above 2 m. Inspected before use; anchor point verified.,ge.safety.harness.webp
+General construction,SAFETY,the item as worn or used,Ear plugs,אטמי אוזניים,سدادات أذن,,"For breaker, grinder and mixer work.",ge.safety.ear_plugs.webp
+General construction,SAFETY,the item as worn or used,Site first aid kit,ערכת עזרה ראשונה לאתר,حقيبة إسعاف أولي للموقع,,Contents checked monthly; location known to every worker.,ge.safety.first_aid.webp
+General construction,SAFETY,the item as worn or used,Fire extinguisher 6 kg,מטף כיבוי 6 ק״ג,طفاية حريق 6 كغ,,"Dry powder, within reach of all hot work.",ge.safety.fire_extinguisher.webp
+General construction,TOOL,"the tool itself, whole",Cordless drill / driver,מברגה־מקדחה נטענת,مثقاب ومفك شحن,מברגה / مفريغا,"18 V, two batteries and a charger. The one tool every trade owns.",ge.tool.driver.cordless.webp
+General construction,TOOL,"the tool itself, whole",Impact driver,מברגת אימפקט,مفك صدمي,אימפקט / إمباكت,For long screws and anything a drill-driver stalls on.,ge.tool.driver.impact.webp
+General construction,TOOL,"the tool itself, whole",Claw hammer,פטיש נגרים,شاكوش بمخلب,شاكوش,"500 g, wooden or fibreglass handle.",ge.tool.hammer.claw.webp
+General construction,TOOL,"the tool itself, whole",Builder's square,זווית בנאים,زاوية بناء,كوس,For setting out a right angle on a wall or a floor.,ge.tool.square.builders.webp
+General construction,TOOL,"the tool itself, whole",Combination pliers,פלייר,زرديّة,بلاير,"180 mm, insulated grips.",ge.tool.pliers.combination.webp
+General construction,TOOL,"the tool itself, whole",Adjustable spanner,מפתח שוודי,مفتاح قابل للضبط,שוודי / مفتاح إنجليزي,250 mm.,ge.tool.wrench.adjustable.webp
+General construction,TOOL,"the tool itself, whole",Utility knife,סכין יפנית,سكين قصّ,יפנית / أوليمبي,"Snap-off blade, with spare blades.",ge.tool.knife.utility.webp
+General construction,TOOL,"the tool itself, whole",Wrecking bar,מוט פריצה,عتلة,,"600 mm, for stripping and pulling nails.",ge.tool.bar.wrecking.webp
+General construction,TOOL,"the tool itself, whole",Sealant gun,אקדח סיליקון,مسدس سيليكون,,"Skeleton frame, for 310 ml cartridges.",ge.tool.gun.sealant.webp
+General construction,TOOL,"the tool itself, whole",Builder's bucket,דלי בניין,سطل باطون,سطل,"Heavy duty, graduated.",ge.tool.bucket.builders.webp
+General construction,TOOL,"the tool itself, whole",Extension lead on a reel,מאריך על גלגלת,تمديدة كهرباء على بكرة,גלגלת / بكرة,"25 m, with thermal cut-out. Unwind it fully before drawing a load.",ge.tool.extension.reel.webp
+General construction,TOOL,"the tool itself, whole",Site work light,פנס עבודה לאתר,كشّاف عمل للموقع,كشّاف,"LED, on a stand.",ge.tool.light.work.webp
+General construction,TOOL,"the tool itself, whole",Site vacuum,שואב אבק לאתר,مكنسة ورشة,,"Wet and dry, M-class filter for silica dust.",ge.tool.vacuum.site.webp
