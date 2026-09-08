@@ -160,6 +160,162 @@ object Migrations {
         }
     }
 
+    /**
+     * The firm's own profile, and the contracting chain above and below it.
+     *
+     * Four tables and eleven columns. The columns give a company something to
+     * publish and a per-field say in who sees it; the tables give a job more
+     * than one firm on it, which is what every tier rule in `core/access` and
+     * `core/work` has been written against.
+     */
+    val MIGRATION_18_19 = object : Migration(18, 19) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_18_19.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * A task can say where in the job it sits.
+     *
+     * Nullable, so every task already on a phone stays exactly as it is. A
+     * migration that invented a stage for existing rows would be guessing, and
+     * a guessed stage is worse than none — it reads as fact.
+     */
+    val MIGRATION_19_20 = object : Migration(19, 20) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_19_20.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * An application can say what it is made of.
+     *
+     * A new table rather than a column: an application covers many packages,
+     * and a comma-joined list of ids in a column is a join table with the
+     * safety removed.
+     */
+    val MIGRATION_20_21 = object : Migration(20, 21) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_20_21.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * The audit trail becomes tamper-evident.
+     *
+     * Existing rows get sequence 0 and no hashes, which is honest: they were
+     * written before anything was signed and nothing can now vouch for them.
+     * Back-filling a chain over them would produce a log that verified without
+     * ever having been protected, which is worse than one that admits the gap.
+     */
+    val MIGRATION_21_22 = object : Migration(21, 22) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_21_22.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * Violations, and photos that know whether they are videos.
+     *
+     * The mediaType default here is 'image' and the entity declares the same
+     * one. A default on one side and not the other is what broke three
+     * releases: Room revalidates on the first open and a column it did not
+     * expect is a crash on launch for everybody who already had the app.
+     */
+    val MIGRATION_22_23 = object : Migration(22, 23) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_22_23.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * What the gate records: who admitted somebody, and their signature.
+     *
+     * All three columns are nullable and none of them carries a default,
+     * because null is the true answer for every membership that already
+     * exists — nobody stood on a gate for the firm's first owner. Giving them
+     * a default would be inventing an induction that never happened, on rows
+     * that may one day be read out in an argument about whether it did.
+     */
+    val MIGRATION_23_24 = object : Migration(23, 24) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_23_24.forEach(db::execSQL)
+        }
+    }
+
+    /** What an incident cost, when somebody knows. Null until they do. */
+    val MIGRATION_24_25 = object : Migration(24, 25) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_24_25.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * Which stages of the job a catalogue item is for.
+     *
+     * The default is an empty JSON array, matching @ColumnInfo on
+     * CatalogItemEntity, and it means "every stage". Existing rows keep
+     * showing up under every filter until the next catalogue load fills them
+     * in, which is the right way round: a column that arrived empty must not
+     * make a plumber's pipes vanish from their own list.
+     */
+    val MIGRATION_25_26 = object : Migration(25, 26) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_25_26.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * The chain of command, and a shift that knows whose it was.
+     *
+     * Both nullable with no default, because null is the true answer for
+     * every row that already exists: nobody drew a chart before this, and no
+     * shift recorded who worked it. Filling either in with a guess would put
+     * a name on somebody's wages that nobody put there.
+     */
+    val MIGRATION_26_27 = object : Migration(26, 27) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_26_27.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * What trade somebody works in, for this firm.
+     *
+     * Nullable with no default. Null means nobody has said, which is the true
+     * answer for every existing row, and a guess would put a man on a list of
+     * electricians that a safety officer then walks the site with.
+     */
+    val MIGRATION_27_28 = object : Migration(27, 28) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_27_28.forEach(db::execSQL)
+        }
+    }
+
+    val MIGRATION_28_29 = object : Migration(28, 29) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_28_29.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * A violation no longer needs a firm behind it.
+     *
+     * The only table in the schema that insisted on a company, which made
+     * recording one impossible for somebody working alone — their membership
+     * carries no company, so the write was refused before it started and the
+     * button did nothing at all.
+     *
+     * SQLite cannot drop NOT NULL from a column, so the table is rebuilt and
+     * the rows copied across. Every existing row keeps the company it already
+     * had; nothing is invented and nothing is lost.
+     */
+    val MIGRATION_29_30 = object : Migration(29, 30) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_29_30.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -178,6 +334,18 @@ object Migrations {
         MIGRATION_15_16,
         MIGRATION_16_17,
         MIGRATION_17_18,
+        MIGRATION_18_19,
+        MIGRATION_19_20,
+        MIGRATION_20_21,
+        MIGRATION_21_22,
+        MIGRATION_22_23,
+        MIGRATION_23_24,
+        MIGRATION_24_25,
+        MIGRATION_25_26,
+        MIGRATION_26_27,
+        MIGRATION_27_28,
+        MIGRATION_28_29,
+        MIGRATION_29_30,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -516,5 +684,190 @@ object Migrations {
             "ON `payment_applications` (`projectId`)",
         "CREATE INDEX IF NOT EXISTS `index_payment_applications_dueOn` " +
             "ON `payment_applications` (`dueOn`)",
+    )
+
+    val SQL_18_19: List<String> = listOf(
+        // The firm's own profile. Nullable throughout: a one-person operation
+        // signing up on a Tuesday should not be stopped at a field they would
+        // have to go and look up.
+        "ALTER TABLE `companies` ADD COLUMN `logoUri` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `email` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `phone` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `website` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `addressLine` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `contractorLicenceNumber` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `contractorClassification` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `licenceExpiresOn` INTEGER",
+        // Empty, not null: every existing firm has published nothing, which
+        // is the only safe reading of a row written before the question existed.
+        "ALTER TABLE `companies` ADD COLUMN `publishedToWorkforce` TEXT NOT NULL DEFAULT ''",
+
+        "CREATE TABLE IF NOT EXISTS `engagements` (`id` TEXT NOT NULL, " +
+            "`projectId` TEXT NOT NULL, `orgId` TEXT NOT NULL, " +
+            "`orgName` TEXT NOT NULL, `party` TEXT NOT NULL, " +
+            "`engagedByOrgId` TEXT, `scopeSummary` TEXT, `startedAt` INTEGER, " +
+            "`endedAt` INTEGER, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_projectId` ON `engagements` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_orgId` ON `engagements` (`orgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_engagedByOrgId` " +
+            "ON `engagements` (`engagedByOrgId`)",
+
+        "CREATE TABLE IF NOT EXISTS `contracts` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`payerOrgId` TEXT NOT NULL, `payeeOrgId` TEXT NOT NULL, " +
+            "`title` TEXT NOT NULL, `amount` REAL NOT NULL, `terms` TEXT NOT NULL, " +
+            "`retentionRate` REAL NOT NULL, `retentionLimit` REAL NOT NULL, " +
+            "`signedAt` INTEGER, `signedByPayerName` TEXT, `signedByPayeeName` TEXT, " +
+            "`disclosedToOrgIds` TEXT NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_projectId` ON `contracts` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_payerOrgId` ON `contracts` (`payerOrgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_payeeOrgId` ON `contracts` (`payeeOrgId`)",
+
+        "CREATE TABLE IF NOT EXISTS `contract_amendments` (`id` TEXT NOT NULL, " +
+            "`contractId` TEXT NOT NULL, `version` INTEGER NOT NULL, " +
+            "`previousAmount` REAL NOT NULL, `newAmount` REAL NOT NULL, " +
+            "`reason` TEXT NOT NULL, `status` TEXT NOT NULL, " +
+            "`proposedByOrgId` TEXT NOT NULL, `proposedByName` TEXT NOT NULL, " +
+            "`proposedAt` INTEGER NOT NULL, `decidedByOrgId` TEXT, " +
+            "`decidedByName` TEXT, `decidedAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_contract_amendments_contractId` " +
+            "ON `contract_amendments` (`contractId`)",
+
+        "CREATE TABLE IF NOT EXISTS `assignments` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`contractId` TEXT, `payerOrgId` TEXT NOT NULL, " +
+            "`payeeOrgId` TEXT NOT NULL, `title` TEXT NOT NULL, `stageId` TEXT, " +
+            "`scopeId` TEXT, `location` TEXT, `amount` REAL NOT NULL, " +
+            "`status` TEXT NOT NULL, `offeredAt` INTEGER, `acceptedAt` INTEGER, " +
+            "`submittedAt` INTEGER, `decidedAt` INTEGER, `decidedByName` TEXT, " +
+            "`rejectionReason` TEXT, `invoicedAt` INTEGER, " +
+            "`createdByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_projectId` ON `assignments` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_contractId` ON `assignments` (`contractId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_payeeOrgId` " +
+            "ON `assignments` (`payeeOrgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_status` ON `assignments` (`status`)",
+    )
+
+    val SQL_19_20: List<String> = listOf(
+        "ALTER TABLE `project_tasks` ADD COLUMN `stageId` TEXT",
+        "ALTER TABLE `project_tasks` ADD COLUMN `scopeId` TEXT",
+    )
+
+    val SQL_20_21: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `payment_application_lines` (`id` TEXT NOT NULL, " +
+            "`applicationId` TEXT NOT NULL, `assignmentId` TEXT NOT NULL, " +
+            "`title` TEXT NOT NULL, `amount` REAL NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_payment_application_lines_applicationId` " +
+            "ON `payment_application_lines` (`applicationId`)",
+        "CREATE INDEX IF NOT EXISTS `index_payment_application_lines_assignmentId` " +
+            "ON `payment_application_lines` (`assignmentId`)",
+    )
+
+    // NOT NULL columns added by ALTER need a default, and the entity has to
+    // declare the same one: Room revalidates on the first open and a default
+    // it did not expect is a crash on launch for everyone who already has the
+    // app. That has shipped three times. See @ColumnInfo on AuditLogEntity.
+    val SQL_21_22: List<String> = listOf(
+        "ALTER TABLE `audit_log` ADD COLUMN `sequence` INTEGER NOT NULL DEFAULT 0",
+        "ALTER TABLE `audit_log` ADD COLUMN `previousHash` TEXT NOT NULL DEFAULT ''",
+        "ALTER TABLE `audit_log` ADD COLUMN `hash` TEXT NOT NULL DEFAULT ''",
+    )
+
+    val SQL_22_23: List<String> = listOf(
+        "ALTER TABLE `photos` ADD COLUMN `mediaType` TEXT NOT NULL DEFAULT 'image'",
+        "CREATE TABLE IF NOT EXISTS `violations` (`id` TEXT NOT NULL, " +
+            "`companyId` TEXT NOT NULL, `projectId` TEXT, " +
+            "`againstAccountId` TEXT NOT NULL, `againstName` TEXT NOT NULL, " +
+            "`againstIdNumber` TEXT NOT NULL, `description` TEXT NOT NULL, " +
+            "`costAmount` REAL, `status` TEXT NOT NULL, " +
+            "`recordedByAccountId` TEXT NOT NULL, `recordedByName` TEXT NOT NULL, " +
+            "`recordedAt` INTEGER NOT NULL, `confirmedAt` INTEGER, " +
+            "`cancelledAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_violations_companyId` " +
+            "ON `violations` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
+            "ON `violations` (`againstAccountId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
+    )
+
+    val SQL_23_24: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `admittedByAccountId` TEXT",
+        "ALTER TABLE `memberships` ADD COLUMN `admittedByName` TEXT",
+        "ALTER TABLE `memberships` ADD COLUMN `admissionSignature` TEXT",
+    )
+
+    val SQL_24_25: List<String> = listOf(
+        "ALTER TABLE `incidents` ADD COLUMN `costAmount` REAL",
+    )
+
+    val SQL_25_26: List<String> = listOf(
+        "ALTER TABLE `catalog_items` ADD COLUMN `stages` TEXT NOT NULL DEFAULT '[]'",
+    )
+
+    val SQL_26_27: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `reportsToMembershipId` TEXT",
+        "ALTER TABLE `time_entries` ADD COLUMN `workerMembershipId` TEXT",
+    )
+
+    val SQL_27_28: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `tradeId` TEXT",
+        "CREATE INDEX IF NOT EXISTS `index_memberships_tradeId` ON `memberships` (`tradeId`)",
+    )
+
+    /**
+     * Nullable, with no default, because there is no number to invent.
+     *
+     * The sign-up form requires one from here on; the column cannot, because
+     * every account already on a phone was made without one and a NOT NULL
+     * with a made-up default would fill the column with a number nobody can
+     * ring, which is worse than an empty one that says so.
+     */
+    val SQL_28_29: List<String> = listOf(
+        "ALTER TABLE `accounts` ADD COLUMN `phone` TEXT",
+        "ALTER TABLE `accounts` ADD COLUMN `email` TEXT",
+    )
+
+    /**
+     * Rebuilds `violations` with a nullable `companyId`.
+     *
+     * The twelve-step dance SQLite documents for changing a column: build the
+     * new table, copy the rows, drop the old one, rename. The columns are
+     * listed by name in the INSERT rather than left to `SELECT *`, so this
+     * still does the right thing if a later version adds a column to one side
+     * and not the other.
+     *
+     * Dropping a table drops its indexes with it, so all three are recreated
+     * afterwards rather than only the one that changed.
+     */
+    val SQL_29_30: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `violations_new` (`id` TEXT NOT NULL, " +
+            "`companyId` TEXT, `projectId` TEXT, " +
+            "`againstAccountId` TEXT NOT NULL, `againstName` TEXT NOT NULL, " +
+            "`againstIdNumber` TEXT NOT NULL, `description` TEXT NOT NULL, " +
+            "`costAmount` REAL, `status` TEXT NOT NULL, " +
+            "`recordedByAccountId` TEXT NOT NULL, `recordedByName` TEXT NOT NULL, " +
+            "`recordedAt` INTEGER NOT NULL, `confirmedAt` INTEGER, " +
+            "`cancelledAt` INTEGER, PRIMARY KEY(`id`))",
+        "INSERT INTO `violations_new` (`id`, `companyId`, `projectId`, " +
+            "`againstAccountId`, `againstName`, `againstIdNumber`, `description`, " +
+            "`costAmount`, `status`, `recordedByAccountId`, `recordedByName`, " +
+            "`recordedAt`, `confirmedAt`, `cancelledAt`) " +
+            "SELECT `id`, `companyId`, `projectId`, " +
+            "`againstAccountId`, `againstName`, `againstIdNumber`, `description`, " +
+            "`costAmount`, `status`, `recordedByAccountId`, `recordedByName`, " +
+            "`recordedAt`, `confirmedAt`, `cancelledAt` FROM `violations`",
+        "DROP TABLE `violations`",
+        "ALTER TABLE `violations_new` RENAME TO `violations`",
+        "CREATE INDEX IF NOT EXISTS `index_violations_companyId` " +
+            "ON `violations` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
+            "ON `violations` (`againstAccountId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
     )
 }

@@ -1,6 +1,8 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.access.CompanyProfile
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.people.Corrections
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.core.security.Signature
 import il.co.tradesmanager.data.local.dao.AccountDao
@@ -47,6 +49,56 @@ class AccountRepository(
         data object NotPermitted : Refusal
     }
 
+    /**
+     * Why somebody's details could not be corrected.
+     *
+     * Its own type rather than more cases on [Refusal], which answers a
+     * different question — why somebody could not be taken off the books.
+     * Folded together, "that is not a phone number" would end up in a dialog
+     * about removing a manager.
+     */
+    sealed interface NotCorrected {
+        /** Correcting the books is an owner's or HR's job. See [Role.canManageMembers]. */
+        data object NotPermitted : NotCorrected
+
+        /** No such account, or one already removed. */
+        data object NoSuchPerson : NotCorrected
+
+        /** Not on the books of the company the person editing is working in. */
+        data object NotOnTheseBooks : NotCorrected
+
+        /**
+         * The details themselves are wrong: a blank name, a number that is
+         * not one, an ID number somebody tried to change.
+         *
+         * Carried rather than restated, so the words a screen shows come from
+         * the rule that refused rather than from a second list beside it.
+         * See [Corrections].
+         */
+        data class Rejected(val fault: Corrections.Fault) : NotCorrected
+
+        /**
+         * Somebody else already holds that ID number.
+         *
+         * Not in [Corrections] with the others, because answering it needs the
+         * whole table and a rule that needs a database is not a rule that can
+         * be reasoned about on its own.
+         */
+        data object IdNumberTaken : NotCorrected
+
+        /**
+         * It failed for a reason there is no better sentence for.
+         *
+         * Here so that a caller has somewhere to put a disk that is full or a
+         * row that vanished. Without it the honest handling of those is a
+         * null, and a null clears the message and leaves the screen looking
+         * like nothing happened.
+         */
+        data object Unknown : NotCorrected
+    }
+
+    class NotCorrectedException(val reason: NotCorrected) : Exception(reason.toString())
+
     fun observeAccounts(): Flow<List<AccountEntity>> = dao.observeAccounts()
     fun observeAccount(id: String): Flow<AccountEntity?> = dao.observeAccount(id)
 
@@ -65,6 +117,8 @@ class AccountRepository(
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
+        phone: String? = null,
+        email: String? = null,
     ): AccountEntity =
         create(
             name = name,
@@ -73,6 +127,8 @@ class AccountRepository(
             passcode = passcode,
             username = username,
             idNumber = idNumber,
+            phone = phone,
+            email = email,
             // Their own tools: a membership with no company behind it, so
             // every permission check has exactly one shape to read.
             joinCompanyId = null,
@@ -90,6 +146,8 @@ class AccountRepository(
         passcode: String?,
         ownerUsername: String? = null,
         ownerIdNumber: String? = null,
+        ownerPhone: String? = null,
+        ownerEmail: String? = null,
     ): AccountEntity {
         val now = System.currentTimeMillis()
         val company = CompanyEntity(
@@ -108,8 +166,60 @@ class AccountRepository(
             passcode = passcode,
             username = ownerUsername,
             idNumber = ownerIdNumber,
+            phone = ownerPhone,
+            email = ownerEmail,
             joinCompanyId = company.id,
         )
+    }
+
+    /**
+     * Saves the firm's own details, and its per-field say in who sees them.
+     *
+     * [published] is the whole point of the screen this comes from. A firm
+     * wants its name and mark where the crew will see it every morning; it
+     * does not necessarily want the owner's mobile number on the same screen
+     * in forty people's hands. So it is asked field by field, and anything
+     * not in this set is not published.
+     */
+    suspend fun updateCompanyProfile(
+        company: CompanyEntity,
+        name: String,
+        registrationNumber: String?,
+        logoUri: String?,
+        email: String?,
+        phone: String?,
+        website: String?,
+        addressLine: String?,
+        contractorLicenceNumber: String?,
+        contractorClassification: String?,
+        licenceExpiresOn: Long?,
+        published: Set<CompanyProfile.Field>,
+        actorName: String,
+    ): CompanyEntity {
+        fun clean(value: String?) = value?.trim()?.takeIf { it.isNotEmpty() }
+        val updated = company.copy(
+            name = name.trim().ifEmpty { company.name },
+            registrationNumber = clean(registrationNumber),
+            logoUri = clean(logoUri),
+            email = clean(email),
+            phone = clean(phone),
+            website = clean(website),
+            addressLine = clean(addressLine),
+            contractorLicenceNumber = clean(contractorLicenceNumber),
+            contractorClassification = clean(contractorClassification),
+            licenceExpiresOn = licenceExpiresOn,
+            // Sorted so the stored string does not churn on every save just
+            // because a set iterated in a different order.
+            publishedToWorkforce = published.map { it.name }.sorted().joinToString(","),
+            updatedAt = System.currentTimeMillis(),
+        )
+        dao.upsertCompany(updated)
+        audit.record(
+            "company", company.id, AuditTrail.Action.UPDATE, actorName,
+            "profile updated; published to crew: " +
+                published.map { it.name }.sorted().joinToString(",").ifEmpty { "nothing" },
+        )
+        return updated
     }
 
     /** Adds a member. Only an owner or HR gets here — see [Role.canManageMembers]. */
@@ -130,6 +240,8 @@ class AccountRepository(
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
+        phone: String? = null,
+        email: String? = null,
     ): Result<AccountEntity> {
         if (!actorRole.canManageMembers) {
             return Result.failure(RefusedException(Refusal.NotPermitted))
@@ -142,6 +254,8 @@ class AccountRepository(
                 passcode = passcode,
                 username = username,
                 idNumber = idNumber,
+                phone = phone,
+                email = email,
                 joinCompanyId = companyId,
                 actorName = actorName,
             ),
@@ -225,6 +339,19 @@ class AccountRepository(
     }
 
     /** Whether an ID number is already spoken for, so sign-up can say so. */
+    /**
+     * Look somebody up by the number on their card.
+     *
+     * Blank finds nobody rather than the first row: an empty search box must
+     * not put a stranger's face on the screen of somebody about to write a
+     * violation.
+     */
+    suspend fun findByIdNumber(idNumber: String): AccountEntity? {
+        val trimmed = idNumber.trim()
+        if (trimmed.isEmpty()) return null
+        return dao.byIdNumber(trimmed)
+    }
+
     suspend fun isIdNumberTaken(idNumber: String): Boolean =
         idNumber.isNotBlank() && dao.countWithIdNumber(idNumber) > 0
 
@@ -251,6 +378,87 @@ class AccountRepository(
         return true
     }
 
+    /**
+     * Corrects what the books say about somebody, from the office.
+     *
+     * The office is who this is for. Most people on a site never open the
+     * app: they were added at the gate by whoever was on it, with a name
+     * heard once and a number read off a scrap of paper. A crew list nobody
+     * can fix is a crew list that goes stale, and a phone number that was
+     * mistyped in November is a person nobody can reach in March.
+     *
+     * Gated on [Role.canManageMembers] and on membership of the company the
+     * editor is actually working in, which is the same rule as adding
+     * somebody: if you can put a person on these books, you can correct what
+     * they say. It is checked here and not only on the screen, because the
+     * screen can be wrong and this is somebody's identity.
+     *
+     * The ID number is add-only, not editable, and that is [setIdNumber]'s
+     * rule rather than a new one: it goes on the gate list and on the
+     * induction record, so a missing one is welcome and a changed one is how
+     * a person ends up standing behind somebody else's paperwork.
+     */
+    suspend fun correctDetails(
+        actorRole: Role,
+        actorName: String,
+        companyId: String?,
+        accountId: String,
+        displayName: String,
+        phone: String?,
+        email: String?,
+        idNumber: String?,
+    ): Result<AccountEntity> {
+        fun refuse(reason: NotCorrected) =
+            Result.failure<AccountEntity>(NotCorrectedException(reason))
+
+        if (!actorRole.canManageMembers) return refuse(NotCorrected.NotPermitted)
+        val account = dao.account(accountId)?.takeIf { it.deletedAt == null }
+            ?: return refuse(NotCorrected.NoSuchPerson)
+        if (!memberships.isCurrentMember(accountId, companyId)) {
+            return refuse(NotCorrected.NotOnTheseBooks)
+        }
+
+        val held = Corrections.Details(
+            displayName = account.displayName,
+            phone = account.phone,
+            email = account.email,
+            idNumber = account.idNumber,
+        )
+        val proposed = Corrections.Details(
+            displayName = displayName,
+            phone = phone,
+            email = email,
+            idNumber = idNumber,
+        )
+        Corrections.blocks(held, proposed)?.let { return refuse(NotCorrected.Rejected(it)) }
+
+        val next = Corrections.applied(held, proposed)
+        // The one question Corrections cannot answer on its own: whether the
+        // number belongs to somebody else. Only asked when it is actually
+        // being filled in, so correcting a name does not go to the table.
+        if (next.idNumber != null && next.idNumber != Corrections.tidy(account.idNumber)) {
+            if (isIdNumberTaken(next.idNumber)) return refuse(NotCorrected.IdNumberTaken)
+        }
+
+        val updated = account.copy(
+            displayName = next.displayName,
+            phone = next.phone,
+            email = next.email,
+            idNumber = next.idNumber,
+        )
+        // Nothing changed. Recording it would fill the audit trail with rows
+        // saying somebody opened a screen.
+        if (updated == account) return Result.success(account)
+
+        dao.upsert(updated)
+        audit.record(
+            ENTITY, account.id, AuditTrail.Action.UPDATE, actorName,
+            "Details corrected (${Corrections.changed(held, next).joinToString(", ")}) " +
+                "for ${account.displayName}",
+        )
+        return Result.success(updated)
+    }
+
     private suspend fun create(
         name: String,
         companyId: String?,
@@ -258,6 +466,8 @@ class AccountRepository(
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
+        phone: String? = null,
+        email: String? = null,
         joinCompanyId: String? = null,
         actorName: String = name.trim(),
     ): AccountEntity {
@@ -274,6 +484,8 @@ class AccountRepository(
             deletedAt = null,
             username = username?.trim()?.takeIf { it.isNotEmpty() },
             idNumber = idNumber?.trim()?.takeIf { it.isNotEmpty() },
+            phone = phone?.trim()?.takeIf { it.isNotEmpty() },
+            email = email?.trim()?.takeIf { it.isNotEmpty() },
             // Nobody is inducted by being created. The person themselves reads
             // it and signs it, on their own first sign-in.
             inductionSignature = null,

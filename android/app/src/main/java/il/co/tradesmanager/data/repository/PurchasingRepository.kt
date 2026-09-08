@@ -111,11 +111,54 @@ class PurchasingRepository(
         audit.record("purchase_order_line", line.id, AuditTrail.Action.DELETE, actorName, line.label)
     }
 
-    /** Sends the order. From here it commits money, so a draft cannot. */
-    suspend fun place(order: PurchaseOrderEntity, actorName: String) {
+    /**
+     * Sends the order. From here it commits money, so a draft cannot.
+     *
+     * [expectedOn] is what the supplier said on the phone, and null when they
+     * did not say. Asked here because this is the moment somebody knows it:
+     * you ring the merchant, they tell you Thursday, and that is the only
+     * time in the whole process the answer is in the room.
+     */
+    suspend fun place(order: PurchaseOrderEntity, actorName: String, expectedOn: Long? = null) {
         val now = System.currentTimeMillis()
-        dao.upsertOrder(order.copy(status = Status.ORDERED, orderedOn = now, updatedAt = now))
+        dao.upsertOrder(
+            order.copy(
+                status = Status.ORDERED,
+                orderedOn = now,
+                expectedOn = expectedOn,
+                updatedAt = now,
+            ),
+        )
         audit.record(ENTITY, order.id, AuditTrail.Action.UPDATE, actorName, "${order.reference} placed")
+    }
+
+    /**
+     * Changes when the delivery is due, or takes the date off.
+     *
+     * A separate act from placing, because a merchant who said Thursday rings
+     * back on Wednesday and says next week. An order that could not be
+     * corrected would have people keeping the real date on a scrap of paper,
+     * which is where it was before this app.
+     *
+     * Refused once the order is closed: a delivery that has arrived, or one
+     * nobody is waiting for, has no date still to come.
+     */
+    suspend fun setExpected(
+        order: PurchaseOrderEntity,
+        expectedOn: Long?,
+        actorName: String,
+    ): Boolean {
+        if (order.status == Status.RECEIVED || order.status == Status.CANCELLED) return false
+        dao.upsertOrder(order.copy(expectedOn = expectedOn, updatedAt = System.currentTimeMillis()))
+        audit.record(
+            ENTITY, order.id, AuditTrail.Action.UPDATE, actorName,
+            if (expectedOn == null) {
+                "${order.reference} has no delivery date"
+            } else {
+                "${order.reference} due $expectedOn"
+            },
+        )
+        return true
     }
 
     suspend fun cancel(order: PurchaseOrderEntity, actorName: String) {

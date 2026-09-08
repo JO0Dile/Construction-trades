@@ -233,6 +233,33 @@ fun InventoryScreen(
                 )
             }
 
+            // The stage of the job, on its own row.
+            //
+            // Not mixed in with the kind chips above, because they answer
+            // different questions and a single scrolling row of eleven chips
+            // answers neither. An electrician on slab conduit picks the stage
+            // once in the morning and stops scrolling past ten light fittings
+            // for the rest of the day.
+            //
+            // A stage is a filter, never a hiding place: an item the catalogue
+            // gives no stage to — and anything the user added themselves —
+            // stays on the list under every one of these.
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState())
+                    .padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                viewModel.stages.forEach { stage ->
+                    FilterChip(
+                        selected = filters.stageId == stage.id,
+                        onClick = { viewModel.setStage(stage.id) },
+                        label = { Text(stage.names.resolve(languageTag)) },
+                    )
+                }
+            }
+
             if (items.isEmpty()) {
                 EmptyState(
                     message = stringResource(R.string.inv_empty),

@@ -35,6 +35,12 @@ data class CatalogManifest(
      */
     val certificationKinds: List<ProjectKind> = emptyList(),
     val trades: List<CatalogTrade> = emptyList(),
+    /**
+     * Where the work breakdown lives — stages, phases and scopes of work.
+     * A separate file because it is read by every lens, not just the stock
+     * list, and because it changes on a different clock from the trades.
+     */
+    val scopesFile: String? = null,
 )
 
 @Serializable
@@ -71,6 +77,32 @@ data class CatalogItemDto(
     val spec: LocalizedText = emptyMap(),
     val attributes: Map<String, String> = emptyMap(),
     val tags: List<String> = emptyList(),
+    /**
+     * What the trade actually calls it, as opposed to what a catalogue calls
+     * it.
+     *
+     * Nobody on an Israeli site asks for a cordless screwdriver-drill. They
+     * ask for a מברגה, and on an Arabic-speaking crew for a مفريغا, which is
+     * the same Hebrew word worn down. Same with كونجو for a demolition
+     * hammer and صاروخ for an angle grinder. These go into the search index
+     * beside the formal names, so typing the word somebody would actually say
+     * finds the thing.
+     *
+     * A separate field rather than more [names], because the formal name is
+     * what a register, an order and an invoice should read.
+     */
+    val colloquial: LocalizedText = emptyMap(),
+    /**
+     * Which stages of the job this is for, by `scopes.json` stage id.
+     *
+     * Empty means every stage, and that is the default on purpose. An item
+     * with no stage stays visible under every filter, so a mistake in this
+     * data makes the list longer rather than making a tool disappear on
+     * somebody who needs it. Tools are mostly left empty for the same reason:
+     * a screwdriver is used on the day the slab is poured and on the day the
+     * keys are handed over.
+     */
+    val stages: List<String> = emptyList(),
 )
 
 @Serializable
@@ -124,4 +156,55 @@ data class TemplateTaskDto(
     val id: String,
     @SerialName("order") val sortOrder: Int = 0,
     val titles: LocalizedText,
+)
+
+/**
+ * The work breakdown: what part of a job a task belongs to.
+ *
+ * Two dimensions, and they are not the same one. A [WorkStage] is *when* —
+ * how far up the building has got, from the frame to the handover. A
+ * [WorkScope] is *what* — the trade operation being carried out. "Electrical,
+ * third floor" is not a job; it is four jobs a month apart, each with its own
+ * crew, its own price and its own inspection, and a system that cannot say
+ * which one is being paid for cannot say anything useful about the money.
+ */
+@Serializable
+data class ScopeFile(
+    val schemaVersion: Int,
+    val catalogVersion: Int,
+    val note: String = "",
+    val stages: List<WorkStage> = emptyList(),
+    val phases: List<WorkPhase> = emptyList(),
+    val scopes: List<WorkScope> = emptyList(),
+)
+
+@Serializable
+data class WorkStage(
+    val id: String,
+    val names: LocalizedText,
+    /**
+     * What the crew calls it, which is frequently not what the contract calls
+     * it. Searching for "الشغل الأسود" has to find the rough-in stage, and
+     * "العقدة" has to find the slab conduit one, or the search is decoration.
+     */
+    val colloquial: LocalizedText = emptyMap(),
+    val descriptions: LocalizedText = emptyMap(),
+)
+
+@Serializable
+data class WorkPhase(
+    val id: String,
+    val names: LocalizedText,
+)
+
+@Serializable
+data class WorkScope(
+    val id: String,
+    val phaseId: String,
+    val stageId: String,
+    /** The trade that usually carries it. A suggestion, never a restriction. */
+    val tradeId: String = "",
+    val names: LocalizedText,
+    val colloquial: LocalizedText = emptyMap(),
+    val descriptions: LocalizedText = emptyMap(),
 )

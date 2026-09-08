@@ -32,6 +32,21 @@ jobs:
       - name: Translations are complete and generated files are current
         run: python3 tools/gen-strings.py --check
 
+      # A Room annotation binds to whatever function follows it. Slip a KDoc
+      # between the two and the query lands on the next method instead, which
+      # is how a lookup by ID number came to declare it returned COUNT(*).
+      # Both halves of that mistake fail KSP; this catches them in a second
+      # instead of forty.
+      - name: Every DAO method carries exactly one Room annotation
+        run: python3 tools/check-dao.py
+
+      # The change feed is filtered by lens, and a kind of record nobody has
+      # classified is shown to nobody. That is the safe direction and a silent
+      # one: a new register would simply never appear in anybody's feed, and
+      # nobody would find out for a release or two.
+      - name: Every audited kind of change is classified by lens
+        run: python3 tools/check-audit-lens.py
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.
@@ -48,6 +63,42 @@ jobs:
       # already has the app. Nothing else in this pipeline catches it.
       - name: Migration SQL matches the schema Room expects
         run: python3 tools/check-migration.py
+
+      # The check above compares two pieces of text and cannot see an INSERT
+      # at all. SQLite will not loosen a NOT NULL in place, so changing one
+      # means rebuilding the table and copying the rows across — and a copy
+      # that misses a column leaves the schema perfect and the data gone.
+      - name: The migrations run, and no rebuild loses its rows
+        run: python3 tools/run-migrations.py
+
+      # A repository method nothing calls is how this app shipped with no way
+      # to report an accident: the table, the DAO and the repository were all
+      # there and no screen could reach any of them. Four features had been
+      # described by a name and a comment and performed by nothing. This holds
+      # the count where the last review left it.
+      - name: No new unreachable code in core and repositories
+        run: python3 tools/find-unused.py --check
+
+      - name: No new arguments that are only ever passed null
+        run: python3 tools/check-null-args.py --check
+
+      # The same fault asked of the column instead of the argument: a field
+      # with an index, a comment and a DAO query written against it, and no
+      # caller that ever puts anything in it. That is what an empty timesheet
+      # and an unsigned permit both looked like from the inside.
+      - name: No new columns that nothing ever fills
+        run: python3 tools/check-dead-columns.py --check
+
+      # The release build had never been run. Only assembleDebug was, and
+      # debug does not minify — so R8 stripping something Room, SQLCipher or
+      # kotlinx.serialization loads reflectively would have surfaced for the
+      # first time on the day of a store submission. This is the bundle Google
+      # Play actually takes, built the way Play takes it, on every push.
+      # Unsigned here: no upload key exists on CI, and signing is the last
+      # step before upload rather than a prerequisite for knowing it builds.
+      - name: Release bundle builds and survives R8
+        run: ./gradlew --no-daemon :app:bundleRelease
+        working-directory: android
 
       - name: Assemble debug APK
         working-directory: android

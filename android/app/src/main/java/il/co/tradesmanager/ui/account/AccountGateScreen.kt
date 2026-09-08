@@ -36,9 +36,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.ContactFields
 
 /**
  * The door.
@@ -62,16 +64,34 @@ fun AccountGateScreen(container: AppContainer, needsSetup: Boolean) {
     // a door.
     var creating by remember { mutableStateOf(false) }
 
+    // And a fresh install used to offer no way in at all — only sign up. That
+    // is technically true today, because accounts live on the device and a
+    // phone with none has nothing to sign in to. It is not what somebody
+    // holding the phone believes, and hiding the door does not explain why.
+    // So both routes are offered and the sign-in screen says plainly what it
+    // cannot reach yet.
+    var signingIn by remember { mutableStateOf(false) }
+
     Surface(Modifier.fillMaxSize()) {
-        if (needsSetup || creating) {
-            FirstRun(
+        when {
+            needsSetup && signingIn -> SignIn(
+                wrongCredentials = wrongCredentials,
+                noAccountsOnDevice = true,
+                onTyping = viewModel::clearError,
+                onSignIn = viewModel::signIn,
+                onCreateAccount = { signingIn = false },
+            )
+
+            needsSetup || creating -> FirstRun(
                 onPersonal = viewModel::createPersonal,
                 onCompany = viewModel::createCompany,
                 onCancel = if (needsSetup) null else ({ creating = false }),
+                onSignIn = if (needsSetup) ({ signingIn = true }) else null,
             )
-        } else {
-            SignIn(
+
+            else -> SignIn(
                 wrongCredentials = wrongCredentials,
+                noAccountsOnDevice = false,
                 onTyping = viewModel::clearError,
                 onSignIn = viewModel::signIn,
                 onCreateAccount = { creating = true },
@@ -86,17 +106,28 @@ private enum class Setup { CHOOSE, PERSONAL, COMPANY }
 
 @Composable
 private fun FirstRun(
-    onPersonal: (name: String, username: String?, idNumber: String?, passcode: String?) -> Unit,
+    onPersonal: (
+        name: String,
+        username: String?,
+        idNumber: String?,
+        phone: String?,
+        email: String?,
+        passcode: String?,
+    ) -> Unit,
     onCompany: (
         company: String,
         registration: String?,
         owner: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         passcode: String?,
     ) -> Unit,
     /** Null on a device with no accounts: there is nowhere to go back to. */
     onCancel: (() -> Unit)?,
+    /** Offered only on a fresh install, where sign in is not otherwise shown. */
+    onSignIn: (() -> Unit)?,
 ) {
     var step by remember { mutableStateOf(Setup.CHOOSE) }
 
@@ -140,6 +171,12 @@ private fun FirstRun(
                     hint = stringResource(R.string.acc_company_hint),
                     onClick = { step = Setup.COMPANY },
                 )
+                onSignIn?.let { signIn ->
+                    Spacer(Modifier.height(12.dp))
+                    TextButton(onClick = signIn, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.acc_have_account))
+                    }
+                }
             }
 
             Setup.PERSONAL -> PersonalForm(onPersonal)
@@ -172,13 +209,23 @@ private fun Choice(title: String, hint: String, onClick: () -> Unit) {
 
 @Composable
 private fun PersonalForm(
-    onCreate: (name: String, username: String?, idNumber: String?, passcode: String?) -> Unit,
+    onCreate: (
+        name: String,
+        username: String?,
+        idNumber: String?,
+        phone: String?,
+        email: String?,
+        passcode: String?,
+    ) -> Unit,
 ) {
     var name by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var idNumber by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
+    val contactOk = Contact.blocksPhone(phone) == null && Contact.blocksEmail(email) == null
 
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         OutlinedTextField(
@@ -194,6 +241,7 @@ private fun PersonalForm(
             idNumber = idNumber,
             onIdNumber = { idNumber = it },
         )
+        ContactFields(phone, { phone = it }, email, { email = it })
         PasscodeField(passcode, { passcode = it }, passcodeOk)
         Button(
             onClick = {
@@ -201,10 +249,13 @@ private fun PersonalForm(
                     name.trim(),
                     username.trim().takeIf { it.isNotEmpty() },
                     idNumber.trim().takeIf { it.isNotEmpty() },
+                    phone.trim(),
+                    email.trim().takeIf { it.isNotEmpty() },
                     passcode.takeIf { it.isNotEmpty() },
                 )
             },
-            enabled = name.isNotBlank() && passcodeOk,
+            enabled = name.isNotBlank() && username.isNotBlank() &&
+                idNumber.isNotBlank() && contactOk && passcodeOk,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.acc_create))
@@ -215,9 +266,16 @@ private fun PersonalForm(
 /**
  * The two things that identify one person out of five on a site.
  *
- * Both optional. A sole trader setting the app up on a Tuesday morning should
- * not be stopped at a field they have to go and look up, and a manager filling
- * in a crew has every reason to fill both in.
+ * Both required. They were optional, on the reasoning that a sole trader
+ * setting up on a Tuesday morning should not be stopped at a field they have
+ * to go and look up. That reasoning does not survive the rest of the app: a
+ * safety officer records a violation by typing an ID number and getting back
+ * a face and a name, and an account with no ID number cannot be found that
+ * way — so the person it belongs to is invisible to the register exactly when
+ * it matters. Signing in needs the username for the same reason.
+ *
+ * Filling them in once at sign-up costs a minute. Not having them costs a
+ * violation that cannot be written against anybody.
  */
 @Composable
 private fun IdentityFields(
@@ -226,11 +284,15 @@ private fun IdentityFields(
     idNumber: String,
     onIdNumber: (String) -> Unit,
 ) {
+    // Username, not "username or ID number": the ID number is the very next
+    // field, and offering a choice between them while asking for both reads
+    // as the same question twice. Either one signs you in afterwards -- that
+    // belongs on the sign-in form, which is where it says so.
     OutlinedTextField(
         value = username,
         onValueChange = onUsername,
-        label = { Text(stringResource(R.string.acc_identifier)) },
-        supportingText = { Text(stringResource(R.string.acc_identifier_hint)) },
+        label = { Text(stringResource(R.string.acc_username)) },
+        supportingText = { Text(stringResource(R.string.acc_username_hint)) },
         singleLine = true,
         modifier = Modifier.fillMaxWidth(),
     )
@@ -252,6 +314,8 @@ private fun CompanyForm(
         owner: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         passcode: String?,
     ) -> Unit,
 ) {
@@ -260,8 +324,11 @@ private fun CompanyForm(
     var ownerName by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var idNumber by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
+    val contactOk = Contact.blocksPhone(phone) == null && Contact.blocksEmail(email) == null
 
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         OutlinedTextField(
@@ -292,6 +359,7 @@ private fun CompanyForm(
             idNumber = idNumber,
             onIdNumber = { idNumber = it },
         )
+        ContactFields(phone, { phone = it }, email, { email = it })
         PasscodeField(passcode, { passcode = it }, passcodeOk)
         Button(
             onClick = {
@@ -301,10 +369,13 @@ private fun CompanyForm(
                     ownerName.trim(),
                     username.trim().takeIf { it.isNotEmpty() },
                     idNumber.trim().takeIf { it.isNotEmpty() },
+                    phone.trim(),
+                    email.trim().takeIf { it.isNotEmpty() },
                     passcode.takeIf { it.isNotEmpty() },
                 )
             },
-            enabled = companyName.isNotBlank() && ownerName.isNotBlank() && passcodeOk,
+            enabled = companyName.isNotBlank() && ownerName.isNotBlank() &&
+                username.isNotBlank() && idNumber.isNotBlank() && contactOk && passcodeOk,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.acc_create))
@@ -330,6 +401,14 @@ private fun CompanyForm(
 @Composable
 private fun SignIn(
     wrongCredentials: Boolean,
+    /**
+     * True on a fresh install, where no credentials can possibly work.
+     *
+     * Without this the screen would answer every attempt with "wrong username
+     * or password", which is a lie: nothing is wrong with what they typed,
+     * there is simply nothing on this phone to check it against.
+     */
+    noAccountsOnDevice: Boolean,
     onTyping: () -> Unit,
     onSignIn: (identifier: String, password: String) -> Unit,
     onCreateAccount: () -> Unit,
@@ -347,6 +426,14 @@ private fun SignIn(
             text = stringResource(R.string.acc_sign_in_title),
             style = MaterialTheme.typography.headlineMedium,
         )
+
+        if (noAccountsOnDevice) {
+            Text(
+                text = stringResource(R.string.acc_none_on_device),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
 
         OutlinedTextField(
             value = identifier,
@@ -423,12 +510,21 @@ private fun PasscodeField(value: String, onChange: (String) -> Unit, acceptable:
     )
 }
 
-/** Role -> the words a site actually uses for it. */
+/**
+ * Role -> the words a site actually uses for it.
+ *
+ * Exhaustive with no `else`, deliberately. Adding SAFETY_OFFICER broke this
+ * and the hint below, which is the compiler asking the one question worth
+ * asking: what does a site call this person. An `else` would have answered it
+ * with silence, and the role after this one would have inherited that silence
+ * without anybody noticing.
+ */
 fun roleLabel(role: Role): Int = when (role) {
     Role.OWNER -> R.string.role_owner
     Role.MANAGER -> R.string.role_manager
     Role.FINANCE -> R.string.role_finance
     Role.HR -> R.string.role_hr
+    Role.SAFETY_OFFICER -> R.string.role_safety_officer
     Role.WORKER -> R.string.role_worker
 }
 
@@ -438,5 +534,6 @@ fun roleHint(role: Role): Int = when (role) {
     Role.MANAGER -> R.string.role_manager_hint
     Role.FINANCE -> R.string.role_finance_hint
     Role.HR -> R.string.role_hr_hint
+    Role.SAFETY_OFFICER -> R.string.role_safety_officer_hint
     Role.WORKER -> R.string.role_worker_hint
 }

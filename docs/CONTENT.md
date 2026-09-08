@@ -11,6 +11,10 @@ the repository, on a branch, and CI checks them the moment they land.
 | Supplier part lists | `shared/assets/catalog/items/<trade>.json` | `CatalogIntegrityTest` |
 | Prices | not yet — see below | — |
 
+The privacy notice is generated too: `docs/PRIVACY.md` comes off the same
+catalogue keys as the screen in the app, so the page a store links to and the
+page a user reads cannot drift apart. Edit the `priv_*` strings, not the file.
+
 ## 1. The photographs
 
 **The filename is the item id.** That is the entire rule.
@@ -25,12 +29,26 @@ shared/assets/catalog/images/
 To see every id that still has no picture, grouped by trade:
 
 ```bash
-python3 tools/image-coverage.py           # 0 of 178 today
+python3 tools/image-coverage.py           # 0 of 527 today
 python3 tools/image-coverage.py --ids     # just the ids, one per line
 ```
 
+An id is the right answer for a build check and the wrong one for a person
+about to go and take five hundred photographs: `el.rcd.40a.30ma` says nothing
+about what the thing is. For that, there is a spreadsheet:
+
+```bash
+python3 tools/photo-worklist.py     # -> docs/translation/items-needing-photos.csv
+```
+
+One row per item still missing, carrying the name in all three languages, the
+word a site would actually shout for it where the catalogue records one
+(מברגה / مفريغا), a line saying what the thing is for, and the exact filename
+to save the picture as. It opens in Excel with the Hebrew and Arabic intact,
+which a plain UTF-8 CSV does not.
+
 If your files are named after the things rather than the ids — `RCD 40A.jpg`,
-`צינור פקס 16.png` — don't rename 178 files by hand:
+`צינור פקס 16.png` — don't rename 497 files by hand:
 
 ```bash
 python3 tools/prepare-images.py ~/photos --dry-run   # see what it would match
@@ -42,8 +60,10 @@ converts to WebP at 512×512, and **lists what it could not match rather than
 guessing**. Anything on that list needs renaming by hand or is an item we do
 not have.
 
-Target about 40–60 KB each; 178 of them is then roughly 8 MB, which the app can
-carry without thinking about it.
+Target about 40–60 KB each; 497 of them is then roughly 25 MB. That is more
+than the app used to carry and worth a decision rather than a shrug: either
+ship the lot, or ship the trades most customers switch on and let the rest
+come down with a catalogue refresh.
 
 **One thing to be careful about:** a photograph from a supplier's catalogue or
 website is their copyright, and shipping it inside an app is redistribution. If

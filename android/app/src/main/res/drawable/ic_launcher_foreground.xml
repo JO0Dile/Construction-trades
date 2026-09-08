@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- A folding rule and a wrench crossed inside the adaptive-icon safe zone.
-     Trade-neutral on purpose: the app is not an electricians' app. -->
+<!-- The flag of Israel, with a check for work signed off.
+
+     The flag used to be 22x12 units in the corner of this 108 viewport,
+     underneath a wrench and a folding rule. At the size a launcher actually
+     draws an icon that is a few pixels: the stripes fell below one pixel and
+     the star — two solid triangles laid over each other — filled in and read
+     as a blue blob. It was not recognisable as the flag, which was the whole
+     point of putting it there.
+
+     It is the subject now, at 44x32 units, five times the area, with the
+     tools removed to make room. The star is drawn as two outlined triangles
+     rather than two filled ones, so the interlace survives being shrunk.
+
+     Proportions are the flag's own: 11:8 overall, stripes an eighth of the
+     height set three quarters of a stripe in from each edge, star sized to
+     the white band between them.
+
+     Everything is inside the adaptive-icon safe zone. A circular launcher
+     shows only the centre 66 of these 108, so nothing may sit further than
+     33 from (54,54): the flag corners reach 32.56 filled, the star 17.05
+     with its stroke, the check 29.81 with its. Checked, not eyeballed —
+     the last version's comment claimed a radius it did not have. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Folding rule, opened to an angle. -->
-    <path
-        android:fillColor="#FFB300"
-        android:pathData="M30,72 L30,64 L62,64 L62,72 Z" />
-    <path
-        android:fillColor="#FFC94D"
-        android:pathData="M62,72 L62,64 L78,38 L85,42 L69,68 Z" />
-    <!-- Rule graduations. -->
-    <path android:fillColor="#1F2933" android:pathData="M38,64 L40,64 L40,68 L38,68 Z" />
-    <path android:fillColor="#1F2933" android:pathData="M46,64 L48,64 L48,68 L46,68 Z" />
-    <path android:fillColor="#1F2933" android:pathData="M54,64 L56,64 L56,68 L54,68 Z" />
+    <!-- White field. Explicitly white, not a theme colour: a flag that turns
+         grey in dark mode is not the flag. -->
+    <path android:fillColor="#FFFFFF" android:pathData="M32,30h44v32h-44z" />
 
-    <!-- Wrench, laid across the rule. -->
+    <!-- The two stripes, in the flag's own blue. -->
+    <path android:fillColor="#0038B8" android:pathData="M32,33h44v5h-44z" />
+    <path android:fillColor="#0038B8" android:pathData="M32,54h44v5h-44z" />
+
+    <!-- Magen David: two overlapping equilateral triangles, outlined so the
+         interlace still reads once the launcher has scaled this down. -->
     <path
-        android:fillColor="#E0E4E8"
-        android:pathData="M40,30 A11,11 0 0,0 55,44 L72,61 A5,5 0 0,0 79,54 L62,37 A11,11 0 0,0 48,22 L55,29 L51,37 L43,37 Z" />
+        android:strokeColor="#0038B8"
+        android:strokeWidth="2.5"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M54,38.2 L60.75,49.9 L47.25,49.9 Z" />
+    <path
+        android:strokeColor="#0038B8"
+        android:strokeWidth="2.5"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M54,53.8 L47.25,42.1 L60.75,42.1 Z" />
+
+    <!-- Signed off. Below the flag rather than across it: a mark over the
+         stripes reads as something scrawled on them. -->
+    <path
+        android:strokeColor="#2E9E4F"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M42,72 L50,80 L68,60" />
 </vector>

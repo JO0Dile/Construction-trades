@@ -1,20 +1,27 @@
 package il.co.tradesmanager.ui.projects
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import android.net.Uri
+import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.money.JobFinancials
+import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
-import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -54,6 +61,46 @@ class ProjectDetailViewModel(
         State(project, materials, tasks, categories.associate { it.id to it.category }, images)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())
 
+    /**
+     * The parts this job is made of: its floors, its flats, its plots.
+     *
+     * Each is a job in its own right with its own tasks, materials,
+     * photographs and snags -- which is the point. Twenty floors flattened
+     * into one job cannot say which floor anything happened on, and twenty
+     * separate jobs cannot say which building they are in.
+     */
+    val parts: StateFlow<List<ProjectEntity>> = container.projects.observeParts(projectId)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** The job this one is a part of, when it is one. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val parent: StateFlow<ProjectEntity?> = state
+        .map { it.project?.parentProjectId }
+        .distinctUntilChanged()
+        .flatMapLatest { id ->
+            if (id == null) flowOf(null) else container.projects.observeProject(id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /**
+     * Adds a part to this job.
+     *
+     * Only one level deep is offered: a part cannot itself be broken up here.
+     * A site with buildings with floors with rooms is four levels the data
+     * allows, and a screen that lets somebody build one is a screen where the
+     * job they are looking for is four taps from where they expected it. If
+     * that turns out to be needed it should be built deliberately.
+     */
+    fun addPart(name: String, kindLabel: String) = viewModelScope.launch {
+        if (name.isBlank()) return@launch
+        container.projects.createBlank(
+            name = name,
+            kindLabel = kindLabel,
+            actorName = container.settings.settings.first().actorName,
+            parentProjectId = projectId,
+        )
+    }
+
     /** Enough of the Money lens for the one line that opens it. */
     val financials: StateFlow<JobFinancials> = container.money.observeFinancials(projectId)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), JobFinancials())
@@ -90,6 +137,60 @@ class ProjectDetailViewModel(
             ownerType = ownerTypeForNewImage(),
             ownerId = projectId,
             actorName = actor,
+        )
+    }
+
+    /**
+     * When the job runs.
+     *
+     * Both columns have been on the table since the beginning and nothing has
+     * ever written to either, which is why `observeOverdue` -- the dashboard
+     * tile that answers "which jobs have run late" -- filters
+     * `dueDate IS NOT NULL` against a column where it never is, and has
+     * therefore always been empty. The job list's `ORDER BY dueDate` has been
+     * ordering by nothing too.
+     *
+     * Null clears. A job whose date was set by mistake has to be able to go
+     * back to having none, and "no date" is a real answer -- plenty of work is
+     * open-ended until somebody signs something.
+     */
+    fun setDates(startDate: Long?, dueDate: Long?) = viewModelScope.launch {
+        val project = state.value.project ?: return@launch
+        container.projects.save(
+            project.copy(
+                startDate = startDate,
+                dueDate = dueDate,
+            ),
+            actorName = container.settings.settings.first().actorName,
+        )
+    }
+
+    /**
+     * Where the job is and who it is for.
+     *
+     * All optional and all editable after the fact, because a job is usually
+     * created in ten seconds when it is won and filled in properly later.
+     * Blank clears the field rather than keeping the old value: somebody who
+     * empties a box means it, and a form that quietly refuses to forget is
+     * one nobody trusts with a correction.
+     */
+    fun setPlaceAndClient(
+        street: String,
+        city: String,
+        postalCode: String,
+        clientName: String,
+        clientPhone: String,
+    ) = viewModelScope.launch {
+        val project = state.value.project ?: return@launch
+        container.projects.save(
+            project.copy(
+                street = street.trim().takeIf { it.isNotEmpty() },
+                city = city.trim().takeIf { it.isNotEmpty() },
+                postalCode = postalCode.trim().takeIf { it.isNotEmpty() },
+                clientName = clientName.trim().takeIf { it.isNotEmpty() },
+                clientPhone = clientPhone.trim().takeIf { it.isNotEmpty() },
+            ),
+            actorName = container.settings.settings.first().actorName,
         )
     }
 
@@ -137,8 +238,28 @@ class ProjectDetailViewModel(
         container.projects.removeMaterial(material, container.settings.settings.first().actorName)
     }
 
-    fun addTask(title: String) = viewModelScope.launch {
-        container.projects.addTask(projectId, title, container.settings.settings.first().actorName)
+    fun addTask(title: String, stageId: String? = null) = viewModelScope.launch {
+        container.projects.addTask(
+            projectId = projectId,
+            title = title,
+            actorName = container.settings.settings.first().actorName,
+            stageId = stageId,
+        )
+    }
+
+    /** The stages of a job, for the picker. Read-only reference data. */
+    val stages: List<WorkStage> get() = container.scopes.stages
+
+    fun stageName(id: String?, languageTag: String): String? =
+        container.scopes.stage(id)?.names?.resolve(languageTag)
+
+    fun setTaskStage(task: ProjectTaskEntity, stageId: String?) = viewModelScope.launch {
+        container.projects.setTaskStage(
+            task = task,
+            stageId = stageId,
+            scopeId = task.scopeId.takeIf { stageId != null },
+            actorName = container.settings.settings.first().actorName,
+        )
     }
 
     fun removeTask(task: ProjectTaskEntity) = viewModelScope.launch {

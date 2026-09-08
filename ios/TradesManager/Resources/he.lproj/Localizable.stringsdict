@@ -323,5 +323,45 @@
             <string>באיחור של %d ימים</string>
         </dict>
     </dict>
+    <key>ts_withheld</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>אדם אחד בפרויקט זה אינו בסמכותכם לתמחר.</string>
+            <key>two</key>
+            <string>שני אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+            <key>many</key>
+            <string>%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+            <key>other</key>
+            <string>%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+        </dict>
+    </dict>
+    <key>crew_no_trade</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>לאדם אחד לא נרשם מקצוע והוא אינו באף אחת מהרשימות.</string>
+            <key>two</key>
+            <string>לשני אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+            <key>many</key>
+            <string>ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+            <key>other</key>
+            <string>ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

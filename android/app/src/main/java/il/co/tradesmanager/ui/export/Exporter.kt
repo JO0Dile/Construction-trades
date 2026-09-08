@@ -35,8 +35,20 @@ object Exporter {
         val directory = File(context.cacheDir, "exports").apply { mkdirs() }
         val stem = document.fileStem()
 
+        // The CSV carries the machine-only columns; the PDF does not. See
+        // ExportDocument.Table for why the two differ in width but never in
+        // what a shared value says.
+        val csvHeaders = table.headers + table.extraHeaders
+        val blank = List(table.extraHeaders.size) { "" }
+        val csvRows = if (table.extraHeaders.isEmpty()) {
+            table.rows
+        } else {
+            table.rows.mapIndexed { index, row ->
+                row + (table.extraCells.getOrNull(index) ?: blank)
+            }
+        }
         val csv = File(directory, "$stem.csv").apply {
-            writeBytes(ExportFormat.csv(table.headers, table.rows).toByteArray(Charsets.UTF_8))
+            writeBytes(ExportFormat.csv(csvHeaders, csvRows).toByteArray(Charsets.UTF_8))
         }
         val pdf = File(directory, "$stem.pdf").apply {
             outputStream().use { writePdf(table, locale, rightToLeft, it) }

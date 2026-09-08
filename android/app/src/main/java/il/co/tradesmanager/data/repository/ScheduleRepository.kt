@@ -61,15 +61,40 @@ class ScheduleRepository(
         audit.record(ENTITY, to.toString(), AuditTrail.Action.CREATE, actorName, "Copied ${from.size} blocks")
     }
 
+    /**
+     * Somebody starts a shift.
+     *
+     * [workerAccountId] and [workerMembershipId] are who they are, beside the
+     * name. The name alone is what this recorded before, and a timesheet keyed
+     * on typed text is one where two men called Hammam are a single row and no
+     * rule can tell whose wages it is showing. Both are nullable because a
+     * sole trader has no company and no membership, and their own timesheet
+     * has nobody to keep it from.
+     */
     suspend fun checkIn(
         workerName: String,
         projectId: String?,
         latitude: Double?,
         longitude: Double?,
+        workerAccountId: String? = null,
+        workerMembershipId: String? = null,
+        /**
+         * The piece of the day's plan this shift is against, when one fits.
+         *
+         * Worked out rather than asked, by `core.time.DayPlan`. A man walking
+         * onto a site at ten to seven with his gloves on will not answer a
+         * second question, and a check-in that takes two taps is a check-in
+         * people stop doing. Null is the ordinary answer and an honest one:
+         * plenty of work is not on anybody's plan.
+         */
+        blockId: String? = null,
     ): TimeEntryEntity {
         val entry = TimeEntryEntity(
             id = UUID.randomUUID().toString(),
+            blockId = blockId,
             projectId = projectId,
+            workerId = workerAccountId,
+            workerMembershipId = workerMembershipId,
             workerName = workerName,
             checkInAt = System.currentTimeMillis(),
             latitude = latitude,

@@ -56,4 +56,13 @@ data class IncidentEntity(
     val longitude: Double? = null,
     val signatureStrokes: String? = null,
     val createdAt: Long,
+    /**
+     * What it cost, when anybody has put a figure on it.
+     *
+     * Null rather than zero for "not known yet", which is the answer for most
+     * reports at the moment they are filed. Zero is a claim that it cost
+     * nothing, and a register that cannot tell the two apart will one day be
+     * used to argue that it did.
+     */
+    val costAmount: Double? = null,
 )

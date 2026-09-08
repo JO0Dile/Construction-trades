@@ -17,9 +17,7 @@
 "action_filter" = "Filter";
 "action_export" = "Export";
 "state_loading" = "Loading…";
-"state_saved" = "Saved";
 "state_deleted" = "Deleted";
-"error_generic" = "Something went wrong";
 "error_required" = "This field is required";
 "error_number" = "Enter a number";
 "onboarding_welcome_title" = "Set the app up for your trade";
@@ -89,6 +87,21 @@
 "proj_name" = "Project name";
 "proj_address" = "Address";
 "proj_client" = "Client";
+"proj_parts" = "Parts of this job";
+"proj_add_part" = "Add a part";
+"proj_part_of" = "Part of";
+"proj_no_parts" = "Not broken into parts.";
+"proj_part_hint" = "A floor, a flat, a plot — whatever this job is made of.";
+"proj_street" = "Street and number";
+"proj_city" = "City";
+"proj_postal_code" = "Postal code";
+"proj_client_phone" = "Client phone";
+"proj_when" = "When it runs";
+"proj_no_date" = "Not set";
+"action_clear" = "Clear";
+"proj_where_and_who" = "Where it is, and who it is for";
+"proj_no_address" = "No address yet.";
+"proj_open_map" = "Map";
 "proj_status" = "Status";
 "proj_start" = "Start date";
 "proj_due" = "Due date";
@@ -156,12 +169,16 @@
 "update_notes" = "What changed";
 "sch_title" = "Schedule";
 "sch_new_block" = "New time block";
+"sch_assign" = "Assign";
+"sch_nobody" = "Nobody yet";
+"sch_unassign" = "Nobody";
 "sch_start" = "Start";
 "sch_end" = "End";
 "sch_task" = "Task";
 "sch_assignee" = "Assigned to";
 "sch_project" = "Project";
 "sch_check_in" = "Check in";
+"sch_which_job" = "Which job?";
 "sch_check_out" = "Check out";
 "sch_checked_in" = "Checked in";
 "sch_empty" = "Nothing scheduled";
@@ -175,6 +192,7 @@
 "saf_fail" = "Not done";
 "saf_na" = "Not applicable";
 "saf_sign_off" = "Sign off";
+"saf_sign_here" = "Sign here";
 "saf_signed_by" = "Signed by";
 "saf_blocked" = "A critical item is not done. Work must not start.";
 "saf_references" = "Standards and regulations";
@@ -194,6 +212,22 @@
 "set_audit_log" = "Activity log";
 "set_export" = "Export my data";
 "set_delete_data" = "Delete my account and data";
+/* Privacy screen: the whole of it in one sentence */
+"priv_lead" = "Everything you record stays on this phone.";
+"priv_where_title" = "Where your work is kept";
+"priv_where_body" = "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.";
+"priv_network_title" = "The one thing that leaves the phone";
+"priv_network_body" = "When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.";
+"priv_none_title" = "What the app does not do";
+"priv_none_body" = "No analytics, no advertising and no tracking of any kind. Nothing is shared with anybody, because there is nowhere for it to go.";
+"priv_perm_title" = "What the permissions are for";
+"priv_perm_body" = "The camera takes the photographs you attach to a job, a snag or a violation, and they are saved on this phone. Internet access is used only for the update check above.";
+"priv_crew_title" = "If your firm installed this";
+"priv_crew_body" = "What you record can be seen by the people your role in the firm allows — that is what the roles are for. It is still only on the phones it was entered on.";
+"priv_delete_title" = "Removing it";
+"priv_delete_body" = "Settings → Delete everything empties the database on this phone. Because nothing ever left it, there is nothing anywhere else to ask for. A backup you took is a file you hold; delete it wherever you put it.";
+"priv_future_title" = "When this changes";
+"priv_future_body" = "A server is planned, so that phones can sync and a lost phone is not a lost site. Nothing goes to one until it exists, and this page will say so before anything does.";
 "set_privacy" = "Privacy policy";
 "set_terms" = "Terms of service";
 "set_about" = "About";
@@ -221,7 +255,7 @@
 "acc_personal_hint" = "One person, your own tools and jobs.";
 "acc_company" = "A company";
 "acc_company_hint" = "Several people, each seeing the part of the work that is theirs.";
-"acc_your_name" = "Your name";
+"acc_your_name" = "Full name";
 "acc_company_name" = "Company name";
 "acc_reg_number" = "Company number (optional)";
 "acc_reg_hint" = "Goes on invoices. You can add it later.";
@@ -380,6 +414,7 @@
 "ptw_issued_by" = "Issued by";
 "ptw_precautions" = "Before work starts";
 "ptw_issue" = "Issue the permit";
+"ptw_sign" = "Sign to issue";
 "ptw_issue_blocked" = "Every precaution has to be ticked before this permit can be issued.";
 "ptw_valid_from" = "Valid from";
 "ptw_valid_to" = "Valid until";
@@ -428,6 +463,17 @@
 "acc_sign_in_title" = "Sign in";
 "acc_identifier" = "Username or ID number";
 "acc_identifier_hint" = "Whichever your site office gave you. Both work.";
+"acc_username" = "Username";
+"acc_username_hint" = "What you will type to sign in. Short is better on a site.";
+"acc_phone" = "Phone number";
+"acc_phone_hint" = "How the site reaches you. Required.";
+"acc_email" = "Email address (optional)";
+"acc_phone_missing" = "A phone number is needed.";
+"acc_phone_not_a_number" = "That is not a phone number.";
+"acc_phone_too_short" = "That is too short to be a phone number.";
+"acc_phone_too_long" = "That is longer than any phone number.";
+"acc_phone_repeated" = "A number somebody can actually be reached on.";
+"acc_email_bad" = "That does not look like an email address.";
 "acc_password" = "Password";
 "acc_password_blank_hint" = "Leave blank if you were not given one.";
 "acc_wrong_credentials" = "That does not match. Check with whoever set you up.";
@@ -819,3 +865,348 @@
 "hv_lifts" = "Lifts never marked done";
 "hv_pours" = "Pours never finished";
 "hv_daily_logs" = "Daily logs never signed";
+/* Alt text for the flag in the settings footer */
+"about_flag" = "Flag of Israel";
+/* Under the app name in the settings footer */
+"about_edition" = "Israel edition — built to Israeli standards, terms and site rules";
+"wp_title" = "Work packages";
+"wp_empty" = "No work packages on this job yet";
+"wp_new" = "New work package";
+"wp_given" = "Given out";
+"wp_taken" = "Taken on";
+"wp_amount" = "Agreed amount";
+"wp_stage" = "Stage";
+"wp_scope" = "Scope of work";
+"wp_location" = "Where";
+"wp_accept" = "Accept";
+"wp_decline" = "Decline";
+"wp_start" = "Start work";
+"wp_submit" = "Submit for inspection";
+"wp_approve" = "Approve";
+"wp_reject" = "Send back";
+"wp_reject_reason" = "What needs correcting";
+"wp_reject_hint" = "A crew sent back with no reason has nothing to fix.";
+"wp_rejected_because" = "Sent back:";
+"wp_need_photo" = "Add a photograph before submitting";
+"wp_need_photo_hint" = "Approval happens in an office days later, by which time the wall is plastered.";
+"wp_invoice" = "Raise the application";
+"wp_approved_not_paid" = "Approved. Not paid — the application still has to run its terms.";
+"wp_status_draft" = "Draft";
+"wp_status_offered" = "Offered";
+"wp_status_accepted" = "Accepted";
+"wp_status_declined" = "Declined";
+"wp_status_progress" = "In progress";
+"wp_status_submitted" = "Awaiting inspection";
+"wp_status_rejected" = "Sent back";
+"wp_status_approved" = "Approved";
+"wp_status_cancelled" = "Cancelled";
+"wp_refused_side" = "Only the other side can do that";
+"wp_refused_state" = "Not possible from here";
+"wp_refused_party" = "This is not your agreement";
+"co_title" = "Company profile";
+"co_logo" = "Company mark";
+"co_name" = "Company name";
+"co_reg" = "Registration number";
+"co_email" = "Email";
+"co_phone" = "Phone";
+"co_website" = "Website";
+"co_address" = "Address";
+"co_licence" = "Contractor licence number";
+"co_classification" = "Classification";
+"co_licence_expires" = "Licence valid until";
+"co_visible_to_workers" = "Show to the crew";
+"co_visible_hint" = "Off means only management sees it. Nothing is published unless you turn it on.";
+"co_verified_note" = "Recording a licence marks you verified on this app. It is not a statement that you are licensed to do the work — that is between you and the regulator.";
+"party_client" = "Developer / client";
+"party_gc" = "General contractor";
+"party_first" = "First-tier subcontractor";
+"party_second" = "Crew leader / labour-only";
+"party_supplier" = "Supplier";
+"party_consultant" = "Consultant / supervisor";
+"party_title" = "Position on this job";
+"party_hint" = "What your firm is on this job, which is not what it is on the next one.";
+/* Subtitle on the project screen link */
+"wp_row_hint" = "What was handed out and what was taken on";
+"eng_title" = "Firms on this job";
+"eng_add" = "Bring a firm onto the job";
+"eng_name" = "Firm name";
+"eng_scope" = "What they are here to do";
+"eng_refused" = "Your position on this job cannot bring that one on.";
+"wp_payee" = "Who is doing it";
+"wp_title_field" = "What the package is";
+"eng_self" = "What is your firm on this job?";
+"eng_self_hint" = "Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.";
+"ct_title" = "Contracts";
+"ct_empty" = "No contracts on this job yet";
+"ct_new" = "New contract";
+"ct_row_hint" = "What was agreed, and with whom";
+"ct_scope" = "What it covers";
+"ct_original" = "Original amount";
+"ct_current" = "Amount in force";
+"ct_receivable" = "You are paid on this";
+"ct_payable" = "You pay on this";
+"ct_sign" = "Sign";
+"ct_signed_by" = "Signed by";
+"ct_unsigned" = "Not signed by both sides yet";
+"ct_amend" = "Propose a change";
+"ct_amend_amount" = "New amount";
+"ct_amend_reason" = "Why";
+"ct_amend_reason_hint" = "Somebody will ask in three years why this contract is worth what it is worth, and they were not there.";
+"ct_amend_history" = "Every figure this contract has been";
+"ct_amend_accept" = "Accept the change";
+"ct_amend_reject" = "Refuse the change";
+"ct_amend_pending" = "Waiting on the other side";
+"ct_amend_yours" = "You proposed this. The other side accepts or refuses it.";
+"ct_margin" = "Your margin on this job";
+"ct_margin_hint" = "What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.";
+"wp_claim_title" = "Approved and not yet claimed";
+"wp_claim_raise" = "Raise a payment application";
+"wp_claim_total" = "This application will claim";
+"wp_claim_cumulative" = "Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.";
+"wp_claim_none" = "Nothing new approved since the last application";
+"task_stage" = "Stage of the job";
+"task_stage_none" = "No stage";
+"task_stage_hint" = "Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.";
+"pay_breakdown" = "What this claim covers";
+"pay_breakdown_hint" = "Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.";
+"pay_breakdown_none" = "Raised by hand — no work packages attached.";
+/* Audit action: a record was exported out of the app */
+"audit_exported" = "Exported";
+/* Audit action: old entries were removed */
+"audit_purged" = "Purged";
+"audit_title" = "Audit trail";
+"audit_hint" = "Every change of consequence, in the order it happened. The trail cannot be edited from inside the app.";
+"audit_empty" = "Nothing recorded yet.";
+"audit_verify" = "Check the trail";
+"audit_intact" = "Intact";
+"audit_intact_detail" = "%1$d entries checked and every one adds up.";
+"audit_unchained" = "%1$d older entries carry no signature and cannot be checked. They were written before this version.";
+"audit_failed" = "The trail does not add up";
+"audit_fault_altered" = "Entry %1$d says something other than what was signed.";
+"audit_fault_broken" = "Entry %1$d does not follow the one before it. Something was removed or replaced.";
+"audit_fault_missing" = "An entry before %1$d is gone.";
+"audit_window" = "Checks the most recent %1$d entries.";
+"audit_not_checked" = "Not checked yet.";
+"audit_export" = "Export the trail";
+"audit_col_seq" = "No.";
+"audit_col_when" = "When";
+"audit_col_who" = "Who";
+"audit_col_action" = "Action";
+"audit_col_what" = "What happened";
+"audit_col_signature" = "Signature";
+"audit_export_checked" = "Checked at export";
+"audit_export_note" = "Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.";
+"sec_encrypted" = "On — the records on this device are encrypted";
+"sec_encrypted_detail" = "The key is held in this device's secure hardware and never leaves it. The database file cannot be read off the phone.";
+"sec_not_encrypted" = "Off — the records on this device are NOT encrypted";
+"sec_not_encrypted_detail" = "This device could not load the encryption library, so the app opened the records unprotected rather than refuse to start. ID numbers, photographs and signatures can be read by anyone with access to this phone's files. Report this device before using it for personnel data.";
+"ret_title" = "Keep the audit trail for";
+"ret_hint" = "How long records must be kept is a legal question, and the answer differs for a payment record, a safety inspection and a worker's ID number. The app does not choose for you: nothing is ever deleted until you set a period, and a purge records what it removed.";
+"ret_keep_all" = "Keep everything";
+"ret_1_year" = "1 year";
+"ret_3_years" = "3 years";
+"ret_7_years" = "7 years";
+"ret_apply" = "Apply now";
+"ret_applied" = "Removed %1$d entries. The purge is itself recorded in the trail.";
+"ret_nothing" = "Nothing was old enough to remove.";
+"inc_title" = "Incidents";
+"inc_add" = "Report an incident";
+"inc_empty" = "Nothing reported.";
+"inc_hint" = "Write it down while it is fresh, including the near misses. A near miss is the same accident with better luck.";
+"inc_what" = "What happened";
+"inc_severity" = "How bad";
+"inc_near_miss" = "Near miss";
+"inc_minor" = "Minor — first aid";
+"inc_serious" = "Serious — hospital or off work";
+"inc_fatal" = "Fatal";
+"inc_escalate" = "This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.";
+"inc_reported_by" = "Reported by";
+"acc_have_account" = "I already have an account";
+"acc_none_on_device" = "There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.";
+"role_safety_officer" = "Safety officer";
+"role_safety_officer_hint" = "Records violations and incidents against named people. Sees who somebody is, never what they are paid.";
+"find_by_id" = "ID number";
+"find_by_id_hint" = "Type the number from their card. Names on a site repeat; this does not.";
+"find_nobody" = "No one has that ID number. They have to create an account before they can be added.";
+"vio_title" = "Violations";
+"vio_new" = "Record a violation";
+"vio_none" = "Nothing recorded.";
+"vio_what" = "What was wrong";
+"vio_cost" = "Cost, if any";
+"vio_cost_hint" = "Leave empty for no charge. Empty and zero are not the same.";
+"vio_evidence" = "Photograph or video";
+"vio_confirm" = "Confirm";
+"vio_confirm_warning" = "Once confirmed this cannot be changed or withdrawn, and the person it names will see it.";
+"vio_draft" = "Draft — only you can see this";
+"vio_confirmed" = "Confirmed";
+"vio_cancelled" = "Cancelled";
+"vio_need_person" = "Choose who this is against.";
+"vio_need_evidence" = "Attach a photograph or a video. A violation with a cost and nothing to show is one person's word.";
+"vio_need_description" = "Write what was wrong.";
+/* Row on a purchase order: when the delivery is expected */
+"po_due" = "Due";
+/* The supplier has not said when it is coming */
+"po_no_due" = "The supplier has not said";
+/* Dialog title when placing an order: ask for the delivery date */
+"po_when_due" = "When is it due?";
+/* Field on a failed checklist row: describe the failure */
+"saf_what_is_wrong" = "What is wrong";
+/* Hint under the field on a failed check */
+"saf_fail_needs_words" = "A failed check with no words is a row nobody can act on six months later.";
+/* Button on a failed checklist row: attach a photograph */
+"saf_photograph" = "Photograph it";
+/* Row on the violation draft: which job it happened on */
+"vio_job" = "Which job";
+/* The violation was not on a job — a yard, a van, the road */
+"vio_no_job" = "Not on a job";
+/* Dialog: the account may not write violations for this company */
+"vio_refused_officer" = "You are not allowed to record violations here.";
+/* Dialog: signed in, but a member of no company at all */
+"vio_refused_books" = "You are not on any company's books. Create a company or join one, then record it.";
+/* Dialog: the violation is already confirmed or cancelled */
+"vio_refused_state" = "This one has already been confirmed or cancelled. It cannot be changed.";
+/* Dialog: confirm was refused because something is missing */
+"vio_refused_incomplete" = "Something is still missing: who it is against, what was wrong, and a photograph or a video.";
+/* Dialog: a negative cost was rejected */
+"vio_refused_cost" = "A cost cannot be less than zero. Leave it empty for no charge.";
+/* Dialog: the write failed for a reason the app has no better sentence for */
+"vio_refused_unknown" = "That could not be saved.";
+/* Screen title: signing people onto the site at the gate */
+"gate_title" = "Site entry";
+/* Section header above the ID number field */
+"gate_find" = "Who is at the gate";
+/* Under the ID field. Says the number is checked against a face. */
+"gate_find_hint" = "The number on their card. Their photograph comes back with it.";
+/* No account has that ID number. */
+"gate_not_found" = "Nobody has that ID number. They sign up on their own phone first, then come back.";
+/* Under the found person's card. %1$s is a role name, e.g. Worker. */
+"gate_grants" = "Will be signed onto the site as: %1$s. Their rank is set afterwards by whoever engaged them.";
+/* The person found is already on this company's books. */
+"gate_already_in" = "Already signed onto this site. Nothing to do.";
+/* Section header above the signature pad */
+"gate_sign" = "Their signature";
+/* Explains what the person at the gate is signing for. */
+"gate_sign_body" = "Hand them the phone. They sign to say they have been briefed on this site's safety rules.";
+/* Why the admit button is disabled. */
+"gate_need_signature" = "Not signed yet.";
+/* The button that puts the person onto the site. */
+"gate_admit" = "Sign them onto the site";
+/* Confirmation after an admission. %1$s is the person's name. */
+"gate_admitted" = "%1$s is on the site.";
+/* Shown to a role that may not admit people. */
+"gate_not_yours" = "Signing people onto the site is not one of yours. The site manager or the safety officer does it.";
+/* Entry point on the People screen that opens the gate. */
+"people_gate" = "Sign someone onto the site";
+/* Button that attaches a photo or video to an incident. %1$d is how many are attached. */
+"inc_evidence" = "Photograph or video (%1$d)";
+/* Why the save button is disabled: no photo or video attached yet. */
+"inc_need_evidence" = "Attach a photograph or a video. By the time this is argued about, the ladder has been moved.";
+/* Why the save button is disabled: nothing written. */
+"inc_need_description" = "Write what happened.";
+/* Optional cost field on an incident report. */
+"inc_cost" = "Cost, if known";
+/* Under the cost field. Explains that blank and zero differ. */
+"inc_cost_hint" = "Leave it empty if nobody knows yet. Empty and zero are not the same.";
+/* The cost field holds something that is not a number, or is negative. */
+"inc_bad_cost" = "That is not an amount. Leave it empty if you do not know.";
+/* The reconciliation covers only the people this viewer may price. */
+"ts_not_whole_job" = "This covers only the people whose pay you may see, so it is not the job's whole labour.";
+/* Empty state when every person on the job is above this viewer in the chain. */
+"ts_all_withheld" = "None of the hours on this job are yours to price.";
+/* Under the empty state: explains the chain of command rule. */
+"ts_withheld_hint" = "You see the pay of the people who answer to you, and your own. Nobody sees their own boss's.";
+/* Label on the member sheet: who this person answers to. */
+"people_reports_to" = "Answers to";
+/* Shown when a member has no manager set. */
+"people_reports_to_nobody" = "Nobody yet — the owner";
+/* Explains what setting a manager does. */
+"people_reports_hint" = "Whoever someone answers to can see what they are paid. Nobody else can, including people beside them and above them.";
+/* Refusal: the actor is not above this person in the chain. */
+"people_chain_not_yours" = "Only somebody above them can move them, and you are not.";
+/* Refusal: you cannot change who you answer to. */
+"people_chain_yourself" = "You cannot move yourself. Whoever you answer to does that.";
+/* Refusal: the move would put a circle in the chain. */
+"people_chain_loop" = "That would put a circle in the chain: they are already above the person you picked.";
+/* Refusal: the person or the manager is not on this company's books. */
+"people_chain_unknown" = "Not on this company's books.";
+/* Screen title: the crew, listed by trade, with faces */
+"crew_title" = "Who is on site";
+/* No one on the books matches the chosen trade. */
+"crew_none" = "Nobody on the books for that trade.";
+/* Label for the trade a person works in. */
+"crew_trade" = "Trade";
+/* Label for the date somebody signed the safety induction. */
+"crew_inducted" = "Inducted";
+/* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
+"crew_no_money" = "Nothing about pay here. Only somebody above them in the chain of command sees that.";
+"crew_contact" = "Contact";
+"crew_call" = "Call";
+"crew_whatsapp" = "WhatsApp";
+"crew_email" = "Email";
+"crew_no_phone" = "No phone number on file for this person.";
+/* Button and dialog title: fix what the crew list says about somebody */
+"crew_correct" = "Correct these details";
+/* Why the ID number cannot be edited once it is set */
+"crew_id_locked" = "The ID number is set and cannot be changed here. It is on the gate list and on the induction record — ask the office.";
+/* Refusal: the name field was left empty */
+"crew_need_name" = "A name is needed. A row with nobody's name on it is a row nobody can read.";
+/* Refusal: that person is not a member of the company being worked in */
+"crew_not_on_books" = "They are not on this company's books.";
+/* Refusal: the account has gone, or was removed */
+"crew_no_such_person" = "That person's record could not be found.";
+/* Refusal: the correction failed for a reason with no better sentence */
+"crew_correct_failed" = "That could not be saved.";
+/* Nobody has confirmed a violation against this person. */
+"crew_no_violations" = "Nothing confirmed against them.";
+/* Entry point that opens the crew list, by trade, with faces. */
+"crew_open" = "Find someone by trade";
+/* Section header on the dashboard: recent changes this person may see */
+"home_changes" = "What changed";
+/* Settings section: taking the record off the phone and putting it back */
+"backup_title" = "Backup";
+/* Explains why a backup matters when everything is on one device. */
+"backup_why" = "Everything is on this phone and nothing is on a server. Lose the phone and you lose the site diary, unless you have a backup.";
+/* Button that writes a backup file. */
+"backup_take" = "Back up";
+/* Button that opens a backup file to restore from. */
+"backup_restore" = "Restore";
+/* Shown while a backup or restore is running. */
+"backup_working" = "Working. This takes a while, because the photographs go in too.";
+/* Backup written. %1$d is how many photos and videos went in. */
+"backup_done" = "Backed up, with %1$d photographs and videos. Keep the file somewhere that is not this phone.";
+/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
+"backup_staged" = "Ready to restore the backup from %1$s. Close the app completely and open it again to finish. Nothing has changed yet.";
+/* The backup predates the installed version; migrations will run. */
+"backup_older_version" = "It was taken by an older version. It will be brought up to date as it is restored.";
+/* Abandons a staged restore before the restart. */
+"backup_cancel_restore" = "Do not restore after all";
+/* Shown at launch after a restore was applied. */
+"backup_restored" = "Restored from a backup.";
+/* The chosen file is not a backup from this app. */
+"backup_refused_file" = "That is not a backup from this app.";
+/* The backup was written by a newer version of the app. */
+"backup_newer_app" = "That backup was made by a newer version of the app. Update first, then restore it.";
+/* The restore failed part way and the original was put back. */
+"backup_rolled_back" = "The restore did not finish, and everything you had is still here. Try again.";
+/* Generic failure: wrong passphrase or damaged file, deliberately not distinguished. */
+"backup_failed" = "That did not work. Either the passphrase is wrong or the file is damaged.";
+/* Label for the backup passphrase field. */
+"backup_passphrase" = "Passphrase";
+/* Second passphrase field, to catch a typo. */
+"backup_passphrase_again" = "Type it again";
+/* Dialog title when opening a backup. */
+"backup_passphrase_open" = "The passphrase for this backup";
+/* There is no recovery. Said plainly, before the field. */
+"backup_passphrase_warning" = "Write this down somewhere safe. Nobody can reset it, and without it the backup cannot be opened by anyone, including us.";
+/* Passphrase below the minimum length. */
+"backup_too_short" = "At least 12 characters. This locks a file somebody could copy and take away.";
+/* The two passphrase fields differ. */
+"backup_no_match" = "The two do not match.";
+/* Long but with too few distinct characters. */
+"backup_too_plain" = "Too few different characters. Length alone is not strength.";
+/* Button that opens a backup to see what is in it, without restoring. */
+"backup_check" = "Check a backup";
+/* What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. */
+"backup_contents" = "Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.";
+/* The archive opened but the database inside failed SQLite's integrity check. */
+"backup_damaged" = "The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.";

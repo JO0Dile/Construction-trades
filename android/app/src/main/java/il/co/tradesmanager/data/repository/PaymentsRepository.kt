@@ -3,6 +3,7 @@ package il.co.tradesmanager.data.repository
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.data.local.dao.PaymentsDao
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
+import il.co.tradesmanager.data.local.entity.PaymentApplicationLineEntity
 import java.time.Instant
 import java.time.ZoneId
 import java.util.Locale
@@ -37,6 +38,20 @@ class PaymentsRepository(
 
     fun observe(id: String): Flow<PaymentApplicationEntity?> = dao.observe(id)
 
+    /** What an application is made of. Empty for one raised by hand. */
+    fun observeLines(applicationId: String): Flow<List<PaymentApplicationLineEntity>> =
+        dao.observeLines(applicationId)
+
+    /**
+     * One work package an application is claiming for.
+     *
+     * A plain value rather than the package itself, so that the caller decides
+     * what a line is worth. The packages screen claims the agreed amount; a
+     * future one measuring part-complete work would claim less, and the
+     * repository has no business assuming either.
+     */
+    data class Cover(val assignmentId: String, val title: String, val amount: Double)
+
     /**
      * Raises the next application in a sequence.
      *
@@ -54,22 +69,23 @@ class PaymentsRepository(
         retentionRate: Double = Payments.DEFAULT_RETENTION,
         retentionLimit: Double = Payments.DEFAULT_RETENTION_LIMIT,
         terms: Payments.Terms = Payments.Terms.SHOTEF_30,
+        covers: List<Cover> = emptyList(),
         actorName: String,
     ): PaymentApplicationEntity {
         val now = System.currentTimeMillis()
-        val previous = dao.lastPaid(projectId, direction.name)
+        val number = (dao.lastNumber(projectId, direction.name) ?: 0) + 1
         val application = PaymentApplicationEntity(
             id = UUID.randomUUID().toString(),
             reference = String.format(Locale.ROOT, "PA-%03d", dao.count() + 1),
             projectId = projectId,
             direction = direction.name,
             partyName = partyName.trim(),
-            applicationNumber = (dao.lastNumber(projectId, direction.name) ?: 0) + 1,
+            applicationNumber = number,
             periodEndsOn = now,
             status = Payments.Status.DRAFT,
             claimedGrossToDate = claimedGrossToDate,
             certifiedGrossToDate = null,
-            previouslyPaidNet = netOf(previous, contractSum),
+            previouslyPaidNet = paidBefore(projectId, direction.name, number, contractSum),
             retentionRate = retentionRate,
             retentionLimit = retentionLimit,
             terms = terms.name,
@@ -84,6 +100,26 @@ class PaymentsRepository(
             updatedAt = now,
         )
         dao.upsert(application)
+        // Written after the application so a line can never point at a row
+        // that is not there. Nothing rolls these back together — Room would
+        // need a transaction across two writes for that — but an application
+        // with no breakdown reads as one raised by hand, which is a state the
+        // screen already handles, whereas a line with no application is a
+        // row nothing can ever show.
+        if (covers.isNotEmpty()) {
+            dao.upsertLines(
+                covers.map { cover ->
+                    PaymentApplicationLineEntity(
+                        id = UUID.randomUUID().toString(),
+                        applicationId = application.id,
+                        assignmentId = cover.assignmentId,
+                        title = cover.title,
+                        amount = cover.amount,
+                        createdAt = now,
+                    )
+                },
+            )
+        }
         audit.record(
             APPLICATION, application.id, AuditTrail.Action.CREATE, actorName,
             "${application.reference} #${application.applicationNumber} ${application.partyName}",
@@ -92,12 +128,24 @@ class PaymentsRepository(
     }
 
     /**
-     * The net figure a paid application settled at.
+     * The net figure the last paid application below [number] settled at.
      *
      * Runs the same retention rule the rest of the app runs, cap and all,
      * rather than a second copy of it in SQL.
+     *
+     * Called again at every step an application takes, because the money it is
+     * measured against usually arrives after it was raised. The stored figure
+     * is a record of what was true at each transition; it is not what the
+     * screen reads, which works the same thing out live from the whole
+     * sequence — see `PaymentsViewModel.previouslyPaidNet`.
      */
-    private fun netOf(previous: PaymentApplicationEntity?, contractSum: Double): Double {
+    private suspend fun paidBefore(
+        projectId: String,
+        direction: String,
+        number: Int,
+        contractSum: Double,
+    ): Double {
+        val previous = dao.lastPaidBefore(projectId, direction, number)
         val gross = previous?.certifiedGrossToDate ?: return 0.0
         return gross - Payments.retentionOn(
             grossToDate = gross,
@@ -147,6 +195,7 @@ class PaymentsRepository(
     suspend fun certify(
         application: PaymentApplicationEntity,
         certifiedGrossToDate: Double,
+        contractSum: Double,
         actorName: String,
         zone: ZoneId = ZoneId.systemDefault(),
     ): Boolean {
@@ -162,6 +211,12 @@ class PaymentsRepository(
             application.copy(
                 status = Payments.Status.CERTIFIED,
                 certifiedGrossToDate = certifiedGrossToDate,
+                previouslyPaidNet = paidBefore(
+                    application.projectId,
+                    application.direction,
+                    application.applicationNumber,
+                    contractSum,
+                ),
                 certifiedAt = now,
                 certifiedByName = actorName,
                 dueOn = due.atStartOfDay(zone).toInstant().toEpochMilli(),
@@ -175,11 +230,34 @@ class PaymentsRepository(
         return true
     }
 
-    suspend fun markPaid(application: PaymentApplicationEntity, actorName: String): Boolean {
+    /**
+     * Records that the money arrived.
+     *
+     * Settles the running total onto the row on the way past. Nothing below
+     * this application can move afterwards in the ordinary run of things, so
+     * this is the figure it was actually paid against — which is what an
+     * export, a sync, or somebody's accountant will read off it next year.
+     */
+    suspend fun markPaid(
+        application: PaymentApplicationEntity,
+        contractSum: Double,
+        actorName: String,
+    ): Boolean {
         if (!Payments.canMarkPaid(application.status)) return false
         val now = System.currentTimeMillis()
+        val settledAgainst = paidBefore(
+            application.projectId,
+            application.direction,
+            application.applicationNumber,
+            contractSum,
+        )
         dao.upsert(
-            application.copy(status = Payments.Status.PAID, paidAt = now, updatedAt = now),
+            application.copy(
+                status = Payments.Status.PAID,
+                paidAt = now,
+                previouslyPaidNet = settledAgainst,
+                updatedAt = now,
+            ),
         )
         audit.record(
             APPLICATION, application.id, AuditTrail.Action.UPDATE, actorName,

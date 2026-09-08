@@ -12,6 +12,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Groups
+import androidx.compose.material.icons.filled.HowToReg
 import androidx.compose.material.icons.filled.PersonRemove
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,7 +41,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.access.Admission
+import il.co.tradesmanager.core.access.Chain
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.data.local.entity.AccountEntity
@@ -61,13 +66,18 @@ import il.co.tradesmanager.ui.components.EmptyState
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PeopleScreen(container: AppContainer) {
+fun PeopleScreen(
+    container: AppContainer,
+    onOpenGate: () -> Unit,
+    onOpenCrew: () -> Unit,
+) {
     val viewModel: PeopleViewModel = viewModel(
         factory = ViewModelFactory(container) { PeopleViewModel(it) },
     )
     val members by viewModel.members.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
+    val chainRefusal by viewModel.chainRefusal.collectAsStateWithLifecycle()
     val certifications by viewModel.certifications.collectAsStateWithLifecycle()
     val kinds by viewModel.kinds.collectAsStateWithLifecycle()
     var adding by remember { mutableStateOf(false) }
@@ -75,9 +85,37 @@ fun PeopleScreen(container: AppContainer) {
 
     val signedIn = session as? SessionRepository.State.SignedIn
     val canManage = signedIn?.canManageMembers == true
+    val myRole = signedIn?.role ?: Role.WORKER
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text(stringResource(R.string.people_title)) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.people_title)) },
+                actions = {
+                    // Available to everybody who can open this tab. Finding a
+                    // face is not a management act — it is what somebody does
+                    // when they have to speak to a man they cannot name.
+                    IconButton(onClick = onOpenCrew) {
+                        Icon(
+                            Icons.Filled.Groups,
+                            contentDescription = stringResource(R.string.crew_open),
+                        )
+                    }
+                    // The gate, not the member list. Adding somebody here is
+                    // an office act; the gate is a person standing in front of
+                    // you signing, and the two are different enough that
+                    // sharing one button would make one of them wrong.
+                    if (Admission.mayWorkTheGate(myRole)) {
+                        IconButton(onClick = onOpenGate) {
+                            Icon(
+                                Icons.Filled.HowToReg,
+                                contentDescription = stringResource(R.string.people_gate),
+                            )
+                        }
+                    }
+                },
+            )
+        },
         floatingActionButton = {
             if (canManage) {
                 FloatingActionButton(onClick = { adding = true }) {
@@ -150,8 +188,8 @@ fun PeopleScreen(container: AppContainer) {
     if (adding) {
         AddMemberDialog(
             onDismiss = { adding = false },
-            onAdd = { name, username, idNumber, role, passcode ->
-                viewModel.addMember(name, username, idNumber, role, passcode)
+            onAdd = { name, username, idNumber, phone, email, role, passcode ->
+                viewModel.addMember(name, username, idNumber, phone, email, role, passcode)
                 adding = false
             },
         )
@@ -165,7 +203,10 @@ fun PeopleScreen(container: AppContainer) {
             suggestedKinds = kinds,
             // You may look at your own tickets; you may not re-role yourself.
             canManage = canManage && member.account.id != signedIn?.account?.id,
+            reportsToName = viewModel.reportsToName(member),
+            candidates = viewModel.candidatesFor(member),
             onDismiss = { editing = null },
+            onSetReportsTo = { viewModel.setReportsTo(member, it) },
             onSetRole = { viewModel.setRole(member, it) },
             onAddCertification = { title, reference, expiresOn ->
                 viewModel.addCertification(member.account.id, title, reference, expiresOn)
@@ -196,6 +237,34 @@ fun PeopleScreen(container: AppContainer) {
             },
         )
     }
+
+    // The chain has its own refusals and its own words for them. Folding them
+    // into the sentence above would tell somebody they lack permission when
+    // what actually happened is that the move would have made a circle.
+    chainRefusal?.let { blocker ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearChainRefusal,
+            title = { Text(stringResource(R.string.people_reports_to)) },
+            text = { Text(stringResource(chainBlockerText(blocker))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearChainRefusal) {
+                    Text(stringResource(R.string.action_ok))
+                }
+            },
+        )
+    }
+}
+
+/**
+ * The sentence for each refusal along the chain. Exhaustive with no `else`, so
+ * the next blocker somebody adds cannot become a blank dialog.
+ */
+private fun chainBlockerText(blocker: Chain.Blocker): Int = when (blocker) {
+    Chain.Blocker.UNKNOWN -> R.string.people_chain_unknown
+    Chain.Blocker.NOT_YOURS -> R.string.people_chain_not_yours
+    Chain.Blocker.YOURSELF -> R.string.people_chain_yourself
+    Chain.Blocker.THEMSELVES -> R.string.people_chain_yourself
+    Chain.Blocker.A_LOOP -> R.string.people_chain_loop
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -206,6 +275,8 @@ private fun AddMemberDialog(
         name: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         role: Role,
         passcode: String?,
     ) -> Unit,
@@ -213,6 +284,8 @@ private fun AddMemberDialog(
     var name by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var idNumber by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var role by remember { mutableStateOf(Role.WORKER) }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
@@ -235,7 +308,7 @@ private fun AddMemberDialog(
                 OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
-                    label = { Text(stringResource(R.string.acc_identifier)) },
+                    label = { Text(stringResource(R.string.acc_username)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )
@@ -243,6 +316,29 @@ private fun AddMemberDialog(
                     value = idNumber,
                     onValueChange = { idNumber = it },
                     label = { Text(stringResource(R.string.acc_id_number)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                // Both optional here, unlike on the sign-up form where the
+                // person is entering their own. The office adding somebody at
+                // the barrier at six in the morning may not have their number
+                // yet, and a man waiting to sign an induction is not somebody
+                // to hold up over a form field. They can be filled in after.
+                OutlinedTextField(
+                    value = phone,
+                    onValueChange = { phone = it },
+                    label = { Text(stringResource(R.string.acc_phone)) },
+                    isError = phone.isNotBlank() && Contact.blocksPhone(phone) != null,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text(stringResource(R.string.acc_email)) },
+                    isError = Contact.blocksEmail(email) != null,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )
@@ -290,12 +386,16 @@ private fun AddMemberDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = name.isNotBlank() && passcodeOk,
+                enabled = name.isNotBlank() && passcodeOk &&
+                    (phone.isBlank() || Contact.blocksPhone(phone) == null) &&
+                    Contact.blocksEmail(email) == null,
                 onClick = {
                     onAdd(
                         name.trim(),
                         username.trim().takeIf { it.isNotEmpty() },
                         idNumber.trim().takeIf { it.isNotEmpty() },
+                        phone.trim().takeIf { it.isNotEmpty() },
+                        email.trim().takeIf { it.isNotEmpty() },
                         role,
                         passcode.takeIf { it.isNotEmpty() },
                     )

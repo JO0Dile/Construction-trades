@@ -13,8 +13,13 @@ class InventoryRepository(
     private val audit: AuditTrail,
 ) {
 
-    fun observe(query: String, kind: String?, lowStockOnly: Boolean): Flow<List<InventoryItemEntity>> =
-        dao.observeItems(query.trim().lowercase(), kind, lowStockOnly)
+    fun observe(
+        query: String,
+        kind: String?,
+        lowStockOnly: Boolean,
+        stageId: String? = null,
+    ): Flow<List<InventoryItemEntity>> =
+        dao.observeItems(query.trim().lowercase(), kind, lowStockOnly, stageId)
 
     fun observeLowStock(): Flow<List<InventoryItemEntity>> = dao.observeLowStock()
 

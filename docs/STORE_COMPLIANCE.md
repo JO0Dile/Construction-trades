@@ -179,6 +179,26 @@ Then, by hand:
       it should return to onboarding).
 - [ ] Fill in the Play Data safety form and the App Store privacy answers from
       section 2 and 3 above, not from memory.
-- [ ] Check the privacy policy and terms are reachable and translated.
+- [x] The privacy notice is in the app: **Settings → About → Privacy policy**,
+      in all three languages. It says what is true — everything stays on the
+      phone, the only outbound request is the update check, no analytics and
+      no tracking — which is short because the app has no server. It has not
+      been through a lawyer, and the day a server exists it is the page that
+      has to change before anything is sent to one.
+- [ ] Terms of service. `set_terms` is written and translated and nothing
+      shows it, because terms are the half of this that is genuinely a legal
+      document rather than a description of behaviour.
+- [x] The same text at a public URL: `docs/PRIVACY.md`, generated from the
+      same catalogue keys as the screen so the two cannot drift, with all
+      three languages on the one page. Paste this into the Play listing's
+      privacy policy field:
+      `https://github.com/JO0Dile/Construction-trades/blob/main/docs/PRIVACY.md`
+      — it works today; move it to your own domain when you have one.
+      Drafts are in `legal/`: `PRIVACY.md`, `TERMS.md`, `ACCESSIBILITY.md`.
+      Both stores want a **URL**, not a file, so they have to be published
+      somewhere before submission — GitHub Pages off this repository is
+      enough. All three are marked as needing a lawyer's review, and the
+      accessibility statement needs an audit and a named contact, which is
+      deliberately left blank rather than invented.
 - [ ] Re-read the two **verify** items: Play's current `targetSdk` minimum and
       Apple's current 4.8 and 3.1.1 wording.

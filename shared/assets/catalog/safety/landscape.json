@@ -1,0 +1,57 @@
+{
+  "tradeId": "landscape",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.ls.plant",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Plant and people in the same space",
+        "he": "ציוד ואנשים באותו מרחב",
+        "ar": "المعدات والناس في نفس المساحة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"
+      ],
+      "items": [
+        {
+          "id": "sf.ls.plant.1",
+          "critical": true,
+          "texts": {
+            "en": "Pedestrian route separated from where plant is moving",
+            "he": "מסלול הולכי רגל מופרד מתנועת הציוד",
+            "ar": "مسار المشاة مفصول عن حركة المعدات"
+          }
+        },
+        {
+          "id": "sf.ls.plant.2",
+          "critical": true,
+          "texts": {
+            "en": "High-visibility clothing worn by everybody in the area",
+            "he": "ביגוד זוהר על כל מי שבאזור",
+            "ar": "ملابس عاكسة على كل من في المنطقة"
+          }
+        },
+        {
+          "id": "sf.ls.plant.3",
+          "critical": true,
+          "texts": {
+            "en": "Operator and banksman have agreed signals and can see each other",
+            "he": "המפעיל והמאותת סיכמו סימנים ורואים זה את זה",
+            "ar": "المشغّل والموجّه اتفقا على الإشارات ويريان بعضهما"
+          }
+        },
+        {
+          "id": "sf.ls.plant.4",
+          "critical": false,
+          "texts": {
+            "en": "Compactor operated with both hands and steel-toed boots on",
+            "he": "המהדק מופעל בשתי ידיים ועם נעלי בטיחות",
+            "ar": "الدكّاكة تُشغّل بيدين ومع حذاء أمان"
+          }
+        }
+      ]
+    }
+  ]
+}

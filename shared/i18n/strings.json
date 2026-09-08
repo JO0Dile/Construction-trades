@@ -95,20 +95,10 @@
       "he": "טוען…",
       "ar": "جارٍ التحميل…"
     },
-    "state_saved": {
-      "en": "Saved",
-      "he": "נשמר",
-      "ar": "تم الحفظ"
-    },
     "state_deleted": {
       "en": "Deleted",
       "he": "נמחק",
       "ar": "تم الحذف"
-    },
-    "error_generic": {
-      "en": "Something went wrong",
-      "he": "משהו השתבש",
-      "ar": "حدث خطأ ما"
     },
     "error_required": {
       "en": "This field is required",
@@ -455,6 +445,81 @@
       "he": "לקוח",
       "ar": "الزبون"
     },
+    "proj_parts": {
+      "en": "Parts of this job",
+      "he": "חלקים של העבודה",
+      "ar": "أجزاء هذا العمل"
+    },
+    "proj_add_part": {
+      "en": "Add a part",
+      "he": "הוספת חלק",
+      "ar": "إضافة جزء"
+    },
+    "proj_part_of": {
+      "en": "Part of",
+      "he": "חלק מתוך",
+      "ar": "جزء من"
+    },
+    "proj_no_parts": {
+      "en": "Not broken into parts.",
+      "he": "לא מחולק לחלקים.",
+      "ar": "غير مقسم إلى أجزاء."
+    },
+    "proj_part_hint": {
+      "en": "A floor, a flat, a plot — whatever this job is made of.",
+      "he": "קומה, דירה, מגרש — ממה שהעבודה מורכבת.",
+      "ar": "طابق أو شقة أو قطعة — مما يتكوّن هذا العمل."
+    },
+    "proj_street": {
+      "en": "Street and number",
+      "he": "רחוב ומספר",
+      "ar": "الشارع والرقم"
+    },
+    "proj_city": {
+      "en": "City",
+      "he": "עיר",
+      "ar": "المدينة"
+    },
+    "proj_postal_code": {
+      "en": "Postal code",
+      "he": "מיקוד",
+      "ar": "الرمز البريدي"
+    },
+    "proj_client_phone": {
+      "en": "Client phone",
+      "he": "טלפון הלקוח",
+      "ar": "هاتف الزبون"
+    },
+    "proj_when": {
+      "en": "When it runs",
+      "he": "מתי היא רצה",
+      "ar": "متى يجري"
+    },
+    "proj_no_date": {
+      "en": "Not set",
+      "he": "לא נקבע",
+      "ar": "غير محدد"
+    },
+    "action_clear": {
+      "en": "Clear",
+      "he": "ניקוי",
+      "ar": "مسح"
+    },
+    "proj_where_and_who": {
+      "en": "Where it is, and who it is for",
+      "he": "איפה זה ולמי",
+      "ar": "أين هو ولمن"
+    },
+    "proj_no_address": {
+      "en": "No address yet.",
+      "he": "עדיין אין כתובת.",
+      "ar": "لا يوجد عنوان بعد."
+    },
+    "proj_open_map": {
+      "en": "Map",
+      "he": "מפה",
+      "ar": "خريطة"
+    },
     "proj_status": {
       "en": "Status",
       "he": "סטטוס",
@@ -762,6 +827,21 @@
       "he": "משבצת זמן חדשה",
       "ar": "فترة زمنية جديدة"
     },
+    "sch_assign": {
+      "en": "Assign",
+      "he": "שיוך",
+      "ar": "إسناد"
+    },
+    "sch_nobody": {
+      "en": "Nobody yet",
+      "he": "עדיין אף אחד",
+      "ar": "لا أحد بعد"
+    },
+    "sch_unassign": {
+      "en": "Nobody",
+      "he": "אף אחד",
+      "ar": "لا أحد"
+    },
     "sch_start": {
       "en": "Start",
       "he": "התחלה",
@@ -791,6 +871,11 @@
       "en": "Check in",
       "he": "כניסה",
       "ar": "تسجيل دخول"
+    },
+    "sch_which_job": {
+      "en": "Which job?",
+      "he": "לאיזו עבודה?",
+      "ar": "على أي عمل؟"
     },
     "sch_check_out": {
       "en": "Check out",
@@ -856,6 +941,11 @@
       "en": "Sign off",
       "he": "חתימה",
       "ar": "توقيع"
+    },
+    "saf_sign_here": {
+      "en": "Sign here",
+      "he": "חתמו כאן",
+      "ar": "وقّع هنا"
     },
     "saf_signed_by": {
       "en": "Signed by",
@@ -951,6 +1041,82 @@
       "en": "Delete my account and data",
       "he": "מחיקת החשבון והנתונים שלי",
       "ar": "حذف حسابي وبياناتي"
+    },
+    "priv_lead": {
+      "c": "Privacy screen: the whole of it in one sentence",
+      "en": "Everything you record stays on this phone.",
+      "he": "כל מה שאתם רושמים נשאר בטלפון הזה.",
+      "ar": "كل ما تُسجّله يبقى على هذا الهاتف."
+    },
+    "priv_where_title": {
+      "en": "Where your work is kept",
+      "he": "היכן נשמרת העבודה שלכם",
+      "ar": "أين يُحفظ عملك"
+    },
+    "priv_where_body": {
+      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.",
+      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
+      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
+    },
+    "priv_network_title": {
+      "en": "The one thing that leaves the phone",
+      "he": "הדבר היחיד שיוצא מהטלפון",
+      "ar": "الشيء الوحيد الذي يغادر الهاتف"
+    },
+    "priv_network_body": {
+      "en": "When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.",
+      "he": "כשלוחצים על בדיקת עדכונים, האפליקציה שואלת את GitHub אם פורסמה גרסה חדשה. בבקשה הזו אין דבר על העבודות, הצוות או האתר שלכם. היא נשלחת רק בלחיצה על הכפתור ולא בשום מועד אחר.",
+      "ar": "عند الضغط على التحقق من التحديثات، يسأل التطبيق GitHub إن كانت هناك نسخة أحدث. هذا الطلب لا يحمل شيئًا عن أعمالك أو طاقمك أو موقعك. ويحدث عند الضغط على الزر فقط."
+    },
+    "priv_none_title": {
+      "en": "What the app does not do",
+      "he": "מה האפליקציה אינה עושה",
+      "ar": "ما لا يفعله التطبيق"
+    },
+    "priv_none_body": {
+      "en": "No analytics, no advertising and no tracking of any kind. Nothing is shared with anybody, because there is nowhere for it to go.",
+      "he": "אין איסוף נתוני שימוש, אין פרסומות ואין מעקב מכל סוג. שום דבר אינו משותף עם אף אחד, כי אין לאן.",
+      "ar": "لا تحليلات ولا إعلانات ولا تتبّع من أي نوع. لا تُشارَك أي معلومة مع أحد، لأنه لا يوجد مكان تذهب إليه."
+    },
+    "priv_perm_title": {
+      "en": "What the permissions are for",
+      "he": "לשם מה ההרשאות",
+      "ar": "لماذا الأذونات"
+    },
+    "priv_perm_body": {
+      "en": "The camera takes the photographs you attach to a job, a snag or a violation, and they are saved on this phone. Internet access is used only for the update check above.",
+      "he": "המצלמה מצלמת את התמונות שאתם מצרפים לעבודה, לליקוי או להפרה, והן נשמרות בטלפון הזה. הגישה לאינטרנט משמשת רק לבדיקת העדכונים שלמעלה.",
+      "ar": "الكاميرا تلتقط الصور التي ترفقها بعمل أو ملاحظة أو مخالفة، وتُحفظ على هذا الهاتف. الوصول إلى الإنترنت يُستخدم فقط لفحص التحديثات أعلاه."
+    },
+    "priv_crew_title": {
+      "en": "If your firm installed this",
+      "he": "אם החברה שלכם התקינה את זה",
+      "ar": "إذا ثبّتت شركتك هذا التطبيق"
+    },
+    "priv_crew_body": {
+      "en": "What you record can be seen by the people your role in the firm allows — that is what the roles are for. It is still only on the phones it was entered on.",
+      "he": "מה שאתם רושמים גלוי לאנשים שהתפקיד שלכם בחברה מתיר — לשם כך קיימים התפקידים. עדיין, הכול נמצא רק במכשירים שבהם הוזן.",
+      "ar": "ما تُسجّله يمكن أن يراه من يسمح لهم دورك في الشركة — لهذا وُجدت الأدوار. ومع ذلك يبقى فقط على الأجهزة التي أُدخل فيها."
+    },
+    "priv_delete_title": {
+      "en": "Removing it",
+      "he": "מחיקה",
+      "ar": "الحذف"
+    },
+    "priv_delete_body": {
+      "en": "Settings → Delete everything empties the database on this phone. Because nothing ever left it, there is nothing anywhere else to ask for. A backup you took is a file you hold; delete it wherever you put it.",
+      "he": "הגדרות ← מחיקת הכול מרוקנת את מסד הנתונים בטלפון הזה. מכיוון ששום דבר לא יצא ממנו, אין ממה לבקש מחיקה במקום אחר. גיבוי שיצרתם הוא קובץ שלכם; מחקו אותו במקום שבו שמרתם אותו.",
+      "ar": "الإعدادات ← حذف كل شيء يُفرغ قاعدة البيانات على هذا الهاتف. وبما أن شيئًا لم يغادره، لا يوجد مكان آخر تطلب منه الحذف. النسخة الاحتياطية التي أخذتها ملف بحوزتك؛ احذفه حيث وضعته."
+    },
+    "priv_future_title": {
+      "en": "When this changes",
+      "he": "מתי זה ישתנה",
+      "ar": "متى يتغيّر هذا"
+    },
+    "priv_future_body": {
+      "en": "A server is planned, so that phones can sync and a lost phone is not a lost site. Nothing goes to one until it exists, and this page will say so before anything does.",
+      "he": "מתוכנן שרת, כדי שמכשירים יוכלו להסתנכרן וטלפון שאבד לא יהיה אתר שאבד. שום דבר לא יישלח לשרת עד שיהיה קיים, והדף הזה יעודכן לפני כן.",
+      "ar": "هناك خادم مخطَّط له، كي تتزامن الأجهزة ولا يعني فقدان الهاتف فقدان الموقع. لن يذهب شيء إليه قبل وجوده، وستُحدَّث هذه الصفحة قبل ذلك."
     },
     "set_privacy": {
       "en": "Privacy policy",
@@ -1088,9 +1254,9 @@
       "ar": "عدة أشخاص، كل منهم يرى الجزء الخاص به من العمل."
     },
     "acc_your_name": {
-      "en": "Your name",
-      "he": "השם שלך",
-      "ar": "اسمك"
+      "en": "Full name",
+      "he": "שם מלא",
+      "ar": "الاسم الكامل"
     },
     "acc_company_name": {
       "en": "Company name",
@@ -1882,6 +2048,11 @@
       "he": "הנפקת ההיתר",
       "ar": "إصدار التصريح"
     },
+    "ptw_sign": {
+      "en": "Sign to issue",
+      "he": "חתמו כדי להנפיק",
+      "ar": "وقّع للإصدار"
+    },
     "ptw_issue_blocked": {
       "en": "Every precaution has to be ticked before this permit can be issued.",
       "he": "יש לסמן את כל אמצעי הזהירות לפני הנפקת ההיתר.",
@@ -2117,6 +2288,61 @@
       "en": "Whichever your site office gave you. Both work.",
       "he": "מה שקיבלתם ממשרד האתר. שניהם עובדים.",
       "ar": "أيهما أعطاك مكتب الموقع. كلاهما يصلح."
+    },
+    "acc_username": {
+      "en": "Username",
+      "he": "שם משתמש",
+      "ar": "اسم المستخدم"
+    },
+    "acc_username_hint": {
+      "en": "What you will type to sign in. Short is better on a site.",
+      "he": "מה שתקלידו כדי להיכנס. קצר עדיף באתר.",
+      "ar": "ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع."
+    },
+    "acc_phone": {
+      "en": "Phone number",
+      "he": "מספר טלפון",
+      "ar": "رقم الهاتف"
+    },
+    "acc_phone_hint": {
+      "en": "How the site reaches you. Required.",
+      "he": "כך האתר משיג אתכם. חובה.",
+      "ar": "بهذا يصل إليك الموقع. مطلوب."
+    },
+    "acc_email": {
+      "en": "Email address (optional)",
+      "he": "כתובת אימייל (לא חובה)",
+      "ar": "البريد الإلكتروني (اختياري)"
+    },
+    "acc_phone_missing": {
+      "en": "A phone number is needed.",
+      "he": "צריך מספר טלפון.",
+      "ar": "رقم الهاتف مطلوب."
+    },
+    "acc_phone_not_a_number": {
+      "en": "That is not a phone number.",
+      "he": "זה לא מספר טלפון.",
+      "ar": "هذا ليس رقم هاتف."
+    },
+    "acc_phone_too_short": {
+      "en": "That is too short to be a phone number.",
+      "he": "זה קצר מדי בשביל מספר טלפון.",
+      "ar": "هذا أقصر من أن يكون رقم هاتف."
+    },
+    "acc_phone_too_long": {
+      "en": "That is longer than any phone number.",
+      "he": "זה ארוך מכל מספר טלפון.",
+      "ar": "هذا أطول من أي رقم هاتف."
+    },
+    "acc_phone_repeated": {
+      "en": "A number somebody can actually be reached on.",
+      "he": "מספר שאפשר באמת להשיג בו מישהו.",
+      "ar": "رقم يمكن الوصول إلى صاحبه فعلاً."
+    },
+    "acc_email_bad": {
+      "en": "That does not look like an email address.",
+      "he": "זה לא נראה ככתובת אימייל.",
+      "ar": "هذا لا يبدو كبريد إلكتروني."
     },
     "acc_password": {
       "en": "Password",
@@ -4072,6 +4298,1387 @@
       "en": "Daily logs never signed",
       "he": "יומני עבודה שלא נחתמו",
       "ar": "يوميات عمل لم تُوقَّع"
+    },
+    "about_flag": {
+      "c": "Alt text for the flag in the settings footer",
+      "en": "Flag of Israel",
+      "he": "דגל ישראל",
+      "ar": "علم إسرائيل"
+    },
+    "about_edition": {
+      "c": "Under the app name in the settings footer",
+      "en": "Israel edition — built to Israeli standards, terms and site rules",
+      "he": "מהדורת ישראל — לפי התקנים, תנאי התשלום ונהלי האתר הישראליים",
+      "ar": "إصدار إسرائيل — وفق المواصفات وشروط الدفع وأنظمة المواقع الإسرائيلية"
+    },
+    "wp_title": {
+      "en": "Work packages",
+      "he": "חבילות עבודה",
+      "ar": "حزم العمل"
+    },
+    "wp_empty": {
+      "en": "No work packages on this job yet",
+      "he": "אין עדיין חבילות עבודה בעבודה הזו",
+      "ar": "لا توجد حزم عمل في هذا المشروع بعد"
+    },
+    "wp_new": {
+      "en": "New work package",
+      "he": "חבילת עבודה חדשה",
+      "ar": "حزمة عمل جديدة"
+    },
+    "wp_given": {
+      "en": "Given out",
+      "he": "נמסר",
+      "ar": "مُسند لغيرنا"
+    },
+    "wp_taken": {
+      "en": "Taken on",
+      "he": "התקבל",
+      "ar": "مُسند إلينا"
+    },
+    "wp_amount": {
+      "en": "Agreed amount",
+      "he": "סכום מוסכם",
+      "ar": "المبلغ المتفق عليه"
+    },
+    "wp_stage": {
+      "en": "Stage",
+      "he": "שלב",
+      "ar": "المرحلة"
+    },
+    "wp_scope": {
+      "en": "Scope of work",
+      "he": "תחום עבודה",
+      "ar": "نطاق العمل"
+    },
+    "wp_location": {
+      "en": "Where",
+      "he": "היכן",
+      "ar": "المكان"
+    },
+    "wp_accept": {
+      "en": "Accept",
+      "he": "קבלה",
+      "ar": "قبول"
+    },
+    "wp_decline": {
+      "en": "Decline",
+      "he": "דחייה",
+      "ar": "رفض المهمة"
+    },
+    "wp_start": {
+      "en": "Start work",
+      "he": "התחלת עבודה",
+      "ar": "بدء العمل"
+    },
+    "wp_submit": {
+      "en": "Submit for inspection",
+      "he": "הגשה לבדיקה",
+      "ar": "تقديم للفحص"
+    },
+    "wp_approve": {
+      "en": "Approve",
+      "he": "אישור",
+      "ar": "اعتماد"
+    },
+    "wp_reject": {
+      "en": "Send back",
+      "he": "החזרה לתיקון",
+      "ar": "إرجاع للتصحيح"
+    },
+    "wp_reject_reason": {
+      "en": "What needs correcting",
+      "he": "מה צריך לתקן",
+      "ar": "ما الذي يجب تصحيحه"
+    },
+    "wp_reject_hint": {
+      "en": "A crew sent back with no reason has nothing to fix.",
+      "he": "צוות שמוחזר בלי סיבה לא יודע מה לתקן.",
+      "ar": "الطاقم الذي يُرجع بدون سبب لا يعرف ما الذي يصلحه."
+    },
+    "wp_rejected_because": {
+      "en": "Sent back:",
+      "he": "הוחזר:",
+      "ar": "أُرجع:"
+    },
+    "wp_need_photo": {
+      "en": "Add a photograph before submitting",
+      "he": "יש לצרף תמונה לפני הגשה",
+      "ar": "أضف صورة قبل التقديم"
+    },
+    "wp_need_photo_hint": {
+      "en": "Approval happens in an office days later, by which time the wall is plastered.",
+      "he": "האישור נעשה במשרד ימים אחר כך, כשהקיר כבר מטויח.",
+      "ar": "الاعتماد يتم في المكتب بعد أيام، وعندها يكون الحيط قد لُيّس."
+    },
+    "wp_invoice": {
+      "en": "Raise the application",
+      "he": "הגשת חשבון",
+      "ar": "رفع مطالبة مالية"
+    },
+    "wp_approved_not_paid": {
+      "en": "Approved. Not paid — the application still has to run its terms.",
+      "he": "אושר. לא שולם — החשבון עדיין כפוף לתנאי התשלום.",
+      "ar": "مُعتمد. غير مدفوع — المطالبة ما زالت خاضعة لشروط الدفع."
+    },
+    "wp_status_draft": {
+      "en": "Draft",
+      "he": "טיוטה",
+      "ar": "مسودة"
+    },
+    "wp_status_offered": {
+      "en": "Offered",
+      "he": "הוצע",
+      "ar": "مُقترح"
+    },
+    "wp_status_accepted": {
+      "en": "Accepted",
+      "he": "התקבל",
+      "ar": "مقبول"
+    },
+    "wp_status_declined": {
+      "en": "Declined",
+      "he": "נדחה",
+      "ar": "مرفوض"
+    },
+    "wp_status_progress": {
+      "en": "In progress",
+      "he": "בעבודה",
+      "ar": "قيد التنفيذ"
+    },
+    "wp_status_submitted": {
+      "en": "Awaiting inspection",
+      "he": "ממתין לבדיקה",
+      "ar": "بانتظار الفحص"
+    },
+    "wp_status_rejected": {
+      "en": "Sent back",
+      "he": "הוחזר",
+      "ar": "مُرجع"
+    },
+    "wp_status_approved": {
+      "en": "Approved",
+      "he": "אושר",
+      "ar": "معتمد"
+    },
+    "wp_status_cancelled": {
+      "en": "Cancelled",
+      "he": "בוטל",
+      "ar": "ملغى"
+    },
+    "wp_refused_side": {
+      "en": "Only the other side can do that",
+      "he": "רק הצד השני יכול לעשות זאת",
+      "ar": "الطرف الآخر فقط يستطيع ذلك"
+    },
+    "wp_refused_state": {
+      "en": "Not possible from here",
+      "he": "לא אפשרי מהמצב הזה",
+      "ar": "غير ممكن من هذه الحالة"
+    },
+    "wp_refused_party": {
+      "en": "This is not your agreement",
+      "he": "זה אינו ההסכם שלך",
+      "ar": "هذه ليست اتفاقيتك"
+    },
+    "co_title": {
+      "en": "Company profile",
+      "he": "פרופיל החברה",
+      "ar": "ملف الشركة"
+    },
+    "co_logo": {
+      "en": "Company mark",
+      "he": "סמל החברה",
+      "ar": "شعار الشركة"
+    },
+    "co_name": {
+      "en": "Company name",
+      "he": "שם החברה",
+      "ar": "اسم الشركة"
+    },
+    "co_reg": {
+      "en": "Registration number",
+      "he": "ח.פ. / ע.מ.",
+      "ar": "رقم التسجيل"
+    },
+    "co_email": {
+      "en": "Email",
+      "he": "דוא״ל",
+      "ar": "البريد الإلكتروني"
+    },
+    "co_phone": {
+      "en": "Phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "co_website": {
+      "en": "Website",
+      "he": "אתר",
+      "ar": "الموقع الإلكتروني"
+    },
+    "co_address": {
+      "en": "Address",
+      "he": "כתובת",
+      "ar": "العنوان"
+    },
+    "co_licence": {
+      "en": "Contractor licence number",
+      "he": "מספר רישיון קבלן",
+      "ar": "رقم رخصة المقاول"
+    },
+    "co_classification": {
+      "en": "Classification",
+      "he": "סיווג",
+      "ar": "التصنيف"
+    },
+    "co_licence_expires": {
+      "en": "Licence valid until",
+      "he": "הרישיון בתוקף עד",
+      "ar": "الرخصة سارية حتى"
+    },
+    "co_visible_to_workers": {
+      "en": "Show to the crew",
+      "he": "להציג לצוות",
+      "ar": "إظهار للطاقم"
+    },
+    "co_visible_hint": {
+      "en": "Off means only management sees it. Nothing is published unless you turn it on.",
+      "he": "כבוי פירושו שרק ההנהלה רואה. שום דבר אינו מפורסם עד שתדליק.",
+      "ar": "مطفأ يعني أن الإدارة فقط تراه. لا يُنشر شيء حتى تشغّله."
+    },
+    "co_verified_note": {
+      "en": "Recording a licence marks you verified on this app. It is not a statement that you are licensed to do the work — that is between you and the regulator.",
+      "he": "רישום רישיון מסמן אתכם כמאומתים באפליקציה. אין בכך קביעה שאתם מורשים לבצע את העבודה — זה עניין שבינכם לבין הרגולטור.",
+      "ar": "تسجيل الرخصة يضعك كمُوثّق داخل التطبيق. وهذا ليس إقراراً بأنك مرخّص لتنفيذ العمل — تلك مسألة بينك وبين الجهة المنظِّمة."
+    },
+    "party_client": {
+      "en": "Developer / client",
+      "he": "יזם / מזמין",
+      "ar": "مطوّر / مالك المشروع"
+    },
+    "party_gc": {
+      "en": "General contractor",
+      "he": "קבלן ראשי",
+      "ar": "مقاول عام"
+    },
+    "party_first": {
+      "en": "First-tier subcontractor",
+      "he": "קבלן משנה ראשי",
+      "ar": "مقاول باطن من الدرجة الأولى"
+    },
+    "party_second": {
+      "en": "Crew leader / labour-only",
+      "he": "ראש צוות / קבלן כוח אדם",
+      "ar": "رئيس طاقم / مقاول عمالة"
+    },
+    "party_supplier": {
+      "en": "Supplier",
+      "he": "ספק",
+      "ar": "مورّد"
+    },
+    "party_consultant": {
+      "en": "Consultant / supervisor",
+      "he": "יועץ / מפקח",
+      "ar": "استشاري / مشرف"
+    },
+    "party_title": {
+      "en": "Position on this job",
+      "he": "תפקיד בעבודה הזו",
+      "ar": "الموقع في هذا المشروع"
+    },
+    "party_hint": {
+      "en": "What your firm is on this job, which is not what it is on the next one.",
+      "he": "מה החברה שלכם בעבודה הזו, וזה לא בהכרח מה שהיא בעבודה הבאה.",
+      "ar": "ما هي شركتك في هذا المشروع، وهذا ليس بالضرورة ما هي عليه في المشروع التالي."
+    },
+    "wp_row_hint": {
+      "c": "Subtitle on the project screen link",
+      "en": "What was handed out and what was taken on",
+      "he": "מה נמסר ומה התקבל",
+      "ar": "ما أُسند لغيرنا وما أُسند إلينا"
+    },
+    "eng_title": {
+      "en": "Firms on this job",
+      "he": "חברות בעבודה הזו",
+      "ar": "الشركات في هذا المشروع"
+    },
+    "eng_add": {
+      "en": "Bring a firm onto the job",
+      "he": "הוספת חברה לעבודה",
+      "ar": "إضافة شركة للمشروع"
+    },
+    "eng_name": {
+      "en": "Firm name",
+      "he": "שם החברה",
+      "ar": "اسم الشركة"
+    },
+    "eng_scope": {
+      "en": "What they are here to do",
+      "he": "מה תפקידם",
+      "ar": "ما الذي جاؤوا لعمله"
+    },
+    "eng_refused": {
+      "en": "Your position on this job cannot bring that one on.",
+      "he": "התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.",
+      "ar": "موقعك في هذا المشروع لا يسمح بإضافة هذا الموقع."
+    },
+    "wp_payee": {
+      "en": "Who is doing it",
+      "he": "מי מבצע",
+      "ar": "من سينفّذه"
+    },
+    "wp_title_field": {
+      "en": "What the package is",
+      "he": "מהי החבילה",
+      "ar": "ما هي الحزمة"
+    },
+    "eng_self": {
+      "en": "What is your firm on this job?",
+      "he": "מה החברה שלכם בעבודה הזו?",
+      "ar": "ما هي شركتكم في هذا المشروع؟"
+    },
+    "eng_self_hint": {
+      "en": "Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.",
+      "he": "ענו על כך לפני הכול. אף אחד אחר לא יכול לענות במקומכם, וכל עוד לא עניתם לא תוכלו להוסיף חברה נוספת.",
+      "ar": "أجب على هذا أولاً. لا أحد غيرك يستطيع تحديده، وحتى تُجيب لا تستطيع إضافة شركة أخرى."
+    },
+    "ct_title": {
+      "en": "Contracts",
+      "he": "חוזים",
+      "ar": "العقود"
+    },
+    "ct_empty": {
+      "en": "No contracts on this job yet",
+      "he": "אין עדיין חוזים בעבודה הזו",
+      "ar": "لا توجد عقود في هذا المشروع بعد"
+    },
+    "ct_new": {
+      "en": "New contract",
+      "he": "חוזה חדש",
+      "ar": "عقد جديد"
+    },
+    "ct_row_hint": {
+      "en": "What was agreed, and with whom",
+      "he": "מה סוכם ועם מי",
+      "ar": "ما تم الاتفاق عليه ومع من"
+    },
+    "ct_scope": {
+      "en": "What it covers",
+      "he": "מה הוא כולל",
+      "ar": "ما الذي يغطيه"
+    },
+    "ct_original": {
+      "en": "Original amount",
+      "he": "סכום מקורי",
+      "ar": "المبلغ الأصلي"
+    },
+    "ct_current": {
+      "en": "Amount in force",
+      "he": "הסכום התקף",
+      "ar": "المبلغ الساري"
+    },
+    "ct_receivable": {
+      "en": "You are paid on this",
+      "he": "אתם מקבלים על זה",
+      "ar": "أنتم تُدفعون على هذا"
+    },
+    "ct_payable": {
+      "en": "You pay on this",
+      "he": "אתם משלמים על זה",
+      "ar": "أنتم تدفعون على هذا"
+    },
+    "ct_sign": {
+      "en": "Sign",
+      "he": "חתימה",
+      "ar": "توقيع"
+    },
+    "ct_signed_by": {
+      "en": "Signed by",
+      "he": "נחתם על ידי",
+      "ar": "وقّع عليه"
+    },
+    "ct_unsigned": {
+      "en": "Not signed by both sides yet",
+      "he": "טרם נחתם על ידי שני הצדדים",
+      "ar": "لم يوقّعه الطرفان بعد"
+    },
+    "ct_amend": {
+      "en": "Propose a change",
+      "he": "הצעת שינוי",
+      "ar": "اقتراح تعديل"
+    },
+    "ct_amend_amount": {
+      "en": "New amount",
+      "he": "סכום חדש",
+      "ar": "المبلغ الجديد"
+    },
+    "ct_amend_reason": {
+      "en": "Why",
+      "he": "סיבה",
+      "ar": "السبب"
+    },
+    "ct_amend_reason_hint": {
+      "en": "Somebody will ask in three years why this contract is worth what it is worth, and they were not there.",
+      "he": "בעוד שלוש שנים מישהו ישאל למה החוזה שווה מה שהוא שווה, והוא לא היה שם.",
+      "ar": "بعد ثلاث سنوات سيسأل أحدهم لماذا قيمة هذا العقد هي كذا، وهو لم يكن حاضراً."
+    },
+    "ct_amend_history": {
+      "en": "Every figure this contract has been",
+      "he": "כל סכום שהחוזה היה",
+      "ar": "كل مبلغ كان عليه هذا العقد"
+    },
+    "ct_amend_accept": {
+      "en": "Accept the change",
+      "he": "אישור השינוי",
+      "ar": "قبول التعديل"
+    },
+    "ct_amend_reject": {
+      "en": "Refuse the change",
+      "he": "דחיית השינוי",
+      "ar": "رفض التعديل"
+    },
+    "ct_amend_pending": {
+      "en": "Waiting on the other side",
+      "he": "ממתין לצד השני",
+      "ar": "بانتظار الطرف الآخر"
+    },
+    "ct_amend_yours": {
+      "en": "You proposed this. The other side accepts or refuses it.",
+      "he": "אתם הצעתם זאת. הצד השני מאשר או דוחה.",
+      "ar": "أنتم اقترحتم هذا. الطرف الآخر يقبل أو يرفض."
+    },
+    "ct_margin": {
+      "en": "Your margin on this job",
+      "he": "המרווח שלכם בעבודה הזו",
+      "ar": "هامشكم في هذا المشروع"
+    },
+    "ct_margin_hint": {
+      "en": "What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.",
+      "he": "מה שאתם מקבלים, פחות מה שאתם משלמים. רק אתם רואים זאת — זה לא מופיע במסך של אף אחד אחר.",
+      "ar": "ما تقبضونه ناقص ما تدفعونه. أنتم فقط ترون هذا — لا يظهر على شاشة أي أحد آخر."
+    },
+    "wp_claim_title": {
+      "en": "Approved and not yet claimed",
+      "he": "אושר וטרם נדרש תשלום",
+      "ar": "معتمد ولم يُطالَب به بعد"
+    },
+    "wp_claim_raise": {
+      "en": "Raise a payment application",
+      "he": "הגשת חשבון",
+      "ar": "رفع مطالبة مالية"
+    },
+    "wp_claim_total": {
+      "en": "This application will claim",
+      "he": "החשבון ידרוש",
+      "ar": "هذه المطالبة ستطالب بـ"
+    },
+    "wp_claim_cumulative": {
+      "en": "Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.",
+      "he": "כל מה שאושר עד היום, לא רק מה שנוסף כעת. הסכום לתשלום הוא זה פחות עיכבון ופחות מה ששולם כבר.",
+      "ar": "كل ما اعتُمد حتى اليوم، لا ما يُضاف الآن فقط. المستحق فعلياً هو ذلك ناقص المحتجز وناقص ما دُفع سابقاً."
+    },
+    "wp_claim_none": {
+      "en": "Nothing new approved since the last application",
+      "he": "לא אושר דבר חדש מאז החשבון הקודם",
+      "ar": "لا شيء جديد اعتُمد منذ المطالبة السابقة"
+    },
+    "task_stage": {
+      "en": "Stage of the job",
+      "he": "שלב בעבודה",
+      "ar": "مرحلة العمل"
+    },
+    "task_stage_none": {
+      "en": "No stage",
+      "he": "ללא שלב",
+      "ar": "بدون مرحلة"
+    },
+    "task_stage_hint": {
+      "en": "Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.",
+      "he": "רשות. שווה לקבוע כשאותה משימה חוזרת בכמה קומות — השלב הוא מה שמבדיל ביניהן.",
+      "ar": "اختياري. يستحق التحديد عندما تتكرر نفس المهمة في عدة طوابق — المرحلة هي ما يميّزها."
+    },
+    "pay_breakdown": {
+      "en": "What this claim covers",
+      "he": "ממה מורכבת התביעה",
+      "ar": "مما تتكون هذه المطالبة"
+    },
+    "pay_breakdown_hint": {
+      "en": "Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.",
+      "he": "כל חבילת עבודה מאושרת שנספרה בסכום שלמעלה. תביעה היא מצטברת, ולכן חבילות מבקשות קודמות מופיעות שוב.",
+      "ar": "كل حزمة عمل معتمدة محسوبة في المبلغ أعلاه. المطالبة تراكمية، لذلك تظهر حزم المطالبات السابقة مرة أخرى."
+    },
+    "pay_breakdown_none": {
+      "en": "Raised by hand — no work packages attached.",
+      "he": "הופקה ידנית — ללא חבילות עבודה מצורפות.",
+      "ar": "أُنشئت يدويًا — بدون حزم عمل مرفقة."
+    },
+    "audit_exported": {
+      "c": "Audit action: a record was exported out of the app",
+      "en": "Exported",
+      "he": "יוצא",
+      "ar": "صُدِّر"
+    },
+    "audit_purged": {
+      "c": "Audit action: old entries were removed",
+      "en": "Purged",
+      "he": "נוקה",
+      "ar": "طُهِّر"
+    },
+    "audit_title": {
+      "en": "Audit trail",
+      "he": "יומן ביקורת",
+      "ar": "سجل التدقيق"
+    },
+    "audit_hint": {
+      "en": "Every change of consequence, in the order it happened. The trail cannot be edited from inside the app.",
+      "he": "כל שינוי בעל משמעות, לפי סדר התרחשותו. לא ניתן לערוך את היומן מתוך האפליקציה.",
+      "ar": "كل تغيير ذي أثر، بترتيب حدوثه. لا يمكن تعديل السجل من داخل التطبيق."
+    },
+    "audit_empty": {
+      "en": "Nothing recorded yet.",
+      "he": "עדיין לא נרשם דבר.",
+      "ar": "لم يُسجَّل شيء بعد."
+    },
+    "audit_verify": {
+      "en": "Check the trail",
+      "he": "בדיקת היומן",
+      "ar": "فحص السجل"
+    },
+    "audit_intact": {
+      "en": "Intact",
+      "he": "תקין",
+      "ar": "سليم"
+    },
+    "audit_intact_detail": {
+      "en": "%1$d entries checked and every one adds up.",
+      "he": "נבדקו %1$d רשומות וכולן מתאימות.",
+      "ar": "تم فحص %1$d سجلات وجميعها متطابقة."
+    },
+    "audit_unchained": {
+      "en": "%1$d older entries carry no signature and cannot be checked. They were written before this version.",
+      "he": "%1$d רשומות ישנות יותר אינן חתומות ולא ניתן לבדוק אותן. הן נכתבו לפני גרסה זו.",
+      "ar": "%1$d سجلات أقدم بلا توقيع ولا يمكن فحصها. كُتبت قبل هذا الإصدار."
+    },
+    "audit_failed": {
+      "en": "The trail does not add up",
+      "he": "היומן אינו מתאים",
+      "ar": "السجل غير متطابق"
+    },
+    "audit_fault_altered": {
+      "en": "Entry %1$d says something other than what was signed.",
+      "he": "רשומה %1$d אומרת דבר שונה ממה שנחתם.",
+      "ar": "السجل %1$d يقول شيئًا غير ما تم توقيعه."
+    },
+    "audit_fault_broken": {
+      "en": "Entry %1$d does not follow the one before it. Something was removed or replaced.",
+      "he": "רשומה %1$d אינה עוקבת אחר קודמתה. משהו הוסר או הוחלף.",
+      "ar": "السجل %1$d لا يتبع ما قبله. أُزيل شيء أو استُبدل."
+    },
+    "audit_fault_missing": {
+      "en": "An entry before %1$d is gone.",
+      "he": "רשומה שלפני %1$d חסרה.",
+      "ar": "سجل قبل %1$d مفقود."
+    },
+    "audit_window": {
+      "en": "Checks the most recent %1$d entries.",
+      "he": "בודק את %1$d הרשומות האחרונות.",
+      "ar": "يفحص أحدث %1$d سجلات."
+    },
+    "audit_not_checked": {
+      "en": "Not checked yet.",
+      "he": "טרם נבדק.",
+      "ar": "لم يُفحص بعد."
+    },
+    "audit_export": {
+      "en": "Export the trail",
+      "he": "ייצוא היומן",
+      "ar": "تصدير السجل"
+    },
+    "audit_col_seq": {
+      "en": "No.",
+      "he": "מס'",
+      "ar": "رقم"
+    },
+    "audit_col_when": {
+      "en": "When",
+      "he": "מתי",
+      "ar": "متى"
+    },
+    "audit_col_who": {
+      "en": "Who",
+      "he": "מי",
+      "ar": "من"
+    },
+    "audit_col_action": {
+      "en": "Action",
+      "he": "פעולה",
+      "ar": "إجراء"
+    },
+    "audit_col_what": {
+      "en": "What happened",
+      "he": "מה קרה",
+      "ar": "ما الذي حدث"
+    },
+    "audit_col_signature": {
+      "en": "Signature",
+      "he": "חתימה",
+      "ar": "توقيع"
+    },
+    "audit_export_checked": {
+      "en": "Checked at export",
+      "he": "נבדק בעת הייצוא",
+      "ar": "فُحص عند التصدير"
+    },
+    "audit_export_note": {
+      "en": "Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.",
+      "he": "החתימות מקוצרות ב-PDF. קובץ ה-CSV מכיל אותן במלואן, ו-docs/AUDIT.md מסביר כיצד לחשב אותן מחדש.",
+      "ar": "التواقيع مختصرة في ملف PDF. ملف CSV يحملها كاملة، و docs/AUDIT.md يوضح كيفية إعادة حسابها."
+    },
+    "sec_encrypted": {
+      "en": "On — the records on this device are encrypted",
+      "he": "פעיל — הנתונים במכשיר זה מוצפנים",
+      "ar": "مفعّل — البيانات على هذا الجهاز مشفّرة"
+    },
+    "sec_encrypted_detail": {
+      "en": "The key is held in this device's secure hardware and never leaves it. The database file cannot be read off the phone.",
+      "he": "המפתח נשמר בחומרה המאובטחת של המכשיר ואינו יוצא ממנה. לא ניתן לקרוא את קובץ הנתונים מחוץ למכשיר.",
+      "ar": "المفتاح محفوظ في العتاد الآمن لهذا الجهاز ولا يغادره. لا يمكن قراءة ملف البيانات خارج الهاتف."
+    },
+    "sec_not_encrypted": {
+      "en": "Off — the records on this device are NOT encrypted",
+      "he": "כבוי — הנתונים במכשיר זה אינם מוצפנים",
+      "ar": "غير مفعّل — البيانات على هذا الجهاز غير مشفّرة"
+    },
+    "sec_not_encrypted_detail": {
+      "en": "This device could not load the encryption library, so the app opened the records unprotected rather than refuse to start. ID numbers, photographs and signatures can be read by anyone with access to this phone's files. Report this device before using it for personnel data.",
+      "he": "המכשיר לא הצליח לטעון את ספריית ההצפנה, ולכן האפליקציה נפתחה ללא הגנה במקום לסרב לפעול. מספרי זהות, תמונות וחתימות ניתנים לקריאה בידי כל מי שיש לו גישה לקבצי המכשיר. דווחו על מכשיר זה לפני שימוש בנתוני עובדים.",
+      "ar": "تعذّر على هذا الجهاز تحميل مكتبة التشفير، لذلك فتح التطبيق البيانات دون حماية بدلًا من رفض التشغيل. أرقام الهوية والصور والتواقيع يمكن لأي شخص لديه وصول إلى ملفات هذا الهاتف قراءتها. أبلغ عن هذا الجهاز قبل استخدامه لبيانات العاملين."
+    },
+    "ret_title": {
+      "en": "Keep the audit trail for",
+      "he": "שמירת יומן הביקורת למשך",
+      "ar": "مدة الاحتفاظ بسجل التدقيق"
+    },
+    "ret_hint": {
+      "en": "How long records must be kept is a legal question, and the answer differs for a payment record, a safety inspection and a worker's ID number. The app does not choose for you: nothing is ever deleted until you set a period, and a purge records what it removed.",
+      "he": "משך שמירת הרשומות הוא שאלה משפטית, והתשובה שונה עבור רשומת תשלום, בדיקת בטיחות ומספר זהות של עובד. האפליקציה אינה בוחרת עבורכם: דבר אינו נמחק עד שתגדירו תקופה, וכל מחיקה נרשמת.",
+      "ar": "مدة الاحتفاظ بالسجلات مسألة قانونية، والإجابة تختلف بين سجل دفع وفحص سلامة ورقم هوية عامل. التطبيق لا يختار عنك: لا يُحذف شيء حتى تحدّد مدة، وكل حذف يُسجَّل."
+    },
+    "ret_keep_all": {
+      "en": "Keep everything",
+      "he": "לשמור הכל",
+      "ar": "الاحتفاظ بكل شيء"
+    },
+    "ret_1_year": {
+      "en": "1 year",
+      "he": "שנה",
+      "ar": "سنة"
+    },
+    "ret_3_years": {
+      "en": "3 years",
+      "he": "3 שנים",
+      "ar": "3 سنوات"
+    },
+    "ret_7_years": {
+      "en": "7 years",
+      "he": "7 שנים",
+      "ar": "7 سنوات"
+    },
+    "ret_apply": {
+      "en": "Apply now",
+      "he": "החל כעת",
+      "ar": "تطبيق الآن"
+    },
+    "ret_applied": {
+      "en": "Removed %1$d entries. The purge is itself recorded in the trail.",
+      "he": "הוסרו %1$d רשומות. המחיקה עצמה נרשמה ביומן.",
+      "ar": "أُزيل %1$d سجلات. عملية الحذف نفسها مسجّلة في السجل."
+    },
+    "ret_nothing": {
+      "en": "Nothing was old enough to remove.",
+      "he": "לא נמצאו רשומות ישנות מספיק להסרה.",
+      "ar": "لا توجد سجلات قديمة بما يكفي للإزالة."
+    },
+    "inc_title": {
+      "en": "Incidents",
+      "he": "אירועים",
+      "ar": "الحوادث"
+    },
+    "inc_add": {
+      "en": "Report an incident",
+      "he": "דיווח על אירוע",
+      "ar": "الإبلاغ عن حادث"
+    },
+    "inc_empty": {
+      "en": "Nothing reported.",
+      "he": "לא דווח דבר.",
+      "ar": "لم يُبلَّغ عن شيء."
+    },
+    "inc_hint": {
+      "en": "Write it down while it is fresh, including the near misses. A near miss is the same accident with better luck.",
+      "he": "תעדו בזמן אמת, כולל כמעט-תאונות. כמעט-תאונה היא אותה תאונה עם קצת יותר מזל.",
+      "ar": "سجّل الحادث فور وقوعه، بما في ذلك ما كاد أن يقع. ما كاد أن يقع هو نفس الحادث بحظ أوفر."
+    },
+    "inc_what": {
+      "en": "What happened",
+      "he": "מה קרה",
+      "ar": "ما الذي حدث"
+    },
+    "inc_severity": {
+      "en": "How bad",
+      "he": "חומרה",
+      "ar": "الخطورة"
+    },
+    "inc_near_miss": {
+      "en": "Near miss",
+      "he": "כמעט תאונה",
+      "ar": "كاد أن يقع"
+    },
+    "inc_minor": {
+      "en": "Minor — first aid",
+      "he": "קל — עזרה ראשונה",
+      "ar": "طفيف — إسعاف أولي"
+    },
+    "inc_serious": {
+      "en": "Serious — hospital or off work",
+      "he": "חמור — בית חולים או היעדרות",
+      "ar": "خطير — مستشفى أو انقطاع عن العمل"
+    },
+    "inc_fatal": {
+      "en": "Fatal",
+      "he": "קטלני",
+      "ar": "مميت"
+    },
+    "inc_escalate": {
+      "en": "This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.",
+      "he": "ייתכן שיש לדווח על אירוע זה גם לרשות המפקחת, ולא רק לתעד אותו כאן. בדקו את חובותיכם — האפליקציה אינה מכריעה בכך עבורכם.",
+      "ar": "قد يتطلب هذا الحادث إبلاغ الجهة الرقابية إضافة إلى تسجيله هنا. تحقّق من التزاماتك — التطبيق لا يقرر ذلك نيابة عنك."
+    },
+    "inc_reported_by": {
+      "en": "Reported by",
+      "he": "דווח על ידי",
+      "ar": "أبلغ عنه"
+    },
+    "acc_have_account": {
+      "en": "I already have an account",
+      "he": "כבר יש לי חשבון",
+      "ar": "لدي حساب بالفعل"
+    },
+    "acc_none_on_device": {
+      "en": "There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.",
+      "he": "אין עדיין חשבונות בטלפון הזה. החשבונות נשמרים במכשיר, ולכן חשבון שנוצר בטלפון אחר אינו נגיש מכאן עד שתהיה לחברה שרת. צרו חשבון כדי להתחיל.",
+      "ar": "لا توجد حسابات على هذا الهاتف بعد. الحسابات محفوظة على الجهاز، لذلك لا يمكن الوصول من هنا إلى حساب أُنشئ على هاتف آخر حتى يكون للشركة خادم. أنشئ حسابًا للبدء."
+    },
+    "role_safety_officer": {
+      "en": "Safety officer",
+      "he": "ממונה בטיחות",
+      "ar": "مسؤول السلامة"
+    },
+    "role_safety_officer_hint": {
+      "en": "Records violations and incidents against named people. Sees who somebody is, never what they are paid.",
+      "he": "רושם הפרות ואירועים על שם אנשים מזוהים. רואה מי האדם, לעולם לא כמה הוא מקבל.",
+      "ar": "يسجّل المخالفات والحوادث بأسماء أشخاص محددين. يرى هوية الشخص، ولا يرى أجره أبدًا."
+    },
+    "find_by_id": {
+      "en": "ID number",
+      "he": "מספר זהות",
+      "ar": "رقم الهوية"
+    },
+    "find_by_id_hint": {
+      "en": "Type the number from their card. Names on a site repeat; this does not.",
+      "he": "הקלידו את המספר מהתעודה. שמות באתר חוזרים על עצמם, המספר לא.",
+      "ar": "اكتب الرقم من بطاقته. الأسماء في الموقع تتكرر، وهذا الرقم لا يتكرر."
+    },
+    "find_nobody": {
+      "en": "No one has that ID number. They have to create an account before they can be added.",
+      "he": "אין אף אחד עם מספר הזהות הזה. עליו ליצור חשבון לפני שניתן להוסיף אותו.",
+      "ar": "لا يوجد أحد بهذا الرقم. عليه إنشاء حساب قبل أن يمكن إضافته."
+    },
+    "vio_title": {
+      "en": "Violations",
+      "he": "הפרות",
+      "ar": "المخالفات"
+    },
+    "vio_new": {
+      "en": "Record a violation",
+      "he": "רישום הפרה",
+      "ar": "تسجيل مخالفة"
+    },
+    "vio_none": {
+      "en": "Nothing recorded.",
+      "he": "לא נרשם דבר.",
+      "ar": "لم يُسجَّل شيء."
+    },
+    "vio_what": {
+      "en": "What was wrong",
+      "he": "מה הייתה ההפרה",
+      "ar": "ما هي المخالفة"
+    },
+    "vio_cost": {
+      "en": "Cost, if any",
+      "he": "עלות, אם יש",
+      "ar": "التكلفة، إن وُجدت"
+    },
+    "vio_cost_hint": {
+      "en": "Leave empty for no charge. Empty and zero are not the same.",
+      "he": "השאירו ריק אם אין חיוב. ריק ואפס אינם אותו דבר.",
+      "ar": "اتركه فارغًا إذا لا توجد تكلفة. الفارغ والصفر ليسا سواء."
+    },
+    "vio_evidence": {
+      "en": "Photograph or video",
+      "he": "תמונה או סרטון",
+      "ar": "صورة أو فيديو"
+    },
+    "vio_confirm": {
+      "en": "Confirm",
+      "he": "אישור",
+      "ar": "تأكيد"
+    },
+    "vio_confirm_warning": {
+      "en": "Once confirmed this cannot be changed or withdrawn, and the person it names will see it.",
+      "he": "לאחר אישור לא ניתן לשנות או לבטל, והאדם ששמו רשום יראה זאת.",
+      "ar": "بعد التأكيد لا يمكن التغيير أو السحب، والشخص المذكور سيراها."
+    },
+    "vio_draft": {
+      "en": "Draft — only you can see this",
+      "he": "טיוטה — רק אתם רואים זאת",
+      "ar": "مسودة — أنت وحدك تراها"
+    },
+    "vio_confirmed": {
+      "en": "Confirmed",
+      "he": "אושר",
+      "ar": "مؤكَّدة"
+    },
+    "vio_cancelled": {
+      "en": "Cancelled",
+      "he": "בוטל",
+      "ar": "مُلغاة"
+    },
+    "vio_need_person": {
+      "en": "Choose who this is against.",
+      "he": "בחרו נגד מי ההפרה.",
+      "ar": "اختر ضد من هذه المخالفة."
+    },
+    "vio_need_evidence": {
+      "en": "Attach a photograph or a video. A violation with a cost and nothing to show is one person's word.",
+      "he": "צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.",
+      "ar": "أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد."
+    },
+    "vio_need_description": {
+      "en": "Write what was wrong.",
+      "he": "כתבו מה הייתה ההפרה.",
+      "ar": "اكتب ما هي المخالفة."
+    },
+    "po_due": {
+      "c": "Row on a purchase order: when the delivery is expected",
+      "en": "Due",
+      "he": "צפוי להגיע",
+      "ar": "موعد الوصول"
+    },
+    "po_no_due": {
+      "c": "The supplier has not said when it is coming",
+      "en": "The supplier has not said",
+      "he": "הספק לא אמר",
+      "ar": "المورّد لم يحدّد"
+    },
+    "po_when_due": {
+      "c": "Dialog title when placing an order: ask for the delivery date",
+      "en": "When is it due?",
+      "he": "מתי זה אמור להגיע?",
+      "ar": "متى من المفترض أن تصل؟"
+    },
+    "saf_what_is_wrong": {
+      "c": "Field on a failed checklist row: describe the failure",
+      "en": "What is wrong",
+      "he": "מה לא תקין",
+      "ar": "ما هو الخلل"
+    },
+    "saf_fail_needs_words": {
+      "c": "Hint under the field on a failed check",
+      "en": "A failed check with no words is a row nobody can act on six months later.",
+      "he": "כשל בלי הסבר הוא שורה שאי אפשר לפעול לפיה כעבור חצי שנה.",
+      "ar": "بند راسب بلا شرح هو سطر لا يمكن التصرف بناءً عليه بعد ستة أشهر."
+    },
+    "saf_photograph": {
+      "c": "Button on a failed checklist row: attach a photograph",
+      "en": "Photograph it",
+      "he": "צילום",
+      "ar": "صوّرها"
+    },
+    "vio_job": {
+      "c": "Row on the violation draft: which job it happened on",
+      "en": "Which job",
+      "he": "באיזו עבודה",
+      "ar": "في أي عمل"
+    },
+    "vio_no_job": {
+      "c": "The violation was not on a job — a yard, a van, the road",
+      "en": "Not on a job",
+      "he": "לא בעבודה מסוימת",
+      "ar": "ليست ضمن عمل"
+    },
+    "vio_refused_officer": {
+      "c": "Dialog: the account may not write violations for this company",
+      "en": "You are not allowed to record violations here.",
+      "he": "אין לכם הרשאה לרשום הפרות כאן.",
+      "ar": "لا تملك صلاحية تسجيل المخالفات هنا."
+    },
+    "vio_refused_books": {
+      "c": "Dialog: signed in, but a member of no company at all",
+      "en": "You are not on any company's books. Create a company or join one, then record it.",
+      "he": "אינכם רשומים באף חברה. פתחו חברה או הצטרפו לאחת, ואז רשמו את ההפרה.",
+      "ar": "لست مسجَّلًا في أي شركة. أنشئ شركة أو انضم إلى واحدة، ثم سجّل المخالفة."
+    },
+    "vio_refused_state": {
+      "c": "Dialog: the violation is already confirmed or cancelled",
+      "en": "This one has already been confirmed or cancelled. It cannot be changed.",
+      "he": "הפרה זו כבר אושרה או בוטלה. לא ניתן לשנות אותה.",
+      "ar": "هذه المخالفة أُكِّدت أو أُلغيت بالفعل. لا يمكن تغييرها."
+    },
+    "vio_refused_incomplete": {
+      "c": "Dialog: confirm was refused because something is missing",
+      "en": "Something is still missing: who it is against, what was wrong, and a photograph or a video.",
+      "he": "עדיין חסר משהו: נגד מי ההפרה, מה הייתה ההפרה, ותמונה או סרטון.",
+      "ar": "لا يزال هناك نقص: ضد من هي المخالفة، وما هي، وصورة أو فيديو."
+    },
+    "vio_refused_cost": {
+      "c": "Dialog: a negative cost was rejected",
+      "en": "A cost cannot be less than zero. Leave it empty for no charge.",
+      "he": "עלות אינה יכולה להיות שלילית. השאירו ריק אם אין חיוב.",
+      "ar": "لا يمكن أن تكون التكلفة أقل من صفر. اتركها فارغة إذا لا يوجد مبلغ."
+    },
+    "vio_refused_unknown": {
+      "c": "Dialog: the write failed for a reason the app has no better sentence for",
+      "en": "That could not be saved.",
+      "he": "לא ניתן היה לשמור.",
+      "ar": "تعذّر الحفظ."
+    },
+    "gate_title": {
+      "c": "Screen title: signing people onto the site at the gate",
+      "en": "Site entry",
+      "he": "כניסה לאתר",
+      "ar": "الدخول إلى الموقع"
+    },
+    "gate_find": {
+      "c": "Section header above the ID number field",
+      "en": "Who is at the gate",
+      "he": "מי בשער",
+      "ar": "من على البوابة"
+    },
+    "gate_find_hint": {
+      "c": "Under the ID field. Says the number is checked against a face.",
+      "en": "The number on their card. Their photograph comes back with it.",
+      "he": "המספר שעל התעודה. התמונה שלהם מוצגת יחד איתו.",
+      "ar": "الرقم المدوّن على بطاقتهم. صورتهم تظهر معه."
+    },
+    "gate_not_found": {
+      "c": "No account has that ID number.",
+      "en": "Nobody has that ID number. They sign up on their own phone first, then come back.",
+      "he": "אין אף אחד עם מספר זהות זה. שיירשמו קודם בטלפון שלהם ויחזרו.",
+      "ar": "لا يوجد أحد بهذا رقم الهوية. عليهم التسجيل أولاً من هاتفهم ثم العودة."
+    },
+    "gate_grants": {
+      "c": "Under the found person's card. %1$s is a role name, e.g. Worker.",
+      "en": "Will be signed onto the site as: %1$s. Their rank is set afterwards by whoever engaged them.",
+      "he": "ייכנס לאתר בתור: %1$s. הדרגה נקבעת לאחר מכן על ידי מי שהעסיק אותו.",
+      "ar": "سيُسجَّل في الموقع بصفة: %1$s. أما رتبته فيحددها لاحقاً من كلّفه بالعمل."
+    },
+    "gate_already_in": {
+      "c": "The person found is already on this company's books.",
+      "en": "Already signed onto this site. Nothing to do.",
+      "he": "כבר רשום באתר הזה. אין מה לעשות.",
+      "ar": "مسجَّل في هذا الموقع مسبقاً. لا حاجة لأي إجراء."
+    },
+    "gate_sign": {
+      "c": "Section header above the signature pad",
+      "en": "Their signature",
+      "he": "החתימה שלהם",
+      "ar": "توقيعهم"
+    },
+    "gate_sign_body": {
+      "c": "Explains what the person at the gate is signing for.",
+      "en": "Hand them the phone. They sign to say they have been briefed on this site's safety rules.",
+      "he": "מסרו להם את הטלפון. הם חותמים על כך שקיבלו תדריך בטיחות לאתר הזה.",
+      "ar": "أعطهم الهاتف. يوقّعون إقراراً بأنهم تلقّوا تعليمات السلامة الخاصة بهذا الموقع."
+    },
+    "gate_need_signature": {
+      "c": "Why the admit button is disabled.",
+      "en": "Not signed yet.",
+      "he": "עדיין לא חתמו.",
+      "ar": "لم يوقّعوا بعد."
+    },
+    "gate_admit": {
+      "c": "The button that puts the person onto the site.",
+      "en": "Sign them onto the site",
+      "he": "הכניסו לאתר",
+      "ar": "سجّلهم في الموقع"
+    },
+    "gate_admitted": {
+      "c": "Confirmation after an admission. %1$s is the person's name.",
+      "en": "%1$s is on the site.",
+      "he": "%1$s נמצא באתר.",
+      "ar": "%1$s أصبح في الموقع."
+    },
+    "gate_not_yours": {
+      "c": "Shown to a role that may not admit people.",
+      "en": "Signing people onto the site is not one of yours. The site manager or the safety officer does it.",
+      "he": "הכנסת אנשים לאתר אינה בסמכותכם. מנהל העבודה או ממונה הבטיחות עושה זאת.",
+      "ar": "تسجيل الأشخاص في الموقع ليس من صلاحياتك. يقوم بذلك مدير الموقع أو مسؤول السلامة."
+    },
+    "people_gate": {
+      "c": "Entry point on the People screen that opens the gate.",
+      "en": "Sign someone onto the site",
+      "he": "הכניסו מישהו לאתר",
+      "ar": "سجّل شخصاً في الموقع"
+    },
+    "inc_evidence": {
+      "c": "Button that attaches a photo or video to an incident. %1$d is how many are attached.",
+      "en": "Photograph or video (%1$d)",
+      "he": "תמונה או סרטון (%1$d)",
+      "ar": "صورة أو فيديو (%1$d)"
+    },
+    "inc_need_evidence": {
+      "c": "Why the save button is disabled: no photo or video attached yet.",
+      "en": "Attach a photograph or a video. By the time this is argued about, the ladder has been moved.",
+      "he": "צרפו תמונה או סרטון. עד שיתווכחו על זה, הסולם כבר יוזז.",
+      "ar": "أرفق صورة أو فيديو. بحلول وقت الجدال حول ما جرى، يكون السلّم قد نُقل."
+    },
+    "inc_need_description": {
+      "c": "Why the save button is disabled: nothing written.",
+      "en": "Write what happened.",
+      "he": "כתבו מה קרה.",
+      "ar": "اكتب ما الذي حدث."
+    },
+    "inc_cost": {
+      "c": "Optional cost field on an incident report.",
+      "en": "Cost, if known",
+      "he": "עלות, אם ידועה",
+      "ar": "التكلفة، إن كانت معروفة"
+    },
+    "inc_cost_hint": {
+      "c": "Under the cost field. Explains that blank and zero differ.",
+      "en": "Leave it empty if nobody knows yet. Empty and zero are not the same.",
+      "he": "השאירו ריק אם עדיין לא ידוע. ריק ואפס אינם אותו דבר.",
+      "ar": "اتركه فارغًا إن لم يُعرف بعد. الفارغ والصفر ليسا سواء."
+    },
+    "inc_bad_cost": {
+      "c": "The cost field holds something that is not a number, or is negative.",
+      "en": "That is not an amount. Leave it empty if you do not know.",
+      "he": "זה אינו סכום. השאירו ריק אם אינכם יודעים.",
+      "ar": "هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف."
+    },
+    "ts_not_whole_job": {
+      "c": "The reconciliation covers only the people this viewer may price.",
+      "en": "This covers only the people whose pay you may see, so it is not the job's whole labour.",
+      "he": "זה מכסה רק את מי שאתם רשאים לראות את שכרם, ולכן אינו כל העבודה בפרויקט.",
+      "ar": "هذا يشمل فقط من يحقّ لك الاطلاع على أجورهم، فهو ليس كامل العمالة في المشروع."
+    },
+    "ts_all_withheld": {
+      "c": "Empty state when every person on the job is above this viewer in the chain.",
+      "en": "None of the hours on this job are yours to price.",
+      "he": "אף אחת מהשעות בפרויקט זה אינה בסמכותכם לתמחר.",
+      "ar": "لا شيء من ساعات هذا المشروع من صلاحيتك تسعيره."
+    },
+    "ts_withheld_hint": {
+      "c": "Under the empty state: explains the chain of command rule.",
+      "en": "You see the pay of the people who answer to you, and your own. Nobody sees their own boss's.",
+      "he": "אתם רואים את שכרם של מי שכפוף לכם, ואת שלכם. איש אינו רואה את שכר הממונה עליו.",
+      "ar": "ترى أجور من هم تحت إمرتك، وأجرك أنت. ولا أحد يرى أجر من هو فوقه."
+    },
+    "people_reports_to": {
+      "c": "Label on the member sheet: who this person answers to.",
+      "en": "Answers to",
+      "he": "כפוף ל",
+      "ar": "يتبع لـ"
+    },
+    "people_reports_to_nobody": {
+      "c": "Shown when a member has no manager set.",
+      "en": "Nobody yet — the owner",
+      "he": "עדיין אף אחד — הבעלים",
+      "ar": "لا أحد بعد — المالك"
+    },
+    "people_reports_hint": {
+      "c": "Explains what setting a manager does.",
+      "en": "Whoever someone answers to can see what they are paid. Nobody else can, including people beside them and above them.",
+      "he": "מי שאדם כפוף לו רואה את שכרו. אף אחד אחר לא, לרבות עמיתים והממונים עליו.",
+      "ar": "من يتبع له الشخص يرى أجره. ولا يراه أحد غيره، لا زملاؤه ولا من هم فوقه."
+    },
+    "people_chain_not_yours": {
+      "c": "Refusal: the actor is not above this person in the chain.",
+      "en": "Only somebody above them can move them, and you are not.",
+      "he": "רק מי שמעליהם יכול להעביר אותם, ואתם לא.",
+      "ar": "لا ينقلهم إلا من هو فوقهم، ولست كذلك."
+    },
+    "people_chain_yourself": {
+      "c": "Refusal: you cannot change who you answer to.",
+      "en": "You cannot move yourself. Whoever you answer to does that.",
+      "he": "אינכם יכולים להעביר את עצמכם. מי שאתם כפופים לו עושה זאת.",
+      "ar": "لا يمكنك نقل نفسك. من تتبع له هو من يفعل ذلك."
+    },
+    "people_chain_loop": {
+      "c": "Refusal: the move would put a circle in the chain.",
+      "en": "That would put a circle in the chain: they are already above the person you picked.",
+      "he": "זה ייצור מעגל בשרשרת: הם כבר מעל האדם שבחרתם.",
+      "ar": "هذا سيُنشئ حلقة مغلقة: هم بالفعل فوق الشخص الذي اخترته."
+    },
+    "people_chain_unknown": {
+      "c": "Refusal: the person or the manager is not on this company's books.",
+      "en": "Not on this company's books.",
+      "he": "לא רשומים בחברה זו.",
+      "ar": "غير مسجّل في دفاتر هذه الشركة."
+    },
+    "crew_title": {
+      "c": "Screen title: the crew, listed by trade, with faces",
+      "en": "Who is on site",
+      "he": "מי באתר",
+      "ar": "من في الموقع"
+    },
+    "crew_none": {
+      "c": "No one on the books matches the chosen trade.",
+      "en": "Nobody on the books for that trade.",
+      "he": "אין אף אחד רשום למקצוע הזה.",
+      "ar": "لا أحد مسجّل لهذه المهنة."
+    },
+    "crew_trade": {
+      "c": "Label for the trade a person works in.",
+      "en": "Trade",
+      "he": "מקצוע",
+      "ar": "المهنة"
+    },
+    "crew_inducted": {
+      "c": "Label for the date somebody signed the safety induction.",
+      "en": "Inducted",
+      "he": "תודרך",
+      "ar": "تلقّى التدريب"
+    },
+    "crew_no_money": {
+      "c": "Says plainly why a profile shows no wages, so an absence is not read as a gap.",
+      "en": "Nothing about pay here. Only somebody above them in the chain of command sees that.",
+      "he": "אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.",
+      "ar": "لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة."
+    },
+    "crew_contact": {
+      "en": "Contact",
+      "he": "יצירת קשר",
+      "ar": "الاتصال"
+    },
+    "crew_call": {
+      "en": "Call",
+      "he": "התקשר",
+      "ar": "اتصال"
+    },
+    "crew_whatsapp": {
+      "en": "WhatsApp",
+      "he": "וואטסאפ",
+      "ar": "واتساب"
+    },
+    "crew_email": {
+      "en": "Email",
+      "he": "אימייל",
+      "ar": "البريد الإلكتروني"
+    },
+    "crew_no_phone": {
+      "en": "No phone number on file for this person.",
+      "he": "אין מספר טלפון רשום לאדם הזה.",
+      "ar": "لا يوجد رقم هاتف مسجل لهذا الشخص."
+    },
+    "crew_correct": {
+      "c": "Button and dialog title: fix what the crew list says about somebody",
+      "en": "Correct these details",
+      "he": "תיקון הפרטים",
+      "ar": "تصحيح التفاصيل"
+    },
+    "crew_id_locked": {
+      "c": "Why the ID number cannot be edited once it is set",
+      "en": "The ID number is set and cannot be changed here. It is on the gate list and on the induction record — ask the office.",
+      "he": "מספר תעודת הזהות כבר נקבע ולא ניתן לשנותו כאן. הוא מופיע ברשימת הכניסה וברישום ההדרכה — פנו למשרד.",
+      "ar": "رقم الهوية مثبَّت ولا يمكن تغييره هنا. فهو مدرج في قائمة البوابة وفي سجل التوجيه — راجع المكتب."
+    },
+    "crew_need_name": {
+      "c": "Refusal: the name field was left empty",
+      "en": "A name is needed. A row with nobody's name on it is a row nobody can read.",
+      "he": "נדרש שם. שורה בלי שם היא שורה שאיש לא יכול לקרוא.",
+      "ar": "الاسم مطلوب. سطر بلا اسم هو سطر لا يستطيع أحد قراءته."
+    },
+    "crew_not_on_books": {
+      "c": "Refusal: that person is not a member of the company being worked in",
+      "en": "They are not on this company's books.",
+      "he": "הם אינם רשומים בחברה הזו.",
+      "ar": "هذا الشخص ليس مسجَّلًا في هذه الشركة."
+    },
+    "crew_no_such_person": {
+      "c": "Refusal: the account has gone, or was removed",
+      "en": "That person's record could not be found.",
+      "he": "לא נמצא רישום עבור אדם זה.",
+      "ar": "تعذّر العثور على سجل هذا الشخص."
+    },
+    "crew_correct_failed": {
+      "c": "Refusal: the correction failed for a reason with no better sentence",
+      "en": "That could not be saved.",
+      "he": "לא ניתן היה לשמור.",
+      "ar": "تعذّر الحفظ."
+    },
+    "crew_no_violations": {
+      "c": "Nobody has confirmed a violation against this person.",
+      "en": "Nothing confirmed against them.",
+      "he": "לא אושרה נגדם אף הפרה.",
+      "ar": "لا توجد مخالفات مؤكدة بحقهم."
+    },
+    "crew_open": {
+      "c": "Entry point that opens the crew list, by trade, with faces.",
+      "en": "Find someone by trade",
+      "he": "חיפוש לפי מקצוע",
+      "ar": "ابحث عن شخص حسب المهنة"
+    },
+    "home_changes": {
+      "c": "Section header on the dashboard: recent changes this person may see",
+      "en": "What changed",
+      "he": "מה השתנה",
+      "ar": "ما الذي تغيّر"
+    },
+    "backup_title": {
+      "c": "Settings section: taking the record off the phone and putting it back",
+      "en": "Backup",
+      "he": "גיבוי",
+      "ar": "النسخ الاحتياطي"
+    },
+    "backup_why": {
+      "c": "Explains why a backup matters when everything is on one device.",
+      "en": "Everything is on this phone and nothing is on a server. Lose the phone and you lose the site diary, unless you have a backup.",
+      "he": "הכול נמצא בטלפון הזה ודבר אינו בשרת. אובדן הטלפון הוא אובדן יומן העבודה, אלא אם יש גיבוי.",
+      "ar": "كل شيء على هذا الهاتف ولا شيء على خادم. فقدان الهاتف يعني فقدان يوميات الموقع، إلا إذا كان لديك نسخة احتياطية."
+    },
+    "backup_take": {
+      "c": "Button that writes a backup file.",
+      "en": "Back up",
+      "he": "גיבוי",
+      "ar": "أنشئ نسخة"
+    },
+    "backup_restore": {
+      "c": "Button that opens a backup file to restore from.",
+      "en": "Restore",
+      "he": "שחזור",
+      "ar": "استعادة"
+    },
+    "backup_working": {
+      "c": "Shown while a backup or restore is running.",
+      "en": "Working. This takes a while, because the photographs go in too.",
+      "he": "בעבודה. זה לוקח זמן, כי גם התמונות נכללות.",
+      "ar": "جارٍ العمل. يستغرق هذا وقتًا، لأن الصور مُضمَّنة أيضًا."
+    },
+    "backup_done": {
+      "c": "Backup written. %1$d is how many photos and videos went in.",
+      "en": "Backed up, with %1$d photographs and videos. Keep the file somewhere that is not this phone.",
+      "he": "הגיבוי הושלם, כולל %1$d תמונות וסרטונים. שמרו את הקובץ במקום שאינו הטלפון הזה.",
+      "ar": "تم النسخ، مع %1$d صورة وفيديو. احتفظ بالملف في مكان غير هذا الهاتف."
+    },
+    "backup_staged": {
+      "c": "A restore is unpacked and waiting for a restart. %1$s is when the backup was taken.",
+      "en": "Ready to restore the backup from %1$s. Close the app completely and open it again to finish. Nothing has changed yet.",
+      "he": "מוכן לשחזור הגיבוי מ־%1$s. סגרו את האפליקציה לגמרי ופתחו אותה שוב כדי לסיים. עדיין לא השתנה דבר.",
+      "ar": "جاهز لاستعادة النسخة من %1$s. أغلق التطبيق تمامًا ثم افتحه مجددًا لإتمام العملية. لم يتغيّر شيء بعد."
+    },
+    "backup_older_version": {
+      "c": "The backup predates the installed version; migrations will run.",
+      "en": "It was taken by an older version. It will be brought up to date as it is restored.",
+      "he": "הגיבוי נלקח בגרסה ישנה יותר. הוא יעודכן במהלך השחזור.",
+      "ar": "أُخذت النسخة بإصدار أقدم. سيجري تحديثها أثناء الاستعادة."
+    },
+    "backup_cancel_restore": {
+      "c": "Abandons a staged restore before the restart.",
+      "en": "Do not restore after all",
+      "he": "ביטול השחזור",
+      "ar": "تراجع عن الاستعادة"
+    },
+    "backup_restored": {
+      "c": "Shown at launch after a restore was applied.",
+      "en": "Restored from a backup.",
+      "he": "שוחזר מגיבוי.",
+      "ar": "تمت الاستعادة من نسخة احتياطية."
+    },
+    "backup_refused_file": {
+      "c": "The chosen file is not a backup from this app.",
+      "en": "That is not a backup from this app.",
+      "he": "זה אינו קובץ גיבוי של האפליקציה הזו.",
+      "ar": "هذا ليس ملف نسخة احتياطية من هذا التطبيق."
+    },
+    "backup_newer_app": {
+      "c": "The backup was written by a newer version of the app.",
+      "en": "That backup was made by a newer version of the app. Update first, then restore it.",
+      "he": "הגיבוי נוצר בגרסה חדשה יותר של האפליקציה. עדכנו תחילה ואז שחזרו.",
+      "ar": "أُنشئت هذه النسخة بإصدار أحدث من التطبيق. حدّث أولًا ثم استعِد."
+    },
+    "backup_rolled_back": {
+      "c": "The restore failed part way and the original was put back.",
+      "en": "The restore did not finish, and everything you had is still here. Try again.",
+      "he": "השחזור לא הושלם, וכל מה שהיה לכם עדיין כאן. נסו שוב.",
+      "ar": "لم تكتمل الاستعادة، وكل ما لديك ما زال موجودًا. حاول مرة أخرى."
+    },
+    "backup_failed": {
+      "c": "Generic failure: wrong passphrase or damaged file, deliberately not distinguished.",
+      "en": "That did not work. Either the passphrase is wrong or the file is damaged.",
+      "he": "זה לא הצליח. או שביטוי הסיסמה שגוי או שהקובץ פגום.",
+      "ar": "لم تنجح العملية. إما أن عبارة المرور خاطئة أو أن الملف تالف."
+    },
+    "backup_passphrase": {
+      "c": "Label for the backup passphrase field.",
+      "en": "Passphrase",
+      "he": "ביטוי סיסמה",
+      "ar": "عبارة المرور"
+    },
+    "backup_passphrase_again": {
+      "c": "Second passphrase field, to catch a typo.",
+      "en": "Type it again",
+      "he": "הקלידו שוב",
+      "ar": "أعد كتابتها"
+    },
+    "backup_passphrase_open": {
+      "c": "Dialog title when opening a backup.",
+      "en": "The passphrase for this backup",
+      "he": "ביטוי הסיסמה של הגיבוי הזה",
+      "ar": "عبارة المرور لهذه النسخة"
+    },
+    "backup_passphrase_warning": {
+      "c": "There is no recovery. Said plainly, before the field.",
+      "en": "Write this down somewhere safe. Nobody can reset it, and without it the backup cannot be opened by anyone, including us.",
+      "he": "רשמו אותו במקום בטוח. אף אחד אינו יכול לאפס אותו, ובלעדיו איש אינו יכול לפתוח את הגיבוי, כולל אנחנו.",
+      "ar": "دوّنها في مكان آمن. لا يمكن لأحد إعادة تعيينها، وبدونها لا يستطيع أحد فتح النسخة، بمن فيهم نحن."
+    },
+    "backup_too_short": {
+      "c": "Passphrase below the minimum length.",
+      "en": "At least 12 characters. This locks a file somebody could copy and take away.",
+      "he": "לפחות 12 תווים. זה נועל קובץ שאפשר להעתיק ולקחת.",
+      "ar": "12 حرفًا على الأقل. هذا يقفل ملفًا يمكن نسخه وأخذه."
+    },
+    "backup_no_match": {
+      "c": "The two passphrase fields differ.",
+      "en": "The two do not match.",
+      "he": "השניים אינם תואמים.",
+      "ar": "العبارتان غير متطابقتين."
+    },
+    "backup_too_plain": {
+      "c": "Long but with too few distinct characters.",
+      "en": "Too few different characters. Length alone is not strength.",
+      "he": "מעט מדי תווים שונים. אורך לבדו אינו חוזק.",
+      "ar": "عدد الأحرف المختلفة قليل جدًا. الطول وحده ليس قوة."
+    },
+    "backup_check": {
+      "c": "Button that opens a backup to see what is in it, without restoring.",
+      "en": "Check a backup",
+      "he": "בדיקת גיבוי",
+      "ar": "افحص نسخة احتياطية"
+    },
+    "backup_contents": {
+      "c": "What a checked backup holds. %1$s is when it was taken, then jobs, people, photos.",
+      "en": "Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.",
+      "he": "נלקח ב־%1$s: %2$d פרויקטים, %3$d אנשים, %4$d תמונות וסרטונים.",
+      "ar": "أُخذت في %1$s: %2$d مشاريع، %3$d أشخاص، %4$d صورة وفيديو."
+    },
+    "backup_damaged": {
+      "c": "The archive opened but the database inside failed SQLite's integrity check.",
+      "en": "The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.",
+      "he": "הקובץ נפתח אך מסד הנתונים שבתוכו פגום. אל תסתמכו עליו — צרו גיבוי חדש.",
+      "ar": "فُتح الملف لكن قاعدة البيانات داخله تالفة. لا تعتمد عليه — أنشئ نسخة جديدة."
     }
   },
   "plurals": {
@@ -4409,6 +6016,48 @@
         "few": "متأخر %d أيام",
         "many": "متأخر %d يومًا",
         "other": "متأخر %d يوم"
+      }
+    },
+    "ts_withheld": {
+      "c": "How many people on a job this viewer may not be shown the money of",
+      "en": {
+        "one": "%d person on this job is not yours to price.",
+        "other": "%d people on this job are not yours to price."
+      },
+      "he": {
+        "one": "אדם אחד בפרויקט זה אינו בסמכותכם לתמחר.",
+        "two": "שני אנשים בפרויקט זה אינם בסמכותכם לתמחר.",
+        "many": "%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.",
+        "other": "%d אנשים בפרויקט זה אינם בסמכותכם לתמחר."
+      },
+      "ar": {
+        "zero": "لا أحد في هذا المشروع خارج صلاحيتك.",
+        "one": "شخص واحد في هذا المشروع ليس من صلاحيتك تسعيره.",
+        "two": "شخصان في هذا المشروع ليسا من صلاحيتك تسعيرهما.",
+        "few": "%d أشخاص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.",
+        "many": "%d شخصًا في هذا المشروع ليسوا من صلاحيتك تسعيرهم.",
+        "other": "%d شخص في هذا المشروع ليسوا من صلاحيتك تسعيرهم."
+      }
+    },
+    "crew_no_trade": {
+      "c": "How many people have no trade recorded and so appear on no trade list",
+      "en": {
+        "one": "%d person has no trade recorded and is on none of these lists.",
+        "other": "%d people have no trade recorded and are on none of these lists."
+      },
+      "he": {
+        "one": "לאדם אחד לא נרשם מקצוע והוא אינו באף אחת מהרשימות.",
+        "two": "לשני אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.",
+        "many": "ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.",
+        "other": "ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות."
+      },
+      "ar": {
+        "zero": "الجميع لديهم مهنة مسجّلة.",
+        "one": "شخص واحد بلا مهنة مسجّلة ولا يظهر في أي من هذه القوائم.",
+        "two": "شخصان بلا مهنة مسجّلة ولا يظهران في أي من هذه القوائم.",
+        "few": "%d أشخاص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.",
+        "many": "%d شخصًا بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.",
+        "other": "%d شخص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم."
       }
     }
   }

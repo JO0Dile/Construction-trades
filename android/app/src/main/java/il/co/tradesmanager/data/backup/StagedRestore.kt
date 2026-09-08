@@ -1,0 +1,296 @@
+package il.co.tradesmanager.data.backup
+
+import android.content.Context
+import il.co.tradesmanager.data.local.AppDatabase
+import java.io.File
+import net.zetetic.database.sqlcipher.SQLiteDatabase
+
+/**
+ * A restore that is prepared while the app runs and applied before it opens
+ * the database.
+ *
+ * Swapping a database out from under a running app means closing something
+ * thirty repositories and a screenful of open Flows are holding. Nothing good
+ * comes of it, and the failure mode is half a database.
+ *
+ * So a restore is two acts. [stage] unpacks the archive somewhere safe and
+ * leaves a marker, while the app carries on with the data it already has.
+ * [apply] runs at the very start of the next launch, before Room opens
+ * anything, when the only thing touching these files is this function.
+ *
+ * ## What makes it safe to run at all
+ *
+ * The old database is **moved aside, not deleted**. If anything fails part way
+ * through, [rollBack] puts it back and the person is exactly where they
+ * started. A restore that cannot be undone is not a feature anybody should tap
+ * on a phone that still has the only copy of a site diary on it.
+ *
+ * And the staged file is checked before it is used: SQLite's own integrity
+ * check, and the schema version it claims against the one it holds. A file
+ * that fails either is abandoned with the original untouched.
+ */
+object StagedRestore {
+
+    private const val STAGING = "restore-pending"
+    private const val DATABASE = "database.db"
+    private const val MEDIA = "media"
+    private const val REPLACED_SUFFIX = ".replaced"
+    private const val PHOTOS = "photos"
+    private const val NOTE = "note"
+
+    /**
+     * Left where the next launch will find it, after a restore succeeded.
+     *
+     * Two numbers -- when the backup was taken and what schema it was on --
+     * because the audit entry that explains the restore has to be written
+     * *after* it, so that it chains onto the restored head. By then the
+     * staging directory is gone, so what the entry needs to say has to
+     * outlive it by one step.
+     */
+    fun noteFile(context: Context): File = File(context.filesDir, "restore-$NOTE")
+
+    fun stagingDir(context: Context): File = File(context.filesDir, STAGING)
+
+    /** True when a restore is waiting to be applied on the next launch. */
+    fun isPending(context: Context): Boolean =
+        File(stagingDir(context), DATABASE).isFile
+
+    /**
+     * Puts an unpacked archive where [apply] will find it.
+     *
+     * Everything is written into the staging directory and only then is the
+     * database file moved into place inside it, because [isPending] keys on
+     * that one file: a half-written staging directory that already looked
+     * pending would be applied on the next launch.
+     */
+    fun stage(
+        context: Context,
+        database: File,
+        media: List<File>,
+        takenAt: Long,
+        schemaVersion: Int,
+    ) {
+        val dir = stagingDir(context)
+        dir.deleteRecursively()
+        dir.mkdirs()
+        val mediaDir = File(dir, MEDIA).apply { mkdirs() }
+        media.forEach { file -> file.copyTo(File(mediaDir, file.name), overwrite = true) }
+        File(dir, NOTE).writeText("$takenAt $schemaVersion")
+
+        val incoming = File(dir, "$DATABASE.part")
+        database.copyTo(incoming, overwrite = true)
+        incoming.renameTo(File(dir, DATABASE))
+    }
+
+    fun discard(context: Context) {
+        stagingDir(context).deleteRecursively()
+    }
+
+    /** What happened, so a launch can say something rather than nothing. */
+    enum class Outcome {
+        /** Nothing was waiting. The ordinary launch. */
+        NOTHING_STAGED,
+
+        /** The database and the media are in place. */
+        RESTORED,
+
+        /**
+         * The staged file did not hold up, and nothing was changed.
+         *
+         * The archive decrypted -- that much was proved before it was staged
+         * -- so this is a file that was damaged in the writing or is not the
+         * database it claimed to be. Either way the original is still there.
+         */
+        REFUSED,
+
+        /**
+         * It failed part way and the original was put back.
+         *
+         * Separate from [REFUSED] because they need different sentences: this
+         * one means something went wrong on this device, not that the file was
+         * bad, and the person should be told to try again rather than to find
+         * a different backup.
+         */
+        ROLLED_BACK,
+    }
+
+    /**
+     * Applies a staged restore. Call before opening the database, or not at all.
+     *
+     * [encrypt] must be the same decision the app is about to open the
+     * database with, because it decides whether the plaintext staged file is
+     * copied into place or exported through SQLCipher under this device's key.
+     * Getting it wrong produces a database the app cannot open, which is why
+     * it is passed in rather than read from settings here.
+     */
+    fun apply(context: Context, encrypt: Boolean, passphrase: () -> ByteArray): Outcome {
+        // Through isPending rather than an inline check, so what counts as a
+        // waiting restore is decided in one place. Two answers to that, one
+        // here and one in stage(), is how a half-written staging directory
+        // gets applied.
+        if (!isPending(context)) return Outcome.NOTHING_STAGED
+        val dir = stagingDir(context)
+        val staged = File(dir, DATABASE)
+
+        if (!isSound(staged)) {
+            discard(context)
+            return Outcome.REFUSED
+        }
+
+        val live = context.getDatabasePath(AppDatabase.NAME)
+        val setAside = File(live.parentFile, live.name + REPLACED_SUFFIX)
+        val photos = File(context.filesDir, PHOTOS)
+        val photosSetAside = File(context.filesDir, PHOTOS + REPLACED_SUFFIX)
+
+        live.parentFile?.mkdirs()
+        setAside.delete()
+        photosSetAside.deleteRecursively()
+
+        // Both moved aside before anything is written, and the move has to
+        // succeed. An earlier version carried on when the rename failed, which
+        // left the old database in place for sqlcipher_export to write its
+        // tables into on top of -- a collision at best, and at worst a file
+        // holding half of each. Nothing has changed yet at this point, so
+        // giving up here costs the restore and nothing else.
+        val hadDatabase = live.exists()
+        if (hadDatabase && !live.renameTo(setAside)) return Outcome.ROLLED_BACK
+        val hadPhotos = photos.isDirectory
+        if (hadPhotos && !photos.renameTo(photosSetAside)) {
+            if (hadDatabase) setAside.renameTo(live)
+            return Outcome.ROLLED_BACK
+        }
+        journalsOf(live).forEach { it.delete() }
+
+        val ok = runCatching {
+            if (encrypt) {
+                exportEncrypted(staged, live, passphrase())
+            } else {
+                staged.copyTo(live, overwrite = true)
+            }
+            copyMedia(File(dir, MEDIA), photos)
+        }.isSuccess
+
+        return if (ok) {
+            setAside.delete()
+            photosSetAside.deleteRecursively()
+            // Carried out of the staging directory before it is deleted, so
+            // the next thing the app does can write the audit entry that
+            // explains what happened to the trail.
+            runCatching { File(dir, NOTE).copyTo(noteFile(context), overwrite = true) }
+            discard(context)
+            Outcome.RESTORED
+        } else {
+            rollBack(live, setAside, hadDatabase, photos, photosSetAside, hadPhotos)
+            discard(context)
+            Outcome.ROLLED_BACK
+        }
+    }
+
+    /**
+     * SQLite's own opinion of the file, before anything is replaced on its say-so.
+     *
+     * Read with the platform's SQLite rather than SQLCipher, because what is
+     * staged is always plaintext: the archive it came out of was locked with
+     * the person's passphrase, never with any device's key. That is the whole
+     * reason a backup restores onto a phone that has never seen the one it was
+     * taken from, and it means the check needs no key and no native library.
+     *
+     * Anything that throws is a no. A file that cannot be opened at all is
+     * exactly as unusable as one that fails the check, and this is the last
+     * moment before the real database is moved.
+     */
+    private fun isSound(file: File): Boolean = runCatching {
+        android.database.sqlite.SQLiteDatabase.openDatabase(
+            file.absolutePath,
+            null,
+            android.database.sqlite.SQLiteDatabase.OPEN_READONLY,
+        ).use { db ->
+            db.rawQuery("PRAGMA integrity_check", null).use { cursor ->
+                cursor.moveToFirst() && cursor.getString(0).equals("ok", ignoreCase = true)
+            }
+        }
+    }.getOrDefault(false)
+
+    /**
+     * Copies the plaintext staged database into an encrypted one at [target].
+     *
+     * `sqlcipher_export` is SQLCipher's own way across the boundary: it reads
+     * every page through one connection and writes it through the other, so
+     * the result is a real encrypted database rather than a plaintext file
+     * with a header stuck on it.
+     */
+    private fun exportEncrypted(staged: File, target: File, key: ByteArray) {
+        // Opened with no key at all. The staged file is plaintext, and this
+        // overload is the one that takes no password -- SQLCipher reads an
+        // unencrypted database perfectly well when none is set, which is what
+        // makes it the right connection to run the export *from*.
+        //
+        // The direction matters: sqlcipher_export copies main into the schema
+        // it is given, so main has to be the plaintext side and the encrypted
+        // file the attached one. The reverse of what BackupRepository does on
+        // the way out, for the same reason.
+        SQLiteDatabase.openDatabase(
+            staged.absolutePath,
+            null as SQLiteDatabase.CursorFactory?,
+            SQLiteDatabase.OPEN_READONLY,
+            null,
+        ).use { plain ->
+                plain.execSQL("ATTACH DATABASE ? AS encrypted KEY ?", arrayOf(target.absolutePath, key))
+                plain.rawQuery("SELECT sqlcipher_export('encrypted')", null).use { it.moveToFirst() }
+                // The schema version does not travel with sqlcipher_export.
+                // Without this, Room opens a database full of the right rows,
+                // reads user_version 0 and tries to migrate it from nothing.
+                plain.execSQL("PRAGMA encrypted.user_version = " + userVersion(plain))
+                plain.execSQL("DETACH DATABASE encrypted")
+            }
+    }
+
+    private fun userVersion(db: SQLiteDatabase): Int =
+        db.rawQuery("PRAGMA user_version", null).use { cursor ->
+            if (cursor.moveToFirst()) cursor.getInt(0) else 0
+        }
+
+    private fun copyMedia(from: File, target: File) {
+        target.mkdirs()
+        if (from.isDirectory) {
+            from.listFiles()?.forEach { it.copyTo(File(target, it.name), overwrite = true) }
+        }
+    }
+
+    /**
+     * Puts back what was moved aside, database and photographs together.
+     *
+     * The photographs matter as much as the rows: a database whose rows point
+     * at pictures that are no longer there is not the thing anybody had before
+     * the restore, and an earlier version of this restored one and not the
+     * other.
+     */
+    private fun rollBack(
+        live: File,
+        setAside: File,
+        hadDatabase: Boolean,
+        photos: File,
+        photosSetAside: File,
+        hadPhotos: Boolean,
+    ) {
+        live.delete()
+        journalsOf(live).forEach { it.delete() }
+        if (hadDatabase) setAside.renameTo(live)
+
+        photos.deleteRecursively()
+        if (hadPhotos) photosSetAside.renameTo(photos)
+    }
+
+    /**
+     * The write-ahead log and its index.
+     *
+     * Deleted alongside the database rather than left behind. A journal from
+     * the old file against a new one is how SQLite is told to replay writes
+     * that belong to a database that is no longer there.
+     */
+    private fun journalsOf(live: File): List<File> = listOf(
+        File(live.parentFile, live.name + "-wal"),
+        File(live.parentFile, live.name + "-shm"),
+        File(live.parentFile, live.name + "-journal"),
+    )
+}

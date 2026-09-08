@@ -1,0 +1,89 @@
+{
+  "tradeId": "aluminium",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.al.windows",
+      "estimatedDays": 4,
+      "names": {
+        "en": "Aluminium windows, one flat",
+        "he": "חלונות אלומיניום לדירה",
+        "ar": "شبابيك ألمنيوم لشقة"
+      },
+      "descriptions": {
+        "en": "Double-glazed units set, sealed and tested against water before the plaster closes them in.",
+        "he": "יחידות בידודיות מותקנות, אטומות ונבדקות למים לפני שהטיח סוגר אותן.",
+        "ar": "وحدات دبل مركّبة ومعزولة ومفحوصة ضد الماء قبل أن تغلقها اللياسة."
+      },
+      "materials": [
+        {
+          "itemId": "al.window.sliding",
+          "quantity": 14
+        },
+        {
+          "itemId": "al.glass.double",
+          "quantity": 14
+        },
+        {
+          "itemId": "al.gasket.epdm",
+          "quantity": 60
+        },
+        {
+          "itemId": "al.sealant.structural",
+          "quantity": 20
+        },
+        {
+          "itemId": "al.shutter.rolling",
+          "quantity": 8
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.al.wt.1",
+          "order": 1,
+          "titles": {
+            "en": "Check every opening against the survey before anything is made",
+            "he": "בדיקת כל פתח מול המדידה לפני הייצור",
+            "ar": "فحص كل فتحة مقابل المسح قبل التصنيع"
+          }
+        },
+        {
+          "id": "tpl.al.wt.2",
+          "order": 2,
+          "titles": {
+            "en": "Set frames plumb and square, packed not forced",
+            "he": "התקנת מסגרות באנך ובזווית, מרופדות ולא בכוח",
+            "ar": "تركيب الحلقات بشاقول وزاوية، مبطّنة لا مضغوطة"
+          }
+        },
+        {
+          "id": "tpl.al.wt.3",
+          "order": 3,
+          "titles": {
+            "en": "Seal the perimeter outside before the inside is closed",
+            "he": "איטום היקפי מבחוץ לפני סגירת הפנים",
+            "ar": "عزل المحيط من الخارج قبل إغلاق الداخل"
+          }
+        },
+        {
+          "id": "tpl.al.wt.4",
+          "order": 4,
+          "titles": {
+            "en": "Hose test each opening and watch the inside face",
+            "he": "בדיקת מים בכל פתח עם התבוננות בצד הפנימי",
+            "ar": "فحص بالماء لكل فتحة مع مراقبة الوجه الداخلي"
+          }
+        },
+        {
+          "id": "tpl.al.wt.5",
+          "order": 5,
+          "titles": {
+            "en": "Glaze last, and protect the units from the trades that follow",
+            "he": "זיגוג אחרון, והגנה על היחידות מבעלי המקצוע הבאים",
+            "ar": "التزجيج أخيراً، وحماية الوحدات من المهن التالية"
+          }
+        }
+      ]
+    }
+  ]
+}

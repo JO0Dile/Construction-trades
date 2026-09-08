@@ -17,9 +17,7 @@
 "action_filter" = "סינון";
 "action_export" = "ייצוא";
 "state_loading" = "טוען…";
-"state_saved" = "נשמר";
 "state_deleted" = "נמחק";
-"error_generic" = "משהו השתבש";
 "error_required" = "שדה חובה";
 "error_number" = "יש להזין מספר";
 "onboarding_welcome_title" = "התאמת האפליקציה לתחום שלך";
@@ -89,6 +87,21 @@
 "proj_name" = "שם הפרויקט";
 "proj_address" = "כתובת";
 "proj_client" = "לקוח";
+"proj_parts" = "חלקים של העבודה";
+"proj_add_part" = "הוספת חלק";
+"proj_part_of" = "חלק מתוך";
+"proj_no_parts" = "לא מחולק לחלקים.";
+"proj_part_hint" = "קומה, דירה, מגרש — ממה שהעבודה מורכבת.";
+"proj_street" = "רחוב ומספר";
+"proj_city" = "עיר";
+"proj_postal_code" = "מיקוד";
+"proj_client_phone" = "טלפון הלקוח";
+"proj_when" = "מתי היא רצה";
+"proj_no_date" = "לא נקבע";
+"action_clear" = "ניקוי";
+"proj_where_and_who" = "איפה זה ולמי";
+"proj_no_address" = "עדיין אין כתובת.";
+"proj_open_map" = "מפה";
 "proj_status" = "סטטוס";
 "proj_start" = "תאריך התחלה";
 "proj_due" = "תאריך יעד";
@@ -156,12 +169,16 @@
 "update_notes" = "מה השתנה";
 "sch_title" = "לוח זמנים";
 "sch_new_block" = "משבצת זמן חדשה";
+"sch_assign" = "שיוך";
+"sch_nobody" = "עדיין אף אחד";
+"sch_unassign" = "אף אחד";
 "sch_start" = "התחלה";
 "sch_end" = "סיום";
 "sch_task" = "משימה";
 "sch_assignee" = "משויך ל";
 "sch_project" = "פרויקט";
 "sch_check_in" = "כניסה";
+"sch_which_job" = "לאיזו עבודה?";
 "sch_check_out" = "יציאה";
 "sch_checked_in" = "נרשמה כניסה";
 "sch_empty" = "אין משימות מתוכננות";
@@ -175,6 +192,7 @@
 "saf_fail" = "לא בוצע";
 "saf_na" = "לא רלוונטי";
 "saf_sign_off" = "חתימה";
+"saf_sign_here" = "חתמו כאן";
 "saf_signed_by" = "נחתם על ידי";
 "saf_blocked" = "פריט קריטי לא בוצע. אין להתחיל בעבודה.";
 "saf_references" = "תקנים ותקנות";
@@ -194,6 +212,22 @@
 "set_audit_log" = "יומן פעילות";
 "set_export" = "ייצוא הנתונים שלי";
 "set_delete_data" = "מחיקת החשבון והנתונים שלי";
+/* Privacy screen: the whole of it in one sentence */
+"priv_lead" = "כל מה שאתם רושמים נשאר בטלפון הזה.";
+"priv_where_title" = "היכן נשמרת העבודה שלכם";
+"priv_where_body" = "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה. אין חשבון אצלנו ואין שרת שמחזיק עותק.";
+"priv_network_title" = "הדבר היחיד שיוצא מהטלפון";
+"priv_network_body" = "כשלוחצים על בדיקת עדכונים, האפליקציה שואלת את GitHub אם פורסמה גרסה חדשה. בבקשה הזו אין דבר על העבודות, הצוות או האתר שלכם. היא נשלחת רק בלחיצה על הכפתור ולא בשום מועד אחר.";
+"priv_none_title" = "מה האפליקציה אינה עושה";
+"priv_none_body" = "אין איסוף נתוני שימוש, אין פרסומות ואין מעקב מכל סוג. שום דבר אינו משותף עם אף אחד, כי אין לאן.";
+"priv_perm_title" = "לשם מה ההרשאות";
+"priv_perm_body" = "המצלמה מצלמת את התמונות שאתם מצרפים לעבודה, לליקוי או להפרה, והן נשמרות בטלפון הזה. הגישה לאינטרנט משמשת רק לבדיקת העדכונים שלמעלה.";
+"priv_crew_title" = "אם החברה שלכם התקינה את זה";
+"priv_crew_body" = "מה שאתם רושמים גלוי לאנשים שהתפקיד שלכם בחברה מתיר — לשם כך קיימים התפקידים. עדיין, הכול נמצא רק במכשירים שבהם הוזן.";
+"priv_delete_title" = "מחיקה";
+"priv_delete_body" = "הגדרות ← מחיקת הכול מרוקנת את מסד הנתונים בטלפון הזה. מכיוון ששום דבר לא יצא ממנו, אין ממה לבקש מחיקה במקום אחר. גיבוי שיצרתם הוא קובץ שלכם; מחקו אותו במקום שבו שמרתם אותו.";
+"priv_future_title" = "מתי זה ישתנה";
+"priv_future_body" = "מתוכנן שרת, כדי שמכשירים יוכלו להסתנכרן וטלפון שאבד לא יהיה אתר שאבד. שום דבר לא יישלח לשרת עד שיהיה קיים, והדף הזה יעודכן לפני כן.";
 "set_privacy" = "מדיניות פרטיות";
 "set_terms" = "תנאי שימוש";
 "set_about" = "אודות";
@@ -221,7 +255,7 @@
 "acc_personal_hint" = "אדם אחד, הכלים והעבודות שלך.";
 "acc_company" = "חברה";
 "acc_company_hint" = "כמה אנשים, כל אחד רואה את החלק שלו בעבודה.";
-"acc_your_name" = "השם שלך";
+"acc_your_name" = "שם מלא";
 "acc_company_name" = "שם החברה";
 "acc_reg_number" = "ח.פ. / ע.מ. (לא חובה)";
 "acc_reg_hint" = "מופיע בחשבוניות. אפשר להוסיף מאוחר יותר.";
@@ -380,6 +414,7 @@
 "ptw_issued_by" = "מנפיק ההיתר";
 "ptw_precautions" = "לפני תחילת העבודה";
 "ptw_issue" = "הנפקת ההיתר";
+"ptw_sign" = "חתמו כדי להנפיק";
 "ptw_issue_blocked" = "יש לסמן את כל אמצעי הזהירות לפני הנפקת ההיתר.";
 "ptw_valid_from" = "בתוקף מ";
 "ptw_valid_to" = "בתוקף עד";
@@ -428,6 +463,17 @@
 "acc_sign_in_title" = "כניסה";
 "acc_identifier" = "שם משתמש או מספר זהות";
 "acc_identifier_hint" = "מה שקיבלתם ממשרד האתר. שניהם עובדים.";
+"acc_username" = "שם משתמש";
+"acc_username_hint" = "מה שתקלידו כדי להיכנס. קצר עדיף באתר.";
+"acc_phone" = "מספר טלפון";
+"acc_phone_hint" = "כך האתר משיג אתכם. חובה.";
+"acc_email" = "כתובת אימייל (לא חובה)";
+"acc_phone_missing" = "צריך מספר טלפון.";
+"acc_phone_not_a_number" = "זה לא מספר טלפון.";
+"acc_phone_too_short" = "זה קצר מדי בשביל מספר טלפון.";
+"acc_phone_too_long" = "זה ארוך מכל מספר טלפון.";
+"acc_phone_repeated" = "מספר שאפשר באמת להשיג בו מישהו.";
+"acc_email_bad" = "זה לא נראה ככתובת אימייל.";
 "acc_password" = "סיסמה";
 "acc_password_blank_hint" = "השאירו ריק אם לא קיבלתם סיסמה.";
 "acc_wrong_credentials" = "אין התאמה. בדקו מול מי שפתח לכם את החשבון.";
@@ -819,3 +865,348 @@
 "hv_lifts" = "הרמות שלא סומנו כהושלמו";
 "hv_pours" = "יציקות שלא נסגרו";
 "hv_daily_logs" = "יומני עבודה שלא נחתמו";
+/* Alt text for the flag in the settings footer */
+"about_flag" = "דגל ישראל";
+/* Under the app name in the settings footer */
+"about_edition" = "מהדורת ישראל — לפי התקנים, תנאי התשלום ונהלי האתר הישראליים";
+"wp_title" = "חבילות עבודה";
+"wp_empty" = "אין עדיין חבילות עבודה בעבודה הזו";
+"wp_new" = "חבילת עבודה חדשה";
+"wp_given" = "נמסר";
+"wp_taken" = "התקבל";
+"wp_amount" = "סכום מוסכם";
+"wp_stage" = "שלב";
+"wp_scope" = "תחום עבודה";
+"wp_location" = "היכן";
+"wp_accept" = "קבלה";
+"wp_decline" = "דחייה";
+"wp_start" = "התחלת עבודה";
+"wp_submit" = "הגשה לבדיקה";
+"wp_approve" = "אישור";
+"wp_reject" = "החזרה לתיקון";
+"wp_reject_reason" = "מה צריך לתקן";
+"wp_reject_hint" = "צוות שמוחזר בלי סיבה לא יודע מה לתקן.";
+"wp_rejected_because" = "הוחזר:";
+"wp_need_photo" = "יש לצרף תמונה לפני הגשה";
+"wp_need_photo_hint" = "האישור נעשה במשרד ימים אחר כך, כשהקיר כבר מטויח.";
+"wp_invoice" = "הגשת חשבון";
+"wp_approved_not_paid" = "אושר. לא שולם — החשבון עדיין כפוף לתנאי התשלום.";
+"wp_status_draft" = "טיוטה";
+"wp_status_offered" = "הוצע";
+"wp_status_accepted" = "התקבל";
+"wp_status_declined" = "נדחה";
+"wp_status_progress" = "בעבודה";
+"wp_status_submitted" = "ממתין לבדיקה";
+"wp_status_rejected" = "הוחזר";
+"wp_status_approved" = "אושר";
+"wp_status_cancelled" = "בוטל";
+"wp_refused_side" = "רק הצד השני יכול לעשות זאת";
+"wp_refused_state" = "לא אפשרי מהמצב הזה";
+"wp_refused_party" = "זה אינו ההסכם שלך";
+"co_title" = "פרופיל החברה";
+"co_logo" = "סמל החברה";
+"co_name" = "שם החברה";
+"co_reg" = "ח.פ. / ע.מ.";
+"co_email" = "דוא״ל";
+"co_phone" = "טלפון";
+"co_website" = "אתר";
+"co_address" = "כתובת";
+"co_licence" = "מספר רישיון קבלן";
+"co_classification" = "סיווג";
+"co_licence_expires" = "הרישיון בתוקף עד";
+"co_visible_to_workers" = "להציג לצוות";
+"co_visible_hint" = "כבוי פירושו שרק ההנהלה רואה. שום דבר אינו מפורסם עד שתדליק.";
+"co_verified_note" = "רישום רישיון מסמן אתכם כמאומתים באפליקציה. אין בכך קביעה שאתם מורשים לבצע את העבודה — זה עניין שבינכם לבין הרגולטור.";
+"party_client" = "יזם / מזמין";
+"party_gc" = "קבלן ראשי";
+"party_first" = "קבלן משנה ראשי";
+"party_second" = "ראש צוות / קבלן כוח אדם";
+"party_supplier" = "ספק";
+"party_consultant" = "יועץ / מפקח";
+"party_title" = "תפקיד בעבודה הזו";
+"party_hint" = "מה החברה שלכם בעבודה הזו, וזה לא בהכרח מה שהיא בעבודה הבאה.";
+/* Subtitle on the project screen link */
+"wp_row_hint" = "מה נמסר ומה התקבל";
+"eng_title" = "חברות בעבודה הזו";
+"eng_add" = "הוספת חברה לעבודה";
+"eng_name" = "שם החברה";
+"eng_scope" = "מה תפקידם";
+"eng_refused" = "התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.";
+"wp_payee" = "מי מבצע";
+"wp_title_field" = "מהי החבילה";
+"eng_self" = "מה החברה שלכם בעבודה הזו?";
+"eng_self_hint" = "ענו על כך לפני הכול. אף אחד אחר לא יכול לענות במקומכם, וכל עוד לא עניתם לא תוכלו להוסיף חברה נוספת.";
+"ct_title" = "חוזים";
+"ct_empty" = "אין עדיין חוזים בעבודה הזו";
+"ct_new" = "חוזה חדש";
+"ct_row_hint" = "מה סוכם ועם מי";
+"ct_scope" = "מה הוא כולל";
+"ct_original" = "סכום מקורי";
+"ct_current" = "הסכום התקף";
+"ct_receivable" = "אתם מקבלים על זה";
+"ct_payable" = "אתם משלמים על זה";
+"ct_sign" = "חתימה";
+"ct_signed_by" = "נחתם על ידי";
+"ct_unsigned" = "טרם נחתם על ידי שני הצדדים";
+"ct_amend" = "הצעת שינוי";
+"ct_amend_amount" = "סכום חדש";
+"ct_amend_reason" = "סיבה";
+"ct_amend_reason_hint" = "בעוד שלוש שנים מישהו ישאל למה החוזה שווה מה שהוא שווה, והוא לא היה שם.";
+"ct_amend_history" = "כל סכום שהחוזה היה";
+"ct_amend_accept" = "אישור השינוי";
+"ct_amend_reject" = "דחיית השינוי";
+"ct_amend_pending" = "ממתין לצד השני";
+"ct_amend_yours" = "אתם הצעתם זאת. הצד השני מאשר או דוחה.";
+"ct_margin" = "המרווח שלכם בעבודה הזו";
+"ct_margin_hint" = "מה שאתם מקבלים, פחות מה שאתם משלמים. רק אתם רואים זאת — זה לא מופיע במסך של אף אחד אחר.";
+"wp_claim_title" = "אושר וטרם נדרש תשלום";
+"wp_claim_raise" = "הגשת חשבון";
+"wp_claim_total" = "החשבון ידרוש";
+"wp_claim_cumulative" = "כל מה שאושר עד היום, לא רק מה שנוסף כעת. הסכום לתשלום הוא זה פחות עיכבון ופחות מה ששולם כבר.";
+"wp_claim_none" = "לא אושר דבר חדש מאז החשבון הקודם";
+"task_stage" = "שלב בעבודה";
+"task_stage_none" = "ללא שלב";
+"task_stage_hint" = "רשות. שווה לקבוע כשאותה משימה חוזרת בכמה קומות — השלב הוא מה שמבדיל ביניהן.";
+"pay_breakdown" = "ממה מורכבת התביעה";
+"pay_breakdown_hint" = "כל חבילת עבודה מאושרת שנספרה בסכום שלמעלה. תביעה היא מצטברת, ולכן חבילות מבקשות קודמות מופיעות שוב.";
+"pay_breakdown_none" = "הופקה ידנית — ללא חבילות עבודה מצורפות.";
+/* Audit action: a record was exported out of the app */
+"audit_exported" = "יוצא";
+/* Audit action: old entries were removed */
+"audit_purged" = "נוקה";
+"audit_title" = "יומן ביקורת";
+"audit_hint" = "כל שינוי בעל משמעות, לפי סדר התרחשותו. לא ניתן לערוך את היומן מתוך האפליקציה.";
+"audit_empty" = "עדיין לא נרשם דבר.";
+"audit_verify" = "בדיקת היומן";
+"audit_intact" = "תקין";
+"audit_intact_detail" = "נבדקו %1$d רשומות וכולן מתאימות.";
+"audit_unchained" = "%1$d רשומות ישנות יותר אינן חתומות ולא ניתן לבדוק אותן. הן נכתבו לפני גרסה זו.";
+"audit_failed" = "היומן אינו מתאים";
+"audit_fault_altered" = "רשומה %1$d אומרת דבר שונה ממה שנחתם.";
+"audit_fault_broken" = "רשומה %1$d אינה עוקבת אחר קודמתה. משהו הוסר או הוחלף.";
+"audit_fault_missing" = "רשומה שלפני %1$d חסרה.";
+"audit_window" = "בודק את %1$d הרשומות האחרונות.";
+"audit_not_checked" = "טרם נבדק.";
+"audit_export" = "ייצוא היומן";
+"audit_col_seq" = "מס'";
+"audit_col_when" = "מתי";
+"audit_col_who" = "מי";
+"audit_col_action" = "פעולה";
+"audit_col_what" = "מה קרה";
+"audit_col_signature" = "חתימה";
+"audit_export_checked" = "נבדק בעת הייצוא";
+"audit_export_note" = "החתימות מקוצרות ב-PDF. קובץ ה-CSV מכיל אותן במלואן, ו-docs/AUDIT.md מסביר כיצד לחשב אותן מחדש.";
+"sec_encrypted" = "פעיל — הנתונים במכשיר זה מוצפנים";
+"sec_encrypted_detail" = "המפתח נשמר בחומרה המאובטחת של המכשיר ואינו יוצא ממנה. לא ניתן לקרוא את קובץ הנתונים מחוץ למכשיר.";
+"sec_not_encrypted" = "כבוי — הנתונים במכשיר זה אינם מוצפנים";
+"sec_not_encrypted_detail" = "המכשיר לא הצליח לטעון את ספריית ההצפנה, ולכן האפליקציה נפתחה ללא הגנה במקום לסרב לפעול. מספרי זהות, תמונות וחתימות ניתנים לקריאה בידי כל מי שיש לו גישה לקבצי המכשיר. דווחו על מכשיר זה לפני שימוש בנתוני עובדים.";
+"ret_title" = "שמירת יומן הביקורת למשך";
+"ret_hint" = "משך שמירת הרשומות הוא שאלה משפטית, והתשובה שונה עבור רשומת תשלום, בדיקת בטיחות ומספר זהות של עובד. האפליקציה אינה בוחרת עבורכם: דבר אינו נמחק עד שתגדירו תקופה, וכל מחיקה נרשמת.";
+"ret_keep_all" = "לשמור הכל";
+"ret_1_year" = "שנה";
+"ret_3_years" = "3 שנים";
+"ret_7_years" = "7 שנים";
+"ret_apply" = "החל כעת";
+"ret_applied" = "הוסרו %1$d רשומות. המחיקה עצמה נרשמה ביומן.";
+"ret_nothing" = "לא נמצאו רשומות ישנות מספיק להסרה.";
+"inc_title" = "אירועים";
+"inc_add" = "דיווח על אירוע";
+"inc_empty" = "לא דווח דבר.";
+"inc_hint" = "תעדו בזמן אמת, כולל כמעט-תאונות. כמעט-תאונה היא אותה תאונה עם קצת יותר מזל.";
+"inc_what" = "מה קרה";
+"inc_severity" = "חומרה";
+"inc_near_miss" = "כמעט תאונה";
+"inc_minor" = "קל — עזרה ראשונה";
+"inc_serious" = "חמור — בית חולים או היעדרות";
+"inc_fatal" = "קטלני";
+"inc_escalate" = "ייתכן שיש לדווח על אירוע זה גם לרשות המפקחת, ולא רק לתעד אותו כאן. בדקו את חובותיכם — האפליקציה אינה מכריעה בכך עבורכם.";
+"inc_reported_by" = "דווח על ידי";
+"acc_have_account" = "כבר יש לי חשבון";
+"acc_none_on_device" = "אין עדיין חשבונות בטלפון הזה. החשבונות נשמרים במכשיר, ולכן חשבון שנוצר בטלפון אחר אינו נגיש מכאן עד שתהיה לחברה שרת. צרו חשבון כדי להתחיל.";
+"role_safety_officer" = "ממונה בטיחות";
+"role_safety_officer_hint" = "רושם הפרות ואירועים על שם אנשים מזוהים. רואה מי האדם, לעולם לא כמה הוא מקבל.";
+"find_by_id" = "מספר זהות";
+"find_by_id_hint" = "הקלידו את המספר מהתעודה. שמות באתר חוזרים על עצמם, המספר לא.";
+"find_nobody" = "אין אף אחד עם מספר הזהות הזה. עליו ליצור חשבון לפני שניתן להוסיף אותו.";
+"vio_title" = "הפרות";
+"vio_new" = "רישום הפרה";
+"vio_none" = "לא נרשם דבר.";
+"vio_what" = "מה הייתה ההפרה";
+"vio_cost" = "עלות, אם יש";
+"vio_cost_hint" = "השאירו ריק אם אין חיוב. ריק ואפס אינם אותו דבר.";
+"vio_evidence" = "תמונה או סרטון";
+"vio_confirm" = "אישור";
+"vio_confirm_warning" = "לאחר אישור לא ניתן לשנות או לבטל, והאדם ששמו רשום יראה זאת.";
+"vio_draft" = "טיוטה — רק אתם רואים זאת";
+"vio_confirmed" = "אושר";
+"vio_cancelled" = "בוטל";
+"vio_need_person" = "בחרו נגד מי ההפרה.";
+"vio_need_evidence" = "צרפו תמונה או סרטון. הפרה עם עלות וללא ראיה היא מילה של אדם אחד.";
+"vio_need_description" = "כתבו מה הייתה ההפרה.";
+/* Row on a purchase order: when the delivery is expected */
+"po_due" = "צפוי להגיע";
+/* The supplier has not said when it is coming */
+"po_no_due" = "הספק לא אמר";
+/* Dialog title when placing an order: ask for the delivery date */
+"po_when_due" = "מתי זה אמור להגיע?";
+/* Field on a failed checklist row: describe the failure */
+"saf_what_is_wrong" = "מה לא תקין";
+/* Hint under the field on a failed check */
+"saf_fail_needs_words" = "כשל בלי הסבר הוא שורה שאי אפשר לפעול לפיה כעבור חצי שנה.";
+/* Button on a failed checklist row: attach a photograph */
+"saf_photograph" = "צילום";
+/* Row on the violation draft: which job it happened on */
+"vio_job" = "באיזו עבודה";
+/* The violation was not on a job — a yard, a van, the road */
+"vio_no_job" = "לא בעבודה מסוימת";
+/* Dialog: the account may not write violations for this company */
+"vio_refused_officer" = "אין לכם הרשאה לרשום הפרות כאן.";
+/* Dialog: signed in, but a member of no company at all */
+"vio_refused_books" = "אינכם רשומים באף חברה. פתחו חברה או הצטרפו לאחת, ואז רשמו את ההפרה.";
+/* Dialog: the violation is already confirmed or cancelled */
+"vio_refused_state" = "הפרה זו כבר אושרה או בוטלה. לא ניתן לשנות אותה.";
+/* Dialog: confirm was refused because something is missing */
+"vio_refused_incomplete" = "עדיין חסר משהו: נגד מי ההפרה, מה הייתה ההפרה, ותמונה או סרטון.";
+/* Dialog: a negative cost was rejected */
+"vio_refused_cost" = "עלות אינה יכולה להיות שלילית. השאירו ריק אם אין חיוב.";
+/* Dialog: the write failed for a reason the app has no better sentence for */
+"vio_refused_unknown" = "לא ניתן היה לשמור.";
+/* Screen title: signing people onto the site at the gate */
+"gate_title" = "כניסה לאתר";
+/* Section header above the ID number field */
+"gate_find" = "מי בשער";
+/* Under the ID field. Says the number is checked against a face. */
+"gate_find_hint" = "המספר שעל התעודה. התמונה שלהם מוצגת יחד איתו.";
+/* No account has that ID number. */
+"gate_not_found" = "אין אף אחד עם מספר זהות זה. שיירשמו קודם בטלפון שלהם ויחזרו.";
+/* Under the found person's card. %1$s is a role name, e.g. Worker. */
+"gate_grants" = "ייכנס לאתר בתור: %1$s. הדרגה נקבעת לאחר מכן על ידי מי שהעסיק אותו.";
+/* The person found is already on this company's books. */
+"gate_already_in" = "כבר רשום באתר הזה. אין מה לעשות.";
+/* Section header above the signature pad */
+"gate_sign" = "החתימה שלהם";
+/* Explains what the person at the gate is signing for. */
+"gate_sign_body" = "מסרו להם את הטלפון. הם חותמים על כך שקיבלו תדריך בטיחות לאתר הזה.";
+/* Why the admit button is disabled. */
+"gate_need_signature" = "עדיין לא חתמו.";
+/* The button that puts the person onto the site. */
+"gate_admit" = "הכניסו לאתר";
+/* Confirmation after an admission. %1$s is the person's name. */
+"gate_admitted" = "%1$s נמצא באתר.";
+/* Shown to a role that may not admit people. */
+"gate_not_yours" = "הכנסת אנשים לאתר אינה בסמכותכם. מנהל העבודה או ממונה הבטיחות עושה זאת.";
+/* Entry point on the People screen that opens the gate. */
+"people_gate" = "הכניסו מישהו לאתר";
+/* Button that attaches a photo or video to an incident. %1$d is how many are attached. */
+"inc_evidence" = "תמונה או סרטון (%1$d)";
+/* Why the save button is disabled: no photo or video attached yet. */
+"inc_need_evidence" = "צרפו תמונה או סרטון. עד שיתווכחו על זה, הסולם כבר יוזז.";
+/* Why the save button is disabled: nothing written. */
+"inc_need_description" = "כתבו מה קרה.";
+/* Optional cost field on an incident report. */
+"inc_cost" = "עלות, אם ידועה";
+/* Under the cost field. Explains that blank and zero differ. */
+"inc_cost_hint" = "השאירו ריק אם עדיין לא ידוע. ריק ואפס אינם אותו דבר.";
+/* The cost field holds something that is not a number, or is negative. */
+"inc_bad_cost" = "זה אינו סכום. השאירו ריק אם אינכם יודעים.";
+/* The reconciliation covers only the people this viewer may price. */
+"ts_not_whole_job" = "זה מכסה רק את מי שאתם רשאים לראות את שכרם, ולכן אינו כל העבודה בפרויקט.";
+/* Empty state when every person on the job is above this viewer in the chain. */
+"ts_all_withheld" = "אף אחת מהשעות בפרויקט זה אינה בסמכותכם לתמחר.";
+/* Under the empty state: explains the chain of command rule. */
+"ts_withheld_hint" = "אתם רואים את שכרם של מי שכפוף לכם, ואת שלכם. איש אינו רואה את שכר הממונה עליו.";
+/* Label on the member sheet: who this person answers to. */
+"people_reports_to" = "כפוף ל";
+/* Shown when a member has no manager set. */
+"people_reports_to_nobody" = "עדיין אף אחד — הבעלים";
+/* Explains what setting a manager does. */
+"people_reports_hint" = "מי שאדם כפוף לו רואה את שכרו. אף אחד אחר לא, לרבות עמיתים והממונים עליו.";
+/* Refusal: the actor is not above this person in the chain. */
+"people_chain_not_yours" = "רק מי שמעליהם יכול להעביר אותם, ואתם לא.";
+/* Refusal: you cannot change who you answer to. */
+"people_chain_yourself" = "אינכם יכולים להעביר את עצמכם. מי שאתם כפופים לו עושה זאת.";
+/* Refusal: the move would put a circle in the chain. */
+"people_chain_loop" = "זה ייצור מעגל בשרשרת: הם כבר מעל האדם שבחרתם.";
+/* Refusal: the person or the manager is not on this company's books. */
+"people_chain_unknown" = "לא רשומים בחברה זו.";
+/* Screen title: the crew, listed by trade, with faces */
+"crew_title" = "מי באתר";
+/* No one on the books matches the chosen trade. */
+"crew_none" = "אין אף אחד רשום למקצוע הזה.";
+/* Label for the trade a person works in. */
+"crew_trade" = "מקצוע";
+/* Label for the date somebody signed the safety induction. */
+"crew_inducted" = "תודרך";
+/* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
+"crew_no_money" = "אין כאן דבר על שכר. רק מי שמעליהם בשרשרת הפיקוד רואה זאת.";
+"crew_contact" = "יצירת קשר";
+"crew_call" = "התקשר";
+"crew_whatsapp" = "וואטסאפ";
+"crew_email" = "אימייל";
+"crew_no_phone" = "אין מספר טלפון רשום לאדם הזה.";
+/* Button and dialog title: fix what the crew list says about somebody */
+"crew_correct" = "תיקון הפרטים";
+/* Why the ID number cannot be edited once it is set */
+"crew_id_locked" = "מספר תעודת הזהות כבר נקבע ולא ניתן לשנותו כאן. הוא מופיע ברשימת הכניסה וברישום ההדרכה — פנו למשרד.";
+/* Refusal: the name field was left empty */
+"crew_need_name" = "נדרש שם. שורה בלי שם היא שורה שאיש לא יכול לקרוא.";
+/* Refusal: that person is not a member of the company being worked in */
+"crew_not_on_books" = "הם אינם רשומים בחברה הזו.";
+/* Refusal: the account has gone, or was removed */
+"crew_no_such_person" = "לא נמצא רישום עבור אדם זה.";
+/* Refusal: the correction failed for a reason with no better sentence */
+"crew_correct_failed" = "לא ניתן היה לשמור.";
+/* Nobody has confirmed a violation against this person. */
+"crew_no_violations" = "לא אושרה נגדם אף הפרה.";
+/* Entry point that opens the crew list, by trade, with faces. */
+"crew_open" = "חיפוש לפי מקצוע";
+/* Section header on the dashboard: recent changes this person may see */
+"home_changes" = "מה השתנה";
+/* Settings section: taking the record off the phone and putting it back */
+"backup_title" = "גיבוי";
+/* Explains why a backup matters when everything is on one device. */
+"backup_why" = "הכול נמצא בטלפון הזה ודבר אינו בשרת. אובדן הטלפון הוא אובדן יומן העבודה, אלא אם יש גיבוי.";
+/* Button that writes a backup file. */
+"backup_take" = "גיבוי";
+/* Button that opens a backup file to restore from. */
+"backup_restore" = "שחזור";
+/* Shown while a backup or restore is running. */
+"backup_working" = "בעבודה. זה לוקח זמן, כי גם התמונות נכללות.";
+/* Backup written. %1$d is how many photos and videos went in. */
+"backup_done" = "הגיבוי הושלם, כולל %1$d תמונות וסרטונים. שמרו את הקובץ במקום שאינו הטלפון הזה.";
+/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
+"backup_staged" = "מוכן לשחזור הגיבוי מ־%1$s. סגרו את האפליקציה לגמרי ופתחו אותה שוב כדי לסיים. עדיין לא השתנה דבר.";
+/* The backup predates the installed version; migrations will run. */
+"backup_older_version" = "הגיבוי נלקח בגרסה ישנה יותר. הוא יעודכן במהלך השחזור.";
+/* Abandons a staged restore before the restart. */
+"backup_cancel_restore" = "ביטול השחזור";
+/* Shown at launch after a restore was applied. */
+"backup_restored" = "שוחזר מגיבוי.";
+/* The chosen file is not a backup from this app. */
+"backup_refused_file" = "זה אינו קובץ גיבוי של האפליקציה הזו.";
+/* The backup was written by a newer version of the app. */
+"backup_newer_app" = "הגיבוי נוצר בגרסה חדשה יותר של האפליקציה. עדכנו תחילה ואז שחזרו.";
+/* The restore failed part way and the original was put back. */
+"backup_rolled_back" = "השחזור לא הושלם, וכל מה שהיה לכם עדיין כאן. נסו שוב.";
+/* Generic failure: wrong passphrase or damaged file, deliberately not distinguished. */
+"backup_failed" = "זה לא הצליח. או שביטוי הסיסמה שגוי או שהקובץ פגום.";
+/* Label for the backup passphrase field. */
+"backup_passphrase" = "ביטוי סיסמה";
+/* Second passphrase field, to catch a typo. */
+"backup_passphrase_again" = "הקלידו שוב";
+/* Dialog title when opening a backup. */
+"backup_passphrase_open" = "ביטוי הסיסמה של הגיבוי הזה";
+/* There is no recovery. Said plainly, before the field. */
+"backup_passphrase_warning" = "רשמו אותו במקום בטוח. אף אחד אינו יכול לאפס אותו, ובלעדיו איש אינו יכול לפתוח את הגיבוי, כולל אנחנו.";
+/* Passphrase below the minimum length. */
+"backup_too_short" = "לפחות 12 תווים. זה נועל קובץ שאפשר להעתיק ולקחת.";
+/* The two passphrase fields differ. */
+"backup_no_match" = "השניים אינם תואמים.";
+/* Long but with too few distinct characters. */
+"backup_too_plain" = "מעט מדי תווים שונים. אורך לבדו אינו חוזק.";
+/* Button that opens a backup to see what is in it, without restoring. */
+"backup_check" = "בדיקת גיבוי";
+/* What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. */
+"backup_contents" = "נלקח ב־%1$s: %2$d פרויקטים, %3$d אנשים, %4$d תמונות וסרטונים.";
+/* The archive opened but the database inside failed SQLite's integrity check. */
+"backup_damaged" = "הקובץ נפתח אך מסד הנתונים שבתוכו פגום. אל תסתמכו עליו — צרו גיבוי חדש.";

@@ -9,6 +9,509 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
+## What is new in 0.15.2 — and what to try first
+
+### Recording a violation now works, and says so when it will not
+
+Both of the things reported off a real phone are in this build.
+
+Pressing **تسجيل مخالفة / רישום הפרה / Record a violation** after finding
+somebody did nothing at all. There were five ways for that to happen and not
+one of them put a word on the screen. The main one: a violation insisted on a
+company, and somebody working on their own — a personal account — has no
+company on their membership, so the write was refused before it started and
+the register read as empty besides.
+
+- [ ] **Safety → the violations icon.** Type an ID number, press search, and
+      press **Record a violation** on the card that comes back. The draft
+      form should open.
+- [ ] Try it on a personal account (one that never made a company). It works
+      now; it could not before.
+- [ ] Any violation you recorded on an older version is still there, with the
+      company it had. The table was rebuilt to allow the empty case and every
+      row was copied across.
+- [ ] If it ever refuses — you are on nobody's books, or your role cannot
+      write in Evidence — you get a sentence saying which, in your language,
+      instead of a button that appears to be broken.
+
+### There is a privacy notice, and a calendar that says what it wants
+
+- [ ] **Settings → About → Privacy policy.** Both stores require this and the
+      app did not have it — the words were written and translated the day the
+      settings screen was built, and no screen ever showed them. Read it in
+      Hebrew and Arabic too; it is short because the honest version is short.
+- [ ] **Orders → place an order.** The calendar now says *When is it due?* at
+      the top. It used to appear with no question on it.
+
+### The audit trail is in your language now
+
+It printed `SIGN_OFF` and `STOCK_CHANGE` — the constants out of the database —
+at a screen whose whole point is that a Hebrew- or Arabic-speaking site manager
+can read it. The words existed and were translated into all three languages
+from the day the trail was built. Nothing referenced them.
+
+- [ ] **Settings → Audit trail.** Every row says what happened in words:
+      נוצר / أُنشئ / Created, נחתם / وُقِّع / Signed.
+- [ ] **Export the trail.** The Action column in the document is words too. A
+      page handed to a regulator should not be the one place the app still
+      speaks in constants.
+
+### A shift knows which piece of the plan it was worked against
+
+`blockId` on a time entry had existed since the schedule was built and nothing
+had ever written to it. The job was fixed earlier; this is the other half.
+"Eight hours on the tower" and "eight hours on the third-floor slab, which was
+planned as six" are different sentences, and only the second tells anybody
+anything.
+
+- [ ] **Schedule → hand a block to yourself** (the assign button on the row),
+      then press check-in and pick that job. Nothing extra is asked — a man
+      walking on at ten to seven with his gloves on will not answer a second
+      question.
+- [ ] Check in before the block starts. It still lands on it: arriving early
+      is most of a site most mornings.
+- [ ] Check in on a job with no block of yours on it. The shift records the
+      job and no block, which is honest — plenty of work is not on anybody's
+      plan.
+- [ ] A block handed to somebody else is never taken, even on the same job at
+      the same hour. A shift on the wrong block is worse than one on none.
+
+### An order can say when the delivery is due
+
+`expectedOn` was on the purchase order table with an index beside it and
+`expectedOn = null` written into the one place an order is ever created. So
+the question a site asks every morning — when is the concrete coming — had a
+column in the database and lived on somebody's scrap of paper.
+
+- [ ] **Orders → open a draft → Place the order.** A calendar opens first and
+      asks when it is due. That is the one moment anybody knows: you ring the
+      merchant, they say Thursday.
+- [ ] Press **Clear** on the calendar instead. The order is still placed, with
+      no date. Plenty of suppliers will not commit to one, and an app that
+      refused to place the order would be an app people work around.
+- [ ] The placed order shows a **Due** row. Tap it to change the date — a
+      merchant who said Thursday rings back on Wednesday and says next week.
+- [ ] Once everything is received, the row is still there and no longer
+      tappable. A delivery that has arrived has no date still to come.
+
+### A failed check can say what was wrong, and show it
+
+`note` and a photograph were both on the checklist row from the day
+checklists were built. The only caller passed the note null and nothing ever
+wrote a photograph, so a failed check on an inspection said FAIL and not one
+word more — the row somebody reads six months later, in front of a regulator,
+and cannot act on.
+
+- [ ] **Safety → run a checklist → mark a check as fail.** A **What is wrong**
+      box and a **Photograph it** button appear under that check, and only
+      under that one. Nobody writes a paragraph about a scaffold that was
+      fine.
+- [ ] Type into the box. It saves as you type — a person halfway up a
+      scaffold does not come back to press Save.
+- [ ] Photograph it. The picture appears under the note. Take a second one
+      and the newest shows; both are kept.
+- [ ] Change the answer from fail to pass and back. **The note survives.** It
+      used to be wiped on every tap.
+- [ ] Export the checklist from the share button. The note is a column in the
+      document — a page of the word FAIL with nothing beside it is the version
+      that helps nobody.
+
+### A violation can say which job it was on
+
+`projectId` on a violation had a column, an index, and a comment reading "the
+job, when it was on one". The only caller that has ever existed passed null,
+so every violation ever recorded belonged to no job, and a firm running twelve
+sites could not tell one register from another.
+
+- [ ] Open a violation draft. There is a **Which job** row above the
+      photograph button. Tap it and pick one.
+- [ ] **Not on a job** is the first option and stays available: plenty of them
+      happen in a yard, in a van, or on the road outside.
+- [ ] Parts of a job are on the list too, not only the jobs themselves. A
+      violation happens on the twelfth floor, and the twelfth floor is a part.
+
+### The office can correct the crew list
+
+Most people on a site never open this app. Somebody on the gate put them on
+the books with a name heard once and a number read off a scrap of paper, and
+until now there was nowhere to fix either.
+
+- [ ] **People → the crew icon → tap somebody → Correct these details.** The
+      button appears only if you are an owner or HR in the company you are
+      working in. A manager or a safety officer reads this screen; neither of
+      them is the office.
+- [ ] Change the name, the phone number or the email and save. The profile
+      updates behind the dialog.
+- [ ] Try a phone number that is not one. It refuses with the same words the
+      sign-up form uses, because it is the same rule and now literally the
+      same code.
+- [ ] **The ID number is the exception.** Open somebody who has none: you can
+      fill it in. Open somebody who has one: it is shown but not editable,
+      with a line saying why. That number is on the gate list and on the
+      induction record, and a quiet edit is how one person ends up standing
+      behind another person's paperwork.
+- [ ] Try filling in an ID number that somebody else already holds. It
+      refuses and says so.
+
+### The backup format changed, and why you should care
+
+0.13.0 sealed the whole backup as a single encrypted message. That turns out
+not to work on a real site's worth of photographs: unlocking it requires
+holding all of it in memory at once, so **a backup big enough to matter could
+not be restored** — and the big ones belong to the sites that have been running
+longest, which are exactly the ones that cannot afford to lose anything.
+
+0.13.1 seals it in small pieces instead, so a backup of any size opens without
+the phone having to hold it. It also closes two things the old shape could not
+see: a file with its end cut off is now refused rather than restored as a
+diary that quietly stops in March, and the details written on the front of the
+file can no longer be edited without breaking it.
+
+- [ ] If you made a backup with 0.13.0, it still restores — nothing you have
+      already taken is stranded. Use **Check a backup** on it to see that.
+- [ ] Take a fresh one after updating. A backup taken with 0.13.1 cannot be
+      restored by a phone still on 0.13.0; it will say it is from a newer
+      version rather than failing strangely.
+
+### Signing up asks for a phone number now
+
+- [ ] Sign up. **Username** and **ID number** are two separate boxes; the
+      first used to say "username or ID number" while the second asked for
+      the ID number anyway. The name box says **full name**.
+- [ ] The **phone number is required** — it is the only field on that form
+      that is. Try `0000000000` and it will not accept it. Try a Romanian or
+      Chinese number with a `+` and it will: the people on an Israeli site
+      least able to argue with a form that refuses them are the ones whose
+      number does not start 05.
+- [ ] **Email is optional.** Leave it empty and carry on.
+- [ ] Adding somebody from **People** has both boxes too, and there they are
+      both optional — the office at the barrier at six in the morning may not
+      have the number yet, and a man waiting to sign an induction is not
+      somebody to hold up over a form field.
+
+- [ ] **People → the crew icon → tap somebody.** Their number is on the
+      profile with a **Call** button. It opens the dialler with the number in
+      it and waits for you to press the green button — it does not ring
+      anybody by itself, so a mis-tap with a glove on costs nothing.
+- [ ] A **WhatsApp** button appears only when the number was saved with its
+      country code (`+972…`, `+40…`). That is deliberate: `0501234567` is
+      Israeli to an Israeli and Romanian to a Romanian, and guessing wrong
+      would open a chat with a stranger. Save a number with the `+` and the
+      button appears.
+- [ ] Open somebody who signed up before this version. It should say there is
+      no number on file, rather than showing a blank — that is a record made
+      before the app asked, not a man with no phone.
+
+Nothing sends a code to that number yet. That needs a server, and there is
+not one — see the note at the end of this section.
+
+### Two more the guard found
+
+- [ ] **A lift plan can be given a date.** `plannedFor` had a column, a
+      translated label and a sort order in the query — whose comment explains
+      that a plan with no date sorts last, which was every plan. There is now a
+      **Planned for** field beside the certificate expiry.
+- [ ] **The daily log records who signed it**, not only the typed name. The
+      יומן עבודה is a record a site manager is required to keep, and a typed
+      name cannot tell one of two men with the same name from the other on the
+      one document that says who was answerable for the day.
+
+### A job can be given dates, so "running late" can mean something
+
+Start and due dates have been columns since the beginning with nothing ever
+writing to either. The dashboard tile that answers *which jobs have run late*
+filters `dueDate IS NOT NULL` against a column where it never was, so it has
+always been empty; the job list's sort by due date has been sorting by nothing.
+
+- [ ] Open a job. **Starts** and **Due** are rows you can tap. They open a
+      calendar — the one place in the app that gets one, because a permit runs
+      for an afternoon and a job runs until March.
+- [ ] Set a due date in the past. The job should appear on the dashboard as
+      running late. Until now that tile could never show anything.
+- [ ] Tap a date and press **Clear**. "No date" is a real answer, and a date
+      put in by mistake has to be able to come back out.
+
+### Hours can finally reach a job
+
+Every check-in the app has ever recorded was filed against **no job**, and
+the timesheet reads `WHERE projectId = :projectId`. Null matches nothing, so
+every job's timesheet has been empty and the labour costs built on top of it
+— person-days, overtime bands, the comparison against typed cost lines — have
+been arithmetic over an empty list. Hours were being collected and could not
+reach the money they are the largest part of.
+
+- [ ] **Check in** from the schedule. With one job it just starts, no
+      question. With several it asks which — one tap, and it is the difference
+      between the timesheet working and not.
+- [ ] **Check out.** It never asks: the shift already knows which job it was.
+- [ ] Open that job → **Timesheet**. The shift is there. Before this it never
+      would have been, on any job, ever.
+- [ ] Shifts recorded before this update stay unattached. There is no honest
+      way to guess which job they were on.
+
+### The permit, the checklist and the talk are signed now
+
+All three took a signature, all three had every caller passing `null` since
+the day they were built, and the signature pad they needed has existed the
+whole time and is used on the gate. So the three documents you would actually
+be asked to produce carried a typed name and nothing else.
+
+- [ ] **Issue a permit to work.** It will not issue until somebody signs. Every
+      other field in that dialog has a sensible default; this one has none on
+      purpose — a permit is the authority to do the work, and the signature is
+      what makes it one.
+- [ ] **Sign off a safety checklist.** A pad appears above the button. It also
+      now records *which account* signed, not only the typed name — two men on
+      a site share a name often enough that the name alone cannot say which of
+      them walked the scaffold.
+- [ ] **Sign somebody in to a toolbox talk.** Tapping a crew member's chip now
+      *selects* them rather than adding them on the spot; then they sign, then
+      you confirm. It is a step slower and it is the whole point: a register a
+      foreman can tick without passing the phone over is a register that proves
+      nothing.
+
+### A job can be made of parts
+
+A twenty-storey tower is one job with twenty floors in it. The database has
+allowed that since the beginning — `parentProjectId` — and nothing has ever
+set it, so every job has been flat.
+
+- [ ] Open a job → **Add a part**. Name a floor, a flat, a plot. It asks two
+      questions and no more; everything else a part needs it gets from the job
+      it is inside.
+- [ ] Tap the part. It is a full job: its own tasks, materials, photographs,
+      snags, permits. At the top it says which job it is **part of**, and that
+      is tappable to go back up.
+- [ ] Look at the **jobs list**. Parts are not in it — the tower is one row,
+      not twenty-one. A list where the floors sit beside the buildings is one
+      where the job you want is the one you cannot find.
+- [ ] Now raise a **snag**, or a permit, or a delivery. The job picker there
+      *does* offer the parts, because a snag belongs to the twelfth floor and
+      not to the tower.
+- [ ] A part has no **Add a part** button of its own. One level deep on
+      purpose; deeper is a tree somebody can bury a floor in.
+
+### A snag showed the photograph it replaced
+
+- [ ] Raise a snag with a photo, then add a second photo of the same defect.
+      The thumbnail in the list should be the **newer** one. It used to be the
+      older one, permanently — the same fault that was fixed for stock
+      photographs, written the same wrong way in a second place.
+
+### The day plan can say who is doing it
+
+The schedule has had an assignee column since it was built and nothing ever
+wrote to it, so every block on every phone has been nobody's. A plan where
+every line is nobody's answers what ought to happen, not who is doing it —
+which is the question actually asked at seven in the morning.
+
+- [ ] Sign in to a **company** account and open the schedule. Each block has
+      an **Assign** button; the name shows on the row itself, next to the
+      hours, so you do not have to open anything to read the plan.
+- [ ] Hand a block back with **Nobody**. Work gets handed back as often as it
+      gets handed out, and a picker you can only add to leaves the wrong name
+      on the job until somebody deletes the block and retypes it.
+- [ ] Sign in to a **personal** account. No Assign button, and no name on the
+      row — there is nobody to hand anything to, and a button that opens an
+      empty list teaches people not to press buttons.
+
+### A job now has an address and a client
+
+Those five columns have been in the database since the beginning with
+nothing ever writing to them, so the job screen has been showing an Address
+row and a Client row that could never appear.
+
+- [ ] Open a job → **Edit** under the address. Fill in street, city, postal
+      code, client name and client number. All optional; a job is created in
+      ten seconds when it is won and filled in properly that evening.
+- [ ] **Map** opens the address in whatever maps app is on the phone. It uses
+      a plain `geo:` search rather than coordinates, so it works without
+      Google Maps installed.
+- [ ] **Call** rings the client, the same way it does on a worker's profile.
+- [ ] Empty a box and save. It should clear — somebody who empties a field
+      means it, and a form that refuses to forget is one nobody trusts with a
+      correction.
+
+### Backup, and the one thing worth testing hardest
+
+Everything is on this phone and nothing is on a server. That is right for a
+site with no signal, and it means a lost phone has until now been a lost site
+diary. **Settings → Backup.**
+
+**This is the least tested thing in the app and the most dangerous if it is
+wrong.** It replaces the database. Please try it on a phone whose data you do
+not mind losing, or after taking a backup you have already checked, before it
+protects anything real.
+
+- [ ] Back up. It asks for a passphrase twice — twelve characters, six of them
+      different — and says plainly that nobody can reset it, because nobody
+      can. Write it down before you type it.
+- [ ] **Check a backup.** This is the one to use often. It opens the file,
+      counts what is inside and throws the copy away without touching
+      anything: *taken 7 September: 6 jobs, 14 people, 312 photographs*. Those
+      numbers are there to be argued with — if you run six jobs and it says
+      two, you have learned something on a day it costs you nothing.
+- [ ] Look at the file it wrote. The name carries the date, so a file listing
+      answers "how old is my backup" without opening anything.
+- [ ] Try to restore a file that is not a backup — any photograph will do. It
+      says *that is not a backup from this app* rather than telling you the
+      passphrase is wrong.
+- [ ] Restore with the wrong passphrase. One message, deliberately: it will
+      not tell you whether the passphrase was wrong or the file was damaged,
+      because it cannot tell and guessing would be a lie.
+- [ ] Restore properly. Notice that **nothing changes yet** — it says to close
+      the app completely and open it again. The swap happens at the next
+      launch, when nothing is holding the database open.
+- [ ] Change your mind before restarting and tap *do not restore after all*.
+      Everything should be exactly as it was.
+- [ ] Do a real one: back up, add a job and a photograph, restore, and check
+      the job is gone and the older photographs are back. **Check the
+      photographs, not just the rows** — a database whose pictures are missing
+      is not a restore.
+- [ ] Settings → the audit trail. There should be a line saying it was
+      restored, and it should be the newest one. That entry is what tells
+      somebody reading the trail later that it was rewound on purpose rather
+      than cut about.
+
+
+This one is about the people on a site rather than the paperwork about them.
+Tap **Check for updates** in Settings and it will offer itself.
+
+The quickest way to see what these changes actually do is to make three
+accounts and sign in as each: an **owner**, a **safety officer**, and a
+**worker**. Most of what follows is about what each of them is shown, and you
+cannot see that from one account.
+
+### Getting onto a site
+
+Every site has a person you meet before you meet the site. That is now a
+screen: **People → the person-with-tick icon** in the top bar.
+
+- [ ] As the owner, open it. Type somebody's ID number. Their **photograph**
+      comes back with their name — that is the point of asking for the number
+      rather than the name.
+- [ ] Notice it says what they will be signed on **as**, before anything is
+      written. It is always *worker*. There is no role picker, and there is
+      not meant to be: whoever is on the gate signs people onto the site, and
+      who you answer to is decided afterwards by the firm that engaged you.
+- [ ] Hand the phone over and sign. The button will not enable until somebody
+      has.
+- [ ] Try the same ID again. It says they are already on and does not ask for
+      a second signature.
+- [ ] Type an ID nobody has. It refuses rather than creating an account — a
+      stranger's number must not bring into existence a person who never
+      agreed to it.
+- [ ] Sign in as the **worker** and open People. The gate icon is not there.
+
+### The safety officer
+
+A new role. Give somebody **Safety officer** in People, then sign in as them.
+
+- [ ] Look at the bottom navigation. They have People and Evidence and **no
+      Money at all** — that is the role, not an oversight. Somebody with the
+      standing to accuse a worker and put a cost on it must not also be
+      reading what that worker earns.
+- [ ] Safety → the **gavel** icon. Type an ID, see the face, write down what
+      was wrong, put a cost on it if you know one.
+- [ ] Attach a **video**, not just a photograph. A still of a man on a ladder
+      does not always show what was wrong with how he was standing on it.
+- [ ] Try to confirm before attaching anything. The button says which of the
+      two things is missing rather than sitting dead.
+- [ ] **Cancel** the draft. It goes, no questions — a draft nobody has been
+      told about should be cheap to throw away.
+- [ ] Write another and **confirm** it. Read the warning. After that it cannot
+      be changed or withdrawn.
+
+### Finding the man who walked off
+
+The officer's real problem: he walked away, you saw his face, you know he was
+on the electrics, and you do **not** know his name. A search box is no help —
+not knowing it is the whole difficulty.
+
+**People → the group icon**, or the same icon inside the violations screen.
+
+- [ ] Press a trade. You get the people on that trade with their faces, to
+      look down.
+- [ ] Tap one. Their profile: trade, rank, who they answer to, their tickets
+      with expired ones in red, when they were inducted, and what has been
+      **confirmed** against them. Drafts are not on it.
+- [ ] Look for wages on it. There are none, and the screen says so out loud
+      rather than leaving you to wonder whether the record is incomplete.
+- [ ] Notice the count at the bottom of anybody with no trade recorded. They
+      are on none of these lists, and it says so rather than quietly leaving
+      them out.
+- [ ] As the **owner**, open the same profile. Now there is a row of trade
+      chips at the bottom — only somebody above them in the chain may say what
+      a person does.
+
+### Wages, up the chain only
+
+The rule: **your own money is yours, and otherwise only somebody above you in
+the chain of command sees it.**
+
+- [ ] In People, tap somebody and set **Answers to**. That is the line that
+      decides who sees their pay, and the screen says so under the heading.
+- [ ] Try to set your *own*. You cannot — whoever you answer to does that.
+- [ ] Try to put your own manager under somebody who answers to them. It
+      refuses and tells you it would make a circle.
+- [ ] Open a job's **Timesheet** as somebody partway up the chain. It says how
+      many people on the job are not yours to price, and it withholds the
+      reconciliation rather than showing a total over half the labour — a gap
+      between costed labour and the hours of the few people you are senior to
+      is a wrong number that looks entirely plausible.
+- [ ] Sign in as a labourer and open the same timesheet. Their own hours are
+      there. Nobody else's are.
+
+### The stock list knows what you are doing today
+
+- [ ] Inventory. Under the kind chips there is a second row: **slab, rough-in,
+      second fix, commissioning**. Pick slab.
+- [ ] The conduit and the earthing stay. The light fittings and sockets go.
+      Your tools stay too — a screwdriver is used on the day the slab is
+      poured and on the day the keys are handed over, so nothing tagged as a
+      tool ever disappears from a filter.
+- [ ] Anything you added yourself stays under every stage. It has no catalogue
+      row to take a stage from, and the safe answer is to show it.
+
+### The tools, under the names sites use
+
+- [ ] Search **מברגה**. Or **مفريغا**. It is there now, and so are the other
+      basics that turned out to be missing with it: hammer, pliers, adjustable
+      spanner, utility knife, wrecking bar, extension reel, work light.
+- [ ] Search **אימפקט**, **בלאייר**, **שוודי**, **יפנית**. The formal name is
+      still what an order and an invoice print; these are what people say.
+
+### What changed
+
+At the foot of the dashboard.
+
+- [ ] As the owner, change something — move a task, add a cost line, replace a
+      drawing. It appears.
+- [ ] Sign in as a **labourer** and look at the same feed. The task and the
+      drawing are there. **The cost line is not.**
+
+### Incidents
+
+- [ ] Safety → the warning triangle → add. It will not file without a
+      photograph or a video. By the time an incident is argued about, the
+      ladder has been moved and the spill mopped.
+- [ ] The cost is optional and stays optional. Leaving it empty is a real
+      answer; a forced figure would be answered with zero, which is a claim
+      that it cost nothing.
+
+### What is not in it
+
+- Nothing here has been tested on a phone by anybody. That is what this
+  release is for.
+- The Hebrew and Arabic on everything new are **drafts**. The worksheets in
+  `docs/translation/` are where the real wording goes.
+- The confidentiality rules — both the one between firms and the one between
+  people — run on this device only, where they are display rules. They become
+  access rules when a server runs the same functions; see `docs/SERVER.md`.
+- There is no payment of any kind. `docs/PRICING.md` is a proposal waiting on
+  a decision, not code.
+---
+
 ## Android — the path that needs nothing but a phone
 
 Every push builds a debug APK in GitHub Actions. That artifact is the app.
@@ -726,7 +1229,7 @@ The day window is the part worth testing properly, and it needs the clock:
       should be accepted exactly as typed, in any language.
 - [ ] Settings → Trades → **+**. Add a trade the app does not ship, e.g.
       *Roofing*. It appears in the list marked **Yours**, switched on, and only
-      that one has a delete button — the six shipped trades do not.
+      that one has a delete button — the twenty-two shipped trades do not.
 
 **Projects as pictures**
 - [ ] Photograph a floor plan inside a job (Photos → camera or gallery).

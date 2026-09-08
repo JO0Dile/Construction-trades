@@ -47,12 +47,25 @@ class SafetyRepository(
         return run
     }
 
+    /**
+     * The row a single check answers to.
+     *
+     * Deterministic, so answering the same check twice replaces the answer
+     * instead of leaving two contradictory rows behind — and so a photograph
+     * can be filed against a check before anybody has answered it, which is
+     * the order an inspector actually works in: you see the thing, you
+     * photograph the thing, then you write it down.
+     *
+     * Exposed rather than rebuilt at each call site, because two places
+     * deriving the same id from the same rule is one place for them to stop
+     * agreeing.
+     */
+    fun runItemId(runId: String, templateItemId: String): String = "$runId:$templateItemId"
+
     suspend fun answer(runId: String, templateItemId: String, state: String, note: String?) {
         safetyDao.upsertRunItem(
             ChecklistRunItemEntity(
-                // Deterministic id: answering the same check twice replaces the
-                // answer instead of leaving two contradictory rows behind.
-                id = "$runId:$templateItemId",
+                id = runItemId(runId, templateItemId),
                 runId = runId,
                 templateItemId = templateItemId,
                 state = state,
@@ -90,13 +103,28 @@ class SafetyRepository(
      * critical check is outstanding — the regulation the checklist encodes is
      * not something a signature is allowed to override.
      */
-    suspend fun signOff(runId: String, signerName: String, signatureStrokes: String?): Boolean {
+    suspend fun signOff(
+        runId: String,
+        signerName: String,
+        signatureStrokes: String?,
+        /**
+         * The account that signed, when somebody is signed in.
+         *
+         * `signedById` has been on the table since checklists were built and
+         * nothing has ever written to it, so a run was signed by a typed name
+         * and nothing else. Two men on a site share a name often enough that
+         * the name alone cannot say which of them walked the scaffold, and the
+         * whole value of the record is that it can.
+         */
+        signedById: String? = null,
+    ): Boolean {
         if (refreshBlockedState(runId)) return false
         val run = safetyDao.run(runId) ?: return false
         safetyDao.upsertRun(
             run.copy(
                 completedAt = System.currentTimeMillis(),
                 signedByName = signerName,
+                signedById = signedById,
                 signatureStrokes = signatureStrokes,
                 blocked = false,
             ),

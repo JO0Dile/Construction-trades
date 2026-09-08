@@ -1,0 +1,99 @@
+{
+  "tradeId": "plastering",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.ps.cement",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Cement, lime and skin",
+        "he": "מלט, סיד ועור",
+        "ar": "الإسمنت والجير والجلد"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997",
+        "תקנות הבטיחות בעבודה (גיהות תעסוקתית ובריאות העובדים באבק מזיק)"
+      ],
+      "items": [
+        {
+          "id": "sf.ps.cement.1",
+          "critical": true,
+          "texts": {
+            "en": "Gloves worn — wet cement burns through skin over hours, painlessly at first",
+            "he": "כפפות מורכבות — מלט רטוב כווה עור לאורך שעות, בתחילה ללא כאב",
+            "ar": "قفازات مرتداة — الإسمنت الرطب يحرق الجلد خلال ساعات، بلا ألم في البداية"
+          }
+        },
+        {
+          "id": "sf.ps.cement.2",
+          "critical": true,
+          "texts": {
+            "en": "Eye protection worn when mixing or spraying",
+            "he": "מגן עיניים בעת ערבוב או התזה",
+            "ar": "واقي العينين عند الخلط أو الرش"
+          }
+        },
+        {
+          "id": "sf.ps.cement.3",
+          "critical": true,
+          "texts": {
+            "en": "Clean water available to wash cement off skin immediately",
+            "he": "מים נקיים זמינים לשטיפת מלט מהעור מיד",
+            "ar": "ماء نظيف متوفر لغسل الإسمنت عن الجلد فوراً"
+          }
+        },
+        {
+          "id": "sf.ps.cement.4",
+          "critical": false,
+          "texts": {
+            "en": "Bags lifted with two hands and knees, or moved on a barrow",
+            "he": "שקים מורמים בשתי ידיים ובברכיים, או מועברים בעגלה",
+            "ar": "الأكياس تُرفع بيدين وركبتين، أو تُنقل بعربة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.ps.spray",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Render spray pump",
+        "he": "משאבת התזת טיח",
+        "ar": "مضخة رش اللياسة"
+      },
+      "references": [
+        "פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.ps.spray.1",
+          "critical": true,
+          "texts": {
+            "en": "Hose and couplings checked for wear before pressurising",
+            "he": "צינור ומחברים נבדקו לבלאי לפני העלאת לחץ",
+            "ar": "الخرطوم والوصلات مفحوصة للتآكل قبل الضغط"
+          }
+        },
+        {
+          "id": "sf.ps.spray.2",
+          "critical": true,
+          "texts": {
+            "en": "Nobody in front of the nozzle, and it is never pointed at a person",
+            "he": "אין איש מול הזרבובית, והיא אינה מכוונת לאדם",
+            "ar": "لا أحد أمام الفوهة، ولا تُوجّه نحو شخص أبداً"
+          }
+        },
+        {
+          "id": "sf.ps.spray.3",
+          "critical": true,
+          "texts": {
+            "en": "Pressure released before any blockage is cleared",
+            "he": "הלחץ שוחרר לפני שחרור כל סתימה",
+            "ar": "الضغط مُفرَّغ قبل إزالة أي انسداد"
+          }
+        }
+      ]
+    }
+  ]
+}

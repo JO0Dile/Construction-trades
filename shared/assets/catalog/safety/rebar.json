@@ -1,0 +1,98 @@
+{
+  "tradeId": "rebar",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.rb.impale",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Projecting bar and impalement",
+        "he": "מוטות בולטים וסכנת שיפוד",
+        "ar": "الحديد البارز وخطر الاختراق"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"
+      ],
+      "items": [
+        {
+          "id": "sf.rb.impale.1",
+          "critical": true,
+          "texts": {
+            "en": "Every upstanding bar capped, or the area is fenced off",
+            "he": "כל מוט זקוף מכוסה, או שהאזור מגודר",
+            "ar": "كل قضيب قائم مغطّى، أو المنطقة مسيّجة"
+          }
+        },
+        {
+          "id": "sf.rb.impale.2",
+          "critical": true,
+          "texts": {
+            "en": "No unprotected bar under any route anybody walks or works above",
+            "he": "אין מוט לא מוגן מתחת למסלול הליכה או עבודה מעליו",
+            "ar": "لا قضيب غير محمي تحت أي مسار يمشي أو يعمل فوقه أحد"
+          }
+        },
+        {
+          "id": "sf.rb.impale.3",
+          "critical": false,
+          "texts": {
+            "en": "Gloves worn — tying wire ends cut, and the cuts get infected",
+            "he": "כפפות מורכבות — קצוות חוט קשירה חותכים והפצעים מזדהמים",
+            "ar": "قفازات مرتداة — أطراف سلك الربط تجرح والجروح تلتهب"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.rb.cover",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Before the pour is called",
+        "he": "לפני הזמנת היציקה",
+        "ar": "قبل طلب الصبّة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.rb.cover.1",
+          "critical": true,
+          "texts": {
+            "en": "Spacers in place so no bar is cast against the formwork",
+            "he": "שומרי מרחק במקומם כך שאף מוט אינו נוצק צמוד לתבנית",
+            "ar": "الفواصل في مكانها فلا يُصبّ أي قضيب ملاصقاً للطوبار"
+          }
+        },
+        {
+          "id": "sf.rb.cover.2",
+          "critical": true,
+          "texts": {
+            "en": "Bar size, spacing and laps checked against the drawing",
+            "he": "קוטר, מרווח וחפיפות נבדקו מול התוכנית",
+            "ar": "قطر الحديد والتباعد والتراكب مفحوصة مقابل المخطط"
+          }
+        },
+        {
+          "id": "sf.rb.cover.3",
+          "critical": true,
+          "texts": {
+            "en": "Conduit and sleeves cast in before the pour, not chased after",
+            "he": "צנרת ושרוולים הוטמעו לפני היציקה, לא נחצבו אחריה",
+            "ar": "المواسير والأجربة مدفونة قبل الصب، لا تُفنّص بعده"
+          }
+        },
+        {
+          "id": "sf.rb.cover.4",
+          "critical": false,
+          "texts": {
+            "en": "Formwork and props checked by a competent person",
+            "he": "תבניות ותמוכות נבדקו על ידי אדם מוסמך",
+            "ar": "الطوبار والدعامات مفحوصة من قبل شخص مؤهل"
+          }
+        }
+      ]
+    }
+  ]
+}

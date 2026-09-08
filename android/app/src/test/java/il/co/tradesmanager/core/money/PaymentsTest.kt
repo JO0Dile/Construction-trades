@@ -164,6 +164,120 @@ class PaymentsTest {
         assertFalse(Payments.canMarkPaid(Payments.Status.PAID))
     }
 
+    // The running total. Which cheque an application is measured against is
+    // not something it can remember, because the money it is measured against
+    // usually arrives after it was raised.
+
+    private fun settled(
+        number: Int,
+        certified: Double,
+        direction: String = "RECEIVABLE",
+        rate: Double = 0.05,
+        limit: Double = 0.05,
+    ) = Payments.Settled(number, direction, certified, rate, limit)
+
+    @Test
+    fun `an application raised before the last one was paid still counts it`() {
+        // The ordinary month under shotef plus thirty. Application two is
+        // raised at the end of February, while application one — certified in
+        // January — is still waiting. Nothing has been paid yet.
+        val contract = 2_000_000.0
+        assertEquals(
+            0.0,
+            Payments.previouslyPaidNet(2, "RECEIVABLE", emptyList(), contract),
+            penny,
+        )
+
+        // The cheque for application one lands on the 30th of March. Only then
+        // is application two certified.
+        val paid = listOf(settled(number = 1, certified = 400_000.0))
+        val previously = Payments.previouslyPaidNet(2, "RECEIVABLE", paid, contract)
+        assertEquals(380_000.0, previously, penny)
+
+        val second = Payments.assess(900_000.0, previously, contract)
+        // 475,000, which is February's work. An application that had kept the
+        // "nothing paid yet" it was raised with would ask for 855,000 — the
+        // whole job to date, with January in it twice.
+        assertEquals(475_000.0, second.dueNow, penny)
+    }
+
+    @Test
+    fun `only the last paid application counts, because they are cumulative`() {
+        val contract = 2_000_000.0
+        val paid = listOf(
+            settled(number = 1, certified = 400_000.0),
+            settled(number = 2, certified = 900_000.0),
+        )
+        // 855,000, not 380,000 + 855,000. Application two already contains
+        // application one.
+        assertEquals(
+            855_000.0,
+            Payments.previouslyPaidNet(3, "RECEIVABLE", paid, contract),
+            penny,
+        )
+    }
+
+    @Test
+    fun `an application is not measured against the other direction`() {
+        // We are paying a subcontractor on the same job that we are claiming
+        // from the client. Two sequences, both numbered from one.
+        val contract = 2_000_000.0
+        val paid = listOf(
+            settled(number = 1, certified = 400_000.0, direction = "RECEIVABLE"),
+            settled(number = 1, certified = 250_000.0, direction = "PAYABLE"),
+            settled(number = 2, certified = 900_000.0, direction = "PAYABLE"),
+        )
+        assertEquals(
+            380_000.0,
+            Payments.previouslyPaidNet(2, "RECEIVABLE", paid, contract),
+            penny,
+        )
+        assertEquals(
+            855_000.0,
+            Payments.previouslyPaidNet(3, "PAYABLE", paid, contract),
+            penny,
+        )
+    }
+
+    @Test
+    fun `a later application is never mistaken for an earlier one`() {
+        // Application four is being looked at while nine has already been
+        // paid — which happens when an old one is settled out of order, or
+        // when somebody opens last spring's paperwork.
+        val contract = 2_000_000.0
+        val paid = listOf(
+            settled(number = 3, certified = 400_000.0),
+            settled(number = 9, certified = 1_800_000.0),
+        )
+        assertEquals(
+            380_000.0,
+            Payments.previouslyPaidNet(4, "RECEIVABLE", paid, contract),
+            penny,
+        )
+    }
+
+    @Test
+    fun `nothing paid before the first application`() {
+        val paid = listOf(settled(number = 1, certified = 400_000.0))
+        assertEquals(
+            0.0,
+            Payments.previouslyPaidNet(1, "RECEIVABLE", paid, 2_000_000.0),
+            penny,
+        )
+    }
+
+    @Test
+    fun `an earlier application keeps the retention it was paid under`() {
+        // Retention was renegotiated down from ten per cent to five partway
+        // through. The cheque already banked was 360,000, not 380,000, and
+        // restating it would hand over 20,000 that was never paid.
+        val contract = 2_000_000.0
+        val paid = listOf(settled(number = 1, certified = 400_000.0, rate = 0.10, limit = 0.10))
+        val previously = Payments.previouslyPaidNet(2, "RECEIVABLE", paid, contract)
+        assertEquals(360_000.0, previously, penny)
+        assertEquals(495_000.0, Payments.assess(900_000.0, previously, contract).dueNow, penny)
+    }
+
     @Test
     fun `certifying less than was claimed is what the difference is for`() {
         // The subcontractor claims 900,000; the surveyor measures 820,000.

@@ -1,0 +1,98 @@
+{
+  "tradeId": "firefighting",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.ff.pressure",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Pressure testing a sprinkler main",
+        "he": "בדיקת לחץ בקו כיבוי",
+        "ar": "فحص ضغط خط الإطفاء"
+      },
+      "references": [
+        "פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.ff.pressure.1",
+          "critical": true,
+          "texts": {
+            "en": "Area cleared of everybody who does not need to be there",
+            "he": "האזור פונה מכל מי שאינו נדרש",
+            "ar": "المنطقة أُخليت من كل من لا حاجة لوجوده"
+          }
+        },
+        {
+          "id": "sf.ff.pressure.2",
+          "critical": true,
+          "texts": {
+            "en": "Pressure released fully before any joint is touched",
+            "he": "הלחץ שוחרר במלואו לפני נגיעה בחיבור",
+            "ar": "الضغط مُفرَّغ بالكامل قبل لمس أي وصلة"
+          }
+        },
+        {
+          "id": "sf.ff.pressure.3",
+          "critical": true,
+          "texts": {
+            "en": "Test held for the full period with no drop, and the result recorded",
+            "he": "הבדיקה הוחזקה למשך המלא ללא ירידה, והתוצאה נרשמה",
+            "ar": "الفحص محفوظ للمدة الكاملة دون هبوط، والنتيجة مسجّلة"
+          }
+        },
+        {
+          "id": "sf.ff.pressure.4",
+          "critical": true,
+          "texts": {
+            "en": "Ceilings not closed over any joint that has not held",
+            "he": "התקרות אינן נסגרות מעל חיבור שלא עמד בבדיקה",
+            "ar": "الأسقف لا تُغلق فوق أي وصلة لم تنجح"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.ff.impair",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Taking a fire system out of service",
+        "he": "הוצאת מערכת כיבוי משירות",
+        "ar": "إخراج منظومة الإطفاء من الخدمة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.ff.impair.1",
+          "critical": true,
+          "texts": {
+            "en": "Building occupier told before the system goes off, not after",
+            "he": "מחזיק המבנה יודע לפני ההשבתה, לא אחריה",
+            "ar": "شاغل المبنى مُبلَّغ قبل الإيقاف، لا بعده"
+          }
+        },
+        {
+          "id": "sf.ff.impair.2",
+          "critical": true,
+          "texts": {
+            "en": "Time out of service recorded, and a person named to put it back",
+            "he": "זמן ההשבתה נרשם ואדם מוגדר אחראי להחזרה",
+            "ar": "وقت الإيقاف مسجّل وشخص محدّد مسؤول عن الإعادة"
+          }
+        },
+        {
+          "id": "sf.ff.impair.3",
+          "critical": true,
+          "texts": {
+            "en": "A fire watch covers the area while the system is down",
+            "he": "שמירת אש מכסה את האזור בזמן ההשבתה",
+            "ar": "حراسة حريق تغطي المنطقة أثناء الإيقاف"
+          }
+        }
+      ]
+    }
+  ]
+}

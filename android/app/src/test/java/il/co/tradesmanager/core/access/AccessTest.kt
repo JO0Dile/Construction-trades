@@ -91,7 +91,30 @@ class AccessTest {
         // Two owners by accident is how a company ends up with an
         // administrator nobody remembers appointing.
         assertFalse(Role.OWNER in Role.assignable)
-        assertEquals(4, Role.assignable.size)
+        // Every role except owner. A count rather than a list so that adding
+        // one without thinking about whether it should be handed out fails
+        // here rather than appearing in a dropdown unnoticed.
+        assertEquals(Role.entries.size - 1, Role.assignable.size)
+    }
+
+    @Test
+    fun `a safety officer sees who somebody is and never what they earn`() {
+        // The whole point of the role. Somebody with the standing to accuse a
+        // worker and put a cost on it must not also be reading that worker's
+        // pay, and the lens model is what stops it rather than a rule to be
+        // remembered on each screen.
+        assertTrue(Role.SAFETY_OFFICER.canRead(Lens.PEOPLE))
+        assertTrue(Role.SAFETY_OFFICER.canWrite(Lens.EVIDENCE))
+        assertFalse(Role.SAFETY_OFFICER.canRead(Lens.MONEY))
+        assertFalse(Role.SAFETY_OFFICER.canWrite(Lens.MONEY))
+    }
+
+    @Test
+    fun `a safety officer cannot re-role anybody or touch the jobs`() {
+        // They write down what is wrong. They do not run the site.
+        assertFalse(Role.SAFETY_OFFICER.canManageMembers)
+        assertFalse(Role.SAFETY_OFFICER.canManageJobs)
+        assertFalse(Role.SAFETY_OFFICER.canWrite(Lens.PLAN))
     }
 
     @Test

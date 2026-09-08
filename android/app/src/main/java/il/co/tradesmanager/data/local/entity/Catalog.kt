@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
@@ -47,8 +48,22 @@ data class CatalogItemEntity(
     val tags: List<String>,
     val catalogVersion: Int,
     /** Every translation, spec and tag lowercased into one column: a search in
-     *  Hebrew finds an item whose English name is the one the user remembers. */
+     *  Hebrew finds an item whose English name is the one the user remembers.
+     *  The colloquial names go in here too — somebody looking for a מברגה is
+     *  not going to type "cordless screwdriver-drill". */
     val searchIndex: String,
+    /**
+     * Stage ids this item belongs to, as a JSON array; see CatalogItemDto.
+     *
+     * `'[]'` means every stage, which is what every row written before this
+     * column existed holds, and what the default says. The default is declared
+     * on both sides — here and in the migration — because Room revalidates the
+     * schema on the first open and a default it did not expect is a crash on
+     * launch for everybody who already had the app. That has shipped three
+     * times.
+     */
+    @ColumnInfo(defaultValue = "'[]'")
+    val stages: List<String> = emptyList(),
 )
 
 /** A safety checklist shipped for a trade, or written by a supervisor. */

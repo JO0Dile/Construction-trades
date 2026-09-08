@@ -1,0 +1,89 @@
+{
+  "tradeId": "waterproofing",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.wp.roof",
+      "estimatedDays": 3,
+      "names": {
+        "en": "Flat roof, membrane and insulation",
+        "he": "גג שטוח — יריעה ובידוד",
+        "ar": "سطح مستوٍ — رول وعزل"
+      },
+      "descriptions": {
+        "en": "Primer, insulation, torch-on membrane, and a flood test before anything goes on top.",
+        "he": "יסוד, בידוד, יריעה בהלחמה, ובדיקת הצפה לפני שמניחים משהו מעל.",
+        "ar": "برايمر، عزل، رول بالحرق، وفحص غمر قبل وضع أي شيء فوقه."
+      },
+      "materials": [
+        {
+          "itemId": "wp.primer.bitumen",
+          "quantity": 30
+        },
+        {
+          "itemId": "wp.insulation.xps",
+          "quantity": 100
+        },
+        {
+          "itemId": "wp.membrane.bitumen",
+          "quantity": 115
+        },
+        {
+          "itemId": "wp.drain.roof",
+          "quantity": 4
+        },
+        {
+          "itemId": "wp.tape.corner",
+          "quantity": 40
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.wp.rt.1",
+          "order": 1,
+          "titles": {
+            "en": "Sweep and prime — a membrane over dust is a membrane that lifts",
+            "he": "ניקוי ויסוד — יריעה על אבק היא יריעה שמתרוממת",
+            "ar": "كنس وبرايمر — رول فوق غبار هو رول ينفصل"
+          }
+        },
+        {
+          "id": "tpl.wp.rt.2",
+          "order": 2,
+          "titles": {
+            "en": "Check the falls actually reach the outlets",
+            "he": "בדיקה ששיפועים מגיעים למחסומים",
+            "ar": "فحص أن الميول تصل فعلاً للمصارف"
+          }
+        },
+        {
+          "id": "tpl.wp.rt.3",
+          "order": 3,
+          "titles": {
+            "en": "Insulation, then membrane with laps the right way round",
+            "he": "בידוד, ואז יריעה עם חפיפות בכיוון הנכון",
+            "ar": "عزل، ثم رول بتراكب في الاتجاه الصحيح"
+          }
+        },
+        {
+          "id": "tpl.wp.rt.4",
+          "order": 4,
+          "titles": {
+            "en": "Upstands and outlets detailed before the field is finished",
+            "he": "רולקות ומחסומים מפורטים לפני סיום השטח",
+            "ar": "الوزرات والمصارف مُفصَّلة قبل إنهاء المسطح"
+          }
+        },
+        {
+          "id": "tpl.wp.rt.5",
+          "order": 5,
+          "titles": {
+            "en": "Flood test 24 hours, then sign it off",
+            "he": "בדיקת הצפה 24 שעות ואז אישור",
+            "ar": "فحص غمر 24 ساعة ثم الاعتماد"
+          }
+        }
+      ]
+    }
+  ]
+}

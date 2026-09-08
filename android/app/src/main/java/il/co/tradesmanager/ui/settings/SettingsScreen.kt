@@ -1,11 +1,15 @@
 package il.co.tradesmanager.ui.settings
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -34,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -52,12 +57,19 @@ import il.co.tradesmanager.ui.components.currentLanguageTag
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
+fun SettingsScreen(
+    container: AppContainer,
+    onOpenCompanyProfile: () -> Unit,
+    onOpenAudit: () -> Unit,
+    onOpenPrivacy: () -> Unit,
+    onBack: () -> Unit,
+) {
     val viewModel: SettingsViewModel = viewModel(
         factory = ViewModelFactory(container) { SettingsViewModel(it) },
     )
     val settings by viewModel.settings.collectAsStateWithLifecycle()
     val trades by viewModel.trades.collectAsStateWithLifecycle()
+    val backupState by viewModel.backup.collectAsStateWithLifecycle()
     var addingTrade by remember { mutableStateOf(false) }
     val updateState by viewModel.update.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
@@ -183,6 +195,20 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 }
             }
 
+            item { SectionHeader(stringResource(R.string.backup_title)) }
+            item {
+                BackupSection(
+                    state = backupState,
+                    restoreOutcome = viewModel.restoreOutcome,
+                    suggestedName = viewModel.backupFileName(),
+                    onBackUp = viewModel::backUp,
+                    onRestore = viewModel::restore,
+                    onCheck = viewModel::check,
+                    onCancelRestore = viewModel::cancelRestore,
+                    onDismiss = viewModel::clearBackupState,
+                )
+            }
+
             item { SectionHeader(stringResource(R.string.update_title)) }
             item {
                 UpdateSection(
@@ -245,16 +271,87 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 }
             }
 
+            // Only a company has a profile. A sole trader has a name and
+            // nobody to publish it to.
+            if ((session as? SessionRepository.State.SignedIn)?.isCompany == true) {
+                item {
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .clickable(onClick = onOpenCompanyProfile)
+                            .padding(16.dp),
+                    ) {
+                        Text(stringResource(R.string.co_title))
+                        Text(
+                            text = stringResource(R.string.co_visible_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+            }
+
             item { SectionHeader(stringResource(R.string.set_security)) }
+            // Under security rather than an "advanced" drawer: the trail is
+            // the answer to "who changed this", and the person asking that is
+            // rarely the person who knows where a developer filed it.
             item {
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .clickable(onClick = onOpenAudit)
+                        .padding(16.dp),
+                ) {
+                    Text(stringResource(R.string.audit_title))
+                    Text(
+                        text = stringResource(R.string.audit_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+            // The encryption status said "Saved" when it was on and "Something
+            // went wrong" when it was off. Off means ID numbers, photographs
+            // and signatures are sitting unprotected on the phone, and a
+            // generic error string is not how you tell somebody that. The
+            // failure case is coloured and spelled out, because a person who
+            // does not notice it has no way to find out.
+            item {
+                val encrypted = viewModel.databaseIsEncrypted
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.set_encrypt)) },
                     supportingContent = {
-                        Text(
-                            stringResource(
-                                if (viewModel.databaseIsEncrypted) R.string.state_saved else R.string.error_generic,
-                            ),
-                        )
+                        Column {
+                            Text(
+                                text = stringResource(
+                                    if (encrypted) {
+                                        R.string.sec_encrypted
+                                    } else {
+                                        R.string.sec_not_encrypted
+                                    },
+                                ),
+                                color = if (encrypted) {
+                                    MaterialTheme.colorScheme.onSurface
+                                } else {
+                                    MaterialTheme.colorScheme.error
+                                },
+                            )
+                            Text(
+                                text = stringResource(
+                                    if (encrypted) {
+                                        R.string.sec_encrypted_detail
+                                    } else {
+                                        R.string.sec_not_encrypted_detail
+                                    },
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = if (encrypted) {
+                                    MaterialTheme.colorScheme.onSurfaceVariant
+                                } else {
+                                    MaterialTheme.colorScheme.error
+                                },
+                            )
+                        }
                     },
                 )
             }
@@ -269,15 +366,19 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 }
             }
 
+            item { SectionHeader(stringResource(R.string.set_about)) }
+            // Both stores require this and the app did not have it. The words
+            // were written and translated the day the settings screen was
+            // built; no screen ever showed them.
             item {
-                Text(
-                    text = stringResource(R.string.set_catalog_version) + ": " +
-                        settings.seededCatalogVersion,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(16.dp),
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.set_privacy)) },
+                    supportingContent = { Text(stringResource(R.string.priv_lead)) },
+                    modifier = Modifier.clickable(onClick = onOpenPrivacy),
                 )
             }
+
+            item { AboutFooter(catalogVersion = settings.seededCatalogVersion) }
         }
     }
 
@@ -407,5 +508,45 @@ private fun IdNumberRow(idNumber: String?, onSet: (String) -> Unit) {
                 Text(stringResource(R.string.action_save))
             }
         }
+    }
+}
+
+/**
+ * What the app is, at the bottom of settings.
+ *
+ * The flag is here rather than only on the launcher icon because the icon is
+ * seen once and then never looked at again, and this is a product built for
+ * one country's rules — its standards, its payment terms, its site register,
+ * its holidays. Saying so in the app is honest rather than decorative.
+ */
+@Composable
+private fun AboutFooter(catalogVersion: Int) {
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Image(
+            painter = painterResource(R.drawable.ic_flag_il),
+            // Named, not decorative: a screen reader announcing nothing here
+            // would leave the one statement this footer makes unsaid.
+            contentDescription = stringResource(R.string.about_flag),
+            modifier = Modifier.size(width = 44.dp, height = 32.dp),
+        )
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.titleSmall,
+        )
+        Text(
+            text = stringResource(R.string.about_edition),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = stringResource(R.string.set_catalog_version) + ": " + catalogVersion,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
     }
 }

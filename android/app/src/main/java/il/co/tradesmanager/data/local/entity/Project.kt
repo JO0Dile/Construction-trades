@@ -90,6 +90,20 @@ data class ProjectTaskEntity(
     val isDone: Boolean = false,
     val doneAt: Long? = null,
     val doneByName: String? = null,
+    /**
+     * Where in the job this task sits, from `shared/assets/catalog/scopes.json`.
+     *
+     * Optional, and it stays optional. Plenty of tasks are "call the crane
+     * company" and belong to no stage at all, and a picker that refused to
+     * save without one would turn a two-second note into a form.
+     *
+     * When it is set it is worth a great deal: "first fix electrics" on three
+     * floors is three tasks that look identical in a list, and the stage is
+     * what separates the one that has to happen before Thursday's pour from
+     * the two that do not.
+     */
+    val stageId: String? = null,
+    val scopeId: String? = null,
 )
 
 @Entity(

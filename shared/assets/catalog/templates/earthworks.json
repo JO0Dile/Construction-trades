@@ -1,0 +1,89 @@
+{
+  "tradeId": "earthworks",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.ew.foundation",
+      "estimatedDays": 5,
+      "names": {
+        "en": "Foundation excavation and base",
+        "he": "חפירת יסודות ומצע",
+        "ar": "حفر الأساسات والبيسة"
+      },
+      "descriptions": {
+        "en": "Scanned, dug, supported and compacted, with the trench inspected before anybody enters it.",
+        "he": "נסרק, נחפר, נתמך והודק, עם בדיקת התעלה לפני כניסת אדם.",
+        "ar": "ممسوح ومحفور ومدعوم ومدكوك، مع فحص الخندق قبل دخول أي شخص."
+      },
+      "materials": [
+        {
+          "itemId": "ew.aggregate.base",
+          "quantity": 40
+        },
+        {
+          "itemId": "ew.sand.fill",
+          "quantity": 15
+        },
+        {
+          "itemId": "ew.geotextile",
+          "quantity": 120
+        },
+        {
+          "itemId": "ew.pipe.drain.perf",
+          "quantity": 60
+        },
+        {
+          "itemId": "ew.shoring.trench.box",
+          "quantity": 2
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.ew.ft.1",
+          "order": 1,
+          "titles": {
+            "en": "Scan the line for services and hand-dig to expose what is found",
+            "he": "סריקת הקו לאיתור תשתיות וחפירת יד לחשיפתן",
+            "ar": "مسح الخط للخدمات والحفر اليدوي لكشف ما يُوجد"
+          }
+        },
+        {
+          "id": "tpl.ew.ft.2",
+          "order": 2,
+          "titles": {
+            "en": "Excavate to level, keeping spoil back from the edge",
+            "he": "חפירה למפלס, עם ערמות מרוחקות מהשפה",
+            "ar": "الحفر للمنسوب مع إبعاد الأتربة عن الحافة"
+          }
+        },
+        {
+          "id": "tpl.ew.ft.3",
+          "order": 3,
+          "titles": {
+            "en": "Support the sides before anybody goes in",
+            "he": "תמיכת הדפנות לפני כניסת אדם",
+            "ar": "دعم الجوانب قبل دخول أي شخص"
+          }
+        },
+        {
+          "id": "tpl.ew.ft.4",
+          "order": 4,
+          "titles": {
+            "en": "Inspect and sign the register — daily, and after rain",
+            "he": "בדיקה וחתימת הפנקס — יומית ואחרי גשם",
+            "ar": "الفحص وتوقيع السجل — يومياً وبعد المطر"
+          }
+        },
+        {
+          "id": "tpl.ew.ft.5",
+          "order": 5,
+          "titles": {
+            "en": "Lay geotextile, drainage and base, then compact in layers",
+            "he": "הנחת בד גיאוטכני, ניקוז ומצע, והידוק בשכבות",
+            "ar": "فرش الجيوتكستايل والتصريف والبيسة، ثم الدك بطبقات"
+          }
+        }
+      ]
+    }
+  ]
+}

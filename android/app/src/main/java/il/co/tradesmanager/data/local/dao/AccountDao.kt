@@ -75,6 +75,24 @@ interface AccountDao {
     )
     suspend fun countWithIdNumber(idNumber: String): Int
 
+    /**
+     * The one person with this ID number, or nobody.
+     *
+     * By ID only, not by username as well. A safety officer typing an ID at
+     * the gate or against a violation is identifying a specific person from a
+     * document in their hand; matching a username too would let a typo land on
+     * somebody else entirely, and the whole point of asking for the ID is that
+     * names on a site repeat and this does not.
+     */
+    @Query(
+        """
+        SELECT * FROM accounts
+        WHERE deletedAt IS NULL AND TRIM(idNumber) = TRIM(:idNumber) COLLATE NOCASE
+        LIMIT 1
+        """,
+    )
+    suspend fun byIdNumber(idNumber: String): AccountEntity?
+
     @Query("UPDATE accounts SET lastSignInAt = :at WHERE id = :id")
     suspend fun recordSignIn(id: String, at: Long)
 

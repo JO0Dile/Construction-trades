@@ -17,9 +17,7 @@
 "action_filter" = "تصفية";
 "action_export" = "تصدير";
 "state_loading" = "جارٍ التحميل…";
-"state_saved" = "تم الحفظ";
 "state_deleted" = "تم الحذف";
-"error_generic" = "حدث خطأ ما";
 "error_required" = "هذا الحقل مطلوب";
 "error_number" = "أدخل رقمًا";
 "onboarding_welcome_title" = "إعداد التطبيق لمهنتك";
@@ -89,6 +87,21 @@
 "proj_name" = "اسم المشروع";
 "proj_address" = "العنوان";
 "proj_client" = "الزبون";
+"proj_parts" = "أجزاء هذا العمل";
+"proj_add_part" = "إضافة جزء";
+"proj_part_of" = "جزء من";
+"proj_no_parts" = "غير مقسم إلى أجزاء.";
+"proj_part_hint" = "طابق أو شقة أو قطعة — مما يتكوّن هذا العمل.";
+"proj_street" = "الشارع والرقم";
+"proj_city" = "المدينة";
+"proj_postal_code" = "الرمز البريدي";
+"proj_client_phone" = "هاتف الزبون";
+"proj_when" = "متى يجري";
+"proj_no_date" = "غير محدد";
+"action_clear" = "مسح";
+"proj_where_and_who" = "أين هو ولمن";
+"proj_no_address" = "لا يوجد عنوان بعد.";
+"proj_open_map" = "خريطة";
 "proj_status" = "الحالة";
 "proj_start" = "تاريخ البدء";
 "proj_due" = "تاريخ الاستحقاق";
@@ -156,12 +169,16 @@
 "update_notes" = "ما الذي تغيّر";
 "sch_title" = "الجدول";
 "sch_new_block" = "فترة زمنية جديدة";
+"sch_assign" = "إسناد";
+"sch_nobody" = "لا أحد بعد";
+"sch_unassign" = "لا أحد";
 "sch_start" = "البداية";
 "sch_end" = "النهاية";
 "sch_task" = "المهمة";
 "sch_assignee" = "مُسنَد إلى";
 "sch_project" = "المشروع";
 "sch_check_in" = "تسجيل دخول";
+"sch_which_job" = "على أي عمل؟";
 "sch_check_out" = "تسجيل خروج";
 "sch_checked_in" = "تم تسجيل الدخول";
 "sch_empty" = "لا شيء مجدول";
@@ -175,6 +192,7 @@
 "saf_fail" = "لم يتم";
 "saf_na" = "غير منطبق";
 "saf_sign_off" = "توقيع";
+"saf_sign_here" = "وقّع هنا";
 "saf_signed_by" = "وقّعه";
 "saf_blocked" = "بند حرج لم يُنفَّذ. يُمنع بدء العمل.";
 "saf_references" = "المواصفات والأنظمة";
@@ -194,6 +212,22 @@
 "set_audit_log" = "سجل النشاط";
 "set_export" = "تصدير بياناتي";
 "set_delete_data" = "حذف حسابي وبياناتي";
+/* Privacy screen: the whole of it in one sentence */
+"priv_lead" = "كل ما تُسجّله يبقى على هذا الهاتف.";
+"priv_where_title" = "أين يُحفظ عملك";
+"priv_where_body" = "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.";
+"priv_network_title" = "الشيء الوحيد الذي يغادر الهاتف";
+"priv_network_body" = "عند الضغط على التحقق من التحديثات، يسأل التطبيق GitHub إن كانت هناك نسخة أحدث. هذا الطلب لا يحمل شيئًا عن أعمالك أو طاقمك أو موقعك. ويحدث عند الضغط على الزر فقط.";
+"priv_none_title" = "ما لا يفعله التطبيق";
+"priv_none_body" = "لا تحليلات ولا إعلانات ولا تتبّع من أي نوع. لا تُشارَك أي معلومة مع أحد، لأنه لا يوجد مكان تذهب إليه.";
+"priv_perm_title" = "لماذا الأذونات";
+"priv_perm_body" = "الكاميرا تلتقط الصور التي ترفقها بعمل أو ملاحظة أو مخالفة، وتُحفظ على هذا الهاتف. الوصول إلى الإنترنت يُستخدم فقط لفحص التحديثات أعلاه.";
+"priv_crew_title" = "إذا ثبّتت شركتك هذا التطبيق";
+"priv_crew_body" = "ما تُسجّله يمكن أن يراه من يسمح لهم دورك في الشركة — لهذا وُجدت الأدوار. ومع ذلك يبقى فقط على الأجهزة التي أُدخل فيها.";
+"priv_delete_title" = "الحذف";
+"priv_delete_body" = "الإعدادات ← حذف كل شيء يُفرغ قاعدة البيانات على هذا الهاتف. وبما أن شيئًا لم يغادره، لا يوجد مكان آخر تطلب منه الحذف. النسخة الاحتياطية التي أخذتها ملف بحوزتك؛ احذفه حيث وضعته.";
+"priv_future_title" = "متى يتغيّر هذا";
+"priv_future_body" = "هناك خادم مخطَّط له، كي تتزامن الأجهزة ولا يعني فقدان الهاتف فقدان الموقع. لن يذهب شيء إليه قبل وجوده، وستُحدَّث هذه الصفحة قبل ذلك.";
 "set_privacy" = "سياسة الخصوصية";
 "set_terms" = "شروط الاستخدام";
 "set_about" = "حول";
@@ -221,7 +255,7 @@
 "acc_personal_hint" = "شخص واحد، أدواتك وأعمالك.";
 "acc_company" = "شركة";
 "acc_company_hint" = "عدة أشخاص، كل منهم يرى الجزء الخاص به من العمل.";
-"acc_your_name" = "اسمك";
+"acc_your_name" = "الاسم الكامل";
 "acc_company_name" = "اسم الشركة";
 "acc_reg_number" = "رقم الشركة (اختياري)";
 "acc_reg_hint" = "يظهر في الفواتير. يمكن إضافته لاحقًا.";
@@ -380,6 +414,7 @@
 "ptw_issued_by" = "مُصدِر التصريح";
 "ptw_precautions" = "قبل بدء العمل";
 "ptw_issue" = "إصدار التصريح";
+"ptw_sign" = "وقّع للإصدار";
 "ptw_issue_blocked" = "يجب وضع علامة على كل إجراءات الوقاية قبل إصدار التصريح.";
 "ptw_valid_from" = "ساري من";
 "ptw_valid_to" = "ساري حتى";
@@ -428,6 +463,17 @@
 "acc_sign_in_title" = "تسجيل الدخول";
 "acc_identifier" = "اسم المستخدم أو رقم الهوية";
 "acc_identifier_hint" = "أيهما أعطاك مكتب الموقع. كلاهما يصلح.";
+"acc_username" = "اسم المستخدم";
+"acc_username_hint" = "ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع.";
+"acc_phone" = "رقم الهاتف";
+"acc_phone_hint" = "بهذا يصل إليك الموقع. مطلوب.";
+"acc_email" = "البريد الإلكتروني (اختياري)";
+"acc_phone_missing" = "رقم الهاتف مطلوب.";
+"acc_phone_not_a_number" = "هذا ليس رقم هاتف.";
+"acc_phone_too_short" = "هذا أقصر من أن يكون رقم هاتف.";
+"acc_phone_too_long" = "هذا أطول من أي رقم هاتف.";
+"acc_phone_repeated" = "رقم يمكن الوصول إلى صاحبه فعلاً.";
+"acc_email_bad" = "هذا لا يبدو كبريد إلكتروني.";
 "acc_password" = "كلمة المرور";
 "acc_password_blank_hint" = "اتركه فارغًا إن لم تُعطَ كلمة مرور.";
 "acc_wrong_credentials" = "لا يوجد تطابق. راجع من أنشأ حسابك.";
@@ -819,3 +865,348 @@
 "hv_lifts" = "عمليات رفع لم تُعلَّم كمنتهية";
 "hv_pours" = "صبّات لم تُنهَ";
 "hv_daily_logs" = "يوميات عمل لم تُوقَّع";
+/* Alt text for the flag in the settings footer */
+"about_flag" = "علم إسرائيل";
+/* Under the app name in the settings footer */
+"about_edition" = "إصدار إسرائيل — وفق المواصفات وشروط الدفع وأنظمة المواقع الإسرائيلية";
+"wp_title" = "حزم العمل";
+"wp_empty" = "لا توجد حزم عمل في هذا المشروع بعد";
+"wp_new" = "حزمة عمل جديدة";
+"wp_given" = "مُسند لغيرنا";
+"wp_taken" = "مُسند إلينا";
+"wp_amount" = "المبلغ المتفق عليه";
+"wp_stage" = "المرحلة";
+"wp_scope" = "نطاق العمل";
+"wp_location" = "المكان";
+"wp_accept" = "قبول";
+"wp_decline" = "رفض المهمة";
+"wp_start" = "بدء العمل";
+"wp_submit" = "تقديم للفحص";
+"wp_approve" = "اعتماد";
+"wp_reject" = "إرجاع للتصحيح";
+"wp_reject_reason" = "ما الذي يجب تصحيحه";
+"wp_reject_hint" = "الطاقم الذي يُرجع بدون سبب لا يعرف ما الذي يصلحه.";
+"wp_rejected_because" = "أُرجع:";
+"wp_need_photo" = "أضف صورة قبل التقديم";
+"wp_need_photo_hint" = "الاعتماد يتم في المكتب بعد أيام، وعندها يكون الحيط قد لُيّس.";
+"wp_invoice" = "رفع مطالبة مالية";
+"wp_approved_not_paid" = "مُعتمد. غير مدفوع — المطالبة ما زالت خاضعة لشروط الدفع.";
+"wp_status_draft" = "مسودة";
+"wp_status_offered" = "مُقترح";
+"wp_status_accepted" = "مقبول";
+"wp_status_declined" = "مرفوض";
+"wp_status_progress" = "قيد التنفيذ";
+"wp_status_submitted" = "بانتظار الفحص";
+"wp_status_rejected" = "مُرجع";
+"wp_status_approved" = "معتمد";
+"wp_status_cancelled" = "ملغى";
+"wp_refused_side" = "الطرف الآخر فقط يستطيع ذلك";
+"wp_refused_state" = "غير ممكن من هذه الحالة";
+"wp_refused_party" = "هذه ليست اتفاقيتك";
+"co_title" = "ملف الشركة";
+"co_logo" = "شعار الشركة";
+"co_name" = "اسم الشركة";
+"co_reg" = "رقم التسجيل";
+"co_email" = "البريد الإلكتروني";
+"co_phone" = "الهاتف";
+"co_website" = "الموقع الإلكتروني";
+"co_address" = "العنوان";
+"co_licence" = "رقم رخصة المقاول";
+"co_classification" = "التصنيف";
+"co_licence_expires" = "الرخصة سارية حتى";
+"co_visible_to_workers" = "إظهار للطاقم";
+"co_visible_hint" = "مطفأ يعني أن الإدارة فقط تراه. لا يُنشر شيء حتى تشغّله.";
+"co_verified_note" = "تسجيل الرخصة يضعك كمُوثّق داخل التطبيق. وهذا ليس إقراراً بأنك مرخّص لتنفيذ العمل — تلك مسألة بينك وبين الجهة المنظِّمة.";
+"party_client" = "مطوّر / مالك المشروع";
+"party_gc" = "مقاول عام";
+"party_first" = "مقاول باطن من الدرجة الأولى";
+"party_second" = "رئيس طاقم / مقاول عمالة";
+"party_supplier" = "مورّد";
+"party_consultant" = "استشاري / مشرف";
+"party_title" = "الموقع في هذا المشروع";
+"party_hint" = "ما هي شركتك في هذا المشروع، وهذا ليس بالضرورة ما هي عليه في المشروع التالي.";
+/* Subtitle on the project screen link */
+"wp_row_hint" = "ما أُسند لغيرنا وما أُسند إلينا";
+"eng_title" = "الشركات في هذا المشروع";
+"eng_add" = "إضافة شركة للمشروع";
+"eng_name" = "اسم الشركة";
+"eng_scope" = "ما الذي جاؤوا لعمله";
+"eng_refused" = "موقعك في هذا المشروع لا يسمح بإضافة هذا الموقع.";
+"wp_payee" = "من سينفّذه";
+"wp_title_field" = "ما هي الحزمة";
+"eng_self" = "ما هي شركتكم في هذا المشروع؟";
+"eng_self_hint" = "أجب على هذا أولاً. لا أحد غيرك يستطيع تحديده، وحتى تُجيب لا تستطيع إضافة شركة أخرى.";
+"ct_title" = "العقود";
+"ct_empty" = "لا توجد عقود في هذا المشروع بعد";
+"ct_new" = "عقد جديد";
+"ct_row_hint" = "ما تم الاتفاق عليه ومع من";
+"ct_scope" = "ما الذي يغطيه";
+"ct_original" = "المبلغ الأصلي";
+"ct_current" = "المبلغ الساري";
+"ct_receivable" = "أنتم تُدفعون على هذا";
+"ct_payable" = "أنتم تدفعون على هذا";
+"ct_sign" = "توقيع";
+"ct_signed_by" = "وقّع عليه";
+"ct_unsigned" = "لم يوقّعه الطرفان بعد";
+"ct_amend" = "اقتراح تعديل";
+"ct_amend_amount" = "المبلغ الجديد";
+"ct_amend_reason" = "السبب";
+"ct_amend_reason_hint" = "بعد ثلاث سنوات سيسأل أحدهم لماذا قيمة هذا العقد هي كذا، وهو لم يكن حاضراً.";
+"ct_amend_history" = "كل مبلغ كان عليه هذا العقد";
+"ct_amend_accept" = "قبول التعديل";
+"ct_amend_reject" = "رفض التعديل";
+"ct_amend_pending" = "بانتظار الطرف الآخر";
+"ct_amend_yours" = "أنتم اقترحتم هذا. الطرف الآخر يقبل أو يرفض.";
+"ct_margin" = "هامشكم في هذا المشروع";
+"ct_margin_hint" = "ما تقبضونه ناقص ما تدفعونه. أنتم فقط ترون هذا — لا يظهر على شاشة أي أحد آخر.";
+"wp_claim_title" = "معتمد ولم يُطالَب به بعد";
+"wp_claim_raise" = "رفع مطالبة مالية";
+"wp_claim_total" = "هذه المطالبة ستطالب بـ";
+"wp_claim_cumulative" = "كل ما اعتُمد حتى اليوم، لا ما يُضاف الآن فقط. المستحق فعلياً هو ذلك ناقص المحتجز وناقص ما دُفع سابقاً.";
+"wp_claim_none" = "لا شيء جديد اعتُمد منذ المطالبة السابقة";
+"task_stage" = "مرحلة العمل";
+"task_stage_none" = "بدون مرحلة";
+"task_stage_hint" = "اختياري. يستحق التحديد عندما تتكرر نفس المهمة في عدة طوابق — المرحلة هي ما يميّزها.";
+"pay_breakdown" = "مما تتكون هذه المطالبة";
+"pay_breakdown_hint" = "كل حزمة عمل معتمدة محسوبة في المبلغ أعلاه. المطالبة تراكمية، لذلك تظهر حزم المطالبات السابقة مرة أخرى.";
+"pay_breakdown_none" = "أُنشئت يدويًا — بدون حزم عمل مرفقة.";
+/* Audit action: a record was exported out of the app */
+"audit_exported" = "صُدِّر";
+/* Audit action: old entries were removed */
+"audit_purged" = "طُهِّر";
+"audit_title" = "سجل التدقيق";
+"audit_hint" = "كل تغيير ذي أثر، بترتيب حدوثه. لا يمكن تعديل السجل من داخل التطبيق.";
+"audit_empty" = "لم يُسجَّل شيء بعد.";
+"audit_verify" = "فحص السجل";
+"audit_intact" = "سليم";
+"audit_intact_detail" = "تم فحص %1$d سجلات وجميعها متطابقة.";
+"audit_unchained" = "%1$d سجلات أقدم بلا توقيع ولا يمكن فحصها. كُتبت قبل هذا الإصدار.";
+"audit_failed" = "السجل غير متطابق";
+"audit_fault_altered" = "السجل %1$d يقول شيئًا غير ما تم توقيعه.";
+"audit_fault_broken" = "السجل %1$d لا يتبع ما قبله. أُزيل شيء أو استُبدل.";
+"audit_fault_missing" = "سجل قبل %1$d مفقود.";
+"audit_window" = "يفحص أحدث %1$d سجلات.";
+"audit_not_checked" = "لم يُفحص بعد.";
+"audit_export" = "تصدير السجل";
+"audit_col_seq" = "رقم";
+"audit_col_when" = "متى";
+"audit_col_who" = "من";
+"audit_col_action" = "إجراء";
+"audit_col_what" = "ما الذي حدث";
+"audit_col_signature" = "توقيع";
+"audit_export_checked" = "فُحص عند التصدير";
+"audit_export_note" = "التواقيع مختصرة في ملف PDF. ملف CSV يحملها كاملة، و docs/AUDIT.md يوضح كيفية إعادة حسابها.";
+"sec_encrypted" = "مفعّل — البيانات على هذا الجهاز مشفّرة";
+"sec_encrypted_detail" = "المفتاح محفوظ في العتاد الآمن لهذا الجهاز ولا يغادره. لا يمكن قراءة ملف البيانات خارج الهاتف.";
+"sec_not_encrypted" = "غير مفعّل — البيانات على هذا الجهاز غير مشفّرة";
+"sec_not_encrypted_detail" = "تعذّر على هذا الجهاز تحميل مكتبة التشفير، لذلك فتح التطبيق البيانات دون حماية بدلًا من رفض التشغيل. أرقام الهوية والصور والتواقيع يمكن لأي شخص لديه وصول إلى ملفات هذا الهاتف قراءتها. أبلغ عن هذا الجهاز قبل استخدامه لبيانات العاملين.";
+"ret_title" = "مدة الاحتفاظ بسجل التدقيق";
+"ret_hint" = "مدة الاحتفاظ بالسجلات مسألة قانونية، والإجابة تختلف بين سجل دفع وفحص سلامة ورقم هوية عامل. التطبيق لا يختار عنك: لا يُحذف شيء حتى تحدّد مدة، وكل حذف يُسجَّل.";
+"ret_keep_all" = "الاحتفاظ بكل شيء";
+"ret_1_year" = "سنة";
+"ret_3_years" = "3 سنوات";
+"ret_7_years" = "7 سنوات";
+"ret_apply" = "تطبيق الآن";
+"ret_applied" = "أُزيل %1$d سجلات. عملية الحذف نفسها مسجّلة في السجل.";
+"ret_nothing" = "لا توجد سجلات قديمة بما يكفي للإزالة.";
+"inc_title" = "الحوادث";
+"inc_add" = "الإبلاغ عن حادث";
+"inc_empty" = "لم يُبلَّغ عن شيء.";
+"inc_hint" = "سجّل الحادث فور وقوعه، بما في ذلك ما كاد أن يقع. ما كاد أن يقع هو نفس الحادث بحظ أوفر.";
+"inc_what" = "ما الذي حدث";
+"inc_severity" = "الخطورة";
+"inc_near_miss" = "كاد أن يقع";
+"inc_minor" = "طفيف — إسعاف أولي";
+"inc_serious" = "خطير — مستشفى أو انقطاع عن العمل";
+"inc_fatal" = "مميت";
+"inc_escalate" = "قد يتطلب هذا الحادث إبلاغ الجهة الرقابية إضافة إلى تسجيله هنا. تحقّق من التزاماتك — التطبيق لا يقرر ذلك نيابة عنك.";
+"inc_reported_by" = "أبلغ عنه";
+"acc_have_account" = "لدي حساب بالفعل";
+"acc_none_on_device" = "لا توجد حسابات على هذا الهاتف بعد. الحسابات محفوظة على الجهاز، لذلك لا يمكن الوصول من هنا إلى حساب أُنشئ على هاتف آخر حتى يكون للشركة خادم. أنشئ حسابًا للبدء.";
+"role_safety_officer" = "مسؤول السلامة";
+"role_safety_officer_hint" = "يسجّل المخالفات والحوادث بأسماء أشخاص محددين. يرى هوية الشخص، ولا يرى أجره أبدًا.";
+"find_by_id" = "رقم الهوية";
+"find_by_id_hint" = "اكتب الرقم من بطاقته. الأسماء في الموقع تتكرر، وهذا الرقم لا يتكرر.";
+"find_nobody" = "لا يوجد أحد بهذا الرقم. عليه إنشاء حساب قبل أن يمكن إضافته.";
+"vio_title" = "المخالفات";
+"vio_new" = "تسجيل مخالفة";
+"vio_none" = "لم يُسجَّل شيء.";
+"vio_what" = "ما هي المخالفة";
+"vio_cost" = "التكلفة، إن وُجدت";
+"vio_cost_hint" = "اتركه فارغًا إذا لا توجد تكلفة. الفارغ والصفر ليسا سواء.";
+"vio_evidence" = "صورة أو فيديو";
+"vio_confirm" = "تأكيد";
+"vio_confirm_warning" = "بعد التأكيد لا يمكن التغيير أو السحب، والشخص المذكور سيراها.";
+"vio_draft" = "مسودة — أنت وحدك تراها";
+"vio_confirmed" = "مؤكَّدة";
+"vio_cancelled" = "مُلغاة";
+"vio_need_person" = "اختر ضد من هذه المخالفة.";
+"vio_need_evidence" = "أرفق صورة أو فيديو. مخالفة بتكلفة وبلا دليل هي كلمة شخص واحد.";
+"vio_need_description" = "اكتب ما هي المخالفة.";
+/* Row on a purchase order: when the delivery is expected */
+"po_due" = "موعد الوصول";
+/* The supplier has not said when it is coming */
+"po_no_due" = "المورّد لم يحدّد";
+/* Dialog title when placing an order: ask for the delivery date */
+"po_when_due" = "متى من المفترض أن تصل؟";
+/* Field on a failed checklist row: describe the failure */
+"saf_what_is_wrong" = "ما هو الخلل";
+/* Hint under the field on a failed check */
+"saf_fail_needs_words" = "بند راسب بلا شرح هو سطر لا يمكن التصرف بناءً عليه بعد ستة أشهر.";
+/* Button on a failed checklist row: attach a photograph */
+"saf_photograph" = "صوّرها";
+/* Row on the violation draft: which job it happened on */
+"vio_job" = "في أي عمل";
+/* The violation was not on a job — a yard, a van, the road */
+"vio_no_job" = "ليست ضمن عمل";
+/* Dialog: the account may not write violations for this company */
+"vio_refused_officer" = "لا تملك صلاحية تسجيل المخالفات هنا.";
+/* Dialog: signed in, but a member of no company at all */
+"vio_refused_books" = "لست مسجَّلًا في أي شركة. أنشئ شركة أو انضم إلى واحدة، ثم سجّل المخالفة.";
+/* Dialog: the violation is already confirmed or cancelled */
+"vio_refused_state" = "هذه المخالفة أُكِّدت أو أُلغيت بالفعل. لا يمكن تغييرها.";
+/* Dialog: confirm was refused because something is missing */
+"vio_refused_incomplete" = "لا يزال هناك نقص: ضد من هي المخالفة، وما هي، وصورة أو فيديو.";
+/* Dialog: a negative cost was rejected */
+"vio_refused_cost" = "لا يمكن أن تكون التكلفة أقل من صفر. اتركها فارغة إذا لا يوجد مبلغ.";
+/* Dialog: the write failed for a reason the app has no better sentence for */
+"vio_refused_unknown" = "تعذّر الحفظ.";
+/* Screen title: signing people onto the site at the gate */
+"gate_title" = "الدخول إلى الموقع";
+/* Section header above the ID number field */
+"gate_find" = "من على البوابة";
+/* Under the ID field. Says the number is checked against a face. */
+"gate_find_hint" = "الرقم المدوّن على بطاقتهم. صورتهم تظهر معه.";
+/* No account has that ID number. */
+"gate_not_found" = "لا يوجد أحد بهذا رقم الهوية. عليهم التسجيل أولاً من هاتفهم ثم العودة.";
+/* Under the found person's card. %1$s is a role name, e.g. Worker. */
+"gate_grants" = "سيُسجَّل في الموقع بصفة: %1$s. أما رتبته فيحددها لاحقاً من كلّفه بالعمل.";
+/* The person found is already on this company's books. */
+"gate_already_in" = "مسجَّل في هذا الموقع مسبقاً. لا حاجة لأي إجراء.";
+/* Section header above the signature pad */
+"gate_sign" = "توقيعهم";
+/* Explains what the person at the gate is signing for. */
+"gate_sign_body" = "أعطهم الهاتف. يوقّعون إقراراً بأنهم تلقّوا تعليمات السلامة الخاصة بهذا الموقع.";
+/* Why the admit button is disabled. */
+"gate_need_signature" = "لم يوقّعوا بعد.";
+/* The button that puts the person onto the site. */
+"gate_admit" = "سجّلهم في الموقع";
+/* Confirmation after an admission. %1$s is the person's name. */
+"gate_admitted" = "%1$s أصبح في الموقع.";
+/* Shown to a role that may not admit people. */
+"gate_not_yours" = "تسجيل الأشخاص في الموقع ليس من صلاحياتك. يقوم بذلك مدير الموقع أو مسؤول السلامة.";
+/* Entry point on the People screen that opens the gate. */
+"people_gate" = "سجّل شخصاً في الموقع";
+/* Button that attaches a photo or video to an incident. %1$d is how many are attached. */
+"inc_evidence" = "صورة أو فيديو (%1$d)";
+/* Why the save button is disabled: no photo or video attached yet. */
+"inc_need_evidence" = "أرفق صورة أو فيديو. بحلول وقت الجدال حول ما جرى، يكون السلّم قد نُقل.";
+/* Why the save button is disabled: nothing written. */
+"inc_need_description" = "اكتب ما الذي حدث.";
+/* Optional cost field on an incident report. */
+"inc_cost" = "التكلفة، إن كانت معروفة";
+/* Under the cost field. Explains that blank and zero differ. */
+"inc_cost_hint" = "اتركه فارغًا إن لم يُعرف بعد. الفارغ والصفر ليسا سواء.";
+/* The cost field holds something that is not a number, or is negative. */
+"inc_bad_cost" = "هذا ليس مبلغًا. اتركه فارغًا إن كنت لا تعرف.";
+/* The reconciliation covers only the people this viewer may price. */
+"ts_not_whole_job" = "هذا يشمل فقط من يحقّ لك الاطلاع على أجورهم، فهو ليس كامل العمالة في المشروع.";
+/* Empty state when every person on the job is above this viewer in the chain. */
+"ts_all_withheld" = "لا شيء من ساعات هذا المشروع من صلاحيتك تسعيره.";
+/* Under the empty state: explains the chain of command rule. */
+"ts_withheld_hint" = "ترى أجور من هم تحت إمرتك، وأجرك أنت. ولا أحد يرى أجر من هو فوقه.";
+/* Label on the member sheet: who this person answers to. */
+"people_reports_to" = "يتبع لـ";
+/* Shown when a member has no manager set. */
+"people_reports_to_nobody" = "لا أحد بعد — المالك";
+/* Explains what setting a manager does. */
+"people_reports_hint" = "من يتبع له الشخص يرى أجره. ولا يراه أحد غيره، لا زملاؤه ولا من هم فوقه.";
+/* Refusal: the actor is not above this person in the chain. */
+"people_chain_not_yours" = "لا ينقلهم إلا من هو فوقهم، ولست كذلك.";
+/* Refusal: you cannot change who you answer to. */
+"people_chain_yourself" = "لا يمكنك نقل نفسك. من تتبع له هو من يفعل ذلك.";
+/* Refusal: the move would put a circle in the chain. */
+"people_chain_loop" = "هذا سيُنشئ حلقة مغلقة: هم بالفعل فوق الشخص الذي اخترته.";
+/* Refusal: the person or the manager is not on this company's books. */
+"people_chain_unknown" = "غير مسجّل في دفاتر هذه الشركة.";
+/* Screen title: the crew, listed by trade, with faces */
+"crew_title" = "من في الموقع";
+/* No one on the books matches the chosen trade. */
+"crew_none" = "لا أحد مسجّل لهذه المهنة.";
+/* Label for the trade a person works in. */
+"crew_trade" = "المهنة";
+/* Label for the date somebody signed the safety induction. */
+"crew_inducted" = "تلقّى التدريب";
+/* Says plainly why a profile shows no wages, so an absence is not read as a gap. */
+"crew_no_money" = "لا شيء هنا عن الأجر. لا يراه إلا من هو فوقهم في سلسلة القيادة.";
+"crew_contact" = "الاتصال";
+"crew_call" = "اتصال";
+"crew_whatsapp" = "واتساب";
+"crew_email" = "البريد الإلكتروني";
+"crew_no_phone" = "لا يوجد رقم هاتف مسجل لهذا الشخص.";
+/* Button and dialog title: fix what the crew list says about somebody */
+"crew_correct" = "تصحيح التفاصيل";
+/* Why the ID number cannot be edited once it is set */
+"crew_id_locked" = "رقم الهوية مثبَّت ولا يمكن تغييره هنا. فهو مدرج في قائمة البوابة وفي سجل التوجيه — راجع المكتب.";
+/* Refusal: the name field was left empty */
+"crew_need_name" = "الاسم مطلوب. سطر بلا اسم هو سطر لا يستطيع أحد قراءته.";
+/* Refusal: that person is not a member of the company being worked in */
+"crew_not_on_books" = "هذا الشخص ليس مسجَّلًا في هذه الشركة.";
+/* Refusal: the account has gone, or was removed */
+"crew_no_such_person" = "تعذّر العثور على سجل هذا الشخص.";
+/* Refusal: the correction failed for a reason with no better sentence */
+"crew_correct_failed" = "تعذّر الحفظ.";
+/* Nobody has confirmed a violation against this person. */
+"crew_no_violations" = "لا توجد مخالفات مؤكدة بحقهم.";
+/* Entry point that opens the crew list, by trade, with faces. */
+"crew_open" = "ابحث عن شخص حسب المهنة";
+/* Section header on the dashboard: recent changes this person may see */
+"home_changes" = "ما الذي تغيّر";
+/* Settings section: taking the record off the phone and putting it back */
+"backup_title" = "النسخ الاحتياطي";
+/* Explains why a backup matters when everything is on one device. */
+"backup_why" = "كل شيء على هذا الهاتف ولا شيء على خادم. فقدان الهاتف يعني فقدان يوميات الموقع، إلا إذا كان لديك نسخة احتياطية.";
+/* Button that writes a backup file. */
+"backup_take" = "أنشئ نسخة";
+/* Button that opens a backup file to restore from. */
+"backup_restore" = "استعادة";
+/* Shown while a backup or restore is running. */
+"backup_working" = "جارٍ العمل. يستغرق هذا وقتًا، لأن الصور مُضمَّنة أيضًا.";
+/* Backup written. %1$d is how many photos and videos went in. */
+"backup_done" = "تم النسخ، مع %1$d صورة وفيديو. احتفظ بالملف في مكان غير هذا الهاتف.";
+/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
+"backup_staged" = "جاهز لاستعادة النسخة من %1$s. أغلق التطبيق تمامًا ثم افتحه مجددًا لإتمام العملية. لم يتغيّر شيء بعد.";
+/* The backup predates the installed version; migrations will run. */
+"backup_older_version" = "أُخذت النسخة بإصدار أقدم. سيجري تحديثها أثناء الاستعادة.";
+/* Abandons a staged restore before the restart. */
+"backup_cancel_restore" = "تراجع عن الاستعادة";
+/* Shown at launch after a restore was applied. */
+"backup_restored" = "تمت الاستعادة من نسخة احتياطية.";
+/* The chosen file is not a backup from this app. */
+"backup_refused_file" = "هذا ليس ملف نسخة احتياطية من هذا التطبيق.";
+/* The backup was written by a newer version of the app. */
+"backup_newer_app" = "أُنشئت هذه النسخة بإصدار أحدث من التطبيق. حدّث أولًا ثم استعِد.";
+/* The restore failed part way and the original was put back. */
+"backup_rolled_back" = "لم تكتمل الاستعادة، وكل ما لديك ما زال موجودًا. حاول مرة أخرى.";
+/* Generic failure: wrong passphrase or damaged file, deliberately not distinguished. */
+"backup_failed" = "لم تنجح العملية. إما أن عبارة المرور خاطئة أو أن الملف تالف.";
+/* Label for the backup passphrase field. */
+"backup_passphrase" = "عبارة المرور";
+/* Second passphrase field, to catch a typo. */
+"backup_passphrase_again" = "أعد كتابتها";
+/* Dialog title when opening a backup. */
+"backup_passphrase_open" = "عبارة المرور لهذه النسخة";
+/* There is no recovery. Said plainly, before the field. */
+"backup_passphrase_warning" = "دوّنها في مكان آمن. لا يمكن لأحد إعادة تعيينها، وبدونها لا يستطيع أحد فتح النسخة، بمن فيهم نحن.";
+/* Passphrase below the minimum length. */
+"backup_too_short" = "12 حرفًا على الأقل. هذا يقفل ملفًا يمكن نسخه وأخذه.";
+/* The two passphrase fields differ. */
+"backup_no_match" = "العبارتان غير متطابقتين.";
+/* Long but with too few distinct characters. */
+"backup_too_plain" = "عدد الأحرف المختلفة قليل جدًا. الطول وحده ليس قوة.";
+/* Button that opens a backup to see what is in it, without restoring. */
+"backup_check" = "افحص نسخة احتياطية";
+/* What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. */
+"backup_contents" = "أُخذت في %1$s: %2$d مشاريع، %3$d أشخاص، %4$d صورة وفيديو.";
+/* The archive opened but the database inside failed SQLite's integrity check. */
+"backup_damaged" = "فُتح الملف لكن قاعدة البيانات داخله تالفة. لا تعتمد عليه — أنشئ نسخة جديدة.";

@@ -18,9 +18,7 @@
     <string name="action_filter">Filter</string>
     <string name="action_export">Export</string>
     <string name="state_loading">Loading…</string>
-    <string name="state_saved">Saved</string>
     <string name="state_deleted">Deleted</string>
-    <string name="error_generic">Something went wrong</string>
     <string name="error_required">This field is required</string>
     <string name="error_number">Enter a number</string>
     <string name="onboarding_welcome_title">Set the app up for your trade</string>
@@ -90,6 +88,21 @@
     <string name="proj_name">Project name</string>
     <string name="proj_address">Address</string>
     <string name="proj_client">Client</string>
+    <string name="proj_parts">Parts of this job</string>
+    <string name="proj_add_part">Add a part</string>
+    <string name="proj_part_of">Part of</string>
+    <string name="proj_no_parts">Not broken into parts.</string>
+    <string name="proj_part_hint">A floor, a flat, a plot — whatever this job is made of.</string>
+    <string name="proj_street">Street and number</string>
+    <string name="proj_city">City</string>
+    <string name="proj_postal_code">Postal code</string>
+    <string name="proj_client_phone">Client phone</string>
+    <string name="proj_when">When it runs</string>
+    <string name="proj_no_date">Not set</string>
+    <string name="action_clear">Clear</string>
+    <string name="proj_where_and_who">Where it is, and who it is for</string>
+    <string name="proj_no_address">No address yet.</string>
+    <string name="proj_open_map">Map</string>
     <string name="proj_status">Status</string>
     <string name="proj_start">Start date</string>
     <string name="proj_due">Due date</string>
@@ -157,12 +170,16 @@
     <string name="update_notes">What changed</string>
     <string name="sch_title">Schedule</string>
     <string name="sch_new_block">New time block</string>
+    <string name="sch_assign">Assign</string>
+    <string name="sch_nobody">Nobody yet</string>
+    <string name="sch_unassign">Nobody</string>
     <string name="sch_start">Start</string>
     <string name="sch_end">End</string>
     <string name="sch_task">Task</string>
     <string name="sch_assignee">Assigned to</string>
     <string name="sch_project">Project</string>
     <string name="sch_check_in">Check in</string>
+    <string name="sch_which_job">Which job?</string>
     <string name="sch_check_out">Check out</string>
     <string name="sch_checked_in">Checked in</string>
     <string name="sch_empty">Nothing scheduled</string>
@@ -176,6 +193,7 @@
     <string name="saf_fail">Not done</string>
     <string name="saf_na">Not applicable</string>
     <string name="saf_sign_off">Sign off</string>
+    <string name="saf_sign_here">Sign here</string>
     <string name="saf_signed_by">Signed by</string>
     <string name="saf_blocked">A critical item is not done. Work must not start.</string>
     <string name="saf_references">Standards and regulations</string>
@@ -195,6 +213,22 @@
     <string name="set_audit_log">Activity log</string>
     <string name="set_export">Export my data</string>
     <string name="set_delete_data">Delete my account and data</string>
+    <!-- Privacy screen: the whole of it in one sentence -->
+    <string name="priv_lead">Everything you record stays on this phone.</string>
+    <string name="priv_where_title">Where your work is kept</string>
+    <string name="priv_where_body">Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.</string>
+    <string name="priv_network_title">The one thing that leaves the phone</string>
+    <string name="priv_network_body">When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.</string>
+    <string name="priv_none_title">What the app does not do</string>
+    <string name="priv_none_body">No analytics, no advertising and no tracking of any kind. Nothing is shared with anybody, because there is nowhere for it to go.</string>
+    <string name="priv_perm_title">What the permissions are for</string>
+    <string name="priv_perm_body">The camera takes the photographs you attach to a job, a snag or a violation, and they are saved on this phone. Internet access is used only for the update check above.</string>
+    <string name="priv_crew_title">If your firm installed this</string>
+    <string name="priv_crew_body">What you record can be seen by the people your role in the firm allows — that is what the roles are for. It is still only on the phones it was entered on.</string>
+    <string name="priv_delete_title">Removing it</string>
+    <string name="priv_delete_body">Settings → Delete everything empties the database on this phone. Because nothing ever left it, there is nothing anywhere else to ask for. A backup you took is a file you hold; delete it wherever you put it.</string>
+    <string name="priv_future_title">When this changes</string>
+    <string name="priv_future_body">A server is planned, so that phones can sync and a lost phone is not a lost site. Nothing goes to one until it exists, and this page will say so before anything does.</string>
     <string name="set_privacy">Privacy policy</string>
     <string name="set_terms">Terms of service</string>
     <string name="set_about">About</string>
@@ -222,7 +256,7 @@
     <string name="acc_personal_hint">One person, your own tools and jobs.</string>
     <string name="acc_company">A company</string>
     <string name="acc_company_hint">Several people, each seeing the part of the work that is theirs.</string>
-    <string name="acc_your_name">Your name</string>
+    <string name="acc_your_name">Full name</string>
     <string name="acc_company_name">Company name</string>
     <string name="acc_reg_number">Company number (optional)</string>
     <string name="acc_reg_hint">Goes on invoices. You can add it later.</string>
@@ -381,6 +415,7 @@
     <string name="ptw_issued_by">Issued by</string>
     <string name="ptw_precautions">Before work starts</string>
     <string name="ptw_issue">Issue the permit</string>
+    <string name="ptw_sign">Sign to issue</string>
     <string name="ptw_issue_blocked">Every precaution has to be ticked before this permit can be issued.</string>
     <string name="ptw_valid_from">Valid from</string>
     <string name="ptw_valid_to">Valid until</string>
@@ -429,6 +464,17 @@
     <string name="acc_sign_in_title">Sign in</string>
     <string name="acc_identifier">Username or ID number</string>
     <string name="acc_identifier_hint">Whichever your site office gave you. Both work.</string>
+    <string name="acc_username">Username</string>
+    <string name="acc_username_hint">What you will type to sign in. Short is better on a site.</string>
+    <string name="acc_phone">Phone number</string>
+    <string name="acc_phone_hint">How the site reaches you. Required.</string>
+    <string name="acc_email">Email address (optional)</string>
+    <string name="acc_phone_missing">A phone number is needed.</string>
+    <string name="acc_phone_not_a_number">That is not a phone number.</string>
+    <string name="acc_phone_too_short">That is too short to be a phone number.</string>
+    <string name="acc_phone_too_long">That is longer than any phone number.</string>
+    <string name="acc_phone_repeated">A number somebody can actually be reached on.</string>
+    <string name="acc_email_bad">That does not look like an email address.</string>
     <string name="acc_password">Password</string>
     <string name="acc_password_blank_hint">Leave blank if you were not given one.</string>
     <string name="acc_wrong_credentials">That does not match. Check with whoever set you up.</string>
@@ -820,6 +866,351 @@
     <string name="hv_lifts">Lifts never marked done</string>
     <string name="hv_pours">Pours never finished</string>
     <string name="hv_daily_logs">Daily logs never signed</string>
+    <!-- Alt text for the flag in the settings footer -->
+    <string name="about_flag">Flag of Israel</string>
+    <!-- Under the app name in the settings footer -->
+    <string name="about_edition">Israel edition — built to Israeli standards, terms and site rules</string>
+    <string name="wp_title">Work packages</string>
+    <string name="wp_empty">No work packages on this job yet</string>
+    <string name="wp_new">New work package</string>
+    <string name="wp_given">Given out</string>
+    <string name="wp_taken">Taken on</string>
+    <string name="wp_amount">Agreed amount</string>
+    <string name="wp_stage">Stage</string>
+    <string name="wp_scope">Scope of work</string>
+    <string name="wp_location">Where</string>
+    <string name="wp_accept">Accept</string>
+    <string name="wp_decline">Decline</string>
+    <string name="wp_start">Start work</string>
+    <string name="wp_submit">Submit for inspection</string>
+    <string name="wp_approve">Approve</string>
+    <string name="wp_reject">Send back</string>
+    <string name="wp_reject_reason">What needs correcting</string>
+    <string name="wp_reject_hint">A crew sent back with no reason has nothing to fix.</string>
+    <string name="wp_rejected_because">Sent back:</string>
+    <string name="wp_need_photo">Add a photograph before submitting</string>
+    <string name="wp_need_photo_hint">Approval happens in an office days later, by which time the wall is plastered.</string>
+    <string name="wp_invoice">Raise the application</string>
+    <string name="wp_approved_not_paid">Approved. Not paid — the application still has to run its terms.</string>
+    <string name="wp_status_draft">Draft</string>
+    <string name="wp_status_offered">Offered</string>
+    <string name="wp_status_accepted">Accepted</string>
+    <string name="wp_status_declined">Declined</string>
+    <string name="wp_status_progress">In progress</string>
+    <string name="wp_status_submitted">Awaiting inspection</string>
+    <string name="wp_status_rejected">Sent back</string>
+    <string name="wp_status_approved">Approved</string>
+    <string name="wp_status_cancelled">Cancelled</string>
+    <string name="wp_refused_side">Only the other side can do that</string>
+    <string name="wp_refused_state">Not possible from here</string>
+    <string name="wp_refused_party">This is not your agreement</string>
+    <string name="co_title">Company profile</string>
+    <string name="co_logo">Company mark</string>
+    <string name="co_name">Company name</string>
+    <string name="co_reg">Registration number</string>
+    <string name="co_email">Email</string>
+    <string name="co_phone">Phone</string>
+    <string name="co_website">Website</string>
+    <string name="co_address">Address</string>
+    <string name="co_licence">Contractor licence number</string>
+    <string name="co_classification">Classification</string>
+    <string name="co_licence_expires">Licence valid until</string>
+    <string name="co_visible_to_workers">Show to the crew</string>
+    <string name="co_visible_hint">Off means only management sees it. Nothing is published unless you turn it on.</string>
+    <string name="co_verified_note">Recording a licence marks you verified on this app. It is not a statement that you are licensed to do the work — that is between you and the regulator.</string>
+    <string name="party_client">Developer / client</string>
+    <string name="party_gc">General contractor</string>
+    <string name="party_first">First-tier subcontractor</string>
+    <string name="party_second">Crew leader / labour-only</string>
+    <string name="party_supplier">Supplier</string>
+    <string name="party_consultant">Consultant / supervisor</string>
+    <string name="party_title">Position on this job</string>
+    <string name="party_hint">What your firm is on this job, which is not what it is on the next one.</string>
+    <!-- Subtitle on the project screen link -->
+    <string name="wp_row_hint">What was handed out and what was taken on</string>
+    <string name="eng_title">Firms on this job</string>
+    <string name="eng_add">Bring a firm onto the job</string>
+    <string name="eng_name">Firm name</string>
+    <string name="eng_scope">What they are here to do</string>
+    <string name="eng_refused">Your position on this job cannot bring that one on.</string>
+    <string name="wp_payee">Who is doing it</string>
+    <string name="wp_title_field">What the package is</string>
+    <string name="eng_self">What is your firm on this job?</string>
+    <string name="eng_self_hint">Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.</string>
+    <string name="ct_title">Contracts</string>
+    <string name="ct_empty">No contracts on this job yet</string>
+    <string name="ct_new">New contract</string>
+    <string name="ct_row_hint">What was agreed, and with whom</string>
+    <string name="ct_scope">What it covers</string>
+    <string name="ct_original">Original amount</string>
+    <string name="ct_current">Amount in force</string>
+    <string name="ct_receivable">You are paid on this</string>
+    <string name="ct_payable">You pay on this</string>
+    <string name="ct_sign">Sign</string>
+    <string name="ct_signed_by">Signed by</string>
+    <string name="ct_unsigned">Not signed by both sides yet</string>
+    <string name="ct_amend">Propose a change</string>
+    <string name="ct_amend_amount">New amount</string>
+    <string name="ct_amend_reason">Why</string>
+    <string name="ct_amend_reason_hint">Somebody will ask in three years why this contract is worth what it is worth, and they were not there.</string>
+    <string name="ct_amend_history">Every figure this contract has been</string>
+    <string name="ct_amend_accept">Accept the change</string>
+    <string name="ct_amend_reject">Refuse the change</string>
+    <string name="ct_amend_pending">Waiting on the other side</string>
+    <string name="ct_amend_yours">You proposed this. The other side accepts or refuses it.</string>
+    <string name="ct_margin">Your margin on this job</string>
+    <string name="ct_margin_hint">What you are paid, less what you pay out. Only you can see this — it is not on anybody else’s screen.</string>
+    <string name="wp_claim_title">Approved and not yet claimed</string>
+    <string name="wp_claim_raise">Raise a payment application</string>
+    <string name="wp_claim_total">This application will claim</string>
+    <string name="wp_claim_cumulative">Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.</string>
+    <string name="wp_claim_none">Nothing new approved since the last application</string>
+    <string name="task_stage">Stage of the job</string>
+    <string name="task_stage_none">No stage</string>
+    <string name="task_stage_hint">Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.</string>
+    <string name="pay_breakdown">What this claim covers</string>
+    <string name="pay_breakdown_hint">Every approved work package counted in the figure above. A claim is cumulative, so packages from earlier applications are listed again.</string>
+    <string name="pay_breakdown_none">Raised by hand — no work packages attached.</string>
+    <!-- Audit action: a record was exported out of the app -->
+    <string name="audit_exported">Exported</string>
+    <!-- Audit action: old entries were removed -->
+    <string name="audit_purged">Purged</string>
+    <string name="audit_title">Audit trail</string>
+    <string name="audit_hint">Every change of consequence, in the order it happened. The trail cannot be edited from inside the app.</string>
+    <string name="audit_empty">Nothing recorded yet.</string>
+    <string name="audit_verify">Check the trail</string>
+    <string name="audit_intact">Intact</string>
+    <string name="audit_intact_detail">%1$d entries checked and every one adds up.</string>
+    <string name="audit_unchained">%1$d older entries carry no signature and cannot be checked. They were written before this version.</string>
+    <string name="audit_failed">The trail does not add up</string>
+    <string name="audit_fault_altered">Entry %1$d says something other than what was signed.</string>
+    <string name="audit_fault_broken">Entry %1$d does not follow the one before it. Something was removed or replaced.</string>
+    <string name="audit_fault_missing">An entry before %1$d is gone.</string>
+    <string name="audit_window">Checks the most recent %1$d entries.</string>
+    <string name="audit_not_checked">Not checked yet.</string>
+    <string name="audit_export">Export the trail</string>
+    <string name="audit_col_seq">No.</string>
+    <string name="audit_col_when">When</string>
+    <string name="audit_col_who">Who</string>
+    <string name="audit_col_action">Action</string>
+    <string name="audit_col_what">What happened</string>
+    <string name="audit_col_signature">Signature</string>
+    <string name="audit_export_checked">Checked at export</string>
+    <string name="audit_export_note">Signatures are shortened in the PDF. The CSV carries them in full, and docs/AUDIT.md says how to recompute them.</string>
+    <string name="sec_encrypted">On — the records on this device are encrypted</string>
+    <string name="sec_encrypted_detail">The key is held in this device\'s secure hardware and never leaves it. The database file cannot be read off the phone.</string>
+    <string name="sec_not_encrypted">Off — the records on this device are NOT encrypted</string>
+    <string name="sec_not_encrypted_detail">This device could not load the encryption library, so the app opened the records unprotected rather than refuse to start. ID numbers, photographs and signatures can be read by anyone with access to this phone\'s files. Report this device before using it for personnel data.</string>
+    <string name="ret_title">Keep the audit trail for</string>
+    <string name="ret_hint">How long records must be kept is a legal question, and the answer differs for a payment record, a safety inspection and a worker\'s ID number. The app does not choose for you: nothing is ever deleted until you set a period, and a purge records what it removed.</string>
+    <string name="ret_keep_all">Keep everything</string>
+    <string name="ret_1_year">1 year</string>
+    <string name="ret_3_years">3 years</string>
+    <string name="ret_7_years">7 years</string>
+    <string name="ret_apply">Apply now</string>
+    <string name="ret_applied">Removed %1$d entries. The purge is itself recorded in the trail.</string>
+    <string name="ret_nothing">Nothing was old enough to remove.</string>
+    <string name="inc_title">Incidents</string>
+    <string name="inc_add">Report an incident</string>
+    <string name="inc_empty">Nothing reported.</string>
+    <string name="inc_hint">Write it down while it is fresh, including the near misses. A near miss is the same accident with better luck.</string>
+    <string name="inc_what">What happened</string>
+    <string name="inc_severity">How bad</string>
+    <string name="inc_near_miss">Near miss</string>
+    <string name="inc_minor">Minor — first aid</string>
+    <string name="inc_serious">Serious — hospital or off work</string>
+    <string name="inc_fatal">Fatal</string>
+    <string name="inc_escalate">This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.</string>
+    <string name="inc_reported_by">Reported by</string>
+    <string name="acc_have_account">I already have an account</string>
+    <string name="acc_none_on_device">There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.</string>
+    <string name="role_safety_officer">Safety officer</string>
+    <string name="role_safety_officer_hint">Records violations and incidents against named people. Sees who somebody is, never what they are paid.</string>
+    <string name="find_by_id">ID number</string>
+    <string name="find_by_id_hint">Type the number from their card. Names on a site repeat; this does not.</string>
+    <string name="find_nobody">No one has that ID number. They have to create an account before they can be added.</string>
+    <string name="vio_title">Violations</string>
+    <string name="vio_new">Record a violation</string>
+    <string name="vio_none">Nothing recorded.</string>
+    <string name="vio_what">What was wrong</string>
+    <string name="vio_cost">Cost, if any</string>
+    <string name="vio_cost_hint">Leave empty for no charge. Empty and zero are not the same.</string>
+    <string name="vio_evidence">Photograph or video</string>
+    <string name="vio_confirm">Confirm</string>
+    <string name="vio_confirm_warning">Once confirmed this cannot be changed or withdrawn, and the person it names will see it.</string>
+    <string name="vio_draft">Draft — only you can see this</string>
+    <string name="vio_confirmed">Confirmed</string>
+    <string name="vio_cancelled">Cancelled</string>
+    <string name="vio_need_person">Choose who this is against.</string>
+    <string name="vio_need_evidence">Attach a photograph or a video. A violation with a cost and nothing to show is one person\'s word.</string>
+    <string name="vio_need_description">Write what was wrong.</string>
+    <!-- Row on a purchase order: when the delivery is expected -->
+    <string name="po_due">Due</string>
+    <!-- The supplier has not said when it is coming -->
+    <string name="po_no_due">The supplier has not said</string>
+    <!-- Dialog title when placing an order: ask for the delivery date -->
+    <string name="po_when_due">When is it due?</string>
+    <!-- Field on a failed checklist row: describe the failure -->
+    <string name="saf_what_is_wrong">What is wrong</string>
+    <!-- Hint under the field on a failed check -->
+    <string name="saf_fail_needs_words">A failed check with no words is a row nobody can act on six months later.</string>
+    <!-- Button on a failed checklist row: attach a photograph -->
+    <string name="saf_photograph">Photograph it</string>
+    <!-- Row on the violation draft: which job it happened on -->
+    <string name="vio_job">Which job</string>
+    <!-- The violation was not on a job — a yard, a van, the road -->
+    <string name="vio_no_job">Not on a job</string>
+    <!-- Dialog: the account may not write violations for this company -->
+    <string name="vio_refused_officer">You are not allowed to record violations here.</string>
+    <!-- Dialog: signed in, but a member of no company at all -->
+    <string name="vio_refused_books">You are not on any company\'s books. Create a company or join one, then record it.</string>
+    <!-- Dialog: the violation is already confirmed or cancelled -->
+    <string name="vio_refused_state">This one has already been confirmed or cancelled. It cannot be changed.</string>
+    <!-- Dialog: confirm was refused because something is missing -->
+    <string name="vio_refused_incomplete">Something is still missing: who it is against, what was wrong, and a photograph or a video.</string>
+    <!-- Dialog: a negative cost was rejected -->
+    <string name="vio_refused_cost">A cost cannot be less than zero. Leave it empty for no charge.</string>
+    <!-- Dialog: the write failed for a reason the app has no better sentence for -->
+    <string name="vio_refused_unknown">That could not be saved.</string>
+    <!-- Screen title: signing people onto the site at the gate -->
+    <string name="gate_title">Site entry</string>
+    <!-- Section header above the ID number field -->
+    <string name="gate_find">Who is at the gate</string>
+    <!-- Under the ID field. Says the number is checked against a face. -->
+    <string name="gate_find_hint">The number on their card. Their photograph comes back with it.</string>
+    <!-- No account has that ID number. -->
+    <string name="gate_not_found">Nobody has that ID number. They sign up on their own phone first, then come back.</string>
+    <!-- Under the found person's card. %1$s is a role name, e.g. Worker. -->
+    <string name="gate_grants">Will be signed onto the site as: %1$s. Their rank is set afterwards by whoever engaged them.</string>
+    <!-- The person found is already on this company's books. -->
+    <string name="gate_already_in">Already signed onto this site. Nothing to do.</string>
+    <!-- Section header above the signature pad -->
+    <string name="gate_sign">Their signature</string>
+    <!-- Explains what the person at the gate is signing for. -->
+    <string name="gate_sign_body">Hand them the phone. They sign to say they have been briefed on this site\'s safety rules.</string>
+    <!-- Why the admit button is disabled. -->
+    <string name="gate_need_signature">Not signed yet.</string>
+    <!-- The button that puts the person onto the site. -->
+    <string name="gate_admit">Sign them onto the site</string>
+    <!-- Confirmation after an admission. %1$s is the person's name. -->
+    <string name="gate_admitted">%1$s is on the site.</string>
+    <!-- Shown to a role that may not admit people. -->
+    <string name="gate_not_yours">Signing people onto the site is not one of yours. The site manager or the safety officer does it.</string>
+    <!-- Entry point on the People screen that opens the gate. -->
+    <string name="people_gate">Sign someone onto the site</string>
+    <!-- Button that attaches a photo or video to an incident. %1$d is how many are attached. -->
+    <string name="inc_evidence">Photograph or video (%1$d)</string>
+    <!-- Why the save button is disabled: no photo or video attached yet. -->
+    <string name="inc_need_evidence">Attach a photograph or a video. By the time this is argued about, the ladder has been moved.</string>
+    <!-- Why the save button is disabled: nothing written. -->
+    <string name="inc_need_description">Write what happened.</string>
+    <!-- Optional cost field on an incident report. -->
+    <string name="inc_cost">Cost, if known</string>
+    <!-- Under the cost field. Explains that blank and zero differ. -->
+    <string name="inc_cost_hint">Leave it empty if nobody knows yet. Empty and zero are not the same.</string>
+    <!-- The cost field holds something that is not a number, or is negative. -->
+    <string name="inc_bad_cost">That is not an amount. Leave it empty if you do not know.</string>
+    <!-- The reconciliation covers only the people this viewer may price. -->
+    <string name="ts_not_whole_job">This covers only the people whose pay you may see, so it is not the job\'s whole labour.</string>
+    <!-- Empty state when every person on the job is above this viewer in the chain. -->
+    <string name="ts_all_withheld">None of the hours on this job are yours to price.</string>
+    <!-- Under the empty state: explains the chain of command rule. -->
+    <string name="ts_withheld_hint">You see the pay of the people who answer to you, and your own. Nobody sees their own boss\'s.</string>
+    <!-- Label on the member sheet: who this person answers to. -->
+    <string name="people_reports_to">Answers to</string>
+    <!-- Shown when a member has no manager set. -->
+    <string name="people_reports_to_nobody">Nobody yet — the owner</string>
+    <!-- Explains what setting a manager does. -->
+    <string name="people_reports_hint">Whoever someone answers to can see what they are paid. Nobody else can, including people beside them and above them.</string>
+    <!-- Refusal: the actor is not above this person in the chain. -->
+    <string name="people_chain_not_yours">Only somebody above them can move them, and you are not.</string>
+    <!-- Refusal: you cannot change who you answer to. -->
+    <string name="people_chain_yourself">You cannot move yourself. Whoever you answer to does that.</string>
+    <!-- Refusal: the move would put a circle in the chain. -->
+    <string name="people_chain_loop">That would put a circle in the chain: they are already above the person you picked.</string>
+    <!-- Refusal: the person or the manager is not on this company's books. -->
+    <string name="people_chain_unknown">Not on this company\'s books.</string>
+    <!-- Screen title: the crew, listed by trade, with faces -->
+    <string name="crew_title">Who is on site</string>
+    <!-- No one on the books matches the chosen trade. -->
+    <string name="crew_none">Nobody on the books for that trade.</string>
+    <!-- Label for the trade a person works in. -->
+    <string name="crew_trade">Trade</string>
+    <!-- Label for the date somebody signed the safety induction. -->
+    <string name="crew_inducted">Inducted</string>
+    <!-- Says plainly why a profile shows no wages, so an absence is not read as a gap. -->
+    <string name="crew_no_money">Nothing about pay here. Only somebody above them in the chain of command sees that.</string>
+    <string name="crew_contact">Contact</string>
+    <string name="crew_call">Call</string>
+    <string name="crew_whatsapp">WhatsApp</string>
+    <string name="crew_email">Email</string>
+    <string name="crew_no_phone">No phone number on file for this person.</string>
+    <!-- Button and dialog title: fix what the crew list says about somebody -->
+    <string name="crew_correct">Correct these details</string>
+    <!-- Why the ID number cannot be edited once it is set -->
+    <string name="crew_id_locked">The ID number is set and cannot be changed here. It is on the gate list and on the induction record — ask the office.</string>
+    <!-- Refusal: the name field was left empty -->
+    <string name="crew_need_name">A name is needed. A row with nobody\'s name on it is a row nobody can read.</string>
+    <!-- Refusal: that person is not a member of the company being worked in -->
+    <string name="crew_not_on_books">They are not on this company\'s books.</string>
+    <!-- Refusal: the account has gone, or was removed -->
+    <string name="crew_no_such_person">That person\'s record could not be found.</string>
+    <!-- Refusal: the correction failed for a reason with no better sentence -->
+    <string name="crew_correct_failed">That could not be saved.</string>
+    <!-- Nobody has confirmed a violation against this person. -->
+    <string name="crew_no_violations">Nothing confirmed against them.</string>
+    <!-- Entry point that opens the crew list, by trade, with faces. -->
+    <string name="crew_open">Find someone by trade</string>
+    <!-- Section header on the dashboard: recent changes this person may see -->
+    <string name="home_changes">What changed</string>
+    <!-- Settings section: taking the record off the phone and putting it back -->
+    <string name="backup_title">Backup</string>
+    <!-- Explains why a backup matters when everything is on one device. -->
+    <string name="backup_why">Everything is on this phone and nothing is on a server. Lose the phone and you lose the site diary, unless you have a backup.</string>
+    <!-- Button that writes a backup file. -->
+    <string name="backup_take">Back up</string>
+    <!-- Button that opens a backup file to restore from. -->
+    <string name="backup_restore">Restore</string>
+    <!-- Shown while a backup or restore is running. -->
+    <string name="backup_working">Working. This takes a while, because the photographs go in too.</string>
+    <!-- Backup written. %1$d is how many photos and videos went in. -->
+    <string name="backup_done">Backed up, with %1$d photographs and videos. Keep the file somewhere that is not this phone.</string>
+    <!-- A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. -->
+    <string name="backup_staged">Ready to restore the backup from %1$s. Close the app completely and open it again to finish. Nothing has changed yet.</string>
+    <!-- The backup predates the installed version; migrations will run. -->
+    <string name="backup_older_version">It was taken by an older version. It will be brought up to date as it is restored.</string>
+    <!-- Abandons a staged restore before the restart. -->
+    <string name="backup_cancel_restore">Do not restore after all</string>
+    <!-- Shown at launch after a restore was applied. -->
+    <string name="backup_restored">Restored from a backup.</string>
+    <!-- The chosen file is not a backup from this app. -->
+    <string name="backup_refused_file">That is not a backup from this app.</string>
+    <!-- The backup was written by a newer version of the app. -->
+    <string name="backup_newer_app">That backup was made by a newer version of the app. Update first, then restore it.</string>
+    <!-- The restore failed part way and the original was put back. -->
+    <string name="backup_rolled_back">The restore did not finish, and everything you had is still here. Try again.</string>
+    <!-- Generic failure: wrong passphrase or damaged file, deliberately not distinguished. -->
+    <string name="backup_failed">That did not work. Either the passphrase is wrong or the file is damaged.</string>
+    <!-- Label for the backup passphrase field. -->
+    <string name="backup_passphrase">Passphrase</string>
+    <!-- Second passphrase field, to catch a typo. -->
+    <string name="backup_passphrase_again">Type it again</string>
+    <!-- Dialog title when opening a backup. -->
+    <string name="backup_passphrase_open">The passphrase for this backup</string>
+    <!-- There is no recovery. Said plainly, before the field. -->
+    <string name="backup_passphrase_warning">Write this down somewhere safe. Nobody can reset it, and without it the backup cannot be opened by anyone, including us.</string>
+    <!-- Passphrase below the minimum length. -->
+    <string name="backup_too_short">At least 12 characters. This locks a file somebody could copy and take away.</string>
+    <!-- The two passphrase fields differ. -->
+    <string name="backup_no_match">The two do not match.</string>
+    <!-- Long but with too few distinct characters. -->
+    <string name="backup_too_plain">Too few different characters. Length alone is not strength.</string>
+    <!-- Button that opens a backup to see what is in it, without restoring. -->
+    <string name="backup_check">Check a backup</string>
+    <!-- What a checked backup holds. %1$s is when it was taken, then jobs, people, photos. -->
+    <string name="backup_contents">Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.</string>
+    <!-- The archive opened but the database inside failed SQLite's integrity check. -->
+    <string name="backup_damaged">The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -883,5 +1274,13 @@
     <plurals name="pay_days_overdue">
         <item quantity="one">%d day overdue</item>
         <item quantity="other">%d days overdue</item>
+    </plurals>
+    <plurals name="ts_withheld">
+        <item quantity="one">%d person on this job is not yours to price.</item>
+        <item quantity="other">%d people on this job are not yours to price.</item>
+    </plurals>
+    <plurals name="crew_no_trade">
+        <item quantity="one">%d person has no trade recorded and is on none of these lists.</item>
+        <item quantity="other">%d people have no trade recorded and are on none of these lists.</item>
     </plurals>
 </resources>

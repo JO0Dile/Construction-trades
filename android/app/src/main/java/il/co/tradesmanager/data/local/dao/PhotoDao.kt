@@ -25,6 +25,35 @@ interface PhotoDao {
     )
     fun observeForAny(ownerId: String, ownerTypes: List<String>): Flow<List<PhotoEntity>>
 
+    /**
+     * How many pictures one thing has.
+     *
+     * Asked of the database rather than counted from a list the caller is
+     * holding. A rule that rests on "there is evidence" must not be satisfied
+     * by a caller's own arithmetic — that is exactly how the work-package
+     * submit rule passed for weeks while the screen handed it a one.
+     */
+    @Query("SELECT COUNT(*) FROM photos WHERE ownerType = :ownerType AND ownerId = :ownerId")
+    suspend fun countFor(ownerType: String, ownerId: String): Int
+
+    /**
+     * The most recent one, for owners that have at most one thing worth
+     * showing -- a person's face being the case this exists for.
+     *
+     * Newest rather than only, because somebody who retakes their photograph
+     * has two rows and the second one is the answer. Keeping the first is
+     * deliberate: it is what a register from March showed.
+     */
+    @Query(
+        """
+        SELECT * FROM photos
+        WHERE ownerType = :ownerType AND ownerId = :ownerId
+        ORDER BY capturedAt DESC
+        LIMIT 1
+        """,
+    )
+    suspend fun newestFor(ownerType: String, ownerId: String): PhotoEntity?
+
     @Query("SELECT * FROM photos WHERE id = :id")
     suspend fun photo(id: String): PhotoEntity?
 

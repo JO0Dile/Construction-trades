@@ -43,11 +43,6 @@ class PhotoRepository(
         const val INCIDENT = "incident"
 
         /**
-         * The two identity pictures: a face for the gate, and the ID document
-         * itself. Both stay on the device — the app has no server to send them
-         * to, and an ID document is not something to be casual about.
-         */
-        /**
          * A snag's two pictures: the one that raised it, and the one that says
          * it was put right. Two owner types on the same table rather than two
          * columns on the snag, so a defect can carry three photos of an awkward
@@ -56,8 +51,38 @@ class PhotoRepository(
         const val SNAG_RAISED = "snag.raised"
         const val SNAG_FIXED = "snag.fixed"
 
+        /**
+         * What a failed check rests on.
+         *
+         * An owner type rather than a column on the row — the same call the
+         * snags made two entries up, for the same reason. An inspector
+         * photographs one bad scaffold tie three times from three angles,
+         * and a schema with room for one of them throws two away.
+         */
+        const val CHECKLIST_FAIL = "checklist.fail"
+
+        /**
+         * The two identity pictures: a face for the gate, and the ID document
+         * itself. Both stay on the device — the app has no server to send them
+         * to, and an ID document is not something to be casual about.
+         */
         const val ACCOUNT_PHOTO = "account.photo"
         const val ACCOUNT_ID_DOCUMENT = "account.id_document"
+
+        /**
+         * What a violation rests on. A still or a video; see
+         * PhotoEntity.mediaType.
+         */
+        const val VIOLATION = "violation"
+
+        /**
+         * Proof that a work package was actually done.
+         *
+         * Demanded at submission rather than at approval, because approval
+         * happens in an office days later and by then the wall is plastered
+         * and there is nothing left to photograph.
+         */
+        const val WORK_PACKAGE = "assignment.proof"
 
         val projectAny = listOf(PROJECT_PLAN, PROJECT_PHOTO)
     }
@@ -71,8 +96,41 @@ class PhotoRepository(
     fun observeFor(ownerType: String, ownerId: String): Flow<List<PhotoEntity>> =
         dao.observeFor(ownerType, ownerId)
 
-    fun observeForOwners(ownerType: String, ownerIds: List<String>): Flow<List<PhotoEntity>> =
-        dao.observeForOwners(ownerType, ownerIds)
+    /** How many pictures or videos one thing has, straight from the table. */
+    suspend fun countFor(ownerType: String, ownerId: String): Int =
+        dao.countFor(ownerType, ownerId)
+
+    /**
+     * Somebody's face, as a URI, or null if they never took one.
+     *
+     * Here rather than at each screen because three places ask the same
+     * question -- the gate, the violation register and the People list -- and
+     * a screen that answers it for itself is a screen that can answer it with
+     * null forever without anybody noticing, which is what both identity cards
+     * in this app did until this existed.
+     */
+    suspend fun faceOf(accountId: String): String? =
+        if (accountId.isBlank()) null else dao.newestFor(Owner.ACCOUNT_PHOTO, accountId)?.uri
+
+    /**
+     * The newest picture each of [ownerIds] has, for a list of thumbnails.
+     *
+     * Returns the map rather than the rows, deliberately. The rows arrive
+     * newest first, and turning them into a map with `associate` keeps the
+     * *last* entry for a repeated key -- which is the oldest photo, so
+     * anything photographed twice shows the picture it replaced. That bug
+     * shipped once already in `newestPerOwner` below and had been sitting
+     * here a second time, in the snag list, written the same obvious wrong
+     * way. Handing back a map nobody has to fold themselves is the only
+     * version of this that cannot be got wrong again.
+     */
+    fun observeNewestForOwners(
+        ownerType: String,
+        ownerIds: List<String>,
+    ): Flow<Map<String, String>> =
+        dao.observeForOwners(ownerType, ownerIds).map { photos ->
+            photos.groupBy { it.ownerId }.mapValues { (_, forOwner) -> forOwner.first().uri }
+        }
 
     /**
      * A cover image per project: the site plan if there is one, otherwise the
@@ -91,9 +149,29 @@ class PhotoRepository(
 
     /** Newest photo per item, for stock thumbnails. */
     fun observeItemThumbnails(): Flow<Map<String, String>> =
-        dao.observeAllOfType(Owner.INVENTORY_ITEM).map { photos ->
-            // Already ordered newest first, so the first per owner wins.
-            photos.associate { it.ownerId to it.uri }
+        newestPerOwner(Owner.INVENTORY_ITEM)
+
+    /**
+     * Account id -> that person's face, for a list of them.
+     *
+     * One query for the whole list rather than one per row. A list of faces
+     * where each row fetches its own flickers its way down the screen, which
+     * is the opposite of useful when somebody is scanning it for a man who has
+     * just walked away from them.
+     */
+    fun observeFaces(): Flow<Map<String, String>> = newestPerOwner(Owner.ACCOUNT_PHOTO)
+
+    /**
+     * The newest picture each owner has, or nothing.
+     *
+     * The rows arrive newest first, and the first of each owner is the answer.
+     * `associate` was doing this and getting it backwards -- it keeps the last
+     * entry for a repeated key, so every item that had ever been
+     * re-photographed showed the picture it was replacing, permanently.
+     */
+    private fun newestPerOwner(ownerType: String): Flow<Map<String, String>> =
+        dao.observeAllOfType(ownerType).map { photos ->
+            photos.groupBy { it.ownerId }.mapValues { (_, theirs) -> theirs.first().uri }
         }
 
     /**
@@ -129,7 +207,22 @@ class PhotoRepository(
         store(id, file, ownerType, ownerId, actorName, note, latitude, longitude)
     }
 
-    /** Copies a gallery pick into app storage and records it. */
+    /** What a stored file is. Kept beside the row; see PhotoEntity.mediaType. */
+    object MediaType {
+        const val IMAGE = "image"
+        const val VIDEO = "video"
+    }
+
+    /**
+     * Copies something the user picked into the app's own storage.
+     *
+     * Whether it is a still or a video is asked of the content resolver rather
+     * than taken as a parameter. A caller that says "this is a photograph"
+     * about an mp4 would have it written to a .jpg and put through the
+     * watermarker, and the evidence a violation rests on would arrive
+     * corrupted — the caller being wrong is not a hypothetical in this
+     * codebase.
+     */
     suspend fun importPhoto(
         source: Uri,
         ownerType: String,
@@ -137,8 +230,16 @@ class PhotoRepository(
         actorName: String,
         note: String? = null,
     ): PhotoEntity? = withContext(Dispatchers.IO) {
+        val mime = context.contentResolver.getType(source).orEmpty()
+        val isVideo = mime.startsWith("video/")
+        val extension = when {
+            isVideo -> mime.substringAfter('/')
+                .takeIf { it.isNotBlank() && it.all(Char::isLetterOrDigit) }
+                ?: "mp4"
+            else -> "jpg"
+        }
         val id = UUID.randomUUID().toString()
-        val file = File(photoDir, "$id.jpg")
+        val file = File(photoDir, "$id.$extension")
         val copied = runCatching {
             context.contentResolver.openInputStream(source)?.use { input ->
                 file.outputStream().use { output -> input.copyTo(output) }
@@ -150,7 +251,17 @@ class PhotoRepository(
             file.delete()
             return@withContext null
         }
-        store(id, file, ownerType, ownerId, actorName, note, null, null)
+        store(
+            id = id,
+            file = file,
+            ownerType = ownerType,
+            ownerId = ownerId,
+            actorName = actorName,
+            note = note,
+            latitude = null,
+            longitude = null,
+            mediaType = if (isVideo) MediaType.VIDEO else MediaType.IMAGE,
+        )
     }
 
     private suspend fun store(
@@ -162,6 +273,7 @@ class PhotoRepository(
         note: String?,
         latitude: Double?,
         longitude: Double?,
+        mediaType: String = MediaType.IMAGE,
     ): PhotoEntity {
         val capturedAt = System.currentTimeMillis()
 
@@ -170,7 +282,12 @@ class PhotoRepository(
         // emailed to a loss adjuster arrives as a picture of a wall unless the
         // date and place came with it. Identity photographs are left alone;
         // see PhotoStamp.appliesTo.
-        if (PhotoStamp.appliesTo(ownerType)) {
+        // Video is never watermarked. Watermark.burn decodes a bitmap and
+        // writes it back; handed an mp4 it would destroy the file, which for a
+        // violation is the evidence itself. A video therefore carries no
+        // burnt-in stamp and its provenance rests on the row beside it —
+        // worth knowing before anybody relies on one in an argument.
+        if (mediaType != MediaType.VIDEO && PhotoStamp.appliesTo(ownerType)) {
             Watermark.burn(
                 file = file,
                 lines = PhotoStamp.lines(
@@ -193,6 +310,7 @@ class PhotoRepository(
             latitude = latitude,
             longitude = longitude,
             note = note,
+            mediaType = mediaType,
         )
         dao.upsert(photo)
         audit.record("photo", id, AuditTrail.Action.CREATE, actorName, "$ownerType $ownerId")
