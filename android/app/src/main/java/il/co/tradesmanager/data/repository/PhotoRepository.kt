@@ -102,8 +102,25 @@ class PhotoRepository(
     suspend fun faceOf(accountId: String): String? =
         if (accountId.isBlank()) null else dao.newestFor(Owner.ACCOUNT_PHOTO, accountId)?.uri
 
-    fun observeForOwners(ownerType: String, ownerIds: List<String>): Flow<List<PhotoEntity>> =
-        dao.observeForOwners(ownerType, ownerIds)
+    /**
+     * The newest picture each of [ownerIds] has, for a list of thumbnails.
+     *
+     * Returns the map rather than the rows, deliberately. The rows arrive
+     * newest first, and turning them into a map with `associate` keeps the
+     * *last* entry for a repeated key -- which is the oldest photo, so
+     * anything photographed twice shows the picture it replaced. That bug
+     * shipped once already in `newestPerOwner` below and had been sitting
+     * here a second time, in the snag list, written the same obvious wrong
+     * way. Handing back a map nobody has to fold themselves is the only
+     * version of this that cannot be got wrong again.
+     */
+    fun observeNewestForOwners(
+        ownerType: String,
+        ownerIds: List<String>,
+    ): Flow<Map<String, String>> =
+        dao.observeForOwners(ownerType, ownerIds).map { photos ->
+            photos.groupBy { it.ownerId }.mapValues { (_, forOwner) -> forOwner.first().uri }
+        }
 
     /**
      * A cover image per project: the site plan if there is one, otherwise the
