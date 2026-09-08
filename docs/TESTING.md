@@ -9,7 +9,7 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.14.0 — and what to try first
+## What is new in 0.14.1 — and what to try first
 
 ### The backup format changed, and why you should care
 
@@ -62,6 +62,27 @@ file can no longer be edited without breaking it.
 
 Nothing sends a code to that number yet. That needs a server, and there is
 not one — see the note at the end of this section.
+
+### The permit, the checklist and the talk are signed now
+
+All three took a signature, all three had every caller passing `null` since
+the day they were built, and the signature pad they needed has existed the
+whole time and is used on the gate. So the three documents you would actually
+be asked to produce carried a typed name and nothing else.
+
+- [ ] **Issue a permit to work.** It will not issue until somebody signs. Every
+      other field in that dialog has a sensible default; this one has none on
+      purpose — a permit is the authority to do the work, and the signature is
+      what makes it one.
+- [ ] **Sign off a safety checklist.** A pad appears above the button. It also
+      now records *which account* signed, not only the typed name — two men on
+      a site share a name often enough that the name alone cannot say which of
+      them walked the scaffold.
+- [ ] **Sign somebody in to a toolbox talk.** Tapping a crew member's chip now
+      *selects* them rather than adding them on the spot; then they sign, then
+      you confirm. It is a step slower and it is the whole point: a register a
+      foreman can tick without passing the phone over is a register that proves
+      nothing.
 
 ### A job can be made of parts
 

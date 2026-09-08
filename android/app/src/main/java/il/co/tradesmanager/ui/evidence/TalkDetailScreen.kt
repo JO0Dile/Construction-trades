@@ -21,7 +21,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SuggestionChip
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -44,6 +44,7 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.LoadingState
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.SignaturePad
 import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLocale
 import java.time.Instant
@@ -164,9 +165,9 @@ fun TalkDetailScreen(
             crew = crew,
             alreadySigned = attendees.mapNotNull { it.accountId }.toSet(),
             onDismiss = { signingIn = false },
-            onSignIn = { accountId, name ->
+            onSignIn = { accountId, name, signature ->
                 signingIn = false
-                viewModel.signIn(accountId, name)
+                viewModel.signIn(accountId, name, signature)
             },
         )
     }
@@ -183,10 +184,13 @@ private fun SignInDialog(
     crew: List<AccountEntity>,
     alreadySigned: Set<String>,
     onDismiss: () -> Unit,
-    onSignIn: (accountId: String?, name: String) -> Unit,
+    onSignIn: (accountId: String?, name: String, signature: String) -> Unit,
 ) {
     var typed by remember { mutableStateOf("") }
+    var picked by remember { mutableStateOf<AccountEntity?>(null) }
+    var signature by remember { mutableStateOf("") }
     val remaining = crew.filter { it.id !in alreadySigned }
+    val name = picked?.displayName ?: typed.trim()
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -199,10 +203,19 @@ private fun SignInDialog(
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
+                    // Picks who, rather than signing them in. Tapping a chip
+                    // used to add them on the spot, which is a foreman ticking
+                    // names -- fast, and worth nothing as a register. Choosing
+                    // is one act and signing is the next, the same order the
+                    // gate uses and for the same reason.
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         remaining.forEach { account ->
-                            SuggestionChip(
-                                onClick = { onSignIn(account.id, account.displayName) },
+                            FilterChip(
+                                selected = picked?.id == account.id,
+                                onClick = {
+                                    picked = if (picked?.id == account.id) null else account
+                                    if (picked != null) typed = ""
+                                },
                                 label = { Text(account.displayName) },
                             )
                         }
@@ -215,17 +228,23 @@ private fun SignInDialog(
                 )
                 OutlinedTextField(
                     value = typed,
-                    onValueChange = { typed = it },
+                    onValueChange = { typed = it; if (it.isNotBlank()) picked = null },
                     label = { Text(stringResource(R.string.tbt_name)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )
+                Text(
+                    text = stringResource(R.string.saf_sign_here),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                SignaturePad(onSignatureChange = { signature = it }, height = 140.dp)
             }
         },
         confirmButton = {
             TextButton(
-                enabled = typed.isNotBlank(),
-                onClick = { onSignIn(null, typed.trim()) },
+                enabled = name.isNotBlank() && signature.isNotBlank(),
+                onClick = { onSignIn(picked?.id, name, signature) },
             ) {
                 Text(stringResource(R.string.action_add))
             }
