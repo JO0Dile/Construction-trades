@@ -1078,9 +1078,9 @@
       "ar": "عدة أشخاص، كل منهم يرى الجزء الخاص به من العمل."
     },
     "acc_your_name": {
-      "en": "Your name",
-      "he": "השם שלך",
-      "ar": "اسمك"
+      "en": "Full name",
+      "he": "שם מלא",
+      "ar": "الاسم الكامل"
     },
     "acc_company_name": {
       "en": "Company name",
@@ -2107,6 +2107,16 @@
       "en": "Whichever your site office gave you. Both work.",
       "he": "מה שקיבלתם ממשרד האתר. שניהם עובדים.",
       "ar": "أيهما أعطاك مكتب الموقع. كلاهما يصلح."
+    },
+    "acc_username": {
+      "en": "Username",
+      "he": "שם משתמש",
+      "ar": "اسم المستخدم"
+    },
+    "acc_username_hint": {
+      "en": "What you will type to sign in. Short is better on a site.",
+      "he": "מה שתקלידו כדי להיכנס. קצר עדיף באתר.",
+      "ar": "ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع."
     },
     "acc_password": {
       "en": "Password",

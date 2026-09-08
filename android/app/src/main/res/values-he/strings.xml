@@ -212,7 +212,7 @@
     <string name="acc_personal_hint">אדם אחד, הכלים והעבודות שלך.</string>
     <string name="acc_company">חברה</string>
     <string name="acc_company_hint">כמה אנשים, כל אחד רואה את החלק שלו בעבודה.</string>
-    <string name="acc_your_name">השם שלך</string>
+    <string name="acc_your_name">שם מלא</string>
     <string name="acc_company_name">שם החברה</string>
     <string name="acc_reg_number">ח.פ. / ע.מ. (לא חובה)</string>
     <string name="acc_reg_hint">מופיע בחשבוניות. אפשר להוסיף מאוחר יותר.</string>
@@ -418,6 +418,8 @@
     <string name="acc_sign_in_title">כניסה</string>
     <string name="acc_identifier">שם משתמש או מספר זהות</string>
     <string name="acc_identifier_hint">מה שקיבלתם ממשרד האתר. שניהם עובדים.</string>
+    <string name="acc_username">שם משתמש</string>
+    <string name="acc_username_hint">מה שתקלידו כדי להיכנס. קצר עדיף באתר.</string>
     <string name="acc_password">סיסמה</string>
     <string name="acc_password_blank_hint">השאירו ריק אם לא קיבלתם סיסמה.</string>
     <string name="acc_wrong_credentials">אין התאמה. בדקו מול מי שפתח לכם את החשבון.</string>

@@ -212,7 +212,7 @@
     <string name="acc_personal_hint">شخص واحد، أدواتك وأعمالك.</string>
     <string name="acc_company">شركة</string>
     <string name="acc_company_hint">عدة أشخاص، كل منهم يرى الجزء الخاص به من العمل.</string>
-    <string name="acc_your_name">اسمك</string>
+    <string name="acc_your_name">الاسم الكامل</string>
     <string name="acc_company_name">اسم الشركة</string>
     <string name="acc_reg_number">رقم الشركة (اختياري)</string>
     <string name="acc_reg_hint">يظهر في الفواتير. يمكن إضافته لاحقًا.</string>
@@ -418,6 +418,8 @@
     <string name="acc_sign_in_title">تسجيل الدخول</string>
     <string name="acc_identifier">اسم المستخدم أو رقم الهوية</string>
     <string name="acc_identifier_hint">أيهما أعطاك مكتب الموقع. كلاهما يصلح.</string>
+    <string name="acc_username">اسم المستخدم</string>
+    <string name="acc_username_hint">ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع.</string>
     <string name="acc_password">كلمة المرور</string>
     <string name="acc_password_blank_hint">اتركه فارغًا إن لم تُعطَ كلمة مرور.</string>
     <string name="acc_wrong_credentials">لا يوجد تطابق. راجع من أنشأ حسابك.</string>

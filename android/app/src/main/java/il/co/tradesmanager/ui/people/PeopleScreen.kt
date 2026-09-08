@@ -303,7 +303,7 @@ private fun AddMemberDialog(
                 OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
-                    label = { Text(stringResource(R.string.acc_identifier)) },
+                    label = { Text(stringResource(R.string.acc_username)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )

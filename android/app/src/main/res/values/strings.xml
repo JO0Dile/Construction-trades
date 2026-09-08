@@ -220,7 +220,7 @@
     <string name="acc_personal_hint">One person, your own tools and jobs.</string>
     <string name="acc_company">A company</string>
     <string name="acc_company_hint">Several people, each seeing the part of the work that is theirs.</string>
-    <string name="acc_your_name">Your name</string>
+    <string name="acc_your_name">Full name</string>
     <string name="acc_company_name">Company name</string>
     <string name="acc_reg_number">Company number (optional)</string>
     <string name="acc_reg_hint">Goes on invoices. You can add it later.</string>
@@ -427,6 +427,8 @@
     <string name="acc_sign_in_title">Sign in</string>
     <string name="acc_identifier">Username or ID number</string>
     <string name="acc_identifier_hint">Whichever your site office gave you. Both work.</string>
+    <string name="acc_username">Username</string>
+    <string name="acc_username_hint">What you will type to sign in. Short is better on a site.</string>
     <string name="acc_password">Password</string>
     <string name="acc_password_blank_hint">Leave blank if you were not given one.</string>
     <string name="acc_wrong_credentials">That does not match. Check with whoever set you up.</string>

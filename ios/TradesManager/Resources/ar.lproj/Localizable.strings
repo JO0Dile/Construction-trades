@@ -219,7 +219,7 @@
 "acc_personal_hint" = "شخص واحد، أدواتك وأعمالك.";
 "acc_company" = "شركة";
 "acc_company_hint" = "عدة أشخاص، كل منهم يرى الجزء الخاص به من العمل.";
-"acc_your_name" = "اسمك";
+"acc_your_name" = "الاسم الكامل";
 "acc_company_name" = "اسم الشركة";
 "acc_reg_number" = "رقم الشركة (اختياري)";
 "acc_reg_hint" = "يظهر في الفواتير. يمكن إضافته لاحقًا.";
@@ -426,6 +426,8 @@
 "acc_sign_in_title" = "تسجيل الدخول";
 "acc_identifier" = "اسم المستخدم أو رقم الهوية";
 "acc_identifier_hint" = "أيهما أعطاك مكتب الموقع. كلاهما يصلح.";
+"acc_username" = "اسم المستخدم";
+"acc_username_hint" = "ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع.";
 "acc_password" = "كلمة المرور";
 "acc_password_blank_hint" = "اتركه فارغًا إن لم تُعطَ كلمة مرور.";
 "acc_wrong_credentials" = "لا يوجد تطابق. راجع من أنشأ حسابك.";

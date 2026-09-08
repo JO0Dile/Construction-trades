@@ -219,7 +219,7 @@
 "acc_personal_hint" = "One person, your own tools and jobs.";
 "acc_company" = "A company";
 "acc_company_hint" = "Several people, each seeing the part of the work that is theirs.";
-"acc_your_name" = "Your name";
+"acc_your_name" = "Full name";
 "acc_company_name" = "Company name";
 "acc_reg_number" = "Company number (optional)";
 "acc_reg_hint" = "Goes on invoices. You can add it later.";
@@ -426,6 +426,8 @@
 "acc_sign_in_title" = "Sign in";
 "acc_identifier" = "Username or ID number";
 "acc_identifier_hint" = "Whichever your site office gave you. Both work.";
+"acc_username" = "Username";
+"acc_username_hint" = "What you will type to sign in. Short is better on a site.";
 "acc_password" = "Password";
 "acc_password_blank_hint" = "Leave blank if you were not given one.";
 "acc_wrong_credentials" = "That does not match. Check with whoever set you up.";

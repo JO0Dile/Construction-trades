@@ -219,7 +219,7 @@
 "acc_personal_hint" = "אדם אחד, הכלים והעבודות שלך.";
 "acc_company" = "חברה";
 "acc_company_hint" = "כמה אנשים, כל אחד רואה את החלק שלו בעבודה.";
-"acc_your_name" = "השם שלך";
+"acc_your_name" = "שם מלא";
 "acc_company_name" = "שם החברה";
 "acc_reg_number" = "ח.פ. / ע.מ. (לא חובה)";
 "acc_reg_hint" = "מופיע בחשבוניות. אפשר להוסיף מאוחר יותר.";
@@ -426,6 +426,8 @@
 "acc_sign_in_title" = "כניסה";
 "acc_identifier" = "שם משתמש או מספר זהות";
 "acc_identifier_hint" = "מה שקיבלתם ממשרד האתר. שניהם עובדים.";
+"acc_username" = "שם משתמש";
+"acc_username_hint" = "מה שתקלידו כדי להיכנס. קצר עדיף באתר.";
 "acc_password" = "סיסמה";
 "acc_password_blank_hint" = "השאירו ריק אם לא קיבלתם סיסמה.";
 "acc_wrong_credentials" = "אין התאמה. בדקו מול מי שפתח לכם את החשבון.";

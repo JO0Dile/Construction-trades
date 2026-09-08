@@ -260,11 +260,15 @@ private fun IdentityFields(
     idNumber: String,
     onIdNumber: (String) -> Unit,
 ) {
+    // Username, not "username or ID number": the ID number is the very next
+    // field, and offering a choice between them while asking for both reads
+    // as the same question twice. Either one signs you in afterwards -- that
+    // belongs on the sign-in form, which is where it says so.
     OutlinedTextField(
         value = username,
         onValueChange = onUsername,
-        label = { Text(stringResource(R.string.acc_identifier)) },
-        supportingText = { Text(stringResource(R.string.acc_identifier_hint)) },
+        label = { Text(stringResource(R.string.acc_username)) },
+        supportingText = { Text(stringResource(R.string.acc_username_hint)) },
         singleLine = true,
         modifier = Modifier.fillMaxWidth(),
     )
