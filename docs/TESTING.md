@@ -31,6 +31,25 @@ file can no longer be edited without breaking it.
       restored by a phone still on 0.13.0; it will say it is from a newer
       version rather than failing strangely.
 
+### Signing up asks for a phone number now
+
+- [ ] Sign up. **Username** and **ID number** are two separate boxes; the
+      first used to say "username or ID number" while the second asked for
+      the ID number anyway. The name box says **full name**.
+- [ ] The **phone number is required** — it is the only field on that form
+      that is. Try `0000000000` and it will not accept it. Try a Romanian or
+      Chinese number with a `+` and it will: the people on an Israeli site
+      least able to argue with a form that refuses them are the ones whose
+      number does not start 05.
+- [ ] **Email is optional.** Leave it empty and carry on.
+- [ ] Adding somebody from **People** has both boxes too, and there they are
+      both optional — the office at the barrier at six in the morning may not
+      have the number yet, and a man waiting to sign an induction is not
+      somebody to hold up over a form field.
+
+Nothing sends a code to that number yet. That needs a server, and there is
+not one — see the note at the end of this section.
+
 ### Backup, and the one thing worth testing hardest
 
 Everything is on this phone and nothing is on a server. That is right for a

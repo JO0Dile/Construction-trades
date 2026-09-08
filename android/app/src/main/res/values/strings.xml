@@ -429,6 +429,15 @@
     <string name="acc_identifier_hint">Whichever your site office gave you. Both work.</string>
     <string name="acc_username">Username</string>
     <string name="acc_username_hint">What you will type to sign in. Short is better on a site.</string>
+    <string name="acc_phone">Phone number</string>
+    <string name="acc_phone_hint">How the site reaches you. Required.</string>
+    <string name="acc_email">Email address (optional)</string>
+    <string name="acc_phone_missing">A phone number is needed.</string>
+    <string name="acc_phone_not_a_number">That is not a phone number.</string>
+    <string name="acc_phone_too_short">That is too short to be a phone number.</string>
+    <string name="acc_phone_too_long">That is longer than any phone number.</string>
+    <string name="acc_phone_repeated">A number somebody can actually be reached on.</string>
+    <string name="acc_email_bad">That does not look like an email address.</string>
     <string name="acc_password">Password</string>
     <string name="acc_password_blank_hint">Leave blank if you were not given one.</string>
     <string name="acc_wrong_credentials">That does not match. Check with whoever set you up.</string>

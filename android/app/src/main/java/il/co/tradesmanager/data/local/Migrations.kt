@@ -292,6 +292,12 @@ object Migrations {
         }
     }
 
+    val MIGRATION_28_29 = object : Migration(28, 29) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_28_29.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -320,6 +326,7 @@ object Migrations {
         MIGRATION_25_26,
         MIGRATION_26_27,
         MIGRATION_27_28,
+        MIGRATION_28_29,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -792,5 +799,18 @@ object Migrations {
     val SQL_27_28: List<String> = listOf(
         "ALTER TABLE `memberships` ADD COLUMN `tradeId` TEXT",
         "CREATE INDEX IF NOT EXISTS `index_memberships_tradeId` ON `memberships` (`tradeId`)",
+    )
+
+    /**
+     * Nullable, with no default, because there is no number to invent.
+     *
+     * The sign-up form requires one from here on; the column cannot, because
+     * every account already on a phone was made without one and a NOT NULL
+     * with a made-up default would fill the column with a number nobody can
+     * ring, which is worse than an empty one that says so.
+     */
+    val SQL_28_29: List<String> = listOf(
+        "ALTER TABLE `accounts` ADD COLUMN `phone` TEXT",
+        "ALTER TABLE `accounts` ADD COLUMN `email` TEXT",
     )
 }

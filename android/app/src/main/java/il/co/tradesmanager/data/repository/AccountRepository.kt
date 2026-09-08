@@ -66,6 +66,8 @@ class AccountRepository(
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
+        phone: String? = null,
+        email: String? = null,
     ): AccountEntity =
         create(
             name = name,
@@ -74,6 +76,8 @@ class AccountRepository(
             passcode = passcode,
             username = username,
             idNumber = idNumber,
+            phone = phone,
+            email = email,
             // Their own tools: a membership with no company behind it, so
             // every permission check has exactly one shape to read.
             joinCompanyId = null,
@@ -91,6 +95,8 @@ class AccountRepository(
         passcode: String?,
         ownerUsername: String? = null,
         ownerIdNumber: String? = null,
+        ownerPhone: String? = null,
+        ownerEmail: String? = null,
     ): AccountEntity {
         val now = System.currentTimeMillis()
         val company = CompanyEntity(
@@ -109,6 +115,8 @@ class AccountRepository(
             passcode = passcode,
             username = ownerUsername,
             idNumber = ownerIdNumber,
+            phone = ownerPhone,
+            email = ownerEmail,
             joinCompanyId = company.id,
         )
     }
@@ -181,6 +189,8 @@ class AccountRepository(
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
+        phone: String? = null,
+        email: String? = null,
     ): Result<AccountEntity> {
         if (!actorRole.canManageMembers) {
             return Result.failure(RefusedException(Refusal.NotPermitted))
@@ -193,6 +203,8 @@ class AccountRepository(
                 passcode = passcode,
                 username = username,
                 idNumber = idNumber,
+                phone = phone,
+                email = email,
                 joinCompanyId = companyId,
                 actorName = actorName,
             ),
@@ -322,6 +334,8 @@ class AccountRepository(
         passcode: String?,
         username: String? = null,
         idNumber: String? = null,
+        phone: String? = null,
+        email: String? = null,
         joinCompanyId: String? = null,
         actorName: String = name.trim(),
     ): AccountEntity {
@@ -338,6 +352,8 @@ class AccountRepository(
             deletedAt = null,
             username = username?.trim()?.takeIf { it.isNotEmpty() },
             idNumber = idNumber?.trim()?.takeIf { it.isNotEmpty() },
+            phone = phone?.trim()?.takeIf { it.isNotEmpty() },
+            email = email?.trim()?.takeIf { it.isNotEmpty() },
             // Nobody is inducted by being created. The person themselves reads
             // it and signs it, on their own first sign-in.
             inductionSignature = null,

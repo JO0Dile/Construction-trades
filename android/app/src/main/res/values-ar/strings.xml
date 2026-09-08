@@ -420,6 +420,15 @@
     <string name="acc_identifier_hint">أيهما أعطاك مكتب الموقع. كلاهما يصلح.</string>
     <string name="acc_username">اسم المستخدم</string>
     <string name="acc_username_hint">ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع.</string>
+    <string name="acc_phone">رقم الهاتف</string>
+    <string name="acc_phone_hint">بهذا يصل إليك الموقع. مطلوب.</string>
+    <string name="acc_email">البريد الإلكتروني (اختياري)</string>
+    <string name="acc_phone_missing">رقم الهاتف مطلوب.</string>
+    <string name="acc_phone_not_a_number">هذا ليس رقم هاتف.</string>
+    <string name="acc_phone_too_short">هذا أقصر من أن يكون رقم هاتف.</string>
+    <string name="acc_phone_too_long">هذا أطول من أي رقم هاتف.</string>
+    <string name="acc_phone_repeated">رقم يمكن الوصول إلى صاحبه فعلاً.</string>
+    <string name="acc_email_bad">هذا لا يبدو كبريد إلكتروني.</string>
     <string name="acc_password">كلمة المرور</string>
     <string name="acc_password_blank_hint">اتركه فارغًا إن لم تُعطَ كلمة مرور.</string>
     <string name="acc_wrong_credentials">لا يوجد تطابق. راجع من أنشأ حسابك.</string>

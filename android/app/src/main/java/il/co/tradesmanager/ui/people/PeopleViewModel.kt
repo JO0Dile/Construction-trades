@@ -97,6 +97,8 @@ class PeopleViewModel(private val container: AppContainer) : ViewModel() {
         name: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         role: Role,
         passcode: String?,
     ) = viewModelScope.launch {
@@ -110,6 +112,8 @@ class PeopleViewModel(private val container: AppContainer) : ViewModel() {
             passcode = passcode,
             username = username,
             idNumber = idNumber,
+            phone = phone,
+            email = email,
         ).recordRefusal()
     }
 

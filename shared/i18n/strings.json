@@ -2118,6 +2118,51 @@
       "he": "מה שתקלידו כדי להיכנס. קצר עדיף באתר.",
       "ar": "ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع."
     },
+    "acc_phone": {
+      "en": "Phone number",
+      "he": "מספר טלפון",
+      "ar": "رقم الهاتف"
+    },
+    "acc_phone_hint": {
+      "en": "How the site reaches you. Required.",
+      "he": "כך האתר משיג אתכם. חובה.",
+      "ar": "بهذا يصل إليك الموقع. مطلوب."
+    },
+    "acc_email": {
+      "en": "Email address (optional)",
+      "he": "כתובת אימייל (לא חובה)",
+      "ar": "البريد الإلكتروني (اختياري)"
+    },
+    "acc_phone_missing": {
+      "en": "A phone number is needed.",
+      "he": "צריך מספר טלפון.",
+      "ar": "رقم الهاتف مطلوب."
+    },
+    "acc_phone_not_a_number": {
+      "en": "That is not a phone number.",
+      "he": "זה לא מספר טלפון.",
+      "ar": "هذا ليس رقم هاتف."
+    },
+    "acc_phone_too_short": {
+      "en": "That is too short to be a phone number.",
+      "he": "זה קצר מדי בשביל מספר טלפון.",
+      "ar": "هذا أقصر من أن يكون رقم هاتف."
+    },
+    "acc_phone_too_long": {
+      "en": "That is longer than any phone number.",
+      "he": "זה ארוך מכל מספר טלפון.",
+      "ar": "هذا أطول من أي رقم هاتف."
+    },
+    "acc_phone_repeated": {
+      "en": "A number somebody can actually be reached on.",
+      "he": "מספר שאפשר באמת להשיג בו מישהו.",
+      "ar": "رقم يمكن الوصول إلى صاحبه فعلاً."
+    },
+    "acc_email_bad": {
+      "en": "That does not look like an email address.",
+      "he": "זה לא נראה ככתובת אימייל.",
+      "ar": "هذا لا يبدو كبريد إلكتروني."
+    },
     "acc_password": {
       "en": "Password",
       "he": "סיסמה",

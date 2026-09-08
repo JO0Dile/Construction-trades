@@ -428,6 +428,15 @@
 "acc_identifier_hint" = "أيهما أعطاك مكتب الموقع. كلاهما يصلح.";
 "acc_username" = "اسم المستخدم";
 "acc_username_hint" = "ما ستكتبه لتسجيل الدخول. الأقصر أفضل في الموقع.";
+"acc_phone" = "رقم الهاتف";
+"acc_phone_hint" = "بهذا يصل إليك الموقع. مطلوب.";
+"acc_email" = "البريد الإلكتروني (اختياري)";
+"acc_phone_missing" = "رقم الهاتف مطلوب.";
+"acc_phone_not_a_number" = "هذا ليس رقم هاتف.";
+"acc_phone_too_short" = "هذا أقصر من أن يكون رقم هاتف.";
+"acc_phone_too_long" = "هذا أطول من أي رقم هاتف.";
+"acc_phone_repeated" = "رقم يمكن الوصول إلى صاحبه فعلاً.";
+"acc_email_bad" = "هذا لا يبدو كبريد إلكتروني.";
 "acc_password" = "كلمة المرور";
 "acc_password_blank_hint" = "اتركه فارغًا إن لم تُعطَ كلمة مرور.";
 "acc_wrong_credentials" = "لا يوجد تطابق. راجع من أنشأ حسابك.";

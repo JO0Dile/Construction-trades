@@ -428,6 +428,15 @@
 "acc_identifier_hint" = "Whichever your site office gave you. Both work.";
 "acc_username" = "Username";
 "acc_username_hint" = "What you will type to sign in. Short is better on a site.";
+"acc_phone" = "Phone number";
+"acc_phone_hint" = "How the site reaches you. Required.";
+"acc_email" = "Email address (optional)";
+"acc_phone_missing" = "A phone number is needed.";
+"acc_phone_not_a_number" = "That is not a phone number.";
+"acc_phone_too_short" = "That is too short to be a phone number.";
+"acc_phone_too_long" = "That is longer than any phone number.";
+"acc_phone_repeated" = "A number somebody can actually be reached on.";
+"acc_email_bad" = "That does not look like an email address.";
 "acc_password" = "Password";
 "acc_password_blank_hint" = "Leave blank if you were not given one.";
 "acc_wrong_credentials" = "That does not match. Check with whoever set you up.";

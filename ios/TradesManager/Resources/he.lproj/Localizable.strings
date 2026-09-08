@@ -428,6 +428,15 @@
 "acc_identifier_hint" = "מה שקיבלתם ממשרד האתר. שניהם עובדים.";
 "acc_username" = "שם משתמש";
 "acc_username_hint" = "מה שתקלידו כדי להיכנס. קצר עדיף באתר.";
+"acc_phone" = "מספר טלפון";
+"acc_phone_hint" = "כך האתר משיג אתכם. חובה.";
+"acc_email" = "כתובת אימייל (לא חובה)";
+"acc_phone_missing" = "צריך מספר טלפון.";
+"acc_phone_not_a_number" = "זה לא מספר טלפון.";
+"acc_phone_too_short" = "זה קצר מדי בשביל מספר טלפון.";
+"acc_phone_too_long" = "זה ארוך מכל מספר טלפון.";
+"acc_phone_repeated" = "מספר שאפשר באמת להשיג בו מישהו.";
+"acc_email_bad" = "זה לא נראה ככתובת אימייל.";
 "acc_password" = "סיסמה";
 "acc_password_blank_hint" = "השאירו ריק אם לא קיבלתם סיסמה.";
 "acc_wrong_credentials" = "אין התאמה. בדקו מול מי שפתח לכם את החשבון.";

@@ -102,4 +102,19 @@ data class AccountEntity(
     val inductionSignature: String?,
     /** When they signed it. Null means they have not, and the app does not open. */
     val inductedAt: Long?,
+    /**
+     * The number somebody rings when this person is needed, or is missing.
+     *
+     * Required when a person signs themselves up, and the only field on that
+     * form that is: everybody on a site has a phone and is reached on it
+     * within the hour. Nullable here all the same, for two reasons that are
+     * not the same reason. Accounts made before this existed have none, and
+     * they must keep working. And when the office adds somebody at the gate
+     * at six in the morning it may not know the number yet -- a person
+     * standing at the barrier waiting to sign an induction is not somebody to
+     * hold up over a form field.
+     */
+    val phone: String? = null,
+    /** Optional, and meant to be. Plenty of people on a site have never had one. */
+    val email: String? = null,
 )

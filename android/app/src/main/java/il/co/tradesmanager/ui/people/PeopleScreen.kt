@@ -44,6 +44,7 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Admission
 import il.co.tradesmanager.core.access.Chain
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.data.local.entity.AccountEntity
@@ -187,8 +188,8 @@ fun PeopleScreen(
     if (adding) {
         AddMemberDialog(
             onDismiss = { adding = false },
-            onAdd = { name, username, idNumber, role, passcode ->
-                viewModel.addMember(name, username, idNumber, role, passcode)
+            onAdd = { name, username, idNumber, phone, email, role, passcode ->
+                viewModel.addMember(name, username, idNumber, phone, email, role, passcode)
                 adding = false
             },
         )
@@ -274,6 +275,8 @@ private fun AddMemberDialog(
         name: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         role: Role,
         passcode: String?,
     ) -> Unit,
@@ -281,6 +284,8 @@ private fun AddMemberDialog(
     var name by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var idNumber by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var role by remember { mutableStateOf(Role.WORKER) }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
@@ -311,6 +316,29 @@ private fun AddMemberDialog(
                     value = idNumber,
                     onValueChange = { idNumber = it },
                     label = { Text(stringResource(R.string.acc_id_number)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                // Both optional here, unlike on the sign-up form where the
+                // person is entering their own. The office adding somebody at
+                // the barrier at six in the morning may not have their number
+                // yet, and a man waiting to sign an induction is not somebody
+                // to hold up over a form field. They can be filled in after.
+                OutlinedTextField(
+                    value = phone,
+                    onValueChange = { phone = it },
+                    label = { Text(stringResource(R.string.acc_phone)) },
+                    isError = phone.isNotBlank() && Contact.blocksPhone(phone) != null,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text(stringResource(R.string.acc_email)) },
+                    isError = Contact.blocksEmail(email) != null,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )
@@ -358,12 +386,16 @@ private fun AddMemberDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = name.isNotBlank() && passcodeOk,
+                enabled = name.isNotBlank() && passcodeOk &&
+                    (phone.isBlank() || Contact.blocksPhone(phone) == null) &&
+                    Contact.blocksEmail(email) == null,
                 onClick = {
                     onAdd(
                         name.trim(),
                         username.trim().takeIf { it.isNotEmpty() },
                         idNumber.trim().takeIf { it.isNotEmpty() },
+                        phone.trim().takeIf { it.isNotEmpty() },
+                        email.trim().takeIf { it.isNotEmpty() },
                         role,
                         passcode.takeIf { it.isNotEmpty() },
                     )

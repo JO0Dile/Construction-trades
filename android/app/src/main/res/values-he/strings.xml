@@ -420,6 +420,15 @@
     <string name="acc_identifier_hint">מה שקיבלתם ממשרד האתר. שניהם עובדים.</string>
     <string name="acc_username">שם משתמש</string>
     <string name="acc_username_hint">מה שתקלידו כדי להיכנס. קצר עדיף באתר.</string>
+    <string name="acc_phone">מספר טלפון</string>
+    <string name="acc_phone_hint">כך האתר משיג אתכם. חובה.</string>
+    <string name="acc_email">כתובת אימייל (לא חובה)</string>
+    <string name="acc_phone_missing">צריך מספר טלפון.</string>
+    <string name="acc_phone_not_a_number">זה לא מספר טלפון.</string>
+    <string name="acc_phone_too_short">זה קצר מדי בשביל מספר טלפון.</string>
+    <string name="acc_phone_too_long">זה ארוך מכל מספר טלפון.</string>
+    <string name="acc_phone_repeated">מספר שאפשר באמת להשיג בו מישהו.</string>
+    <string name="acc_email_bad">זה לא נראה ככתובת אימייל.</string>
     <string name="acc_password">סיסמה</string>
     <string name="acc_password_blank_hint">השאירו ריק אם לא קיבלתם סיסמה.</string>
     <string name="acc_wrong_credentials">אין התאמה. בדקו מול מי שפתח לכם את החשבון.</string>

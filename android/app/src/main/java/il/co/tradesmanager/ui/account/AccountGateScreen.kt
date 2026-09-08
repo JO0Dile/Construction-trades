@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.account
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -36,6 +37,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -104,13 +106,22 @@ private enum class Setup { CHOOSE, PERSONAL, COMPANY }
 
 @Composable
 private fun FirstRun(
-    onPersonal: (name: String, username: String?, idNumber: String?, passcode: String?) -> Unit,
+    onPersonal: (
+        name: String,
+        username: String?,
+        idNumber: String?,
+        phone: String?,
+        email: String?,
+        passcode: String?,
+    ) -> Unit,
     onCompany: (
         company: String,
         registration: String?,
         owner: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         passcode: String?,
     ) -> Unit,
     /** Null on a device with no accounts: there is nowhere to go back to. */
@@ -198,13 +209,23 @@ private fun Choice(title: String, hint: String, onClick: () -> Unit) {
 
 @Composable
 private fun PersonalForm(
-    onCreate: (name: String, username: String?, idNumber: String?, passcode: String?) -> Unit,
+    onCreate: (
+        name: String,
+        username: String?,
+        idNumber: String?,
+        phone: String?,
+        email: String?,
+        passcode: String?,
+    ) -> Unit,
 ) {
     var name by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var idNumber by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
+    val contactOk = Contact.blocksPhone(phone) == null && Contact.blocksEmail(email) == null
 
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         OutlinedTextField(
@@ -220,6 +241,7 @@ private fun PersonalForm(
             idNumber = idNumber,
             onIdNumber = { idNumber = it },
         )
+        ContactFields(phone, { phone = it }, email, { email = it })
         PasscodeField(passcode, { passcode = it }, passcodeOk)
         Button(
             onClick = {
@@ -227,11 +249,13 @@ private fun PersonalForm(
                     name.trim(),
                     username.trim().takeIf { it.isNotEmpty() },
                     idNumber.trim().takeIf { it.isNotEmpty() },
+                    phone.trim(),
+                    email.trim().takeIf { it.isNotEmpty() },
                     passcode.takeIf { it.isNotEmpty() },
                 )
             },
             enabled = name.isNotBlank() && username.isNotBlank() &&
-                idNumber.isNotBlank() && passcodeOk,
+                idNumber.isNotBlank() && contactOk && passcodeOk,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.acc_create))
@@ -282,6 +306,71 @@ private fun IdentityFields(
     )
 }
 
+/**
+ * How the site reaches this person.
+ *
+ * The phone number is required and the email address is not, which is the way
+ * round a site works rather than the way round a form usually is. Everybody
+ * on a site has a phone and is reached on it within the hour; plenty of them
+ * have never had an email address, and requiring one would be requiring the
+ * part that is optional in real life.
+ *
+ * The error appears only once something has been typed. A box somebody has
+ * not reached yet is not a mistake they have made, and a form that is already
+ * shouting when it opens teaches people to ignore it.
+ */
+@Composable
+private fun ContactFields(
+    phone: String,
+    onPhone: (String) -> Unit,
+    email: String,
+    onEmail: (String) -> Unit,
+) {
+    val phoneFault = Contact.blocksPhone(phone).takeIf { phone.isNotBlank() }
+    val emailFault = Contact.blocksEmail(email)
+
+    OutlinedTextField(
+        value = phone,
+        onValueChange = onPhone,
+        label = { Text(stringResource(R.string.acc_phone)) },
+        isError = phoneFault != null,
+        supportingText = {
+            Text(stringResource(phoneFault?.let(::phoneMessage) ?: R.string.acc_phone_hint))
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+        singleLine = true,
+        modifier = Modifier.fillMaxWidth(),
+    )
+    OutlinedTextField(
+        value = email,
+        onValueChange = onEmail,
+        label = { Text(stringResource(R.string.acc_email)) },
+        isError = emailFault != null,
+        supportingText = {
+            if (emailFault != null) Text(stringResource(R.string.acc_email_bad))
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        singleLine = true,
+        modifier = Modifier.fillMaxWidth(),
+    )
+}
+
+/**
+ * One message per fault, and no `else`.
+ *
+ * A fault added later has to be given words here or this stops compiling,
+ * which is the point: the alternative is a new kind of wrong number showing
+ * a blank line under the box.
+ */
+@StringRes
+private fun phoneMessage(fault: Contact.PhoneFault): Int = when (fault) {
+    Contact.PhoneFault.MISSING -> R.string.acc_phone_missing
+    Contact.PhoneFault.NOT_A_NUMBER -> R.string.acc_phone_not_a_number
+    Contact.PhoneFault.TOO_SHORT -> R.string.acc_phone_too_short
+    Contact.PhoneFault.TOO_LONG -> R.string.acc_phone_too_long
+    Contact.PhoneFault.ONE_DIGIT_REPEATED -> R.string.acc_phone_repeated
+}
+
 @Composable
 private fun CompanyForm(
     onCreate: (
@@ -290,6 +379,8 @@ private fun CompanyForm(
         owner: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         passcode: String?,
     ) -> Unit,
 ) {
@@ -298,8 +389,11 @@ private fun CompanyForm(
     var ownerName by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var idNumber by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var passcode by remember { mutableStateOf("") }
     val passcodeOk = passcode.isEmpty() || Passcode.isAcceptable(passcode)
+    val contactOk = Contact.blocksPhone(phone) == null && Contact.blocksEmail(email) == null
 
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         OutlinedTextField(
@@ -330,6 +424,7 @@ private fun CompanyForm(
             idNumber = idNumber,
             onIdNumber = { idNumber = it },
         )
+        ContactFields(phone, { phone = it }, email, { email = it })
         PasscodeField(passcode, { passcode = it }, passcodeOk)
         Button(
             onClick = {
@@ -339,11 +434,13 @@ private fun CompanyForm(
                     ownerName.trim(),
                     username.trim().takeIf { it.isNotEmpty() },
                     idNumber.trim().takeIf { it.isNotEmpty() },
+                    phone.trim(),
+                    email.trim().takeIf { it.isNotEmpty() },
                     passcode.takeIf { it.isNotEmpty() },
                 )
             },
             enabled = companyName.isNotBlank() && ownerName.isNotBlank() &&
-                username.isNotBlank() && idNumber.isNotBlank() && passcodeOk,
+                username.isNotBlank() && idNumber.isNotBlank() && contactOk && passcodeOk,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.acc_create))
