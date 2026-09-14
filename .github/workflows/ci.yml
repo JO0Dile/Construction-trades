@@ -47,6 +47,15 @@ jobs:
       - name: Every audited kind of change is classified by lens
         run: python3 tools/check-audit-lens.py
 
+      # A right-to-left mark inside a Kotlin string is invisible, changes what
+      # the string is, and looks identical in a diff to the line it replaced.
+      # Lint catches exactly one of these — a byte-order mark — and only after
+      # a full Gradle run; this catches all of them in a second. Source only:
+      # the catalogue carries direction marks inside Hebrew item names, and
+      # those are what the supplier calls the thing, not a mistake.
+      - name: No invisible characters in source
+        run: python3 tools/check-invisibles.py
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.

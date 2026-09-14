@@ -140,11 +140,13 @@ private fun Results(
             Result(hit = hit, onOpen = onOpen)
             HorizontalDivider()
         }
-        item {
-            // An empty-ish list on a full database is otherwise read as the
-            // app having lost something, when it is the role grid doing its
-            // job. Said once, at the bottom, rather than over the results.
-            Note(stringResource(R.string.search_only_yours))
+        // An empty-ish list on a full database is otherwise read as the app
+        // having lost something, when it is the role grid doing its job. Said
+        // once, at the bottom, rather than over the results — and only when
+        // there are results, so that the moment between the last letter and
+        // the answer is blank rather than a footnote on nothing.
+        if (hits.isNotEmpty()) {
+            item { Note(stringResource(R.string.search_only_yours)) }
         }
     }
 }

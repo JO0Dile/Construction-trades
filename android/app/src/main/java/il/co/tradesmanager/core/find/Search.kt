@@ -241,42 +241,42 @@ object Search {
         // Invisible. Dropped rather than made into a space: the direction
         // marks sit inside words in Hebrew and Arabic as a matter of course,
         // and treating one as a word break loses the word.
-        '​', '‌', '‍', '‎', '‏', '⁦', '⁧',
-        '⁨', '⁩', '﻿',
+        '\u200B', '\u200C', '\u200D', '\u200E', '\u200F', '\u2066', '\u2067',
+        '\u2068', '\u2069', '\uFEFF',
         -> null
 
         // Hebrew points and cantillation. Written or not written, it is the
         // same word; most text on a site has none of them and a name copied
         // off a document has all of them.
-        in '֑'..'ֽ', 'ֿ', 'ׁ', 'ׂ', 'ׄ', 'ׅ', 'ׇ',
+        in '\u0591'..'\u05BD', '\u05BF', '\u05C1', '\u05C2', '\u05C4', '\u05C5', '\u05C7',
         -> null
 
         // Hebrew letters that change shape at the end of a word. Searching
         // "לים" has to find "ירושלים", and the mem in it is the final one.
-        'ך' -> 'כ'
-        'ם' -> 'מ'
-        'ן' -> 'נ'
-        'ף' -> 'פ'
-        'ץ' -> 'צ'
+        '\u05DA' -> '\u05DB'
+        '\u05DD' -> '\u05DE'
+        '\u05DF' -> '\u05E0'
+        '\u05E3' -> '\u05E4'
+        '\u05E5' -> '\u05E6'
 
         // Arabic harakat, the superscript alef, the Quranic marks — and the
         // tatweel, which stretches a word for the look of it and means
         // nothing.
-        'ـ', in 'ً'..'ٟ', 'ٰ', in 'ۖ'..'ۭ',
+        '\u0640', in '\u064B'..'\u065F', '\u0670', in '\u06D6'..'\u06ED',
         -> null
 
         // The letters Arabic is written more than one way. Hamza on alef is
         // routinely left off; ta marbuta and ha are typed for each other; alef
         // maqsura and ya are the same key to most people.
-        'آ', 'أ', 'إ', 'ٱ' -> 'ا'
-        'ؤ' -> 'و'
-        'ئ', 'ى' -> 'ي'
-        'ة' -> 'ه'
+        '\u0622', '\u0623', '\u0625', '\u0671' -> '\u0627'
+        '\u0624' -> '\u0648'
+        '\u0626', '\u0649' -> '\u064A'
+        '\u0629' -> '\u0647'
 
         // Arabic-Indic and Eastern Arabic-Indic digits, which is what an
         // Arabic-locale screen shows and therefore what gets typed back in.
-        in '٠'..'٩' -> '0' + (c - '٠')
-        in '۰'..'۹' -> '0' + (c - '۰')
+        in '\u0660'..'\u0669' -> '0' + (c - '\u0660')
+        in '\u06F0'..'\u06F9' -> '0' + (c - '\u06F0')
 
         else -> if (c.isLetterOrDigit()) c.lowercaseChar() else ' '
     }

@@ -32,33 +32,33 @@ class SearchTest {
     @Test
     fun `hebrew points come off`() {
         // יְרוּשָׁלַיִם, pointed, against the same word written plainly.
-        val pointed = "יְרוּשָׁלַ" +
-            "יִם"
-        assertEquals(Search.fold("ירושלים"), Search.fold(pointed))
+        val pointed = "\u05D9\u05B0\u05E8\u05D5\u05BC\u05E9\u05C1\u05B8\u05DC\u05B7" +
+            "\u05D9\u05B4\u05DD"
+        assertEquals(Search.fold("\u05D9\u05E8\u05D5\u05E9\u05DC\u05D9\u05DD"), Search.fold(pointed))
     }
 
     @Test
     fun `hebrew letters that change shape at the end of a word do not`() {
         // ך ם ן ף ץ  ->  כ מ נ פ צ
         assertEquals(
-            "כמנפצ",
-            Search.fold("ךםןףץ"),
+            "\u05DB\u05DE\u05E0\u05E4\u05E6",
+            Search.fold("\u05DA\u05DD\u05DF\u05E3\u05E5"),
         )
     }
 
     @Test
     fun `a word is found by its middle even when the last letter changed shape`() {
         // Searching לים finds ירושלים, whose mem is the final form.
-        val jerusalem = "ירושלים"
-        val lim = "לים"
+        val jerusalem = "\u05D9\u05E8\u05D5\u05E9\u05DC\u05D9\u05DD"
+        val lim = "\u05DC\u05D9\u05DD"
         assertTrue(Search.score(Search.terms(lim), jerusalem, "") > 0)
     }
 
     @Test
     fun `arabic harakat come off and the tatweel is not a letter`() {
-        val muhammad = "محمد"
-        val pointed = "مُحَمَّد"
-        val stretched = "مـــحمد"
+        val muhammad = "\u0645\u062D\u0645\u062F"
+        val pointed = "\u0645\u064F\u062D\u064E\u0645\u064E\u0651\u062F"
+        val stretched = "\u0645\u0640\u0640\u0640\u062D\u0645\u062F"
         assertEquals(Search.fold(muhammad), Search.fold(pointed))
         assertEquals(muhammad, Search.fold(stretched))
     }
@@ -66,26 +66,26 @@ class SearchTest {
     @Test
     fun `the several spellings of a letter agree`() {
         // أ إ آ ٱ all fold to ا.
-        val alefs = "أإآٱ"
-        assertEquals("اااا", Search.fold(alefs))
+        val alefs = "\u0623\u0625\u0622\u0671"
+        assertEquals("\u0627\u0627\u0627\u0627", Search.fold(alefs))
         // ة folds to ه, ى to ي.
-        assertEquals("شركه", Search.fold("شركة"))
-        assertEquals("ي", Search.fold("ى"))
+        assertEquals("\u0634\u0631\u0643\u0647", Search.fold("\u0634\u0631\u0643\u0629"))
+        assertEquals("\u064A", Search.fold("\u0649"))
     }
 
     @Test
     fun `arabic digits are digits`() {
-        assertEquals("42", Search.fold("٤٢"))
-        assertEquals("42", Search.fold("۴۲"))
+        assertEquals("42", Search.fold("\u0664\u0662"))
+        assertEquals("42", Search.fold("\u06F4\u06F2"))
     }
 
     @Test
     fun `an invisible direction mark is not a word break`() {
-        val plain = "ירושלים"
-        val withMark = "ירו‏שלים"
+        val plain = "\u05D9\u05E8\u05D5\u05E9\u05DC\u05D9\u05DD"
+        val withMark = "\u05D9\u05E8\u05D5\u200F\u05E9\u05DC\u05D9\u05DD"
         assertEquals(Search.fold(plain), Search.fold(withMark))
-        val muhammad = "محمد"
-        assertEquals(muhammad, Search.fold("مح‌مد"))
+        val muhammad = "\u0645\u062D\u0645\u062F"
+        assertEquals(muhammad, Search.fold("\u0645\u062D\u200C\u0645\u062F"))
     }
 
     /* ----------------------------------------------------------- the digits */
@@ -93,7 +93,7 @@ class SearchTest {
     @Test
     fun `separators are not part of a number`() {
         assertEquals("03123456", Search.digits("03-123456"))
-        assertEquals("03123456", Search.digits("٠٣-١٢٣٤٥٦"))
+        assertEquals("03123456", Search.digits("\u0660\u0663-\u0661\u0662\u0663\u0664\u0665\u0666"))
         assertEquals("", Search.digits("no numbers"))
     }
 
@@ -101,10 +101,10 @@ class SearchTest {
 
     @Test
     fun `one letter is not a search`() {
-        assertEquals(emptyList<String>(), Search.terms("א"))
+        assertEquals(emptyList<String>(), Search.terms("\u05D0"))
         // And a mark is not a second letter.
-        assertEquals(emptyList<String>(), Search.terms("אֶ"))
-        assertEquals(listOf("אב"), Search.terms("אב"))
+        assertEquals(emptyList<String>(), Search.terms("\u05D0\u05B6"))
+        assertEquals(listOf("\u05D0\u05D1"), Search.terms("\u05D0\u05D1"))
     }
 
     @Test
@@ -142,7 +142,7 @@ class SearchTest {
         assertEquals(1, Search.score(plain, "Dani Levi", "03-123456"))
         assertEquals(6, Search.score(Search.terms("03-123456"), "Dani Levi", "03-123456"))
         // Typed in Arabic-Indic, stored in Latin.
-        val arabic = Search.terms("٠٣١٢٣٤٥٦")
+        val arabic = Search.terms("\u0660\u0663\u0661\u0662\u0663\u0664\u0665\u0666")
         assertEquals(1, Search.score(arabic, "Dani Levi", "03-123456"))
         assertEquals(0, Search.score(Search.terms("99999999"), "Dani Levi", "03-123456"))
     }

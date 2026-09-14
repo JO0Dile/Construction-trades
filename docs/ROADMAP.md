@@ -452,7 +452,7 @@ take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 76 | |
+| Built | 77 | |
 | Buildable here — on the device, no server | 109 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
