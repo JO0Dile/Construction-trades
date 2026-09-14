@@ -9,7 +9,50 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.16.0 — and what to try first
+## What is new in 0.16.1 — and what to try first
+
+### The gate finds a man who is already on the books
+
+This is the one to test properly, because getting it wrong costs a real
+record. The gate looked people up by their ID number as **text**, and the same
+number reaches the app written more than one way.
+
+- [ ] **People → the gate.** Take somebody already on the books and type their
+      ID number **with dashes** when it was entered without them (301-234-567
+      for 301234567). They should be found.
+- [ ] **On an Arabic phone**, type the ID using the digits the keypad gives
+      you (٣٠١٢٣٤٥٦٧). They should be found. This did not work before: the
+      same man read as a stranger, and adding him again made a second record
+      with the same number that could not be told from the first.
+- [ ] Same test from **Safety → record a violation**, which looks people up
+      the same way.
+- [ ] **Signing in with an ID number** instead of a username, written either
+      way, should work.
+- [ ] Try to give somebody an ID number that another person already has,
+      written the other way round. It should be refused — that check runs on
+      the same rule.
+- [ ] A number with letters in it (a foreign passport, an army number) still
+      goes in. Nothing here decides whether a number is a *real* Israeli one;
+      a gate that turns away a real person for holding the wrong document is
+      worse than one that writes down what it was told.
+
+### The search box on Stock reads Hebrew and Arabic now
+
+The whole-app search went in reading all three languages; the box on the stock
+screen itself was still the old one, and was broken the same way.
+
+- [ ] **Stock.** Search for an item by its Hebrew or Arabic name, typed
+      **without** the points or harakat it was entered with. It should be
+      found.
+- [ ] Type Arabic-Indic digits into it.
+- [ ] One letter narrows the list here (unlike the whole-app box, which wants
+      two — you can see this one working on the rows in front of you).
+- [ ] With the box empty, low stock still sorts to the top.
+
+---
+
+## What was new in 0.16.0
+
 
 ### One search box, over everything
 
