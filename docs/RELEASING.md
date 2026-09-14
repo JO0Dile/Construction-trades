@@ -23,6 +23,55 @@ A server becomes necessary only for the things that genuinely require one:
 
 None of those is needed to launch.
 
+## Making the repository private
+
+Worth doing, and it costs three things. None is fatal; all three are silent
+if nobody looks for them first.
+
+**1. Every phone stops getting updates.** `Settings → Check for updates` asks
+`api.github.com` for the latest release with no token in the app — it cannot
+carry one, because an APK is a file anybody can open and read. A private
+repository answers an anonymous request with 404, which the app reports as
+"no update available". Nobody sees an error; the updates just stop.
+
+**2. The download link stops working** for anyone you send it to who is not
+on the repository.
+
+**3. The privacy policy URL 404s**, and Play's listing field wants one that
+resolves for anybody.
+
+### The way round all three
+
+Keep **two** repositories:
+
+| | holds | visibility |
+|---|---|---|
+| `Construction-trades` | the source, the catalogue, the docs | **private** |
+| a second repo, e.g. `trades-releases` | the published APKs and `PRIVACY.md`, nothing else | public |
+
+Then point the app at the public one — two lines, no Kotlin:
+
+```kotlin
+// android/app/build.gradle.kts
+"\"https://api.github.com/repos/<owner>/trades-releases/releases/latest\"",
+"\"https://github.com/<owner>/trades-releases/releases/latest\"",
+```
+
+and change `release.yml` to publish there. A binary somebody can install is
+already a binary they hold; publishing it publicly gives away nothing the
+source does not, and the source is what is worth protecting.
+
+The alternative — one private repository and updates by hand — works, but
+"four different versions on one site" is exactly the problem the update check
+was written to stop.
+
+### What private does not protect
+
+An APK is not a secret. Anybody holding one can decompile it, and R8 renames
+symbols without hiding logic. Private stops casual copying of the source and
+makes theft provable; it is not a technical barrier. The barrier is the
+licence, the catalogue nobody else has written, and being first.
+
 ## The upload key
 
 Google Play signs the app people install with a key it holds. You sign the

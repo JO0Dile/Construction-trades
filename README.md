@@ -10,6 +10,11 @@ English, working with no signal.
 SwiftUI. There is no WebView, no PWA, no hybrid shell, and no browser
 dependency for anything.
 
+> **© 2026 JO0Dile. All rights reserved.** This is not open source. Reading
+> this repository grants no licence to copy, modify or distribute any part of
+> it — see [`LICENSE`](LICENSE). The open-source libraries it is built on keep
+> their own licences and are unaffected.
+
 ---
 
 ## Get it on a phone
