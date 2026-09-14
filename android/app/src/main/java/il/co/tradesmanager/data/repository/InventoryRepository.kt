@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.find.Search
 import il.co.tradesmanager.core.i18n.LocalizedText
 import il.co.tradesmanager.core.i18n.searchable
 import il.co.tradesmanager.data.local.dao.InventoryDao
@@ -7,19 +8,61 @@ import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.StockMovementEntity
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class InventoryRepository(
     private val dao: InventoryDao,
     private val audit: AuditTrail,
 ) {
 
+    /**
+     * The stock list, narrowed by what somebody typed into the box on it.
+     *
+     * The typing is matched here rather than in SQL, and that is the whole
+     * point of the change: the query used to be a LIKE over a lowercased
+     * index, which folds case for ASCII and nothing else. An item entered with
+     * Arabic harakat was invisible to anybody typing it without them, a name
+     * with Hebrew points likewise, and a foreman typing the Arabic-Indic
+     * digits his own screen had just shown him found nothing at all. Every one
+     * of those looked like an empty catalogue rather than a broken search.
+     *
+     * One letter is enough here. That is not what the whole-app search does —
+     * see [Search.terms] for why the two boxes want different floors.
+     *
+     * Matched on every name an item has rather than the one being displayed,
+     * so a storeman searching in Hebrew finds the box somebody labelled in
+     * English. Ordering: the best match first when there is something to
+     * match, and otherwise exactly what the query returned, which puts low
+     * stock at the top. The sort is stable, so items that score alike keep
+     * that order between them.
+     */
     fun observe(
         query: String,
         kind: String?,
         lowStockOnly: Boolean,
         stageId: String? = null,
-    ): Flow<List<InventoryItemEntity>> =
-        dao.observeItems(query.trim().lowercase(), kind, lowStockOnly, stageId)
+    ): Flow<List<InventoryItemEntity>> {
+        val terms = Search.terms(query, shortest = 1)
+        return dao.observeItems(kind, lowStockOnly, stageId).map { rows ->
+            if (terms.isEmpty()) {
+                rows
+            } else {
+                rows.map { item ->
+                    item to Search.score(terms, item.names.searchable(), alsoMatch(item))
+                }
+                    .filter { (_, score) -> score > 0 }
+                    .sortedByDescending { (_, score) -> score }
+                    .map { (item, _) -> item }
+            }
+        }
+    }
+
+    /** Everything about an item worth matching on beyond its names. */
+    private fun alsoMatch(item: InventoryItemEntity): String = listOfNotNull(
+        item.spec.searchable(),
+        item.searchIndex,
+        item.barcode,
+    ).joinToString(" ")
 
     fun observeLowStock(): Flow<List<InventoryItemEntity>> = dao.observeLowStock()
 

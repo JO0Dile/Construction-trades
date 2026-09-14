@@ -116,10 +116,23 @@ object Search {
         val score: Int,
     )
 
-    /** The words of a query, folded. Empty means: do not search. */
-    fun terms(query: String): List<String> {
+    /**
+     * The words of a query, folded. Empty means: do not search.
+     *
+     * [shortest] is how many characters it takes before anything happens, and
+     * it is not the same question in both places this is used. The box that
+     * searches the whole app needs two, because one letter matches most of the
+     * database and a list of everything is the same as no list. A filter box
+     * over a list somebody is already looking at needs one: they can see what
+     * it is doing to the rows in front of them, and a single letter narrowing
+     * a screen of stock is exactly what it is for.
+     *
+     * Counted after folding, so a letter with a vowel point under it is one
+     * character and not two.
+     */
+    fun terms(query: String, shortest: Int = SHORTEST_QUERY): List<String> {
         val folded = fold(query)
-        if (folded.length < SHORTEST_QUERY) return emptyList()
+        if (folded.length < shortest) return emptyList()
         return folded.split(' ').filter { it.isNotEmpty() }.distinct()
     }
 

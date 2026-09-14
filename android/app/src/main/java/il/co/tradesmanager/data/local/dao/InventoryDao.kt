@@ -13,9 +13,17 @@ import kotlinx.coroutines.flow.Flow
 interface InventoryDao {
 
     /**
-     * One query serves the whole list screen. An empty [query] matches
-     * everything, [kind] filters the chips, and [lowStockOnly] uses the same
-     * rule the row badge does, so the filter and the badge can never disagree.
+     * One query serves the whole list screen. [kind] filters the chips, and
+     * [lowStockOnly] uses the same rule the row badge does, so the filter and
+     * the badge can never disagree.
+     *
+     * It does not take what somebody typed. It used to, as a LIKE over the
+     * search index, and that was quietly broken for two of the three languages
+     * this app ships in: LIKE in SQLite folds case for ASCII and nothing else,
+     * so a name stored with Hebrew points or Arabic harakat was never found by
+     * anybody typing it without them, and no amount of SQL takes a mark off a
+     * letter. The words are matched in Kotlin now, in InventoryRepository,
+     * against the same folding the whole-app search uses.
      *
      * [stageId] filters by the stage of the job somebody is on: an electrician
      * doing slab conduit does not want to scroll past ten light fittings to
@@ -38,7 +46,6 @@ interface InventoryDao {
         SELECT i.* FROM inventory_items AS i
         LEFT JOIN catalog_items AS c ON c.id = i.catalogItemId
         WHERE i.deletedAt IS NULL
-          AND (:query = '' OR i.searchIndex LIKE '%' || :query || '%')
           AND (:kind IS NULL OR i.kind = :kind)
           AND (:lowStockOnly = 0 OR (i.minStock > 0 AND i.quantity <= i.minStock))
           AND (
@@ -51,7 +58,6 @@ interface InventoryDao {
         """,
     )
     fun observeItems(
-        query: String,
         kind: String?,
         lowStockOnly: Boolean,
         stageId: String?,

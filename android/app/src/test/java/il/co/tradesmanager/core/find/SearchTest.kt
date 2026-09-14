@@ -108,6 +108,19 @@ class SearchTest {
     }
 
     @Test
+    fun `a filter box searches on one letter and the whole-app box does not`() {
+        // The box over the whole app needs two: one letter matches most of the
+        // database. A filter box over a list somebody is already looking at
+        // needs one, because they can see it working on the rows in front of
+        // them. InventoryRepository.observe is the caller that asks for one.
+        assertEquals(emptyList<String>(), Search.terms("\u05D0"))
+        assertEquals(listOf("\u05D0"), Search.terms("\u05D0", shortest = 1))
+        // Still counted after folding: a letter with a point under it is one
+        // letter, not two.
+        assertEquals(listOf("\u05D0"), Search.terms("\u05D0\u05B6", shortest = 1))
+    }
+
+    @Test
     fun `words are split and said once`() {
         assertEquals(listOf("hanson", "cement"), Search.terms("Hanson  hanson cement"))
         assertEquals(emptyList<String>(), Search.terms("   "))
