@@ -1,80 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- The themed-icon layer, which Android tints to one flat colour.
 
-     Same subject and the same geometry as the colour layer: the tools, with
-     the flag in the band beneath them. When these two drift apart, a phone
-     with themed icons turned on shows a different app from the one in the
-     list, which is how this file last went wrong.
+     Drawn rather than derived. The colour layer is a picture, and a picture
+     reduced to a single tint is a smear: the flag is mostly white with two
+     thin stripes, so its silhouette is a rectangle, and the wrench and the
+     rule fuse into each other where they cross. So this is the same subject
+     in the same arrangement — flag above, tools below — drawn as a thing that
+     survives being tinted and shrunk.
 
-     The tools are solid here. In colour the wrench and the rule are told
-     apart by being different colours; in one tint they fuse where they cross,
-     and what is left is a wrench laid over a rule read as a single outline.
-     That is what a silhouette is, and it survives being shrunk, which two
-     shades of the same tint would not.
+     It has to stay in step with the colour layer. A phone with themed icons
+     switched on shows this instead of that one, and when the two drift the
+     app in the list is not the app in the drawer. That has gone wrong here
+     before; if the picture changes, this changes with it.
 
-     The flag is drawn as lines rather than filled. Filled, it is a tinted
-     rectangle and says nothing; as an outline it keeps its border, its two
-     stripes and its star, which is what is actually recognised. The border is
-     inset by half its stroke so its outer edge lands exactly where the filled
-     flag's edge is in the colour layer, keeping both layers inside the same
-     safe zone: nothing here is more than 33 from (54,54). -->
+     The tools are solid, because a silhouette is what reads at this size. The
+     flag is drawn as lines: its two edges, both stripes and the star all
+     follow one computed wave, so nothing in it nearly-agrees with anything
+     else. Everything sits inside the adaptive safe circle — nothing further
+     than 33 from (54,54) of the 108 viewport. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- The tools, under the same transform as the colour layer: scaled 0.68
-         about (57.5,47) and moved to sit at (54,41). The graduation marks are
-         not repeated — in one tint they are drawn on the rule in the rule's
-         own colour, which is nothing at all. -->
     <group
         android:pivotX="57.5"
-        android:pivotY="47"
-        android:scaleX="0.68"
-        android:scaleY="0.68"
+        android:pivotY="46.6"
+        android:scaleX="0.65"
+        android:scaleY="0.65"
         android:translateX="-3.5"
-        android:translateY="-6">
-
-        <!-- Folding rule, opened to an angle. -->
+        android:translateY="17.4">
         <path
             android:fillColor="#FFFFFF"
             android:pathData="M30,72 L30,64 L62,64 L62,72 Z" />
         <path
             android:fillColor="#FFFFFF"
             android:pathData="M62,72 L62,64 L78,38 L85,42 L69,68 Z" />
-
-        <!-- Wrench, laid across the rule. -->
         <path
             android:fillColor="#FFFFFF"
             android:pathData="M40,30 A11,11 0 0,0 55,44 L72,61 A5,5 0 0,0 79,54 L62,37 A11,11 0 0,0 48,22 L55,29 L51,37 L43,37 Z" />
     </group>
 
-    <!-- Flag border. The path is inset 0.8 — half the stroke — so the drawn
-         edge sits on 39,60 to 69,82, the colour layer's flag exactly. -->
+    <!-- The flag as an outline: filled, one tint is a smear. -->
     <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.6"
-        android:strokeLineJoin="miter"
         android:fillColor="#00000000"
-        android:pathData="M39.8,60.8 L68.2,60.8 L68.2,81.2 L39.8,81.2 Z" />
-
-    <!-- The two stripes, kept solid and run to the full width: at this weight
-         they read as bands, and on the flag they do touch both edges. -->
-    <path android:fillColor="#FFFFFF" android:pathData="M39,62.1h30v2.75h-30z" />
-    <path android:fillColor="#FFFFFF" android:pathData="M39,77.2h30v2.75h-30z" />
-
-    <!-- Magen David, the colour layer's triangles at the same size. -->
-    <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.6"
+        android:strokeWidth="1.5"
         android:strokeLineJoin="round"
-        android:fillColor="#00000000"
-        android:pathData="M54,66.4 L57.98,73.3 L50.02,73.3 Z" />
+        android:pathData="M39.00,26.50 L40.07,27.12 L41.14,27.71 L42.21,28.25 L43.29,28.69 L44.36,29.02 L45.43,29.23 L46.50,29.30 L47.57,29.23 L48.64,29.02 L49.71,28.69 L50.79,28.25 L51.86,27.71 L52.93,27.12 L54.00,26.50 L55.07,25.88 L56.14,25.29 L57.21,24.75 L58.29,24.31 L59.36,23.98 L60.43,23.77 L61.50,23.70 L62.57,23.77 L63.64,23.98 L64.71,24.31 L65.79,24.75 L66.86,25.29 L67.93,25.88 L69.00,26.50 L69.00,43.50 L67.93,42.88 L66.86,42.29 L65.79,41.75 L64.71,41.31 L63.64,40.98 L62.57,40.77 L61.50,40.70 L60.43,40.77 L59.36,40.98 L58.29,41.31 L57.21,41.75 L56.14,42.29 L55.07,42.88 L54.00,43.50 L52.93,44.12 L51.86,44.71 L50.79,45.25 L49.71,45.69 L48.64,46.02 L47.57,46.23 L46.50,46.30 L45.43,46.23 L44.36,46.02 L43.29,45.69 L42.21,45.25 L41.14,44.71 L40.07,44.12 L39.00,43.50 Z" />
     <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.6"
-        android:strokeLineJoin="round"
+        android:fillColor="#FFFFFF"
+        android:pathData="M39.00,28.09 L40.07,28.72 L41.14,29.31 L42.21,29.84 L43.29,30.28 L44.36,30.62 L45.43,30.82 L46.50,30.89 L47.57,30.82 L48.64,30.62 L49.71,30.28 L50.79,29.84 L51.86,29.31 L52.93,28.72 L54.00,28.09 L55.07,27.47 L56.14,26.88 L57.21,26.35 L58.29,25.90 L59.36,25.57 L60.43,25.36 L61.50,25.29 L62.57,25.36 L63.64,25.57 L64.71,25.90 L65.79,26.35 L66.86,26.88 L67.93,27.47 L69.00,28.09 L69.00,30.75 L67.93,30.13 L66.86,29.54 L65.79,29.00 L64.71,28.56 L63.64,28.23 L62.57,28.02 L61.50,27.95 L60.43,28.02 L59.36,28.23 L58.29,28.56 L57.21,29.00 L56.14,29.54 L55.07,30.13 L54.00,30.75 L52.93,31.37 L51.86,31.96 L50.79,32.50 L49.71,32.94 L48.64,33.27 L47.57,33.48 L46.50,33.55 L45.43,33.48 L44.36,33.27 L43.29,32.94 L42.21,32.50 L41.14,31.96 L40.07,31.37 L39.00,30.75 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M39.00,39.25 L40.07,39.87 L41.14,40.46 L42.21,41.00 L43.29,41.44 L44.36,41.77 L45.43,41.98 L46.50,42.05 L47.57,41.98 L48.64,41.77 L49.71,41.44 L50.79,41.00 L51.86,40.46 L52.93,39.87 L54.00,39.25 L55.07,38.63 L56.14,38.04 L57.21,37.50 L58.29,37.06 L59.36,36.73 L60.43,36.52 L61.50,36.45 L62.57,36.52 L63.64,36.73 L64.71,37.06 L65.79,37.50 L66.86,38.04 L67.93,38.63 L69.00,39.25 L69.00,41.91 L67.93,41.28 L66.86,40.69 L65.79,40.16 L64.71,39.72 L63.64,39.38 L62.57,39.18 L61.50,39.11 L60.43,39.18 L59.36,39.38 L58.29,39.72 L57.21,40.16 L56.14,40.69 L55.07,41.28 L54.00,41.91 L52.93,42.53 L51.86,43.12 L50.79,43.65 L49.71,44.10 L48.64,44.43 L47.57,44.64 L46.50,44.71 L45.43,44.64 L44.36,44.43 L43.29,44.10 L42.21,43.65 L41.14,43.12 L40.07,42.53 L39.00,41.91 Z" />
+    <path
         android:fillColor="#00000000"
-        android:pathData="M54,75.6 L50.02,68.7 L57.98,68.7 Z" />
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.3"
+        android:strokeLineJoin="round"
+        android:pathData="M54.00,30.92 L50.47,37.04 L57.53,37.04 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.3"
+        android:strokeLineJoin="round"
+        android:pathData="M54.00,39.08 L57.53,32.96 L50.47,32.96 Z" />
 </vector>

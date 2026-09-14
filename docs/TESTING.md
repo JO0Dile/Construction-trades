@@ -50,27 +50,20 @@ answer is behind.
 - [ ] Nobody's ID number appears in the results list — only on the profile
       behind the row.
 
-### The icon has its tools back, and the flag with them
+### The icon is the one you drew
 
-### The icon has its tools back, and the flag with them
+The launcher icon is now the artwork itself rather than a drawing of it. The
+circle it came on is gone — a launcher supplies its own shape, and different
+phones use different ones — so the picture sits on a ground taken from the
+same artwork and whatever shape your phone masks it to fits round it.
 
-The previous build was asked to add the flag of Israel to the launcher icon
-and instead deleted the wrench and the folding rule and left the flag on its
-own. The tools are back, drawn exactly as they were, with the flag in the
-band that clears underneath them — added to the icon rather than replacing
-it.
-
-- [ ] **Look at the home screen after this update installs.** Wrench and
-      folding rule, flag under them. Long-press and look at the shortcut
-      icon too, and the icon in Settings → Apps.
+- [ ] **Look at the home screen after this update installs.** Flag above,
+      wrench and rule below. Nothing should be cut off at the edges.
+- [ ] Long-press it and look at the shortcut icon, and at **Settings → Apps**.
 - [ ] **If your phone themes its icons** (Android 13 and up: long-press the
-      wallpaper → Wallpaper & style → Themed icons), turn that on. It used
-      to show a different picture from the one in the drawer, because the
-      themed layer had not been kept in step. It now shows the same tools
-      and the same flag as a line drawing.
-- [ ] Everything below is from 0.15.2 and still worth going through if you
-      have not yet.
-
+      wallpaper → Wallpaper & style → Themed icons), turn that on. It shows a
+      drawn version in one colour — same flag above, same tools below —
+      because a photograph tinted a single colour is a smear.
 
 ### Recording a violation now works, and says so when it will not
 
