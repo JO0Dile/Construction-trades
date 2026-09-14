@@ -50,6 +50,22 @@ answer is behind.
 - [ ] Nobody's ID number appears in the results list — only on the profile
       behind the row.
 
+### The catalogue has photographs now
+
+415 of the 527 items have a picture of the actual thing. They are bundled
+into the app, not fetched — they work in a basement with no signal, which is
+the point.
+
+- [ ] **Stock.** Scroll the list. Most rows should show the item rather than a
+      placeholder.
+- [ ] Open a few and check the picture is **of that item** — a ball valve
+      where it says ball valve. If any picture is of the wrong thing, tell me
+      the item and I will pull it.
+- [ ] The 112 still without one show the placeholder, which is what they did
+      before. Nothing is broken; they are listed in
+      `docs/translation/items-needing-photos.csv` with the exact filename to
+      save each new picture as.
+
 ### The icon is the one you drew
 
 The launcher icon is now the artwork itself rather than a drawing of it. The
