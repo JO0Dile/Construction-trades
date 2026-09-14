@@ -20,6 +20,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -58,6 +59,7 @@ fun TimesheetScreen(
     val days by viewModel.days.collectAsStateWithLifecycle()
     val totals by viewModel.totals.collectAsStateWithLifecycle()
     val reconciliation by viewModel.reconciliation.collectAsStateWithLifecycle()
+    val withheld by viewModel.withheldPeople.collectAsStateWithLifecycle()
     val locale = currentLocale()
 
     Scaffold(
@@ -76,9 +78,20 @@ fun TimesheetScreen(
         },
     ) { padding ->
         if (days.isEmpty()) {
+            // "Nobody has clocked any hours" and "these hours are not yours to
+            // price" are different facts, and telling somebody the first when
+            // the second is true sends them looking for a bug.
             EmptyState(
-                message = stringResource(R.string.ts_empty),
-                hint = stringResource(R.string.ts_empty_hint),
+                message = if (withheld > 0) {
+                    stringResource(R.string.ts_all_withheld)
+                } else {
+                    stringResource(R.string.ts_empty)
+                },
+                hint = if (withheld > 0) {
+                    stringResource(R.string.ts_withheld_hint)
+                } else {
+                    stringResource(R.string.ts_empty_hint)
+                },
                 modifier = Modifier.padding(padding),
             )
             return@Scaffold
@@ -86,6 +99,20 @@ fun TimesheetScreen(
 
         LazyColumn(Modifier.padding(padding)) {
             item { Reconciliation(reconciliation, locale) }
+
+            // Said plainly rather than left as a shorter list. Somebody who
+            // cannot tell a partial timesheet from a complete one will read
+            // this as the job's whole labour and act on it.
+            if (withheld > 0) {
+                item {
+                    Text(
+                        text = pluralStringResource(R.plurals.ts_withheld, withheld, withheld),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                    )
+                }
+            }
 
             item { SectionHeader(stringResource(R.string.ts_by_person)) }
             items(totals, key = { it.workerName }) { total ->
@@ -131,6 +158,13 @@ private fun Reconciliation(
                 stringResource(R.string.ts_from_costs),
                 Formats.money(reconciliation.fromCostLines, locale),
             )
+            if (!reconciliation.complete) {
+                Text(
+                    stringResource(R.string.ts_not_whole_job),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                )
+            }
             if (reconciliation.disagrees) {
                 Text(
                     stringResource(R.string.ts_disagree),

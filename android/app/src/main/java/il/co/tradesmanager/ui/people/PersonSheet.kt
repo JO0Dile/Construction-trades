@@ -69,7 +69,18 @@ fun PersonSheet(
     suggestedKinds: List<ProjectKind>,
     role: Role,
     canManage: Boolean,
+    /**
+     * Who this person answers to, and who they could be moved under.
+     *
+     * [candidates] is already narrowed to people the viewer is entitled to
+     * arrange — the rule lives in [il.co.tradesmanager.core.access.Chain] and
+     * is applied again by the repository. Empty means there is nothing on
+     * offer, and the section is not drawn at all rather than drawn dead.
+     */
+    reportsToName: String?,
+    candidates: List<PeopleViewModel.Candidate>,
     onDismiss: () -> Unit,
+    onSetReportsTo: (String?) -> Unit,
     onSetRole: (Role) -> Unit,
     onAddCertification: (title: String, reference: String?, expiresOn: Long?) -> Unit,
     onRemoveCertification: (CertificationEntity) -> Unit,
@@ -108,6 +119,38 @@ fun PersonSheet(
                             selected = role == option,
                             onClick = { onSetRole(option) },
                             label = { Text(stringResource(roleLabel(option))) },
+                        )
+                    }
+                }
+            }
+
+            // Who they answer to. Not decoration: this is the line that
+            // decides who may be shown what they are paid, so it says so
+            // rather than leaving somebody to find out by experiment.
+            if (candidates.isNotEmpty()) {
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    text = stringResource(R.string.people_reports_to),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Text(
+                    text = stringResource(R.string.people_reports_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 8.dp),
+                )
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FilterChip(
+                        selected = reportsToName == null,
+                        onClick = { onSetReportsTo(null) },
+                        label = { Text(stringResource(R.string.people_reports_to_nobody)) },
+                    )
+                    candidates.forEach { candidate ->
+                        FilterChip(
+                            selected = reportsToName == candidate.name,
+                            onClick = { onSetReportsTo(candidate.membershipId) },
+                            label = { Text(candidate.name) },
                         )
                     }
                 }

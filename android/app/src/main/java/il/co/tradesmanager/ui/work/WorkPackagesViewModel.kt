@@ -1,0 +1,351 @@
+package il.co.tradesmanager.ui.work
+
+import android.net.Uri
+import java.util.UUID
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Party
+import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.work.Assignment
+import il.co.tradesmanager.data.catalog.WorkScope
+import il.co.tradesmanager.data.catalog.WorkStage
+import il.co.tradesmanager.data.local.entity.AssignmentEntity
+import il.co.tradesmanager.data.local.entity.EngagementEntity
+import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.repository.EngagementRepository
+import il.co.tradesmanager.data.repository.PaymentsRepository
+import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.di.AppContainer
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+
+/**
+ * The work packages on one job, from where the signed-in firm is standing.
+ *
+ * "From where the firm is standing" is the whole screen. The same package is
+ * something a contractor gave out and something a crew took on, and the two
+ * see different buttons on it — so the identity of the viewing organisation
+ * is not a detail passed to one function, it is the thing every row is read
+ * through.
+ */
+class WorkPackagesViewModel(
+    private val container: AppContainer,
+    private val projectId: String,
+) : ViewModel() {
+
+    val session: StateFlow<SessionRepository.State> = container.session.state
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5_000),
+            SessionRepository.State.Loading,
+        )
+
+    /**
+     * Which organisation is looking.
+     *
+     * A personal account has no company, and its own account id stands in as
+     * its organisation. That is not a placeholder: a sole trader taking work
+     * from a contractor is a real party to a real agreement, and giving them
+     * a blank id would silently drop them out of every confidentiality check
+     * — which fails open, because a blank id matches a blank column.
+     */
+    val orgId: StateFlow<String> = session
+        .map { state ->
+            val signedIn = state as? SessionRepository.State.SignedIn ?: return@map ""
+            signedIn.active?.companyId ?: signedIn.account.id
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "")
+
+    private val _openId = MutableStateFlow<String?>(null)
+    val openId: StateFlow<String?> = _openId.asStateFlow()
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val packages: StateFlow<List<AssignmentEntity>> = orgId
+        .flatMapLatest { org ->
+            if (org.isBlank()) flowOf(emptyList())
+            else container.engagements.observeAssignments(projectId, org)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val open: StateFlow<AssignmentEntity?> = _openId
+        .flatMapLatest { id ->
+            if (id == null) flowOf(null) else container.engagements.observeAssignment(id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /**
+     * The proof photographs on the open package.
+     *
+     * Counted from the photo table rather than passed in by the screen. The
+     * submit rule is "there is a photograph", and a screen that told the
+     * repository how many there were could tell it one when there were none —
+     * which is exactly the check being made.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val proofPhotos: StateFlow<List<PhotoEntity>> = _openId
+        .flatMapLatest { id ->
+            if (id == null) flowOf(emptyList())
+            else container.photos.observeFor(PhotoRepository.Owner.WORK_PACKAGE, id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** Every firm on this job, so a package has somebody to be given to. */
+    val engagements: StateFlow<List<EngagementEntity>> =
+        container.engagements.observeEngagements(projectId)
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /**
+     * This firm's own position on this job, which decides who it may engage.
+     *
+     * Null until somebody has recorded it. A firm that has not said what it is
+     * on this job may not bring anybody onto it — guessing "general
+     * contractor" from the fact that they opened the screen would let a crew
+     * leader invert the chain by accident.
+     */
+    val myParty: StateFlow<Party?> = combine(engagements, orgId) { rows, org ->
+        rows.firstOrNull { it.orgId == org && it.endedAt == null }?.let { Party.parse(it.party) }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    val stages: List<WorkStage> get() = container.scopes.stages
+
+    fun scopesFor(stageId: String?): List<WorkScope> =
+        if (stageId == null) container.scopes.scopes else container.scopes.scopesInStage(stageId)
+
+    fun scopeName(id: String?, languageTag: String): String? =
+        container.scopes.scope(id)?.names?.resolve(languageTag)
+
+    fun stageName(id: String?, languageTag: String): String? =
+        container.scopes.stage(id)?.names?.resolve(languageTag)
+
+    /** The last refusal, for showing why a button did nothing. */
+    private val _refusal = MutableStateFlow<EngagementRepository.Refusal?>(null)
+    val refusal: StateFlow<EngagementRepository.Refusal?> = _refusal.asStateFlow()
+
+    fun clearRefusal() { _refusal.value = null }
+
+    fun openPackage(id: String?) { _openId.value = id }
+
+    /**
+     * Brings a firm onto the job at a stated position.
+     *
+     * The refusal comes back on the same channel as the others, because
+     * "a crew leader cannot appoint a general contractor" is a rule, not a
+     * disabled button — the same call arriving from a future API has to meet
+     * it too.
+     */
+    /**
+     * Records what this firm is on this job.
+     *
+     * Nobody else can do it. A general contractor cannot be added to a job by
+     * the crew it has not hired yet, so the first engagement on any job is
+     * always a firm saying what it is — and until it has, [myParty] is null
+     * and it may bring nobody on.
+     *
+     * Passed with no engager, which is what makes it self-declared rather than
+     * appointed: the downward-only check in the repository applies to
+     * appointing somebody else, and there is nobody above to check against.
+     */
+    fun declareSelf(party: Party) = viewModelScope.launch {
+        val org = orgId.value
+        if (org.isBlank()) return@launch
+        val signedIn = session.value as? SessionRepository.State.SignedIn ?: return@launch
+        val actor = container.settings.settings.first().actorName
+        container.engagements.engage(
+            projectId = projectId,
+            orgId = org,
+            orgName = signedIn.company?.name ?: signedIn.account.displayName,
+            party = party,
+            engagedByOrgId = null,
+            engagedByParty = null,
+            scopeSummary = null,
+            actorName = actor,
+        ).onFailure { failure ->
+            _refusal.value = (failure as? EngagementRepository.Refused)?.refusal
+        }
+    }
+
+    fun engage(orgName: String, party: Party, scopeSummary: String?) = viewModelScope.launch {
+        val actor = container.settings.settings.first().actorName
+        container.engagements.engage(
+            projectId = projectId,
+            // A firm that has not signed up yet is still on the job and still
+            // has to be recorded. Its id is minted here and becomes the real
+            // one when they accept an invitation.
+            orgId = UUID.randomUUID().toString(),
+            orgName = orgName,
+            party = party,
+            engagedByOrgId = orgId.value,
+            engagedByParty = myParty.value,
+            scopeSummary = scopeSummary,
+            actorName = actor,
+        ).onFailure { failure ->
+            _refusal.value = (failure as? EngagementRepository.Refused)?.refusal
+        }
+    }
+
+    // ---- proof photographs ------------------------------------------------
+
+    fun newCameraTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
+
+    fun recordCameraPhoto(photoId: String) = viewModelScope.launch {
+        val id = _openId.value ?: return@launch
+        val actor = container.settings.settings.first().actorName
+        container.photos.recordCameraPhoto(photoId, PhotoRepository.Owner.WORK_PACKAGE, id, actor)
+    }
+
+    fun importPhoto(source: Uri) = viewModelScope.launch {
+        val id = _openId.value ?: return@launch
+        val actor = container.settings.settings.first().actorName
+        container.photos.importPhoto(source, PhotoRepository.Owner.WORK_PACKAGE, id, actor)
+    }
+
+    fun create(
+        title: String,
+        amount: Double,
+        payeeOrgId: String,
+        stageId: String?,
+        scopeId: String?,
+        location: String?,
+    ) = viewModelScope.launch {
+        val actor = container.settings.settings.first().actorName
+        val raised = container.engagements.createAssignment(
+            projectId = projectId,
+            contractId = null,
+            payerOrgId = orgId.value,
+            payeeOrgId = payeeOrgId,
+            title = title,
+            stageId = stageId,
+            scopeId = scopeId,
+            location = location,
+            amount = amount,
+            actorName = actor,
+        )
+        _openId.value = raised.id
+    }
+
+    fun move(to: String, reason: String? = null) = viewModelScope.launch {
+        val assignment = open.value ?: return@launch
+        val actor = container.settings.settings.first().actorName
+        container.engagements
+            .move(assignment, to, orgId.value, actor, reason, proofPhotos.value.size)
+            .onFailure { failure ->
+                _refusal.value = (failure as? EngagementRepository.Refused)?.refusal
+            }
+    }
+
+    /** Everything approved on this job that this firm is owed for. */
+    val claimable: StateFlow<List<Assignment.Claimable>> = combine(packages, orgId) { all, org ->
+        all.filter { it.payeeOrgId == org }
+            .map { Assignment.Claimable(it.id, it.amount, it.status, it.invoicedAt != null) }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /**
+     * Turns approved work into a payment application.
+     *
+     * The one join between a discrete package and a cumulative claim, and the
+     * place the arithmetic would go wrong. The application claims **everything
+     * approved to date**, not the packages being added to it — see
+     * `Assignment.claimToDate`. What is actually due follows from that in
+     * `core.money.Payments`, less retention and less what has already been
+     * paid, and it will not be due for another six weeks under שוטף + 30.
+     *
+     * Every package it covers is marked before the application is raised. If
+     * one of them refuses — somebody else invoiced it on another device — the
+     * application is not raised at all, because a claim covering packages that
+     * are already on somebody else's application is worse than no claim.
+     */
+    fun raiseApplication() = viewModelScope.launch {
+        val org = orgId.value
+        val ready = Assignment.readyToClaim(claimable.value)
+        if (ready.isEmpty()) return@launch
+        val actor = container.settings.settings.first().actorName
+
+        val covered = ready.mapNotNull { row -> packages.value.firstOrNull { it.id == row.id } }
+        for (assignment in covered) {
+            val marked = container.engagements.markInvoiced(assignment, org, actor)
+            if (marked.isFailure) {
+                _refusal.value =
+                    (marked.exceptionOrNull() as? EngagementRepository.Refused)?.refusal
+                return@launch
+            }
+        }
+
+        // The payer of the packages is who this claim goes to. Taken from the
+        // packages rather than from a field, so it cannot name the wrong firm.
+        val payer = covered.firstOrNull()?.payerOrgId.orEmpty()
+        val payerName = engagements.value
+            .firstOrNull { it.orgId == payer }?.orgName
+            ?: payer
+        // The breakdown lists everything the claim is made of, which is every
+        // approved package and not only the ones marked above. The claim is
+        // cumulative; a breakdown showing only this month's packages would not
+        // add up to the figure printed beside it, and somebody would spend an
+        // afternoon finding out why.
+        val covers = Assignment.claimedBy(claimable.value).mapNotNull { row ->
+            val assignment = packages.value.firstOrNull { it.id == row.id }
+                ?: return@mapNotNull null
+            PaymentsRepository.Cover(
+                assignmentId = assignment.id,
+                title = assignment.title,
+                amount = row.amount,
+            )
+        }
+        container.payments.raise(
+            projectId = projectId,
+            direction = PaymentsRepository.Direction.RECEIVABLE,
+            partyName = payerName,
+            claimedGrossToDate = Assignment.claimToDate(claimable.value),
+            contractSum = contractSum.value,
+            covers = covers,
+            actorName = actor,
+        )
+    }
+
+    /**
+     * The revised contract, which is what the retention limit is a share of.
+     *
+     * Read from the Money lens rather than summed from the packages: retention
+     * is capped against the value of the job, and the packages this firm holds
+     * are not the job.
+     */
+    val contractSum: StateFlow<Double> = container.money.observeFinancials(projectId)
+        .map { it.revisedContract }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0.0)
+
+    companion object {
+
+        /** Which side of the agreement this organisation is on, or null. */
+        fun sideOf(assignment: AssignmentEntity, orgId: String): Assignment.Side? = when (orgId) {
+            assignment.payerOrgId -> Assignment.Side.PAYER
+            assignment.payeeOrgId -> Assignment.Side.PAYEE
+            else -> null
+        }
+
+        /**
+         * The moves this viewer may make right now.
+         *
+         * Derived from the same table the repository checks rather than from
+         * a list of statuses written out again here. A second copy would drift
+         * from the first, and the version that drifts is always the one that
+         * shows a button which then refuses.
+         */
+        fun moves(assignment: AssignmentEntity, orgId: String): List<String> {
+            val side = sideOf(assignment, orgId) ?: return emptyList()
+            return Assignment.next(assignment.status)
+                .filter { Assignment.actor(it) == side }
+                .sorted()
+        }
+    }
+}

@@ -1,0 +1,99 @@
+{
+  "tradeId": "drywall",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.gb.access",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Working above head height on boards",
+        "he": "עבודה מעל גובה הראש בלוחות",
+        "ar": "العمل فوق مستوى الرأس بالألواح"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.gb.access.1",
+          "critical": true,
+          "texts": {
+            "en": "Platform or tower in use, not a stack of boards or a bucket",
+            "he": "פלטפורמה או מגדל בשימוש, לא ערימת לוחות או דלי",
+            "ar": "منصة أو برج مستخدم، لا كومة ألواح ولا دلو"
+          }
+        },
+        {
+          "id": "sf.gb.access.2",
+          "critical": true,
+          "texts": {
+            "en": "Stilts permitted on this site, or not in use at all",
+            "he": "קביים מותרים באתר הזה, או שאינם בשימוש כלל",
+            "ar": "الركائز مسموحة في هذا الموقع، أو غير مستخدمة إطلاقاً"
+          }
+        },
+        {
+          "id": "sf.gb.access.3",
+          "critical": true,
+          "texts": {
+            "en": "Floor clear of offcuts, screws and cable underfoot",
+            "he": "הרצפה נקייה משאריות, ברגים וכבלים",
+            "ar": "الأرضية خالية من القصاصات والبراغي والكابلات"
+          }
+        },
+        {
+          "id": "sf.gb.access.4",
+          "critical": false,
+          "texts": {
+            "en": "Ceiling boards lifted by two people or by a panel lifter",
+            "he": "לוחות תקרה מורמים בשניים או במרים לוחות",
+            "ar": "ألواح السقف تُرفع باثنين أو برافعة ألواح"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.gb.services",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Before cutting into a wall or ceiling",
+        "he": "לפני חיתוך בקיר או בתקרה",
+        "ar": "قبل القص في حائط أو سقف"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (חשמל), התש״ן-1990",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.gb.services.1",
+          "critical": true,
+          "texts": {
+            "en": "Cable and pipe positions confirmed, by drawing or by detector",
+            "he": "מיקומי כבלים וצנרת אושרו, לפי תוכנית או גלאי",
+            "ar": "مواقع الكابلات والمواسير مؤكّدة، بمخطط أو بجهاز كشف"
+          }
+        },
+        {
+          "id": "sf.gb.services.2",
+          "critical": true,
+          "texts": {
+            "en": "Circuits in the area isolated where a cut could reach them",
+            "he": "מעגלים באזור מנותקים היכן שחיתוך עלול להגיע אליהם",
+            "ar": "الدارات في المنطقة معزولة حيث قد يصلها القص"
+          }
+        },
+        {
+          "id": "sf.gb.services.3",
+          "critical": false,
+          "texts": {
+            "en": "Fire-rated construction identified so the right board goes back",
+            "he": "בנייה עמידת אש זוהתה כדי שיוחזר הלוח הנכון",
+            "ar": "البناء المقاوم للحريق محدّد ليُعاد اللوح الصحيح"
+          }
+        }
+      ]
+    }
+  ]
+}

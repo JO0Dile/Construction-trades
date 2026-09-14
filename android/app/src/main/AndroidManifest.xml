@@ -2,32 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Every permission below is requested at the moment of use, with an
-         in-app rationale screen first. Nothing is asked for at launch. -->
+    <!-- Only what the app actually does. Each is requested at the moment of
+         use, with an in-app rationale first; nothing is asked for at launch.
 
-    <!-- Site photos, barcode/QR labels. -->
+         Microphone, location and notifications used to be declared here for
+         voice dictation, GPS stamping and task reminders. None of those three
+         features exists — there is no speech, location or notification code
+         in the app at all. Play requires a permission to be necessary for
+         functionality, location draws its own declaration form and review,
+         and an app that asks a site worker for the microphone and their
+         position without using either is not one to hand a ministry. They
+         come back with the features, if the features are ever built. -->
+
+    <!-- Site photos, barcode and QR labels. -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <!-- Optional GPS stamp on check-in, site photos and incident reports.
-         The app is fully usable with this denied. -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- Task reminders and team notifications. -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- Cloud sync only; the app is offline-first and never blocks on this. -->
+    <!-- The update check on the sideloaded build, and nothing else: the app
+         is offline-first and never blocks on the network. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Voice dictation of task notes in Hebrew and Arabic. -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
-
-    <!-- Voice input resolves the system speech recognizer by intent. -->
-    <queries>
-        <intent>
-            <action android:name="android.speech.RecognitionService" />
-        </intent>
-    </queries>
 
     <application
         android:name=".TradesManagerApp"

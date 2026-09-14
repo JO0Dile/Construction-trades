@@ -70,8 +70,13 @@ class OrderDetailViewModel(
         container.purchasing.removeLine(line, actor())
     }
 
-    fun place() = viewModelScope.launch {
-        state.value.order?.let { container.purchasing.place(it, actor()) }
+    /** [expectedOn] is what the supplier said, or null when they did not say. */
+    fun place(expectedOn: Long?) = viewModelScope.launch {
+        state.value.order?.let { container.purchasing.place(it, actor(), expectedOn) }
+    }
+
+    fun setExpected(expectedOn: Long?) = viewModelScope.launch {
+        state.value.order?.let { container.purchasing.setExpected(it, expectedOn, actor()) }
     }
 
     fun cancel() = viewModelScope.launch {

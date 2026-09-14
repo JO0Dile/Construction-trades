@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.orders
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -49,8 +50,10 @@ import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.PickDate
 import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
 import il.co.tradesmanager.ui.components.SectionPlaceholder
+import il.co.tradesmanager.ui.components.asDate
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.unitLabel
 
@@ -84,6 +87,10 @@ fun OrderDetailScreen(
 
     val order = state.order
     val isDraft = order?.status == PurchasingRepository.Status.DRAFT
+    // Two separate questions, so two separate flags: one asks the date on the
+    // way to placing the order, the other changes it afterwards.
+    var askingDueOnPlace by remember { mutableStateOf(false) }
+    var changingDue by remember { mutableStateOf(false) }
     val isOpen = order?.status == PurchasingRepository.Status.ORDERED ||
         order?.status == PurchasingRepository.Status.PART_RECEIVED
 
@@ -126,6 +133,28 @@ fun OrderDetailScreen(
                             )
                         }
 
+                        // When the concrete is coming is the question asked
+                        // on a site every morning. The column has been here
+                        // since orders were built with nothing ever written
+                        // into it, so the answer lived on somebody's scrap of
+                        // paper — which is where it was before this app.
+                        if (!isDraft) {
+                            ListItem(
+                                overlineContent = { Text(stringResource(R.string.po_due)) },
+                                headlineContent = {
+                                    Text(
+                                        order?.expectedOn?.let { asDate(it, locale) }
+                                            ?: stringResource(R.string.po_no_due),
+                                    )
+                                },
+                                modifier = if (isOpen && canEdit) {
+                                    Modifier.clickable { changingDue = true }
+                                } else {
+                                    Modifier
+                                },
+                            )
+                        }
+
                         if (isDraft) {
                             Text(
                                 text = stringResource(R.string.po_draft_note),
@@ -135,7 +164,7 @@ fun OrderDetailScreen(
                             )
                             if (canEdit) {
                                 Button(
-                                    onClick = viewModel::place,
+                                    onClick = { askingDueOnPlace = true },
                                     enabled = state.lines.isNotEmpty(),
                                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
                                 ) {
@@ -198,6 +227,34 @@ fun OrderDetailScreen(
                 viewModel.receive(line, it)
                 receiving = null
             },
+        )
+    }
+
+    // Asked on the way to placing it, because that is the one moment somebody
+    // knows: you ring the merchant, they say Thursday, and the answer is in
+    // the room. Clear on the calendar places the order with no date rather
+    // than refusing to place it — plenty of suppliers will not commit.
+    if (askingDueOnPlace) {
+        PickDate(
+            initial = null,
+            onDismiss = { askingDueOnPlace = false },
+            onPick = { due ->
+                viewModel.place(due)
+                askingDueOnPlace = false
+            },
+            title = stringResource(R.string.po_when_due),
+        )
+    }
+
+    if (changingDue) {
+        PickDate(
+            initial = order?.expectedOn,
+            onDismiss = { changingDue = false },
+            onPick = { due ->
+                viewModel.setExpected(due)
+                changingDue = false
+            },
+            title = stringResource(R.string.po_when_due),
         )
     }
 }

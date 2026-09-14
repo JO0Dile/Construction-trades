@@ -46,6 +46,20 @@ class SettingsRepository(private val context: Context) {
          * every argument it has already won. Empty until first read.
          */
         val deviceId: String = "",
+        /**
+         * How many days of audit trail to keep. Zero means keep everything.
+         *
+         * Zero by default, and deliberately: how long site records must be
+         * held is a legal question with different answers for a payment
+         * record, a safety inspection and a personal ID number, and it is
+         * answered by the organisation running the app — eventually a
+         * ministry — not by whoever wrote this file. A period invented here
+         * would quietly destroy evidence on somebody else's job.
+         *
+         * So nothing is ever deleted until a person sets a number, and the
+         * purge records what it cut. See docs/AUDIT.md.
+         */
+        val auditRetentionDays: Int = 0,
     )
 
     val settings: Flow<Settings> = context.dataStore.data.map { prefs ->
@@ -58,6 +72,7 @@ class SettingsRepository(private val context: Context) {
             actorName = prefs[KEY_ACTOR] ?: "",
             seededCatalogVersion = prefs[KEY_SEEDED_VERSION] ?: 0,
             projectsAsGrid = prefs[KEY_PROJECTS_GRID] ?: true,
+            auditRetentionDays = prefs[KEY_AUDIT_RETENTION] ?: 0,
             signedInAccountId = prefs[KEY_ACCOUNT]?.takeIf { it.isNotBlank() },
             activeCompanyId = prefs[KEY_ACTIVE_COMPANY]?.takeIf { it.isNotBlank() },
             deviceId = prefs[KEY_DEVICE_ID].orEmpty(),
@@ -109,6 +124,18 @@ class SettingsRepository(private val context: Context) {
         it.remove(KEY_ACTIVE_COMPANY)
     }
 
+    /**
+     * How long to keep the audit trail. Zero keeps everything.
+     *
+     * Negative is refused rather than clamped: a negative retention would
+     * compute a cutoff in the future and delete the entire trail, and a
+     * silent correction is how that ships.
+     */
+    suspend fun setAuditRetentionDays(days: Int) {
+        require(days >= 0) { "retention cannot be negative" }
+        put { it[KEY_AUDIT_RETENTION] = days }
+    }
+
     /** Account deletion, as both stores require it to be offered in-app. */
     suspend fun clearAll() {
         context.dataStore.edit { it.clear() }
@@ -129,5 +156,6 @@ class SettingsRepository(private val context: Context) {
         val KEY_ACCOUNT = stringPreferencesKey("signed_in_account")
         val KEY_ACTIVE_COMPANY = stringPreferencesKey("active_company")
         val KEY_DEVICE_ID = stringPreferencesKey("device_id")
+        val KEY_AUDIT_RETENTION = intPreferencesKey("audit_retention_days")
     }
 }

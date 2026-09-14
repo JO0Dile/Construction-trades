@@ -387,5 +387,53 @@
             <string>متأخر %d يوم</string>
         </dict>
     </dict>
+    <key>ts_withheld</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا أحد في هذا المشروع خارج صلاحيتك.</string>
+            <key>one</key>
+            <string>شخص واحد في هذا المشروع ليس من صلاحيتك تسعيره.</string>
+            <key>two</key>
+            <string>شخصان في هذا المشروع ليسا من صلاحيتك تسعيرهما.</string>
+            <key>few</key>
+            <string>%d أشخاص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</string>
+            <key>many</key>
+            <string>%d شخصًا في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</string>
+            <key>other</key>
+            <string>%d شخص في هذا المشروع ليسوا من صلاحيتك تسعيرهم.</string>
+        </dict>
+    </dict>
+    <key>crew_no_trade</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>الجميع لديهم مهنة مسجّلة.</string>
+            <key>one</key>
+            <string>شخص واحد بلا مهنة مسجّلة ولا يظهر في أي من هذه القوائم.</string>
+            <key>two</key>
+            <string>شخصان بلا مهنة مسجّلة ولا يظهران في أي من هذه القوائم.</string>
+            <key>few</key>
+            <string>%d أشخاص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</string>
+            <key>many</key>
+            <string>%d شخصًا بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</string>
+            <key>other</key>
+            <string>%d شخص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

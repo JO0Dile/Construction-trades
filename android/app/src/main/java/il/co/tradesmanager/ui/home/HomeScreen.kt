@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.Badge
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.RequestQuote
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.filled.Settings
@@ -54,8 +55,10 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLocale
+import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZoneId
 
 /**
  * The screen the day starts on.
@@ -74,13 +77,16 @@ fun HomeScreen(
     onOpenProjects: () -> Unit,
     onOpenSafety: () -> Unit,
     onOpenPeople: () -> Unit,
+    onOpenSearch: () -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val viewModel: HomeViewModel = viewModel(factory = ViewModelFactory(container) { HomeViewModel(it) })
     val state by viewModel.state.collectAsStateWithLifecycle()
     val portfolio by viewModel.portfolio.collectAsStateWithLifecycle()
+    val changes by viewModel.changes.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val zone = ZoneId.systemDefault()
 
     // Each tile belongs to a lens, so the dashboard is different work for
     // different people rather than the same wall of numbers with some greyed
@@ -106,6 +112,15 @@ fun HomeScreen(
                     }
                 },
                 actions = {
+                    // First, and on every screen a person starts from: the
+                    // whole point of one search box is that it is not hidden
+                    // behind whichever register happens to hold the answer.
+                    IconButton(onClick = onOpenSearch) {
+                        Icon(
+                            Icons.Filled.Search,
+                            contentDescription = stringResource(R.string.action_search),
+                        )
+                    }
                     IconButton(onClick = onOpenSettings) {
                         Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.set_title))
                     }
@@ -324,6 +339,30 @@ fun HomeScreen(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
+                    }
+                }
+            }
+
+            // What changed, and only what this person may be told about. The
+            // filter is the lens grid, asked about a change instead of a
+            // screen: a labourer sees the programme move and the drawing
+            // replaced, and does not see a cost line.
+            if (changes.isNotEmpty()) {
+                item { SectionHeader(stringResource(R.string.home_changes)) }
+                items(changes, key = { it.id }) { change ->
+                    val at = Instant.ofEpochMilli(change.occurredAt).atZone(zone)
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 6.dp),
+                    ) {
+                        Text(change.summary, style = MaterialTheme.typography.bodyLarge)
+                        Text(
+                            text = change.actorName + " · " +
+                                Formats.dateTime(at.toLocalDate(), at.toLocalTime(), locale),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
                     }
                 }
             }

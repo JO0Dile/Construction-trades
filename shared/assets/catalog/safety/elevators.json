@@ -1,0 +1,68 @@
+{
+  "tradeId": "elevators",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.lf.shaft",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Working in a lift shaft",
+        "he": "עבודה בפיר מעלית",
+        "ar": "العمل في بئر المصعد"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007",
+        "תקנות הבטיחות בעבודה (עבודה בחלל מוקף), התשע״ח-2018",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (חשמל), התש״ן-1990"
+      ],
+      "items": [
+        {
+          "id": "sf.lf.shaft.1",
+          "critical": true,
+          "texts": {
+            "en": "Power to the machine locked off with a personal padlock",
+            "he": "המתח למכונה ננעל במנעול אישי",
+            "ar": "التيار عن الماكينة مقفل بقفل شخصي"
+          }
+        },
+        {
+          "id": "sf.lf.shaft.2",
+          "critical": true,
+          "texts": {
+            "en": "Landing doors barriered and signed on every floor, not just this one",
+            "he": "דלתות הפיר מגודרות ומסומנות בכל קומה, לא רק בזו",
+            "ar": "أبواب الطوابق مسيّجة ومعلّمة في كل طابق، لا هذا فقط"
+          }
+        },
+        {
+          "id": "sf.lf.shaft.3",
+          "critical": true,
+          "texts": {
+            "en": "Fall arrest anchored above, and the pit refuge space is clear",
+            "he": "רתמה מעוגנת מלמעלה ומרחב המפלט בבור פנוי",
+            "ar": "حزام السقوط مربوط من أعلى ومساحة الملجأ في الحفرة خالية"
+          }
+        },
+        {
+          "id": "sf.lf.shaft.4",
+          "critical": true,
+          "texts": {
+            "en": "Nobody working above anybody else in the same shaft",
+            "he": "אין עבודה של אדם מעל אדם אחר באותו פיר",
+            "ar": "لا أحد يعمل فوق آخر في نفس البئر"
+          }
+        },
+        {
+          "id": "sf.lf.shaft.5",
+          "critical": false,
+          "texts": {
+            "en": "Lighting and communication to the outside both working",
+            "he": "תאורה ותקשורת החוצה פועלות",
+            "ar": "الإنارة والاتصال للخارج يعملان"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "tradeId": "metalwork",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.mw.grind",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Grinding and cutting metal",
+        "he": "השחזה וחיתוך מתכת",
+        "ar": "الجلخ وقص المعدن"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997",
+        "פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970"
+      ],
+      "items": [
+        {
+          "id": "sf.mw.grind.1",
+          "critical": true,
+          "texts": {
+            "en": "Guard fitted and not removed for convenience",
+            "he": "המגן מותקן ולא הוסר לנוחות",
+            "ar": "الواقي مركّب ولم يُزل للراحة"
+          }
+        },
+        {
+          "id": "sf.mw.grind.2",
+          "critical": true,
+          "texts": {
+            "en": "Disc rated above the tool's speed and free of cracks",
+            "he": "הדיסק מדורג מעל מהירות הכלי ונקי מסדקים",
+            "ar": "القرص مصنّف فوق سرعة العدة وخالٍ من الشقوق"
+          }
+        },
+        {
+          "id": "sf.mw.grind.3",
+          "critical": true,
+          "texts": {
+            "en": "Face shield over goggles, not instead of them",
+            "he": "מגן פנים מעל משקפי מגן, לא במקומם",
+            "ar": "واقي وجه فوق النظارات، لا بدلاً عنها"
+          }
+        },
+        {
+          "id": "sf.mw.grind.4",
+          "critical": false,
+          "texts": {
+            "en": "Sparks are not falling onto anybody, anything stored, or a lower floor",
+            "he": "ניצוצות אינם נופלים על אדם, על חומר מאוחסן או לקומה נמוכה",
+            "ar": "الشرر لا يسقط على شخص أو مادة مخزّنة أو طابق أسفل"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.mw.balustrade",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Balustrade and edge protection",
+        "he": "מעקה והגנת קצה",
+        "ar": "الدرابزين وحماية الحافة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.mw.balustrade.1",
+          "critical": true,
+          "texts": {
+            "en": "Temporary edge protection stays up until the permanent rail is fixed",
+            "he": "הגנת קצה זמנית נשארת עד שהמעקה הקבוע מקובע",
+            "ar": "حماية الحافة المؤقتة تبقى حتى يُثبّت الدرابزين الدائم"
+          }
+        },
+        {
+          "id": "sf.mw.balustrade.2",
+          "critical": true,
+          "texts": {
+            "en": "Fixings into concrete are the specified anchor, not a plug and screw",
+            "he": "העיגון לבטון הוא העוגן שנקבע, לא פלסטיק ובורג",
+            "ar": "التثبيت في الباطون هو المثبّت المحدّد، لا فيشر وبرغي"
+          }
+        },
+        {
+          "id": "sf.mw.balustrade.3",
+          "critical": false,
+          "texts": {
+            "en": "Gap between uprights and below the rail checked against the drawing",
+            "he": "המרווח בין העמודים ומתחת למאחז נבדק מול התוכנית",
+            "ar": "الفراغ بين القوائم وتحت المسكة مفحوص مقابل المخطط"
+          }
+        }
+      ]
+    }
+  ]
+}
