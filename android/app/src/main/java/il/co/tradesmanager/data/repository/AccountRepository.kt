@@ -3,6 +3,7 @@ package il.co.tradesmanager.data.repository
 import il.co.tradesmanager.core.access.CompanyProfile
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.people.Corrections
+import il.co.tradesmanager.core.people.IdNumbers
 import il.co.tradesmanager.core.security.Passcode
 import il.co.tradesmanager.core.security.Signature
 import il.co.tradesmanager.data.local.dao.AccountDao
@@ -308,7 +309,13 @@ class AccountRepository(
         val typed = identifier.trim()
         if (typed.isEmpty()) return SignIn.WrongCredentials
 
-        val candidates = dao.accountsMatching(typed).filter { it.deletedAt == null }
+        // The name and username halves are matched in SQL. The ID number
+        // half cannot be — it is a number written several ways — so it is
+        // matched here and folded in, without disturbing the order the SQL
+        // returns, which puts whoever signed in most recently first.
+        val candidates = (
+            dao.accountsMatching(typed).filter { it.deletedAt == null } + matchingIdNumber(typed)
+            ).distinctBy { it.id }
         val account = candidates.firstOrNull {
             Passcode.opens(passcode, it.passcodeHash, it.passcodeSalt)
         } ?: return SignIn.WrongCredentials
@@ -346,14 +353,28 @@ class AccountRepository(
      * not put a stranger's face on the screen of somebody about to write a
      * violation.
      */
-    suspend fun findByIdNumber(idNumber: String): AccountEntity? {
-        val trimmed = idNumber.trim()
-        if (trimmed.isEmpty()) return null
-        return dao.byIdNumber(trimmed)
-    }
+    suspend fun findByIdNumber(idNumber: String): AccountEntity? =
+        matchingIdNumber(idNumber).firstOrNull()
 
     suspend fun isIdNumberTaken(idNumber: String): Boolean =
-        idNumber.isNotBlank() && dao.countWithIdNumber(idNumber) > 0
+        matchingIdNumber(idNumber).isNotEmpty()
+
+    /**
+     * Everybody whose ID number is this one, however either was written.
+     *
+     * The comparison is [IdNumbers.same] rather than string equality, and the
+     * reason is the gate: a man typed in on an Arabic keypad, or read off a
+     * document with its separators, used to read as a stranger and get added a
+     * second time. See IdNumbers for what that costs.
+     *
+     * It should return at most one row. It returns a list because the same
+     * rule decides whether a number is already taken, and "how many" is the
+     * question there.
+     */
+    private suspend fun matchingIdNumber(idNumber: String): List<AccountEntity> {
+        if (IdNumbers.canonical(idNumber) == null) return emptyList()
+        return dao.accountsWithIdNumber().filter { IdNumbers.same(it.idNumber, idNumber) }
+    }
 
     /**
      * Sets the ID number, once.
@@ -373,7 +394,10 @@ class AccountRepository(
         val account = dao.account(accountId)?.takeIf { it.deletedAt == null } ?: return false
         if (!account.idNumber.isNullOrBlank()) return false
         if (isIdNumberTaken(trimmed)) return false
-        dao.upsert(account.copy(idNumber = trimmed))
+        // Stored as its digits. Existing rows keep whatever they hold and
+        // are still matched, but nothing new is written in a form that only
+        // one keypad produces.
+        dao.upsert(account.copy(idNumber = IdNumbers.canonical(trimmed) ?: trimmed))
         audit.record(ENTITY, account.id, AuditTrail.Action.UPDATE, account.displayName, "ID number set")
         return true
     }
