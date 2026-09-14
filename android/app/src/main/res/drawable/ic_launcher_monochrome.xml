@@ -1,49 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- The themed-icon layer, which Android tints to one flat colour.
 
-     It used to carry the wrench and folding rule that the colour icon no
-     longer has, so a phone with themed icons turned on showed a different
-     app from the one in the list.
+     Same subject and the same geometry as the colour layer: the tools, with
+     the flag in the band beneath them. When these two drift apart, a phone
+     with themed icons turned on shows a different app from the one in the
+     list, which is how this file last went wrong.
 
-     Everything here is an outline. A flag filled in a single tint is a solid
-     rectangle and says nothing; the same flag as a line drawing keeps its
-     stripes, its star and the check, which is what a person actually
-     recognises. Same geometry and the same safe zone as the colour layer. -->
+     The tools are solid here. In colour the wrench and the rule are told
+     apart by being different colours; in one tint they fuse where they cross,
+     and what is left is a wrench laid over a rule read as a single outline.
+     That is what a silhouette is, and it survives being shrunk, which two
+     shades of the same tint would not.
+
+     The flag is drawn as lines rather than filled. Filled, it is a tinted
+     rectangle and says nothing; as an outline it keeps its border, its two
+     stripes and its star, which is what is actually recognised. The border is
+     inset by half its stroke so its outer edge lands exactly where the filled
+     flag's edge is in the colour layer, keeping both layers inside the same
+     safe zone: nothing here is more than 33 from (54,54). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Flag edge. -->
+    <!-- The tools, under the same transform as the colour layer: scaled 0.68
+         about (57.5,47) and moved to sit at (54,41). The graduation marks are
+         not repeated — in one tint they are drawn on the rule in the rule's
+         own colour, which is nothing at all. -->
+    <group
+        android:pivotX="57.5"
+        android:pivotY="47"
+        android:scaleX="0.68"
+        android:scaleY="0.68"
+        android:translateX="-3.5"
+        android:translateY="-6">
+
+        <!-- Folding rule, opened to an angle. -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M30,72 L30,64 L62,64 L62,72 Z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M62,72 L62,64 L78,38 L85,42 L69,68 Z" />
+
+        <!-- Wrench, laid across the rule. -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M40,30 A11,11 0 0,0 55,44 L72,61 A5,5 0 0,0 79,54 L62,37 A11,11 0 0,0 48,22 L55,29 L51,37 L43,37 Z" />
+    </group>
+
+    <!-- Flag border. The path is inset 0.8 — half the stroke — so the drawn
+         edge sits on 39,60 to 69,82, the colour layer's flag exactly. -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.5"
+        android:strokeWidth="1.6"
+        android:strokeLineJoin="miter"
         android:fillColor="#00000000"
-        android:pathData="M32,30 L76,30 L76,62 L32,62 Z" />
+        android:pathData="M39.8,60.8 L68.2,60.8 L68.2,81.2 L39.8,81.2 Z" />
 
-    <!-- The two stripes, kept solid: at this weight they read as bands. -->
-    <path android:fillColor="#FFFFFF" android:pathData="M32,33h44v4h-44z" />
-    <path android:fillColor="#FFFFFF" android:pathData="M32,55h44v4h-44z" />
+    <!-- The two stripes, kept solid and run to the full width: at this weight
+         they read as bands, and on the flag they do touch both edges. -->
+    <path android:fillColor="#FFFFFF" android:pathData="M39,62.1h30v2.75h-30z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M39,77.2h30v2.75h-30z" />
 
+    <!-- Magen David, the colour layer's triangles at the same size. -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.5"
+        android:strokeWidth="1.6"
         android:strokeLineJoin="round"
         android:fillColor="#00000000"
-        android:pathData="M54,38.2 L60.75,49.9 L47.25,49.9 Z" />
+        android:pathData="M54,66.4 L57.98,73.3 L50.02,73.3 Z" />
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.5"
+        android:strokeWidth="1.6"
         android:strokeLineJoin="round"
         android:fillColor="#00000000"
-        android:pathData="M54,53.8 L47.25,42.1 L60.75,42.1 Z" />
-
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="7"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:fillColor="#00000000"
-        android:pathData="M42,72 L50,80 L68,60" />
+        android:pathData="M54,75.6 L50.02,68.7 L57.98,68.7 Z" />
 </vector>
