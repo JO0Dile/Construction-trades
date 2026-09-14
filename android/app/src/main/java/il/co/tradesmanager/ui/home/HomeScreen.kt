@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.Badge
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.RequestQuote
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.filled.Settings
@@ -76,6 +77,7 @@ fun HomeScreen(
     onOpenProjects: () -> Unit,
     onOpenSafety: () -> Unit,
     onOpenPeople: () -> Unit,
+    onOpenSearch: () -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val viewModel: HomeViewModel = viewModel(factory = ViewModelFactory(container) { HomeViewModel(it) })
@@ -110,6 +112,15 @@ fun HomeScreen(
                     }
                 },
                 actions = {
+                    // First, and on every screen a person starts from: the
+                    // whole point of one search box is that it is not hidden
+                    // behind whichever register happens to hold the answer.
+                    IconButton(onClick = onOpenSearch) {
+                        Icon(
+                            Icons.Filled.Search,
+                            contentDescription = stringResource(R.string.action_search),
+                        )
+                    }
                     IconButton(onClick = onOpenSettings) {
                         Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.set_title))
                     }

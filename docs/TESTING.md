@@ -9,7 +9,48 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.15.3 — and what to try first
+## What is new in 0.16.0 — and what to try first
+
+### One search box, over everything
+
+There is a magnifying glass at the top of the home screen now. It looks in
+jobs, people, stock, orders, permits, snags and plant at once, and it is the
+first thing in the app that does not need you to already know which screen the
+answer is behind.
+
+- [ ] **Home → the magnifying glass.** Type part of a job name. The job should
+      come back with its client and address under it; tapping it opens the job.
+- [ ] Type part of somebody's name. Tapping the row opens **their profile**,
+      not the crew list.
+- [ ] Type a **supplier** — the order comes back under its own reference.
+- [ ] Type two words that are in different places, like a supplier and what
+      was on the order. Both have to appear somewhere for a row to come back,
+      and they can be in either order.
+
+**The part worth testing hardest, in Hebrew and Arabic:**
+
+- [ ] Type an Arabic name **without** the harakat when it was entered **with**
+      them, and the other way round. It should still be found.
+- [ ] Same with Hebrew points.
+- [ ] Type a word that ends in a final letter — ם ן ך ף ץ — using the ordinary
+      form, and search for the middle of a word ending in one. Both should
+      work.
+- [ ] Type أحمد as احمد, and شركة as شركه. Both should find it.
+- [ ] On an Arabic phone, type the digits **as the keyboard gives them** (٠١٢…).
+      They should find records stored in Latin digits.
+- [ ] Type an ID or phone number **without** its dashes when it was stored with
+      them. And with them when it was stored without.
+- [ ] One letter searches nothing and says so. Two letters searches.
+
+**And the thing it must not do:**
+
+- [ ] Sign in as somebody whose role cannot read Money or Evidence. Search
+      still works, and the registers they cannot open do not appear in it.
+      There is a line at the bottom of the results saying so.
+- [ ] Nobody's ID number appears in the results list — only on the profile
+      behind the row.
+
+### The icon has its tools back, and the flag with them
 
 ### The icon has its tools back, and the flag with them
 
@@ -27,8 +68,8 @@ it.
       to show a different picture from the one in the drawer, because the
       themed layer had not been kept in step. It now shows the same tools
       and the same flag as a line drawing.
-- [ ] Nothing else changed in this build. Everything below is from 0.15.2
-      and still worth going through if you have not yet.
+- [ ] Everything below is from 0.15.2 and still worth going through if you
+      have not yet.
 
 
 ### Recording a violation now works, and says so when it will not

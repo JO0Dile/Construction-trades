@@ -36,6 +36,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -85,10 +86,18 @@ import java.time.ZoneId
 fun CrewScreen(
     container: AppContainer,
     onBack: () -> Unit,
+    openMembershipId: String? = null,
 ) {
     val viewModel: CrewViewModel = viewModel(
         factory = ViewModelFactory(container) { CrewViewModel(it) },
     )
+
+    // Arrived from the search box, which found a person and knows their
+    // membership but has no idea this screen exists. Keyed on the id so that
+    // coming back for the same person opens them again rather than once ever.
+    LaunchedEffect(openMembershipId) {
+        if (openMembershipId != null) viewModel.openProfile(openMembershipId)
+    }
     val trades by viewModel.trades.collectAsStateWithLifecycle()
     val tradeId by viewModel.tradeId.collectAsStateWithLifecycle()
     val people by viewModel.people.collectAsStateWithLifecycle()

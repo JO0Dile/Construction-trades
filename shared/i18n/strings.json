@@ -5679,6 +5679,72 @@
       "en": "The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.",
       "he": "הקובץ נפתח אך מסד הנתונים שבתוכו פגום. אל תסתמכו עליו — צרו גיבוי חדש.",
       "ar": "فُتح الملف لكن قاعدة البيانات داخله تالفة. لا تعتمد عليه — أنشئ نسخة جديدة."
+    },
+    "search_hint": {
+      "c": "Placeholder in the one search box that covers the whole app.",
+      "en": "A name, a number, a reference",
+      "he": "שם, מספר או סימוכין",
+      "ar": "اسم أو رقم أو مرجع"
+    },
+    "search_start": {
+      "c": "Shown before anything is typed, so people know how wide the search is.",
+      "en": "Everything on this phone is searched at once: jobs, people, stock, orders, permits, snags and plant.",
+      "he": "החיפוש עובר בבת אחת על הכול במכשיר: פרויקטים, אנשים, מלאי, הזמנות, היתרים, ליקויים וציוד.",
+      "ar": "يبحث دفعة واحدة في كل ما على هذا الجهاز: المشاريع والأشخاص والمخزون والطلبيات والتصاريح والعيوب والمعدات."
+    },
+    "search_short": {
+      "c": "One letter matches most of the database, so nothing is searched until two.",
+      "en": "Two letters at least.",
+      "he": "לפחות שתי אותיות.",
+      "ar": "حرفان على الأقل."
+    },
+    "search_nothing": {
+      "c": "No results. %1$s is what was typed.",
+      "en": "Nothing matched %1$s.",
+      "he": "לא נמצא דבר עבור %1$s.",
+      "ar": "لا شيء يطابق %1$s."
+    },
+    "search_only_yours": {
+      "c": "Footnote on the results, so an empty list is not mistaken for an empty database.",
+      "en": "Only what your role lets you see is searched.",
+      "he": "החיפוש מציג רק את מה שההרשאות שלכם מתירות לראות.",
+      "ar": "لا يشمل البحث إلا ما تسمح لك صلاحيتك برؤيته."
+    },
+    "search_kind_job": {
+      "c": "Tag on a result row saying which register it came out of.",
+      "en": "Job",
+      "he": "עבודה",
+      "ar": "عمل"
+    },
+    "search_kind_person": {
+      "en": "Person",
+      "he": "אדם",
+      "ar": "شخص"
+    },
+    "search_kind_item": {
+      "en": "Item",
+      "he": "פריט",
+      "ar": "صنف"
+    },
+    "search_kind_order": {
+      "en": "Order",
+      "he": "הזמנה",
+      "ar": "طلبية"
+    },
+    "search_kind_permit": {
+      "en": "Permit",
+      "he": "היתר עבודה",
+      "ar": "تصريح عمل"
+    },
+    "search_kind_snag": {
+      "en": "Snag",
+      "he": "ליקוי",
+      "ar": "عيب"
+    },
+    "search_kind_plant": {
+      "en": "Plant",
+      "he": "ציוד",
+      "ar": "معدات"
     }
   },
   "plurals": {

@@ -1210,3 +1210,21 @@
 "backup_contents" = "أُخذت في %1$s: %2$d مشاريع، %3$d أشخاص، %4$d صورة وفيديو.";
 /* The archive opened but the database inside failed SQLite's integrity check. */
 "backup_damaged" = "فُتح الملف لكن قاعدة البيانات داخله تالفة. لا تعتمد عليه — أنشئ نسخة جديدة.";
+/* Placeholder in the one search box that covers the whole app. */
+"search_hint" = "اسم أو رقم أو مرجع";
+/* Shown before anything is typed, so people know how wide the search is. */
+"search_start" = "يبحث دفعة واحدة في كل ما على هذا الجهاز: المشاريع والأشخاص والمخزون والطلبيات والتصاريح والعيوب والمعدات.";
+/* One letter matches most of the database, so nothing is searched until two. */
+"search_short" = "حرفان على الأقل.";
+/* No results. %1$s is what was typed. */
+"search_nothing" = "لا شيء يطابق %1$s.";
+/* Footnote on the results, so an empty list is not mistaken for an empty database. */
+"search_only_yours" = "لا يشمل البحث إلا ما تسمح لك صلاحيتك برؤيته.";
+/* Tag on a result row saying which register it came out of. */
+"search_kind_job" = "عمل";
+"search_kind_person" = "شخص";
+"search_kind_item" = "صنف";
+"search_kind_order" = "طلبية";
+"search_kind_permit" = "تصريح عمل";
+"search_kind_snag" = "عيب";
+"search_kind_plant" = "معدات";

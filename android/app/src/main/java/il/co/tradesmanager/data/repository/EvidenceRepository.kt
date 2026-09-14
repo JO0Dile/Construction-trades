@@ -113,6 +113,9 @@ class EvidenceRepository(
 
     fun observePermit(id: String): Flow<PermitEntity?> = dao.observePermit(id)
 
+    /** Every permit there is, for search. Uncapped: see EvidenceDao.allPermits. */
+    suspend fun allPermits(): List<PermitEntity> = dao.allPermits()
+
     fun observePrecautions(permitId: String): Flow<List<PermitPrecautionEntity>> =
         dao.observePrecautions(permitId)
 
@@ -300,6 +303,9 @@ class EvidenceRepository(
         dao.observeSnags(projectId)
 
     fun observeSnag(id: String): Flow<SnagEntity?> = dao.observeSnag(id)
+
+    /** Every snag there is, for search. Uncapped: see EvidenceDao.allSnags. */
+    suspend fun allSnags(): List<SnagEntity> = dao.allSnags()
 
     suspend fun raiseSnag(
         projectId: String,

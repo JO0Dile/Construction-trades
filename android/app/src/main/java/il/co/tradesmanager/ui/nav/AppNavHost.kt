@@ -27,6 +27,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.find.Search
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.di.AppContainer
@@ -56,6 +57,7 @@ import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
 import il.co.tradesmanager.ui.scaffold.ScaffoldRegisterScreen
 import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
+import il.co.tradesmanager.ui.search.SearchScreen
 import il.co.tradesmanager.ui.evidence.DailyLogScreen
 import il.co.tradesmanager.ui.evidence.PermitDetailScreen
 import il.co.tradesmanager.ui.evidence.PermitsScreen
@@ -111,6 +113,7 @@ object Routes {
     const val PRIVACY = "privacy"
     const val CONTRACTS = "contracts"
     const val SETTINGS = "settings"
+    const val SEARCH = "search"
     const val SCANNER = "scanner"
 
     /** Key the scanner writes its result under, read by whoever launched it. */
@@ -120,6 +123,15 @@ object Routes {
     const val SAVED_ITEM = "saved_item"
 
     fun inventoryEdit(itemId: String?) = "$INVENTORY_EDIT?itemId=${itemId.orEmpty()}"
+
+    /**
+     * The crew list, optionally with one person already open.
+     *
+     * Always spelled with the argument, empty or not, so there is one
+     * route rather than two shapes of the same one. Same reason and the
+     * same form as [inventoryEdit].
+     */
+    fun crew(openMembershipId: String?) = "$CREW?open=${openMembershipId.orEmpty()}"
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
     fun money(projectId: String) = "$MONEY/$projectId"
     fun payments(projectId: String) = "$PAYMENTS/$projectId"
@@ -138,6 +150,27 @@ object Routes {
     fun temporaryWorks(projectId: String) = "$TEMP_WORKS/$projectId"
     fun excavations(projectId: String) = "$EXCAVATIONS/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
+}
+
+/**
+ * Where a search result goes when it is tapped.
+ *
+ * Every kind lands on the record itself except plant, which has no screen of
+ * its own for one machine — the register is where a machine lives. The row
+ * already carried its serial number and whether it is off hire, which is most
+ * of what somebody searching for it wanted.
+ */
+private fun routeFor(hit: Search.Hit): String = when (hit.kind) {
+    Search.Kind.JOB -> Routes.projectDetail(hit.id)
+    // The id on a person hit is their membership, not their account: a
+    // membership is what the crew screen opens, and what a person is on this
+    // firm's books rather than who they are.
+    Search.Kind.PERSON -> Routes.crew(hit.id)
+    Search.Kind.ITEM -> Routes.inventoryEdit(hit.id)
+    Search.Kind.ORDER -> Routes.orderDetail(hit.id)
+    Search.Kind.PERMIT -> Routes.permitDetail(hit.id)
+    Search.Kind.SNAG -> Routes.snagDetail(hit.id)
+    Search.Kind.PLANT -> Routes.PLANT
 }
 
 /**
@@ -228,6 +261,7 @@ fun AppNavHost(
                     onOpenProjects = { navController.switchTab(Routes.PROJECTS) },
                     onOpenSafety = { navController.switchTab(Routes.SAFETY) },
                     onOpenPeople = { navController.switchTab(Routes.PEOPLE) },
+                    onOpenSearch = { navController.navigate(Routes.SEARCH) },
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                 )
             }
@@ -360,7 +394,7 @@ fun AppNavHost(
                 PeopleScreen(
                     container = container,
                     onOpenGate = { navController.navigate(Routes.GATE) },
-                    onOpenCrew = { navController.navigate(Routes.CREW) },
+                    onOpenCrew = { navController.navigate(Routes.crew(null)) },
                 )
             }
             composable(Routes.GATE) {
@@ -369,10 +403,19 @@ fun AppNavHost(
                     onBack = { navController.popBackStack() },
                 )
             }
-            composable(Routes.CREW) {
+            composable("${Routes.CREW}?open={open}") { entry ->
                 CrewScreen(
                     container = container,
                     onBack = { navController.popBackStack() },
+                    openMembershipId = entry.arguments?.getString("open")
+                        ?.takeIf { it.isNotBlank() },
+                )
+            }
+            composable(Routes.SEARCH) {
+                SearchScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                    onOpen = { hit -> navController.navigate(routeFor(hit)) },
                 )
             }
             composable(Routes.PLANT) {
@@ -484,7 +527,7 @@ fun AppNavHost(
                 ViolationsScreen(
                     container = container,
                     onBack = { navController.popBackStack() },
-                    onOpenCrew = { navController.navigate(Routes.CREW) },
+                    onOpenCrew = { navController.navigate(Routes.crew(null)) },
                 )
             }
             composable(Routes.INCIDENTS) {

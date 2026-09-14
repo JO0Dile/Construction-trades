@@ -1210,3 +1210,21 @@
 "backup_contents" = "Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.";
 /* The archive opened but the database inside failed SQLite's integrity check. */
 "backup_damaged" = "The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.";
+/* Placeholder in the one search box that covers the whole app. */
+"search_hint" = "A name, a number, a reference";
+/* Shown before anything is typed, so people know how wide the search is. */
+"search_start" = "Everything on this phone is searched at once: jobs, people, stock, orders, permits, snags and plant.";
+/* One letter matches most of the database, so nothing is searched until two. */
+"search_short" = "Two letters at least.";
+/* No results. %1$s is what was typed. */
+"search_nothing" = "Nothing matched %1$s.";
+/* Footnote on the results, so an empty list is not mistaken for an empty database. */
+"search_only_yours" = "Only what your role lets you see is searched.";
+/* Tag on a result row saying which register it came out of. */
+"search_kind_job" = "Job";
+"search_kind_person" = "Person";
+"search_kind_item" = "Item";
+"search_kind_order" = "Order";
+"search_kind_permit" = "Permit";
+"search_kind_snag" = "Snag";
+"search_kind_plant" = "Plant";

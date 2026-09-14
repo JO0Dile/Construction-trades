@@ -349,6 +349,46 @@ wall of "0 open permits" is how a list stops being read. And the order is what
 matters at handover rather than what is biggest, so twenty unsigned logs do not
 sort above one scaffold left standing in the street.
 
+**Phase 4p — one box that looks everywhere. Done.**
+Forty-three destinations and a register behind most of them, and no way to find
+a record without first knowing which register it was in. There were three
+search boxes — the catalogue, the crew, the gate — and each one searched its
+own table.
+
+The hard part is not the searching, it is the three scripts. The existing boxes
+compare with SQL `LIKE` over a lowercased column, and `LIKE` in SQLite folds
+case for ASCII and nothing else: it does not fold Hebrew or Arabic at all, and
+no amount of SQL will take a harakat off a letter. So the comparison moved into
+Kotlin, over text with the marks stripped — Hebrew points, Arabic harakat, the
+tatweel, the several accepted spellings of alef, ta marbuta against ha, and the
+five Hebrew letters that change shape at the end of a word. The invisible
+direction marks are dropped rather than turned into spaces: they sit inside
+words in right-to-left text as a matter of course, and a search that treats one
+as a word break stops finding half the database without ever saying so.
+
+Arabic-Indic digits are folded to Latin, because `Formats` already puts them on
+the screen and what is on the screen is what gets typed back in. And a number
+is matched a second way, against the record's digits with the separators taken
+out, so an ID typed 03-123456 finds one stored 03123456 — nobody remembers
+which side of that a number went in on.
+
+Two rules about what comes back. Every word has to appear somewhere, in any
+field and in any order, because that is how a person describes a record they
+half-remember. And the lens each kind needs is checked **before** the rows are
+read, not after: a search that loads the wage bill and then filters it has
+already loaded the wage bill. The lenses are copied off the screens themselves
+rather than decided again, so search shows exactly what its register shows.
+
+What is shown and what is matched are not the same text. A status held as
+PART_RECEIVED and a role held as SITE_MANAGER fold to the words somebody would
+type, so they are matched — and never printed. An ID number is matched and
+never shown: typing one is how the gate finds a man and that has to keep
+working, but a list of results is read over somebody's shoulder.
+
+Seven registers so far: jobs, people, stock, orders, permits, snags and plant.
+The daily logs, the pours, the scaffolds, the lifts and the rest are found
+through the job they belong to, which is how anybody looks for them anyway.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

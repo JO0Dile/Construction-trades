@@ -1211,6 +1211,24 @@
     <string name="backup_contents">Taken %1$s: %2$d jobs, %3$d people, %4$d photographs and videos.</string>
     <!-- The archive opened but the database inside failed SQLite's integrity check. -->
     <string name="backup_damaged">The file opened but the database inside it is damaged. Do not rely on this one — take a fresh backup.</string>
+    <!-- Placeholder in the one search box that covers the whole app. -->
+    <string name="search_hint">A name, a number, a reference</string>
+    <!-- Shown before anything is typed, so people know how wide the search is. -->
+    <string name="search_start">Everything on this phone is searched at once: jobs, people, stock, orders, permits, snags and plant.</string>
+    <!-- One letter matches most of the database, so nothing is searched until two. -->
+    <string name="search_short">Two letters at least.</string>
+    <!-- No results. %1$s is what was typed. -->
+    <string name="search_nothing">Nothing matched %1$s.</string>
+    <!-- Footnote on the results, so an empty list is not mistaken for an empty database. -->
+    <string name="search_only_yours">Only what your role lets you see is searched.</string>
+    <!-- Tag on a result row saying which register it came out of. -->
+    <string name="search_kind_job">Job</string>
+    <string name="search_kind_person">Person</string>
+    <string name="search_kind_item">Item</string>
+    <string name="search_kind_order">Order</string>
+    <string name="search_kind_permit">Permit</string>
+    <string name="search_kind_snag">Snag</string>
+    <string name="search_kind_plant">Plant</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
