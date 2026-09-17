@@ -1174,8 +1174,8 @@
 "backup_working" = "Working. This takes a while, because the photographs go in too.";
 /* Backup written. %1$d is how many photos and videos went in. */
 "backup_done" = "Backed up, with %1$d photographs and videos. Keep the file somewhere that is not this phone.";
-/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
-"backup_staged" = "Ready to restore the backup from %1$s. Close the app completely and open it again to finish. Nothing has changed yet.";
+/* A restore is unpacked and waiting for the app to be restarted. %1$s is when the backup was taken. */
+"backup_staged" = "Ready to restore the backup from %1$s. The app has to close and open again to finish, because the file it would replace is the one it is running on. Nothing has changed yet.";
 /* The backup predates the installed version; migrations will run. */
 "backup_older_version" = "It was taken by an older version. It will be brought up to date as it is restored.";
 /* Abandons a staged restore before the restart. */
@@ -1228,3 +1228,5 @@
 "search_kind_permit" = "Permit";
 "search_kind_snag" = "Snag";
 "search_kind_plant" = "Plant";
+/* Button that closes the app and opens it again to finish a staged restore. */
+"backup_restart_now" = "Close and open now";

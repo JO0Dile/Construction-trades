@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -55,6 +56,7 @@ fun BackupSection(
     onRestore: (android.net.Uri, String) -> Unit,
     onCheck: (android.net.Uri, String) -> Unit,
     onCancelRestore: () -> Unit,
+    onRestartNow: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val locale = currentLocale()
@@ -145,6 +147,13 @@ fun BackupSection(
                 )
                 if (state.needsMigrating) {
                     Note(stringResource(R.string.backup_older_version), error = false)
+                }
+                // The restore is finished by this button, not by the person
+                // swiping the app away: that destroys the activity and usually
+                // leaves the process alive, so Application.onCreate never runs
+                // again and the restore is never applied. See Relaunch.
+                Button(onClick = onRestartNow) {
+                    Text(stringResource(R.string.backup_restart_now))
                 }
                 TextButton(onClick = onCancelRestore) {
                     Text(stringResource(R.string.backup_cancel_restore))

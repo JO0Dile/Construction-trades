@@ -9,7 +9,44 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.16.1 — and what to try first
+## What is new in 0.16.2 — and what to try first
+
+### Restore actually finishes now
+
+Reported: restore says it is ready, you close the app and open it, and nothing
+has been restored.
+
+That was right, and the instruction was the bug. A restore is applied when the
+**process** starts, not when the screen does — and swiping an app off the
+Recents screen destroys the screen while routinely leaving the process running,
+so the app came back up on the database it already had. Nothing was wrong with
+the restore. It was never reached. So the app now does it itself.
+
+- [ ] **Settings → Restore**, pick your backup, type the passphrase. It still
+      says it is ready, and there is now a **Close and open now** button.
+- [ ] Press it. The app closes and comes back by itself, and the note at the
+      top should say the backup was restored.
+- [ ] Check your jobs, crew and photos are the ones from the backup.
+- [ ] **Cancel restore** still works if you change your mind before pressing it.
+
+### Adding stock no longer looks like it did nothing
+
+Reported: press add, nothing happens, leave and come back and the item is
+there.
+
+- [ ] **Stock → the + button.** Fill in an item and save. The list should jump
+      to the new row and hold it highlighted for a couple of seconds.
+- [ ] Do it with a **search still typed** in the box. The search should clear
+      itself and the new row should still be found.
+- [ ] Do it with a **kind chip** or the low-stock filter on. Same.
+- [ ] If pressing + on a **row** (to add one to the quantity) still looks like
+      it does nothing, tell me — that is a different button and a different
+      fix, and this one does not touch it.
+
+---
+
+## What was new in 0.16.1
+
 
 ### The gate finds a man who is already on the books
 

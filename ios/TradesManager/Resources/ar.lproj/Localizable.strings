@@ -1174,8 +1174,8 @@
 "backup_working" = "جارٍ العمل. يستغرق هذا وقتًا، لأن الصور مُضمَّنة أيضًا.";
 /* Backup written. %1$d is how many photos and videos went in. */
 "backup_done" = "تم النسخ، مع %1$d صورة وفيديو. احتفظ بالملف في مكان غير هذا الهاتف.";
-/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
-"backup_staged" = "جاهز لاستعادة النسخة من %1$s. أغلق التطبيق تمامًا ثم افتحه مجددًا لإتمام العملية. لم يتغيّر شيء بعد.";
+/* A restore is unpacked and waiting for the app to be restarted. %1$s is when the backup was taken. */
+"backup_staged" = "جاهز لاستعادة النسخة من %1$s. لإتمام العملية على التطبيق أن يُغلق ثم يُفتح من جديد، لأن الملف المراد استبداله هو الملف الذي يعمل عليه. لم يتغيّر شيء بعد.";
 /* The backup predates the installed version; migrations will run. */
 "backup_older_version" = "أُخذت النسخة بإصدار أقدم. سيجري تحديثها أثناء الاستعادة.";
 /* Abandons a staged restore before the restart. */
@@ -1228,3 +1228,5 @@
 "search_kind_permit" = "تصريح عمل";
 "search_kind_snag" = "عيب";
 "search_kind_plant" = "معدات";
+/* Button that closes the app and opens it again to finish a staged restore. */
+"backup_restart_now" = "أغلق وافتح الآن";

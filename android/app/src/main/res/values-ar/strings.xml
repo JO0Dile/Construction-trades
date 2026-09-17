@@ -1097,7 +1097,7 @@
     <string name="backup_restore">استعادة</string>
     <string name="backup_working">جارٍ العمل. يستغرق هذا وقتًا، لأن الصور مُضمَّنة أيضًا.</string>
     <string name="backup_done">تم النسخ، مع %1$d صورة وفيديو. احتفظ بالملف في مكان غير هذا الهاتف.</string>
-    <string name="backup_staged">جاهز لاستعادة النسخة من %1$s. أغلق التطبيق تمامًا ثم افتحه مجددًا لإتمام العملية. لم يتغيّر شيء بعد.</string>
+    <string name="backup_staged">جاهز لاستعادة النسخة من %1$s. لإتمام العملية على التطبيق أن يُغلق ثم يُفتح من جديد، لأن الملف المراد استبداله هو الملف الذي يعمل عليه. لم يتغيّر شيء بعد.</string>
     <string name="backup_older_version">أُخذت النسخة بإصدار أقدم. سيجري تحديثها أثناء الاستعادة.</string>
     <string name="backup_cancel_restore">تراجع عن الاستعادة</string>
     <string name="backup_restored">تمت الاستعادة من نسخة احتياطية.</string>
@@ -1127,6 +1127,7 @@
     <string name="search_kind_permit">تصريح عمل</string>
     <string name="search_kind_snag">عيب</string>
     <string name="search_kind_plant">معدات</string>
+    <string name="backup_restart_now">أغلق وافتح الآن</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

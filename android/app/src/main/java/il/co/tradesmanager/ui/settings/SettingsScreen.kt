@@ -46,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.AppLanguages
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.data.backup.Relaunch
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.SettingsRepository.ThemeMode
 import il.co.tradesmanager.di.AppContainer
@@ -205,6 +206,7 @@ fun SettingsScreen(
                     onRestore = viewModel::restore,
                     onCheck = viewModel::check,
                     onCancelRestore = viewModel::cancelRestore,
+                    onRestartNow = { Relaunch.now(context) },
                     onDismiss = viewModel::clearBackupState,
                 )
             }

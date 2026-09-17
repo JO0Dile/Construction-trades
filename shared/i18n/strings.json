@@ -5573,10 +5573,10 @@
       "ar": "تم النسخ، مع %1$d صورة وفيديو. احتفظ بالملف في مكان غير هذا الهاتف."
     },
     "backup_staged": {
-      "c": "A restore is unpacked and waiting for a restart. %1$s is when the backup was taken.",
-      "en": "Ready to restore the backup from %1$s. Close the app completely and open it again to finish. Nothing has changed yet.",
-      "he": "מוכן לשחזור הגיבוי מ־%1$s. סגרו את האפליקציה לגמרי ופתחו אותה שוב כדי לסיים. עדיין לא השתנה דבר.",
-      "ar": "جاهز لاستعادة النسخة من %1$s. أغلق التطبيق تمامًا ثم افتحه مجددًا لإتمام العملية. لم يتغيّر شيء بعد."
+      "c": "A restore is unpacked and waiting for the app to be restarted. %1$s is when the backup was taken.",
+      "en": "Ready to restore the backup from %1$s. The app has to close and open again to finish, because the file it would replace is the one it is running on. Nothing has changed yet.",
+      "he": "מוכן לשחזור הגיבוי מ־%1$s. כדי לסיים, האפליקציה צריכה להיסגר ולהיפתח מחדש — הקובץ שאמור להיות מוחלף הוא הקובץ שהיא פועלת עליו. עדיין לא השתנה דבר.",
+      "ar": "جاهز لاستعادة النسخة من %1$s. لإتمام العملية على التطبيق أن يُغلق ثم يُفتح من جديد، لأن الملف المراد استبداله هو الملف الذي يعمل عليه. لم يتغيّر شيء بعد."
     },
     "backup_older_version": {
       "c": "The backup predates the installed version; migrations will run.",
@@ -5745,6 +5745,12 @@
       "en": "Plant",
       "he": "ציוד",
       "ar": "معدات"
+    },
+    "backup_restart_now": {
+      "c": "Button that closes the app and opens it again to finish a staged restore.",
+      "en": "Close and open now",
+      "he": "סגירה ופתיחה עכשיו",
+      "ar": "أغلق وافتح الآن"
     }
   },
   "plurals": {

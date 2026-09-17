@@ -1174,8 +1174,8 @@
 "backup_working" = "בעבודה. זה לוקח זמן, כי גם התמונות נכללות.";
 /* Backup written. %1$d is how many photos and videos went in. */
 "backup_done" = "הגיבוי הושלם, כולל %1$d תמונות וסרטונים. שמרו את הקובץ במקום שאינו הטלפון הזה.";
-/* A restore is unpacked and waiting for a restart. %1$s is when the backup was taken. */
-"backup_staged" = "מוכן לשחזור הגיבוי מ־%1$s. סגרו את האפליקציה לגמרי ופתחו אותה שוב כדי לסיים. עדיין לא השתנה דבר.";
+/* A restore is unpacked and waiting for the app to be restarted. %1$s is when the backup was taken. */
+"backup_staged" = "מוכן לשחזור הגיבוי מ־%1$s. כדי לסיים, האפליקציה צריכה להיסגר ולהיפתח מחדש — הקובץ שאמור להיות מוחלף הוא הקובץ שהיא פועלת עליו. עדיין לא השתנה דבר.";
 /* The backup predates the installed version; migrations will run. */
 "backup_older_version" = "הגיבוי נלקח בגרסה ישנה יותר. הוא יעודכן במהלך השחזור.";
 /* Abandons a staged restore before the restart. */
@@ -1228,3 +1228,5 @@
 "search_kind_permit" = "היתר עבודה";
 "search_kind_snag" = "ליקוי";
 "search_kind_plant" = "ציוד";
+/* Button that closes the app and opens it again to finish a staged restore. */
+"backup_restart_now" = "סגירה ופתיחה עכשיו";

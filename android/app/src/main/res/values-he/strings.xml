@@ -1097,7 +1097,7 @@
     <string name="backup_restore">שחזור</string>
     <string name="backup_working">בעבודה. זה לוקח זמן, כי גם התמונות נכללות.</string>
     <string name="backup_done">הגיבוי הושלם, כולל %1$d תמונות וסרטונים. שמרו את הקובץ במקום שאינו הטלפון הזה.</string>
-    <string name="backup_staged">מוכן לשחזור הגיבוי מ־%1$s. סגרו את האפליקציה לגמרי ופתחו אותה שוב כדי לסיים. עדיין לא השתנה דבר.</string>
+    <string name="backup_staged">מוכן לשחזור הגיבוי מ־%1$s. כדי לסיים, האפליקציה צריכה להיסגר ולהיפתח מחדש — הקובץ שאמור להיות מוחלף הוא הקובץ שהיא פועלת עליו. עדיין לא השתנה דבר.</string>
     <string name="backup_older_version">הגיבוי נלקח בגרסה ישנה יותר. הוא יעודכן במהלך השחזור.</string>
     <string name="backup_cancel_restore">ביטול השחזור</string>
     <string name="backup_restored">שוחזר מגיבוי.</string>
@@ -1127,6 +1127,7 @@
     <string name="search_kind_permit">היתר עבודה</string>
     <string name="search_kind_snag">ליקוי</string>
     <string name="search_kind_plant">ציוד</string>
+    <string name="backup_restart_now">סגירה ופתיחה עכשיו</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
