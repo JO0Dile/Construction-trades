@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """The list of catalogue items still waiting for a photograph.
 
+The column that matters most is "photograph exactly this": one
+unambiguous sentence naming the object and the form it actually takes on a
+site, written out in docs/translation/photo-briefs.json. It exists because
+the names on their own are not enough to fetch or generate a picture from —
+"Pit buffer", "Darby", "Base plate" — and a generator handed a name it
+cannot place does not fail, it invents. That is how a batch of these came
+back with faces and bones in it instead of cables.
+
 `image-coverage.py` answers "how many are missing" and prints their ids.
 That is the right answer for a build check and the wrong one for a person
 about to go and take 527 photographs: an id says nothing about what the thing
@@ -28,6 +36,7 @@ import sys
 from collections import Counter
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+BRIEFS = ROOT / "docs" / "translation" / "photo-briefs.json"
 CATALOG = ROOT / "shared" / "assets" / "catalog"
 IMAGES = CATALOG / "images"
 OUT = ROOT / "docs" / "translation" / "items-needing-photos.csv"
@@ -53,6 +62,7 @@ def photographed() -> set[str]:
 def missing() -> list[dict[str, str]]:
     manifest = json.loads((CATALOG / "manifest.json").read_text(encoding="utf-8"))
     have = photographed()
+    briefs = json.loads(BRIEFS.read_text(encoding="utf-8"))["briefs"]
     rows: list[dict[str, str]] = []
     for trade in manifest["trades"]:
         trade_name = trade.get("names", {}).get("en") or trade["id"]
@@ -74,6 +84,7 @@ def missing() -> list[dict[str, str]]:
                         value for value in spoken.values() if value
                     ),
                     "what it is": item.get("spec", {}).get("en", ""),
+                    "photograph exactly this": briefs.get(item["id"], ""),
                     "save the file as": item["id"] + ".webp",
                 }
             )
