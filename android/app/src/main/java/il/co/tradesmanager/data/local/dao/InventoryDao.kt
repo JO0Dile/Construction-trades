@@ -17,6 +17,21 @@ interface InventoryDao {
      * [lowStockOnly] uses the same rule the row badge does, so the filter and
      * the badge can never disagree.
      *
+     * Newest first, and nothing else moves.
+     *
+     * It used to put every low-stock row above everything else and then sort
+     * by updatedAt. That had two faults and both were reported. A new item is
+     * not low stock, so it landed below the whole low-stock block — forty rows
+     * down on a real van, which reads as "it went to the bottom". And sorting
+     * on updatedAt meant pressing + on a row rewrote its updatedAt and threw
+     * it to the top of the list, under the finger that pressed it.
+     *
+     * createdAt does neither: a new item is always first, and adjusting a
+     * quantity or correcting a name moves nothing. Low stock is still found —
+     * it has its own filter and its own badge, which is where urgency belongs
+     * rather than in the resting order of the list. The id breaks ties so the
+     * seeded catalogue, which shares one timestamp, is at least stable.
+     *
      * It does not take what somebody typed. It used to, as a LIKE over the
      * search index, and that was quietly broken for two of the three languages
      * this app ships in: LIKE in SQLite folds case for ASCII and nothing else,
@@ -54,7 +69,7 @@ interface InventoryDao {
             OR c.stages = '[]'
             OR c.stages LIKE '%"' || :stageId || '"%'
           )
-        ORDER BY (i.minStock > 0 AND i.quantity <= i.minStock) DESC, i.updatedAt DESC
+        ORDER BY i.createdAt DESC, i.id
         """,
     )
     fun observeItems(

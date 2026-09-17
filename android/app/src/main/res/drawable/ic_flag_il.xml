@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The flag of Israel, at its own 11:8 proportion.
+<!-- The flag of Israel, to the proportions the law actually gives it.
 
-     Drawn rather than shipped as a bitmap so it stays sharp at every density
-     and takes no space. The blue is the flag's own #0038B8; the field is left
-     as an explicit white rather than a theme colour, because a flag that goes
-     dark-grey in dark mode is not the flag. -->
+     The Flag and Emblem Law fixes the construction on a 220 by 160 field: two
+     blue stripes 25 wide, set 15 in from the top and bottom edges, and a Magen
+     David of two equilateral triangles of side 60 drawn in lines 5.5 wide,
+     centred on the flag.
+
+     This was drawn by eye before and three things were wrong. The stripes were
+     18 wide instead of 25 and sat 24 in instead of 15. The star was side 48
+     instead of 60. And — the one that actually showed — the two triangles did
+     not share a centre: the upward one was centred on y 74 and the downward
+     one on y 86, twelve units apart, so they read as two triangles sliding off
+     each other rather than as a hexagram.
+
+     The coordinates below are computed from the specification rather than
+     placed: the circumradius is side / sqrt(3), so the points fall where they
+     fall. Drawn rather than shipped as a bitmap so it stays sharp at every
+     density, and the field is an explicit white rather than a theme colour,
+     because a flag that turns grey in dark mode is not the flag. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="44dp"
     android:height="32dp"
@@ -13,19 +26,20 @@
 
     <path android:fillColor="#FFFFFF" android:pathData="M0,0h220v160h-220z" />
 
-    <path android:fillColor="#0038B8" android:pathData="M0,24h220v18h-220z" />
-    <path android:fillColor="#0038B8" android:pathData="M0,118h220v18h-220z" />
+    <path android:fillColor="#0038B8" android:pathData="M0,15h220v25h-220z" />
+    <path android:fillColor="#0038B8" android:pathData="M0,120h220v25h-220z" />
 
-    <!-- Magen David: two overlapping equilateral triangles, drawn as
-         outlines so the interlace reads at small sizes. -->
+    <!-- Both triangles centred on (110,80); circumradius 60/sqrt(3) = 34.64. -->
     <path
         android:strokeColor="#0038B8"
-        android:strokeWidth="7"
+        android:strokeWidth="5.5"
+        android:strokeLineJoin="miter"
         android:fillColor="#00000000"
-        android:pathData="M110,46 L134,88 L86,88 Z" />
+        android:pathData="M110.00,45.36 L80.00,97.32 L140.00,97.32 Z" />
     <path
         android:strokeColor="#0038B8"
-        android:strokeWidth="7"
+        android:strokeWidth="5.5"
+        android:strokeLineJoin="miter"
         android:fillColor="#00000000"
-        android:pathData="M110,114 L86,72 L134,72 Z" />
+        android:pathData="M110.00,114.64 L80.00,62.68 L140.00,62.68 Z" />
 </vector>
