@@ -1,17 +1,10 @@
 package il.co.tradesmanager.ui.evidence
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.AlertDialog
@@ -33,28 +26,23 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.AsyncImage
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.Snags
 import il.co.tradesmanager.core.i18n.Formats
-import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.LoadingState
+import il.co.tradesmanager.ui.components.PhotoStrip
 import il.co.tradesmanager.ui.components.SectionHeader
-import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLocale
-import il.co.tradesmanager.ui.components.rememberImageAdder
 import il.co.tradesmanager.ui.components.rememberNow
 import java.time.Instant
 import java.time.ZoneId
@@ -262,51 +250,6 @@ fun SnagDetailScreen(
                 viewModel.verify(accepted = true, notes = notes)
             },
         )
-    }
-}
-
-@Composable
-private fun PhotoStrip(
-    photos: List<PhotoEntity>,
-    canAdd: Boolean,
-    newCameraTarget: () -> Pair<String, android.net.Uri>,
-    onCaptured: (String) -> Unit,
-    onPicked: (android.net.Uri) -> Unit,
-) {
-    val add = rememberImageAdder(
-        newCameraTarget = newCameraTarget,
-        onCaptured = onCaptured,
-        onPicked = onPicked,
-    )
-    if (photos.isEmpty() && !canAdd) {
-        SectionPlaceholder(stringResource(R.string.photo_empty))
-        return
-    }
-    LazyRow(
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        items(photos, key = { it.id }) { photo ->
-            Box(
-                modifier = Modifier
-                    .size(110.dp)
-                    .clip(RoundedCornerShape(12.dp)),
-            ) {
-                AsyncImage(
-                    model = photo.uri,
-                    contentDescription = photo.note,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize(),
-                )
-            }
-        }
-        if (canAdd) {
-            item {
-                OutlinedButton(onClick = add, modifier = Modifier.size(110.dp)) {
-                    Text(stringResource(R.string.photo_add))
-                }
-            }
-        }
     }
 }
 

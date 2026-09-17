@@ -42,6 +42,28 @@ interface MembershipDao {
     @Query("SELECT * FROM memberships WHERE companyId = :companyId")
     suspend fun forCompany(companyId: String): List<MembershipEntity>
 
+    /**
+     * Somebody's current membership of one company, or null.
+     *
+     * What the gate asks before admitting anybody, so a second tap on the
+     * button does not produce a second membership. Current only: a spell that
+     * ended is history and must not stop them coming back.
+     *
+     * The null-safe companyId comparison is the same shape as
+     * [observeForCompany] and for the same reason -- `companyId = NULL` is
+     * never true in SQL, so a personal membership would never be found.
+     */
+    @Query(
+        """
+        SELECT * FROM memberships
+        WHERE accountId = :accountId
+          AND leftAt IS NULL
+          AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+        LIMIT 1
+        """,
+    )
+    suspend fun currentFor(accountId: String, companyId: String?): MembershipEntity?
+
     @Query("SELECT * FROM companies ORDER BY name")
     fun observeCompanies(): Flow<List<CompanyEntity>>
 
@@ -50,6 +72,25 @@ interface MembershipDao {
 
     @Query("UPDATE memberships SET role = :role WHERE id = :id")
     suspend fun setRole(id: String, role: String)
+
+    /** Moves somebody onto another crew. Null puts them back at the top. */
+    @Query("UPDATE memberships SET reportsToMembershipId = :bossId WHERE id = :id")
+    suspend fun setReportsTo(id: String, bossId: String?)
+
+    /** Records what trade somebody works in here. Null unsays it. */
+    @Query("UPDATE memberships SET tradeId = :tradeId WHERE id = :id")
+    suspend fun setTrade(id: String, tradeId: String?)
+
+    /**
+     * Everybody who was reporting to a membership that is ending.
+     *
+     * Read before the membership is closed, so their crew can be lifted to
+     * whoever the leaver answered to rather than left pointing at somebody who
+     * is no longer here. A dangling link is not harmless: it is a branch whose
+     * pay nobody above can see.
+     */
+    @Query("SELECT * FROM memberships WHERE reportsToMembershipId = :bossId AND leftAt IS NULL")
+    suspend fun reportingTo(bossId: String): List<MembershipEntity>
 
     /** Coming off the books, not being deleted from history. */
     @Query("UPDATE memberships SET leftAt = :at WHERE id = :id")

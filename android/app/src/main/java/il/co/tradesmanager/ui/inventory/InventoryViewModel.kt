@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.inventory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,6 +22,13 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
         val query: String = "",
         val kind: String? = null,
         val lowStockOnly: Boolean = false,
+        /**
+         * The stage of the job being worked, or null for all of them.
+         *
+         * Null by default: somebody who has not said which stage they are on
+         * should see their whole van, not a guess about it.
+         */
+        val stageId: String? = null,
     )
 
     private val _filters = MutableStateFlow(Filters())
@@ -28,7 +36,9 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val items: StateFlow<List<InventoryItemEntity>> = _filters
-        .flatMapLatest { container.inventory.observe(it.query, it.kind, it.lowStockOnly) }
+        .flatMapLatest {
+            container.inventory.observe(it.query, it.kind, it.lowStockOnly, it.stageId)
+        }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     /** Low-stock count independent of the current filter, for the chip badge. */
@@ -56,6 +66,21 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
     fun setQuery(value: String) { _filters.value = _filters.value.copy(query = value) }
 
     fun setKind(kind: String?) { _filters.value = _filters.value.copy(kind = kind) }
+
+    /**
+     * Tapping the stage you are already on clears it.
+     *
+     * The kind chips above carry an explicit "All" instead. Six stages plus a
+     * seventh chip to undo them is a scrolling row nobody reaches the end of,
+     * and tapping the selected one back off is what a phone user tries first.
+     */
+    fun setStage(stageId: String?) {
+        val current = _filters.value.stageId
+        _filters.value = _filters.value.copy(stageId = if (current == stageId) null else stageId)
+    }
+
+    /** The stages of a job, in order, for the chip row. Content, not code. */
+    val stages: List<WorkStage> get() = container.scopes.stages
 
     fun toggleLowStockOnly() {
         _filters.value = _filters.value.copy(lowStockOnly = !_filters.value.lowStockOnly)

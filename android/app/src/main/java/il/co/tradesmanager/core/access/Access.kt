@@ -100,6 +100,28 @@ enum class Role(
         canManageMembers = true,
     ),
 
+    /**
+     * Walks the site and writes down what is wrong.
+     *
+     * Reads People because a violation is written against a named person: the
+     * officer types an ID number and has to get back a face and a name, or
+     * they cannot tell one of five men in the same hi-vis from another.
+     * Writes Evidence, which is where violations and incidents live.
+     *
+     * Money is NONE and that is the point of the role rather than an
+     * oversight. Somebody with the standing to accuse a worker and put a cost
+     * on it must not also be reading what that worker earns. The lens model
+     * already enforces it, so this is one word rather than a rule to remember
+     * at every screen.
+     */
+    SAFETY_OFFICER(
+        plan = Access.NONE,
+        stuff = Access.NONE,
+        people = Access.READ,
+        evidence = Access.WRITE,
+        money = Access.NONE,
+    ),
+
     /** On the tools. Does the work and records it; cannot delete the job. */
     WORKER(
         plan = Access.WRITE,
@@ -135,6 +157,16 @@ enum class Role(
             entries.firstOrNull { it.name.equals(value?.trim(), ignoreCase = true) } ?: WORKER
 
         /** Roles an owner can hand out. Nobody assigns a second owner by accident. */
-        val assignable: List<Role> = listOf(MANAGER, FINANCE, HR, WORKER)
+        val assignable: List<Role> = listOf(MANAGER, FINANCE, HR, SAFETY_OFFICER, WORKER)
+
+        /**
+         * What admitting somebody at the gate grants, and all it grants.
+         *
+         * The person on the gate establishes who you are and that you have
+         * signed for safety. They do not decide what you are: rank comes from
+         * whoever engaged you, separately and afterwards. See
+         * `core.access.Admission`.
+         */
+        val onAdmission: Role = WORKER
     }
 }

@@ -62,6 +62,85 @@ with networks:
 **A device identity.** Minted once per installation and kept, because a device
 that gets a new id every launch loses every argument it has already won.
 
+## The rule the server exists to enforce
+
+Sync is not the only reason to want a server. The other one is that **some
+rules cannot be enforced on a phone at all.**
+
+`core/access/Commercial.kt` decides who may be told what a job is worth. On
+one device, running one firm's data, it is a display rule. The moment two
+firms share a job it becomes an access rule, and an access rule that lives in
+the client is not an access rule — anybody can read a response body, and a
+phone in somebody's hand is not a trusted place to keep a secret.
+
+So when the server is built:
+
+* it runs `Commercial.maySeeMoney` on **every** read that carries a figure,
+  keyed on the authenticated organisation, not on a parameter in the request
+* a field the caller may not see is **absent from the response**, not null and
+  not zero
+* `Commercial.margin` is never a stored column. It is the difference between
+  two agreements, and the whole point is that no third party sees both
+
+Concretely, for a second-tier crew:
+
+```json
+{ "agreementId": "a.sub", "money": { "contractSum": 7000 } }
+```
+
+and never `{"mainContractAmount": 10000, "firstTierProfit": 3000, …}` with the
+client hiding the first two. See `docs/COMPLIANCE.md`.
+
+`core/access/Chain.kt` is the same rule one level down, between people
+instead of firms: a person's own money is theirs, and otherwise may be shown
+only to somebody above them in the chain of command. It needs the server for
+exactly the same reason, and rather more urgently — a labourer and their
+foreman are commonly on the same site with the same app, and the labourer
+tapping through to a payroll endpoint is not a hypothetical.
+
+So the server:
+
+* runs `Chain.maySeePay` on **every** read that carries a rate, an hours
+  total or a pay figure, keyed on the authenticated membership
+* sends a withheld person's row **absent**, not blanked — a row with a null
+  rate says "nobody recorded one", which is a different and misleading fact
+* never sends a job total computed over people the caller may not price. A
+  gap between a job's costed labour and the hours of the few people somebody
+  happens to be senior to is a wrong number that reads as money nobody
+  worked for, and it discloses a rate by subtraction
+
+The chain is per company and is read from `memberships.reportsToMembershipId`,
+so a foreman for one firm gets nothing extra on another firm's job.
+
+The same applies to `core/work/Assignment.mayMove`. A crew that could POST
+`status: APPROVED` on its own work needs no inspection, whatever the app's
+buttons allow, so the transition table and the side that owns each transition
+are checked server-side on every write.
+
+## What a backup does instead, until then
+
+There is now a backup: Settings, **Backup**, to a file the person chooses.
+It is not sync and it does not pretend to be — it is one phone's record, taken
+deliberately, to somewhere that is not that phone.
+
+Three things about it are worth knowing before the server exists:
+
+* **The archive is locked with the person's passphrase, not the device key.**
+  The database key lives in this device's Keystore and dies with a factory
+  reset, so a file locked with it would be unreadable on exactly the two
+  occasions a backup exists for. `sqlcipher_export` makes a plaintext copy on
+  the way out and another on the way back in.
+* **There is no recovery.** Nobody holds a key to reset. The screen says so
+  before the field, because the alternative is somebody discovering it on the
+  day the phone went into the concrete.
+* **A restore is applied at the next launch, not live**, and the database it
+  replaces is moved aside rather than deleted. If anything fails part way, the
+  original goes back. See `StagedRestore`.
+
+When the server arrives it does not replace this. A backup a person holds is
+the thing that survives the server being unreachable, or the account being
+closed, or the company that runs it going away.
+
 ## What is not built, and cannot be
 
 - **The transport.** There is nothing to talk to.
@@ -88,3 +167,57 @@ that gets a new id every launch loses every argument it has already won.
 Do not start with real-time. Nothing on a building site needs to be
 instantaneous, and a sync that runs when the phone finds Wi-Fi is both simpler
 and better suited to a place where signal comes and goes.
+
+## Sending a code to the phone number somebody signed up with
+
+Asked for, and not built, because it cannot be built into the app. It is
+written down here rather than left as a gap somebody rediscovers later.
+
+The number is collected at sign-up and required. What is missing is the part
+that proves the person typing it is holding that phone.
+
+**Why the app cannot do it on its own.** An SMS has to be sent by something
+that is not the phone receiving it.
+
+- Sending it from the app itself, with `SEND_SMS`, would have the phone text
+  itself. That proves nothing — anyone can type a number and then read the
+  code off their own screen, whoever the number belongs to — and it costs the
+  user a message. Google Play also treats `SEND_SMS` as a restricted
+  permission and would need a justification this use could not honestly give.
+- Calling an SMS gateway straight from the app means the gateway's API key is
+  inside the APK. An APK is a zip file that anybody can download from the
+  releases page and unzip. Whoever does that can send messages on the
+  account until the bill is noticed, and changing the key means shipping a
+  new version to every phone. This is not a theoretical risk; it is the
+  ordinary outcome.
+
+**What it needs.** The smallest possible endpoint, on the machine
+`docs/SERVER.md` is already about:
+
+1. `POST /verify/start` — takes a number, generates a six-digit code, stores
+   it with an expiry of about ten minutes and a per-number rate limit, and
+   asks an SMS provider to send it. In Israel that is a local carrier gateway
+   or an international one (Twilio and similar) with Israeli sender-ID
+   registration, which is a paid account and a form, not a code change.
+2. `POST /verify/check` — takes the number and the code, and answers yes or
+   no. A wrong code must cost an attempt; five wrong codes must cost the
+   number a cooling-off period, or the six digits are guessable in an
+   afternoon.
+3. The app stores `phoneVerifiedAt` when the server says yes.
+
+**Two things not to get wrong when it is built.**
+
+The rate limit is the whole security of a six-digit code, and it belongs on
+the server. A limit enforced in the app is not a limit — the app is the thing
+being attacked.
+
+And verification must not become a gate on anything safety-related. An
+unverified number is a number that has not been confirmed, not a person who
+may not report a near miss or sign an induction. The same rule as
+`docs/PRICING.md`: nothing that keeps somebody safe waits on anything.
+
+**What the app should do until then.** Nothing that pretends. There is no
+"enter the code we sent you" screen, because no code was sent, and a screen
+that asks for one teaches people the app lies to them. The number is
+collected, stored and used for what it is actually for today: ringing
+somebody.

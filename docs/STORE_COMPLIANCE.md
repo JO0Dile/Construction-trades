@@ -70,6 +70,24 @@ None of these is a Play "sensitive permission" requiring a declaration form,
 because the app requests no background location, no SMS/call log, no
 all-files access, and no accessibility-service API.
 
+### Listing copy and art — written
+
+- [x] Title, short description and full description in Hebrew, Arabic and
+      English: `docs/store/listing.json`, under Play's own language codes so it
+      pastes straight in. `tools/check-listing.py` holds them to 30 / 80 / 4000
+      characters and runs in CI, because two of the three are not Latin and
+      guessing their length by eye does not work.
+- [x] Icon, 512×512: `docs/store/play-icon-512.png`.
+- [x] Feature graphic, 1024×500, no alpha: `docs/store/play-feature-1024x500.png`.
+      Deliberately wordless — the listing is in three languages, two of them
+      shaped, and a graphic that is wrong in Arabic is worse than one with no
+      words on it.
+- [ ] **Screenshots. Still missing, and they need a device or an emulator.**
+      At least two per form factor, and Play wants them per language: Hebrew
+      and Arabic must be captured with the device itself set to that language,
+      or the layout in them is mirrored the wrong way. Nothing in this
+      repository can produce them.
+
 ### Media
 
 The app writes photos to its own private storage and never reads the shared
@@ -179,6 +197,31 @@ Then, by hand:
       it should return to onboarding).
 - [ ] Fill in the Play Data safety form and the App Store privacy answers from
       section 2 and 3 above, not from memory.
-- [ ] Check the privacy policy and terms are reachable and translated.
+- [x] The privacy notice is in the app: **Settings → About → Privacy policy**,
+      in all three languages. It says what is true — everything stays on the
+      phone, the only outbound request is the update check, no analytics and
+      no tracking — which is short because the app has no server. It has not
+      been through a lawyer, and the day a server exists it is the page that
+      has to change before anything is sent to one.
+- [x] Terms of service. Shown at **Settings → About → Terms of service** and
+      published at `docs/TERMS.md`, both generated from the same catalogue
+      keys as the screen so the two cannot drift. Paste into the Play
+      listing's terms field:
+      `https://github.com/JO0Dile/Construction-trades/blob/main/docs/TERMS.md`
+      Subscriptions are what make this a field Play will not leave empty. The
+      text says on its own last section that it has not been through a lawyer,
+      which is true and which a reader is entitled to know.
+- [x] The same text at a public URL: `docs/PRIVACY.md`, generated from the
+      same catalogue keys as the screen so the two cannot drift, with all
+      three languages on the one page. Paste this into the Play listing's
+      privacy policy field:
+      `https://github.com/JO0Dile/Construction-trades/blob/main/docs/PRIVACY.md`
+      — it works today; move it to your own domain when you have one.
+      Drafts are in `legal/`: `PRIVACY.md`, `TERMS.md`, `ACCESSIBILITY.md`.
+      Both stores want a **URL**, not a file, so they have to be published
+      somewhere before submission — GitHub Pages off this repository is
+      enough. All three are marked as needing a lawyer's review, and the
+      accessibility statement needs an audit and a named contact, which is
+      deliberately left blank rather than invented.
 - [ ] Re-read the two **verify** items: Play's current `targetSdk` minimum and
       Apple's current 4.8 and 3.1.1 wording.

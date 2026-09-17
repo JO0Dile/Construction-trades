@@ -1,0 +1,202 @@
+{
+  "tradeId": "metalwork",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "mw.balustrade.steel",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M",
+      "names": {
+        "en": "Steel balustrade",
+        "he": "מעקה פלדה",
+        "ar": "درابزين حديد"
+      },
+      "spec": {
+        "en": "Height and gap are regulated, not a matter of taste. Measure both before welding.",
+        "he": "הגובה והמרווח מוסדרים בתקן, לא עניין של טעם. יש למדוד לפני ריתוך.",
+        "ar": "الارتفاع والفراغ منظّمان بالمواصفة لا بالذوق. قِسهما قبل اللحام."
+      },
+      "tags": [
+        "balustrade",
+        "safety"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "mw.balustrade.glass",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M",
+      "names": {
+        "en": "Glass balustrade",
+        "he": "מעקה זכוכית",
+        "ar": "درابزين زجاج"
+      },
+      "spec": {
+        "en": "Laminated glass only, and the fixing is the design. Tempered alone falls out of the frame.",
+        "he": "זכוכית רב־שכבתית בלבד, והעיגון הוא התכנון. מחוסמת לבדה נושרת מהמסגרת.",
+        "ar": "زجاج مصفّح فقط، والتثبيت هو التصميم. المقسّى وحده يسقط من الإطار."
+      },
+      "tags": [
+        "balustrade",
+        "safety"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "mw.handrail.stainless",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M",
+      "names": {
+        "en": "Stainless handrail",
+        "he": "מאחז יד נירוסטה",
+        "ar": "مسكة يد ستانلس"
+      },
+      "spec": {
+        "en": "Grade 316 near the sea. 304 rusts in Israeli coastal air and looks neglected in a year.",
+        "he": "נירוסטה 316 ליד הים. 304 מחלידה באוויר החופי ונראית מוזנחת תוך שנה.",
+        "ar": "ستانلس 316 قرب البحر. الـ304 يصدأ في هواء الساحل ويبدو مهملاً خلال سنة."
+      },
+      "tags": [
+        "balustrade",
+        "accessibility"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "mw.gate.steel",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Steel gate",
+        "he": "שער פלדה",
+        "ar": "بوابة حديد"
+      },
+      "spec": {
+        "en": "Hangs on posts set in concrete. The post, not the leaf, is what sags.",
+        "he": "תלוי על עמודים מעוגנים בבטון. העמוד, לא הכנף, הוא מה שצונח.",
+        "ar": "تُعلَّق على أعمدة مثبّتة بالباطون. العمود لا الدرفة هو ما يهبط."
+      },
+      "tags": [
+        "gate"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "mw.grating.steel",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "M2",
+      "names": {
+        "en": "Steel floor grating",
+        "he": "סורג רצפה פלדה",
+        "ar": "مشبك أرضية حديد"
+      },
+      "spec": {
+        "en": "Walkable floor over a void. Clip it down; an unclipped panel is a trapdoor.",
+        "he": "רצפה ניתנת להליכה מעל חלל. יש לקבע; פאנל לא מקובע הוא מלכודת.",
+        "ar": "أرضية يُمشى عليها فوق فراغ. ثبّتها؛ اللوح غير المثبّت فخّ."
+      },
+      "tags": [
+        "grating"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "mw.tool.grinder.125",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Angle grinder 125 mm",
+        "he": "משחזת זווית 125 מ״מ",
+        "ar": "جلّاخة 125 ملم"
+      },
+      "spec": {
+        "en": "The everyday size. Guard on, and never a cutting disc on a grinding job.",
+        "he": "הגודל היומיומי. עם מגן, ולעולם לא דיסק חיתוך לעבודת השחזה.",
+        "ar": "المقاس اليومي. بالحاجب، ولا قرص قصّ أبداً في عمل جلخ."
+      },
+      "attributes": {
+        "discMm": "125"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "mw.tool.bender.pipe",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Pipe/tube bender",
+        "he": "מכופף צינורות",
+        "ar": "ثنّاية مواسير"
+      },
+      "spec": {
+        "en": "Bends without kinking, which a knee and a pipe will not do.",
+        "he": "מכופף בלי לקמט, מה שברך וצינור לא יעשו.",
+        "ar": "يثني دون تجعّد، وهو ما لا تفعله الركبة والماسورة."
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "mw.tool.clamp.welding",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Welding clamp set",
+        "he": "ערכת מלחציים לריתוך",
+        "ar": "طقم ملازم لحام"
+      },
+      "spec": {
+        "en": "Holds the work square while it is tacked. Tacking by hand pulls out of square.",
+        "he": "מחזיק את העבודה בזווית ישרה בזמן הנקודות. ריתוך ביד מוציא מזווית.",
+        "ar": "يمسك القطعة قائمة أثناء التنقيط. التنقيط باليد يخرجها عن الزاوية."
+      },
+      "tags": [
+        "welding"
+      ]
+    },
+    {
+      "id": "mw.tool.vice.bench",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Bench vice",
+        "he": "מלחציים שולחן",
+        "ar": "ملزمة طاولة"
+      },
+      "spec": {
+        "en": "125 mm jaws.",
+        "he": "לסתות 125 מ״מ.",
+        "ar": "فكّان 125 ملم."
+      },
+      "attributes": {},
+      "tags": [
+        "vice"
+      ],
+      "colloquial": {
+        "ar": "ملزمة"
+      }
+    }
+  ]
+}

@@ -102,12 +102,8 @@ class EvidenceRepository(
         audit.record(TALK, attendee.talkId, AuditTrail.Action.UPDATE, actorName, "Removed ${attendee.name}")
     }
 
-    suspend fun removeTalk(talk: ToolboxTalkEntity, actorName: String) {
-        dao.deleteTalk(talk)
-        audit.record(TALK, talk.id, AuditTrail.Action.DELETE, actorName, talk.topic)
-    }
 
-    /** A briefing nobody attended records nothing. Used to mark the row unfinished. */
+    /** A briefing nobody attended records nothing. Nothing reads this yet. */
     suspend fun isRegisterEmpty(talkId: String): Boolean = dao.attendeeCount(talkId) == 0
 
     // ---- Permits to work ----
@@ -116,6 +112,9 @@ class EvidenceRepository(
         dao.observePermits(projectId)
 
     fun observePermit(id: String): Flow<PermitEntity?> = dao.observePermit(id)
+
+    /** Every permit there is, for search. Uncapped: see EvidenceDao.allPermits. */
+    suspend fun allPermits(): List<PermitEntity> = dao.allPermits()
 
     fun observePrecautions(permitId: String): Flow<List<PermitPrecautionEntity>> =
         dao.observePrecautions(permitId)
@@ -297,10 +296,6 @@ class EvidenceRepository(
         audit.record(PERMIT, permit.id, AuditTrail.Action.UPDATE, actorName, "${permit.reference} cancelled")
     }
 
-    suspend fun removePermit(permit: PermitEntity, actorName: String) {
-        dao.deletePermit(permit)
-        audit.record(PERMIT, permit.id, AuditTrail.Action.DELETE, actorName, permit.reference)
-    }
 
     // ---- Snagging ----
 
@@ -308,6 +303,9 @@ class EvidenceRepository(
         dao.observeSnags(projectId)
 
     fun observeSnag(id: String): Flow<SnagEntity?> = dao.observeSnag(id)
+
+    /** Every snag there is, for search. Uncapped: see EvidenceDao.allSnags. */
+    suspend fun allSnags(): List<SnagEntity> = dao.allSnags()
 
     suspend fun raiseSnag(
         projectId: String,
@@ -404,10 +402,6 @@ class EvidenceRepository(
         return true
     }
 
-    suspend fun removeSnag(snag: SnagEntity, actorName: String) {
-        dao.deleteSnag(snag)
-        audit.record(SNAG, snag.id, AuditTrail.Action.DELETE, actorName, snag.reference)
-    }
 
     private companion object {
         const val TALK = "toolbox_talk"

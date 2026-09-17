@@ -1,0 +1,215 @@
+{
+  "tradeId": "earthworks",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "ew.aggregate.base",
+      "kind": "MATERIAL",
+      "category": "aggregates",
+      "unit": "M3",
+      "names": {
+        "en": "Crushed base course",
+        "he": "מצע סוג א׳",
+        "ar": "بيسة أساس مكسّرة"
+      },
+      "spec": {
+        "en": "Compacted in layers under a slab or a road. One thick layer does not compact.",
+        "he": "מהודק בשכבות מתחת לרצפה או לכביש. שכבה עבה אחת אינה מתהדקת.",
+        "ar": "يُرصّ بطبقات تحت البلاطة أو الطريق. الطبقة السميكة الواحدة لا تُرصّ."
+      },
+      "tags": [
+        "subbase"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ew.sand.fill",
+      "kind": "MATERIAL",
+      "category": "aggregates",
+      "unit": "M3",
+      "names": {
+        "en": "Fill sand",
+        "he": "חול מילוי",
+        "ar": "رمل ردم"
+      },
+      "spec": {
+        "en": "Bedding and backfill around pipes, where a stone would dent the pipe.",
+        "he": "מצע ומילוי סביב צנרת, במקום שאבן הייתה פוגעת בצינור.",
+        "ar": "فرشة وردم حول المواسير، حيث يضرّ الحجر بالماسورة."
+      },
+      "tags": [
+        "fill"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ew.geotextile",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M2",
+      "names": {
+        "en": "Geotextile separation fabric",
+        "he": "בד גיאוטכני",
+        "ar": "قماش جيوتكستايل"
+      },
+      "spec": {
+        "en": "Keeps the base course and the subgrade from mixing, which is what ruins both.",
+        "he": "מונע ערבוב בין המצע לתשתית, וזה מה שהורס את שניהם.",
+        "ar": "يمنع اختلاط الأساس بالتربة التحتية، وهو ما يفسد كليهما."
+      },
+      "tags": [
+        "separation"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ew.pipe.drain.perf",
+      "kind": "MATERIAL",
+      "category": "drainage",
+      "unit": "M",
+      "names": {
+        "en": "Perforated drainage pipe",
+        "he": "צינור ניקוז מחורר",
+        "ar": "ماسورة تصريف مثقّبة"
+      },
+      "spec": {
+        "en": "Holes face down. Facing up, it fills with silt and drains nothing.",
+        "he": "החורים כלפי מטה. כלפי מעלה הוא מתמלא סחף ואינו מנקז דבר.",
+        "ar": "الثقوب للأسفل. إن كانت للأعلى امتلأ بالطمي ولم يصرّف شيئاً."
+      },
+      "tags": [
+        "drainage"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ew.shoring.trench.box",
+      "kind": "MATERIAL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Trench shoring box",
+        "he": "תיבת דיפון לתעלה",
+        "ar": "صندوق تدعيم الخندق"
+      },
+      "spec": {
+        "en": "A trench over 1.2 m deep is a grave without one. Israeli safety regulations are explicit.",
+        "he": "תעלה עמוקה מ־1.2 מ׳ היא קבר בלעדיה. תקנות הבטיחות מפורשות.",
+        "ar": "خندق أعمق من 1.2 م هو قبر بدونه. أنظمة السلامة صريحة بهذا."
+      },
+      "attributes": {
+        "depthTriggerM": "1.2"
+      },
+      "tags": [
+        "shoring",
+        "safety",
+        "excavation"
+      ]
+    },
+    {
+      "id": "ew.plate.road",
+      "kind": "MATERIAL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Road plate",
+        "he": "לוח פלדה לכביש",
+        "ar": "بليتة طريق"
+      },
+      "spec": {
+        "en": "Covers an open trench so traffic can pass. Pin it or it walks.",
+        "he": "מכסה תעלה פתוחה כדי לאפשר תנועה. יש לעגן, אחרת היא נודדת.",
+        "ar": "تغطّي خندقاً مفتوحاً ليمرّ السير. ثبّتها وإلا زحفت."
+      },
+      "tags": [
+        "temporary-works"
+      ]
+    },
+    {
+      "id": "ew.tool.compactor.plate",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Plate compactor",
+        "he": "מהדק פלטה",
+        "ar": "دكّاكة صفيحة"
+      },
+      "spec": {
+        "en": "For open areas in layers. Check the layer depth against the machine, not the clock.",
+        "he": "לשטחים פתוחים בשכבות. יש להתאים את עובי השכבה למכונה, לא לשעון.",
+        "ar": "للمساحات المفتوحة بطبقات. طابق سُمك الطبقة مع الآلة لا مع الساعة."
+      },
+      "tags": [
+        "compaction"
+      ]
+    },
+    {
+      "id": "ew.tool.compactor.rammer",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Trench rammer",
+        "he": "מהדק תעלות",
+        "ar": "دكّاكة خنادق (ضفدع)"
+      },
+      "spec": {
+        "en": "Narrow foot for trenches, where a plate cannot reach the bottom.",
+        "he": "כף צרה לתעלות, שם מהדק פלטה אינו מגיע לתחתית.",
+        "ar": "قدم ضيقة للخنادق، حيث لا تصل الدكّاكة الصفيحية للقاع."
+      },
+      "tags": [
+        "compaction"
+      ]
+    },
+    {
+      "id": "ew.tool.level.rotary",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Rotary laser and staff",
+        "he": "לייזר סיבובי ומוט",
+        "ar": "ليزر دوّار مع مسطرة"
+      },
+      "spec": {
+        "en": "One person sets it, one reads the staff. Levels a whole site off one datum.",
+        "he": "אחד מציב, אחד קורא את המוט. מפלס אתר שלם מנקודת ייחוס אחת.",
+        "ar": "واحد ينصبه وآخر يقرأ المسطرة. يسوّي موقعاً كاملاً من منسوب واحد."
+      },
+      "tags": [
+        "setting-out"
+      ]
+    },
+    {
+      "id": "ew.tool.cat.genny",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Cable avoidance tool (CAT & genny)",
+        "he": "גלאי תשתיות תת־קרקעיות",
+        "ar": "جهاز كشف الخدمات تحت الأرض"
+      },
+      "spec": {
+        "en": "Scanned before any dig. Hitting a live cable or a gas main is how excavation kills.",
+        "he": "סורקים לפני כל חפירה. פגיעה בכבל חי או בקו גז היא הדרך שבה חפירה הורגת.",
+        "ar": "يُمسح قبل أي حفر. ضرب كابل حيّ أو خط غاز هو كيف يقتل الحفر."
+      },
+      "tags": [
+        "safety",
+        "excavation",
+        "survey"
+      ]
+    }
+  ]
+}

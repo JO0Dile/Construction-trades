@@ -42,11 +42,15 @@ you have not got round to still looks finished.
 
 ## Size
 
-Aim for **512×512** and about **40–60 KB** each. At that size the whole set of
-178 costs roughly 8 MB, which fits the store budget with room to spare.
+Aim for **512×512** and about **40–60 KB** each. At that size the whole
+catalogue — 527 items, and `tools/image-coverage.py` prints the current number
+— costs roughly 26 MB. That fits inside Google Play's 200 MB limit for an APK
+comfortably, but it is no longer a rounding error, so it is worth doing the
+common items first rather than all of them at once.
 
-Do not drop 4 MB camera originals in here: 178 of those is 700 MB, which is
-larger than the app is allowed to be. If what you have is camera originals or
+Do not drop 4 MB camera originals in here: 527 of those is over 2 GB, which is
+an order of magnitude larger than the app is allowed to be. If what you have is
+camera originals or
 supplier images at odd sizes, this converts and renames a whole folder for you:
 
 ```bash

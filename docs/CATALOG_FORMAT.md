@@ -133,6 +133,52 @@ Every `itemId` must exist in some trade's `items` file. A template naming a
 missing item would create a project with a line nobody can buy, so the test
 fails on it.
 
+## scopes.json
+
+The work breakdown. Two dimensions that are constantly confused for one:
+
+* **stage** — how far up the building has got. `civil` → `slab` → `rough-in`
+  → `second-fix` → `commissioning` → `handover`.
+* **scope** — the trade operation itself, grouped into `phases`.
+
+"Electrical, third floor" is not one job. It is slab conduit before the pour
+(העקדה / العقدة), rough-in in the walls (الشغل الأسود), trim-out after paint
+(الشغل الأبيض), and commissioning — four crews, four prices, four
+inspections, months apart. A task that cannot say which of the four it is
+cannot be priced, assigned or signed off.
+
+```json
+{
+  "schemaVersion": 1,
+  "catalogVersion": 2,
+  "stages": [
+    {
+      "id": "rough-in",
+      "names": { "en": "…", "he": "…", "ar": "…" },
+      "colloquial": { "ar": "الشغل الأسود" },
+      "descriptions": { "en": "…" }
+    }
+  ],
+  "phases": [{ "id": "electrical", "names": { "en": "…", "he": "…", "ar": "…" } }],
+  "scopes": [
+    {
+      "id": "electrical-rough",
+      "phaseId": "electrical",
+      "stageId": "rough-in",
+      "tradeId": "electrical",
+      "names": { "en": "…", "he": "…", "ar": "…" },
+      "colloquial": { "ar": "الشغل الأسود / زرع العلب" },
+      "descriptions": { "en": "…" }
+    }
+  ]
+}
+```
+
+`colloquial` is what the crew actually says, and it is searched alongside
+`names`. A foreman typing "العقدة" has to land on slab conduit; a search that
+only knows the contract wording is decoration. `tradeId` is a suggestion for
+who usually carries the scope, never a restriction on who may be assigned it.
+
 ## Editing safely
 
 ```bash
@@ -142,4 +188,10 @@ cd android && ./gradlew :app:testDebugUnitTest --tests '*CatalogIntegrityTest'
 That parses every file through the app's own model types with **unknown keys
 rejected**, so a typo'd field name fails loudly instead of being dropped at
 runtime, and checks that every item is trilingual, ids are unique, mandatory
-checklists have teeth, checklists cite a source, and template lines resolve.
+checklists have teeth, checklists cite a source, template lines resolve, and
+every scope points at a stage, phase and trade that exist.
+
+A `spec` is optional. "Side cutters" needs no sentence explaining it, and
+inventing one in three languages produces filler rather than help. What is not
+optional is finishing it: an item with an English spec and no Hebrew one is
+half-translated on the phone where it matters, and the test says so.

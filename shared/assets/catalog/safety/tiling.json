@@ -1,0 +1,99 @@
+{
+  "tradeId": "tiling",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.tl.cutting",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Cutting tile and stone",
+        "he": "חיתוך אריחים ואבן",
+        "ar": "قص البلاط والحجر"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (גיהות תעסוקתית ובריאות העובדים באבק מזיק)",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"
+      ],
+      "items": [
+        {
+          "id": "sf.tl.cutting.1",
+          "critical": true,
+          "texts": {
+            "en": "Wet saw in use, or on-tool extraction where cutting dry",
+            "he": "מסור רטוב בשימוש, או שאיבה על הכלי בחיתוך יבש",
+            "ar": "منشار مبلّل مستخدم، أو شفط على العدة عند القص الجاف"
+          }
+        },
+        {
+          "id": "sf.tl.cutting.2",
+          "critical": true,
+          "texts": {
+            "en": "Eye protection worn — a porcelain chip does not wait",
+            "he": "מגן עיניים מורכב — רסיס פורצלן אינו ממתין",
+            "ar": "واقي العينين مرتدى — شظية البورسلان لا تنتظر"
+          }
+        },
+        {
+          "id": "sf.tl.cutting.3",
+          "critical": true,
+          "texts": {
+            "en": "Blade correct for the material and undamaged",
+            "he": "הדיסק מתאים לחומר ואינו פגום",
+            "ar": "القرص مناسب للمادة وغير تالف"
+          }
+        },
+        {
+          "id": "sf.tl.cutting.4",
+          "critical": false,
+          "texts": {
+            "en": "Wet saw fed from an RCD-protected supply",
+            "he": "המסור הרטוב מוזן ממקור מוגן ממסר פחת",
+            "ar": "المنشار المبلّل مغذّى من مصدر محمي بقاطع تسريب"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.tl.kneel",
+      "mandatoryBeforeWork": false,
+      "titles": {
+        "en": "Working on your knees all day",
+        "he": "עבודה על הברכיים לאורך היום",
+        "ar": "العمل على الركبتين طوال اليوم"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997",
+        "פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970"
+      ],
+      "items": [
+        {
+          "id": "sf.tl.kneel.1",
+          "critical": false,
+          "texts": {
+            "en": "Knee pads or a kneeling board in use",
+            "he": "מגני ברכיים או לוח כריעה בשימוש",
+            "ar": "واقيات ركب أو لوح ركوع مستخدم"
+          }
+        },
+        {
+          "id": "sf.tl.kneel.2",
+          "critical": false,
+          "texts": {
+            "en": "Adhesive and grout handled in gloves — cement burns skin",
+            "he": "דבק ורובה מטופלים בכפפות — מלט כווה עור",
+            "ar": "اللاصق والقصارة يُستعملان بقفازات — الإسمنت يحرق الجلد"
+          }
+        },
+        {
+          "id": "sf.tl.kneel.3",
+          "critical": false,
+          "texts": {
+            "en": "Area ventilated where epoxy grout or solvent is in use",
+            "he": "האזור מאוורר בשימוש ברובה אפוקסי או ממס",
+            "ar": "المنطقة مهوّاة عند استعمال قصارة إيبوكسي أو مذيب"
+          }
+        }
+      ]
+    }
+  ]
+}

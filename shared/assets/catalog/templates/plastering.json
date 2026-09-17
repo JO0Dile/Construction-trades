@@ -1,0 +1,93 @@
+{
+  "tradeId": "plastering",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.ps.room",
+      "estimatedDays": 3,
+      "names": {
+        "en": "Render and skim, one room",
+        "he": "טיח ושפכטל לחדר אחד",
+        "ar": "لياسة ومعجون لغرفة واحدة"
+      },
+      "descriptions": {
+        "en": "Base render over block, mesh at every junction of two materials, then a finish coat.",
+        "he": "הרבצה על בלוק, רשת בכל מפגש בין שני חומרים, ואז שכבת גמר.",
+        "ar": "لياسة أساس على البلوك، شبك عند كل وصلة بين مادتين، ثم طبقة تشطيب."
+      },
+      "materials": [
+        {
+          "itemId": "ps.bonding.agent",
+          "quantity": 10
+        },
+        {
+          "itemId": "ps.mortar.render.base",
+          "quantity": 25
+        },
+        {
+          "itemId": "ps.mesh.render",
+          "quantity": 12
+        },
+        {
+          "itemId": "ps.bead.corner.render",
+          "quantity": 14
+        },
+        {
+          "itemId": "ps.mortar.render.finish",
+          "quantity": 12
+        },
+        {
+          "itemId": "ps.skim.filler",
+          "quantity": 6
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.ps.rt.1",
+          "order": 1,
+          "titles": {
+            "en": "Key coat over anything smooth or dusty",
+            "he": "יסוד הצמדה על כל משטח חלק או מאובק",
+            "ar": "طبقة ربط فوق أي سطح أملس أو مغبّر"
+          }
+        },
+        {
+          "id": "tpl.ps.rt.2",
+          "order": 2,
+          "titles": {
+            "en": "Mesh over every junction of two materials — that is where it cracks",
+            "he": "רשת בכל מפגש בין שני חומרים — שם נסדק",
+            "ar": "شبك فوق كل وصلة بين مادتين — من هناك يتشقق"
+          }
+        },
+        {
+          "id": "tpl.ps.rt.3",
+          "order": 3,
+          "titles": {
+            "en": "Beads to every corner and reveal",
+            "he": "פינות לכל זווית ומלבן",
+            "ar": "زوايا لكل ركن وفتحة"
+          }
+        },
+        {
+          "id": "tpl.ps.rt.4",
+          "order": 4,
+          "titles": {
+            "en": "Base coat and rule off flat",
+            "he": "שכבת בסיס ויישור בסרגל",
+            "ar": "طبقة الأساس والتسوية بالقدّة"
+          }
+        },
+        {
+          "id": "tpl.ps.rt.5",
+          "order": 5,
+          "titles": {
+            "en": "Finish coat once the base has taken up",
+            "he": "שכבת גמר לאחר התייצבות הבסיס",
+            "ar": "طبقة التشطيب بعد شدّ الأساس"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -417,6 +417,14 @@ private fun NumbersForm(
                 .orEmpty(),
         )
     }
+    // The column, the label and the sort order all existed. Nothing set it.
+    // The list orders by `plannedFor IS NULL, plannedFor` and its comment
+    // explains that a plan with no date sorts last -- which was every plan.
+    var plannedFor by remember(plan.id) {
+        mutableStateOf(
+            plan.plannedFor?.let { dateOf(it, ZoneId.systemDefault(), locale) }.orEmpty(),
+        )
+    }
 
     Column(
         modifier = Modifier.fillMaxWidth().padding(16.dp),
@@ -472,6 +480,13 @@ private fun NumbersForm(
                 modifier = Modifier.fillMaxWidth(),
             )
         }
+        OutlinedTextField(
+            value = plannedFor,
+            onValueChange = { plannedFor = it },
+            label = { Text(stringResource(R.string.lift_planned_for)) },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+        )
         Button(
             onClick = {
                 onSave(
@@ -486,6 +501,10 @@ private fun NumbersForm(
                         windSpeedKmh = wind.toDoubleOrNull(),
                         applianceCertificateRequired = certRequired,
                         applianceCertificateExpiresOn = Formats.parseDate(certExpiry)
+                            ?.atStartOfDay(ZoneId.systemDefault())
+                            ?.toInstant()
+                            ?.toEpochMilli(),
+                        plannedFor = Formats.parseDate(plannedFor)
                             ?.atStartOfDay(ZoneId.systemDefault())
                             ?.toInstant()
                             ?.toEpochMilli(),

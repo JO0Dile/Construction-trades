@@ -47,6 +47,9 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withTimeoutOrNull
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
@@ -114,29 +117,42 @@ fun InventoryScreen(
     // newest — which puts a new row below every low-stock row and off the
     // bottom of the screen. Any of them makes the app look as though the save
     // did nothing.
+    //
+    // And that is exactly what it did look like, because this waited on the
+    // wrong thing. The list is a Room query, so the emission carrying a row
+    // saved a moment ago always lands *after* this screen has recomposed.
+    // Looking once, finding nothing and concluding the row must have been
+    // deleted is a race the save lost every single time: the marker was
+    // cleared, the row then arrived in silence, and the sort had already put
+    // it off the bottom of the screen. Press add, nothing happens, leave and
+    // come back and there it is. So now it waits for the row instead of
+    // deciding on one look at a list that cannot have it yet.
     val listState = rememberLazyListState()
     val saved by savedStateHandle
         .getStateFlow<String?>(Routes.SAVED_ITEM, null)
         .collectAsStateWithLifecycle()
     var justSaved by remember { mutableStateOf<String?>(null) }
 
-    LaunchedEffect(saved, items) {
+    LaunchedEffect(saved) {
         val id = saved ?: return@LaunchedEffect
-        val index = items.indexOfFirst { it.id == id }
-        if (index < 0) {
-            if (filters != InventoryViewModel.Filters()) {
-                // Not in this view because something is filtering it out. Drop
-                // the filters; this runs again when the list is rebuilt.
-                viewModel.clearFilters()
-            } else {
-                // Nothing is filtering and it is still not here, so it is gone
-                // — deleted, most likely. Stop looking rather than re-checking
-                // on every future change to the list.
-                savedStateHandle[Routes.SAVED_ITEM] = null
-            }
-            return@LaunchedEffect
+
+        // A search or a chip is the usual reason a just-saved row is not in
+        // this view, and dropping them is what somebody wants once they have
+        // acted on the search. Done first, so the wait below is waiting on the
+        // list that can actually contain it.
+        if (filters != InventoryViewModel.Filters()) viewModel.clearFilters()
+
+        // Keyed on `saved` alone. Keying on the list as well restarted this on
+        // every emission, which cancelled the scroll with the very update that
+        // had brought the row in.
+        val index = withTimeoutOrNull(WAIT_FOR_SAVED_ROW) {
+            viewModel.items.map { rows -> rows.indexOfFirst { it.id == id } }.first { it >= 0 }
         }
+
         savedStateHandle[Routes.SAVED_ITEM] = null
+        // Null means it really is not coming — deleted, most likely. Nothing
+        // to scroll to and nothing to say about it.
+        if (index == null) return@LaunchedEffect
         justSaved = id
         listState.animateScrollToItem(index)
     }
@@ -233,6 +249,33 @@ fun InventoryScreen(
                 )
             }
 
+            // The stage of the job, on its own row.
+            //
+            // Not mixed in with the kind chips above, because they answer
+            // different questions and a single scrolling row of eleven chips
+            // answers neither. An electrician on slab conduit picks the stage
+            // once in the morning and stops scrolling past ten light fittings
+            // for the rest of the day.
+            //
+            // A stage is a filter, never a hiding place: an item the catalogue
+            // gives no stage to — and anything the user added themselves —
+            // stays on the list under every one of these.
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState())
+                    .padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                viewModel.stages.forEach { stage ->
+                    FilterChip(
+                        selected = filters.stageId == stage.id,
+                        onClick = { viewModel.setStage(stage.id) },
+                        label = { Text(stage.names.resolve(languageTag)) },
+                    )
+                }
+            }
+
             if (items.isEmpty()) {
                 EmptyState(
                     message = stringResource(R.string.inv_empty),
@@ -312,3 +355,13 @@ fun InventoryScreen(
 
 private const val USED_ON_SITE = "used_on_site"
 private const val RESTOCKED = "restocked"
+
+/**
+ * How long to wait for a just-saved row to reach the list.
+ *
+ * It is a local database write, so in practice this is a few milliseconds and
+ * the timeout is never reached. It exists so that a row which genuinely is not
+ * coming — one deleted from the edit screen — ends the wait instead of leaving
+ * a coroutine sitting on a list it will never see.
+ */
+private const val WAIT_FOR_SAVED_ROW = 5_000L

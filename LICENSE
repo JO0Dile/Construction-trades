@@ -1,0 +1,47 @@
+Copyright (c) 2026 JO0Dile. All rights reserved.
+
+Trades Work Manager — Israel Edition ("the Software"), including its source
+code, its catalogue of trades, items, checklists and templates, its Hebrew,
+Arabic and English text, its designs, and its documentation.
+
+THIS IS NOT OPEN SOURCE SOFTWARE.
+
+No permission is granted to any person to copy, modify, merge, publish,
+distribute, sublicense, sell, reverse engineer, or create derivative works
+from the Software, in whole or in part, by any means, without prior written
+permission from the copyright holder.
+
+Viewing this repository, or receiving a build of the Software, grants no
+licence of any kind. An installed copy may be used only under whatever terms
+were agreed in writing for that copy.
+
+The absence of a licence file before this one did not place the Software in
+the public domain and did not grant anyone any rights. Under the Berne
+Convention and Israel's Copyright Law 5768-2007, copyright exists from the
+moment a work is created, whether or not it is claimed. This file states the
+position; it does not change it.
+
+---
+
+THIRD-PARTY COMPONENTS
+
+The Software is built on open-source libraries — among them the Android
+Jetpack and Compose libraries, Room, Kotlin and kotlinx, Coil, ZXing and
+SQLCipher for Android. Each of those remains under its own licence, held by
+its own authors, and nothing above claims any right over them. Their terms
+govern their own code and are unaffected by this file.
+
+---
+
+HOW TO ASK
+
+For permission to use, licence, distribute or evaluate the Software, contact
+the copyright holder through the repository owner's GitHub account.
+
+---
+
+Replace "JO0Dile" above with the legal name of the person or company that is
+to own this — an individual's full name, or the registered company name and
+number. A licence is only as strong as the party it names, and "the owner of
+a GitHub account" is a harder thing to prove in a room than a name on a
+certificate.

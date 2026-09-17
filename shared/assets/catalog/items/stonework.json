@@ -1,0 +1,403 @@
+{
+  "tradeId": "stonework",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "st.stone.jerusalem.slab",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Jerusalem stone slab, sawn",
+        "he": "לוח אבן ירושלמית מנוסרת",
+        "ar": "لوح حجر قدسي منشور"
+      },
+      "spec": {
+        "en": "The stone Jerusalem requires by law on a façade. Sawn face, ready to dress.",
+        "he": "האבן שירושלים מחייבת בחזית בחוק. פנים מנוסרות, מוכנות לסיתות.",
+        "ar": "الحجر الذي تفرضه القدس على الواجهة قانوناً. وجه منشور جاهز للنحت."
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.stone.tobzeh",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Tobzeh (bush-hammered) stone",
+        "he": "אבן טובזה",
+        "ar": "حجر طبزة"
+      },
+      "spec": {
+        "en": "Bush-hammered to an even stipple. The texture is the finish, not a defect.",
+        "he": "מסותתת בפטיש טובזה למרקם אחיד. המרקם הוא הגמר ולא פגם.",
+        "ar": "منحوت بالطبزة لملمس منتظم. الملمس هو التشطيب لا عيب."
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.stone.msamsam",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Msamsam (chiselled) stone",
+        "he": "אבן מסמסם",
+        "ar": "حجر مسمسم"
+      },
+      "spec": {
+        "en": "Fine chiselled lines, the quietest of the dressed finishes.",
+        "he": "קווי סיתות עדינים, השקט שבגימורי הסיתות.",
+        "ar": "خطوط نحت ناعمة، أهدأ التشطيبات المنحوتة."
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.stone.mafjar",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Mafjar (split-face) stone",
+        "he": "אבן מפג׳ר",
+        "ar": "حجر مفجّر"
+      },
+      "spec": {
+        "en": "Split rather than cut, so every face is different. That is the point of it.",
+        "he": "מפוצלת ולא חתוכה, כך שכל פנים שונות. זו כל מטרתה.",
+        "ar": "مفلوق لا مقصوص، فكل وجه مختلف. وهذه غايته."
+      },
+      "tags": [
+        "facade",
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.stone.marble.slab",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Marble slab",
+        "he": "לוח שיש",
+        "ar": "لوح رخام"
+      },
+      "spec": {
+        "en": "Soft and acid-sensitive. Not a kitchen worktop unless the client has been told.",
+        "he": "רך ורגיש לחומצה. לא למשטח מטבח אלא אם הלקוח יודע.",
+        "ar": "طري وحسّاس للحمض. ليس لسطح مطبخ إلا إن أُخبر الزبون."
+      },
+      "tags": [
+        "interior",
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.stone.granite.slab",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Granite slab",
+        "he": "לוח גרניט",
+        "ar": "لوح جرانيت"
+      },
+      "spec": {
+        "en": "Hard, dense and nearly maintenance free, which is why it outlasts the kitchen around it.",
+        "he": "קשה, צפוף וכמעט ללא תחזוקה, ולכן הוא שורד את המטבח סביבו.",
+        "ar": "صلب وكثيف وبلا صيانة تقريباً، ولهذا يبقى بعد المطبخ حوله."
+      },
+      "tags": [
+        "interior",
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.sill.window.stone",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M",
+      "names": {
+        "en": "Stone window sill",
+        "he": "אדן חלון אבן",
+        "ar": "عتبة شباك حجر"
+      },
+      "spec": {
+        "en": "Throws the water clear of the wall. Without a drip groove it runs back and stains.",
+        "he": "מרחיק את המים מהקיר. בלי חריץ ניקוז הם חוזרים ומכתימים.",
+        "ar": "يبعد الماء عن الجدار. بلا خدّ تنقيط يعود ويلطّخ."
+      },
+      "tags": [
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.anchor.stainless",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Stainless steel stone anchor",
+        "he": "עוגן אבן נירוסטה",
+        "ar": "مثبّت حجر ستانلس"
+      },
+      "spec": {
+        "en": "Mechanical fixing. A facade stone held on mortar alone comes off the building eventually.",
+        "he": "עיגון מכני. אבן חיפוי המוחזקת בטיט בלבד יורדת מהבניין בסופו של דבר.",
+        "ar": "تثبيت ميكانيكي. حجر الواجهة المثبّت بالمونة وحدها يقع عن المبنى في النهاية."
+      },
+      "attributes": {
+        "material": "AISI 316"
+      },
+      "tags": [
+        "facade",
+        "fixing",
+        "safety"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.mortar.stone",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Stone-setting mortar",
+        "he": "טיט לאבן",
+        "ar": "مونة تثبيت الحجر"
+      },
+      "spec": {
+        "en": "Weaker than the stone on purpose, so any movement cracks the joint and not the face.",
+        "he": "חלש מהאבן בכוונה, כך שתזוזה סודקת את המישק ולא את הפנים.",
+        "ar": "أضعف من الحجر عمداً، فتشقّ الحركة الفاصل لا الوجه."
+      },
+      "tags": [
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.grout.stone",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Stone pointing grout",
+        "he": "רובה לאבן",
+        "ar": "قصارة فواصل الحجر"
+      },
+      "spec": {
+        "en": "Fills the joint and keeps the water out of it. Colour is decided on a sample, wet.",
+        "he": "ממלא את המישק ומונע חדירת מים. הגוון נקבע על דוגמה, ברטוב.",
+        "ar": "يملأ الفاصل ويمنع دخول الماء. اللون يُحدَّد على عيّنة مبلّلة."
+      },
+      "tags": [
+        "stone"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.sealer.stone",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "L",
+      "names": {
+        "en": "Stone impregnating sealer",
+        "he": "אימפרגנציה לאבן",
+        "ar": "مادة حماية للحجر"
+      },
+      "spec": {
+        "en": "Soaks in rather than coating. It slows staining; it does not stop it.",
+        "he": "נספגת ואינה מצפה. מאטה הכתמה, אינה מונעת אותה.",
+        "ar": "يتشرّب ولا يغلّف. يبطئ التبقّع ولا يمنعه."
+      },
+      "tags": [
+        "protection"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "st.tool.grinder.230",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Angle grinder 230 mm",
+        "he": "משחזת זווית 230 מ״מ",
+        "ar": "جلّاخة 230 ملم"
+      },
+      "spec": {
+        "en": "Big, heavy and unforgiving. Two hands, and never without the guard.",
+        "he": "גדולה, כבדה ולא סלחנית. שתי ידיים, ולעולם לא בלי מגן.",
+        "ar": "كبيرة وثقيلة ولا تسامح. بيدين، ولا بدون الحاجب أبداً."
+      },
+      "attributes": {
+        "discMm": "230"
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "st.tool.saw.bridge",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Bridge saw",
+        "he": "מסור גשר",
+        "ar": "منشار جسري"
+      },
+      "spec": {
+        "en": "Shop machine for accurate slabs. Site cutting is for adjustment, not for sizing.",
+        "he": "מכונת בית מלאכה ללוחות מדויקים. חיתוך באתר הוא להתאמה ולא למידה.",
+        "ar": "آلة ورشة للألواح الدقيقة. القصّ في الموقع للتعديل لا للتقييس."
+      },
+      "tags": [
+        "cutting",
+        "workshop"
+      ]
+    },
+    {
+      "id": "st.tool.chisel.set",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Stone chisel set",
+        "he": "ערכת אזמלי אבן",
+        "ar": "طقم أزاميل حجر"
+      },
+      "spec": {
+        "en": "The dressed finishes are made with these, by hand, one face at a time.",
+        "he": "גימורי הסיתות נעשים בהם, ביד, פנים אחת בכל פעם.",
+        "ar": "التشطيبات المنحوتة تُصنع بها، يدوياً، وجهاً وجهاً."
+      },
+      "tags": [
+        "hand-tool",
+        "carving"
+      ]
+    },
+    {
+      "id": "st.tool.bush.hammer",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Bush hammer",
+        "he": "פטיש טובזה",
+        "ar": "شاكوش طبزة"
+      },
+      "spec": {
+        "en": "The toothed head that makes a tobzeh face. Even pressure or the face reads patchy.",
+        "he": "הראש המשונן שיוצר פני טובזה. לחץ אחיד, אחרת הפנים נראות מנומרות.",
+        "ar": "الرأس المسنّن الذي يصنع وجه الطبزة. ضغط منتظم وإلا بدا الوجه مرقّعاً."
+      },
+      "tags": [
+        "carving"
+      ]
+    },
+    {
+      "id": "st.tool.blade.diamond",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Diamond blade for stone",
+        "he": "דיסק יהלום לאבן",
+        "ar": "قرص ألماس للحجر"
+      },
+      "spec": {
+        "en": "Matched to the stone. A blade for granite glazes over on soft limestone.",
+        "he": "מותאם לאבן. דיסק לגרניט מתחלק על אבן גיר רכה.",
+        "ar": "يُطابق الحجر. قرص الجرانيت يتزجّج على الحجر الجيري الطري."
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "st.tool.vacuum.lifter",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Vacuum slab lifter",
+        "he": "מרים ואקום ללוחות",
+        "ar": "رافعة شفط للألواح"
+      },
+      "spec": {
+        "en": "A slab is a two-person lift at best and a lifting operation at worst.",
+        "he": "לוח הוא הרמה לשניים במקרה הטוב ופעולת הרמה מתוכננת במקרה הפחות טוב.",
+        "ar": "اللوح رفعة لشخصين في أحسن الأحوال وعملية رفع مخطّطة في أسوئها."
+      },
+      "tags": [
+        "lifting",
+        "safety"
+      ]
+    },
+    {
+      "id": "st.ppe.dust.mask.p3",
+      "kind": "SAFETY",
+      "category": "ppe",
+      "unit": "PCS",
+      "names": {
+        "en": "Respirator P3 (silica)",
+        "he": "מסכת נשימה P3",
+        "ar": "كمامة P3 (سيليكا)"
+      },
+      "spec": {
+        "en": "Cutting stone dry makes respirable silica. This is the difference between a career and silicosis.",
+        "he": "חיתוך אבן יבש מייצר צורן נשים. זה ההבדל בין קריירה לסיליקוזיס.",
+        "ar": "قص الحجر الجاف يُنتج سيليكا تُستنشق. هذا الفرق بين مهنة وبين تليّف الرئة."
+      },
+      "attributes": {
+        "rating": "P3"
+      },
+      "tags": [
+        "ppe",
+        "silica",
+        "health"
+      ]
+    }
+  ]
+}

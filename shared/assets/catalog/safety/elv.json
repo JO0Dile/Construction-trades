@@ -1,0 +1,98 @@
+{
+  "tradeId": "elv",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.elv.mixed",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Low voltage beside mains",
+        "he": "מתח נמוך לצד מתח רשת",
+        "ar": "التيار الخفيف بجانب تيار الشبكة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (חשמל), התש״ן-1990",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.elv.mixed.1",
+          "critical": true,
+          "texts": {
+            "en": "Data and mains segregated — the same trunking is not shared",
+            "he": "תקשורת ומתח רשת מופרדים — אין שימוש באותה תעלה",
+            "ar": "الشبكة وتيار القوى مفصولان — لا يُستخدم نفس المجرى"
+          }
+        },
+        {
+          "id": "sf.elv.mixed.2",
+          "critical": true,
+          "texts": {
+            "en": "Any cable of unknown origin treated as live until proved otherwise",
+            "he": "כל כבל שמקורו לא ידוע נחשב חי עד שיוכח אחרת",
+            "ar": "أي كابل مجهول المصدر يُعامل كحيّ حتى يُثبت العكس"
+          }
+        },
+        {
+          "id": "sf.elv.mixed.3",
+          "critical": true,
+          "texts": {
+            "en": "Fire-stopping made good at every wall and floor the cable passes",
+            "he": "אטימת אש הושלמה בכל קיר ורצפה שהכבל עובר בהם",
+            "ar": "سدّ الحريق مُنجز عند كل حائط وأرضية يمر بها الكابل"
+          }
+        },
+        {
+          "id": "sf.elv.mixed.4",
+          "critical": false,
+          "texts": {
+            "en": "Fibre offcuts collected — a glass shard in a finger does not show on an X-ray",
+            "he": "שאריות סיב נאספו — רסיס זכוכית באצבע אינו נראה בצילום",
+            "ar": "قصاصات الألياف مجموعة — شظية الزجاج في الإصبع لا تظهر بالأشعة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.elv.commission",
+      "mandatoryBeforeWork": false,
+      "titles": {
+        "en": "Before a life-safety system is signed over",
+        "he": "לפני מסירת מערכת בטיחות חיים",
+        "ar": "قبل تسليم منظومة سلامة الحياة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.elv.commission.1",
+          "critical": true,
+          "texts": {
+            "en": "Every detector, sounder and call point tested and the result recorded",
+            "he": "כל גלאי, צופר ולחצן נבדקו והתוצאה נרשמה",
+            "ar": "كل كاشف وصفارة وزر مفحوص والنتيجة مسجّلة"
+          }
+        },
+        {
+          "id": "sf.elv.commission.2",
+          "critical": true,
+          "texts": {
+            "en": "Cause and effect proved, not assumed from the panel display",
+            "he": "סיבה ותוצאה הוכחו, לא הונחו מתצוגת הרכזת",
+            "ar": "السبب والنتيجة مُثبتان، لا مفترضان من شاشة اللوحة"
+          }
+        },
+        {
+          "id": "sf.elv.commission.3",
+          "critical": false,
+          "texts": {
+            "en": "Anybody who will use the system has been shown how",
+            "he": "כל מי שישתמש במערכת קיבל הדרכה",
+            "ar": "كل من سيستخدم المنظومة تلقّى شرحاً"
+          }
+        }
+      ]
+    }
+  ]
+}

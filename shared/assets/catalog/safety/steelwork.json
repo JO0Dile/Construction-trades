@@ -1,0 +1,118 @@
+{
+  "tradeId": "steelwork",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.sw.hotwork",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Welding and cutting",
+        "he": "ריתוך וחיתוך",
+        "ar": "اللحام والقص"
+      },
+      "references": [
+        "פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.sw.hotwork.1",
+          "critical": true,
+          "texts": {
+            "en": "Hot work permit issued and in date",
+            "he": "היתר עבודה חמה הונפק ובתוקף",
+            "ar": "تصريح شغل ساخن صادر وساري"
+          }
+        },
+        {
+          "id": "sf.sw.hotwork.2",
+          "critical": true,
+          "texts": {
+            "en": "Combustibles removed or covered within the whole spark radius",
+            "he": "חומרים דליקים הוסרו או כוסו בכל רדיוס הניצוצות",
+            "ar": "المواد القابلة للاشتعال أُزيلت أو غُطّيت في كامل نطاق الشرر"
+          }
+        },
+        {
+          "id": "sf.sw.hotwork.3",
+          "critical": true,
+          "texts": {
+            "en": "Extinguisher within reach and somebody who can use it",
+            "he": "מטף בהישג יד ואדם היודע להפעילו",
+            "ar": "طفاية بالمتناول وشخص يعرف استعمالها"
+          }
+        },
+        {
+          "id": "sf.sw.hotwork.4",
+          "critical": true,
+          "texts": {
+            "en": "Fire watch to continue for a full hour after work stops",
+            "he": "שמירת אש תימשך שעה מלאה לאחר סיום העבודה",
+            "ar": "حراسة الحريق تستمر ساعة كاملة بعد توقّف العمل"
+          }
+        },
+        {
+          "id": "sf.sw.hotwork.5",
+          "critical": true,
+          "texts": {
+            "en": "Fume extraction or ventilation where welding galvanised steel",
+            "he": "שאיבת אדים או אוורור בריתוך פלדה מגולוונת",
+            "ar": "شفط الأبخرة أو تهوية عند لحام الحديد المجلفن"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.sw.erect",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Erecting steel",
+        "he": "הקמת קונסטרוקציה",
+        "ar": "تركيب الهيكل الحديدي"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007",
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"
+      ],
+      "items": [
+        {
+          "id": "sf.sw.erect.1",
+          "critical": true,
+          "texts": {
+            "en": "Lift plan in place and the appointed person is on site",
+            "he": "תוכנית הרמה קיימת והממונה נמצא באתר",
+            "ar": "خطة الرفع موجودة والمسؤول المعيّن في الموقع"
+          }
+        },
+        {
+          "id": "sf.sw.erect.2",
+          "critical": true,
+          "texts": {
+            "en": "Fall arrest anchored to something an engineer has accepted",
+            "he": "רתמה מעוגנת לנקודה שמהנדס אישר",
+            "ar": "حزام السقوط مربوط بنقطة اعتمدها مهندس"
+          }
+        },
+        {
+          "id": "sf.sw.erect.3",
+          "critical": true,
+          "texts": {
+            "en": "Member is not released from the crane until it is fully bolted",
+            "he": "האלמנט אינו משוחרר מהמנוף עד שהוברג במלואו",
+            "ar": "العنصر لا يُحرَّر من الرافعة حتى يُبرغى بالكامل"
+          }
+        },
+        {
+          "id": "sf.sw.erect.4",
+          "critical": false,
+          "texts": {
+            "en": "Bolts torqued to the specified figure and recorded",
+            "he": "הברגים הודקו למומנט הנדרש והדבר נרשם",
+            "ar": "البراغي مشدودة للعزم المحدّد ومسجّلة"
+          }
+        }
+      ]
+    }
+  ]
+}

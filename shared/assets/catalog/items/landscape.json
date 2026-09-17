@@ -1,0 +1,199 @@
+{
+  "tradeId": "landscape",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "ls.paver.interlock",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Interlock paver",
+        "he": "אבן משתלבת",
+        "ar": "بلاط انترلوك"
+      },
+      "spec": {
+        "en": "Laid on sand and locked by the joints, not by mortar. The edge restraint holds it all.",
+        "he": "מונחת על חול ונעולה במישקים, לא בטיט. אבן השפה מחזיקה את הכול.",
+        "ar": "يُفرش على رمل ويُقفل بالفواصل لا بالمونة. البردورة تمسك الكل."
+      },
+      "tags": [
+        "paving"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "ls.kerb.concrete",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "M",
+      "names": {
+        "en": "Concrete kerb",
+        "he": "אבן שפה",
+        "ar": "بردورة باطون"
+      },
+      "spec": {
+        "en": "The edge everything else pushes against. Without it the paving creeps outward.",
+        "he": "הקצה שכל השאר נשען עליו. בלעדיו הריצוף זוחל החוצה.",
+        "ar": "الحافة التي يستند إليها كل شيء. بدونها يزحف البلاط للخارج."
+      },
+      "tags": [
+        "paving"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ls.tactile.paving",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Tactile warning paving",
+        "he": "ריצוף אזהרה מישושי",
+        "ar": "بلاط تحذير ملموس"
+      },
+      "spec": {
+        "en": "Required at every crossing and stair head under Israeli accessibility rules.",
+        "he": "נדרש בכל מעבר וראש מדרגות לפי תקנות הנגישות.",
+        "ar": "مطلوب عند كل معبر ورأس درج بموجب أنظمة إمكانية الوصول."
+      },
+      "tags": [
+        "accessibility",
+        "paving"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "ls.irrigation.dripline",
+      "kind": "MATERIAL",
+      "category": "pipes",
+      "unit": "M",
+      "names": {
+        "en": "Drip irrigation line",
+        "he": "טפטפות",
+        "ar": "خط ري بالتنقيط"
+      },
+      "spec": {
+        "en": "Water at the root, not in the air. Flush the line before the first season.",
+        "he": "מים בשורש ולא באוויר. יש לשטוף את הקו לפני העונה הראשונה.",
+        "ar": "ماء عند الجذر لا في الهواء. اغسل الخط قبل الموسم الأول."
+      },
+      "tags": [
+        "irrigation"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "ls.irrigation.controller",
+      "kind": "MATERIAL",
+      "category": "controls",
+      "unit": "PCS",
+      "names": {
+        "en": "Irrigation controller",
+        "he": "בקר השקיה",
+        "ar": "وحدة تحكم الري"
+      },
+      "spec": {
+        "en": "Runs the valves to a schedule. A rain sensor on it saves the water bill.",
+        "he": "מפעיל את הברזים לפי תוכנית. חיישן גשם עליו חוסך בחשבון המים.",
+        "ar": "يشغّل المحابس وفق برنامج. حسّاس المطر عليه يوفّر فاتورة الماء."
+      },
+      "tags": [
+        "irrigation"
+      ],
+      "stages": [
+        "commissioning"
+      ]
+    },
+    {
+      "id": "ls.topsoil",
+      "kind": "MATERIAL",
+      "category": "aggregates",
+      "unit": "M3",
+      "names": {
+        "en": "Topsoil",
+        "he": "אדמת גן",
+        "ar": "تربة زراعية"
+      },
+      "spec": {
+        "en": "Screened planting soil. Sub-soil looks the same in the lorry and grows nothing.",
+        "he": "אדמת גן מנופה. אדמת תשתית נראית זהה במשאית ואינה מצמיחה דבר.",
+        "ar": "تربة زراعية منخولة. تربة تحتية تبدو مثلها في الشاحنة ولا تُنبت شيئاً."
+      },
+      "tags": [
+        "planting"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ls.tree.stake",
+      "kind": "MATERIAL",
+      "category": "timber",
+      "unit": "PCS",
+      "names": {
+        "en": "Tree stake and tie",
+        "he": "סמוכה לעץ",
+        "ar": "دعامة شجرة"
+      },
+      "spec": {
+        "en": "Holds the root ball still, not the trunk rigid. A tree that cannot move never thickens.",
+        "he": "מייצבת את גוש השורשים, לא את הגזע. עץ שאינו נע אינו מתעבה.",
+        "ar": "تثبّت كتلة الجذور لا الجذع. شجرة لا تتحرّك لا يغلظ ساقها."
+      },
+      "tags": [
+        "planting"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "ls.tool.compactor.paving",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Paving compactor with pad",
+        "he": "מהדק לריצוף עם רפידה",
+        "ar": "دكّاكة بلاط مع لبادة"
+      },
+      "spec": {
+        "en": "The pad is what stops the plate chipping the pavers.",
+        "he": "הרפידה היא שמונעת מהמהדק לפגום באבנים.",
+        "ar": "اللبادة هي ما يمنع الدكّاكة من كسر البلاط."
+      },
+      "tags": [
+        "paving"
+      ]
+    },
+    {
+      "id": "ls.tool.splitter.block",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Block splitter",
+        "he": "מפצל אבן משתלבת",
+        "ar": "مقصلة انترلوك"
+      },
+      "spec": {
+        "en": "Splits a paver without dust or a blade, which is why it beats a grinder on a street.",
+        "he": "מפצל אבן בלי אבק ובלי דיסק, ולכן עדיף על משחזת ברחוב.",
+        "ar": "يشقّ البلاطة دون غبار ولا قرص، ولهذا يتفوّق على الجلّاخة في الشارع."
+      },
+      "tags": [
+        "paving"
+      ]
+    }
+  ]
+}

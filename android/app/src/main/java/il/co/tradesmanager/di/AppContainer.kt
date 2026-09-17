@@ -1,38 +1,43 @@
 package il.co.tradesmanager.di
 
 import android.content.Context
+import il.co.tradesmanager.data.backup.BackupRepository
+import il.co.tradesmanager.data.backup.StagedRestore
 import il.co.tradesmanager.data.catalog.CatalogSeeder
 import il.co.tradesmanager.data.catalog.CatalogSource
+import il.co.tradesmanager.data.catalog.ScopeCatalog
 import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
-import il.co.tradesmanager.data.repository.ExcavationRepository
-import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
+import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
+import il.co.tradesmanager.data.repository.ExcavationRepository
+import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
-import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
+import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TemporaryWorksRepository
+import il.co.tradesmanager.data.repository.TradeRepository
+import il.co.tradesmanager.data.repository.ViolationRepository
+import il.co.tradesmanager.data.sync.NoOpSyncEngine
+import il.co.tradesmanager.data.sync.SyncEngine
+import il.co.tradesmanager.data.update.UpdateRepository
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import il.co.tradesmanager.data.repository.SettingsRepository
-import il.co.tradesmanager.data.repository.TradeRepository
-import il.co.tradesmanager.data.sync.NoOpSyncEngine
-import il.co.tradesmanager.data.update.UpdateRepository
-import il.co.tradesmanager.data.sync.SyncEngine
 
 /**
  * Hand-rolled dependency container.
@@ -53,7 +58,20 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val database: AppDatabase = databaseResult.database
 
+    /**
+     * What a restore staged in the last session did on the way into this one.
+     *
+     * Read once, at launch, and shown in Settings. A restore that silently
+     * worked and a restore that silently did not look identical from the
+     * outside, and the second one leaves somebody believing they have their
+     * site diary back.
+     */
+    val restoreOutcome: StagedRestore.Outcome = databaseResult.restore
+
     val catalogSource = CatalogSource(appContext)
+
+    /** Stages and scopes of work. Read-only reference data, never seeded. */
+    val scopes = ScopeCatalog(catalogSource)
 
     val settings = SettingsRepository(appContext)
 
@@ -113,6 +131,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val payments = PaymentsRepository(database.paymentsDao(), auditTrail)
 
+    /** Who is on a job, what they agreed, and what they were asked to do. */
+    val engagements = EngagementRepository(database.engagementDao(), auditTrail)
+
     /** The daily site log — the יומן עבודה a site manager has to keep. */
     val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)
 
@@ -132,6 +153,19 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val safety = SafetyRepository(database.safetyDao(), database.catalogDao(), auditTrail)
 
+    val violations = ViolationRepository(database.violationDao(), photos, auditTrail)
+
+    /**
+     * Taking the record off the phone and putting it back.
+     *
+     * Needs to know whether the database it is copying is encrypted, because
+     * that decides how a plaintext copy is made of it — see BackupRepository.
+     * The archive is always locked by the person's passphrase either way; the
+     * device's own key never leaves the device and would be no use on another
+     * phone if it did.
+     */
+    val backups = BackupRepository(appContext, database, auditTrail, databaseIsEncrypted)
+
     val catalogDao = database.catalogDao()
 
     val trades = TradeRepository(catalogDao, auditTrail)
@@ -140,7 +174,7 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
         source = catalogSource,
         catalogDao = catalogDao,
         inventoryDao = database.inventoryDao(),
-        auditDao = database.auditDao(),
+        audit = auditTrail,
     )
 
     /**

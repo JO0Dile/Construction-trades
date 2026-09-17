@@ -27,11 +27,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.find.Search
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.concrete.ConcreteScreen
 import il.co.tradesmanager.ui.excavation.ExcavationScreen
+import il.co.tradesmanager.ui.gate.GateScreen
 import il.co.tradesmanager.ui.handover.HandoverScreen
 import il.co.tradesmanager.ui.home.HomeScreen
 import il.co.tradesmanager.ui.inventory.InventoryEditScreen
@@ -41,13 +43,21 @@ import il.co.tradesmanager.ui.money.MoneyScreen
 import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
+import il.co.tradesmanager.ui.audit.AuditScreen
+import il.co.tradesmanager.ui.safety.IncidentsScreen
+import il.co.tradesmanager.ui.safety.ViolationsScreen
+import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
+import il.co.tradesmanager.ui.work.ContractsScreen
+import il.co.tradesmanager.ui.work.WorkPackagesScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
+import il.co.tradesmanager.ui.people.CrewScreen
 import il.co.tradesmanager.ui.people.PeopleScreen
 import il.co.tradesmanager.ui.projects.ProjectDetailScreen
 import il.co.tradesmanager.ui.projects.ProjectsScreen
 import il.co.tradesmanager.ui.scaffold.ScaffoldRegisterScreen
 import il.co.tradesmanager.ui.scanner.BarcodeScannerScreen
+import il.co.tradesmanager.ui.search.SearchScreen
 import il.co.tradesmanager.ui.evidence.DailyLogScreen
 import il.co.tradesmanager.ui.evidence.PermitDetailScreen
 import il.co.tradesmanager.ui.evidence.PermitsScreen
@@ -58,6 +68,8 @@ import il.co.tradesmanager.ui.evidence.TalksScreen
 import il.co.tradesmanager.ui.safety.ChecklistRunScreen
 import il.co.tradesmanager.ui.safety.SafetyScreen
 import il.co.tradesmanager.ui.schedule.ScheduleScreen
+import il.co.tradesmanager.ui.settings.PrivacyScreen
+import il.co.tradesmanager.ui.settings.TermsScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
 import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
 import il.co.tradesmanager.ui.timesheet.TimesheetScreen
@@ -77,6 +89,8 @@ object Routes {
     const val PERMITS = "safety/permits"
     const val PERMIT_DETAIL = "safety/permits/detail"
     const val SNAGS = "safety/snags"
+    const val INCIDENTS = "safety/incidents"
+    const val VIOLATIONS = "safety/violations"
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
@@ -86,13 +100,22 @@ object Routes {
     const val EXCAVATIONS = "projects/excavations"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
+    const val GATE = "people/gate"
+    const val CREW = "people/crew"
     const val MONEY = "money"
     const val PAYMENTS = "money/applications"
     const val TIMESHEET = "money/timesheet"
     const val PLANT = "plant"
     const val ORDERS = "orders"
     const val ORDER_DETAIL = "orders/detail"
+    const val WORK_PACKAGES = "work_packages"
+    const val COMPANY_PROFILE = "company_profile"
+    const val AUDIT = "audit"
+    const val PRIVACY = "privacy"
+    const val TERMS = "terms"
+    const val CONTRACTS = "contracts"
     const val SETTINGS = "settings"
+    const val SEARCH = "search"
     const val SCANNER = "scanner"
 
     /** Key the scanner writes its result under, read by whoever launched it. */
@@ -102,9 +125,20 @@ object Routes {
     const val SAVED_ITEM = "saved_item"
 
     fun inventoryEdit(itemId: String?) = "$INVENTORY_EDIT?itemId=${itemId.orEmpty()}"
+
+    /**
+     * The crew list, optionally with one person already open.
+     *
+     * Always spelled with the argument, empty or not, so there is one
+     * route rather than two shapes of the same one. Same reason and the
+     * same form as [inventoryEdit].
+     */
+    fun crew(openMembershipId: String?) = "$CREW?open=${openMembershipId.orEmpty()}"
     fun projectDetail(projectId: String) = "$PROJECT_DETAIL/$projectId"
     fun money(projectId: String) = "$MONEY/$projectId"
     fun payments(projectId: String) = "$PAYMENTS/$projectId"
+    fun workPackages(projectId: String) = "$WORK_PACKAGES/$projectId"
+    fun contracts(projectId: String) = "$CONTRACTS/$projectId"
     fun timesheet(projectId: String) = "$TIMESHEET/$projectId"
     fun orderDetail(orderId: String) = "$ORDER_DETAIL/$orderId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
@@ -118,6 +152,27 @@ object Routes {
     fun temporaryWorks(projectId: String) = "$TEMP_WORKS/$projectId"
     fun excavations(projectId: String) = "$EXCAVATIONS/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
+}
+
+/**
+ * Where a search result goes when it is tapped.
+ *
+ * Every kind lands on the record itself except plant, which has no screen of
+ * its own for one machine — the register is where a machine lives. The row
+ * already carried its serial number and whether it is off hire, which is most
+ * of what somebody searching for it wanted.
+ */
+private fun routeFor(hit: Search.Hit): String = when (hit.kind) {
+    Search.Kind.JOB -> Routes.projectDetail(hit.id)
+    // The id on a person hit is their membership, not their account: a
+    // membership is what the crew screen opens, and what a person is on this
+    // firm's books rather than who they are.
+    Search.Kind.PERSON -> Routes.crew(hit.id)
+    Search.Kind.ITEM -> Routes.inventoryEdit(hit.id)
+    Search.Kind.ORDER -> Routes.orderDetail(hit.id)
+    Search.Kind.PERMIT -> Routes.permitDetail(hit.id)
+    Search.Kind.SNAG -> Routes.snagDetail(hit.id)
+    Search.Kind.PLANT -> Routes.PLANT
 }
 
 /**
@@ -208,6 +263,7 @@ fun AppNavHost(
                     onOpenProjects = { navController.switchTab(Routes.PROJECTS) },
                     onOpenSafety = { navController.switchTab(Routes.SAFETY) },
                     onOpenPeople = { navController.switchTab(Routes.PEOPLE) },
+                    onOpenSearch = { navController.navigate(Routes.SEARCH) },
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                 )
             }
@@ -273,6 +329,10 @@ fun AppNavHost(
                     },
                     onOpenExcavations = { navController.navigate(Routes.excavations(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
+                    onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
+                    // A part, or the job it belongs to. Same screen, so the
+                    // back stack reads the way somebody walked in.
+                    onOpenProject = { navController.navigate(Routes.projectDetail(it)) },
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -283,6 +343,40 @@ fun AppNavHost(
                     projectId = id,
                     onOpenPayments = { navController.navigate(Routes.payments(id)) },
                     onOpenTimesheet = { navController.navigate(Routes.timesheet(id)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.COMPANY_PROFILE) {
+                CompanyProfileScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.AUDIT) {
+                AuditScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.PRIVACY) {
+                PrivacyScreen(onBack = { navController.popBackStack() })
+            }
+            composable(Routes.TERMS) {
+                TermsScreen(onBack = { navController.popBackStack() })
+            }
+            composable("${Routes.WORK_PACKAGES}/{projectId}") { entry ->
+                val id = entry.arguments?.getString("projectId").orEmpty()
+                WorkPackagesScreen(
+                    container = container,
+                    projectId = id,
+                    onOpenContracts = { navController.navigate(Routes.contracts(id)) },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.CONTRACTS}/{projectId}") { entry ->
+                ContractsScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },
                 )
             }
@@ -301,7 +395,34 @@ fun AppNavHost(
                 )
             }
             composable(Routes.SCHEDULE) { ScheduleScreen(container = container) }
-            composable(Routes.PEOPLE) { PeopleScreen(container = container) }
+            composable(Routes.PEOPLE) {
+                PeopleScreen(
+                    container = container,
+                    onOpenGate = { navController.navigate(Routes.GATE) },
+                    onOpenCrew = { navController.navigate(Routes.crew(null)) },
+                )
+            }
+            composable(Routes.GATE) {
+                GateScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.CREW}?open={open}") { entry ->
+                CrewScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                    openMembershipId = entry.arguments?.getString("open")
+                        ?.takeIf { it.isNotBlank() },
+                )
+            }
+            composable(Routes.SEARCH) {
+                SearchScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                    onOpen = { hit -> navController.navigate(routeFor(hit)) },
+                )
+            }
             composable(Routes.PLANT) {
                 PlantScreen(container = container, onBack = { navController.popBackStack() })
             }
@@ -326,6 +447,8 @@ fun AppNavHost(
                     onOpenTalks = { navController.navigate(Routes.TALKS) },
                     onOpenPermits = { navController.navigate(Routes.PERMITS) },
                     onOpenSnags = { navController.navigate(Routes.SNAGS) },
+                    onOpenIncidents = { navController.navigate(Routes.INCIDENTS) },
+                    onOpenViolations = { navController.navigate(Routes.VIOLATIONS) },
                 )
             }
             composable(Routes.TALKS) {
@@ -405,6 +528,23 @@ fun AppNavHost(
                     onBack = { navController.popBackStack() },
                 )
             }
+            composable(Routes.VIOLATIONS) {
+                ViolationsScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                    onOpenCrew = { navController.navigate(Routes.crew(null)) },
+                )
+            }
+            composable(Routes.INCIDENTS) {
+                IncidentsScreen(
+                    container = container,
+                    // Not scoped to a job: an incident is reported by whoever
+                    // saw it, and making them find the right project first is
+                    // how a near miss goes unrecorded.
+                    projectId = null,
+                    onBack = { navController.popBackStack() },
+                )
+            }
             composable(Routes.SNAGS) {
                 SnagsScreen(
                     container = container,
@@ -427,7 +567,16 @@ fun AppNavHost(
                 )
             }
             composable(Routes.SETTINGS) {
-                SettingsScreen(container = container, onBack = { navController.popBackStack() })
+                SettingsScreen(
+                    container = container,
+                    onOpenCompanyProfile = {
+                        navController.navigate(Routes.COMPANY_PROFILE)
+                    },
+                    onOpenAudit = { navController.navigate(Routes.AUDIT) },
+                    onOpenPrivacy = { navController.navigate(Routes.PRIVACY) },
+                    onOpenTerms = { navController.navigate(Routes.TERMS) },
+                    onBack = { navController.popBackStack() },
+                )
             }
         }
     }
