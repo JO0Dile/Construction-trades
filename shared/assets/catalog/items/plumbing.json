@@ -785,6 +785,11 @@
         "he": "צינור PPR ‏25 מ״מ",
         "ar": "ماسورة PPR ‏25 ملم"
       },
+      "spec": {
+        "en": "Fused, not glued. A good joint is one material; a cold one looks identical and leaks later.",
+        "he": "מולחם ולא מודבק. חיבור טוב הוא חומר אחד; חיבור קר נראה זהה ודולף אחר כך.",
+        "ar": "يُلحم لا يُلصق. الوصلة الجيدة مادة واحدة؛ الباردة تبدو مثلها وتسرّب لاحقاً."
+      },
       "attributes": {
         "diameterMm": "25"
       },
@@ -806,6 +811,11 @@
         "he": "צינור ניקוז HDPE",
         "ar": "ماسورة صرف HDPE"
       },
+      "spec": {
+        "en": "Butt-welded drainage that takes movement without cracking at the joint.",
+        "he": "ניקוז מולחם קצה אל קצה שסופג תזוזה בלי סדק בחיבור.",
+        "ar": "صرف ملحوم طرفاً لطرف يتحمّل الحركة دون تشقّق الوصلة."
+      },
       "tags": [
         "drainage"
       ],
@@ -824,6 +834,11 @@
         "he": "מפלג PEX",
         "ar": "مجمّع PEX"
       },
+      "spec": {
+        "en": "Every loop starts and ends here, so every loop can be isolated from here.",
+        "he": "כל לולאה מתחילה ומסתיימת כאן, ולכן ניתן לנתק כל לולאה מכאן.",
+        "ar": "كل دارة تبدأ وتنتهي هنا، فيمكن عزل كل دارة من هنا."
+      },
       "tags": [
         "supply"
       ],
@@ -840,6 +855,11 @@
         "en": "Floor drain / gully",
         "he": "מחסום רצפה",
         "ar": "سيفون أرضية"
+      },
+      "spec": {
+        "en": "The water seal is what keeps the drain smell out. A dry trap is an open sewer.",
+        "he": "מי החסימה הם שמונעים ריח מהביוב. מחסום יבש הוא ביוב פתוח.",
+        "ar": "سدّ الماء هو ما يمنع رائحة المجاري. السيفون الجاف مجرور مفتوح."
       },
       "tags": [
         "drainage",
@@ -860,6 +880,11 @@
         "he": "מיכל מים לגג",
         "ar": "خزان ماء للسطح"
       },
+      "spec": {
+        "en": "Israeli roofs carry them for pressure and for the days the mains stop.",
+        "he": "גגות בישראל נושאים אותם ללחץ ולימים שבהם אספקת המים נפסקת.",
+        "ar": "أسطح البلاد تحملها للضغط ولأيام انقطاع الشبكة."
+      },
       "tags": [
         "tank"
       ],
@@ -876,6 +901,11 @@
         "en": "Booster pump set",
         "he": "מערכת משאבות הגברה",
         "ar": "مجموعة مضخات ضغط"
+      },
+      "spec": {
+        "en": "Lifts pressure to the top floors. Sized to the building, not to the biggest pump available.",
+        "he": "מעלה לחץ לקומות העליונות. מתוכננת לבניין, לא למשאבה הגדולה שיש במלאי.",
+        "ar": "ترفع الضغط للطوابق العليا. تُحسب للمبنى لا لأكبر مضخة متوفرة."
       },
       "tags": [
         "pump"
@@ -917,6 +947,11 @@
         "he": "מונע זרימה חוזרת",
         "ar": "مانع تدفّق عكسي"
       },
+      "spec": {
+        "en": "Stops the building's water going back into the mains. It is tested, and the test is recorded.",
+        "he": "מונע חזרת מים מהבניין לרשת. נבדק, והבדיקה מתועדת.",
+        "ar": "يمنع رجوع ماء المبنى إلى الشبكة. يُختبر، والاختبار يُوثَّق."
+      },
       "tags": [
         "valve",
         "regulated"
@@ -936,6 +971,11 @@
         "he": "ברז מיקסר לכיור",
         "ar": "خلاط مغسلة"
       },
+      "spec": {
+        "en": "One hole, one lever. The flexible tails are the part that fails, so leave them reachable.",
+        "he": "חור אחד, ידית אחת. הצינורות הגמישים הם מה שמתקלקל, לכן יש להשאיר גישה.",
+        "ar": "ثقب واحد ومقبض واحد. الوصلات المرنة هي ما يتعطّل، فاتركها متاحة."
+      },
       "tags": [
         "sanitaryware"
       ],
@@ -952,6 +992,11 @@
         "en": "Shower tray",
         "he": "אגן מקלחת",
         "ar": "قاعدة دش"
+      },
+      "spec": {
+        "en": "Set it level and support it fully. A tray on high spots cracks where nobody can see.",
+        "he": "יש להתקין מפולס ובתמיכה מלאה. אגן על נקודות גבוהות נסדק היכן שאיש אינו רואה.",
+        "ar": "ثبّتها مستوية وبدعم كامل. القاعدة على نتوءات تتشقّق حيث لا يرى أحد."
       },
       "tags": [
         "sanitaryware"
@@ -970,6 +1015,11 @@
         "he": "מכבש לחיבורי לחיצה",
         "ar": "ماكينة كبس وصلات"
       },
+      "spec": {
+        "en": "A joint in seconds with no flame, which is why it is allowed where a torch is not.",
+        "he": "חיבור בשניות בלי אש, ולכן מותר במקום שבו מבער אסור.",
+        "ar": "وصلة في ثوانٍ بلا لهب، ولهذا يُسمح بها حيث يُمنع الشعّال."
+      },
       "tags": [
         "power-tool"
       ]
@@ -984,6 +1034,11 @@
         "he": "מלחם PPR",
         "ar": "ماكينة لحام PPR"
       },
+      "spec": {
+        "en": "Heat both parts to temperature, then join and hold still. Moving it makes a cold joint.",
+        "he": "יש לחמם את שני החלקים לטמפרטורה, לחבר ולהחזיק ללא תזוזה. תזוזה יוצרת חיבור קר.",
+        "ar": "سخّن القطعتين للحرارة، ثم صِل وثبّت دون حركة. الحركة تصنع وصلة باردة."
+      },
       "tags": [
         "power-tool"
       ]
@@ -997,6 +1052,11 @@
         "en": "Drain inspection camera",
         "he": "מצלמת ביוב",
         "ar": "كاميرا فحص الصرف"
+      },
+      "spec": {
+        "en": "Finds the blockage and records where it was, which settles who pays for it.",
+        "he": "מאתרת את הסתימה ומתעדת את מקומה, וכך נקבע מי משלם.",
+        "ar": "تجد الانسداد وتوثّق موضعه، وبهذا يُحسم من يدفع."
       },
       "tags": [
         "inspection"

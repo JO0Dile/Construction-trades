@@ -12,6 +12,11 @@
         "he": "מוט מצולע Ø12",
         "ar": "حديد مضلّع Ø12"
       },
+      "spec": {
+        "en": "Stirrups and light work. The ribs are what bond it to the concrete.",
+        "he": "לחישוקים ולעבודה קלה. הצלעות הן שמקשרות אותו לבטון.",
+        "ar": "للكانات والأعمال الخفيفة. الأضلاع هي ما يربطه بالباطون."
+      },
       "attributes": {
         "diameterMm": "12"
       },
@@ -31,6 +36,11 @@
         "en": "Ribbed rebar Ø16",
         "he": "מוט מצולע Ø16",
         "ar": "حديد مضلّع Ø16"
+      },
+      "spec": {
+        "en": "Beams and columns, in the sizes the bar schedule calls for.",
+        "he": "לקורות ולעמודים, במידות שברשימת הברזל.",
+        "ar": "للجسور والأعمدة، بالمقاسات التي يطلبها جدول الحديد."
       },
       "attributes": {
         "diameterMm": "16"
@@ -52,6 +62,11 @@
         "he": "מוט מצולע Ø20",
         "ar": "حديد مضلّع Ø20"
       },
+      "spec": {
+        "en": "Heavier beams and columns. Substituting a diameter is the engineer's call, never the site's.",
+        "he": "לקורות ועמודים כבדים. החלפת קוטר היא החלטת המהנדס ולא של האתר.",
+        "ar": "لجسور وأعمدة أثقل. تبديل القطر قرار المهندس لا الموقع."
+      },
       "attributes": {
         "diameterMm": "20"
       },
@@ -72,6 +87,11 @@
         "he": "רשת ברזל מרותכת",
         "ar": "شبك حديد ملحوم"
       },
+      "spec": {
+        "en": "Slabs and screeds. Lap it by the sheet's own spacing, not by a guess.",
+        "he": "לרצפות ולמדות. החפיפה לפי מרווח הרשת ולא לפי אומדן.",
+        "ar": "للبلاطات والسكريد. التراكب بحسب تباعد الشبكة لا بالتقدير."
+      },
       "tags": [
         "rebar"
       ],
@@ -88,6 +108,11 @@
         "en": "Stirrup (link)",
         "he": "חישוק",
         "ar": "كانة (استربة)"
+      },
+      "spec": {
+        "en": "Holds the main bars in place and takes the shear. Spacing tightens near the supports.",
+        "he": "מחזיק את המוטות הראשיים ונושא את הגזירה. המרווח מצטופף ליד התמיכות.",
+        "ar": "تمسك الأسياخ الرئيسية وتحمل القصّ. التباعد يضيق قرب المساند."
       },
       "tags": [
         "rebar"
@@ -129,6 +154,11 @@
         "he": "חוט קשירה",
         "ar": "سلك ربط"
       },
+      "spec": {
+        "en": "Holds the cage until the concrete does. It is not structural and never was.",
+        "he": "מחזיק את הכלוב עד שהבטון יחזיק. אינו אלמנט מבני ולא היה.",
+        "ar": "يمسك القفص حتى يمسكه الباطون. ليس إنشائياً ولم يكن."
+      },
       "tags": [
         "consumable"
       ]
@@ -142,6 +172,11 @@
         "en": "Threaded rebar coupler",
         "he": "מצמד הברגה למוט",
         "ar": "وصلة حديد ملولبة"
+      },
+      "spec": {
+        "en": "Joins bar without a lap, where there is no room for one.",
+        "he": "מחבר מוטות בלי חפיפה, היכן שאין מקום לחפיפה.",
+        "ar": "يصل الأسياخ دون تراكب، حيث لا مكان له."
       },
       "tags": [
         "rebar",
@@ -161,6 +196,11 @@
         "he": "עוגן כימי",
         "ar": "مثبّت كيماوي (شناكل)"
       },
+      "spec": {
+        "en": "Drilled, cleaned and injected. The hole not being cleaned is why they pull out.",
+        "he": "קודח, מנוקה ומוזרק. חור שלא נוקה הוא הסיבה שהעוגן נשלף.",
+        "ar": "يُثقب ويُنظّف ويُحقن. عدم تنظيف الثقب سبب انخلاعه."
+      },
       "tags": [
         "anchor"
       ],
@@ -178,6 +218,11 @@
         "he": "מכופף ברזל",
         "ar": "ثنّاية حديد"
       },
+      "spec": {
+        "en": "Bends to a radius, not a corner. A sharp bend cracks the bar.",
+        "he": "מכופף לרדיוס ולא לפינה. כיפוף חד סודק את המוט.",
+        "ar": "يثني بنصف قطر لا بزاوية. الثني الحاد يشقّ السيخ."
+      },
       "tags": [
         "power-tool"
       ]
@@ -192,6 +237,11 @@
         "he": "חותך ברזל",
         "ar": "قصّاصة حديد"
       },
+      "spec": {
+        "en": "Cuts cold and clean. A torch changes the steel where it cuts.",
+        "he": "חותך בקור ובנקיון. מבער משנה את הפלדה במקום החיתוך.",
+        "ar": "يقطع بارداً ونظيفاً. الشعّال يغيّر الحديد عند القطع."
+      },
       "tags": [
         "power-tool"
       ]
@@ -205,6 +255,11 @@
         "en": "Tying hook / twister",
         "he": "וו קשירה",
         "ar": "خطّاف ربط الحديد"
+      },
+      "spec": {
+        "en": "Twists the tie in one pull. Thousands a day; the wrist decides which hook.",
+        "he": "מסובב את הקשירה במשיכה אחת. אלפים ביום; פרק היד קובע איזה וו.",
+        "ar": "يلوي الرباط بسحبة. آلاف يومياً؛ المعصم يقرّر أي خطّاف."
       },
       "tags": [
         "hand-tool"

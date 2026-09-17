@@ -1162,6 +1162,11 @@
         "he": "חותכן צד",
         "ar": "قاطعة جانبية (زرديّة قص)"
       },
+      "spec": {
+        "en": "Cuts flush to the work. Insulated handles, because it is used live more than it should be.",
+        "he": "חותך בגובה העבודה. ידיות מבודדות, כי משתמשים בו תחת מתח יותר מכפי שראוי.",
+        "ar": "يقطع بمحاذاة العمل. مقابض معزولة، لأنه يُستعمل تحت التيار أكثر مما ينبغي."
+      },
       "tags": [
         "hand-tool"
       ]
@@ -1306,6 +1311,11 @@
         "he": "קופסת קיר משולשת",
         "ar": "علبة حائط ثلاثية"
       },
+      "spec": {
+        "en": "Set the box flush with the finished wall, not the block. Plaster depth is the usual mistake.",
+        "he": "יש להתקין את הקופסה בגובה הקיר הגמור ולא הבלוק. עובי הטיח הוא הטעות הרגילה.",
+        "ar": "ثبّت العلبة بمستوى الحائط النهائي لا البلوك. سُمك اللياسة هو الخطأ المعتاد."
+      },
       "tags": [
         "black-work",
         "boxes"
@@ -1427,6 +1437,11 @@
         "en": "Flexible PVC conduit 25 mm",
         "he": "שרשורי PVC ‏25 מ״מ",
         "ar": "ماسورة مرنة PVC ‏25 ملم"
+      },
+      "spec": {
+        "en": "Draw wire in as it is laid. An empty buried conduit is a conduit nobody can use.",
+        "he": "יש להשחיל חוט משיכה בזמן ההנחה. שרשורי קבור וריק הוא שרשורי שאיש לא ישתמש בו.",
+        "ar": "أدخل سلك السحب أثناء التمديد. الماسورة المدفونة الفارغة لا ينتفع بها أحد."
       },
       "attributes": {
         "diameterMm": "25"
@@ -1551,6 +1566,11 @@
         "he": "שקע כפול",
         "ar": "بريزة مزدوجة"
       },
+      "spec": {
+        "en": "Earthed double outlet. Count them at first fix; adding one later means chasing a finished wall.",
+        "he": "שקע כפול מוארק. יש לספור בשלב ראשון; הוספה אחר כך היא חציבה בקיר גמור.",
+        "ar": "بريزة مزدوجة مؤرّضة. عُدّها في المرحلة الأولى؛ إضافتها لاحقاً تعني تكسير حائط منتهٍ."
+      },
       "tags": [
         "white-work",
         "sockets"
@@ -1568,6 +1588,11 @@
         "en": "Socket with USB-A/C charger",
         "he": "שקע עם מטען USB",
         "ar": "بريزة مع شاحن USB"
+      },
+      "spec": {
+        "en": "Saves a charger block. The USB part fails long before the socket does.",
+        "he": "חוסך מטען. חלק ה־USB מתקלקל הרבה לפני השקע.",
+        "ar": "يوفّر شاحناً. جزء الـUSB يتعطّل قبل البريزة بكثير."
       },
       "tags": [
         "white-work",
@@ -1610,6 +1635,11 @@
         "he": "דימר",
         "ar": "مفتاح ديمر"
       },
+      "spec": {
+        "en": "Has to match the lamp. A trailing-edge dimmer on the wrong LED buzzes and flickers.",
+        "he": "חייב להתאים לנורה. דימר לא מתאים ל־LED מזמזם ומהבהב.",
+        "ar": "يجب أن يطابق المصباح. الديمر غير المناسب لِلِد يطنّ ويرمش."
+      },
       "tags": [
         "white-work",
         "switches"
@@ -1628,6 +1658,11 @@
         "he": "מכסה עיוור",
         "ar": "غطاء أعمى"
       },
+      "spec": {
+        "en": "Closes a box that is not used yet. An open box is a live box somebody can reach into.",
+        "he": "סוגר קופסה שאינה בשימוש. קופסה פתוחה היא קופסה חיה שאפשר להכניס אליה יד.",
+        "ar": "يغلق علبة غير مستعملة. العلبة المفتوحة علبة حيّة يمكن إدخال اليد فيها."
+      },
       "tags": [
         "white-work"
       ],
@@ -1644,6 +1679,11 @@
         "en": "LED downlight, recessed",
         "he": "גוף תאורה שקוע LED",
         "ar": "سبوت LED غاطس"
+      },
+      "spec": {
+        "en": "Cut-out size is fixed by the fitting. Decide the fitting before the ceiling is cut.",
+        "he": "קוטר החיתוך נקבע על ידי הגוף. יש לבחור גוף לפני שחותכים את התקרה.",
+        "ar": "قطر الفتحة يحدده الجسم. اختر الجسم قبل قصّ السقف."
       },
       "tags": [
         "white-work",
@@ -1714,6 +1754,11 @@
         "he": "שלט יציאה מואר",
         "ar": "لافتة مخرج مضاءة"
       },
+      "spec": {
+        "en": "Runs on its own battery when the power goes, which is the only time it matters.",
+        "he": "פועל על סוללה עצמית בהפסקת חשמל, וזו הפעם היחידה שהוא חשוב.",
+        "ar": "يعمل على بطاريته عند انقطاع الكهرباء، وهي المرة الوحيدة التي يهمّ فيها."
+      },
       "tags": [
         "life-safety",
         "lobby"
@@ -1731,6 +1776,11 @@
         "en": "Distribution board, 12-way",
         "he": "לוח חלוקה 12 מקומות",
         "ar": "لوحة توزيع 12 خط"
+      },
+      "spec": {
+        "en": "A flat board. Leave spare ways; every flat gains circuits, never loses them.",
+        "he": "לוח לדירה. יש להשאיר מקומות פנויים; כל דירה מוסיפה מעגלים ולא מורידה.",
+        "ar": "لوحة شقة. اترك خطوطاً فارغة؛ كل شقة تزيد دوائر ولا تنقصها."
       },
       "tags": [
         "boards"
@@ -1750,6 +1800,11 @@
         "he": "לוח חלוקה 36 מקומות",
         "ar": "لوحة توزيع 36 خط"
       },
+      "spec": {
+        "en": "A building or a large flat. Label every way at handover or the next electrician guesses.",
+        "he": "לבניין או לדירה גדולה. יש לסמן כל מעגל במסירה, אחרת החשמלאי הבא מנחש.",
+        "ar": "لمبنى أو شقة كبيرة. علّم كل خط عند التسليم وإلا خمّن الكهربائي القادم."
+      },
       "tags": [
         "boards",
         "office"
@@ -1768,6 +1823,11 @@
         "en": "MCB, C16",
         "he": "מא״ז C16",
         "ar": "قاطع C16"
+      },
+      "spec": {
+        "en": "Protects the cable, not the appliance. The curve is chosen for the inrush, not the load.",
+        "he": "מגן על הכבל ולא על המכשיר. העקומה נבחרת לזרם ההתנעה, לא לעומס.",
+        "ar": "يحمي الكابل لا الجهاز. المنحنى يُختار لتيار البدء لا للحمل."
       },
       "attributes": {
         "curve": "C",
@@ -1819,6 +1879,11 @@
         "he": "מגן ברקים סוג 2",
         "ar": "جهاز حماية من الصواعق نوع 2"
       },
+      "spec": {
+        "en": "Takes the hit so the boards and the electronics do not. Check the window after any storm.",
+        "he": "סופג את המכה במקום הלוחות והאלקטרוניקה. יש לבדוק את החלונית אחרי סופה.",
+        "ar": "يتلقّى الصدمة بدل اللوحات والإلكترونيات. افحص النافذة بعد أي عاصفة."
+      },
       "tags": [
         "boards",
         "protection"
@@ -1837,6 +1902,11 @@
         "he": "אלקטרודת הארקה מצופה נחושת",
         "ar": "قضيب تأريض مطلي نحاس"
       },
+      "spec": {
+        "en": "Driven until the measured resistance is low enough. Depth is the result, not the target.",
+        "he": "נתקעת עד שההתנגדות הנמדדת נמוכה מספיק. העומק הוא התוצאה, לא היעד.",
+        "ar": "يُدقّ حتى تنخفض المقاومة المقاسة بما يكفي. العمق نتيجة لا هدف."
+      },
       "tags": [
         "earthing"
       ],
@@ -1854,6 +1924,11 @@
         "en": "Main earthing busbar",
         "he": "פס השוואת פוטנציאלים",
         "ar": "بار تأريض رئيسي"
+      },
+      "spec": {
+        "en": "Where every earth and every bond meets. One busbar, one building, no loops.",
+        "he": "המקום שבו נפגשות כל ההארקות וההשוואות. פס אחד לבניין, בלי לולאות.",
+        "ar": "حيث تلتقي كل التأريضات والروابط. بار واحد للمبنى، دون حلقات."
       },
       "tags": [
         "earthing"

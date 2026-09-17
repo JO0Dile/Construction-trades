@@ -12,6 +12,11 @@
         "he": "חלון אלומיניום ציר",
         "ar": "شباك ألمنيوم مفصلي"
       },
+      "spec": {
+        "en": "Opens on a side hinge, so the whole opening clears for air.",
+        "he": "נפתח על ציר צדדי, כך שכל הפתח נפתח לאוורור.",
+        "ar": "يفتح على مفصلة جانبية، فيتحرّر الفتح كله للتهوية."
+      },
       "tags": [
         "window"
       ],
@@ -29,6 +34,11 @@
         "he": "חלון הזזה אלומיניום",
         "ar": "شباك ألمنيوم سحّاب"
       },
+      "spec": {
+        "en": "Takes no room to open, which is why balconies get them.",
+        "he": "אינו תופס מקום בפתיחה, ולכן הוא הנפוץ במרפסות.",
+        "ar": "لا يأخذ حيّزاً عند الفتح، ولهذا يُركَّب في الشرفات."
+      },
       "tags": [
         "window"
       ],
@@ -45,6 +55,11 @@
         "en": "Aluminium entrance door",
         "he": "דלת כניסה אלומיניום",
         "ar": "باب مدخل ألمنيوم"
+      },
+      "spec": {
+        "en": "Thermally broken profile: without the break it sweats in winter.",
+        "he": "פרופיל עם ניתוק תרמי; בלעדיו הדלת מזיעה בחורף.",
+        "ar": "بروفيل بقطع حراري؛ بدونه يتعرّق الباب في الشتاء."
       },
       "tags": [
         "door",
@@ -64,6 +79,11 @@
         "he": "קיר מסך",
         "ar": "كيرتن وول"
       },
+      "spec": {
+        "en": "The façade carries only itself and the wind; the frame carries the building.",
+        "he": "החזית נושאת את עצמה ואת עומס הרוח בלבד; השלד נושא את הבניין.",
+        "ar": "الواجهة تحمل نفسها وحمل الرياح فقط؛ الهيكل يحمل المبنى."
+      },
       "tags": [
         "facade"
       ],
@@ -80,6 +100,11 @@
         "en": "Aluminium composite panel",
         "he": "לוח קומפוזיט אלומיניום",
         "ar": "بانل ألمنيوم مركّب (ACP)"
+      },
+      "spec": {
+        "en": "Check the core rating before it goes on a façade — the fire class is the whole question.",
+        "he": "יש לוודא את דירוג הליבה לפני התקנה בחזית; סיווג האש הוא כל העניין.",
+        "ar": "تأكّد من تصنيف القلب قبل تركيبه على الواجهة؛ درجة مقاومة الحريق هي المسألة كلها."
       },
       "tags": [
         "facade"
@@ -98,6 +123,11 @@
         "he": "זכוכית בידודית",
         "ar": "زجاج دبل (عازل)"
       },
+      "spec": {
+        "en": "Two panes with a sealed gap between them. A broken seal shows as mist inside.",
+        "he": "שתי זגוגיות עם מרווח אטום ביניהן. אטם שנפגם נראה כאדים בפנים.",
+        "ar": "لوحان بينهما فراغ محكم. تلف الإحكام يظهر كضباب في الداخل."
+      },
       "tags": [
         "glazing"
       ],
@@ -114,6 +144,11 @@
         "en": "Laminated safety glass",
         "he": "זכוכית רב־שכבתית",
         "ar": "زجاج مصفّح (لامينيت)"
+      },
+      "spec": {
+        "en": "Breaks and stays in its frame, which is why it goes overhead and at low level.",
+        "he": "נשברת ונשארת במסגרת, ולכן היא לזיגוג עילי ולזיגוג נמוך.",
+        "ar": "ينكسر ويبقى في إطاره، ولهذا يُستخدم في الزجاج العلوي والمنخفض."
       },
       "tags": [
         "glazing",
@@ -133,6 +168,11 @@
         "he": "זכוכית מחוסמת",
         "ar": "زجاج مقسّى (سيكوريت)"
       },
+      "spec": {
+        "en": "Cannot be cut or drilled after tempering. Every hole is decided before the oven.",
+        "he": "לא ניתן לחתוך או לקדוח אחרי החיסום. כל חור נקבע לפני התנור.",
+        "ar": "لا يُقصّ ولا يُثقب بعد التقسية. كل ثقب يُحدَّد قبل الفرن."
+      },
       "tags": [
         "glazing",
         "safety"
@@ -151,6 +191,11 @@
         "he": "תריס גלילה",
         "ar": "شيش رول (تريسول)"
       },
+      "spec": {
+        "en": "Slats in a box above the opening. Leave the box reachable or the motor is unreachable.",
+        "he": "שלבים בארגז מעל הפתח. יש להשאיר גישה לארגז, אחרת אין גישה למנוע.",
+        "ar": "شرائح في صندوق فوق الفتحة. اترك الصندوق متاحاً وإلا تعذّر الوصول إلى الموتور."
+      },
       "tags": [
         "shutter"
       ],
@@ -168,6 +213,11 @@
         "he": "אטם EPDM לזיגוג",
         "ar": "جلدة EPDM للزجاج"
       },
+      "spec": {
+        "en": "Holds the glass and keeps the water out. Cut it long and let it compress.",
+        "he": "מחזיק את הזכוכית ומונע חדירת מים. יש לחתוך בעודף ולתת לו להידחס.",
+        "ar": "يمسك الزجاج ويمنع دخول الماء. اقطعه بزيادة ودعه ينضغط."
+      },
       "tags": [
         "sealing"
       ]
@@ -181,6 +231,11 @@
         "en": "Structural silicone",
         "he": "סיליקון מבני",
         "ar": "سيليكون إنشائي"
+      },
+      "spec": {
+        "en": "Structural, not sanitary: it carries load. The wrong tube here is a panel on the pavement.",
+        "he": "סיליקון מבני הנושא עומס, לא סניטרי. שפופרת לא נכונה כאן היא לוח על המדרכה.",
+        "ar": "سيليكون إنشائي يحمل حِملاً، لا صحي. الأنبوب الخطأ هنا يعني بانل على الرصيف."
       },
       "tags": [
         "sealing",
@@ -197,6 +252,11 @@
         "he": "מסור גרונג לאלומיניום",
         "ar": "منشار زاوية للألمنيوم"
       },
+      "spec": {
+        "en": "Non-ferrous blade and a slow feed; forcing it tears the profile.",
+        "he": "להב לחיתוך מתכות לא ברזליות והזנה איטית; לחץ מהיר קורע את הפרופיל.",
+        "ar": "شفرة لمعادن غير حديدية وتغذية بطيئة؛ الضغط السريع يمزّق البروفيل."
+      },
       "tags": [
         "cutting"
       ]
@@ -210,6 +270,11 @@
         "en": "Glass suction lifter",
         "he": "כוס ואקום לזכוכית",
         "ar": "كأس شفط زجاج"
+      },
+      "spec": {
+        "en": "Two or three cups and two people. One person and one cup is how glass is dropped.",
+        "he": "שתיים־שלוש כוסות ושני אנשים. אדם אחד וכוס אחת כך שוברים זכוכית.",
+        "ar": "كأسان أو ثلاثة وشخصان. شخص واحد بكأس واحد هكذا يقع الزجاج."
       },
       "tags": [
         "lifting",
@@ -225,6 +290,11 @@
         "en": "Sealant gun",
         "he": "אקדח סיליקון",
         "ar": "مسدس سيليكون"
+      },
+      "spec": {
+        "en": "Skeleton or sausage gun. A smooth trigger matters more than the price.",
+        "he": "אקדח שלד או נקניק. הדק חלק חשוב יותר מהמחיר.",
+        "ar": "مسدس هيكلي أو للسجق. سلاسة الزناد أهم من السعر."
       },
       "tags": [
         "hand-tool"

@@ -12,6 +12,11 @@
         "he": "צינור פלדה שחור SCH40",
         "ar": "ماسورة حديد أسود SCH40"
       },
+      "spec": {
+        "en": "Threaded or grooved, never plastic. A sprinkler main has to survive the fire it is fighting.",
+        "he": "מוברג או מחורץ, לעולם לא פלסטיק. קו ספרינקלרים חייב לשרוד את השריפה שהוא מכבה.",
+        "ar": "ملولب أو مخدّد، لا بلاستيك أبداً. خط الرشّاشات يجب أن ينجو من الحريق الذي يطفئه."
+      },
       "tags": [
         "sprinkler"
       ],
@@ -28,6 +33,11 @@
         "en": "Pendent sprinkler head",
         "he": "ראש ספרינקלר תלוי",
         "ar": "رشّاش معلّق"
+      },
+      "spec": {
+        "en": "Hangs below the ceiling and sprays down. Never paint one; paint changes when it opens.",
+        "he": "תלוי מתחת לתקרה ומתיז כלפי מטה. אין לצבוע; צבע משנה את טמפרטורת ההפעלה.",
+        "ar": "يتدلّى تحت السقف ويرشّ للأسفل. لا تدهنه؛ الدهان يغيّر لحظة فتحه."
       },
       "tags": [
         "sprinkler"
@@ -46,6 +56,11 @@
         "he": "ראש ספרינקלר זקוף",
         "ar": "رشّاش قائم"
       },
+      "spec": {
+        "en": "Sits above the pipe in an exposed ceiling or a car park.",
+        "he": "ניצב מעל הצינור בתקרה חשופה או בחניון.",
+        "ar": "يقف فوق الماسورة في سقف مكشوف أو موقف سيارات."
+      },
       "tags": [
         "sprinkler"
       ],
@@ -62,6 +77,11 @@
         "en": "Alarm check valve",
         "he": "שסתום התראה",
         "ar": "محبس إنذار"
+      },
+      "spec": {
+        "en": "Tells the panel that water is moving, which is how anybody knows a head has opened.",
+        "he": "מדווח לרכזת שיש זרימה, וכך יודעים שראש נפתח.",
+        "ar": "يخبر اللوحة أن الماء يتحرّك، وهكذا يُعرف أن رأساً قد فُتح."
       },
       "tags": [
         "sprinkler"
@@ -80,6 +100,11 @@
         "he": "גלגלון כיבוי",
         "ar": "بكرة خرطوم حريق"
       },
+      "spec": {
+        "en": "For the first minute, by whoever is standing there. Keep the run to it clear.",
+        "he": "לדקה הראשונה, בידי מי שנמצא שם. יש לשמור על גישה פנויה אליו.",
+        "ar": "للدقيقة الأولى، بيد من يقف هناك. أبقِ الطريق إليه خالياً."
+      },
       "tags": [
         "hose"
       ],
@@ -97,6 +122,11 @@
         "he": "ארון הידרנט",
         "ar": "خزانة حريق"
       },
+      "spec": {
+        "en": "The fire service connects here. Blocked or locked, it is worse than not being there.",
+        "he": "כבאות מתחברת כאן. חסום או נעול, גרוע מלא להיות שם.",
+        "ar": "الإطفاء تتّصل هنا. إن كانت مسدودة أو مقفلة فهي أسوأ من عدمها."
+      },
       "tags": [
         "hydrant"
       ],
@@ -113,6 +143,11 @@
         "en": "Dry powder extinguisher 6 kg",
         "he": "מטף אבקה 6 ק״ג",
         "ar": "طفاية بودرة 6 كغم"
+      },
+      "spec": {
+        "en": "General purpose. Serviced yearly, and the gauge read on every site walk.",
+        "he": "לשימוש כללי. טיפול שנתי, והמד נקרא בכל סיור אתר.",
+        "ar": "للاستخدام العام. صيانة سنوية، والمؤشّر يُقرأ في كل جولة موقع."
       },
       "attributes": {
         "massKg": "6"
@@ -134,6 +169,11 @@
         "he": "משאבת ג׳וקי",
         "ar": "مضخة جوكي"
       },
+      "spec": {
+        "en": "Holds the standing pressure so the main pump does not start for a dripping joint.",
+        "he": "שומר על לחץ המנוחה כדי שהמשאבה הראשית לא תותנע בגלל נזילה.",
+        "ar": "يحفظ ضغط السكون كي لا تبدأ المضخة الرئيسية لأجل تسريب."
+      },
       "tags": [
         "pump"
       ],
@@ -151,6 +191,11 @@
         "en": "Pipe grooving machine",
         "he": "מכונת חריצה לצינור",
         "ar": "ماكينة تخديد المواسير"
+      },
+      "spec": {
+        "en": "Rolls the groove a coupling locks into. The groove depth is a gauge job, not an eye job.",
+        "he": "מגלגל את החריץ שאליו ננעל המחבר. עומק החריץ נמדד בסרגל ולא בעין.",
+        "ar": "يدحرج الخدّ الذي يقفل فيه الكبلن. عمق الخدّ يُقاس بعيار لا بالعين."
       },
       "tags": [
         "power-tool"

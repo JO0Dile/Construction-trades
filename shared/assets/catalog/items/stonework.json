@@ -12,6 +12,11 @@
         "he": "לוח אבן ירושלמית מנוסרת",
         "ar": "لوح حجر قدسي منشور"
       },
+      "spec": {
+        "en": "The stone Jerusalem requires by law on a façade. Sawn face, ready to dress.",
+        "he": "האבן שירושלים מחייבת בחזית בחוק. פנים מנוסרות, מוכנות לסיתות.",
+        "ar": "الحجر الذي تفرضه القدس على الواجهة قانوناً. وجه منشور جاهز للنحت."
+      },
       "tags": [
         "facade",
         "stone"
@@ -29,6 +34,11 @@
         "en": "Tobzeh (bush-hammered) stone",
         "he": "אבן טובזה",
         "ar": "حجر طبزة"
+      },
+      "spec": {
+        "en": "Bush-hammered to an even stipple. The texture is the finish, not a defect.",
+        "he": "מסותתת בפטיש טובזה למרקם אחיד. המרקם הוא הגמר ולא פגם.",
+        "ar": "منحوت بالطبزة لملمس منتظم. الملمس هو التشطيب لا عيب."
       },
       "tags": [
         "facade",
@@ -48,6 +58,11 @@
         "he": "אבן מסמסם",
         "ar": "حجر مسمسم"
       },
+      "spec": {
+        "en": "Fine chiselled lines, the quietest of the dressed finishes.",
+        "he": "קווי סיתות עדינים, השקט שבגימורי הסיתות.",
+        "ar": "خطوط نحت ناعمة، أهدأ التشطيبات المنحوتة."
+      },
       "tags": [
         "facade",
         "stone"
@@ -65,6 +80,11 @@
         "en": "Mafjar (split-face) stone",
         "he": "אבן מפג׳ר",
         "ar": "حجر مفجّر"
+      },
+      "spec": {
+        "en": "Split rather than cut, so every face is different. That is the point of it.",
+        "he": "מפוצלת ולא חתוכה, כך שכל פנים שונות. זו כל מטרתה.",
+        "ar": "مفلوق لا مقصوص، فكل وجه مختلف. وهذه غايته."
       },
       "tags": [
         "facade",
@@ -84,6 +104,11 @@
         "he": "לוח שיש",
         "ar": "لوح رخام"
       },
+      "spec": {
+        "en": "Soft and acid-sensitive. Not a kitchen worktop unless the client has been told.",
+        "he": "רך ורגיש לחומצה. לא למשטח מטבח אלא אם הלקוח יודע.",
+        "ar": "طري وحسّاس للحمض. ليس لسطح مطبخ إلا إن أُخبر الزبون."
+      },
       "tags": [
         "interior",
         "stone"
@@ -102,6 +127,11 @@
         "he": "לוח גרניט",
         "ar": "لوح جرانيت"
       },
+      "spec": {
+        "en": "Hard, dense and nearly maintenance free, which is why it outlasts the kitchen around it.",
+        "he": "קשה, צפוף וכמעט ללא תחזוקה, ולכן הוא שורד את המטבח סביבו.",
+        "ar": "صلب وكثيف وبلا صيانة تقريباً، ولهذا يبقى بعد المطبخ حوله."
+      },
       "tags": [
         "interior",
         "stone"
@@ -119,6 +149,11 @@
         "en": "Stone window sill",
         "he": "אדן חלון אבן",
         "ar": "عتبة شباك حجر"
+      },
+      "spec": {
+        "en": "Throws the water clear of the wall. Without a drip groove it runs back and stains.",
+        "he": "מרחיק את המים מהקיר. בלי חריץ ניקוז הם חוזרים ומכתימים.",
+        "ar": "يبعد الماء عن الجدار. بلا خدّ تنقيط يعود ويلطّخ."
       },
       "tags": [
         "stone"
@@ -164,6 +199,11 @@
         "he": "טיט לאבן",
         "ar": "مونة تثبيت الحجر"
       },
+      "spec": {
+        "en": "Weaker than the stone on purpose, so any movement cracks the joint and not the face.",
+        "he": "חלש מהאבן בכוונה, כך שתזוזה סודקת את המישק ולא את הפנים.",
+        "ar": "أضعف من الحجر عمداً، فتشقّ الحركة الفاصل لا الوجه."
+      },
       "tags": [
         "stone"
       ],
@@ -180,6 +220,11 @@
         "en": "Stone pointing grout",
         "he": "רובה לאבן",
         "ar": "قصارة فواصل الحجر"
+      },
+      "spec": {
+        "en": "Fills the joint and keeps the water out of it. Colour is decided on a sample, wet.",
+        "he": "ממלא את המישק ומונע חדירת מים. הגוון נקבע על דוגמה, ברטוב.",
+        "ar": "يملأ الفاصل ويمنع دخول الماء. اللون يُحدَّد على عيّنة مبلّلة."
       },
       "tags": [
         "stone"
@@ -198,6 +243,11 @@
         "he": "אימפרגנציה לאבן",
         "ar": "مادة حماية للحجر"
       },
+      "spec": {
+        "en": "Soaks in rather than coating. It slows staining; it does not stop it.",
+        "he": "נספגת ואינה מצפה. מאטה הכתמה, אינה מונעת אותה.",
+        "ar": "يتشرّب ولا يغلّف. يبطئ التبقّع ولا يمنعه."
+      },
       "tags": [
         "protection"
       ],
@@ -214,6 +264,11 @@
         "en": "Angle grinder 230 mm",
         "he": "משחזת זווית 230 מ״מ",
         "ar": "جلّاخة 230 ملم"
+      },
+      "spec": {
+        "en": "Big, heavy and unforgiving. Two hands, and never without the guard.",
+        "he": "גדולה, כבדה ולא סלחנית. שתי ידיים, ולעולם לא בלי מגן.",
+        "ar": "كبيرة وثقيلة ولا تسامح. بيدين، ولا بدون الحاجب أبداً."
       },
       "attributes": {
         "discMm": "230"
@@ -232,6 +287,11 @@
         "he": "מסור גשר",
         "ar": "منشار جسري"
       },
+      "spec": {
+        "en": "Shop machine for accurate slabs. Site cutting is for adjustment, not for sizing.",
+        "he": "מכונת בית מלאכה ללוחות מדויקים. חיתוך באתר הוא להתאמה ולא למידה.",
+        "ar": "آلة ورشة للألواح الدقيقة. القصّ في الموقع للتعديل لا للتقييس."
+      },
       "tags": [
         "cutting",
         "workshop"
@@ -246,6 +306,11 @@
         "en": "Stone chisel set",
         "he": "ערכת אזמלי אבן",
         "ar": "طقم أزاميل حجر"
+      },
+      "spec": {
+        "en": "The dressed finishes are made with these, by hand, one face at a time.",
+        "he": "גימורי הסיתות נעשים בהם, ביד, פנים אחת בכל פעם.",
+        "ar": "التشطيبات المنحوتة تُصنع بها، يدوياً، وجهاً وجهاً."
       },
       "tags": [
         "hand-tool",
@@ -262,6 +327,11 @@
         "he": "פטיש טובזה",
         "ar": "شاكوش طبزة"
       },
+      "spec": {
+        "en": "The toothed head that makes a tobzeh face. Even pressure or the face reads patchy.",
+        "he": "הראש המשונן שיוצר פני טובזה. לחץ אחיד, אחרת הפנים נראות מנומרות.",
+        "ar": "الرأس المسنّن الذي يصنع وجه الطبزة. ضغط منتظم وإلا بدا الوجه مرقّعاً."
+      },
       "tags": [
         "carving"
       ]
@@ -276,6 +346,11 @@
         "he": "דיסק יהלום לאבן",
         "ar": "قرص ألماس للحجر"
       },
+      "spec": {
+        "en": "Matched to the stone. A blade for granite glazes over on soft limestone.",
+        "he": "מותאם לאבן. דיסק לגרניט מתחלק על אבן גיר רכה.",
+        "ar": "يُطابق الحجر. قرص الجرانيت يتزجّج على الحجر الجيري الطري."
+      },
       "tags": [
         "cutting"
       ]
@@ -289,6 +364,11 @@
         "en": "Vacuum slab lifter",
         "he": "מרים ואקום ללוחות",
         "ar": "رافعة شفط للألواح"
+      },
+      "spec": {
+        "en": "A slab is a two-person lift at best and a lifting operation at worst.",
+        "he": "לוח הוא הרמה לשניים במקרה הטוב ופעולת הרמה מתוכננת במקרה הפחות טוב.",
+        "ar": "اللوح رفعة لشخصين في أحسن الأحوال وعملية رفع مخطّطة في أسوئها."
       },
       "tags": [
         "lifting",

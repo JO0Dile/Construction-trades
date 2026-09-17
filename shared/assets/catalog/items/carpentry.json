@@ -638,6 +638,11 @@
         "he": "דלת פנים מלאה",
         "ar": "باب داخلي مصمت"
       },
+      "spec": {
+        "en": "Heavier and quieter than hollow core, and it takes a lock properly.",
+        "he": "כבדה ושקטה יותר מדלת חלולה, ומחזיקה מנעול כמו שצריך.",
+        "ar": "أثقل وأهدأ من الباب المفرّغ، ويثبّت القفل كما يجب."
+      },
       "tags": [
         "door"
       ],
@@ -654,6 +659,11 @@
         "en": "Internal door, hollow core",
         "he": "דלת פנים חלולה",
         "ar": "باب داخلي مفرّغ"
+      },
+      "spec": {
+        "en": "Light and cheap. Fixing anything to it needs a block inside the leaf.",
+        "he": "קלה וזולה. כל חיבור אליה מחייב בלוק פנימי בתוך הכנף.",
+        "ar": "خفيف ورخيص. أي تثبيت عليه يحتاج قطعة داخلية في الدرفة."
       },
       "tags": [
         "door"
@@ -699,6 +709,11 @@
         "he": "דלת ביטחון",
         "ar": "باب أمان (حديد)"
       },
+      "spec": {
+        "en": "Multi-point lock and a steel frame, fitted as one assembly or not at all.",
+        "he": "מנעול רב־בריח ומשקוף פלדה, מותקנים כמכלול אחד או בכלל לא.",
+        "ar": "قفل متعدد النقاط وحلق حديد، يُركَّبان كوحدة واحدة أو لا."
+      },
       "tags": [
         "door",
         "security"
@@ -717,6 +732,11 @@
         "he": "משקוף מתכת",
         "ar": "حلق باب حديد"
       },
+      "spec": {
+        "en": "Set and grouted before plaster. Out of plumb here is a door that swings on its own.",
+        "he": "מותקן ומוזרק לפני הטיח. סטייה מאנך כאן היא דלת שנסגרת מעצמה.",
+        "ar": "يُثبَّت ويُحقن قبل اللياسة. الانحراف هنا يعني باباً يتحرّك وحده."
+      },
       "tags": [
         "door"
       ],
@@ -734,6 +754,11 @@
         "he": "משקוף עץ",
         "ar": "حلق باب خشب"
       },
+      "spec": {
+        "en": "Wraps the opening and is scribed to the wall. Needs a dry opening.",
+        "he": "עוטף את הפתח ומותאם לקיר. מחייב פתח יבש.",
+        "ar": "يغلّف الفتحة ويُضبط على الحائط. يحتاج فتحة جافة."
+      },
       "tags": [
         "door"
       ],
@@ -750,6 +775,11 @@
         "en": "Architrave / casing",
         "he": "חיפוי משקוף",
         "ar": "براويز الباب"
+      },
+      "spec": {
+        "en": "Covers the joint between frame and wall, which is never as straight as it looks.",
+        "he": "מכסה את המפגש בין המשקוף לקיר, שלעולם אינו ישר כפי שהוא נראה.",
+        "ar": "يغطّي الوصلة بين الحلق والحائط، وهي ليست مستقيمة كما تبدو."
       },
       "tags": [
         "door",
@@ -769,6 +799,11 @@
         "he": "ציר דלת",
         "ar": "مفصلة باب"
       },
+      "spec": {
+        "en": "Three to a leaf on anything heavy. Two is how a door drops in its frame.",
+        "he": "שלושה צירים לכנף כבדה. שניים כך דלת צונחת במשקוף.",
+        "ar": "ثلاث مفصلات للدرفة الثقيلة. اثنتان هكذا يهبط الباب في حلقه."
+      },
       "tags": [
         "door",
         "hardware"
@@ -786,6 +821,11 @@
         "en": "Cylinder lock",
         "he": "מנעול צילינדר",
         "ar": "قفل سلندر"
+      },
+      "spec": {
+        "en": "The cylinder is the part that gets changed, which is the point of it.",
+        "he": "הצילינדר הוא החלק שמוחלף, וזו כל מטרתו.",
+        "ar": "السلندر هو الجزء الذي يُستبدل، وهذه غايته."
       },
       "tags": [
         "door",
@@ -805,6 +845,11 @@
         "he": "מחזיר שמן",
         "ar": "مغلاق باب (زنبرك)"
       },
+      "spec": {
+        "en": "Adjustable sweep and latch speed. A fire door is not signed off without one.",
+        "he": "מהירות סגירה ונעילה מתכווננות. דלת אש אינה נמסרת בלעדיו.",
+        "ar": "سرعة الإغلاق والقفل قابلة للضبط. لا يُسلَّم باب حريق بدونه."
+      },
       "tags": [
         "door",
         "fire"
@@ -822,6 +867,11 @@
         "en": "Intumescent seal strip",
         "he": "פס תופח לדלת אש",
         "ar": "شريط منتفخ لباب الحريق"
+      },
+      "spec": {
+        "en": "Swells shut in a fire. Painted over or left off, the door's rating is gone.",
+        "he": "מתנפח וסוגר בשריפה. אם נצבע או הושמט, דירוג הדלת בטל.",
+        "ar": "ينتفخ ويسدّ عند الحريق. إن دُهن أو أُهمل، سقط تصنيف الباب."
       },
       "tags": [
         "door",
@@ -841,6 +891,11 @@
         "he": "אטם סף נשלף",
         "ar": "عتبة عزل منسدلة"
       },
+      "spec": {
+        "en": "Drops as the door shuts and seals the gap without a raised sill to trip on.",
+        "he": "נשלף בסגירת הדלת ואוטם את המרווח בלי סף מורם להיתקל בו.",
+        "ar": "ينسدل عند الإغلاق ويسدّ الفراغ دون عتبة بارزة يُتعثَّر بها."
+      },
       "tags": [
         "door",
         "acoustic"
@@ -859,6 +914,11 @@
         "he": "פנל MDF",
         "ar": "وزرة MDF"
       },
+      "spec": {
+        "en": "Primed and ready to paint. Keep it off a wet floor; MDF swells once and stays swollen.",
+        "he": "מוכן לצבע. אין להניח על רצפה רטובה; MDF מתנפח פעם אחת ונשאר.",
+        "ar": "جاهز للدهان. لا تضعه على أرضية مبلّلة؛ الـMDF ينتفخ مرة ولا يعود."
+      },
       "tags": [
         "finishing"
       ],
@@ -875,6 +935,11 @@
         "en": "Kitchen carcass unit",
         "he": "גוף ארון מטבח",
         "ar": "هيكل خزانة مطبخ"
+      },
+      "spec": {
+        "en": "The box the kitchen is built from. Level it before a single door goes on.",
+        "he": "הגוף שממנו נבנה המטבח. יש לפלס אותו לפני התקנת דלת ראשונה.",
+        "ar": "الهيكل الذي يُبنى منه المطبخ. سوِّه قبل تركيب أي باب."
       },
       "tags": [
         "joinery"
@@ -893,6 +958,11 @@
         "he": "משטח עבודה למינציה",
         "ar": "سطح عمل لامينيت"
       },
+      "spec": {
+        "en": "Seal every cut edge, especially around the sink. Water gets in at the cut.",
+        "he": "יש לאטום כל קצה חתוך, במיוחד סביב הכיור. המים נכנסים בחתך.",
+        "ar": "اختم كل حافة مقطوعة، خاصة حول المغسلة. الماء يدخل من القطع."
+      },
       "tags": [
         "joinery"
       ],
@@ -910,6 +980,11 @@
         "he": "תבנית לצירים",
         "ar": "قالب المفصلات"
       },
+      "spec": {
+        "en": "Drills the 35 mm cups at one spacing, so a run of doors lines up.",
+        "he": "קודח את הכוסות 35 מ״מ במרווח אחיד, כך ששורת דלתות מיושרת.",
+        "ar": "يثقب أكواب 35 ملم بتباعد واحد، فتستوي صفّ الأبواب."
+      },
       "tags": [
         "door"
       ]
@@ -923,6 +998,11 @@
         "en": "Plunge saw with track",
         "he": "מסור שקיעה עם מסילה",
         "ar": "منشار غاطس مع سكة"
+      },
+      "spec": {
+        "en": "Cuts a straight line in sheet goods without a table saw.",
+        "he": "חותך קו ישר בלוחות בלי מסור שולחן.",
+        "ar": "يقطع خطاً مستقيماً في الألواح دون منشار طاولة."
       },
       "tags": [
         "cutting"
@@ -938,6 +1018,11 @@
         "he": "מלחציים ארוכים",
         "ar": "ملزمة طويلة"
       },
+      "spec": {
+        "en": "Long bar clamp for glue-ups. Alternate them over and under or the panel bows.",
+        "he": "מלחציים ארוכים להדבקה. יש לסירוגין מעל ומתחת, אחרת הלוח מתקמר.",
+        "ar": "ملزمة طويلة للتغرية. بادل بينها فوق وتحت وإلا تقوّس اللوح."
+      },
       "tags": [
         "hand-tool"
       ]
@@ -951,6 +1036,11 @@
         "en": "Door planer",
         "he": "מקצועה חשמלית",
         "ar": "مسحاج كهربائي"
+      },
+      "spec": {
+        "en": "Takes a few millimetres off a leaf that binds, in one pass along the edge.",
+        "he": "מוריד מילימטרים בודדים מכנף שנתקעת, במעבר אחד לאורך הקצה.",
+        "ar": "يزيل ملّيمترات من درفة تعلق، بمرور واحد على الحافة."
       },
       "tags": [
         "door"

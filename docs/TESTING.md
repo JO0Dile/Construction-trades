@@ -9,7 +9,32 @@ any computer; iOS genuinely cannot exist without a Mac.
 
 ---
 
-## What is new in 0.16.2 — and what to try first
+## What is new in 0.17.0 — and what to try first
+
+### Every item in the catalogue says what it is
+
+All 527 now carry a line under the name, in Hebrew, Arabic and English. 260 of
+them had nothing at all — a blank line in the app, and one less thing for the
+search to match on.
+
+They are written as what somebody on a site would want to know, not as a
+catalogue blurb: why a C16 breaker protects the cable rather than the
+appliance, that an intumescent strip painted over voids the door's fire
+rating, that a dry floor trap is an open sewer.
+
+- [ ] **Stock**, and open a few items. Each should have a sentence under its
+      name, in your language.
+- [ ] Switch language and check a few again.
+- [ ] **Search** for a word that is only in a description — try "silica", or
+      "rating", or a Hebrew or Arabic word from one of them. The item should
+      come back even though the word is not in its name.
+- [ ] If any line is wrong for the trade, tell me which item. These are
+      written from the trade, and a wrong one is worse than a blank one.
+
+---
+
+## What was new in 0.16.2
+
 
 ### Restore actually finishes now
 

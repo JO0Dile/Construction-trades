@@ -12,6 +12,11 @@
         "he": "לוח גבס רגיל 12.5 מ״מ",
         "ar": "لوح جبس عادي 12.5 ملم"
       },
+      "spec": {
+        "en": "The ordinary board. Not for a wet room and not for a fire wall.",
+        "he": "הלוח הרגיל. לא לחדר רטוב ולא לקיר אש.",
+        "ar": "اللوح العادي. ليس لغرفة رطبة ولا لجدار حريق."
+      },
       "attributes": {
         "thicknessMm": "12.5"
       },
@@ -58,6 +63,11 @@
         "he": "לוח גבס חסין אש (ורוד) 15 מ״מ",
         "ar": "لوح جبس مقاوم للحريق (وردي) 15 ملم"
       },
+      "spec": {
+        "en": "Pink board. Its rating is the whole wall build-up, not the sheet alone.",
+        "he": "לוח ורוד. הדירוג הוא של כל מבנה הקיר, לא של הלוח לבדו.",
+        "ar": "اللوح الوردي. التصنيف للجدار كاملاً لا للّوح وحده."
+      },
       "attributes": {
         "thicknessMm": "15"
       },
@@ -79,6 +89,11 @@
         "he": "לוח גבס אקוסטי",
         "ar": "لوح جبس عازل للصوت"
       },
+      "spec": {
+        "en": "Denser than standard. Seal the perimeter or the extra mass buys nothing.",
+        "he": "צפוף מהרגיל. יש לאטום את ההיקף, אחרת המסה הנוספת לא תורמת דבר.",
+        "ar": "أكثف من العادي. اختم المحيط وإلا لم تفد الكتلة الزائدة."
+      },
       "tags": [
         "board",
         "acoustic"
@@ -96,6 +111,11 @@
         "en": "Cement board",
         "he": "לוח צמנטבורד",
         "ar": "لوح سمنت بورد"
+      },
+      "spec": {
+        "en": "For behind tiles in a wet area. It does not care about water; plasterboard does.",
+        "he": "מאחורי אריחים באזור רטוב. אינו מושפע ממים; גבס כן.",
+        "ar": "خلف البلاط في المناطق الرطبة. لا يتأثر بالماء؛ الجبس يتأثر."
       },
       "tags": [
         "board",
@@ -116,6 +136,11 @@
         "he": "פרופיל C-70",
         "ar": "بروفيل C-70"
       },
+      "spec": {
+        "en": "The upright. Spacing decides what the wall carries, so measure it, do not eye it.",
+        "he": "הזקף. המרווח קובע מה הקיר נושא; יש למדוד ולא לאמוד.",
+        "ar": "القائم. التباعد يحدد ما يحمله الجدار؛ قِس ولا تقدّر."
+      },
       "attributes": {
         "widthMm": "70"
       },
@@ -132,6 +157,11 @@
         "en": "Metal track U-70",
         "he": "מסילה U-70",
         "ar": "مسار U-70"
+      },
+      "spec": {
+        "en": "Top and bottom. Fix it straight; every stud after it inherits the error.",
+        "he": "עליונה ותחתונה. יש לקבע ישר; כל זקף אחריה יורש את הסטייה.",
+        "ar": "علوي وسفلي. ثبّته مستقيماً؛ كل قائم بعده يرث الخطأ."
       },
       "attributes": {
         "widthMm": "70"
@@ -150,6 +180,11 @@
         "he": "תלייה לתקרה עם קפיץ",
         "ar": "علّاقة سقف مع زنبرك"
       },
+      "spec": {
+        "en": "Carries a suspended ceiling off the slab, with a spring to take out the rattle.",
+        "he": "נושאת תקרה אקוסטית מהתקרה הקונסטרוקטיבית, עם קפיץ שמבטל רעש.",
+        "ar": "تحمل السقف المعلّق عن البلاطة، مع زنبرك يلغي الخشخشة."
+      },
       "tags": [
         "ceiling"
       ]
@@ -163,6 +198,11 @@
         "en": "Suspended ceiling grid, T24",
         "he": "שלד תקרה אקוסטית T24",
         "ar": "شبكة سقف معلّق T24"
+      },
+      "spec": {
+        "en": "The visible grid a lay-in tile drops into. Level it once; every tile shows the error.",
+        "he": "השלד הגלוי שאליו מונח אריח. יש לפלס פעם אחת; כל אריח מסגיר סטייה.",
+        "ar": "الشبكة الظاهرة التي تستقر فيها البلاطة. سوِّها مرة؛ كل بلاطة تفضح الخطأ."
       },
       "tags": [
         "ceiling",
@@ -178,6 +218,11 @@
         "en": "Mineral ceiling tile 60×60",
         "he": "אריח תקרה מינרלי 60×60",
         "ar": "بلاطة سقف معدنية 60×60"
+      },
+      "spec": {
+        "en": "Lifts out for access, which is the reason to choose it over a sealed ceiling.",
+        "he": "ניתן להרמה לצורך גישה, וזו הסיבה לבחור בו על פני תקרה אטומה.",
+        "ar": "تُرفع للوصول، وهذا سبب اختيارها بدل سقف مصمت."
       },
       "tags": [
         "ceiling",
@@ -197,6 +242,11 @@
         "he": "פינת מגן",
         "ar": "زاوية حماية (كورنر)"
       },
+      "spec": {
+        "en": "Makes the arris straight and stops a knock taking the corner off.",
+        "he": "מיישרת את הפינה ומונעת מכה שמפילה אותה.",
+        "ar": "تجعل الزاوية مستقيمة وتمنع الضربة من كسرها."
+      },
       "tags": [
         "finishing"
       ],
@@ -213,6 +263,11 @@
         "en": "Joint tape, paper",
         "he": "סרט חיזוק לרובה",
         "ar": "شريط تقوية ورقي"
+      },
+      "spec": {
+        "en": "Stronger than mesh on a flat joint, and it makes a crisp internal angle.",
+        "he": "חזק מרשת במישק שטוח, ונותן זווית פנימית חדה.",
+        "ar": "أقوى من الشبك في الفاصل المستوي، ويعطي زاوية داخلية حادة."
       },
       "tags": [
         "finishing"
@@ -231,6 +286,11 @@
         "he": "סרט רשת פיברגלס",
         "ar": "شريط شبك فايبر"
       },
+      "spec": {
+        "en": "Self-adhesive and fast, for patches and for board that is not paper-faced.",
+        "he": "נדבק מעצמו ומהיר, לתיקונים וללוחות בלי ציפוי נייר.",
+        "ar": "لاصق ذاتياً وسريع، للترقيع وللألواح غير الورقية."
+      },
       "tags": [
         "finishing"
       ],
@@ -248,6 +308,11 @@
         "he": "שפכטל למישקים",
         "ar": "معجون فواصل (جبصين)"
       },
+      "spec": {
+        "en": "Three thin coats beat one thick one. Thick shrinks and cracks.",
+        "he": "שלוש שכבות דקות עדיפות על אחת עבה. עבה מתכווץ ונסדק.",
+        "ar": "ثلاث طبقات رقيقة أفضل من واحدة سميكة. السميكة تنكمش وتتشقق."
+      },
       "tags": [
         "finishing"
       ],
@@ -264,6 +329,11 @@
         "en": "Drywall screw 25 mm",
         "he": "בורג גבס 25 מ״מ",
         "ar": "برغي جبس 25 ملم"
+      },
+      "spec": {
+        "en": "Just below the paper, not through it. Through it, the screw holds nothing.",
+        "he": "מעט מתחת לנייר ולא דרכו. דרכו הבורג אינו אוחז בדבר.",
+        "ar": "تحت الورق قليلاً لا خلاله. إن اخترقه لم يمسك البرغي بشيء."
       },
       "attributes": {
         "lengthMm": "25"
@@ -328,6 +398,11 @@
         "he": "מברגת גבס עם עומק",
         "ar": "دريل جبس بمحدّد عمق"
       },
+      "spec": {
+        "en": "The depth stop is the tool. Without it every screw is a guess.",
+        "he": "מגביל העומק הוא הכלי. בלעדיו כל בורג הוא ניחוש.",
+        "ar": "محدّد العمق هو الأداة. بدونه كل برغي تخمين."
+      },
       "tags": [
         "power-tool"
       ]
@@ -362,6 +437,11 @@
         "he": "משוף לוחות",
         "ar": "مبرد ألواح"
       },
+      "spec": {
+        "en": "Trims a cut edge to the line so the board actually meets its neighbour.",
+        "he": "מיישר קצה חתוך לקו כך שהלוח נפגש עם שכנו.",
+        "ar": "يسوّي الحافة المقطوعة على الخط ليلتقي اللوح بجاره."
+      },
       "tags": [
         "hand-tool"
       ]
@@ -375,6 +455,11 @@
         "en": "Taping knife set",
         "he": "ערכת סכיני שפכטל",
         "ar": "طقم سكاكين معجون"
+      },
+      "spec": {
+        "en": "A set, because each coat wants a wider blade than the last.",
+        "he": "ערכה, משום שכל שכבה דורשת להב רחב מקודמתה.",
+        "ar": "طقم، لأن كل طبقة تريد نصلاً أعرض من سابقتها."
       },
       "tags": [
         "finishing"

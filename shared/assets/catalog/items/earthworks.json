@@ -12,6 +12,11 @@
         "he": "מצע סוג א׳",
         "ar": "بيسة أساس مكسّرة"
       },
+      "spec": {
+        "en": "Compacted in layers under a slab or a road. One thick layer does not compact.",
+        "he": "מהודק בשכבות מתחת לרצפה או לכביש. שכבה עבה אחת אינה מתהדקת.",
+        "ar": "يُرصّ بطبقات تحت البلاطة أو الطريق. الطبقة السميكة الواحدة لا تُرصّ."
+      },
       "tags": [
         "subbase"
       ],
@@ -28,6 +33,11 @@
         "en": "Fill sand",
         "he": "חול מילוי",
         "ar": "رمل ردم"
+      },
+      "spec": {
+        "en": "Bedding and backfill around pipes, where a stone would dent the pipe.",
+        "he": "מצע ומילוי סביב צנרת, במקום שאבן הייתה פוגעת בצינור.",
+        "ar": "فرشة وردم حول المواسير، حيث يضرّ الحجر بالماسورة."
       },
       "tags": [
         "fill"
@@ -46,6 +56,11 @@
         "he": "בד גיאוטכני",
         "ar": "قماش جيوتكستايل"
       },
+      "spec": {
+        "en": "Keeps the base course and the subgrade from mixing, which is what ruins both.",
+        "he": "מונע ערבוב בין המצע לתשתית, וזה מה שהורס את שניהם.",
+        "ar": "يمنع اختلاط الأساس بالتربة التحتية، وهو ما يفسد كليهما."
+      },
       "tags": [
         "separation"
       ],
@@ -62,6 +77,11 @@
         "en": "Perforated drainage pipe",
         "he": "צינור ניקוז מחורר",
         "ar": "ماسورة تصريف مثقّبة"
+      },
+      "spec": {
+        "en": "Holes face down. Facing up, it fills with silt and drains nothing.",
+        "he": "החורים כלפי מטה. כלפי מעלה הוא מתמלא סחף ואינו מנקז דבר.",
+        "ar": "الثقوب للأسفل. إن كانت للأعلى امتلأ بالطمي ولم يصرّف شيئاً."
       },
       "tags": [
         "drainage"
@@ -104,6 +124,11 @@
         "he": "לוח פלדה לכביש",
         "ar": "بليتة طريق"
       },
+      "spec": {
+        "en": "Covers an open trench so traffic can pass. Pin it or it walks.",
+        "he": "מכסה תעלה פתוחה כדי לאפשר תנועה. יש לעגן, אחרת היא נודדת.",
+        "ar": "تغطّي خندقاً مفتوحاً ليمرّ السير. ثبّتها وإلا زحفت."
+      },
       "tags": [
         "temporary-works"
       ]
@@ -117,6 +142,11 @@
         "en": "Plate compactor",
         "he": "מהדק פלטה",
         "ar": "دكّاكة صفيحة"
+      },
+      "spec": {
+        "en": "For open areas in layers. Check the layer depth against the machine, not the clock.",
+        "he": "לשטחים פתוחים בשכבות. יש להתאים את עובי השכבה למכונה, לא לשעון.",
+        "ar": "للمساحات المفتوحة بطبقات. طابق سُمك الطبقة مع الآلة لا مع الساعة."
       },
       "tags": [
         "compaction"
@@ -132,6 +162,11 @@
         "he": "מהדק תעלות",
         "ar": "دكّاكة خنادق (ضفدع)"
       },
+      "spec": {
+        "en": "Narrow foot for trenches, where a plate cannot reach the bottom.",
+        "he": "כף צרה לתעלות, שם מהדק פלטה אינו מגיע לתחתית.",
+        "ar": "قدم ضيقة للخنادق، حيث لا تصل الدكّاكة الصفيحية للقاع."
+      },
       "tags": [
         "compaction"
       ]
@@ -145,6 +180,11 @@
         "en": "Rotary laser and staff",
         "he": "לייזר סיבובי ומוט",
         "ar": "ليزر دوّار مع مسطرة"
+      },
+      "spec": {
+        "en": "One person sets it, one reads the staff. Levels a whole site off one datum.",
+        "he": "אחד מציב, אחד קורא את המוט. מפלס אתר שלם מנקודת ייחוס אחת.",
+        "ar": "واحد ينصبه وآخر يقرأ المسطرة. يسوّي موقعاً كاملاً من منسوب واحد."
       },
       "tags": [
         "setting-out"

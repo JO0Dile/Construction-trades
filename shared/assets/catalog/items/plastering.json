@@ -12,6 +12,11 @@
         "he": "טיט הרבצה",
         "ar": "مونة لياسة أساس"
       },
+      "spec": {
+        "en": "The first coat, thrown on and left rough for the next one to grip.",
+        "he": "השכבה הראשונה, נזרקת ונשארת מחוספסת כדי שהבאה תיאחז.",
+        "ar": "الطبقة الأولى، تُرمى وتُترك خشنة لتمسك التالية."
+      },
       "tags": [
         "render"
       ],
@@ -29,6 +34,11 @@
         "he": "טיח גמר",
         "ar": "لياسة تشطيب"
       },
+      "spec": {
+        "en": "The coat that is seen. It only ever looks as flat as the coat under it.",
+        "he": "השכבה הנראית. היא שטוחה בדיוק כמו השכבה שמתחתיה.",
+        "ar": "الطبقة التي تُرى. تبدو مستوية بقدر الطبقة التي تحتها فقط."
+      },
       "tags": [
         "render"
       ],
@@ -45,6 +55,11 @@
         "en": "Gypsum plaster",
         "he": "טיח גבס",
         "ar": "جبصين لياسة"
+      },
+      "spec": {
+        "en": "Internal only. It goes off on its own clock, so mix what can be used.",
+        "he": "לפנים בלבד. מתקשה לפי שעון משלו, לכן מערבבים רק מה שאפשר לנצל.",
+        "ar": "للداخل فقط. يشدّ بساعته الخاصة، فاخلط ما يمكن استعماله."
       },
       "tags": [
         "render",
@@ -64,6 +79,11 @@
         "he": "שפכטל גמר",
         "ar": "معجون تشطيب ناعم"
       },
+      "spec": {
+        "en": "The last millimetre. Sanded, primed and then it stops being anybody's problem.",
+        "he": "המילימטר האחרון. משויף, מיוסד, ואז מפסיק להיות בעיה של מישהו.",
+        "ar": "الملّيمتر الأخير. يُصنفر ويُؤسّس ثم يكفّ عن كونه مشكلة أحد."
+      },
       "tags": [
         "finishing"
       ],
@@ -80,6 +100,11 @@
         "en": "Bonding agent / key coat",
         "he": "יסוד הצמדה",
         "ar": "مادة ربط (بونديج)"
+      },
+      "spec": {
+        "en": "Makes a smooth or dusty surface something plaster can hold on to.",
+        "he": "הופך משטח חלק או מאובק למשהו שהטיח יכול להיאחז בו.",
+        "ar": "يجعل سطحاً أملس أو مغبّراً شيئاً تمسك به اللياسة."
       },
       "tags": [
         "preparation"
@@ -121,6 +146,11 @@
         "he": "פינת טיח",
         "ar": "زاوية لياسة"
       },
+      "spec": {
+        "en": "Sets the line of the corner and takes the knocks the render cannot.",
+        "he": "קובעת את קו הפינה וסופגת מכות שהטיח אינו סופג.",
+        "ar": "تحدّد خط الزاوية وتتلقّى الضربات التي لا تتحمّلها اللياسة."
+      },
       "tags": [
         "finishing"
       ],
@@ -137,6 +167,11 @@
         "en": "Floor screed",
         "he": "מדה לרצפה",
         "ar": "مونة أرضيات (سكريد)"
+      },
+      "spec": {
+        "en": "The layer the floor finish is laid on. Its level is the finished floor level, minus the tile.",
+        "he": "השכבה שעליה מונח גמר הרצפה. המפלס שלה הוא מפלס הגמר פחות האריח.",
+        "ar": "الطبقة التي يُفرش عليها التشطيب. منسوبها هو المنسوب النهائي ناقص البلاطة."
       },
       "tags": [
         "floor"
@@ -155,6 +190,11 @@
         "he": "מדה מתפלסת",
         "ar": "مونة ذاتية التسوية"
       },
+      "spec": {
+        "en": "Finds its own level over a sound base. It will not fix a base that moves.",
+        "he": "מתפלסת בעצמה על בסיס יציב. לא תתקן בסיס שזז.",
+        "ar": "تسوّي نفسها على قاعدة سليمة. لن تصلح قاعدة متحركة."
+      },
       "tags": [
         "floor"
       ],
@@ -172,6 +212,11 @@
         "he": "לוח נשיאה",
         "ar": "لوح حمل المونة"
       },
+      "spec": {
+        "en": "Carries the mortar in the other hand. Everything else is timing.",
+        "he": "נושא את הטיט ביד השנייה. כל השאר הוא תזמון.",
+        "ar": "يحمل المونة باليد الأخرى. كل ما عداه توقيت."
+      },
       "tags": [
         "hand-tool"
       ]
@@ -185,6 +230,11 @@
         "en": "Finishing trowel",
         "he": "כף גמר",
         "ar": "مالج تشطيب"
+      },
+      "spec": {
+        "en": "Worn in and slightly flexed. A brand-new trowel leaves lines.",
+        "he": "מיושנת ומעט גמישה. כף חדשה לגמרי משאירה קווים.",
+        "ar": "مستعمل ومرن قليلاً. المالج الجديد تماماً يترك خطوطاً."
       },
       "tags": [
         "hand-tool"
@@ -200,6 +250,11 @@
         "he": "סרגל יישור",
         "ar": "قدّة تسوية"
       },
+      "spec": {
+        "en": "Rules the surface flat across the high spots before they set.",
+        "he": "מיישר את פני השטח מעל הגבהויות לפני שהן מתקשות.",
+        "ar": "يسوّي السطح فوق المرتفعات قبل أن تشدّ."
+      },
       "tags": [
         "hand-tool"
       ]
@@ -213,6 +268,11 @@
         "en": "Sponge float",
         "he": "מגלף ספוג",
         "ar": "مالج إسفنج"
+      },
+      "spec": {
+        "en": "Brings up a fine texture at the end. Too wet and it opens the surface.",
+        "he": "מעלה מרקם עדין בסיום. רטוב מדי הוא פותח את הפנים.",
+        "ar": "يُظهر ملمساً ناعماً في النهاية. المبلّل زيادة يفتح السطح."
       },
       "tags": [
         "hand-tool"
@@ -228,6 +288,11 @@
         "he": "משאבת התזת טיח",
         "ar": "مضخة رشّ لياسة"
       },
+      "spec": {
+        "en": "Puts on in an hour what a gang puts on in a day. It needs water, power and a clean-out.",
+        "he": "מתיזה בשעה מה שצוות מורח ביום. דורשת מים, חשמל וניקוי בסיום.",
+        "ar": "ترشّ في ساعة ما يفرده فريق في يوم. تحتاج ماءً وكهرباءً وتنظيفاً."
+      },
       "tags": [
         "power-tool"
       ]
@@ -241,6 +306,11 @@
         "en": "Forced-action mixer",
         "he": "מערבל כפוי",
         "ar": "خلّاطة قسرية"
+      },
+      "spec": {
+        "en": "Mixes stiff material a drill paddle cannot. Screed and render need it.",
+        "he": "מערבל חומר סמיך שמערבל מקדחה אינו מסוגל לו. מדה וטיח דורשים אותו.",
+        "ar": "يخلط مادة قاسية لا تقوى عليها ريشة الدريل. السكريد واللياسة يحتاجانه."
       },
       "tags": [
         "mixing"

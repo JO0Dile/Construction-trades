@@ -12,6 +12,11 @@
         "he": "קורת פלדה IPE",
         "ar": "جسر حديد IPE"
       },
+      "spec": {
+        "en": "Ordered to a cutting list. Holes and cleats are decided in the shop, not on site.",
+        "he": "מוזמנת לפי רשימת חיתוך. חורים ופלטות נקבעים בבית המלאכה ולא באתר.",
+        "ar": "يُطلب بحسب قائمة القصّ. الثقوب والصفائح تُقرَّر في الورشة لا في الموقع."
+      },
       "tags": [
         "structure"
       ],
@@ -28,6 +33,11 @@
         "en": "Rectangular hollow section",
         "he": "פרופיל מלבני חלול",
         "ar": "بروفيل مجوّف مستطيل"
+      },
+      "spec": {
+        "en": "Closed section, so it takes twist. Sealing the ends is what stops it rusting inside.",
+        "he": "חתך סגור ולכן סופג פיתול. אטימת הקצוות היא שמונעת חלודה מבפנים.",
+        "ar": "مقطع مغلق فيتحمّل الليّ. إغلاق الأطراف يمنع الصدأ من الداخل."
       },
       "tags": [
         "structure"
@@ -46,6 +56,11 @@
         "he": "לוחית בסיס",
         "ar": "بليتة قاعدة"
       },
+      "spec": {
+        "en": "Spreads the column load into the concrete. Grout it solid or it bears on four bolts.",
+        "he": "מפזרת את עומס העמוד אל הבטון. יש למלא בגראוט, אחרת היא נשענת על ארבעה ברגים.",
+        "ar": "تنشر حمل العمود في الباطون. احقنها بالجراوت وإلا ارتكزت على أربعة براغٍ."
+      },
       "tags": [
         "structure"
       ],
@@ -62,6 +77,11 @@
         "en": "High-strength structural bolt",
         "he": "בורג מבני בעל חוזק גבוה",
         "ar": "برغي إنشائي عالي المقاومة"
+      },
+      "spec": {
+        "en": "Tightened to a figure, not to feel. The torque wrench is part of the connection.",
+        "he": "מהודק למספר ולא לתחושה. מפתח המומנט הוא חלק מהחיבור.",
+        "ar": "يُشدّ إلى رقم لا إلى إحساس. مفتاح العزم جزء من الوصلة."
       },
       "attributes": {
         "grade": "8.8"
@@ -82,6 +102,11 @@
         "en": "Metal deck sheet",
         "he": "פח לרצפה משתפת",
         "ar": "صاج ديك معدني"
+      },
+      "spec": {
+        "en": "Formwork that stays and then acts with the slab. Fix it down before anybody walks it.",
+        "he": "תבנית שנשארת ואז פועלת עם התקרה. יש לקבע לפני שדורכים עליה.",
+        "ar": "طوبار يبقى ثم يعمل مع البلاطة. ثبّته قبل أن يمشي عليه أحد."
       },
       "tags": [
         "structure"
@@ -123,6 +148,11 @@
         "he": "יסוד עשיר אבץ",
         "ar": "برايمر غني بالزنك"
       },
+      "spec": {
+        "en": "Protects the cut and the weld, which is where steel starts to go.",
+        "he": "מגן על החתך ועל הריתוך, ומשם הפלדה מתחילה להיפגע.",
+        "ar": "يحمي القطع واللحام، ومن هناك يبدأ تلف الحديد."
+      },
       "tags": [
         "protection"
       ],
@@ -140,6 +170,11 @@
         "he": "מכונת ריתוך MIG",
         "ar": "ماكينة لحام MIG"
       },
+      "spec": {
+        "en": "Fast and clean in a shop. Wind on site blows the shielding gas away.",
+        "he": "מהיר ונקי בבית מלאכה. רוח באתר מפזרת את גז המיגון.",
+        "ar": "سريع ونظيف في الورشة. الرياح في الموقع تبدّد غاز الحماية."
+      },
       "tags": [
         "welding"
       ]
@@ -153,6 +188,11 @@
         "en": "Stick (MMA) welder",
         "he": "מכונת ריתוך אלקטרודה",
         "ar": "ماكينة لحام إلكترود"
+      },
+      "spec": {
+        "en": "Works outdoors and through a bit of rust, which is why it is the site machine.",
+        "he": "עובד בחוץ וגם על מעט חלודה, ולכן הוא מכונת השטח.",
+        "ar": "يعمل في الخارج وعلى قليل من الصدأ، ولهذا هو آلة الموقع."
       },
       "tags": [
         "welding"
@@ -168,6 +208,11 @@
         "he": "אלקטרודות ריתוך",
         "ar": "إلكترودات لحام"
       },
+      "spec": {
+        "en": "Kept dry, in an oven if the spec says so. Damp rods make porous welds.",
+        "he": "נשמרות יבשות, בתנור אם המפרט דורש. אלקטרודות לחות יוצרות ריתוך נקבובי.",
+        "ar": "تُحفظ جافة، في فرن إن نصّت المواصفة. الإلكترود الرطب يعطي لحاماً مسامياً."
+      },
       "tags": [
         "welding"
       ]
@@ -181,6 +226,11 @@
         "en": "Torque wrench",
         "he": "מפתח מומנט",
         "ar": "مفتاح عزم"
+      },
+      "spec": {
+        "en": "Calibrated, and the calibration has a date on it. Otherwise it is a long spanner.",
+        "he": "מכויל, ולכיול יש תאריך. אחרת זהו מפתח ארוך.",
+        "ar": "معاير، وللمعايرة تاريخ. وإلا فهو مفتاح طويل."
       },
       "tags": [
         "fixing",
@@ -197,6 +247,11 @@
         "he": "מקדחה מגנטית",
         "ar": "دريل بقاعدة مغناطيسية"
       },
+      "spec": {
+        "en": "Holds itself to the steel. Never on a painted or curved surface; the magnet lets go.",
+        "he": "נאחזת בפלדה בעצמה. לעולם לא על משטח צבוע או מעוקל; המגנט משחרר.",
+        "ar": "يمسك نفسه بالحديد. لا على سطح مدهون أو منحنٍ؛ المغناطيس يفلت."
+      },
       "tags": [
         "power-tool"
       ]
@@ -210,6 +265,11 @@
         "en": "Auto-darkening welding mask",
         "he": "מסכת ריתוך אוטומטית",
         "ar": "قناع لحام أوتوماتيكي"
+      },
+      "spec": {
+        "en": "Darkens on the arc so the work is set up with it already on.",
+        "he": "מחשיכה עם הקשת, כך שמכינים את העבודה כשהיא כבר על הפנים.",
+        "ar": "يعتم مع القوس، فيُجهَّز العمل وهو على الوجه."
       },
       "tags": [
         "ppe",

@@ -12,6 +12,11 @@
         "he": "כבל תקשורת Cat6",
         "ar": "كابل شبكة Cat6"
       },
+      "spec": {
+        "en": "Bend it gently and keep it away from power. Both rules are about the same interference.",
+        "he": "יש לכופף בעדינות ולהרחיק מחשמל. שני הכללים נוגעים לאותה הפרעה.",
+        "ar": "اثنِه برفق وأبعده عن الكهرباء. القاعدتان عن التشويش نفسه."
+      },
       "attributes": {
         "category": "Cat6"
       },
@@ -32,6 +37,11 @@
         "he": "כבל תקשורת Cat6A מסוכך",
         "ar": "كابل شبكة Cat6A مدرّع"
       },
+      "spec": {
+        "en": "Shielded, and the shield has to be earthed at one end or it is just expensive cable.",
+        "he": "מסוכך, והמסך חייב הארקה בקצה אחד, אחרת זה רק כבל יקר.",
+        "ar": "مدرّع، والدرع يجب تأريضه من طرف واحد وإلا فهو كابل غالٍ فقط."
+      },
       "attributes": {
         "category": "Cat6A"
       },
@@ -51,6 +61,11 @@
         "en": "Coaxial cable RG6",
         "he": "כבל קואקסיאלי RG6",
         "ar": "كابل كواكسيال RG6"
+      },
+      "spec": {
+        "en": "Television and satellite. Every extra connector costs signal.",
+        "he": "טלוויזיה ולוויין. כל מחבר נוסף גורע מהאות.",
+        "ar": "تلفزيون وستالايت. كل وصلة إضافية تُفقد إشارة."
       },
       "tags": [
         "tv"
@@ -92,6 +107,11 @@
         "he": "סיב אופטי OM4",
         "ar": "ألياف ضوئية OM4"
       },
+      "spec": {
+        "en": "Glass, not copper. Never kink it, and cap both ends until it is spliced.",
+        "he": "זכוכית ולא נחושת. אין לקפל, ויש לכסות את שני הקצוות עד ההלחמה.",
+        "ar": "زجاج لا نحاس. لا تثنِه، وغطِّ الطرفين حتى اللحام."
+      },
       "tags": [
         "data",
         "backbone"
@@ -109,6 +129,11 @@
         "en": "Patch panel, 24 port",
         "he": "פאנל תקשורת 24 יציאות",
         "ar": "باتش بانل 24 مخرج"
+      },
+      "spec": {
+        "en": "Where the fixed cabling ends and the patching begins. Label both ends the same day.",
+        "he": "המקום שבו מסתיימת התשתית הקבועה ומתחיל הפאטצ׳. יש לסמן שני הקצוות באותו יום.",
+        "ar": "حيث ينتهي التمديد الثابت ويبدأ التوصيل. علّم الطرفين في اليوم نفسه."
       },
       "tags": [
         "data",
@@ -128,6 +153,11 @@
         "he": "ארון תקשורת 19\" ‏42U",
         "ar": "كابينة 19 إنش ‏42U"
       },
+      "spec": {
+        "en": "Leave a clear U above and below anything that gets warm, and leave the door reachable.",
+        "he": "יש להשאיר יחידה פנויה מעל ומתחת לכל דבר שמתחמם, ולהשאיר גישה לדלת.",
+        "ar": "اترك وحدة فارغة فوق وتحت كل ما يسخن، واترك الباب متاحاً."
+      },
       "tags": [
         "data",
         "rack"
@@ -145,6 +175,11 @@
         "en": "RJ45 data outlet",
         "he": "שקע תקשורת RJ45",
         "ar": "بريزة شبكة RJ45"
+      },
+      "spec": {
+        "en": "Punch to the same standard at both ends. Mixing A and B is the classic dead run.",
+        "he": "יש לנעוץ באותו תקן בשני הקצוות. ערבוב A ו־B הוא הקו המת הקלאסי.",
+        "ar": "ثبّت بالمعيار نفسه في الطرفين. خلط A وB هو الخط الميت المعروف."
       },
       "tags": [
         "data",
@@ -164,6 +199,11 @@
         "he": "מצלמת IP כיפה",
         "ar": "كاميرا IP قبّة"
       },
+      "spec": {
+        "en": "Discreet and hard to aim away from. Indoors and in lobbies.",
+        "he": "דיסקרטית וקשה להסטה. לפנים ולובי.",
+        "ar": "خفية ويصعب تحويل اتجاهها. للداخل والمداخل."
+      },
       "tags": [
         "cctv"
       ],
@@ -181,6 +221,11 @@
         "he": "מצלמת IP צינור",
         "ar": "كاميرا IP بوليت"
       },
+      "spec": {
+        "en": "Obvious on purpose, and easier to point down a fence line.",
+        "he": "בולטת בכוונה, וקל יותר לכוון אותה לאורך גדר.",
+        "ar": "ظاهرة عمداً، وأسهل في توجيهها بمحاذاة السياج."
+      },
       "tags": [
         "cctv"
       ],
@@ -197,6 +242,11 @@
         "en": "Network video recorder, 16 channel",
         "he": "מקליט וידאו רשת 16 ערוצים",
         "ar": "مسجّل شبكي 16 قناة"
+      },
+      "spec": {
+        "en": "The recorder is the evidence. Size the disk for the retention somebody agreed to keep.",
+        "he": "המקליט הוא הראיה. יש להתאים את הדיסק לתקופת השמירה שסוכמה.",
+        "ar": "المسجّل هو الدليل. اختر القرص بحسب مدة الحفظ المتفق عليها."
       },
       "tags": [
         "cctv"
@@ -216,6 +266,11 @@
         "he": "לוח אינטרקום כניסה",
         "ar": "لوحة إنترکوم المدخل"
       },
+      "spec": {
+        "en": "At the door. Sun on the lens is what makes a panel unreadable, not the panel.",
+        "he": "בכניסה. שמש על העדשה היא שהופכת לוח ללא קריא, לא הלוח עצמו.",
+        "ar": "عند الباب. الشمس على العدسة تجعل اللوحة غير مقروءة، لا اللوحة نفسها."
+      },
       "tags": [
         "intercom",
         "lobby"
@@ -234,6 +289,11 @@
         "he": "שפופרת אינטרקום",
         "ar": "سمّاعة إنترکوم"
       },
+      "spec": {
+        "en": "Inside the flat. Works with its own panel and rarely with anybody else's.",
+        "he": "בתוך הדירה. עובדת עם הלוח שלה ולעיתים רחוקות עם אחר.",
+        "ar": "داخل الشقة. تعمل مع لوحتها ونادراً مع غيرها."
+      },
       "tags": [
         "intercom"
       ],
@@ -250,6 +310,11 @@
         "en": "Addressable smoke detector",
         "he": "גלאי עשן כתובתי",
         "ar": "كاشف دخان معنون"
+      },
+      "spec": {
+        "en": "Addressable, so the panel names the room. Conventional only names the zone.",
+        "he": "כתובתי, כך שהרכזת מציינת את החדר. רגיל מציין רק אזור.",
+        "ar": "معنون، فتسمّي اللوحة الغرفة. العادي يسمّي المنطقة فقط."
       },
       "tags": [
         "fire",
@@ -269,6 +334,11 @@
         "he": "גלאי חום כתובתי",
         "ar": "كاشف حرارة معنون"
       },
+      "spec": {
+        "en": "For kitchens and car parks, where smoke detection would cry wolf all day.",
+        "he": "למטבחים ולחניונים, שם גלאי עשן היה מתריע לשווא כל היום.",
+        "ar": "للمطابخ والمواقف، حيث يطلق كاشف الدخان إنذاراً كاذباً طوال اليوم."
+      },
       "tags": [
         "fire",
         "life-safety"
@@ -286,6 +356,11 @@
         "en": "Sounder / beacon",
         "he": "צופר ונצנץ",
         "ar": "صفارة وفلاش إنذار"
+      },
+      "spec": {
+        "en": "Heard and seen. The beacon is for plant rooms and for anybody who will not hear it.",
+        "he": "נשמע ונראה. הנצנץ הוא לחדרי מכונות ולמי שלא ישמע.",
+        "ar": "يُسمع ويُرى. الفلاش لغرف المكائن ولمن لا يسمع."
       },
       "tags": [
         "fire",
@@ -305,6 +380,11 @@
         "he": "לחצן אזעקה ידני",
         "ar": "زر إنذار يدوي"
       },
+      "spec": {
+        "en": "By every exit, at a height a person reaches without thinking.",
+        "he": "ליד כל יציאה, בגובה שאדם מגיע אליו בלי לחשוב.",
+        "ar": "عند كل مخرج، بارتفاع يصل إليه الإنسان دون تفكير."
+      },
       "tags": [
         "fire",
         "life-safety"
@@ -322,6 +402,11 @@
         "en": "Fire alarm control panel",
         "he": "רכזת גילוי אש",
         "ar": "لوحة تحكم إنذار الحريق"
+      },
+      "spec": {
+        "en": "The one place the building's fire state is true. Its log is evidence after an event.",
+        "he": "המקום היחיד שבו מצב האש של הבניין נכון. היומן שלה הוא ראיה אחרי אירוע.",
+        "ar": "المكان الوحيد الذي تصحّ فيه حالة حريق المبنى. سجلّها دليل بعد الحادث."
       },
       "tags": [
         "fire",
@@ -342,6 +427,11 @@
         "he": "קורא בקרת כניסה",
         "ar": "قارئ تحكم بالدخول"
       },
+      "spec": {
+        "en": "Reads the card or the finger. What it unlocks is decided by the controller, not by it.",
+        "he": "קורא כרטיס או אצבע. מה שנפתח נקבע בבקר ולא בו.",
+        "ar": "يقرأ البطاقة أو الإصبع. ما يُفتح يقرّره المتحكّم لا هو."
+      },
       "tags": [
         "access-control",
         "lobby"
@@ -360,6 +450,11 @@
         "he": "מנעול מגנטי",
         "ar": "قفل مغناطيسي"
       },
+      "spec": {
+        "en": "Fails open when the power goes, which is what the fire officer will ask about.",
+        "he": "נפתח בהפסקת חשמל, וזה מה שקצין הבטיחות ישאל עליו.",
+        "ar": "يُفتح عند انقطاع الكهرباء، وهذا ما سيسأل عنه ضابط السلامة."
+      },
       "tags": [
         "access-control"
       ]
@@ -373,6 +468,11 @@
         "en": "TV distribution amplifier",
         "he": "מגבר טלוויזיה",
         "ar": "مضخّم توزيع تلفزيون"
+      },
+      "spec": {
+        "en": "Lifts the signal for a whole riser. Too much gain is as bad as too little.",
+        "he": "מגביר את האות לכל הקומות. הגברה עודפת גרועה כמו חסרה.",
+        "ar": "يرفع الإشارة لكل الطوابق. الزيادة سيئة كالنقصان."
       },
       "tags": [
         "tv"
@@ -391,6 +491,11 @@
         "en": "LAN cable tester",
         "he": "בודק כבלי רשת",
         "ar": "فاحص كابلات شبكة"
+      },
+      "spec": {
+        "en": "Proves the pairs are where they should be before the ceiling closes.",
+        "he": "מוכיח שהזוגות במקומם לפני שסוגרים את התקרה.",
+        "ar": "يثبت أن الأزواج في مكانها قبل إغلاق السقف."
       },
       "tags": [
         "testing",
@@ -428,6 +533,11 @@
         "he": "כלי נעיצה 110",
         "ar": "أداة تثبيت 110/كرون"
       },
+      "spec": {
+        "en": "Seats and trims in one press. A hand-pushed core is a connection that fails later.",
+        "he": "נועץ וחותך בלחיצה אחת. נעיצה ביד היא חיבור שייכשל בהמשך.",
+        "ar": "يثبّت ويقصّ بضغطة. التثبيت باليد وصلة تفشل لاحقاً."
+      },
       "tags": [
         "data"
       ]
@@ -441,6 +551,11 @@
         "en": "RJ45 crimping tool",
         "he": "מלחץ RJ45",
         "ar": "كماشة كبس RJ45"
+      },
+      "spec": {
+        "en": "A ratchet one. A cheap crimp is why half a floor of points fail intermittently.",
+        "he": "עם מנגנון מחגר. מלחץ זול הוא הסיבה שחצי קומה נופלת לסירוגין.",
+        "ar": "من النوع ذي السقّاطة. الكمّاشة الرخيصة سبب تقطّع نصف الطابق."
       },
       "tags": [
         "data"
@@ -456,6 +571,11 @@
         "he": "מחבר סיבים בהיתוך",
         "ar": "جهاز لحام ألياف ضوئية"
       },
+      "spec": {
+        "en": "Joins glass with an arc. Clean the ends first; one speck is the whole loss.",
+        "he": "מחבר סיבים בקשת חשמלית. יש לנקות את הקצוות; גרגר אחד הוא כל האיבוד.",
+        "ar": "يلحم الزجاج بقوس كهربائي. نظّف الأطراف؛ ذرّة واحدة هي كل الفقد."
+      },
       "tags": [
         "data",
         "fibre"
@@ -470,6 +590,11 @@
         "en": "OTDR",
         "he": "מודד OTDR",
         "ar": "جهاز OTDR"
+      },
+      "spec": {
+        "en": "Shows where the loss is along the fibre, not just that there is one.",
+        "he": "מראה היכן האיבוד לאורך הסיב, לא רק שקיים איבוד.",
+        "ar": "يبيّن أين الفقد على طول الليف، لا أنه موجود فقط."
       },
       "tags": [
         "data",

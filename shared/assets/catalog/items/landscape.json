@@ -12,6 +12,11 @@
         "he": "אבן משתלבת",
         "ar": "بلاط انترلوك"
       },
+      "spec": {
+        "en": "Laid on sand and locked by the joints, not by mortar. The edge restraint holds it all.",
+        "he": "מונחת על חול ונעולה במישקים, לא בטיט. אבן השפה מחזיקה את הכול.",
+        "ar": "يُفرش على رمل ويُقفل بالفواصل لا بالمونة. البردورة تمسك الكل."
+      },
       "tags": [
         "paving"
       ],
@@ -28,6 +33,11 @@
         "en": "Concrete kerb",
         "he": "אבן שפה",
         "ar": "بردورة باطون"
+      },
+      "spec": {
+        "en": "The edge everything else pushes against. Without it the paving creeps outward.",
+        "he": "הקצה שכל השאר נשען עליו. בלעדיו הריצוף זוחל החוצה.",
+        "ar": "الحافة التي يستند إليها كل شيء. بدونها يزحف البلاط للخارج."
       },
       "tags": [
         "paving"
@@ -69,6 +79,11 @@
         "he": "טפטפות",
         "ar": "خط ري بالتنقيط"
       },
+      "spec": {
+        "en": "Water at the root, not in the air. Flush the line before the first season.",
+        "he": "מים בשורש ולא באוויר. יש לשטוף את הקו לפני העונה הראשונה.",
+        "ar": "ماء عند الجذر لا في الهواء. اغسل الخط قبل الموسم الأول."
+      },
       "tags": [
         "irrigation"
       ],
@@ -85,6 +100,11 @@
         "en": "Irrigation controller",
         "he": "בקר השקיה",
         "ar": "وحدة تحكم الري"
+      },
+      "spec": {
+        "en": "Runs the valves to a schedule. A rain sensor on it saves the water bill.",
+        "he": "מפעיל את הברזים לפי תוכנית. חיישן גשם עליו חוסך בחשבון המים.",
+        "ar": "يشغّل المحابس وفق برنامج. حسّاس المطر عليه يوفّر فاتورة الماء."
       },
       "tags": [
         "irrigation"
@@ -103,6 +123,11 @@
         "he": "אדמת גן",
         "ar": "تربة زراعية"
       },
+      "spec": {
+        "en": "Screened planting soil. Sub-soil looks the same in the lorry and grows nothing.",
+        "he": "אדמת גן מנופה. אדמת תשתית נראית זהה במשאית ואינה מצמיחה דבר.",
+        "ar": "تربة زراعية منخولة. تربة تحتية تبدو مثلها في الشاحنة ولا تُنبت شيئاً."
+      },
       "tags": [
         "planting"
       ],
@@ -119,6 +144,11 @@
         "en": "Tree stake and tie",
         "he": "סמוכה לעץ",
         "ar": "دعامة شجرة"
+      },
+      "spec": {
+        "en": "Holds the root ball still, not the trunk rigid. A tree that cannot move never thickens.",
+        "he": "מייצבת את גוש השורשים, לא את הגזע. עץ שאינו נע אינו מתעבה.",
+        "ar": "تثبّت كتلة الجذور لا الجذع. شجرة لا تتحرّك لا يغلظ ساقها."
       },
       "tags": [
         "planting"
@@ -137,6 +167,11 @@
         "he": "מהדק לריצוף עם רפידה",
         "ar": "دكّاكة بلاط مع لبادة"
       },
+      "spec": {
+        "en": "The pad is what stops the plate chipping the pavers.",
+        "he": "הרפידה היא שמונעת מהמהדק לפגום באבנים.",
+        "ar": "اللبادة هي ما يمنع الدكّاكة من كسر البلاط."
+      },
       "tags": [
         "paving"
       ]
@@ -150,6 +185,11 @@
         "en": "Block splitter",
         "he": "מפצל אבן משתלבת",
         "ar": "مقصلة انترلوك"
+      },
+      "spec": {
+        "en": "Splits a paver without dust or a blade, which is why it beats a grinder on a street.",
+        "he": "מפצל אבן בלי אבק ובלי דיסק, ולכן עדיף על משחזת ברחוב.",
+        "ar": "يشقّ البلاطة دون غبار ولا قرص، ولهذا يتفوّق على الجلّاخة في الشارع."
       },
       "tags": [
         "paving"

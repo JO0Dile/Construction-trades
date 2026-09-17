@@ -690,6 +690,11 @@
         "he": "תעלת פח מגולוון",
         "ar": "دكت صاج مجلفن"
       },
+      "spec": {
+        "en": "Sealed at every joint. An unsealed duct delivers its air into the ceiling void.",
+        "he": "אטום בכל חיבור. תעלה לא אטומה מספקת את האוויר לחלל התקרה.",
+        "ar": "مختوم عند كل وصلة. الدكت غير المختوم يضخّ هواءه في فراغ السقف."
+      },
       "tags": [
         "duct"
       ],
@@ -706,6 +711,11 @@
         "en": "Pre-insulated panel duct",
         "he": "תעלה מבודדת מראש",
         "ar": "دكت بانل معزول"
+      },
+      "spec": {
+        "en": "Insulation and duct in one board, cut and taped on site. Lighter and faster than sheet.",
+        "he": "בידוד ותעלה בלוח אחד, נחתך ומודבק באתר. קל ומהיר מפח.",
+        "ar": "عزل ودكت في لوح واحد، يُقصّ ويُلصق في الموقع. أخفّ وأسرع من الصاج."
       },
       "tags": [
         "duct"
@@ -724,6 +734,11 @@
         "he": "תעלה גמישה מבודדת",
         "ar": "دكت مرن معزول"
       },
+      "spec": {
+        "en": "Short runs only, pulled tight. Every sag and bend costs airflow.",
+        "he": "לקטעים קצרים בלבד, מתוח. כל שקע וכיפוף גורעים מהספיקה.",
+        "ar": "لمسافات قصيرة فقط ومشدود. كل ترهّل وانحناء يُفقد تدفقاً."
+      },
       "tags": [
         "duct"
       ],
@@ -740,6 +755,11 @@
         "en": "Fire damper",
         "he": "מדף אש",
         "ar": "دامبر حريق"
+      },
+      "spec": {
+        "en": "Closes the duct where it crosses a fire compartment. Its access hatch is not optional.",
+        "he": "סוגר את התעלה במעבר בין תאי אש. פתח הגישה אליו אינו רשות.",
+        "ar": "يغلق الدكت عند عبوره حاجز حريق. فتحة الوصول إليه ليست اختيارية."
       },
       "tags": [
         "duct",
@@ -760,6 +780,11 @@
         "he": "מדף ויסות",
         "ar": "دامبر تنظيم"
       },
+      "spec": {
+        "en": "Balances one branch against another. Mark the set position before the ceiling closes.",
+        "he": "מאזן בין הסתעפויות. יש לסמן את מצב הכיוון לפני סגירת התקרה.",
+        "ar": "يوازن فرعاً بآخر. علّم وضع الضبط قبل إغلاق السقف."
+      },
       "tags": [
         "duct",
         "balancing"
@@ -777,6 +802,11 @@
         "en": "Supply grille",
         "he": "גריל אספקה",
         "ar": "جريل تغذية"
+      },
+      "spec": {
+        "en": "Where the air enters the room. Its throw decides whether the far corner is served.",
+        "he": "המקום שבו האוויר נכנס לחדר. טווח הזריקה קובע אם הפינה הרחוקה מקבלת אוויר.",
+        "ar": "حيث يدخل الهواء الغرفة. مدى الرمي يقرّر إن كانت الزاوية البعيدة تُخدَم."
       },
       "tags": [
         "grille",
@@ -796,6 +826,11 @@
         "he": "מפזר סחרור",
         "ar": "مبثّ دوّار"
       },
+      "spec": {
+        "en": "Mixes the air near the ceiling so nobody sits in a draught.",
+        "he": "מערבב את האוויר סמוך לתקרה כך שאיש אינו יושב בזרם.",
+        "ar": "يخلط الهواء قرب السقف فلا يجلس أحد في تيار."
+      },
       "tags": [
         "grille",
         "second-fix"
@@ -814,6 +849,11 @@
         "he": "יחידה פנימית VRF",
         "ar": "وحدة داخلية VRF"
       },
+      "spec": {
+        "en": "One room, one unit, all on the same refrigerant loop as the others.",
+        "he": "חדר אחד, יחידה אחת, על אותו מעגל גז עם כל השאר.",
+        "ar": "غرفة واحدة، وحدة واحدة، على دارة الغاز نفسها مع البقية."
+      },
       "tags": [
         "unit"
       ],
@@ -830,6 +870,11 @@
         "en": "VRF outdoor unit",
         "he": "יחידה חיצונית VRF",
         "ar": "وحدة خارجية VRF"
+      },
+      "spec": {
+        "en": "Serves many indoor units at once. It needs clear air around it or it derates in summer.",
+        "he": "משרתת יחידות פנימיות רבות. זקוקה לאוויר חופשי סביבה, אחרת תספק פחות בקיץ.",
+        "ar": "تخدم وحدات داخلية كثيرة. تحتاج هواء طليقاً حولها وإلا ضعُفت صيفاً."
       },
       "tags": [
         "unit"
@@ -848,6 +893,11 @@
         "he": "יחידת מאוורר־סליל תקרתית",
         "ar": "وحدة فان كويل سقفية"
       },
+      "spec": {
+        "en": "Water, not gas. There is a condensate tray above the ceiling and it will block one day.",
+        "he": "מים ולא גז. יש מגש עיבוי מעל התקרה והוא ייסתם ביום מן הימים.",
+        "ar": "ماء لا غاز. هناك صينية تكثيف فوق السقف وستنسدّ يوماً ما."
+      },
       "tags": [
         "unit"
       ],
@@ -864,6 +914,11 @@
         "en": "Fresh air / heat recovery unit",
         "he": "יחידת אוויר צח עם השבת חום",
         "ar": "وحدة هواء نقي مع استرجاع حراري"
+      },
+      "spec": {
+        "en": "Brings outside air in and takes the heat off what is going out.",
+        "he": "מכניסה אוויר חוץ ומשיבה חום מהאוויר היוצא.",
+        "ar": "تُدخل هواء الخارج وتسترجع حرارة الخارج منه."
       },
       "tags": [
         "unit",
@@ -883,6 +938,11 @@
         "he": "מד מיקרון",
         "ar": "مقياس ميكرون"
       },
+      "spec": {
+        "en": "Proves the system is dry before gas goes in. Pressure alone does not.",
+        "he": "מוכיח שהמערכת יבשה לפני הכנסת גז. לחץ לבדו אינו מוכיח.",
+        "ar": "يثبت جفاف النظام قبل إدخال الغاز. الضغط وحده لا يثبت."
+      },
       "tags": [
         "commissioning"
       ]
@@ -896,6 +956,11 @@
         "en": "Refrigerant manifold gauges",
         "he": "סט מדי לחץ לגז קירור",
         "ar": "مانيفولد قياس غاز التبريد"
+      },
+      "spec": {
+        "en": "Reads both sides at once. The numbers are read against the ambient, not in the abstract.",
+        "he": "מציג את שני הצדדים יחד. המספרים נקראים ביחס לטמפרטורת הסביבה.",
+        "ar": "يقرأ الجانبين معاً. الأرقام تُقرأ مقابل حرارة الجو لا بمعزل."
       },
       "tags": [
         "service"

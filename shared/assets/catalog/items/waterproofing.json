@@ -12,6 +12,11 @@
         "he": "יריעה ביטומנית",
         "ar": "رول بيتومين بالحرق"
       },
+      "spec": {
+        "en": "Torched on with laps that shed water downhill. Every lap the wrong way is a leak.",
+        "he": "מולחמת במבער עם חפיפות המנקזות עם השיפוע. כל חפיפה הפוכה היא נזילה.",
+        "ar": "يُلحم بالشعّال بتراكبات تصرّف مع الميل. كل تراكب معكوس تسريب."
+      },
       "tags": [
         "roof"
       ],
@@ -29,6 +34,11 @@
         "en": "TPO single-ply membrane",
         "he": "יריעת TPO",
         "ar": "غشاء TPO"
+      },
+      "spec": {
+        "en": "Hot-air welded, light, and it stays light in colour, which the roof feels in summer.",
+        "he": "מולחמת באוויר חם, קלה, ונשארת בהירה, וזה מורגש בגג בקיץ.",
+        "ar": "يُلحم بالهواء الساخن، خفيف ويبقى فاتح اللون، والسطح يشعر بذلك صيفاً."
       },
       "tags": [
         "roof"
@@ -48,6 +58,11 @@
         "he": "איטום צמנטי",
         "ar": "عزل إسمنتي"
       },
+      "spec": {
+        "en": "Brushed on and bonded to the substrate. For wet rooms and water tanks.",
+        "he": "נמרח ונקשר למצע. לחדרים רטובים ולמאגרי מים.",
+        "ar": "يُدهن ويرتبط بالقاعدة. لغرف الماء وخزاناته."
+      },
       "tags": [
         "wet-area"
       ],
@@ -65,6 +80,11 @@
         "en": "Liquid polyurethane membrane",
         "he": "איטום פוליאוריטן נוזלי",
         "ar": "عزل بولي يوريثان سائل"
+      },
+      "spec": {
+        "en": "Seamless, which is why it goes where a sheet cannot be lapped cleanly.",
+        "he": "ללא תפרים, ולכן מיושם היכן שלא ניתן לחפוף יריעה בנקיון.",
+        "ar": "بلا فواصل، ولهذا يُستخدم حيث لا يمكن تراكب الرول بنظافة."
       },
       "tags": [
         "roof",
@@ -84,6 +104,11 @@
         "en": "Bitumen primer",
         "he": "יסוד ביטומני",
         "ar": "برايمر بيتوميني"
+      },
+      "spec": {
+        "en": "Binds the dust so the membrane sticks to the slab and not to a layer of grit.",
+        "he": "קושר את האבק כך שהיריעה נדבקת לבטון ולא לשכבת חול.",
+        "ar": "يربط الغبار ليلتصق الرول بالبلاطة لا بطبقة رمل."
       },
       "tags": [
         "preparation"
@@ -127,6 +152,11 @@
         "he": "לוח בידוד XPS",
         "ar": "لوح عزل XPS"
       },
+      "spec": {
+        "en": "Closed cell, so it can sit under the screed or over the waterproofing and stay dry.",
+        "he": "תאים סגורים, ולכן יכול לשבת מתחת למדה או מעל האיטום ולהישאר יבש.",
+        "ar": "خلايا مغلقة، فيصلح تحت السكريد أو فوق العزل ويبقى جافاً."
+      },
       "tags": [
         "thermal"
       ],
@@ -144,6 +174,11 @@
         "en": "Roof drain outlet",
         "he": "מחסום גג",
         "ar": "مصرف سطح"
+      },
+      "spec": {
+        "en": "The lowest point, or it is not a drain. Clamp the membrane into it.",
+        "he": "הנקודה הנמוכה ביותר, אחרת אינו מחסום. יש להדק את היריעה לתוכו.",
+        "ar": "أخفض نقطة، وإلا فليس مصرفاً. أحكم الرول داخله."
       },
       "tags": [
         "roof",
@@ -163,6 +198,11 @@
         "he": "מבער גז לאיטום",
         "ar": "شعّالة غاز للعزل"
       },
+      "spec": {
+        "en": "A hot work permit and a fire watch afterwards. Roof fires start after the torch is off.",
+        "he": "היתר עבודה בחום וצפיית אש אחריה. שריפות גג מתחילות אחרי שהמבער כבה.",
+        "ar": "تصريح عمل ساخن ومراقبة حريق بعده. حرائق الأسطح تبدأ بعد إطفاء الشعّال."
+      },
       "tags": [
         "hot-work"
       ]
@@ -176,6 +216,11 @@
         "en": "Spiked roller",
         "he": "גלגלת קוצים",
         "ar": "رول مسنّن"
+      },
+      "spec": {
+        "en": "Rolls the air out of a liquid membrane. Trapped air is a blister later.",
+        "he": "מגלגלת החוצה את האוויר מיריעה נוזלית. אוויר כלוא הוא בועה בהמשך.",
+        "ar": "يُخرج الهواء من العزل السائل. الهواء المحبوس فقاعة لاحقاً."
       },
       "tags": [
         "hand-tool"

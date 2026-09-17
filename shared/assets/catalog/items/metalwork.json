@@ -12,6 +12,11 @@
         "he": "מעקה פלדה",
         "ar": "درابزين حديد"
       },
+      "spec": {
+        "en": "Height and gap are regulated, not a matter of taste. Measure both before welding.",
+        "he": "הגובה והמרווח מוסדרים בתקן, לא עניין של טעם. יש למדוד לפני ריתוך.",
+        "ar": "الارتفاع والفراغ منظّمان بالمواصفة لا بالذوق. قِسهما قبل اللحام."
+      },
       "tags": [
         "balustrade",
         "safety"
@@ -29,6 +34,11 @@
         "en": "Glass balustrade",
         "he": "מעקה זכוכית",
         "ar": "درابزين زجاج"
+      },
+      "spec": {
+        "en": "Laminated glass only, and the fixing is the design. Tempered alone falls out of the frame.",
+        "he": "זכוכית רב־שכבתית בלבד, והעיגון הוא התכנון. מחוסמת לבדה נושרת מהמסגרת.",
+        "ar": "زجاج مصفّح فقط، والتثبيت هو التصميم. المقسّى وحده يسقط من الإطار."
       },
       "tags": [
         "balustrade",
@@ -48,6 +58,11 @@
         "he": "מאחז יד נירוסטה",
         "ar": "مسكة يد ستانلس"
       },
+      "spec": {
+        "en": "Grade 316 near the sea. 304 rusts in Israeli coastal air and looks neglected in a year.",
+        "he": "נירוסטה 316 ליד הים. 304 מחלידה באוויר החופי ונראית מוזנחת תוך שנה.",
+        "ar": "ستانلس 316 قرب البحر. الـ304 يصدأ في هواء الساحل ويبدو مهملاً خلال سنة."
+      },
       "tags": [
         "balustrade",
         "accessibility"
@@ -66,6 +81,11 @@
         "he": "שער פלדה",
         "ar": "بوابة حديد"
       },
+      "spec": {
+        "en": "Hangs on posts set in concrete. The post, not the leaf, is what sags.",
+        "he": "תלוי על עמודים מעוגנים בבטון. העמוד, לא הכנף, הוא מה שצונח.",
+        "ar": "تُعلَّق على أعمدة مثبّتة بالباطون. العمود لا الدرفة هو ما يهبط."
+      },
       "tags": [
         "gate"
       ],
@@ -82,6 +102,11 @@
         "en": "Steel floor grating",
         "he": "סורג רצפה פלדה",
         "ar": "مشبك أرضية حديد"
+      },
+      "spec": {
+        "en": "Walkable floor over a void. Clip it down; an unclipped panel is a trapdoor.",
+        "he": "רצפה ניתנת להליכה מעל חלל. יש לקבע; פאנל לא מקובע הוא מלכודת.",
+        "ar": "أرضية يُمشى عليها فوق فراغ. ثبّتها؛ اللوح غير المثبّت فخّ."
       },
       "tags": [
         "grating"
@@ -100,6 +125,11 @@
         "he": "משחזת זווית 125 מ״מ",
         "ar": "جلّاخة 125 ملم"
       },
+      "spec": {
+        "en": "The everyday size. Guard on, and never a cutting disc on a grinding job.",
+        "he": "הגודל היומיומי. עם מגן, ולעולם לא דיסק חיתוך לעבודת השחזה.",
+        "ar": "المقاس اليومي. بالحاجب، ولا قرص قصّ أبداً في عمل جلخ."
+      },
       "attributes": {
         "discMm": "125"
       },
@@ -117,6 +147,11 @@
         "he": "מכופף צינורות",
         "ar": "ثنّاية مواسير"
       },
+      "spec": {
+        "en": "Bends without kinking, which a knee and a pipe will not do.",
+        "he": "מכופף בלי לקמט, מה שברך וצינור לא יעשו.",
+        "ar": "يثني دون تجعّد، وهو ما لا تفعله الركبة والماسورة."
+      },
       "tags": [
         "hand-tool"
       ]
@@ -130,6 +165,11 @@
         "en": "Welding clamp set",
         "he": "ערכת מלחציים לריתוך",
         "ar": "طقم ملازم لحام"
+      },
+      "spec": {
+        "en": "Holds the work square while it is tacked. Tacking by hand pulls out of square.",
+        "he": "מחזיק את העבודה בזווית ישרה בזמן הנקודות. ריתוך ביד מוציא מזווית.",
+        "ar": "يمسك القطعة قائمة أثناء التنقيط. التنقيط باليد يخرجها عن الزاوية."
       },
       "tags": [
         "welding"
