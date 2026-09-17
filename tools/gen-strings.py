@@ -64,6 +64,24 @@ PRIVACY_SECTIONS = [
     ("priv_future_title", "priv_future_body"),
 ]
 
+# The same arrangement for the terms of use, and for the same reason: a store
+# that asks for a URL, a screen in the app, and one source so the two cannot
+# say different things. Subscriptions are what turn this from a nicety into a
+# field Play will not leave empty.
+TERMS = pathlib.Path("docs") / "TERMS.md"
+TERMS_LEAD = "terms_lead"
+TERMS_SECTIONS = [
+    ("terms_what_title", "terms_what_body"),
+    ("terms_not_title", "terms_not_body"),
+    ("terms_licence_title", "terms_licence_body"),
+    ("terms_money_title", "terms_money_body"),
+    ("terms_data_title", "terms_data_body"),
+    ("terms_availability_title", "terms_availability_body"),
+    ("terms_liability_title", "terms_liability_body"),
+    ("terms_law_title", "terms_law_body"),
+    ("terms_review_title", "terms_review_body"),
+]
+
 
 def load() -> dict:
     with CATALOGUE.open(encoding="utf-8") as fh:
@@ -115,6 +133,9 @@ def validate(data: dict) -> list[str]:
     for key in [PRIVACY_LEAD] + [k for pair in PRIVACY_SECTIONS for k in pair]:
         if key not in data["strings"]:
             problems.append(f"Privacy page references unknown key {key!r}")
+    for key in [TERMS_LEAD] + [k for pair in TERMS_SECTIONS for k in pair]:
+        if key not in data["strings"]:
+            problems.append(f"Terms page references unknown key {key!r}")
     return problems
 
 
@@ -234,6 +255,29 @@ def render_privacy(data: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def render_terms(data: dict) -> str:
+    lines = [
+        f"<!-- {GENERATED_BANNER} -->",
+        "",
+        "# Terms of use",
+        "",
+        "This is the same text the app shows at **Settings → About → Terms of",
+        "service**, published here so it has a web address. Both come from the same",
+        "source; neither can drift from the other.",
+        "",
+        "It has not been through a lawyer. The last section says so in the app as",
+        "well, because a reader is entitled to know that.",
+    ]
+    for lang in data["languages"]:
+        heading = data["strings"]["app_name"][lang]
+        lines += ["", "---", "", f"## {heading} — {lang}", "",
+                  f"**{data['strings'][TERMS_LEAD][lang]}**"]
+        for title, body in TERMS_SECTIONS:
+            lines += ["", f"### {data['strings'][title][lang]}", "",
+                      data["strings"][body][lang]]
+    return "\n".join(lines) + "\n"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if generated files are out of date")
@@ -257,6 +301,7 @@ def main() -> int:
         write(lproj / "InfoPlist.strings", render_ios_infoplist(data, lang), args.check, stale)
 
     write(ROOT / PRIVACY, render_privacy(data), args.check, stale)
+    write(ROOT / TERMS, render_terms(data), args.check, stale)
 
     if args.check:
         if stale:

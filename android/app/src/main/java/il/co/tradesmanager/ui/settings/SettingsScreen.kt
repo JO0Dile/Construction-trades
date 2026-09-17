@@ -63,6 +63,7 @@ fun SettingsScreen(
     onOpenCompanyProfile: () -> Unit,
     onOpenAudit: () -> Unit,
     onOpenPrivacy: () -> Unit,
+    onOpenTerms: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: SettingsViewModel = viewModel(
@@ -377,6 +378,16 @@ fun SettingsScreen(
                     headlineContent = { Text(stringResource(R.string.set_privacy)) },
                     supportingContent = { Text(stringResource(R.string.priv_lead)) },
                     modifier = Modifier.clickable(onClick = onOpenPrivacy),
+                )
+            }
+
+            // set_terms was in the same state the privacy keys were: written,
+            // translated three ways, and shown nowhere.
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.set_terms)) },
+                    supportingContent = { Text(stringResource(R.string.terms_lead)) },
+                    modifier = Modifier.clickable(onClick = onOpenTerms),
                 )
             }
 

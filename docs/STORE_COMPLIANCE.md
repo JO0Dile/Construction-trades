@@ -203,9 +203,14 @@ Then, by hand:
       no tracking — which is short because the app has no server. It has not
       been through a lawyer, and the day a server exists it is the page that
       has to change before anything is sent to one.
-- [ ] Terms of service. `set_terms` is written and translated and nothing
-      shows it, because terms are the half of this that is genuinely a legal
-      document rather than a description of behaviour.
+- [x] Terms of service. Shown at **Settings → About → Terms of service** and
+      published at `docs/TERMS.md`, both generated from the same catalogue
+      keys as the screen so the two cannot drift. Paste into the Play
+      listing's terms field:
+      `https://github.com/JO0Dile/Construction-trades/blob/main/docs/TERMS.md`
+      Subscriptions are what make this a field Play will not leave empty. The
+      text says on its own last section that it has not been through a lawyer,
+      which is true and which a reader is entitled to know.
 - [x] The same text at a public URL: `docs/PRIVACY.md`, generated from the
       same catalogue keys as the screen so the two cannot drift, with all
       three languages on the one page. Paste this into the Play listing's

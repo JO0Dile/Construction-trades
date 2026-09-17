@@ -1231,6 +1231,26 @@
     <string name="search_kind_plant">Plant</string>
     <!-- Button that closes the app and opens it again to finish a staged restore. -->
     <string name="backup_restart_now">Close and open now</string>
+    <!-- Lead paragraph of the terms of use screen. -->
+    <string name="terms_lead">This is what the app is, what it is not, and what you are answerable for. It is short because the app has no server and collects nothing: most of what terms of use usually cover does not happen here.</string>
+    <string name="terms_what_title">What this software is</string>
+    <string name="terms_what_body">A record-keeping tool for construction work: stock, tasks, people, evidence and money. It runs on the device and keeps its data there.</string>
+    <string name="terms_not_title">It is not a safety system</string>
+    <string name="terms_not_body">The app carries checklists, permit forms, inspection registers and references to Israeli standards. They are prompts for a competent person to work through. They do not make a job safe, they do not certify anybody, and following them is not a defence. A scaffold is signed off by somebody qualified to sign it off; an excavation is inspected by somebody competent to inspect it. The app records that this happened. It cannot do it. Where a standard is named, the name is a pointer for the site file — not a reproduction of the standard and not a substitute for reading it.</string>
+    <string name="terms_licence_title">Recorded is not licensed</string>
+    <string name="terms_licence_body">Recording a contractor registration number marks a firm as having supplied one. Whether that firm is lawfully entitled to carry out particular work is a matter for the regulator, not for this app.</string>
+    <string name="terms_money_title">The arithmetic is tested; the figures are yours</string>
+    <string name="terms_money_body">The app works out retention, payment terms, overtime bands, VAT and valuations from the figures entered into it. It is not accounting software, it files nothing with anybody, and it does not replace an accountant.</string>
+    <string name="terms_data_title">Your data, your responsibility</string>
+    <string name="terms_data_body">The data lives on the device. Back it up — a lost or broken phone is lost data, and the export exists for that reason. Lock it — the passcode and the device lock are what stand between the contents and whoever picks the phone up. And you are the one answerable for the personal data of the people recorded in it: their names, ID numbers, photographs and hours.</string>
+    <string name="terms_availability_title">Supplied as it is</string>
+    <string name="terms_availability_body">There is no uptime commitment, because there is no service to be up. It runs on the device, offline, and keeps running whether or not anybody maintains it.</string>
+    <string name="terms_liability_title">Liability</string>
+    <string name="terms_liability_body">To the extent Israeli law permits, the publisher is not liable for loss arising from use of the software, including lost records, lost profit, or a decision taken on the strength of something the app displayed. Nothing here limits liability that cannot lawfully be limited.</string>
+    <string name="terms_law_title">Governing law</string>
+    <string name="terms_law_body">Israeli law, and the courts of Israel.</string>
+    <string name="terms_review_title">Not yet reviewed by a lawyer</string>
+    <string name="terms_review_body">This text says plainly what the app does and does not do. It has not been through an Israeli lawyer, and it should be before the app is sold. That is a job for a person, not for the person who wrote the software.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

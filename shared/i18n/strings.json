@@ -5751,6 +5751,102 @@
       "en": "Close and open now",
       "he": "סגירה ופתיחה עכשיו",
       "ar": "أغلق وافتح الآن"
+    },
+    "terms_lead": {
+      "c": "Lead paragraph of the terms of use screen.",
+      "en": "This is what the app is, what it is not, and what you are answerable for. It is short because the app has no server and collects nothing: most of what terms of use usually cover does not happen here.",
+      "he": "זה מה שהאפליקציה היא, מה שהיא אינה, ועל מה אתם אחראים. הטקסט קצר משום שאין שרת ואין איסוף מידע: רוב מה שתנאי שימוש נדרשים לכסות פשוט אינו קורה כאן.",
+      "ar": "هذا ما هو التطبيق، وما ليس هو، وما أنت مسؤول عنه. النص قصير لأنه لا يوجد خادم ولا جمع بيانات: معظم ما تغطّيه شروط الاستخدام عادةً لا يحدث هنا."
+    },
+    "terms_what_title": {
+      "en": "What this software is",
+      "he": "מה התוכנה הזאת",
+      "ar": "ما هذا البرنامج"
+    },
+    "terms_what_body": {
+      "en": "A record-keeping tool for construction work: stock, tasks, people, evidence and money. It runs on the device and keeps its data there.",
+      "he": "כלי לתיעוד עבודות בנייה: מלאי, משימות, אנשים, ראיות וכסף. הוא פועל על המכשיר ושומר את המידע בו.",
+      "ar": "أداة لتوثيق أعمال البناء: مخزون ومهام وأشخاص وأدلة وحسابات. يعمل على الجهاز ويحفظ بياناته فيه."
+    },
+    "terms_not_title": {
+      "en": "It is not a safety system",
+      "he": "זו אינה מערכת בטיחות",
+      "ar": "ليس نظام سلامة"
+    },
+    "terms_not_body": {
+      "en": "The app carries checklists, permit forms, inspection registers and references to Israeli standards. They are prompts for a competent person to work through. They do not make a job safe, they do not certify anybody, and following them is not a defence. A scaffold is signed off by somebody qualified to sign it off; an excavation is inspected by somebody competent to inspect it. The app records that this happened. It cannot do it. Where a standard is named, the name is a pointer for the site file — not a reproduction of the standard and not a substitute for reading it.",
+      "he": "באפליקציה יש רשימות תיוג, טפסי היתר, פנקסי בדיקה והפניות לתקנים ישראליים. אלה תזכורות לאדם מוסמך לעבוד לפיהן. הן אינן הופכות עבודה לבטוחה, אינן מסמיכות איש, ומילוין אינו הגנה. פיגום מאושר בידי מי שמוסמך לאשר אותו; חפירה נבדקת בידי מי שכשיר לבדוק אותה. האפליקציה מתעדת שזה קרה. היא אינה יכולה לעשות זאת. כאשר מוזכר תקן, השם הוא מצביע לתיק האתר — לא שכפול של התקן ולא תחליף לקריאתו.",
+      "ar": "يحتوي التطبيق قوائم تدقيق ونماذج تصاريح وسجلات فحص وإشارات إلى المواصفات الإسرائيلية. هي تذكيرات ليعمل بها شخص مؤهَّل. لا تجعل العمل آمناً، ولا تمنح أحداً شهادة، واتّباعها ليس دفاعاً. السقالة يعتمدها من هو مؤهَّل لاعتمادها؛ والحفرية يفحصها من هو كفء لفحصها. التطبيق يوثّق أن ذلك حدث. ولا يستطيع القيام به. وحين يُذكر معيار، فالاسم دليل لملف الموقع — لا نسخة عن المعيار ولا بديل عن قراءته."
+    },
+    "terms_licence_title": {
+      "en": "Recorded is not licensed",
+      "he": "רישום אינו רישוי",
+      "ar": "التسجيل ليس ترخيصاً"
+    },
+    "terms_licence_body": {
+      "en": "Recording a contractor registration number marks a firm as having supplied one. Whether that firm is lawfully entitled to carry out particular work is a matter for the regulator, not for this app.",
+      "he": "רישום מספר קבלן מסמן שהחברה מסרה מספר. האם אותה חברה רשאית כדין לבצע עבודה מסוימת — זה עניין לרגולטור ולא לאפליקציה.",
+      "ar": "تسجيل رقم مقاول يعني أن الشركة قدّمت رقماً. أما كونها مخوَّلة قانوناً بتنفيذ عمل بعينه فشأن الجهة المنظِّمة لا هذا التطبيق."
+    },
+    "terms_money_title": {
+      "en": "The arithmetic is tested; the figures are yours",
+      "he": "החשבון נבדק; המספרים שלכם",
+      "ar": "الحساب مُختبَر؛ والأرقام لك"
+    },
+    "terms_money_body": {
+      "en": "The app works out retention, payment terms, overtime bands, VAT and valuations from the figures entered into it. It is not accounting software, it files nothing with anybody, and it does not replace an accountant.",
+      "he": "האפליקציה מחשבת עיכבון, תנאי תשלום, מדרגות שעות נוספות, מע״מ והערכות מתוך המספרים שהוזנו לה. היא אינה תוכנת הנהלת חשבונות, אינה מדווחת לאיש, ואינה מחליפה רואה חשבון.",
+      "ar": "يحسب التطبيق المحتجزات وشروط الدفع وشرائح العمل الإضافي وضريبة القيمة المضافة والتقديرات من الأرقام المُدخَلة إليه. ليس برنامج محاسبة، ولا يقدّم إقراراً لأحد، ولا يحلّ محلّ المحاسب."
+    },
+    "terms_data_title": {
+      "en": "Your data, your responsibility",
+      "he": "המידע שלכם, באחריותכם",
+      "ar": "بياناتك، ومسؤوليتك"
+    },
+    "terms_data_body": {
+      "en": "The data lives on the device. Back it up — a lost or broken phone is lost data, and the export exists for that reason. Lock it — the passcode and the device lock are what stand between the contents and whoever picks the phone up. And you are the one answerable for the personal data of the people recorded in it: their names, ID numbers, photographs and hours.",
+      "he": "המידע נמצא על המכשיר. גבו אותו — טלפון שאבד או נשבר הוא מידע שאבד, והייצוא קיים בדיוק לשם כך. נעלו אותו — הסיסמה ונעילת המכשיר הן מה שעומד בין התוכן לבין מי שירים את הטלפון. ואתם האחראים למידע האישי של האנשים הרשומים בו: שמותיהם, מספרי הזהות, התמונות והשעות.",
+      "ar": "البيانات على الجهاز. انسخها احتياطياً — الهاتف الضائع أو المكسور بيانات ضائعة، والتصدير موجود لهذا. أقفله — كلمة السر وقفل الجهاز هما ما يقف بين المحتوى ومن يلتقط الهاتف. وأنت المسؤول عن البيانات الشخصية للمسجَّلين فيه: أسماؤهم وأرقام هوياتهم وصورهم وساعاتهم."
+    },
+    "terms_availability_title": {
+      "en": "Supplied as it is",
+      "he": "מסופק כפי שהוא",
+      "ar": "يُقدَّم كما هو"
+    },
+    "terms_availability_body": {
+      "en": "There is no uptime commitment, because there is no service to be up. It runs on the device, offline, and keeps running whether or not anybody maintains it.",
+      "he": "אין התחייבות לזמינות, משום שאין שירות שצריך להיות זמין. התוכנה פועלת על המכשיר, ללא חיבור, וממשיכה לפעול בין אם מישהו מתחזק אותה ובין אם לא.",
+      "ar": "لا التزام بالجاهزية، لأنه لا توجد خدمة لتكون جاهزة. يعمل على الجهاز دون اتصال، ويستمر سواء صانه أحد أم لا."
+    },
+    "terms_liability_title": {
+      "en": "Liability",
+      "he": "אחריות",
+      "ar": "المسؤولية"
+    },
+    "terms_liability_body": {
+      "en": "To the extent Israeli law permits, the publisher is not liable for loss arising from use of the software, including lost records, lost profit, or a decision taken on the strength of something the app displayed. Nothing here limits liability that cannot lawfully be limited.",
+      "he": "במידה שהדין הישראלי מתיר, המפרסם אינו אחראי לנזק הנובע משימוש בתוכנה, לרבות אובדן רישומים, אובדן רווח, או החלטה שהתקבלה על סמך דבר שהאפליקציה הציגה. אין באמור כדי להגביל אחריות שאינה ניתנת להגבלה כדין.",
+      "ar": "بالقدر الذي يسمح به القانون الإسرائيلي، لا يتحمّل الناشر مسؤولية خسارة ناشئة عن استخدام البرنامج، بما في ذلك ضياع السجلات أو فوات الربح أو قرار اتُّخذ بناءً على ما عرضه التطبيق. ولا يحدّ ما ورد هنا مسؤوليةً لا يجوز قانوناً الحدّ منها."
+    },
+    "terms_law_title": {
+      "en": "Governing law",
+      "he": "הדין החל",
+      "ar": "القانون الحاكم"
+    },
+    "terms_law_body": {
+      "en": "Israeli law, and the courts of Israel.",
+      "he": "הדין הישראלי, ובתי המשפט בישראל.",
+      "ar": "القانون الإسرائيلي ومحاكم إسرائيل."
+    },
+    "terms_review_title": {
+      "en": "Not yet reviewed by a lawyer",
+      "he": "טרם נבדק על ידי עורך דין",
+      "ar": "لم يراجعه محامٍ بعد"
+    },
+    "terms_review_body": {
+      "en": "This text says plainly what the app does and does not do. It has not been through an Israeli lawyer, and it should be before the app is sold. That is a job for a person, not for the person who wrote the software.",
+      "he": "הטקסט הזה אומר בפשטות מה האפליקציה עושה ומה אינה עושה. הוא טרם נבדק על ידי עורך דין ישראלי, וראוי שייבדק לפני שהאפליקציה נמכרת. זו עבודה לאדם, ולא למי שכתב את התוכנה.",
+      "ar": "يقول هذا النص بوضوح ما يفعله التطبيق وما لا يفعله. لم يراجعه محامٍ إسرائيلي بعد، وينبغي أن يراجعه قبل بيع التطبيق. تلك مهمة شخص، لا مهمة من كتب البرنامج."
     }
   },
   "plurals": {

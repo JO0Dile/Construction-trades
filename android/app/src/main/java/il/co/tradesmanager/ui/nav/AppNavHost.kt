@@ -69,6 +69,7 @@ import il.co.tradesmanager.ui.safety.ChecklistRunScreen
 import il.co.tradesmanager.ui.safety.SafetyScreen
 import il.co.tradesmanager.ui.schedule.ScheduleScreen
 import il.co.tradesmanager.ui.settings.PrivacyScreen
+import il.co.tradesmanager.ui.settings.TermsScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
 import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
 import il.co.tradesmanager.ui.timesheet.TimesheetScreen
@@ -111,6 +112,7 @@ object Routes {
     const val COMPANY_PROFILE = "company_profile"
     const val AUDIT = "audit"
     const val PRIVACY = "privacy"
+    const val TERMS = "terms"
     const val CONTRACTS = "contracts"
     const val SETTINGS = "settings"
     const val SEARCH = "search"
@@ -359,6 +361,9 @@ fun AppNavHost(
             composable(Routes.PRIVACY) {
                 PrivacyScreen(onBack = { navController.popBackStack() })
             }
+            composable(Routes.TERMS) {
+                TermsScreen(onBack = { navController.popBackStack() })
+            }
             composable("${Routes.WORK_PACKAGES}/{projectId}") { entry ->
                 val id = entry.arguments?.getString("projectId").orEmpty()
                 WorkPackagesScreen(
@@ -569,6 +574,7 @@ fun AppNavHost(
                     },
                     onOpenAudit = { navController.navigate(Routes.AUDIT) },
                     onOpenPrivacy = { navController.navigate(Routes.PRIVACY) },
+                    onOpenTerms = { navController.navigate(Routes.TERMS) },
                     onBack = { navController.popBackStack() },
                 )
             }
