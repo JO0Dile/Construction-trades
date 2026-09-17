@@ -53,6 +53,13 @@ jobs:
       # a full Gradle run; this catches all of them in a second. Source only:
       # the catalogue carries direction marks inside Hebrew item names, and
       # those are what the supplier calls the thing, not a mistake.
+      # A listing one character over the limit is not rejected politely at
+      # upload; it is rejected on submission day by somebody in a hurry who did
+      # not write it. Two of the three languages are not Latin, so every
+      # estimate of their length by eye is wrong.
+      - name: Store listing is within the limits
+        run: python3 tools/check-listing.py
+
       - name: No invisible characters in source
         run: python3 tools/check-invisibles.py
 

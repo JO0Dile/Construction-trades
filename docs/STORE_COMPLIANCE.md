@@ -70,6 +70,24 @@ None of these is a Play "sensitive permission" requiring a declaration form,
 because the app requests no background location, no SMS/call log, no
 all-files access, and no accessibility-service API.
 
+### Listing copy and art — written
+
+- [x] Title, short description and full description in Hebrew, Arabic and
+      English: `docs/store/listing.json`, under Play's own language codes so it
+      pastes straight in. `tools/check-listing.py` holds them to 30 / 80 / 4000
+      characters and runs in CI, because two of the three are not Latin and
+      guessing their length by eye does not work.
+- [x] Icon, 512×512: `docs/store/play-icon-512.png`.
+- [x] Feature graphic, 1024×500, no alpha: `docs/store/play-feature-1024x500.png`.
+      Deliberately wordless — the listing is in three languages, two of them
+      shaped, and a graphic that is wrong in Arabic is worse than one with no
+      words on it.
+- [ ] **Screenshots. Still missing, and they need a device or an emulator.**
+      At least two per form factor, and Play wants them per language: Hebrew
+      and Arabic must be captured with the device itself set to that language,
+      or the layout in them is mirrored the wrong way. Nothing in this
+      repository can produce them.
+
 ### Media
 
 The app writes photos to its own private storage and never reads the shared
