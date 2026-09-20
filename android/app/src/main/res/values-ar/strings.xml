@@ -62,6 +62,9 @@
     <string name="inv_stock_remove">صرف مخزون</string>
     <string name="inv_stock_reason">السبب</string>
     <string name="inv_history">سجل المخزون</string>
+    <string name="inv_reason_used">استُخدم في الموقع</string>
+    <string name="inv_reason_restocked">تجديد المخزون</string>
+    <string name="inv_no_movements">لا توجد حركات بعد</string>
     <string name="inv_scan">مسح ملصق</string>
     <string name="inv_from_catalog">من الكتالوج</string>
     <string name="inv_custom">صنف مخصّص</string>

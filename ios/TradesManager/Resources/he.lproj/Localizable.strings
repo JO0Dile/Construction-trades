@@ -62,6 +62,9 @@
 "inv_stock_remove" = "הוצאת מלאי";
 "inv_stock_reason" = "סיבה";
 "inv_history" = "היסטוריית מלאי";
+"inv_reason_used" = "שימוש באתר";
+"inv_reason_restocked" = "חידוש מלאי";
+"inv_no_movements" = "אין עדיין תנועות";
 "inv_scan" = "סריקת תווית";
 "inv_from_catalog" = "מהקטלוג";
 "inv_custom" = "פריט מותאם";

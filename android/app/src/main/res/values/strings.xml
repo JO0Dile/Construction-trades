@@ -63,6 +63,9 @@
     <string name="inv_stock_remove">Use stock</string>
     <string name="inv_stock_reason">Reason</string>
     <string name="inv_history">Stock history</string>
+    <string name="inv_reason_used">Used on site</string>
+    <string name="inv_reason_restocked">Restocked</string>
+    <string name="inv_no_movements">No movements yet</string>
     <string name="inv_scan">Scan a label</string>
     <string name="inv_from_catalog">From catalogue</string>
     <string name="inv_custom">Custom item</string>

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
+import il.co.tradesmanager.data.local.entity.StockMovementEntity
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -51,6 +53,42 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
     /** Item id -> photo uri, so a row can show the user's own picture. */
     val photoByItem: StateFlow<Map<String, String>> = container.photos.observeItemThumbnails()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
+    /**
+     * Which item's details are open, or null when the sheet is closed.
+     *
+     * What is held is the id, and the row itself is observed from the
+     * database rather than picked out of [items]. Pressing + in the sheet can
+     * carry an item back above its low-stock threshold, and a sheet reading
+     * from the filtered list would then empty itself under the finger that
+     * was still using it.
+     */
+    private val _detailsFor = MutableStateFlow<String?>(null)
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val details: StateFlow<InventoryItemEntity?> = _detailsFor
+        .flatMapLatest { id ->
+            if (id == null) flowOf<InventoryItemEntity?>(null) else container.inventory.observeItem(id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /**
+     * What has happened to that item's stock, newest first.
+     *
+     * Every adjustment has written one of these since the register was built,
+     * naming who moved it and why, and nothing has ever read them back. A
+     * count that cannot be questioned is a count nobody believes.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val detailsMovements: StateFlow<List<StockMovementEntity>> = _detailsFor
+        .flatMapLatest { id ->
+            if (id == null) flowOf(emptyList()) else container.inventory.observeMovements(id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    fun openDetails(itemId: String) { _detailsFor.value = itemId }
+
+    fun closeDetails() { _detailsFor.value = null }
 
     /**
      * Drops every filter.
@@ -98,5 +136,17 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
     fun delete(itemId: String) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
         container.inventory.delete(itemId, actor)
+    }
+
+    companion object {
+        /**
+         * Why the plus and the minus say stock moved.
+         *
+         * Stored on the movement and read back by whatever displays it, so
+         * they are keys rather than prose: the person who moved the stock and
+         * the person reading the register later may not share a language.
+         */
+        const val USED_ON_SITE = "used_on_site"
+        const val RESTOCKED = "restocked"
     }
 }

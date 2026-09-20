@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.inventory
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -91,6 +92,8 @@ fun InventoryScreen(
     val filters by viewModel.filters.collectAsStateWithLifecycle()
     val lowStockCount by viewModel.lowStockCount.collectAsStateWithLifecycle()
     val photoByItem by viewModel.photoByItem.collectAsStateWithLifecycle()
+    val details by viewModel.details.collectAsStateWithLifecycle()
+    val movements by viewModel.detailsMovements.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
     val locale = currentLocale()
     val context = LocalContext.current
@@ -316,7 +319,7 @@ fun InventoryScreen(
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     IconButton(
                                         onClick = {
-                                            viewModel.adjustStock(item.id, -1.0, USED_ON_SITE)
+                                            viewModel.adjustStock(item.id, -1.0, InventoryViewModel.USED_ON_SITE)
                                         },
                                     ) {
                                         Icon(
@@ -325,7 +328,11 @@ fun InventoryScreen(
                                         )
                                     }
                                     AssistChip(
-                                        onClick = { onEditItem(item.id) },
+                                        // The chip reads as a count, so it
+                                        // opens the item rather than jumping
+                                        // straight into a form. Editing is a
+                                        // button inside the sheet.
+                                        onClick = { viewModel.openDetails(item.id) },
                                         label = {
                                             Text(
                                                 Formats.quantity(item.quantity, locale) + " " +
@@ -334,7 +341,7 @@ fun InventoryScreen(
                                         },
                                     )
                                     IconButton(
-                                        onClick = { viewModel.adjustStock(item.id, 1.0, RESTOCKED) },
+                                        onClick = { viewModel.adjustStock(item.id, 1.0, InventoryViewModel.RESTOCKED) },
                                     ) {
                                         Icon(
                                             Icons.Filled.Add,
@@ -343,18 +350,33 @@ fun InventoryScreen(
                                     }
                                 }
                             },
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { viewModel.openDetails(item.id) },
                         )
                     }
                 }
             }
         }
     }
+
+    // Tapping a row opens the item: the picture at a size you can recognise
+    // a fitting from, the whole spec rather than two clipped lines, and the
+    // count with its plus and minus.
+    details?.let { item ->
+        ItemSheet(
+            item = item,
+            movements = movements,
+            photoUri = photoByItem[item.id],
+            onAdjust = { delta, reason -> viewModel.adjustStock(item.id, delta, reason) },
+            onEdit = {
+                viewModel.closeDetails()
+                onEditItem(item.id)
+            },
+            onDismiss = viewModel::closeDetails,
+        )
+    }
 }
-
-
-private const val USED_ON_SITE = "used_on_site"
-private const val RESTOCKED = "restocked"
 
 /**
  * How long to wait for a just-saved row to reach the list.

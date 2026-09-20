@@ -320,6 +320,21 @@
       "he": "היסטוריית מלאי",
       "ar": "سجل المخزون"
     },
+    "inv_reason_used": {
+      "en": "Used on site",
+      "he": "שימוש באתר",
+      "ar": "استُخدم في الموقع"
+    },
+    "inv_reason_restocked": {
+      "en": "Restocked",
+      "he": "חידוש מלאי",
+      "ar": "تجديد المخزون"
+    },
+    "inv_no_movements": {
+      "en": "No movements yet",
+      "he": "אין עדיין תנועות",
+      "ar": "لا توجد حركات بعد"
+    },
     "inv_scan": {
       "en": "Scan a label",
       "he": "סריקת תווית",
