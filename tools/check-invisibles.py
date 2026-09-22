@@ -62,8 +62,21 @@ def offending(text: str) -> list[tuple[int, int, str]]:
 
 
 def main() -> int:
+    # --others --exclude-standard as well as --cached, so a file that has been
+    # written but not yet added is scanned too. Plain `git ls-files` lists only
+    # tracked files, which meant a brand new source file was invisible to this
+    # until the moment it was committed — and a new file is exactly where a
+    # freshly typed escape turns into a raw character. That is not theoretical:
+    # it is how two direction marks reached VerificationTest.kt after this
+    # check had been run and had said the tree was clean.
+    #
+    # --exclude-standard keeps .gitignore honoured, so build output stays out.
     listed = subprocess.run(
-        ["git", "ls-files"], capture_output=True, text=True, cwd=ROOT, check=True
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+        check=True,
     ).stdout.split()
 
     problems = []

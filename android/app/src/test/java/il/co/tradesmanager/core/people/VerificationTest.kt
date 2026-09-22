@@ -93,8 +93,8 @@ class VerificationTest {
 
     @Test
     fun `pasted out of a message with its direction mark`() {
-        assertEquals(Outcome.CORRECT, Verification.check(challenge, "‏" + code, sentAt))
-        assertEquals(Outcome.CORRECT, Verification.check(challenge, code + "‎", sentAt))
+        assertEquals(Outcome.CORRECT, Verification.check(challenge, "\u200F" + code, sentAt))
+        assertEquals(Outcome.CORRECT, Verification.check(challenge, code + "\u200E", sentAt))
     }
 
     @Test
