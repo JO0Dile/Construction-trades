@@ -63,6 +63,15 @@ jobs:
       - name: No invisible characters in source
         run: python3 tools/check-invisibles.py
 
+      # `val x by ...collectAsStateWithLifecycle()` only compiles with the
+      # getValue import, and a `var` written back to needs setValue as well.
+      # The delegate line looks identical to every other one in the file, and
+      # the compiler answers with a message about a type rather than a missing
+      # import. Gradle does not run in the container this is usually worked on,
+      # so one omission costs a whole round trip through here to find.
+      - name: Every Compose state delegate has its import
+        run: python3 tools/check-compose-delegates.py
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.
