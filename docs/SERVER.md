@@ -170,8 +170,8 @@ and better suited to a place where signal comes and goes.
 
 ## Sending a code to the phone number somebody signed up with
 
-Asked for, and not built, because it cannot be built into the app. It is
-written down here rather than left as a gap somebody rediscovers later.
+Asked for. The **rules** are built and tested — `core/people/Verification.kt`
+— and nothing sends anything, because sending cannot be built into the app.
 
 The number is collected at sign-up and required. What is missing is the part
 that proves the person typing it is holding that phone.
@@ -216,8 +216,27 @@ unverified number is a number that has not been confirmed, not a person who
 may not report a near miss or sign an induction. The same rule as
 `docs/PRICING.md`: nothing that keeps somebody safe waits on anything.
 
-**What the app should do until then.** Nothing that pretends. There is no
-"enter the code we sent you" screen, because no code was sent, and a screen
-that asks for one teaches people the app lies to them. The number is
-collected, stored and used for what it is actually for today: ringing
-somebody.
+**What the app does until then.** Nothing that pretends. There is no "enter
+the code we sent you" screen, because no code was sent, and a screen that asks
+for one teaches people the app lies to them. The number is collected, stored
+and used for what it is actually for today: ringing somebody.
+
+What it does have is `core/people/Verification.kt`: how long a code lives, how
+many wrong tries it takes, how long a number waits afterwards, and what counts
+as the same six digits. Rules only — no screen, no column, no caller but its
+own test.
+
+Those rules are written before the server rather than after it for one
+concrete reason. `Formats` puts Arabic-Indic digits on an Arabic screen, so
+the keypad a man is holding gives back ٣٠١٢٣٤ for a code generated as 301234,
+and comparing those as text says no. That is the same fault `IdNumbers` was
+written to fix at the gate — found there only after it had shipped, where it
+read a man already on the books as a stranger. A verification that rejected
+every Arabic-speaking worker would be that fault a second time, and it would
+be discovered the same way. So the folding is in from the start, and the test
+types the code every way it actually gets typed: on an Arabic keypad, with the
+space an SMS reads with, and pasted out of a message with its direction mark.
+
+The endpoints above should enforce the same numbers. When the two disagree,
+**the server wins** — the limit is the whole security of a six-digit code, and
+the app is the thing being attacked.
