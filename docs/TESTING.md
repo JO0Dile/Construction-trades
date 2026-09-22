@@ -683,8 +683,11 @@ At the foot of the dashboard.
 - The confidentiality rules — both the one between firms and the one between
   people — run on this device only, where they are display rules. They become
   access rules when a server runs the same functions; see `docs/SERVER.md`.
-- There is no payment of any kind. `docs/PRICING.md` is a proposal waiting on
-  a decision, not code.
+- There is no payment of any kind. The plans are decided and readable in
+  Settings, and `core/money/Plans.kt` holds the rules with tests, but nothing
+  is sold and no limit is enforced: an entitlement needs somewhere to be
+  checked that is not the phone asking. See the last section of
+  `docs/PRICING.md`.
 ---
 
 ## Android — the path that needs nothing but a phone

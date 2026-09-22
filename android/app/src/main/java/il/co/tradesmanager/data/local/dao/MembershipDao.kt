@@ -43,6 +43,22 @@ interface MembershipDao {
     suspend fun forCompany(companyId: String): List<MembershipEntity>
 
     /**
+     * How many people are currently on one firm's books.
+     *
+     * The same predicate as [observeForCompany], the null-company case
+     * included: a device with nobody's firm on it still has a set of people
+     * on its books, and a plan's seats count them the same way.
+     */
+    @Query(
+        """
+        SELECT COUNT(*) FROM memberships
+        WHERE leftAt IS NULL
+          AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+        """,
+    )
+    fun observeOnTheBooks(companyId: String?): Flow<Int>
+
+    /**
      * Somebody's current membership of one company, or null.
      *
      * What the gate asks before admitting anybody, so a second tap on the

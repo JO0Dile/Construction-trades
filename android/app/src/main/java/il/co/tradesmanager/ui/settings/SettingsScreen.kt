@@ -64,6 +64,7 @@ fun SettingsScreen(
     onOpenAudit: () -> Unit,
     onOpenPrivacy: () -> Unit,
     onOpenTerms: () -> Unit,
+    onOpenPlans: () -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: SettingsViewModel = viewModel(
@@ -388,6 +389,18 @@ fun SettingsScreen(
                     headlineContent = { Text(stringResource(R.string.set_terms)) },
                     supportingContent = { Text(stringResource(R.string.terms_lead)) },
                     modifier = Modifier.clickable(onClick = onOpenTerms),
+                )
+            }
+
+            // Beside the terms rather than at the top of the screen. Nobody
+            // opens an app to read about its pricing, and a firm that has
+            // never been asked for money should not be shown a price list
+            // every time they change the theme.
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.set_plans)) },
+                    supportingContent = { Text(stringResource(R.string.plans_lead)) },
+                    modifier = Modifier.clickable(onClick = onOpenPlans),
                 )
             }
 

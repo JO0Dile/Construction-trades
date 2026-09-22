@@ -1143,6 +1143,116 @@
       "he": "תנאי שימוש",
       "ar": "شروط الاستخدام"
     },
+    "set_plans": {
+      "en": "Plans and pricing",
+      "he": "מסלולים ומחירים",
+      "ar": "الباقات والأسعار"
+    },
+    "plans_lead": {
+      "en": "Priced per company, not per person. The boss pays; the crew does not.",
+      "he": "המחיר לפי חברה, לא לפי אדם. הבוס משלם, הצוות לא.",
+      "ar": "السعر لكل شركة، لا لكل شخص. المعلم يدفع، والطاقم لا."
+    },
+    "plans_safety_title": {
+      "en": "Never behind a payment",
+      "he": "לעולם לא בתשלום",
+      "ar": "لا يُدفع مقابله أبدًا"
+    },
+    "plans_safety_body": {
+      "en": "Admission at the gate, the safety induction, reading a permit, reporting an incident or a near miss, seeing a violation written against you, clocking in and out, and reading or exporting anything already recorded. Free on every plan, for ever, including after a subscription runs out.",
+      "he": "כניסה בשער, תדרוך בטיחות, קריאת היתר עבודה, דיווח על תאונה או כמעט נפגע, צפייה בעבירה שנרשמה נגדך, דיווח נוכחות, וקריאה או יצוא של כל מה שכבר נרשם. חינם בכל מסלול, לתמיד, גם אחרי שהמנוי נגמר.",
+      "ar": "الدخول من البوابة، والتوجيه الأمني، وقراءة تصريح العمل، والإبلاغ عن حادث أو عن موقف وشيك، ورؤية مخالفة مسجّلة بحقك، وتسجيل الحضور والانصراف، وقراءة أو تصدير كل ما سُجّل. مجانًا في كل باقة، دائمًا، وحتى بعد انتهاء الاشتراك."
+    },
+    "plans_free": {
+      "en": "Free",
+      "he": "חינם",
+      "ar": "مجانًا"
+    },
+    "plans_pro": {
+      "en": "Pro",
+      "he": "פרו",
+      "ar": "برو"
+    },
+    "plans_site": {
+      "en": "Site",
+      "he": "אתר",
+      "ar": "موقع"
+    },
+    "plans_free_price": {
+      "en": "No charge",
+      "he": "ללא תשלום",
+      "ar": "بلا مقابل"
+    },
+    "plans_pro_price": {
+      "en": "₪49 a month, or ₪490 a year",
+      "he": "₪49 לחודש, או ₪490 לשנה",
+      "ar": "₪49 شهريًا، أو ₪490 سنويًا"
+    },
+    "plans_site_price": {
+      "en": "₪149 a month, or ₪1,490 a year",
+      "he": "₪149 לחודש, או ₪1,490 לשנה",
+      "ar": "₪149 شهريًا، أو ₪1,490 سنويًا"
+    },
+    "plans_free_for": {
+      "en": "A sole trader or a small crew. Everything works: the catalogue, all five lenses, the registers, the photographs, the audit trail.",
+      "he": "עצמאי או צוות קטן. הכול עובד: הקטלוג, חמש העדשות, היומנים, התמונות ונתיב הביקורת.",
+      "ar": "عامل مستقل أو طاقم صغير. كل شيء يعمل: الكتالوج، والعدسات الخمس، والسجلات، والصور، ومسار التدقيق."
+    },
+    "plans_pro_for": {
+      "en": "A firm with a crew. Adds more than one company on a device and a signed audit export a third party can check.",
+      "he": "חברה עם צוות. מוסיף יותר מחברה אחת במכשיר אחד, ויצוא ביקורת חתום שגורם שלישי יכול לבדוק.",
+      "ar": "شركة لديها طاقم. تضيف أكثر من شركة على الجهاز الواحد، وتصدير تدقيق موقّع يمكن لجهة ثالثة التحقق منه."
+    },
+    "plans_site_for": {
+      "en": "A main contractor. Adds subcontractor chains, contracts and work packages, and payment applications with certification and retention.",
+      "he": "קבלן ראשי. מוסיף שרשרות קבלני משנה, חוזים וחבילות עבודה, וחשבונות חלקיים עם אישור ועיכבון.",
+      "ar": "مقاول رئيسي. يضيف سلاسل مقاولي الباطن، والعقود وحزم العمل، ومطالبات الدفع مع الاعتماد والمحتجز."
+    },
+    "plans_seats_free": {
+      "en": "Up to 3 people",
+      "he": "עד 3 אנשים",
+      "ar": "حتى 3 أشخاص"
+    },
+    "plans_seats_pro": {
+      "en": "Up to 15 people",
+      "he": "עד 15 אנשים",
+      "ar": "حتى 15 شخصًا"
+    },
+    "plans_seats_site": {
+      "en": "No limit on people",
+      "he": "ללא הגבלה על מספר האנשים",
+      "ar": "بلا حد لعدد الأشخاص"
+    },
+    "plans_year_note": {
+      "en": "A year is two months free.",
+      "he": "תשלום שנתי הוא שני חודשים חינם.",
+      "ar": "الاشتراك السنوي يعني شهرين مجانًا."
+    },
+    "plans_vat": {
+      "en": "Prices include VAT at 18%.",
+      "he": "המחירים כוללים מע\"מ בשיעור 18%.",
+      "ar": "الأسعار شاملة ضريبة القيمة المضافة 18%."
+    },
+    "plans_current": {
+      "en": "Your plan",
+      "he": "המסלול שלך",
+      "ar": "باقتك"
+    },
+    "plans_on_the_books": {
+      "en": "People on the books",
+      "he": "אנשים בספרים",
+      "ar": "الأشخاص المسجلون"
+    },
+    "plans_not_yet_title": {
+      "en": "Nothing to pay yet",
+      "he": "אין עדיין מה לשלם",
+      "ar": "لا شيء للدفع بعد"
+    },
+    "plans_not_yet_body": {
+      "en": "Everybody is on the free plan and no limit is enforced. Buying is not switched on until the subscription can be checked against something other than this phone, and a limit that could be lifted by tapping a button on your own device is not a limit.",
+      "he": "כולם במסלול החינם ואין אכיפה של שום מגבלה. הרכישה לא תיפתח עד שאפשר יהיה לבדוק את המנוי מול משהו שאינו הטלפון הזה, ומגבלה שניתן להסיר בלחיצה על המכשיר שלך אינה מגבלה.",
+      "ar": "الجميع على الباقة المجانية ولا يُفرض أي حد. لن يُفتح الشراء قبل أن يصبح بالإمكان التحقق من الاشتراك مقابل جهة غير هذا الهاتف؛ والحد الذي يمكن رفعه بضغطة زر على جهازك ليس حدًا."
+    },
     "set_about": {
       "en": "About",
       "he": "אודות",

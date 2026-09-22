@@ -32,6 +32,16 @@ class MembershipRepository(
 
     fun observeCompanies(): Flow<List<CompanyEntity>> = dao.observeCompanies()
 
+    /**
+     * How many people the firm currently has on its books.
+     *
+     * What a plan's seats are counted against — see
+     * [il.co.tradesmanager.core.money.Plans.seats]. People who have left are
+     * not counted: a seat is somebody working here now, not everybody who
+     * ever did.
+     */
+    fun observeOnTheBooks(companyId: String?): Flow<Int> = dao.observeOnTheBooks(companyId)
+
     /** Everyone currently on one company's books. */
     fun observeForCompany(companyId: String?): Flow<List<MembershipEntity>> =
         dao.observeForCompany(companyId)
