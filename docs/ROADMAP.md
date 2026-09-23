@@ -447,17 +447,32 @@ is correct and unenforced.
 
 ## The 350, honestly
 
-A full list of 350 wanted features exists. Sorted by what it would actually
-take to build them, it comes out roughly:
+A full list of 350 wanted features exists. **It is not in this repository**,
+which is why the first row below is an estimate and the rest are not. Sorted
+by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 77 | |
-| Buildable here — on the device, no server | 109 | where the work is |
+| Built | ~85 | *estimated — see below* |
+| Buildable here — on the device, no server | ~101 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
+
+The built figure has gone 35 → 44 → 76 → 77 → ~85 since the third of
+September. The last exact count was 77, on the fourteenth. Landing since
+then, and plausibly items on the list: site admission at the gate, one search
+box across the whole app, terms of service, the stock item detail sheet, the
+plans screen, the rules for a phone verification code, and restore actually
+reaching the end of its own mechanism.
+
+**It is an estimate and it should not be quoted as anything else.** Counting
+it properly needs the 350-item list, which lives outside this repository.
+Anybody holding that list can settle it in an afternoon: mark each line
+built, buildable here, or one of the four kinds of impossible, and replace
+this table with the real numbers. It is worth doing before the list is shown
+to anybody deciding whether to buy this.
 
 So about half of the list cannot be built into this app however long anybody
 works at it, because it needs a signed agreement, a server, a device that does
