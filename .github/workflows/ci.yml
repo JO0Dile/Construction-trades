@@ -72,6 +72,12 @@ jobs:
       - name: Every Compose state delegate has its import
         run: python3 tools/check-compose-delegates.py
 
+      # Two Kotlin mistakes that compile cleanly in the head and not in the
+      # compiler, each of which has cost a full CI round trip: a second
+      # companion object in a class that already has one, and catch (_: E).
+      - name: No Kotlin the compiler will reject
+        run: python3 tools/check-kotlin-pitfalls.py
+
       # The fault this codebase actually has is not a crash. It is a feature
       # that compiles, lints and passes every test and cannot be reached: a
       # route nothing navigates to, a screen nothing calls, a view model

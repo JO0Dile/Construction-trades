@@ -156,9 +156,8 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
 
         /** The seeder's actor name. Its rows are true and nobody wants them. */
         const val SYSTEM_ACTOR = "system"
-    }
 
-    private companion object {
+        /** The pre-use states that mean a machine should not be started yet. */
         val NEEDS_A_CHECK = setOf(PreUse.Today.NEVER_CHECKED, PreUse.Today.NOT_CHECKED_TODAY)
     }
 }
