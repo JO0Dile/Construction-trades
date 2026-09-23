@@ -3,6 +3,11 @@
 Four spreadsheets. All are UTF-8 with a byte-order mark, so Excel opens them
 in Hebrew and Arabic without mangling anything.
 
+**Going out to take the photographs? Use [`../PHOTOS.md`](../PHOTOS.md)
+instead.** It is the same list as `items-needing-photos.csv`, written as a
+checklist that reads on a phone. Ten columns of spreadsheet render as a table
+wider than the screen of the person actually standing in the merchant's.
+
 ## items.csv — 497 catalogue items
 
 One row per thing the app can stock. Columns:

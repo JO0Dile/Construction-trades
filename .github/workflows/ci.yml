@@ -112,6 +112,14 @@ jobs:
       - name: The documented permissions are the ones the app holds
         run: python3 tools/check-permissions.py
 
+      # The photograph checklist is generated from the catalogue. A picture
+      # added without regenerating it leaves the list telling somebody to go
+      # and take one that is already in the repository — which is a wasted
+      # afternoon rather than a broken build, and so exactly the kind of thing
+      # nobody notices.
+      - name: The photograph checklist matches the catalogue
+        run: python3 tools/photo-worklist.py --check
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.

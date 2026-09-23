@@ -131,37 +131,53 @@ refusing to start on a site with no signal.
 
 ## State of the work
 
-Built, and verified by running:
+Every push builds the app, runs the tests and runs twenty-two checks. Nothing
+below is a claim about what was intended — it is what the build proves.
 
-- the shared catalogues, and the generator and format they depend on
-- the Room data layer: 19 entities, seeding with a duplicate guard, stock
-  movements, audit trail, encryption
-- Compose screens: onboarding, home, inventory list and editor, projects with
-  templates, day schedule with check-in, safety checklist runs with sign-off,
-  settings
-- SwiftUI screens covering the same ground, over SwiftData models that mirror
-  the Room schema field for field, with in-app language switching that needs no
-  restart
-- barcode scanning on both platforms — CameraX with ML Kit on Android,
-  AVFoundation on iOS — and CSV + PDF export that survives Excel on Windows and
-  mirrors its columns for Hebrew and Arabic
-- 40 unit tests, all passing — locale resolution and fallback, Israeli
-  date/time/currency formats, time-of-day parsing, CSV quoting and filename
-  reduction, and a catalogue integrity suite that parses all 178 items, 84
-  checks and 12 templates through the app's own model types with unknown keys
+**Built and verified:**
+
+- 22 trades, **527 catalogue items**, 193 safety checks and 17 project
+  templates, all parsed through the app's own model types with unknown keys
   rejected
+- **1,274 interface strings and 18 plural rules in Hebrew, Arabic and
+  English**, with every catalogue block trilingual too. The build fails if one
+  language goes missing, if the English is pasted into another, or if an
+  English sentence is written into the audit register
+- a Room data layer: **52 entities, 29 migrations** replayed end to end on
+  every push with a check that no rebuild loses its rows, plus seeding with a
+  duplicate guard, stock movements, a tamper-evident audit trail and SQLCipher
+- the five lenses as Compose screens, and SwiftUI screens covering the same
+  ground over SwiftData models that mirror the Room schema field for field
+- barcode scanning on both platforms, and CSV + PDF export that survives Excel
+  on Windows and mirrors its columns for Hebrew and Arabic
+- **635 unit tests, all passing**, and a release bundle built through R8 on
+  every push — because a debug build does not minify, and something Room,
+  SQLCipher or kotlinx.serialization loads reflectively should not first go
+  missing on the day of a store submission
 
-Not built, and not pretended otherwise:
+**Not built, and not pretended otherwise:**
 
-- **No `.xcodeproj`** — an Xcode project cannot be generated faithfully without
-  Xcode, so the iOS set-up is fifteen manual minutes on a Mac.
-- The Swift has never been compiled; this repository was built in an
-  environment with no Swift toolchain and no Android SDK. The Kotlin's pure
-  layers are compiled and tested, the Android build itself is not.
-- Photo capture, the cloud sync implementation behind `SyncEngine`, and the
-  on-premise service.
-- Hebrew and Arabic terminology review by a native-speaking tradesperson, and a
-  VoiceOver/TalkBack accessibility pass.
+- **No server.** Sync, cross-firm confidentiality as an access rule rather than
+  a display rule, and anchoring the audit chain somewhere the holder of the
+  phone does not control all wait on it. See
+  [`docs/SERVER.md`](docs/SERVER.md).
+- **No billing.** The plans are decided and readable in Settings; nothing is
+  sold. An entitlement kept on the device can be set by whoever holds the
+  device, so there is nothing to enforce yet —
+  [`docs/PRICING.md`](docs/PRICING.md) says what has to exist first.
+- **No `.xcodeproj`**, and the Swift has never been compiled: this repository
+  is worked on in a container with no Swift toolchain. The iOS set-up is
+  fifteen manual minutes on a Mac. The Android build *is* compiled, linted and
+  tested on every push.
+- **112 catalogue items still have no photograph** — everything else has one.
+  The list, with a brief for each, is in
+  [`docs/PHOTOS.md`](docs/PHOTOS.md).
+- Hebrew and Arabic **terminology review by a native-speaking tradesperson**.
+  The translations are complete and the build keeps them that way; whether the
+  words are the ones used on a site is a different claim, and not yet made.
+- A VoiceOver/TalkBack pass. Every icon in the app carries a content
+  description and no icon-only button is unlabelled, but that has been checked
+  by reading the source, not by listening to it.
 
 The safety content carries a warning in the app and in
 [`docs/CATALOG_FORMAT.md`](docs/CATALOG_FORMAT.md): the regulation references
