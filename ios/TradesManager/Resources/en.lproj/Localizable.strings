@@ -1378,3 +1378,71 @@
 "summary_status_proposed" = "Proposed";
 "summary_status_withdrawn" = "Withdrawn";
 "summary_variation_status" = "%1$s: %2$s";
+"summary_muster_ended_all_out" = "Roll call ended, everybody accounted for";
+"summary_muster_ended_missing" = "Roll call ended, %1$s unaccounted for: %2$s";
+"summary_muster_person_added" = "%1$s added to the roll call";
+"summary_muster_started" = "Roll call started (%1$s), %2$s on site";
+/* Roll call screen title */
+"muster_title" = "Roll call";
+/* What the screen is for, shown when nothing is running */
+"muster_blurb" = "When the site is cleared, this counts everybody who was checked in and tells you who is still missing. It works with no signal.";
+/* A practice evacuation */
+"muster_reason_drill" = "Practice drill";
+/* A real evacuation */
+"muster_reason_emergency" = "Emergency";
+"muster_start" = "Start roll call";
+/* Optional free text: what happened, where the assembly point is */
+"muster_note_hint" = "What happened (optional)";
+"muster_live" = "Roll call in progress";
+/* The number the screen shows biggest */
+"muster_unaccounted" = "%1$d unaccounted for";
+"muster_all_accounted" = "Everybody accounted for";
+/* How long the roll call has been running */
+"muster_minutes" = "%1$d min";
+/* Shown once a roll call has run past ten minutes */
+"muster_taking_long" = "This is taking a while. Hand the list over if you have to.";
+/* Standing at the muster point */
+"muster_present" = "Present";
+/* Confirmed safe, but not at the muster point */
+"muster_elsewhere" = "Safe elsewhere";
+/* Undo: puts somebody back on the missing list */
+"muster_still_missing" = "Still missing";
+/* Badge: their check-in had been open longer than any shift */
+"muster_stale" = "Old check-in — may not be on site";
+/* Badge: not from the check-in data */
+"muster_added_badge" = "Added at the gate";
+"muster_add_person" = "Add somebody";
+/* Why you would add somebody by hand */
+"muster_add_person_blurb" = "A visitor, a driver, anybody who never checked in.";
+"muster_name_hint" = "Name";
+/* Asked before somebody may be marked safe elsewhere */
+"muster_account_question" = "How do you know they are safe?";
+/* Example answer */
+"muster_account_hint" = "Rang him, left at four";
+/* Refusal: marking somebody safe elsewhere with nothing said about how */
+"muster_account_required" = "Say how they were reached. A roll call ticked off without checking is worth nothing.";
+"muster_end" = "End roll call";
+"muster_end_with_missing_title" = "End with names missing?";
+/* Names the people who will be recorded as unaccounted for */
+"muster_end_with_missing_body" = "These names stay on the record as unaccounted for: %1$s";
+/* Shown when no open check-in exists to build a list from */
+"muster_nobody_checked_in" = "Nobody is checked in right now. You can still start a roll call and add names by hand.";
+/* How many open check-ins the list was built from */
+"muster_on_site" = "%1$d on site";
+"muster_history" = "Past roll calls";
+"muster_history_empty" = "No roll calls yet.";
+"muster_already_running" = "A roll call is already running.";
+/* Button on the banner that opens the running roll call */
+"muster_open_live" = "Open";
+/* Summary line on a past roll call that ended with people missing */
+"muster_record_missing" = "%1$d unaccounted for";
+/* Summary line on a past roll call where everybody was found */
+"muster_record_clear" = "Everybody out";
+/* Refusal: this account cannot write to the safety register, so it cannot start a roll call */
+"muster_not_allowed" = "This account cannot write to the safety register, so it cannot start a roll call. Anybody on site who can should start it.";
+/* A roll call write that failed for a reason the screen has no sentence for */
+"muster_refused_generic" = "That did not go through. Try again, and if it keeps failing write the names down.";
+/* Section header: violations this officer has started and not finished */
+"vio_drafts" = "Yours, not finished";
+/* Supporting line on an unfinished draft row */
+"vio_draft_resume" = "Tap to finish or drop it. Nobody else can see it.";

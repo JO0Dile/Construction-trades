@@ -6487,6 +6487,238 @@
       "en": "%1$s: %2$s",
       "he": "%1$s: %2$s",
       "ar": "%1$s: %2$s"
+    },
+    "summary_muster_ended_all_out": {
+      "en": "Roll call ended, everybody accounted for",
+      "he": "המפקד הסתיים, כל הנוכחים אותרו",
+      "ar": "انتهى النداء، الجميع محسوبون"
+    },
+    "summary_muster_ended_missing": {
+      "en": "Roll call ended, %1$s unaccounted for: %2$s",
+      "he": "המפקד הסתיים, %1$s לא אותרו: %2$s",
+      "ar": "انتهى النداء، %1$s لم يُعثر عليهم: %2$s"
+    },
+    "summary_muster_person_added": {
+      "en": "%1$s added to the roll call",
+      "he": "%1$s נוסף למפקד",
+      "ar": "أُضيف %1$s إلى النداء"
+    },
+    "summary_muster_started": {
+      "en": "Roll call started (%1$s), %2$s on site",
+      "he": "מפקד נוכחות החל (%1$s), %2$s באתר",
+      "ar": "بدأ نداء الأسماء (%1$s)، %2$s في الموقع"
+    },
+    "muster_title": {
+      "c": "Roll call screen title",
+      "en": "Roll call",
+      "he": "מפקד נוכחות",
+      "ar": "نداء الأسماء"
+    },
+    "muster_blurb": {
+      "c": "What the screen is for, shown when nothing is running",
+      "en": "When the site is cleared, this counts everybody who was checked in and tells you who is still missing. It works with no signal.",
+      "he": "כשהאתר מפונה, המסך סופר את כל מי שהיה רשום בכניסה ומראה מי עדיין חסר. עובד גם בלי קליטה.",
+      "ar": "عند إخلاء الموقع، تحصي هذه الشاشة كل من سجّل دخوله وتبيّن من لا يزال مفقودًا. تعمل دون إنترنت."
+    },
+    "muster_reason_drill": {
+      "c": "A practice evacuation",
+      "en": "Practice drill",
+      "he": "תרגיל",
+      "ar": "تمرين"
+    },
+    "muster_reason_emergency": {
+      "c": "A real evacuation",
+      "en": "Emergency",
+      "he": "חירום",
+      "ar": "طوارئ"
+    },
+    "muster_start": {
+      "en": "Start roll call",
+      "he": "התחל מפקד",
+      "ar": "ابدأ النداء"
+    },
+    "muster_note_hint": {
+      "c": "Optional free text: what happened, where the assembly point is",
+      "en": "What happened (optional)",
+      "he": "מה קרה (אפשרי)",
+      "ar": "ما الذي حدث (اختياري)"
+    },
+    "muster_live": {
+      "en": "Roll call in progress",
+      "he": "מפקד מתנהל",
+      "ar": "النداء جارٍ"
+    },
+    "muster_unaccounted": {
+      "c": "The number the screen shows biggest",
+      "en": "%1$d unaccounted for",
+      "he": "%1$d לא אותרו",
+      "ar": "%1$d لم يُعثر عليهم"
+    },
+    "muster_all_accounted": {
+      "en": "Everybody accounted for",
+      "he": "כל הנוכחים אותרו",
+      "ar": "الجميع محسوبون"
+    },
+    "muster_minutes": {
+      "c": "How long the roll call has been running",
+      "en": "%1$d min",
+      "he": "%1$d דקות",
+      "ar": "%1$d دقيقة"
+    },
+    "muster_taking_long": {
+      "c": "Shown once a roll call has run past ten minutes",
+      "en": "This is taking a while. Hand the list over if you have to.",
+      "he": "זה לוקח זמן. אם צריך, תעבירו את הרשימה לכוחות ההצלה.",
+      "ar": "الأمر يطول. سلّم القائمة للطوارئ إن لزم الأمر."
+    },
+    "muster_present": {
+      "c": "Standing at the muster point",
+      "en": "Present",
+      "he": "נוכח",
+      "ar": "حاضر"
+    },
+    "muster_elsewhere": {
+      "c": "Confirmed safe, but not at the muster point",
+      "en": "Safe elsewhere",
+      "he": "בטוח במקום אחר",
+      "ar": "بأمان في مكان آخر"
+    },
+    "muster_still_missing": {
+      "c": "Undo: puts somebody back on the missing list",
+      "en": "Still missing",
+      "he": "עדיין לא אותר",
+      "ar": "لا يزال مفقودًا"
+    },
+    "muster_stale": {
+      "c": "Badge: their check-in had been open longer than any shift",
+      "en": "Old check-in — may not be on site",
+      "he": "כניסה ישנה — ייתכן שאינו באתר",
+      "ar": "تسجيل قديم — قد لا يكون في الموقع"
+    },
+    "muster_added_badge": {
+      "c": "Badge: not from the check-in data",
+      "en": "Added at the gate",
+      "he": "נוסף בשער",
+      "ar": "أُضيف عند البوابة"
+    },
+    "muster_add_person": {
+      "en": "Add somebody",
+      "he": "הוסף אדם",
+      "ar": "أضف شخصًا"
+    },
+    "muster_add_person_blurb": {
+      "c": "Why you would add somebody by hand",
+      "en": "A visitor, a driver, anybody who never checked in.",
+      "he": "מבקר, נהג, או כל מי שלא נרשם בכניסה.",
+      "ar": "زائر أو سائق أو أي شخص لم يسجّل دخوله."
+    },
+    "muster_name_hint": {
+      "en": "Name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "muster_account_question": {
+      "c": "Asked before somebody may be marked safe elsewhere",
+      "en": "How do you know they are safe?",
+      "he": "מנין ידוע שהוא בטוח？",
+      "ar": "كيف تعرف أنه بأمان؟"
+    },
+    "muster_account_hint": {
+      "c": "Example answer",
+      "en": "Rang him, left at four",
+      "he": "התקשרתי אליו, עזב בארבע",
+      "ar": "اتصلت به، غادر الساعة الرابعة"
+    },
+    "muster_account_required": {
+      "c": "Refusal: marking somebody safe elsewhere with nothing said about how",
+      "en": "Say how they were reached. A roll call ticked off without checking is worth nothing.",
+      "he": "צריך לרשום איך אומת איתו. מפקד שמסמנים בלי לבדוק לא שווה כלום.",
+      "ar": "اذكر كيف تمّ التأكد منه. نداء يُعلّم دون تحقق لا قيمة له."
+    },
+    "muster_end": {
+      "en": "End roll call",
+      "he": "סיים מפקד",
+      "ar": "أنهِ النداء"
+    },
+    "muster_end_with_missing_title": {
+      "en": "End with names missing?",
+      "he": "לסיים כשחסרים שמות？",
+      "ar": "إنهاء وهناك أسماء مفقودة؟"
+    },
+    "muster_end_with_missing_body": {
+      "c": "Names the people who will be recorded as unaccounted for",
+      "en": "These names stay on the record as unaccounted for: %1$s",
+      "he": "השמות האלה יירשמו כמי שלא אותרו: %1$s",
+      "ar": "تبقى هذه الأسماء في السجل كمفقودين: %1$s"
+    },
+    "muster_nobody_checked_in": {
+      "c": "Shown when no open check-in exists to build a list from",
+      "en": "Nobody is checked in right now. You can still start a roll call and add names by hand.",
+      "he": "אין כרגע אף אחד רשום בכניסה. אפשר להתחיל מפקד ולהוסיף שמות ידנית.",
+      "ar": "لا أحد مسجّل الآن. يمكنك بدء النداء وإضافة الأسماء يدويًا."
+    },
+    "muster_on_site": {
+      "c": "How many open check-ins the list was built from",
+      "en": "%1$d on site",
+      "he": "%1$d באתר",
+      "ar": "%1$d في الموقع"
+    },
+    "muster_history": {
+      "en": "Past roll calls",
+      "he": "מפקדים קודמים",
+      "ar": "النداءات السابقة"
+    },
+    "muster_history_empty": {
+      "en": "No roll calls yet.",
+      "he": "עדיין אין מפקדים.",
+      "ar": "لا توجد نداءات بعد."
+    },
+    "muster_already_running": {
+      "en": "A roll call is already running.",
+      "he": "כבר מתנהל מפקד.",
+      "ar": "هناك نداء جارٍ بالفعل."
+    },
+    "muster_open_live": {
+      "c": "Button on the banner that opens the running roll call",
+      "en": "Open",
+      "he": "פתח",
+      "ar": "افتح"
+    },
+    "muster_record_missing": {
+      "c": "Summary line on a past roll call that ended with people missing",
+      "en": "%1$d unaccounted for",
+      "he": "%1$d לא אותרו",
+      "ar": "%1$d لم يُعثر عليهم"
+    },
+    "muster_record_clear": {
+      "c": "Summary line on a past roll call where everybody was found",
+      "en": "Everybody out",
+      "he": "כולם יצאו",
+      "ar": "الجميع خرجوا"
+    },
+    "muster_not_allowed": {
+      "c": "Refusal: this account cannot write to the safety register, so it cannot start a roll call",
+      "en": "This account cannot write to the safety register, so it cannot start a roll call. Anybody on site who can should start it.",
+      "he": "לחשבון הזה אין הרשאה לכתוב במרשם הבטיחות, ולכן אינו יכול להתחיל מפקד. שמי שכן יכול, באתר, יתחיל אותו.",
+      "ar": "هذا الحساب لا يملك صلاحية الكتابة في سجل السلامة، فلا يمكنه بدء النداء. ليبدأه من يملك ذلك ممن هم في الموقع."
+    },
+    "muster_refused_generic": {
+      "c": "A roll call write that failed for a reason the screen has no sentence for",
+      "en": "That did not go through. Try again, and if it keeps failing write the names down.",
+      "he": "הפעולה לא נקלטה. נסו שוב, ואם זה חוזר — רשמו את השמות על דף.",
+      "ar": "لم تُنفّذ العملية. أعد المحاولة، وإن تكرر الأمر فاكتب الأسماء على ورق."
+    },
+    "vio_drafts": {
+      "c": "Section header: violations this officer has started and not finished",
+      "en": "Yours, not finished",
+      "he": "טיוטות שלך שלא הושלמו",
+      "ar": "مسوداتك غير المكتملة"
+    },
+    "vio_draft_resume": {
+      "c": "Supporting line on an unfinished draft row",
+      "en": "Tap to finish or drop it. Nobody else can see it.",
+      "he": "הקישו כדי להשלים או לבטל. אף אחד אחר לא רואה את זה.",
+      "ar": "انقر لإكمالها أو إلغائها. لا يراها أحد سواك."
     }
   },
   "plurals": {

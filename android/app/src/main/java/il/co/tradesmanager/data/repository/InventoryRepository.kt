@@ -11,6 +11,8 @@ import il.co.tradesmanager.data.local.entity.StockMovementEntity
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 class InventoryRepository(
     private val dao: InventoryDao,
@@ -100,6 +102,23 @@ class InventoryRepository(
     }
 
     /**
+     * Adjustments are serialised.
+     *
+     * Reading the count and writing it back are two calls, and every plus and
+     * minus in the app is a tap that starts its own coroutine. Two taps a few
+     * milliseconds apart both read the same number and both wrote one more
+     * than it, so five taps on the plus put three on the shelf -- silently,
+     * with a movement row for each tap that agreed with itself and not with
+     * the total. That is the bug somebody reports as "the buttons do not
+     * work", and no amount of pressing them harder fixes it.
+     *
+     * A mutex rather than a transaction, for the same reason AuditTrail uses
+     * one: the ordering of the read and the write is what matters, and it
+     * holds within this process, which is where every writer is.
+     */
+    private val adjusting = Mutex()
+
+    /**
      * Moves stock and writes the movement in the same call, so a quantity can
      * never change without a row saying who changed it and why. Stock is
      * clamped at zero: a van cannot hold minus three sockets, and a negative
@@ -111,10 +130,17 @@ class InventoryRepository(
         reason: String,
         actorName: String,
         projectId: String? = null,
-    ): Double {
-        val item = dao.item(itemId) ?: return 0.0
+    ): Double = adjusting.withLock {
+        val item = dao.item(itemId) ?: return@withLock 0.0
         val now = System.currentTimeMillis()
         val resulting = (item.quantity + delta).coerceAtLeast(0.0)
+
+        // Nothing moved, so nothing is recorded. Pressing minus on an empty
+        // shelf used to write a movement of zero and an audit line saying the
+        // count went from nought to nought -- so the one place a foreman goes
+        // to ask where his stock went filled up with rows about nothing, and
+        // on the screen the button still looked broken.
+        if (resulting == item.quantity) return@withLock item.quantity
 
         dao.setQuantity(itemId, resulting, now)
         dao.insertMovement(
@@ -142,7 +168,7 @@ class InventoryRepository(
                 Summary.nest(reason),
             ),
         )
-        return resulting
+        resulting
     }
 
     private fun searchIndexFor(

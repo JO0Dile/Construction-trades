@@ -316,6 +316,19 @@ object Migrations {
         }
     }
 
+    /**
+     * The roll call after an evacuation.
+     *
+     * Two new tables and nothing touched. Every open check-in in the app was
+     * already a statement that somebody had not left the site, and nothing
+     * read them for the one question worth asking when the alarm goes.
+     */
+    val MIGRATION_30_31 = object : Migration(30, 31) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_30_31.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -346,6 +359,7 @@ object Migrations {
         MIGRATION_27_28,
         MIGRATION_28_29,
         MIGRATION_29_30,
+        MIGRATION_30_31,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -869,5 +883,29 @@ object Migrations {
         "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
             "ON `violations` (`againstAccountId`)",
         "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
+    )
+
+    /**
+     * Roll call tables. Nothing existing is touched, so no rebuild and no copy.
+     *
+     * `unaccountedAtEnd` is nullable on purpose: null means the roll call has
+     * not ended, and zero means it ended with everybody found. Collapsing the
+     * two into a default of zero would make a running roll call read, in a
+     * list of past ones, as one where nobody was missing.
+     */
+    val SQL_30_31: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `musters` (`id` TEXT NOT NULL, `projectId` TEXT, " +
+            "`companyId` TEXT, `startedAt` INTEGER NOT NULL, `endedAt` INTEGER, " +
+            "`reason` TEXT NOT NULL, `startedByAccountId` TEXT NOT NULL, " +
+            "`startedByName` TEXT NOT NULL, `note` TEXT, `unaccountedAtEnd` INTEGER, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_musters_startedAt` ON `musters` (`startedAt`)",
+        "CREATE TABLE IF NOT EXISTS `muster_people` (`id` TEXT NOT NULL, " +
+            "`musterId` TEXT NOT NULL, `personId` TEXT, `name` TEXT NOT NULL, " +
+            "`state` TEXT NOT NULL, `staleCheckIn` INTEGER NOT NULL, " +
+            "`addedDuringRollCall` INTEGER NOT NULL, `account` TEXT, " +
+            "`settledAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_muster_people_musterId` " +
+            "ON `muster_people` (`musterId`)",
     )
 }

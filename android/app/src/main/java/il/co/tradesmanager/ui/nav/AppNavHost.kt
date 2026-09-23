@@ -12,9 +12,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -45,6 +49,7 @@ import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.audit.AuditScreen
 import il.co.tradesmanager.ui.safety.IncidentsScreen
+import il.co.tradesmanager.ui.safety.MusterScreen
 import il.co.tradesmanager.ui.safety.ViolationsScreen
 import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
@@ -92,6 +97,7 @@ object Routes {
     const val SNAGS = "safety/snags"
     const val INCIDENTS = "safety/incidents"
     const val VIOLATIONS = "safety/violations"
+    const val MUSTER = "safety/muster"
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
@@ -218,7 +224,18 @@ fun AppNavHost(
     val tabs = TABS.filter { it.isVisibleTo(role) }
     val showBottomBar = currentRoute in tabs.map { it.route }
 
+    // One place for a failure every screen could have and none reported. A
+    // picture that cannot be copied off the phone attached nothing and said
+    // nothing, on nine screens including the two where the picture is the
+    // evidence. Collected here so a tenth screen cannot forget it.
+    val snackbar = remember { SnackbarHostState() }
+    val importFailed = stringResource(R.string.photo_failed)
+    LaunchedEffect(Unit) {
+        container.photos.importFailures.collect { snackbar.showSnackbar(importFailed) }
+    }
+
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbar) },
         bottomBar = {
             if (showBottomBar) {
                 NavigationBar {
@@ -264,6 +281,7 @@ fun AppNavHost(
                     onOpenSchedule = { navController.switchTab(Routes.SCHEDULE) },
                     onOpenProjects = { navController.switchTab(Routes.PROJECTS) },
                     onOpenSafety = { navController.switchTab(Routes.SAFETY) },
+                    onOpenMuster = { navController.navigate(Routes.MUSTER) },
                     onOpenPeople = { navController.switchTab(Routes.PEOPLE) },
                     onOpenSearch = { navController.navigate(Routes.SEARCH) },
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },
@@ -454,6 +472,7 @@ fun AppNavHost(
                     onOpenSnags = { navController.navigate(Routes.SNAGS) },
                     onOpenIncidents = { navController.navigate(Routes.INCIDENTS) },
                     onOpenViolations = { navController.navigate(Routes.VIOLATIONS) },
+                    onOpenMuster = { navController.navigate(Routes.MUSTER) },
                 )
             }
             composable(Routes.TALKS) {
@@ -530,6 +549,12 @@ fun AppNavHost(
                 HandoverScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.MUSTER) {
+                MusterScreen(
+                    container = container,
                     onBack = { navController.popBackStack() },
                 )
             }

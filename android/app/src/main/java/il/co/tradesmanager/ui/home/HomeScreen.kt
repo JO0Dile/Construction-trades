@@ -77,6 +77,7 @@ fun HomeScreen(
     onOpenSchedule: () -> Unit,
     onOpenProjects: () -> Unit,
     onOpenSafety: () -> Unit,
+    onOpenMuster: () -> Unit,
     onOpenPeople: () -> Unit,
     onOpenSearch: () -> Unit,
     onOpenSettings: () -> Unit,
@@ -86,6 +87,7 @@ fun HomeScreen(
     val portfolio by viewModel.portfolio.collectAsStateWithLifecycle()
     val changes by viewModel.changes.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
+    val rollCallRunning by viewModel.rollCallRunning.collectAsStateWithLifecycle()
     val locale = currentLocale()
     val zone = ZoneId.systemDefault()
 
@@ -133,6 +135,35 @@ fun HomeScreen(
             modifier = Modifier.padding(padding),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 24.dp),
         ) {
+
+            // Above the numbers, and the only thing that is. A roll call is
+            // running means somebody is missing or might be, and nothing else
+            // on this page competes with that.
+            if (rollCallRunning) {
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 12.dp)
+                            .clickable(onClick = onOpenMuster),
+                    ) {
+                        Column(Modifier.padding(16.dp)) {
+                            Text(
+                                stringResource(R.string.muster_live),
+                                style = MaterialTheme.typography.titleMedium,
+                            )
+                            Text(
+                                stringResource(R.string.muster_open_live),
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
+                    }
+                }
+            }
 
             item {
                 Row(

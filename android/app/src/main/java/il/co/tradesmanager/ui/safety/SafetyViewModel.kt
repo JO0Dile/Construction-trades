@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -23,6 +24,18 @@ class SafetyViewModel(private val container: AppContainer) : ViewModel() {
             SessionRepository.State.Loading,
         )
 
+
+    /**
+     * Whether a roll call is running right now.
+     *
+     * On this screen rather than only on the roll call screen, because the
+     * person who started it walks away from their phone and comes back to
+     * whichever page it was left on. An evacuation that is still open has to
+     * be visible from the safety lens, not only from inside itself.
+     */
+    val rollCallRunning: StateFlow<Boolean> = container.musters.observeLive()
+        .map { it != null }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
     private val tradeIds = MutableStateFlow<List<String>>(emptyList())
 

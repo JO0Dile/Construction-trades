@@ -7,16 +7,20 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Assignment
+import androidx.compose.material.icons.filled.Campaign
 import androidx.compose.material.icons.filled.ChecklistRtl
 import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.ReportProblem
 import androidx.compose.material3.AssistChip
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,6 +28,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -47,10 +52,12 @@ fun SafetyScreen(
     onOpenSnags: () -> Unit,
     onOpenIncidents: () -> Unit,
     onOpenViolations: () -> Unit,
+    onOpenMuster: () -> Unit,
 ) {
     val viewModel: SafetyViewModel = viewModel(factory = ViewModelFactory(container) { SafetyViewModel(it) })
     val templates by viewModel.templates.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
+    val rollCallRunning by viewModel.rollCallRunning.collectAsStateWithLifecycle()
     // Writing Evidence is what a violation is. The role model already decides
     // who may, so this asks it rather than naming SAFETY_OFFICER here — an
     // owner walking their own site should be able to write one too.
@@ -104,15 +111,23 @@ fun SafetyScreen(
             )
         },
     ) { padding ->
-        if (templates.isEmpty()) {
-            EmptyState(
-                message = stringResource(R.string.saf_empty),
-                hint = stringResource(R.string.set_trades),
-                icon = Icons.Filled.HealthAndSafety,
-                modifier = Modifier.padding(padding),
-            )
-        } else {
-            LazyColumn(Modifier.padding(padding)) {
+        // One list, always. The roll call card used to be unreachable on a
+        // phone with no checklists for its trades, because the empty state
+        // replaced the whole page -- and "no checklists" has nothing to do
+        // with whether the site needs evacuating.
+        LazyColumn(Modifier.padding(padding)) {
+            item {
+                MusterCard(running = rollCallRunning, onOpen = onOpenMuster)
+            }
+            if (templates.isEmpty()) {
+                item {
+                    EmptyState(
+                        message = stringResource(R.string.saf_empty),
+                        hint = stringResource(R.string.set_trades),
+                        icon = Icons.Filled.HealthAndSafety,
+                    )
+                }
+            } else {
                 items(templates, key = { it.id }) { template ->
                     ListItem(
                         headlineContent = { Text(template.titles.resolve(languageTag)) },
@@ -135,15 +150,63 @@ fun SafetyScreen(
                             .clickable { onRunChecklist(template.id) },
                     )
                 }
-                item {
-                    Text(
-                        text = stringResource(R.string.saf_disclaimer),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(16.dp),
-                    )
-                }
+            }
+            item {
+                Text(
+                    text = stringResource(R.string.saf_disclaimer),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(16.dp),
+                )
             }
         }
+    }
+}
+
+/**
+ * The way in to the roll call, and the way back to one already running.
+ *
+ * Top of the safety lens and drawn as a card rather than a seventh icon in the
+ * top bar. The other registers are things somebody sits down and fills in;
+ * this is the one they need in ten seconds while an alarm is going, and a
+ * 24dp icon among six others is not ten seconds.
+ */
+@Composable
+private fun MusterCard(running: Boolean, onOpen: () -> Unit) {
+    Card(
+        colors = if (running) {
+            CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.errorContainer,
+                contentColor = MaterialTheme.colorScheme.onErrorContainer,
+            )
+        } else {
+            CardDefaults.cardColors()
+        },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .clickable(onClick = onOpen),
+    ) {
+        ListItem(
+            headlineContent = {
+                Text(
+                    stringResource(
+                        if (running) R.string.muster_live else R.string.muster_title,
+                    ),
+                )
+            },
+            supportingContent = {
+                Text(
+                    stringResource(
+                        if (running) R.string.muster_open_live else R.string.muster_blurb,
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            },
+            leadingContent = {
+                Icon(Icons.Filled.Campaign, contentDescription = null)
+            },
+            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+        )
     }
 }

@@ -1379,6 +1379,74 @@
     <string name="summary_status_proposed">Proposed</string>
     <string name="summary_status_withdrawn">Withdrawn</string>
     <string name="summary_variation_status">%1$s: %2$s</string>
+    <string name="summary_muster_ended_all_out">Roll call ended, everybody accounted for</string>
+    <string name="summary_muster_ended_missing">Roll call ended, %1$s unaccounted for: %2$s</string>
+    <string name="summary_muster_person_added">%1$s added to the roll call</string>
+    <string name="summary_muster_started">Roll call started (%1$s), %2$s on site</string>
+    <!-- Roll call screen title -->
+    <string name="muster_title">Roll call</string>
+    <!-- What the screen is for, shown when nothing is running -->
+    <string name="muster_blurb">When the site is cleared, this counts everybody who was checked in and tells you who is still missing. It works with no signal.</string>
+    <!-- A practice evacuation -->
+    <string name="muster_reason_drill">Practice drill</string>
+    <!-- A real evacuation -->
+    <string name="muster_reason_emergency">Emergency</string>
+    <string name="muster_start">Start roll call</string>
+    <!-- Optional free text: what happened, where the assembly point is -->
+    <string name="muster_note_hint">What happened (optional)</string>
+    <string name="muster_live">Roll call in progress</string>
+    <!-- The number the screen shows biggest -->
+    <string name="muster_unaccounted">%1$d unaccounted for</string>
+    <string name="muster_all_accounted">Everybody accounted for</string>
+    <!-- How long the roll call has been running -->
+    <string name="muster_minutes">%1$d min</string>
+    <!-- Shown once a roll call has run past ten minutes -->
+    <string name="muster_taking_long">This is taking a while. Hand the list over if you have to.</string>
+    <!-- Standing at the muster point -->
+    <string name="muster_present">Present</string>
+    <!-- Confirmed safe, but not at the muster point -->
+    <string name="muster_elsewhere">Safe elsewhere</string>
+    <!-- Undo: puts somebody back on the missing list -->
+    <string name="muster_still_missing">Still missing</string>
+    <!-- Badge: their check-in had been open longer than any shift -->
+    <string name="muster_stale">Old check-in — may not be on site</string>
+    <!-- Badge: not from the check-in data -->
+    <string name="muster_added_badge">Added at the gate</string>
+    <string name="muster_add_person">Add somebody</string>
+    <!-- Why you would add somebody by hand -->
+    <string name="muster_add_person_blurb">A visitor, a driver, anybody who never checked in.</string>
+    <string name="muster_name_hint">Name</string>
+    <!-- Asked before somebody may be marked safe elsewhere -->
+    <string name="muster_account_question">How do you know they are safe?</string>
+    <!-- Example answer -->
+    <string name="muster_account_hint">Rang him, left at four</string>
+    <!-- Refusal: marking somebody safe elsewhere with nothing said about how -->
+    <string name="muster_account_required">Say how they were reached. A roll call ticked off without checking is worth nothing.</string>
+    <string name="muster_end">End roll call</string>
+    <string name="muster_end_with_missing_title">End with names missing?</string>
+    <!-- Names the people who will be recorded as unaccounted for -->
+    <string name="muster_end_with_missing_body">These names stay on the record as unaccounted for: %1$s</string>
+    <!-- Shown when no open check-in exists to build a list from -->
+    <string name="muster_nobody_checked_in">Nobody is checked in right now. You can still start a roll call and add names by hand.</string>
+    <!-- How many open check-ins the list was built from -->
+    <string name="muster_on_site">%1$d on site</string>
+    <string name="muster_history">Past roll calls</string>
+    <string name="muster_history_empty">No roll calls yet.</string>
+    <string name="muster_already_running">A roll call is already running.</string>
+    <!-- Button on the banner that opens the running roll call -->
+    <string name="muster_open_live">Open</string>
+    <!-- Summary line on a past roll call that ended with people missing -->
+    <string name="muster_record_missing">%1$d unaccounted for</string>
+    <!-- Summary line on a past roll call where everybody was found -->
+    <string name="muster_record_clear">Everybody out</string>
+    <!-- Refusal: this account cannot write to the safety register, so it cannot start a roll call -->
+    <string name="muster_not_allowed">This account cannot write to the safety register, so it cannot start a roll call. Anybody on site who can should start it.</string>
+    <!-- A roll call write that failed for a reason the screen has no sentence for -->
+    <string name="muster_refused_generic">That did not go through. Try again, and if it keeps failing write the names down.</string>
+    <!-- Section header: violations this officer has started and not finished -->
+    <string name="vio_drafts">Yours, not finished</string>
+    <!-- Supporting line on an unfinished draft row -->
+    <string name="vio_draft_resume">Tap to finish or drop it. Nobody else can see it.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

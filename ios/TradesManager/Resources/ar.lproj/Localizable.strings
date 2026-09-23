@@ -1378,3 +1378,71 @@
 "summary_status_proposed" = "مُقترح";
 "summary_status_withdrawn" = "سُحب";
 "summary_variation_status" = "%1$s: %2$s";
+"summary_muster_ended_all_out" = "انتهى النداء، الجميع محسوبون";
+"summary_muster_ended_missing" = "انتهى النداء، %1$s لم يُعثر عليهم: %2$s";
+"summary_muster_person_added" = "أُضيف %1$s إلى النداء";
+"summary_muster_started" = "بدأ نداء الأسماء (%1$s)، %2$s في الموقع";
+/* Roll call screen title */
+"muster_title" = "نداء الأسماء";
+/* What the screen is for, shown when nothing is running */
+"muster_blurb" = "عند إخلاء الموقع، تحصي هذه الشاشة كل من سجّل دخوله وتبيّن من لا يزال مفقودًا. تعمل دون إنترنت.";
+/* A practice evacuation */
+"muster_reason_drill" = "تمرين";
+/* A real evacuation */
+"muster_reason_emergency" = "طوارئ";
+"muster_start" = "ابدأ النداء";
+/* Optional free text: what happened, where the assembly point is */
+"muster_note_hint" = "ما الذي حدث (اختياري)";
+"muster_live" = "النداء جارٍ";
+/* The number the screen shows biggest */
+"muster_unaccounted" = "%1$d لم يُعثر عليهم";
+"muster_all_accounted" = "الجميع محسوبون";
+/* How long the roll call has been running */
+"muster_minutes" = "%1$d دقيقة";
+/* Shown once a roll call has run past ten minutes */
+"muster_taking_long" = "الأمر يطول. سلّم القائمة للطوارئ إن لزم الأمر.";
+/* Standing at the muster point */
+"muster_present" = "حاضر";
+/* Confirmed safe, but not at the muster point */
+"muster_elsewhere" = "بأمان في مكان آخر";
+/* Undo: puts somebody back on the missing list */
+"muster_still_missing" = "لا يزال مفقودًا";
+/* Badge: their check-in had been open longer than any shift */
+"muster_stale" = "تسجيل قديم — قد لا يكون في الموقع";
+/* Badge: not from the check-in data */
+"muster_added_badge" = "أُضيف عند البوابة";
+"muster_add_person" = "أضف شخصًا";
+/* Why you would add somebody by hand */
+"muster_add_person_blurb" = "زائر أو سائق أو أي شخص لم يسجّل دخوله.";
+"muster_name_hint" = "الاسم";
+/* Asked before somebody may be marked safe elsewhere */
+"muster_account_question" = "كيف تعرف أنه بأمان؟";
+/* Example answer */
+"muster_account_hint" = "اتصلت به، غادر الساعة الرابعة";
+/* Refusal: marking somebody safe elsewhere with nothing said about how */
+"muster_account_required" = "اذكر كيف تمّ التأكد منه. نداء يُعلّم دون تحقق لا قيمة له.";
+"muster_end" = "أنهِ النداء";
+"muster_end_with_missing_title" = "إنهاء وهناك أسماء مفقودة؟";
+/* Names the people who will be recorded as unaccounted for */
+"muster_end_with_missing_body" = "تبقى هذه الأسماء في السجل كمفقودين: %1$s";
+/* Shown when no open check-in exists to build a list from */
+"muster_nobody_checked_in" = "لا أحد مسجّل الآن. يمكنك بدء النداء وإضافة الأسماء يدويًا.";
+/* How many open check-ins the list was built from */
+"muster_on_site" = "%1$d في الموقع";
+"muster_history" = "النداءات السابقة";
+"muster_history_empty" = "لا توجد نداءات بعد.";
+"muster_already_running" = "هناك نداء جارٍ بالفعل.";
+/* Button on the banner that opens the running roll call */
+"muster_open_live" = "افتح";
+/* Summary line on a past roll call that ended with people missing */
+"muster_record_missing" = "%1$d لم يُعثر عليهم";
+/* Summary line on a past roll call where everybody was found */
+"muster_record_clear" = "الجميع خرجوا";
+/* Refusal: this account cannot write to the safety register, so it cannot start a roll call */
+"muster_not_allowed" = "هذا الحساب لا يملك صلاحية الكتابة في سجل السلامة، فلا يمكنه بدء النداء. ليبدأه من يملك ذلك ممن هم في الموقع.";
+/* A roll call write that failed for a reason the screen has no sentence for */
+"muster_refused_generic" = "لم تُنفّذ العملية. أعد المحاولة، وإن تكرر الأمر فاكتب الأسماء على ورق.";
+/* Section header: violations this officer has started and not finished */
+"vio_drafts" = "مسوداتك غير المكتملة";
+/* Supporting line on an unfinished draft row */
+"vio_draft_resume" = "انقر لإكمالها أو إلغائها. لا يراها أحد سواك.";

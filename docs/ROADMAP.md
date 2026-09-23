@@ -389,6 +389,34 @@ Seven registers so far: jobs, people, stock, orders, permits, snags and plant.
 The daily logs, the pours, the scaffolds, the lifts and the rest are found
 through the job they belong to, which is how anybody looks for them anyway.
 
+**The roll call. Done.**
+Every open check-in is already a statement that somebody has not left the
+site, and until now nothing read them for the one question that matters when
+the alarm goes: is there still a man in the building. On most sites that is
+answered from a paper register kept in the hut that is on fire.
+
+The list is taken once, at the moment the alarm goes, and never refreshed —
+if it kept refreshing, a man who walked out of the gate and clocked off during
+the evacuation would quietly vanish off it and nobody would know whether he
+was accounted for or simply gone from the query. A doubtful name is flagged,
+never dropped: somebody who forgot to clock out two days ago is almost
+certainly not on site, and the one time that is wrong, leaving them off is
+fatal. Standing in front of you is one state; confirmed safe by telephone is
+another, and it cannot be recorded without saying how, because otherwise the
+fast way to finish a roll call is to tick everybody off without ringing
+anyone.
+
+The site being cleared is worked out from the people on it rather than chosen
+from a dropdown — if every open check-in names the same job, that is the site;
+if they disagree, the record says none, which is true rather than convenient.
+A roll call is **ended**, never closed or passed, ending it with names still
+missing is always allowed because at some point the list goes to the fire
+brigade, and the audit row keeps those names rather than a count.
+
+Anybody who can write to the safety register can start one, which includes a
+worker. Narrowing it to a supervisor would mean the app refuses the man
+holding the phone in the one scenario the feature exists for.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -453,19 +481,19 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~85 | *estimated — see below* |
-| Buildable here — on the device, no server | ~101 | where the work is |
+| Built | ~86 | *estimated — see below* |
+| Buildable here — on the device, no server | ~100 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~85 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~86 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
-plans screen, the rules for a phone verification code, and restore actually
-reaching the end of its own mechanism.
+plans screen, the rules for a phone verification code, restore actually
+reaching the end of its own mechanism, and the emergency roll call.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

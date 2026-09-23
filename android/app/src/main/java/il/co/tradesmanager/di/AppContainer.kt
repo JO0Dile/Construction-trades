@@ -21,6 +21,7 @@ import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
+import il.co.tradesmanager.data.repository.MusterRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
@@ -154,6 +155,15 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val safety = SafetyRepository(database.safetyDao(), database.catalogDao(), auditTrail)
 
     val violations = ViolationRepository(database.violationDao(), photos, auditTrail)
+
+    /**
+     * The roll call after an evacuation.
+     *
+     * Takes the schedule DAO rather than the schedule repository: the only
+     * thing it wants is the open check-ins, and the repository wraps those in
+     * clocking rules that have nothing to do with counting heads at a gate.
+     */
+    val musters = MusterRepository(database.musterDao(), database.scheduleDao(), auditTrail)
 
     /**
      * Taking the record off the phone and putting it back.

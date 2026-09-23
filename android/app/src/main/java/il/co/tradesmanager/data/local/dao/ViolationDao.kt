@@ -35,13 +35,22 @@ interface ViolationDao {
      * to them. The same shape as ProjectDao.observeProjects, for the same
      * reason.
      *
+     * Drafts are excluded, and that is the rule this register runs on rather
+     * than a tidy-up. A draft is an officer still deciding, and the person it
+     * names has not been told. This query had no status clause at all, so
+     * every half-written accusation in the firm was on the register that the
+     * whole firm reads -- naming somebody over something the officer might
+     * still think better of. They belong to whoever is writing them, and
+     * [observeDraftsBy] is where they show.
+     *
      * Bounded: an officer walking a large site for two years writes a lot of
      * these, and reading every one to draw a list is how a screen freezes.
      */
     @Query(
         """
         SELECT * FROM violations
-        WHERE (:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId
+        WHERE ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+          AND status <> 'DRAFT'
         ORDER BY recordedAt DESC
         LIMIT :limit
         """,

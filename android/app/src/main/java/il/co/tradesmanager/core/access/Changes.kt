@@ -65,6 +65,7 @@ object Changes {
         "checklist_run" to Lens.EVIDENCE,
         "incident" to Lens.EVIDENCE,
         "violation" to Lens.EVIDENCE,
+        "muster" to Lens.EVIDENCE,
         "snag" to Lens.EVIDENCE,
         "toolbox_talk" to Lens.EVIDENCE,
         "permit" to Lens.EVIDENCE,

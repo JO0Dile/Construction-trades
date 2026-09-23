@@ -72,6 +72,14 @@ jobs:
       - name: Every Compose state delegate has its import
         run: python3 tools/check-compose-delegates.py
 
+      # The fault this codebase actually has is not a crash. It is a feature
+      # that compiles, lints and passes every test and cannot be reached: a
+      # route nothing navigates to, a screen nothing calls, a view model
+      # action no screen invokes. A draft violation sat unreachable like this
+      # for weeks -- no row opened one -- and was found only by using the app.
+      - name: Nothing is built that nobody can reach
+        run: python3 tools/check-unreachable.py
+
       # The same fault in the other source set: assertTrue with no
       # `import org.junit.Assert.assertTrue` does not compile, and the line
       # looks exactly like the twenty around it that do. Gradle does not run

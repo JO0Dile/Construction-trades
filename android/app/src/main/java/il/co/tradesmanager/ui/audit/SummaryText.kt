@@ -128,6 +128,10 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.LIFT_ROLE_SET -> R.string.summary_lift_role_set
     Summaries.MARKED_SITE_PLAN -> R.string.summary_marked_site_plan
     Summaries.MEMBER_ADDED -> R.string.summary_member_added
+    Summaries.MUSTER_ENDED_ALL_OUT -> R.string.summary_muster_ended_all_out
+    Summaries.MUSTER_ENDED_MISSING -> R.string.summary_muster_ended_missing
+    Summaries.MUSTER_PERSON_ADDED -> R.string.summary_muster_person_added
+    Summaries.MUSTER_STARTED -> R.string.summary_muster_started
     Summaries.ORDER_CANCELLED -> R.string.summary_order_cancelled
     Summaries.ORDER_DUE -> R.string.summary_order_due
     Summaries.ORDER_NO_DATE -> R.string.summary_order_no_date
@@ -208,6 +212,8 @@ private const val LIST = ", "
  */
 @StringRes
 private fun borrowedPhrase(key: String): Int? = when (key) {
+    "muster_reason_drill" -> R.string.muster_reason_drill
+    "muster_reason_emergency" -> R.string.muster_reason_emergency
     "plant_available" -> R.string.plant_available
     "plant_on_site" -> R.string.plant_on_site
     "plant_maintenance" -> R.string.plant_maintenance

@@ -10,7 +10,8 @@
       "plant_",
       "snag_",
       "var_",
-      "eng_"
+      "eng_",
+      "muster_reason_"
     ]
   },
   "phrases": {
@@ -426,6 +427,38 @@
       "en": "%1$s added as %2$s",
       "he": "%1$s נוסף בתפקיד %2$s",
       "ar": "%1$s أُضيف بصفة %2$s"
+    },
+    "muster_ended_all_out": {
+      "arguments": [],
+      "en": "Roll call ended, everybody accounted for",
+      "he": "המפקד הסתיים, כל הנוכחים אותרו",
+      "ar": "انتهى النداء، الجميع محسوبون"
+    },
+    "muster_ended_missing": {
+      "arguments": [
+        "count",
+        "names"
+      ],
+      "en": "Roll call ended, %1$s unaccounted for: %2$s",
+      "he": "המפקד הסתיים, %1$s לא אותרו: %2$s",
+      "ar": "انتهى النداء، %1$s لم يُعثر عليهم: %2$s"
+    },
+    "muster_person_added": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s added to the roll call",
+      "he": "%1$s נוסף למפקד",
+      "ar": "أُضيف %1$s إلى النداء"
+    },
+    "muster_started": {
+      "arguments": [
+        "reason",
+        "people"
+      ],
+      "en": "Roll call started (%1$s), %2$s on site",
+      "he": "מפקד נוכחות החל (%1$s), %2$s באתר",
+      "ar": "بدأ نداء الأسماء (%1$s)، %2$s في الموقع"
     },
     "order_cancelled": {
       "arguments": [

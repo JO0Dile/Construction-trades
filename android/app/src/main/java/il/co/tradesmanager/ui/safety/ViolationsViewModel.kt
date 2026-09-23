@@ -60,6 +60,26 @@ class ViolationsViewModel(
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
+    /**
+     * The drafts this officer has not finished.
+     *
+     * Their own only, and separate from the register. Until now nothing read
+     * them at all: a draft left by walking off the screen could not be
+     * reopened, finished or cancelled by anybody, and sat forever as a row
+     * nothing could reach.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val drafts: StateFlow<List<ViolationEntity>> = session
+        .flatMapLatest { state ->
+            val me = (state as? SessionRepository.State.SignedIn)?.account
+            if (me == null) {
+                flowOf(emptyList())
+            } else {
+                container.violations.observeDraftsBy(me.id)
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
     /* --------------------------------------------------------- finding them */
 
     private val _found = MutableStateFlow<AccountEntity?>(null)

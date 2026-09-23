@@ -73,6 +73,7 @@ fun ViolationsScreen(
         factory = ViewModelFactory(container) { ViolationsViewModel(it) },
     )
     val violations by viewModel.violations.collectAsStateWithLifecycle()
+    val drafts by viewModel.drafts.collectAsStateWithLifecycle()
     val found by viewModel.found.collectAsStateWithLifecycle()
     val face by viewModel.foundFace.collectAsStateWithLifecycle()
     val inVain by viewModel.searchedInVain.collectAsStateWithLifecycle()
@@ -184,6 +185,29 @@ fun ViolationsScreen(
                             }
                         }
                     }
+                }
+            }
+
+            // The officer's own unfinished drafts, above the register and
+            // nowhere near it. Walking off this screen used to strand a draft
+            // for good: nothing read them, no row opened one, and the only
+            // way to finish an accusation was never to leave the page.
+            if (drafts.isNotEmpty()) {
+                item { SectionHeader(stringResource(R.string.vio_drafts)) }
+                items(drafts, key = { it.id }) { draft ->
+                    ListItem(
+                        headlineContent = {
+                            Text(draft.againstName.ifBlank { draft.againstIdNumber })
+                        },
+                        supportingContent = {
+                            Text(
+                                draft.description.ifBlank {
+                                    stringResource(R.string.vio_draft_resume)
+                                },
+                            )
+                        },
+                        modifier = Modifier.clickable { viewModel.openDraft(draft.id) },
+                    )
                 }
             }
 

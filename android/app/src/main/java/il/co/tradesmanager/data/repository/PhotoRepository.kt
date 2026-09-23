@@ -14,6 +14,9 @@ import java.util.Locale
 import java.util.UUID
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
@@ -215,6 +218,25 @@ class PhotoRepository(
     }
 
     /**
+     * An import that did not work, announced once.
+     *
+     * Nine view models call [importPhoto] and every one of them threw away the
+     * null it can return, so a picture that could not be copied -- a file the
+     * other app had already released, a phone with no room left -- attached
+     * nothing and said nothing. On a violation or an incident that is not a
+     * cosmetic failure: the evidence is the record, and the officer walks away
+     * believing it is there.
+     *
+     * Announced from here rather than returned to each caller, because a
+     * tenth caller will forget too. The app collects this in one place and
+     * says so. Replay of zero and a buffer of one: somebody who was not
+     * looking at the screen does not want yesterday's failure, and a second
+     * failure while the first is still showing is the same sentence twice.
+     */
+    private val _importFailures = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val importFailures: SharedFlow<Unit> = _importFailures.asSharedFlow()
+
+    /**
      * Copies something the user picked into the app's own storage.
      *
      * Whether it is a still or a video is asked of the content resolver rather
@@ -250,6 +272,7 @@ class PhotoRepository(
 
         if (!copied || file.length() == 0L) {
             file.delete()
+            _importFailures.tryEmit(Unit)
             return@withContext null
         }
         store(

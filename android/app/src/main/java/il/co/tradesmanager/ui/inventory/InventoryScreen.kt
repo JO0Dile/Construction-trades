@@ -321,6 +321,12 @@ fun InventoryScreen(
                                         onClick = {
                                             viewModel.adjustStock(item.id, -1.0, InventoryViewModel.USED_ON_SITE)
                                         },
+                                        // Off on an empty shelf, the same as
+                                        // in the item sheet. It was live here
+                                        // and did nothing when pressed, which
+                                        // is how a working app reads as
+                                        // broken.
+                                        enabled = item.quantity > 0.0,
                                     ) {
                                         Icon(
                                             Icons.Filled.Remove,

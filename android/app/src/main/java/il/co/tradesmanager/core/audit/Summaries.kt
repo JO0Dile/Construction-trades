@@ -361,6 +361,32 @@ object Summaries {
     const val MEMBER_ADDED = "member_added"
 
     /**
+     * Roll call ended, everybody accounted for
+     */
+    const val MUSTER_ENDED_ALL_OUT = "muster_ended_all_out"
+
+    /**
+     * Roll call ended, %1$s unaccounted for: %2$s
+     *
+     * Arguments, in order: count, names.
+     */
+    const val MUSTER_ENDED_MISSING = "muster_ended_missing"
+
+    /**
+     * %1$s added to the roll call
+     *
+     * Arguments, in order: name.
+     */
+    const val MUSTER_PERSON_ADDED = "muster_person_added"
+
+    /**
+     * Roll call started (%1$s), %2$s on site
+     *
+     * Arguments, in order: reason, people.
+     */
+    const val MUSTER_STARTED = "muster_started"
+
+    /**
      * %1$s cancelled
      *
      * Arguments, in order: reference.

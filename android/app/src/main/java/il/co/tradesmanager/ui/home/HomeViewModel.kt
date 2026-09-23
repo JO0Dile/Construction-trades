@@ -16,6 +16,7 @@ import java.time.LocalDate
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel(private val container: AppContainer) : ViewModel() {
@@ -67,6 +68,18 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
             SharingStarted.WhileSubscribed(5_000),
             SessionRepository.State.Loading,
         )
+
+    /**
+     * Whether a roll call is running.
+     *
+     * On the dashboard because this is the page the app opens on, and an
+     * evacuation that is still open must not be something you have to
+     * remember to go and look for. It is the only thing here that is drawn
+     * above the numbers.
+     */
+    val rollCallRunning: StateFlow<Boolean> = container.musters.observeLive()
+        .map { it != null }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
     /**
      * What has changed lately, as this person is entitled to hear it.

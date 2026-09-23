@@ -1378,3 +1378,71 @@
 "summary_status_proposed" = "הוצע";
 "summary_status_withdrawn" = "נמשך";
 "summary_variation_status" = "%1$s: %2$s";
+"summary_muster_ended_all_out" = "המפקד הסתיים, כל הנוכחים אותרו";
+"summary_muster_ended_missing" = "המפקד הסתיים, %1$s לא אותרו: %2$s";
+"summary_muster_person_added" = "%1$s נוסף למפקד";
+"summary_muster_started" = "מפקד נוכחות החל (%1$s), %2$s באתר";
+/* Roll call screen title */
+"muster_title" = "מפקד נוכחות";
+/* What the screen is for, shown when nothing is running */
+"muster_blurb" = "כשהאתר מפונה, המסך סופר את כל מי שהיה רשום בכניסה ומראה מי עדיין חסר. עובד גם בלי קליטה.";
+/* A practice evacuation */
+"muster_reason_drill" = "תרגיל";
+/* A real evacuation */
+"muster_reason_emergency" = "חירום";
+"muster_start" = "התחל מפקד";
+/* Optional free text: what happened, where the assembly point is */
+"muster_note_hint" = "מה קרה (אפשרי)";
+"muster_live" = "מפקד מתנהל";
+/* The number the screen shows biggest */
+"muster_unaccounted" = "%1$d לא אותרו";
+"muster_all_accounted" = "כל הנוכחים אותרו";
+/* How long the roll call has been running */
+"muster_minutes" = "%1$d דקות";
+/* Shown once a roll call has run past ten minutes */
+"muster_taking_long" = "זה לוקח זמן. אם צריך, תעבירו את הרשימה לכוחות ההצלה.";
+/* Standing at the muster point */
+"muster_present" = "נוכח";
+/* Confirmed safe, but not at the muster point */
+"muster_elsewhere" = "בטוח במקום אחר";
+/* Undo: puts somebody back on the missing list */
+"muster_still_missing" = "עדיין לא אותר";
+/* Badge: their check-in had been open longer than any shift */
+"muster_stale" = "כניסה ישנה — ייתכן שאינו באתר";
+/* Badge: not from the check-in data */
+"muster_added_badge" = "נוסף בשער";
+"muster_add_person" = "הוסף אדם";
+/* Why you would add somebody by hand */
+"muster_add_person_blurb" = "מבקר, נהג, או כל מי שלא נרשם בכניסה.";
+"muster_name_hint" = "שם";
+/* Asked before somebody may be marked safe elsewhere */
+"muster_account_question" = "מנין ידוע שהוא בטוח？";
+/* Example answer */
+"muster_account_hint" = "התקשרתי אליו, עזב בארבע";
+/* Refusal: marking somebody safe elsewhere with nothing said about how */
+"muster_account_required" = "צריך לרשום איך אומת איתו. מפקד שמסמנים בלי לבדוק לא שווה כלום.";
+"muster_end" = "סיים מפקד";
+"muster_end_with_missing_title" = "לסיים כשחסרים שמות？";
+/* Names the people who will be recorded as unaccounted for */
+"muster_end_with_missing_body" = "השמות האלה יירשמו כמי שלא אותרו: %1$s";
+/* Shown when no open check-in exists to build a list from */
+"muster_nobody_checked_in" = "אין כרגע אף אחד רשום בכניסה. אפשר להתחיל מפקד ולהוסיף שמות ידנית.";
+/* How many open check-ins the list was built from */
+"muster_on_site" = "%1$d באתר";
+"muster_history" = "מפקדים קודמים";
+"muster_history_empty" = "עדיין אין מפקדים.";
+"muster_already_running" = "כבר מתנהל מפקד.";
+/* Button on the banner that opens the running roll call */
+"muster_open_live" = "פתח";
+/* Summary line on a past roll call that ended with people missing */
+"muster_record_missing" = "%1$d לא אותרו";
+/* Summary line on a past roll call where everybody was found */
+"muster_record_clear" = "כולם יצאו";
+/* Refusal: this account cannot write to the safety register, so it cannot start a roll call */
+"muster_not_allowed" = "לחשבון הזה אין הרשאה לכתוב במרשם הבטיחות, ולכן אינו יכול להתחיל מפקד. שמי שכן יכול, באתר, יתחיל אותו.";
+/* A roll call write that failed for a reason the screen has no sentence for */
+"muster_refused_generic" = "הפעולה לא נקלטה. נסו שוב, ואם זה חוזר — רשמו את השמות על דף.";
+/* Section header: violations this officer has started and not finished */
+"vio_drafts" = "טיוטות שלך שלא הושלמו";
+/* Supporting line on an unfinished draft row */
+"vio_draft_resume" = "הקישו כדי להשלים או לבטל. אף אחד אחר לא רואה את זה.";
