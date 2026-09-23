@@ -75,10 +75,26 @@ jobs:
           # meaningful for a release cut from the default branch. The body
           # says where to look either way, and is appended to rather than
           # replaced by the generated list.
+          #
+          # In three languages, because this body is not only read on GitHub:
+          # the app fetches it and shows it under "What changed" when somebody
+          # taps Check for updates. An English-only release note is an English
+          # panel on a Hebrew phone, which is the one thing the rest of this
+          # app no longer does. The generated commit list below it stays in
+          # English — those are commit titles, and rewriting them would be
+          # lying about what the commits say.
           body: |
             Install `app-universal-debug.apk` below — it runs on any phone.
             A phone that already has the app will be offered this build by
             **Settings → Check for updates**.
+
+            התקינו את `app-universal-debug.apk` — הוא מתאים לכל טלפון.
+            במכשיר שהאפליקציה כבר מותקנת בו, **הגדרות ← בדיקת עדכונים**
+            תציע את הגרסה הזו.
+
+            ثبّت `app-universal-debug.apk` — يعمل على أي هاتف.
+            إن كان التطبيق مثبّتًا مسبقًا، **الإعدادات ← التحقق من التحديثات**
+            ستعرض هذه النسخة.
 
             What is new and what to try with it is written up in
             [`docs/TESTING.md`](https://github.com/JO0Dile/Construction-trades/blob/${{ github.sha }}/docs/TESTING.md).
