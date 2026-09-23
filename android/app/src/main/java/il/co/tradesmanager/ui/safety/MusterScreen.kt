@@ -1,5 +1,7 @@
 package il.co.tradesmanager.ui.safety
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Campaign
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
@@ -42,6 +45,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -49,6 +53,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.safety.Emergency
 import il.co.tradesmanager.core.safety.Muster
 import il.co.tradesmanager.data.local.entity.MusterEntity
 import il.co.tradesmanager.data.repository.MusterRepository
@@ -154,6 +159,8 @@ private fun Waiting(
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+            Spacer(Modifier.height(16.dp))
+            EmergencyNumbers()
             Spacer(Modifier.height(16.dp))
         }
         if (mayRun) {
@@ -310,6 +317,8 @@ private fun LiveRollCall(
     LazyColumn(modifier.fillMaxWidth(), contentPadding = PaddingAll) {
         item {
             LiveHeader(roll, now)
+            Spacer(Modifier.height(16.dp))
+            EmergencyNumbers()
             Spacer(Modifier.height(16.dp))
         }
         items(roll.ordered(), key = { it.id }) { person ->
@@ -587,6 +596,54 @@ private fun EndDialog(
             TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
         },
     )
+}
+
+/* ---------------------------------------------------- the numbers to ring */
+
+/**
+ * Israel's three emergency numbers, as buttons that open the dialer.
+ *
+ * On both halves of the screen: before a roll call, because the first call is
+ * often made before anybody counts anything, and during one, because a name
+ * still missing after ten minutes is when somebody rings 102. The dialer opens
+ * with the number in and the person presses call -- the app never places a
+ * call itself.
+ */
+@Composable
+private fun EmergencyNumbers() {
+    val context = LocalContext.current
+    var noDialer by remember { mutableStateOf(false) }
+    Column(Modifier.fillMaxWidth()) {
+        Text(stringResource(R.string.muster_call_title), style = MaterialTheme.typography.titleSmall)
+        Spacer(Modifier.height(8.dp))
+        Emergency.ORDER.forEach { number ->
+            OutlinedButton(
+                onClick = {
+                    val dial = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number"))
+                    // A tablet with no telephony has nothing to open. Saying
+                    // so beats a button that does nothing in the one place
+                    // that matters most.
+                    runCatching { context.startActivity(dial) }
+                        .onFailure { noDialer = true }
+                },
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Icon(Icons.Filled.Call, contentDescription = null)
+                Text(stringResource(numberLabel(number)), modifier = Modifier.padding(start = 8.dp))
+            }
+        }
+        Text(
+            stringResource(if (noDialer) R.string.muster_call_no_dialer else R.string.muster_call_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = if (noDialer) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+private fun numberLabel(number: String): Int = when (number) {
+    Emergency.AMBULANCE -> R.string.muster_call_ambulance
+    Emergency.FIRE_AND_RESCUE -> R.string.muster_call_fire
+    else -> R.string.muster_call_police
 }
 
 /* ------------------------------------------------------------- the words */

@@ -105,5 +105,6 @@ class DailyLogTest {
         assertTrue(DailyLog.Summary().isQuiet)
         assertFalse(DailyLog.Summary(talksHeld = 1).isQuiet)
         assertFalse(DailyLog.Summary(incidents = 1).isQuiet)
+        assertFalse("a day people were on site is not a quiet one", DailyLog.Summary(checkedIn = 3).isQuiet)
     }
 }

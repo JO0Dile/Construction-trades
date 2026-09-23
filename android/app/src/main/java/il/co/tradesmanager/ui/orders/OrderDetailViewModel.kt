@@ -8,8 +8,10 @@ import il.co.tradesmanager.data.local.entity.PurchaseOrderEntity
 import il.co.tradesmanager.data.local.entity.PurchaseOrderLineEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
@@ -19,6 +21,17 @@ class OrderDetailViewModel(
     private val container: AppContainer,
     private val orderId: String,
 ) : ViewModel() {
+
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
 
     data class State(
         val order: PurchaseOrderEntity? = null,
@@ -76,7 +89,8 @@ class OrderDetailViewModel(
     }
 
     fun setExpected(expectedOn: Long?) = viewModelScope.launch {
-        state.value.order?.let { container.purchasing.setExpected(it, expectedOn, actor()) }
+        val order = state.value.order ?: return@launch
+        if (!container.purchasing.setExpected(order, expectedOn, actor())) _notSaved.value = true
     }
 
     fun cancel() = viewModelScope.launch {

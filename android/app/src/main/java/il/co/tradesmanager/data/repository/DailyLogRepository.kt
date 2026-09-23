@@ -71,6 +71,7 @@ class DailyLogRepository(
             talksHeld = dao.talksHeld(projectId, from, to),
             snagsRaised = dao.snagsRaised(projectId, from, to),
             incidents = dao.incidents(projectId, from, to),
+            checkedIn = dao.checkedIn(projectId, from, to),
         )
     }
 

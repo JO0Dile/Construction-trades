@@ -209,6 +209,7 @@ private fun CrewProfileSheet(
     val reportsTo by viewModel.openReportsTo.collectAsStateWithLifecycle()
     val mayPrice by viewModel.mayPrice.collectAsStateWithLifecycle()
     val notCorrected by viewModel.notCorrected.collectAsStateWithLifecycle()
+    val tradeRefused by viewModel.tradeRefused.collectAsStateWithLifecycle()
     var correcting by remember(person.account.id) { mutableStateOf(false) }
     val locale = currentLocale()
     val languageTag = currentLanguageTag()
@@ -324,6 +325,18 @@ private fun CrewProfileSheet(
             onSave = { name, phone, email, idNumber ->
                 viewModel.correct(person, name, phone, email, idNumber)
                 correcting = false
+            },
+        )
+    }
+
+    tradeRefused?.let { blocker ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearTradeRefused,
+            text = { Text(stringResource(chainBlockerText(blocker))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearTradeRefused) {
+                    Text(stringResource(R.string.action_ok))
+                }
             },
         )
     }

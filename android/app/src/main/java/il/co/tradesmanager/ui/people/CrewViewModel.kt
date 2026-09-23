@@ -10,6 +10,7 @@ import il.co.tradesmanager.data.local.entity.MembershipEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.local.entity.ViolationEntity
 import il.co.tradesmanager.data.repository.AccountRepository
+import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -189,6 +190,20 @@ class CrewViewModel(
 
     /* ---------------------------------------------------- saying the trade */
 
+    /**
+     * Set when a trade was refused, so the screen can say why.
+     *
+     * The refusal used to be returned and dropped: somebody picking a trade for
+     * a person they have no standing over saw the sheet close and the trade
+     * not change, which is the app looking broken rather than saying no.
+     */
+    private val _tradeRefused = MutableStateFlow<Chain.Blocker?>(null)
+    val tradeRefused: StateFlow<Chain.Blocker?> = _tradeRefused.asStateFlow()
+
+    fun clearTradeRefused() {
+        _tradeRefused.value = null
+    }
+
     fun setTradeOf(person: Person, tradeId: String?) = viewModelScope.launch {
         val me = signedIn ?: return@launch
         container.memberships.setTrade(
@@ -196,7 +211,10 @@ class CrewViewModel(
             membershipId = person.membership.id,
             tradeId = tradeId,
             actorName = me.account.displayName,
-        )
+        ).onFailure { failure ->
+            _tradeRefused.value = (failure as? MembershipRepository.NotReassigned)?.blocker
+                ?: Chain.Blocker.UNKNOWN
+        }
     }
 
     /** Whether this viewer may say what somebody's trade is. */

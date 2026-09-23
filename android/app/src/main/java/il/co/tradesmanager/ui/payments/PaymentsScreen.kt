@@ -54,6 +54,7 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.EmptyState
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLocale
@@ -88,6 +89,8 @@ fun PaymentsScreen(
         factory = ViewModelFactory(container) { PaymentsViewModel(it, projectId) },
     )
     val applications by viewModel.applications.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val open by viewModel.open.collectAsStateWithLifecycle()
     val lines by viewModel.lines.collectAsStateWithLifecycle()
     val contractSum by viewModel.contractSum.collectAsStateWithLifecycle()

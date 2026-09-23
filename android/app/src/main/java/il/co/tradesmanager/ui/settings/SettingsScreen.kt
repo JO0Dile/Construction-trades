@@ -52,6 +52,7 @@ import il.co.tradesmanager.data.repository.SettingsRepository.ThemeMode
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.account.roleLabel
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
 import il.co.tradesmanager.ui.components.currentLanguageTag
@@ -71,6 +72,8 @@ fun SettingsScreen(
         factory = ViewModelFactory(container) { SettingsViewModel(it) },
     )
     val settings by viewModel.settings.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved, message = R.string.id_number_not_saved)
     val trades by viewModel.trades.collectAsStateWithLifecycle()
     val backupState by viewModel.backup.collectAsStateWithLifecycle()
     var addingTrade by remember { mutableStateOf(false) }

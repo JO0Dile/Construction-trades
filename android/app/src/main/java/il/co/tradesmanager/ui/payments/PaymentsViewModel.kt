@@ -26,6 +26,17 @@ class PaymentsViewModel(
     private val projectId: String,
 ) : ViewModel() {
 
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
+
     private val _openId = MutableStateFlow<String?>(null)
     val openId: StateFlow<String?> = _openId.asStateFlow()
 
@@ -101,11 +112,13 @@ class PaymentsViewModel(
     }
 
     fun certify(certifiedGrossToDate: Double) = withOpen { application, actor ->
-        container.payments.certify(application, certifiedGrossToDate, contractSum.value, actor)
+        if (!container.payments.certify(application, certifiedGrossToDate, contractSum.value, actor)) {
+            _notSaved.value = true
+        }
     }
 
     fun markPaid() = withOpen { application, actor ->
-        container.payments.markPaid(application, contractSum.value, actor)
+        if (!container.payments.markPaid(application, contractSum.value, actor)) _notSaved.value = true
     }
 
     fun reject(notes: String?) = withOpen { application, actor ->

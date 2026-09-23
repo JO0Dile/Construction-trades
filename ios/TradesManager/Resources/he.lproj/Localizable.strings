@@ -10,16 +10,10 @@
 "action_add" = "הוספה";
 "action_close" = "סגירה";
 "action_back" = "חזרה";
-"action_retry" = "נסה שוב";
-"action_undo" = "ביטול פעולה";
 "action_continue" = "המשך";
 "action_search" = "חיפוש";
 "action_filter" = "סינון";
-"action_export" = "ייצוא";
-"state_loading" = "טוען…";
-"state_deleted" = "נמחק";
 "error_required" = "שדה חובה";
-"error_number" = "יש להזין מספר";
 "onboarding_welcome_title" = "התאמת האפליקציה לתחום שלך";
 "onboarding_welcome_body" = "הכול עובד ללא אינטרנט. בוחרים שפה ותחומי עבודה, ורשימות הכלים והחומרים מוכנות.";
 "onboarding_language_title" = "שפה";
@@ -32,13 +26,11 @@
 "nav_projects" = "פרויקטים";
 "nav_schedule" = "לוח זמנים";
 "nav_safety" = "בטיחות";
-"nav_settings" = "הגדרות";
 "home_today" = "היום";
 "home_low_stock" = "מלאי נמוך";
 "home_active_projects" = "פרויקטים פעילים";
 "home_safety_due" = "נדרש אישור בטיחות";
 "home_no_tasks_today" = "אין משימות מתוכננות להיום";
-"home_open_tasks" = "משימות פתוחות";
 "inv_title" = "מלאי";
 "inv_search_hint" = "חיפוש לפי שם, מפרט או תגית";
 "inv_add_item" = "פריט חדש";
@@ -49,18 +41,14 @@
 "inv_quantity" = "כמות במלאי";
 "inv_min_stock" = "סף מלאי נמוך";
 "inv_unit" = "יחידת מידה";
-"inv_supplier" = "ספק";
 "inv_price" = "מחיר קנייה";
 "inv_barcode" = "ברקוד / QR";
 "inv_tags" = "תגיות";
-"inv_photos" = "תמונות";
 "inv_low_stock" = "נמוך";
-"inv_out_of_stock" = "אזל";
 "inv_filter_all" = "הכול";
 "inv_filter_low" = "מלאי נמוך";
 "inv_stock_add" = "הוספת מלאי";
 "inv_stock_remove" = "הוצאת מלאי";
-"inv_stock_reason" = "סיבה";
 "inv_history" = "היסטוריית מלאי";
 "inv_no_movements" = "אין עדיין תנועות";
 "inv_scan" = "סריקת תווית";
@@ -97,7 +85,6 @@
 "proj_city" = "עיר";
 "proj_postal_code" = "מיקוד";
 "proj_client_phone" = "טלפון הלקוח";
-"proj_when" = "מתי היא רצה";
 "proj_no_date" = "לא נקבע";
 "action_clear" = "ניקוי";
 "proj_where_and_who" = "איפה זה ולמי";
@@ -106,7 +93,6 @@
 "proj_status" = "סטטוס";
 "proj_start" = "תאריך התחלה";
 "proj_due" = "תאריך יעד";
-"proj_notes" = "הערות";
 "proj_materials" = "חומרים וכלים";
 "proj_tasks" = "משימות";
 "proj_progress" = "התקדמות";
@@ -168,7 +154,6 @@
 /* Android asks the user to allow this app to install apps */
 "update_permission" = "אנדרואיד יבקש לאשר לאפליקציה להתקין עדכונים. ההרשאה משמשת אך ורק לעדכוני האפליקציה עצמה.";
 "update_notes" = "מה השתנה";
-"sch_title" = "לוח זמנים";
 "sch_new_block" = "משבצת זמן חדשה";
 "sch_assign" = "שיוך";
 "sch_nobody" = "עדיין אף אחד";
@@ -177,16 +162,13 @@
 "sch_end" = "סיום";
 "sch_task" = "משימה";
 "sch_assignee" = "משויך ל";
-"sch_project" = "פרויקט";
 "sch_check_in" = "כניסה";
 "sch_which_job" = "לאיזו עבודה?";
 "sch_check_out" = "יציאה";
-"sch_checked_in" = "נרשמה כניסה";
 "sch_empty" = "אין משימות מתוכננות";
 "sch_previous_day" = "יום קודם";
 "sch_next_day" = "יום הבא";
 "saf_title" = "בטיחות";
-"saf_run" = "התחלת תדריך";
 "saf_mandatory" = "חובה לפני תחילת עבודה";
 "saf_critical" = "קריטי";
 "saf_pass" = "בוצע";
@@ -197,7 +179,6 @@
 "saf_signed_by" = "נחתם על ידי";
 "saf_blocked" = "פריט קריטי לא בוצע. אין להתחיל בעבודה.";
 "saf_references" = "תקנים ותקנות";
-"saf_report_incident" = "דיווח על אירוע";
 "saf_empty" = "אין תדריכים לתחומים שנבחרו";
 "saf_disclaimer" = "אזכורי התקנים הם הפניה לתיק האתר. אין בהם תחליף לנוסח המלא של התקן או התקנה.";
 "set_title" = "הגדרות";
@@ -210,7 +191,6 @@
 "set_trades" = "תחומי העבודה שלי";
 "set_security" = "אבטחה";
 "set_encrypt" = "הצפנת הנתונים במכשיר";
-"set_audit_log" = "יומן פעילות";
 "set_export" = "ייצוא הנתונים שלי";
 "set_delete_data" = "מחיקת החשבון והנתונים שלי";
 /* Privacy screen: the whole of it in one sentence */
@@ -259,12 +239,7 @@
 "set_reseed_note" = "מוסיף פריטי קטלוג חסרים. הפריטים והכמויות שלך אינם משתנים.";
 "perm_camera_title" = "מצלמה";
 "perm_camera_body" = "משמשת לצילום פריטים והתקדמות באתר ולסריקת ברקודים. התמונות נשארות במכשיר אלא אם מסונכרנות.";
-"perm_location_title" = "מיקום";
 "perm_location_body" = "אופציונלי. מוסיף חותמת מיקום לכניסות, לתמונות אתר ולדיווחי אירוע. האפליקציה עובדת במלואה גם בלעדיו.";
-"perm_mic_title" = "מיקרופון";
-"perm_mic_body" = "בשימוש רק בזמן הכתבת הערה למשימה בעברית או בערבית.";
-"perm_notifications_title" = "התראות";
-"perm_notifications_body" = "תזכורות למשימות מתוכננות ולמלאי נמוך.";
 "perm_allow" = "אישור";
 "perm_not_now" = "לא עכשיו";
 "audit_created" = "נוצר";
@@ -287,11 +262,8 @@
 "acc_passcode_short" = "לפחות 4 ספרות.";
 "acc_create" = "יצירה";
 "acc_sign_in" = "כניסה";
-"acc_sign_in_as" = "מי משתמש במכשיר?";
 "acc_sign_out" = "יציאה";
-"acc_wrong_passcode" = "קוד הכניסה שגוי.";
 "acc_signed_in_as" = "מחובר כ־";
-"acc_no_passcode" = "בלי קוד כניסה";
 "people_title" = "אנשים";
 "people_add" = "הוספת אדם";
 "people_role" = "התפקיד";
@@ -441,7 +413,6 @@
 "ptw_issue_blocked" = "יש לסמן את כל אמצעי הזהירות לפני הנפקת ההיתר.";
 "ptw_valid_from" = "בתוקף מ";
 "ptw_valid_to" = "בתוקף עד";
-"ptw_window_invalid" = "שעת הסיום חייבת להיות אחרי שעת ההתחלה.";
 "ptw_close" = "החזרת ההיתר";
 "ptw_close_notes" = "השטח הושאר בטוח — הערות";
 "ptw_cancel" = "ביטול ההיתר";
@@ -547,10 +518,6 @@
 "comp_switch" = "היכן אתם עובדים";
 "comp_switch_hint" = "אפשר להיות רשומים ביותר מחברה אחת. הבחירה קובעת אילו עבודות תראו ומה מותר לכם.";
 "comp_own" = "העבודות שלכם";
-"comp_own_hint" = "עבודות ששייכות רק לכם.";
-"comp_add" = "פתיחת חברה נוספת";
-"comp_add_hint" = "חברה נוספת באותו טלפון, עם עבודות וצוות משלה. תעודת הזהות, התמונה והתדריך שלכם עוברים איתכם.";
-"comp_none" = "אינכם רשומים באף חברה.";
 "snag_title" = "ליקויים";
 "snag_new" = "פתיחת ליקוי";
 "snag_empty" = "אין ליקויים. פתחו ליקוי כשמוצאים פגם.";
@@ -578,11 +545,9 @@
 "snag_raised_by" = "נפתח על ידי";
 "snag_checked_by" = "נבדק על ידי";
 "acc_create_instead" = "לא קיבלתי חשבון";
-"acc_id_add" = "הוספת מספר תעודת זהות";
 "acc_id_locked" = "נקבע פעם אחת ונשמר. משרד האתר מזהה אתכם לפיו, ולכן אי אפשר לשנות אותו בשקט.";
 "acc_id_missing" = "אין לכם עדיין מספר תעודת זהות, ולכן אפשר להיכנס רק עם שם המשתמש. הוסיפו מספר ושניהם יעבדו.";
 "log_title" = "יומן עבודה";
-"log_empty" = "עדיין לא נרשמו ימים. היומן של היום מחכה.";
 "log_today" = "היום";
 "log_gathered" = "מה שנרשם היום";
 "log_gathered_hint" = "נספר ממה שנרשם בפועל. תיקון הרישום מתקן גם כאן.";
@@ -690,7 +655,6 @@
 "lift_gross" = "סך הכול על הוו";
 "lift_appliance" = "העגורן או מכשיר ההרמה";
 "lift_appliance_cert" = "תוקף בדיקת המכשיר";
-"lift_appliance_cert_none" = "לא נרשמה תעודת בדיקה";
 "lift_appliance_cert_needed" = "מכשיר זה טעון בדיקה תקופתית";
 "lift_radius" = "רדיוס (מ׳)";
 "lift_capacity" = "כושר ההרמה בטבלה ברדיוס זה (ק״ג)";
@@ -706,9 +670,7 @@
 "lift_role_banksman" = "אתת";
 "lift_crew_name" = "שם";
 "lift_crew_ticket" = "מספר ההסמכה";
-"lift_crew_expires" = "תוקף ההסמכה";
 "lift_crew_no_expiry" = "ללא תפוגה";
-"lift_crew_set" = "שיבוץ לתפקיד";
 "lift_crew_none" = "לא שובץ איש";
 "lift_planned_for" = "מתוכנן ל";
 "lift_approve" = "אישור ההרמה";
@@ -936,7 +898,6 @@
 "co_address" = "כתובת";
 "co_licence" = "מספר רישיון קבלן";
 "co_classification" = "סיווג";
-"co_licence_expires" = "הרישיון בתוקף עד";
 "co_visible_to_workers" = "להציג לצוות";
 "co_visible_hint" = "כבוי פירושו שרק ההנהלה רואה. שום דבר אינו מפורסם עד שתדליק.";
 "co_verified_note" = "רישום רישיון מסמן אתכם כמאומתים באפליקציה. אין בכך קביעה שאתם מורשים לבצע את העבודה — זה עניין שבינכם לבין הרגולטור.";
@@ -954,18 +915,15 @@
 "eng_add" = "הוספת חברה לעבודה";
 "eng_name" = "שם החברה";
 "eng_scope" = "מה תפקידם";
-"eng_refused" = "התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.";
 "wp_payee" = "מי מבצע";
 "wp_title_field" = "מהי החבילה";
 "eng_self" = "מה החברה שלכם בעבודה הזו?";
 "eng_self_hint" = "ענו על כך לפני הכול. אף אחד אחר לא יכול לענות במקומכם, וכל עוד לא עניתם לא תוכלו להוסיף חברה נוספת.";
 "ct_title" = "חוזים";
 "ct_empty" = "אין עדיין חוזים בעבודה הזו";
-"ct_new" = "חוזה חדש";
 "ct_row_hint" = "מה סוכם ועם מי";
 "ct_scope" = "מה הוא כולל";
 "ct_original" = "סכום מקורי";
-"ct_current" = "הסכום התקף";
 "ct_receivable" = "אתם מקבלים על זה";
 "ct_payable" = "אתם משלמים על זה";
 "ct_sign" = "חתימה";
@@ -986,7 +944,6 @@
 "wp_claim_raise" = "הגשת חשבון";
 "wp_claim_total" = "החשבון ידרוש";
 "wp_claim_cumulative" = "כל מה שאושר עד היום, לא רק מה שנוסף כעת. הסכום לתשלום הוא זה פחות עיכבון ופחות מה ששולם כבר.";
-"wp_claim_none" = "לא אושר דבר חדש מאז החשבון הקודם";
 "task_stage" = "שלב בעבודה";
 "task_stage_none" = "ללא שלב";
 "task_stage_hint" = "רשות. שווה לקבוע כשאותה משימה חוזרת בכמה קומות — השלב הוא מה שמבדיל ביניהן.";
@@ -1043,7 +1000,6 @@
 "inc_serious" = "חמור — בית חולים או היעדרות";
 "inc_fatal" = "קטלני";
 "inc_escalate" = "ייתכן שיש לדווח על אירוע זה גם לרשות המפקחת, ולא רק לתעד אותו כאן. בדקו את חובותיכם — האפליקציה אינה מכריעה בכך עבורכם.";
-"inc_reported_by" = "דווח על ידי";
 "acc_have_account" = "כבר יש לי חשבון";
 "acc_none_on_device" = "אין עדיין חשבונות בטלפון הזה. החשבונות נשמרים במכשיר, ולכן חשבון שנוצר בטלפון אחר אינו נגיש מכאן עד שתהיה לחברה שרת. צרו חשבון כדי להתחיל.";
 "role_safety_officer" = "ממונה בטיחות";
@@ -1525,3 +1481,21 @@
 "summary_heat_checked" = "בדיקת חום: תחושת חום %1$s°C, %2$s";
 /* A heat check that failed to save for a reason other than a rule */
 "heat_refused_generic" = "הבדיקה לא נשמרה. נסו שוב.";
+/* Daily log row: people with a check-in on this job that day, counted by the app */
+"log_checked_in" = "נרשמו בכניסה באפליקציה";
+/* A write the rules refused, where the screen had no more specific sentence */
+"write_not_saved" = "הפעולה לא נשמרה. ייתכן שמשהו השתנה מאז שהמסך נפתח, או שחסר משהו שנדרש. בדקו שוב ונסו שוב.";
+/* Adding an ID number was refused */
+"id_number_not_saved" = "מספר הזהות לא נשמר. הוא כבר רשום בחשבון אחר, או שלחשבון הזה כבר יש מספר.";
+/* Section header on the roll call screen */
+"muster_call_title" = "מספרי חירום";
+/* Button: opens the dialer on 101 */
+"muster_call_ambulance" = "מד״א — 101";
+/* Button: opens the dialer on 102 */
+"muster_call_fire" = "כבאות והצלה — 102";
+/* Button: opens the dialer on 100 */
+"muster_call_police" = "משטרה — 100";
+/* Under the emergency numbers */
+"muster_call_hint" = "פותח את החייגן עם המספר. הלחיצה על חיוג היא שלכם.";
+/* This device cannot place calls */
+"muster_call_no_dialer" = "המכשיר הזה לא יכול לחייג. השתמשו בטלפון אחר.";

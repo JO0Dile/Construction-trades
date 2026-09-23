@@ -11,16 +11,10 @@
     <string name="action_add">Add</string>
     <string name="action_close">Close</string>
     <string name="action_back">Back</string>
-    <string name="action_retry">Try again</string>
-    <string name="action_undo">Undo</string>
     <string name="action_continue">Continue</string>
     <string name="action_search">Search</string>
     <string name="action_filter">Filter</string>
-    <string name="action_export">Export</string>
-    <string name="state_loading">Loading…</string>
-    <string name="state_deleted">Deleted</string>
     <string name="error_required">This field is required</string>
-    <string name="error_number">Enter a number</string>
     <string name="onboarding_welcome_title">Set the app up for your trade</string>
     <string name="onboarding_welcome_body">Everything works offline. Pick a language and your trades, and your tool and material lists are ready.</string>
     <string name="onboarding_language_title">Language</string>
@@ -33,13 +27,11 @@
     <string name="nav_projects">Projects</string>
     <string name="nav_schedule">Schedule</string>
     <string name="nav_safety">Safety</string>
-    <string name="nav_settings">Settings</string>
     <string name="home_today">Today</string>
     <string name="home_low_stock">Running low</string>
     <string name="home_active_projects">Active projects</string>
     <string name="home_safety_due">Safety sign-off due</string>
     <string name="home_no_tasks_today">Nothing scheduled for today</string>
-    <string name="home_open_tasks">Open tasks</string>
     <string name="inv_title">Inventory</string>
     <string name="inv_search_hint">Search name, spec or tag</string>
     <string name="inv_add_item">New item</string>
@@ -50,18 +42,14 @@
     <string name="inv_quantity">Quantity in stock</string>
     <string name="inv_min_stock">Low stock threshold</string>
     <string name="inv_unit">Unit</string>
-    <string name="inv_supplier">Supplier</string>
     <string name="inv_price">Purchase price</string>
     <string name="inv_barcode">Barcode / QR</string>
     <string name="inv_tags">Tags</string>
-    <string name="inv_photos">Photos</string>
     <string name="inv_low_stock">Low</string>
-    <string name="inv_out_of_stock">Out of stock</string>
     <string name="inv_filter_all">All</string>
     <string name="inv_filter_low">Low stock</string>
     <string name="inv_stock_add">Add stock</string>
     <string name="inv_stock_remove">Use stock</string>
-    <string name="inv_stock_reason">Reason</string>
     <string name="inv_history">Stock history</string>
     <string name="inv_no_movements">No movements yet</string>
     <string name="inv_scan">Scan a label</string>
@@ -98,7 +86,6 @@
     <string name="proj_city">City</string>
     <string name="proj_postal_code">Postal code</string>
     <string name="proj_client_phone">Client phone</string>
-    <string name="proj_when">When it runs</string>
     <string name="proj_no_date">Not set</string>
     <string name="action_clear">Clear</string>
     <string name="proj_where_and_who">Where it is, and who it is for</string>
@@ -107,7 +94,6 @@
     <string name="proj_status">Status</string>
     <string name="proj_start">Start date</string>
     <string name="proj_due">Due date</string>
-    <string name="proj_notes">Notes</string>
     <string name="proj_materials">Materials and tools</string>
     <string name="proj_tasks">Tasks</string>
     <string name="proj_progress">Progress</string>
@@ -169,7 +155,6 @@
     <!-- Android asks the user to allow this app to install apps -->
     <string name="update_permission">Android will ask you to allow this app to install updates. That permission is only used for this app\'s own updates.</string>
     <string name="update_notes">What changed</string>
-    <string name="sch_title">Schedule</string>
     <string name="sch_new_block">New time block</string>
     <string name="sch_assign">Assign</string>
     <string name="sch_nobody">Nobody yet</string>
@@ -178,16 +163,13 @@
     <string name="sch_end">End</string>
     <string name="sch_task">Task</string>
     <string name="sch_assignee">Assigned to</string>
-    <string name="sch_project">Project</string>
     <string name="sch_check_in">Check in</string>
     <string name="sch_which_job">Which job?</string>
     <string name="sch_check_out">Check out</string>
-    <string name="sch_checked_in">Checked in</string>
     <string name="sch_empty">Nothing scheduled</string>
     <string name="sch_previous_day">Previous day</string>
     <string name="sch_next_day">Next day</string>
     <string name="saf_title">Safety</string>
-    <string name="saf_run">Start checklist</string>
     <string name="saf_mandatory">Required before work</string>
     <string name="saf_critical">Critical</string>
     <string name="saf_pass">Done</string>
@@ -198,7 +180,6 @@
     <string name="saf_signed_by">Signed by</string>
     <string name="saf_blocked">A critical item is not done. Work must not start.</string>
     <string name="saf_references">Standards and regulations</string>
-    <string name="saf_report_incident">Report an incident</string>
     <string name="saf_empty">No checklists for your trades</string>
     <string name="saf_disclaimer">Standard references are a pointer for the site file. They do not replace the published text of the standard or regulation.</string>
     <string name="set_title">Settings</string>
@@ -211,7 +192,6 @@
     <string name="set_trades">My trades</string>
     <string name="set_security">Security</string>
     <string name="set_encrypt">Encrypt data on this device</string>
-    <string name="set_audit_log">Activity log</string>
     <string name="set_export">Export my data</string>
     <string name="set_delete_data">Delete my account and data</string>
     <!-- Privacy screen: the whole of it in one sentence -->
@@ -260,12 +240,7 @@
     <string name="set_reseed_note">Adds catalogue items that are missing. Your own items and quantities are never touched.</string>
     <string name="perm_camera_title">Camera</string>
     <string name="perm_camera_body">Used to photograph items and site progress, and to scan barcodes. Photos stay on this device unless you sync.</string>
-    <string name="perm_location_title">Location</string>
     <string name="perm_location_body">Optional. Stamps check-ins, site photos and incident reports with where they happened. The app works fully without it.</string>
-    <string name="perm_mic_title">Microphone</string>
-    <string name="perm_mic_body">Used only while you dictate a task note in Hebrew or Arabic.</string>
-    <string name="perm_notifications_title">Notifications</string>
-    <string name="perm_notifications_body">Reminders for scheduled tasks and low stock.</string>
     <string name="perm_allow">Allow</string>
     <string name="perm_not_now">Not now</string>
     <string name="audit_created">Created</string>
@@ -288,11 +263,8 @@
     <string name="acc_passcode_short">At least 4 digits.</string>
     <string name="acc_create">Create</string>
     <string name="acc_sign_in">Sign in</string>
-    <string name="acc_sign_in_as">Who is using this device?</string>
     <string name="acc_sign_out">Sign out</string>
-    <string name="acc_wrong_passcode">That passcode is not right.</string>
     <string name="acc_signed_in_as">Signed in as</string>
-    <string name="acc_no_passcode">No passcode</string>
     <string name="people_title">People</string>
     <string name="people_add">Add someone</string>
     <string name="people_role">What they do</string>
@@ -442,7 +414,6 @@
     <string name="ptw_issue_blocked">Every precaution has to be ticked before this permit can be issued.</string>
     <string name="ptw_valid_from">Valid from</string>
     <string name="ptw_valid_to">Valid until</string>
-    <string name="ptw_window_invalid">The end has to come after the start.</string>
     <string name="ptw_close">Sign the permit back</string>
     <string name="ptw_close_notes">Area left safe — anything to note</string>
     <string name="ptw_cancel">Withdraw the permit</string>
@@ -548,10 +519,6 @@
     <string name="comp_switch">Where you are working</string>
     <string name="comp_switch_hint">You can be on more than one firm\'s books. This decides whose jobs you see and what you may do.</string>
     <string name="comp_own">Your own tools</string>
-    <string name="comp_own_hint">Jobs that belong to nobody but you.</string>
-    <string name="comp_add">Start another company</string>
-    <string name="comp_add_hint">A new firm on the same phone, with its own jobs and its own crew. Your ID, photograph and induction come with you.</string>
-    <string name="comp_none">You are not on any firm\'s books.</string>
     <string name="snag_title">Snags</string>
     <string name="snag_new">Raise a snag</string>
     <string name="snag_empty">No snags. Raise one when you find a defect.</string>
@@ -579,11 +546,9 @@
     <string name="snag_raised_by">Raised by</string>
     <string name="snag_checked_by">Checked by</string>
     <string name="acc_create_instead">I have not been given an account</string>
-    <string name="acc_id_add">Add your ID number</string>
     <string name="acc_id_locked">Set once and kept. The site office identifies you by this, so it is not something to change quietly.</string>
     <string name="acc_id_missing">You have no ID number yet, so you can only sign in with your username. Add one and either will work.</string>
     <string name="log_title">Daily log</string>
-    <string name="log_empty">No days logged yet. Today\'s is ready when you are.</string>
     <string name="log_today">Today</string>
     <string name="log_gathered">What the app recorded today</string>
     <string name="log_gathered_hint">Counted from what was actually entered. Correct the entry and this corrects itself.</string>
@@ -691,7 +656,6 @@
     <string name="lift_gross">On the hook</string>
     <string name="lift_appliance">Crane or appliance</string>
     <string name="lift_appliance_cert">Its test certificate runs out</string>
-    <string name="lift_appliance_cert_none">No test certificate recorded</string>
     <string name="lift_appliance_cert_needed">This appliance needs a periodic test</string>
     <string name="lift_radius">Radius (m)</string>
     <string name="lift_capacity">Chart capacity at that radius (kg)</string>
@@ -707,9 +671,7 @@
     <string name="lift_role_banksman">Banksman</string>
     <string name="lift_crew_name">Name</string>
     <string name="lift_crew_ticket">Ticket number</string>
-    <string name="lift_crew_expires">Ticket runs out</string>
     <string name="lift_crew_no_expiry">Does not expire</string>
-    <string name="lift_crew_set">Put somebody in this role</string>
     <string name="lift_crew_none">Nobody</string>
     <string name="lift_planned_for">Planned for</string>
     <string name="lift_approve">Approve the lift</string>
@@ -937,7 +899,6 @@
     <string name="co_address">Address</string>
     <string name="co_licence">Contractor licence number</string>
     <string name="co_classification">Classification</string>
-    <string name="co_licence_expires">Licence valid until</string>
     <string name="co_visible_to_workers">Show to the crew</string>
     <string name="co_visible_hint">Off means only management sees it. Nothing is published unless you turn it on.</string>
     <string name="co_verified_note">Recording a licence marks you verified on this app. It is not a statement that you are licensed to do the work — that is between you and the regulator.</string>
@@ -955,18 +916,15 @@
     <string name="eng_add">Bring a firm onto the job</string>
     <string name="eng_name">Firm name</string>
     <string name="eng_scope">What they are here to do</string>
-    <string name="eng_refused">Your position on this job cannot bring that one on.</string>
     <string name="wp_payee">Who is doing it</string>
     <string name="wp_title_field">What the package is</string>
     <string name="eng_self">What is your firm on this job?</string>
     <string name="eng_self_hint">Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.</string>
     <string name="ct_title">Contracts</string>
     <string name="ct_empty">No contracts on this job yet</string>
-    <string name="ct_new">New contract</string>
     <string name="ct_row_hint">What was agreed, and with whom</string>
     <string name="ct_scope">What it covers</string>
     <string name="ct_original">Original amount</string>
-    <string name="ct_current">Amount in force</string>
     <string name="ct_receivable">You are paid on this</string>
     <string name="ct_payable">You pay on this</string>
     <string name="ct_sign">Sign</string>
@@ -987,7 +945,6 @@
     <string name="wp_claim_raise">Raise a payment application</string>
     <string name="wp_claim_total">This application will claim</string>
     <string name="wp_claim_cumulative">Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.</string>
-    <string name="wp_claim_none">Nothing new approved since the last application</string>
     <string name="task_stage">Stage of the job</string>
     <string name="task_stage_none">No stage</string>
     <string name="task_stage_hint">Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.</string>
@@ -1044,7 +1001,6 @@
     <string name="inc_serious">Serious — hospital or off work</string>
     <string name="inc_fatal">Fatal</string>
     <string name="inc_escalate">This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.</string>
-    <string name="inc_reported_by">Reported by</string>
     <string name="acc_have_account">I already have an account</string>
     <string name="acc_none_on_device">There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.</string>
     <string name="role_safety_officer">Safety officer</string>
@@ -1526,6 +1482,24 @@
     <string name="summary_heat_checked">Heat check: feels like %1$s°C, %2$s</string>
     <!-- A heat check that failed to save for a reason other than a rule -->
     <string name="heat_refused_generic">That did not save. Try again.</string>
+    <!-- Daily log row: people with a check-in on this job that day, counted by the app -->
+    <string name="log_checked_in">Checked in on the app</string>
+    <!-- A write the rules refused, where the screen had no more specific sentence -->
+    <string name="write_not_saved">That was not saved. It may have changed since this screen opened, or something it needs is missing. Look again and try once more.</string>
+    <!-- Adding an ID number was refused -->
+    <string name="id_number_not_saved">That ID number was not saved. It is already on another account, or this account already has one.</string>
+    <!-- Section header on the roll call screen -->
+    <string name="muster_call_title">Emergency numbers</string>
+    <!-- Button: opens the dialer on 101 -->
+    <string name="muster_call_ambulance">Ambulance — 101</string>
+    <!-- Button: opens the dialer on 102 -->
+    <string name="muster_call_fire">Fire and rescue — 102</string>
+    <!-- Button: opens the dialer on 100 -->
+    <string name="muster_call_police">Police — 100</string>
+    <!-- Under the emergency numbers -->
+    <string name="muster_call_hint">Opens the phone with the number in. You press call.</string>
+    <!-- This device cannot place calls -->
+    <string name="muster_call_no_dialer">This device cannot make phone calls. Use another phone.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

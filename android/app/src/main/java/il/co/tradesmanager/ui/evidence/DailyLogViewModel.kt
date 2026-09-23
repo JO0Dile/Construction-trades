@@ -30,6 +30,17 @@ class DailyLogViewModel(
     private val projectId: String,
 ) : ViewModel() {
 
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
+
     private val zone: ZoneId = ZoneId.systemDefault()
     private val _logId = MutableStateFlow<String?>(null)
 
@@ -65,7 +76,7 @@ class DailyLogViewModel(
 
     fun save(weather: String?, workforceCount: Int?, notes: String?) = viewModelScope.launch {
         val id = _logId.value ?: return@launch
-        container.dailyLogs.update(id, weather, workforceCount, notes)
+        if (!container.dailyLogs.update(id, weather, workforceCount, notes)) _notSaved.value = true
     }
 
     fun sign(signature: String) = viewModelScope.launch {
@@ -75,6 +86,8 @@ class DailyLogViewModel(
         // register has to read years later without the account table next to
         // it; the id is what lets anything check who that was.
         val signedIn = container.session.state.first() as? SessionRepository.State.SignedIn
-        container.dailyLogs.sign(id, actor, signature, signedIn?.account?.id)
+        if (!container.dailyLogs.sign(id, actor, signature, signedIn?.account?.id)) {
+            _notSaved.value = true
+        }
     }
 }

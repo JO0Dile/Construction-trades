@@ -258,8 +258,11 @@ fun PeopleScreen(
 /**
  * The sentence for each refusal along the chain. Exhaustive with no `else`, so
  * the next blocker somebody adds cannot become a blank dialog.
+ *
+ * Internal rather than private so the crew screen says the same thing when a
+ * trade is refused for the same reason.
  */
-private fun chainBlockerText(blocker: Chain.Blocker): Int = when (blocker) {
+internal fun chainBlockerText(blocker: Chain.Blocker): Int = when (blocker) {
     Chain.Blocker.UNKNOWN -> R.string.people_chain_unknown
     Chain.Blocker.NOT_YOURS -> R.string.people_chain_not_yours
     Chain.Blocker.YOURSELF -> R.string.people_chain_yourself

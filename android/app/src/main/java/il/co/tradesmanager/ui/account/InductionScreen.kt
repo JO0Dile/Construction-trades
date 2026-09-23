@@ -41,6 +41,7 @@ import il.co.tradesmanager.core.safety.Induction
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.SignaturePad
 import il.co.tradesmanager.ui.components.rememberImageAdder
 
@@ -67,6 +68,8 @@ fun InductionScreen(
         factory = ViewModelFactory(container) { InductionViewModel(it, accountId) },
     )
     val photo by viewModel.photo.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val idDocument by viewModel.idDocument.collectAsStateWithLifecycle()
 
     var signature by remember { mutableStateOf("") }

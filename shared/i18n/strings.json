@@ -60,16 +60,6 @@
       "he": "חזרה",
       "ar": "رجوع"
     },
-    "action_retry": {
-      "en": "Try again",
-      "he": "נסה שוב",
-      "ar": "حاول مرة أخرى"
-    },
-    "action_undo": {
-      "en": "Undo",
-      "he": "ביטול פעולה",
-      "ar": "تراجع"
-    },
     "action_continue": {
       "en": "Continue",
       "he": "המשך",
@@ -85,30 +75,10 @@
       "he": "סינון",
       "ar": "تصفية"
     },
-    "action_export": {
-      "en": "Export",
-      "he": "ייצוא",
-      "ar": "تصدير"
-    },
-    "state_loading": {
-      "en": "Loading…",
-      "he": "טוען…",
-      "ar": "جارٍ التحميل…"
-    },
-    "state_deleted": {
-      "en": "Deleted",
-      "he": "נמחק",
-      "ar": "تم الحذف"
-    },
     "error_required": {
       "en": "This field is required",
       "he": "שדה חובה",
       "ar": "هذا الحقل مطلوب"
-    },
-    "error_number": {
-      "en": "Enter a number",
-      "he": "יש להזין מספר",
-      "ar": "أدخل رقمًا"
     },
     "onboarding_welcome_title": {
       "en": "Set the app up for your trade",
@@ -170,11 +140,6 @@
       "he": "בטיחות",
       "ar": "السلامة"
     },
-    "nav_settings": {
-      "en": "Settings",
-      "he": "הגדרות",
-      "ar": "الإعدادات"
-    },
     "home_today": {
       "en": "Today",
       "he": "היום",
@@ -199,11 +164,6 @@
       "en": "Nothing scheduled for today",
       "he": "אין משימות מתוכננות להיום",
       "ar": "لا توجد مهام مجدولة اليوم"
-    },
-    "home_open_tasks": {
-      "en": "Open tasks",
-      "he": "משימות פתוחות",
-      "ar": "مهام مفتوحة"
     },
     "inv_title": {
       "en": "Inventory",
@@ -255,11 +215,6 @@
       "he": "יחידת מידה",
       "ar": "وحدة القياس"
     },
-    "inv_supplier": {
-      "en": "Supplier",
-      "he": "ספק",
-      "ar": "المورّد"
-    },
     "inv_price": {
       "en": "Purchase price",
       "he": "מחיר קנייה",
@@ -275,20 +230,10 @@
       "he": "תגיות",
       "ar": "الوسوم"
     },
-    "inv_photos": {
-      "en": "Photos",
-      "he": "תמונות",
-      "ar": "الصور"
-    },
     "inv_low_stock": {
       "en": "Low",
       "he": "נמוך",
       "ar": "منخفض"
-    },
-    "inv_out_of_stock": {
-      "en": "Out of stock",
-      "he": "אזל",
-      "ar": "نفد"
     },
     "inv_filter_all": {
       "en": "All",
@@ -309,11 +254,6 @@
       "en": "Use stock",
       "he": "הוצאת מלאי",
       "ar": "صرف مخزون"
-    },
-    "inv_stock_reason": {
-      "en": "Reason",
-      "he": "סיבה",
-      "ar": "السبب"
     },
     "inv_history": {
       "en": "Stock history",
@@ -495,11 +435,6 @@
       "he": "טלפון הלקוח",
       "ar": "هاتف الزبون"
     },
-    "proj_when": {
-      "en": "When it runs",
-      "he": "מתי היא רצה",
-      "ar": "متى يجري"
-    },
     "proj_no_date": {
       "en": "Not set",
       "he": "לא נקבע",
@@ -539,11 +474,6 @@
       "en": "Due date",
       "he": "תאריך יעד",
       "ar": "تاريخ الاستحقاق"
-    },
-    "proj_notes": {
-      "en": "Notes",
-      "he": "הערות",
-      "ar": "ملاحظات"
     },
     "proj_materials": {
       "en": "Materials and tools",
@@ -822,11 +752,6 @@
       "he": "מה השתנה",
       "ar": "ما الذي تغيّر"
     },
-    "sch_title": {
-      "en": "Schedule",
-      "he": "לוח זמנים",
-      "ar": "الجدول"
-    },
     "sch_new_block": {
       "en": "New time block",
       "he": "משבצת זמן חדשה",
@@ -867,11 +792,6 @@
       "he": "משויך ל",
       "ar": "مُسنَد إلى"
     },
-    "sch_project": {
-      "en": "Project",
-      "he": "פרויקט",
-      "ar": "المشروع"
-    },
     "sch_check_in": {
       "en": "Check in",
       "he": "כניסה",
@@ -886,11 +806,6 @@
       "en": "Check out",
       "he": "יציאה",
       "ar": "تسجيل خروج"
-    },
-    "sch_checked_in": {
-      "en": "Checked in",
-      "he": "נרשמה כניסה",
-      "ar": "تم تسجيل الدخول"
     },
     "sch_empty": {
       "en": "Nothing scheduled",
@@ -911,11 +826,6 @@
       "en": "Safety",
       "he": "בטיחות",
       "ar": "السلامة"
-    },
-    "saf_run": {
-      "en": "Start checklist",
-      "he": "התחלת תדריך",
-      "ar": "بدء قائمة الفحص"
     },
     "saf_mandatory": {
       "en": "Required before work",
@@ -966,11 +876,6 @@
       "en": "Standards and regulations",
       "he": "תקנים ותקנות",
       "ar": "المواصفات والأنظمة"
-    },
-    "saf_report_incident": {
-      "en": "Report an incident",
-      "he": "דיווח על אירוע",
-      "ar": "الإبلاغ عن حادث"
     },
     "saf_empty": {
       "en": "No checklists for your trades",
@@ -1031,11 +936,6 @@
       "en": "Encrypt data on this device",
       "he": "הצפנת הנתונים במכשיר",
       "ar": "تشفير البيانات على الجهاز"
-    },
-    "set_audit_log": {
-      "en": "Activity log",
-      "he": "יומן פעילות",
-      "ar": "سجل النشاط"
     },
     "set_export": {
       "en": "Export my data",
@@ -1273,35 +1173,10 @@
       "he": "משמשת לצילום פריטים והתקדמות באתר ולסריקת ברקודים. התמונות נשארות במכשיר אלא אם מסונכרנות.",
       "ar": "تُستخدم لتصوير الأصناف وتقدّم العمل ولمسح الباركود. تبقى الصور على الجهاز ما لم تتم المزامنة."
     },
-    "perm_location_title": {
-      "en": "Location",
-      "he": "מיקום",
-      "ar": "الموقع"
-    },
     "perm_location_body": {
       "en": "Optional. Stamps check-ins, site photos and incident reports with where they happened. The app works fully without it.",
       "he": "אופציונלי. מוסיף חותמת מיקום לכניסות, לתמונות אתר ולדיווחי אירוע. האפליקציה עובדת במלואה גם בלעדיו.",
       "ar": "اختياري. يضيف ختم الموقع لتسجيلات الدخول وصور الموقع وتقارير الحوادث. يعمل التطبيق بالكامل بدونه."
-    },
-    "perm_mic_title": {
-      "en": "Microphone",
-      "he": "מיקרופון",
-      "ar": "الميكروفون"
-    },
-    "perm_mic_body": {
-      "en": "Used only while you dictate a task note in Hebrew or Arabic.",
-      "he": "בשימוש רק בזמן הכתבת הערה למשימה בעברית או בערבית.",
-      "ar": "يُستخدم فقط أثناء إملاء ملاحظة مهمة بالعبرية أو العربية."
-    },
-    "perm_notifications_title": {
-      "en": "Notifications",
-      "he": "התראות",
-      "ar": "الإشعارات"
-    },
-    "perm_notifications_body": {
-      "en": "Reminders for scheduled tasks and low stock.",
-      "he": "תזכורות למשימות מתוכננות ולמלאי נמוך.",
-      "ar": "تذكيرات بالمهام المجدولة والمخزون المنخفض."
     },
     "perm_allow": {
       "en": "Allow",
@@ -1413,30 +1288,15 @@
       "he": "כניסה",
       "ar": "تسجيل الدخول"
     },
-    "acc_sign_in_as": {
-      "en": "Who is using this device?",
-      "he": "מי משתמש במכשיר?",
-      "ar": "من يستخدم هذا الجهاز؟"
-    },
     "acc_sign_out": {
       "en": "Sign out",
       "he": "יציאה",
       "ar": "تسجيل الخروج"
     },
-    "acc_wrong_passcode": {
-      "en": "That passcode is not right.",
-      "he": "קוד הכניסה שגוי.",
-      "ar": "رمز الدخول غير صحيح."
-    },
     "acc_signed_in_as": {
       "en": "Signed in as",
       "he": "מחובר כ־",
       "ar": "مسجّل الدخول باسم"
-    },
-    "acc_no_passcode": {
-      "en": "No passcode",
-      "he": "בלי קוד כניסה",
-      "ar": "بدون رمز دخول"
     },
     "people_title": {
       "en": "People",
@@ -2183,11 +2043,6 @@
       "he": "בתוקף עד",
       "ar": "ساري حتى"
     },
-    "ptw_window_invalid": {
-      "en": "The end has to come after the start.",
-      "he": "שעת הסיום חייבת להיות אחרי שעת ההתחלה.",
-      "ar": "يجب أن يكون وقت الانتهاء بعد وقت البدء."
-    },
     "ptw_close": {
       "en": "Sign the permit back",
       "he": "החזרת ההיתר",
@@ -2709,26 +2564,6 @@
       "he": "העבודות שלכם",
       "ar": "أعمالك الخاصة"
     },
-    "comp_own_hint": {
-      "en": "Jobs that belong to nobody but you.",
-      "he": "עבודות ששייכות רק לכם.",
-      "ar": "أعمال تخصّك وحدك."
-    },
-    "comp_add": {
-      "en": "Start another company",
-      "he": "פתיחת חברה נוספת",
-      "ar": "إنشاء شركة أخرى"
-    },
-    "comp_add_hint": {
-      "en": "A new firm on the same phone, with its own jobs and its own crew. Your ID, photograph and induction come with you.",
-      "he": "חברה נוספת באותו טלפון, עם עבודות וצוות משלה. תעודת הזהות, התמונה והתדריך שלכם עוברים איתכם.",
-      "ar": "شركة جديدة على الهاتف نفسه، بأعمالها وطاقمها. هويتك وصورتك وتعليماتك تنتقل معك."
-    },
-    "comp_none": {
-      "en": "You are not on any firm's books.",
-      "he": "אינכם רשומים באף חברה.",
-      "ar": "لست مسجّلًا لدى أي شركة."
-    },
     "snag_title": {
       "en": "Snags",
       "he": "ליקויים",
@@ -2864,11 +2699,6 @@
       "he": "לא קיבלתי חשבון",
       "ar": "لم أحصل على حساب"
     },
-    "acc_id_add": {
-      "en": "Add your ID number",
-      "he": "הוספת מספר תעודת זהות",
-      "ar": "أضف رقم هويتك"
-    },
     "acc_id_locked": {
       "en": "Set once and kept. The site office identifies you by this, so it is not something to change quietly.",
       "he": "נקבע פעם אחת ונשמר. משרד האתר מזהה אתכם לפיו, ולכן אי אפשר לשנות אותו בשקט.",
@@ -2883,11 +2713,6 @@
       "en": "Daily log",
       "he": "יומן עבודה",
       "ar": "يومية العمل"
-    },
-    "log_empty": {
-      "en": "No days logged yet. Today's is ready when you are.",
-      "he": "עדיין לא נרשמו ימים. היומן של היום מחכה.",
-      "ar": "لم تُسجَّل أيام بعد. يومية اليوم جاهزة."
     },
     "log_today": {
       "en": "Today",
@@ -3424,11 +3249,6 @@
       "he": "תוקף בדיקת המכשיר",
       "ar": "تنتهي شهادة فحصه"
     },
-    "lift_appliance_cert_none": {
-      "en": "No test certificate recorded",
-      "he": "לא נרשמה תעודת בדיקה",
-      "ar": "لم تُسجَّل شهادة فحص"
-    },
     "lift_appliance_cert_needed": {
       "en": "This appliance needs a periodic test",
       "he": "מכשיר זה טעון בדיקה תקופתית",
@@ -3504,20 +3324,10 @@
       "he": "מספר ההסמכה",
       "ar": "رقم الشهادة"
     },
-    "lift_crew_expires": {
-      "en": "Ticket runs out",
-      "he": "תוקף ההסמכה",
-      "ar": "تنتهي صلاحية الشهادة"
-    },
     "lift_crew_no_expiry": {
       "en": "Does not expire",
       "he": "ללא תפוגה",
       "ar": "بلا تاريخ انتهاء"
-    },
-    "lift_crew_set": {
-      "en": "Put somebody in this role",
-      "he": "שיבוץ לתפקיד",
-      "ar": "تعيين شخص لهذا الدور"
     },
     "lift_crew_none": {
       "en": "Nobody",
@@ -4646,11 +4456,6 @@
       "he": "סיווג",
       "ar": "التصنيف"
     },
-    "co_licence_expires": {
-      "en": "Licence valid until",
-      "he": "הרישיון בתוקף עד",
-      "ar": "الرخصة سارية حتى"
-    },
     "co_visible_to_workers": {
       "en": "Show to the crew",
       "he": "להציג לצוות",
@@ -4732,11 +4537,6 @@
       "he": "מה תפקידם",
       "ar": "ما الذي جاؤوا لعمله"
     },
-    "eng_refused": {
-      "en": "Your position on this job cannot bring that one on.",
-      "he": "התפקיד שלכם בעבודה הזו אינו מאפשר להוסיף תפקיד כזה.",
-      "ar": "موقعك في هذا المشروع لا يسمح بإضافة هذا الموقع."
-    },
     "wp_payee": {
       "en": "Who is doing it",
       "he": "מי מבצע",
@@ -4767,11 +4567,6 @@
       "he": "אין עדיין חוזים בעבודה הזו",
       "ar": "لا توجد عقود في هذا المشروع بعد"
     },
-    "ct_new": {
-      "en": "New contract",
-      "he": "חוזה חדש",
-      "ar": "عقد جديد"
-    },
     "ct_row_hint": {
       "en": "What was agreed, and with whom",
       "he": "מה סוכם ועם מי",
@@ -4786,11 +4581,6 @@
       "en": "Original amount",
       "he": "סכום מקורי",
       "ar": "المبلغ الأصلي"
-    },
-    "ct_current": {
-      "en": "Amount in force",
-      "he": "הסכום התקף",
-      "ar": "المبلغ الساري"
     },
     "ct_receivable": {
       "en": "You are paid on this",
@@ -4891,11 +4681,6 @@
       "en": "Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.",
       "he": "כל מה שאושר עד היום, לא רק מה שנוסף כעת. הסכום לתשלום הוא זה פחות עיכבון ופחות מה ששולם כבר.",
       "ar": "كل ما اعتُمد حتى اليوم، لا ما يُضاف الآن فقط. المستحق فعلياً هو ذلك ناقص المحتجز وناقص ما دُفع سابقاً."
-    },
-    "wp_claim_none": {
-      "en": "Nothing new approved since the last application",
-      "he": "לא אושר דבר חדש מאז החשבון הקודם",
-      "ar": "لا شيء جديد اعتُمد منذ المطالبة السابقة"
     },
     "task_stage": {
       "en": "Stage of the job",
@@ -5168,11 +4953,6 @@
       "en": "This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.",
       "he": "ייתכן שיש לדווח על אירוע זה גם לרשות המפקחת, ולא רק לתעד אותו כאן. בדקו את חובותיכם — האפליקציה אינה מכריעה בכך עבורכם.",
       "ar": "قد يتطلب هذا الحادث إبلاغ الجهة الرقابية إضافة إلى تسجيله هنا. تحقّق من التزاماتك — التطبيق لا يقرر ذلك نيابة عنك."
-    },
-    "inc_reported_by": {
-      "en": "Reported by",
-      "he": "דווח על ידי",
-      "ar": "أبلغ عنه"
     },
     "acc_have_account": {
       "en": "I already have an account",
@@ -6958,6 +6738,60 @@
       "en": "That did not save. Try again.",
       "he": "הבדיקה לא נשמרה. נסו שוב.",
       "ar": "لم يُحفظ الفحص. حاول مرة أخرى."
+    },
+    "log_checked_in": {
+      "c": "Daily log row: people with a check-in on this job that day, counted by the app",
+      "en": "Checked in on the app",
+      "he": "נרשמו בכניסה באפליקציה",
+      "ar": "سجّلوا الدخول في التطبيق"
+    },
+    "write_not_saved": {
+      "c": "A write the rules refused, where the screen had no more specific sentence",
+      "en": "That was not saved. It may have changed since this screen opened, or something it needs is missing. Look again and try once more.",
+      "he": "הפעולה לא נשמרה. ייתכן שמשהו השתנה מאז שהמסך נפתח, או שחסר משהו שנדרש. בדקו שוב ונסו שוב.",
+      "ar": "لم يُحفظ ذلك. ربما تغيّر شيء منذ فتح هذه الشاشة، أو ينقص شيء مطلوب. راجع وحاول مرة أخرى."
+    },
+    "id_number_not_saved": {
+      "c": "Adding an ID number was refused",
+      "en": "That ID number was not saved. It is already on another account, or this account already has one.",
+      "he": "מספר הזהות לא נשמר. הוא כבר רשום בחשבון אחר, או שלחשבון הזה כבר יש מספר.",
+      "ar": "لم يُحفظ رقم الهوية. إنه مسجّل في حساب آخر، أو أن لهذا الحساب رقمًا بالفعل."
+    },
+    "muster_call_title": {
+      "c": "Section header on the roll call screen",
+      "en": "Emergency numbers",
+      "he": "מספרי חירום",
+      "ar": "أرقام الطوارئ"
+    },
+    "muster_call_ambulance": {
+      "c": "Button: opens the dialer on 101",
+      "en": "Ambulance — 101",
+      "he": "מד״א — 101",
+      "ar": "الإسعاف — 101"
+    },
+    "muster_call_fire": {
+      "c": "Button: opens the dialer on 102",
+      "en": "Fire and rescue — 102",
+      "he": "כבאות והצלה — 102",
+      "ar": "الإطفاء والإنقاذ — 102"
+    },
+    "muster_call_police": {
+      "c": "Button: opens the dialer on 100",
+      "en": "Police — 100",
+      "he": "משטרה — 100",
+      "ar": "الشرطة — 100"
+    },
+    "muster_call_hint": {
+      "c": "Under the emergency numbers",
+      "en": "Opens the phone with the number in. You press call.",
+      "he": "פותח את החייגן עם המספר. הלחיצה על חיוג היא שלכם.",
+      "ar": "يفتح الهاتف والرقم جاهز. أنت تضغط على الاتصال."
+    },
+    "muster_call_no_dialer": {
+      "c": "This device cannot place calls",
+      "en": "This device cannot make phone calls. Use another phone.",
+      "he": "המכשיר הזה לא יכול לחייג. השתמשו בטלפון אחר.",
+      "ar": "هذا الجهاز لا يستطيع إجراء المكالمات. استخدم هاتفًا آخر."
     }
   },
   "plurals": {

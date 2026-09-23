@@ -80,6 +80,13 @@ jobs:
       - name: Nothing is built that nobody can reach
         run: python3 tools/check-unreachable.py
 
+      # A repository write that can be refused says so by returning a Result
+      # or a Boolean. Twelve screens threw that answer away, so a refused
+      # permit, a snag verified twice, an ID number already on another account
+      # all looked exactly like a button that did nothing.
+      - name: Every refusable write has its answer read
+        run: python3 tools/check-ignored-results.py
+
       # The same fault in the other source set: assertTrue with no
       # `import org.junit.Assert.assertTrue` does not compile, and the line
       # looks exactly like the twenty around it that do. Gradle does not run

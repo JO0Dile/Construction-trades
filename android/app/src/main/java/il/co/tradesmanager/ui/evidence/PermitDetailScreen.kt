@@ -46,6 +46,7 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.LoadingState
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SignaturePad
 import il.co.tradesmanager.ui.components.currentLocale
@@ -75,6 +76,8 @@ fun PermitDetailScreen(
         factory = ViewModelFactory(container) { PermitDetailViewModel(it, permitId) },
     )
     val permit by viewModel.permit.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val precautions by viewModel.precautions.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val now = rememberNow()

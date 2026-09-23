@@ -10,16 +10,10 @@
 "action_add" = "Add";
 "action_close" = "Close";
 "action_back" = "Back";
-"action_retry" = "Try again";
-"action_undo" = "Undo";
 "action_continue" = "Continue";
 "action_search" = "Search";
 "action_filter" = "Filter";
-"action_export" = "Export";
-"state_loading" = "Loading…";
-"state_deleted" = "Deleted";
 "error_required" = "This field is required";
-"error_number" = "Enter a number";
 "onboarding_welcome_title" = "Set the app up for your trade";
 "onboarding_welcome_body" = "Everything works offline. Pick a language and your trades, and your tool and material lists are ready.";
 "onboarding_language_title" = "Language";
@@ -32,13 +26,11 @@
 "nav_projects" = "Projects";
 "nav_schedule" = "Schedule";
 "nav_safety" = "Safety";
-"nav_settings" = "Settings";
 "home_today" = "Today";
 "home_low_stock" = "Running low";
 "home_active_projects" = "Active projects";
 "home_safety_due" = "Safety sign-off due";
 "home_no_tasks_today" = "Nothing scheduled for today";
-"home_open_tasks" = "Open tasks";
 "inv_title" = "Inventory";
 "inv_search_hint" = "Search name, spec or tag";
 "inv_add_item" = "New item";
@@ -49,18 +41,14 @@
 "inv_quantity" = "Quantity in stock";
 "inv_min_stock" = "Low stock threshold";
 "inv_unit" = "Unit";
-"inv_supplier" = "Supplier";
 "inv_price" = "Purchase price";
 "inv_barcode" = "Barcode / QR";
 "inv_tags" = "Tags";
-"inv_photos" = "Photos";
 "inv_low_stock" = "Low";
-"inv_out_of_stock" = "Out of stock";
 "inv_filter_all" = "All";
 "inv_filter_low" = "Low stock";
 "inv_stock_add" = "Add stock";
 "inv_stock_remove" = "Use stock";
-"inv_stock_reason" = "Reason";
 "inv_history" = "Stock history";
 "inv_no_movements" = "No movements yet";
 "inv_scan" = "Scan a label";
@@ -97,7 +85,6 @@
 "proj_city" = "City";
 "proj_postal_code" = "Postal code";
 "proj_client_phone" = "Client phone";
-"proj_when" = "When it runs";
 "proj_no_date" = "Not set";
 "action_clear" = "Clear";
 "proj_where_and_who" = "Where it is, and who it is for";
@@ -106,7 +93,6 @@
 "proj_status" = "Status";
 "proj_start" = "Start date";
 "proj_due" = "Due date";
-"proj_notes" = "Notes";
 "proj_materials" = "Materials and tools";
 "proj_tasks" = "Tasks";
 "proj_progress" = "Progress";
@@ -168,7 +154,6 @@
 /* Android asks the user to allow this app to install apps */
 "update_permission" = "Android will ask you to allow this app to install updates. That permission is only used for this app's own updates.";
 "update_notes" = "What changed";
-"sch_title" = "Schedule";
 "sch_new_block" = "New time block";
 "sch_assign" = "Assign";
 "sch_nobody" = "Nobody yet";
@@ -177,16 +162,13 @@
 "sch_end" = "End";
 "sch_task" = "Task";
 "sch_assignee" = "Assigned to";
-"sch_project" = "Project";
 "sch_check_in" = "Check in";
 "sch_which_job" = "Which job?";
 "sch_check_out" = "Check out";
-"sch_checked_in" = "Checked in";
 "sch_empty" = "Nothing scheduled";
 "sch_previous_day" = "Previous day";
 "sch_next_day" = "Next day";
 "saf_title" = "Safety";
-"saf_run" = "Start checklist";
 "saf_mandatory" = "Required before work";
 "saf_critical" = "Critical";
 "saf_pass" = "Done";
@@ -197,7 +179,6 @@
 "saf_signed_by" = "Signed by";
 "saf_blocked" = "A critical item is not done. Work must not start.";
 "saf_references" = "Standards and regulations";
-"saf_report_incident" = "Report an incident";
 "saf_empty" = "No checklists for your trades";
 "saf_disclaimer" = "Standard references are a pointer for the site file. They do not replace the published text of the standard or regulation.";
 "set_title" = "Settings";
@@ -210,7 +191,6 @@
 "set_trades" = "My trades";
 "set_security" = "Security";
 "set_encrypt" = "Encrypt data on this device";
-"set_audit_log" = "Activity log";
 "set_export" = "Export my data";
 "set_delete_data" = "Delete my account and data";
 /* Privacy screen: the whole of it in one sentence */
@@ -259,12 +239,7 @@
 "set_reseed_note" = "Adds catalogue items that are missing. Your own items and quantities are never touched.";
 "perm_camera_title" = "Camera";
 "perm_camera_body" = "Used to photograph items and site progress, and to scan barcodes. Photos stay on this device unless you sync.";
-"perm_location_title" = "Location";
 "perm_location_body" = "Optional. Stamps check-ins, site photos and incident reports with where they happened. The app works fully without it.";
-"perm_mic_title" = "Microphone";
-"perm_mic_body" = "Used only while you dictate a task note in Hebrew or Arabic.";
-"perm_notifications_title" = "Notifications";
-"perm_notifications_body" = "Reminders for scheduled tasks and low stock.";
 "perm_allow" = "Allow";
 "perm_not_now" = "Not now";
 "audit_created" = "Created";
@@ -287,11 +262,8 @@
 "acc_passcode_short" = "At least 4 digits.";
 "acc_create" = "Create";
 "acc_sign_in" = "Sign in";
-"acc_sign_in_as" = "Who is using this device?";
 "acc_sign_out" = "Sign out";
-"acc_wrong_passcode" = "That passcode is not right.";
 "acc_signed_in_as" = "Signed in as";
-"acc_no_passcode" = "No passcode";
 "people_title" = "People";
 "people_add" = "Add someone";
 "people_role" = "What they do";
@@ -441,7 +413,6 @@
 "ptw_issue_blocked" = "Every precaution has to be ticked before this permit can be issued.";
 "ptw_valid_from" = "Valid from";
 "ptw_valid_to" = "Valid until";
-"ptw_window_invalid" = "The end has to come after the start.";
 "ptw_close" = "Sign the permit back";
 "ptw_close_notes" = "Area left safe — anything to note";
 "ptw_cancel" = "Withdraw the permit";
@@ -547,10 +518,6 @@
 "comp_switch" = "Where you are working";
 "comp_switch_hint" = "You can be on more than one firm's books. This decides whose jobs you see and what you may do.";
 "comp_own" = "Your own tools";
-"comp_own_hint" = "Jobs that belong to nobody but you.";
-"comp_add" = "Start another company";
-"comp_add_hint" = "A new firm on the same phone, with its own jobs and its own crew. Your ID, photograph and induction come with you.";
-"comp_none" = "You are not on any firm's books.";
 "snag_title" = "Snags";
 "snag_new" = "Raise a snag";
 "snag_empty" = "No snags. Raise one when you find a defect.";
@@ -578,11 +545,9 @@
 "snag_raised_by" = "Raised by";
 "snag_checked_by" = "Checked by";
 "acc_create_instead" = "I have not been given an account";
-"acc_id_add" = "Add your ID number";
 "acc_id_locked" = "Set once and kept. The site office identifies you by this, so it is not something to change quietly.";
 "acc_id_missing" = "You have no ID number yet, so you can only sign in with your username. Add one and either will work.";
 "log_title" = "Daily log";
-"log_empty" = "No days logged yet. Today's is ready when you are.";
 "log_today" = "Today";
 "log_gathered" = "What the app recorded today";
 "log_gathered_hint" = "Counted from what was actually entered. Correct the entry and this corrects itself.";
@@ -690,7 +655,6 @@
 "lift_gross" = "On the hook";
 "lift_appliance" = "Crane or appliance";
 "lift_appliance_cert" = "Its test certificate runs out";
-"lift_appliance_cert_none" = "No test certificate recorded";
 "lift_appliance_cert_needed" = "This appliance needs a periodic test";
 "lift_radius" = "Radius (m)";
 "lift_capacity" = "Chart capacity at that radius (kg)";
@@ -706,9 +670,7 @@
 "lift_role_banksman" = "Banksman";
 "lift_crew_name" = "Name";
 "lift_crew_ticket" = "Ticket number";
-"lift_crew_expires" = "Ticket runs out";
 "lift_crew_no_expiry" = "Does not expire";
-"lift_crew_set" = "Put somebody in this role";
 "lift_crew_none" = "Nobody";
 "lift_planned_for" = "Planned for";
 "lift_approve" = "Approve the lift";
@@ -936,7 +898,6 @@
 "co_address" = "Address";
 "co_licence" = "Contractor licence number";
 "co_classification" = "Classification";
-"co_licence_expires" = "Licence valid until";
 "co_visible_to_workers" = "Show to the crew";
 "co_visible_hint" = "Off means only management sees it. Nothing is published unless you turn it on.";
 "co_verified_note" = "Recording a licence marks you verified on this app. It is not a statement that you are licensed to do the work — that is between you and the regulator.";
@@ -954,18 +915,15 @@
 "eng_add" = "Bring a firm onto the job";
 "eng_name" = "Firm name";
 "eng_scope" = "What they are here to do";
-"eng_refused" = "Your position on this job cannot bring that one on.";
 "wp_payee" = "Who is doing it";
 "wp_title_field" = "What the package is";
 "eng_self" = "What is your firm on this job?";
 "eng_self_hint" = "Answer before anything else. Nobody else can say this for you, and until it is answered you cannot bring another firm on.";
 "ct_title" = "Contracts";
 "ct_empty" = "No contracts on this job yet";
-"ct_new" = "New contract";
 "ct_row_hint" = "What was agreed, and with whom";
 "ct_scope" = "What it covers";
 "ct_original" = "Original amount";
-"ct_current" = "Amount in force";
 "ct_receivable" = "You are paid on this";
 "ct_payable" = "You pay on this";
 "ct_sign" = "Sign";
@@ -986,7 +944,6 @@
 "wp_claim_raise" = "Raise a payment application";
 "wp_claim_total" = "This application will claim";
 "wp_claim_cumulative" = "Everything approved to date, not just what is being added. What is actually due is that less retention and less what has already been paid.";
-"wp_claim_none" = "Nothing new approved since the last application";
 "task_stage" = "Stage of the job";
 "task_stage_none" = "No stage";
 "task_stage_hint" = "Optional. Worth setting when the same task repeats on several floors — the stage is what tells them apart.";
@@ -1043,7 +1000,6 @@
 "inc_serious" = "Serious — hospital or off work";
 "inc_fatal" = "Fatal";
 "inc_escalate" = "This may have to be reported to a regulator as well as recorded here. Check your obligations — the app does not decide this for you.";
-"inc_reported_by" = "Reported by";
 "acc_have_account" = "I already have an account";
 "acc_none_on_device" = "There are no accounts on this phone yet. Accounts are kept on the device, so one made on another phone cannot be reached from here until the company has a server. Create an account to get started.";
 "role_safety_officer" = "Safety officer";
@@ -1525,3 +1481,21 @@
 "summary_heat_checked" = "Heat check: feels like %1$s°C, %2$s";
 /* A heat check that failed to save for a reason other than a rule */
 "heat_refused_generic" = "That did not save. Try again.";
+/* Daily log row: people with a check-in on this job that day, counted by the app */
+"log_checked_in" = "Checked in on the app";
+/* A write the rules refused, where the screen had no more specific sentence */
+"write_not_saved" = "That was not saved. It may have changed since this screen opened, or something it needs is missing. Look again and try once more.";
+/* Adding an ID number was refused */
+"id_number_not_saved" = "That ID number was not saved. It is already on another account, or this account already has one.";
+/* Section header on the roll call screen */
+"muster_call_title" = "Emergency numbers";
+/* Button: opens the dialer on 101 */
+"muster_call_ambulance" = "Ambulance — 101";
+/* Button: opens the dialer on 102 */
+"muster_call_fire" = "Fire and rescue — 102";
+/* Button: opens the dialer on 100 */
+"muster_call_police" = "Police — 100";
+/* Under the emergency numbers */
+"muster_call_hint" = "Opens the phone with the number in. You press call.";
+/* This device cannot place calls */
+"muster_call_no_dialer" = "This device cannot make phone calls. Use another phone.";

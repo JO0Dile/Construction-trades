@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.di.AppContainer
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -16,6 +18,17 @@ class InductionViewModel(
     private val container: AppContainer,
     private val accountId: String,
 ) : ViewModel() {
+
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
 
     val photo: StateFlow<List<PhotoEntity>> =
         container.photos.observeFor(PhotoRepository.Owner.ACCOUNT_PHOTO, accountId)
@@ -43,6 +56,6 @@ class InductionViewModel(
      * [il.co.tradesmanager.data.repository.AccountRepository.recordInduction].
      */
     fun sign(signature: String) = viewModelScope.launch {
-        container.accounts.recordInduction(accountId, signature)
+        if (!container.accounts.recordInduction(accountId, signature)) _notSaved.value = true
     }
 }

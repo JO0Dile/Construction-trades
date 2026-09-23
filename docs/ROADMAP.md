@@ -449,6 +449,29 @@ of two and a half, and the field showed exactly what it had kept. One parser
 and one input filter now serve every field, and both are tested with
 Arabic-Indic, Extended Arabic-Indic and comma-decimal input.
 
+**The reachability pass. Done.**
+The fault this codebase actually has is not a crash. It is something that
+compiles, lints, passes every test and cannot be reached, or that says no
+without saying anything. Two checks now fail the build on the kinds a machine
+can see, and the first run of each found real bugs:
+
+- `tools/check-unreachable.py` — a route nothing navigates to, a screen
+  nothing calls, a view model action no screen invokes, a string translated
+  three times and shown on no screen. It found the draft violation nobody
+  could reopen, and 44 dead strings, one of them the sentence meant to say a
+  photograph had failed to save. One more, a plural for how many people were
+  on site, turned out to be a missing row in the daily log rather than a dead
+  word — the log now counts who checked in on the job that day, beside the
+  typed headcount, because a site diary is supposed to say it.
+- `tools/check-ignored-results.py` — a call to a repository write that can be
+  refused, whose answer nothing reads. Resolved through the container to the
+  class that answers, so two functions of the same name cannot be confused.
+  It found twelve on seven screens: issuing a permit, recording work stopped,
+  closing it, marking a snag fixed, verifying it, signing the daily log,
+  editing it, certifying a payment, marking it paid, setting an order's date,
+  recording an induction, adding an ID number. Each now says so when it is
+  refused. Setting a person's trade had the same fault through a `Result`.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

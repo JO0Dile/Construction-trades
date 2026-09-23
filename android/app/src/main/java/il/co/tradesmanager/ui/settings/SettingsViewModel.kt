@@ -26,6 +26,17 @@ import kotlinx.coroutines.launch
 
 class SettingsViewModel(private val container: AppContainer) : ViewModel() {
 
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
+
     /* ------------------------------------------------------------- backups */
 
     /**
@@ -173,7 +184,7 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
      * set — see [il.co.tradesmanager.data.repository.AccountRepository.setIdNumber].
      */
     fun setIdNumber(accountId: String, idNumber: String) = viewModelScope.launch {
-        container.accounts.setIdNumber(accountId, idNumber)
+        if (!container.accounts.setIdNumber(accountId, idNumber)) _notSaved.value = true
     }
 
     /** Switching which company's work is on screen. */

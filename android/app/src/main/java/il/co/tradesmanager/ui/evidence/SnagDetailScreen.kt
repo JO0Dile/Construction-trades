@@ -40,6 +40,7 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.LoadingState
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.PhotoStrip
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLocale
@@ -67,6 +68,8 @@ fun SnagDetailScreen(
         factory = ViewModelFactory(container) { SnagDetailViewModel(it, snagId) },
     )
     val snag by viewModel.snag.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val raised by viewModel.raisedPhotos.collectAsStateWithLifecycle()
     val fixed by viewModel.fixedPhotos.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()

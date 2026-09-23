@@ -51,6 +51,7 @@ import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.PickDate
 import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
 import il.co.tradesmanager.ui.components.SectionPlaceholder
@@ -77,6 +78,8 @@ fun OrderDetailScreen(
         factory = ViewModelFactory(container) { OrderDetailViewModel(it, orderId) },
     )
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
 

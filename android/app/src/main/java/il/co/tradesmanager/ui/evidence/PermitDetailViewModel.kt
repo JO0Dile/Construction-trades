@@ -6,8 +6,10 @@ import il.co.tradesmanager.data.local.entity.PermitEntity
 import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -16,6 +18,17 @@ class PermitDetailViewModel(
     private val container: AppContainer,
     private val permitId: String,
 ) : ViewModel() {
+
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
 
     val permit: StateFlow<PermitEntity?> = container.evidence.observePermit(permitId)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
@@ -52,23 +65,24 @@ class PermitDetailViewModel(
      */
     fun issue(validFrom: Long, validTo: Long, signature: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.issue(
+        val issued = container.evidence.issue(
             permitId = permitId,
             validFrom = validFrom,
             validTo = validTo,
             issuedByName = actor,
             signatureStrokes = signature,
         )
+        if (!issued) _notSaved.value = true
     }
 
     fun recordWorkStopped() = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.recordWorkStopped(permitId, actor)
+        if (!container.evidence.recordWorkStopped(permitId, actor)) _notSaved.value = true
     }
 
     fun close(notes: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.close(permitId, actor, notes)
+        if (!container.evidence.close(permitId, actor, notes)) _notSaved.value = true
     }
 
     fun cancel() = viewModelScope.launch {
