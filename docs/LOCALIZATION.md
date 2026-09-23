@@ -97,6 +97,65 @@ released by accident. When you add a fourth language to `languages`, add it to
 that test's `languages` list too — that is the deliberate moment where you
 decide the catalogue must be complete in it.
 
+## The third place: what the audit trail says
+
+There is a third body of text, and it is the one that was English for longest
+because neither of the checks above could see it.
+
+An audit summary is written by one person and read by another. A labourer
+signs an induction on an Arabic phone, the site manager reads the trail in
+Hebrew, and the export goes to an inspector in English. A sentence built at
+the moment of the write can only be in one of those, so the register stores a
+**key and its arguments** and the words are chosen when somebody looks:
+
+```
+permit_issued|PTW-14|Yossi
+```
+
+The words live in `tools/data/audit-summaries.json`, in the same three
+languages as everything else:
+
+```json
+"permit_issued": {
+  "arguments": ["reference", "name"],
+  "en": "%1$s issued to %2$s",
+  "he": "%1$s הונפק ל%2$s",
+  "ar": "%1$s صدر لـ%2$s"
+}
+```
+
+The arguments are data — a reference, a name, a number — and are never
+translated. An argument marked with `Summary.nest` is itself a key, which is
+how a role or a status arrives in the reader's language instead of as
+`SITE_MANAGER` in the middle of a Hebrew sentence.
+
+**Adding a phrase** means adding it to that file, running
+`tools/gen-audit-strings.py`, and then adding a constant in
+`core/audit/Summaries.kt` and a branch in `ui/audit/SummaryText.kt`.
+`tools/gen-audit-strings.py --check` fails until all four exist, because a
+phrase with no translation reaches a Hebrew screen as the key itself —
+`tw_released`, in the middle of an audit trail.
+
+**Never translate a phrase by editing the generated string catalogue.** The
+phrase table is the source; the generator overwrites `summary_*` from it.
+
+Rows written before any of this exist as English prose and are left exactly as
+they are. An audit trail whose history gets tidied up is not an audit trail,
+so anything that does not parse as a key is printed as it was stored.
+
+## What the build refuses to let you forget
+
+| Check | What it catches |
+|---|---|
+| `gen-strings.py --check` | A string added in one language and not the other two |
+| `check-catalog-languages.py` | A catalogue block with no Hebrew or Arabic, or with the English pasted into one of them |
+| `check-audit-summaries.py` | An English sentence written into the audit register |
+| `gen-audit-strings.py --check` | A phrase missing a translation, a constant or a branch; an audit action with no word for it |
+| `check-invisibles.py` | A direction mark hiding in a source file |
+
+None of these can fail at compile time. The wrong version builds, runs, and
+writes a perfectly good English sentence onto somebody's Hebrew screen.
+
 ## Terminology
 
 The Hebrew and Arabic in the catalogues is written in the terms used on

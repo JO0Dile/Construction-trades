@@ -32,6 +32,8 @@ TABLE = ROOT / "tools" / "data" / "audit-summaries.json"
 CATALOGUE = ROOT / "shared" / "i18n" / "strings.json"
 KEYS = ROOT / "android/app/src/main/java/il/co/tradesmanager/core/audit/Summaries.kt"
 RESOLVER = ROOT / "android/app/src/main/java/il/co/tradesmanager/ui/audit/SummaryText.kt"
+ACTIONS = ROOT / "android/app/src/main/java/il/co/tradesmanager/data/repository/AuditTrail.kt"
+ACTION_LABELS = ROOT / "android/app/src/main/java/il/co/tradesmanager/ui/audit/AuditActionLabel.kt"
 
 PREFIX = "summary_"
 LANGUAGES = ("en", "he", "ar")
@@ -99,6 +101,28 @@ def faults(phrases: dict, catalogue: dict) -> list[str]:
         for key in sorted(phrases):
             if shape(key) not in text:
                 found.append(f"{key}: {what}")
+    found += action_faults()
+    return found
+
+
+def action_faults() -> list[str]:
+    """Every audit action has a word for it.
+
+    The label falls back to the constant, so an action nobody translated
+    prints as STOCK_CHANGE. That is not hypothetical — it is what a
+    Hebrew-speaking site manager was shown, for two releases, while the
+    translations sat in the catalogue unused. The fallback is right (a row
+    from a newer version should still say something) and it is exactly why
+    nothing fails when a new action is added.
+    """
+    found = []
+    actions = re.findall(r'const val (\w+) = "\1"', ACTIONS.read_text(encoding="utf-8"))
+    if not actions:
+        return ["AuditTrail.kt: no action constants found — has the shape changed?"]
+    labels = ACTION_LABELS.read_text(encoding="utf-8")
+    for action in actions:
+        if f"Action.{action}" not in labels:
+            found.append(f"audit action {action}: no word for it in AuditActionLabel.kt")
     return found
 
 
@@ -125,7 +149,10 @@ def main() -> int:
         for fault in found:
             print(" ", fault)
         return 1
-    print(f"All {len(phrases)} audit phrases are translated, wired and consistent.")
+    print(
+        f"All {len(phrases)} audit phrases are translated and wired, "
+        "and every audit action has a word for it."
+    )
     return 0
 
 

@@ -678,8 +678,12 @@ At the foot of the dashboard.
 
 - Nothing here has been tested on a phone by anybody. That is what this
   release is for.
-- The Hebrew and Arabic on everything new are **drafts**. The worksheets in
-  `docs/translation/` are where the real wording goes.
+- The Hebrew and Arabic are **complete but unreviewed**. Every app string,
+  every catalogue block and every audit phrase exists in all three languages
+  and the build fails if one goes missing — but none of it has yet been read
+  by a native-speaking tradesperson, which is the pass that decides whether
+  the words are the ones used on a site. The worksheets in
+  `docs/translation/` are where that review goes.
 - The confidentiality rules — both the one between firms and the one between
   people — run on this device only, where they are display rules. They become
   access rules when a server runs the same functions; see `docs/SERVER.md`.
