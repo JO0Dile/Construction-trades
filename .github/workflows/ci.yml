@@ -72,6 +72,14 @@ jobs:
       - name: Every Compose state delegate has its import
         run: python3 tools/check-compose-delegates.py
 
+      # The same fault in the other source set: assertTrue with no
+      # `import org.junit.Assert.assertTrue` does not compile, and the line
+      # looks exactly like the twenty around it that do. Gradle does not run
+      # in the container this is usually worked on, so being told by CI costs
+      # a whole round trip to learn about a missing import.
+      - name: Every JUnit assertion a test calls is imported
+        run: python3 tools/check-test-imports.py
+
       # An audit summary is stored once and read later, by somebody who may
       # not share a language with whoever wrote it. The register this app
       # exists to produce was English-only for two of the three languages it
@@ -94,6 +102,15 @@ jobs:
       # speaks English notices.
       - name: The catalogue is written in all three languages
         run: python3 tools/check-catalog-languages.py
+
+      # docs/STORE_COMPLIANCE.md says in as many words to fill Google Play's
+      # Data safety form in from its permission table. That table listed
+      # location, microphone and notifications for a long time, none of which
+      # is in the manifest — the plan changed and the table did not. Nothing
+      # on this machine could catch it: the damage happens off it, when
+      # somebody careful declares that the app collects a worker's location.
+      - name: The documented permissions are the ones the app holds
+        run: python3 tools/check-permissions.py
 
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and

@@ -58,17 +58,37 @@ of this codebase that you can check by reading it.
 
 ### Permissions the listing will be asked about
 
+**Answer the store forms from this table and nothing else** — not from the
+feature list, and not from memory. A Data safety form that declares a
+permission the app does not hold is an inaccurate declaration, and Play
+treats those as a policy matter rather than a typo.
+
+This table listed five permissions for a long time. Three of them were never
+in the manifest: dictation, notifications and location. They were in the plan,
+the plan changed, and the table did not — which is how a form gets filled in
+wrongly by somebody being careful. `tools/check-permissions.py` now fails the
+build if this table and `AndroidManifest.xml` disagree.
+
+**Android — what the manifest declares, and all it declares:**
+
 | Permission | Why | If refused |
 |---|---|---|
-| `CAMERA` | Item and site photos, barcode scanning | Those features are unavailable; everything else works |
-| `ACCESS_COARSE/FINE_LOCATION` | Optional GPS stamp on check-ins, site photos, incident reports | Check-in is still recorded, without a stamp |
-| `RECORD_AUDIO` | Hebrew/Arabic dictation of task notes | Type the note instead |
-| `POST_NOTIFICATIONS` | Task reminders, low-stock alerts | No reminders |
-| `INTERNET`, `ACCESS_NETWORK_STATE` | Optional sync only | The app is unaffected |
+| `android.permission.CAMERA` | Item and site photos, barcode scanning | Those features are unavailable; everything else works |
+| `android.permission.INTERNET` | The update check, and sync when a server exists | The update check reports no update; nothing else changes |
+| `android.permission.ACCESS_NETWORK_STATE` | Whether to attempt the update check at all | As above |
 
-None of these is a Play "sensitive permission" requiring a declaration form,
-because the app requests no background location, no SMS/call log, no
-all-files access, and no accessibility-service API.
+**Android does not collect location.** Every field that could carry a fix —
+a check-in, a site photo, an incident report — is written null, and the
+manifest holds no location permission. Answer "no" to location on the Data
+safety form for the Android build.
+
+**iOS** declares camera, photo library and location-when-in-use. The location
+stamp is real on iOS and is optional there, so the App Store privacy answers
+are **not** the same as Play's. Fill each store in from its own platform.
+
+None of these is a Play "sensitive permission" requiring a declaration form:
+no background location, no SMS or call log, no all-files access, and no
+accessibility-service API.
 
 ### Listing copy and art — written
 
@@ -177,8 +197,16 @@ submitting a build that:
 Run these before either store:
 
 ```bash
-# Content and translations are complete and consistent
-python3 tools/gen-strings.py --check
+# Everything a store form or a listing is filled in from. CI runs all of
+# these on every push; run them again here, because the answer you are about
+# to type into Play is only as good as the day somebody last checked.
+python3 tools/gen-strings.py --check          # every app string, three languages
+python3 tools/check-catalog-languages.py      # every catalogue block, three languages
+python3 tools/check-audit-summaries.py        # no English written into the register
+python3 tools/gen-audit-strings.py --check    # every audit phrase translated and wired
+python3 tools/check-permissions.py            # the table matches the manifest
+python3 tools/check-listing.py                # the store copy fits the limits
+python3 tools/check-invisibles.py             # no direction marks hiding in source
 
 # The catalogues parse, are trilingual, and every template line resolves
 cd android && ./gradlew :app:testDebugUnitTest
