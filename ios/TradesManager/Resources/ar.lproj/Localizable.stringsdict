@@ -435,5 +435,29 @@
             <string>%d شخص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</string>
         </dict>
     </dict>
+    <key>home_plant_unchecked</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا آلات غير مفحوصة في الموقع اليوم</string>
+            <key>one</key>
+            <string>آلة واحدة في الموقع لم تُفحص اليوم</string>
+            <key>two</key>
+            <string>آلتان في الموقع لم تُفحصا اليوم</string>
+            <key>few</key>
+            <string>%d آلات في الموقع لم تُفحص اليوم</string>
+            <key>many</key>
+            <string>%d آلة في الموقع لم تُفحص اليوم</string>
+            <key>other</key>
+            <string>%d آلة في الموقع لم تُفحص اليوم</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

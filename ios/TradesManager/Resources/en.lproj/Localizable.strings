@@ -1499,3 +1499,71 @@
 "muster_call_hint" = "Opens the phone with the number in. You press call.";
 /* This device cannot place calls */
 "muster_call_no_dialer" = "This device cannot make phone calls. Use another phone.";
+/* Badge on a roll call row: holds an in-date first-aid ticket */
+"muster_first_aider" = "First aider";
+/* Roll call header: first aiders counted present, by name */
+"muster_first_aiders_here" = "First aiders here: %1$s";
+/* Button: hand the list to another app */
+"muster_share" = "Share the list";
+/* First line of a shared roll call */
+"muster_share_heading" = "Roll call — %1$s — started %2$s";
+/* Line of a shared roll call */
+"muster_share_ended" = "Ended %1$s";
+/* Line of a shared roll call that is still running */
+"muster_share_running" = "Still running";
+/* Line of a shared roll call */
+"muster_share_unaccounted" = "UNACCOUNTED FOR (%1$d): %2$s";
+/* Line of a shared roll call */
+"muster_share_present" = "Present (%1$d): %2$s";
+/* Line of a shared roll call */
+"muster_share_elsewhere" = "Safe elsewhere (%1$d): %2$s";
+"summary_plant_checked_fit" = "%1$s checked before use: fit";
+"summary_plant_checked_unfit" = "%1$s checked before use: out of service — %2$s";
+/* Button and dialog title */
+"plant_preuse" = "Pre-use check";
+/* Top of the pre-use dialog */
+"plant_preuse_hint" = "Walk round the machine before starting it. A defect takes it out of service until somebody puts it right.";
+/* Answer */
+"plant_preuse_ok" = "OK";
+/* Answer */
+"plant_preuse_defect" = "Defect";
+/* Answer: does not apply to this machine */
+"plant_preuse_na" = "N/A";
+/* Input label, shown once a defect is marked */
+"plant_preuse_note" = "What is wrong";
+/* Button */
+"plant_preuse_submit" = "Record the check";
+/* Pre-use item */
+"plant_item_visible_damage" = "Visible damage, cracks, loose parts";
+/* Pre-use item */
+"plant_item_tyres_or_tracks" = "Tyres or tracks";
+/* Pre-use item */
+"plant_item_leaks" = "Oil, fuel or hydraulic leaks";
+/* Pre-use item */
+"plant_item_fluid_levels" = "Fluid levels";
+/* Pre-use item */
+"plant_item_brakes" = "Brakes";
+/* Pre-use item */
+"plant_item_steering_and_controls" = "Steering and controls";
+/* Pre-use item */
+"plant_item_lights_horn_and_alarms" = "Lights, horn, reversing alarm";
+/* Pre-use item */
+"plant_item_seatbelt_and_cab" = "Seatbelt and cab";
+/* Pre-use item */
+"plant_item_guards" = "Guards and covers in place";
+/* Pre-use item */
+"plant_item_fire_extinguisher" = "Fire extinguisher";
+/* Plant register row */
+"plant_check_never" = "Never checked before use";
+/* Plant register row */
+"plant_check_not_today" = "Not checked today";
+/* Plant register row */
+"plant_check_fit_today" = "Checked today: fit";
+/* Plant register row */
+"plant_check_unfit_today" = "Out of service after today's check";
+/* Refusal */
+"plant_preuse_unanswered" = "Answer every item. A half-finished walk-round is not a check.";
+/* Refusal */
+"plant_preuse_undescribed" = "Say what the defect is.";
+/* Refusal */
+"plant_preuse_nothing" = "Nothing was marked as looked at. Mark at least what you checked.";

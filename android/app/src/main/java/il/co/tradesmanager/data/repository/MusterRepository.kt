@@ -62,6 +62,9 @@ class MusterRepository(
 
     fun observePeople(musterId: String): Flow<List<MusterPersonEntity>> = dao.observePeople(musterId)
 
+    /** Everybody on one roll call, read once, for handing the list over. */
+    suspend fun peopleOf(musterId: String): List<MusterPersonEntity> = dao.people(musterId)
+
     /** One firm's past roll calls. Null is the one-man band, not everybody. */
     fun observeForCompany(companyId: String?): Flow<List<MusterEntity>> =
         dao.observeForCompany(companyId)

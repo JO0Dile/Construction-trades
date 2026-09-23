@@ -257,4 +257,27 @@ class MusterTest {
         val ended = changed(Muster.end(roll, now + 30 * minute))
         assertFalse("an ended roll call is not still running", ended.isLongRunning(now + 99 * minute))
     }
+
+    @Test
+    fun `a first aider is anybody holding the first-aid ticket in any language, in date`() {
+        val day = 24L * hour
+        val titles = listOf("First aid", "עזרה ראשונה")
+        val held = mapOf(
+            "w1" to listOf(Muster.Held("  first AID ", expiresOn = now + 90 * day)),
+            "w2" to listOf(Muster.Held(titles[1], expiresOn = null)),
+            "w3" to listOf(Muster.Held("First aid", expiresOn = now - day)),
+            "w4" to listOf(Muster.Held("Work at height", expiresOn = null)),
+            "w5" to listOf(Muster.Held("First aid", expiresOn = now + 5 * day)),
+        )
+
+        assertEquals(setOf("w1", "w2", "w5"), Muster.firstAiders(held, titles, now))
+    }
+
+    @Test
+    fun `with no first-aid kind known, nobody is claimed to be a first aider`() {
+        val held = mapOf("w1" to listOf(Muster.Held("First aid", expiresOn = null)))
+
+        assertEquals(emptySet<String>(), Muster.firstAiders(held, emptyList(), now))
+        assertEquals(emptySet<String>(), Muster.firstAiders(held, listOf("  "), now))
+    }
 }

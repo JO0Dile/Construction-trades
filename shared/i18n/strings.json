@@ -6792,6 +6792,214 @@
       "en": "This device cannot make phone calls. Use another phone.",
       "he": "המכשיר הזה לא יכול לחייג. השתמשו בטלפון אחר.",
       "ar": "هذا الجهاز لا يستطيع إجراء المكالمات. استخدم هاتفًا آخر."
+    },
+    "muster_first_aider": {
+      "c": "Badge on a roll call row: holds an in-date first-aid ticket",
+      "en": "First aider",
+      "he": "מגיש עזרה ראשונה",
+      "ar": "مسعف أولي"
+    },
+    "muster_first_aiders_here": {
+      "c": "Roll call header: first aiders counted present, by name",
+      "en": "First aiders here: %1$s",
+      "he": "מגישי עזרה ראשונה כאן: %1$s",
+      "ar": "المسعفون الأوليون هنا: %1$s"
+    },
+    "muster_share": {
+      "c": "Button: hand the list to another app",
+      "en": "Share the list",
+      "he": "שתף את הרשימה",
+      "ar": "شارك القائمة"
+    },
+    "muster_share_heading": {
+      "c": "First line of a shared roll call",
+      "en": "Roll call — %1$s — started %2$s",
+      "he": "מפקד נוכחות — %1$s — החל %2$s",
+      "ar": "نداء الأسماء — %1$s — بدأ %2$s"
+    },
+    "muster_share_ended": {
+      "c": "Line of a shared roll call",
+      "en": "Ended %1$s",
+      "he": "הסתיים %1$s",
+      "ar": "انتهى %1$s"
+    },
+    "muster_share_running": {
+      "c": "Line of a shared roll call that is still running",
+      "en": "Still running",
+      "he": "עדיין מתנהל",
+      "ar": "لا يزال جاريًا"
+    },
+    "muster_share_unaccounted": {
+      "c": "Line of a shared roll call",
+      "en": "UNACCOUNTED FOR (%1$d): %2$s",
+      "he": "לא אותרו (%1$d): %2$s",
+      "ar": "لم يُعثر عليهم (%1$d): %2$s"
+    },
+    "muster_share_present": {
+      "c": "Line of a shared roll call",
+      "en": "Present (%1$d): %2$s",
+      "he": "נוכחים (%1$d): %2$s",
+      "ar": "حاضرون (%1$d): %2$s"
+    },
+    "muster_share_elsewhere": {
+      "c": "Line of a shared roll call",
+      "en": "Safe elsewhere (%1$d): %2$s",
+      "he": "בטוחים במקום אחר (%1$d): %2$s",
+      "ar": "بأمان في مكان آخر (%1$d): %2$s"
+    },
+    "summary_plant_checked_fit": {
+      "en": "%1$s checked before use: fit",
+      "he": "%1$s נבדק לפני שימוש: תקין",
+      "ar": "فُحص %1$s قبل الاستخدام: سليم"
+    },
+    "summary_plant_checked_unfit": {
+      "en": "%1$s checked before use: out of service — %2$s",
+      "he": "%1$s נבדק לפני שימוש: הוצא משימוש — %2$s",
+      "ar": "فُحص %1$s قبل الاستخدام: أُوقف عن العمل — %2$s"
+    },
+    "plant_preuse": {
+      "c": "Button and dialog title",
+      "en": "Pre-use check",
+      "he": "בדיקה לפני שימוש",
+      "ar": "فحص قبل الاستخدام"
+    },
+    "plant_preuse_hint": {
+      "c": "Top of the pre-use dialog",
+      "en": "Walk round the machine before starting it. A defect takes it out of service until somebody puts it right.",
+      "he": "סיירו סביב המכונה לפני שמפעילים אותה. תקלה מוציאה אותה משימוש עד שמישהו מתקן אותה.",
+      "ar": "تجوّل حول الآلة قبل تشغيلها. أي عطل يوقفها عن العمل حتى يصلحه أحد."
+    },
+    "plant_preuse_ok": {
+      "c": "Answer",
+      "en": "OK",
+      "he": "תקין",
+      "ar": "سليم"
+    },
+    "plant_preuse_defect": {
+      "c": "Answer",
+      "en": "Defect",
+      "he": "תקלה",
+      "ar": "عطل"
+    },
+    "plant_preuse_na": {
+      "c": "Answer: does not apply to this machine",
+      "en": "N/A",
+      "he": "לא רלוונטי",
+      "ar": "لا ينطبق"
+    },
+    "plant_preuse_note": {
+      "c": "Input label, shown once a defect is marked",
+      "en": "What is wrong",
+      "he": "מה התקלה",
+      "ar": "ما العطل"
+    },
+    "plant_preuse_submit": {
+      "c": "Button",
+      "en": "Record the check",
+      "he": "רשום את הבדיקה",
+      "ar": "سجّل الفحص"
+    },
+    "plant_item_visible_damage": {
+      "c": "Pre-use item",
+      "en": "Visible damage, cracks, loose parts",
+      "he": "נזק נראה לעין, סדקים, חלקים רופפים",
+      "ar": "أضرار ظاهرة أو تشققات أو أجزاء مفكوكة"
+    },
+    "plant_item_tyres_or_tracks": {
+      "c": "Pre-use item",
+      "en": "Tyres or tracks",
+      "he": "צמיגים או זחלים",
+      "ar": "الإطارات أو الجنازير"
+    },
+    "plant_item_leaks": {
+      "c": "Pre-use item",
+      "en": "Oil, fuel or hydraulic leaks",
+      "he": "דליפות שמן, דלק או הידראוליקה",
+      "ar": "تسرّب زيت أو وقود أو سائل هيدروليكي"
+    },
+    "plant_item_fluid_levels": {
+      "c": "Pre-use item",
+      "en": "Fluid levels",
+      "he": "מפלסי נוזלים",
+      "ar": "مستويات السوائل"
+    },
+    "plant_item_brakes": {
+      "c": "Pre-use item",
+      "en": "Brakes",
+      "he": "בלמים",
+      "ar": "المكابح"
+    },
+    "plant_item_steering_and_controls": {
+      "c": "Pre-use item",
+      "en": "Steering and controls",
+      "he": "היגוי ובקרות",
+      "ar": "التوجيه وأدوات التحكم"
+    },
+    "plant_item_lights_horn_and_alarms": {
+      "c": "Pre-use item",
+      "en": "Lights, horn, reversing alarm",
+      "he": "אורות, צופר, אזעקת נסיעה לאחור",
+      "ar": "الأضواء والبوق وإنذار الرجوع"
+    },
+    "plant_item_seatbelt_and_cab": {
+      "c": "Pre-use item",
+      "en": "Seatbelt and cab",
+      "he": "חגורת בטיחות ותא המפעיל",
+      "ar": "حزام الأمان والمقصورة"
+    },
+    "plant_item_guards": {
+      "c": "Pre-use item",
+      "en": "Guards and covers in place",
+      "he": "מגנים וכיסויים במקומם",
+      "ar": "الواقيات والأغطية في مكانها"
+    },
+    "plant_item_fire_extinguisher": {
+      "c": "Pre-use item",
+      "en": "Fire extinguisher",
+      "he": "מטף כיבוי אש",
+      "ar": "طفاية الحريق"
+    },
+    "plant_check_never": {
+      "c": "Plant register row",
+      "en": "Never checked before use",
+      "he": "מעולם לא נבדק לפני שימוש",
+      "ar": "لم يُفحص قبل الاستخدام قط"
+    },
+    "plant_check_not_today": {
+      "c": "Plant register row",
+      "en": "Not checked today",
+      "he": "לא נבדק היום",
+      "ar": "لم يُفحص اليوم"
+    },
+    "plant_check_fit_today": {
+      "c": "Plant register row",
+      "en": "Checked today: fit",
+      "he": "נבדק היום: תקין",
+      "ar": "فُحص اليوم: سليم"
+    },
+    "plant_check_unfit_today": {
+      "c": "Plant register row",
+      "en": "Out of service after today's check",
+      "he": "הוצא משימוש בבדיקה של היום",
+      "ar": "أُوقف عن العمل بعد فحص اليوم"
+    },
+    "plant_preuse_unanswered": {
+      "c": "Refusal",
+      "en": "Answer every item. A half-finished walk-round is not a check.",
+      "he": "יש לענות על כל סעיף. סיור שלא הושלם אינו בדיקה.",
+      "ar": "أجب عن كل بند. الجولة غير المكتملة ليست فحصًا."
+    },
+    "plant_preuse_undescribed": {
+      "c": "Refusal",
+      "en": "Say what the defect is.",
+      "he": "יש לתאר את התקלה.",
+      "ar": "صِف العطل."
+    },
+    "plant_preuse_nothing": {
+      "c": "Refusal",
+      "en": "Nothing was marked as looked at. Mark at least what you checked.",
+      "he": "לא סומן שום דבר כנבדק. סמנו לפחות את מה שבדקתם.",
+      "ar": "لم يُعلَّم أي شيء على أنه فُحص. علّم على الأقل ما فحصته."
     }
   },
   "plurals": {
@@ -7171,6 +7379,27 @@
         "few": "%d أشخاص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.",
         "many": "%d شخصًا بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.",
         "other": "%d شخص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم."
+      }
+    },
+    "home_plant_unchecked": {
+      "c": "Home banner: machines on site with no pre-use check today",
+      "en": {
+        "one": "%d machine on site not checked today",
+        "other": "%d machines on site not checked today"
+      },
+      "he": {
+        "one": "מכונה אחת באתר לא נבדקה היום",
+        "two": "שתי מכונות באתר לא נבדקו היום",
+        "many": "%d מכונות באתר לא נבדקו היום",
+        "other": "%d מכונות באתר לא נבדקו היום"
+      },
+      "ar": {
+        "zero": "لا آلات غير مفحوصة في الموقع اليوم",
+        "one": "آلة واحدة في الموقع لم تُفحص اليوم",
+        "two": "آلتان في الموقع لم تُفحصا اليوم",
+        "few": "%d آلات في الموقع لم تُفحص اليوم",
+        "many": "%d آلة في الموقع لم تُفحص اليوم",
+        "other": "%d آلة في الموقع لم تُفحص اليوم"
       }
     }
   }

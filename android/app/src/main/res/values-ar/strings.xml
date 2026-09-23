@@ -1321,6 +1321,41 @@
     <string name="muster_call_police">الشرطة — 100</string>
     <string name="muster_call_hint">يفتح الهاتف والرقم جاهز. أنت تضغط على الاتصال.</string>
     <string name="muster_call_no_dialer">هذا الجهاز لا يستطيع إجراء المكالمات. استخدم هاتفًا آخر.</string>
+    <string name="muster_first_aider">مسعف أولي</string>
+    <string name="muster_first_aiders_here">المسعفون الأوليون هنا: %1$s</string>
+    <string name="muster_share">شارك القائمة</string>
+    <string name="muster_share_heading">نداء الأسماء — %1$s — بدأ %2$s</string>
+    <string name="muster_share_ended">انتهى %1$s</string>
+    <string name="muster_share_running">لا يزال جاريًا</string>
+    <string name="muster_share_unaccounted">لم يُعثر عليهم (%1$d): %2$s</string>
+    <string name="muster_share_present">حاضرون (%1$d): %2$s</string>
+    <string name="muster_share_elsewhere">بأمان في مكان آخر (%1$d): %2$s</string>
+    <string name="summary_plant_checked_fit">فُحص %1$s قبل الاستخدام: سليم</string>
+    <string name="summary_plant_checked_unfit">فُحص %1$s قبل الاستخدام: أُوقف عن العمل — %2$s</string>
+    <string name="plant_preuse">فحص قبل الاستخدام</string>
+    <string name="plant_preuse_hint">تجوّل حول الآلة قبل تشغيلها. أي عطل يوقفها عن العمل حتى يصلحه أحد.</string>
+    <string name="plant_preuse_ok">سليم</string>
+    <string name="plant_preuse_defect">عطل</string>
+    <string name="plant_preuse_na">لا ينطبق</string>
+    <string name="plant_preuse_note">ما العطل</string>
+    <string name="plant_preuse_submit">سجّل الفحص</string>
+    <string name="plant_item_visible_damage">أضرار ظاهرة أو تشققات أو أجزاء مفكوكة</string>
+    <string name="plant_item_tyres_or_tracks">الإطارات أو الجنازير</string>
+    <string name="plant_item_leaks">تسرّب زيت أو وقود أو سائل هيدروليكي</string>
+    <string name="plant_item_fluid_levels">مستويات السوائل</string>
+    <string name="plant_item_brakes">المكابح</string>
+    <string name="plant_item_steering_and_controls">التوجيه وأدوات التحكم</string>
+    <string name="plant_item_lights_horn_and_alarms">الأضواء والبوق وإنذار الرجوع</string>
+    <string name="plant_item_seatbelt_and_cab">حزام الأمان والمقصورة</string>
+    <string name="plant_item_guards">الواقيات والأغطية في مكانها</string>
+    <string name="plant_item_fire_extinguisher">طفاية الحريق</string>
+    <string name="plant_check_never">لم يُفحص قبل الاستخدام قط</string>
+    <string name="plant_check_not_today">لم يُفحص اليوم</string>
+    <string name="plant_check_fit_today">فُحص اليوم: سليم</string>
+    <string name="plant_check_unfit_today">أُوقف عن العمل بعد فحص اليوم</string>
+    <string name="plant_preuse_unanswered">أجب عن كل بند. الجولة غير المكتملة ليست فحصًا.</string>
+    <string name="plant_preuse_undescribed">صِف العطل.</string>
+    <string name="plant_preuse_nothing">لم يُعلَّم أي شيء على أنه فُحص. علّم على الأقل ما فحصته.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -1464,5 +1499,13 @@
         <item quantity="few">%d أشخاص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</item>
         <item quantity="many">%d شخصًا بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</item>
         <item quantity="other">%d شخص بلا مهنة مسجّلة ولا يظهرون في أي من هذه القوائم.</item>
+    </plurals>
+    <plurals name="home_plant_unchecked">
+        <item quantity="zero">لا آلات غير مفحوصة في الموقع اليوم</item>
+        <item quantity="one">آلة واحدة في الموقع لم تُفحص اليوم</item>
+        <item quantity="two">آلتان في الموقع لم تُفحصا اليوم</item>
+        <item quantity="few">%d آلات في الموقع لم تُفحص اليوم</item>
+        <item quantity="many">%d آلة في الموقع لم تُفحص اليوم</item>
+        <item quantity="other">%d آلة في الموقع لم تُفحص اليوم</item>
     </plurals>
 </resources>

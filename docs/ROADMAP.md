@@ -417,6 +417,17 @@ Anybody who can write to the safety register can start one, which includes a
 worker. Narrowing it to a supervisor would mean the app refuses the man
 holding the phone in the one scenario the feature exists for.
 
+Three things were added after the first release. Israel's emergency numbers
+— 101, 102, 100 — are one tap away on both halves of the screen, opening the
+dialer with the number in; the person presses call, so the app needs no call
+permission and cannot ring from a pocket. First aiders are marked on the
+list, read from their in-date first-aid tickets in any of the three
+languages, and the header names the ones counted present, because the second
+question at a muster point is whether anybody there knows what to do. And the
+list can be handed over — to WhatsApp, a text, whatever the person uses —
+running or ended, missing names first, because the moment it is needed is
+when the fire brigade arrives and asks who is still inside.
+
 **The heat check. Done.**
 Heat is one of the things that most often hurts people on an Israeli site in
 summer, and it does not look like a hazard. What decides it is temperature and
@@ -448,6 +459,24 @@ concrete pour ten times too large, a lift radius of twenty-five metres for one
 of two and a half, and the field showed exactly what it had kept. One parser
 and one input filter now serve every field, and both are tested with
 Arabic-Indic, Extended Arabic-Indic and comma-decimal input.
+
+**Plant pre-use checks. Done.**
+Every excavator, telehandler, forklift and dumper is looked over by whoever
+is about to drive it, before the shift. What matters about that check is what
+happens when it finds something, so a defect here takes the machine out of
+service at once — through the same audited status change as any other, so the
+register, the dashboard and the audit trail all say so — and a later check
+that happens not to spot the leak again does **not** put it back. Somebody
+decides it has been put right, and says so.
+
+A check is good for the calendar day it was made, like an excavation
+inspection: a machine checked at ten to midnight is not carried through the
+morning shift. Every item has to be answered, nothing starts pre-filled
+(a form that opens with every item "OK" gets submitted without anybody
+walking round anything), a defect has to say what it is, and a check in which
+every item was marked as not applying is refused because nothing was looked
+at. The register shows each machine's state for today on its row, because the
+question at seven in the morning is which machines may be started.
 
 **The reachability pass. Done.**
 The fault this codebase actually has is not a crash. It is something that
@@ -536,20 +565,20 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~87 | *estimated — see below* |
-| Buildable here — on the device, no server | ~99 | where the work is |
+| Built | ~88 | *estimated — see below* |
+| Buildable here — on the device, no server | ~98 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~87 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~88 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
-reaching the end of its own mechanism, the emergency roll call, and the
-heat check.
+reaching the end of its own mechanism, the emergency roll call, the heat
+check, and plant pre-use checks.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

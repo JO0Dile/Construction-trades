@@ -65,6 +65,7 @@ import il.co.tradesmanager.data.local.entity.ViolationEntity
 import il.co.tradesmanager.data.local.entity.PermitEntity
 import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.PlantCheckEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
@@ -93,7 +94,7 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 32
+const val DATABASE_VERSION = 33
 
 @Database(
     entities = [
@@ -152,6 +153,7 @@ const val DATABASE_VERSION = 32
         MusterEntity::class,
         MusterPersonEntity::class,
         HeatCheckEntity::class,
+        PlantCheckEntity::class,
     ],
     version = DATABASE_VERSION,
     exportSchema = true,

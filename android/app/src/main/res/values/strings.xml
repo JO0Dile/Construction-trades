@@ -1500,6 +1500,74 @@
     <string name="muster_call_hint">Opens the phone with the number in. You press call.</string>
     <!-- This device cannot place calls -->
     <string name="muster_call_no_dialer">This device cannot make phone calls. Use another phone.</string>
+    <!-- Badge on a roll call row: holds an in-date first-aid ticket -->
+    <string name="muster_first_aider">First aider</string>
+    <!-- Roll call header: first aiders counted present, by name -->
+    <string name="muster_first_aiders_here">First aiders here: %1$s</string>
+    <!-- Button: hand the list to another app -->
+    <string name="muster_share">Share the list</string>
+    <!-- First line of a shared roll call -->
+    <string name="muster_share_heading">Roll call — %1$s — started %2$s</string>
+    <!-- Line of a shared roll call -->
+    <string name="muster_share_ended">Ended %1$s</string>
+    <!-- Line of a shared roll call that is still running -->
+    <string name="muster_share_running">Still running</string>
+    <!-- Line of a shared roll call -->
+    <string name="muster_share_unaccounted">UNACCOUNTED FOR (%1$d): %2$s</string>
+    <!-- Line of a shared roll call -->
+    <string name="muster_share_present">Present (%1$d): %2$s</string>
+    <!-- Line of a shared roll call -->
+    <string name="muster_share_elsewhere">Safe elsewhere (%1$d): %2$s</string>
+    <string name="summary_plant_checked_fit">%1$s checked before use: fit</string>
+    <string name="summary_plant_checked_unfit">%1$s checked before use: out of service — %2$s</string>
+    <!-- Button and dialog title -->
+    <string name="plant_preuse">Pre-use check</string>
+    <!-- Top of the pre-use dialog -->
+    <string name="plant_preuse_hint">Walk round the machine before starting it. A defect takes it out of service until somebody puts it right.</string>
+    <!-- Answer -->
+    <string name="plant_preuse_ok">OK</string>
+    <!-- Answer -->
+    <string name="plant_preuse_defect">Defect</string>
+    <!-- Answer: does not apply to this machine -->
+    <string name="plant_preuse_na">N/A</string>
+    <!-- Input label, shown once a defect is marked -->
+    <string name="plant_preuse_note">What is wrong</string>
+    <!-- Button -->
+    <string name="plant_preuse_submit">Record the check</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_visible_damage">Visible damage, cracks, loose parts</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_tyres_or_tracks">Tyres or tracks</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_leaks">Oil, fuel or hydraulic leaks</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_fluid_levels">Fluid levels</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_brakes">Brakes</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_steering_and_controls">Steering and controls</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_lights_horn_and_alarms">Lights, horn, reversing alarm</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_seatbelt_and_cab">Seatbelt and cab</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_guards">Guards and covers in place</string>
+    <!-- Pre-use item -->
+    <string name="plant_item_fire_extinguisher">Fire extinguisher</string>
+    <!-- Plant register row -->
+    <string name="plant_check_never">Never checked before use</string>
+    <!-- Plant register row -->
+    <string name="plant_check_not_today">Not checked today</string>
+    <!-- Plant register row -->
+    <string name="plant_check_fit_today">Checked today: fit</string>
+    <!-- Plant register row -->
+    <string name="plant_check_unfit_today">Out of service after today\'s check</string>
+    <!-- Refusal -->
+    <string name="plant_preuse_unanswered">Answer every item. A half-finished walk-round is not a check.</string>
+    <!-- Refusal -->
+    <string name="plant_preuse_undescribed">Say what the defect is.</string>
+    <!-- Refusal -->
+    <string name="plant_preuse_nothing">Nothing was marked as looked at. Mark at least what you checked.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -1571,5 +1639,9 @@
     <plurals name="crew_no_trade">
         <item quantity="one">%d person has no trade recorded and is on none of these lists.</item>
         <item quantity="other">%d people have no trade recorded and are on none of these lists.</item>
+    </plurals>
+    <plurals name="home_plant_unchecked">
+        <item quantity="one">%d machine on site not checked today</item>
+        <item quantity="other">%d machines on site not checked today</item>
     </plurals>
 </resources>

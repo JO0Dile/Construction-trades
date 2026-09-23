@@ -1499,3 +1499,71 @@
 "muster_call_hint" = "פותח את החייגן עם המספר. הלחיצה על חיוג היא שלכם.";
 /* This device cannot place calls */
 "muster_call_no_dialer" = "המכשיר הזה לא יכול לחייג. השתמשו בטלפון אחר.";
+/* Badge on a roll call row: holds an in-date first-aid ticket */
+"muster_first_aider" = "מגיש עזרה ראשונה";
+/* Roll call header: first aiders counted present, by name */
+"muster_first_aiders_here" = "מגישי עזרה ראשונה כאן: %1$s";
+/* Button: hand the list to another app */
+"muster_share" = "שתף את הרשימה";
+/* First line of a shared roll call */
+"muster_share_heading" = "מפקד נוכחות — %1$s — החל %2$s";
+/* Line of a shared roll call */
+"muster_share_ended" = "הסתיים %1$s";
+/* Line of a shared roll call that is still running */
+"muster_share_running" = "עדיין מתנהל";
+/* Line of a shared roll call */
+"muster_share_unaccounted" = "לא אותרו (%1$d): %2$s";
+/* Line of a shared roll call */
+"muster_share_present" = "נוכחים (%1$d): %2$s";
+/* Line of a shared roll call */
+"muster_share_elsewhere" = "בטוחים במקום אחר (%1$d): %2$s";
+"summary_plant_checked_fit" = "%1$s נבדק לפני שימוש: תקין";
+"summary_plant_checked_unfit" = "%1$s נבדק לפני שימוש: הוצא משימוש — %2$s";
+/* Button and dialog title */
+"plant_preuse" = "בדיקה לפני שימוש";
+/* Top of the pre-use dialog */
+"plant_preuse_hint" = "סיירו סביב המכונה לפני שמפעילים אותה. תקלה מוציאה אותה משימוש עד שמישהו מתקן אותה.";
+/* Answer */
+"plant_preuse_ok" = "תקין";
+/* Answer */
+"plant_preuse_defect" = "תקלה";
+/* Answer: does not apply to this machine */
+"plant_preuse_na" = "לא רלוונטי";
+/* Input label, shown once a defect is marked */
+"plant_preuse_note" = "מה התקלה";
+/* Button */
+"plant_preuse_submit" = "רשום את הבדיקה";
+/* Pre-use item */
+"plant_item_visible_damage" = "נזק נראה לעין, סדקים, חלקים רופפים";
+/* Pre-use item */
+"plant_item_tyres_or_tracks" = "צמיגים או זחלים";
+/* Pre-use item */
+"plant_item_leaks" = "דליפות שמן, דלק או הידראוליקה";
+/* Pre-use item */
+"plant_item_fluid_levels" = "מפלסי נוזלים";
+/* Pre-use item */
+"plant_item_brakes" = "בלמים";
+/* Pre-use item */
+"plant_item_steering_and_controls" = "היגוי ובקרות";
+/* Pre-use item */
+"plant_item_lights_horn_and_alarms" = "אורות, צופר, אזעקת נסיעה לאחור";
+/* Pre-use item */
+"plant_item_seatbelt_and_cab" = "חגורת בטיחות ותא המפעיל";
+/* Pre-use item */
+"plant_item_guards" = "מגנים וכיסויים במקומם";
+/* Pre-use item */
+"plant_item_fire_extinguisher" = "מטף כיבוי אש";
+/* Plant register row */
+"plant_check_never" = "מעולם לא נבדק לפני שימוש";
+/* Plant register row */
+"plant_check_not_today" = "לא נבדק היום";
+/* Plant register row */
+"plant_check_fit_today" = "נבדק היום: תקין";
+/* Plant register row */
+"plant_check_unfit_today" = "הוצא משימוש בבדיקה של היום";
+/* Refusal */
+"plant_preuse_unanswered" = "יש לענות על כל סעיף. סיור שלא הושלם אינו בדיקה.";
+/* Refusal */
+"plant_preuse_undescribed" = "יש לתאר את התקלה.";
+/* Refusal */
+"plant_preuse_nothing" = "לא סומן שום דבר כנבדק. סמנו לפחות את מה שבדקתם.";

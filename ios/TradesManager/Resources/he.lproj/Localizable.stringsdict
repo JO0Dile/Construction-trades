@@ -363,5 +363,25 @@
             <string>ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
         </dict>
     </dict>
+    <key>home_plant_unchecked</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>מכונה אחת באתר לא נבדקה היום</string>
+            <key>two</key>
+            <string>שתי מכונות באתר לא נבדקו היום</string>
+            <key>many</key>
+            <string>%d מכונות באתר לא נבדקו היום</string>
+            <key>other</key>
+            <string>%d מכונות באתר לא נבדקו היום</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

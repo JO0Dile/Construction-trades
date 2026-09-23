@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
@@ -67,6 +68,36 @@ class MusterViewModel(
             }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /**
+     * The account ids of first aiders on the roll call.
+     *
+     * Read from everybody's tickets rather than asked for, so it cannot be
+     * stale in the way a list somebody keeps in the hut is. See
+     * Muster.firstAiders for what counts.
+     */
+    private val _firstAidTitles = MutableStateFlow<List<String>>(emptyList())
+
+    init {
+        viewModelScope.launch {
+            _firstAidTitles.value = container.certifications.suggestedKinds()
+                .filter { it.id == FIRST_AID_KIND }
+                .flatMap { it.names.values }
+        }
+    }
+
+    val firstAiders: StateFlow<Set<String>> = combine(
+        container.certifications.observeByAccount(),
+        _firstAidTitles,
+    ) { byAccount, titles ->
+        Muster.firstAiders(
+            held = byAccount.mapValues { (_, tickets) ->
+                tickets.map { Muster.Held(it.title, it.expiresOn) }
+            },
+            firstAidTitles = titles,
+            now = System.currentTimeMillis(),
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptySet())
 
     /** How many are checked in, for the card that offers to start one. */
     val onSite: StateFlow<Int> = container.musters.observeOnSiteCount()
@@ -129,6 +160,15 @@ class MusterViewModel(
         ).onFailure(::refuse)
     }
 
+    /**
+     * One roll call as the rules see it, for sharing: live or ended.
+     *
+     * Suspending rather than a flow, because it is read once at the moment
+     * somebody presses share and must be the list as it stands then.
+     */
+    suspend fun rollFor(muster: MusterEntity): Muster.Roll =
+        container.musters.rollOf(muster, container.musters.peopleOf(muster.id))
+
     fun present(rowId: String) = viewModelScope.launch {
         container.musters.settle(rowId, Muster.State.PRESENT).onFailure(::refuse)
     }
@@ -152,5 +192,10 @@ class MusterViewModel(
         val muster = live.value ?: return@launch
         val actor = signedIn?.account?.displayName.orEmpty()
         container.musters.end(muster.id, actor).onFailure(::refuse)
+    }
+
+    private companion object {
+        /** The first-aid kind's id in the catalogue manifest. */
+        const val FIRST_AID_KIND = "first-aid"
     }
 }

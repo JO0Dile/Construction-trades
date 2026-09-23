@@ -5,14 +5,17 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.access.Changes
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.people.Expiry
+import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CertificationEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
+import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import java.time.LocalDate
+import java.time.ZoneId
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -77,6 +80,34 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
      * remember to go and look for. It is the only thing here that is drawn
      * above the numbers.
      */
+    /**
+     * Machines on a site that nobody has walked round today.
+     *
+     * Only those on site: one in the yard or on maintenance is not about to be
+     * started. See core.safety.PreUse for what "today" means.
+     */
+    val plantUnchecked: StateFlow<Int> = combine(
+        container.equipment.observeAll(),
+        container.equipment.observeLatestChecks(),
+    ) { machines, checks ->
+        val latest = checks.associateBy { it.equipmentId }
+        val now = System.currentTimeMillis()
+        val zone = ZoneId.systemDefault()
+        machines.count { machine ->
+            machine.status == EquipmentRepository.Status.ON_SITE &&
+                latest[machine.id].let { last ->
+                    PreUse.today(
+                        lastCheckedAt = last?.checkedAt,
+                        lastOutcome = last?.outcome?.let { stored ->
+                            runCatching { PreUse.Outcome.valueOf(stored) }.getOrNull()
+                        },
+                        now = now,
+                        zone = zone,
+                    )
+                } in NEEDS_A_CHECK
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
     val rollCallRunning: StateFlow<Boolean> = container.musters.observeLive()
         .map { it != null }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
@@ -125,5 +156,9 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
 
         /** The seeder's actor name. Its rows are true and nobody wants them. */
         const val SYSTEM_ACTOR = "system"
+    }
+
+    private companion object {
+        val NEEDS_A_CHECK = setOf(PreUse.Today.NEVER_CHECKED, PreUse.Today.NOT_CHECKED_TODAY)
     }
 }

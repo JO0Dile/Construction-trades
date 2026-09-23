@@ -78,6 +78,7 @@ fun HomeScreen(
     onOpenProjects: () -> Unit,
     onOpenSafety: () -> Unit,
     onOpenMuster: () -> Unit,
+    onOpenPlant: () -> Unit,
     onOpenPeople: () -> Unit,
     onOpenSearch: () -> Unit,
     onOpenSettings: () -> Unit,
@@ -88,6 +89,7 @@ fun HomeScreen(
     val changes by viewModel.changes.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val rollCallRunning by viewModel.rollCallRunning.collectAsStateWithLifecycle()
+    val plantUnchecked by viewModel.plantUnchecked.collectAsStateWithLifecycle()
     val locale = currentLocale()
     val zone = ZoneId.systemDefault()
 
@@ -161,6 +163,29 @@ fun HomeScreen(
                                 style = MaterialTheme.typography.bodySmall,
                             )
                         }
+                    }
+                }
+            }
+
+            // The seven o'clock question: which machines may be started. Only
+            // shown when the answer is "not all of them yet".
+            if (seesStuff && plantUnchecked > 0) {
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                            .clickable(onClick = onOpenPlant),
+                    ) {
+                        Text(
+                            pluralStringResource(R.plurals.home_plant_unchecked, plantUnchecked, plantUnchecked),
+                            style = MaterialTheme.typography.titleSmall,
+                            modifier = Modifier.padding(16.dp),
+                        )
                     }
                 }
             }

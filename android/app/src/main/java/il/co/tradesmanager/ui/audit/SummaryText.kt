@@ -149,6 +149,8 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.PERMIT_SIGNED_BACK -> R.string.summary_permit_signed_back
     Summaries.PERMIT_STOPPED -> R.string.summary_permit_stopped
     Summaries.PHOTO_REMOVED -> R.string.summary_photo_removed
+    Summaries.PLANT_CHECKED_FIT -> R.string.summary_plant_checked_fit
+    Summaries.PLANT_CHECKED_UNFIT -> R.string.summary_plant_checked_unfit
     Summaries.PLANT_TO_SITE -> R.string.summary_plant_to_site
     Summaries.PLANT_TO_YARD -> R.string.summary_plant_to_yard
     Summaries.POUR_FINISHED -> R.string.summary_pour_finished

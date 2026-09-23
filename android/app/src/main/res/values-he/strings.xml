@@ -1321,6 +1321,41 @@
     <string name="muster_call_police">משטרה — 100</string>
     <string name="muster_call_hint">פותח את החייגן עם המספר. הלחיצה על חיוג היא שלכם.</string>
     <string name="muster_call_no_dialer">המכשיר הזה לא יכול לחייג. השתמשו בטלפון אחר.</string>
+    <string name="muster_first_aider">מגיש עזרה ראשונה</string>
+    <string name="muster_first_aiders_here">מגישי עזרה ראשונה כאן: %1$s</string>
+    <string name="muster_share">שתף את הרשימה</string>
+    <string name="muster_share_heading">מפקד נוכחות — %1$s — החל %2$s</string>
+    <string name="muster_share_ended">הסתיים %1$s</string>
+    <string name="muster_share_running">עדיין מתנהל</string>
+    <string name="muster_share_unaccounted">לא אותרו (%1$d): %2$s</string>
+    <string name="muster_share_present">נוכחים (%1$d): %2$s</string>
+    <string name="muster_share_elsewhere">בטוחים במקום אחר (%1$d): %2$s</string>
+    <string name="summary_plant_checked_fit">%1$s נבדק לפני שימוש: תקין</string>
+    <string name="summary_plant_checked_unfit">%1$s נבדק לפני שימוש: הוצא משימוש — %2$s</string>
+    <string name="plant_preuse">בדיקה לפני שימוש</string>
+    <string name="plant_preuse_hint">סיירו סביב המכונה לפני שמפעילים אותה. תקלה מוציאה אותה משימוש עד שמישהו מתקן אותה.</string>
+    <string name="plant_preuse_ok">תקין</string>
+    <string name="plant_preuse_defect">תקלה</string>
+    <string name="plant_preuse_na">לא רלוונטי</string>
+    <string name="plant_preuse_note">מה התקלה</string>
+    <string name="plant_preuse_submit">רשום את הבדיקה</string>
+    <string name="plant_item_visible_damage">נזק נראה לעין, סדקים, חלקים רופפים</string>
+    <string name="plant_item_tyres_or_tracks">צמיגים או זחלים</string>
+    <string name="plant_item_leaks">דליפות שמן, דלק או הידראוליקה</string>
+    <string name="plant_item_fluid_levels">מפלסי נוזלים</string>
+    <string name="plant_item_brakes">בלמים</string>
+    <string name="plant_item_steering_and_controls">היגוי ובקרות</string>
+    <string name="plant_item_lights_horn_and_alarms">אורות, צופר, אזעקת נסיעה לאחור</string>
+    <string name="plant_item_seatbelt_and_cab">חגורת בטיחות ותא המפעיל</string>
+    <string name="plant_item_guards">מגנים וכיסויים במקומם</string>
+    <string name="plant_item_fire_extinguisher">מטף כיבוי אש</string>
+    <string name="plant_check_never">מעולם לא נבדק לפני שימוש</string>
+    <string name="plant_check_not_today">לא נבדק היום</string>
+    <string name="plant_check_fit_today">נבדק היום: תקין</string>
+    <string name="plant_check_unfit_today">הוצא משימוש בבדיקה של היום</string>
+    <string name="plant_preuse_unanswered">יש לענות על כל סעיף. סיור שלא הושלם אינו בדיקה.</string>
+    <string name="plant_preuse_undescribed">יש לתאר את התקלה.</string>
+    <string name="plant_preuse_nothing">לא סומן שום דבר כנבדק. סמנו לפחות את מה שבדקתם.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -1428,5 +1463,11 @@
         <item quantity="two">לשני אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</item>
         <item quantity="many">ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</item>
         <item quantity="other">ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</item>
+    </plurals>
+    <plurals name="home_plant_unchecked">
+        <item quantity="one">מכונה אחת באתר לא נבדקה היום</item>
+        <item quantity="two">שתי מכונות באתר לא נבדקו היום</item>
+        <item quantity="many">%d מכונות באתר לא נבדקו היום</item>
+        <item quantity="other">%d מכונות באתר לא נבדקו היום</item>
     </plurals>
 </resources>

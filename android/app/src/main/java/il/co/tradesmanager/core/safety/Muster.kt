@@ -1,5 +1,8 @@
 package il.co.tradesmanager.core.safety
 
+import il.co.tradesmanager.core.find.Search
+import il.co.tradesmanager.core.people.Expiry
+
 /**
  * The roll call after the site is evacuated.
  *
@@ -335,6 +338,42 @@ object Muster {
     fun end(roll: Roll, at: Long): Outcome {
         if (!roll.isLive) return Outcome.Refused(Refusal.ALREADY_ENDED)
         return Outcome.Changed(roll.copy(endedAt = at.coerceAtLeast(roll.startedAt)))
+    }
+
+    /** A certificate, as the roll call needs to see it. */
+    data class Held(val title: String, val expiresOn: Long?)
+
+    /**
+     * Which of the people on the list are first aiders.
+     *
+     * The second question at a muster point, after "who is missing": is
+     * anybody here who knows what to do. The app already holds everybody's
+     * tickets; this reads them.
+     *
+     * A certificate counts when its title is the first-aid kind in any of the
+     * app's languages -- the picker writes the name in whatever language the
+     * person adding it was using, so a Hebrew and an Arabic entry for the same
+     * course have to both count -- and it has not expired. One in its renewal
+     * window still counts: it is still a valid ticket, and the man holding it
+     * still knows how.
+     *
+     * A certificate typed by hand under some other wording is not recognised.
+     * That errs toward not claiming somebody is a first aider, which is the
+     * right way round to be wrong.
+     */
+    fun firstAiders(
+        held: Map<String, List<Held>>,
+        firstAidTitles: Collection<String>,
+        now: Long,
+    ): Set<String> {
+        val titles = firstAidTitles.map(Search::fold).filter { it.isNotEmpty() }.toSet()
+        if (titles.isEmpty()) return emptySet()
+        return held.filterValues { tickets ->
+            tickets.any { ticket ->
+                Search.fold(ticket.title) in titles &&
+                    Expiry.state(ticket.expiresOn, now) != Expiry.State.EXPIRED
+            }
+        }.keys
     }
 
     /** The roll call as it reads once it is over. */

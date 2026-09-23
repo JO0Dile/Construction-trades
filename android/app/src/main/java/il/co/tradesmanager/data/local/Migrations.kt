@@ -338,6 +338,15 @@ object Migrations {
         }
     }
 
+    /**
+     * Pre-use checks for plant. One new table and nothing touched.
+     */
+    val MIGRATION_32_33 = object : Migration(32, 33) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_32_33.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -370,6 +379,7 @@ object Migrations {
         MIGRATION_29_30,
         MIGRATION_30_31,
         MIGRATION_31_32,
+        MIGRATION_32_33,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -932,5 +942,18 @@ object Migrations {
             "`note` TEXT, `checkedByAccountId` TEXT NOT NULL, " +
             "`checkedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_heat_checks_checkedAt` ON `heat_checks` (`checkedAt`)",
+    )
+
+    /**
+     * The pre-use check table. `answers` is the JSON the type converters write
+     * for every Map<String, String> column in the schema.
+     */
+    val SQL_32_33: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `plant_checks` (`id` TEXT NOT NULL, " +
+            "`equipmentId` TEXT NOT NULL, `checkedAt` INTEGER NOT NULL, " +
+            "`outcome` TEXT NOT NULL, `answers` TEXT NOT NULL, `defectNote` TEXT, " +
+            "`checkedByAccountId` TEXT, `checkedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_plant_checks_equipmentId` " +
+            "ON `plant_checks` (`equipmentId`)",
     )
 }

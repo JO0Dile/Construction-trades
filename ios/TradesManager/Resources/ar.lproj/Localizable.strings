@@ -1499,3 +1499,71 @@
 "muster_call_hint" = "يفتح الهاتف والرقم جاهز. أنت تضغط على الاتصال.";
 /* This device cannot place calls */
 "muster_call_no_dialer" = "هذا الجهاز لا يستطيع إجراء المكالمات. استخدم هاتفًا آخر.";
+/* Badge on a roll call row: holds an in-date first-aid ticket */
+"muster_first_aider" = "مسعف أولي";
+/* Roll call header: first aiders counted present, by name */
+"muster_first_aiders_here" = "المسعفون الأوليون هنا: %1$s";
+/* Button: hand the list to another app */
+"muster_share" = "شارك القائمة";
+/* First line of a shared roll call */
+"muster_share_heading" = "نداء الأسماء — %1$s — بدأ %2$s";
+/* Line of a shared roll call */
+"muster_share_ended" = "انتهى %1$s";
+/* Line of a shared roll call that is still running */
+"muster_share_running" = "لا يزال جاريًا";
+/* Line of a shared roll call */
+"muster_share_unaccounted" = "لم يُعثر عليهم (%1$d): %2$s";
+/* Line of a shared roll call */
+"muster_share_present" = "حاضرون (%1$d): %2$s";
+/* Line of a shared roll call */
+"muster_share_elsewhere" = "بأمان في مكان آخر (%1$d): %2$s";
+"summary_plant_checked_fit" = "فُحص %1$s قبل الاستخدام: سليم";
+"summary_plant_checked_unfit" = "فُحص %1$s قبل الاستخدام: أُوقف عن العمل — %2$s";
+/* Button and dialog title */
+"plant_preuse" = "فحص قبل الاستخدام";
+/* Top of the pre-use dialog */
+"plant_preuse_hint" = "تجوّل حول الآلة قبل تشغيلها. أي عطل يوقفها عن العمل حتى يصلحه أحد.";
+/* Answer */
+"plant_preuse_ok" = "سليم";
+/* Answer */
+"plant_preuse_defect" = "عطل";
+/* Answer: does not apply to this machine */
+"plant_preuse_na" = "لا ينطبق";
+/* Input label, shown once a defect is marked */
+"plant_preuse_note" = "ما العطل";
+/* Button */
+"plant_preuse_submit" = "سجّل الفحص";
+/* Pre-use item */
+"plant_item_visible_damage" = "أضرار ظاهرة أو تشققات أو أجزاء مفكوكة";
+/* Pre-use item */
+"plant_item_tyres_or_tracks" = "الإطارات أو الجنازير";
+/* Pre-use item */
+"plant_item_leaks" = "تسرّب زيت أو وقود أو سائل هيدروليكي";
+/* Pre-use item */
+"plant_item_fluid_levels" = "مستويات السوائل";
+/* Pre-use item */
+"plant_item_brakes" = "المكابح";
+/* Pre-use item */
+"plant_item_steering_and_controls" = "التوجيه وأدوات التحكم";
+/* Pre-use item */
+"plant_item_lights_horn_and_alarms" = "الأضواء والبوق وإنذار الرجوع";
+/* Pre-use item */
+"plant_item_seatbelt_and_cab" = "حزام الأمان والمقصورة";
+/* Pre-use item */
+"plant_item_guards" = "الواقيات والأغطية في مكانها";
+/* Pre-use item */
+"plant_item_fire_extinguisher" = "طفاية الحريق";
+/* Plant register row */
+"plant_check_never" = "لم يُفحص قبل الاستخدام قط";
+/* Plant register row */
+"plant_check_not_today" = "لم يُفحص اليوم";
+/* Plant register row */
+"plant_check_fit_today" = "فُحص اليوم: سليم";
+/* Plant register row */
+"plant_check_unfit_today" = "أُوقف عن العمل بعد فحص اليوم";
+/* Refusal */
+"plant_preuse_unanswered" = "أجب عن كل بند. الجولة غير المكتملة ليست فحصًا.";
+/* Refusal */
+"plant_preuse_undescribed" = "صِف العطل.";
+/* Refusal */
+"plant_preuse_nothing" = "لم يُعلَّم أي شيء على أنه فُحص. علّم على الأقل ما فحصته.";

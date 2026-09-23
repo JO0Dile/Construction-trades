@@ -590,6 +590,23 @@
       "he": "התמונה הוסרה",
       "ar": "أُزيلت الصورة"
     },
+    "plant_checked_fit": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s checked before use: fit",
+      "he": "%1$s נבדק לפני שימוש: תקין",
+      "ar": "فُحص %1$s قبل الاستخدام: سليم"
+    },
+    "plant_checked_unfit": {
+      "arguments": [
+        "name",
+        "defect"
+      ],
+      "en": "%1$s checked before use: out of service — %2$s",
+      "he": "%1$s נבדק לפני שימוש: הוצא משימוש — %2$s",
+      "ar": "فُحص %1$s قبل الاستخدام: أُوقف عن العمل — %2$s"
+    },
     "plant_to_site": {
       "arguments": [
         "name"

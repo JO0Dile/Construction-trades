@@ -123,6 +123,28 @@ Until any of that is switched on, the running cost of this product is zero.
   and a personal ID number, and it is answered by the organisation running the
   app rather than by whoever wrote the code.
 
+## iPhone
+
+**The iPhone app is well behind the Android one, and has never been compiled.**
+It covers the first version of the ground — inventory, projects, the
+schedule, safety checklists, the barcode scanner, export — over 14 data
+models. Android has 56 tables. Everything built since the first version is
+Android only: money, the people and the chain of command, the site registers
+(daily log, concrete, scaffolding, lifting, temporary works, excavations,
+permits, snags, violations), the roll call, heat checks and plant pre-use
+checks.
+
+It has never been compiled because this repository has been worked on where
+there is no Swift toolchain, so the first job on a Mac is to make it build at
+all. After that the rules are the easy half: everything under
+`android/app/src/main/java/.../core` is plain Kotlin with no Android in it and
+a test beside it, and each file says in prose what it enforces and why — it
+ports rule by rule, and the tests are the specification. The screens are the
+long half.
+
+A buyer should price the iPhone app as a second build on top of a finished
+design, not as a finishing touch.
+
 ## What needs a person, not code
 
 These are the ones that cannot be finished by building anything, and they are

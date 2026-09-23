@@ -494,6 +494,20 @@ object Summaries {
     const val PHOTO_REMOVED = "photo_removed"
 
     /**
+     * %1$s checked before use: fit
+     *
+     * Arguments, in order: name.
+     */
+    const val PLANT_CHECKED_FIT = "plant_checked_fit"
+
+    /**
+     * %1$s checked before use: out of service — %2$s
+     *
+     * Arguments, in order: name, defect.
+     */
+    const val PLANT_CHECKED_UNFIT = "plant_checked_unfit"
+
+    /**
      * %1$s sent to site
      *
      * Arguments, in order: name.

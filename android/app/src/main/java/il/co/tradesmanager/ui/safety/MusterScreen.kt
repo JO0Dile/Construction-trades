@@ -1,5 +1,6 @@
 package il.co.tradesmanager.ui.safety
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Campaign
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
@@ -42,6 +44,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -62,7 +65,9 @@ import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.currentLocale
 import java.time.Instant
 import java.time.ZoneId
+import java.util.Locale
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * The roll call.
@@ -88,6 +93,7 @@ fun MusterScreen(
     val jobNames by viewModel.jobNames.collectAsStateWithLifecycle()
     val mayRun by viewModel.mayRun.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
+    val firstAiders by viewModel.firstAiders.collectAsStateWithLifecycle()
 
     val snackbar = remember { SnackbarHostState() }
     val refusalText = refusal?.let { stringResource(sentence(it)) }
@@ -115,9 +121,13 @@ fun MusterScreen(
         snackbarHost = { SnackbarHost(snackbar) },
     ) { padding ->
         val current = roll
-        if (live != null && current != null) {
+        val running = live
+        if (running != null && current != null) {
             LiveRollCall(
+                muster = running,
                 roll = current,
+                firstAiders = firstAiders,
+                rollFor = viewModel::rollFor,
                 onPresent = viewModel::present,
                 onElsewhere = viewModel::elsewhere,
                 onStillMissing = viewModel::stillMissing,
@@ -132,6 +142,7 @@ fun MusterScreen(
                 history = history,
                 jobNames = jobNames,
                 onStart = viewModel::start,
+                rollFor = viewModel::rollFor,
                 modifier = Modifier.padding(padding),
             )
         }
@@ -147,6 +158,7 @@ private fun Waiting(
     history: List<MusterEntity>,
     jobNames: Map<String, String>,
     onStart: (Muster.Reason, String) -> Unit,
+    rollFor: suspend (MusterEntity) -> Muster.Roll,
     modifier: Modifier = Modifier,
 ) {
     var note by remember { mutableStateOf("") }
@@ -235,14 +247,18 @@ private fun Waiting(
             }
         } else {
             items(history, key = { it.id }) { past ->
-                PastRollCall(past, past.projectId?.let(jobNames::get))
+                PastRollCall(past, past.projectId?.let(jobNames::get), rollFor)
             }
         }
     }
 }
 
 @Composable
-private fun PastRollCall(past: MusterEntity, jobName: String?) {
+private fun PastRollCall(
+    past: MusterEntity,
+    jobName: String?,
+    rollFor: suspend (MusterEntity) -> Muster.Roll,
+) {
     val locale = currentLocale()
     val missing = past.unaccountedAtEnd ?: 0
     Card(
@@ -283,6 +299,7 @@ private fun PastRollCall(past: MusterEntity, jobName: String?) {
                 ).joinToString(SEPARATOR),
                 style = MaterialTheme.typography.bodySmall,
             )
+            ShareListButton(muster = past, rollFor = rollFor)
         }
     }
 }
@@ -291,7 +308,10 @@ private fun PastRollCall(past: MusterEntity, jobName: String?) {
 
 @Composable
 private fun LiveRollCall(
+    muster: MusterEntity,
     roll: Muster.Roll,
+    firstAiders: Set<String>,
+    rollFor: suspend (MusterEntity) -> Muster.Roll,
     onPresent: (String) -> Unit,
     onElsewhere: (String, String) -> Unit,
     onStillMissing: (String) -> Unit,
@@ -316,7 +336,9 @@ private fun LiveRollCall(
 
     LazyColumn(modifier.fillMaxWidth(), contentPadding = PaddingAll) {
         item {
-            LiveHeader(roll, now)
+            LiveHeader(roll, now, firstAiders)
+            Spacer(Modifier.height(8.dp))
+            ShareListButton(muster = muster, rollFor = rollFor)
             Spacer(Modifier.height(16.dp))
             EmergencyNumbers()
             Spacer(Modifier.height(16.dp))
@@ -324,6 +346,7 @@ private fun LiveRollCall(
         items(roll.ordered(), key = { it.id }) { person ->
             PersonRow(
                 person = person,
+                firstAider = person.personId != null && person.personId in firstAiders,
                 onPresent = { onPresent(person.id) },
                 onElsewhere = { accountingFor = person },
                 onStillMissing = { onStillMissing(person.id) },
@@ -386,7 +409,7 @@ private fun LiveRollCall(
 }
 
 @Composable
-private fun LiveHeader(roll: Muster.Roll, now: Long) {
+private fun LiveHeader(roll: Muster.Roll, now: Long, firstAiders: Set<String>) {
     val missing = roll.unaccountedCount
     Card(
         Modifier.fillMaxWidth(),
@@ -420,6 +443,19 @@ private fun LiveHeader(roll: Muster.Roll, now: Long) {
                 ).joinToString(SEPARATOR),
                 style = MaterialTheme.typography.bodyMedium,
             )
+            // Who at the muster point can help, by name. Only those counted
+            // present: a first aider still missing is not one who can help.
+            val helpers = roll.people
+                .filter { it.state == Muster.State.PRESENT && it.personId in firstAiders }
+                .map { it.name }
+            if (helpers.isNotEmpty()) {
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    stringResource(R.string.muster_first_aiders_here, helpers.joinToString(SEPARATOR)),
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
             if (roll.isLongRunning(now)) {
                 Spacer(Modifier.height(8.dp))
                 Text(
@@ -434,6 +470,7 @@ private fun LiveHeader(roll: Muster.Roll, now: Long) {
 @Composable
 private fun PersonRow(
     person: Muster.Person,
+    firstAider: Boolean,
     onPresent: () -> Unit,
     onElsewhere: () -> Unit,
     onStillMissing: () -> Unit,
@@ -448,6 +485,7 @@ private fun PersonRow(
             )
         }
         val badges = listOfNotNull(
+            if (firstAider) stringResource(R.string.muster_first_aider) else null,
             if (person.staleCheckIn) stringResource(R.string.muster_stale) else null,
             if (person.addedDuringRollCall) stringResource(R.string.muster_added_badge) else null,
             person.account?.takeIf { it.isNotBlank() },
@@ -597,6 +635,90 @@ private fun EndDialog(
         },
     )
 }
+
+/* ------------------------------------------------------- handing it over */
+
+/**
+ * Sends the list to whatever the person uses -- WhatsApp, a text, email.
+ *
+ * On a running roll call as well as an ended one, because the moment it is
+ * needed is when the fire brigade arrives and asks who is still inside, and
+ * that is before anybody has ended anything. Plain text, missing names first
+ * and in capitals in English, because it will be read on a small screen by
+ * somebody in a hurry. Shared through the system's own sheet, so nothing
+ * leaves the phone unless the person picks where it goes.
+ */
+@Composable
+private fun ShareListButton(
+    muster: MusterEntity,
+    rollFor: suspend (MusterEntity) -> Muster.Roll,
+) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val locale = currentLocale()
+    val heading = stringResource(
+        R.string.muster_share_heading,
+        stringResource(reasonLabel(readReason(muster.reason))),
+        moment(muster.startedAt, locale),
+    )
+    val endedLine = muster.endedAt?.let {
+        stringResource(R.string.muster_share_ended, moment(it, locale))
+    } ?: stringResource(R.string.muster_share_running)
+
+    TextButton(
+        onClick = {
+            scope.launch {
+                val roll = rollFor(muster)
+                val text = listText(context, heading, endedLine, roll, muster.note)
+                val send = Intent(Intent.ACTION_SEND)
+                    .setType("text/plain")
+                    .putExtra(Intent.EXTRA_TEXT, text)
+                runCatching { context.startActivity(Intent.createChooser(send, null)) }
+            }
+        },
+    ) {
+        Icon(Icons.Filled.Share, contentDescription = null)
+        Text(stringResource(R.string.muster_share), modifier = Modifier.padding(start = 8.dp))
+    }
+}
+
+/** The list as text: who is missing, who is here, who is safe elsewhere and how. */
+private fun listText(
+    context: Context,
+    heading: String,
+    endedLine: String,
+    roll: Muster.Roll,
+    note: String?,
+): String {
+    val missing = roll.unaccounted().map { it.name }
+    val present = roll.people.filter { it.state == Muster.State.PRESENT }.map { it.name }.sorted()
+    val elsewhere = roll.people.filter { it.state == Muster.State.ACCOUNTED_ELSEWHERE }
+        .sortedBy { it.name }
+        .map { person -> person.account?.let { "${person.name} (${it})" } ?: person.name }
+    return buildList {
+        add(heading)
+        add(endedLine)
+        if (missing.isNotEmpty()) {
+            add(context.getString(R.string.muster_share_unaccounted, missing.size, missing.joinToString(LIST)))
+        } else {
+            add(context.getString(R.string.muster_all_accounted))
+        }
+        if (present.isNotEmpty()) {
+            add(context.getString(R.string.muster_share_present, present.size, present.joinToString(LIST)))
+        }
+        if (elsewhere.isNotEmpty()) {
+            add(context.getString(R.string.muster_share_elsewhere, elsewhere.size, elsewhere.joinToString(LIST)))
+        }
+        note?.takeIf { it.isNotBlank() }?.let { add(it) }
+    }.joinToString("\n")
+}
+
+private fun moment(epochMillis: Long, locale: Locale): String =
+    Instant.ofEpochMilli(epochMillis).atZone(ZoneId.systemDefault()).let {
+        Formats.dateTime(it.toLocalDate(), it.toLocalTime(), locale)
+    }
+
+private const val LIST = ", "
 
 /* ---------------------------------------------------- the numbers to ring */
 
