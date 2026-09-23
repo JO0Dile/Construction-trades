@@ -129,6 +129,14 @@ refusing to start on a site with no signal.
 
 ---
 
+## Taking this on
+
+Buying it, or being handed it? **[`docs/HANDOVER.md`](docs/HANDOVER.md)** is
+the one to read first: what runs today at no cost, what is prepared and
+deliberately switched off — SMS codes and billing — with the exact steps and
+real costs to switch each on, and the short list of things that need a person
+rather than any more code.
+
 ## State of the work
 
 Every push builds the app, runs the tests and runs twenty-two checks. Nothing

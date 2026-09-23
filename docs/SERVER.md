@@ -1,5 +1,8 @@
 # When you get a server
 
+*Taking this product on rather than building it? Start with*
+*[`HANDOVER.md`](HANDOVER.md).*
+
 Nothing in the app needs one. Every screen reads and writes the phone's own
 database and nothing waits on a network, which is the whole reason it works in
 a basement car park. A server adds one thing: the same data on more than one

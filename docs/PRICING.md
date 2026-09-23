@@ -1,5 +1,8 @@
 # What to charge, and what must never be charged for
 
+*Taking this product on rather than building it? Start with*
+*[`HANDOVER.md`](HANDOVER.md).*
+
 **Decided.** The rules below are `core/money/Plans.kt`, and the tests in
 `PlansTest.kt` fail if this document and that file ever disagree. The screen a
 customer reads is `ui/settings/PlansScreen.kt`, in all three languages.
