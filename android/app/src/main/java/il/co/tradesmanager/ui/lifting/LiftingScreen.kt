@@ -47,6 +47,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.safety.Lifting
 import il.co.tradesmanager.data.local.entity.CertificationEntity
@@ -492,13 +493,13 @@ private fun NumbersForm(
                 onSave(
                     plan.copy(
                         applianceName = appliance.trim().takeIf { it.isNotEmpty() },
-                        loadWeightKg = load.toDoubleOrNull(),
-                        riggingWeightKg = rigging.toDoubleOrNull(),
-                        radiusMetres = radius.toDoubleOrNull(),
-                        capacityAtRadiusKg = capacity.toDoubleOrNull(),
-                        windLimitKmh = windLimit.toDoubleOrNull()
+                        loadWeightKg = Numbers.parseDecimal(load),
+                        riggingWeightKg = Numbers.parseDecimal(rigging),
+                        radiusMetres = Numbers.parseDecimal(radius),
+                        capacityAtRadiusKg = Numbers.parseDecimal(capacity),
+                        windLimitKmh = Numbers.parseDecimal(windLimit)
                             ?: Lifting.DEFAULT_WIND_LIMIT_KMH,
-                        windSpeedKmh = wind.toDoubleOrNull(),
+                        windSpeedKmh = Numbers.parseDecimal(wind),
                         applianceCertificateRequired = certRequired,
                         applianceCertificateExpiresOn = Formats.parseDate(certExpiry)
                             ?.atStartOfDay(ZoneId.systemDefault())
@@ -523,10 +524,11 @@ private fun NumbersForm(
 private fun NumberField(value: String, onChange: (String) -> Unit, labelRes: Int) {
     OutlinedTextField(
         value = value,
-        // Digits and a full stop only. Double.toString and toDoubleOrNull both
-        // speak the same dot-decimal regardless of locale, so a phone set to a
-        // comma decimal cannot write a number the app then fails to read back.
-        onValueChange = { onChange(it.filter { c -> c.isDigit() || c == '.' }) },
+        // Digits in any script and a decimal point in any of its spellings.
+        // This used to keep digits and full stops only, which silently turned
+        // a radius typed as 2,5 into 25 on a keyboard that offers a comma --
+        // a lift plan ten times out. See core.i18n.Numbers.
+        onValueChange = { onChange(Numbers.typingDecimal(it)) },
         label = { Text(stringResource(labelRes)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -534,7 +536,7 @@ private fun NumberField(value: String, onChange: (String) -> Unit, labelRes: Int
     )
 }
 
-/** Locale-independent, so what is typed is what is stored. */
+/** Dot-decimal on the way back out, which Numbers.parseDecimal reads like any other. */
 private fun Double?.asField(): String = this?.toString().orEmpty()
 
 private fun dateOf(millis: Long, zone: ZoneId, locale: Locale): String =

@@ -6719,6 +6719,245 @@
       "en": "Tap to finish or drop it. Nobody else can see it.",
       "he": "הקישו כדי להשלים או לבטל. אף אחד אחר לא רואה את זה.",
       "ar": "انقر لإكمالها أو إلغائها. لا يراها أحد سواك."
+    },
+    "heat_title": {
+      "c": "Heat check screen title",
+      "en": "Heat check",
+      "he": "בדיקת עומס חום",
+      "ar": "فحص الإجهاد الحراري"
+    },
+    "heat_blurb": {
+      "c": "What the screen is for",
+      "en": "Heat and humidity together decide how hard the heat is on a body. Measure in the shade, and say if the work is in the sun.",
+      "he": "החום והלחות יחד קובעים כמה החום מכביד על הגוף. מודדים בצל, ומציינים אם העבודה בשמש.",
+      "ar": "الحرارة والرطوبة معًا تحددان مدى عبء الحر على الجسم. قِس في الظل، واذكر إن كان العمل تحت الشمس."
+    },
+    "heat_temperature": {
+      "c": "Input label",
+      "en": "Temperature in the shade (°C)",
+      "he": "טמפרטורה בצל (°C)",
+      "ar": "الحرارة في الظل (°C)"
+    },
+    "heat_humidity": {
+      "c": "Input label",
+      "en": "Relative humidity (%)",
+      "he": "לחות יחסית (%)",
+      "ar": "الرطوبة النسبية (%)"
+    },
+    "heat_in_sun": {
+      "c": "Switch",
+      "en": "The work is in full sun",
+      "he": "העבודה בשמש מלאה",
+      "ar": "العمل تحت أشعة الشمس المباشرة"
+    },
+    "heat_in_sun_hint": {
+      "c": "Under the switch",
+      "en": "In full sun it can feel up to 8 degrees hotter. The level is then taken from the worst case.",
+      "he": "בשמש מלאה זה יכול להרגיש חם עד 8 מעלות יותר. הרמה נקבעת אז לפי המקרה הגרוע.",
+      "ar": "تحت الشمس المباشرة قد يبدو الحر أشد بما يصل إلى 8 درجات. يُحدَّد المستوى حينها وفق أسوأ الاحتمالات."
+    },
+    "heat_feels_like": {
+      "c": "The heat index, as a worker would say it",
+      "en": "Feels like %1$d°C",
+      "he": "תחושת חום: %1$d°C",
+      "ar": "الحرارة المحسوسة: %1$d°C"
+    },
+    "heat_band_none": {
+      "c": "Heat level",
+      "en": "No heat risk",
+      "he": "אין סיכון חום",
+      "ar": "لا خطر حراري"
+    },
+    "heat_band_caution": {
+      "c": "Heat level",
+      "en": "Caution",
+      "he": "זהירות",
+      "ar": "حذر"
+    },
+    "heat_band_extreme_caution": {
+      "c": "Heat level",
+      "en": "Extreme caution",
+      "he": "זהירות רבה",
+      "ar": "حذر شديد"
+    },
+    "heat_band_danger": {
+      "c": "Heat level",
+      "en": "Danger",
+      "he": "סכנה",
+      "ar": "خطر"
+    },
+    "heat_band_extreme_danger": {
+      "c": "Heat level",
+      "en": "Extreme danger",
+      "he": "סכנה חמורה",
+      "ar": "خطر بالغ"
+    },
+    "heat_band_none_meaning": {
+      "c": "What the level means",
+      "en": "Nothing about the heat itself to act on.",
+      "he": "אין בחום עצמו דבר שמחייב פעולה.",
+      "ar": "لا شيء في الحر نفسه يستدعي إجراءً."
+    },
+    "heat_band_caution_meaning": {
+      "c": "What the level means",
+      "en": "Fatigue is possible with long exposure and hard work.",
+      "he": "עייפות אפשרית בחשיפה ממושכת ובעבודה קשה.",
+      "ar": "الإرهاق ممكن مع التعرض الطويل والعمل الشاق."
+    },
+    "heat_band_extreme_caution_meaning": {
+      "c": "What the level means",
+      "en": "Heat cramps and heat exhaustion are possible.",
+      "he": "התכווצויות חום ותשישות חום אפשריות.",
+      "ar": "التشنجات الحرارية والإنهاك الحراري ممكنة."
+    },
+    "heat_band_danger_meaning": {
+      "c": "What the level means",
+      "en": "Cramps and exhaustion are likely. Heat stroke is possible.",
+      "he": "התכווצויות ותשישות צפויות. מכת חום אפשרית.",
+      "ar": "التشنجات والإنهاك مرجحة. ضربة الشمس ممكنة."
+    },
+    "heat_band_extreme_danger_meaning": {
+      "c": "What the level means",
+      "en": "Heat stroke is highly likely.",
+      "he": "מכת חום צפויה מאוד.",
+      "ar": "ضربة الشمس مرجحة جدًا."
+    },
+    "heat_measure_water": {
+      "c": "A measure taken",
+      "en": "Cool water within reach of the work",
+      "he": "מים קרים בהישג יד ליד העבודה",
+      "ar": "ماء بارد في متناول اليد قرب العمل"
+    },
+    "heat_measure_shade": {
+      "c": "A measure taken",
+      "en": "Shade to rest in",
+      "he": "צל למנוחה",
+      "ar": "ظل للاستراحة"
+    },
+    "heat_measure_scheduled_breaks": {
+      "c": "A measure taken",
+      "en": "Breaks on a schedule",
+      "he": "הפסקות לפי לוח זמנים",
+      "ar": "استراحات وفق جدول"
+    },
+    "heat_measure_buddy_system": {
+      "c": "A measure taken",
+      "en": "Nobody working alone",
+      "he": "אף אחד לא עובד לבד",
+      "ar": "لا أحد يعمل وحده"
+    },
+    "heat_measure_new_workers_eased_in": {
+      "c": "A measure taken",
+      "en": "New or returning workers on lighter work",
+      "he": "עובדים חדשים או חוזרים בעבודה קלה יותר",
+      "ar": "العمال الجدد أو العائدون في عمل أخف"
+    },
+    "heat_measure_heavy_work_moved": {
+      "c": "A measure taken",
+      "en": "Heavy work moved to cooler hours",
+      "he": "עבודה כבדה הועברה לשעות קרירות",
+      "ar": "نُقل العمل الشاق إلى ساعات أبرد"
+    },
+    "heat_measure_heavy_work_stopped": {
+      "c": "A measure taken",
+      "en": "Heavy outdoor work stopped",
+      "he": "עבודה כבדה בחוץ הופסקה",
+      "ar": "أُوقف العمل الشاق في الخارج"
+    },
+    "heat_measures_title": {
+      "c": "Section header",
+      "en": "What was done",
+      "he": "מה נעשה",
+      "ar": "ما الذي تم فعله"
+    },
+    "heat_not_done": {
+      "c": "On a record: measures the level calls for that were not ticked",
+      "en": "Called for and not recorded: %1$s",
+      "he": "נדרש ולא נרשם: %1$s",
+      "ar": "مطلوب ولم يُسجَّل: %1$s"
+    },
+    "heat_nothing_done": {
+      "c": "On a record with no measures",
+      "en": "Nothing recorded as done.",
+      "he": "לא נרשם שנעשה דבר.",
+      "ar": "لم يُسجَّل أي إجراء."
+    },
+    "heat_note_hint": {
+      "c": "Input label",
+      "en": "Note (optional)",
+      "he": "הערה (לא חובה)",
+      "ar": "ملاحظة (اختياري)"
+    },
+    "heat_record": {
+      "c": "Button",
+      "en": "Record this check",
+      "he": "רשום את הבדיקה",
+      "ar": "سجّل هذا الفحص"
+    },
+    "heat_recorded": {
+      "c": "Confirmation",
+      "en": "Heat check recorded.",
+      "he": "בדיקת החום נרשמה.",
+      "ar": "سُجّل فحص الحرارة."
+    },
+    "heat_history": {
+      "c": "Section header",
+      "en": "Past checks",
+      "he": "בדיקות קודמות",
+      "ar": "الفحوص السابقة"
+    },
+    "heat_history_empty": {
+      "c": "Empty history",
+      "en": "No heat checks yet.",
+      "he": "עדיין אין בדיקות חום.",
+      "ar": "لا توجد فحوص حرارة بعد."
+    },
+    "heat_refused_temperature": {
+      "c": "Refusal",
+      "en": "That temperature cannot be right. Check the reading.",
+      "he": "הטמפרטורה הזאת לא ייתכן שנכונה. בדקו את הקריאה.",
+      "ar": "هذه الحرارة لا يمكن أن تكون صحيحة. تحقّق من القراءة."
+    },
+    "heat_refused_humidity": {
+      "c": "Refusal",
+      "en": "Humidity is between 0 and 100 per cent.",
+      "he": "הלחות היא בין 0 ל-100 אחוז.",
+      "ar": "الرطوبة بين 0 و100 بالمئة."
+    },
+    "heat_not_allowed": {
+      "c": "Refusal",
+      "en": "This account cannot write to the safety register.",
+      "he": "לחשבון הזה אין הרשאה לכתוב במרשם הבטיחות.",
+      "ar": "هذا الحساب لا يملك صلاحية الكتابة في سجل السلامة."
+    },
+    "heat_disclaimer": {
+      "c": "Legal footnote; must not claim Israeli law",
+      "en": "Heat index and levels from the US National Weather Service. This is not a statement of what Israeli law requires; follow the instructions of the Ministry of Labour and your safety officer.",
+      "he": "מדד החום והרמות לפי שירות מזג האוויר הלאומי של ארה״ב. אין בכך קביעה של דרישות החוק בישראל; יש לפעול לפי הנחיות משרד העבודה וממונה הבטיחות.",
+      "ar": "مؤشر الحرارة ومستوياته وفق هيئة الأرصاد الجوية الوطنية الأمريكية. هذا ليس بيانًا لما يتطلبه القانون الإسرائيلي؛ اتبع تعليمات وزارة العمل ومسؤول السلامة."
+    },
+    "heat_sun_badge": {
+      "c": "Tag on a record made in full sun",
+      "en": "in full sun",
+      "he": "בשמש מלאה",
+      "ar": "تحت الشمس المباشرة"
+    },
+    "heat_reading": {
+      "c": "The raw reading on a record",
+      "en": "%1$s°C in the shade, humidity %2$s",
+      "he": "%1$s°C בצל, לחות %2$s",
+      "ar": "%1$s°C في الظل، الرطوبة %2$s"
+    },
+    "summary_heat_checked": {
+      "en": "Heat check: feels like %1$s°C, %2$s",
+      "he": "בדיקת חום: תחושת חום %1$s°C, %2$s",
+      "ar": "فحص الحرارة: الحرارة المحسوسة %1$s°C، %2$s"
+    },
+    "heat_refused_generic": {
+      "c": "A heat check that failed to save for a reason other than a rule",
+      "en": "That did not save. Try again.",
+      "he": "הבדיקה לא נשמרה. נסו שוב.",
+      "ar": "لم يُحفظ الفحص. حاول مرة أخرى."
     }
   },
   "plurals": {

@@ -417,6 +417,38 @@ Anybody who can write to the safety register can start one, which includes a
 worker. Narrowing it to a supervisor would mean the app refuses the man
 holding the phone in the one scenario the feature exists for.
 
+**The heat check. Done.**
+Heat is one of the things that most often hurts people on an Israeli site in
+summer, and it does not look like a hazard. What decides it is temperature and
+humidity together, because sweat does not evaporate into wet air: a humid 32
+degrees on the coast reads as Danger, a dry 40 in the Arava as a step below
+it, and the thermometer on the hut says the opposite.
+
+The index is the US National Weather Service's own formula — the Rothfusz
+regression with its two published adjustments, and the simpler estimate below
+the range it holds for — checked against seven points of the published NWS
+chart to within half a degree Fahrenheit. The bands are the NWS's, converted
+exactly. None of it is offered as what Israeli law requires, and the screen
+says so. A check can be marked as work in full sun, and the level is then
+judged on the NWS's stated worst case rather than the shade figure.
+
+What gets recorded is what was done, ticked by the person who did it. A reading
+with nothing done is **not** refused: "Danger, nothing done" is a true record,
+and a register that will not write it down hides exactly the days somebody
+needs to see later. The record spells out what the level called for and was
+not done.
+
+**Numbers in any digits. Done.**
+Every number field parsed with the JVM's own parser, which reads ASCII digits
+only — so an Arabic keyboard typing Arabic-Indic digits entered nothing, with
+nothing on screen to say why. Worse, seven decimal fields filtered their input
+to digits and full stops, throwing the comma away: on a keyboard that offers a
+comma as the decimal point, "7,5" became 75. A payment ten times too big, a
+concrete pour ten times too large, a lift radius of twenty-five metres for one
+of two and a half, and the field showed exactly what it had kept. One parser
+and one input filter now serve every field, and both are tested with
+Arabic-Indic, Extended Arabic-Indic and comma-decimal input.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -481,19 +513,20 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~86 | *estimated — see below* |
-| Buildable here — on the device, no server | ~100 | where the work is |
+| Built | ~87 | *estimated — see below* |
+| Buildable here — on the device, no server | ~99 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~86 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~87 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
-reaching the end of its own mechanism, and the emergency roll call.
+reaching the end of its own mechanism, the emergency roll call, and the
+heat check.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

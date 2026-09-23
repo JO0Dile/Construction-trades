@@ -46,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.safety.TemporaryWorks
 import il.co.tradesmanager.data.local.entity.ConcretePourEntity
 import il.co.tradesmanager.data.local.entity.TemporaryWorksEntity
@@ -632,7 +633,7 @@ private fun DesignDialog(
                     onSave(
                         reference.trim().takeIf { it.isNotEmpty() },
                         designer.trim().takeIf { it.isNotEmpty() },
-                        days.toLongOrNull() ?: TemporaryWorks.DEFAULT_STRIKING_DAYS,
+                        Numbers.parseWhole(days) ?: TemporaryWorks.DEFAULT_STRIKING_DAYS,
                         pour,
                     )
                 },

@@ -1446,3 +1446,82 @@
 "vio_drafts" = "Yours, not finished";
 /* Supporting line on an unfinished draft row */
 "vio_draft_resume" = "Tap to finish or drop it. Nobody else can see it.";
+/* Heat check screen title */
+"heat_title" = "Heat check";
+/* What the screen is for */
+"heat_blurb" = "Heat and humidity together decide how hard the heat is on a body. Measure in the shade, and say if the work is in the sun.";
+/* Input label */
+"heat_temperature" = "Temperature in the shade (°C)";
+/* Input label */
+"heat_humidity" = "Relative humidity (%)";
+/* Switch */
+"heat_in_sun" = "The work is in full sun";
+/* Under the switch */
+"heat_in_sun_hint" = "In full sun it can feel up to 8 degrees hotter. The level is then taken from the worst case.";
+/* The heat index, as a worker would say it */
+"heat_feels_like" = "Feels like %1$d°C";
+/* Heat level */
+"heat_band_none" = "No heat risk";
+/* Heat level */
+"heat_band_caution" = "Caution";
+/* Heat level */
+"heat_band_extreme_caution" = "Extreme caution";
+/* Heat level */
+"heat_band_danger" = "Danger";
+/* Heat level */
+"heat_band_extreme_danger" = "Extreme danger";
+/* What the level means */
+"heat_band_none_meaning" = "Nothing about the heat itself to act on.";
+/* What the level means */
+"heat_band_caution_meaning" = "Fatigue is possible with long exposure and hard work.";
+/* What the level means */
+"heat_band_extreme_caution_meaning" = "Heat cramps and heat exhaustion are possible.";
+/* What the level means */
+"heat_band_danger_meaning" = "Cramps and exhaustion are likely. Heat stroke is possible.";
+/* What the level means */
+"heat_band_extreme_danger_meaning" = "Heat stroke is highly likely.";
+/* A measure taken */
+"heat_measure_water" = "Cool water within reach of the work";
+/* A measure taken */
+"heat_measure_shade" = "Shade to rest in";
+/* A measure taken */
+"heat_measure_scheduled_breaks" = "Breaks on a schedule";
+/* A measure taken */
+"heat_measure_buddy_system" = "Nobody working alone";
+/* A measure taken */
+"heat_measure_new_workers_eased_in" = "New or returning workers on lighter work";
+/* A measure taken */
+"heat_measure_heavy_work_moved" = "Heavy work moved to cooler hours";
+/* A measure taken */
+"heat_measure_heavy_work_stopped" = "Heavy outdoor work stopped";
+/* Section header */
+"heat_measures_title" = "What was done";
+/* On a record: measures the level calls for that were not ticked */
+"heat_not_done" = "Called for and not recorded: %1$s";
+/* On a record with no measures */
+"heat_nothing_done" = "Nothing recorded as done.";
+/* Input label */
+"heat_note_hint" = "Note (optional)";
+/* Button */
+"heat_record" = "Record this check";
+/* Confirmation */
+"heat_recorded" = "Heat check recorded.";
+/* Section header */
+"heat_history" = "Past checks";
+/* Empty history */
+"heat_history_empty" = "No heat checks yet.";
+/* Refusal */
+"heat_refused_temperature" = "That temperature cannot be right. Check the reading.";
+/* Refusal */
+"heat_refused_humidity" = "Humidity is between 0 and 100 per cent.";
+/* Refusal */
+"heat_not_allowed" = "This account cannot write to the safety register.";
+/* Legal footnote; must not claim Israeli law */
+"heat_disclaimer" = "Heat index and levels from the US National Weather Service. This is not a statement of what Israeli law requires; follow the instructions of the Ministry of Labour and your safety officer.";
+/* Tag on a record made in full sun */
+"heat_sun_badge" = "in full sun";
+/* The raw reading on a record */
+"heat_reading" = "%1$s°C in the shade, humidity %2$s";
+"summary_heat_checked" = "Heat check: feels like %1$s°C, %2$s";
+/* A heat check that failed to save for a reason other than a rule */
+"heat_refused_generic" = "That did not save. Try again.";

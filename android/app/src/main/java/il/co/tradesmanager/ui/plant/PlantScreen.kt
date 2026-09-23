@@ -43,6 +43,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.money.HireCost
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
@@ -221,7 +222,7 @@ private fun AddPlantDialog(
     var serviceDue by remember { mutableStateOf("") }
 
     val hired = ownership == EquipmentRepository.Ownership.HIRED
-    val parsedRate = rate.trim().replace(',', '.').toDoubleOrNull()
+    val parsedRate = Numbers.parseDecimal(rate)
     val parsedDue = if (serviceDue.isBlank()) null else Formats.parseDate(serviceDue)
     val dueOk = serviceDue.isBlank() || parsedDue != null
     // A hire with no rate is a machine that silently costs nothing, which is

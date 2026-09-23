@@ -1446,3 +1446,82 @@
 "vio_drafts" = "טיוטות שלך שלא הושלמו";
 /* Supporting line on an unfinished draft row */
 "vio_draft_resume" = "הקישו כדי להשלים או לבטל. אף אחד אחר לא רואה את זה.";
+/* Heat check screen title */
+"heat_title" = "בדיקת עומס חום";
+/* What the screen is for */
+"heat_blurb" = "החום והלחות יחד קובעים כמה החום מכביד על הגוף. מודדים בצל, ומציינים אם העבודה בשמש.";
+/* Input label */
+"heat_temperature" = "טמפרטורה בצל (°C)";
+/* Input label */
+"heat_humidity" = "לחות יחסית (%)";
+/* Switch */
+"heat_in_sun" = "העבודה בשמש מלאה";
+/* Under the switch */
+"heat_in_sun_hint" = "בשמש מלאה זה יכול להרגיש חם עד 8 מעלות יותר. הרמה נקבעת אז לפי המקרה הגרוע.";
+/* The heat index, as a worker would say it */
+"heat_feels_like" = "תחושת חום: %1$d°C";
+/* Heat level */
+"heat_band_none" = "אין סיכון חום";
+/* Heat level */
+"heat_band_caution" = "זהירות";
+/* Heat level */
+"heat_band_extreme_caution" = "זהירות רבה";
+/* Heat level */
+"heat_band_danger" = "סכנה";
+/* Heat level */
+"heat_band_extreme_danger" = "סכנה חמורה";
+/* What the level means */
+"heat_band_none_meaning" = "אין בחום עצמו דבר שמחייב פעולה.";
+/* What the level means */
+"heat_band_caution_meaning" = "עייפות אפשרית בחשיפה ממושכת ובעבודה קשה.";
+/* What the level means */
+"heat_band_extreme_caution_meaning" = "התכווצויות חום ותשישות חום אפשריות.";
+/* What the level means */
+"heat_band_danger_meaning" = "התכווצויות ותשישות צפויות. מכת חום אפשרית.";
+/* What the level means */
+"heat_band_extreme_danger_meaning" = "מכת חום צפויה מאוד.";
+/* A measure taken */
+"heat_measure_water" = "מים קרים בהישג יד ליד העבודה";
+/* A measure taken */
+"heat_measure_shade" = "צל למנוחה";
+/* A measure taken */
+"heat_measure_scheduled_breaks" = "הפסקות לפי לוח זמנים";
+/* A measure taken */
+"heat_measure_buddy_system" = "אף אחד לא עובד לבד";
+/* A measure taken */
+"heat_measure_new_workers_eased_in" = "עובדים חדשים או חוזרים בעבודה קלה יותר";
+/* A measure taken */
+"heat_measure_heavy_work_moved" = "עבודה כבדה הועברה לשעות קרירות";
+/* A measure taken */
+"heat_measure_heavy_work_stopped" = "עבודה כבדה בחוץ הופסקה";
+/* Section header */
+"heat_measures_title" = "מה נעשה";
+/* On a record: measures the level calls for that were not ticked */
+"heat_not_done" = "נדרש ולא נרשם: %1$s";
+/* On a record with no measures */
+"heat_nothing_done" = "לא נרשם שנעשה דבר.";
+/* Input label */
+"heat_note_hint" = "הערה (לא חובה)";
+/* Button */
+"heat_record" = "רשום את הבדיקה";
+/* Confirmation */
+"heat_recorded" = "בדיקת החום נרשמה.";
+/* Section header */
+"heat_history" = "בדיקות קודמות";
+/* Empty history */
+"heat_history_empty" = "עדיין אין בדיקות חום.";
+/* Refusal */
+"heat_refused_temperature" = "הטמפרטורה הזאת לא ייתכן שנכונה. בדקו את הקריאה.";
+/* Refusal */
+"heat_refused_humidity" = "הלחות היא בין 0 ל-100 אחוז.";
+/* Refusal */
+"heat_not_allowed" = "לחשבון הזה אין הרשאה לכתוב במרשם הבטיחות.";
+/* Legal footnote; must not claim Israeli law */
+"heat_disclaimer" = "מדד החום והרמות לפי שירות מזג האוויר הלאומי של ארה״ב. אין בכך קביעה של דרישות החוק בישראל; יש לפעול לפי הנחיות משרד העבודה וממונה הבטיחות.";
+/* Tag on a record made in full sun */
+"heat_sun_badge" = "בשמש מלאה";
+/* The raw reading on a record */
+"heat_reading" = "%1$s°C בצל, לחות %2$s";
+"summary_heat_checked" = "בדיקת חום: תחושת חום %1$s°C, %2$s";
+/* A heat check that failed to save for a reason other than a rule */
+"heat_refused_generic" = "הבדיקה לא נשמרה. נסו שוב.";

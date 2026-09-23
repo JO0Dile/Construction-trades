@@ -45,6 +45,7 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.ConcretePour
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -325,8 +326,8 @@ private fun TruckRow(
                 OutlinedTextField(
                     value = slump,
                     onValueChange = {
-                        slump = it.filter { ch -> ch.isDigit() || ch == '.' }
-                        onSlump(slump.toDoubleOrNull())
+                        slump = Numbers.typingDecimal(it)
+                        onSlump(Numbers.parseDecimal(slump))
                     },
                     label = { Text(stringResource(R.string.tick_slump)) },
                     singleLine = true,
@@ -398,7 +399,7 @@ private fun StartPourDialog(
                 )
                 OutlinedTextField(
                     value = volume,
-                    onValueChange = { volume = it.filter { c -> c.isDigit() || c == '.' } },
+                    onValueChange = { volume = Numbers.typingDecimal(it) },
                     label = { Text(stringResource(R.string.pour_ordered)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -413,7 +414,7 @@ private fun StartPourDialog(
                 )
                 OutlinedTextField(
                     value = temperature,
-                    onValueChange = { temperature = it.filter { c -> c.isDigit() || c == '.' } },
+                    onValueChange = { temperature = Numbers.typingDecimal(it, allowNegative = true) },
                     label = { Text(stringResource(R.string.pour_temperature)) },
                     supportingText = { Text(stringResource(R.string.pour_temperature_hint)) },
                     singleLine = true,
@@ -429,9 +430,9 @@ private fun StartPourDialog(
                     onStart(
                         element.trim(),
                         mix.trim().takeIf { it.isNotEmpty() },
-                        volume.toDoubleOrNull(),
+                        Numbers.parseDecimal(volume),
                         supplier.trim().takeIf { it.isNotEmpty() },
-                        temperature.toDoubleOrNull(),
+                        Numbers.parseDecimal(temperature),
                     )
                 },
             ) {
@@ -486,7 +487,7 @@ private fun AddTruckDialog(
                 )
                 OutlinedTextField(
                     value = volume,
-                    onValueChange = { volume = it.filter { c -> c.isDigit() || c == '.' } },
+                    onValueChange = { volume = Numbers.typingDecimal(it) },
                     label = { Text(stringResource(R.string.tick_volume)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -505,16 +506,16 @@ private fun AddTruckDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = (volume.toDoubleOrNull() ?: 0.0) > 0.0,
+                enabled = (Numbers.parseDecimal(volume) ?: 0.0) > 0.0,
                 onClick = {
                     // Counted from the tap, not from the screen's ticking
                     // clock: that one only moves once a minute, and every
                     // judgement on this screen is measured off this number.
-                    val ago = (minutesAgo.toLongOrNull() ?: 0L) * 60_000L
+                    val ago = (Numbers.parseWhole(minutesAgo) ?: 0L) * 60_000L
                     onAdd(
                         ticketNumber.trim().takeIf { it.isNotEmpty() },
                         truck.trim().takeIf { it.isNotEmpty() },
-                        volume.toDoubleOrNull() ?: 0.0,
+                        Numbers.parseDecimal(volume) ?: 0.0,
                         System.currentTimeMillis() - ago,
                     )
                 },

@@ -273,6 +273,13 @@ object Summaries {
     const val GOODS_RECEIVED = "goods_received"
 
     /**
+     * Heat check: feels like %1$s°C, %2$s
+     *
+     * Arguments, in order: index, band.
+     */
+    const val HEAT_CHECKED = "heat_checked"
+
+    /**
      * ID number set
      */
     const val ID_NUMBER_SET = "id_number_set"

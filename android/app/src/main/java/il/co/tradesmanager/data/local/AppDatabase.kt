@@ -13,6 +13,7 @@ import il.co.tradesmanager.data.local.dao.EquipmentDao
 import il.co.tradesmanager.data.local.dao.EvidenceDao
 import il.co.tradesmanager.data.local.dao.EngagementDao
 import il.co.tradesmanager.data.local.dao.ExcavationDao
+import il.co.tradesmanager.data.local.dao.HeatDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
 import il.co.tradesmanager.data.local.dao.LiftingDao
 import il.co.tradesmanager.data.local.dao.MembershipDao
@@ -47,6 +48,7 @@ import il.co.tradesmanager.data.local.entity.ContractAmendmentEntity
 import il.co.tradesmanager.data.local.entity.ContractEntity
 import il.co.tradesmanager.data.local.entity.EngagementEntity
 import il.co.tradesmanager.data.local.entity.ExcavationInspectionEntity
+import il.co.tradesmanager.data.local.entity.HeatCheckEntity
 import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
@@ -91,7 +93,7 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 31
+const val DATABASE_VERSION = 32
 
 @Database(
     entities = [
@@ -149,6 +151,7 @@ const val DATABASE_VERSION = 31
         AssignmentEntity::class,
         MusterEntity::class,
         MusterPersonEntity::class,
+        HeatCheckEntity::class,
     ],
     version = DATABASE_VERSION,
     exportSchema = true,
@@ -179,6 +182,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun liftingDao(): LiftingDao
 
     abstract fun musterDao(): MusterDao
+
+    abstract fun heatDao(): HeatDao
 
     abstract fun temporaryWorksDao(): TemporaryWorksDao
 

@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.ReportProblem
+import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -29,6 +30,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -53,6 +55,7 @@ fun SafetyScreen(
     onOpenIncidents: () -> Unit,
     onOpenViolations: () -> Unit,
     onOpenMuster: () -> Unit,
+    onOpenHeat: () -> Unit,
 ) {
     val viewModel: SafetyViewModel = viewModel(factory = ViewModelFactory(container) { SafetyViewModel(it) })
     val templates by viewModel.templates.collectAsStateWithLifecycle()
@@ -117,7 +120,26 @@ fun SafetyScreen(
         // with whether the site needs evacuating.
         LazyColumn(Modifier.padding(padding)) {
             item {
-                MusterCard(running = rollCallRunning, onOpen = onOpenMuster)
+                EntryCard(
+                    title = stringResource(
+                        if (rollCallRunning) R.string.muster_live else R.string.muster_title,
+                    ),
+                    body = stringResource(
+                        if (rollCallRunning) R.string.muster_open_live else R.string.muster_blurb,
+                    ),
+                    icon = Icons.Filled.Campaign,
+                    alert = rollCallRunning,
+                    onOpen = onOpenMuster,
+                )
+            }
+            item {
+                EntryCard(
+                    title = stringResource(R.string.heat_title),
+                    body = stringResource(R.string.heat_blurb),
+                    icon = Icons.Filled.WbSunny,
+                    alert = false,
+                    onOpen = onOpenHeat,
+                )
             }
             if (templates.isEmpty()) {
                 item {
@@ -164,17 +186,24 @@ fun SafetyScreen(
 }
 
 /**
- * The way in to the roll call, and the way back to one already running.
+ * A way in to one of the two things on this screen that are not a register to
+ * sit down and fill in: the roll call, needed in ten seconds while an alarm is
+ * going, and the heat check, needed every hot morning.
  *
- * Top of the safety lens and drawn as a card rather than a seventh icon in the
- * top bar. The other registers are things somebody sits down and fills in;
- * this is the one they need in ten seconds while an alarm is going, and a
- * 24dp icon among six others is not ten seconds.
+ * Top of the safety lens and drawn as a card rather than one more icon in the
+ * top bar, because a 24dp icon among six others is not ten seconds. [alert]
+ * turns it red, for a roll call that is still running.
  */
 @Composable
-private fun MusterCard(running: Boolean, onOpen: () -> Unit) {
+private fun EntryCard(
+    title: String,
+    body: String,
+    icon: ImageVector,
+    alert: Boolean,
+    onOpen: () -> Unit,
+) {
     Card(
-        colors = if (running) {
+        colors = if (alert) {
             CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.errorContainer,
                 contentColor = MaterialTheme.colorScheme.onErrorContainer,
@@ -184,28 +213,13 @@ private fun MusterCard(running: Boolean, onOpen: () -> Unit) {
         },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
             .clickable(onClick = onOpen),
     ) {
         ListItem(
-            headlineContent = {
-                Text(
-                    stringResource(
-                        if (running) R.string.muster_live else R.string.muster_title,
-                    ),
-                )
-            },
-            supportingContent = {
-                Text(
-                    stringResource(
-                        if (running) R.string.muster_open_live else R.string.muster_blurb,
-                    ),
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            },
-            leadingContent = {
-                Icon(Icons.Filled.Campaign, contentDescription = null)
-            },
+            headlineContent = { Text(title) },
+            supportingContent = { Text(body, style = MaterialTheme.typography.bodySmall) },
+            leadingContent = { Icon(icon, contentDescription = null) },
             colors = ListItemDefaults.colors(containerColor = Color.Transparent),
         )
     }

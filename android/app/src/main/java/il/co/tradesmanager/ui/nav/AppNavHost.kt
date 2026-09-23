@@ -48,6 +48,7 @@ import il.co.tradesmanager.ui.onboarding.OnboardingScreen
 import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.audit.AuditScreen
+import il.co.tradesmanager.ui.safety.HeatScreen
 import il.co.tradesmanager.ui.safety.IncidentsScreen
 import il.co.tradesmanager.ui.safety.MusterScreen
 import il.co.tradesmanager.ui.safety.ViolationsScreen
@@ -98,6 +99,7 @@ object Routes {
     const val INCIDENTS = "safety/incidents"
     const val VIOLATIONS = "safety/violations"
     const val MUSTER = "safety/muster"
+    const val HEAT = "safety/heat"
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
@@ -473,6 +475,7 @@ fun AppNavHost(
                     onOpenIncidents = { navController.navigate(Routes.INCIDENTS) },
                     onOpenViolations = { navController.navigate(Routes.VIOLATIONS) },
                     onOpenMuster = { navController.navigate(Routes.MUSTER) },
+                    onOpenHeat = { navController.navigate(Routes.HEAT) },
                 )
             }
             composable(Routes.TALKS) {
@@ -549,6 +552,12 @@ fun AppNavHost(
                 HandoverScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.HEAT) {
+                HeatScreen(
+                    container = container,
                     onBack = { navController.popBackStack() },
                 )
             }

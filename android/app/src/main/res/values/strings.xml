@@ -1447,6 +1447,85 @@
     <string name="vio_drafts">Yours, not finished</string>
     <!-- Supporting line on an unfinished draft row -->
     <string name="vio_draft_resume">Tap to finish or drop it. Nobody else can see it.</string>
+    <!-- Heat check screen title -->
+    <string name="heat_title">Heat check</string>
+    <!-- What the screen is for -->
+    <string name="heat_blurb">Heat and humidity together decide how hard the heat is on a body. Measure in the shade, and say if the work is in the sun.</string>
+    <!-- Input label -->
+    <string name="heat_temperature">Temperature in the shade (°C)</string>
+    <!-- Input label -->
+    <string name="heat_humidity">Relative humidity (%)</string>
+    <!-- Switch -->
+    <string name="heat_in_sun">The work is in full sun</string>
+    <!-- Under the switch -->
+    <string name="heat_in_sun_hint">In full sun it can feel up to 8 degrees hotter. The level is then taken from the worst case.</string>
+    <!-- The heat index, as a worker would say it -->
+    <string name="heat_feels_like">Feels like %1$d°C</string>
+    <!-- Heat level -->
+    <string name="heat_band_none">No heat risk</string>
+    <!-- Heat level -->
+    <string name="heat_band_caution">Caution</string>
+    <!-- Heat level -->
+    <string name="heat_band_extreme_caution">Extreme caution</string>
+    <!-- Heat level -->
+    <string name="heat_band_danger">Danger</string>
+    <!-- Heat level -->
+    <string name="heat_band_extreme_danger">Extreme danger</string>
+    <!-- What the level means -->
+    <string name="heat_band_none_meaning">Nothing about the heat itself to act on.</string>
+    <!-- What the level means -->
+    <string name="heat_band_caution_meaning">Fatigue is possible with long exposure and hard work.</string>
+    <!-- What the level means -->
+    <string name="heat_band_extreme_caution_meaning">Heat cramps and heat exhaustion are possible.</string>
+    <!-- What the level means -->
+    <string name="heat_band_danger_meaning">Cramps and exhaustion are likely. Heat stroke is possible.</string>
+    <!-- What the level means -->
+    <string name="heat_band_extreme_danger_meaning">Heat stroke is highly likely.</string>
+    <!-- A measure taken -->
+    <string name="heat_measure_water">Cool water within reach of the work</string>
+    <!-- A measure taken -->
+    <string name="heat_measure_shade">Shade to rest in</string>
+    <!-- A measure taken -->
+    <string name="heat_measure_scheduled_breaks">Breaks on a schedule</string>
+    <!-- A measure taken -->
+    <string name="heat_measure_buddy_system">Nobody working alone</string>
+    <!-- A measure taken -->
+    <string name="heat_measure_new_workers_eased_in">New or returning workers on lighter work</string>
+    <!-- A measure taken -->
+    <string name="heat_measure_heavy_work_moved">Heavy work moved to cooler hours</string>
+    <!-- A measure taken -->
+    <string name="heat_measure_heavy_work_stopped">Heavy outdoor work stopped</string>
+    <!-- Section header -->
+    <string name="heat_measures_title">What was done</string>
+    <!-- On a record: measures the level calls for that were not ticked -->
+    <string name="heat_not_done">Called for and not recorded: %1$s</string>
+    <!-- On a record with no measures -->
+    <string name="heat_nothing_done">Nothing recorded as done.</string>
+    <!-- Input label -->
+    <string name="heat_note_hint">Note (optional)</string>
+    <!-- Button -->
+    <string name="heat_record">Record this check</string>
+    <!-- Confirmation -->
+    <string name="heat_recorded">Heat check recorded.</string>
+    <!-- Section header -->
+    <string name="heat_history">Past checks</string>
+    <!-- Empty history -->
+    <string name="heat_history_empty">No heat checks yet.</string>
+    <!-- Refusal -->
+    <string name="heat_refused_temperature">That temperature cannot be right. Check the reading.</string>
+    <!-- Refusal -->
+    <string name="heat_refused_humidity">Humidity is between 0 and 100 per cent.</string>
+    <!-- Refusal -->
+    <string name="heat_not_allowed">This account cannot write to the safety register.</string>
+    <!-- Legal footnote; must not claim Israeli law -->
+    <string name="heat_disclaimer">Heat index and levels from the US National Weather Service. This is not a statement of what Israeli law requires; follow the instructions of the Ministry of Labour and your safety officer.</string>
+    <!-- Tag on a record made in full sun -->
+    <string name="heat_sun_badge">in full sun</string>
+    <!-- The raw reading on a record -->
+    <string name="heat_reading">%1$s°C in the shade, humidity %2$s</string>
+    <string name="summary_heat_checked">Heat check: feels like %1$s°C, %2$s</string>
+    <!-- A heat check that failed to save for a reason other than a rule -->
+    <string name="heat_refused_generic">That did not save. Try again.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

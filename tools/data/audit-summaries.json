@@ -11,7 +11,8 @@
       "snag_",
       "var_",
       "eng_",
-      "muster_reason_"
+      "muster_reason_",
+      "heat_band_"
     ]
   },
   "phrases": {
@@ -321,6 +322,15 @@
       "en": "Received %1$s %2$s of %3$s",
       "he": "התקבלו %1$s %2$s של %3$s",
       "ar": "استُلم %1$s %2$s من %3$s"
+    },
+    "heat_checked": {
+      "arguments": [
+        "index",
+        "band"
+      ],
+      "en": "Heat check: feels like %1$s°C, %2$s",
+      "he": "בדיקת חום: תחושת חום %1$s°C, %2$s",
+      "ar": "فحص الحرارة: الحرارة المحسوسة %1$s°C، %2$s"
     },
     "id_number_set": {
       "arguments": [],

@@ -38,6 +38,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.work.Amendment
 import il.co.tradesmanager.data.local.entity.ContractAmendmentEntity
 import il.co.tradesmanager.data.local.entity.ContractEntity
@@ -278,10 +279,10 @@ fun ContractsScreen(
                 TextButton(
                     // The same completeness rule the repository applies, so
                     // the button waits rather than refusing after the tap.
-                    enabled = Amendment.isComplete(amount.toDoubleOrNull(), reason),
+                    enabled = Amendment.isComplete(Numbers.parseDecimal(amount), reason),
                     onClick = {
                         proposing = false
-                        viewModel.propose(amount.toDoubleOrNull(), reason)
+                        viewModel.propose(Numbers.parseDecimal(amount), reason)
                     },
                 ) { Text(stringResource(R.string.action_save)) }
             },

@@ -43,6 +43,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.safety.Violations
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.ViolationRepository
@@ -265,7 +266,7 @@ private fun DraftForm(
     var costText by remember(cost) { mutableStateOf(cost?.toString().orEmpty()) }
     // Locale-independent: what is typed is what is stored, and a decimal comma
     // must not silently become a different number.
-    val parsedCost = costText.trim().takeIf { it.isNotEmpty() }?.toDoubleOrNull()
+    val parsedCost = costText.trim().takeIf { it.isNotEmpty() }?.let(Numbers::parseDecimal)
     val costOk = costText.isBlank() || (parsedCost != null && parsedCost >= 0.0)
 
     val addEvidence = rememberImageAdder(
@@ -312,7 +313,7 @@ private fun DraftForm(
                 value = costText,
                 onValueChange = {
                     costText = it
-                    val parsed = it.trim().takeIf { v -> v.isNotEmpty() }?.toDoubleOrNull()
+                    val parsed = it.trim().takeIf { v -> v.isNotEmpty() }?.let(Numbers::parseDecimal)
                     if (it.isBlank() || parsed != null) viewModel.edit(text, parsed)
                 },
                 label = { Text(stringResource(R.string.vio_cost)) },

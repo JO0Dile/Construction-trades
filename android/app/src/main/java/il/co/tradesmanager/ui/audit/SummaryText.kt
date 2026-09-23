@@ -114,6 +114,7 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.FIELD_REGISTRATION -> R.string.summary_field_registration
     Summaries.FIELD_WEBSITE -> R.string.summary_field_website
     Summaries.GOODS_RECEIVED -> R.string.summary_goods_received
+    Summaries.HEAT_CHECKED -> R.string.summary_heat_checked
     Summaries.ID_NUMBER_SET -> R.string.summary_id_number_set
     Summaries.INDUCTION_SIGNED -> R.string.summary_induction_signed
     Summaries.INSPECTION_FAILED -> R.string.summary_inspection_failed
@@ -212,6 +213,11 @@ private const val LIST = ", "
  */
 @StringRes
 private fun borrowedPhrase(key: String): Int? = when (key) {
+    "heat_band_none" -> R.string.heat_band_none
+    "heat_band_caution" -> R.string.heat_band_caution
+    "heat_band_extreme_caution" -> R.string.heat_band_extreme_caution
+    "heat_band_danger" -> R.string.heat_band_danger
+    "heat_band_extreme_danger" -> R.string.heat_band_extreme_danger
     "muster_reason_drill" -> R.string.muster_reason_drill
     "muster_reason_emergency" -> R.string.muster_reason_emergency
     "plant_available" -> R.string.plant_available

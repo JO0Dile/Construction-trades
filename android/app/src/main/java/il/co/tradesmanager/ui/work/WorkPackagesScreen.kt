@@ -45,6 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Party
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.work.Assignment
 import il.co.tradesmanager.data.catalog.WorkScope
@@ -630,16 +631,17 @@ private fun CreateDialog(
         },
         confirmButton = {
             TextButton(
-                // toDoubleOrNull, not a locale-aware parse: the field is typed
-                // on a phone whose keyboard may offer a comma, and a comma
-                // parsed as a thousands separator turns 7,5 into 75.
+                // Not a locale-aware parse: the field is typed on a phone whose
+                // keyboard may offer a comma, and a comma read as a thousands
+                // separator turns 7,5 into 75. Numbers.parseDecimal reads a
+                // comma as the decimal point, always.
                 enabled = title.isNotBlank() && payee != null &&
-                    (amount.toDoubleOrNull() ?: -1.0) >= 0.0,
+                    (Numbers.parseDecimal(amount) ?: -1.0) >= 0.0,
                 onClick = {
                     val target = payee ?: return@TextButton
                     onCreate(
                         title,
-                        amount.toDoubleOrNull() ?: 0.0,
+                        Numbers.parseDecimal(amount) ?: 0.0,
                         target.orgId,
                         stageId,
                         scopeId,

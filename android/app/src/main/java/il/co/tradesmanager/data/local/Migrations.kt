@@ -329,6 +329,15 @@ object Migrations {
         }
     }
 
+    /**
+     * Heat checks. One new table and nothing touched.
+     */
+    val MIGRATION_31_32 = object : Migration(31, 32) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_31_32.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -360,6 +369,7 @@ object Migrations {
         MIGRATION_28_29,
         MIGRATION_29_30,
         MIGRATION_30_31,
+        MIGRATION_31_32,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -907,5 +917,20 @@ object Migrations {
             "`settledAt` INTEGER, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_muster_people_musterId` " +
             "ON `muster_people` (`musterId`)",
+    )
+
+    /**
+     * The heat check table. `measures` is the JSON list the type converters
+     * write for every List<String> column in the schema, so it is TEXT and
+     * never null: an empty list is `[]`, and "nothing done" is a value.
+     */
+    val SQL_31_32: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `heat_checks` (`id` TEXT NOT NULL, `projectId` TEXT, " +
+            "`companyId` TEXT, `checkedAt` INTEGER NOT NULL, `temperatureC` REAL NOT NULL, " +
+            "`humidityPercent` REAL NOT NULL, `inSun` INTEGER NOT NULL, " +
+            "`heatIndexC` REAL NOT NULL, `band` TEXT NOT NULL, `measures` TEXT NOT NULL, " +
+            "`note` TEXT, `checkedByAccountId` TEXT NOT NULL, " +
+            "`checkedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_heat_checks_checkedAt` ON `heat_checks` (`checkedAt`)",
     )
 }

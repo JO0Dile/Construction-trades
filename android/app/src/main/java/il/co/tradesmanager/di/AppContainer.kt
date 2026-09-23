@@ -17,6 +17,7 @@ import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
 import il.co.tradesmanager.data.repository.ExcavationRepository
+import il.co.tradesmanager.data.repository.HeatRepository
 import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
@@ -164,6 +165,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
      * clocking rules that have nothing to do with counting heads at a gate.
      */
     val musters = MusterRepository(database.musterDao(), database.scheduleDao(), auditTrail)
+
+    val heat = HeatRepository(database.heatDao(), database.scheduleDao(), auditTrail)
 
     /**
      * Taking the record off the phone and putting it back.

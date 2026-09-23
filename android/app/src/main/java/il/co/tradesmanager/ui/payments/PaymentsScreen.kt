@@ -45,6 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
 import il.co.tradesmanager.data.repository.PaymentsRepository
@@ -486,7 +487,7 @@ private fun MoneyField(value: String, onChange: (String) -> Unit, labelRes: Int)
         value = value,
         // Digits and a dot only, so a phone set to a comma decimal cannot write
         // a figure the app then fails to read back.
-        onValueChange = { onChange(it.filter { c -> c.isDigit() || c == '.' }) },
+        onValueChange = { onChange(Numbers.typingDecimal(it)) },
         label = { Text(stringResource(labelRes)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -575,13 +576,13 @@ private fun RaiseDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = party.isNotBlank() && claimed.toDoubleOrNull() != null,
+                enabled = party.isNotBlank() && Numbers.parseDecimal(claimed) != null,
                 onClick = {
                     onRaise(
                         direction,
                         party.trim(),
-                        claimed.toDoubleOrNull() ?: 0.0,
-                        (retention.toIntOrNull() ?: 0).coerceIn(0, 100) / 100.0,
+                        Numbers.parseDecimal(claimed) ?: 0.0,
+                        (Numbers.parseWhole(retention)?.toInt() ?: 0).coerceIn(0, 100) / 100.0,
                         terms,
                     )
                 },
@@ -621,8 +622,8 @@ private fun AmountDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = amount.toDoubleOrNull() != null,
-                onClick = { onSave(amount.toDoubleOrNull() ?: 0.0) },
+                enabled = Numbers.parseDecimal(amount) != null,
+                onClick = { onSave(Numbers.parseDecimal(amount) ?: 0.0) },
             ) {
                 Text(stringResource(R.string.action_save))
             }

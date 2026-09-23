@@ -15,8 +15,8 @@ android {
         // Android 8.0 — the floor the tender documents ask for.
         minSdk = 26
         targetSdk = 35
-        versionCode = 36
-        versionName = "0.19.0"
+        versionCode = 37
+        versionName = "0.20.0"
 
         // Where the in-app update check looks. Read through BuildConfig so a
         // fork points at its own repository without touching Kotlin.
@@ -166,7 +166,12 @@ android {
     }
 }
 
-// Room's exported schemas are committed so migrations can be diffed in review.
+// Room exports each version's schema here on every build. They are not
+// committed yet: the build only runs in CI, so nothing in this repository has
+// ever generated them where they could be added. Until somebody builds once
+// locally and commits app/schemas, the check that a migration matches its
+// entities is tools/check-migration.py, which CI runs against Room's own
+// generated code after every build.
 ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
     arg("room.incremental", "true")

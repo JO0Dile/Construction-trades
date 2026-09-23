@@ -37,6 +37,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.safety.Incidents
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -165,7 +166,7 @@ private fun ReportDialog(
     var costText by remember { mutableStateOf("") }
     // Locale-independent: what is typed is what is stored, and a decimal comma
     // must not silently become a different number.
-    val cost = costText.trim().takeIf { it.isNotEmpty() }?.toDoubleOrNull()
+    val cost = costText.trim().takeIf { it.isNotEmpty() }?.let(Numbers::parseDecimal)
     val costTyped = costText.isNotBlank()
 
     val addEvidence = rememberImageAdder(

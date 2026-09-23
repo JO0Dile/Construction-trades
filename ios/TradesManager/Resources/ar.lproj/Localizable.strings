@@ -1446,3 +1446,82 @@
 "vio_drafts" = "مسوداتك غير المكتملة";
 /* Supporting line on an unfinished draft row */
 "vio_draft_resume" = "انقر لإكمالها أو إلغائها. لا يراها أحد سواك.";
+/* Heat check screen title */
+"heat_title" = "فحص الإجهاد الحراري";
+/* What the screen is for */
+"heat_blurb" = "الحرارة والرطوبة معًا تحددان مدى عبء الحر على الجسم. قِس في الظل، واذكر إن كان العمل تحت الشمس.";
+/* Input label */
+"heat_temperature" = "الحرارة في الظل (°C)";
+/* Input label */
+"heat_humidity" = "الرطوبة النسبية (%)";
+/* Switch */
+"heat_in_sun" = "العمل تحت أشعة الشمس المباشرة";
+/* Under the switch */
+"heat_in_sun_hint" = "تحت الشمس المباشرة قد يبدو الحر أشد بما يصل إلى 8 درجات. يُحدَّد المستوى حينها وفق أسوأ الاحتمالات.";
+/* The heat index, as a worker would say it */
+"heat_feels_like" = "الحرارة المحسوسة: %1$d°C";
+/* Heat level */
+"heat_band_none" = "لا خطر حراري";
+/* Heat level */
+"heat_band_caution" = "حذر";
+/* Heat level */
+"heat_band_extreme_caution" = "حذر شديد";
+/* Heat level */
+"heat_band_danger" = "خطر";
+/* Heat level */
+"heat_band_extreme_danger" = "خطر بالغ";
+/* What the level means */
+"heat_band_none_meaning" = "لا شيء في الحر نفسه يستدعي إجراءً.";
+/* What the level means */
+"heat_band_caution_meaning" = "الإرهاق ممكن مع التعرض الطويل والعمل الشاق.";
+/* What the level means */
+"heat_band_extreme_caution_meaning" = "التشنجات الحرارية والإنهاك الحراري ممكنة.";
+/* What the level means */
+"heat_band_danger_meaning" = "التشنجات والإنهاك مرجحة. ضربة الشمس ممكنة.";
+/* What the level means */
+"heat_band_extreme_danger_meaning" = "ضربة الشمس مرجحة جدًا.";
+/* A measure taken */
+"heat_measure_water" = "ماء بارد في متناول اليد قرب العمل";
+/* A measure taken */
+"heat_measure_shade" = "ظل للاستراحة";
+/* A measure taken */
+"heat_measure_scheduled_breaks" = "استراحات وفق جدول";
+/* A measure taken */
+"heat_measure_buddy_system" = "لا أحد يعمل وحده";
+/* A measure taken */
+"heat_measure_new_workers_eased_in" = "العمال الجدد أو العائدون في عمل أخف";
+/* A measure taken */
+"heat_measure_heavy_work_moved" = "نُقل العمل الشاق إلى ساعات أبرد";
+/* A measure taken */
+"heat_measure_heavy_work_stopped" = "أُوقف العمل الشاق في الخارج";
+/* Section header */
+"heat_measures_title" = "ما الذي تم فعله";
+/* On a record: measures the level calls for that were not ticked */
+"heat_not_done" = "مطلوب ولم يُسجَّل: %1$s";
+/* On a record with no measures */
+"heat_nothing_done" = "لم يُسجَّل أي إجراء.";
+/* Input label */
+"heat_note_hint" = "ملاحظة (اختياري)";
+/* Button */
+"heat_record" = "سجّل هذا الفحص";
+/* Confirmation */
+"heat_recorded" = "سُجّل فحص الحرارة.";
+/* Section header */
+"heat_history" = "الفحوص السابقة";
+/* Empty history */
+"heat_history_empty" = "لا توجد فحوص حرارة بعد.";
+/* Refusal */
+"heat_refused_temperature" = "هذه الحرارة لا يمكن أن تكون صحيحة. تحقّق من القراءة.";
+/* Refusal */
+"heat_refused_humidity" = "الرطوبة بين 0 و100 بالمئة.";
+/* Refusal */
+"heat_not_allowed" = "هذا الحساب لا يملك صلاحية الكتابة في سجل السلامة.";
+/* Legal footnote; must not claim Israeli law */
+"heat_disclaimer" = "مؤشر الحرارة ومستوياته وفق هيئة الأرصاد الجوية الوطنية الأمريكية. هذا ليس بيانًا لما يتطلبه القانون الإسرائيلي؛ اتبع تعليمات وزارة العمل ومسؤول السلامة.";
+/* Tag on a record made in full sun */
+"heat_sun_badge" = "تحت الشمس المباشرة";
+/* The raw reading on a record */
+"heat_reading" = "%1$s°C في الظل، الرطوبة %2$s";
+"summary_heat_checked" = "فحص الحرارة: الحرارة المحسوسة %1$s°C، %2$s";
+/* A heat check that failed to save for a reason other than a rule */
+"heat_refused_generic" = "لم يُحفظ الفحص. حاول مرة أخرى.";

@@ -48,13 +48,15 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.safety.Muster
 import il.co.tradesmanager.data.local.entity.MusterEntity
 import il.co.tradesmanager.data.repository.MusterRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
-import java.text.DateFormat
-import java.util.Date
+import il.co.tradesmanager.ui.components.currentLocale
+import java.time.Instant
+import java.time.ZoneId
 import kotlinx.coroutines.delay
 
 /**
@@ -234,6 +236,7 @@ private fun Waiting(
 
 @Composable
 private fun PastRollCall(past: MusterEntity, jobName: String?) {
+    val locale = currentLocale()
     val missing = past.unaccountedAtEnd ?: 0
     Card(
         Modifier
@@ -263,8 +266,9 @@ private fun PastRollCall(past: MusterEntity, jobName: String?) {
             Text(
                 listOfNotNull(
                     stringResource(reasonLabel(readReason(past.reason))),
-                    DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
-                        .format(Date(past.startedAt)),
+                    Instant.ofEpochMilli(past.startedAt).atZone(ZoneId.systemDefault()).let {
+                        Formats.dateTime(it.toLocalDate(), it.toLocalTime(), locale)
+                    },
                     // Absent when the people on site did not agree on one job,
                     // which is a real answer rather than a missing one.
                     jobName,

@@ -38,6 +38,7 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.DailyLog
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -89,7 +90,7 @@ fun DailyLogScreen(
     // The typed fields are saved as they are left rather than behind a button:
     // a log half filled in at five o'clock and abandoned is the common case.
     LaunchedEffect(weather, headcount, notes, current?.id) {
-        if (editable) viewModel.save(weather, headcount.toIntOrNull(), notes)
+        if (editable) viewModel.save(weather, Numbers.parseWhole(headcount)?.toInt(), notes)
     }
 
     Scaffold(

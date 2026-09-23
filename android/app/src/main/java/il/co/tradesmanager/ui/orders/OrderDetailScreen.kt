@@ -45,6 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.data.local.entity.PurchaseOrderLineEntity
 import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SessionRepository
@@ -338,8 +339,8 @@ private fun AddLineDialog(
     var quantity by remember { mutableStateOf("1") }
     var price by remember { mutableStateOf("") }
 
-    val parsedQuantity = quantity.trim().replace(',', '.').toDoubleOrNull()
-    val parsedPrice = price.trim().replace(',', '.').toDoubleOrNull()
+    val parsedQuantity = Numbers.parseDecimal(quantity)
+    val parsedPrice = Numbers.parseDecimal(price)
     val ok = label.isNotBlank() &&
         parsedQuantity != null && parsedQuantity > 0.0 &&
         parsedPrice != null && parsedPrice >= 0.0
@@ -418,7 +419,7 @@ private fun ReceiveDialog(
     // Pre-filled with what is still owed, because that is what usually turns
     // up, and retyping it off the screen above is how a digit gets dropped.
     var quantity by remember { mutableStateOf(outstanding.toString()) }
-    val parsed = quantity.trim().replace(',', '.').toDoubleOrNull()
+    val parsed = Numbers.parseDecimal(quantity)
 
     AlertDialog(
         onDismissRequest = onDismiss,
