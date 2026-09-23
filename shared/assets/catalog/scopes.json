@@ -14,7 +14,9 @@
         "ar": "شغل العظم"
       },
       "descriptions": {
-        "en": "Ground, foundations, frame and slabs. Nothing hidden in a wall yet."
+        "en": "Ground, foundations, frame and slabs. Nothing hidden in a wall yet.",
+        "he": "קרקע, יסודות, שלד ותקרות. עוד שום דבר לא מוסתר בתוך קיר.",
+        "ar": "الأرض والأساسات والهيكل والأسقف. لا شيء مخفيًا داخل جدار بعد."
       }
     },
     {
@@ -28,7 +30,9 @@
         "ar": "العقدة / تأسيس الصبة"
       },
       "descriptions": {
-        "en": "Services buried in the slab before it is cast. Missing it means chasing the whole building later."
+        "en": "Services buried in the slab before it is cast. Missing it means chasing the whole building later.",
+        "he": "תשתיות שנקברות בתקרה לפני היציקה. פספוס כאן פירושו חציבה בכל הבניין אחר כך.",
+        "ar": "التمديدات التي تُدفن في السقف قبل الصبّ. تفويتها يعني تكسير البناء كله لاحقًا."
       }
     },
     {
@@ -42,7 +46,9 @@
         "ar": "الشغل الأسود"
       },
       "descriptions": {
-        "en": "Chasing, boxes, conduit and pipe inside walls, before plaster."
+        "en": "Chasing, boxes, conduit and pipe inside walls, before plaster.",
+        "he": "חציבה, קופסאות, צנרת ומובילים בתוך הקירות, לפני הטיח.",
+        "ar": "التكسير وعلب الكهرباء والمواسير والمجاري داخل الجدران، قبل القصارة."
       }
     },
     {
@@ -56,7 +62,9 @@
         "ar": "الشغل الأبيض / النظيف"
       },
       "descriptions": {
-        "en": "Everything that is seen and touched: fixtures, plates, trim, sanitaryware."
+        "en": "Everything that is seen and touched: fixtures, plates, trim, sanitaryware.",
+        "he": "כל מה שרואים ונוגעים בו: כלים, מסגרות, פנלים, כלים סניטריים.",
+        "ar": "كل ما يُرى ويُلمس: الأطقم والمفاتيح والبراويز والأدوات الصحية."
       }
     },
     {
@@ -70,7 +78,9 @@
         "ar": "الفحص والتشغيل"
       },
       "descriptions": {
-        "en": "Proving the installation works and is safe before anybody relies on it."
+        "en": "Proving the installation works and is safe before anybody relies on it.",
+        "he": "הוכחה שהמערכת עובדת ובטוחה לפני שמישהו מסתמך עליה.",
+        "ar": "إثبات أن المنظومة تعمل وآمنة قبل أن يعتمد عليها أحد."
       }
     },
     {
@@ -84,7 +94,9 @@
         "ar": "التسليم والملاحظات"
       },
       "descriptions": {
-        "en": "Walking the job with the client, listing what is wrong, closing it out."
+        "en": "Walking the job with the client, listing what is wrong, closing it out.",
+        "he": "סיור עם הלקוח, רישום כל מה שלא תקין, וסגירה שלו.",
+        "ar": "جولة مع الزبون، وتسجيل كل ما هو غير سليم، وإغلاقه."
       }
     }
   ],
@@ -177,7 +189,9 @@
         "ar": "الهدد / الإزالة"
       },
       "descriptions": {
-        "en": "Tearing down existing structures, clearing debris, and preparing bare ground."
+        "en": "Tearing down existing structures, clearing debris, and preparing bare ground.",
+        "he": "הריסת מבנים קיימים, פינוי פסולת והכנת הקרקע.",
+        "ar": "هدم المباني القائمة وإزالة الأنقاض وتجهيز الأرض."
       }
     },
     {
@@ -194,7 +208,9 @@
         "ar": "الحفر والدك"
       },
       "descriptions": {
-        "en": "Digging trenches, moving soil, leveling the ground, and compacting the base dirt."
+        "en": "Digging trenches, moving soil, leveling the ground, and compacting the base dirt.",
+        "he": "חפירת תעלות, העתקת עפר, יישור הקרקע והידוק המצע.",
+        "ar": "حفر الخنادق ونقل التراب وتسوية الأرض ودكّ الأساس."
       }
     },
     {
@@ -211,7 +227,9 @@
         "ar": "تدعيم الجوانب وسحب الموية"
       },
       "descriptions": {
-        "en": "Supporting deep excavation walls to prevent collapse and pumping out groundwater."
+        "en": "Supporting deep excavation walls to prevent collapse and pumping out groundwater.",
+        "he": "תמיכת דפנות חפירה עמוקה למניעת מפולת, ושאיבת מי תהום.",
+        "ar": "دعم جدران الحفر العميق لمنع الانهيار، وسحب المياه الجوفية."
       }
     },
     {
@@ -228,7 +246,9 @@
         "ar": "الخوازيق / الجسات"
       },
       "descriptions": {
-        "en": "Drilling and pouring heavy concrete deep piles for skyscrapers or weak soil layouts."
+        "en": "Drilling and pouring heavy concrete deep piles for skyscrapers or weak soil layouts.",
+        "he": "קידוח ויציקת כלונסאות בטון עמוקים למגדלים או לקרקע חלשה.",
+        "ar": "حفر وصبّ خوازيق خرسانية عميقة للأبراج أو للتربة الضعيفة."
       }
     },
     {
@@ -245,7 +265,9 @@
         "ar": "شد خشب وتمليح حديد"
       },
       "descriptions": {
-        "en": "Building wooden/metal molds and tying steel rebar reinforcement before pouring concrete."
+        "en": "Building wooden/metal molds and tying steel rebar reinforcement before pouring concrete.",
+        "he": "בניית תבניות עץ או מתכת וקשירת ברזל זיון לפני היציקה.",
+        "ar": "بناء قوالب الخشب أو المعدن وربط حديد التسليح قبل الصبّ."
       }
     },
     {
@@ -262,7 +284,9 @@
         "ar": "صبة الخرسانة / الريديمكس"
       },
       "descriptions": {
-        "en": "Pouring ready-mix concrete into foundations, columns, beams, and overhead floor slabs."
+        "en": "Pouring ready-mix concrete into foundations, columns, beams, and overhead floor slabs.",
+        "he": "יציקת בטון מובא ליסודות, עמודים, קורות ותקרות.",
+        "ar": "صبّ الخرسانة الجاهزة في الأساسات والأعمدة والجسور والأسقف."
       }
     },
     {
@@ -279,7 +303,9 @@
         "ar": "تركيب بريكاست"
       },
       "descriptions": {
-        "en": "Assembling pre-made concrete walls, panels, and stairs on-site using heavy cranes."
+        "en": "Assembling pre-made concrete walls, panels, and stairs on-site using heavy cranes.",
+        "he": "הרכבת קירות, פאנלים ומדרגות טרומיים באתר בעזרת מנופים.",
+        "ar": "تركيب جدران وألواح ودرَج جاهزة الصبّ في الموقع بواسطة الرافعات."
       }
     },
     {
@@ -296,7 +322,9 @@
         "ar": "تركيب حديد هانجر / ستيل"
       },
       "descriptions": {
-        "en": "Erecting structural steel beams, columns, and trusses for warehouses or modern high-rises."
+        "en": "Erecting structural steel beams, columns, and trusses for warehouses or modern high-rises.",
+        "he": "הקמת קורות, עמודים ורפפות פלדה למחסנים ולמבני גובה.",
+        "ar": "نصب جسور وأعمدة وجمالونات فولاذية للمستودعات والأبراج."
       }
     },
     {
@@ -313,7 +341,9 @@
         "ar": "شغل الطوب / البلوك"
       },
       "descriptions": {
-        "en": "Laying perimeter walls and interior partitions using concrete, clay, or thermal blocks."
+        "en": "Laying perimeter walls and interior partitions using concrete, clay, or thermal blocks.",
+        "he": "בניית קירות היקף ומחיצות פנים מבלוקי בטון, חרס או בלוקי בידוד.",
+        "ar": "بناء الجدران الخارجية والقواطع الداخلية من بلوك الباطون أو الطوب أو البلوك العازل."
       }
     },
     {
@@ -330,7 +360,9 @@
         "ar": "تأسيس الصبة / ليات السقف"
       },
       "descriptions": {
-        "en": "Laying plastic pipes inside structural slabs before the concrete is cast."
+        "en": "Laying plastic pipes inside structural slabs before the concrete is cast.",
+        "he": "הנחת מובילים בתוך תקרות קונסטרוקטיביות לפני יציקת הבטון.",
+        "ar": "مدّ المواسير داخل الأسقف الإنشائية قبل صبّ الخرسانة."
       }
     },
     {
@@ -347,7 +379,9 @@
         "ar": "الشغل الأسود / زرع العلب"
       },
       "descriptions": {
-        "en": "Chasing/digging block walls, mounting wall boxes, and installing conduit pipes inside walls."
+        "en": "Chasing/digging block walls, mounting wall boxes, and installing conduit pipes inside walls.",
+        "he": "חציבה בקירות בלוק, התקנת קופסאות והעברת מובילים בתוך הקיר.",
+        "ar": "تكسير جدران البلوك وتركيب العلب ومدّ المواسير داخل الجدار."
       }
     },
     {
@@ -364,7 +398,9 @@
         "ar": "سحب السلك واللوحات"
       },
       "descriptions": {
-        "en": "Pulling copper circuits through conduits and installing main distribution boards (DBs)."
+        "en": "Pulling copper circuits through conduits and installing main distribution boards (DBs).",
+        "he": "השחלת מעגלי נחושת במובילים והתקנת לוחות חשמל ראשיים.",
+        "ar": "سحب دوائر النحاس داخل المواسير وتركيب لوحات التوزيع الرئيسية."
       }
     },
     {
@@ -381,7 +417,9 @@
         "ar": "الشغل الأبيض / تركيب الأفياش والإنارة"
       },
       "descriptions": {
-        "en": "Installing light switches, wall outlets, decorative light fixtures, spotlights, and chandeliers."
+        "en": "Installing light switches, wall outlets, decorative light fixtures, spotlights, and chandeliers.",
+        "he": "התקנת מפסקים, שקעים, גופי תאורה, ספוטים ונברשות.",
+        "ar": "تركيب المفاتيح والمقابس ووحدات الإنارة والسبوتات والثريات."
       }
     },
     {
@@ -398,7 +436,9 @@
         "ar": "تأسيس وتشطيب التيار الخفيف"
       },
       "descriptions": {
-        "en": "Wiring and setting up CCTV security, internet data networks, intercoms, and fire alarms."
+        "en": "Wiring and setting up CCTV security, internet data networks, intercoms, and fire alarms.",
+        "he": "חיווט והפעלה של מצלמות, רשתות תקשורת, אינטרקום וגילוי אש.",
+        "ar": "تمديد وتشغيل الكاميرات وشبكات الاتصال والإنتركوم وكشف الحريق."
       }
     },
     {
@@ -415,7 +455,9 @@
         "ar": "تأسيس شبكة المجاري / المزراب"
       },
       "descriptions": {
-        "en": "Laying heavy-duty PVC or cast-iron lines underground for main building waste outflow."
+        "en": "Laying heavy-duty PVC or cast-iron lines underground for main building waste outflow.",
+        "he": "הנחת קווי דלוחין ראשיים תת-קרקעיים מ-PVC כבד או מיצקת.",
+        "ar": "مدّ خطوط الصرف الرئيسية تحت الأرض من PVC الثقيل أو الحديد الزهر."
       }
     },
     {
@@ -432,7 +474,9 @@
         "ar": "تأسيس الحمامات والمطابخ (الشغل الأسود)"
       },
       "descriptions": {
-        "en": "Installing water supply lines (PPR/PEX) and drainage loops inside bathroom and kitchen walls."
+        "en": "Installing water supply lines (PPR/PEX) and drainage loops inside bathroom and kitchen walls.",
+        "he": "התקנת קווי אספקת מים וקווי ניקוז בתוך קירות המקלחות והמטבח.",
+        "ar": "تركيب خطوط تغذية المياه وحلقات الصرف داخل جدران الحمامات والمطبخ."
       }
     },
     {
@@ -449,7 +493,9 @@
         "ar": "تركيب دينامو ومصفيات الموية وخزانات"
       },
       "descriptions": {
-        "en": "Mounting roof/basement water storage systems, booster pumps, and pressure filters."
+        "en": "Mounting roof/basement water storage systems, booster pumps, and pressure filters.",
+        "he": "התקנת מיכלי אגירה בגג או במרתף, משאבות הגברה ומסנני לחץ.",
+        "ar": "تركيب خزانات التجميع على السطح أو في القبو، ومضخات الضغط والفلاتر."
       }
     },
     {
@@ -466,7 +512,9 @@
         "ar": "تشطيب السباكة / تركيب الخلاطات والمراحيض"
       },
       "descriptions": {
-        "en": "Installing final toilets, sinks, mixers, shower zones, bathtubs, and water heaters."
+        "en": "Installing final toilets, sinks, mixers, shower zones, bathtubs, and water heaters.",
+        "he": "התקנת אסלות, כיורים, ברזים, מקלחונים, אמבטיות ודודים.",
+        "ar": "تركيب المراحيض والمغاسل والخلاطات وكبائن الدش والبانيو والسخانات."
       }
     },
     {
@@ -483,7 +531,9 @@
         "ar": "تأسيس مواسير النحاس والجراب"
       },
       "descriptions": {
-        "en": "Drilling wall passages (sleeves) and running copper lines from indoor spaces to the roof."
+        "en": "Drilling wall passages (sleeves) and running copper lines from indoor spaces to the roof.",
+        "he": "קידוח מעברים בקיר והעברת קווי נחושת מהחלל הפנימי אל הגג.",
+        "ar": "ثقب ممرات في الجدار ومدّ خطوط النحاس من الداخل إلى السطح."
       }
     },
     {
@@ -500,7 +550,9 @@
         "ar": "تركيب الدكت / صاج التكييف"
       },
       "descriptions": {
-        "en": "Manufacturing and mounting galvanized iron sheets or pre-insulated panels for central/ducted AC."
+        "en": "Manufacturing and mounting galvanized iron sheets or pre-insulated panels for central/ducted AC.",
+        "he": "ייצור והתקנת תעלות פח מגולוון או לוחות מבודדים למיזוג מרכזי.",
+        "ar": "تصنيع وتركيب قنوات الصاج المجلفن أو الألواح المعزولة للتكييف المركزي."
       }
     },
     {
@@ -517,7 +569,9 @@
         "ar": "تعليق الفانات والكمبروسرات"
       },
       "descriptions": {
-        "en": "Hanging indoor FCUs, concealed packages, and installing outdoor condensing condenser units."
+        "en": "Hanging indoor FCUs, concealed packages, and installing outdoor condensing condenser units.",
+        "he": "תליית מזגנים פנימיים ומיני מרכזיים, והתקנת יחידות עיבוי חיצוניות.",
+        "ar": "تعليق الوحدات الداخلية والمخفية، وتركيب وحدات التكثيف الخارجية."
       }
     },
     {
@@ -534,7 +588,9 @@
         "ar": "تركيب الجريلات وفلتر الهواء"
       },
       "descriptions": {
-        "en": "Installing final visible linear slots, supply grilles, and exhaust vents in finished ceilings."
+        "en": "Installing final visible linear slots, supply grilles, and exhaust vents in finished ceilings.",
+        "he": "התקנת מפזרים, תריסי אספקה ופתחי יניקה בתקרות גמורות.",
+        "ar": "تركيب فتحات التوزيع وشبكات التغذية ومخارج الشفط في الأسقف المنتهية."
       }
     },
     {
@@ -551,7 +607,9 @@
         "ar": "عزل السطح / تركيب الرولات"
       },
       "descriptions": {
-        "en": "Applying bitumen membranes and extruded polystyrene boards to block rain leaks and sun heat."
+        "en": "Applying bitumen membranes and extruded polystyrene boards to block rain leaks and sun heat.",
+        "he": "יריעות ביטומן ולוחות קלקר מוקצף בגג, נגד חדירת גשם וחום.",
+        "ar": "لصق رولات البيتومين وألواح البوليسترين على السطح ضد المطر والحرارة."
       }
     },
     {
@@ -568,7 +626,9 @@
         "ar": "عزل الحمامات والمطابخ والبيتومين السائل"
       },
       "descriptions": {
-        "en": "Coating concrete floors of bathrooms, kitchens, and pools with elastic waterproofing before tiling."
+        "en": "Coating concrete floors of bathrooms, kitchens, and pools with elastic waterproofing before tiling.",
+        "he": "איטום גמיש של רצפות בטון בחדרי רחצה, מטבחים ובריכות לפני ריצוף.",
+        "ar": "عزل مرن لأرضيات الباطون في الحمامات والمطابخ والبرك قبل التبليط."
       }
     },
     {
@@ -585,7 +645,9 @@
         "ar": "المحارة / اللياسة / تلييس جدران"
       },
       "descriptions": {
-        "en": "Applying cement-sand mortar matrix to convert rough bricks into dead-straight, smooth gray surfaces."
+        "en": "Applying cement-sand mortar matrix to convert rough bricks into dead-straight, smooth gray surfaces.",
+        "he": "טיח מלט-חול שהופך בלוק גס לקירות ישרים וחלקים.",
+        "ar": "قصارة الإسمنت والرمل التي تحوّل البلوك الخشن إلى جدران مستقيمة وناعمة."
       }
     },
     {
@@ -602,7 +664,9 @@
         "ar": "تركيب سيراميك وبورسلان وبلاط أرضيات"
       },
       "descriptions": {
-        "en": "Laying porcelain, ceramic, or natural marble floors using specialized tile adhesives or cement bed."
+        "en": "Laying porcelain, ceramic, or natural marble floors using specialized tile adhesives or cement bed.",
+        "he": "ריצוף פורצלן, קרמיקה או שיש טבעי בדבק ייעודי או על מצע מלט.",
+        "ar": "تبليط البورسلان أو السيراميك أو الرخام الطبيعي بالغراء المخصّص أو على فرشة إسمنت."
       }
     },
     {
@@ -619,7 +683,9 @@
         "ar": "تركيب ديكورات جبس / جبسمبورد معلق"
       },
       "descriptions": {
-        "en": "Suspending metallic grids and installing gypsum boards, sound panels, or wooden panels."
+        "en": "Suspending metallic grids and installing gypsum boards, sound panels, or wooden panels.",
+        "he": "תליית פרופילים והתקנת לוחות גבס, לוחות אקוסטיים או חיפוי עץ.",
+        "ar": "تعليق الهياكل المعدنية وتركيب ألواح الجبس أو الألواح الصوتية أو التكسية الخشبية."
       }
     },
     {
@@ -636,7 +702,9 @@
         "ar": "شغل البوية / معجون ودهان الحوائط"
       },
       "descriptions": {
-        "en": "Applying internal primer coats, fine sand putty matrices, and final weather-resistant finish coatings."
+        "en": "Applying internal primer coats, fine sand putty matrices, and final weather-resistant finish coatings.",
+        "he": "צבע יסוד פנימי, שכבות שפכטל, וצבע עליון עמיד.",
+        "ar": "دهان الأساس الداخلي وطبقات المعجون والدهان النهائي المقاوم."
       }
     },
     {
@@ -653,7 +721,9 @@
         "ar": "تركيب كيرتن وول / تكسية واجهات حجر طبيعي"
       },
       "descriptions": {
-        "en": "Installing massive outer curtain glass walls, aluminum composite panel (ACP) sheets, or mechanical stone anchors."
+        "en": "Installing massive outer curtain glass walls, aluminum composite panel (ACP) sheets, or mechanical stone anchors.",
+        "he": "חיפוי חוץ: קירות מסך מזכוכית, לוחות אלומיניום מרוכב או עיגון אבן.",
+        "ar": "تكسية خارجية: جدران زجاجية أو ألواح ألمنيوم مركّب أو تثبيت حجر ميكانيكي."
       }
     },
     {
@@ -670,7 +740,9 @@
         "ar": "تركيب شبابيك ألومنيوم وقطاعات زجاج دبل"
       },
       "descriptions": {
-        "en": "Fabricating and sealing double-glazed external windows, slide systems, and structural framing panels."
+        "en": "Fabricating and sealing double-glazed external windows, slide systems, and structural framing panels.",
+        "he": "ייצור ואיטום חלונות זכוכית בידודית, מערכות הזזה ופרופילי מסגרת.",
+        "ar": "تصنيع وعزل نوافذ الزجاج المزدوج وأنظمة السحب وبراويز الألمنيوم."
       }
     },
     {
@@ -687,7 +759,9 @@
         "ar": "تركيب أبواب خشب وحواجب وإطارات"
       },
       "descriptions": {
-        "en": "Hanging interior solid wood doors, installing wooden architraves, custom walk-in closets, and vanities."
+        "en": "Hanging interior solid wood doors, installing wooden architraves, custom walk-in closets, and vanities.",
+        "he": "תליית דלתות עץ מלא, משקופים, ארונות בהתאמה וארונות אמבטיה.",
+        "ar": "تعليق أبواب الخشب الصلب والبراويز والخزائن المفصّلة وخزائن الحمام."
       }
     },
     {
@@ -704,7 +778,9 @@
         "ar": "تركيب درابزين حديد أو ستانلس للدرج وبلكونات"
       },
       "descriptions": {
-        "en": "Welding and polishing decorative steel, stainless iron, or thick structural safety glass sheets on staircases."
+        "en": "Welding and polishing decorative steel, stainless iron, or thick structural safety glass sheets on staircases.",
+        "he": "ריתוך וליטוש מעקות פלדה, נירוסטה או זכוכית בטיחותית במדרגות.",
+        "ar": "لحام وتلميع درابزين الفولاذ أو الستانلس أو الزجاج الأمني على الدرَج."
       }
     },
     {
@@ -721,7 +797,9 @@
         "ar": "تأسيس مواسير حريق وشبكة الرش الآلي"
       },
       "descriptions": {
-        "en": "Running thick black seamless carbon steel pipes, mounting emergency fire boxes, and zoning ceiling sprinkler nozzles."
+        "en": "Running thick black seamless carbon steel pipes, mounting emergency fire boxes, and zoning ceiling sprinkler nozzles.",
+        "he": "הנחת צנרת פלדה שחורה, התקנת עמדות כיבוי וחלוקת ספרינקלרים בתקרה.",
+        "ar": "مدّ مواسير الفولاذ الأسود وتركيب صناديق الإطفاء وتوزيع الرشاشات في السقف."
       }
     },
     {
@@ -738,7 +816,9 @@
         "ar": "تركيب أسانسير وماكينات المصاعد وجدران الكابينة"
       },
       "descriptions": {
-        "en": "Bolting heavy mechanical rails down elevator structural shafts, hanging steel cables, and fine-tuning motor blocks."
+        "en": "Bolting heavy mechanical rails down elevator structural shafts, hanging steel cables, and fine-tuning motor blocks.",
+        "he": "התקנת מסילות בפיר המעלית, מתיחת כבלי פלדה וכיוון מנגנון ההנעה.",
+        "ar": "تثبيت السكك داخل بئر المصعد، وشدّ كابلات الفولاذ، وضبط وحدة الحركة."
       }
     },
     {
@@ -755,7 +835,9 @@
         "ar": "تمديد خطوط الصرف الخارجي وكابلات الضغط العالي للموقع"
       },
       "descriptions": {
-        "en": "Hooking the entire structure up to urban grid electric cells, storm water networks, and clean water city lines."
+        "en": "Hooking the entire structure up to urban grid electric cells, storm water networks, and clean water city lines.",
+        "he": "חיבור המבנה לרשת החשמל העירונית, לניקוז מי גשם ולקו המים.",
+        "ar": "ربط المبنى بشبكة الكهرباء البلدية وتصريف مياه الأمطار وخط المياه."
       }
     },
     {
@@ -772,7 +854,9 @@
         "ar": "تركيب انترلوك / لاندسكيب وأعمال البلدورات زراعة"
       },
       "descriptions": {
-        "en": "Laying heavy concrete interlock bricks for parking garages, building sidewalks, and assembling localized irrigation drip networks."
+        "en": "Laying heavy concrete interlock bricks for parking garages, building sidewalks, and assembling localized irrigation drip networks.",
+        "he": "ריצוף אבני השתלבות בחניות, בניית מדרכות והתקנת מערכות השקיה.",
+        "ar": "تبليط الإنترلوك في المواقف، وبناء الأرصفة، وتركيب شبكات الري بالتنقيط."
       }
     }
   ]

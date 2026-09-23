@@ -86,6 +86,15 @@ jobs:
       - name: Audit phrases are translated and wired
         run: python3 tools/gen-audit-strings.py --check
 
+      # gen-strings proves the app's own strings are complete; it cannot see
+      # the catalogue, which is the larger half of what a user reads. A block
+      # added in English with the other two "to follow" looks finished in a
+      # diff, and in the app it does not fail — resolve() falls back, so an
+      # Arabic labourer is quietly shown an English sentence and nobody who
+      # speaks English notices.
+      - name: The catalogue is written in all three languages
+        run: python3 tools/check-catalog-languages.py
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.
