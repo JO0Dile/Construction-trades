@@ -1,6 +1,8 @@
 package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.access.Party
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.core.work.Amendment
 import il.co.tradesmanager.core.work.Assignment
@@ -323,7 +325,19 @@ class EngagementRepositoryTest {
 
         repo.move(job, Assignment.Status.OFFERED, first, "Director")
         assertTrue(audit.entries.size > created)
-        assertTrue(audit.entries.last().summary.contains("DRAFT -> OFFERED"))
+
+        // The row says which way the job moved — as a key and two marked
+        // arguments, not as "DRAFT -> OFFERED". This test asserted that
+        // sentence for a long time, which is how it came to be the one thing
+        // holding the English in place: the register is read by whoever opens
+        // it, and the crew leader reading it did not make the move.
+        val stored = Summary.parse(audit.entries.last().summary)
+        assertNotNull("a move must be stored as a key, not as a sentence", stored)
+        assertEquals(Summaries.ASSIGNMENT_STATUS, stored!!.key)
+        assertEquals(
+            listOf("wp_status_draft", "wp_status_offered"),
+            stored.arguments.drop(1).map { Summary.nested(it) },
+        )
     }
 
     // ---- helpers ---------------------------------------------------------
