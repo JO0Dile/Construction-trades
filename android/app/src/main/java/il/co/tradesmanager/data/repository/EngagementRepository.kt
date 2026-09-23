@@ -2,6 +2,8 @@ package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.access.Commercial
 import il.co.tradesmanager.core.access.Party
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.core.work.Amendment
 import il.co.tradesmanager.core.work.Assignment
@@ -93,7 +95,7 @@ class EngagementRepository(
         dao.upsert(row)
         audit.record(
             ENGAGEMENT, row.id, AuditTrail.Action.CREATE, actorName,
-            "${row.orgName} as ${party.name}",
+            Summary.of(Summaries.PARTY_ADDED, row.orgName, party.name),
         )
         return Result.success(row)
     }
@@ -160,7 +162,7 @@ class EngagementRepository(
         dao.upsert(updated)
         audit.record(
             CONTRACT, contract.id, AuditTrail.Action.SIGN_OFF, actorName,
-            "${contract.reference} signed",
+            Summary.of(Summaries.CONTRACT_SIGNED, contract.reference),
         )
         return Result.success(updated)
     }
@@ -382,7 +384,7 @@ class EngagementRepository(
         dao.upsert(updated)
         audit.record(
             ASSIGNMENT, assignment.id, AuditTrail.Action.UPDATE, actorName,
-            "${assignment.reference} invoiced",
+            Summary.of(Summaries.ASSIGNMENT_INVOICED, assignment.reference),
         )
         return Result.success(updated)
     }

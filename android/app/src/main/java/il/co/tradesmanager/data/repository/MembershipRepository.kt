@@ -5,6 +5,8 @@ import il.co.tradesmanager.core.access.Chain
 import il.co.tradesmanager.core.access.Membership
 import il.co.tradesmanager.core.access.Memberships
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.data.local.dao.MembershipDao
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.CompanyEntity
@@ -84,7 +86,7 @@ class MembershipRepository(
         dao.upsert(membership)
         audit.record(
             ENTITY, membership.id, AuditTrail.Action.CREATE, actorName,
-            "Joined as ${role.name.lowercase()}",
+            Summary.of(Summaries.JOINED_AS, Summary.nest(role.name.lowercase())),
         )
         return toDomain(membership)
     }
@@ -141,7 +143,11 @@ class MembershipRepository(
         dao.upsert(membership)
         audit.record(
             ENTITY, membership.id, AuditTrail.Action.CREATE, gateKeeperName,
-            "Admitted ${account.displayName} at the gate as ${role.name.lowercase()}",
+            Summary.of(
+                Summaries.ADMITTED_AT_GATE,
+                account.displayName,
+                Summary.nest(role.name.lowercase()),
+            ),
         )
         return Result.success(toDomain(membership))
     }
@@ -179,7 +185,7 @@ class MembershipRepository(
         dao.setRole(membershipId, role.name)
         audit.record(
             ENTITY, membershipId, AuditTrail.Action.UPDATE, actorName,
-            "Role set to ${role.name.lowercase()}",
+            Summary.of(Summaries.ROLE_SET, Summary.nest(role.name.lowercase())),
         )
         return Result.success(Unit)
     }
@@ -234,7 +240,11 @@ class MembershipRepository(
         dao.setReportsTo(membershipId, bossMembershipId)
         audit.record(
             ENTITY, membershipId, AuditTrail.Action.UPDATE, actorName,
-            if (bossMembershipId == null) "Reports to nobody" else "Now reports to $bossMembershipId",
+            if (bossMembershipId == null) {
+                Summaries.REPORTS_TO_NOBODY
+            } else {
+                Summary.of(Summaries.REPORTS_TO, bossMembershipId)
+            },
         )
         return Result.success(Unit)
     }
@@ -262,7 +272,11 @@ class MembershipRepository(
         dao.setTrade(membershipId, tradeId)
         audit.record(
             ENTITY, membershipId, AuditTrail.Action.UPDATE, actorName,
-            if (tradeId == null) "Trade cleared" else "Trade set to $tradeId",
+            if (tradeId == null) {
+                Summaries.TRADE_CLEARED
+            } else {
+                Summary.of(Summaries.TRADE_SET, tradeId)
+            },
         )
         return Result.success(Unit)
     }
@@ -295,7 +309,7 @@ class MembershipRepository(
         dao.reportingTo(membershipId).forEach { dao.setReportsTo(it.id, liftedTo) }
 
         dao.markLeft(membershipId, System.currentTimeMillis())
-        audit.record(ENTITY, membershipId, AuditTrail.Action.DELETE, actorName, "Left the company")
+        audit.record(ENTITY, membershipId, AuditTrail.Action.DELETE, actorName, Summaries.LEFT_COMPANY)
         return Result.success(Unit)
     }
 

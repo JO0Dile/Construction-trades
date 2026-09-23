@@ -35,6 +35,7 @@ import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.StockMovementEntity
+import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.ui.components.ItemThumbnail
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
@@ -266,7 +267,7 @@ private fun Movement(movement: StockMovementEntity) {
             },
         )
         Column(modifier = Modifier.padding(start = 12.dp)) {
-            Text(text = reasonLabel(movement.reason), style = MaterialTheme.typography.bodyMedium)
+            Text(text = summaryText(movement.reason), style = MaterialTheme.typography.bodyMedium)
             Text(
                 text = day + SEPARATOR + movement.actorName,
                 style = MaterialTheme.typography.bodySmall,
@@ -274,20 +275,6 @@ private fun Movement(movement: StockMovementEntity) {
             )
         }
     }
-}
-
-/**
- * Why the stock moved, in the reader's language where we know.
- *
- * The two the buttons write are keys and translate. A goods-received movement
- * carries the order reference instead, which is not a key and is shown as it
- * was stored.
- */
-@Composable
-private fun reasonLabel(reason: String): String = when (reason) {
-    InventoryViewModel.USED_ON_SITE -> stringResource(R.string.inv_reason_used)
-    InventoryViewModel.RESTOCKED -> stringResource(R.string.inv_reason_restocked)
-    else -> reason
 }
 
 private fun kindLabel(kind: String): Int = when (kind.uppercase()) {

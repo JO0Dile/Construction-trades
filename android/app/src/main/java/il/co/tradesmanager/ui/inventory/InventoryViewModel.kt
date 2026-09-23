@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.inventory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.StockMovementEntity
@@ -146,7 +147,7 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
          * they are keys rather than prose: the person who moved the stock and
          * the person reading the register later may not share a language.
          */
-        const val USED_ON_SITE = "used_on_site"
-        const val RESTOCKED = "restocked"
+        const val USED_ON_SITE = Summaries.USED_ON_SITE
+        const val RESTOCKED = Summaries.RESTOCKED
     }
 }

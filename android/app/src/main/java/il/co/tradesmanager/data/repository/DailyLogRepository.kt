@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.core.evidence.DailyLog
 import il.co.tradesmanager.data.local.dao.DailyLogDao
 import il.co.tradesmanager.data.local.entity.DailyLogEntity
@@ -126,7 +127,7 @@ class DailyLogRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(ENTITY, logId, AuditTrail.Action.SIGN_OFF, signerName, "Daily log signed")
+        audit.record(ENTITY, logId, AuditTrail.Action.SIGN_OFF, signerName, Summaries.DAILY_LOG_SIGNED)
         return true
     }
 

@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.safety.TemporaryWorks
 import il.co.tradesmanager.data.local.dao.TemporaryWorksDao
 import il.co.tradesmanager.data.local.entity.TemporaryWorksEntity
@@ -110,14 +112,14 @@ class TemporaryWorksRepository(
         )
         audit.record(
             ITEM, item.id, AuditTrail.Action.SIGN_OFF, actorName,
-            "${item.reference} checked by ${checkerName.trim()}",
+            Summary.of(Summaries.TW_CHECKED_BY, item.reference, checkerName.trim()),
         )
     }
 
     suspend fun markErected(item: TemporaryWorksEntity, actorName: String) {
         val now = System.currentTimeMillis()
         dao.upsert(item.copy(erectedAt = now, updatedAt = now))
-        audit.record(ITEM, item.id, AuditTrail.Action.UPDATE, actorName, "${item.reference} erected")
+        audit.record(ITEM, item.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.TW_ERECTED, item.reference))
     }
 
     /**
@@ -134,14 +136,14 @@ class TemporaryWorksRepository(
         )
         audit.record(
             ITEM, item.id, AuditTrail.Action.SIGN_OFF, actorName,
-            "${item.reference} inspected against the design",
+            Summary.of(Summaries.TW_INSPECTED, item.reference),
         )
     }
 
     suspend fun markLoaded(item: TemporaryWorksEntity, actorName: String) {
         val now = System.currentTimeMillis()
         dao.upsert(item.copy(loadedAt = now, updatedAt = now))
-        audit.record(ITEM, item.id, AuditTrail.Action.UPDATE, actorName, "${item.reference} loaded")
+        audit.record(ITEM, item.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.TW_LOADED, item.reference))
     }
 
     /**
@@ -158,14 +160,14 @@ class TemporaryWorksRepository(
         )
         audit.record(
             ITEM, item.id, AuditTrail.Action.SIGN_OFF, actorName,
-            "${item.reference} released for striking",
+            Summary.of(Summaries.TW_RELEASED, item.reference),
         )
     }
 
     suspend fun markStruck(item: TemporaryWorksEntity, actorName: String) {
         val now = System.currentTimeMillis()
         dao.upsert(item.copy(struckAt = now, updatedAt = now))
-        audit.record(ITEM, item.id, AuditTrail.Action.UPDATE, actorName, "${item.reference} struck")
+        audit.record(ITEM, item.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.TW_STRUCK, item.reference))
     }
 
     suspend fun remove(item: TemporaryWorksEntity, actorName: String) {

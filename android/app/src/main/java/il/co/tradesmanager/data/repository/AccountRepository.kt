@@ -2,6 +2,8 @@ package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.access.CompanyProfile
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.people.Corrections
 import il.co.tradesmanager.core.people.IdNumbers
 import il.co.tradesmanager.core.security.Passcode
@@ -217,8 +219,10 @@ class AccountRepository(
         dao.upsertCompany(updated)
         audit.record(
             "company", company.id, AuditTrail.Action.UPDATE, actorName,
-            "profile updated; published to crew: " +
-                published.map { it.name }.sorted().joinToString(",").ifEmpty { "nothing" },
+            Summary.of(
+                Summaries.PROFILE_PUBLISHED,
+                published.map { it.name }.sorted().joinToString(", "),
+            ),
         )
         return updated
     }
@@ -276,7 +280,7 @@ class AccountRepository(
         dao.setPasscode(account.id, hashed?.hash, hashed?.salt)
         audit.record(
             ENTITY, account.id, AuditTrail.Action.UPDATE, account.displayName,
-            if (hashed == null) "Passcode removed" else "Passcode changed",
+            if (hashed == null) Summaries.PASSCODE_REMOVED else Summaries.PASSCODE_CHANGED,
         )
     }
 
@@ -340,7 +344,7 @@ class AccountRepository(
         dao.upsert(account.copy(inductionSignature = signature, inductedAt = now))
         audit.record(
             ENTITY, account.id, AuditTrail.Action.SIGN_OFF, account.displayName,
-            "Safety induction signed",
+            Summaries.INDUCTION_SIGNED,
         )
         return true
     }
@@ -398,7 +402,7 @@ class AccountRepository(
         // are still matched, but nothing new is written in a form that only
         // one keypad produces.
         dao.upsert(account.copy(idNumber = IdNumbers.canonical(trimmed) ?: trimmed))
-        audit.record(ENTITY, account.id, AuditTrail.Action.UPDATE, account.displayName, "ID number set")
+        audit.record(ENTITY, account.id, AuditTrail.Action.UPDATE, account.displayName, Summaries.ID_NUMBER_SET)
         return true
     }
 
@@ -477,8 +481,11 @@ class AccountRepository(
         dao.upsert(updated)
         audit.record(
             ENTITY, account.id, AuditTrail.Action.UPDATE, actorName,
-            "Details corrected (${Corrections.changed(held, next).joinToString(", ")}) " +
-                "for ${account.displayName}",
+            Summary.of(
+                Summaries.DETAILS_CORRECTED,
+                account.displayName,
+                Corrections.changed(held, next).joinToString(", "),
+            ),
         )
         return Result.success(updated)
     }
@@ -527,7 +534,7 @@ class AccountRepository(
         )
         audit.record(
             ENTITY, account.id, AuditTrail.Action.CREATE, actorName,
-            "${account.displayName} (${role.name.lowercase()})",
+            Summary.of(Summaries.MEMBER_ADDED, account.displayName, Summary.nest(role.name.lowercase())),
         )
         return account
     }

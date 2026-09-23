@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.data.local.dao.PaymentsDao
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
@@ -182,7 +184,7 @@ class PaymentsRepository(
         )
         audit.record(
             APPLICATION, application.id, AuditTrail.Action.UPDATE, actorName,
-            "${application.reference} submitted",
+            Summary.of(Summaries.APPLICATION_SUBMITTED, application.reference),
         )
     }
 
@@ -225,7 +227,7 @@ class PaymentsRepository(
         )
         audit.record(
             APPLICATION, application.id, AuditTrail.Action.SIGN_OFF, actorName,
-            "${application.reference} certified",
+            Summary.of(Summaries.APPLICATION_CERTIFIED, application.reference),
         )
         return true
     }
@@ -261,7 +263,7 @@ class PaymentsRepository(
         )
         audit.record(
             APPLICATION, application.id, AuditTrail.Action.UPDATE, actorName,
-            "${application.reference} paid",
+            Summary.of(Summaries.APPLICATION_PAID, application.reference),
         )
         return true
     }
@@ -277,7 +279,7 @@ class PaymentsRepository(
         )
         audit.record(
             APPLICATION, application.id, AuditTrail.Action.UPDATE, actorName,
-            "${application.reference} rejected",
+            Summary.of(Summaries.APPLICATION_REJECTED, application.reference),
         )
     }
 

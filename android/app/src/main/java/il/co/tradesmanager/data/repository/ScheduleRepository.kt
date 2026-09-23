@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.data.local.dao.ScheduleDao
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
@@ -36,12 +38,12 @@ class ScheduleRepository(
 
     suspend fun setDone(id: String, done: Boolean, actorName: String) {
         dao.setDone(id, done, System.currentTimeMillis())
-        audit.record(ENTITY, id, AuditTrail.Action.UPDATE, actorName, if (done) "done" else "reopened")
+        audit.record(ENTITY, id, AuditTrail.Action.UPDATE, actorName, if (done) Summaries.TASK_DONE else Summaries.TASK_REOPENED)
     }
 
     suspend fun delete(id: String, actorName: String) {
         dao.delete(id)
-        audit.record(ENTITY, id, AuditTrail.Action.DELETE, actorName, "Time block removed")
+        audit.record(ENTITY, id, AuditTrail.Action.DELETE, actorName, Summaries.TIME_BLOCK_REMOVED)
     }
 
     /** Copies a day's blocks onto another date — the "same again tomorrow" case. */
@@ -58,7 +60,7 @@ class ScheduleRepository(
                 )
             },
         )
-        audit.record(ENTITY, to.toString(), AuditTrail.Action.CREATE, actorName, "Copied ${from.size} blocks")
+        audit.record(ENTITY, to.toString(), AuditTrail.Action.CREATE, actorName, Summary.of(Summaries.BLOCKS_COPIED, from.size.toString()))
     }
 
     /**
@@ -101,7 +103,7 @@ class ScheduleRepository(
             longitude = longitude,
         )
         dao.upsertTimeEntry(entry)
-        audit.record("time_entry", entry.id, AuditTrail.Action.CREATE, workerName, "Checked in")
+        audit.record("time_entry", entry.id, AuditTrail.Action.CREATE, workerName, Summaries.CHECKED_IN)
         return entry
     }
 
@@ -110,7 +112,7 @@ class ScheduleRepository(
         dao.upsertTimeEntry(closed)
         audit.record(
             "time_entry", closed.id, AuditTrail.Action.UPDATE, closed.workerName,
-            "Checked out after ${closed.minutesWorked ?: 0} min",
+            Summary.of(Summaries.CHECKED_OUT, (closed.minutesWorked ?: 0).toString()),
         )
     }
 

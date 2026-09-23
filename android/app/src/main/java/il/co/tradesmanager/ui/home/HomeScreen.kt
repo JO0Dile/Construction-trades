@@ -53,6 +53,7 @@ import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLocale
 import java.time.Instant
@@ -356,7 +357,7 @@ fun HomeScreen(
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp, vertical = 6.dp),
                     ) {
-                        Text(change.summary, style = MaterialTheme.typography.bodyLarge)
+                        Text(summaryText(change.summary), style = MaterialTheme.typography.bodyLarge)
                         Text(
                             text = change.actorName + " · " +
                                 Formats.dateTime(at.toLocalDate(), at.toLocalTime(), locale),

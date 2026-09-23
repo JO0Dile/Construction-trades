@@ -226,7 +226,7 @@ fun AuditScreen(
                             ?: entry.action
                         Text("#${entry.sequence} · $what")
                     },
-                    headlineContent = { Text(entry.summary) },
+                    headlineContent = { Text(summaryText(entry.summary)) },
                     supportingContent = {
                         Text(
                             entry.actorName + " · " +

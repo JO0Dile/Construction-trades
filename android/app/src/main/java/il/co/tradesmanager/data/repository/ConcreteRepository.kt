@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.data.local.dao.ConcreteDao
 import il.co.tradesmanager.data.local.entity.ConcretePourEntity
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
@@ -71,7 +73,7 @@ class ConcreteRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(POUR, pour.id, AuditTrail.Action.SIGN_OFF, actorName, "${pour.reference} finished")
+        audit.record(POUR, pour.id, AuditTrail.Action.SIGN_OFF, actorName, Summary.of(Summaries.POUR_FINISHED, pour.reference))
     }
 
 
@@ -109,7 +111,11 @@ class ConcreteRepository(
         dao.upsertTicket(ticket)
         audit.record(
             TICKET, ticket.id, AuditTrail.Action.CREATE, actorName,
-            "Truck ${ticket.truckNumber.orEmpty()} ${ticket.volume}m3",
+            Summary.of(
+                Summaries.CONCRETE_TRUCK,
+                ticket.truckNumber.orEmpty(),
+                ticket.volume.toString(),
+            ),
         )
         return ticket
     }
@@ -123,7 +129,7 @@ class ConcreteRepository(
     suspend fun markPlaced(ticket: ConcreteTicketEntity, actorName: String) {
         if (ticket.rejected || ticket.dischargedAt != null) return
         dao.upsertTicket(ticket.copy(dischargedAt = System.currentTimeMillis()))
-        audit.record(TICKET, ticket.id, AuditTrail.Action.UPDATE, actorName, "Placed")
+        audit.record(TICKET, ticket.id, AuditTrail.Action.UPDATE, actorName, Summaries.CONCRETE_PLACED)
     }
 
     /**
@@ -141,7 +147,7 @@ class ConcreteRepository(
         )
         audit.record(
             TICKET, ticket.id, AuditTrail.Action.UPDATE, actorName,
-            "Rejected: ${reason.orEmpty()}",
+            Summary.of(Summaries.CONCRETE_REJECTED, reason.orEmpty()),
         )
     }
 

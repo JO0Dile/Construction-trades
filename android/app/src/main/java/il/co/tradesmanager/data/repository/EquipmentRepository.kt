@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.money.HireCost
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.data.local.dao.EquipmentDao
@@ -110,7 +112,10 @@ class EquipmentRepository(
         )
         audit.record(
             ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName,
-            if (projectId == null) "${equipment.name} back in the yard" else "${equipment.name} on site",
+            Summary.of(
+                if (projectId == null) Summaries.PLANT_TO_YARD else Summaries.PLANT_TO_SITE,
+                equipment.name,
+            ),
         )
     }
 
@@ -135,7 +140,7 @@ class EquipmentRepository(
         dao.upsert(
             equipment.copy(lastServicedOn = now, serviceDueOn = nextDueOn, updatedAt = now),
         )
-        audit.record(ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName, "${equipment.name} serviced")
+        audit.record(ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.EQUIPMENT_SERVICED, equipment.name))
     }
 
     suspend fun remove(equipment: EquipmentEntity, actorName: String) {

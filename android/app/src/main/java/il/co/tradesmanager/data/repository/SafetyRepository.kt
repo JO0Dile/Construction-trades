@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
@@ -43,7 +45,7 @@ class SafetyRepository(
             blocked = true,
         )
         safetyDao.upsertRun(run)
-        audit.record(ENTITY, run.id, AuditTrail.Action.CREATE, actorName, "Started checklist $templateId")
+        audit.record(ENTITY, run.id, AuditTrail.Action.CREATE, actorName, Summary.of(Summaries.CHECKLIST_STARTED, templateId))
         return run
     }
 
@@ -129,7 +131,7 @@ class SafetyRepository(
                 blocked = false,
             ),
         )
-        audit.record(ENTITY, runId, AuditTrail.Action.SIGN_OFF, signerName, "Checklist signed")
+        audit.record(ENTITY, runId, AuditTrail.Action.SIGN_OFF, signerName, Summaries.CHECKLIST_SIGNED)
         return true
     }
 

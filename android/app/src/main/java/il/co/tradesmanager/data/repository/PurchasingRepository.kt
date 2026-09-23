@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.data.local.dao.ProjectDao
 import il.co.tradesmanager.data.local.dao.PurchasingDao
 import il.co.tradesmanager.data.local.entity.PurchaseOrderEntity
@@ -129,7 +131,7 @@ class PurchasingRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(ENTITY, order.id, AuditTrail.Action.UPDATE, actorName, "${order.reference} placed")
+        audit.record(ENTITY, order.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.ORDER_PLACED, order.reference))
     }
 
     /**
@@ -153,9 +155,9 @@ class PurchasingRepository(
         audit.record(
             ENTITY, order.id, AuditTrail.Action.UPDATE, actorName,
             if (expectedOn == null) {
-                "${order.reference} has no delivery date"
+                Summary.of(Summaries.ORDER_NO_DATE, order.reference)
             } else {
-                "${order.reference} due $expectedOn"
+                Summary.of(Summaries.ORDER_DUE, order.reference, expectedOn.toString())
             },
         )
         return true
@@ -163,7 +165,7 @@ class PurchasingRepository(
 
     suspend fun cancel(order: PurchaseOrderEntity, actorName: String) {
         dao.upsertOrder(order.copy(status = Status.CANCELLED, updatedAt = System.currentTimeMillis()))
-        audit.record(ENTITY, order.id, AuditTrail.Action.UPDATE, actorName, "${order.reference} cancelled")
+        audit.record(ENTITY, order.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.ORDER_CANCELLED, order.reference))
     }
 
     suspend fun delete(order: PurchaseOrderEntity, actorName: String) {
@@ -197,7 +199,7 @@ class PurchasingRepository(
             inventory.adjustStock(
                 itemId = itemId,
                 delta = quantity,
-                reason = "Delivered on ${order.reference}",
+                reason = Summary.of(Summaries.DELIVERED_ON, order.reference),
                 actorName = actorName,
                 projectId = order.projectId,
             )
@@ -208,7 +210,12 @@ class PurchasingRepository(
         refreshStatus(order.id, actorName)
         audit.record(
             "purchase_order_line", line.id, AuditTrail.Action.UPDATE, actorName,
-            "Received $quantity ${line.unit} of ${line.label}",
+            Summary.of(
+                Summaries.GOODS_RECEIVED,
+                quantity.toString(),
+                line.unit,
+                line.label,
+            ),
         )
     }
 

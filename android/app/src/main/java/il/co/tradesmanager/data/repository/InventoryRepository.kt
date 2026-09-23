@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.find.Search
 import il.co.tradesmanager.core.i18n.LocalizedText
 import il.co.tradesmanager.core.i18n.searchable
@@ -94,7 +96,7 @@ class InventoryRepository(
     suspend fun delete(id: String, actorName: String) {
         val now = System.currentTimeMillis()
         dao.softDelete(id, now)
-        audit.record(ENTITY, id, AuditTrail.Action.DELETE, actorName, "Item removed from inventory")
+        audit.record(ENTITY, id, AuditTrail.Action.DELETE, actorName, Summaries.ITEM_REMOVED)
     }
 
     /**
@@ -133,7 +135,12 @@ class InventoryRepository(
             entityId = itemId,
             action = AuditTrail.Action.STOCK_CHANGE,
             actorName = actorName,
-            summary = "${item.quantity} -> $resulting ($reason)",
+            summary = Summary.of(
+                Summaries.STOCK_MOVED,
+                item.quantity.toString(),
+                resulting.toString(),
+                Summary.nest(reason),
+            ),
         )
         return resulting
     }

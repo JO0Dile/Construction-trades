@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.catalog.CatalogItemFile
 import il.co.tradesmanager.data.catalog.CatalogSource
@@ -76,7 +78,7 @@ class ProjectRepository(
 
     suspend fun setTaskDone(taskId: String, done: Boolean, actorName: String) {
         dao.setTaskDone(taskId, done, if (done) System.currentTimeMillis() else null, actorName.ifBlank { null })
-        audit.record("project_task", taskId, AuditTrail.Action.UPDATE, actorName, if (done) "done" else "reopened")
+        audit.record("project_task", taskId, AuditTrail.Action.UPDATE, actorName, if (done) Summaries.TASK_DONE else Summaries.TASK_REOPENED)
     }
 
     /**
@@ -194,7 +196,11 @@ class ProjectRepository(
         dao.upsertTasks(listOf(task.copy(stageId = stageId, scopeId = scopeId)))
         audit.record(
             "project_task", task.id, AuditTrail.Action.UPDATE, actorName,
-            "${task.title} -> " + (stageId ?: "no stage"),
+            if (stageId == null) {
+                Summary.of(Summaries.TASK_STAGE_CLEARED, task.title)
+            } else {
+                Summary.of(Summaries.TASK_STAGE_SET, task.title, stageId)
+            },
         )
     }
 
@@ -279,7 +285,7 @@ class ProjectRepository(
 
         audit.record(
             ENTITY, projectId, AuditTrail.Action.CREATE, actorName,
-            "Created from template ${template.id}",
+            Summary.of(Summaries.CREATED_FROM_TEMPLATE, template.id),
         )
         project
     }

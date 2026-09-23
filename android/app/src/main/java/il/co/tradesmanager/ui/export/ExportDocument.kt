@@ -3,6 +3,7 @@ package il.co.tradesmanager.ui.export
 import android.content.Context
 import il.co.tradesmanager.R
 import il.co.tradesmanager.ui.audit.auditActionLabel
+import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
@@ -209,7 +210,7 @@ sealed interface ExportDocument {
                     auditActionLabel(entry.action)
                         ?.let { context.getString(it) }
                         ?: entry.action,
-                    entry.summary,
+                    summaryText(context, entry.summary),
                     // Blank rather than a placeholder on an unsigned row: an
                     // entry written before the chain existed has no signature,
                     // and inventing a dash for it would read like one.

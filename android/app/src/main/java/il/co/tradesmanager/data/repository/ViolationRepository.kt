@@ -2,6 +2,8 @@ package il.co.tradesmanager.data.repository
 
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.safety.Violations
 import il.co.tradesmanager.data.local.dao.ViolationDao
 import il.co.tradesmanager.data.local.entity.ViolationEntity
@@ -167,7 +169,7 @@ class ViolationRepository(
             entityId = confirmed.id,
             action = AuditTrail.Action.SIGN_OFF,
             actorName = actorName,
-            summary = "Violation confirmed against ${confirmed.againstName}",
+            summary = Summary.of(Summaries.VIOLATION_CONFIRMED, confirmed.againstName),
         )
         return Result.success(confirmed)
     }

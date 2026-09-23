@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.data.local.dao.CostByCategory
 import il.co.tradesmanager.data.local.dao.MoneyDao
@@ -103,7 +105,7 @@ class MoneyRepository(
                 updatedAt = System.currentTimeMillis(),
             ),
         )
-        audit.record("job_budget", projectId, AuditTrail.Action.UPDATE, actorName, "Contract value set")
+        audit.record("job_budget", projectId, AuditTrail.Action.UPDATE, actorName, Summaries.CONTRACT_VALUE_SET)
     }
 
     suspend fun addCost(
@@ -231,7 +233,7 @@ class MoneyRepository(
                 paidOn = System.currentTimeMillis(),
             ),
         )
-        audit.record("invoice", invoice.id, AuditTrail.Action.UPDATE, actorName, "${invoice.number} paid")
+        audit.record("invoice", invoice.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.INVOICE_PAID, invoice.number))
     }
 
     suspend fun removeInvoice(invoice: InvoiceEntity, actorName: String) {

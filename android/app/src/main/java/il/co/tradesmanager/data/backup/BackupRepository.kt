@@ -3,6 +3,8 @@ package il.co.tradesmanager.data.backup
 import android.content.Context
 import android.net.Uri
 import il.co.tradesmanager.BuildConfig
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.security.Backup
 import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DATABASE_VERSION
@@ -78,7 +80,7 @@ class BackupRepository(
                     entityId = header.createdAt.toString(),
                     action = AuditTrail.Action.EXPORT,
                     actorName = actorName,
-                    summary = "Backed up, ${media.size} photographs and videos",
+                    summary = Summary.of(Summaries.BACKUP_MADE, media.size.toString()),
                 )
                 media.size
             }.also { plain.delete() }

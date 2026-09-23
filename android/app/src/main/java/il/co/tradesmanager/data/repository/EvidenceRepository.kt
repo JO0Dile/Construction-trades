@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
 import il.co.tradesmanager.data.local.dao.BriefingRecord
@@ -94,12 +96,12 @@ class EvidenceRepository(
             signedAt = System.currentTimeMillis(),
         )
         dao.upsertAttendee(attendee)
-        audit.record(TALK, talkId, AuditTrail.Action.SIGN_OFF, actorName, "${attendee.name} attended")
+        audit.record(TALK, talkId, AuditTrail.Action.SIGN_OFF, actorName, Summary.of(Summaries.ATTENDEE_ADDED, attendee.name))
     }
 
     suspend fun removeAttendee(attendee: ToolboxTalkAttendeeEntity, actorName: String) {
         dao.deleteAttendee(attendee)
-        audit.record(TALK, attendee.talkId, AuditTrail.Action.UPDATE, actorName, "Removed ${attendee.name}")
+        audit.record(TALK, attendee.talkId, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.ATTENDEE_REMOVED, attendee.name))
     }
 
 
@@ -224,7 +226,7 @@ class EvidenceRepository(
         )
         audit.record(
             PERMIT, permitId, AuditTrail.Action.SIGN_OFF, issuedByName,
-            "${permit.reference} issued to ${permit.issuedToName}",
+            Summary.of(Summaries.PERMIT_ISSUED, permit.reference, permit.issuedToName),
         )
         return true
     }
@@ -244,7 +246,7 @@ class EvidenceRepository(
         dao.upsertPermit(permit.copy(workStoppedAt = now, updatedAt = now))
         audit.record(
             PERMIT, permitId, AuditTrail.Action.UPDATE, actorName,
-            "${permit.reference} work stopped",
+            Summary.of(Summaries.PERMIT_STOPPED, permit.reference),
         )
         return true
     }
@@ -279,7 +281,7 @@ class EvidenceRepository(
         )
         audit.record(
             PERMIT, permitId, AuditTrail.Action.SIGN_OFF, closedByName,
-            "${permit.reference} signed back",
+            Summary.of(Summaries.PERMIT_SIGNED_BACK, permit.reference),
         )
         return true
     }
@@ -293,7 +295,7 @@ class EvidenceRepository(
         dao.upsertPermit(
             permit.copy(status = Permits.Status.CANCELLED, updatedAt = System.currentTimeMillis()),
         )
-        audit.record(PERMIT, permit.id, AuditTrail.Action.UPDATE, actorName, "${permit.reference} cancelled")
+        audit.record(PERMIT, permit.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.PERMIT_CANCELLED, permit.reference))
     }
 
 
@@ -367,7 +369,7 @@ class EvidenceRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(SNAG, snagId, AuditTrail.Action.UPDATE, actorName, "${snag.reference} claimed fixed")
+        audit.record(SNAG, snagId, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.SNAG_CLAIMED_FIXED, snag.reference))
         return true
     }
 

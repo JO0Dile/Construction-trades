@@ -320,16 +320,6 @@
       "he": "היסטוריית מלאי",
       "ar": "سجل المخزون"
     },
-    "inv_reason_used": {
-      "en": "Used on site",
-      "he": "שימוש באתר",
-      "ar": "استُخدم في الموقع"
-    },
-    "inv_reason_restocked": {
-      "en": "Restocked",
-      "he": "חידוש מלאי",
-      "ar": "تجديد المخزون"
-    },
     "inv_no_movements": {
       "en": "No movements yet",
       "he": "אין עדיין תנועות",
@@ -5972,6 +5962,421 @@
       "en": "This text says plainly what the app does and does not do. It has not been through an Israeli lawyer, and it should be before the app is sold. That is a job for a person, not for the person who wrote the software.",
       "he": "הטקסט הזה אומר בפשטות מה האפליקציה עושה ומה אינה עושה. הוא טרם נבדק על ידי עורך דין ישראלי, וראוי שייבדק לפני שהאפליקציה נמכרת. זו עבודה לאדם, ולא למי שכתב את התוכנה.",
       "ar": "يقول هذا النص بوضوح ما يفعله التطبيق وما لا يفعله. لم يراجعه محامٍ إسرائيلي بعد، وينبغي أن يراجعه قبل بيع التطبيق. تلك مهمة شخص، لا مهمة من كتب البرنامج."
+    },
+    "summary_induction_signed": {
+      "en": "Safety induction signed",
+      "he": "תדריך הבטיחות נחתם",
+      "ar": "وُقّع التوجيه الأمني"
+    },
+    "summary_id_number_set": {
+      "en": "ID number set",
+      "he": "מספר הזהות נקבע",
+      "ar": "حُدّد رقم الهوية"
+    },
+    "summary_daily_log_signed": {
+      "en": "Daily log signed",
+      "he": "יומן העבודה נחתם",
+      "ar": "وُقّعت يومية العمل"
+    },
+    "summary_checklist_signed": {
+      "en": "Checklist signed",
+      "he": "רשימת הבדיקה נחתמה",
+      "ar": "وُقّعت قائمة الفحص"
+    },
+    "summary_concrete_placed": {
+      "en": "Placed",
+      "he": "נוצק",
+      "ar": "تمّ الصبّ"
+    },
+    "summary_excavation_disturbed": {
+      "en": "Ground disturbed",
+      "he": "הקרקע נפתחה",
+      "ar": "فُتحت الأرض"
+    },
+    "summary_excavation_backfilled": {
+      "en": "Backfilled",
+      "he": "הוחזר מילוי",
+      "ar": "أُعيد الردم"
+    },
+    "summary_scaffold_altered": {
+      "en": "Altered",
+      "he": "שונה",
+      "ar": "عُدّل"
+    },
+    "summary_scaffold_dismantled": {
+      "en": "Dismantled",
+      "he": "פורק",
+      "ar": "فُكّ"
+    },
+    "summary_item_removed": {
+      "en": "Item removed from stock",
+      "he": "הפריט הוסר מהמלאי",
+      "ar": "أُزيل الصنف من المخزون"
+    },
+    "summary_left_company": {
+      "en": "Left the company",
+      "he": "עזב את החברה",
+      "ar": "غادر الشركة"
+    },
+    "summary_contract_value_set": {
+      "en": "Contract value set",
+      "he": "שווי החוזה נקבע",
+      "ar": "حُدّدت قيمة العقد"
+    },
+    "summary_marked_site_plan": {
+      "en": "Marked as a site plan",
+      "he": "סומן כתוכנית אתר",
+      "ar": "حُدّد كمخطط موقع"
+    },
+    "summary_photo_removed": {
+      "en": "Photograph removed",
+      "he": "התמונה הוסרה",
+      "ar": "أُزيلت الصورة"
+    },
+    "summary_time_block_removed": {
+      "en": "Time block removed",
+      "he": "משבצת הזמן הוסרה",
+      "ar": "أُزيلت الفترة الزمنية"
+    },
+    "summary_checked_in": {
+      "en": "Checked in",
+      "he": "כניסה נרשמה",
+      "ar": "سُجّل الحضور"
+    },
+    "summary_custom_trade_removed": {
+      "en": "Custom trade removed",
+      "he": "מקצוע מותאם הוסר",
+      "ar": "أُزيلت مهنة مخصّصة"
+    },
+    "summary_backup_made": {
+      "en": "Backed up, with %1$s photographs and videos",
+      "he": "גובה, כולל %1$s תמונות וסרטונים",
+      "ar": "نُسخ احتياطيًا، مع %1$s صورة ومقطعًا"
+    },
+    "summary_details_corrected": {
+      "en": "Details corrected for %1$s: %2$s",
+      "he": "פרטים תוקנו עבור %1$s: %2$s",
+      "ar": "صُحّحت تفاصيل %1$s: %2$s"
+    },
+    "summary_profile_published": {
+      "en": "Company profile updated; shown to the crew: %1$s",
+      "he": "פרטי החברה עודכנו; מוצג לצוות: %1$s",
+      "ar": "حُدّث ملف الشركة؛ يظهر للطاقم: %1$s"
+    },
+    "summary_member_added": {
+      "en": "%1$s added as %2$s",
+      "he": "%1$s נוסף בתפקיד %2$s",
+      "ar": "%1$s أُضيف بصفة %2$s"
+    },
+    "summary_joined_as": {
+      "en": "Joined as %1$s",
+      "he": "הצטרף בתפקיד %1$s",
+      "ar": "انضمّ بصفة %1$s"
+    },
+    "summary_admitted_at_gate": {
+      "en": "%1$s admitted at the gate as %2$s",
+      "he": "%1$s נרשם בשער בתפקיד %2$s",
+      "ar": "%1$s سُجّل عند البوابة بصفة %2$s"
+    },
+    "summary_role_set": {
+      "en": "Role set to %1$s",
+      "he": "התפקיד נקבע ל%1$s",
+      "ar": "حُدّد الدور: %1$s"
+    },
+    "summary_violation_confirmed": {
+      "en": "Violation confirmed against %1$s",
+      "he": "עבירה אושרה נגד %1$s",
+      "ar": "تأكّدت مخالفة بحق %1$s"
+    },
+    "summary_pour_finished": {
+      "en": "%1$s finished",
+      "he": "%1$s הסתיימה",
+      "ar": "%1$s انتهت"
+    },
+    "summary_concrete_truck": {
+      "en": "Truck %1$s, %2$s m³",
+      "he": "משאית %1$s, %2$s מ״ק",
+      "ar": "شاحنة %1$s، %2$s م³"
+    },
+    "summary_concrete_rejected": {
+      "en": "Load rejected: %1$s",
+      "he": "המשלוח נדחה: %1$s",
+      "ar": "رُفضت الحمولة: %1$s"
+    },
+    "summary_permit_issued": {
+      "en": "%1$s issued to %2$s",
+      "he": "%1$s הונפק ל%2$s",
+      "ar": "%1$s صدر لـ%2$s"
+    },
+    "summary_permit_stopped": {
+      "en": "%1$s work stopped",
+      "he": "%1$s העבודה הופסקה",
+      "ar": "%1$s أُوقف العمل"
+    },
+    "summary_permit_signed_back": {
+      "en": "%1$s signed back",
+      "he": "%1$s הוחזר בחתימה",
+      "ar": "%1$s أُعيد موقّعًا"
+    },
+    "summary_permit_cancelled": {
+      "en": "%1$s cancelled",
+      "he": "%1$s בוטל",
+      "ar": "%1$s أُلغي"
+    },
+    "summary_attendee_added": {
+      "en": "%1$s attended",
+      "he": "%1$s נכח",
+      "ar": "%1$s حضر"
+    },
+    "summary_attendee_removed": {
+      "en": "%1$s taken off the attendance",
+      "he": "%1$s הוסר מרשימת הנוכחות",
+      "ar": "%1$s أُزيل من كشف الحضور"
+    },
+    "summary_snag_claimed_fixed": {
+      "en": "%1$s reported fixed",
+      "he": "%1$s דווח כתוקן",
+      "ar": "%1$s أُبلغ عن إصلاحه"
+    },
+    "summary_services_located": {
+      "en": "%1$s buried services located",
+      "he": "%1$s תשתיות תת-קרקעיות אותרו",
+      "ar": "%1$s حُدّدت المرافق المدفونة"
+    },
+    "summary_lift_approved": {
+      "en": "%1$s approved",
+      "he": "%1$s אושרה",
+      "ar": "%1$s اعتُمدت"
+    },
+    "summary_lift_done": {
+      "en": "%1$s lifted",
+      "he": "%1$s בוצעה הרמה",
+      "ar": "%1$s نُفّذ الرفع"
+    },
+    "summary_lift_role_set": {
+      "en": "%1$s %2$s: %3$s",
+      "he": "%1$s %2$s: %3$s",
+      "ar": "%1$s %2$s: %3$s"
+    },
+    "summary_lift_role_cleared": {
+      "en": "%1$s %2$s cleared",
+      "he": "%1$s %2$s בוטל",
+      "ar": "%1$s أُلغي تعيين %2$s"
+    },
+    "summary_equipment_serviced": {
+      "en": "%1$s serviced",
+      "he": "%1$s עבר טיפול",
+      "ar": "%1$s خضع للصيانة"
+    },
+    "summary_equipment_status": {
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "summary_contract_signed": {
+      "en": "%1$s signed",
+      "he": "%1$s נחתם",
+      "ar": "%1$s وُقّع"
+    },
+    "summary_party_added": {
+      "en": "%1$s added as %2$s",
+      "he": "%1$s נוסף בתור %2$s",
+      "ar": "%1$s أُضيف بصفة %2$s"
+    },
+    "summary_assignment_invoiced": {
+      "en": "%1$s invoiced",
+      "he": "%1$s חויב",
+      "ar": "%1$s صدرت فاتورته"
+    },
+    "summary_invoice_paid": {
+      "en": "%1$s paid",
+      "he": "%1$s שולמה",
+      "ar": "%1$s دُفعت"
+    },
+    "summary_application_submitted": {
+      "en": "%1$s submitted",
+      "he": "%1$s הוגשה",
+      "ar": "%1$s قُدّمت"
+    },
+    "summary_application_certified": {
+      "en": "%1$s certified",
+      "he": "%1$s אושרה לתשלום",
+      "ar": "%1$s اعتُمدت"
+    },
+    "summary_application_paid": {
+      "en": "%1$s paid",
+      "he": "%1$s שולמה",
+      "ar": "%1$s دُفعت"
+    },
+    "summary_application_rejected": {
+      "en": "%1$s rejected",
+      "he": "%1$s נדחתה",
+      "ar": "%1$s رُفضت"
+    },
+    "summary_order_placed": {
+      "en": "%1$s placed",
+      "he": "%1$s הוזמנה",
+      "ar": "%1$s أُرسل الطلب"
+    },
+    "summary_order_cancelled": {
+      "en": "%1$s cancelled",
+      "he": "%1$s בוטלה",
+      "ar": "%1$s أُلغي"
+    },
+    "summary_goods_received": {
+      "en": "Received %1$s %2$s of %3$s",
+      "he": "התקבלו %1$s %2$s של %3$s",
+      "ar": "استُلم %1$s %2$s من %3$s"
+    },
+    "summary_stock_moved": {
+      "en": "%1$s to %2$s — %3$s",
+      "he": "מ-%1$s ל-%2$s — %3$s",
+      "ar": "من %1$s إلى %2$s — %3$s"
+    },
+    "summary_checklist_started": {
+      "en": "Started the checklist %1$s",
+      "he": "רשימת הבדיקה %1$s החלה",
+      "ar": "بدأت قائمة الفحص %1$s"
+    },
+    "summary_blocks_copied": {
+      "en": "Copied %1$s time blocks",
+      "he": "הועתקו %1$s משבצות זמן",
+      "ar": "نُسخت %1$s فترات زمنية"
+    },
+    "summary_checked_out": {
+      "en": "Checked out after %1$s minutes",
+      "he": "יציאה נרשמה אחרי %1$s דקות",
+      "ar": "سُجّل الانصراف بعد %1$s دقيقة"
+    },
+    "summary_created_from_template": {
+      "en": "Created from the template %1$s",
+      "he": "נוצר מתבנית %1$s",
+      "ar": "أُنشئ من القالب %1$s"
+    },
+    "summary_task_stage_set": {
+      "en": "%1$s moved to %2$s",
+      "he": "%1$s הועבר ל%2$s",
+      "ar": "%1$s نُقل إلى %2$s"
+    },
+    "summary_task_stage_cleared": {
+      "en": "%1$s taken off its stage",
+      "he": "%1$s הוסר מהשלב שלו",
+      "ar": "%1$s أُزيل من مرحلته"
+    },
+    "summary_tw_checked_by": {
+      "en": "%1$s checked by %2$s",
+      "he": "%1$s נבדק על ידי %2$s",
+      "ar": "%1$s فحصه %2$s"
+    },
+    "summary_tw_erected": {
+      "en": "%1$s erected",
+      "he": "%1$s הוקם",
+      "ar": "%1$s نُصب"
+    },
+    "summary_tw_inspected": {
+      "en": "%1$s inspected against the design",
+      "he": "%1$s נבדק מול התכנון",
+      "ar": "%1$s فُحص مقابل التصميم"
+    },
+    "summary_tw_loaded": {
+      "en": "%1$s loaded",
+      "he": "%1$s הועמס",
+      "ar": "%1$s حُمّل"
+    },
+    "summary_tw_released": {
+      "en": "%1$s released for striking",
+      "he": "%1$s שוחרר לפירוק",
+      "ar": "%1$s أُفرج عنه للفكّ"
+    },
+    "summary_tw_struck": {
+      "en": "%1$s struck",
+      "he": "%1$s פורק",
+      "ar": "%1$s فُكّ"
+    },
+    "summary_inspection_failed": {
+      "en": "%1$s failed inspection",
+      "he": "%1$s נכשל בבדיקה",
+      "ar": "%1$s رسب في الفحص"
+    },
+    "summary_inspection_passed": {
+      "en": "%1$s passed inspection",
+      "he": "%1$s עבר בדיקה",
+      "ar": "%1$s اجتاز الفحص"
+    },
+    "summary_order_due": {
+      "en": "%1$s due %2$s",
+      "he": "%1$s צפויה ל%2$s",
+      "ar": "%1$s متوقّعة في %2$s"
+    },
+    "summary_order_no_date": {
+      "en": "%1$s has no delivery date",
+      "he": "ל%1$s אין תאריך אספקה",
+      "ar": "%1$s بلا تاريخ توريد"
+    },
+    "summary_passcode_changed": {
+      "en": "Passcode changed",
+      "he": "הסיסמה שונתה",
+      "ar": "غُيّرت كلمة المرور"
+    },
+    "summary_passcode_removed": {
+      "en": "Passcode removed",
+      "he": "הסיסמה הוסרה",
+      "ar": "أُزيلت كلمة المرور"
+    },
+    "summary_plant_to_site": {
+      "en": "%1$s sent to site",
+      "he": "%1$s נשלח לאתר",
+      "ar": "%1$s أُرسل إلى الموقع"
+    },
+    "summary_plant_to_yard": {
+      "en": "%1$s back in the yard",
+      "he": "%1$s חזר למחסן",
+      "ar": "%1$s عاد إلى المستودع"
+    },
+    "summary_reports_to": {
+      "en": "Now reports to %1$s",
+      "he": "כפוף מעתה ל%1$s",
+      "ar": "يتبع الآن %1$s"
+    },
+    "summary_reports_to_nobody": {
+      "en": "Reports to nobody",
+      "he": "לא כפוף לאיש",
+      "ar": "لا يتبع أحدًا"
+    },
+    "summary_task_done": {
+      "en": "Done",
+      "he": "בוצע",
+      "ar": "أُنجز"
+    },
+    "summary_task_reopened": {
+      "en": "Reopened",
+      "he": "נפתח מחדש",
+      "ar": "أُعيد فتحه"
+    },
+    "summary_trade_cleared": {
+      "en": "Trade cleared",
+      "he": "המקצוע נוקה",
+      "ar": "أُزيلت المهنة"
+    },
+    "summary_trade_set": {
+      "en": "Trade set to %1$s",
+      "he": "המקצוע נקבע ל%1$s",
+      "ar": "حُدّدت المهنة: %1$s"
+    },
+    "summary_delivered_on": {
+      "en": "Delivered on %1$s",
+      "he": "סופק לפי %1$s",
+      "ar": "وُرّد بموجب %1$s"
+    },
+    "summary_restocked": {
+      "en": "Restocked",
+      "he": "חידוש מלאי",
+      "ar": "تجديد المخزون"
+    },
+    "summary_used_on_site": {
+      "en": "Used on site",
+      "he": "שימוש באתר",
+      "ar": "استُخدم في الموقع"
     }
   },
   "plurals": {

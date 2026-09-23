@@ -72,6 +72,20 @@ jobs:
       - name: Every Compose state delegate has its import
         run: python3 tools/check-compose-delegates.py
 
+      # An audit summary is stored once and read later, by somebody who may
+      # not share a language with whoever wrote it. The register this app
+      # exists to produce was English-only for two of the three languages it
+      # ships in, and nothing failed: the wrong version builds, runs, and
+      # writes a perfectly good English sentence into the trail.
+      - name: No English sentences written into the audit register
+        run: python3 tools/check-audit-summaries.py
+
+      # And the phrase, its translation, the constant that writes it and the
+      # branch that renders it all have to agree. A phrase with no translation
+      # reaches a Hebrew screen as the key itself.
+      - name: Audit phrases are translated and wired
+        run: python3 tools/gen-audit-strings.py --check
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.

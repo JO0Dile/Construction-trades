@@ -3,6 +3,7 @@ package il.co.tradesmanager.data.repository
 import android.content.Context
 import android.net.Uri
 import androidx.core.content.FileProvider
+import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.core.evidence.PhotoStamp
@@ -327,7 +328,7 @@ class PhotoRepository(
             dao.setOwnerType(it.id, Owner.PROJECT_PHOTO)
         }
         dao.setOwnerType(photo.id, Owner.PROJECT_PLAN)
-        audit.record("photo", photo.id, AuditTrail.Action.UPDATE, actorName, "Marked as site plan")
+        audit.record("photo", photo.id, AuditTrail.Action.UPDATE, actorName, Summaries.MARKED_SITE_PLAN)
     }
 
     suspend fun delete(photo: PhotoEntity, actorName: String) {
@@ -335,6 +336,6 @@ class PhotoRepository(
             runCatching { File(java.net.URI(photo.uri)).delete() }
         }
         dao.delete(photo.id)
-        audit.record("photo", photo.id, AuditTrail.Action.DELETE, actorName, "Photo removed")
+        audit.record("photo", photo.id, AuditTrail.Action.DELETE, actorName, Summaries.PHOTO_REMOVED)
     }
 }
