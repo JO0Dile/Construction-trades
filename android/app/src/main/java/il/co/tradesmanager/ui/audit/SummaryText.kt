@@ -67,18 +67,21 @@ fun summaryText(stored: String): String = summaryText(LocalContext.current, stor
 private fun nestedText(context: Context, key: String): String {
     Role.entries.firstOrNull { it.name.lowercase() == key }
         ?.let { return context.getString(roleLabel(it)) }
-    val phrase = summaryPhrase(key) ?: return key
+    val phrase = summaryPhrase(key) ?: borrowedPhrase(key) ?: return key
     return context.getString(phrase)
 }
 
 @StringRes
 private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.ADMITTED_AT_GATE -> R.string.summary_admitted_at_gate
+    Summaries.AMENDMENT_STATUS -> R.string.summary_amendment_status
     Summaries.APPLICATION_CERTIFIED -> R.string.summary_application_certified
     Summaries.APPLICATION_PAID -> R.string.summary_application_paid
     Summaries.APPLICATION_REJECTED -> R.string.summary_application_rejected
     Summaries.APPLICATION_SUBMITTED -> R.string.summary_application_submitted
     Summaries.ASSIGNMENT_INVOICED -> R.string.summary_assignment_invoiced
+    Summaries.ASSIGNMENT_STATUS -> R.string.summary_assignment_status
+    Summaries.ASSIGNMENT_STATUS_REASON -> R.string.summary_assignment_status_reason
     Summaries.ATTENDEE_ADDED -> R.string.summary_attendee_added
     Summaries.ATTENDEE_REMOVED -> R.string.summary_attendee_removed
     Summaries.BACKUP_MADE -> R.string.summary_backup_made
@@ -129,7 +132,11 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.ORDER_DUE -> R.string.summary_order_due
     Summaries.ORDER_NO_DATE -> R.string.summary_order_no_date
     Summaries.ORDER_PLACED -> R.string.summary_order_placed
+    Summaries.ORDER_STATUS -> R.string.summary_order_status
     Summaries.PARTY_ADDED -> R.string.summary_party_added
+    Summaries.PARTY_FIRST_TIER -> R.string.summary_party_first_tier
+    Summaries.PARTY_GENERAL_CONTRACTOR -> R.string.summary_party_general_contractor
+    Summaries.PARTY_SECOND_TIER -> R.string.summary_party_second_tier
     Summaries.PASSCODE_CHANGED -> R.string.summary_passcode_changed
     Summaries.PASSCODE_REMOVED -> R.string.summary_passcode_removed
     Summaries.PERMIT_CANCELLED -> R.string.summary_permit_cancelled
@@ -149,6 +156,11 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.SCAFFOLD_DISMANTLED -> R.string.summary_scaffold_dismantled
     Summaries.SERVICES_LOCATED -> R.string.summary_services_located
     Summaries.SNAG_CLAIMED_FIXED -> R.string.summary_snag_claimed_fixed
+    Summaries.SNAG_STATUS -> R.string.summary_snag_status
+    Summaries.STATUS_FIXED -> R.string.summary_status_fixed
+    Summaries.STATUS_IN_PROGRESS -> R.string.summary_status_in_progress
+    Summaries.STATUS_PROPOSED -> R.string.summary_status_proposed
+    Summaries.STATUS_WITHDRAWN -> R.string.summary_status_withdrawn
     Summaries.STOCK_MOVED -> R.string.summary_stock_moved
     Summaries.TASK_DONE -> R.string.summary_task_done
     Summaries.TASK_REOPENED -> R.string.summary_task_reopened
@@ -164,6 +176,7 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.TW_RELEASED -> R.string.summary_tw_released
     Summaries.TW_STRUCK -> R.string.summary_tw_struck
     Summaries.USED_ON_SITE -> R.string.summary_used_on_site
+    Summaries.VARIATION_STATUS -> R.string.summary_variation_status
     Summaries.VIOLATION_CONFIRMED -> R.string.summary_violation_confirmed
     else -> null
 }
@@ -178,3 +191,54 @@ private fun summaryPhrase(key: String): Int? = when (key) {
  * contains a comma is untouched.
  */
 private const val LIST = ", "
+
+/**
+ * A status or a position on a job, borrowed from the word the screens use.
+ *
+ * These are not written again here. "In the yard" already exists, in three
+ * languages, because the plant register shows it on a chip — and a register
+ * that said something slightly different from the screen it came from would
+ * be worse than one that repeated it, because somebody would eventually have
+ * to work out which of the two was right.
+ *
+ * Keyed by the name of the string rather than by the status constant, so the
+ * mapping is a line anybody can read against the catalogue. The repositories
+ * write these keys through a summaryKey function beside each status
+ * vocabulary.
+ */
+@StringRes
+private fun borrowedPhrase(key: String): Int? = when (key) {
+    "plant_available" -> R.string.plant_available
+    "plant_on_site" -> R.string.plant_on_site
+    "plant_maintenance" -> R.string.plant_maintenance
+    "plant_off_hire" -> R.string.plant_off_hire
+    "po_status_draft" -> R.string.po_status_draft
+    "po_status_ordered" -> R.string.po_status_ordered
+    "po_status_part" -> R.string.po_status_part
+    "po_status_received" -> R.string.po_status_received
+    "po_status_cancelled" -> R.string.po_status_cancelled
+    "snag_state_open" -> R.string.snag_state_open
+    "snag_state_closed" -> R.string.snag_state_closed
+    "snag_state_rejected" -> R.string.snag_state_rejected
+    "wp_status_draft" -> R.string.wp_status_draft
+    "wp_status_offered" -> R.string.wp_status_offered
+    "wp_status_accepted" -> R.string.wp_status_accepted
+    "wp_status_declined" -> R.string.wp_status_declined
+    "wp_status_progress" -> R.string.wp_status_progress
+    "wp_status_submitted" -> R.string.wp_status_submitted
+    "wp_status_rejected" -> R.string.wp_status_rejected
+    "wp_status_approved" -> R.string.wp_status_approved
+    "wp_status_cancelled" -> R.string.wp_status_cancelled
+    "pay_status_draft" -> R.string.pay_status_draft
+    "pay_status_submitted" -> R.string.pay_status_submitted
+    "pay_status_certified" -> R.string.pay_status_certified
+    "pay_status_paid" -> R.string.pay_status_paid
+    "pay_status_rejected" -> R.string.pay_status_rejected
+    "party_client" -> R.string.party_client
+    "party_consultant" -> R.string.party_consultant
+    "party_gc" -> R.string.party_gc
+    "party_first" -> R.string.party_first
+    "party_second" -> R.string.party_second
+    "party_supplier" -> R.string.party_supplier
+    else -> null
+}

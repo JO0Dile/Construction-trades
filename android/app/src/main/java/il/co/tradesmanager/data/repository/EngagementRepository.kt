@@ -95,7 +95,7 @@ class EngagementRepository(
         dao.upsert(row)
         audit.record(
             ENGAGEMENT, row.id, AuditTrail.Action.CREATE, actorName,
-            Summary.of(Summaries.PARTY_ADDED, row.orgName, party.name),
+            Summary.of(Summaries.PARTY_ADDED, row.orgName, Summary.nest(partySummaryKey(party))),
         )
         return Result.success(row)
     }
@@ -240,7 +240,12 @@ class EngagementRepository(
         dao.upsert(updated)
         audit.record(
             AMENDMENT, amendment.id, AuditTrail.Action.SIGN_OFF, actorName,
-            "${contract.reference} v${amendment.version} ${updated.status}",
+            Summary.of(
+                Summaries.AMENDMENT_STATUS,
+                contract.reference,
+                amendment.version.toString(),
+                Summary.nest(amendmentSummaryKey(updated.status)),
+            ),
         )
         return Result.success(updated)
     }
@@ -345,8 +350,22 @@ class EngagementRepository(
             ASSIGNMENT, assignment.id,
             if (to in DECISIONS) AuditTrail.Action.SIGN_OFF else AuditTrail.Action.UPDATE,
             actorName,
-            "${assignment.reference} ${assignment.status} -> $to" +
-                (reason?.let { ": $it" } ?: ""),
+            if (reason.isNullOrBlank()) {
+                Summary.of(
+                    Summaries.ASSIGNMENT_STATUS,
+                    assignment.reference,
+                    Summary.nest(assignmentSummaryKey(assignment.status)),
+                    Summary.nest(assignmentSummaryKey(to)),
+                )
+            } else {
+                Summary.of(
+                    Summaries.ASSIGNMENT_STATUS_REASON,
+                    assignment.reference,
+                    Summary.nest(assignmentSummaryKey(assignment.status)),
+                    Summary.nest(assignmentSummaryKey(to)),
+                    reason.trim(),
+                )
+            },
         )
         return Result.success(updated)
     }
@@ -391,6 +410,45 @@ class EngagementRepository(
 
     /** A refusal, carrying which rule said no. */
     class Refused(val refusal: Refusal) : IllegalStateException(refusal.name)
+
+/**
+ * What a status or a position is called in an audit summary.
+ *
+ * Each key names the string the screens already show, so the register and the
+ * screen a figure came from cannot say two different things — and nobody has
+ * to work out later which of the two was right. Anything unrecognised falls
+ * through to itself and prints as it stands, which is the right answer for a
+ * row written by a version this one has never seen.
+ */
+private fun assignmentSummaryKey(status: String): String = when (status) {
+    Assignment.Status.DRAFT -> "wp_status_draft"
+    Assignment.Status.OFFERED -> "wp_status_offered"
+    Assignment.Status.ACCEPTED -> "wp_status_accepted"
+    Assignment.Status.DECLINED -> "wp_status_declined"
+    Assignment.Status.IN_PROGRESS -> "wp_status_progress"
+    Assignment.Status.SUBMITTED -> "wp_status_submitted"
+    Assignment.Status.REJECTED -> "wp_status_rejected"
+    Assignment.Status.APPROVED -> "wp_status_approved"
+    Assignment.Status.CANCELLED -> "wp_status_cancelled"
+    else -> status
+}
+
+private fun amendmentSummaryKey(status: String): String = when (status) {
+    "PROPOSED" -> Summaries.STATUS_PROPOSED
+    "ACCEPTED" -> "wp_status_accepted"
+    "REJECTED" -> "pay_status_rejected"
+    "WITHDRAWN" -> Summaries.STATUS_WITHDRAWN
+    else -> status
+}
+
+private fun partySummaryKey(party: Party): String = when (party) {
+    Party.CLIENT -> "party_client"
+    Party.CONSULTANT -> "party_consultant"
+    Party.GENERAL_CONTRACTOR -> "party_gc"
+    Party.FIRST_TIER -> "party_first"
+    Party.SECOND_TIER -> "party_second"
+    Party.SUPPLIER -> "party_supplier"
+}
 
     private companion object {
         const val ENGAGEMENT = "engagement"

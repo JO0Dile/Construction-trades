@@ -37,6 +37,22 @@ class EquipmentRepository(
         /** Hired kit that has gone back. Stops accruing on its return date. */
         const val OFF_HIRE = "OFF_HIRE"
 
+        /**
+         * What this status is called in an audit summary.
+         *
+         * The key names the string the screens already show, so the register
+         * and the chip it came from cannot say two different things. An
+         * unknown value falls through to itself, which prints as it stands
+         * rather than vanishing.
+         */
+        fun summaryKey(status: String): String = when (status) {
+            AVAILABLE -> "plant_available"
+            ON_SITE -> "plant_on_site"
+            MAINTENANCE -> "plant_maintenance"
+            OFF_HIRE -> "plant_off_hire"
+            else -> status
+        }
+
         val all = listOf(AVAILABLE, ON_SITE, MAINTENANCE, OFF_HIRE)
     }
 
@@ -131,7 +147,11 @@ class EquipmentRepository(
         )
         audit.record(
             ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName,
-            "${equipment.name} ${status.lowercase().replace('_', ' ')}",
+            Summary.of(
+                Summaries.EQUIPMENT_STATUS,
+                equipment.name,
+                Summary.nest(Status.summaryKey(status)),
+            ),
         )
     }
 

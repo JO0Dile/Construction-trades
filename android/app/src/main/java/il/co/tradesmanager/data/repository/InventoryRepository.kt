@@ -137,8 +137,8 @@ class InventoryRepository(
             actorName = actorName,
             summary = Summary.of(
                 Summaries.STOCK_MOVED,
-                item.quantity.toString(),
-                resulting.toString(),
+                Summary.number(item.quantity),
+                Summary.number(resulting),
                 Summary.nest(reason),
             ),
         )

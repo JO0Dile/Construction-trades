@@ -102,6 +102,30 @@ def faults(phrases: dict, catalogue: dict) -> list[str]:
             if shape(key) not in text:
                 found.append(f"{key}: {what}")
     found += action_faults()
+    found += borrowed_faults(catalogue)
+    return found
+
+
+def borrowed_faults(catalogue: dict) -> list[str]:
+    """The statuses a summary borrows from the screens still exist.
+
+    A summary can carry a status — "PO-12: part delivered" — and rather than
+    translating those words a second time the renderer points at the string
+    the plant register and the orders screen already show. That keeps the
+    register and the screen it came from saying the same thing, and it means a
+    rename in the catalogue silently turns the audit trail back into
+    "part_received" unless something checks. This is that something.
+    """
+    found = []
+    text = RESOLVER.read_text(encoding="utf-8")
+    borrowed = re.findall(r'"([a-z][a-z0-9_]*)" -> R\.string\.([a-z][a-z0-9_]*)', text)
+    if not borrowed:
+        return ["SummaryText.kt: no borrowed status labels found — has the shape changed?"]
+    for key, name in borrowed:
+        if key != name:
+            found.append(f"borrowed status {key}: points at R.string.{name}; keep the two the same")
+        if name not in catalogue["strings"]:
+            found.append(f"borrowed status {key}: R.string.{name} is not in the catalogue")
     return found
 
 
@@ -151,7 +175,7 @@ def main() -> int:
         return 1
     print(
         f"All {len(phrases)} audit phrases are translated and wired, "
-        "and every audit action has a word for it."
+        "every audit action has a word for it, and every borrowed status resolves."
     )
     return 0
 

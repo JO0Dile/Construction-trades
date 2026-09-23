@@ -6422,6 +6422,71 @@
       "en": "website",
       "he": "אתר אינטרנט",
       "ar": "الموقع الإلكتروني"
+    },
+    "summary_amendment_status": {
+      "en": "%1$s v%2$s: %3$s",
+      "he": "%1$s גרסה %2$s: %3$s",
+      "ar": "%1$s نسخة %2$s: %3$s"
+    },
+    "summary_assignment_status": {
+      "en": "%1$s: %2$s to %3$s",
+      "he": "%1$s: מ%2$s ל%3$s",
+      "ar": "%1$s: من %2$s إلى %3$s"
+    },
+    "summary_assignment_status_reason": {
+      "en": "%1$s: %2$s to %3$s — %4$s",
+      "he": "%1$s: מ%2$s ל%3$s — %4$s",
+      "ar": "%1$s: من %2$s إلى %3$s — %4$s"
+    },
+    "summary_order_status": {
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "summary_party_first_tier": {
+      "en": "First-tier subcontractor",
+      "he": "קבלן משנה ראשי",
+      "ar": "مقاول باطن من الدرجة الأولى"
+    },
+    "summary_party_general_contractor": {
+      "en": "General contractor",
+      "he": "קבלן ראשי",
+      "ar": "مقاول رئيسي"
+    },
+    "summary_party_second_tier": {
+      "en": "Crew leader / labour-only",
+      "he": "ראש צוות / כוח אדם בלבד",
+      "ar": "رئيس طاقم / أيدٍ عاملة فقط"
+    },
+    "summary_snag_status": {
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "summary_status_fixed": {
+      "en": "Reported fixed",
+      "he": "דווח כתוקן",
+      "ar": "أُبلغ عن إصلاحه"
+    },
+    "summary_status_in_progress": {
+      "en": "In progress",
+      "he": "בביצוע",
+      "ar": "قيد التنفيذ"
+    },
+    "summary_status_proposed": {
+      "en": "Proposed",
+      "he": "הוצע",
+      "ar": "مُقترح"
+    },
+    "summary_status_withdrawn": {
+      "en": "Withdrawn",
+      "he": "נמשך",
+      "ar": "سُحب"
+    },
+    "summary_variation_status": {
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
     }
   },
   "plurals": {

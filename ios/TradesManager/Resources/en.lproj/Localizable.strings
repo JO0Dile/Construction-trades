@@ -1365,3 +1365,16 @@
 "summary_field_phone" = "phone";
 "summary_field_registration" = "registration number";
 "summary_field_website" = "website";
+"summary_amendment_status" = "%1$s v%2$s: %3$s";
+"summary_assignment_status" = "%1$s: %2$s to %3$s";
+"summary_assignment_status_reason" = "%1$s: %2$s to %3$s — %4$s";
+"summary_order_status" = "%1$s: %2$s";
+"summary_party_first_tier" = "First-tier subcontractor";
+"summary_party_general_contractor" = "General contractor";
+"summary_party_second_tier" = "Crew leader / labour-only";
+"summary_snag_status" = "%1$s: %2$s";
+"summary_status_fixed" = "Reported fixed";
+"summary_status_in_progress" = "In progress";
+"summary_status_proposed" = "Proposed";
+"summary_status_withdrawn" = "Withdrawn";
+"summary_variation_status" = "%1$s: %2$s";

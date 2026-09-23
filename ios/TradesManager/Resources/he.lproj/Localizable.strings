@@ -1365,3 +1365,16 @@
 "summary_field_phone" = "טלפון";
 "summary_field_registration" = "מספר רישום";
 "summary_field_website" = "אתר אינטרנט";
+"summary_amendment_status" = "%1$s גרסה %2$s: %3$s";
+"summary_assignment_status" = "%1$s: מ%2$s ל%3$s";
+"summary_assignment_status_reason" = "%1$s: מ%2$s ל%3$s — %4$s";
+"summary_order_status" = "%1$s: %2$s";
+"summary_party_first_tier" = "קבלן משנה ראשי";
+"summary_party_general_contractor" = "קבלן ראשי";
+"summary_party_second_tier" = "ראש צוות / כוח אדם בלבד";
+"summary_snag_status" = "%1$s: %2$s";
+"summary_status_fixed" = "דווח כתוקן";
+"summary_status_in_progress" = "בביצוע";
+"summary_status_proposed" = "הוצע";
+"summary_status_withdrawn" = "נמשך";
+"summary_variation_status" = "%1$s: %2$s";

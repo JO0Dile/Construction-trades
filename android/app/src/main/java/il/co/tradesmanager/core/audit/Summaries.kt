@@ -27,6 +27,13 @@ object Summaries {
     const val ADMITTED_AT_GATE = "admitted_at_gate"
 
     /**
+     * %1$s v%2$s: %3$s
+     *
+     * Arguments, in order: reference, version, status.
+     */
+    const val AMENDMENT_STATUS = "amendment_status"
+
+    /**
      * %1$s certified
      *
      * Arguments, in order: reference.
@@ -60,6 +67,20 @@ object Summaries {
      * Arguments, in order: reference.
      */
     const val ASSIGNMENT_INVOICED = "assignment_invoiced"
+
+    /**
+     * %1$s: %2$s to %3$s
+     *
+     * Arguments, in order: reference, from, to.
+     */
+    const val ASSIGNMENT_STATUS = "assignment_status"
+
+    /**
+     * %1$s: %2$s to %3$s — %4$s
+     *
+     * Arguments, in order: reference, from, to, reason.
+     */
+    const val ASSIGNMENT_STATUS_REASON = "assignment_status_reason"
 
     /**
      * %1$s attended
@@ -368,11 +389,33 @@ object Summaries {
     const val ORDER_PLACED = "order_placed"
 
     /**
+     * %1$s: %2$s
+     *
+     * Arguments, in order: reference, status.
+     */
+    const val ORDER_STATUS = "order_status"
+
+    /**
      * %1$s added as %2$s
      *
      * Arguments, in order: organisation, party.
      */
     const val PARTY_ADDED = "party_added"
+
+    /**
+     * First-tier subcontractor
+     */
+    const val PARTY_FIRST_TIER = "party_first_tier"
+
+    /**
+     * General contractor
+     */
+    const val PARTY_GENERAL_CONTRACTOR = "party_general_contractor"
+
+    /**
+     * Crew leader / labour-only
+     */
+    const val PARTY_SECOND_TIER = "party_second_tier"
 
     /**
      * Passcode changed
@@ -494,6 +537,33 @@ object Summaries {
     const val SNAG_CLAIMED_FIXED = "snag_claimed_fixed"
 
     /**
+     * %1$s: %2$s
+     *
+     * Arguments, in order: reference, status.
+     */
+    const val SNAG_STATUS = "snag_status"
+
+    /**
+     * Reported fixed
+     */
+    const val STATUS_FIXED = "status_fixed"
+
+    /**
+     * In progress
+     */
+    const val STATUS_IN_PROGRESS = "status_in_progress"
+
+    /**
+     * Proposed
+     */
+    const val STATUS_PROPOSED = "status_proposed"
+
+    /**
+     * Withdrawn
+     */
+    const val STATUS_WITHDRAWN = "status_withdrawn"
+
+    /**
      * %1$s to %2$s — %3$s
      *
      * Arguments, in order: from, to, reason.
@@ -587,6 +657,13 @@ object Summaries {
      * Used on site
      */
     const val USED_ON_SITE = "used_on_site"
+
+    /**
+     * %1$s: %2$s
+     *
+     * Arguments, in order: reference, status.
+     */
+    const val VARIATION_STATUS = "variation_status"
 
     /**
      * Violation confirmed against %1$s

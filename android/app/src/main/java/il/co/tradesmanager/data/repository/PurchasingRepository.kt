@@ -39,6 +39,23 @@ class PurchasingRepository(
         const val RECEIVED = "RECEIVED"
         /** A conversation that ended. Commits nothing. */
         const val CANCELLED = "CANCELLED"
+
+        /**
+         * What this status is called in an audit summary.
+         *
+         * The key names the string the screens already show, so the register
+         * and the chip it came from cannot say two different things. An
+         * unknown value falls through to itself, which prints as it stands
+         * rather than vanishing.
+         */
+        fun summaryKey(status: String): String = when (status) {
+            DRAFT -> "po_status_draft"
+            ORDERED -> "po_status_ordered"
+            PART_RECEIVED -> "po_status_part"
+            RECEIVED -> "po_status_received"
+            CANCELLED -> "po_status_cancelled"
+            else -> status
+        }
     }
 
     fun observeOrders(): Flow<List<PurchaseOrderEntity>> = dao.observeOrders()
@@ -157,7 +174,7 @@ class PurchasingRepository(
             if (expectedOn == null) {
                 Summary.of(Summaries.ORDER_NO_DATE, order.reference)
             } else {
-                Summary.of(Summaries.ORDER_DUE, order.reference, expectedOn.toString())
+                Summary.of(Summaries.ORDER_DUE, order.reference, Summary.date(expectedOn))
             },
         )
         return true
@@ -212,7 +229,7 @@ class PurchasingRepository(
             "purchase_order_line", line.id, AuditTrail.Action.UPDATE, actorName,
             Summary.of(
                 Summaries.GOODS_RECEIVED,
-                quantity.toString(),
+                Summary.number(quantity),
                 line.unit,
                 line.label,
             ),
@@ -258,7 +275,11 @@ class PurchasingRepository(
             dao.upsertOrder(order.copy(status = status, updatedAt = System.currentTimeMillis()))
             audit.record(
                 ENTITY, order.id, AuditTrail.Action.UPDATE, actorName,
-                "${order.reference} ${status.lowercase().replace('_', ' ')}",
+                Summary.of(
+                Summaries.ORDER_STATUS,
+                order.reference,
+                Summary.nest(Status.summaryKey(status)),
+            ),
             )
         }
     }

@@ -186,7 +186,11 @@ class MoneyRepository(
         )
         audit.record(
             "variation", variation.id, AuditTrail.Action.UPDATE, actorName,
-            "${variation.reference} ${status.lowercase()}",
+            Summary.of(
+                Summaries.VARIATION_STATUS,
+                variation.reference,
+                Summary.nest(JobFinancials.VariationStatus.summaryKey(status)),
+            ),
         )
     }
 

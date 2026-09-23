@@ -95,6 +95,28 @@ def prose_in(expression: str) -> list[str]:
     return left
 
 
+# A status or a position is English in the value rather than in the literal,
+# so stripping the interpolations hides it completely. "PO-12 part received"
+# has no English in its fixed part at all — the words come out of the enum.
+ENUM = re.compile(
+    r"\.(status|kind|severity|state)\b"
+    r"|\.lowercase\(|\.uppercase\("
+    r"|\b[A-Z][A-Za-z]*\.(Status|Kind|Severity|State)\."
+)
+
+
+def enums_in(expression: str) -> list[str]:
+    """Enum values interpolated into a summary without being marked as keys.
+
+    Summary.nest is what says "this is a key, look it up". Anything else lands
+    in the register spelled the way the constant is spelled, which is English,
+    and no amount of reading the string literal will show it.
+    """
+    if "Summary.nest" in expression:
+        return []
+    return sorted({m.group(0) for m in ENUM.finditer(expression)})
+
+
 def main() -> int:
     problems, checked = [], 0
     for path in sorted(SOURCE.rglob("*.kt")):
@@ -104,23 +126,27 @@ def main() -> int:
             if expression is None:
                 continue
             checked += 1
-            prose = prose_in(expression)
-            if prose:
+            found = prose_in(expression) + enums_in(expression)
+            if found:
                 line = text[: match.start()].count("\n") + 1
-                problems.append((path.relative_to(ROOT), line, prose))
+                problems.append((path.relative_to(ROOT), line, found))
 
     if problems:
-        print(f"{len(problems)} audit summaries are English sentences:\n")
+        print(f"{len(problems)} audit summaries would be English in the register:\n")
         for where, line, prose in problems:
             print(f"  {where}:{line}")
             for phrase in prose:
                 print(f"      {phrase!r}")
         print(
             "\nStore a key and its arguments instead — Summary.of(Summaries.X, ...) —"
-            "\nso the register can be read in the language of whoever opens it."
+            "\nand mark a status or a role with Summary.nest, so the register can be"
+            "\nread in the language of whoever opens it."
         )
         return 1
-    print(f"None of the {checked} audit summaries hard-code an English sentence.")
+    print(
+        f"None of the {checked} audit summaries hard-code an English sentence "
+        "or an untranslated status."
+    )
     return 0
 
 

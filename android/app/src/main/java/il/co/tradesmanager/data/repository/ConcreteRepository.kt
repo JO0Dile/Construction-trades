@@ -114,7 +114,7 @@ class ConcreteRepository(
             Summary.of(
                 Summaries.CONCRETE_TRUCK,
                 ticket.truckNumber.orEmpty(),
-                ticket.volume.toString(),
+                Summary.number(ticket.volume),
             ),
         )
         return ticket

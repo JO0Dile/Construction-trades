@@ -399,7 +399,11 @@ class EvidenceRepository(
         )
         audit.record(
             SNAG, snagId, AuditTrail.Action.SIGN_OFF, actorName,
-            "${snag.reference} ${status.lowercase()}",
+            Summary.of(
+                Summaries.SNAG_STATUS,
+                snag.reference,
+                Summary.nest(Snags.Status.summaryKey(status)),
+            ),
         )
         return true
     }

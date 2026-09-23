@@ -62,6 +62,34 @@ object Summary {
     fun of(key: String, vararg arguments: String): String =
         (listOf(key) + arguments.map(::escape)).joinToString(SEPARATOR.toString())
 
+    /**
+     * A number, as it should be written into a summary.
+     *
+     * Plain digits, and no trailing `.0` on a whole number — a register that
+     * says "4.0 sockets" was written by a program rather than by a person,
+     * and reads that way. ASCII rather than the reader's own digits on
+     * purpose: the argument is stored once and read in three languages, so it
+     * cannot be formatted for any one of them.
+     */
+    fun number(value: Double): String = when {
+        !value.isFinite() -> value.toString()
+        value == Math.rint(value) && kotlin.math.abs(value) < 1e15 -> value.toLong().toString()
+        else -> value.toString()
+    }
+
+    /**
+     * A moment, as it should be written into a summary.
+     *
+     * The day it fell on where the work is, in ISO order. This was an epoch
+     * millisecond count — "PO-12 due 1758585600000" — which is a thirteen
+     * digit number where a delivery date should be, and was that in English
+     * too. A date is stored rather than formatted because it is written once
+     * and read in three languages, and 2026-10-01 is the one spelling that
+     * means the same in all of them.
+     */
+    fun date(epochMillis: Long, zone: java.time.ZoneId = java.time.ZoneId.systemDefault()): String =
+        java.time.Instant.ofEpochMilli(epochMillis).atZone(zone).toLocalDate().toString()
+
     /** Null when this is not one of ours, which means show it as it is. */
     fun parse(stored: String): Parsed? {
         val parts = split(stored)

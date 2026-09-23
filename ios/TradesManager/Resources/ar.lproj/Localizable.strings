@@ -1365,3 +1365,16 @@
 "summary_field_phone" = "الهاتف";
 "summary_field_registration" = "رقم التسجيل";
 "summary_field_website" = "الموقع الإلكتروني";
+"summary_amendment_status" = "%1$s نسخة %2$s: %3$s";
+"summary_assignment_status" = "%1$s: من %2$s إلى %3$s";
+"summary_assignment_status_reason" = "%1$s: من %2$s إلى %3$s — %4$s";
+"summary_order_status" = "%1$s: %2$s";
+"summary_party_first_tier" = "مقاول باطن من الدرجة الأولى";
+"summary_party_general_contractor" = "مقاول رئيسي";
+"summary_party_second_tier" = "رئيس طاقم / أيدٍ عاملة فقط";
+"summary_snag_status" = "%1$s: %2$s";
+"summary_status_fixed" = "أُبلغ عن إصلاحه";
+"summary_status_in_progress" = "قيد التنفيذ";
+"summary_status_proposed" = "مُقترح";
+"summary_status_withdrawn" = "سُحب";
+"summary_variation_status" = "%1$s: %2$s";

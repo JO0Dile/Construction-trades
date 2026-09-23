@@ -23,6 +23,16 @@
       "he": "%1$s נרשם בשער בתפקיד %2$s",
       "ar": "%1$s سُجّل عند البوابة بصفة %2$s"
     },
+    "amendment_status": {
+      "arguments": [
+        "reference",
+        "version",
+        "status"
+      ],
+      "en": "%1$s v%2$s: %3$s",
+      "he": "%1$s גרסה %2$s: %3$s",
+      "ar": "%1$s نسخة %2$s: %3$s"
+    },
     "application_certified": {
       "arguments": [
         "reference"
@@ -62,6 +72,27 @@
       "en": "%1$s invoiced",
       "he": "%1$s חויב",
       "ar": "%1$s صدرت فاتورته"
+    },
+    "assignment_status": {
+      "arguments": [
+        "reference",
+        "from",
+        "to"
+      ],
+      "en": "%1$s: %2$s to %3$s",
+      "he": "%1$s: מ%2$s ל%3$s",
+      "ar": "%1$s: من %2$s إلى %3$s"
+    },
+    "assignment_status_reason": {
+      "arguments": [
+        "reference",
+        "from",
+        "to",
+        "reason"
+      ],
+      "en": "%1$s: %2$s to %3$s — %4$s",
+      "he": "%1$s: מ%2$s ל%3$s — %4$s",
+      "ar": "%1$s: من %2$s إلى %3$s — %4$s"
     },
     "attendee_added": {
       "arguments": [
@@ -429,6 +460,15 @@
       "he": "%1$s הוזמנה",
       "ar": "%1$s أُرسل الطلب"
     },
+    "order_status": {
+      "arguments": [
+        "reference",
+        "status"
+      ],
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
     "party_added": {
       "arguments": [
         "organisation",
@@ -437,6 +477,24 @@
       "en": "%1$s added as %2$s",
       "he": "%1$s נוסף בתור %2$s",
       "ar": "%1$s أُضيف بصفة %2$s"
+    },
+    "party_first_tier": {
+      "arguments": [],
+      "en": "First-tier subcontractor",
+      "he": "קבלן משנה ראשי",
+      "ar": "مقاول باطن من الدرجة الأولى"
+    },
+    "party_general_contractor": {
+      "arguments": [],
+      "en": "General contractor",
+      "he": "קבלן ראשי",
+      "ar": "مقاول رئيسي"
+    },
+    "party_second_tier": {
+      "arguments": [],
+      "en": "Crew leader / labour-only",
+      "he": "ראש צוות / כוח אדם בלבד",
+      "ar": "رئيس طاقم / أيدٍ عاملة فقط"
     },
     "passcode_changed": {
       "arguments": [],
@@ -577,6 +635,39 @@
       "he": "%1$s דווח כתוקן",
       "ar": "%1$s أُبلغ عن إصلاحه"
     },
+    "snag_status": {
+      "arguments": [
+        "reference",
+        "status"
+      ],
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "status_fixed": {
+      "arguments": [],
+      "en": "Reported fixed",
+      "he": "דווח כתוקן",
+      "ar": "أُبلغ عن إصلاحه"
+    },
+    "status_in_progress": {
+      "arguments": [],
+      "en": "In progress",
+      "he": "בביצוע",
+      "ar": "قيد التنفيذ"
+    },
+    "status_proposed": {
+      "arguments": [],
+      "en": "Proposed",
+      "he": "הוצע",
+      "ar": "مُقترح"
+    },
+    "status_withdrawn": {
+      "arguments": [],
+      "en": "Withdrawn",
+      "he": "נמשך",
+      "ar": "سُحب"
+    },
     "stock_moved": {
       "arguments": [
         "from",
@@ -690,6 +781,15 @@
       "en": "Used on site",
       "he": "שימוש באתר",
       "ar": "استُخدم في الموقع"
+    },
+    "variation_status": {
+      "arguments": [
+        "reference",
+        "status"
+      ],
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
     },
     "violation_confirmed": {
       "arguments": [

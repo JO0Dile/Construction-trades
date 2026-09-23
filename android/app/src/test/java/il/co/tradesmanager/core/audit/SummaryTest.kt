@@ -110,6 +110,48 @@ class SummaryTest {
     }
 
     @Test
+    fun `a whole number is written without a trailing point zero`() {
+        // "4.0 sockets" in a register was written by a program rather than by
+        // a person, and reads that way to whoever is reconstructing a day.
+        assertEquals("4", Summary.number(4.0))
+        assertEquals("0", Summary.number(0.0))
+        assertEquals("-3", Summary.number(-3.0))
+        assertEquals("1000000", Summary.number(1_000_000.0))
+    }
+
+    @Test
+    fun `a fraction keeps its fraction`() {
+        // Half a cubic metre of concrete is not the same delivery as a whole
+        // one, and the ticket has to be able to say so.
+        assertTrue(Summary.number(2.5).contains("."))
+        assertTrue(Summary.number(0.25).contains("."))
+        assertTrue(Summary.number(-1.5).contains("."))
+    }
+
+    @Test
+    fun `a date is a date and not thirteen digits`() {
+        // This was an epoch millisecond count: "PO-12 due 1758585600000".
+        // ISO order because the argument is stored once and read in three
+        // languages, and 2025-09-23 is the one spelling that means the same
+        // in all of them.
+        val utc = java.time.ZoneId.of("UTC")
+        assertEquals("2025-09-23", Summary.date(1_758_585_600_000L, utc))
+        assertEquals("1970-01-01", Summary.date(0L, utc))
+    }
+
+    @Test
+    fun `the day is the day where the work is`() {
+        // Half past eleven at night in Israel is still that day, not the next
+        // one, and a delivery date that moves because the server is in London
+        // is a delivery date nobody trusts.
+        val israel = java.time.ZoneId.of("Asia/Jerusalem")
+        val lateEvening = java.time.ZonedDateTime
+            .of(2026, 3, 1, 23, 30, 0, 0, israel)
+            .toInstant().toEpochMilli()
+        assertEquals("2026-03-01", Summary.date(lateEvening, israel))
+    }
+
+    @Test
     fun `keys are lower case, digits and underscores`() {
         for (key in listOf("a", "a1", "tw_released", "goods_received")) {
             assertEquals(Summary.Parsed(key, emptyList()), Summary.parse(key))
