@@ -35,6 +35,7 @@ import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TemporaryWorksRepository
 import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.repository.ViolationRepository
+import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.data.sync.NoOpSyncEngine
 import il.co.tradesmanager.data.sync.SyncEngine
 import il.co.tradesmanager.data.update.UpdateRepository
@@ -167,6 +168,8 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     val musters = MusterRepository(database.musterDao(), database.scheduleDao(), auditTrail)
 
     val heat = HeatRepository(database.heatDao(), database.scheduleDao(), auditTrail)
+
+    val waste = WasteRepository(database.wasteDao(), auditTrail)
 
     /**
      * Taking the record off the phone and putting it back.

@@ -1567,3 +1567,75 @@
 "plant_preuse_undescribed" = "Say what the defect is.";
 /* Refusal */
 "plant_preuse_nothing" = "Nothing was marked as looked at. Mark at least what you checked.";
+/* Register title */
+"waste_title" = "Waste register";
+/* Link on the job screen */
+"waste_row_hint" = "Every load that leaves, and where it went";
+/* Top of the register */
+"waste_blurb" = "Record each load as it leaves, with its ticket. At the end of the job this is the proof of where the waste went.";
+/* Button */
+"waste_add" = "Record a load";
+/* Field label */
+"waste_stream" = "What it is";
+/* Field label */
+"waste_quantity" = "Quantity";
+/* Field label */
+"waste_destination" = "Where it went";
+/* Field label */
+"waste_facility" = "Facility name";
+/* Field label */
+"waste_hauler" = "Haulier (optional)";
+/* Field label */
+"waste_ticket" = "Ticket number";
+/* Field label */
+"waste_notes" = "Notes (optional)";
+/* Button */
+"waste_ticket_photo" = "Photograph the ticket";
+/* On a load with nothing to show where it went */
+"waste_no_ticket" = "No ticket yet";
+/* Button on a load with no ticket number */
+"waste_add_ticket" = "Add the ticket number";
+/* Empty register */
+"waste_empty" = "No loads recorded on this job.";
+/* Totals line: amount, unit, share kept out of landfill */
+"waste_total" = "%1$s %2$s in total, %3$s kept out of landfill";
+/* Refusal */
+"waste_refused_quantity" = "Enter how much it was.";
+/* Refusal */
+"waste_refused_destination" = "Say which facility it went to.";
+/* Refusal */
+"waste_refused_hazardous" = "Hazardous waste is never recorded without its ticket number.";
+/* Refusal */
+"waste_not_allowed" = "This account cannot write to the site registers.";
+/* Handover pack row */
+"hv_waste_unproven" = "Waste loads with no ticket";
+/* Waste stream */
+"waste_stream_concrete_and_masonry" = "Concrete and masonry";
+/* Waste stream */
+"waste_stream_wood" = "Wood";
+/* Waste stream */
+"waste_stream_metal" = "Metal";
+/* Waste stream */
+"waste_stream_plastic" = "Plastic";
+/* Waste stream */
+"waste_stream_cardboard_and_paper" = "Cardboard and paper";
+/* Waste stream */
+"waste_stream_soil" = "Soil";
+/* Waste stream */
+"waste_stream_mixed" = "Mixed";
+/* Waste stream */
+"waste_stream_hazardous" = "Hazardous";
+/* Unit */
+"waste_unit_tonnes" = "tonnes";
+/* Unit */
+"waste_unit_cubic_metres" = "m³";
+/* Destination */
+"waste_dest_recycling" = "Recycling facility";
+/* Destination */
+"waste_dest_reused" = "Reused";
+/* Destination */
+"waste_dest_transfer_station" = "Transfer station";
+/* Destination */
+"waste_dest_landfill" = "Landfill";
+"summary_waste_recorded" = "%1$s %2$s of %3$s to %4$s";
+"summary_waste_ticket_added" = "Ticket added for a load to %1$s";

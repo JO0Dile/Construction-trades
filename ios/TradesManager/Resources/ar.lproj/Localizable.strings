@@ -1567,3 +1567,75 @@
 "plant_preuse_undescribed" = "صِف العطل.";
 /* Refusal */
 "plant_preuse_nothing" = "لم يُعلَّم أي شيء على أنه فُحص. علّم على الأقل ما فحصته.";
+/* Register title */
+"waste_title" = "سجل النفايات";
+/* Link on the job screen */
+"waste_row_hint" = "كل حمولة تغادر وإلى أين ذهبت";
+/* Top of the register */
+"waste_blurb" = "سجّل كل حمولة عند مغادرتها مع تذكرتها. في نهاية العمل هذا هو الدليل على وجهة النفايات.";
+/* Button */
+"waste_add" = "سجّل حمولة";
+/* Field label */
+"waste_stream" = "ما هي";
+/* Field label */
+"waste_quantity" = "الكمية";
+/* Field label */
+"waste_destination" = "إلى أين ذهبت";
+/* Field label */
+"waste_facility" = "اسم المنشأة";
+/* Field label */
+"waste_hauler" = "الناقل (اختياري)";
+/* Field label */
+"waste_ticket" = "رقم التذكرة";
+/* Field label */
+"waste_notes" = "ملاحظات (اختياري)";
+/* Button */
+"waste_ticket_photo" = "صوّر التذكرة";
+/* On a load with nothing to show where it went */
+"waste_no_ticket" = "لا توجد تذكرة بعد";
+/* Button on a load with no ticket number */
+"waste_add_ticket" = "أضف رقم التذكرة";
+/* Empty register */
+"waste_empty" = "لم تُسجَّل حمولات في هذا العمل.";
+/* Totals line: amount, unit, share kept out of landfill */
+"waste_total" = "المجموع %1$s %2$s، منها %3$s لم تذهب إلى المكب";
+/* Refusal */
+"waste_refused_quantity" = "أدخل الكمية.";
+/* Refusal */
+"waste_refused_destination" = "اذكر المنشأة التي ذهبت إليها.";
+/* Refusal */
+"waste_refused_hazardous" = "لا تُسجَّل النفايات الخطرة أبدًا دون رقم التذكرة.";
+/* Refusal */
+"waste_not_allowed" = "هذا الحساب لا يملك صلاحية الكتابة في سجلات الموقع.";
+/* Handover pack row */
+"hv_waste_unproven" = "حمولات نفايات بلا تذكرة";
+/* Waste stream */
+"waste_stream_concrete_and_masonry" = "خرسانة وبناء";
+/* Waste stream */
+"waste_stream_wood" = "خشب";
+/* Waste stream */
+"waste_stream_metal" = "معادن";
+/* Waste stream */
+"waste_stream_plastic" = "بلاستيك";
+/* Waste stream */
+"waste_stream_cardboard_and_paper" = "كرتون وورق";
+/* Waste stream */
+"waste_stream_soil" = "تربة";
+/* Waste stream */
+"waste_stream_mixed" = "مختلط";
+/* Waste stream */
+"waste_stream_hazardous" = "خطِر";
+/* Unit */
+"waste_unit_tonnes" = "طن";
+/* Unit */
+"waste_unit_cubic_metres" = "م³";
+/* Destination */
+"waste_dest_recycling" = "منشأة إعادة تدوير";
+/* Destination */
+"waste_dest_reused" = "إعادة استخدام";
+/* Destination */
+"waste_dest_transfer_station" = "محطة ترحيل";
+/* Destination */
+"waste_dest_landfill" = "مكب نفايات";
+"summary_waste_recorded" = "%1$s %2$s من %3$s إلى %4$s";
+"summary_waste_ticket_added" = "أُضيفت تذكرة لحمولة أُرسلت إلى %1$s";

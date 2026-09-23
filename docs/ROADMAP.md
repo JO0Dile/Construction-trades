@@ -478,6 +478,25 @@ every item was marked as not applying is refused because nothing was looked
 at. The register shows each machine's state for today on its row, because the
 question at seven in the morning is which machines may be started.
 
+**The construction waste register. Done.**
+The first of the green-building row. Every skip and lorry of rubble leaves
+for somewhere, and at the end of a job the question is whether anybody can
+show where — a local authority can ask for proof that construction waste went
+to a licensed facility, and a client with a green-building target asks how
+much was kept out of landfill. Each load is recorded as it leaves: what it
+was, how much, who took it, which facility, and the ticket, by number, by
+photograph or both.
+
+A load with no ticket is still recorded, because it still left, and counted
+as unproven until one is added; the handover pack now lists those loads
+beside the open permits and the standing scaffolds. Hazardous waste is the
+exception and is never recorded without its ticket number. Totals are kept
+per unit and never added across tonnes and cubic metres, a transfer station
+is not counted as kept out of landfill because this record cannot see what
+the station did with it, and a job with no loads has no diversion rate
+rather than a rate of nothing. Presented as keeping the evidence for whoever
+asks, not as what any authority requires on a particular job.
+
 **The reachability pass. Done.**
 The fault this codebase actually has is not a crash. It is something that
 compiles, lints, passes every test and cannot be reached, or that says no
@@ -515,7 +534,7 @@ Whole categories still at zero, in roughly the order they are worth doing:
 | ----------- | -------------------- |
 | Sync between devices | every lens, one mechanism |
 | Israeli government and accounting integrations | the edge, Phase 5 |
-| Site security, structural, underground, façade, green building, legal, PR, weather, AI | not yet placed |
+| Site security, structural, underground, façade, the rest of green building, legal, PR, weather, AI | not yet placed |
 
 Since that list was written, twelve of its rows have landed and are no longer
 on it: the plant register, purchase orders with goods received, toolbox talks
@@ -565,20 +584,20 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~88 | *estimated — see below* |
-| Buildable here — on the device, no server | ~98 | where the work is |
+| Built | ~89 | *estimated — see below* |
+| Buildable here — on the device, no server | ~97 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~88 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
-check, and plant pre-use checks.
+check, plant pre-use checks, and the waste register.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

@@ -66,6 +66,12 @@ class PhotoRepository(
         const val CHECKLIST_FAIL = "checklist.fail"
 
         /**
+         * A photograph of a waste load's ticket from the facility that took
+         * it. Either this or the ticket number shows where the load went.
+         */
+        const val WASTE_TICKET = "waste.ticket"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.
@@ -173,6 +179,16 @@ class PhotoRepository(
      * entry for a repeated key, so every item that had ever been
      * re-photographed showed the picture it was replacing, permanently.
      */
+    /**
+     * How many photographs each owner of one kind has, by owner id.
+     *
+     * For a register whose rows count as shown once a photograph exists --
+     * a waste load with a picture of its ticket -- and which needs that
+     * answer for a whole list at once rather than one query per row.
+     */
+    fun observeCountsFor(ownerType: String): Flow<Map<String, Int>> =
+        dao.observeAllOfType(ownerType).map { photos -> photos.groupingBy { it.ownerId }.eachCount() }
+
     private fun newestPerOwner(ownerType: String): Flow<Map<String, String>> =
         dao.observeAllOfType(ownerType).map { photos ->
             photos.groupBy { it.ownerId }.mapValues { (_, theirs) -> theirs.first().uri }

@@ -307,5 +307,21 @@
             <string>%d machines on site not checked today</string>
         </dict>
     </dict>
+    <key>waste_unproven</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d load with no ticket</string>
+            <key>other</key>
+            <string>%d loads with no ticket</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

@@ -185,6 +185,8 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.USED_ON_SITE -> R.string.summary_used_on_site
     Summaries.VARIATION_STATUS -> R.string.summary_variation_status
     Summaries.VIOLATION_CONFIRMED -> R.string.summary_violation_confirmed
+    Summaries.WASTE_RECORDED -> R.string.summary_waste_recorded
+    Summaries.WASTE_TICKET_ADDED -> R.string.summary_waste_ticket_added
     else -> null
 }
 
@@ -220,6 +222,16 @@ private fun borrowedPhrase(key: String): Int? = when (key) {
     "heat_band_extreme_caution" -> R.string.heat_band_extreme_caution
     "heat_band_danger" -> R.string.heat_band_danger
     "heat_band_extreme_danger" -> R.string.heat_band_extreme_danger
+    "waste_stream_concrete_and_masonry" -> R.string.waste_stream_concrete_and_masonry
+    "waste_stream_wood" -> R.string.waste_stream_wood
+    "waste_stream_metal" -> R.string.waste_stream_metal
+    "waste_stream_plastic" -> R.string.waste_stream_plastic
+    "waste_stream_cardboard_and_paper" -> R.string.waste_stream_cardboard_and_paper
+    "waste_stream_soil" -> R.string.waste_stream_soil
+    "waste_stream_mixed" -> R.string.waste_stream_mixed
+    "waste_stream_hazardous" -> R.string.waste_stream_hazardous
+    "waste_unit_tonnes" -> R.string.waste_unit_tonnes
+    "waste_unit_cubic_metres" -> R.string.waste_unit_cubic_metres
     "muster_reason_drill" -> R.string.muster_reason_drill
     "muster_reason_emergency" -> R.string.muster_reason_emergency
     "plant_available" -> R.string.plant_available

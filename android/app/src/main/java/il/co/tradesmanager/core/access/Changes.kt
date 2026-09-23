@@ -67,6 +67,7 @@ object Changes {
         "violation" to Lens.EVIDENCE,
         "muster" to Lens.EVIDENCE,
         "heat_check" to Lens.EVIDENCE,
+        "waste_load" to Lens.EVIDENCE,
         "snag" to Lens.EVIDENCE,
         "toolbox_talk" to Lens.EVIDENCE,
         "permit" to Lens.EVIDENCE,

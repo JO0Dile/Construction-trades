@@ -718,4 +718,18 @@ object Summaries {
      * Arguments, in order: name.
      */
     const val VIOLATION_CONFIRMED = "violation_confirmed"
+
+    /**
+     * %1$s %2$s of %3$s to %4$s
+     *
+     * Arguments, in order: quantity, unit, stream, facility.
+     */
+    const val WASTE_RECORDED = "waste_recorded"
+
+    /**
+     * Ticket added for a load to %1$s
+     *
+     * Arguments, in order: facility.
+     */
+    const val WASTE_TICKET_ADDED = "waste_ticket_added"
 }

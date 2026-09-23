@@ -1356,6 +1356,43 @@
     <string name="plant_preuse_unanswered">أجب عن كل بند. الجولة غير المكتملة ليست فحصًا.</string>
     <string name="plant_preuse_undescribed">صِف العطل.</string>
     <string name="plant_preuse_nothing">لم يُعلَّم أي شيء على أنه فُحص. علّم على الأقل ما فحصته.</string>
+    <string name="waste_title">سجل النفايات</string>
+    <string name="waste_row_hint">كل حمولة تغادر وإلى أين ذهبت</string>
+    <string name="waste_blurb">سجّل كل حمولة عند مغادرتها مع تذكرتها. في نهاية العمل هذا هو الدليل على وجهة النفايات.</string>
+    <string name="waste_add">سجّل حمولة</string>
+    <string name="waste_stream">ما هي</string>
+    <string name="waste_quantity">الكمية</string>
+    <string name="waste_destination">إلى أين ذهبت</string>
+    <string name="waste_facility">اسم المنشأة</string>
+    <string name="waste_hauler">الناقل (اختياري)</string>
+    <string name="waste_ticket">رقم التذكرة</string>
+    <string name="waste_notes">ملاحظات (اختياري)</string>
+    <string name="waste_ticket_photo">صوّر التذكرة</string>
+    <string name="waste_no_ticket">لا توجد تذكرة بعد</string>
+    <string name="waste_add_ticket">أضف رقم التذكرة</string>
+    <string name="waste_empty">لم تُسجَّل حمولات في هذا العمل.</string>
+    <string name="waste_total">المجموع %1$s %2$s، منها %3$s لم تذهب إلى المكب</string>
+    <string name="waste_refused_quantity">أدخل الكمية.</string>
+    <string name="waste_refused_destination">اذكر المنشأة التي ذهبت إليها.</string>
+    <string name="waste_refused_hazardous">لا تُسجَّل النفايات الخطرة أبدًا دون رقم التذكرة.</string>
+    <string name="waste_not_allowed">هذا الحساب لا يملك صلاحية الكتابة في سجلات الموقع.</string>
+    <string name="hv_waste_unproven">حمولات نفايات بلا تذكرة</string>
+    <string name="waste_stream_concrete_and_masonry">خرسانة وبناء</string>
+    <string name="waste_stream_wood">خشب</string>
+    <string name="waste_stream_metal">معادن</string>
+    <string name="waste_stream_plastic">بلاستيك</string>
+    <string name="waste_stream_cardboard_and_paper">كرتون وورق</string>
+    <string name="waste_stream_soil">تربة</string>
+    <string name="waste_stream_mixed">مختلط</string>
+    <string name="waste_stream_hazardous">خطِر</string>
+    <string name="waste_unit_tonnes">طن</string>
+    <string name="waste_unit_cubic_metres">م³</string>
+    <string name="waste_dest_recycling">منشأة إعادة تدوير</string>
+    <string name="waste_dest_reused">إعادة استخدام</string>
+    <string name="waste_dest_transfer_station">محطة ترحيل</string>
+    <string name="waste_dest_landfill">مكب نفايات</string>
+    <string name="summary_waste_recorded">%1$s %2$s من %3$s إلى %4$s</string>
+    <string name="summary_waste_ticket_added">أُضيفت تذكرة لحمولة أُرسلت إلى %1$s</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -1507,5 +1544,13 @@
         <item quantity="few">%d آلات في الموقع لم تُفحص اليوم</item>
         <item quantity="many">%d آلة في الموقع لم تُفحص اليوم</item>
         <item quantity="other">%d آلة في الموقع لم تُفحص اليوم</item>
+    </plurals>
+    <plurals name="waste_unproven">
+        <item quantity="zero">لا حمولات بلا تذكرة</item>
+        <item quantity="one">حمولة واحدة بلا تذكرة</item>
+        <item quantity="two">حمولتان بلا تذكرة</item>
+        <item quantity="few">%d حمولات بلا تذكرة</item>
+        <item quantity="many">%d حمولة بلا تذكرة</item>
+        <item quantity="other">%d حمولة بلا تذكرة</item>
     </plurals>
 </resources>

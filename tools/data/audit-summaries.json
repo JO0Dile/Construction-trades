@@ -12,7 +12,9 @@
       "var_",
       "eng_",
       "muster_reason_",
-      "heat_band_"
+      "heat_band_",
+      "waste_stream_",
+      "waste_unit_"
     ]
   },
   "phrases": {
@@ -858,6 +860,25 @@
       "en": "Violation confirmed against %1$s",
       "he": "עבירה אושרה נגד %1$s",
       "ar": "تأكّدت مخالفة بحق %1$s"
+    },
+    "waste_recorded": {
+      "arguments": [
+        "quantity",
+        "unit",
+        "stream",
+        "facility"
+      ],
+      "en": "%1$s %2$s of %3$s to %4$s",
+      "he": "%1$s %2$s של %3$s אל %4$s",
+      "ar": "%1$s %2$s من %3$s إلى %4$s"
+    },
+    "waste_ticket_added": {
+      "arguments": [
+        "facility"
+      ],
+      "en": "Ticket added for a load to %1$s",
+      "he": "נוספה תעודה למטען שנשלח אל %1$s",
+      "ar": "أُضيفت تذكرة لحمولة أُرسلت إلى %1$s"
     }
   }
 }

@@ -118,6 +118,7 @@ fun ProjectDetailScreen(
     onOpenLifts: () -> Unit,
     onOpenTemporaryWorks: () -> Unit,
     onOpenExcavations: () -> Unit,
+    onOpenWaste: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -190,6 +191,7 @@ fun ProjectDetailScreen(
             add(JobLink(R.string.lift_title, R.string.lift_row_hint, onOpenLifts))
             add(JobLink(R.string.tw_title, R.string.tw_row_hint, onOpenTemporaryWorks))
             add(JobLink(R.string.exc_title, R.string.exc_row_hint, onOpenExcavations))
+            add(JobLink(R.string.waste_title, R.string.waste_row_hint, onOpenWaste))
             // Last, because it is the one that reads all the others.
             add(JobLink(R.string.hv_title, R.string.hv_row_hint, onOpenHandover))
         }

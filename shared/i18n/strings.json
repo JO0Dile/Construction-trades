@@ -7000,6 +7000,226 @@
       "en": "Nothing was marked as looked at. Mark at least what you checked.",
       "he": "לא סומן שום דבר כנבדק. סמנו לפחות את מה שבדקתם.",
       "ar": "لم يُعلَّم أي شيء على أنه فُحص. علّم على الأقل ما فحصته."
+    },
+    "waste_title": {
+      "c": "Register title",
+      "en": "Waste register",
+      "he": "מרשם פסולת",
+      "ar": "سجل النفايات"
+    },
+    "waste_row_hint": {
+      "c": "Link on the job screen",
+      "en": "Every load that leaves, and where it went",
+      "he": "כל מטען שיוצא, ולאן הגיע",
+      "ar": "كل حمولة تغادر وإلى أين ذهبت"
+    },
+    "waste_blurb": {
+      "c": "Top of the register",
+      "en": "Record each load as it leaves, with its ticket. At the end of the job this is the proof of where the waste went.",
+      "he": "רשמו כל מטען כשהוא יוצא, עם התעודה שלו. בסוף העבודה זו ההוכחה לאן הפסולת הגיעה.",
+      "ar": "سجّل كل حمولة عند مغادرتها مع تذكرتها. في نهاية العمل هذا هو الدليل على وجهة النفايات."
+    },
+    "waste_add": {
+      "c": "Button",
+      "en": "Record a load",
+      "he": "רשום מטען",
+      "ar": "سجّل حمولة"
+    },
+    "waste_stream": {
+      "c": "Field label",
+      "en": "What it is",
+      "he": "מה זה",
+      "ar": "ما هي"
+    },
+    "waste_quantity": {
+      "c": "Field label",
+      "en": "Quantity",
+      "he": "כמות",
+      "ar": "الكمية"
+    },
+    "waste_destination": {
+      "c": "Field label",
+      "en": "Where it went",
+      "he": "לאן הגיע",
+      "ar": "إلى أين ذهبت"
+    },
+    "waste_facility": {
+      "c": "Field label",
+      "en": "Facility name",
+      "he": "שם המתקן",
+      "ar": "اسم المنشأة"
+    },
+    "waste_hauler": {
+      "c": "Field label",
+      "en": "Haulier (optional)",
+      "he": "מוביל (לא חובה)",
+      "ar": "الناقل (اختياري)"
+    },
+    "waste_ticket": {
+      "c": "Field label",
+      "en": "Ticket number",
+      "he": "מספר תעודה",
+      "ar": "رقم التذكرة"
+    },
+    "waste_notes": {
+      "c": "Field label",
+      "en": "Notes (optional)",
+      "he": "הערות (לא חובה)",
+      "ar": "ملاحظات (اختياري)"
+    },
+    "waste_ticket_photo": {
+      "c": "Button",
+      "en": "Photograph the ticket",
+      "he": "צלם את התעודה",
+      "ar": "صوّر التذكرة"
+    },
+    "waste_no_ticket": {
+      "c": "On a load with nothing to show where it went",
+      "en": "No ticket yet",
+      "he": "עדיין אין תעודה",
+      "ar": "لا توجد تذكرة بعد"
+    },
+    "waste_add_ticket": {
+      "c": "Button on a load with no ticket number",
+      "en": "Add the ticket number",
+      "he": "הוסף מספר תעודה",
+      "ar": "أضف رقم التذكرة"
+    },
+    "waste_empty": {
+      "c": "Empty register",
+      "en": "No loads recorded on this job.",
+      "he": "לא נרשמו מטענים בעבודה הזו.",
+      "ar": "لم تُسجَّل حمولات في هذا العمل."
+    },
+    "waste_total": {
+      "c": "Totals line: amount, unit, share kept out of landfill",
+      "en": "%1$s %2$s in total, %3$s kept out of landfill",
+      "he": "%1$s %2$s בסך הכול, %3$s לא הגיעו להטמנה",
+      "ar": "المجموع %1$s %2$s، منها %3$s لم تذهب إلى المكب"
+    },
+    "waste_refused_quantity": {
+      "c": "Refusal",
+      "en": "Enter how much it was.",
+      "he": "יש להזין כמות.",
+      "ar": "أدخل الكمية."
+    },
+    "waste_refused_destination": {
+      "c": "Refusal",
+      "en": "Say which facility it went to.",
+      "he": "יש לציין לאיזה מתקן הגיע.",
+      "ar": "اذكر المنشأة التي ذهبت إليها."
+    },
+    "waste_refused_hazardous": {
+      "c": "Refusal",
+      "en": "Hazardous waste is never recorded without its ticket number.",
+      "he": "פסולת מסוכנת לא נרשמת בלי מספר תעודה.",
+      "ar": "لا تُسجَّل النفايات الخطرة أبدًا دون رقم التذكرة."
+    },
+    "waste_not_allowed": {
+      "c": "Refusal",
+      "en": "This account cannot write to the site registers.",
+      "he": "לחשבון הזה אין הרשאה לכתוב במרשמי האתר.",
+      "ar": "هذا الحساب لا يملك صلاحية الكتابة في سجلات الموقع."
+    },
+    "hv_waste_unproven": {
+      "c": "Handover pack row",
+      "en": "Waste loads with no ticket",
+      "he": "מטעני פסולת בלי תעודה",
+      "ar": "حمولات نفايات بلا تذكرة"
+    },
+    "waste_stream_concrete_and_masonry": {
+      "c": "Waste stream",
+      "en": "Concrete and masonry",
+      "he": "בטון ובנייה",
+      "ar": "خرسانة وبناء"
+    },
+    "waste_stream_wood": {
+      "c": "Waste stream",
+      "en": "Wood",
+      "he": "עץ",
+      "ar": "خشب"
+    },
+    "waste_stream_metal": {
+      "c": "Waste stream",
+      "en": "Metal",
+      "he": "מתכת",
+      "ar": "معادن"
+    },
+    "waste_stream_plastic": {
+      "c": "Waste stream",
+      "en": "Plastic",
+      "he": "פלסטיק",
+      "ar": "بلاستيك"
+    },
+    "waste_stream_cardboard_and_paper": {
+      "c": "Waste stream",
+      "en": "Cardboard and paper",
+      "he": "קרטון ונייר",
+      "ar": "كرتون وورق"
+    },
+    "waste_stream_soil": {
+      "c": "Waste stream",
+      "en": "Soil",
+      "he": "עפר",
+      "ar": "تربة"
+    },
+    "waste_stream_mixed": {
+      "c": "Waste stream",
+      "en": "Mixed",
+      "he": "מעורב",
+      "ar": "مختلط"
+    },
+    "waste_stream_hazardous": {
+      "c": "Waste stream",
+      "en": "Hazardous",
+      "he": "מסוכן",
+      "ar": "خطِر"
+    },
+    "waste_unit_tonnes": {
+      "c": "Unit",
+      "en": "tonnes",
+      "he": "טון",
+      "ar": "طن"
+    },
+    "waste_unit_cubic_metres": {
+      "c": "Unit",
+      "en": "m³",
+      "he": "מ״ק",
+      "ar": "م³"
+    },
+    "waste_dest_recycling": {
+      "c": "Destination",
+      "en": "Recycling facility",
+      "he": "מתקן מיחזור",
+      "ar": "منشأة إعادة تدوير"
+    },
+    "waste_dest_reused": {
+      "c": "Destination",
+      "en": "Reused",
+      "he": "שימוש חוזר",
+      "ar": "إعادة استخدام"
+    },
+    "waste_dest_transfer_station": {
+      "c": "Destination",
+      "en": "Transfer station",
+      "he": "תחנת מעבר",
+      "ar": "محطة ترحيل"
+    },
+    "waste_dest_landfill": {
+      "c": "Destination",
+      "en": "Landfill",
+      "he": "הטמנה",
+      "ar": "مكب نفايات"
+    },
+    "summary_waste_recorded": {
+      "en": "%1$s %2$s of %3$s to %4$s",
+      "he": "%1$s %2$s של %3$s אל %4$s",
+      "ar": "%1$s %2$s من %3$s إلى %4$s"
+    },
+    "summary_waste_ticket_added": {
+      "en": "Ticket added for a load to %1$s",
+      "he": "נוספה תעודה למטען שנשלח אל %1$s",
+      "ar": "أُضيفت تذكرة لحمولة أُرسلت إلى %1$s"
     }
   },
   "plurals": {
@@ -7400,6 +7620,27 @@
         "few": "%d آلات في الموقع لم تُفحص اليوم",
         "many": "%d آلة في الموقع لم تُفحص اليوم",
         "other": "%d آلة في الموقع لم تُفحص اليوم"
+      }
+    },
+    "waste_unproven": {
+      "c": "Register header: loads with neither a ticket number nor a photo of the ticket",
+      "en": {
+        "one": "%d load with no ticket",
+        "other": "%d loads with no ticket"
+      },
+      "he": {
+        "one": "מטען אחד בלי תעודה",
+        "two": "שני מטענים בלי תעודה",
+        "many": "%d מטענים בלי תעודה",
+        "other": "%d מטענים בלי תעודה"
+      },
+      "ar": {
+        "zero": "لا حمولات بلا تذكرة",
+        "one": "حمولة واحدة بلا تذكرة",
+        "two": "حمولتان بلا تذكرة",
+        "few": "%d حمولات بلا تذكرة",
+        "many": "%d حمولة بلا تذكرة",
+        "other": "%d حمولة بلا تذكرة"
       }
     }
   }

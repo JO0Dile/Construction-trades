@@ -49,6 +49,12 @@ object HandoverPack {
 
         /** Days somebody wrote up and never signed. */
         UNSIGNED_DAILY_LOGS,
+
+        /**
+         * Loads of waste with neither a ticket number nor a photograph of
+         * the ticket: nothing yet shows where they went.
+         */
+        WASTE_WITHOUT_TICKET,
     }
 
     data class Outstanding(val item: Item, val count: Int)

@@ -7,7 +7,9 @@ import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
 import il.co.tradesmanager.data.local.entity.ProjectEntity
+import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -77,10 +79,27 @@ class HandoverViewModel(
         )
     }
 
+    /**
+     * Loads nothing yet shows went anywhere. The ticket photographs are in
+     * another table, so the two are read together and weighed by the same
+     * rule the register uses -- see Waste.Load.proven.
+     */
+    private val fromWaste = combine(
+        container.waste.observeForProject(projectId),
+        container.photos.observeCountsFor(PhotoRepository.Owner.WASTE_TICKET),
+    ) { loads, photographed ->
+        mapOf(
+            HandoverPack.Item.WASTE_WITHOUT_TICKET to loads.count { row ->
+                WasteRepository.asLoad(row, photographed[row.id] ?: 0)?.proven == false
+            },
+        )
+    }
+
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,
         fromWorks,
-    ) { safety, works -> HandoverPack.readiness(safety + works) }
+        fromWaste,
+    ) { safety, works, waste -> HandoverPack.readiness(safety + works + waste) }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5_000),

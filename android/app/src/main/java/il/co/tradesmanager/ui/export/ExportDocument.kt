@@ -360,4 +360,5 @@ internal fun handoverItemLabel(item: HandoverPack.Item): Int = when (item) {
     HandoverPack.Item.LIFTS_INCOMPLETE -> R.string.hv_lifts
     HandoverPack.Item.POURS_UNFINISHED -> R.string.hv_pours
     HandoverPack.Item.UNSIGNED_DAILY_LOGS -> R.string.hv_daily_logs
+    HandoverPack.Item.WASTE_WITHOUT_TICKET -> R.string.hv_waste_unproven
 }

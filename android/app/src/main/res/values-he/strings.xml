@@ -1356,6 +1356,43 @@
     <string name="plant_preuse_unanswered">יש לענות על כל סעיף. סיור שלא הושלם אינו בדיקה.</string>
     <string name="plant_preuse_undescribed">יש לתאר את התקלה.</string>
     <string name="plant_preuse_nothing">לא סומן שום דבר כנבדק. סמנו לפחות את מה שבדקתם.</string>
+    <string name="waste_title">מרשם פסולת</string>
+    <string name="waste_row_hint">כל מטען שיוצא, ולאן הגיע</string>
+    <string name="waste_blurb">רשמו כל מטען כשהוא יוצא, עם התעודה שלו. בסוף העבודה זו ההוכחה לאן הפסולת הגיעה.</string>
+    <string name="waste_add">רשום מטען</string>
+    <string name="waste_stream">מה זה</string>
+    <string name="waste_quantity">כמות</string>
+    <string name="waste_destination">לאן הגיע</string>
+    <string name="waste_facility">שם המתקן</string>
+    <string name="waste_hauler">מוביל (לא חובה)</string>
+    <string name="waste_ticket">מספר תעודה</string>
+    <string name="waste_notes">הערות (לא חובה)</string>
+    <string name="waste_ticket_photo">צלם את התעודה</string>
+    <string name="waste_no_ticket">עדיין אין תעודה</string>
+    <string name="waste_add_ticket">הוסף מספר תעודה</string>
+    <string name="waste_empty">לא נרשמו מטענים בעבודה הזו.</string>
+    <string name="waste_total">%1$s %2$s בסך הכול, %3$s לא הגיעו להטמנה</string>
+    <string name="waste_refused_quantity">יש להזין כמות.</string>
+    <string name="waste_refused_destination">יש לציין לאיזה מתקן הגיע.</string>
+    <string name="waste_refused_hazardous">פסולת מסוכנת לא נרשמת בלי מספר תעודה.</string>
+    <string name="waste_not_allowed">לחשבון הזה אין הרשאה לכתוב במרשמי האתר.</string>
+    <string name="hv_waste_unproven">מטעני פסולת בלי תעודה</string>
+    <string name="waste_stream_concrete_and_masonry">בטון ובנייה</string>
+    <string name="waste_stream_wood">עץ</string>
+    <string name="waste_stream_metal">מתכת</string>
+    <string name="waste_stream_plastic">פלסטיק</string>
+    <string name="waste_stream_cardboard_and_paper">קרטון ונייר</string>
+    <string name="waste_stream_soil">עפר</string>
+    <string name="waste_stream_mixed">מעורב</string>
+    <string name="waste_stream_hazardous">מסוכן</string>
+    <string name="waste_unit_tonnes">טון</string>
+    <string name="waste_unit_cubic_metres">מ״ק</string>
+    <string name="waste_dest_recycling">מתקן מיחזור</string>
+    <string name="waste_dest_reused">שימוש חוזר</string>
+    <string name="waste_dest_transfer_station">תחנת מעבר</string>
+    <string name="waste_dest_landfill">הטמנה</string>
+    <string name="summary_waste_recorded">%1$s %2$s של %3$s אל %4$s</string>
+    <string name="summary_waste_ticket_added">נוספה תעודה למטען שנשלח אל %1$s</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -1469,5 +1506,11 @@
         <item quantity="two">שתי מכונות באתר לא נבדקו היום</item>
         <item quantity="many">%d מכונות באתר לא נבדקו היום</item>
         <item quantity="other">%d מכונות באתר לא נבדקו היום</item>
+    </plurals>
+    <plurals name="waste_unproven">
+        <item quantity="one">מטען אחד בלי תעודה</item>
+        <item quantity="two">שני מטענים בלי תעודה</item>
+        <item quantity="many">%d מטענים בלי תעודה</item>
+        <item quantity="other">%d מטענים בלי תעודה</item>
     </plurals>
 </resources>

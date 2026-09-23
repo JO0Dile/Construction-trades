@@ -347,6 +347,15 @@ object Migrations {
         }
     }
 
+    /**
+     * The construction waste register. One new table and nothing touched.
+     */
+    val MIGRATION_33_34 = object : Migration(33, 34) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_33_34.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -380,6 +389,7 @@ object Migrations {
         MIGRATION_30_31,
         MIGRATION_31_32,
         MIGRATION_32_33,
+        MIGRATION_33_34,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -955,5 +965,15 @@ object Migrations {
             "`checkedByAccountId` TEXT, `checkedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_plant_checks_equipmentId` " +
             "ON `plant_checks` (`equipmentId`)",
+    )
+
+    /** The waste load table. */
+    val SQL_33_34: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `waste_loads` (`id` TEXT NOT NULL, " +
+            "`projectId` TEXT NOT NULL, `removedAt` INTEGER NOT NULL, `stream` TEXT NOT NULL, " +
+            "`quantity` REAL NOT NULL, `unit` TEXT NOT NULL, `destination` TEXT NOT NULL, " +
+            "`facility` TEXT NOT NULL, `hauler` TEXT, `ticketNumber` TEXT, `notes` TEXT, " +
+            "`recordedByAccountId` TEXT, `recordedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_waste_loads_projectId` ON `waste_loads` (`projectId`)",
     )
 }

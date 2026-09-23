@@ -1568,6 +1568,78 @@
     <string name="plant_preuse_undescribed">Say what the defect is.</string>
     <!-- Refusal -->
     <string name="plant_preuse_nothing">Nothing was marked as looked at. Mark at least what you checked.</string>
+    <!-- Register title -->
+    <string name="waste_title">Waste register</string>
+    <!-- Link on the job screen -->
+    <string name="waste_row_hint">Every load that leaves, and where it went</string>
+    <!-- Top of the register -->
+    <string name="waste_blurb">Record each load as it leaves, with its ticket. At the end of the job this is the proof of where the waste went.</string>
+    <!-- Button -->
+    <string name="waste_add">Record a load</string>
+    <!-- Field label -->
+    <string name="waste_stream">What it is</string>
+    <!-- Field label -->
+    <string name="waste_quantity">Quantity</string>
+    <!-- Field label -->
+    <string name="waste_destination">Where it went</string>
+    <!-- Field label -->
+    <string name="waste_facility">Facility name</string>
+    <!-- Field label -->
+    <string name="waste_hauler">Haulier (optional)</string>
+    <!-- Field label -->
+    <string name="waste_ticket">Ticket number</string>
+    <!-- Field label -->
+    <string name="waste_notes">Notes (optional)</string>
+    <!-- Button -->
+    <string name="waste_ticket_photo">Photograph the ticket</string>
+    <!-- On a load with nothing to show where it went -->
+    <string name="waste_no_ticket">No ticket yet</string>
+    <!-- Button on a load with no ticket number -->
+    <string name="waste_add_ticket">Add the ticket number</string>
+    <!-- Empty register -->
+    <string name="waste_empty">No loads recorded on this job.</string>
+    <!-- Totals line: amount, unit, share kept out of landfill -->
+    <string name="waste_total">%1$s %2$s in total, %3$s kept out of landfill</string>
+    <!-- Refusal -->
+    <string name="waste_refused_quantity">Enter how much it was.</string>
+    <!-- Refusal -->
+    <string name="waste_refused_destination">Say which facility it went to.</string>
+    <!-- Refusal -->
+    <string name="waste_refused_hazardous">Hazardous waste is never recorded without its ticket number.</string>
+    <!-- Refusal -->
+    <string name="waste_not_allowed">This account cannot write to the site registers.</string>
+    <!-- Handover pack row -->
+    <string name="hv_waste_unproven">Waste loads with no ticket</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_concrete_and_masonry">Concrete and masonry</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_wood">Wood</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_metal">Metal</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_plastic">Plastic</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_cardboard_and_paper">Cardboard and paper</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_soil">Soil</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_mixed">Mixed</string>
+    <!-- Waste stream -->
+    <string name="waste_stream_hazardous">Hazardous</string>
+    <!-- Unit -->
+    <string name="waste_unit_tonnes">tonnes</string>
+    <!-- Unit -->
+    <string name="waste_unit_cubic_metres">m³</string>
+    <!-- Destination -->
+    <string name="waste_dest_recycling">Recycling facility</string>
+    <!-- Destination -->
+    <string name="waste_dest_reused">Reused</string>
+    <!-- Destination -->
+    <string name="waste_dest_transfer_station">Transfer station</string>
+    <!-- Destination -->
+    <string name="waste_dest_landfill">Landfill</string>
+    <string name="summary_waste_recorded">%1$s %2$s of %3$s to %4$s</string>
+    <string name="summary_waste_ticket_added">Ticket added for a load to %1$s</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -1643,5 +1715,9 @@
     <plurals name="home_plant_unchecked">
         <item quantity="one">%d machine on site not checked today</item>
         <item quantity="other">%d machines on site not checked today</item>
+    </plurals>
+    <plurals name="waste_unproven">
+        <item quantity="one">%d load with no ticket</item>
+        <item quantity="other">%d loads with no ticket</item>
     </plurals>
 </resources>

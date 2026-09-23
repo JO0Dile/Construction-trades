@@ -383,5 +383,25 @@
             <string>%d מכונות באתר לא נבדקו היום</string>
         </dict>
     </dict>
+    <key>waste_unproven</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>מטען אחד בלי תעודה</string>
+            <key>two</key>
+            <string>שני מטענים בלי תעודה</string>
+            <key>many</key>
+            <string>%d מטענים בלי תעודה</string>
+            <key>other</key>
+            <string>%d מטענים בלי תעודה</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

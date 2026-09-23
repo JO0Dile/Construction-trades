@@ -79,6 +79,7 @@ import il.co.tradesmanager.ui.settings.PlansScreen
 import il.co.tradesmanager.ui.settings.TermsScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
 import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
+import il.co.tradesmanager.ui.waste.WasteScreen
 import il.co.tradesmanager.ui.timesheet.TimesheetScreen
 
 object Routes {
@@ -107,6 +108,7 @@ object Routes {
     const val LIFTS = "projects/lifts"
     const val TEMP_WORKS = "projects/tempworks"
     const val EXCAVATIONS = "projects/excavations"
+    const val WASTE = "projects/waste"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
     const val GATE = "people/gate"
@@ -161,6 +163,7 @@ object Routes {
     fun lifts(projectId: String) = "$LIFTS/$projectId"
     fun temporaryWorks(projectId: String) = "$TEMP_WORKS/$projectId"
     fun excavations(projectId: String) = "$EXCAVATIONS/$projectId"
+    fun waste(projectId: String) = "$WASTE/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
 }
 
@@ -351,6 +354,7 @@ fun AppNavHost(
                         navController.navigate(Routes.temporaryWorks(id))
                     },
                     onOpenExcavations = { navController.navigate(Routes.excavations(id)) },
+                    onOpenWaste = { navController.navigate(Routes.waste(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     // A part, or the job it belongs to. Same screen, so the
@@ -537,6 +541,13 @@ fun AppNavHost(
             }
             composable("${Routes.TEMP_WORKS}/{projectId}") { entry ->
                 TemporaryWorksScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.WASTE}/{projectId}") { entry ->
+                WasteScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

@@ -1567,3 +1567,75 @@
 "plant_preuse_undescribed" = "יש לתאר את התקלה.";
 /* Refusal */
 "plant_preuse_nothing" = "לא סומן שום דבר כנבדק. סמנו לפחות את מה שבדקתם.";
+/* Register title */
+"waste_title" = "מרשם פסולת";
+/* Link on the job screen */
+"waste_row_hint" = "כל מטען שיוצא, ולאן הגיע";
+/* Top of the register */
+"waste_blurb" = "רשמו כל מטען כשהוא יוצא, עם התעודה שלו. בסוף העבודה זו ההוכחה לאן הפסולת הגיעה.";
+/* Button */
+"waste_add" = "רשום מטען";
+/* Field label */
+"waste_stream" = "מה זה";
+/* Field label */
+"waste_quantity" = "כמות";
+/* Field label */
+"waste_destination" = "לאן הגיע";
+/* Field label */
+"waste_facility" = "שם המתקן";
+/* Field label */
+"waste_hauler" = "מוביל (לא חובה)";
+/* Field label */
+"waste_ticket" = "מספר תעודה";
+/* Field label */
+"waste_notes" = "הערות (לא חובה)";
+/* Button */
+"waste_ticket_photo" = "צלם את התעודה";
+/* On a load with nothing to show where it went */
+"waste_no_ticket" = "עדיין אין תעודה";
+/* Button on a load with no ticket number */
+"waste_add_ticket" = "הוסף מספר תעודה";
+/* Empty register */
+"waste_empty" = "לא נרשמו מטענים בעבודה הזו.";
+/* Totals line: amount, unit, share kept out of landfill */
+"waste_total" = "%1$s %2$s בסך הכול, %3$s לא הגיעו להטמנה";
+/* Refusal */
+"waste_refused_quantity" = "יש להזין כמות.";
+/* Refusal */
+"waste_refused_destination" = "יש לציין לאיזה מתקן הגיע.";
+/* Refusal */
+"waste_refused_hazardous" = "פסולת מסוכנת לא נרשמת בלי מספר תעודה.";
+/* Refusal */
+"waste_not_allowed" = "לחשבון הזה אין הרשאה לכתוב במרשמי האתר.";
+/* Handover pack row */
+"hv_waste_unproven" = "מטעני פסולת בלי תעודה";
+/* Waste stream */
+"waste_stream_concrete_and_masonry" = "בטון ובנייה";
+/* Waste stream */
+"waste_stream_wood" = "עץ";
+/* Waste stream */
+"waste_stream_metal" = "מתכת";
+/* Waste stream */
+"waste_stream_plastic" = "פלסטיק";
+/* Waste stream */
+"waste_stream_cardboard_and_paper" = "קרטון ונייר";
+/* Waste stream */
+"waste_stream_soil" = "עפר";
+/* Waste stream */
+"waste_stream_mixed" = "מעורב";
+/* Waste stream */
+"waste_stream_hazardous" = "מסוכן";
+/* Unit */
+"waste_unit_tonnes" = "טון";
+/* Unit */
+"waste_unit_cubic_metres" = "מ״ק";
+/* Destination */
+"waste_dest_recycling" = "מתקן מיחזור";
+/* Destination */
+"waste_dest_reused" = "שימוש חוזר";
+/* Destination */
+"waste_dest_transfer_station" = "תחנת מעבר";
+/* Destination */
+"waste_dest_landfill" = "הטמנה";
+"summary_waste_recorded" = "%1$s %2$s של %3$s אל %4$s";
+"summary_waste_ticket_added" = "נוספה תעודה למטען שנשלח אל %1$s";

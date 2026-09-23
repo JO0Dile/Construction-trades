@@ -22,6 +22,7 @@ import il.co.tradesmanager.data.local.dao.MusterDao
 import il.co.tradesmanager.data.local.dao.PaymentsDao
 import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.dao.ViolationDao
+import il.co.tradesmanager.data.local.dao.WasteDao
 import il.co.tradesmanager.data.local.dao.ProjectDao
 import il.co.tradesmanager.data.local.dao.PurchasingDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
@@ -84,6 +85,7 @@ import il.co.tradesmanager.data.local.entity.ToolboxTalkAttendeeEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.local.entity.VariationEntity
+import il.co.tradesmanager.data.local.entity.WasteLoadEntity
 
 /**
  * The schema version the code expects.
@@ -94,7 +96,7 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 33
+const val DATABASE_VERSION = 34
 
 @Database(
     entities = [
@@ -154,6 +156,7 @@ const val DATABASE_VERSION = 33
         MusterPersonEntity::class,
         HeatCheckEntity::class,
         PlantCheckEntity::class,
+        WasteLoadEntity::class,
     ],
     version = DATABASE_VERSION,
     exportSchema = true,
@@ -186,6 +189,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun musterDao(): MusterDao
 
     abstract fun heatDao(): HeatDao
+
+    abstract fun wasteDao(): WasteDao
 
     abstract fun temporaryWorksDao(): TemporaryWorksDao
 
