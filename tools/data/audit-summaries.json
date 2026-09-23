@@ -226,6 +226,60 @@
       "he": "הקרקע נפתחה",
       "ar": "فُتحت الأرض"
     },
+    "field_address": {
+      "arguments": [],
+      "en": "address",
+      "he": "כתובת",
+      "ar": "العنوان"
+    },
+    "field_email": {
+      "arguments": [],
+      "en": "email",
+      "he": "דוא\"ל",
+      "ar": "البريد الإلكتروني"
+    },
+    "field_id_number": {
+      "arguments": [],
+      "en": "ID number",
+      "he": "מספר זהות",
+      "ar": "رقم الهوية"
+    },
+    "field_licence": {
+      "arguments": [],
+      "en": "contractor licence",
+      "he": "רישיון קבלן",
+      "ar": "رخصة المقاول"
+    },
+    "field_name": {
+      "arguments": [],
+      "en": "name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "field_nothing": {
+      "arguments": [],
+      "en": "nothing",
+      "he": "דבר",
+      "ar": "لا شيء"
+    },
+    "field_phone": {
+      "arguments": [],
+      "en": "phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "field_registration": {
+      "arguments": [],
+      "en": "registration number",
+      "he": "מספר רישום",
+      "ar": "رقم التسجيل"
+    },
+    "field_website": {
+      "arguments": [],
+      "en": "website",
+      "he": "אתר אינטרנט",
+      "ar": "الموقع الإلكتروني"
+    },
     "goods_received": {
       "arguments": [
         "quantity",

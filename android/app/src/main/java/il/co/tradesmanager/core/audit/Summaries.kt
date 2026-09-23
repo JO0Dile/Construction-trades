@@ -200,6 +200,51 @@ object Summaries {
     const val EXCAVATION_DISTURBED = "excavation_disturbed"
 
     /**
+     * address
+     */
+    const val FIELD_ADDRESS = "field_address"
+
+    /**
+     * email
+     */
+    const val FIELD_EMAIL = "field_email"
+
+    /**
+     * ID number
+     */
+    const val FIELD_ID_NUMBER = "field_id_number"
+
+    /**
+     * contractor licence
+     */
+    const val FIELD_LICENCE = "field_licence"
+
+    /**
+     * name
+     */
+    const val FIELD_NAME = "field_name"
+
+    /**
+     * nothing
+     */
+    const val FIELD_NOTHING = "field_nothing"
+
+    /**
+     * phone
+     */
+    const val FIELD_PHONE = "field_phone"
+
+    /**
+     * registration number
+     */
+    const val FIELD_REGISTRATION = "field_registration"
+
+    /**
+     * website
+     */
+    const val FIELD_WEBSITE = "field_website"
+
+    /**
      * Received %1$s %2$s of %3$s
      *
      * Arguments, in order: quantity, unit, item.

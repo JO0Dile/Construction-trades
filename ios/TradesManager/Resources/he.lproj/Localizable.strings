@@ -1356,3 +1356,12 @@
 "summary_delivered_on" = "סופק לפי %1$s";
 "summary_restocked" = "חידוש מלאי";
 "summary_used_on_site" = "שימוש באתר";
+"summary_field_address" = "כתובת";
+"summary_field_email" = "דוא\"ל";
+"summary_field_id_number" = "מספר זהות";
+"summary_field_licence" = "רישיון קבלן";
+"summary_field_name" = "שם";
+"summary_field_nothing" = "דבר";
+"summary_field_phone" = "טלפון";
+"summary_field_registration" = "מספר רישום";
+"summary_field_website" = "אתר אינטרנט";

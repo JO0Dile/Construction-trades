@@ -1253,6 +1253,15 @@
     <string name="summary_delivered_on">وُرّد بموجب %1$s</string>
     <string name="summary_restocked">تجديد المخزون</string>
     <string name="summary_used_on_site">استُخدم في الموقع</string>
+    <string name="summary_field_address">العنوان</string>
+    <string name="summary_field_email">البريد الإلكتروني</string>
+    <string name="summary_field_id_number">رقم الهوية</string>
+    <string name="summary_field_licence">رخصة المقاول</string>
+    <string name="summary_field_name">الاسم</string>
+    <string name="summary_field_nothing">لا شيء</string>
+    <string name="summary_field_phone">الهاتف</string>
+    <string name="summary_field_registration">رقم التسجيل</string>
+    <string name="summary_field_website">الموقع الإلكتروني</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

@@ -1253,6 +1253,15 @@
     <string name="summary_delivered_on">סופק לפי %1$s</string>
     <string name="summary_restocked">חידוש מלאי</string>
     <string name="summary_used_on_site">שימוש באתר</string>
+    <string name="summary_field_address">כתובת</string>
+    <string name="summary_field_email">דוא\"ל</string>
+    <string name="summary_field_id_number">מספר זהות</string>
+    <string name="summary_field_licence">רישיון קבלן</string>
+    <string name="summary_field_name">שם</string>
+    <string name="summary_field_nothing">דבר</string>
+    <string name="summary_field_phone">טלפון</string>
+    <string name="summary_field_registration">מספר רישום</string>
+    <string name="summary_field_website">אתר אינטרנט</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

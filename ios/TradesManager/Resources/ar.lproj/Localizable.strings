@@ -1356,3 +1356,12 @@
 "summary_delivered_on" = "وُرّد بموجب %1$s";
 "summary_restocked" = "تجديد المخزون";
 "summary_used_on_site" = "استُخدم في الموقع";
+"summary_field_address" = "العنوان";
+"summary_field_email" = "البريد الإلكتروني";
+"summary_field_id_number" = "رقم الهوية";
+"summary_field_licence" = "رخصة المقاول";
+"summary_field_name" = "الاسم";
+"summary_field_nothing" = "لا شيء";
+"summary_field_phone" = "الهاتف";
+"summary_field_registration" = "رقم التسجيل";
+"summary_field_website" = "الموقع الإلكتروني";

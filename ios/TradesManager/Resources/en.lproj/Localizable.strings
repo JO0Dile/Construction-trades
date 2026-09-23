@@ -1356,3 +1356,12 @@
 "summary_delivered_on" = "Delivered on %1$s";
 "summary_restocked" = "Restocked";
 "summary_used_on_site" = "Used on site";
+"summary_field_address" = "address";
+"summary_field_email" = "email";
+"summary_field_id_number" = "ID number";
+"summary_field_licence" = "contractor licence";
+"summary_field_name" = "name";
+"summary_field_nothing" = "nothing";
+"summary_field_phone" = "phone";
+"summary_field_registration" = "registration number";
+"summary_field_website" = "website";

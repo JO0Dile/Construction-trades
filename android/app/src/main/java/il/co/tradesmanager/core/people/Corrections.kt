@@ -1,5 +1,7 @@
 package il.co.tradesmanager.core.people
 
+import il.co.tradesmanager.core.audit.Summaries
+
 /**
  * What the office may change about somebody, and what it may not.
  *
@@ -92,9 +94,9 @@ object Corrections {
 
     /** Which fields this correction actually changes, for the audit trail. */
     fun changed(held: Details, next: Details): List<String> = buildList {
-        if (next.displayName != held.displayName) add("name")
-        if (next.phone != tidy(held.phone)) add("phone")
-        if (next.email != tidy(held.email)) add("email")
-        if (next.idNumber != tidy(held.idNumber)) add("ID number")
+        if (next.displayName != held.displayName) add(Summaries.FIELD_NAME)
+        if (next.phone != tidy(held.phone)) add(Summaries.FIELD_PHONE)
+        if (next.email != tidy(held.email)) add(Summaries.FIELD_EMAIL)
+        if (next.idNumber != tidy(held.idNumber)) add(Summaries.FIELD_ID_NUMBER)
     }
 }

@@ -2,6 +2,7 @@ package il.co.tradesmanager.core.people
 
 import il.co.tradesmanager.core.people.Corrections.Details
 import il.co.tradesmanager.core.people.Corrections.Fault
+import il.co.tradesmanager.core.audit.Summaries
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -160,8 +161,16 @@ class CorrectionsTest {
     fun `every changed field is named for the audit trail`() {
         val blank = held.copy(idNumber = null)
         val proposed = Details("Hammam Zoabi", "+40721234567", "h@example.com", "301234567")
+        // Keys, not words. The audit trail is read by people who do not
+        // share a language with whoever typed the correction, so the summary
+        // stores what changed and the screen chooses the language.
         assertEquals(
-            listOf("name", "phone", "email", "ID number"),
+            listOf(
+                Summaries.FIELD_NAME,
+                Summaries.FIELD_PHONE,
+                Summaries.FIELD_EMAIL,
+                Summaries.FIELD_ID_NUMBER,
+            ),
             Corrections.changed(blank, Corrections.applied(blank, proposed)),
         )
     }

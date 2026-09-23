@@ -6377,6 +6377,51 @@
       "en": "Used on site",
       "he": "שימוש באתר",
       "ar": "استُخدم في الموقع"
+    },
+    "summary_field_address": {
+      "en": "address",
+      "he": "כתובת",
+      "ar": "العنوان"
+    },
+    "summary_field_email": {
+      "en": "email",
+      "he": "דוא\"ל",
+      "ar": "البريد الإلكتروني"
+    },
+    "summary_field_id_number": {
+      "en": "ID number",
+      "he": "מספר זהות",
+      "ar": "رقم الهوية"
+    },
+    "summary_field_licence": {
+      "en": "contractor licence",
+      "he": "רישיון קבלן",
+      "ar": "رخصة المقاول"
+    },
+    "summary_field_name": {
+      "en": "name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "summary_field_nothing": {
+      "en": "nothing",
+      "he": "דבר",
+      "ar": "لا شيء"
+    },
+    "summary_field_phone": {
+      "en": "phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "summary_field_registration": {
+      "en": "registration number",
+      "he": "מספר רישום",
+      "ar": "رقم التسجيل"
+    },
+    "summary_field_website": {
+      "en": "website",
+      "he": "אתר אינטרנט",
+      "ar": "الموقع الإلكتروني"
     }
   },
   "plurals": {

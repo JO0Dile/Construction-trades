@@ -221,7 +221,9 @@ class AccountRepository(
             "company", company.id, AuditTrail.Action.UPDATE, actorName,
             Summary.of(
                 Summaries.PROFILE_PUBLISHED,
-                published.map { it.name }.sorted().joinToString(", "),
+                published.map { Summary.nest(it.summaryKey) }.sorted()
+                    .joinToString(", ")
+                    .ifEmpty { Summary.nest(Summaries.FIELD_NOTHING) },
             ),
         )
         return updated
@@ -484,7 +486,7 @@ class AccountRepository(
             Summary.of(
                 Summaries.DETAILS_CORRECTED,
                 account.displayName,
-                Corrections.changed(held, next).joinToString(", "),
+                Corrections.changed(held, next).joinToString(", ", transform = Summary::nest),
             ),
         )
         return Result.success(updated)

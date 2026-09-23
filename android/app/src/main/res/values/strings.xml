@@ -1357,6 +1357,15 @@
     <string name="summary_delivered_on">Delivered on %1$s</string>
     <string name="summary_restocked">Restocked</string>
     <string name="summary_used_on_site">Used on site</string>
+    <string name="summary_field_address">address</string>
+    <string name="summary_field_email">email</string>
+    <string name="summary_field_id_number">ID number</string>
+    <string name="summary_field_licence">contractor licence</string>
+    <string name="summary_field_name">name</string>
+    <string name="summary_field_nothing">nothing</string>
+    <string name="summary_field_phone">phone</string>
+    <string name="summary_field_registration">registration number</string>
+    <string name="summary_field_website">website</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

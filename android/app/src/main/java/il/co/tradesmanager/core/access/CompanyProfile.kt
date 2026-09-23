@@ -1,5 +1,7 @@
 package il.co.tradesmanager.core.access
 
+import il.co.tradesmanager.core.audit.Summaries
+
 /**
  * What a firm publishes about itself, and to whom.
  *
@@ -44,6 +46,26 @@ object CompanyProfile {
         ADDRESS,
         REGISTRATION_NUMBER,
         LICENCE,
+        ;
+
+        /**
+         * What this field is called in an audit summary.
+         *
+         * A `when` rather than the enum's own name, so the compiler insists
+         * on an answer when a field is added. Building the key by
+         * concatenation would have quietly produced one nothing recognises,
+         * and an unrecognised key prints as itself — which on a Hebrew screen
+         * reads as "field_registration_number".
+         */
+        val summaryKey: String
+            get() = when (this) {
+                EMAIL -> Summaries.FIELD_EMAIL
+                PHONE -> Summaries.FIELD_PHONE
+                WEBSITE -> Summaries.FIELD_WEBSITE
+                ADDRESS -> Summaries.FIELD_ADDRESS
+                REGISTRATION_NUMBER -> Summaries.FIELD_REGISTRATION
+                LICENCE -> Summaries.FIELD_LICENCE
+            }
     }
 
     /**

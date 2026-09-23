@@ -38,8 +38,10 @@ fun summaryText(context: Context, stored: String): String {
     val parsed = Summary.parse(stored) ?: return stored
     val phrase = summaryPhrase(parsed.key) ?: return stored
     val arguments: Array<Any> = Array(parsed.arguments.size) { index ->
-        val argument = parsed.arguments[index]
-        Summary.nested(argument)?.let { nestedText(context, it) } ?: argument
+        parsed.arguments[index].split(LIST)
+            .joinToString(LIST) { piece ->
+                Summary.nested(piece)?.let { nestedText(context, it) } ?: piece
+            }
     }
     // A stored row with fewer arguments than its phrase expects would throw
     // out of getString and take the whole audit screen with it. That row
@@ -99,6 +101,15 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.EQUIPMENT_STATUS -> R.string.summary_equipment_status
     Summaries.EXCAVATION_BACKFILLED -> R.string.summary_excavation_backfilled
     Summaries.EXCAVATION_DISTURBED -> R.string.summary_excavation_disturbed
+    Summaries.FIELD_ADDRESS -> R.string.summary_field_address
+    Summaries.FIELD_EMAIL -> R.string.summary_field_email
+    Summaries.FIELD_ID_NUMBER -> R.string.summary_field_id_number
+    Summaries.FIELD_LICENCE -> R.string.summary_field_licence
+    Summaries.FIELD_NAME -> R.string.summary_field_name
+    Summaries.FIELD_NOTHING -> R.string.summary_field_nothing
+    Summaries.FIELD_PHONE -> R.string.summary_field_phone
+    Summaries.FIELD_REGISTRATION -> R.string.summary_field_registration
+    Summaries.FIELD_WEBSITE -> R.string.summary_field_website
     Summaries.GOODS_RECEIVED -> R.string.summary_goods_received
     Summaries.ID_NUMBER_SET -> R.string.summary_id_number_set
     Summaries.INDUCTION_SIGNED -> R.string.summary_induction_signed
@@ -156,3 +167,14 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.VIOLATION_CONFIRMED -> R.string.summary_violation_confirmed
     else -> null
 }
+
+/**
+ * Between several keys in one argument.
+ *
+ * "Details corrected for Yossi: name, phone" is one argument holding two
+ * field names, not two arguments — how many changed is not known until
+ * somebody changes them. Each piece is looked up on its own, and a piece that
+ * is not marked as a key is left exactly as it is, so an argument that merely
+ * contains a comma is untouched.
+ */
+private const val LIST = ", "
