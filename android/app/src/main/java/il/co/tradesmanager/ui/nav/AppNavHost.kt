@@ -293,6 +293,7 @@ fun AppNavHost(
                     onOpenSafety = { navController.switchTab(Routes.SAFETY) },
                     onOpenMuster = { navController.navigate(Routes.MUSTER) },
                     onOpenPlant = { navController.navigate(Routes.PLANT) },
+                    onOpenPpe = { navController.navigate(Routes.PPE) },
                     onOpenPeople = { navController.switchTab(Routes.PEOPLE) },
                     onOpenSearch = { navController.navigate(Routes.SEARCH) },
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },

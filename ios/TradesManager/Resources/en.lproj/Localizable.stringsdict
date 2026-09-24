@@ -323,5 +323,21 @@
             <string>%d loads with no ticket</string>
         </dict>
     </dict>
+    <key>home_ppe_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d item of protective equipment is past its replacement date</string>
+            <key>other</key>
+            <string>%d items of protective equipment are past their replacement date</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

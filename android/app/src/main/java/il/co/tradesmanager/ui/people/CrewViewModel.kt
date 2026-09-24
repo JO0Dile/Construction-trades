@@ -8,9 +8,11 @@ import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.CertificationEntity
 import il.co.tradesmanager.data.local.entity.MembershipEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
+import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.ViolationEntity
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
+import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -158,6 +160,23 @@ class CrewViewModel(
             } else {
                 container.violations.observeConfirmedAgainst(person.account.id)
             }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /**
+     * Whether this viewer may see the equipment register -- and so the
+     * equipment section on a profile. Hidden rather than shown empty for
+     * everybody else, because "holds nothing" is a claim, not a blank.
+     */
+    val seesPpe: StateFlow<Boolean> = session
+        .map { state -> (state as? SessionRepository.State.SignedIn)?.role?.let { PpeRepository.mayRead(it) } == true }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    /** What the open person is holding now, for a viewer who may see the register. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val openPpe: StateFlow<List<PpeIssueEntity>> = combine(open, seesPpe) { person, sees -> person to sees }
+        .flatMapLatest { (person, sees) ->
+            if (person == null || !sees) flowOf(emptyList()) else container.ppe.observeHeldBy(person.account.id)
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 

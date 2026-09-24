@@ -80,9 +80,9 @@ New rows appear; nothing already filled in is touched. A row whose string or
 item has left the app is removed only if nobody answered it. CI fails when a
 sheet is behind, so an untranslated string cannot reach a release unnoticed.
 
-## safety-and-templates.csv — 413 rows
+## safety-and-templates.csv — 434 rows
 
-The text inside the checklists and the job templates: 47 checklist titles, 201
+The text inside the checklists and the job templates: 50 checklist titles, 219
 safety checks, and the names, descriptions and 117 task steps of the 24
 templates.
 

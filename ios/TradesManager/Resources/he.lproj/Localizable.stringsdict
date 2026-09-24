@@ -403,5 +403,25 @@
             <string>%d מטענים בלי תעודה</string>
         </dict>
     </dict>
+    <key>home_ppe_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>פריט ציוד מגן אחד עבר את מועד ההחלפה</string>
+            <key>two</key>
+            <string>שני פריטי ציוד מגן עברו את מועד ההחלפה</string>
+            <key>many</key>
+            <string>%d פריטי ציוד מגן עברו את מועד ההחלפה</string>
+            <key>other</key>
+            <string>%d פריטי ציוד מגן עברו את מועד ההחלפה</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

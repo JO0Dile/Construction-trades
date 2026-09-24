@@ -1787,6 +1787,30 @@
     <string name="muster_visitor_badge">visitor</string>
     <!-- A visitor's name in the shared roll call text; %1$s the name -->
     <string name="muster_share_visitor">%1$s (visitor)</string>
+    <!-- Profile section placeholder: the register shows nothing held -->
+    <string name="crew_no_ppe">Holding nothing on the equipment register.</string>
+    <!-- Export column -->
+    <string name="ppe_col_holder">Issued to</string>
+    <!-- Export column -->
+    <string name="ppe_col_item">Item</string>
+    <!-- Export column -->
+    <string name="ppe_col_size">Size</string>
+    <!-- Export column: date issued -->
+    <string name="ppe_col_issued">Issued</string>
+    <!-- Export column -->
+    <string name="ppe_col_state">State</string>
+    <!-- Export column -->
+    <string name="visit_col_arrived">Arrived</string>
+    <!-- Export column -->
+    <string name="visit_col_left">Left</string>
+    <!-- Export column: told the site rules -->
+    <string name="visit_col_briefed">Briefed</string>
+    <!-- Export cell: not signed out -->
+    <string name="visit_col_still_here">Still signed in</string>
+    <!-- Export cell -->
+    <string name="visit_col_yes">Yes</string>
+    <!-- Export cell -->
+    <string name="visit_col_no">No</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -1866,5 +1890,9 @@
     <plurals name="waste_unproven">
         <item quantity="one">%d load with no ticket</item>
         <item quantity="other">%d loads with no ticket</item>
+    </plurals>
+    <plurals name="home_ppe_overdue">
+        <item quantity="one">%d item of protective equipment is past its replacement date</item>
+        <item quantity="other">%d items of protective equipment are past their replacement date</item>
     </plurals>
 </resources>

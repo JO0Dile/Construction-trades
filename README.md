@@ -50,7 +50,7 @@ The app ships with the catalogues already written:
 | Trades | 22 — from electrical, plumbing and HVAC to gypsum, stonework, tiling, plastering, aluminium, rebar, waterproofing, firefighting, lifts and landscape |
 | Tools and materials | 527, every one named in Hebrew, Arabic and English, and every one with a specification |
 | Work breakdown | 36 scopes of work across 6 stages, each carrying the term the crew says as well as the one the contract says |
-| Safety checklists | 47, holding 201 checks, one for every trade, each citing the Israeli regulation or standard it comes from |
+| Safety checklists | 50, holding 219 checks, one for every trade, each citing the Israeli regulation or standard it comes from |
 | Project templates | 24, whose material lines all resolve to real catalogue items |
 
 Pick your trades during onboarding and the lists are there. Add your own items
@@ -144,7 +144,7 @@ below is a claim about what was intended — it is what the build proves.
 
 **Built and verified:**
 
-- 22 trades, **527 catalogue items**, 201 safety checks and 24 project
+- 22 trades, **527 catalogue items**, 219 safety checks and 24 project
   templates, all parsed through the app's own model types with unknown keys
   rejected
 - **1,468 interface strings and 20 plural rules in Hebrew, Arabic and

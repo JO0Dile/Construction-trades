@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.access.Changes
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.people.Expiry
+import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CertificationEntity
@@ -12,13 +13,17 @@ import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.repository.EquipmentRepository
+import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import java.time.LocalDate
 import java.time.ZoneId
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -107,6 +112,26 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
                 } in NEEDS_A_CHECK
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    /**
+     * Protective equipment past its replace-by date, in this firm, for
+     * somebody who may read the register. Nought for everybody else: the
+     * banner is not drawn, rather than drawn with a count they may not know.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val ppeOverdue: StateFlow<Int> = session
+        .flatMapLatest { state ->
+            val me = state as? SessionRepository.State.SignedIn
+            if (me == null || !PpeRepository.mayRead(me.role)) {
+                flowOf(0)
+            } else {
+                container.ppe.observeForCompany(me.active?.companyId).map { rows ->
+                    val now = System.currentTimeMillis()
+                    rows.count { Ppe.state(it.replaceBy, it.handedBackAt, now) == Ppe.State.OVERDUE }
+                }
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
     val rollCallRunning: StateFlow<Boolean> = container.musters.observeLive()
         .map { it != null }

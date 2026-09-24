@@ -1,5 +1,12 @@
 package il.co.tradesmanager.ui.visitors
 
+import il.co.tradesmanager.ui.components.currentLanguageTag
+import il.co.tradesmanager.ui.export.Exporter
+import il.co.tradesmanager.ui.export.ExportDocument
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.material.icons.filled.IosShare
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -78,7 +85,11 @@ fun VisitorsScreen(
     val here by viewModel.here.collectAsStateWithLifecycle()
     val gone by viewModel.gone.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
+    val jobName by viewModel.jobName.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val languageTag = currentLanguageTag()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
 
     var signing by remember { mutableStateOf(false) }
     var name by remember { mutableStateOf("") }
@@ -122,6 +133,28 @@ fun VisitorsScreen(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.action_back),
                         )
+                    }
+                },
+                actions = {
+                    // Who was on the site and when, for whoever asks.
+                    if (here.isNotEmpty() || gone.isNotEmpty()) {
+                        IconButton(
+                            onClick = {
+                                val result = Exporter.write(
+                                    context = context,
+                                    document = ExportDocument.VisitorLog(
+                                        jobName = jobName,
+                                        visits = here + gone,
+                                    ),
+                                    languageTag = languageTag,
+                                    locale = locale,
+                                    rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                                )
+                                context.startActivity(Exporter.shareIntent(context, result))
+                            },
+                        ) {
+                            Icon(Icons.Filled.IosShare, contentDescription = stringResource(R.string.set_export))
+                        }
                     }
                 },
             )

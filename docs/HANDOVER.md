@@ -18,7 +18,7 @@ SQLCipher.
 So there is **no server to pay for, no hosting, and no per-user cost**. The
 whole product runs on the phones it is installed on:
 
-- 22 trades, 527 catalogue items, 201 safety checks, 24 project templates
+- 22 trades, 527 catalogue items, 219 safety checks, 24 project templates
 - the five lenses — plan, stuff, people, evidence, money — and every register
   under them: daily log, concrete pours, scaffolding, lifting, temporary
   works, excavations, permits, toolbox talks, snags, incidents, violations,

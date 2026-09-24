@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.people.Contact
 import il.co.tradesmanager.core.i18n.resolve
@@ -206,6 +207,8 @@ private fun CrewProfileSheet(
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val tickets by viewModel.openTickets.collectAsStateWithLifecycle()
     val violations by viewModel.openViolations.collectAsStateWithLifecycle()
+    val seesPpe by viewModel.seesPpe.collectAsStateWithLifecycle()
+    val ppe by viewModel.openPpe.collectAsStateWithLifecycle()
     val reportsTo by viewModel.openReportsTo.collectAsStateWithLifecycle()
     val mayPrice by viewModel.mayPrice.collectAsStateWithLifecycle()
     val notCorrected by viewModel.notCorrected.collectAsStateWithLifecycle()
@@ -288,6 +291,33 @@ private fun CrewProfileSheet(
                     },
                     emphasise = state == Expiry.State.EXPIRED,
                 )
+            }
+
+            // What they are wearing, for somebody who may read the register.
+            // Beside the tickets because it is the same question at the foot
+            // of a scaffold: is he allowed up, and has he got the harness.
+            if (seesPpe) {
+                SectionHeader(stringResource(R.string.ppe_title))
+                if (ppe.isEmpty()) {
+                    SectionPlaceholder(stringResource(R.string.crew_no_ppe))
+                }
+                val now = System.currentTimeMillis()
+                ppe.forEach { issue ->
+                    val state = Ppe.state(issue.replaceBy, issue.handedBackAt, now)
+                    DetailLine(
+                        label = issue.itemName,
+                        value = when (state) {
+                            Ppe.State.OVERDUE -> stringResource(R.string.ppe_state_overdue)
+                            Ppe.State.DUE_SOON -> stringResource(R.string.ppe_state_due_soon)
+                            else -> stringResource(
+                                R.string.ppe_issued_on,
+                                Formats.date(Instant.ofEpochMilli(issue.issuedAt).atZone(zone).toLocalDate(), locale),
+                                issue.issuedByName,
+                            )
+                        },
+                        emphasise = state == Ppe.State.OVERDUE,
+                    )
+                }
             }
 
             SectionHeader(stringResource(R.string.vio_title))

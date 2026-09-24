@@ -1,6 +1,6 @@
 {
   "tradeId": "general",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "checklists": [
     {
       "id": "sf.ge.height",
@@ -66,6 +66,48 @@
         { "id": "sf.ge.lk.6", "critical": false, "texts": { "en": "Gas cylinders, fuel and chemicals locked away", "he": "בלוני גז, דלק וכימיקלים נעולים", "ar": "أسطوانات الغاز والوقود والمواد الكيميائية مقفلة" } },
         { "id": "sf.ge.lk.7", "critical": false, "texts": { "en": "Nobody left on site, checked against who checked in", "he": "אף אחד לא נשאר באתר, נבדק מול רשימת מי שנכנס", "ar": "لم يبقَ أحد في الموقع، تم التحقق مقابل من سجّلوا الدخول" } },
         { "id": "sf.ge.lk.8", "critical": false, "texts": { "en": "Hot work areas checked again after the fire watch ended", "he": "אזורי עבודה חמה נבדקו שוב לאחר סיום משמרת האש", "ar": "مناطق الأعمال الساخنة فُحصت مجددًا بعد انتهاء مراقبة الحريق" } }
+      ]
+    },
+    {
+      "id": "sf.ge.firstaid",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "First aid and emergency readiness", "he": "עזרה ראשונה ומוכנות לחירום", "ar": "الإسعافات الأولية والجاهزية للطوارئ" },
+      "references": ["תקנות ארגון הפיקוח על העבודה (עזרה ראשונה במקומות עבודה), התשמ״ח-1988", "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"],
+      "items": [
+        { "id": "sf.ge.fa.1", "critical": true, "texts": { "en": "First-aid kit on site, where everyone knows, and not locked away", "he": "ערכת עזרה ראשונה באתר, במקום ידוע לכולם ולא נעולה", "ar": "حقيبة إسعافات أولية في الموقع، في مكان يعرفه الجميع وغير مقفلة" } },
+        { "id": "sf.ge.fa.2", "critical": true, "texts": { "en": "Kit checked against its contents list: nothing used and not replaced, nothing past its date", "he": "הערכה נבדקה מול רשימת התכולה: אין פריט שנוצל ולא הוחלף, ואין פריט שפג תוקפו", "ar": "فُحصت الحقيبة مقابل قائمة محتوياتها: لا شيء استُخدم ولم يُستبدل، ولا شيء منتهي الصلاحية" } },
+        { "id": "sf.ge.fa.3", "critical": true, "texts": { "en": "A trained first aider on site this shift, named on the notice board", "he": "מגיש עזרה ראשונה מוסמך נמצא באתר במשמרת זו, ושמו מופיע על לוח המודעות", "ar": "مسعف مدرَّب موجود في الموقع في هذه الوردية، واسمه على لوحة الإعلانات" } },
+        { "id": "sf.ge.fa.4", "critical": true, "texts": { "en": "Emergency numbers and the site's address posted at the gate and in the site office", "he": "מספרי החירום וכתובת האתר תלויים בשער ובמשרד האתר", "ar": "أرقام الطوارئ وعنوان الموقع معلّقة عند البوابة وفي مكتب الموقع" } },
+        { "id": "sf.ge.fa.5", "critical": false, "texts": { "en": "Eyewash on site wherever cement, chemicals or grinding are in use", "he": "עמדת שטיפת עיניים באתר בכל מקום שבו עובדים עם מלט, כימיקלים או השחזה", "ar": "محطة غسيل عيون في الموقع حيثما يُستخدم الإسمنت أو المواد الكيميائية أو الجلخ" } },
+        { "id": "sf.ge.fa.6", "critical": false, "texts": { "en": "Assembly point marked, and the way to it clear", "he": "נקודת הכינוס מסומנת והדרך אליה פנויה", "ar": "نقطة التجمع معلَّمة والطريق إليها سالك" } },
+        { "id": "sf.ge.fa.7", "critical": false, "texts": { "en": "A way in for an ambulance kept open up to the gate", "he": "דרך גישה לאמבולנס עד השער נשמרת פנויה", "ar": "طريق دخول لسيارة الإسعاف حتى البوابة يبقى مفتوحًا" } }
+      ]
+    },
+    {
+      "id": "sf.ge.fire",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "Fire extinguishers and fire points", "he": "מטפים ועמדות כיבוי", "ar": "طفايات الحريق ونقاط الإطفاء" },
+      "references": ["תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"],
+      "items": [
+        { "id": "sf.ge.fe.1", "critical": true, "texts": { "en": "An extinguisher at every fire point, hot-work area and fuel store", "he": "מטף בכל עמדת כיבוי, אזור עבודה בחום ומחסן דלק", "ar": "طفاية عند كل نقطة إطفاء ومنطقة أعمال ساخنة ومخزن وقود" } },
+        { "id": "sf.ge.fe.2", "critical": true, "texts": { "en": "Gauge in the green, pin and seal in place", "he": "מד הלחץ בתחום הירוק, הנצרה והחותם במקומם", "ar": "مؤشر الضغط في المنطقة الخضراء، والمسمار والختم في مكانهما" } },
+        { "id": "sf.ge.fe.3", "critical": true, "texts": { "en": "Service label in date", "he": "תווית השירות בתוקף", "ar": "ملصق الصيانة ساري المفعول" } },
+        { "id": "sf.ge.fe.4", "critical": false, "texts": { "en": "Not blocked, and mounted or standing where it can be seen", "he": "לא חסום, ותלוי או עומד במקום גלוי", "ar": "غير محجوبة، ومعلّقة أو موضوعة في مكان ظاهر" } },
+        { "id": "sf.ge.fe.5", "critical": false, "texts": { "en": "Fire points and escape routes signposted", "he": "עמדות הכיבוי ודרכי המילוט מסומנות בשילוט", "ar": "نقاط الإطفاء وطرق الهروب مُشار إليها بلافتات" } },
+        { "id": "sf.ge.fe.6", "critical": false, "texts": { "en": "Gas bottles and flammables stored away from hot work", "he": "בלוני גז וחומרים דליקים מאוחסנים הרחק מעבודה בחום", "ar": "أسطوانات الغاز والمواد القابلة للاشتعال مخزّنة بعيدًا عن الأعمال الساخنة" } }
+      ]
+    },
+    {
+      "id": "sf.ge.welfare",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "Drinking water, toilets and rest", "he": "מי שתייה, שירותים ומנוחה", "ar": "مياه الشرب والمراحيض والاستراحة" },
+      "references": ["תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"],
+      "items": [
+        { "id": "sf.ge.wf.1", "critical": true, "texts": { "en": "Cool drinking water within reach of where people are working", "he": "מי שתייה קרים בהישג יד ממקום העבודה", "ar": "مياه شرب باردة في متناول اليد من مكان العمل" } },
+        { "id": "sf.ge.wf.2", "critical": true, "texts": { "en": "Toilets on site, clean, with water to wash hands", "he": "שירותים באתר, נקיים, עם מים לרחיצת ידיים", "ar": "مراحيض في الموقع، نظيفة، مع ماء لغسل اليدين" } },
+        { "id": "sf.ge.wf.3", "critical": false, "texts": { "en": "A shaded place to rest", "he": "מקום מוצל למנוחה", "ar": "مكان مظلَّل للاستراحة" } },
+        { "id": "sf.ge.wf.4", "critical": false, "texts": { "en": "Somewhere to eat away from dust and chemicals", "he": "מקום לאכול הרחק מאבק וכימיקלים", "ar": "مكان لتناول الطعام بعيدًا عن الغبار والمواد الكيميائية" } },
+        { "id": "sf.ge.wf.5", "critical": false, "texts": { "en": "Somewhere to change and keep clothes dry", "he": "מקום להחלפת בגדים ולשמירתם יבשים", "ar": "مكان لتبديل الملابس وحفظها جافة" } }
       ]
     }
   ]

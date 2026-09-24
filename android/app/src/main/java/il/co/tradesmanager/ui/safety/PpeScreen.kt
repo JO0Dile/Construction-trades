@@ -1,5 +1,11 @@
 package il.co.tradesmanager.ui.safety
 
+import il.co.tradesmanager.ui.export.Exporter
+import il.co.tradesmanager.ui.export.ExportDocument
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.material.icons.filled.IosShare
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -96,6 +102,8 @@ fun PpeScreen(
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
     val locale = currentLocale()
     val languageTag = currentLanguageTag()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
 
     var issuing by remember { mutableStateOf(false) }
     var findPerson by remember { mutableStateOf("") }
@@ -153,6 +161,29 @@ fun PpeScreen(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.action_back),
                         )
+                    }
+                },
+                actions = {
+                    // The printout an inspector asks for: everybody, what they
+                    // were given, when, and whether it is past its date.
+                    if (mayRead && rows.isNotEmpty()) {
+                        IconButton(
+                            onClick = {
+                                val result = Exporter.write(
+                                    context = context,
+                                    document = ExportDocument.PpeRegister(
+                                        issues = rows.values.toList(),
+                                        now = System.currentTimeMillis(),
+                                    ),
+                                    languageTag = languageTag,
+                                    locale = locale,
+                                    rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                                )
+                                context.startActivity(Exporter.shareIntent(context, result))
+                            },
+                        ) {
+                            Icon(Icons.Filled.IosShare, contentDescription = stringResource(R.string.set_export))
+                        }
                     }
                 },
             )

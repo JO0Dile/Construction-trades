@@ -58,6 +58,8 @@ class PpeRepository(
     fun observeForCompany(companyId: String?): Flow<List<PpeIssueEntity>> =
         dao.observeForCompany(companyId)
 
+    fun observeHeldBy(accountId: String): Flow<List<PpeIssueEntity>> = dao.observeHeldBy(accountId)
+
     suspend fun issue(
         role: Role,
         companyId: String?,

@@ -1469,6 +1469,18 @@
     <string name="visit_refused_left">יציאתו כבר נרשמה.</string>
     <string name="muster_visitor_badge">מבקר</string>
     <string name="muster_share_visitor">%1$s (מבקר)</string>
+    <string name="crew_no_ppe">אין ציוד רשום על שמו בפנקס הציוד.</string>
+    <string name="ppe_col_holder">נמסר ל</string>
+    <string name="ppe_col_item">פריט</string>
+    <string name="ppe_col_size">מידה</string>
+    <string name="ppe_col_issued">נמסר בתאריך</string>
+    <string name="ppe_col_state">מצב</string>
+    <string name="visit_col_arrived">הגיע</string>
+    <string name="visit_col_left">יצא</string>
+    <string name="visit_col_briefed">קיבל הסבר</string>
+    <string name="visit_col_still_here">עדיין רשום באתר</string>
+    <string name="visit_col_yes">כן</string>
+    <string name="visit_col_no">לא</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -1588,5 +1600,11 @@
         <item quantity="two">שני מטענים בלי תעודה</item>
         <item quantity="many">%d מטענים בלי תעודה</item>
         <item quantity="other">%d מטענים בלי תעודה</item>
+    </plurals>
+    <plurals name="home_ppe_overdue">
+        <item quantity="one">פריט ציוד מגן אחד עבר את מועד ההחלפה</item>
+        <item quantity="two">שני פריטי ציוד מגן עברו את מועד ההחלפה</item>
+        <item quantity="many">%d פריטי ציוד מגן עברו את מועד ההחלפה</item>
+        <item quantity="other">%d פריטי ציוד מגן עברו את מועד ההחלפה</item>
     </plurals>
 </resources>

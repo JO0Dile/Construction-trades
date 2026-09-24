@@ -1469,6 +1469,18 @@
     <string name="visit_refused_left">سُجّل خروجه من قبل.</string>
     <string name="muster_visitor_badge">زائر</string>
     <string name="muster_share_visitor">%1$s (زائر)</string>
+    <string name="crew_no_ppe">لا يحمل شيئًا مسجلًا في سجل المعدات.</string>
+    <string name="ppe_col_holder">سُلّم إلى</string>
+    <string name="ppe_col_item">القطعة</string>
+    <string name="ppe_col_size">المقاس</string>
+    <string name="ppe_col_issued">تاريخ التسليم</string>
+    <string name="ppe_col_state">الحالة</string>
+    <string name="visit_col_arrived">وصل</string>
+    <string name="visit_col_left">غادر</string>
+    <string name="visit_col_briefed">أُبلغ بالقواعد</string>
+    <string name="visit_col_still_here">ما زال مسجلًا</string>
+    <string name="visit_col_yes">نعم</string>
+    <string name="visit_col_no">لا</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -1628,5 +1640,13 @@
         <item quantity="few">%d حمولات بلا تذكرة</item>
         <item quantity="many">%d حمولة بلا تذكرة</item>
         <item quantity="other">%d حمولة بلا تذكرة</item>
+    </plurals>
+    <plurals name="home_ppe_overdue">
+        <item quantity="zero">لا توجد معدات وقاية تجاوزت موعد استبدالها</item>
+        <item quantity="one">قطعة واحدة من معدات الوقاية تجاوزت موعد استبدالها</item>
+        <item quantity="two">قطعتان من معدات الوقاية تجاوزتا موعد استبدالهما</item>
+        <item quantity="few">%d قطع من معدات الوقاية تجاوزت موعد استبدالها</item>
+        <item quantity="many">%d قطعة من معدات الوقاية تجاوزت موعد استبدالها</item>
+        <item quantity="other">%d قطعة من معدات الوقاية تجاوزت موعد استبدالها</item>
     </plurals>
 </resources>

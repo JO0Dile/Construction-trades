@@ -7,15 +7,18 @@ import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.security.AuditChain
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
+import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
+import il.co.tradesmanager.data.local.entity.SiteVisitEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.components.unitLabel
 import java.time.Instant
@@ -103,6 +106,30 @@ sealed interface ExportDocument {
     ) : ExportDocument
 
     /**
+     * The protective equipment register: every issue, held or handed back.
+     *
+     * [now] is when it was exported, so the state column says what was
+     * overdue on the day the printout was made rather than on the day it is
+     * read.
+     */
+    data class PpeRegister(
+        val issues: List<PpeIssueEntity>,
+        val now: Long,
+    ) : ExportDocument
+
+    /**
+     * One job's visitor log.
+     *
+     * Phone numbers are left out. The log is printed for an inspector who
+     * wants to know who was on the site and when; a list of strangers'
+     * numbers is not something to hand over because it happened to be kept.
+     */
+    data class VisitorLog(
+        val jobName: String,
+        val visits: List<SiteVisitEntity>,
+    ) : ExportDocument
+
+    /**
      * A table, plus columns only the machine-readable copy carries.
      *
      * [extraHeaders] and [extraCells] are appended to each CSV row and left
@@ -174,6 +201,63 @@ sealed interface ExportDocument {
                     Formats.quantity(material.requiredQuantity, locale),
                     context.getString(unitLabel(material.unit)),
                     "",
+                )
+            },
+        )
+
+        is PpeRegister -> Table(
+            title = context.getString(R.string.ppe_title),
+            headers = listOf(
+                context.getString(R.string.ppe_col_holder),
+                context.getString(R.string.ppe_col_item),
+                context.getString(R.string.ppe_quantity),
+                context.getString(R.string.ppe_col_size),
+                context.getString(R.string.ppe_col_issued),
+                context.getString(R.string.ptw_issued_by),
+                context.getString(R.string.ppe_replace_by),
+                context.getString(R.string.ppe_col_state),
+            ),
+            rows = issues.sortedWith(compareBy({ it.holderName.lowercase() }, { it.issuedAt })).map { issue ->
+                val state = Ppe.state(issue.replaceBy, issue.handedBackAt, now)
+                listOf(
+                    issue.holderName,
+                    issue.itemName,
+                    issue.quantity.toString(),
+                    issue.size.orEmpty(),
+                    day(issue.issuedAt, locale),
+                    issue.issuedByName,
+                    issue.replaceBy?.let { day(it, locale) }.orEmpty(),
+                    when (state) {
+                        Ppe.State.OVERDUE -> context.getString(R.string.ppe_state_overdue)
+                        Ppe.State.DUE_SOON -> context.getString(R.string.ppe_state_due_soon)
+                        Ppe.State.IN_USE -> context.getString(R.string.ppe_state_in_use)
+                        Ppe.State.HANDED_BACK -> context.getString(R.string.ppe_history) +
+                            issue.handedBackAt?.let { " " + day(it, locale) }.orEmpty()
+                    },
+                )
+            },
+        )
+
+        is VisitorLog -> Table(
+            title = context.getString(R.string.visit_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.visit_name),
+                context.getString(R.string.visit_organisation),
+                context.getString(R.string.visit_host),
+                context.getString(R.string.visit_col_arrived),
+                context.getString(R.string.visit_col_left),
+                context.getString(R.string.visit_col_briefed),
+                context.getString(R.string.audit_signed),
+            ),
+            rows = visits.sortedBy { it.arrivedAt }.map { visit ->
+                listOf(
+                    visit.name,
+                    visit.organisation.orEmpty(),
+                    visit.hostName.orEmpty(),
+                    moment(visit.arrivedAt, locale),
+                    visit.leftAt?.let { moment(it, locale) } ?: context.getString(R.string.visit_col_still_here),
+                    context.getString(if (visit.briefed) R.string.visit_col_yes else R.string.visit_col_no),
+                    context.getString(if (!visit.signature.isNullOrBlank()) R.string.visit_col_yes else R.string.visit_col_no),
                 )
             },
         )
@@ -302,8 +386,18 @@ sealed interface ExportDocument {
             is Checklist -> template.id
             is Handover -> "handover-" + project.name
             is AuditTrail -> "audit-trail-" + exportedOn
+            is PpeRegister -> "protective-equipment"
+            is VisitorLog -> "visitors-" + jobName
         },
     )
+
+    private fun day(at: Long, locale: Locale): String =
+        Formats.date(Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault()).toLocalDate(), locale)
+
+    private fun moment(at: Long, locale: Locale): String =
+        Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault()).let {
+            Formats.dateTime(it.toLocalDate(), it.toLocalTime(), locale)
+        }
 
     /** The verdict in one word, for the first cell somebody reads. */
     private fun AuditTrail.verdictWord(context: Context): String = when (verdict) {

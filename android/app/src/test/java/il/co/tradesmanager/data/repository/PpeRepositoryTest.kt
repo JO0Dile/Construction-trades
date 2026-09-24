@@ -31,6 +31,11 @@ class FakePpeDao : PpeDao {
 
     override fun observeForCompany(companyId: String?): Flow<List<PpeIssueEntity>> =
         rows.map { all -> all.filter { it.companyId == companyId }.sortedByDescending { it.issuedAt } }
+
+    override fun observeHeldBy(accountId: String): Flow<List<PpeIssueEntity>> =
+        rows.map { all ->
+            all.filter { it.accountId == accountId && it.handedBackAt == null }.sortedByDescending { it.issuedAt }
+        }
 }
 
 class PpeRepositoryTest {
@@ -193,5 +198,14 @@ class PpeRepositoryTest {
         val rules = PpeRepository.asIssue(row)
         assertEquals("acc.worker", rules.holderKey)
         assertNotNull(rules.itemName)
+    }
+
+    @Test
+    fun `a profile shows what the person holds now, not what they handed back`() = runTest {
+        val kept = issue().getOrThrow().issue.id
+        val returned = issue(now = 2_000_000L).getOrThrow().issue.id
+        repo.handBack(Role.SAFETY_OFFICER, returned, "Officer", now = 3_000_000L).getOrThrow()
+
+        assertEquals(listOf(kept), repo.observeHeldBy("acc.worker").first().map { it.id })
     }
 }

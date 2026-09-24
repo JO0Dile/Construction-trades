@@ -483,5 +483,29 @@
             <string>%d حمولة بلا تذكرة</string>
         </dict>
     </dict>
+    <key>home_ppe_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا توجد معدات وقاية تجاوزت موعد استبدالها</string>
+            <key>one</key>
+            <string>قطعة واحدة من معدات الوقاية تجاوزت موعد استبدالها</string>
+            <key>two</key>
+            <string>قطعتان من معدات الوقاية تجاوزتا موعد استبدالهما</string>
+            <key>few</key>
+            <string>%d قطع من معدات الوقاية تجاوزت موعد استبدالها</string>
+            <key>many</key>
+            <string>%d قطعة من معدات الوقاية تجاوزت موعد استبدالها</string>
+            <key>other</key>
+            <string>%d قطعة من معدات الوقاية تجاوزت موعد استبدالها</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

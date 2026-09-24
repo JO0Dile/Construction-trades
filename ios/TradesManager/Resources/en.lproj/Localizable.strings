@@ -1786,3 +1786,27 @@
 "muster_visitor_badge" = "visitor";
 /* A visitor's name in the shared roll call text; %1$s the name */
 "muster_share_visitor" = "%1$s (visitor)";
+/* Profile section placeholder: the register shows nothing held */
+"crew_no_ppe" = "Holding nothing on the equipment register.";
+/* Export column */
+"ppe_col_holder" = "Issued to";
+/* Export column */
+"ppe_col_item" = "Item";
+/* Export column */
+"ppe_col_size" = "Size";
+/* Export column: date issued */
+"ppe_col_issued" = "Issued";
+/* Export column */
+"ppe_col_state" = "State";
+/* Export column */
+"visit_col_arrived" = "Arrived";
+/* Export column */
+"visit_col_left" = "Left";
+/* Export column: told the site rules */
+"visit_col_briefed" = "Briefed";
+/* Export cell: not signed out */
+"visit_col_still_here" = "Still signed in";
+/* Export cell */
+"visit_col_yes" = "Yes";
+/* Export cell */
+"visit_col_no" = "No";

@@ -1786,3 +1786,27 @@
 "muster_visitor_badge" = "زائر";
 /* A visitor's name in the shared roll call text; %1$s the name */
 "muster_share_visitor" = "%1$s (زائر)";
+/* Profile section placeholder: the register shows nothing held */
+"crew_no_ppe" = "لا يحمل شيئًا مسجلًا في سجل المعدات.";
+/* Export column */
+"ppe_col_holder" = "سُلّم إلى";
+/* Export column */
+"ppe_col_item" = "القطعة";
+/* Export column */
+"ppe_col_size" = "المقاس";
+/* Export column: date issued */
+"ppe_col_issued" = "تاريخ التسليم";
+/* Export column */
+"ppe_col_state" = "الحالة";
+/* Export column */
+"visit_col_arrived" = "وصل";
+/* Export column */
+"visit_col_left" = "غادر";
+/* Export column: told the site rules */
+"visit_col_briefed" = "أُبلغ بالقواعد";
+/* Export cell: not signed out */
+"visit_col_still_here" = "ما زال مسجلًا";
+/* Export cell */
+"visit_col_yes" = "نعم";
+/* Export cell */
+"visit_col_no" = "لا";

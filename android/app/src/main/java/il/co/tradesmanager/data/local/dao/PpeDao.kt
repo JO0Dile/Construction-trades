@@ -30,4 +30,8 @@ interface PpeDao {
         """,
     )
     fun observeForCompany(companyId: String?): Flow<List<PpeIssueEntity>>
+
+    /** What one person is holding now, newest first. For their profile. */
+    @Query("SELECT * FROM ppe_issues WHERE accountId = :accountId AND handedBackAt IS NULL ORDER BY issuedAt DESC")
+    fun observeHeldBy(accountId: String): Flow<List<PpeIssueEntity>>
 }

@@ -79,6 +79,7 @@ fun HomeScreen(
     onOpenSafety: () -> Unit,
     onOpenMuster: () -> Unit,
     onOpenPlant: () -> Unit,
+    onOpenPpe: () -> Unit,
     onOpenPeople: () -> Unit,
     onOpenSearch: () -> Unit,
     onOpenSettings: () -> Unit,
@@ -90,6 +91,7 @@ fun HomeScreen(
     val session by viewModel.session.collectAsStateWithLifecycle()
     val rollCallRunning by viewModel.rollCallRunning.collectAsStateWithLifecycle()
     val plantUnchecked by viewModel.plantUnchecked.collectAsStateWithLifecycle()
+    val ppeOverdue by viewModel.ppeOverdue.collectAsStateWithLifecycle()
     val locale = currentLocale()
     val zone = ZoneId.systemDefault()
 
@@ -183,6 +185,30 @@ fun HomeScreen(
                     ) {
                         Text(
                             pluralStringResource(R.plurals.home_plant_unchecked, plantUnchecked, plantUnchecked),
+                            style = MaterialTheme.typography.titleSmall,
+                            modifier = Modifier.padding(16.dp),
+                        )
+                    }
+                }
+            }
+
+            // A harness past its date is a man on a scaffold in something the
+            // manufacturer no longer stands behind. The count is already only
+            // there for somebody who may read the register.
+            if (ppeOverdue > 0) {
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                            .clickable(onClick = onOpenPpe),
+                    ) {
+                        Text(
+                            pluralStringResource(R.plurals.home_ppe_overdue, ppeOverdue, ppeOverdue),
                             style = MaterialTheme.typography.titleSmall,
                             modifier = Modifier.padding(16.dp),
                         )

@@ -7671,6 +7671,78 @@
       "en": "%1$s (visitor)",
       "he": "%1$s (מבקר)",
       "ar": "%1$s (زائر)"
+    },
+    "crew_no_ppe": {
+      "c": "Profile section placeholder: the register shows nothing held",
+      "en": "Holding nothing on the equipment register.",
+      "he": "אין ציוד רשום על שמו בפנקס הציוד.",
+      "ar": "لا يحمل شيئًا مسجلًا في سجل المعدات."
+    },
+    "ppe_col_holder": {
+      "c": "Export column",
+      "en": "Issued to",
+      "he": "נמסר ל",
+      "ar": "سُلّم إلى"
+    },
+    "ppe_col_item": {
+      "c": "Export column",
+      "en": "Item",
+      "he": "פריט",
+      "ar": "القطعة"
+    },
+    "ppe_col_size": {
+      "c": "Export column",
+      "en": "Size",
+      "he": "מידה",
+      "ar": "المقاس"
+    },
+    "ppe_col_issued": {
+      "c": "Export column: date issued",
+      "en": "Issued",
+      "he": "נמסר בתאריך",
+      "ar": "تاريخ التسليم"
+    },
+    "ppe_col_state": {
+      "c": "Export column",
+      "en": "State",
+      "he": "מצב",
+      "ar": "الحالة"
+    },
+    "visit_col_arrived": {
+      "c": "Export column",
+      "en": "Arrived",
+      "he": "הגיע",
+      "ar": "وصل"
+    },
+    "visit_col_left": {
+      "c": "Export column",
+      "en": "Left",
+      "he": "יצא",
+      "ar": "غادر"
+    },
+    "visit_col_briefed": {
+      "c": "Export column: told the site rules",
+      "en": "Briefed",
+      "he": "קיבל הסבר",
+      "ar": "أُبلغ بالقواعد"
+    },
+    "visit_col_still_here": {
+      "c": "Export cell: not signed out",
+      "en": "Still signed in",
+      "he": "עדיין רשום באתר",
+      "ar": "ما زال مسجلًا"
+    },
+    "visit_col_yes": {
+      "c": "Export cell",
+      "en": "Yes",
+      "he": "כן",
+      "ar": "نعم"
+    },
+    "visit_col_no": {
+      "c": "Export cell",
+      "en": "No",
+      "he": "לא",
+      "ar": "لا"
     }
   },
   "plurals": {
@@ -8092,6 +8164,27 @@
         "few": "%d حمولات بلا تذكرة",
         "many": "%d حمولة بلا تذكرة",
         "other": "%d حمولة بلا تذكرة"
+      }
+    },
+    "home_ppe_overdue": {
+      "c": "Home banner: protective equipment past its replace-by date",
+      "en": {
+        "one": "%d item of protective equipment is past its replacement date",
+        "other": "%d items of protective equipment are past their replacement date"
+      },
+      "he": {
+        "one": "פריט ציוד מגן אחד עבר את מועד ההחלפה",
+        "two": "שני פריטי ציוד מגן עברו את מועד ההחלפה",
+        "many": "%d פריטי ציוד מגן עברו את מועד ההחלפה",
+        "other": "%d פריטי ציוד מגן עברו את מועד ההחלפה"
+      },
+      "ar": {
+        "zero": "لا توجد معدات وقاية تجاوزت موعد استبدالها",
+        "one": "قطعة واحدة من معدات الوقاية تجاوزت موعد استبدالها",
+        "two": "قطعتان من معدات الوقاية تجاوزتا موعد استبدالهما",
+        "few": "%d قطع من معدات الوقاية تجاوزت موعد استبدالها",
+        "many": "%d قطعة من معدات الوقاية تجاوزت موعد استبدالها",
+        "other": "%d قطعة من معدات الوقاية تجاوزت موعد استبدالها"
       }
     }
   }
