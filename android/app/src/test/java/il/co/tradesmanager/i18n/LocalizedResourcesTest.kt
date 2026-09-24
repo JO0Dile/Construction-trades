@@ -28,6 +28,10 @@ import org.robolectric.annotation.Config
  *
  * "iw" as well as "he": Android and Java still hand the old code to apps on
  * some phones, and a Hebrew phone that reports "iw" must still get Hebrew.
+ *
+ * Its first run failed both Hebrew cases, and it was right to: the framework
+ * turns "he" into "iw" before it looks a word up, and the app's Hebrew was
+ * filed only under values-he, which that lookup never chooses.
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34], application = Application::class)

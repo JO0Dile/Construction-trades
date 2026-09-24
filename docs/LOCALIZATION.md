@@ -18,10 +18,18 @@ Nothing else. `tools/gen-strings.py` turns it into:
 |---|---|---|
 | `android/app/src/main/res/values/strings.xml` | Android | English (the source language) |
 | `android/app/src/main/res/values-he/strings.xml` | Android | Hebrew |
+| `android/app/src/main/res/values-iw/strings.xml` | Android | Hebrew again, under the code Android looks it up by |
 | `android/app/src/main/res/values-ar/strings.xml` | Android | Arabic |
 | `ios/.../<lang>.lproj/Localizable.strings` | iOS | UI strings |
 | `ios/.../<lang>.lproj/Localizable.stringsdict` | iOS | Plurals |
 | `ios/.../<lang>.lproj/InfoPlist.strings` | iOS | Permission purpose strings |
+
+Hebrew is written twice on Android on purpose. Android turns a phone's
+`he` into the old code `iw` before it looks a word up, and does not treat
+the two as one language, so a `values-he` folder on its own is never
+chosen. The same goes for Indonesian (`id`/`in`) and Yiddish (`yi`/`ji`)
+if they are ever added; the generator writes both folders for all three,
+and `tools/check-locale-switch.py` fails the build if they differ.
 
 Never edit a generated file. The generator rewrites it, and a hand edit is
 lost silently — which is why every generated file carries a banner saying so.

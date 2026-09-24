@@ -156,6 +156,27 @@ def android_values_dir(lang: str, source: str) -> pathlib.Path:
     return ANDROID_RES / ("values" if lang == source else f"values-{lang}")
 
 
+# The codes Android itself still asks for.
+#
+# Java renamed Hebrew from "iw" to "he" decades ago; Android's resource lookup
+# did not. Before it looks anything up, the framework turns a phone's "he"
+# into "iw" (ResourcesImpl.adjustLanguageTag), and the matcher does not treat
+# the two as the same language. So a folder named values-he is never chosen
+# on a Hebrew phone: the app shipped every Hebrew word for twenty-eight
+# versions and showed English, while the catalogue, which the app looks up by
+# the new code itself, came out in Hebrew. Every library that works in Hebrew
+# ships values-iw for this reason. The same file is written under both names,
+# so whichever code a phone reports, it finds its words.
+ANDROID_LEGACY_CODES = {"he": "iw", "id": "in", "yi": "ji"}
+
+
+def android_values_dirs(lang: str, source: str) -> list[pathlib.Path]:
+    dirs = [android_values_dir(lang, source)]
+    if lang in ANDROID_LEGACY_CODES and lang != source:
+        dirs.append(ANDROID_RES / f"values-{ANDROID_LEGACY_CODES[lang]}")
+    return dirs
+
+
 def render_android(data: dict, lang: str) -> str:
     lines = ['<?xml version="1.0" encoding="utf-8"?>', f"<!-- {GENERATED_BANNER} -->", "<resources>"]
     for key, entry in data["strings"].items():
@@ -293,8 +314,8 @@ def main() -> int:
 
     stale: list[str] = []
     for lang in data["languages"]:
-        write(android_values_dir(lang, data["sourceLanguage"]) / "strings.xml",
-              render_android(data, lang), args.check, stale)
+        for values in android_values_dirs(lang, data["sourceLanguage"]):
+            write(values / "strings.xml", render_android(data, lang), args.check, stale)
         lproj = IOS_RES / f"{lang}.lproj"
         write(lproj / "Localizable.strings", render_ios_strings(data, lang), args.check, stale)
         write(lproj / "Localizable.stringsdict", render_ios_stringsdict(data, lang), args.check, stale)

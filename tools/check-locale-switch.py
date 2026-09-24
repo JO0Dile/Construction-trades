@@ -17,6 +17,11 @@ Checked here, because each of these is one line of XML nobody rereads:
   * every activity is an AppCompatActivity, which is what applies the choice
   * every language in locales_config.xml survives resourceConfigurations,
     with "iw" beside "he" for the libraries that still use the old code
+  * the app's own Hebrew is filed under "iw" as well as "he". Android turns a
+    phone's "he" into "iw" before looking anything up and does not treat the
+    two as one language, so values-he alone is never chosen. Fixing the
+    first three still left every word of the app English on a Hebrew phone;
+    a test running Android's own resource lookup is what found it.
 """
 
 from __future__ import annotations
@@ -28,10 +33,14 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 APP = ROOT / "android" / "app"
 MANIFEST = APP / "src" / "main" / "AndroidManifest.xml"
-LOCALES = APP / "src" / "main" / "res" / "xml" / "locales_config.xml"
+RES = APP / "src" / "main" / "res"
+LOCALES = RES / "xml" / "locales_config.xml"
 GRADLE = APP / "build.gradle.kts"
 SOURCES = APP / "src" / "main" / "java"
 ANDROID = "{http://schemas.android.com/apk/res/android}"
+
+# The code Android's resource lookup asks for, for the languages Java renamed.
+LEGACY_CODES = {"he": "iw", "id": "in", "yi": "ji"}
 
 
 def main() -> int:
@@ -88,6 +97,26 @@ def main() -> int:
             "'iw' is missing from resourceConfigurations: the AndroidX libraries file their Hebrew "
             "under it, and without it their strings stay English on a Hebrew phone."
         )
+
+    for tag in shipped:
+        language = tag.split("-")[0]
+        if language not in LEGACY_CODES:
+            continue
+        legacy = LEGACY_CODES[language]
+        modern_dir = RES / f"values-{language}"
+        legacy_dir = RES / f"values-{legacy}"
+        for modern in sorted(modern_dir.glob("*.xml")):
+            twin = legacy_dir / modern.name
+            if not twin.is_file():
+                problems.append(
+                    f"values-{legacy}/{modern.name} is missing: Android looks up '{language}' as "
+                    f"'{legacy}', so the words in values-{language}/{modern.name} are never shown."
+                )
+            elif twin.read_bytes() != modern.read_bytes():
+                problems.append(
+                    f"values-{legacy}/{modern.name} differs from values-{language}/{modern.name}: "
+                    "run tools/gen-strings.py."
+                )
 
     if problems:
         print("Switching language would not switch the app:", file=sys.stderr)

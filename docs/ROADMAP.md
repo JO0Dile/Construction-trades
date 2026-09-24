@@ -573,6 +573,14 @@ choice is kept across restarts on older Android, and the libraries' Hebrew is
 no longer stripped from the build. `tools/check-locale-switch.py` fails the
 build if any of the three comes back.
 
+That was not the whole of it. The first test to ask Android's own resource
+lookup what a Hebrew phone is shown, rather than reading the files, failed:
+Android turns "he" into the old code "iw" before it looks anything up, and
+the app's Hebrew was filed only under "he". The catalogue, which the app
+looks up by the new code itself, came out in Hebrew; every button and heading
+stayed English. The generator now writes the Hebrew file under both codes,
+and the same check fails the build if the two ever differ.
+
 **Every update says what it does. Done.**
 Written once per version in English, Hebrew and Arabic, shipped in the app
 and attached to the release. A phone offered an update lists every version
