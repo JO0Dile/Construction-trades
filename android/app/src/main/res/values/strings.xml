@@ -1916,6 +1916,22 @@
     <string name="dwg_refused_revision">Say which revision this is.</string>
     <!-- Refusal -->
     <string name="dwg_refused_current">That revision is already the current one.</string>
+    <!-- Handover pack row -->
+    <string name="hv_cubes_engineer">Pours with a cube result for the engineer</string>
+    <!-- Handover pack row -->
+    <string name="hv_cubes_missing">Finished pours with no 28-day cube result</string>
+    <!-- Screen title and People action -->
+    <string name="gaps_title">Tickets by trade</string>
+    <!-- What the screen is for; the catalogue's word is 'usually' -->
+    <string name="gaps_blurb">The tickets each trade usually needs, and who does not hold them in date. What a particular job calls for is the job\'s to say.</string>
+    <!-- Nobody has a gap -->
+    <string name="gaps_none">Everybody holds the tickets their trade usually needs.</string>
+    <!-- Nobody could be checked -->
+    <string name="gaps_none_checked">Nobody here has a trade that usually needs a ticket yet. Set people\'s trades on their profiles.</string>
+    <!-- Row line; %1$s is a ticket kind -->
+    <string name="gaps_missing">%1$s: none on record</string>
+    <!-- Row line; %1$s is a ticket kind -->
+    <string name="gaps_expired">%1$s: expired</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

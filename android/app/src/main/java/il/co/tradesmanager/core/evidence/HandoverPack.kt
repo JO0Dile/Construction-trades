@@ -47,6 +47,17 @@ object HandoverPack {
         /** Pours started and never finished. */
         POURS_UNFINISHED,
 
+        /**
+         * Pours with a twenty-eight-day cube result under the strength the
+         * mix asks for. Not a verdict on the structure -- that is the
+         * engineer's -- but a handover file with an unanswered low result
+         * in it is not finished.
+         */
+        CUBES_FOR_ENGINEER,
+
+        /** Finished pours with no twenty-eight-day cube result recorded yet. */
+        POURS_WITHOUT_28_DAY_RESULT,
+
         /** Days somebody wrote up and never signed. */
         UNSIGNED_DAILY_LOGS,
 

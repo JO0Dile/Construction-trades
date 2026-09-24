@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.27.0",
+      "points": [
+        {
+          "en": "Tickets by trade (People, the shield button): who lacks a ticket their trade usually needs, such as a licensed electrician, welding or work at height, or holds only an expired one.",
+          "he": "תעודות לפי מקצוע (אנשים, כפתור המגן): מי שחסרה לו תעודה שהמקצוע שלו צריך בדרך כלל, כמו חשמלאי מוסמך, ריתוך או עבודה בגובה, או שיש לו רק תעודה שפג תוקפה.",
+          "ar": "الشهادات حسب المهنة (الأشخاص، زر الدرع): من تنقصه شهادة تحتاجها مهنته عادةً، مثل كهربائي مرخّص أو لحام أو العمل على ارتفاع، أو يحمل شهادة منتهية فقط."
+        },
+        {
+          "en": "The handover pack now lists finished pours still missing their 28-day cube result, and pours with a result the engineer has to see.",
+          "he": "תיק המסירה מציג עכשיו יציקות שהסתיימו ועדיין חסרה להן תוצאת קוביות לגיל 28 ימים, ויציקות עם תוצאה שהמהנדס חייב לראות.",
+          "ar": "يعرض ملف التسليم الآن الصبّات المنتهية التي ما زالت تنقصها نتيجة المكعبات لعمر 28 يومًا، والصبّات ذات النتيجة التي يجب أن يطّلع عليها المهندس."
+        }
+      ]
+    },
+    {
       "version": "0.26.0",
       "points": [
         {

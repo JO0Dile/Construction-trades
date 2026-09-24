@@ -147,7 +147,7 @@ below is a claim about what was intended — it is what the build proves.
 - 22 trades, **527 catalogue items**, 219 safety checks and 24 project
   templates, all parsed through the app's own model types with unknown keys
   rejected
-- **1,534 interface strings and 23 plural rules in Hebrew, Arabic and
+- **1,542 interface strings and 23 plural rules in Hebrew, Arabic and
   English**, with every catalogue block trilingual too. The build fails if one
   language goes missing, if the English is pasted into another, or if an
   English sentence is written into the audit register
@@ -162,7 +162,7 @@ below is a claim about what was intended — it is what the build proves.
   visitor logs) is Android only
 - barcode scanning on both platforms, and CSV + PDF export that survives Excel
   on Windows and mirrors its columns for Hebrew and Arabic
-- **784 unit tests, all passing**, and a release bundle built through R8 on
+- **791 unit tests, all passing**, and a release bundle built through R8 on
   every push — because a debug build does not minify, and something Room,
   SQLCipher or kotlinx.serialization loads reflectively should not first go
   missing on the day of a store submission

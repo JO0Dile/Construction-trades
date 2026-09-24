@@ -9,7 +9,11 @@ The two here have both cost one:
     add when a constant is needed near the bottom of a long file, and fatal
     ("Only one companion object is allowed per class");
   * `catch (_: SomeException)`, which reads as idiomatic and is not accepted
-    by the Kotlin this project builds with.
+    by the Kotlin this project builds with;
+  * `stringResource(...)` inside the lambda of a function that is not
+    inline -- `joinToString { }`, the sort selectors, `lazy { }`. Composable
+    calls are allowed inside `map { }` because `map` is inline, and the two
+    look identical on the page.
 
 The same reasoning as check-compose-delegates and check-test-imports: not a
 style rule, a compile error found in a second instead of a quarter of an hour.
@@ -26,6 +30,26 @@ SOURCES = [ROOT / "android/app/src/main/java", ROOT / "android/app/src/test/java
 CLASS = re.compile(r"\b(?:class|object|interface)\s+\w+")
 COMPANION = re.compile(r"\bcompanion\s+object\b")
 UNDERSCORE_CATCH = re.compile(r"\bcatch\s*\(\s*_\s*:")
+# Higher-order functions whose lambda is not inline, or is crossinline: a
+# composable call inside one does not compile.
+NOT_INLINE = re.compile(
+    r"\.(joinToString|sortedBy|sortedByDescending|thenBy|thenByDescending)\s*(\([^()]*\))?\s*\{"
+    r"|\b(compareBy|compareByDescending|lazy)\s*(<[^>]*>)?\s*\{"
+)
+COMPOSABLE_CALL = re.compile(r"\b(stringResource|pluralStringResource|painterResource)\s*\(")
+
+
+def lambda_body(text: str, open_brace: int) -> str:
+    """The text between a lambda's braces, matched on the stripped source."""
+    depth = 0
+    for index in range(open_brace, len(text)):
+        if text[index] == "{":
+            depth += 1
+        elif text[index] == "}":
+            depth -= 1
+            if depth == 0:
+                return text[open_brace + 1:index]
+    return text[open_brace + 1:]
 
 
 def strip(text: str) -> str:
@@ -94,12 +118,21 @@ def main() -> int:
             for m in UNDERSCORE_CATCH.finditer(text):
                 line = text.count("\n", 0, m.start()) + 1
                 faults.append(f"{rel}:{line}  catch (_: ...) does not compile here; name the parameter")
+            for m in NOT_INLINE.finditer(text):
+                body = lambda_body(text, m.end() - 1)
+                if COMPOSABLE_CALL.search(body):
+                    line = text.count("\n", 0, m.start()) + 1
+                    name = m.group(1) or m.group(3)
+                    faults.append(
+                        f"{rel}:{line}  a composable call inside {name} {{ }}, which is not inline; "
+                        "look the strings up in map { } first"
+                    )
     if faults:
         print(f"{len(faults)} Kotlin mistakes the compiler will reject:\n", file=sys.stderr)
         for fault in faults:
             print(f"  {fault}", file=sys.stderr)
         return 1
-    print(f"No companion or catch-parameter mistakes in {files} Kotlin files.")
+    print(f"No companion, catch-parameter or non-inline composable mistakes in {files} Kotlin files.")
     return 0
 
 

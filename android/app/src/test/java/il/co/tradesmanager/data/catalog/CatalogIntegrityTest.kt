@@ -398,4 +398,18 @@ class CatalogIntegrityTest {
         }
         assertEquals(emptyList<String>(), problems)
     }
+
+    /**
+     * A trade's usual tickets are ids of certification kinds. One that names
+     * no kind can never be matched by any ticket, so everybody in the trade
+     * would show a gap nobody could close.
+     */
+    @Test
+    fun everyUsualTicketIsARealKind() {
+        val kinds = manifest.certificationKinds.map { it.id }.toSet()
+        val unknown = manifest.trades.flatMap { trade ->
+            trade.usualTickets.filterNot { it in kinds }.map { "${trade.id} -> $it" }
+        }
+        assertEquals(emptyList<String>(), unknown)
+    }
 }

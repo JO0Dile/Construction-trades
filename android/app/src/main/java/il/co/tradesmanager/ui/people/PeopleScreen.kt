@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HowToReg
 import androidx.compose.material.icons.filled.PersonRemove
+import androidx.compose.material.icons.filled.VerifiedUser
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -70,6 +71,7 @@ fun PeopleScreen(
     container: AppContainer,
     onOpenGate: () -> Unit,
     onOpenCrew: () -> Unit,
+    onOpenTicketGaps: () -> Unit,
 ) {
     val viewModel: PeopleViewModel = viewModel(
         factory = ViewModelFactory(container) { PeopleViewModel(it) },
@@ -99,6 +101,14 @@ fun PeopleScreen(
                         Icon(
                             Icons.Filled.Groups,
                             contentDescription = stringResource(R.string.crew_open),
+                        )
+                    }
+                    // Who lacks a ticket their trade usually needs. Everybody who
+                    // can open this tab can already see the tickets it reads.
+                    IconButton(onClick = onOpenTicketGaps) {
+                        Icon(
+                            Icons.Filled.VerifiedUser,
+                            contentDescription = stringResource(R.string.gaps_title),
                         )
                     }
                     // The gate, not the member list. Adding somebody here is

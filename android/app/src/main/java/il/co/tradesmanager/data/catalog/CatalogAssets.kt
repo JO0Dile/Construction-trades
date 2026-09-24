@@ -58,6 +58,13 @@ data class CatalogTrade(
     val itemsFile: String,
     val safetyFile: String? = null,
     val templatesFile: String? = null,
+    /**
+     * Certification kinds this trade usually needs, by id. "Usually" is the
+     * word: which tickets a particular job calls for depends on the job, so
+     * this drives a question on the People lens, never a refusal. Left empty
+     * for a trade where there is no one answer.
+     */
+    val usualTickets: List<String> = emptyList(),
 )
 
 @Serializable

@@ -77,6 +77,14 @@ object CubeTests {
     }
 
     /**
+     * A finished pour still owed the result it is judged on: none of its sets
+     * is twenty-eight days or older. A pour still running is not counted
+     * here; it is already outstanding for being unfinished.
+     */
+    fun awaitingJudgedResult(finished: Boolean, setAges: List<Int>): Boolean =
+        finished && setAges.none { it >= JUDGED_AT_DAYS }
+
+    /**
      * A stored set, as the rules see it: figures kept as text, judged against
      * the strength the pour's own mix asks for. Null when no figure reads as
      * a number, which a set recorded through the app never is.

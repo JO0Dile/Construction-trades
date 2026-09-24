@@ -81,6 +81,7 @@ import il.co.tradesmanager.ui.settings.TermsScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
 import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
 import il.co.tradesmanager.ui.drawings.DrawingsScreen
+import il.co.tradesmanager.ui.people.TicketGapsScreen
 import il.co.tradesmanager.ui.update.WhatsNewGate
 import il.co.tradesmanager.ui.visitors.VisitorsScreen
 import il.co.tradesmanager.ui.waste.WasteScreen
@@ -116,6 +117,7 @@ object Routes {
     const val WASTE = "projects/waste"
     const val VISITORS = "projects/visitors"
     const val DRAWINGS = "projects/drawings"
+    const val TICKET_GAPS = "people/tickets"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
     const val GATE = "people/gate"
@@ -445,6 +447,13 @@ fun AppNavHost(
                     container = container,
                     onOpenGate = { navController.navigate(Routes.GATE) },
                     onOpenCrew = { navController.navigate(Routes.crew(null)) },
+                    onOpenTicketGaps = { navController.navigate(Routes.TICKET_GAPS) },
+                )
+            }
+            composable(Routes.TICKET_GAPS) {
+                TicketGapsScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable(Routes.GATE) {

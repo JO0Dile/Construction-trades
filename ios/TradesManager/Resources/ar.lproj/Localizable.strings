@@ -1915,3 +1915,19 @@
 "dwg_refused_revision" = "اذكر أي مراجعة هذه.";
 /* Refusal */
 "dwg_refused_current" = "هذه المراجعة هي الحالية أصلًا.";
+/* Handover pack row */
+"hv_cubes_engineer" = "صبّات بنتيجة مكعبات لاطلاع المهندس";
+/* Handover pack row */
+"hv_cubes_missing" = "صبّات منتهية بلا نتيجة مكعبات لعمر 28 يومًا";
+/* Screen title and People action */
+"gaps_title" = "الشهادات حسب المهنة";
+/* What the screen is for; the catalogue's word is 'usually' */
+"gaps_blurb" = "الشهادات التي تحتاجها كل مهنة عادةً، ومن لا يحملها سارية. أما ما يتطلبه عمل بعينه فيحدده العمل نفسه.";
+/* Nobody has a gap */
+"gaps_none" = "الجميع يحملون الشهادات التي تحتاجها مهنتهم عادةً.";
+/* Nobody could be checked */
+"gaps_none_checked" = "لا يوجد هنا بعد من تحتاج مهنته شهادة عادةً. حدّد مهنة كل شخص في ملفه.";
+/* Row line; %1$s is a ticket kind */
+"gaps_missing" = "%1$s: غير مسجلة";
+/* Row line; %1$s is a ticket kind */
+"gaps_expired" = "%1$s: منتهية الصلاحية";

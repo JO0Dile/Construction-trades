@@ -8064,6 +8064,54 @@
       "en": "That revision is already the current one.",
       "he": "המהדורה הזו כבר העדכנית.",
       "ar": "هذه المراجعة هي الحالية أصلًا."
+    },
+    "hv_cubes_engineer": {
+      "c": "Handover pack row",
+      "en": "Pours with a cube result for the engineer",
+      "he": "יציקות עם תוצאת קוביות לעיון המהנדס",
+      "ar": "صبّات بنتيجة مكعبات لاطلاع المهندس"
+    },
+    "hv_cubes_missing": {
+      "c": "Handover pack row",
+      "en": "Finished pours with no 28-day cube result",
+      "he": "יציקות שהסתיימו בלי תוצאת קוביות לגיל 28 ימים",
+      "ar": "صبّات منتهية بلا نتيجة مكعبات لعمر 28 يومًا"
+    },
+    "gaps_title": {
+      "c": "Screen title and People action",
+      "en": "Tickets by trade",
+      "he": "תעודות לפי מקצוע",
+      "ar": "الشهادات حسب المهنة"
+    },
+    "gaps_blurb": {
+      "c": "What the screen is for; the catalogue's word is 'usually'",
+      "en": "The tickets each trade usually needs, and who does not hold them in date. What a particular job calls for is the job's to say.",
+      "he": "התעודות שכל מקצוע צריך בדרך כלל, ומי שאין לו אותן בתוקף. מה עבודה מסוימת דורשת נקבע לפי העבודה.",
+      "ar": "الشهادات التي تحتاجها كل مهنة عادةً، ومن لا يحملها سارية. أما ما يتطلبه عمل بعينه فيحدده العمل نفسه."
+    },
+    "gaps_none": {
+      "c": "Nobody has a gap",
+      "en": "Everybody holds the tickets their trade usually needs.",
+      "he": "לכל אחד יש את התעודות שהמקצוע שלו צריך בדרך כלל.",
+      "ar": "الجميع يحملون الشهادات التي تحتاجها مهنتهم عادةً."
+    },
+    "gaps_none_checked": {
+      "c": "Nobody could be checked",
+      "en": "Nobody here has a trade that usually needs a ticket yet. Set people's trades on their profiles.",
+      "he": "עדיין אין כאן אף אחד שהמקצוע שלו צריך תעודה בדרך כלל. יש להגדיר את המקצוע בפרופיל של כל אחד.",
+      "ar": "لا يوجد هنا بعد من تحتاج مهنته شهادة عادةً. حدّد مهنة كل شخص في ملفه."
+    },
+    "gaps_missing": {
+      "c": "Row line; %1$s is a ticket kind",
+      "en": "%1$s: none on record",
+      "he": "%1$s: לא רשום",
+      "ar": "%1$s: غير مسجلة"
+    },
+    "gaps_expired": {
+      "c": "Row line; %1$s is a ticket kind",
+      "en": "%1$s: expired",
+      "he": "%1$s: פג תוקף",
+      "ar": "%1$s: منتهية الصلاحية"
     }
   },
   "plurals": {

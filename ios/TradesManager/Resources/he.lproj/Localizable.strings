@@ -1915,3 +1915,19 @@
 "dwg_refused_revision" = "יש לציין איזו מהדורה זו.";
 /* Refusal */
 "dwg_refused_current" = "המהדורה הזו כבר העדכנית.";
+/* Handover pack row */
+"hv_cubes_engineer" = "יציקות עם תוצאת קוביות לעיון המהנדס";
+/* Handover pack row */
+"hv_cubes_missing" = "יציקות שהסתיימו בלי תוצאת קוביות לגיל 28 ימים";
+/* Screen title and People action */
+"gaps_title" = "תעודות לפי מקצוע";
+/* What the screen is for; the catalogue's word is 'usually' */
+"gaps_blurb" = "התעודות שכל מקצוע צריך בדרך כלל, ומי שאין לו אותן בתוקף. מה עבודה מסוימת דורשת נקבע לפי העבודה.";
+/* Nobody has a gap */
+"gaps_none" = "לכל אחד יש את התעודות שהמקצוע שלו צריך בדרך כלל.";
+/* Nobody could be checked */
+"gaps_none_checked" = "עדיין אין כאן אף אחד שהמקצוע שלו צריך תעודה בדרך כלל. יש להגדיר את המקצוע בפרופיל של כל אחד.";
+/* Row line; %1$s is a ticket kind */
+"gaps_missing" = "%1$s: לא רשום";
+/* Row line; %1$s is a ticket kind */
+"gaps_expired" = "%1$s: פג תוקף";

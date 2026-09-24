@@ -45,6 +45,15 @@ class CertificationRepository(
         runCatching { source.manifest().certificationKinds }.getOrDefault(emptyList())
     }
 
+    /** Which kinds each catalogue trade usually needs, by trade id. See TicketGaps. */
+    suspend fun usualTicketsByTrade(): Map<String, List<String>> = withContext(Dispatchers.IO) {
+        runCatching {
+            source.manifest().trades
+                .filter { it.usualTickets.isNotEmpty() }
+                .associate { it.id to it.usualTickets }
+        }.getOrDefault(emptyMap())
+    }
+
     suspend fun add(
         accountId: String,
         title: String,

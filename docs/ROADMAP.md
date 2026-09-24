@@ -594,6 +594,14 @@ and an earlier one opens marked as replaced. Revisions are ordered by when
 they arrived rather than by their letters, because firms letter them
 differently.
 
+**Tickets by trade. Done.**
+The catalogue now says which tickets a trade usually needs — a licensed
+electrician, welding, work at height — only where there is one answer, and
+the People lens lists who lacks one or holds only an expired one. "Usually"
+is the screen's own word: what a job calls for is the job's to say. A ticket
+counts when its title is the kind's name in any of the three languages, the
+rule the roll call already uses to find first aiders.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -658,14 +666,14 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~94 | *estimated — see below* |
-| Buildable here — on the device, no server | ~92 | where the work is |
+| Built | ~95 | *estimated — see below* |
+| Buildable here — on the device, no server | ~91 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the

@@ -3,6 +3,7 @@ package il.co.tradesmanager.ui.handover
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.evidence.DailyLog
+import il.co.tradesmanager.core.evidence.CubeTests
 import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
@@ -95,11 +96,37 @@ class HandoverViewModel(
         )
     }
 
+    /**
+     * The cube results, by the same rule the pour screen marks them with --
+     * see CubeTests -- so the pack and the pour list cannot disagree about
+     * which pours the engineer still has to see.
+     */
+    private val fromCubes = combine(
+        container.concrete.observePours(projectId),
+        container.concrete.observeCubeSetsForProject(projectId),
+    ) { pours, sets ->
+        val byPour = sets.groupBy { it.pourId }
+        mapOf(
+            HandoverPack.Item.CUBES_FOR_ENGINEER to pours.count { pour ->
+                byPour[pour.id].orEmpty().any { set ->
+                    CubeTests.judgeStored(set.ageDays, set.strengthsMpa, pour.mixDesign)?.needsEngineer == true
+                }
+            },
+            HandoverPack.Item.POURS_WITHOUT_28_DAY_RESULT to pours.count { pour ->
+                CubeTests.awaitingJudgedResult(
+                    finished = pour.completedAt != null,
+                    setAges = byPour[pour.id].orEmpty().map { it.ageDays },
+                )
+            },
+        )
+    }
+
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,
         fromWorks,
         fromWaste,
-    ) { safety, works, waste -> HandoverPack.readiness(safety + works + waste) }
+        fromCubes,
+    ) { safety, works, waste, cubes -> HandoverPack.readiness(safety + works + waste + cubes) }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5_000),

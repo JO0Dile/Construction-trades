@@ -77,4 +77,13 @@ class CubeTestsTest {
         assertEquals(30.0, stored.specifiedMpa!!, 0.0)
         assertNull(CubeTests.judgeStored(28, listOf("x"), "B-30"))
     }
+
+    @Test
+    fun `a finished pour is owed its twenty-eight-day result until one is in`() {
+        assertTrue(CubeTests.awaitingJudgedResult(finished = true, setAges = emptyList()))
+        assertTrue("seven days is not the result it is judged on", CubeTests.awaitingJudgedResult(true, listOf(7)))
+        assertFalse(CubeTests.awaitingJudgedResult(true, listOf(7, 28)))
+        assertFalse("fifty-six days counts too", CubeTests.awaitingJudgedResult(true, listOf(56)))
+        assertFalse("a pour still running is outstanding for that instead", CubeTests.awaitingJudgedResult(false, emptyList()))
+    }
 }

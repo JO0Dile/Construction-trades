@@ -285,7 +285,10 @@
       },
       "itemsFile": "items/electrical.json",
       "safetyFile": "safety/electrical.json",
-      "templatesFile": "templates/electrical.json"
+      "templatesFile": "templates/electrical.json",
+      "usualTickets": [
+        "electrician"
+      ]
     },
     {
       "id": "plumbing",
@@ -387,7 +390,11 @@
         "ar": "هياكل حديدية"
       },
       "itemsFile": "items/steelwork.json",
-      "safetyFile": "safety/steelwork.json"
+      "safetyFile": "safety/steelwork.json",
+      "usualTickets": [
+        "welding",
+        "height"
+      ]
     },
     {
       "id": "masonry",
@@ -426,7 +433,10 @@
       },
       "itemsFile": "items/waterproofing.json",
       "safetyFile": "safety/waterproofing.json",
-      "templatesFile": "templates/waterproofing.json"
+      "templatesFile": "templates/waterproofing.json",
+      "usualTickets": [
+        "height"
+      ]
     },
     {
       "id": "plastering",
@@ -478,7 +488,10 @@
       },
       "itemsFile": "items/stonework.json",
       "safetyFile": "safety/stonework.json",
-      "templatesFile": "templates/stonework.json"
+      "templatesFile": "templates/stonework.json",
+      "usualTickets": [
+        "height"
+      ]
     },
     {
       "id": "aluminium",
@@ -491,7 +504,10 @@
       },
       "itemsFile": "items/aluminium.json",
       "safetyFile": "safety/aluminium.json",
-      "templatesFile": "templates/aluminium.json"
+      "templatesFile": "templates/aluminium.json",
+      "usualTickets": [
+        "height"
+      ]
     },
     {
       "id": "metalwork",
@@ -503,7 +519,10 @@
         "ar": "حدادة ودرابزين"
       },
       "itemsFile": "items/metalwork.json",
-      "safetyFile": "safety/metalwork.json"
+      "safetyFile": "safety/metalwork.json",
+      "usualTickets": [
+        "welding"
+      ]
     },
     {
       "id": "firefighting",
@@ -528,7 +547,10 @@
         "ar": "مصاعد ودرجات متحركة"
       },
       "itemsFile": "items/elevators.json",
-      "safetyFile": "safety/elevators.json"
+      "safetyFile": "safety/elevators.json",
+      "usualTickets": [
+        "height"
+      ]
     },
     {
       "id": "landscape",
