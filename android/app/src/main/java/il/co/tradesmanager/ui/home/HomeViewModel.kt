@@ -2,18 +2,29 @@ package il.co.tradesmanager.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Changes
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.people.Expiry
+import il.co.tradesmanager.core.safety.Ppe
+import il.co.tradesmanager.core.safety.PreUse
+import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CertificationEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
+import il.co.tradesmanager.data.repository.EquipmentRepository
+import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import java.time.LocalDate
+import java.time.ZoneId
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel(private val container: AppContainer) : ViewModel() {
@@ -66,7 +77,112 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
             SessionRepository.State.Loading,
         )
 
+    /**
+     * Whether a roll call is running.
+     *
+     * On the dashboard because this is the page the app opens on, and an
+     * evacuation that is still open must not be something you have to
+     * remember to go and look for. It is the only thing here that is drawn
+     * above the numbers.
+     */
+    /**
+     * Machines on a site that nobody has walked round today.
+     *
+     * Only those on site: one in the yard or on maintenance is not about to be
+     * started. See core.safety.PreUse for what "today" means.
+     */
+    val plantUnchecked: StateFlow<Int> = combine(
+        container.equipment.observeAll(),
+        container.equipment.observeLatestChecks(),
+    ) { machines, checks ->
+        val latest = checks.associateBy { it.equipmentId }
+        val now = System.currentTimeMillis()
+        val zone = ZoneId.systemDefault()
+        machines.count { machine ->
+            machine.status == EquipmentRepository.Status.ON_SITE &&
+                latest[machine.id].let { last ->
+                    PreUse.today(
+                        lastCheckedAt = last?.checkedAt,
+                        lastOutcome = last?.outcome?.let { stored ->
+                            runCatching { PreUse.Outcome.valueOf(stored) }.getOrNull()
+                        },
+                        now = now,
+                        zone = zone,
+                    )
+                } in NEEDS_A_CHECK
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    /**
+     * Protective equipment past its replace-by date, in this firm, for
+     * somebody who may read the register. Nought for everybody else: the
+     * banner is not drawn, rather than drawn with a count they may not know.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val ppeOverdue: StateFlow<Int> = session
+        .flatMapLatest { state ->
+            val me = state as? SessionRepository.State.SignedIn
+            if (me == null || !PpeRepository.mayRead(me.role)) {
+                flowOf(0)
+            } else {
+                container.ppe.observeForCompany(me.active?.companyId).map { rows ->
+                    val now = System.currentTimeMillis()
+                    rows.count { Ppe.state(it.replaceBy, it.handedBackAt, now) == Ppe.State.OVERDUE }
+                }
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    val rollCallRunning: StateFlow<Boolean> = container.musters.observeLive()
+        .map { it != null }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    /**
+     * What has changed lately, as this person is entitled to hear it.
+     *
+     * Built off the audit trail rather than a second table of notices. Every
+     * change is already recorded there, with who did it and what it was, and
+     * a parallel feed written by hand would be a feed that drifts from the
+     * record it is supposed to be describing.
+     *
+     * Filtered by [Changes.visibleTo], which asks the same lens grid the
+     * navigation bar is built from. A labourer sees the programme move and the
+     * drawing replaced; they do not see a cost line or another person's row.
+     *
+     * Seeded and system rows are dropped. "Loaded catalogue v3: 527 items" is
+     * a true entry and nobody wants to be told it every time they open the
+     * app; a feed people scroll past is a feed that hides the one line that
+     * mattered.
+     */
+    val changes: StateFlow<List<AuditLogEntity>> = combine(
+        container.auditTrail.recent(limit = FEED_DEPTH),
+        session,
+    ) { entries, state ->
+        val role = (state as? SessionRepository.State.SignedIn)?.role ?: return@combine emptyList()
+        Changes.visibleTo(role, entries.filterNot { it.actorName == SYSTEM_ACTOR }) {
+            it.entityType
+        }.take(FEED_SHOWN)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
     /** Expired tickets outrank ones merely expiring, for the tile's colour. */
     fun anyExpired(tickets: List<CertificationEntity>, now: Long = System.currentTimeMillis()) =
         tickets.any { Expiry.state(it.expiresOn, now) == Expiry.State.EXPIRED }
+
+    private companion object {
+        /**
+         * How far back to read, and how much of it to show.
+         *
+         * Read wide and show narrow, because the filter runs after the query:
+         * a labourer whose last twenty changes were all cost lines would
+         * otherwise see an empty feed and conclude nothing had happened.
+         */
+        const val FEED_DEPTH = 200
+        const val FEED_SHOWN = 12
+
+        /** The seeder's actor name. Its rows are true and nobody wants them. */
+        const val SYSTEM_ACTOR = "system"
+
+        /** The pre-use states that mean a machine should not be started yet. */
+        val NEEDS_A_CHECK = setOf(PreUse.Today.NEVER_CHECKED, PreUse.Today.NOT_CHECKED_TODAY)
+    }
 }

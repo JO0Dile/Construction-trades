@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.core.evidence.DailyLog
 import il.co.tradesmanager.data.local.dao.DailyLogDao
 import il.co.tradesmanager.data.local.entity.DailyLogEntity
@@ -70,6 +71,7 @@ class DailyLogRepository(
             talksHeld = dao.talksHeld(projectId, from, to),
             snagsRaised = dao.snagsRaised(projectId, from, to),
             incidents = dao.incidents(projectId, from, to),
+            checkedIn = dao.checkedIn(projectId, from, to),
         )
     }
 
@@ -97,7 +99,22 @@ class DailyLogRepository(
      * Signs the day off. From here the log is a record and stops being a
      * document — [update] refuses, and there is no path back.
      */
-    suspend fun sign(logId: String, signerName: String, signature: String): Boolean {
+    suspend fun sign(
+        logId: String,
+        signerName: String,
+        signature: String,
+        /**
+         * The account that signed, when somebody is signed in.
+         *
+         * `preparedById` has been on the table since the daily log was built
+         * and appears nowhere but the migration that made it. The יומן עבודה
+         * is a record an Israeli site manager is required to keep, and it was
+         * attributed by a typed name alone -- which cannot tell one of two men
+         * with the same name from the other, on the one document whose value
+         * is that it says who was answerable for the day.
+         */
+        signedById: String? = null,
+    ): Boolean {
         val log = dao.log(logId) ?: return false
         if (!DailyLog.canSign(log.status, signature)) return false
         val now = System.currentTimeMillis()
@@ -105,12 +122,13 @@ class DailyLogRepository(
             log.copy(
                 status = DailyLog.Status.SIGNED,
                 preparedByName = signerName.trim().ifEmpty { log.preparedByName },
+                preparedById = signedById ?: log.preparedById,
                 signature = signature,
                 signedAt = now,
                 updatedAt = now,
             ),
         )
-        audit.record(ENTITY, logId, AuditTrail.Action.SIGN_OFF, signerName, "Daily log signed")
+        audit.record(ENTITY, logId, AuditTrail.Action.SIGN_OFF, signerName, Summaries.DAILY_LOG_SIGNED)
         return true
     }
 

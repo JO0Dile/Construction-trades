@@ -43,8 +43,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.money.HireCost
 import il.co.tradesmanager.core.people.Expiry
+import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.EquipmentRepository
@@ -52,6 +54,7 @@ import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.currentLocale
 import java.time.ZoneId
 
@@ -74,12 +77,17 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
     val equipment by viewModel.equipment.collectAsStateWithLifecycle()
     val projects by viewModel.projects.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
+    val latestChecks by viewModel.latestChecks.collectAsStateWithLifecycle()
+    val preUseRefused by viewModel.preUseRefused.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
 
     val signedIn = session as? SessionRepository.State.SignedIn
     val canEdit = signedIn?.canWrite(Lens.STUFF) != false
 
     var adding by remember { mutableStateOf(false) }
     var chosen by remember { mutableStateOf<EquipmentEntity?>(null) }
+    var checking by remember { mutableStateOf<EquipmentEntity?>(null) }
 
     Scaffold(
         topBar = {
@@ -114,6 +122,16 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
                 items(equipment, key = { it.id }) { machine ->
                     PlantRow(
                         machine = machine,
+                        today = latestChecks[machine.id].let { last ->
+                            PreUse.today(
+                                lastCheckedAt = last?.checkedAt,
+                                lastOutcome = last?.outcome?.let { stored ->
+                                    runCatching { PreUse.Outcome.valueOf(stored) }.getOrNull()
+                                },
+                                now = System.currentTimeMillis(),
+                                zone = ZoneId.systemDefault(),
+                            )
+                        },
                         projectName = projects.firstOrNull {
                             it.id == machine.assignedProjectId
                         }?.name,
@@ -151,16 +169,40 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
                 viewModel.recordService(machine, null)
                 chosen = null
             },
+            onPreUse = {
+                checking = machine
+                chosen = null
+            },
             onRemove = {
                 viewModel.remove(machine)
                 chosen = null
             },
         )
     }
+
+    checking?.let { machine ->
+        PreUseDialog(
+            machine = machine,
+            refused = preUseRefused,
+            onDismiss = {
+                checking = null
+                viewModel.clearPreUseRefused()
+            },
+            onRecord = { answers, note ->
+                viewModel.clearPreUseRefused()
+                viewModel.recordPreUse(machine, answers, note) { checking = null }
+            },
+        )
+    }
 }
 
 @Composable
-private fun PlantRow(machine: EquipmentEntity, projectName: String?, onClick: () -> Unit) {
+private fun PlantRow(
+    machine: EquipmentEntity,
+    today: PreUse.Today,
+    projectName: String?,
+    onClick: () -> Unit,
+) {
     val now = System.currentTimeMillis()
     val service = Expiry.state(machine.serviceDueOn, now)
     val trailing: (@Composable () -> Unit)? = machine.serialNumber?.let { serial ->
@@ -182,20 +224,32 @@ private fun PlantRow(machine: EquipmentEntity, projectName: String?, onClick: ()
         headlineContent = { Text(machine.name) },
         supportingContent = {
             val where = projectName ?: stringResource(statusLabel(machine.status))
-            Text(
-                text = when (service) {
-                    Expiry.State.EXPIRED ->
-                        where + " · " + stringResource(R.string.plant_overdue)
-                    Expiry.State.EXPIRING_SOON ->
-                        where + " · " + stringResource(R.string.plant_service_due)
-                    else -> where
-                },
-                color = when (service) {
-                    Expiry.State.EXPIRED -> MaterialTheme.colorScheme.error
-                    Expiry.State.EXPIRING_SOON -> Amber
-                    else -> MaterialTheme.colorScheme.onSurfaceVariant
-                },
-            )
+            Column {
+                Text(
+                    text = when (service) {
+                        Expiry.State.EXPIRED ->
+                            where + " · " + stringResource(R.string.plant_overdue)
+                        Expiry.State.EXPIRING_SOON ->
+                            where + " · " + stringResource(R.string.plant_service_due)
+                        else -> where
+                    },
+                    color = when (service) {
+                        Expiry.State.EXPIRED -> MaterialTheme.colorScheme.error
+                        Expiry.State.EXPIRING_SOON -> Amber
+                        else -> MaterialTheme.colorScheme.onSurfaceVariant
+                    },
+                )
+                // Today's walk-round, on the row, because the question at seven
+                // in the morning is which machines may be started.
+                Text(
+                    text = stringResource(todayLabel(today)),
+                    color = when (today) {
+                        PreUse.Today.UNFIT_TODAY -> MaterialTheme.colorScheme.error
+                        PreUse.Today.FIT_TODAY -> MaterialTheme.colorScheme.onSurfaceVariant
+                        else -> Amber
+                    },
+                )
+            }
         },
         trailingContent = trailing,
         modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
@@ -221,7 +275,7 @@ private fun AddPlantDialog(
     var serviceDue by remember { mutableStateOf("") }
 
     val hired = ownership == EquipmentRepository.Ownership.HIRED
-    val parsedRate = rate.trim().replace(',', '.').toDoubleOrNull()
+    val parsedRate = Numbers.parseDecimal(rate)
     val parsedDue = if (serviceDue.isBlank()) null else Formats.parseDate(serviceDue)
     val dueOk = serviceDue.isBlank() || parsedDue != null
     // A hire with no rate is a machine that silently costs nothing, which is
@@ -323,6 +377,7 @@ private fun PlantActionsDialog(
     onAssign: (String?) -> Unit,
     onStatus: (String) -> Unit,
     onServiced: () -> Unit,
+    onPreUse: () -> Unit,
     onRemove: () -> Unit,
 ) {
     val locale = currentLocale()
@@ -387,6 +442,9 @@ private fun PlantActionsDialog(
                     }
                 }
 
+                TextButton(onClick = onPreUse) {
+                    Text(stringResource(R.string.plant_preuse))
+                }
                 TextButton(onClick = onServiced) {
                     Text(stringResource(R.string.plant_serviced))
                 }
@@ -413,3 +471,102 @@ internal fun statusLabel(status: String): Int = when (status) {
 
 /** Amber: still usable, but book the service. Not an error yet. */
 private val Amber = Color(0xFFB9770E)
+
+/**
+ * The walk-round itself: every item, three answers each, and what is wrong.
+ *
+ * Nothing starts pre-filled. A form that opens with every item already "OK"
+ * is a form that gets submitted without anybody walking round anything.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun PreUseDialog(
+    machine: EquipmentEntity,
+    refused: PreUse.Refusal?,
+    onDismiss: () -> Unit,
+    onRecord: (Map<PreUse.Item, PreUse.Answer>, String) -> Unit,
+) {
+    var answers by remember { mutableStateOf(emptyMap<PreUse.Item, PreUse.Answer>()) }
+    var note by remember { mutableStateOf("") }
+    val anyDefect = PreUse.Answer.DEFECT in answers.values
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.plant_preuse) + " — " + machine.name) },
+        text = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(
+                    stringResource(R.string.plant_preuse_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                PreUse.Item.entries.forEach { item ->
+                    Text(stringResource(itemLabel(item)), style = MaterialTheme.typography.labelLarge)
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        PreUse.Answer.entries.forEach { answer ->
+                            FilterChip(
+                                selected = answers[item] == answer,
+                                onClick = { answers = answers + (item to answer) },
+                                label = { Text(stringResource(answerLabel(answer))) },
+                            )
+                        }
+                    }
+                }
+                if (anyDefect) {
+                    OutlinedTextField(
+                        value = note,
+                        onValueChange = { note = it },
+                        label = { Text(stringResource(R.string.plant_preuse_note)) },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                refused?.let {
+                    Text(stringResource(refusalLabel(it)), color = MaterialTheme.colorScheme.error)
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onRecord(answers, note) }) {
+                Text(stringResource(R.string.plant_preuse_submit))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+private fun todayLabel(today: PreUse.Today): Int = when (today) {
+    PreUse.Today.NEVER_CHECKED -> R.string.plant_check_never
+    PreUse.Today.NOT_CHECKED_TODAY -> R.string.plant_check_not_today
+    PreUse.Today.FIT_TODAY -> R.string.plant_check_fit_today
+    PreUse.Today.UNFIT_TODAY -> R.string.plant_check_unfit_today
+}
+
+private fun itemLabel(item: PreUse.Item): Int = when (item) {
+    PreUse.Item.VISIBLE_DAMAGE -> R.string.plant_item_visible_damage
+    PreUse.Item.TYRES_OR_TRACKS -> R.string.plant_item_tyres_or_tracks
+    PreUse.Item.LEAKS -> R.string.plant_item_leaks
+    PreUse.Item.FLUID_LEVELS -> R.string.plant_item_fluid_levels
+    PreUse.Item.BRAKES -> R.string.plant_item_brakes
+    PreUse.Item.STEERING_AND_CONTROLS -> R.string.plant_item_steering_and_controls
+    PreUse.Item.LIGHTS_HORN_AND_ALARMS -> R.string.plant_item_lights_horn_and_alarms
+    PreUse.Item.SEATBELT_AND_CAB -> R.string.plant_item_seatbelt_and_cab
+    PreUse.Item.GUARDS -> R.string.plant_item_guards
+    PreUse.Item.FIRE_EXTINGUISHER -> R.string.plant_item_fire_extinguisher
+}
+
+private fun answerLabel(answer: PreUse.Answer): Int = when (answer) {
+    PreUse.Answer.OK -> R.string.plant_preuse_ok
+    PreUse.Answer.DEFECT -> R.string.plant_preuse_defect
+    PreUse.Answer.NOT_APPLICABLE -> R.string.plant_preuse_na
+}
+
+private fun refusalLabel(refusal: PreUse.Refusal): Int = when (refusal) {
+    PreUse.Refusal.UNANSWERED -> R.string.plant_preuse_unanswered
+    PreUse.Refusal.DEFECT_NOT_DESCRIBED -> R.string.plant_preuse_undescribed
+    PreUse.Refusal.NOTHING_CHECKED -> R.string.plant_preuse_nothing
+}

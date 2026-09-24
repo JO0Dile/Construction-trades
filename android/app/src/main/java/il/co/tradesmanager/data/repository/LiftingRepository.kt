@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.safety.Lifting
 import il.co.tradesmanager.data.local.dao.LiftingDao
 import il.co.tradesmanager.data.local.entity.LiftCrewEntity
@@ -100,13 +102,13 @@ class LiftingRepository(
         dao.upsertPlan(
             plan.copy(approvedByName = actorName, approvedAt = now, updatedAt = now),
         )
-        audit.record(PLAN, plan.id, AuditTrail.Action.SIGN_OFF, actorName, "${plan.reference} approved")
+        audit.record(PLAN, plan.id, AuditTrail.Action.SIGN_OFF, actorName, Summary.of(Summaries.LIFT_APPROVED, plan.reference))
     }
 
     suspend fun complete(plan: LiftPlanEntity, actorName: String) {
         val now = System.currentTimeMillis()
         dao.upsertPlan(plan.copy(completedAt = now, updatedAt = now))
-        audit.record(PLAN, plan.id, AuditTrail.Action.UPDATE, actorName, "${plan.reference} lifted")
+        audit.record(PLAN, plan.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.LIFT_DONE, plan.reference))
     }
 
     suspend fun deletePlan(plan: LiftPlanEntity, actorName: String) {
@@ -157,7 +159,12 @@ class LiftingRepository(
         }
         audit.record(
             PLAN, plan.id, AuditTrail.Action.UPDATE, actorName,
-            "${plan.reference} ${role.name.lowercase(Locale.ROOT)}: ${name.trim()}",
+            Summary.of(
+                Summaries.LIFT_ROLE_SET,
+                plan.reference,
+                Summary.nest(role.name.lowercase(Locale.ROOT)),
+                name.trim(),
+            ),
         )
     }
 
@@ -165,7 +172,11 @@ class LiftingRepository(
         dao.clearRole(plan.id, role.name)
         audit.record(
             PLAN, plan.id, AuditTrail.Action.UPDATE, actorName,
-            "${plan.reference} ${role.name.lowercase(Locale.ROOT)} cleared",
+            Summary.of(
+                Summaries.LIFT_ROLE_CLEARED,
+                plan.reference,
+                Summary.nest(role.name.lowercase(Locale.ROOT)),
+            ),
         )
     }
 

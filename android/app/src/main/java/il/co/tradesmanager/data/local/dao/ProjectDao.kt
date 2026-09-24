@@ -47,6 +47,36 @@ interface ProjectDao {
     )
     fun observeProjectsByStatus(status: String, companyId: String?): Flow<List<ProjectEntity>>
 
+    /**
+     * Whole jobs, without the parts they are made of.
+     *
+     * The list screen wants this and the pickers do not. A tower whose twenty
+     * floors are parts would otherwise arrive as twenty-one rows that all look
+     * like jobs, and the one somebody was looking for is the one they cannot
+     * find. Everywhere work is *recorded* -- a snag, a permit, a delivery --
+     * still offers every part, because a snag belongs to the twelfth floor and
+     * not to the tower.
+     */
+    @Query(
+        """
+        SELECT * FROM projects
+        WHERE deletedAt IS NULL AND parentProjectId IS NULL
+          AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+        ORDER BY dueDate IS NULL, dueDate, updatedAt DESC
+        """,
+    )
+    fun observeTopLevelProjects(companyId: String?): Flow<List<ProjectEntity>>
+
+    /** The parts of one job: its floors, its flats, its plots. */
+    @Query(
+        """
+        SELECT * FROM projects
+        WHERE deletedAt IS NULL AND parentProjectId = :parentId
+        ORDER BY name
+        """,
+    )
+    fun observeParts(parentId: String): Flow<List<ProjectEntity>>
+
     @Query("SELECT * FROM projects WHERE id = :id")
     fun observeProject(id: String): Flow<ProjectEntity?>
 

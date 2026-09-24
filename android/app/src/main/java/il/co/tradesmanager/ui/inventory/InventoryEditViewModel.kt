@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.inventory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.i18n.resolve
 import android.net.Uri
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
@@ -144,10 +145,10 @@ class InventoryEditViewModel(
                 spec = existing?.spec.orEmpty() + (languageTag.substringBefore('-') to form.spec),
                 attributes = existing?.attributes.orEmpty(),
                 tags = form.tags.split(',').map { it.trim() }.filter { it.isNotBlank() },
-                quantity = form.quantity.toDoubleOrNull() ?: 0.0,
-                minStock = form.minStock.toDoubleOrNull() ?: 0.0,
+                quantity = Numbers.parseDecimal(form.quantity) ?: 0.0,
+                minStock = Numbers.parseDecimal(form.minStock) ?: 0.0,
                 supplierId = existing?.supplierId,
-                purchasePrice = form.price.toDoubleOrNull(),
+                purchasePrice = Numbers.parseDecimal(form.price),
                 barcode = form.barcode.takeIf { it.isNotBlank() },
                 searchIndex = "",
                 createdAt = existing?.createdAt ?: now,

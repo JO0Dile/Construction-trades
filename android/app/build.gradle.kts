@@ -15,8 +15,8 @@ android {
         // Android 8.0 — the floor the tender documents ask for.
         minSdk = 26
         targetSdk = 35
-        versionCode = 7
-        versionName = "0.5.1"
+        versionCode = 48
+        versionName = "0.31.0"
 
         // Where the in-app update check looks. Read through BuildConfig so a
         // fork points at its own repository without touching Kotlin.
@@ -36,23 +36,52 @@ android {
         // The locales the app actually ships translations for. Adding a
         // language is: drop in values-<code>/strings.xml, add the code here
         // and to res/xml/locales_config.xml. No Kotlin changes.
-        resourceConfigurations += listOf("en", "he", "ar")
+        //
+        // "iw" as well as "he": they are the same language, and the AndroidX
+        // and Material libraries still file their Hebrew under the old code.
+        // Filtering on "he" alone stripped every library string's Hebrew out
+        // of the APK, so the system's own buttons and descriptions stayed in
+        // English on a Hebrew phone.
+        resourceConfigurations += listOf("en", "he", "iw", "ar")
 
         vectorDrawables.useSupportLibrary = true
     }
 
-    // Gradle's own debug key is generated per machine, so an APK built by CI
-    // could not install over one built by the last CI run — Android refuses a
-    // signature change. This keystore is committed on purpose: its password is
-    // the well-known Android debug one, it protects nothing, and a shared key
-    // is the only way direct-download updates can work at all. It is NOT the
-    // key a Play or App Store release is signed with.
+    // The upload key for Google Play, supplied by the person doing the
+    // release and never committed. Absent on CI and on any clone: the release
+    // build still compiles and minifies unsigned, which is what needs
+    // checking on every push. Signing is the last step before upload, not a
+    // prerequisite for knowing the build works.
+    //
+    // Set these in ~/.gradle/gradle.properties or the environment:
+    //   TM_KEYSTORE, TM_KEYSTORE_PASSWORD, TM_KEY_ALIAS, TM_KEY_PASSWORD
+    // See docs/RELEASING.md.
+    val keystorePath: String? = providers.gradleProperty("TM_KEYSTORE").orNull
+        ?: System.getenv("TM_KEYSTORE")
+
     signingConfigs {
+        // Gradle's own debug key is generated per machine, so an APK built by
+        // CI could not install over one built by the last CI run — Android
+        // refuses a signature change. This keystore is committed on purpose:
+        // its password is the well-known Android debug one, it protects
+        // nothing, and a shared key is the only way direct-download updates
+        // can work at all. It is NOT the key a store release is signed with.
         getByName("debug") {
             storeFile = file("debug.keystore")
             storePassword = "android"
             keyAlias = "androiddebugkey"
             keyPassword = "android"
+        }
+        if (keystorePath != null && file(keystorePath).exists()) {
+            create("upload") {
+                storeFile = file(keystorePath)
+                storePassword = providers.gradleProperty("TM_KEYSTORE_PASSWORD").orNull
+                    ?: System.getenv("TM_KEYSTORE_PASSWORD")
+                keyAlias = providers.gradleProperty("TM_KEY_ALIAS").orNull
+                    ?: System.getenv("TM_KEY_ALIAS")
+                keyPassword = providers.gradleProperty("TM_KEY_PASSWORD").orNull
+                    ?: System.getenv("TM_KEY_PASSWORD")
+            }
         }
     }
 
@@ -78,6 +107,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            // Only when a key was supplied. Without one the build still runs
+            // and produces an unsigned bundle, which is the thing CI needs to
+            // check: R8 stripping something Room or SQLCipher loads by name
+            // must fail on a push, not on submission day.
+            signingConfigs.findByName("upload")?.let { signingConfig = it }
         }
     }
 
@@ -138,7 +172,12 @@ android {
     }
 }
 
-// Room's exported schemas are committed so migrations can be diffed in review.
+// Room exports each version's schema here on every build. They are not
+// committed yet: the build only runs in CI, so nothing in this repository has
+// ever generated them where they could be added. Until somebody builds once
+// locally and commits app/schemas, the check that a migration matches its
+// entities is tools/check-migration.py, which CI runs against Room's own
+// generated code after every build.
 ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
     arg("room.incremental", "true")

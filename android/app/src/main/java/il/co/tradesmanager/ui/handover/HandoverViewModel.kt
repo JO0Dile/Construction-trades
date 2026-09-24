@@ -3,12 +3,18 @@ package il.co.tradesmanager.ui.handover
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.evidence.DailyLog
+import il.co.tradesmanager.core.evidence.CubeTests
 import il.co.tradesmanager.core.evidence.HandoverPack
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
+import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.local.entity.ProjectEntity
+import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.di.AppContainer
+import java.time.ZoneId
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -77,10 +83,95 @@ class HandoverViewModel(
         )
     }
 
+    /**
+     * Loads nothing yet shows went anywhere. The ticket photographs are in
+     * another table, so the two are read together and weighed by the same
+     * rule the register uses -- see Waste.Load.proven.
+     */
+    private val fromWaste = combine(
+        container.waste.observeForProject(projectId),
+        container.photos.observeCountsFor(PhotoRepository.Owner.WASTE_TICKET),
+    ) { loads, photographed ->
+        mapOf(
+            HandoverPack.Item.WASTE_WITHOUT_TICKET to loads.count { row ->
+                WasteRepository.asLoad(row, photographed[row.id] ?: 0)?.proven == false
+            },
+        )
+    }
+
+    /**
+     * The cube results, by the same rule the pour screen marks them with --
+     * see CubeTests -- so the pack and the pour list cannot disagree about
+     * which pours the engineer still has to see.
+     */
+    private val fromCubes = combine(
+        container.concrete.observePours(projectId),
+        container.concrete.observeCubeSetsForProject(projectId),
+    ) { pours, sets ->
+        val byPour = sets.groupBy { it.pourId }
+        mapOf(
+            HandoverPack.Item.CUBES_FOR_ENGINEER to pours.count { pour ->
+                byPour[pour.id].orEmpty().any { set ->
+                    CubeTests.judgeStored(set.ageDays, set.strengthsMpa, pour.mixDesign)?.needsEngineer == true
+                }
+            },
+            HandoverPack.Item.POURS_WITHOUT_28_DAY_RESULT to pours.count { pour ->
+                CubeTests.awaitingJudgedResult(
+                    finished = pour.completedAt != null,
+                    setAges = byPour[pour.id].orEmpty().map { it.ageDays },
+                )
+            },
+        )
+    }
+
+    /**
+     * What was asked of somebody else and has not come back: questions to the
+     * designers, and inspections, by the same rule the register lists them
+     * with -- see Inspections.state -- so the two cannot disagree.
+     */
+    private val fromQueries = combine(
+        container.designQueries.observeForProject(projectId),
+        container.inspections.observeForProject(projectId),
+        container.concrete.observePours(projectId),
+    ) { queries, inspections, pours ->
+        val now = System.currentTimeMillis()
+        val zone = ZoneId.systemDefault()
+        val askedAgain = inspections.mapNotNull { it.reinspectionOf }.toSet()
+        val cleared = inspections.mapNotNull { it.clearedPourId }.toSet()
+        mapOf(
+            HandoverPack.Item.QUERIES_UNANSWERED to queries.count { it.answeredAt == null },
+            HandoverPack.Item.INSPECTIONS_OUTSTANDING to inspections.count {
+                Inspections.outstanding(
+                    Inspections.state(Inspections.resultOf(it.result), it.wantedOn, it.id in askedAgain, now, zone),
+                )
+            },
+            HandoverPack.Item.POURS_WITHOUT_INSPECTION to pours.count { it.id !in cleared },
+        )
+    }
+
+    /** Materials, by the same rule the register lists them with -- see Submittals.state. */
+    private val fromSubmittals = container.submittals.observeForProject(projectId).map { submittals ->
+        val now = System.currentTimeMillis()
+        val zone = ZoneId.systemDefault()
+        val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
+        mapOf(
+            HandoverPack.Item.SUBMITTALS_OUTSTANDING to submittals.count {
+                Submittals.outstanding(
+                    Submittals.state(Submittals.decisionOf(it.decision), it.neededBy, it.id in sentAgain, now, zone),
+                )
+            },
+        )
+    }
+
+    private val fromAskedOf = combine(fromQueries, fromSubmittals) { queries, submittals -> queries + submittals }
+
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,
         fromWorks,
-    ) { safety, works -> HandoverPack.readiness(safety + works) }
+        fromWaste,
+        fromCubes,
+        fromAskedOf,
+    ) { safety, works, waste, cubes, askedOf -> HandoverPack.readiness(safety + works + waste + cubes + askedOf) }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5_000),

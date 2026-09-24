@@ -10,6 +10,11 @@ English, working with no signal.
 SwiftUI. There is no WebView, no PWA, no hybrid shell, and no browser
 dependency for anything.
 
+> **© 2026 JO0Dile. All rights reserved.** This is not open source. Reading
+> this repository grants no licence to copy, modify or distribute any part of
+> it — see [`LICENSE`](LICENSE). The open-source libraries it is built on keep
+> their own licences and are unaffected.
+
 ---
 
 ## Get it on a phone
@@ -42,10 +47,11 @@ The app ships with the catalogues already written:
 
 | | |
 |---|---|
-| Trades | 6 — electrical, plumbing, HVAC & refrigeration, painting, carpentry, general construction |
-| Tools and materials | 178, each with a name **and** a specification in Hebrew, Arabic and English |
-| Safety checklists | 19, holding 84 checks, each citing the Israeli regulation or standard it comes from |
-| Project templates | 12, whose material lines all resolve to real catalogue items |
+| Trades | 22 — from electrical, plumbing and HVAC to gypsum, stonework, tiling, plastering, aluminium, rebar, waterproofing, firefighting, lifts and landscape |
+| Tools and materials | 527, every one named in Hebrew, Arabic and English, and every one with a specification |
+| Work breakdown | 36 scopes of work across 6 stages, each carrying the term the crew says as well as the one the contract says |
+| Safety checklists | 50, holding 219 checks, one for every trade, each citing the Israeli regulation or standard it comes from |
+| Project templates | 24, whose material lines all resolve to real catalogue items |
 
 Pick your trades during onboarding and the lists are there. Add your own items
 at any time; a catalogue refresh never touches them, and never creates a second
@@ -123,39 +129,67 @@ refusing to start on a site with no signal.
 
 ---
 
+## Taking this on
+
+Buying it, or being handed it? **[`docs/HANDOVER.md`](docs/HANDOVER.md)** is
+the one to read first: what runs today at no cost, what is prepared and
+deliberately switched off — SMS codes and billing — with the exact steps and
+real costs to switch each on, and the short list of things that need a person
+rather than any more code.
+
 ## State of the work
 
-Built, and verified by running:
+Every push builds the app, runs the tests and runs thirty checks. Nothing
+below is a claim about what was intended — it is what the build proves.
 
-- the shared catalogues, and the generator and format they depend on
-- the Room data layer: 19 entities, seeding with a duplicate guard, stock
-  movements, audit trail, encryption
-- Compose screens: onboarding, home, inventory list and editor, projects with
-  templates, day schedule with check-in, safety checklist runs with sign-off,
-  settings
-- SwiftUI screens covering the same ground, over SwiftData models that mirror
-  the Room schema field for field, with in-app language switching that needs no
-  restart
-- barcode scanning on both platforms — CameraX with ML Kit on Android,
-  AVFoundation on iOS — and CSV + PDF export that survives Excel on Windows and
-  mirrors its columns for Hebrew and Arabic
-- 40 unit tests, all passing — locale resolution and fallback, Israeli
-  date/time/currency formats, time-of-day parsing, CSV quoting and filename
-  reduction, and a catalogue integrity suite that parses all 178 items, 84
-  checks and 12 templates through the app's own model types with unknown keys
+**Built and verified:**
+
+- 22 trades, **527 catalogue items**, 219 safety checks and 24 project
+  templates, all parsed through the app's own model types with unknown keys
   rejected
+- **1,720 interface strings and 23 plural rules in Hebrew, Arabic and
+  English**, with every catalogue block trilingual too. The build fails if one
+  language goes missing, if the English is pasted into another, or if an
+  English sentence is written into the audit register
+- a Room data layer: **64 entities, 38 migrations** replayed end to end on
+  every push with a check that no rebuild loses its rows, plus seeding with a
+  duplicate guard, stock movements, a tamper-evident audit trail and SQLCipher
+- the five lenses as Compose screens. The SwiftUI app covers the first
+  version of the ground — inventory, projects, schedule, safety checklists,
+  the scanner, export — over 14 SwiftData models; it has not kept pace with
+  the 64 Android tables, and everything built since (money, people, the site
+  registers, the roll call, heat and pre-use checks, the equipment and
+  visitor logs) is Android only
+- barcode scanning on both platforms, and CSV + PDF export that survives Excel
+  on Windows and mirrors its columns for Hebrew and Arabic
+- **830 unit tests, all passing**, and a release bundle built through R8 on
+  every push — because a debug build does not minify, and something Room,
+  SQLCipher or kotlinx.serialization loads reflectively should not first go
+  missing on the day of a store submission
 
-Not built, and not pretended otherwise:
+**Not built, and not pretended otherwise:**
 
-- **No `.xcodeproj`** — an Xcode project cannot be generated faithfully without
-  Xcode, so the iOS set-up is fifteen manual minutes on a Mac.
-- The Swift has never been compiled; this repository was built in an
-  environment with no Swift toolchain and no Android SDK. The Kotlin's pure
-  layers are compiled and tested, the Android build itself is not.
-- Photo capture, the cloud sync implementation behind `SyncEngine`, and the
-  on-premise service.
-- Hebrew and Arabic terminology review by a native-speaking tradesperson, and a
-  VoiceOver/TalkBack accessibility pass.
+- **No server.** Sync, cross-firm confidentiality as an access rule rather than
+  a display rule, and anchoring the audit chain somewhere the holder of the
+  phone does not control all wait on it. See
+  [`docs/SERVER.md`](docs/SERVER.md).
+- **No billing.** The plans are decided and readable in Settings; nothing is
+  sold. An entitlement kept on the device can be set by whoever holds the
+  device, so there is nothing to enforce yet —
+  [`docs/PRICING.md`](docs/PRICING.md) says what has to exist first.
+- **No `.xcodeproj`**, and the Swift has never been compiled: this repository
+  is worked on in a container with no Swift toolchain. The iOS set-up is
+  fifteen manual minutes on a Mac. The Android build *is* compiled, linted and
+  tested on every push.
+- **112 catalogue items still have no photograph** — everything else has one.
+  The list, with a brief for each, is in
+  [`docs/PHOTOS.md`](docs/PHOTOS.md).
+- Hebrew and Arabic **terminology review by a native-speaking tradesperson**.
+  The translations are complete and the build keeps them that way; whether the
+  words are the ones used on a site is a different claim, and not yet made.
+- A VoiceOver/TalkBack pass. Every icon in the app carries a content
+  description and no icon-only button is unlabelled, but that has been checked
+  by reading the source, not by listening to it.
 
 The safety content carries a warning in the app and in
 [`docs/CATALOG_FORMAT.md`](docs/CATALOG_FORMAT.md): the regulation references

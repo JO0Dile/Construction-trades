@@ -41,6 +41,27 @@ interface ScheduleDao {
     fun observeTimeEntries(projectId: String): Flow<List<TimeEntryEntity>>
 
     /**
+     * Everybody whose check-in is still open, anywhere, oldest first.
+     *
+     * Read once when a roll call starts. Not filtered by job on purpose: a
+     * roll call over-includes or it is useless, and a man whose check-in
+     * carries the wrong job -- or no job at all, which is every entry this app
+     * wrote before it knew about jobs -- has to appear on the list somebody is
+     * shouting names off.
+     *
+     * Oldest first so the man who has been in there longest is at the top.
+     */
+    @Query("SELECT * FROM time_entries WHERE checkOutAt IS NULL ORDER BY checkInAt LIMIT 1000")
+    suspend fun openCheckIns(): List<TimeEntryEntity>
+
+    /**
+     * How many are on site right now, for a screen that wants the number and
+     * not the names.
+     */
+    @Query("SELECT COUNT(*) FROM time_entries WHERE checkOutAt IS NULL")
+    fun observeOnSiteCount(): Flow<Int>
+
+    /**
      * Finished entries on a job, oldest first.
      *
      * Only the ones somebody has clocked out of: an open entry has no hours

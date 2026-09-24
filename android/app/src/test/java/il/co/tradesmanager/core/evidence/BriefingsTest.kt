@@ -37,4 +37,25 @@ class BriefingsTest {
         assertTrue(never < ancient)
         assertTrue(ancient < yesterday)
     }
+
+    @Test
+    fun `a checklist becomes talking points, the ones that block sign-off first`() {
+        val points = Briefings.talkingPoints(
+            listOf(
+                "Ladder footed" to false,
+                "  Harness clipped on above 2 m " to true,
+                "" to true,
+                "Edge protection fitted" to true,
+            ),
+        )
+        assertEquals(
+            "• Harness clipped on above 2 m\n• Edge protection fitted\n• Ladder footed",
+            points,
+        )
+    }
+
+    @Test
+    fun `an empty checklist gives no points rather than a stray bullet`() {
+        assertEquals("", Briefings.talkingPoints(emptyList()))
+    }
 }

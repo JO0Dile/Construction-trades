@@ -160,6 +160,240 @@ object Migrations {
         }
     }
 
+    /**
+     * The firm's own profile, and the contracting chain above and below it.
+     *
+     * Four tables and eleven columns. The columns give a company something to
+     * publish and a per-field say in who sees it; the tables give a job more
+     * than one firm on it, which is what every tier rule in `core/access` and
+     * `core/work` has been written against.
+     */
+    val MIGRATION_18_19 = object : Migration(18, 19) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_18_19.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * A task can say where in the job it sits.
+     *
+     * Nullable, so every task already on a phone stays exactly as it is. A
+     * migration that invented a stage for existing rows would be guessing, and
+     * a guessed stage is worse than none — it reads as fact.
+     */
+    val MIGRATION_19_20 = object : Migration(19, 20) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_19_20.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * An application can say what it is made of.
+     *
+     * A new table rather than a column: an application covers many packages,
+     * and a comma-joined list of ids in a column is a join table with the
+     * safety removed.
+     */
+    val MIGRATION_20_21 = object : Migration(20, 21) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_20_21.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * The audit trail becomes tamper-evident.
+     *
+     * Existing rows get sequence 0 and no hashes, which is honest: they were
+     * written before anything was signed and nothing can now vouch for them.
+     * Back-filling a chain over them would produce a log that verified without
+     * ever having been protected, which is worse than one that admits the gap.
+     */
+    val MIGRATION_21_22 = object : Migration(21, 22) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_21_22.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * Violations, and photos that know whether they are videos.
+     *
+     * The mediaType default here is 'image' and the entity declares the same
+     * one. A default on one side and not the other is what broke three
+     * releases: Room revalidates on the first open and a column it did not
+     * expect is a crash on launch for everybody who already had the app.
+     */
+    val MIGRATION_22_23 = object : Migration(22, 23) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_22_23.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * What the gate records: who admitted somebody, and their signature.
+     *
+     * All three columns are nullable and none of them carries a default,
+     * because null is the true answer for every membership that already
+     * exists — nobody stood on a gate for the firm's first owner. Giving them
+     * a default would be inventing an induction that never happened, on rows
+     * that may one day be read out in an argument about whether it did.
+     */
+    val MIGRATION_23_24 = object : Migration(23, 24) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_23_24.forEach(db::execSQL)
+        }
+    }
+
+    /** What an incident cost, when somebody knows. Null until they do. */
+    val MIGRATION_24_25 = object : Migration(24, 25) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_24_25.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * Which stages of the job a catalogue item is for.
+     *
+     * The default is an empty JSON array, matching @ColumnInfo on
+     * CatalogItemEntity, and it means "every stage". Existing rows keep
+     * showing up under every filter until the next catalogue load fills them
+     * in, which is the right way round: a column that arrived empty must not
+     * make a plumber's pipes vanish from their own list.
+     */
+    val MIGRATION_25_26 = object : Migration(25, 26) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_25_26.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * The chain of command, and a shift that knows whose it was.
+     *
+     * Both nullable with no default, because null is the true answer for
+     * every row that already exists: nobody drew a chart before this, and no
+     * shift recorded who worked it. Filling either in with a guess would put
+     * a name on somebody's wages that nobody put there.
+     */
+    val MIGRATION_26_27 = object : Migration(26, 27) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_26_27.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * What trade somebody works in, for this firm.
+     *
+     * Nullable with no default. Null means nobody has said, which is the true
+     * answer for every existing row, and a guess would put a man on a list of
+     * electricians that a safety officer then walks the site with.
+     */
+    val MIGRATION_27_28 = object : Migration(27, 28) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_27_28.forEach(db::execSQL)
+        }
+    }
+
+    val MIGRATION_28_29 = object : Migration(28, 29) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_28_29.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * A violation no longer needs a firm behind it.
+     *
+     * The only table in the schema that insisted on a company, which made
+     * recording one impossible for somebody working alone — their membership
+     * carries no company, so the write was refused before it started and the
+     * button did nothing at all.
+     *
+     * SQLite cannot drop NOT NULL from a column, so the table is rebuilt and
+     * the rows copied across. Every existing row keeps the company it already
+     * had; nothing is invented and nothing is lost.
+     */
+    val MIGRATION_29_30 = object : Migration(29, 30) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_29_30.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * The roll call after an evacuation.
+     *
+     * Two new tables and nothing touched. Every open check-in in the app was
+     * already a statement that somebody had not left the site, and nothing
+     * read them for the one question worth asking when the alarm goes.
+     */
+    val MIGRATION_30_31 = object : Migration(30, 31) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_30_31.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * Heat checks. One new table and nothing touched.
+     */
+    val MIGRATION_31_32 = object : Migration(31, 32) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_31_32.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * Pre-use checks for plant. One new table and nothing touched.
+     */
+    val MIGRATION_32_33 = object : Migration(32, 33) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_32_33.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * The construction waste register. One new table and nothing touched.
+     */
+    val MIGRATION_33_34 = object : Migration(33, 34) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_33_34.forEach(db::execSQL)
+        }
+    }
+
+    /**
+     * The protective equipment register and the visitor log: two new tables,
+     * and one column on the roll call so a visitor on it says so.
+     */
+    val MIGRATION_34_35 = object : Migration(34, 35) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_34_35.forEach(db::execSQL)
+        }
+    }
+
+    /** Concrete cube results against each pour, and the drawing register. Two new tables. */
+    val MIGRATION_35_36 = object : Migration(35, 36) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_35_36.forEach(db::execSQL)
+        }
+    }
+
+    /** Questions put to the designers. One new table. */
+    val MIGRATION_36_37 = object : Migration(36, 37) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_36_37.forEach(db::execSQL)
+        }
+    }
+
+    /** Inspection requests: one new table. */
+    val MIGRATION_37_38 = object : Migration(37, 38) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_37_38.forEach(db::execSQL)
+        }
+    }
+
+    /** Material submittals: one new table. */
+    val MIGRATION_38_39 = object : Migration(38, 39) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_38_39.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -178,6 +412,27 @@ object Migrations {
         MIGRATION_15_16,
         MIGRATION_16_17,
         MIGRATION_17_18,
+        MIGRATION_18_19,
+        MIGRATION_19_20,
+        MIGRATION_20_21,
+        MIGRATION_21_22,
+        MIGRATION_22_23,
+        MIGRATION_23_24,
+        MIGRATION_24_25,
+        MIGRATION_25_26,
+        MIGRATION_26_27,
+        MIGRATION_27_28,
+        MIGRATION_28_29,
+        MIGRATION_29_30,
+        MIGRATION_30_31,
+        MIGRATION_31_32,
+        MIGRATION_32_33,
+        MIGRATION_33_34,
+        MIGRATION_34_35,
+        MIGRATION_35_36,
+        MIGRATION_36_37,
+        MIGRATION_37_38,
+        MIGRATION_38_39,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -516,5 +771,328 @@ object Migrations {
             "ON `payment_applications` (`projectId`)",
         "CREATE INDEX IF NOT EXISTS `index_payment_applications_dueOn` " +
             "ON `payment_applications` (`dueOn`)",
+    )
+
+    val SQL_18_19: List<String> = listOf(
+        // The firm's own profile. Nullable throughout: a one-person operation
+        // signing up on a Tuesday should not be stopped at a field they would
+        // have to go and look up.
+        "ALTER TABLE `companies` ADD COLUMN `logoUri` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `email` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `phone` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `website` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `addressLine` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `contractorLicenceNumber` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `contractorClassification` TEXT",
+        "ALTER TABLE `companies` ADD COLUMN `licenceExpiresOn` INTEGER",
+        // Empty, not null: every existing firm has published nothing, which
+        // is the only safe reading of a row written before the question existed.
+        "ALTER TABLE `companies` ADD COLUMN `publishedToWorkforce` TEXT NOT NULL DEFAULT ''",
+
+        "CREATE TABLE IF NOT EXISTS `engagements` (`id` TEXT NOT NULL, " +
+            "`projectId` TEXT NOT NULL, `orgId` TEXT NOT NULL, " +
+            "`orgName` TEXT NOT NULL, `party` TEXT NOT NULL, " +
+            "`engagedByOrgId` TEXT, `scopeSummary` TEXT, `startedAt` INTEGER, " +
+            "`endedAt` INTEGER, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_projectId` ON `engagements` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_orgId` ON `engagements` (`orgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_engagements_engagedByOrgId` " +
+            "ON `engagements` (`engagedByOrgId`)",
+
+        "CREATE TABLE IF NOT EXISTS `contracts` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`payerOrgId` TEXT NOT NULL, `payeeOrgId` TEXT NOT NULL, " +
+            "`title` TEXT NOT NULL, `amount` REAL NOT NULL, `terms` TEXT NOT NULL, " +
+            "`retentionRate` REAL NOT NULL, `retentionLimit` REAL NOT NULL, " +
+            "`signedAt` INTEGER, `signedByPayerName` TEXT, `signedByPayeeName` TEXT, " +
+            "`disclosedToOrgIds` TEXT NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_projectId` ON `contracts` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_payerOrgId` ON `contracts` (`payerOrgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_contracts_payeeOrgId` ON `contracts` (`payeeOrgId`)",
+
+        "CREATE TABLE IF NOT EXISTS `contract_amendments` (`id` TEXT NOT NULL, " +
+            "`contractId` TEXT NOT NULL, `version` INTEGER NOT NULL, " +
+            "`previousAmount` REAL NOT NULL, `newAmount` REAL NOT NULL, " +
+            "`reason` TEXT NOT NULL, `status` TEXT NOT NULL, " +
+            "`proposedByOrgId` TEXT NOT NULL, `proposedByName` TEXT NOT NULL, " +
+            "`proposedAt` INTEGER NOT NULL, `decidedByOrgId` TEXT, " +
+            "`decidedByName` TEXT, `decidedAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_contract_amendments_contractId` " +
+            "ON `contract_amendments` (`contractId`)",
+
+        "CREATE TABLE IF NOT EXISTS `assignments` (`id` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`contractId` TEXT, `payerOrgId` TEXT NOT NULL, " +
+            "`payeeOrgId` TEXT NOT NULL, `title` TEXT NOT NULL, `stageId` TEXT, " +
+            "`scopeId` TEXT, `location` TEXT, `amount` REAL NOT NULL, " +
+            "`status` TEXT NOT NULL, `offeredAt` INTEGER, `acceptedAt` INTEGER, " +
+            "`submittedAt` INTEGER, `decidedAt` INTEGER, `decidedByName` TEXT, " +
+            "`rejectionReason` TEXT, `invoicedAt` INTEGER, " +
+            "`createdByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "`updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_projectId` ON `assignments` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_contractId` ON `assignments` (`contractId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_payeeOrgId` " +
+            "ON `assignments` (`payeeOrgId`)",
+        "CREATE INDEX IF NOT EXISTS `index_assignments_status` ON `assignments` (`status`)",
+    )
+
+    val SQL_19_20: List<String> = listOf(
+        "ALTER TABLE `project_tasks` ADD COLUMN `stageId` TEXT",
+        "ALTER TABLE `project_tasks` ADD COLUMN `scopeId` TEXT",
+    )
+
+    val SQL_20_21: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `payment_application_lines` (`id` TEXT NOT NULL, " +
+            "`applicationId` TEXT NOT NULL, `assignmentId` TEXT NOT NULL, " +
+            "`title` TEXT NOT NULL, `amount` REAL NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_payment_application_lines_applicationId` " +
+            "ON `payment_application_lines` (`applicationId`)",
+        "CREATE INDEX IF NOT EXISTS `index_payment_application_lines_assignmentId` " +
+            "ON `payment_application_lines` (`assignmentId`)",
+    )
+
+    // NOT NULL columns added by ALTER need a default, and the entity has to
+    // declare the same one: Room revalidates on the first open and a default
+    // it did not expect is a crash on launch for everyone who already has the
+    // app. That has shipped three times. See @ColumnInfo on AuditLogEntity.
+    val SQL_21_22: List<String> = listOf(
+        "ALTER TABLE `audit_log` ADD COLUMN `sequence` INTEGER NOT NULL DEFAULT 0",
+        "ALTER TABLE `audit_log` ADD COLUMN `previousHash` TEXT NOT NULL DEFAULT ''",
+        "ALTER TABLE `audit_log` ADD COLUMN `hash` TEXT NOT NULL DEFAULT ''",
+    )
+
+    val SQL_22_23: List<String> = listOf(
+        "ALTER TABLE `photos` ADD COLUMN `mediaType` TEXT NOT NULL DEFAULT 'image'",
+        "CREATE TABLE IF NOT EXISTS `violations` (`id` TEXT NOT NULL, " +
+            "`companyId` TEXT NOT NULL, `projectId` TEXT, " +
+            "`againstAccountId` TEXT NOT NULL, `againstName` TEXT NOT NULL, " +
+            "`againstIdNumber` TEXT NOT NULL, `description` TEXT NOT NULL, " +
+            "`costAmount` REAL, `status` TEXT NOT NULL, " +
+            "`recordedByAccountId` TEXT NOT NULL, `recordedByName` TEXT NOT NULL, " +
+            "`recordedAt` INTEGER NOT NULL, `confirmedAt` INTEGER, " +
+            "`cancelledAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_violations_companyId` " +
+            "ON `violations` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
+            "ON `violations` (`againstAccountId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
+    )
+
+    val SQL_23_24: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `admittedByAccountId` TEXT",
+        "ALTER TABLE `memberships` ADD COLUMN `admittedByName` TEXT",
+        "ALTER TABLE `memberships` ADD COLUMN `admissionSignature` TEXT",
+    )
+
+    val SQL_24_25: List<String> = listOf(
+        "ALTER TABLE `incidents` ADD COLUMN `costAmount` REAL",
+    )
+
+    val SQL_25_26: List<String> = listOf(
+        "ALTER TABLE `catalog_items` ADD COLUMN `stages` TEXT NOT NULL DEFAULT '[]'",
+    )
+
+    val SQL_26_27: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `reportsToMembershipId` TEXT",
+        "ALTER TABLE `time_entries` ADD COLUMN `workerMembershipId` TEXT",
+    )
+
+    val SQL_27_28: List<String> = listOf(
+        "ALTER TABLE `memberships` ADD COLUMN `tradeId` TEXT",
+        "CREATE INDEX IF NOT EXISTS `index_memberships_tradeId` ON `memberships` (`tradeId`)",
+    )
+
+    /**
+     * Nullable, with no default, because there is no number to invent.
+     *
+     * The sign-up form requires one from here on; the column cannot, because
+     * every account already on a phone was made without one and a NOT NULL
+     * with a made-up default would fill the column with a number nobody can
+     * ring, which is worse than an empty one that says so.
+     */
+    val SQL_28_29: List<String> = listOf(
+        "ALTER TABLE `accounts` ADD COLUMN `phone` TEXT",
+        "ALTER TABLE `accounts` ADD COLUMN `email` TEXT",
+    )
+
+    /**
+     * Rebuilds `violations` with a nullable `companyId`.
+     *
+     * The twelve-step dance SQLite documents for changing a column: build the
+     * new table, copy the rows, drop the old one, rename. The columns are
+     * listed by name in the INSERT rather than left to `SELECT *`, so this
+     * still does the right thing if a later version adds a column to one side
+     * and not the other.
+     *
+     * Dropping a table drops its indexes with it, so all three are recreated
+     * afterwards rather than only the one that changed.
+     */
+    val SQL_29_30: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `violations_new` (`id` TEXT NOT NULL, " +
+            "`companyId` TEXT, `projectId` TEXT, " +
+            "`againstAccountId` TEXT NOT NULL, `againstName` TEXT NOT NULL, " +
+            "`againstIdNumber` TEXT NOT NULL, `description` TEXT NOT NULL, " +
+            "`costAmount` REAL, `status` TEXT NOT NULL, " +
+            "`recordedByAccountId` TEXT NOT NULL, `recordedByName` TEXT NOT NULL, " +
+            "`recordedAt` INTEGER NOT NULL, `confirmedAt` INTEGER, " +
+            "`cancelledAt` INTEGER, PRIMARY KEY(`id`))",
+        "INSERT INTO `violations_new` (`id`, `companyId`, `projectId`, " +
+            "`againstAccountId`, `againstName`, `againstIdNumber`, `description`, " +
+            "`costAmount`, `status`, `recordedByAccountId`, `recordedByName`, " +
+            "`recordedAt`, `confirmedAt`, `cancelledAt`) " +
+            "SELECT `id`, `companyId`, `projectId`, " +
+            "`againstAccountId`, `againstName`, `againstIdNumber`, `description`, " +
+            "`costAmount`, `status`, `recordedByAccountId`, `recordedByName`, " +
+            "`recordedAt`, `confirmedAt`, `cancelledAt` FROM `violations`",
+        "DROP TABLE `violations`",
+        "ALTER TABLE `violations_new` RENAME TO `violations`",
+        "CREATE INDEX IF NOT EXISTS `index_violations_companyId` " +
+            "ON `violations` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_againstAccountId` " +
+            "ON `violations` (`againstAccountId`)",
+        "CREATE INDEX IF NOT EXISTS `index_violations_status` ON `violations` (`status`)",
+    )
+
+    /**
+     * Roll call tables. Nothing existing is touched, so no rebuild and no copy.
+     *
+     * `unaccountedAtEnd` is nullable on purpose: null means the roll call has
+     * not ended, and zero means it ended with everybody found. Collapsing the
+     * two into a default of zero would make a running roll call read, in a
+     * list of past ones, as one where nobody was missing.
+     */
+    val SQL_30_31: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `musters` (`id` TEXT NOT NULL, `projectId` TEXT, " +
+            "`companyId` TEXT, `startedAt` INTEGER NOT NULL, `endedAt` INTEGER, " +
+            "`reason` TEXT NOT NULL, `startedByAccountId` TEXT NOT NULL, " +
+            "`startedByName` TEXT NOT NULL, `note` TEXT, `unaccountedAtEnd` INTEGER, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_musters_startedAt` ON `musters` (`startedAt`)",
+        "CREATE TABLE IF NOT EXISTS `muster_people` (`id` TEXT NOT NULL, " +
+            "`musterId` TEXT NOT NULL, `personId` TEXT, `name` TEXT NOT NULL, " +
+            "`state` TEXT NOT NULL, `staleCheckIn` INTEGER NOT NULL, " +
+            "`addedDuringRollCall` INTEGER NOT NULL, `account` TEXT, " +
+            "`settledAt` INTEGER, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_muster_people_musterId` " +
+            "ON `muster_people` (`musterId`)",
+    )
+
+    /**
+     * The heat check table. `measures` is the JSON list the type converters
+     * write for every List<String> column in the schema, so it is TEXT and
+     * never null: an empty list is `[]`, and "nothing done" is a value.
+     */
+    val SQL_31_32: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `heat_checks` (`id` TEXT NOT NULL, `projectId` TEXT, " +
+            "`companyId` TEXT, `checkedAt` INTEGER NOT NULL, `temperatureC` REAL NOT NULL, " +
+            "`humidityPercent` REAL NOT NULL, `inSun` INTEGER NOT NULL, " +
+            "`heatIndexC` REAL NOT NULL, `band` TEXT NOT NULL, `measures` TEXT NOT NULL, " +
+            "`note` TEXT, `checkedByAccountId` TEXT NOT NULL, " +
+            "`checkedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_heat_checks_checkedAt` ON `heat_checks` (`checkedAt`)",
+    )
+
+    /**
+     * The pre-use check table. `answers` is the JSON the type converters write
+     * for every Map<String, String> column in the schema.
+     */
+    val SQL_32_33: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `plant_checks` (`id` TEXT NOT NULL, " +
+            "`equipmentId` TEXT NOT NULL, `checkedAt` INTEGER NOT NULL, " +
+            "`outcome` TEXT NOT NULL, `answers` TEXT NOT NULL, `defectNote` TEXT, " +
+            "`checkedByAccountId` TEXT, `checkedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_plant_checks_equipmentId` " +
+            "ON `plant_checks` (`equipmentId`)",
+    )
+
+    /** The waste load table. */
+    val SQL_33_34: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `waste_loads` (`id` TEXT NOT NULL, " +
+            "`projectId` TEXT NOT NULL, `removedAt` INTEGER NOT NULL, `stream` TEXT NOT NULL, " +
+            "`quantity` REAL NOT NULL, `unit` TEXT NOT NULL, `destination` TEXT NOT NULL, " +
+            "`facility` TEXT NOT NULL, `hauler` TEXT, `ticketNumber` TEXT, `notes` TEXT, " +
+            "`recordedByAccountId` TEXT, `recordedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_waste_loads_projectId` ON `waste_loads` (`projectId`)",
+    )
+
+    /**
+     * The protective equipment register, the visitor log, and the flag that
+     * marks a visitor on a roll call. `visitor` is added with the default the
+     * entity declares, which is what Room checks it against.
+     */
+    val SQL_34_35: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `ppe_issues` (`id` TEXT NOT NULL, `companyId` TEXT, " +
+            "`accountId` TEXT, `holderName` TEXT NOT NULL, `inventoryItemId` TEXT, " +
+            "`itemName` TEXT NOT NULL, `quantity` INTEGER NOT NULL, `size` TEXT, " +
+            "`issuedAt` INTEGER NOT NULL, `replaceBy` INTEGER, `signature` TEXT NOT NULL, " +
+            "`issuedByAccountId` TEXT, `issuedByName` TEXT NOT NULL, `handedBackAt` INTEGER, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_ppe_issues_companyId` ON `ppe_issues` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_ppe_issues_accountId` ON `ppe_issues` (`accountId`)",
+        "CREATE TABLE IF NOT EXISTS `site_visits` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`companyId` TEXT, `name` TEXT NOT NULL, `organisation` TEXT, `phone` TEXT, " +
+            "`hostName` TEXT, `briefed` INTEGER NOT NULL, `signature` TEXT, " +
+            "`arrivedAt` INTEGER NOT NULL, `leftAt` INTEGER, `signedInByAccountId` TEXT, " +
+            "`signedInByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_site_visits_projectId` ON `site_visits` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_site_visits_leftAt` ON `site_visits` (`leftAt`)",
+        "ALTER TABLE `muster_people` ADD COLUMN `visitor` INTEGER NOT NULL DEFAULT 0",
+    )
+
+    /**
+     * Concrete cube results and the drawing register. `strengthsMpa` is the
+     * JSON the list converter writes.
+     */
+    val SQL_35_36: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `concrete_cube_sets` (`id` TEXT NOT NULL, " +
+            "`pourId` TEXT NOT NULL, `ageDays` INTEGER NOT NULL, `testedAt` INTEGER NOT NULL, " +
+            "`laboratory` TEXT, `reportNumber` TEXT, `strengthsMpa` TEXT NOT NULL, " +
+            "`recordedByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`), FOREIGN KEY(`pourId`) REFERENCES " +
+            "`concrete_pours`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_concrete_cube_sets_pourId` " +
+            "ON `concrete_cube_sets` (`pourId`)",
+        "CREATE TABLE IF NOT EXISTS `drawings` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`number` TEXT NOT NULL, `title` TEXT NOT NULL, `revision` TEXT NOT NULL, " +
+            "`receivedAt` INTEGER NOT NULL, `supersededAt` INTEGER, `notes` TEXT, " +
+            "`recordedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_drawings_projectId` ON `drawings` (`projectId`)",
+    )
+
+    /** The designer query log. */
+    val SQL_36_37: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `design_queries` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `question` TEXT NOT NULL, `askedOf` TEXT NOT NULL, " +
+            "`drawingNumber` TEXT, `askedAt` INTEGER NOT NULL, `neededBy` INTEGER, " +
+            "`askedByName` TEXT NOT NULL, `answer` TEXT, `answeredAt` INTEGER, " +
+            "`answerRecordedByName` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_design_queries_projectId` ON `design_queries` (`projectId`)",
+    )
+
+    /** Requests for somebody to inspect work before it is covered up. */
+    val SQL_37_38: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `inspections` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `kind` TEXT NOT NULL, `element` TEXT NOT NULL, " +
+            "`requestedOf` TEXT NOT NULL, `requestedAt` INTEGER NOT NULL, `wantedOn` INTEGER, " +
+            "`requestedByName` TEXT NOT NULL, `reinspectionOf` TEXT, `result` TEXT, " +
+            "`inspectorName` TEXT, `comments` TEXT, `decidedAt` INTEGER, " +
+            "`resultRecordedByName` TEXT, `clearedPourId` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_inspections_projectId` ON `inspections` (`projectId`)",
+    )
+
+    /** Materials sent for approval before they are ordered. */
+    val SQL_38_39: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `submittals` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `revision` INTEGER NOT NULL, `item` TEXT NOT NULL, " +
+            "`supplier` TEXT, `location` TEXT, `submittedTo` TEXT NOT NULL, `submittedAt` INTEGER NOT NULL, " +
+            "`neededBy` INTEGER, `submittedByName` TEXT NOT NULL, `resubmissionOf` TEXT, " +
+            "`decision` TEXT, `reviewerName` TEXT, `notes` TEXT, `decidedAt` INTEGER, " +
+            "`decisionRecordedByName` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_submittals_projectId` ON `submittals` (`projectId`)",
     )
 }

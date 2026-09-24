@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import il.co.tradesmanager.BuildConfig
 import il.co.tradesmanager.R
 import il.co.tradesmanager.data.update.UpdateRepository
+import il.co.tradesmanager.ui.update.ChangesList
 import java.io.File
 
 /**
@@ -77,7 +78,17 @@ fun UpdateSection(
                 StatusLine(
                     stringResource(R.string.update_available) + ": " + state.release.versionName,
                 )
-                if (state.release.notes.isNotBlank()) {
+                // Every version between this one and the offered one, in the
+                // phone's language. A release from before notes were attached
+                // has only its own text, which is shown as it was.
+                if (state.release.changes.isNotEmpty()) {
+                    Text(
+                        text = stringResource(R.string.update_notes),
+                        style = MaterialTheme.typography.labelMedium,
+                        modifier = Modifier.padding(top = 8.dp, bottom = 4.dp),
+                    )
+                    ChangesList(state.release.changes)
+                } else if (state.release.notes.isNotBlank()) {
                     Text(
                         text = stringResource(R.string.update_notes),
                         style = MaterialTheme.typography.labelMedium,

@@ -94,4 +94,23 @@ interface DailyLogDao {
         """,
     )
     suspend fun incidents(projectId: String, from: Long, to: Long): Int
+
+    /**
+     * How many different people had a shift on this job that overlapped the
+     * day: checked in before it ended, and not checked out before it began.
+     * A shift still open counts, which is the man on site right now.
+     *
+     * A person is their account where the entry has one and their name where
+     * it does not -- every entry written before the app knew about accounts
+     * has only the name, and counting those as nobody would undercount every
+     * old log.
+     */
+    @Query(
+        """
+        SELECT COUNT(DISTINCT COALESCE(workerId, workerName)) FROM time_entries
+        WHERE projectId = :projectId AND checkInAt <= :to
+          AND (checkOutAt IS NULL OR checkOutAt >= :from)
+        """,
+    )
+    suspend fun checkedIn(projectId: String, from: Long, to: Long): Int
 }

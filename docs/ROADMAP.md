@@ -349,6 +349,297 @@ wall of "0 open permits" is how a list stops being read. And the order is what
 matters at handover rather than what is biggest, so twenty unsigned logs do not
 sort above one scaffold left standing in the street.
 
+**Phase 4p — one box that looks everywhere. Done.**
+Forty-three destinations and a register behind most of them, and no way to find
+a record without first knowing which register it was in. There were three
+search boxes — the catalogue, the crew, the gate — and each one searched its
+own table.
+
+The hard part is not the searching, it is the three scripts. The existing boxes
+compare with SQL `LIKE` over a lowercased column, and `LIKE` in SQLite folds
+case for ASCII and nothing else: it does not fold Hebrew or Arabic at all, and
+no amount of SQL will take a harakat off a letter. So the comparison moved into
+Kotlin, over text with the marks stripped — Hebrew points, Arabic harakat, the
+tatweel, the several accepted spellings of alef, ta marbuta against ha, and the
+five Hebrew letters that change shape at the end of a word. The invisible
+direction marks are dropped rather than turned into spaces: they sit inside
+words in right-to-left text as a matter of course, and a search that treats one
+as a word break stops finding half the database without ever saying so.
+
+Arabic-Indic digits are folded to Latin, because `Formats` already puts them on
+the screen and what is on the screen is what gets typed back in. And a number
+is matched a second way, against the record's digits with the separators taken
+out, so an ID typed 03-123456 finds one stored 03123456 — nobody remembers
+which side of that a number went in on.
+
+Two rules about what comes back. Every word has to appear somewhere, in any
+field and in any order, because that is how a person describes a record they
+half-remember. And the lens each kind needs is checked **before** the rows are
+read, not after: a search that loads the wage bill and then filters it has
+already loaded the wage bill. The lenses are copied off the screens themselves
+rather than decided again, so search shows exactly what its register shows.
+
+What is shown and what is matched are not the same text. A status held as
+PART_RECEIVED and a role held as SITE_MANAGER fold to the words somebody would
+type, so they are matched — and never printed. An ID number is matched and
+never shown: typing one is how the gate finds a man and that has to keep
+working, but a list of results is read over somebody's shoulder.
+
+Seven registers so far: jobs, people, stock, orders, permits, snags and plant.
+The daily logs, the pours, the scaffolds, the lifts and the rest are found
+through the job they belong to, which is how anybody looks for them anyway.
+
+**The roll call. Done.**
+Every open check-in is already a statement that somebody has not left the
+site, and until now nothing read them for the one question that matters when
+the alarm goes: is there still a man in the building. On most sites that is
+answered from a paper register kept in the hut that is on fire.
+
+The list is taken once, at the moment the alarm goes, and never refreshed —
+if it kept refreshing, a man who walked out of the gate and clocked off during
+the evacuation would quietly vanish off it and nobody would know whether he
+was accounted for or simply gone from the query. A doubtful name is flagged,
+never dropped: somebody who forgot to clock out two days ago is almost
+certainly not on site, and the one time that is wrong, leaving them off is
+fatal. Standing in front of you is one state; confirmed safe by telephone is
+another, and it cannot be recorded without saying how, because otherwise the
+fast way to finish a roll call is to tick everybody off without ringing
+anyone.
+
+The site being cleared is worked out from the people on it rather than chosen
+from a dropdown — if every open check-in names the same job, that is the site;
+if they disagree, the record says none, which is true rather than convenient.
+A roll call is **ended**, never closed or passed, ending it with names still
+missing is always allowed because at some point the list goes to the fire
+brigade, and the audit row keeps those names rather than a count.
+
+Anybody who can write to the safety register can start one, which includes a
+worker. Narrowing it to a supervisor would mean the app refuses the man
+holding the phone in the one scenario the feature exists for.
+
+Three things were added after the first release. Israel's emergency numbers
+— 101, 102, 100 — are one tap away on both halves of the screen, opening the
+dialer with the number in; the person presses call, so the app needs no call
+permission and cannot ring from a pocket. First aiders are marked on the
+list, read from their in-date first-aid tickets in any of the three
+languages, and the header names the ones counted present, because the second
+question at a muster point is whether anybody there knows what to do. And the
+list can be handed over — to WhatsApp, a text, whatever the person uses —
+running or ended, missing names first, because the moment it is needed is
+when the fire brigade arrives and asks who is still inside.
+
+**The heat check. Done.**
+Heat is one of the things that most often hurts people on an Israeli site in
+summer, and it does not look like a hazard. What decides it is temperature and
+humidity together, because sweat does not evaporate into wet air: a humid 32
+degrees on the coast reads as Danger, a dry 40 in the Arava as a step below
+it, and the thermometer on the hut says the opposite.
+
+The index is the US National Weather Service's own formula — the Rothfusz
+regression with its two published adjustments, and the simpler estimate below
+the range it holds for — checked against seven points of the published NWS
+chart to within half a degree Fahrenheit. The bands are the NWS's, converted
+exactly. None of it is offered as what Israeli law requires, and the screen
+says so. A check can be marked as work in full sun, and the level is then
+judged on the NWS's stated worst case rather than the shade figure.
+
+What gets recorded is what was done, ticked by the person who did it. A reading
+with nothing done is **not** refused: "Danger, nothing done" is a true record,
+and a register that will not write it down hides exactly the days somebody
+needs to see later. The record spells out what the level called for and was
+not done.
+
+**Numbers in any digits. Done.**
+Every number field parsed with the JVM's own parser, which reads ASCII digits
+only — so an Arabic keyboard typing Arabic-Indic digits entered nothing, with
+nothing on screen to say why. Worse, seven decimal fields filtered their input
+to digits and full stops, throwing the comma away: on a keyboard that offers a
+comma as the decimal point, "7,5" became 75. A payment ten times too big, a
+concrete pour ten times too large, a lift radius of twenty-five metres for one
+of two and a half, and the field showed exactly what it had kept. One parser
+and one input filter now serve every field, and both are tested with
+Arabic-Indic, Extended Arabic-Indic and comma-decimal input.
+
+**Plant pre-use checks. Done.**
+Every excavator, telehandler, forklift and dumper is looked over by whoever
+is about to drive it, before the shift. What matters about that check is what
+happens when it finds something, so a defect here takes the machine out of
+service at once — through the same audited status change as any other, so the
+register, the dashboard and the audit trail all say so — and a later check
+that happens not to spot the leak again does **not** put it back. Somebody
+decides it has been put right, and says so.
+
+A check is good for the calendar day it was made, like an excavation
+inspection: a machine checked at ten to midnight is not carried through the
+morning shift. Every item has to be answered, nothing starts pre-filled
+(a form that opens with every item "OK" gets submitted without anybody
+walking round anything), a defect has to say what it is, and a check in which
+every item was marked as not applying is refused because nothing was looked
+at. The register shows each machine's state for today on its row, because the
+question at seven in the morning is which machines may be started.
+
+**The construction waste register. Done.**
+The first of the green-building row. Every skip and lorry of rubble leaves
+for somewhere, and at the end of a job the question is whether anybody can
+show where — a local authority can ask for proof that construction waste went
+to a licensed facility, and a client with a green-building target asks how
+much was kept out of landfill. Each load is recorded as it leaves: what it
+was, how much, who took it, which facility, and the ticket, by number, by
+photograph or both.
+
+A load with no ticket is still recorded, because it still left, and counted
+as unproven until one is added; the handover pack now lists those loads
+beside the open permits and the standing scaffolds. Hazardous waste is the
+exception and is never recorded without its ticket number. Totals are kept
+per unit and never added across tonnes and cubic metres, a transfer station
+is not counted as kept out of landfill because this record cannot see what
+the station did with it, and a job with no loads has no diversion rate
+rather than a rate of nothing. Presented as keeping the evidence for whoever
+asks, not as what any authority requires on a particular job.
+
+**The reachability pass. Done.**
+The fault this codebase actually has is not a crash. It is something that
+compiles, lints, passes every test and cannot be reached, or that says no
+without saying anything. Two checks now fail the build on the kinds a machine
+can see, and the first run of each found real bugs:
+
+- `tools/check-unreachable.py` — a route nothing navigates to, a screen
+  nothing calls, a view model action no screen invokes, a string translated
+  three times and shown on no screen. It found the draft violation nobody
+  could reopen, and 44 dead strings, one of them the sentence meant to say a
+  photograph had failed to save. One more, a plural for how many people were
+  on site, turned out to be a missing row in the daily log rather than a dead
+  word — the log now counts who checked in on the job that day, beside the
+  typed headcount, because a site diary is supposed to say it.
+- `tools/check-ignored-results.py` — a call to a repository write that can be
+  refused, whose answer nothing reads. Resolved through the container to the
+  class that answers, so two functions of the same name cannot be confused.
+  It found twelve on seven screens: issuing a permit, recording work stopped,
+  closing it, marking a snag fixed, verifying it, signing the daily log,
+  editing it, certifying a payment, marking it paid, setting an order's date,
+  recording an induction, adding an ID number. Each now says so when it is
+  refused. Setting a person's trade had the same fault through a `Result`.
+
+**The protective equipment register. Done.**
+What an inspector asks for after an accident is not that the firm had
+helmets in the container. It is that this man was given this helmet on this
+day and put his name to it. So an issue is refused without the receiver's
+own signature, drawn on the phone at the container door, and it is refused
+for nothing else that is not a typo: a stock shelf that reads nought does not
+stop a helmet going on a head. Handing something out takes it off the stock
+list in the same step, and when the shelf count was short the person issuing
+is told, because they have just found out somebody took stock without
+recording it.
+
+The register shows who is holding what, with anything past its replace-by
+date first. The date is picked from a few intervals so nobody counts forward
+on their fingers, and the screen says that how long a harness lasts is on its
+label and the manufacturer's to say — the app has no opinion on it. Handing
+something back dates the row and puts nothing on the shelf, because a used
+harness is not stock. Issuing is for the owner, a manager or a safety
+officer, because it needs both the safety record and the list of who is in
+the firm, and a worker's role is shown neither.
+
+**The visitor log. Done.**
+An inspector, the client's engineer, a driver waiting to unload: the people
+least likely to know where the assembly point is, and most likely to be
+forgotten at it, because nobody on the site knows their face. Each job now
+has a visitor log — a name, and optionally who they are from, who they came
+to see, a phone number, whether they were told the site rules, and their
+signature. Only the name is required, because every field a gate log demands
+is a field that gets "x" typed into it.
+
+Anybody signed in and not out goes on the next roll call automatically,
+marked as a visitor on the screen and in the text that is shared from it, and
+counts towards which site the roll call is for. A visitor signed in more than
+a shift ago is flagged on both the log and the roll call — and, like a stale
+check-in, never dropped from it.
+
+**Translation sheets that keep up. Done.**
+The spreadsheets a buyer hands to the people who fix the Hebrew and Arabic
+were written once, by hand, and the app kept growing after them: 478
+interface strings, the twenty count forms and thirty hand tools had never
+been on them, so nobody would ever have been asked to translate them. Both
+generators now rebuild the sheets from the app and the catalogue, carry
+across every column a translator typed, carry the developer's note on where
+a string appears, and fail the build when a sheet falls behind.
+
+**Choosing a language changes the whole app. Done.**
+For twenty-four versions picking Hebrew left most of the screen in English.
+The translations were all in the APK; the manifest told Android the activity
+handled language changes itself, so the screen was never rebuilt and only the
+text the app looks up for itself switched. Now the activity is recreated, the
+choice is kept across restarts on older Android, and the libraries' Hebrew is
+no longer stripped from the build. `tools/check-locale-switch.py` fails the
+build if any of the three comes back.
+
+That was not the whole of it. The first test to ask Android's own resource
+lookup what a Hebrew phone is shown, rather than reading the files, failed:
+Android turns "he" into the old code "iw" before it looks anything up, and
+the app's Hebrew was filed only under "he". The catalogue, which the app
+looks up by the new code itself, came out in Hebrew; every button and heading
+stayed English. The generator now writes the Hebrew file under both codes,
+and the same check fails the build if the two ever differ.
+
+**Every update says what it does. Done.**
+Written once per version in English, Hebrew and Arabic, shipped in the app
+and attached to the release. A phone offered an update lists every version
+between the one it has and the one on offer; after installing, What's new
+lists everything since it last looked; Settings keeps the history. The build
+fails until the version has notes in all three languages.
+
+**Concrete cube results. Done.**
+The lab's seven- and twenty-eight-day figures against each pour, every cube
+kept rather than only the mean. A twenty-eight-day mean under the strength the
+mix asks for, or any cube under it, is marked for the engineer on the pour and
+in the pour list. Whether a pour conforms is the engineer's call under the
+standard; the screen says so.
+
+**The drawing register. Done.**
+Each drawing and the revision of it to build from. A new revision replaces the
+old one on every phone in one step; the list shows only current revisions,
+and an earlier one opens marked as replaced. Revisions are ordered by when
+they arrived rather than by their letters, because firms letter them
+differently.
+
+**Tickets by trade. Done.**
+The catalogue now says which tickets a trade usually needs — a licensed
+electrician, welding, work at height — only where there is one answer, and
+the People lens lists who lacks one or holds only an expired one. "Usually"
+is the screen's own word: what a job calls for is the job's to say. A ticket
+counts when its title is the kind's name in any of the three languages, the
+rule the roll call already uses to find first aiders.
+
+**Questions to the designers. Done.**
+Every question put to the architect, the engineer or the supervisor gets a
+number, the day it was asked, who it was put to, the drawing it is about, and
+the day the site needs the answer. An unanswered one past that day — on the
+site's own calendar, so Thursday evening is still Thursday — is shown first
+and in red, the answer is written once and not edited afterwards, and the
+handover pack counts the ones never answered.
+
+**Inspection requests. Done.**
+Before the steel is poured over, the membrane screeded or the wall closed,
+somebody is asked to look. Each request says what and where, of whom, and
+the day the site wants them, and gets a number; the result is written once
+with the name of whoever inspected, a failure needs its reason, and a photo
+of the signed form can go with it. A failed inspection is not edited into a
+pass: it is asked again under a new number that points back at it, so the
+record keeps both. A pour shows the passed inspection of the steel or the
+forms that let it go ahead, or says none is recorded, and the handover pack
+counts both. Which elements need inspecting, and by whom, is the job's
+specification; the register only keeps the record.
+
+**Material approvals. Done.**
+The tile, the membrane, the window system: sent to the architect or the
+supervisor before it is ordered, with what is proposed, who makes it, where
+it goes, and the day the answer is needed to order in time. The answer --
+approved, approved as noted, or rejected -- is written once with the name of
+whoever gave it, and a rejection needs its reason. A rejected submittal keeps
+its number and goes up a revision, the way the trade numbers them, and every
+go stays on the record with its datasheet. The handover pack counts the ones
+still waiting or rejected and not sent again.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -361,35 +652,80 @@ Whole categories still at zero, in roughly the order they are worth doing:
 
 | Not started | Lens it will land in |
 | ----------- | -------------------- |
-| Subcontract ledgers | Money |
 | Sync between devices | every lens, one mechanism |
 | Israeli government and accounting integrations | the edge, Phase 5 |
-| Site security, structural, underground, façade, green building, commissioning, legal, PR, weather, AI | not yet placed |
+| Site security, structural, underground, façade, the rest of green building, legal, PR, weather, AI | not yet placed |
 
-Since that list was written, ten of its rows have landed and are no longer on
-it: the plant register, purchase orders with goods received, toolbox talks with
-permits to work, one person belonging to several companies, snagging, the
+Since that list was written, twelve of its rows have landed and are no longer
+on it: the plant register, purchase orders with goods received, toolbox talks
+with permits to work, one person belonging to several companies, snagging, the
 concrete half of "concrete and structural", the scaffold register, lifting
-operations, temporary works, and excavations — leaving "underground" on that
-row meaning services diversions and tunnelling rather than trenches.
+operations, temporary works, excavations, subcontract ledgers, and
+commissioning as a stage of work — leaving "underground" on that row meaning
+services diversions and tunnelling rather than trenches.
+
+Backup and restore has since landed and is off that list. It is not sync —
+it is one phone's record, taken deliberately to a file the person keeps — but
+it closes the gap that mattered most: everything lived on one device and a lost
+device lost all of it.
 
 The ones that are genuinely hard are sync, the government integrations, and
 anything needing a server. The rest are now another table, another lens
 section, another screen — which is what the four phases above were for.
 
+## More than one firm on a job
+
+Everything above was written for a firm running its own work. The multi-tier
+model changes what the app is: a general contractor, the subcontractor it
+engaged, and that subcontractor's crew can all be on the same job in the same
+database, and none of them may see what the others agreed.
+
+Three rules carry it, all in `core/` with tests, all deliberately small:
+
+* **`access/Party`** — what a firm is *on this job*, which is not what it is on
+  the next one. Engagement runs downward only, so the chain stays a chain.
+* **`access/Commercial`** — a commercial figure may be sent only to a party to
+  the contract it belongs to. Everything else is a consequence of that one
+  sentence.
+* **`work/Assignment`** — the lifecycle, with a side that owns each move. Only
+  the crew accepts and submits; only the payer approves and cancels.
+
+The part that is **not** built, and is the reason `docs/SERVER.md` exists: on
+one device these are display rules. The moment two firms share a job they are
+access rules, and an access rule that lives in the client is not an access
+rule. Until there is a server running the same functions, this is a model that
+is correct and unenforced.
+
 ## The 350, honestly
 
-A full list of 350 wanted features exists. Sorted by what it would actually
-take to build them, it comes out roughly:
+A full list of 350 wanted features exists. **It is not in this repository**,
+which is why the first row below is an estimate and the rest are not. Sorted
+by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | 67 | |
-| Buildable here — on the device, no server | 118 | where the work is |
+| Built | ~98 | *estimated — see below* |
+| Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
+
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 since the third of
+September. The last exact count was 77, on the fourteenth. Landing since
+then, and plausibly items on the list: site admission at the gate, one search
+box across the whole app, terms of service, the stock item detail sheet, the
+plans screen, the rules for a phone verification code, restore actually
+reaching the end of its own mechanism, the emergency roll call, the heat
+check, plant pre-use checks, the waste register, the protective equipment
+register, the visitor log, inspection requests, and material approvals.
+
+**It is an estimate and it should not be quoted as anything else.** Counting
+it properly needs the 350-item list, which lives outside this repository.
+Anybody holding that list can settle it in an afternoon: mark each line
+built, buildable here, or one of the four kinds of impossible, and replace
+this table with the real numbers. It is worth doing before the list is shown
+to anybody deciding whether to buy this.
 
 So about half of the list cannot be built into this app however long anybody
 works at it, because it needs a signed agreement, a server, a device that does

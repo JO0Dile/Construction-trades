@@ -32,6 +32,136 @@ jobs:
       - name: Translations are complete and generated files are current
         run: python3 tools/gen-strings.py --check
 
+      # A Room annotation binds to whatever function follows it. Slip a KDoc
+      # between the two and the query lands on the next method instead, which
+      # is how a lookup by ID number came to declare it returned COUNT(*).
+      # Both halves of that mistake fail KSP; this catches them in a second
+      # instead of forty.
+      - name: Every DAO method carries exactly one Room annotation
+        run: python3 tools/check-dao.py
+
+      # The change feed is filtered by lens, and a kind of record nobody has
+      # classified is shown to nobody. That is the safe direction and a silent
+      # one: a new register would simply never appear in anybody's feed, and
+      # nobody would find out for a release or two.
+      - name: Every audited kind of change is classified by lens
+        run: python3 tools/check-audit-lens.py
+
+      # A right-to-left mark inside a Kotlin string is invisible, changes what
+      # the string is, and looks identical in a diff to the line it replaced.
+      # Lint catches exactly one of these — a byte-order mark — and only after
+      # a full Gradle run; this catches all of them in a second. Source only:
+      # the catalogue carries direction marks inside Hebrew item names, and
+      # those are what the supplier calls the thing, not a mistake.
+      # A listing one character over the limit is not rejected politely at
+      # upload; it is rejected on submission day by somebody in a hurry who did
+      # not write it. Two of the three languages are not Latin, so every
+      # estimate of their length by eye is wrong.
+      - name: Store listing is within the limits
+        run: python3 tools/check-listing.py
+
+      - name: No invisible characters in source
+        run: python3 tools/check-invisibles.py
+
+      # `val x by ...collectAsStateWithLifecycle()` only compiles with the
+      # getValue import, and a `var` written back to needs setValue as well.
+      # The delegate line looks identical to every other one in the file, and
+      # the compiler answers with a message about a type rather than a missing
+      # import. Gradle does not run in the container this is usually worked on,
+      # so one omission costs a whole round trip through here to find.
+      - name: Every Compose state delegate has its import
+        run: python3 tools/check-compose-delegates.py
+
+      # Two Kotlin mistakes that compile cleanly in the head and not in the
+      # compiler, each of which has cost a full CI round trip: a second
+      # companion object in a class that already has one, and catch (_: E).
+      - name: No Kotlin the compiler will reject
+        run: python3 tools/check-kotlin-pitfalls.py
+
+      # The fault this codebase actually has is not a crash. It is a feature
+      # that compiles, lints and passes every test and cannot be reached: a
+      # route nothing navigates to, a screen nothing calls, a view model
+      # action no screen invokes. A draft violation sat unreachable like this
+      # for weeks -- no row opened one -- and was found only by using the app.
+      - name: Nothing is built that nobody can reach
+        run: python3 tools/check-unreachable.py
+
+      # A repository write that can be refused says so by returning a Result
+      # or a Boolean. Twelve screens threw that answer away, so a refused
+      # permit, a snag verified twice, an ID number already on another account
+      # all looked exactly like a button that did nothing.
+      - name: Every refusable write has its answer read
+        run: python3 tools/check-ignored-results.py
+
+      # The same fault in the other source set: assertTrue with no
+      # `import org.junit.Assert.assertTrue` does not compile, and the line
+      # looks exactly like the twenty around it that do. Gradle does not run
+      # in the container this is usually worked on, so being told by CI costs
+      # a whole round trip to learn about a missing import.
+      - name: Every JUnit assertion a test calls is imported
+        run: python3 tools/check-test-imports.py
+
+      # An audit summary is stored once and read later, by somebody who may
+      # not share a language with whoever wrote it. The register this app
+      # exists to produce was English-only for two of the three languages it
+      # ships in, and nothing failed: the wrong version builds, runs, and
+      # writes a perfectly good English sentence into the trail.
+      - name: No English sentences written into the audit register
+        run: python3 tools/check-audit-summaries.py
+
+      # And the phrase, its translation, the constant that writes it and the
+      # branch that renders it all have to agree. A phrase with no translation
+      # reaches a Hebrew screen as the key itself.
+      - name: Audit phrases are translated and wired
+        run: python3 tools/gen-audit-strings.py --check
+
+      # gen-strings proves the app's own strings are complete; it cannot see
+      # the catalogue, which is the larger half of what a user reads. A block
+      # added in English with the other two "to follow" looks finished in a
+      # diff, and in the app it does not fail — resolve() falls back, so an
+      # Arabic labourer is quietly shown an English sentence and nobody who
+      # speaks English notices.
+      - name: The catalogue is written in all three languages
+        run: python3 tools/check-catalog-languages.py
+
+      # docs/STORE_COMPLIANCE.md says in as many words to fill Google Play's
+      # Data safety form in from its permission table. That table listed
+      # location, microphone and notifications for a long time, none of which
+      # is in the manifest — the plan changed and the table did not. Nothing
+      # on this machine could catch it: the damage happens off it, when
+      # somebody careful declares that the app collects a worker's location.
+      - name: The documented permissions are the ones the app holds
+        run: python3 tools/check-permissions.py
+
+      # The photograph checklist is generated from the catalogue. A picture
+      # added without regenerating it leaves the list telling somebody to go
+      # and take one that is already in the repository — which is a wasted
+      # afternoon rather than a broken build, and so exactly the kind of thing
+      # nobody notices.
+      - name: The photograph checklist matches the catalogue
+        run: python3 tools/photo-worklist.py --check
+
+      # The translation sheets are what a buyer hands to the people who fix
+      # the Hebrew and Arabic. They were typed once and the app kept growing:
+      # 478 interface strings and thirty hand tools were never on them, so
+      # nobody was ever asked to translate them and they would have shipped
+      # in draft wording. Both generators keep what a translator typed.
+      - name: The translation sheets cover every string
+        run: python3 tools/gen-translation-sheet.py --check
+      - name: The translation sheets cover the whole catalogue
+        run: python3 tools/gen-catalog-sheets.py --check
+
+      # Choosing Hebrew left the app in English for twenty-four versions: the
+      # manifest told Android the activity handled language changes itself,
+      # so the screen was never rebuilt. The translations were all there.
+      - name: Choosing a language changes the whole app
+        run: python3 tools/check-locale-switch.py
+
+      # Every update says what it does, in all three languages, before it can
+      # be built: the app shows it before and after installing.
+      - name: This version says what it does, in three languages
+        run: python3 tools/release-notes.py --check
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.
@@ -48,6 +178,42 @@ jobs:
       # already has the app. Nothing else in this pipeline catches it.
       - name: Migration SQL matches the schema Room expects
         run: python3 tools/check-migration.py
+
+      # The check above compares two pieces of text and cannot see an INSERT
+      # at all. SQLite will not loosen a NOT NULL in place, so changing one
+      # means rebuilding the table and copying the rows across — and a copy
+      # that misses a column leaves the schema perfect and the data gone.
+      - name: The migrations run, and no rebuild loses its rows
+        run: python3 tools/run-migrations.py
+
+      # A repository method nothing calls is how this app shipped with no way
+      # to report an accident: the table, the DAO and the repository were all
+      # there and no screen could reach any of them. Four features had been
+      # described by a name and a comment and performed by nothing. This holds
+      # the count where the last review left it.
+      - name: No new unreachable code in core and repositories
+        run: python3 tools/find-unused.py --check
+
+      - name: No new arguments that are only ever passed null
+        run: python3 tools/check-null-args.py --check
+
+      # The same fault asked of the column instead of the argument: a field
+      # with an index, a comment and a DAO query written against it, and no
+      # caller that ever puts anything in it. That is what an empty timesheet
+      # and an unsigned permit both looked like from the inside.
+      - name: No new columns that nothing ever fills
+        run: python3 tools/check-dead-columns.py --check
+
+      # The release build had never been run. Only assembleDebug was, and
+      # debug does not minify — so R8 stripping something Room, SQLCipher or
+      # kotlinx.serialization loads reflectively would have surfaced for the
+      # first time on the day of a store submission. This is the bundle Google
+      # Play actually takes, built the way Play takes it, on every push.
+      # Unsigned here: no upload key exists on CI, and signing is the last
+      # step before upload rather than a prerequisite for knowing it builds.
+      - name: Release bundle builds and survives R8
+        run: ./gradlew --no-daemon :app:bundleRelease
+        working-directory: android
 
       - name: Assemble debug APK
         working-directory: android

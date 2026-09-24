@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.Badge
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.RequestQuote
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.filled.Settings
@@ -52,10 +53,13 @@ import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLocale
+import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZoneId
 
 /**
  * The screen the day starts on.
@@ -73,14 +77,23 @@ fun HomeScreen(
     onOpenSchedule: () -> Unit,
     onOpenProjects: () -> Unit,
     onOpenSafety: () -> Unit,
+    onOpenMuster: () -> Unit,
+    onOpenPlant: () -> Unit,
+    onOpenPpe: () -> Unit,
     onOpenPeople: () -> Unit,
+    onOpenSearch: () -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val viewModel: HomeViewModel = viewModel(factory = ViewModelFactory(container) { HomeViewModel(it) })
     val state by viewModel.state.collectAsStateWithLifecycle()
     val portfolio by viewModel.portfolio.collectAsStateWithLifecycle()
+    val changes by viewModel.changes.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
+    val rollCallRunning by viewModel.rollCallRunning.collectAsStateWithLifecycle()
+    val plantUnchecked by viewModel.plantUnchecked.collectAsStateWithLifecycle()
+    val ppeOverdue by viewModel.ppeOverdue.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val zone = ZoneId.systemDefault()
 
     // Each tile belongs to a lens, so the dashboard is different work for
     // different people rather than the same wall of numbers with some greyed
@@ -106,6 +119,15 @@ fun HomeScreen(
                     }
                 },
                 actions = {
+                    // First, and on every screen a person starts from: the
+                    // whole point of one search box is that it is not hidden
+                    // behind whichever register happens to hold the answer.
+                    IconButton(onClick = onOpenSearch) {
+                        Icon(
+                            Icons.Filled.Search,
+                            contentDescription = stringResource(R.string.action_search),
+                        )
+                    }
                     IconButton(onClick = onOpenSettings) {
                         Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.set_title))
                     }
@@ -117,6 +139,82 @@ fun HomeScreen(
             modifier = Modifier.padding(padding),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 24.dp),
         ) {
+
+            // Above the numbers, and the only thing that is. A roll call is
+            // running means somebody is missing or might be, and nothing else
+            // on this page competes with that.
+            if (rollCallRunning) {
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 12.dp)
+                            .clickable(onClick = onOpenMuster),
+                    ) {
+                        Column(Modifier.padding(16.dp)) {
+                            Text(
+                                stringResource(R.string.muster_live),
+                                style = MaterialTheme.typography.titleMedium,
+                            )
+                            Text(
+                                stringResource(R.string.muster_open_live),
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
+                    }
+                }
+            }
+
+            // The seven o'clock question: which machines may be started. Only
+            // shown when the answer is "not all of them yet".
+            if (seesStuff && plantUnchecked > 0) {
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                            .clickable(onClick = onOpenPlant),
+                    ) {
+                        Text(
+                            pluralStringResource(R.plurals.home_plant_unchecked, plantUnchecked, plantUnchecked),
+                            style = MaterialTheme.typography.titleSmall,
+                            modifier = Modifier.padding(16.dp),
+                        )
+                    }
+                }
+            }
+
+            // A harness past its date is a man on a scaffold in something the
+            // manufacturer no longer stands behind. The count is already only
+            // there for somebody who may read the register.
+            if (ppeOverdue > 0) {
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                            .clickable(onClick = onOpenPpe),
+                    ) {
+                        Text(
+                            pluralStringResource(R.plurals.home_ppe_overdue, ppeOverdue, ppeOverdue),
+                            style = MaterialTheme.typography.titleSmall,
+                            modifier = Modifier.padding(16.dp),
+                        )
+                    }
+                }
+            }
 
             item {
                 Row(
@@ -324,6 +422,30 @@ fun HomeScreen(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
+                    }
+                }
+            }
+
+            // What changed, and only what this person may be told about. The
+            // filter is the lens grid, asked about a change instead of a
+            // screen: a labourer sees the programme move and the drawing
+            // replaced, and does not see a cost line.
+            if (changes.isNotEmpty()) {
+                item { SectionHeader(stringResource(R.string.home_changes)) }
+                items(changes, key = { it.id }) { change ->
+                    val at = Instant.ofEpochMilli(change.occurredAt).atZone(zone)
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 6.dp),
+                    ) {
+                        Text(summaryText(change.summary), style = MaterialTheme.typography.bodyLarge)
+                        Text(
+                            text = change.actorName + " · " +
+                                Formats.dateTime(at.toLocalDate(), at.toLocalTime(), locale),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
                     }
                 }
             }

@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.core.i18n.LocalizedText
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.entity.TradeEntity
@@ -61,7 +62,7 @@ class TradeRepository(
         // straight back on the next catalogue load anyway.
         if (!isCustom(trade)) return
         dao.deleteTrade(trade.id)
-        audit.record("trade", trade.id, AuditTrail.Action.DELETE, actorName, "Custom trade removed")
+        audit.record("trade", trade.id, AuditTrail.Action.DELETE, actorName, Summaries.CUSTOM_TRADE_REMOVED)
     }
 
     companion object {

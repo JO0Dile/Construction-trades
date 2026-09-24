@@ -32,6 +32,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.unit.dp
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
 import il.co.tradesmanager.ui.components.ItemThumbnail
@@ -75,7 +76,7 @@ fun AddMaterialDialog(
         matches = search(label).take(8)
     }
 
-    val amount = quantity.replace(',', '.').toDoubleOrNull()
+    val amount = Numbers.parseDecimal(quantity)
     val canAdd = label.isNotBlank() && amount != null && amount > 0.0
 
     AlertDialog(

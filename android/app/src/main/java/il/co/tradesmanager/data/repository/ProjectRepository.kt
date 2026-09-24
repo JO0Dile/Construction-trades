@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.catalog.CatalogItemFile
 import il.co.tradesmanager.data.catalog.CatalogSource
@@ -49,6 +51,12 @@ class ProjectRepository(
     fun observeProjects(): Flow<List<ProjectEntity>> =
         activeCompanyId.flatMapLatest { dao.observeProjects(it) }
 
+    /** For the list of jobs. Parts are reached through the job they belong to. */
+    fun observeTopLevel(): Flow<List<ProjectEntity>> =
+        activeCompanyId.flatMapLatest { dao.observeTopLevelProjects(it) }
+
+    fun observeParts(parentId: String): Flow<List<ProjectEntity>> = dao.observeParts(parentId)
+
     fun observeActive(): Flow<List<ProjectEntity>> =
         activeCompanyId.flatMapLatest { dao.observeProjectsByStatus(Status.ACTIVE, it) }
     fun observeProject(id: String): Flow<ProjectEntity?> = dao.observeProject(id)
@@ -70,7 +78,7 @@ class ProjectRepository(
 
     suspend fun setTaskDone(taskId: String, done: Boolean, actorName: String) {
         dao.setTaskDone(taskId, done, if (done) System.currentTimeMillis() else null, actorName.ifBlank { null })
-        audit.record("project_task", taskId, AuditTrail.Action.UPDATE, actorName, if (done) "done" else "reopened")
+        audit.record("project_task", taskId, AuditTrail.Action.UPDATE, actorName, if (done) Summaries.TASK_DONE else Summaries.TASK_REOPENED)
     }
 
     /**
@@ -95,12 +103,23 @@ class ProjectRepository(
         name: String,
         kindLabel: String,
         actorName: String,
+        /**
+         * The job this is a part of, if it is one.
+         *
+         * The column has been here since the beginning with nothing setting
+         * it. A twenty-storey tower is one job with twenty floors in it, and
+         * every floor has its own tasks, materials, photographs and snags --
+         * flattening that into twenty jobs loses which building they are in,
+         * and keeping it as one loses which floor anything happened on.
+         */
+        parentProjectId: String? = null,
     ): ProjectEntity = withContext(Dispatchers.IO) {
         val now = System.currentTimeMillis()
         val project = ProjectEntity(
             id = UUID.randomUUID().toString(),
             name = name.trim(),
             kindLabel = kindLabel.trim(),
+            parentProjectId = parentProjectId,
             status = Status.PLANNED,
             createdAt = now,
             updatedAt = now,
@@ -148,15 +167,41 @@ class ProjectRepository(
         audit.record("project_material", material.id, AuditTrail.Action.DELETE, actorName, material.label)
     }
 
-    suspend fun addTask(projectId: String, title: String, actorName: String) {
+    suspend fun addTask(
+        projectId: String,
+        title: String,
+        actorName: String,
+        stageId: String? = null,
+        scopeId: String? = null,
+    ) {
         val task = ProjectTaskEntity(
             id = UUID.randomUUID().toString(),
             projectId = projectId,
             title = title.trim(),
             sortOrder = dao.nextTaskSortOrder(projectId),
+            stageId = stageId,
+            scopeId = scopeId,
         )
         dao.upsertTasks(listOf(task))
         audit.record("project_task", task.id, AuditTrail.Action.CREATE, actorName, task.title)
+    }
+
+    /** Moves a task to a different stage of the job, or off the stages entirely. */
+    suspend fun setTaskStage(
+        task: ProjectTaskEntity,
+        stageId: String?,
+        scopeId: String?,
+        actorName: String,
+    ) {
+        dao.upsertTasks(listOf(task.copy(stageId = stageId, scopeId = scopeId)))
+        audit.record(
+            "project_task", task.id, AuditTrail.Action.UPDATE, actorName,
+            if (stageId == null) {
+                Summary.of(Summaries.TASK_STAGE_CLEARED, task.title)
+            } else {
+                Summary.of(Summaries.TASK_STAGE_SET, task.title, stageId)
+            },
+        )
     }
 
     suspend fun removeTask(task: ProjectTaskEntity, actorName: String) {
@@ -230,13 +275,17 @@ class ProjectRepository(
                     projectId = projectId,
                     title = task.titles.resolve(languageTag),
                     sortOrder = index,
+                    // Left unset. A template's steps run through several stages
+                    // — a bathroom is waterproofed, tested, then tiled — and
+                    // stamping them all with one stage would be worse than
+                    // leaving it to whoever is running the job.
                 )
             },
         )
 
         audit.record(
             ENTITY, projectId, AuditTrail.Action.CREATE, actorName,
-            "Created from template ${template.id}",
+            Summary.of(Summaries.CREATED_FROM_TEMPLATE, template.id),
         )
         project
     }

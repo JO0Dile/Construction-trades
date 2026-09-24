@@ -1,0 +1,170 @@
+{
+  "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
+  "versions": [
+    {
+      "version": "0.31.0",
+      "points": [
+        {
+          "en": "Each job gets a register of material approvals. Before a tile, a membrane or a window system is ordered, send it to the architect or the supervisor: what is proposed, who makes it, where it goes, and the day the answer is needed. It is numbered MS-001, and one past its day with no answer is shown first, in red.",
+          "he": "לכל עבודה יש עכשיו פנקס אישורי חומרים. לפני שמזמינים אריח, חומר איטום או מערכת חלונות, שולחים אותם לאדריכל או למפקח: מה מוצע, מי מייצר, איפה ייושם, ועד מתי נדרשת תשובה. כל הגשה ממוספרת MS-001, והגשה שעבר מועדה בלי תשובה מוצגת ראשונה, באדום.",
+          "ar": "لكل مشروع الآن سجل لاعتماد المواد. قبل طلب البلاط أو مادة العزل أو نظام النوافذ، أرسلها إلى المهندس المعماري أو المشرف: ما المقترح، ومَن يصنعه، وأين يُستخدم، ومتى تلزم الإجابة. يُرقَّم كل طلب MS-001، ويظهر الطلب الذي فات موعده بلا إجابة أولًا باللون الأحمر."
+        },
+        {
+          "en": "The answer is written once, with the name of whoever gave it: approved, approved as noted, or rejected with its reason. A rejected one keeps its number and goes up a revision, so MS-004 rev. 1 is the second go at the same thing, and every go stays on the record with a photograph of its datasheet or sample.",
+          "he": "התשובה נרשמת פעם אחת, עם שם מי שנתן אותה: אושר, אושר בהערות, או נדחה עם הסיבה. מה שנדחה שומר על המספר ועולה מהדורה, כך ש־MS-004 מהדורה 1 הוא הניסיון השני לאותו דבר, וכל הגשה נשארת ברישום עם צילום של דף הנתונים או הדוגמה.",
+          "ar": "تُسجَّل الإجابة مرة واحدة مع اسم مَن أعطاها: معتمد، أو معتمد مع ملاحظات، أو مرفوض مع السبب. ما يُرفض يحتفظ برقمه ويُرفع إصداره، فيكون MS-004 الإصدار 1 المحاولة الثانية للشيء نفسه، وتبقى كل محاولة في السجل مع صورة لورقة البيانات أو العينة."
+        },
+        {
+          "en": "The handover pack counts materials still waiting or rejected and not sent again, and the search box finds them by number, product, supplier, place or the reviewer's notes.",
+          "he": "תיק המסירה סופר חומרים שעדיין ממתינים, או שנדחו ולא נשלחו שוב, ותיבת החיפוש מוצאת אותם לפי מספר, מוצר, ספק, מקום או הערות הבודק.",
+          "ar": "تحصي حزمة التسليم المواد التي لا تزال تنتظر، أو رُفضت ولم يُعد إرسالها، ويجدها صندوق البحث برقمها أو المنتج أو المورّد أو المكان أو ملاحظات المراجع."
+        },
+        {
+          "en": "An answer from a designer, an inspection result or an approval can no longer be saved twice when two people record it at the same moment: the first one stands and the second is told it is already recorded.",
+          "he": "תשובה של מתכנן, תוצאת בדיקה או אישור חומר כבר לא יכולים להישמר פעמיים כששני אנשים רושמים אותם באותו רגע: הראשון נשאר, והשני מקבל הודעה שהם כבר נרשמו.",
+          "ar": "لم يعد ممكنًا حفظ إجابة المصمم أو نتيجة الفحص أو اعتماد المادة مرتين عندما يسجلها شخصان في اللحظة نفسها: يبقى الأول، ويُبلَّغ الثاني بأنها مسجلة بالفعل."
+        }
+      ]
+    },
+    {
+      "version": "0.30.0",
+      "points": [
+        {
+          "en": "Each job gets an inspection register. Before steel is poured over, a membrane screeded or a wall closed, ask for it to be inspected: what and where, of whom, and the day you want them. It is numbered IR-001, and an overdue one is shown first, in red.",
+          "he": "לכל עבודה יש עכשיו פנקס בדיקות. לפני שיוצקים על ברזל, מכסים איטום במדה או סוגרים קיר, מבקשים בדיקה: מה ואיפה, ממי, ובאיזה יום. כל בקשה ממוספרת IR-001, ובקשה שעבר מועדה מוצגת ראשונה, באדום.",
+          "ar": "لكل مشروع الآن سجل فحوصات. قبل صبّ الخرسانة على الحديد أو تغطية العزل أو إغلاق الجدار، اطلب فحصه: ماذا وأين، ومِن مَن، وفي أي يوم. يُرقَّم كل طلب IR-001، ويظهر الطلب المتأخر أولًا باللون الأحمر."
+        },
+        {
+          "en": "The result is written once, with the name of whoever inspected. A failure needs its reason, and is not edited into a pass: it is asked again under a new number, and both stay on the record. A photograph of the signed form can go with it.",
+          "he": "התוצאה נרשמת פעם אחת, עם שם מי שבדק. בדיקה שנפסלה צריכה סיבה, ואי אפשר לשנות אותה לאישור: מבקשים אותה שוב במספר חדש, ושתיהן נשארות ברישום. אפשר לצרף צילום של הטופס החתום.",
+          "ar": "تُسجَّل النتيجة مرة واحدة مع اسم مَن قام بالفحص. الفحص المرفوض يحتاج إلى سبب، ولا يُعدَّل إلى مقبول: يُطلب مجددًا برقم جديد، ويبقى الاثنان في السجل. ويمكن إرفاق صورة للنموذج الموقّع."
+        },
+        {
+          "en": "A pour now shows the passed inspection of the steel or the formwork that let it go ahead, or says that none is recorded. The handover pack counts inspections still waiting and pours with none, and the search box finds inspections by number, place, inspector or comment.",
+          "he": "יציקה מציגה עכשיו את בדיקת הברזל או הטפסנות שאושרה ושחררה אותה, או מציינת שלא נרשמה בדיקה. תיק המסירה סופר בדיקות שעדיין ממתינות ויציקות בלי בדיקה, ותיבת החיפוש מוצאת בדיקות לפי מספר, מקום, בודק או הערה.",
+          "ar": "تعرض الصبّة الآن فحص الحديد أو القوالب المقبول الذي أجازها، أو تذكر أنه لم يُسجَّل فحص. وتحصي حزمة التسليم الفحوصات التي لا تزال منتظرة والصبّات التي بلا فحص، ويجد صندوق البحث الفحوصات برقمها أو مكانها أو الفاحص أو الملاحظة."
+        }
+      ]
+    },
+    {
+      "version": "0.29.0",
+      "points": [
+        {
+          "en": "A phone set to Hebrew now shows the whole app in Hebrew. Android looks Hebrew up under its old code, \"iw\", and the app filed its Hebrew only under the new one, \"he\", so the buttons and headings stayed in English while the catalogue was in Hebrew. The same words are now filed under both.",
+          "he": "טלפון שמוגדר לעברית מציג עכשיו את כל האפליקציה בעברית. אנדרואיד מחפשת עברית לפי הקוד הישן שלה, \"iw\", והאפליקציה שמרה את העברית שלה רק תחת הקוד החדש, \"he\", ולכן הכפתורים והכותרות נשארו באנגלית בזמן שהקטלוג הופיע בעברית. עכשיו אותן מילים שמורות תחת שני הקודים.",
+          "ar": "الهاتف المضبوط على العبرية يعرض الآن التطبيق كله بالعبرية. يبحث أندرويد عن العبرية برمزها القديم \"iw\"، وكان التطبيق يحفظ عبريته تحت الرمز الجديد \"he\" فقط، فبقيت الأزرار والعناوين بالإنجليزية بينما ظهر الكتالوج بالعبرية. أصبحت الكلمات نفسها محفوظة الآن تحت الرمزين."
+        },
+        {
+          "en": "The search box now finds drawings by number or title, questions to the designers by any word in them, and visitors by name, and opens the job's register they are in.",
+          "he": "תיבת החיפוש מוצאת עכשיו תוכניות לפי מספר או כותרת, שאלות למתכננים לפי כל מילה בהן, ומבקרים לפי שם, ופותחת את הפנקס של העבודה שבה הם נמצאים.",
+          "ar": "صندوق البحث يجد الآن المخططات برقمها أو عنوانها، وأسئلة المصممين بأي كلمة فيها، والزوار بأسمائهم، ويفتح سجل المشروع الذي هم فيه."
+        },
+        {
+          "en": "Hebrew and Arabic are now checked on every build against Android itself, which is how the fault above was found, so the app cannot quietly go back to showing English on a Hebrew or Arabic phone.",
+          "he": "העברית והערבית נבדקות עכשיו בכל בנייה מול אנדרואיד עצמה, וכך נמצאה התקלה שלמעלה, כך שהאפליקציה לא יכולה לחזור בשקט להציג אנגלית בטלפון בעברית או בערבית.",
+          "ar": "تُفحص العبرية والعربية الآن في كل بناء مقابل نظام أندرويد نفسه، وهكذا وُجد العطل المذكور أعلاه، فلا يمكن أن يعود التطبيق خفيةً إلى عرض الإنجليزية على هاتف بالعبرية أو العربية."
+        }
+      ]
+    },
+    {
+      "version": "0.28.0",
+      "points": [
+        {
+          "en": "Questions to the designers, on every job: write down each question put to the architect, the engineer or the supervisor, when the site needs the answer, and the answer when it comes. Unanswered questions past their date are shown first, in red.",
+          "he": "שאלות למתכננים, בכל עבודה: רישום כל שאלה שנשאלה את האדריכל, המהנדס או המפקח, מתי האתר צריך את התשובה, והתשובה כשהיא מגיעה. שאלות שלא נענו אחרי התאריך מוצגות ראשונות, באדום.",
+          "ar": "أسئلة للمصممين، في كل مشروع: سجّل كل سؤال وُجّه إلى المعماري أو المهندس أو المشرف، ومتى يحتاج الموقع إلى الإجابة، والإجابة عند وصولها. الأسئلة التي لم يُجَب عنها بعد تاريخها تظهر أولًا بالأحمر."
+        },
+        {
+          "en": "The handover pack lists questions to the designers that were never answered.",
+          "he": "תיק המסירה מציג שאלות למתכננים שלא נענו מעולם.",
+          "ar": "يعرض ملف التسليم أسئلة المصممين التي لم يُجَب عنها قط."
+        }
+      ]
+    },
+    {
+      "version": "0.27.0",
+      "points": [
+        {
+          "en": "Tickets by trade (People, the shield button): who lacks a ticket their trade usually needs, such as a licensed electrician, welding or work at height, or holds only an expired one.",
+          "he": "תעודות לפי מקצוע (אנשים, כפתור המגן): מי שחסרה לו תעודה שהמקצוע שלו צריך בדרך כלל, כמו חשמלאי מוסמך, ריתוך או עבודה בגובה, או שיש לו רק תעודה שפג תוקפה.",
+          "ar": "الشهادات حسب المهنة (الأشخاص، زر الدرع): من تنقصه شهادة تحتاجها مهنته عادةً، مثل كهربائي مرخّص أو لحام أو العمل على ارتفاع، أو يحمل شهادة منتهية فقط."
+        },
+        {
+          "en": "The handover pack now lists finished pours still missing their 28-day cube result, and pours with a result the engineer has to see.",
+          "he": "תיק המסירה מציג עכשיו יציקות שהסתיימו ועדיין חסרה להן תוצאת קוביות לגיל 28 ימים, ויציקות עם תוצאה שהמהנדס חייב לראות.",
+          "ar": "يعرض ملف التسليم الآن الصبّات المنتهية التي ما زالت تنقصها نتيجة المكعبات لعمر 28 يومًا، والصبّات ذات النتيجة التي يجب أن يطّلع عليها المهندس."
+        }
+      ]
+    },
+    {
+      "version": "0.26.0",
+      "points": [
+        {
+          "en": "Drawings register on every job: record each drawing and its revision. A new revision replaces the old one on every phone, so the crew only sees the one to build from; earlier revisions stay in the history marked as replaced.",
+          "he": "פנקס תוכניות בכל עבודה: רישום כל תוכנית והמהדורה שלה. מהדורה חדשה מחליפה את הקודמת בכל הטלפונים, כך שהצוות רואה רק את זו שלפיה בונים; מהדורות קודמות נשארות בהיסטוריה ומסומנות כמוחלפות.",
+          "ar": "سجل المخططات في كل مشروع: سجّل كل مخطط ومراجعته. المراجعة الجديدة تحلّ محل القديمة في كل الهواتف، فلا يرى الطاقم إلا المراجعة التي يُبنى عليها؛ وتبقى المراجعات السابقة في السجل موسومة بأنها مستبدلة."
+        },
+        {
+          "en": "Photograph each drawing sheet, or pick the file the architect sent, and open it full screen to zoom in on a dimension.",
+          "he": "צילום כל גיליון תוכנית, או בחירת הקובץ שהאדריכל שלח, ופתיחתו במסך מלא כדי להגדיל מידה.",
+          "ar": "صوّر كل لوحة مخطط، أو اختر الملف الذي أرسله المعماري، وافتحه بملء الشاشة لتكبير أي بُعد."
+        },
+        {
+          "en": "Concrete cube results on every pour: type in the lab's 7- and 28-day results. A 28-day result below the strength the mix asks for is marked for the engineer, on the pour and in the pour list.",
+          "he": "תוצאות קוביות בטון בכל יציקה: הקלדת תוצאות המעבדה לגיל 7 ו־28 ימים. תוצאה לגיל 28 ימים שנמוכה מהחוזק הנדרש בתערובת מסומנת לעיון המהנדס, ביציקה וברשימת היציקות.",
+          "ar": "نتائج مكعبات الخرسانة في كل صبّة: أدخل نتائج المختبر لعمر 7 و28 يومًا. النتيجة لعمر 28 يومًا الأقل من المقاومة المطلوبة في الخلطة تُعلَّم لاطلاع المهندس، في الصبّة وفي قائمة الصبّات."
+        }
+      ]
+    },
+    {
+      "version": "0.25.0",
+      "points": [
+        {
+          "en": "Choosing Hebrew or Arabic now changes the whole app, and the choice is kept after the phone restarts. Until now most of the app stayed in English.",
+          "he": "בחירת עברית או ערבית משנה עכשיו את כל האפליקציה, והבחירה נשמרת גם אחרי הפעלה מחדש של הטלפון. עד עכשיו רוב האפליקציה נשארה באנגלית.",
+          "ar": "اختيار العبرية أو العربية يغيّر الآن التطبيق كله، ويبقى الاختيار محفوظًا بعد إعادة تشغيل الهاتف. حتى الآن كان معظم التطبيق يبقى بالإنجليزية."
+        },
+        {
+          "en": "What's new: every update now says what it does, in your language. An update that skips versions lists everything since the one you have, and Settings keeps the whole history.",
+          "he": "מה חדש: כל עדכון מסביר עכשיו מה הוא עושה, בשפה שלכם. עדכון שמדלג על גרסאות מציג את כל מה שהשתנה מאז הגרסה שמותקנת, וההיסטוריה המלאה נמצאת בהגדרות.",
+          "ar": "ما الجديد: كل تحديث يشرح الآن ما يفعله، بلغتك. التحديث الذي يتخطى نسخًا يعرض كل ما تغيّر منذ النسخة المثبّتة، والسجل الكامل موجود في الإعدادات."
+        },
+        {
+          "en": "A toolbox talk can start from any safety checklist: its title becomes the topic and its checks the talking points, the critical ones first.",
+          "he": "תדריך בטיחות יכול להתחיל מכל רשימת בדיקה: שם הרשימה הופך לנושא והבדיקות לנקודות לשיחה, הקריטיות קודם.",
+          "ar": "يمكن أن يبدأ إيجاز السلامة من أي قائمة فحص: يصبح عنوانها الموضوع وتصبح بنودها نقاط الحديث، والحرجة أولًا."
+        },
+        {
+          "en": "Before a roll call starts, it says how many visitors are signed in and will be on the list as well as the crew.",
+          "he": "לפני שמתחיל מסדר, מוצג כמה מבקרים רשומים באתר ויופיעו ברשימה, בנוסף לצוות.",
+          "ar": "قبل بدء التفقد، يظهر عدد الزوار المسجلين الذين سيكونون في القائمة إضافة إلى الطاقم."
+        }
+      ]
+    },
+    {
+      "version": "0.24.0",
+      "points": [
+        {
+          "en": "Protective equipment register (Safety): hand a helmet, harness or gloves to a worker, who signs for it on the phone. It comes off the stock list, and anything past its replace-by date is shown first.",
+          "he": "פנקס ציוד מגן אישי (בטיחות): מסירת קסדה, רתמה או כפפות לעובד, שחותם על הקבלה בטלפון. הפריט יורד מהמלאי, ומה שעבר את מועד ההחלפה מוצג ראשון.",
+          "ar": "سجل معدات الوقاية الشخصية (السلامة): سلّم خوذة أو حزام أمان أو قفازات لعامل يوقّع على الاستلام في الهاتف. تُخصم القطعة من المخزون، ويظهر أولًا ما تجاوز موعد استبداله."
+        },
+        {
+          "en": "Visitor log on every job: sign inspectors, clients and drivers in and out. Anyone still signed in goes on the evacuation roll call, marked as a visitor.",
+          "he": "יומן מבקרים בכל עבודה: רישום כניסה ויציאה של מפקחים, לקוחות ונהגים. מי שעדיין רשום באתר נכלל במסדר הפינוי, מסומן כמבקר.",
+          "ar": "سجل الزوار في كل مشروع: سجّل دخول وخروج المفتشين والعملاء والسائقين. كل من ما زال مسجلًا يُدرج في تفقد الإخلاء بصفة زائر."
+        },
+        {
+          "en": "Both registers export to a spreadsheet and a PDF for an inspector. A worker's profile shows the equipment they hold, and home warns when equipment is overdue for replacement.",
+          "he": "שני הפנקסים מיוצאים לגיליון ול־PDF עבור מפקח. בפרופיל העובד מופיע הציוד שבידיו, ובמסך הבית מופיעה התראה כשציוד עבר את מועד ההחלפה.",
+          "ar": "يُصدَّر السجلان إلى جدول وإلى PDF للمفتش. يُظهر ملف العامل المعدات التي بحوزته، وتنبّه الشاشة الرئيسية عند تأخر استبدال المعدات."
+        },
+        {
+          "en": "Four new checklists: end-of-day site lock-up, first aid, fire extinguishers, and drinking water, toilets and rest.",
+          "he": "ארבע רשימות בדיקה חדשות: נעילת האתר בסוף יום, עזרה ראשונה, מטפים, ומי שתייה, שירותים ומנוחה.",
+          "ar": "أربع قوائم فحص جديدة: إغلاق الموقع في نهاية اليوم، الإسعافات الأولية، طفايات الحريق، ومياه الشرب والمراحيض والاستراحة."
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,12 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.access.Role
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
+import il.co.tradesmanager.core.evidence.CubeTests
 import il.co.tradesmanager.data.local.dao.ConcreteDao
+import il.co.tradesmanager.data.local.entity.ConcreteCubeSetEntity
 import il.co.tradesmanager.data.local.entity.ConcretePourEntity
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
 import java.util.Locale
@@ -30,6 +36,69 @@ class ConcreteRepository(
         dao.observeTickets(pourId)
 
     fun observePlacedVolume(pourId: String): Flow<Double> = dao.observePlacedVolume(pourId)
+
+    fun observeCubeSets(pourId: String): Flow<List<ConcreteCubeSetEntity>> = dao.observeCubeSets(pourId)
+
+    fun observeCubeSetsForProject(projectId: String): Flow<List<ConcreteCubeSetEntity>> =
+        dao.observeCubeSetsForProject(projectId)
+
+    /** Why a cube result was not recorded. */
+    enum class CubeRefusal { NOT_ALLOWED, NO_CUBES, IMPLAUSIBLE_STRENGTH, BAD_AGE, UNKNOWN }
+
+    class CubesRefused(val refusal: CubeRefusal) : Exception(refusal.name)
+
+    /**
+     * A lab's results for one set of cubes from [pourId].
+     *
+     * Recorded whatever they say. A low result is the one most worth having
+     * on the record, and refusing it -- or quietly averaging it into
+     * something acceptable -- is the opposite of what this is for.
+     */
+    suspend fun recordCubes(
+        role: Role,
+        pourId: String,
+        ageDays: Int,
+        testedAt: Long,
+        laboratory: String?,
+        reportNumber: String?,
+        strengthsMpa: List<Double>,
+        actorName: String,
+    ): Result<ConcreteCubeSetEntity> {
+        if (!role.canWrite(Lens.STUFF)) return Result.failure(CubesRefused(CubeRefusal.NOT_ALLOWED))
+        CubeTests.refusal(ageDays, strengthsMpa)?.let {
+            return Result.failure(
+                CubesRefused(
+                    when (it) {
+                        CubeTests.Refusal.NO_CUBES -> CubeRefusal.NO_CUBES
+                        CubeTests.Refusal.IMPLAUSIBLE_STRENGTH -> CubeRefusal.IMPLAUSIBLE_STRENGTH
+                        CubeTests.Refusal.BAD_AGE -> CubeRefusal.BAD_AGE
+                    },
+                ),
+            )
+        }
+        val pour = dao.pour(pourId) ?: return Result.failure(CubesRefused(CubeRefusal.UNKNOWN))
+        val set = ConcreteCubeSetEntity(
+            id = UUID.randomUUID().toString(),
+            pourId = pourId,
+            ageDays = ageDays,
+            testedAt = testedAt,
+            laboratory = laboratory?.trim()?.takeIf { it.isNotEmpty() },
+            reportNumber = reportNumber?.trim()?.takeIf { it.isNotEmpty() },
+            // Double's own toString: the same text whatever the phone's language.
+            strengthsMpa = strengthsMpa.map { it.toString() },
+            recordedByName = actorName,
+            createdAt = System.currentTimeMillis(),
+        )
+        return runCatching {
+            dao.upsertCubeSet(set)
+            val mean = Math.round(strengthsMpa.average() * 10.0) / 10.0
+            audit.record(
+                CUBES, set.id, AuditTrail.Action.CREATE, actorName,
+                Summary.of(Summaries.CUBES_RECORDED, pour.reference, ageDays.toString(), Summary.number(mean)),
+            )
+            set
+        }.recoverCatching { throw CubesRefused(CubeRefusal.UNKNOWN) }
+    }
 
     suspend fun startPour(
         projectId: String,
@@ -71,13 +140,9 @@ class ConcreteRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(POUR, pour.id, AuditTrail.Action.SIGN_OFF, actorName, "${pour.reference} finished")
+        audit.record(POUR, pour.id, AuditTrail.Action.SIGN_OFF, actorName, Summary.of(Summaries.POUR_FINISHED, pour.reference))
     }
 
-    suspend fun removePour(pour: ConcretePourEntity, actorName: String) {
-        dao.deletePour(pour)
-        audit.record(POUR, pour.id, AuditTrail.Action.DELETE, actorName, pour.reference)
-    }
 
     /**
      * Books a truck in.
@@ -113,7 +178,11 @@ class ConcreteRepository(
         dao.upsertTicket(ticket)
         audit.record(
             TICKET, ticket.id, AuditTrail.Action.CREATE, actorName,
-            "Truck ${ticket.truckNumber.orEmpty()} ${ticket.volume}m3",
+            Summary.of(
+                Summaries.CONCRETE_TRUCK,
+                ticket.truckNumber.orEmpty(),
+                Summary.number(ticket.volume),
+            ),
         )
         return ticket
     }
@@ -127,7 +196,7 @@ class ConcreteRepository(
     suspend fun markPlaced(ticket: ConcreteTicketEntity, actorName: String) {
         if (ticket.rejected || ticket.dischargedAt != null) return
         dao.upsertTicket(ticket.copy(dischargedAt = System.currentTimeMillis()))
-        audit.record(TICKET, ticket.id, AuditTrail.Action.UPDATE, actorName, "Placed")
+        audit.record(TICKET, ticket.id, AuditTrail.Action.UPDATE, actorName, Summaries.CONCRETE_PLACED)
     }
 
     /**
@@ -145,16 +214,14 @@ class ConcreteRepository(
         )
         audit.record(
             TICKET, ticket.id, AuditTrail.Action.UPDATE, actorName,
-            "Rejected: ${reason.orEmpty()}",
+            Summary.of(Summaries.CONCRETE_REJECTED, reason.orEmpty()),
         )
     }
 
-    suspend fun removeTicket(ticket: ConcreteTicketEntity, actorName: String) {
-        dao.deleteTicket(ticket)
-        audit.record(TICKET, ticket.id, AuditTrail.Action.DELETE, actorName, ticket.ticketNumber.orEmpty())
-    }
 
     private companion object {
+        const val CUBES = "concrete_cube_set"
+
         const val POUR = "concrete_pour"
         const val TICKET = "concrete_ticket"
     }

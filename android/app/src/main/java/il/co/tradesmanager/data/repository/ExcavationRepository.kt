@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.safety.Excavation
 import il.co.tradesmanager.data.local.dao.ExcavationDao
 import il.co.tradesmanager.data.local.entity.ExcavationEntity
@@ -108,7 +110,7 @@ class ExcavationRepository(
         )
         audit.record(
             EXCAVATION, excavation.id, AuditTrail.Action.SIGN_OFF, actorName,
-            "${excavation.reference} services located",
+            Summary.of(Summaries.SERVICES_LOCATED, excavation.reference),
         )
     }
 
@@ -157,7 +159,10 @@ class ExcavationRepository(
         }
         audit.record(
             EXCAVATION, excavation.id, AuditTrail.Action.SIGN_OFF, inspectorName,
-            "${excavation.reference} ${if (passed) "passed" else "failed"}",
+            Summary.of(
+                if (passed) Summaries.INSPECTION_PASSED else Summaries.INSPECTION_FAILED,
+                excavation.reference,
+            ),
         )
     }
 
@@ -171,13 +176,13 @@ class ExcavationRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(EXCAVATION, excavation.id, AuditTrail.Action.UPDATE, actorName, "Disturbed")
+        audit.record(EXCAVATION, excavation.id, AuditTrail.Action.UPDATE, actorName, Summaries.EXCAVATION_DISTURBED)
     }
 
     suspend fun backfill(excavation: ExcavationEntity, actorName: String) {
         val now = System.currentTimeMillis()
         dao.upsert(excavation.copy(backfilledAt = now, updatedAt = now))
-        audit.record(EXCAVATION, excavation.id, AuditTrail.Action.UPDATE, actorName, "Backfilled")
+        audit.record(EXCAVATION, excavation.id, AuditTrail.Action.UPDATE, actorName, Summaries.EXCAVATION_BACKFILLED)
     }
 
     suspend fun remove(excavation: ExcavationEntity, actorName: String) {

@@ -11,19 +11,30 @@ import il.co.tradesmanager.data.local.dao.ConcreteDao
 import il.co.tradesmanager.data.local.dao.DailyLogDao
 import il.co.tradesmanager.data.local.dao.EquipmentDao
 import il.co.tradesmanager.data.local.dao.EvidenceDao
+import il.co.tradesmanager.data.local.dao.EngagementDao
 import il.co.tradesmanager.data.local.dao.ExcavationDao
+import il.co.tradesmanager.data.local.dao.HeatDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
 import il.co.tradesmanager.data.local.dao.LiftingDao
 import il.co.tradesmanager.data.local.dao.MembershipDao
 import il.co.tradesmanager.data.local.dao.MoneyDao
+import il.co.tradesmanager.data.local.dao.MusterDao
 import il.co.tradesmanager.data.local.dao.PaymentsDao
 import il.co.tradesmanager.data.local.dao.PhotoDao
+import il.co.tradesmanager.data.local.dao.ViolationDao
+import il.co.tradesmanager.data.local.dao.WasteDao
 import il.co.tradesmanager.data.local.dao.ProjectDao
 import il.co.tradesmanager.data.local.dao.PurchasingDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
 import il.co.tradesmanager.data.local.dao.ScaffoldDao
 import il.co.tradesmanager.data.local.dao.ScheduleDao
 import il.co.tradesmanager.data.local.dao.TemporaryWorksDao
+import il.co.tradesmanager.data.local.dao.PpeDao
+import il.co.tradesmanager.data.local.dao.VisitDao
+import il.co.tradesmanager.data.local.dao.DrawingDao
+import il.co.tradesmanager.data.local.dao.DesignQueryDao
+import il.co.tradesmanager.data.local.dao.InspectionDao
+import il.co.tradesmanager.data.local.dao.SubmittalDao
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
@@ -39,7 +50,12 @@ import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
 import il.co.tradesmanager.data.local.entity.ExcavationEntity
+import il.co.tradesmanager.data.local.entity.AssignmentEntity
+import il.co.tradesmanager.data.local.entity.ContractAmendmentEntity
+import il.co.tradesmanager.data.local.entity.ContractEntity
+import il.co.tradesmanager.data.local.entity.EngagementEntity
 import il.co.tradesmanager.data.local.entity.ExcavationInspectionEntity
+import il.co.tradesmanager.data.local.entity.HeatCheckEntity
 import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
@@ -48,10 +64,15 @@ import il.co.tradesmanager.data.local.entity.LiftCrewEntity
 import il.co.tradesmanager.data.local.entity.LiftPlanEntity
 import il.co.tradesmanager.data.local.entity.MembershipEntity
 import il.co.tradesmanager.data.local.entity.MilestoneEntity
+import il.co.tradesmanager.data.local.entity.MusterEntity
+import il.co.tradesmanager.data.local.entity.MusterPersonEntity
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
+import il.co.tradesmanager.data.local.entity.PaymentApplicationLineEntity
+import il.co.tradesmanager.data.local.entity.ViolationEntity
 import il.co.tradesmanager.data.local.entity.PermitEntity
 import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.PlantCheckEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
@@ -70,6 +91,25 @@ import il.co.tradesmanager.data.local.entity.ToolboxTalkAttendeeEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
 import il.co.tradesmanager.data.local.entity.VariationEntity
+import il.co.tradesmanager.data.local.entity.WasteLoadEntity
+import il.co.tradesmanager.data.local.entity.PpeIssueEntity
+import il.co.tradesmanager.data.local.entity.SiteVisitEntity
+import il.co.tradesmanager.data.local.entity.ConcreteCubeSetEntity
+import il.co.tradesmanager.data.local.entity.DrawingEntity
+import il.co.tradesmanager.data.local.entity.DesignQueryEntity
+import il.co.tradesmanager.data.local.entity.InspectionEntity
+import il.co.tradesmanager.data.local.entity.SubmittalEntity
+
+/**
+ * The schema version the code expects.
+ *
+ * A constant rather than a literal inside the annotation so that a test can
+ * read it. Three releases in a row shipped a migration that did not match the
+ * entities it was meant to produce, and each one only surfaced when the
+ * database refused to open on a phone that already had data. The chain is
+ * checked against this now, in a unit test that runs on every push.
+ */
+const val DATABASE_VERSION = 39
 
 @Database(
     entities = [
@@ -119,8 +159,26 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
         ExcavationEntity::class,
         ExcavationInspectionEntity::class,
         PaymentApplicationEntity::class,
+        PaymentApplicationLineEntity::class,
+        ViolationEntity::class,
+        EngagementEntity::class,
+        ContractEntity::class,
+        ContractAmendmentEntity::class,
+        AssignmentEntity::class,
+        MusterEntity::class,
+        MusterPersonEntity::class,
+        HeatCheckEntity::class,
+        PlantCheckEntity::class,
+        WasteLoadEntity::class,
+        PpeIssueEntity::class,
+        SiteVisitEntity::class,
+        ConcreteCubeSetEntity::class,
+        DrawingEntity::class,
+        DesignQueryEntity::class,
+        InspectionEntity::class,
+        SubmittalEntity::class,
     ],
-    version = 18,
+    version = DATABASE_VERSION,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -132,6 +190,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun safetyDao(): SafetyDao
     abstract fun auditDao(): AuditDao
     abstract fun photoDao(): PhotoDao
+
+    abstract fun violationDao(): ViolationDao
     abstract fun accountDao(): AccountDao
     abstract fun moneyDao(): MoneyDao
     abstract fun certificationDao(): CertificationDao
@@ -146,11 +206,31 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun liftingDao(): LiftingDao
 
+    abstract fun musterDao(): MusterDao
+
+    abstract fun heatDao(): HeatDao
+
+    abstract fun wasteDao(): WasteDao
+
+    abstract fun ppeDao(): PpeDao
+
+    abstract fun visitDao(): VisitDao
+
+    abstract fun drawingDao(): DrawingDao
+
+    abstract fun designQueryDao(): DesignQueryDao
+
+    abstract fun inspectionDao(): InspectionDao
+
+    abstract fun submittalDao(): SubmittalDao
+
     abstract fun temporaryWorksDao(): TemporaryWorksDao
 
     abstract fun excavationDao(): ExcavationDao
 
     abstract fun paymentsDao(): PaymentsDao
+
+    abstract fun engagementDao(): EngagementDao
 
     companion object {
         const val NAME = "tradesmanager.db"

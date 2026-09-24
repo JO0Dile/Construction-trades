@@ -1,0 +1,407 @@
+{
+  "tradeId": "tiling",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "tl.tile.porcelain.60x60",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Porcelain tile 60×60",
+        "he": "אריח פורצלן 60×60",
+        "ar": "بلاط بورسلان 60×60"
+      },
+      "spec": {
+        "en": "Dense and low absorption. Order the overage with the batch; a second batch is a different colour.",
+        "he": "צפוף וסופג מעט. יש להזמין עודף עם המשלוח; משלוח שני הוא גוון אחר.",
+        "ar": "كثيف وقليل الامتصاص. اطلب الزيادة مع الدفعة؛ الدفعة الثانية لون آخر."
+      },
+      "tags": [
+        "floor"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.tile.porcelain.120x60",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Porcelain tile 120×60",
+        "he": "אריח פורצלן 120×60",
+        "ar": "بلاط بورسلان 120×60"
+      },
+      "spec": {
+        "en": "Large format needs a flat bed and full coverage, or it drums and cracks.",
+        "he": "פורמט גדול דורש מצע שטוח וכיסוי מלא, אחרת הוא חלול ונסדק.",
+        "ar": "المقاس الكبير يحتاج فرشة مستوية وتغطية كاملة، وإلا طبّل وتشقّق."
+      },
+      "tags": [
+        "floor"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.tile.ceramic.wall",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Ceramic wall tile",
+        "he": "אריח קרמיקה לקיר",
+        "ar": "سيراميك حيطان"
+      },
+      "spec": {
+        "en": "Lighter and softer than porcelain, and only for walls.",
+        "he": "קל ורך מפורצלן, ולקירות בלבד.",
+        "ar": "أخفّ وأطرى من البورسلان، وللحيطان فقط."
+      },
+      "tags": [
+        "wall"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.tile.mosaic",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Mosaic sheet",
+        "he": "פסיפס",
+        "ar": "فسيفساء (موزاييك)"
+      },
+      "spec": {
+        "en": "Comes on a sheet. The sheet lines are what shows if they are not staggered.",
+        "he": "מגיע על גיליון. קווי הגיליון הם מה שנראה אם אינם מוסטים.",
+        "ar": "يأتي على شبكة. خطوط الشبكة هي ما يظهر إن لم تُزحزح."
+      },
+      "tags": [
+        "wall"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.tile.terrazzo",
+      "kind": "MATERIAL",
+      "category": "finishes",
+      "unit": "M2",
+      "names": {
+        "en": "Terrazzo tile",
+        "he": "אריח טראצו",
+        "ar": "بلاط تيرازو"
+      },
+      "spec": {
+        "en": "Ground and polished after laying, which is why it comes out as one floor.",
+        "he": "משויף ומלוטש אחרי ההנחה, ולכן מתקבלת רצפה אחת.",
+        "ar": "يُجلخ ويُلمّع بعد الفرش، ولهذا يخرج أرضية واحدة."
+      },
+      "tags": [
+        "floor"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.adhesive.c2te",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Tile adhesive C2TE",
+        "he": "דבק אריחים C2TE",
+        "ar": "لاصق بلاط C2TE"
+      },
+      "spec": {
+        "en": "C2 = improved cement, T = no slip, E = extended open time. Large-format tile needs all three.",
+        "he": "C2 = מלט משופר, T = ללא החלקה, E = זמן פתוח מוארך. אריח גדול דורש את שלושתם.",
+        "ar": "C2 = إسمنت محسّن، T = بدون انزلاق، E = وقت فتح ممتد. البلاط الكبير يحتاجها كلها."
+      },
+      "attributes": {
+        "class": "C2TE"
+      },
+      "tags": [
+        "adhesive"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.grout.cg2",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Tile grout CG2",
+        "he": "רובה CG2",
+        "ar": "قصارة بلاط CG2"
+      },
+      "spec": {
+        "en": "The ordinary grout, and the joint width decides which one. Too narrow a joint has nowhere to go.",
+        "he": "הרובה הרגילה, ורוחב המישק קובע איזו. מישק צר מדי אין לו לאן לזוז.",
+        "ar": "القصارة العادية، وعرض الفاصل يحدد أيّها. الفاصل الضيق جداً لا مكان له."
+      },
+      "tags": [
+        "grout"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.grout.epoxy",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "KG",
+      "names": {
+        "en": "Epoxy grout",
+        "he": "רובה אפוקסי",
+        "ar": "قصارة إيبوكسي"
+      },
+      "spec": {
+        "en": "Stainless and chemical-proof, and unforgiving of slow work. Clean it as it goes.",
+        "he": "עמידה בכתמים ובכימיקלים, ואינה סלחנית לעבודה איטית. יש לנקות תוך כדי.",
+        "ar": "لا تتبقّع وتقاوم الكيماويات، ولا تسامح البطء. نظّفها أولاً بأول."
+      },
+      "tags": [
+        "grout",
+        "wet-area"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.silicone.sanitary",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Sanitary silicone",
+        "he": "סיליקון סניטרי",
+        "ar": "سيليكون صحي"
+      },
+      "spec": {
+        "en": "Every internal corner, because grout in a moving joint cracks.",
+        "he": "בכל פינה פנימית, כי רובה במישק נע נסדקת.",
+        "ar": "في كل زاوية داخلية، لأن القصارة في فاصل متحرك تتشقّق."
+      },
+      "tags": [
+        "sealant",
+        "wet-area"
+      ]
+    },
+    {
+      "id": "tl.profile.schluter",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M",
+      "names": {
+        "en": "Tile trim profile",
+        "he": "פרופיל סיום לאריח",
+        "ar": "بروفيل إنهاء البلاط"
+      },
+      "spec": {
+        "en": "Finishes an exposed edge and protects it. Decided before the tiling starts, not after.",
+        "he": "מסיים קצה חשוף ומגן עליו. נבחר לפני תחילת הריצוף ולא אחריו.",
+        "ar": "ينهي حافة مكشوفة ويحميها. يُختار قبل بدء البلاط لا بعده."
+      },
+      "tags": [
+        "finishing"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "tl.uncoupling.membrane",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M2",
+      "names": {
+        "en": "Uncoupling membrane",
+        "he": "יריעת ניתוק",
+        "ar": "غشاء فصل الحركة"
+      },
+      "spec": {
+        "en": "Lets the substrate move without taking the tiles with it.",
+        "he": "מאפשרת למצע לזוז בלי לגרור את האריחים.",
+        "ar": "يسمح للقاعدة بالحركة دون أن تجرّ البلاط."
+      },
+      "tags": [
+        "substrate"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "tl.levelling.clips",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "PCS",
+      "names": {
+        "en": "Levelling clips and wedges",
+        "he": "קליפסים ליישור אריחים",
+        "ar": "مشابك وأسافين تسوية"
+      },
+      "spec": {
+        "en": "Holds neighbouring tiles flush while the adhesive sets. They do not fix a bad bed.",
+        "he": "מחזיקים אריחים שכנים במישור אחד עד התייבשות הדבק. אינם מתקנים מצע גרוע.",
+        "ar": "تمسك البلاطات المتجاورة بمستوى واحد حتى يجفّ اللاصق. لا تصلح فرشة سيئة."
+      },
+      "tags": [
+        "setting"
+      ]
+    },
+    {
+      "id": "tl.tool.cutter.manual",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Manual tile cutter",
+        "he": "חותך אריחים ידני",
+        "ar": "قصّاصة بلاط يدوية"
+      },
+      "spec": {
+        "en": "Scores and snaps. Fast, silent and dust-free for a straight cut.",
+        "he": "משרט ושובר. מהיר, שקט ונקי מאבק לחיתוך ישר.",
+        "ar": "يخدش ويكسر. سريع وصامت وبلا غبار للقصّ المستقيم."
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "tl.tool.saw.wet",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Wet tile saw",
+        "he": "מסור אריחים רטוב",
+        "ar": "منشار بلاط مبلّل"
+      },
+      "spec": {
+        "en": "Water keeps the blade cool and the silica down. Both matter.",
+        "he": "המים מקררים את הדיסק ומורידים את אבק הסיליקה. שניהם חשובים.",
+        "ar": "الماء يبرّد القرص ويحجز غبار السيليكا. كلاهما مهم."
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "tl.tool.trowel.notched",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Notched trowel",
+        "he": "כף משוננת",
+        "ar": "مالج مسنّن"
+      },
+      "spec": {
+        "en": "The notch size is chosen for the tile. Too small and the back is never covered.",
+        "he": "גודל השן נבחר לפי האריח. קטן מדי והגב אינו מכוסה.",
+        "ar": "حجم السنّ يُختار للبلاطة. الصغير جداً لا يغطّي الظهر."
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "tl.tool.mixer.paddle",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Mixing drill with paddle",
+        "he": "מערבל עם מוט ערבוב",
+        "ar": "دريل خلط مع ريشة"
+      },
+      "spec": {
+        "en": "Slow speed. Fast mixing whips air into the adhesive and weakens it.",
+        "he": "מהירות נמוכה. ערבוב מהיר מכניס אוויר לדבק ומחליש אותו.",
+        "ar": "سرعة بطيئة. الخلط السريع يُدخل هواءً في اللاصق ويُضعفه."
+      },
+      "tags": [
+        "mixing"
+      ]
+    },
+    {
+      "id": "tl.tool.suction.cup",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Tile suction cup",
+        "he": "כוס ואקום לאריח",
+        "ar": "كأس شفط بلاط"
+      },
+      "spec": {
+        "en": "Lifts a laid tile back out before the adhesive grabs.",
+        "he": "מרים אריח שהונח לפני שהדבק תופס.",
+        "ar": "يرفع بلاطة مفروشة قبل أن يمسك اللاصق."
+      },
+      "tags": [
+        "handling"
+      ]
+    },
+    {
+      "id": "tl.tool.laser.floor",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Floor laser / level",
+        "he": "לייזר לרצפה",
+        "ar": "ليزر أرضيات"
+      },
+      "spec": {
+        "en": "Sets the first line. Every tile after it inherits that line, right or wrong.",
+        "he": "קובע את הקו הראשון. כל אריח אחריו יורש אותו, נכון או שגוי.",
+        "ar": "يحدّد الخط الأول. كل بلاطة بعده ترثه، صواباً كان أو خطأ."
+      },
+      "tags": [
+        "setting-out"
+      ]
+    },
+    {
+      "id": "tl.tool.level.spirit",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Spirit level 100 cm",
+        "he": "פלס 100 ס״מ",
+        "ar": "ميزان مياه 100 سم"
+      },
+      "spec": {
+        "en": "Checked on every course, not at the end.",
+        "he": "בודקים בכל שורה, לא בסוף.",
+        "ar": "يُفحص عند كل مدماك، لا في النهاية."
+      },
+      "attributes": {},
+      "tags": [
+        "level"
+      ],
+      "colloquial": {
+        "he": "פלס",
+        "ar": "ميزان"
+      }
+    }
+  ]
+}

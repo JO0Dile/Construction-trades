@@ -28,6 +28,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.text.KeyboardOptions
@@ -38,10 +39,12 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.DailyLog
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SignaturePad
 import il.co.tradesmanager.ui.components.currentLocale
@@ -69,6 +72,8 @@ fun DailyLogScreen(
         factory = ViewModelFactory(container) { DailyLogViewModel(it, projectId) },
     )
     val log by viewModel.log.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val summary by viewModel.summary.collectAsStateWithLifecycle()
     val history by viewModel.history.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
@@ -89,7 +94,7 @@ fun DailyLogScreen(
     // The typed fields are saved as they are left rather than behind a button:
     // a log half filled in at five o'clock and abandoned is the common case.
     LaunchedEffect(weather, headcount, notes, current?.id) {
-        if (editable) viewModel.save(weather, headcount.toIntOrNull(), notes)
+        if (editable) viewModel.save(weather, Numbers.parseWhole(headcount)?.toInt(), notes)
     }
 
     Scaffold(
@@ -147,6 +152,10 @@ fun DailyLogScreen(
                     DetailRow(stringResource(R.string.log_talks), "${summary.talksHeld}")
                     DetailRow(stringResource(R.string.log_snags), "${summary.snagsRaised}")
                     DetailRow(stringResource(R.string.log_incidents), "${summary.incidents}")
+                    DetailRow(
+                        stringResource(R.string.log_checked_in),
+                        pluralStringResource(R.plurals.log_workers, summary.checkedIn, summary.checkedIn),
+                    )
                 }
             }
             if (summary.isQuiet) {

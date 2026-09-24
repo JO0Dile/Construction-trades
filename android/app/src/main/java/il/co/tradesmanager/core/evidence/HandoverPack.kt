@@ -47,8 +47,37 @@ object HandoverPack {
         /** Pours started and never finished. */
         POURS_UNFINISHED,
 
+        /**
+         * Pours with a twenty-eight-day cube result under the strength the
+         * mix asks for. Not a verdict on the structure -- that is the
+         * engineer's -- but a handover file with an unanswered low result
+         * in it is not finished.
+         */
+        CUBES_FOR_ENGINEER,
+
+        /** Finished pours with no twenty-eight-day cube result recorded yet. */
+        POURS_WITHOUT_28_DAY_RESULT,
+
         /** Days somebody wrote up and never signed. */
         UNSIGNED_DAILY_LOGS,
+
+        /** Questions put to the designers and never answered. */
+        QUERIES_UNANSWERED,
+
+        /** Inspections still waiting, overdue, or failed and not asked again. */
+        INSPECTIONS_OUTSTANDING,
+
+        /** Pours with no passed inspection of the steel or the forms set against them. */
+        POURS_WITHOUT_INSPECTION,
+
+        /** Materials still waiting for an answer, or rejected and not sent again. */
+        SUBMITTALS_OUTSTANDING,
+
+        /**
+         * Loads of waste with neither a ticket number nor a photograph of
+         * the ticket: nothing yet shows where they went.
+         */
+        WASTE_WITHOUT_TICKET,
     }
 
     data class Outstanding(val item: Item, val count: Int)

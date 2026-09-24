@@ -259,5 +259,117 @@
             <string>%d days overdue</string>
         </dict>
     </dict>
+    <key>ts_withheld</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d person on this job is not yours to price.</string>
+            <key>other</key>
+            <string>%d people on this job are not yours to price.</string>
+        </dict>
+    </dict>
+    <key>crew_no_trade</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d person has no trade recorded and is on none of these lists.</string>
+            <key>other</key>
+            <string>%d people have no trade recorded and are on none of these lists.</string>
+        </dict>
+    </dict>
+    <key>home_plant_unchecked</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d machine on site not checked today</string>
+            <key>other</key>
+            <string>%d machines on site not checked today</string>
+        </dict>
+    </dict>
+    <key>waste_unproven</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d load with no ticket</string>
+            <key>other</key>
+            <string>%d loads with no ticket</string>
+        </dict>
+    </dict>
+    <key>home_ppe_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d item of protective equipment is past its replacement date</string>
+            <key>other</key>
+            <string>%d items of protective equipment are past their replacement date</string>
+        </dict>
+    </dict>
+    <key>muster_visitors_on_site</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>and %d visitor signed in</string>
+            <key>other</key>
+            <string>and %d visitors signed in</string>
+        </dict>
+    </dict>
+    <key>cube_age_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d day</string>
+            <key>other</key>
+            <string>%d days</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

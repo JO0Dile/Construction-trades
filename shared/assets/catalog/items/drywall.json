@@ -1,0 +1,537 @@
+{
+  "tradeId": "drywall",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "gb.board.standard.12_5",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Plasterboard, standard 12.5 mm",
+        "he": "לוח גבס רגיל 12.5 מ״מ",
+        "ar": "لوح جبس عادي 12.5 ملم"
+      },
+      "spec": {
+        "en": "The ordinary board. Not for a wet room and not for a fire wall.",
+        "he": "הלוח הרגיל. לא לחדר רטוב ולא לקיר אש.",
+        "ar": "اللوح العادي. ليس لغرفة رطبة ولا لجدار حريق."
+      },
+      "attributes": {
+        "thicknessMm": "12.5"
+      },
+      "tags": [
+        "board"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "gb.board.moisture.12_5",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Plasterboard, moisture-resistant (green)",
+        "he": "לוח גבס עמיד לחות (ירוק)",
+        "ar": "لوح جبس مقاوم للرطوبة (أخضر)"
+      },
+      "spec": {
+        "en": "Bathrooms and kitchens. Not a substitute for waterproofing behind tile.",
+        "he": "חדרי רחצה ומטבחים. אינו תחליף לאיטום מאחורי חיפוי.",
+        "ar": "الحمامات والمطابخ. ليس بديلاً عن العزل خلف السيراميك."
+      },
+      "attributes": {
+        "thicknessMm": "12.5"
+      },
+      "tags": [
+        "board",
+        "wet-area"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "gb.board.fire.15",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Plasterboard, fire-rated (pink) 15 mm",
+        "he": "לוח גבס חסין אש (ורוד) 15 מ״מ",
+        "ar": "لوح جبس مقاوم للحريق (وردي) 15 ملم"
+      },
+      "spec": {
+        "en": "Pink board. Its rating is the whole wall build-up, not the sheet alone.",
+        "he": "לוח ורוד. הדירוג הוא של כל מבנה הקיר, לא של הלוח לבדו.",
+        "ar": "اللوح الوردي. التصنيف للجدار كاملاً لا للّوح وحده."
+      },
+      "attributes": {
+        "thicknessMm": "15"
+      },
+      "tags": [
+        "board",
+        "fire"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "gb.board.acoustic",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Acoustic plasterboard",
+        "he": "לוח גבס אקוסטי",
+        "ar": "لوح جبس عازل للصوت"
+      },
+      "spec": {
+        "en": "Denser than standard. Seal the perimeter or the extra mass buys nothing.",
+        "he": "צפוף מהרגיל. יש לאטום את ההיקף, אחרת המסה הנוספת לא תורמת דבר.",
+        "ar": "أكثف من العادي. اختم المحيط وإلا لم تفد الكتلة الزائدة."
+      },
+      "tags": [
+        "board",
+        "acoustic"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "gb.board.cement",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Cement board",
+        "he": "לוח צמנטבורד",
+        "ar": "لوح سمنت بورد"
+      },
+      "spec": {
+        "en": "For behind tiles in a wet area. It does not care about water; plasterboard does.",
+        "he": "מאחורי אריחים באזור רטוב. אינו מושפע ממים; גבס כן.",
+        "ar": "خلف البلاط في المناطق الرطبة. لا يتأثر بالماء؛ الجبس يتأثر."
+      },
+      "tags": [
+        "board",
+        "wet-area",
+        "facade"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "gb.stud.c.70",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "M",
+      "names": {
+        "en": "Metal stud C-70",
+        "he": "פרופיל C-70",
+        "ar": "بروفيل C-70"
+      },
+      "spec": {
+        "en": "The upright. Spacing decides what the wall carries, so measure it, do not eye it.",
+        "he": "הזקף. המרווח קובע מה הקיר נושא; יש למדוד ולא לאמוד.",
+        "ar": "القائم. التباعد يحدد ما يحمله الجدار؛ قِس ولا تقدّر."
+      },
+      "attributes": {
+        "widthMm": "70"
+      },
+      "tags": [
+        "framing"
+      ]
+    },
+    {
+      "id": "gb.track.u.70",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "M",
+      "names": {
+        "en": "Metal track U-70",
+        "he": "מסילה U-70",
+        "ar": "مسار U-70"
+      },
+      "spec": {
+        "en": "Top and bottom. Fix it straight; every stud after it inherits the error.",
+        "he": "עליונה ותחתונה. יש לקבע ישר; כל זקף אחריה יורש את הסטייה.",
+        "ar": "علوي وسفلي. ثبّته مستقيماً؛ كل قائم بعده يرث الخطأ."
+      },
+      "attributes": {
+        "widthMm": "70"
+      },
+      "tags": [
+        "framing"
+      ]
+    },
+    {
+      "id": "gb.hanger.ceiling",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Ceiling hanger and spring clip",
+        "he": "תלייה לתקרה עם קפיץ",
+        "ar": "علّاقة سقف مع زنبرك"
+      },
+      "spec": {
+        "en": "Carries a suspended ceiling off the slab, with a spring to take out the rattle.",
+        "he": "נושאת תקרה אקוסטית מהתקרה הקונסטרוקטיבית, עם קפיץ שמבטל רעש.",
+        "ar": "تحمل السقف المعلّق عن البلاطة، مع زنبرك يلغي الخشخشة."
+      },
+      "tags": [
+        "ceiling"
+      ]
+    },
+    {
+      "id": "gb.grid.t24",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "M2",
+      "names": {
+        "en": "Suspended ceiling grid, T24",
+        "he": "שלד תקרה אקוסטית T24",
+        "ar": "شبكة سقف معلّق T24"
+      },
+      "spec": {
+        "en": "The visible grid a lay-in tile drops into. Level it once; every tile shows the error.",
+        "he": "השלד הגלוי שאליו מונח אריח. יש לפלס פעם אחת; כל אריח מסגיר סטייה.",
+        "ar": "الشبكة الظاهرة التي تستقر فيها البلاطة. سوِّها مرة؛ كل بلاطة تفضح الخطأ."
+      },
+      "tags": [
+        "ceiling",
+        "office"
+      ]
+    },
+    {
+      "id": "gb.tile.mineral.60x60",
+      "kind": "MATERIAL",
+      "category": "boards",
+      "unit": "M2",
+      "names": {
+        "en": "Mineral ceiling tile 60×60",
+        "he": "אריח תקרה מינרלי 60×60",
+        "ar": "بلاطة سقف معدنية 60×60"
+      },
+      "spec": {
+        "en": "Lifts out for access, which is the reason to choose it over a sealed ceiling.",
+        "he": "ניתן להרמה לצורך גישה, וזו הסיבה לבחור בו על פני תקרה אטומה.",
+        "ar": "تُرفع للوصول، وهذا سبب اختيارها بدل سقف مصمت."
+      },
+      "tags": [
+        "ceiling",
+        "office"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "gb.corner.bead",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "M",
+      "names": {
+        "en": "Corner bead",
+        "he": "פינת מגן",
+        "ar": "زاوية حماية (كورنر)"
+      },
+      "spec": {
+        "en": "Makes the arris straight and stops a knock taking the corner off.",
+        "he": "מיישרת את הפינה ומונעת מכה שמפילה אותה.",
+        "ar": "تجعل الزاوية مستقيمة وتمنع الضربة من كسرها."
+      },
+      "tags": [
+        "finishing"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "gb.tape.paper",
+      "kind": "CONSUMABLE",
+      "category": "finishing",
+      "unit": "ROLL",
+      "names": {
+        "en": "Joint tape, paper",
+        "he": "סרט חיזוק לרובה",
+        "ar": "شريط تقوية ورقي"
+      },
+      "spec": {
+        "en": "Stronger than mesh on a flat joint, and it makes a crisp internal angle.",
+        "he": "חזק מרשת במישק שטוח, ונותן זווית פנימית חדה.",
+        "ar": "أقوى من الشبك في الفاصل المستوي، ويعطي زاوية داخلية حادة."
+      },
+      "tags": [
+        "finishing"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "gb.tape.mesh",
+      "kind": "CONSUMABLE",
+      "category": "finishing",
+      "unit": "ROLL",
+      "names": {
+        "en": "Joint tape, fibreglass mesh",
+        "he": "סרט רשת פיברגלס",
+        "ar": "شريط شبك فايبر"
+      },
+      "spec": {
+        "en": "Self-adhesive and fast, for patches and for board that is not paper-faced.",
+        "he": "נדבק מעצמו ומהיר, לתיקונים וללוחות בלי ציפוי נייר.",
+        "ar": "لاصق ذاتياً وسريع، للترقيع وللألواح غير الورقية."
+      },
+      "tags": [
+        "finishing"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "gb.compound.joint",
+      "kind": "MATERIAL",
+      "category": "finishing",
+      "unit": "BAG",
+      "names": {
+        "en": "Jointing compound",
+        "he": "שפכטל למישקים",
+        "ar": "معجون فواصل (جبصين)"
+      },
+      "spec": {
+        "en": "Three thin coats beat one thick one. Thick shrinks and cracks.",
+        "he": "שלוש שכבות דקות עדיפות על אחת עבה. עבה מתכווץ ונסדק.",
+        "ar": "ثلاث طبقات رقيقة أفضل من واحدة سميكة. السميكة تنكمش وتتشقق."
+      },
+      "tags": [
+        "finishing"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "gb.screw.drywall.25",
+      "kind": "CONSUMABLE",
+      "category": "fixings",
+      "unit": "KG",
+      "names": {
+        "en": "Drywall screw 25 mm",
+        "he": "בורג גבס 25 מ״מ",
+        "ar": "برغي جبس 25 ملم"
+      },
+      "spec": {
+        "en": "Just below the paper, not through it. Through it, the screw holds nothing.",
+        "he": "מעט מתחת לנייר ולא דרכו. דרכו הבורג אינו אוחז בדבר.",
+        "ar": "تحت الورق قليلاً لا خلاله. إن اخترقه لم يمسك البرغي بشيء."
+      },
+      "attributes": {
+        "lengthMm": "25"
+      },
+      "tags": [
+        "fixing"
+      ]
+    },
+    {
+      "id": "gb.insulation.rockwool",
+      "kind": "MATERIAL",
+      "category": "insulation",
+      "unit": "M2",
+      "names": {
+        "en": "Rock wool infill, 50 mm",
+        "he": "צמר סלעים 50 מ״מ",
+        "ar": "صوف صخري 50 ملم"
+      },
+      "spec": {
+        "en": "Goes inside the partition. Half of what a plasterboard wall is for is the noise.",
+        "he": "נכנס לתוך המחיצה. חצי מתפקידה של מחיצת גבס הוא הרעש.",
+        "ar": "يُوضع داخل القاطع. نصف فائدة حيط الجبس هي الصوت."
+      },
+      "attributes": {
+        "thicknessMm": "50"
+      },
+      "tags": [
+        "acoustic",
+        "insulation"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "gb.access.hatch",
+      "kind": "MATERIAL",
+      "category": "hardware",
+      "unit": "PCS",
+      "names": {
+        "en": "Ceiling access hatch",
+        "he": "דלת שירות לתקרה",
+        "ar": "فتحة صيانة للسقف"
+      },
+      "spec": {
+        "en": "Every valve and damper above a sealed ceiling needs one, or the ceiling comes down at the first fault.",
+        "he": "כל שסתום ומדף מעל תקרה אטומה דורש אחת, אחרת התקרה יורדת בתקלה הראשונה.",
+        "ar": "كل محبس ودامبر فوق سقف مغلق يحتاج واحدة، وإلا يُفكّ السقف بأول عطل."
+      },
+      "tags": [
+        "ceiling",
+        "maintenance"
+      ]
+    },
+    {
+      "id": "gb.tool.screwgun",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Drywall screwgun with depth stop",
+        "he": "מברגת גבס עם עומק",
+        "ar": "دريل جبس بمحدّد عمق"
+      },
+      "spec": {
+        "en": "The depth stop is the tool. Without it every screw is a guess.",
+        "he": "מגביל העומק הוא הכלי. בלעדיו כל בורג הוא ניחוש.",
+        "ar": "محدّد العمق هو الأداة. بدونه كل برغي تخمين."
+      },
+      "tags": [
+        "power-tool"
+      ]
+    },
+    {
+      "id": "gb.tool.board.lifter",
+      "kind": "TOOL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Panel lifter",
+        "he": "מרים לוחות",
+        "ar": "رافعة ألواح"
+      },
+      "spec": {
+        "en": "A ceiling board is a two-man lift, or one man and this.",
+        "he": "לוח תקרה הוא הרמה של שניים, או של אחד עם זה.",
+        "ar": "لوح السقف يحتاج رجلين، أو رجلاً واحداً مع هذه."
+      },
+      "tags": [
+        "lifting",
+        "ceiling"
+      ]
+    },
+    {
+      "id": "gb.tool.rasp",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Board rasp / edge plane",
+        "he": "משוף לוחות",
+        "ar": "مبرد ألواح"
+      },
+      "spec": {
+        "en": "Trims a cut edge to the line so the board actually meets its neighbour.",
+        "he": "מיישר קצה חתוך לקו כך שהלוח נפגש עם שכנו.",
+        "ar": "يسوّي الحافة المقطوعة على الخط ليلتقي اللوح بجاره."
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "gb.tool.knife.taping",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Taping knife set",
+        "he": "ערכת סכיני שפכטל",
+        "ar": "طقم سكاكين معجون"
+      },
+      "spec": {
+        "en": "A set, because each coat wants a wider blade than the last.",
+        "he": "ערכה, משום שכל שכבה דורשת להב רחב מקודמתה.",
+        "ar": "طقم، لأن كل طبقة تريد نصلاً أعرض من سابقتها."
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "gb.tool.stilts",
+      "kind": "TOOL",
+      "category": "access",
+      "unit": "PAIR",
+      "names": {
+        "en": "Drywall stilts",
+        "he": "קביים לגבס",
+        "ar": "ركائز جبس (ستيلتس)"
+      },
+      "spec": {
+        "en": "Faster than a hop-up and far easier to fall off. Check the site rules before they come out of the van.",
+        "he": "מהיר יותר משרפרף וקל בהרבה ליפול ממנו. בדוק את נוהלי האתר לפני שהם יוצאים מהרכב.",
+        "ar": "أسرع من السلّم وأسهل بكثير للوقوع منه. راجع قوانين الموقع قبل إخراجها."
+      },
+      "tags": [
+        "access",
+        "risk"
+      ]
+    },
+    {
+      "id": "gb.tool.knife.utility",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Utility knife",
+        "he": "סכין יפנית",
+        "ar": "سكين قصّ"
+      },
+      "spec": {
+        "en": "Snap-off blade; a dull blade tears the paper.",
+        "he": "להב נשבר; להב קהה קורע את הנייר.",
+        "ar": "شفرة قابلة للكسر؛ الشفرة الكليلة تمزّق الورق."
+      },
+      "attributes": {},
+      "tags": [
+        "knife"
+      ],
+      "colloquial": {
+        "he": "יפנית",
+        "ar": "أوليمبي"
+      }
+    },
+    {
+      "id": "gb.tool.level.spirit",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Spirit level 120 cm",
+        "he": "פלס 120 ס״מ",
+        "ar": "ميزان مياه 120 سم"
+      },
+      "spec": {
+        "en": "For setting the track before anything is boarded.",
+        "he": "לישור הפרופיל לפני שמלבישים לוחות.",
+        "ar": "لضبط المجرى قبل تركيب أي لوح."
+      },
+      "attributes": {},
+      "tags": [
+        "level"
+      ],
+      "colloquial": {
+        "he": "פלס",
+        "ar": "ميزان"
+      }
+    }
+  ]
+}

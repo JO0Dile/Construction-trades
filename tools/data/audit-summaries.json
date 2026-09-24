@@ -1,0 +1,1072 @@
+{
+  "note": "The phrases the repositories write into an audit summary. The key is what is stored; the text is chosen when somebody reads it. See core/audit/Summary.kt. Generated into the string catalogue by tools/gen-audit-strings.py.",
+  "nested": {
+    "comment": "Arguments written with Summary.nest() resolve through these, which already exist and are already translated.",
+    "prefixes": [
+      "role_",
+      "po_status_",
+      "pay_status_",
+      "wp_status_",
+      "plant_",
+      "snag_",
+      "var_",
+      "eng_",
+      "muster_reason_",
+      "heat_band_",
+      "waste_stream_",
+      "waste_unit_"
+    ]
+  },
+  "phrases": {
+    "admitted_at_gate": {
+      "arguments": [
+        "name",
+        "role"
+      ],
+      "en": "%1$s admitted at the gate as %2$s",
+      "he": "%1$s נרשם בשער בתפקיד %2$s",
+      "ar": "%1$s سُجّل عند البوابة بصفة %2$s"
+    },
+    "amendment_status": {
+      "arguments": [
+        "reference",
+        "version",
+        "status"
+      ],
+      "en": "%1$s v%2$s: %3$s",
+      "he": "%1$s גרסה %2$s: %3$s",
+      "ar": "%1$s نسخة %2$s: %3$s"
+    },
+    "application_certified": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s certified",
+      "he": "%1$s אושרה לתשלום",
+      "ar": "%1$s اعتُمدت"
+    },
+    "application_paid": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s paid",
+      "he": "%1$s שולמה",
+      "ar": "%1$s دُفعت"
+    },
+    "application_rejected": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s rejected",
+      "he": "%1$s נדחתה",
+      "ar": "%1$s رُفضت"
+    },
+    "application_submitted": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s submitted",
+      "he": "%1$s הוגשה",
+      "ar": "%1$s قُدّمت"
+    },
+    "assignment_invoiced": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s invoiced",
+      "he": "%1$s חויב",
+      "ar": "%1$s صدرت فاتورته"
+    },
+    "assignment_status": {
+      "arguments": [
+        "reference",
+        "from",
+        "to"
+      ],
+      "en": "%1$s: %2$s to %3$s",
+      "he": "%1$s: מ%2$s ל%3$s",
+      "ar": "%1$s: من %2$s إلى %3$s"
+    },
+    "assignment_status_reason": {
+      "arguments": [
+        "reference",
+        "from",
+        "to",
+        "reason"
+      ],
+      "en": "%1$s: %2$s to %3$s — %4$s",
+      "he": "%1$s: מ%2$s ל%3$s — %4$s",
+      "ar": "%1$s: من %2$s إلى %3$s — %4$s"
+    },
+    "attendee_added": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s attended",
+      "he": "%1$s נכח",
+      "ar": "%1$s حضر"
+    },
+    "attendee_removed": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s taken off the attendance",
+      "he": "%1$s הוסר מרשימת הנוכחות",
+      "ar": "%1$s أُزيل من كشف الحضور"
+    },
+    "backup_made": {
+      "arguments": [
+        "count"
+      ],
+      "en": "Backed up, with %1$s photographs and videos",
+      "he": "גובה, כולל %1$s תמונות וסרטונים",
+      "ar": "نُسخ احتياطيًا، مع %1$s صورة ومقطعًا"
+    },
+    "blocks_copied": {
+      "arguments": [
+        "count"
+      ],
+      "en": "Copied %1$s time blocks",
+      "he": "הועתקו %1$s משבצות זמן",
+      "ar": "نُسخت %1$s فترات زمنية"
+    },
+    "checked_in": {
+      "arguments": [],
+      "en": "Checked in",
+      "he": "כניסה נרשמה",
+      "ar": "سُجّل الحضور"
+    },
+    "checked_out": {
+      "arguments": [
+        "minutes"
+      ],
+      "en": "Checked out after %1$s minutes",
+      "he": "יציאה נרשמה אחרי %1$s דקות",
+      "ar": "سُجّل الانصراف بعد %1$s دقيقة"
+    },
+    "checklist_signed": {
+      "arguments": [],
+      "en": "Checklist signed",
+      "he": "רשימת הבדיקה נחתמה",
+      "ar": "وُقّعت قائمة الفحص"
+    },
+    "checklist_started": {
+      "arguments": [
+        "name"
+      ],
+      "en": "Started the checklist %1$s",
+      "he": "רשימת הבדיקה %1$s החלה",
+      "ar": "بدأت قائمة الفحص %1$s"
+    },
+    "concrete_placed": {
+      "arguments": [],
+      "en": "Placed",
+      "he": "נוצק",
+      "ar": "تمّ الصبّ"
+    },
+    "concrete_rejected": {
+      "arguments": [
+        "reason"
+      ],
+      "en": "Load rejected: %1$s",
+      "he": "המשלוח נדחה: %1$s",
+      "ar": "رُفضت الحمولة: %1$s"
+    },
+    "concrete_truck": {
+      "arguments": [
+        "truck",
+        "volume"
+      ],
+      "en": "Truck %1$s, %2$s m³",
+      "he": "משאית %1$s, %2$s מ״ק",
+      "ar": "شاحنة %1$s، %2$s م³"
+    },
+    "contract_signed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s signed",
+      "he": "%1$s נחתם",
+      "ar": "%1$s وُقّع"
+    },
+    "contract_value_set": {
+      "arguments": [],
+      "en": "Contract value set",
+      "he": "שווי החוזה נקבע",
+      "ar": "حُدّدت قيمة العقد"
+    },
+    "created_from_template": {
+      "arguments": [
+        "template"
+      ],
+      "en": "Created from the template %1$s",
+      "he": "נוצר מתבנית %1$s",
+      "ar": "أُنشئ من القالب %1$s"
+    },
+    "cubes_recorded": {
+      "arguments": [
+        "reference",
+        "days",
+        "mean"
+      ],
+      "en": "%1$s: %2$s-day cubes, mean %3$s MPa",
+      "he": "%1$s: קוביות בגיל %2$s ימים, ממוצע %3$s מגה־פסקל",
+      "ar": "%1$s: مكعبات بعمر %2$s يومًا، المتوسط %3$s ميغاباسكال"
+    },
+    "custom_trade_removed": {
+      "arguments": [],
+      "en": "Custom trade removed",
+      "he": "מקצוע מותאם הוסר",
+      "ar": "أُزيلت مهنة مخصّصة"
+    },
+    "daily_log_signed": {
+      "arguments": [],
+      "en": "Daily log signed",
+      "he": "יומן העבודה נחתם",
+      "ar": "وُقّعت يومية العمل"
+    },
+    "delivered_on": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "Delivered on %1$s",
+      "he": "סופק לפי %1$s",
+      "ar": "وُرّد بموجب %1$s"
+    },
+    "details_corrected": {
+      "arguments": [
+        "name",
+        "fields"
+      ],
+      "en": "Details corrected for %1$s: %2$s",
+      "he": "פרטים תוקנו עבור %1$s: %2$s",
+      "ar": "صُحّحت تفاصيل %1$s: %2$s"
+    },
+    "drawing_received": {
+      "arguments": [
+        "number",
+        "revision"
+      ],
+      "en": "%1$s revision %2$s received",
+      "he": "התקבל %1$s במהדורה %2$s",
+      "ar": "استُلم %1$s بالمراجعة %2$s"
+    },
+    "drawing_superseded": {
+      "arguments": [
+        "number",
+        "revision",
+        "previous"
+      ],
+      "en": "%1$s revision %2$s received, replacing %3$s",
+      "he": "התקבל %1$s במהדורה %2$s, במקום %3$s",
+      "ar": "استُلم %1$s بالمراجعة %2$s بدلًا من %3$s"
+    },
+    "equipment_serviced": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s serviced",
+      "he": "%1$s עבר טיפול",
+      "ar": "%1$s خضع للصيانة"
+    },
+    "equipment_status": {
+      "arguments": [
+        "name",
+        "status"
+      ],
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "excavation_backfilled": {
+      "arguments": [],
+      "en": "Backfilled",
+      "he": "הוחזר מילוי",
+      "ar": "أُعيد الردم"
+    },
+    "excavation_disturbed": {
+      "arguments": [],
+      "en": "Ground disturbed",
+      "he": "הקרקע נפתחה",
+      "ar": "فُتحت الأرض"
+    },
+    "field_address": {
+      "arguments": [],
+      "en": "address",
+      "he": "כתובת",
+      "ar": "العنوان"
+    },
+    "field_email": {
+      "arguments": [],
+      "en": "email",
+      "he": "דוא\"ל",
+      "ar": "البريد الإلكتروني"
+    },
+    "field_id_number": {
+      "arguments": [],
+      "en": "ID number",
+      "he": "מספר זהות",
+      "ar": "رقم الهوية"
+    },
+    "field_licence": {
+      "arguments": [],
+      "en": "contractor licence",
+      "he": "רישיון קבלן",
+      "ar": "رخصة المقاول"
+    },
+    "field_name": {
+      "arguments": [],
+      "en": "name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "field_nothing": {
+      "arguments": [],
+      "en": "nothing",
+      "he": "דבר",
+      "ar": "لا شيء"
+    },
+    "field_phone": {
+      "arguments": [],
+      "en": "phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "field_registration": {
+      "arguments": [],
+      "en": "registration number",
+      "he": "מספר רישום",
+      "ar": "رقم التسجيل"
+    },
+    "field_website": {
+      "arguments": [],
+      "en": "website",
+      "he": "אתר אינטרנט",
+      "ar": "الموقع الإلكتروني"
+    },
+    "goods_received": {
+      "arguments": [
+        "quantity",
+        "unit",
+        "item"
+      ],
+      "en": "Received %1$s %2$s of %3$s",
+      "he": "התקבלו %1$s %2$s של %3$s",
+      "ar": "استُلم %1$s %2$s من %3$s"
+    },
+    "heat_checked": {
+      "arguments": [
+        "index",
+        "band"
+      ],
+      "en": "Heat check: feels like %1$s°C, %2$s",
+      "he": "בדיקת חום: תחושת חום %1$s°C, %2$s",
+      "ar": "فحص الحرارة: الحرارة المحسوسة %1$s°C، %2$s"
+    },
+    "id_number_set": {
+      "arguments": [],
+      "en": "ID number set",
+      "he": "מספר הזהות נקבע",
+      "ar": "حُدّد رقم الهوية"
+    },
+    "induction_signed": {
+      "arguments": [],
+      "en": "Safety induction signed",
+      "he": "תדריך הבטיחות נחתם",
+      "ar": "وُقّع التوجيه الأمني"
+    },
+    "inspection_failed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s failed inspection",
+      "he": "%1$s נכשל בבדיקה",
+      "ar": "%1$s رسب في الفحص"
+    },
+    "inspection_passed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s passed inspection",
+      "he": "%1$s עבר בדיקה",
+      "ar": "%1$s اجتاز الفحص"
+    },
+    "invoice_paid": {
+      "arguments": [
+        "number"
+      ],
+      "en": "%1$s paid",
+      "he": "%1$s שולמה",
+      "ar": "%1$s دُفعت"
+    },
+    "ir_cleared_pour": {
+      "arguments": [
+        "reference",
+        "pour"
+      ],
+      "en": "%1$s cleared %2$s",
+      "he": "%1$s שחררה את %2$s ליציקה",
+      "ar": "%1$s أجاز الصبّة %2$s"
+    },
+    "ir_failed": {
+      "arguments": [
+        "reference",
+        "inspector"
+      ],
+      "en": "%1$s failed by %2$s",
+      "he": "%1$s נפסלה על ידי %2$s",
+      "ar": "رفض %2$s الفحص %1$s"
+    },
+    "ir_passed": {
+      "arguments": [
+        "reference",
+        "inspector"
+      ],
+      "en": "%1$s passed by %2$s",
+      "he": "%1$s אושרה על ידי %2$s",
+      "ar": "اعتمد %2$s الفحص %1$s"
+    },
+    "ir_passed_with_comments": {
+      "arguments": [
+        "reference",
+        "inspector"
+      ],
+      "en": "%1$s passed with comments by %2$s",
+      "he": "%1$s אושרה עם הערות על ידי %2$s",
+      "ar": "اعتمد %2$s الفحص %1$s مع ملاحظات"
+    },
+    "ir_requested": {
+      "arguments": [
+        "reference",
+        "requested_of"
+      ],
+      "en": "%1$s: inspection asked of %2$s",
+      "he": "%1$s: התבקשה בדיקה מ־%2$s",
+      "ar": "%1$s: طُلب الفحص من %2$s"
+    },
+    "ir_requested_again": {
+      "arguments": [
+        "previous",
+        "reference"
+      ],
+      "en": "%1$s failed; asked again as %2$s",
+      "he": "%1$s נפסלה; התבקשה שוב כ־%2$s",
+      "ar": "لم يجتز %1$s؛ طُلب مجددًا برقم %2$s"
+    },
+    "item_removed": {
+      "arguments": [],
+      "en": "Item removed from stock",
+      "he": "הפריט הוסר מהמלאי",
+      "ar": "أُزيل الصنف من المخزون"
+    },
+    "joined_as": {
+      "arguments": [
+        "role"
+      ],
+      "en": "Joined as %1$s",
+      "he": "הצטרף בתפקיד %1$s",
+      "ar": "انضمّ بصفة %1$s"
+    },
+    "left_company": {
+      "arguments": [],
+      "en": "Left the company",
+      "he": "עזב את החברה",
+      "ar": "غادر الشركة"
+    },
+    "lift_approved": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s approved",
+      "he": "%1$s אושרה",
+      "ar": "%1$s اعتُمدت"
+    },
+    "lift_done": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s lifted",
+      "he": "%1$s בוצעה הרמה",
+      "ar": "%1$s نُفّذ الرفع"
+    },
+    "lift_role_cleared": {
+      "arguments": [
+        "reference",
+        "role"
+      ],
+      "en": "%1$s %2$s cleared",
+      "he": "%1$s %2$s בוטל",
+      "ar": "%1$s أُلغي تعيين %2$s"
+    },
+    "lift_role_set": {
+      "arguments": [
+        "reference",
+        "role",
+        "name"
+      ],
+      "en": "%1$s %2$s: %3$s",
+      "he": "%1$s %2$s: %3$s",
+      "ar": "%1$s %2$s: %3$s"
+    },
+    "marked_site_plan": {
+      "arguments": [],
+      "en": "Marked as a site plan",
+      "he": "סומן כתוכנית אתר",
+      "ar": "حُدّد كمخطط موقع"
+    },
+    "member_added": {
+      "arguments": [
+        "name",
+        "role"
+      ],
+      "en": "%1$s added as %2$s",
+      "he": "%1$s נוסף בתפקיד %2$s",
+      "ar": "%1$s أُضيف بصفة %2$s"
+    },
+    "ms_approved": {
+      "arguments": [
+        "reference",
+        "reviewer"
+      ],
+      "en": "%1$s approved by %2$s",
+      "he": "%1$s אושר על ידי %2$s",
+      "ar": "اعتمد %2$s المادة %1$s"
+    },
+    "ms_approved_as_noted": {
+      "arguments": [
+        "reference",
+        "reviewer"
+      ],
+      "en": "%1$s approved as noted by %2$s",
+      "he": "%1$s אושר בהערות על ידי %2$s",
+      "ar": "اعتمد %2$s المادة %1$s مع ملاحظات"
+    },
+    "ms_rejected": {
+      "arguments": [
+        "reference",
+        "reviewer"
+      ],
+      "en": "%1$s rejected by %2$s",
+      "he": "%1$s נדחה על ידי %2$s",
+      "ar": "رفض %2$s المادة %1$s"
+    },
+    "ms_resubmitted": {
+      "arguments": [
+        "reference",
+        "revision"
+      ],
+      "en": "%1$s sent again as revision %2$s",
+      "he": "%1$s נשלח שוב כמהדורה %2$s",
+      "ar": "أُعيد إرسال %1$s بالإصدار %2$s"
+    },
+    "ms_submitted": {
+      "arguments": [
+        "reference",
+        "submitted_to"
+      ],
+      "en": "%1$s sent for approval to %2$s",
+      "he": "%1$s נשלח לאישור אל %2$s",
+      "ar": "أُرسل %1$s للاعتماد إلى %2$s"
+    },
+    "muster_ended_all_out": {
+      "arguments": [],
+      "en": "Roll call ended, everybody accounted for",
+      "he": "המפקד הסתיים, כל הנוכחים אותרו",
+      "ar": "انتهى النداء، الجميع محسوبون"
+    },
+    "muster_ended_missing": {
+      "arguments": [
+        "count",
+        "names"
+      ],
+      "en": "Roll call ended, %1$s unaccounted for: %2$s",
+      "he": "המפקד הסתיים, %1$s לא אותרו: %2$s",
+      "ar": "انتهى النداء، %1$s لم يُعثر عليهم: %2$s"
+    },
+    "muster_person_added": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s added to the roll call",
+      "he": "%1$s נוסף למפקד",
+      "ar": "أُضيف %1$s إلى النداء"
+    },
+    "muster_started": {
+      "arguments": [
+        "reason",
+        "people"
+      ],
+      "en": "Roll call started (%1$s), %2$s on site",
+      "he": "מפקד נוכחות החל (%1$s), %2$s באתר",
+      "ar": "بدأ نداء الأسماء (%1$s)، %2$s في الموقع"
+    },
+    "order_cancelled": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s cancelled",
+      "he": "%1$s בוטלה",
+      "ar": "%1$s أُلغي"
+    },
+    "order_due": {
+      "arguments": [
+        "reference",
+        "date"
+      ],
+      "en": "%1$s due %2$s",
+      "he": "%1$s צפויה ל%2$s",
+      "ar": "%1$s متوقّعة في %2$s"
+    },
+    "order_no_date": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s has no delivery date",
+      "he": "ל%1$s אין תאריך אספקה",
+      "ar": "%1$s بلا تاريخ توريد"
+    },
+    "order_placed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s placed",
+      "he": "%1$s הוזמנה",
+      "ar": "%1$s أُرسل الطلب"
+    },
+    "order_status": {
+      "arguments": [
+        "reference",
+        "status"
+      ],
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "party_added": {
+      "arguments": [
+        "organisation",
+        "party"
+      ],
+      "en": "%1$s added as %2$s",
+      "he": "%1$s נוסף בתור %2$s",
+      "ar": "%1$s أُضيف بصفة %2$s"
+    },
+    "party_first_tier": {
+      "arguments": [],
+      "en": "First-tier subcontractor",
+      "he": "קבלן משנה ראשי",
+      "ar": "مقاول باطن من الدرجة الأولى"
+    },
+    "party_general_contractor": {
+      "arguments": [],
+      "en": "General contractor",
+      "he": "קבלן ראשי",
+      "ar": "مقاول رئيسي"
+    },
+    "party_second_tier": {
+      "arguments": [],
+      "en": "Crew leader / labour-only",
+      "he": "ראש צוות / כוח אדם בלבד",
+      "ar": "رئيس طاقم / أيدٍ عاملة فقط"
+    },
+    "passcode_changed": {
+      "arguments": [],
+      "en": "Passcode changed",
+      "he": "הסיסמה שונתה",
+      "ar": "غُيّرت كلمة المرور"
+    },
+    "passcode_removed": {
+      "arguments": [],
+      "en": "Passcode removed",
+      "he": "הסיסמה הוסרה",
+      "ar": "أُزيلت كلمة المرور"
+    },
+    "permit_cancelled": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s cancelled",
+      "he": "%1$s בוטל",
+      "ar": "%1$s أُلغي"
+    },
+    "permit_issued": {
+      "arguments": [
+        "reference",
+        "name"
+      ],
+      "en": "%1$s issued to %2$s",
+      "he": "%1$s הונפק ל%2$s",
+      "ar": "%1$s صدر لـ%2$s"
+    },
+    "permit_signed_back": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s signed back",
+      "he": "%1$s הוחזר בחתימה",
+      "ar": "%1$s أُعيد موقّعًا"
+    },
+    "permit_stopped": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s work stopped",
+      "he": "%1$s העבודה הופסקה",
+      "ar": "%1$s أُوقف العمل"
+    },
+    "photo_removed": {
+      "arguments": [],
+      "en": "Photograph removed",
+      "he": "התמונה הוסרה",
+      "ar": "أُزيلت الصورة"
+    },
+    "plant_checked_fit": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s checked before use: fit",
+      "he": "%1$s נבדק לפני שימוש: תקין",
+      "ar": "فُحص %1$s قبل الاستخدام: سليم"
+    },
+    "plant_checked_unfit": {
+      "arguments": [
+        "name",
+        "defect"
+      ],
+      "en": "%1$s checked before use: out of service — %2$s",
+      "he": "%1$s נבדק לפני שימוש: הוצא משימוש — %2$s",
+      "ar": "فُحص %1$s قبل الاستخدام: أُوقف عن العمل — %2$s"
+    },
+    "plant_to_site": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s sent to site",
+      "he": "%1$s נשלח לאתר",
+      "ar": "%1$s أُرسل إلى الموقع"
+    },
+    "plant_to_yard": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s back in the yard",
+      "he": "%1$s חזר למחסן",
+      "ar": "%1$s عاد إلى المستودع"
+    },
+    "pour_finished": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s finished",
+      "he": "%1$s הסתיימה",
+      "ar": "%1$s انتهت"
+    },
+    "ppe_handed_back": {
+      "arguments": [
+        "item",
+        "name"
+      ],
+      "en": "%1$s handed back by %2$s",
+      "he": "%1$s הוחזר על ידי %2$s",
+      "ar": "أعاد %2$s %1$s"
+    },
+    "ppe_issued": {
+      "arguments": [
+        "quantity",
+        "item",
+        "name"
+      ],
+      "en": "Issued to %3$s: %2$s, quantity %1$s",
+      "he": "נמסר ל־%3$s: %2$s, כמות %1$s",
+      "ar": "سُلِّم إلى %3$s: %2$s، الكمية %1$s"
+    },
+    "ppe_issued_to": {
+      "arguments": [
+        "name"
+      ],
+      "en": "Issued to %1$s",
+      "he": "נמסר ל־%1$s",
+      "ar": "سُلِّم إلى %1$s"
+    },
+    "profile_published": {
+      "arguments": [
+        "fields"
+      ],
+      "en": "Company profile updated; shown to the crew: %1$s",
+      "he": "פרטי החברה עודכנו; מוצג לצוות: %1$s",
+      "ar": "حُدّث ملف الشركة؛ يظهر للطاقم: %1$s"
+    },
+    "query_answered": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s answered",
+      "he": "התקבלה תשובה ל־%1$s",
+      "ar": "وردت إجابة على %1$s"
+    },
+    "query_raised": {
+      "arguments": [
+        "reference",
+        "asked_of"
+      ],
+      "en": "%1$s asked of %2$s",
+      "he": "%1$s נשאלה אצל %2$s",
+      "ar": "%1$s وُجّه إلى %2$s"
+    },
+    "reports_to": {
+      "arguments": [
+        "boss"
+      ],
+      "en": "Now reports to %1$s",
+      "he": "כפוף מעתה ל%1$s",
+      "ar": "يتبع الآن %1$s"
+    },
+    "reports_to_nobody": {
+      "arguments": [],
+      "en": "Reports to nobody",
+      "he": "לא כפוף לאיש",
+      "ar": "لا يتبع أحدًا"
+    },
+    "restocked": {
+      "arguments": [],
+      "en": "Restocked",
+      "he": "חידוש מלאי",
+      "ar": "تجديد المخزون"
+    },
+    "role_set": {
+      "arguments": [
+        "role"
+      ],
+      "en": "Role set to %1$s",
+      "he": "התפקיד נקבע ל%1$s",
+      "ar": "حُدّد الدور: %1$s"
+    },
+    "scaffold_altered": {
+      "arguments": [],
+      "en": "Altered",
+      "he": "שונה",
+      "ar": "عُدّل"
+    },
+    "scaffold_dismantled": {
+      "arguments": [],
+      "en": "Dismantled",
+      "he": "פורק",
+      "ar": "فُكّ"
+    },
+    "services_located": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s buried services located",
+      "he": "%1$s תשתיות תת-קרקעיות אותרו",
+      "ar": "%1$s حُدّدت المرافق المدفونة"
+    },
+    "snag_claimed_fixed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s reported fixed",
+      "he": "%1$s דווח כתוקן",
+      "ar": "%1$s أُبلغ عن إصلاحه"
+    },
+    "snag_status": {
+      "arguments": [
+        "reference",
+        "status"
+      ],
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "status_fixed": {
+      "arguments": [],
+      "en": "Reported fixed",
+      "he": "דווח כתוקן",
+      "ar": "أُبلغ عن إصلاحه"
+    },
+    "status_in_progress": {
+      "arguments": [],
+      "en": "In progress",
+      "he": "בביצוע",
+      "ar": "قيد التنفيذ"
+    },
+    "status_proposed": {
+      "arguments": [],
+      "en": "Proposed",
+      "he": "הוצע",
+      "ar": "مُقترح"
+    },
+    "status_withdrawn": {
+      "arguments": [],
+      "en": "Withdrawn",
+      "he": "נמשך",
+      "ar": "سُحب"
+    },
+    "stock_moved": {
+      "arguments": [
+        "from",
+        "to",
+        "reason"
+      ],
+      "en": "%1$s to %2$s — %3$s",
+      "he": "מ-%1$s ל-%2$s — %3$s",
+      "ar": "من %1$s إلى %2$s — %3$s"
+    },
+    "task_done": {
+      "arguments": [],
+      "en": "Done",
+      "he": "בוצע",
+      "ar": "أُنجز"
+    },
+    "task_reopened": {
+      "arguments": [],
+      "en": "Reopened",
+      "he": "נפתח מחדש",
+      "ar": "أُعيد فتحه"
+    },
+    "task_stage_cleared": {
+      "arguments": [
+        "task"
+      ],
+      "en": "%1$s taken off its stage",
+      "he": "%1$s הוסר מהשלב שלו",
+      "ar": "%1$s أُزيل من مرحلته"
+    },
+    "task_stage_set": {
+      "arguments": [
+        "task",
+        "stage"
+      ],
+      "en": "%1$s moved to %2$s",
+      "he": "%1$s הועבר ל%2$s",
+      "ar": "%1$s نُقل إلى %2$s"
+    },
+    "time_block_removed": {
+      "arguments": [],
+      "en": "Time block removed",
+      "he": "משבצת הזמן הוסרה",
+      "ar": "أُزيلت الفترة الزمنية"
+    },
+    "trade_cleared": {
+      "arguments": [],
+      "en": "Trade cleared",
+      "he": "המקצוע נוקה",
+      "ar": "أُزيلت المهنة"
+    },
+    "trade_set": {
+      "arguments": [
+        "trade"
+      ],
+      "en": "Trade set to %1$s",
+      "he": "המקצוע נקבע ל%1$s",
+      "ar": "حُدّدت المهنة: %1$s"
+    },
+    "tw_checked_by": {
+      "arguments": [
+        "reference",
+        "name"
+      ],
+      "en": "%1$s checked by %2$s",
+      "he": "%1$s נבדק על ידי %2$s",
+      "ar": "%1$s فحصه %2$s"
+    },
+    "tw_erected": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s erected",
+      "he": "%1$s הוקם",
+      "ar": "%1$s نُصب"
+    },
+    "tw_inspected": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s inspected against the design",
+      "he": "%1$s נבדק מול התכנון",
+      "ar": "%1$s فُحص مقابل التصميم"
+    },
+    "tw_loaded": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s loaded",
+      "he": "%1$s הועמס",
+      "ar": "%1$s حُمّل"
+    },
+    "tw_released": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s released for striking",
+      "he": "%1$s שוחרר לפירוק",
+      "ar": "%1$s أُفرج عنه للفكّ"
+    },
+    "tw_struck": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s struck",
+      "he": "%1$s פורק",
+      "ar": "%1$s فُكّ"
+    },
+    "used_on_site": {
+      "arguments": [],
+      "en": "Used on site",
+      "he": "שימוש באתר",
+      "ar": "استُخدم في الموقع"
+    },
+    "variation_status": {
+      "arguments": [
+        "reference",
+        "status"
+      ],
+      "en": "%1$s: %2$s",
+      "he": "%1$s: %2$s",
+      "ar": "%1$s: %2$s"
+    },
+    "violation_confirmed": {
+      "arguments": [
+        "name"
+      ],
+      "en": "Violation confirmed against %1$s",
+      "he": "עבירה אושרה נגד %1$s",
+      "ar": "تأكّدت مخالفة بحق %1$s"
+    },
+    "visitor_signed_in": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s signed in as a visitor",
+      "he": "%1$s נרשם כמבקר",
+      "ar": "سُجّل %1$s كزائر"
+    },
+    "visitor_signed_out": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s signed out",
+      "he": "%1$s יצא מהאתר",
+      "ar": "غادر %1$s الموقع"
+    },
+    "waste_recorded": {
+      "arguments": [
+        "quantity",
+        "unit",
+        "stream",
+        "facility"
+      ],
+      "en": "%1$s %2$s of %3$s to %4$s",
+      "he": "%1$s %2$s של %3$s אל %4$s",
+      "ar": "%1$s %2$s من %3$s إلى %4$s"
+    },
+    "waste_ticket_added": {
+      "arguments": [
+        "facility"
+      ],
+      "en": "Ticket added for a load to %1$s",
+      "he": "נוספה תעודה למטען שנשלח אל %1$s",
+      "ar": "أُضيفت تذكرة لحمولة أُرسلت إلى %1$s"
+    }
+  }
+}

@@ -97,10 +97,19 @@ object DailyLog {
         val talksHeld: Int = 0,
         val snagsRaised: Int = 0,
         val incidents: Int = 0,
+        /**
+         * Different people with a shift on this job that overlapped the day.
+         *
+         * Counted from the check-ins, so it is the app's figure and not the
+         * site's: somebody who never uses the app is not in it. It sits beside
+         * the typed headcount rather than replacing it, and a gap between the
+         * two is itself worth a site manager's attention.
+         */
+        val checkedIn: Int = 0,
     ) {
         /** True when the app watched nothing happen — worth saying out loud. */
         val isQuiet: Boolean
             get() = tasksCompleted == 0 && deliveries == 0 && permitsIssued == 0 &&
-                talksHeld == 0 && snagsRaised == 0 && incidents == 0
+                talksHeld == 0 && snagsRaised == 0 && incidents == 0 && checkedIn == 0
     }
 }

@@ -58,17 +58,55 @@ of this codebase that you can check by reading it.
 
 ### Permissions the listing will be asked about
 
+**Answer the store forms from this table and nothing else** — not from the
+feature list, and not from memory. A Data safety form that declares a
+permission the app does not hold is an inaccurate declaration, and Play
+treats those as a policy matter rather than a typo.
+
+This table listed five permissions for a long time. Three of them were never
+in the manifest: dictation, notifications and location. They were in the plan,
+the plan changed, and the table did not — which is how a form gets filled in
+wrongly by somebody being careful. `tools/check-permissions.py` now fails the
+build if this table and `AndroidManifest.xml` disagree.
+
+**Android — what the manifest declares, and all it declares:**
+
 | Permission | Why | If refused |
 |---|---|---|
-| `CAMERA` | Item and site photos, barcode scanning | Those features are unavailable; everything else works |
-| `ACCESS_COARSE/FINE_LOCATION` | Optional GPS stamp on check-ins, site photos, incident reports | Check-in is still recorded, without a stamp |
-| `RECORD_AUDIO` | Hebrew/Arabic dictation of task notes | Type the note instead |
-| `POST_NOTIFICATIONS` | Task reminders, low-stock alerts | No reminders |
-| `INTERNET`, `ACCESS_NETWORK_STATE` | Optional sync only | The app is unaffected |
+| `android.permission.CAMERA` | Item and site photos, barcode scanning | Those features are unavailable; everything else works |
+| `android.permission.INTERNET` | The update check, and sync when a server exists | The update check reports no update; nothing else changes |
+| `android.permission.ACCESS_NETWORK_STATE` | Whether to attempt the update check at all | As above |
 
-None of these is a Play "sensitive permission" requiring a declaration form,
-because the app requests no background location, no SMS/call log, no
-all-files access, and no accessibility-service API.
+**Android does not collect location.** Every field that could carry a fix —
+a check-in, a site photo, an incident report — is written null, and the
+manifest holds no location permission. Answer "no" to location on the Data
+safety form for the Android build.
+
+**iOS** declares camera, photo library and location-when-in-use. The location
+stamp is real on iOS and is optional there, so the App Store privacy answers
+are **not** the same as Play's. Fill each store in from its own platform.
+
+None of these is a Play "sensitive permission" requiring a declaration form:
+no background location, no SMS or call log, no all-files access, and no
+accessibility-service API.
+
+### Listing copy and art — written
+
+- [x] Title, short description and full description in Hebrew, Arabic and
+      English: `docs/store/listing.json`, under Play's own language codes so it
+      pastes straight in. `tools/check-listing.py` holds them to 30 / 80 / 4000
+      characters and runs in CI, because two of the three are not Latin and
+      guessing their length by eye does not work.
+- [x] Icon, 512×512: `docs/store/play-icon-512.png`.
+- [x] Feature graphic, 1024×500, no alpha: `docs/store/play-feature-1024x500.png`.
+      Deliberately wordless — the listing is in three languages, two of them
+      shaped, and a graphic that is wrong in Arabic is worse than one with no
+      words on it.
+- [ ] **Screenshots. Still missing, and they need a device or an emulator.**
+      At least two per form factor, and Play wants them per language: Hebrew
+      and Arabic must be captured with the device itself set to that language,
+      or the layout in them is mirrored the wrong way. Nothing in this
+      repository can produce them.
 
 ### Media
 
@@ -159,8 +197,16 @@ submitting a build that:
 Run these before either store:
 
 ```bash
-# Content and translations are complete and consistent
-python3 tools/gen-strings.py --check
+# Everything a store form or a listing is filled in from. CI runs all of
+# these on every push; run them again here, because the answer you are about
+# to type into Play is only as good as the day somebody last checked.
+python3 tools/gen-strings.py --check          # every app string, three languages
+python3 tools/check-catalog-languages.py      # every catalogue block, three languages
+python3 tools/check-audit-summaries.py        # no English written into the register
+python3 tools/gen-audit-strings.py --check    # every audit phrase translated and wired
+python3 tools/check-permissions.py            # the table matches the manifest
+python3 tools/check-listing.py                # the store copy fits the limits
+python3 tools/check-invisibles.py             # no direction marks hiding in source
 
 # The catalogues parse, are trilingual, and every template line resolves
 cd android && ./gradlew :app:testDebugUnitTest
@@ -179,6 +225,31 @@ Then, by hand:
       it should return to onboarding).
 - [ ] Fill in the Play Data safety form and the App Store privacy answers from
       section 2 and 3 above, not from memory.
-- [ ] Check the privacy policy and terms are reachable and translated.
+- [x] The privacy notice is in the app: **Settings → About → Privacy policy**,
+      in all three languages. It says what is true — everything stays on the
+      phone, the only outbound request is the update check, no analytics and
+      no tracking — which is short because the app has no server. It has not
+      been through a lawyer, and the day a server exists it is the page that
+      has to change before anything is sent to one.
+- [x] Terms of service. Shown at **Settings → About → Terms of service** and
+      published at `docs/TERMS.md`, both generated from the same catalogue
+      keys as the screen so the two cannot drift. Paste into the Play
+      listing's terms field:
+      `https://github.com/JO0Dile/Construction-trades/blob/main/docs/TERMS.md`
+      Subscriptions are what make this a field Play will not leave empty. The
+      text says on its own last section that it has not been through a lawyer,
+      which is true and which a reader is entitled to know.
+- [x] The same text at a public URL: `docs/PRIVACY.md`, generated from the
+      same catalogue keys as the screen so the two cannot drift, with all
+      three languages on the one page. Paste this into the Play listing's
+      privacy policy field:
+      `https://github.com/JO0Dile/Construction-trades/blob/main/docs/PRIVACY.md`
+      — it works today; move it to your own domain when you have one.
+      Drafts are in `legal/`: `PRIVACY.md`, `TERMS.md`, `ACCESSIBILITY.md`.
+      Both stores want a **URL**, not a file, so they have to be published
+      somewhere before submission — GitHub Pages off this repository is
+      enough. All three are marked as needing a lawyer's review, and the
+      accessibility statement needs an audit and a named contact, which is
+      deliberately left blank rather than invented.
 - [ ] Re-read the two **verify** items: Play's current `targetSdk` minimum and
       Apple's current 4.8 and 3.1.1 wording.

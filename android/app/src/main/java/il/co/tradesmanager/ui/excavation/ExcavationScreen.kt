@@ -46,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.safety.Excavation
 import il.co.tradesmanager.core.security.Signature
 import il.co.tradesmanager.data.local.entity.ExcavationEntity
@@ -567,7 +568,7 @@ private fun DepthField(value: String, onChange: (String) -> Unit) {
         value = value,
         // Digits and a dot only, so a phone set to a comma decimal cannot write
         // a number the app then fails to read back.
-        onValueChange = { onChange(it.filter { c -> c.isDigit() || c == '.' }) },
+        onValueChange = { onChange(Numbers.typingDecimal(it)) },
         label = { Text(stringResource(R.string.exc_depth)) },
         supportingText = { Text(stringResource(R.string.exc_depth_hint)) },
         singleLine = true,
@@ -608,7 +609,7 @@ private fun AddDialog(
         confirmButton = {
             TextButton(
                 enabled = location.isNotBlank(),
-                onClick = { onAdd(location.trim(), depth.toDoubleOrNull(), support) },
+                onClick = { onAdd(location.trim(), Numbers.parseDecimal(depth), support) },
             ) {
                 Text(stringResource(R.string.acc_create))
             }
@@ -643,7 +644,7 @@ private fun DimensionsDialog(
             }
         },
         confirmButton = {
-            TextButton(onClick = { onSave(depth.toDoubleOrNull(), support) }) {
+            TextButton(onClick = { onSave(Numbers.parseDecimal(depth), support) }) {
                 Text(stringResource(R.string.action_save))
             }
         },
