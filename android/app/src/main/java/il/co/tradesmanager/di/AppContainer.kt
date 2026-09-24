@@ -13,6 +13,7 @@ import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
+import il.co.tradesmanager.data.repository.DrawingRepository
 import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
@@ -184,6 +185,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Who is on a job without working there, until they sign out. */
     val visits = VisitRepository(database.visitDao(), auditTrail)
+
+    /** Which revision of each drawing a job is being built from. */
+    val drawings = DrawingRepository(database.drawingDao(), auditTrail)
 
     /**
      * Taking the record off the phone and putting it back.

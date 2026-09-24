@@ -96,9 +96,12 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.CONTRACT_SIGNED -> R.string.summary_contract_signed
     Summaries.CONTRACT_VALUE_SET -> R.string.summary_contract_value_set
     Summaries.CREATED_FROM_TEMPLATE -> R.string.summary_created_from_template
+    Summaries.CUBES_RECORDED -> R.string.summary_cubes_recorded
     Summaries.CUSTOM_TRADE_REMOVED -> R.string.summary_custom_trade_removed
     Summaries.DAILY_LOG_SIGNED -> R.string.summary_daily_log_signed
     Summaries.DELIVERED_ON -> R.string.summary_delivered_on
+    Summaries.DRAWING_RECEIVED -> R.string.summary_drawing_received
+    Summaries.DRAWING_SUPERSEDED -> R.string.summary_drawing_superseded
     Summaries.DETAILS_CORRECTED -> R.string.summary_details_corrected
     Summaries.EQUIPMENT_SERVICED -> R.string.summary_equipment_serviced
     Summaries.EQUIPMENT_STATUS -> R.string.summary_equipment_status

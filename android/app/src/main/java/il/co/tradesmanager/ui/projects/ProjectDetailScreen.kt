@@ -120,6 +120,7 @@ fun ProjectDetailScreen(
     onOpenExcavations: () -> Unit,
     onOpenWaste: () -> Unit,
     onOpenVisitors: () -> Unit,
+    onOpenDrawings: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -181,6 +182,8 @@ fun ProjectDetailScreen(
         // The day's log lives beside the money for the same reason: too much
         // to inline, too important to bury in a menu.
         if (canSeeEvidence) add(JobLink(R.string.log_title, R.string.log_notes_hint, onOpenDailyLog))
+        // What the job is being built from, which is part of the plan.
+        if (canSeePlan) add(JobLink(R.string.dwg_title, R.string.dwg_row_hint, onOpenDrawings))
         // Beside the log, because it is the other thing somebody at the gate
         // writes in every day, and the roll call reads it.
         if (canSeeEvidence) add(JobLink(R.string.visit_title, R.string.visit_row_hint, onOpenVisitors))

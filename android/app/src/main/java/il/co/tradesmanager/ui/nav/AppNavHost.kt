@@ -80,6 +80,7 @@ import il.co.tradesmanager.ui.settings.PlansScreen
 import il.co.tradesmanager.ui.settings.TermsScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
 import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
+import il.co.tradesmanager.ui.drawings.DrawingsScreen
 import il.co.tradesmanager.ui.update.WhatsNewGate
 import il.co.tradesmanager.ui.visitors.VisitorsScreen
 import il.co.tradesmanager.ui.waste.WasteScreen
@@ -114,6 +115,7 @@ object Routes {
     const val EXCAVATIONS = "projects/excavations"
     const val WASTE = "projects/waste"
     const val VISITORS = "projects/visitors"
+    const val DRAWINGS = "projects/drawings"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
     const val GATE = "people/gate"
@@ -170,6 +172,7 @@ object Routes {
     fun excavations(projectId: String) = "$EXCAVATIONS/$projectId"
     fun waste(projectId: String) = "$WASTE/$projectId"
     fun visitors(projectId: String) = "$VISITORS/$projectId"
+    fun drawings(projectId: String) = "$DRAWINGS/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
 }
 
@@ -366,6 +369,7 @@ fun AppNavHost(
                     onOpenExcavations = { navController.navigate(Routes.excavations(id)) },
                     onOpenWaste = { navController.navigate(Routes.waste(id)) },
                     onOpenVisitors = { navController.navigate(Routes.visitors(id)) },
+                    onOpenDrawings = { navController.navigate(Routes.drawings(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     // A part, or the job it belongs to. Same screen, so the
@@ -560,6 +564,13 @@ fun AppNavHost(
             }
             composable("${Routes.WASTE}/{projectId}") { entry ->
                 WasteScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.DRAWINGS}/{projectId}") { entry ->
+                DrawingsScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

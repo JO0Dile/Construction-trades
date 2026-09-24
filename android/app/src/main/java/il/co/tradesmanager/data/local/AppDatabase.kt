@@ -31,6 +31,7 @@ import il.co.tradesmanager.data.local.dao.ScheduleDao
 import il.co.tradesmanager.data.local.dao.TemporaryWorksDao
 import il.co.tradesmanager.data.local.dao.PpeDao
 import il.co.tradesmanager.data.local.dao.VisitDao
+import il.co.tradesmanager.data.local.dao.DrawingDao
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
@@ -90,6 +91,8 @@ import il.co.tradesmanager.data.local.entity.VariationEntity
 import il.co.tradesmanager.data.local.entity.WasteLoadEntity
 import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.SiteVisitEntity
+import il.co.tradesmanager.data.local.entity.ConcreteCubeSetEntity
+import il.co.tradesmanager.data.local.entity.DrawingEntity
 
 /**
  * The schema version the code expects.
@@ -100,7 +103,7 @@ import il.co.tradesmanager.data.local.entity.SiteVisitEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 35
+const val DATABASE_VERSION = 36
 
 @Database(
     entities = [
@@ -163,6 +166,8 @@ const val DATABASE_VERSION = 35
         WasteLoadEntity::class,
         PpeIssueEntity::class,
         SiteVisitEntity::class,
+        ConcreteCubeSetEntity::class,
+        DrawingEntity::class,
     ],
     version = DATABASE_VERSION,
     exportSchema = true,
@@ -201,6 +206,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun ppeDao(): PpeDao
 
     abstract fun visitDao(): VisitDao
+
+    abstract fun drawingDao(): DrawingDao
 
     abstract fun temporaryWorksDao(): TemporaryWorksDao
 

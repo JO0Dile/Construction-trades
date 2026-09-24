@@ -7767,6 +7767,303 @@
       "en": "Version %1$s",
       "he": "גרסה %1$s",
       "ar": "النسخة %1$s"
+    },
+    "summary_cubes_recorded": {
+      "en": "%1$s: %2$s-day cubes, mean %3$s MPa",
+      "he": "%1$s: קוביות בגיל %2$s ימים, ממוצע %3$s מגה־פסקל",
+      "ar": "%1$s: مكعبات بعمر %2$s يومًا، المتوسط %3$s ميغاباسكال"
+    },
+    "cube_title": {
+      "c": "Section heading on a pour",
+      "en": "Cube tests",
+      "he": "בדיקות קוביות",
+      "ar": "اختبارات المكعبات"
+    },
+    "cube_add": {
+      "c": "Button and dialog title",
+      "en": "Add a lab result",
+      "he": "הוספת תוצאת מעבדה",
+      "ar": "إضافة نتيجة مختبر"
+    },
+    "cube_empty": {
+      "c": "Empty section",
+      "en": "No results yet. Cubes are usually crushed at 7 and 28 days.",
+      "he": "עדיין אין תוצאות. קוביות נבדקות בדרך כלל בגיל 7 ו־28 ימים.",
+      "ar": "لا نتائج بعد. تُكسر المكعبات عادة بعمر 7 و28 يومًا."
+    },
+    "cube_age": {
+      "c": "Label over the age chips",
+      "en": "Age",
+      "he": "גיל",
+      "ar": "العمر"
+    },
+    "cube_other_age": {
+      "c": "Chip and field for an age other than 7 or 28",
+      "en": "Other age (days)",
+      "he": "גיל אחר (ימים)",
+      "ar": "عمر آخر (أيام)"
+    },
+    "cube_lab": {
+      "c": "Field",
+      "en": "Laboratory",
+      "he": "מעבדה",
+      "ar": "المختبر"
+    },
+    "cube_report": {
+      "c": "Field",
+      "en": "Report number",
+      "he": "מספר דוח",
+      "ar": "رقم التقرير"
+    },
+    "cube_strength": {
+      "c": "Field; %1$s is the cube's number",
+      "en": "Cube %1$s (MPa)",
+      "he": "קובייה %1$s (מגה־פסקל)",
+      "ar": "المكعب %1$s (ميغاباسكال)"
+    },
+    "cube_record": {
+      "c": "Dialog button",
+      "en": "Record",
+      "he": "רישום",
+      "ar": "تسجيل"
+    },
+    "cube_mean": {
+      "c": "Result line; %1$s mean, %2$s lowest, both MPa",
+      "en": "Mean %1$s MPa, lowest %2$s",
+      "he": "ממוצע %1$s מגה־פסקל, הנמוך %2$s",
+      "ar": "المتوسط %1$s ميغاباسكال، الأدنى %2$s"
+    },
+    "cube_specified": {
+      "c": "Result line; %1$s the specified strength in MPa",
+      "en": "specified %1$s",
+      "he": "נדרש %1$s",
+      "ar": "المطلوب %1$s"
+    },
+    "cube_verdict_early": {
+      "c": "Verdict before 28 days",
+      "en": "Early result: an indication only",
+      "he": "תוצאה מוקדמת: להתרשמות בלבד",
+      "ar": "نتيجة مبكرة: للاسترشاد فقط"
+    },
+    "cube_verdict_no_spec": {
+      "c": "Verdict when the mix names no strength",
+      "en": "The pour's mix does not say which strength was specified",
+      "he": "בתערובת של היציקה לא מצוין החוזק הנדרש",
+      "ar": "لا تذكر خلطة الصبّة المقاومة المطلوبة"
+    },
+    "cube_verdict_mean_below": {
+      "c": "Verdict, shown bold in red",
+      "en": "Mean below the specified strength: the engineer has to see this",
+      "he": "הממוצע נמוך מהחוזק הנדרש: המהנדס חייב לראות זאת",
+      "ar": "المتوسط أقل من المقاومة المطلوبة: يجب أن يطّلع المهندس على ذلك"
+    },
+    "cube_verdict_cube_below": {
+      "c": "Verdict, shown bold in red",
+      "en": "A cube below the specified strength: the engineer has to see this",
+      "he": "קובייה מתחת לחוזק הנדרש: המהנדס חייב לראות זאת",
+      "ar": "مكعب أقل من المقاومة المطلوبة: يجب أن يطّلع المهندس على ذلك"
+    },
+    "cube_verdict_meets": {
+      "c": "Verdict",
+      "en": "At or above the specified strength",
+      "he": "בחוזק הנדרש או מעליו",
+      "ar": "بالمقاومة المطلوبة أو أعلى"
+    },
+    "cube_needs_engineer": {
+      "c": "Marker on the pour list",
+      "en": "Cube result for the engineer",
+      "he": "תוצאת קוביות לעיון המהנדס",
+      "ar": "نتيجة مكعبات لاطلاع المهندس"
+    },
+    "cube_disclaimer": {
+      "c": "Under the result form: the app does not decide conformity",
+      "en": "Whether a pour conforms is decided by the engineer under the standard, which may call for more tests. This only shows the results that need looking at.",
+      "he": "האם היציקה עומדת בדרישות קובע המהנדס לפי התקן, שעשוי לדרוש בדיקות נוספות. כאן מוצגות רק התוצאות שדורשות עיון.",
+      "ar": "مدى مطابقة الصبّة يقرره المهندس وفق المواصفة، وقد تتطلب فحوصًا إضافية. هنا تُعرض فقط النتائج التي تحتاج إلى مراجعة."
+    },
+    "cube_refused_not_allowed": {
+      "c": "Refusal",
+      "en": "Only somebody who books concrete in can record its results.",
+      "he": "רק מי שקולט בטון יכול לרשום את תוצאותיו.",
+      "ar": "لا يسجّل النتائج إلا من يستلم الخرسانة."
+    },
+    "cube_refused_no_cubes": {
+      "c": "Refusal",
+      "en": "Type at least one cube's strength.",
+      "he": "יש להקליד חוזק של קובייה אחת לפחות.",
+      "ar": "اكتب مقاومة مكعب واحد على الأقل."
+    },
+    "cube_refused_strength": {
+      "c": "Refusal",
+      "en": "That cannot be a cube's strength: it has to be between 0 and 150 MPa.",
+      "he": "זה לא יכול להיות חוזק של קובייה: הוא חייב להיות בין 0 ל־150 מגה־פסקל.",
+      "ar": "لا يمكن أن تكون هذه مقاومة مكعب: يجب أن تكون بين 0 و150 ميغاباسكال."
+    },
+    "cube_refused_age": {
+      "c": "Refusal",
+      "en": "The age has to be between 1 and 365 days.",
+      "he": "הגיל חייב להיות בין 1 ל־365 ימים.",
+      "ar": "يجب أن يكون العمر بين 1 و365 يومًا."
+    },
+    "summary_drawing_received": {
+      "en": "%1$s revision %2$s received",
+      "he": "התקבל %1$s במהדורה %2$s",
+      "ar": "استُلم %1$s بالمراجعة %2$s"
+    },
+    "summary_drawing_superseded": {
+      "en": "%1$s revision %2$s received, replacing %3$s",
+      "he": "התקבל %1$s במהדורה %2$s, במקום %3$s",
+      "ar": "استُلم %1$s بالمراجعة %2$s بدلًا من %3$s"
+    },
+    "dwg_title": {
+      "c": "Drawing register screen title and job link",
+      "en": "Drawings",
+      "he": "תוכניות",
+      "ar": "المخططات"
+    },
+    "dwg_row_hint": {
+      "c": "Hint under the job link",
+      "en": "The revision of each drawing to build from",
+      "he": "המהדורה של כל תוכנית שלפיה בונים",
+      "ar": "مراجعة كل مخطط التي يُبنى عليها"
+    },
+    "dwg_blurb": {
+      "c": "What the register is for",
+      "en": "Only the current revision of each drawing is listed. A new revision replaces the old one on every phone.",
+      "he": "מוצגת רק המהדורה העדכנית של כל תוכנית. מהדורה חדשה מחליפה את הקודמת בכל הטלפונים.",
+      "ar": "تُعرض فقط المراجعة الحالية لكل مخطط. المراجعة الجديدة تحلّ محل القديمة في كل الهواتف."
+    },
+    "dwg_empty": {
+      "c": "Empty register",
+      "en": "No drawings on this job yet.",
+      "he": "אין עדיין תוכניות בעבודה הזו.",
+      "ar": "لا توجد مخططات في هذا المشروع بعد."
+    },
+    "dwg_record": {
+      "c": "Button and dialog title",
+      "en": "Record a drawing or a new revision",
+      "he": "רישום תוכנית או מהדורה חדשה",
+      "ar": "تسجيل مخطط أو مراجعة جديدة"
+    },
+    "dwg_number": {
+      "c": "Field: drawing number from the title block",
+      "en": "Drawing number",
+      "he": "מספר תוכנית",
+      "ar": "رقم المخطط"
+    },
+    "dwg_title_field": {
+      "c": "Field",
+      "en": "Title",
+      "he": "כותרת",
+      "ar": "العنوان"
+    },
+    "dwg_revision_field": {
+      "c": "Field",
+      "en": "Revision",
+      "he": "מהדורה",
+      "ar": "المراجعة"
+    },
+    "dwg_notes": {
+      "c": "Field",
+      "en": "Notes (optional)",
+      "he": "הערות (לא חובה)",
+      "ar": "ملاحظات (اختياري)"
+    },
+    "dwg_save": {
+      "c": "Dialog button",
+      "en": "Record",
+      "he": "רישום",
+      "ar": "تسجيل"
+    },
+    "dwg_revision": {
+      "c": "Row text; %1$s is the revision",
+      "en": "Revision %1$s",
+      "he": "מהדורה %1$s",
+      "ar": "المراجعة %1$s"
+    },
+    "dwg_received": {
+      "c": "Row text; %1$s is a date",
+      "en": "received %1$s",
+      "he": "התקבלה %1$s",
+      "ar": "استُلمت %1$s"
+    },
+    "dwg_replaced_on": {
+      "c": "History row; %1$s is a date",
+      "en": "replaced %1$s",
+      "he": "הוחלפה %1$s",
+      "ar": "استُبدلت %1$s"
+    },
+    "dwg_will_replace": {
+      "c": "Shown in the form when the number exists; %1$s is the current revision",
+      "en": "This replaces revision %1$s, which will no longer be the one to build from.",
+      "he": "זו מחליפה את מהדורה %1$s, שלא תהיה עוד המהדורה שלפיה בונים.",
+      "ar": "هذه تحلّ محل المراجعة %1$s، التي لن تبقى المراجعة التي يُبنى عليها."
+    },
+    "dwg_current": {
+      "c": "Banner on the current revision",
+      "en": "Current: build from this revision",
+      "he": "עדכנית: בונים לפי מהדורה זו",
+      "ar": "حالية: يُبنى على هذه المراجعة"
+    },
+    "dwg_superseded_banner": {
+      "c": "Banner on an old revision",
+      "en": "Replaced: do not build from this revision",
+      "he": "הוחלפה: אין לבנות לפי מהדורה זו",
+      "ar": "مستبدلة: لا يُبنى على هذه المراجعة"
+    },
+    "dwg_sheet": {
+      "c": "Section heading and image description",
+      "en": "The sheet",
+      "he": "הגיליון",
+      "ar": "اللوحة"
+    },
+    "dwg_no_sheet": {
+      "c": "No picture of the sheet yet",
+      "en": "No picture of the sheet",
+      "he": "אין תמונה של הגיליון",
+      "ar": "لا توجد صورة للوحة"
+    },
+    "dwg_add_sheet": {
+      "c": "Button",
+      "en": "Add a picture of the sheet",
+      "he": "הוספת תמונה של הגיליון",
+      "ar": "إضافة صورة للوحة"
+    },
+    "dwg_history": {
+      "c": "Section heading",
+      "en": "Earlier revisions",
+      "he": "מהדורות קודמות",
+      "ar": "مراجعات سابقة"
+    },
+    "dwg_no_history": {
+      "c": "Empty history",
+      "en": "This is the first revision on the register.",
+      "he": "זו המהדורה הראשונה בפנקס.",
+      "ar": "هذه أول مراجعة في السجل."
+    },
+    "dwg_refused_not_allowed": {
+      "c": "Refusal",
+      "en": "Only somebody who plans the job can record its drawings.",
+      "he": "רק מי שמתכנן את העבודה יכול לרשום את התוכניות שלה.",
+      "ar": "لا يسجّل المخططات إلا من يخطط للمشروع."
+    },
+    "dwg_refused_number": {
+      "c": "Refusal",
+      "en": "A drawing needs its number from the title block.",
+      "he": "לתוכנית חייב להיות המספר שמופיע על אבן הכותרת.",
+      "ar": "يجب أن يكون للمخطط رقمه الموجود في خانة العنوان."
+    },
+    "dwg_refused_revision": {
+      "c": "Refusal",
+      "en": "Say which revision this is.",
+      "he": "יש לציין איזו מהדורה זו.",
+      "ar": "اذكر أي مراجعة هذه."
+    },
+    "dwg_refused_current": {
+      "c": "Refusal",
+      "en": "That revision is already the current one.",
+      "he": "המהדורה הזו כבר העדכנית.",
+      "ar": "هذه المراجعة هي الحالية أصلًا."
     }
   },
   "plurals": {
@@ -8230,6 +8527,27 @@
         "few": "و%d زوار مسجلين",
         "many": "و%d زائرًا مسجلًا",
         "other": "و%d زائر مسجل"
+      }
+    },
+    "cube_age_days": {
+      "c": "The age of a cube set in days",
+      "en": {
+        "one": "%d day",
+        "other": "%d days"
+      },
+      "he": {
+        "one": "יום אחד",
+        "two": "יומיים",
+        "many": "%d ימים",
+        "other": "%d ימים"
+      },
+      "ar": {
+        "zero": "صفر أيام",
+        "one": "يوم واحد",
+        "two": "يومان",
+        "few": "%d أيام",
+        "many": "%d يومًا",
+        "other": "%d يوم"
       }
     }
   }

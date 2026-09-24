@@ -173,6 +173,13 @@ object Summaries {
     const val CREATED_FROM_TEMPLATE = "created_from_template"
 
     /**
+     * %1$s: %2$s-day cubes, mean %3$s MPa
+     *
+     * Arguments, in order: reference, days, mean.
+     */
+    const val CUBES_RECORDED = "cubes_recorded"
+
+    /**
      * Custom trade removed
      */
     const val CUSTOM_TRADE_REMOVED = "custom_trade_removed"
@@ -188,6 +195,20 @@ object Summaries {
      * Arguments, in order: reference.
      */
     const val DELIVERED_ON = "delivered_on"
+
+    /**
+     * %1$s revision %2$s received
+     *
+     * Arguments, in order: number, revision.
+     */
+    const val DRAWING_RECEIVED = "drawing_received"
+
+    /**
+     * %1$s revision %2$s received, replacing %3$s
+     *
+     * Arguments, in order: number, revision, previous.
+     */
+    const val DRAWING_SUPERSEDED = "drawing_superseded"
 
     /**
      * Details corrected for %1$s: %2$s

@@ -84,6 +84,9 @@ fun ConcreteScreen(
     val openPour by viewModel.openPour.collectAsStateWithLifecycle()
     val tickets by viewModel.tickets.collectAsStateWithLifecycle()
     val placed by viewModel.placedVolume.collectAsStateWithLifecycle()
+    val cubeSets by viewModel.cubeSets.collectAsStateWithLifecycle()
+    val needsEngineer by viewModel.needsEngineer.collectAsStateWithLifecycle()
+    val cubeRefusal by viewModel.cubeRefusal.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
     // A minute is the right cadence: the numbers on this screen are minutes.
@@ -94,6 +97,7 @@ fun ConcreteScreen(
     var starting by remember { mutableStateOf(false) }
     var addingTruck by remember { mutableStateOf(false) }
     var rejecting by remember { mutableStateOf<ConcreteTicketEntity?>(null) }
+    var addingCubes by remember { mutableStateOf(false) }
 
     val pour = openPour
     // Stable sort over a list the database already returns in batching order,
@@ -163,6 +167,14 @@ fun ConcreteScreen(
                                                 R.string.pour_running
                                             },
                                         ),
+                                        // Said on the list, because a low
+                                        // result a month later is the thing
+                                        // nobody opens an old pour to find.
+                                        if (row.id in needsEngineer) {
+                                            stringResource(R.string.cube_needs_engineer)
+                                        } else {
+                                            null
+                                        },
                                     ).joinToString(" · "),
                                 )
                             },
@@ -210,6 +222,26 @@ fun ConcreteScreen(
                 )
             }
 
+            // Results come back from the lab weeks after the pour, so this is
+            // open whether the pour is finished or not.
+            item { SectionHeader(stringResource(R.string.cube_title)) }
+            if (cubeSets.isEmpty()) {
+                item { SectionPlaceholder(stringResource(R.string.cube_empty)) }
+            }
+            items(cubeSets, key = { it.id }) { set ->
+                CubeSetRow(set = set, mixDesign = pour.mixDesign, locale = locale)
+            }
+            if (canEdit) {
+                item {
+                    OutlinedButton(
+                        onClick = { addingCubes = true },
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                    ) {
+                        Text(stringResource(R.string.cube_add))
+                    }
+                }
+            }
+
             if (canEdit && pour.completedAt == null) {
                 item { HorizontalDivider(Modifier.padding(vertical = 8.dp)) }
                 item {
@@ -240,6 +272,26 @@ fun ConcreteScreen(
             onAdd = { ticketNumber, truck, volume, dispatchedAt ->
                 addingTruck = false
                 viewModel.addTicket(ticketNumber, truck, volume, dispatchedAt)
+            },
+        )
+    }
+
+    if (addingCubes) {
+        CubeDialog(
+            onDismiss = { addingCubes = false },
+            onRecord = { age, laboratory, report, strengths ->
+                addingCubes = false
+                viewModel.recordCubes(age, laboratory, report, strengths)
+            },
+        )
+    }
+
+    cubeRefusal?.let { refusal ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearCubeRefusal,
+            text = { Text(stringResource(cubeRefusalLabel(refusal))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearCubeRefusal) { Text(stringResource(R.string.action_ok)) }
             },
         )
     }

@@ -1819,6 +1819,103 @@
     <string name="whats_new_hint">What each version of the app changed</string>
     <!-- Heading over one version's changes; %1$s is a version number -->
     <string name="whats_new_version">Version %1$s</string>
+    <string name="summary_cubes_recorded">%1$s: %2$s-day cubes, mean %3$s MPa</string>
+    <!-- Section heading on a pour -->
+    <string name="cube_title">Cube tests</string>
+    <!-- Button and dialog title -->
+    <string name="cube_add">Add a lab result</string>
+    <!-- Empty section -->
+    <string name="cube_empty">No results yet. Cubes are usually crushed at 7 and 28 days.</string>
+    <!-- Label over the age chips -->
+    <string name="cube_age">Age</string>
+    <!-- Chip and field for an age other than 7 or 28 -->
+    <string name="cube_other_age">Other age (days)</string>
+    <!-- Field -->
+    <string name="cube_lab">Laboratory</string>
+    <!-- Field -->
+    <string name="cube_report">Report number</string>
+    <!-- Field; %1$s is the cube's number -->
+    <string name="cube_strength">Cube %1$s (MPa)</string>
+    <!-- Dialog button -->
+    <string name="cube_record">Record</string>
+    <!-- Result line; %1$s mean, %2$s lowest, both MPa -->
+    <string name="cube_mean">Mean %1$s MPa, lowest %2$s</string>
+    <!-- Result line; %1$s the specified strength in MPa -->
+    <string name="cube_specified">specified %1$s</string>
+    <!-- Verdict before 28 days -->
+    <string name="cube_verdict_early">Early result: an indication only</string>
+    <!-- Verdict when the mix names no strength -->
+    <string name="cube_verdict_no_spec">The pour\'s mix does not say which strength was specified</string>
+    <!-- Verdict, shown bold in red -->
+    <string name="cube_verdict_mean_below">Mean below the specified strength: the engineer has to see this</string>
+    <!-- Verdict, shown bold in red -->
+    <string name="cube_verdict_cube_below">A cube below the specified strength: the engineer has to see this</string>
+    <!-- Verdict -->
+    <string name="cube_verdict_meets">At or above the specified strength</string>
+    <!-- Marker on the pour list -->
+    <string name="cube_needs_engineer">Cube result for the engineer</string>
+    <!-- Under the result form: the app does not decide conformity -->
+    <string name="cube_disclaimer">Whether a pour conforms is decided by the engineer under the standard, which may call for more tests. This only shows the results that need looking at.</string>
+    <!-- Refusal -->
+    <string name="cube_refused_not_allowed">Only somebody who books concrete in can record its results.</string>
+    <!-- Refusal -->
+    <string name="cube_refused_no_cubes">Type at least one cube\'s strength.</string>
+    <!-- Refusal -->
+    <string name="cube_refused_strength">That cannot be a cube\'s strength: it has to be between 0 and 150 MPa.</string>
+    <!-- Refusal -->
+    <string name="cube_refused_age">The age has to be between 1 and 365 days.</string>
+    <string name="summary_drawing_received">%1$s revision %2$s received</string>
+    <string name="summary_drawing_superseded">%1$s revision %2$s received, replacing %3$s</string>
+    <!-- Drawing register screen title and job link -->
+    <string name="dwg_title">Drawings</string>
+    <!-- Hint under the job link -->
+    <string name="dwg_row_hint">The revision of each drawing to build from</string>
+    <!-- What the register is for -->
+    <string name="dwg_blurb">Only the current revision of each drawing is listed. A new revision replaces the old one on every phone.</string>
+    <!-- Empty register -->
+    <string name="dwg_empty">No drawings on this job yet.</string>
+    <!-- Button and dialog title -->
+    <string name="dwg_record">Record a drawing or a new revision</string>
+    <!-- Field: drawing number from the title block -->
+    <string name="dwg_number">Drawing number</string>
+    <!-- Field -->
+    <string name="dwg_title_field">Title</string>
+    <!-- Field -->
+    <string name="dwg_revision_field">Revision</string>
+    <!-- Field -->
+    <string name="dwg_notes">Notes (optional)</string>
+    <!-- Dialog button -->
+    <string name="dwg_save">Record</string>
+    <!-- Row text; %1$s is the revision -->
+    <string name="dwg_revision">Revision %1$s</string>
+    <!-- Row text; %1$s is a date -->
+    <string name="dwg_received">received %1$s</string>
+    <!-- History row; %1$s is a date -->
+    <string name="dwg_replaced_on">replaced %1$s</string>
+    <!-- Shown in the form when the number exists; %1$s is the current revision -->
+    <string name="dwg_will_replace">This replaces revision %1$s, which will no longer be the one to build from.</string>
+    <!-- Banner on the current revision -->
+    <string name="dwg_current">Current: build from this revision</string>
+    <!-- Banner on an old revision -->
+    <string name="dwg_superseded_banner">Replaced: do not build from this revision</string>
+    <!-- Section heading and image description -->
+    <string name="dwg_sheet">The sheet</string>
+    <!-- No picture of the sheet yet -->
+    <string name="dwg_no_sheet">No picture of the sheet</string>
+    <!-- Button -->
+    <string name="dwg_add_sheet">Add a picture of the sheet</string>
+    <!-- Section heading -->
+    <string name="dwg_history">Earlier revisions</string>
+    <!-- Empty history -->
+    <string name="dwg_no_history">This is the first revision on the register.</string>
+    <!-- Refusal -->
+    <string name="dwg_refused_not_allowed">Only somebody who plans the job can record its drawings.</string>
+    <!-- Refusal -->
+    <string name="dwg_refused_number">A drawing needs its number from the title block.</string>
+    <!-- Refusal -->
+    <string name="dwg_refused_revision">Say which revision this is.</string>
+    <!-- Refusal -->
+    <string name="dwg_refused_current">That revision is already the current one.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -1906,5 +2003,9 @@
     <plurals name="muster_visitors_on_site">
         <item quantity="one">and %d visitor signed in</item>
         <item quantity="other">and %d visitors signed in</item>
+    </plurals>
+    <plurals name="cube_age_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
     </plurals>
 </resources>

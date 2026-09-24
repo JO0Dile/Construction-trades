@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.26.0",
+      "points": [
+        {
+          "en": "Drawings register on every job: record each drawing and its revision. A new revision replaces the old one on every phone, so the crew only sees the one to build from; earlier revisions stay in the history marked as replaced.",
+          "he": "פנקס תוכניות בכל עבודה: רישום כל תוכנית והמהדורה שלה. מהדורה חדשה מחליפה את הקודמת בכל הטלפונים, כך שהצוות רואה רק את זו שלפיה בונים; מהדורות קודמות נשארות בהיסטוריה ומסומנות כמוחלפות.",
+          "ar": "سجل المخططات في كل مشروع: سجّل كل مخطط ومراجعته. المراجعة الجديدة تحلّ محل القديمة في كل الهواتف، فلا يرى الطاقم إلا المراجعة التي يُبنى عليها؛ وتبقى المراجعات السابقة في السجل موسومة بأنها مستبدلة."
+        },
+        {
+          "en": "Photograph each drawing sheet, or pick the file the architect sent, and open it full screen to zoom in on a dimension.",
+          "he": "צילום כל גיליון תוכנית, או בחירת הקובץ שהאדריכל שלח, ופתיחתו במסך מלא כדי להגדיל מידה.",
+          "ar": "صوّر كل لوحة مخطط، أو اختر الملف الذي أرسله المعماري، وافتحه بملء الشاشة لتكبير أي بُعد."
+        },
+        {
+          "en": "Concrete cube results on every pour: type in the lab's 7- and 28-day results. A 28-day result below the strength the mix asks for is marked for the engineer, on the pour and in the pour list.",
+          "he": "תוצאות קוביות בטון בכל יציקה: הקלדת תוצאות המעבדה לגיל 7 ו־28 ימים. תוצאה לגיל 28 ימים שנמוכה מהחוזק הנדרש בתערובת מסומנת לעיון המהנדס, ביציקה וברשימת היציקות.",
+          "ar": "نتائج مكعبات الخرسانة في كل صبّة: أدخل نتائج المختبر لعمر 7 و28 يومًا. النتيجة لعمر 28 يومًا الأقل من المقاومة المطلوبة في الخلطة تُعلَّم لاطلاع المهندس، في الصبّة وفي قائمة الصبّات."
+        }
+      ]
+    },
+    {
       "version": "0.25.0",
       "points": [
         {

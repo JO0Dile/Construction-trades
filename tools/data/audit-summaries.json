@@ -203,6 +203,16 @@
       "he": "נוצר מתבנית %1$s",
       "ar": "أُنشئ من القالب %1$s"
     },
+    "cubes_recorded": {
+      "arguments": [
+        "reference",
+        "days",
+        "mean"
+      ],
+      "en": "%1$s: %2$s-day cubes, mean %3$s MPa",
+      "he": "%1$s: קוביות בגיל %2$s ימים, ממוצע %3$s מגה־פסקל",
+      "ar": "%1$s: مكعبات بعمر %2$s يومًا، المتوسط %3$s ميغاباسكال"
+    },
     "custom_trade_removed": {
       "arguments": [],
       "en": "Custom trade removed",
@@ -231,6 +241,25 @@
       "en": "Details corrected for %1$s: %2$s",
       "he": "פרטים תוקנו עבור %1$s: %2$s",
       "ar": "صُحّحت تفاصيل %1$s: %2$s"
+    },
+    "drawing_received": {
+      "arguments": [
+        "number",
+        "revision"
+      ],
+      "en": "%1$s revision %2$s received",
+      "he": "התקבל %1$s במהדורה %2$s",
+      "ar": "استُلم %1$s بالمراجعة %2$s"
+    },
+    "drawing_superseded": {
+      "arguments": [
+        "number",
+        "revision",
+        "previous"
+      ],
+      "en": "%1$s revision %2$s received, replacing %3$s",
+      "he": "התקבל %1$s במהדורה %2$s, במקום %3$s",
+      "ar": "استُلم %1$s بالمراجعة %2$s بدلًا من %3$s"
     },
     "equipment_serviced": {
       "arguments": [

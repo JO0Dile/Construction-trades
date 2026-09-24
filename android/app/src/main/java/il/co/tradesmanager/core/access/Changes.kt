@@ -40,6 +40,7 @@ object Changes {
     val LENS_OF: Map<String, Lens> = mapOf(
         // What is supposed to happen.
         "project" to Lens.PLAN,
+        "drawing" to Lens.PLAN,
         "project_task" to Lens.PLAN,
         "task_block" to Lens.PLAN,
         "assignment" to Lens.PLAN,
@@ -76,6 +77,7 @@ object Changes {
         "daily_log" to Lens.EVIDENCE,
         "concrete_pour" to Lens.EVIDENCE,
         "concrete_ticket" to Lens.EVIDENCE,
+        "concrete_cube_set" to Lens.EVIDENCE,
         "scaffold" to Lens.EVIDENCE,
         "lift_plan" to Lens.EVIDENCE,
         "excavation" to Lens.EVIDENCE,

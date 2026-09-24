@@ -2,8 +2,11 @@ package il.co.tradesmanager.ui.concrete
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.evidence.CubeTests
+import il.co.tradesmanager.data.local.entity.ConcreteCubeSetEntity
 import il.co.tradesmanager.data.local.entity.ConcretePourEntity
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
+import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
@@ -61,6 +65,62 @@ class ConcreteViewModel(
         )
 
     fun open(pourId: String?) { _openPourId.value = pourId }
+
+    /** The open pour's cube results, seven days before twenty-eight. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val cubeSets: StateFlow<List<ConcreteCubeSetEntity>> = _openPourId
+        .flatMapLatest { id -> if (id == null) flowOf(emptyList()) else container.concrete.observeCubeSets(id) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /**
+     * The pours on this job with a result the engineer has to see, so the
+     * list says so without anybody opening each one.
+     */
+    val needsEngineer: StateFlow<Set<String>> = combine(
+        pours,
+        container.concrete.observeCubeSetsForProject(projectId),
+    ) { rows, sets ->
+        val byId = rows.associateBy { it.id }
+        sets.filter { set ->
+            val pour = byId[set.pourId] ?: return@filter false
+            CubeTests.judgeStored(set.ageDays, set.strengthsMpa, pour.mixDesign)?.needsEngineer == true
+        }.map { it.pourId }.toSet()
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptySet())
+
+    private val _cubeRefusal = MutableStateFlow<ConcreteRepository.CubeRefusal?>(null)
+    val cubeRefusal: StateFlow<ConcreteRepository.CubeRefusal?> = _cubeRefusal.asStateFlow()
+
+    fun clearCubeRefusal() {
+        _cubeRefusal.value = null
+    }
+
+    fun recordCubes(
+        ageDays: Int,
+        laboratory: String?,
+        reportNumber: String?,
+        strengthsMpa: List<Double>,
+    ) = viewModelScope.launch {
+        val id = _openPourId.value ?: return@launch
+        val role = (session.value as? SessionRepository.State.SignedIn)?.role
+        if (role == null) {
+            _cubeRefusal.value = ConcreteRepository.CubeRefusal.NOT_ALLOWED
+            return@launch
+        }
+        val actor = container.settings.settings.first().actorName
+        container.concrete.recordCubes(
+            role = role,
+            pourId = id,
+            ageDays = ageDays,
+            testedAt = System.currentTimeMillis(),
+            laboratory = laboratory,
+            reportNumber = reportNumber,
+            strengthsMpa = strengthsMpa,
+            actorName = actor,
+        ).onFailure { failure ->
+            _cubeRefusal.value = (failure as? ConcreteRepository.CubesRefused)?.refusal
+                ?: ConcreteRepository.CubeRefusal.UNKNOWN
+        }
+    }
 
     fun startPour(
         element: String,

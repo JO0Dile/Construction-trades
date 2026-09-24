@@ -1818,3 +1818,100 @@
 "whats_new_hint" = "ما الذي تغيّر في كل نسخة من التطبيق";
 /* Heading over one version's changes; %1$s is a version number */
 "whats_new_version" = "النسخة %1$s";
+"summary_cubes_recorded" = "%1$s: مكعبات بعمر %2$s يومًا، المتوسط %3$s ميغاباسكال";
+/* Section heading on a pour */
+"cube_title" = "اختبارات المكعبات";
+/* Button and dialog title */
+"cube_add" = "إضافة نتيجة مختبر";
+/* Empty section */
+"cube_empty" = "لا نتائج بعد. تُكسر المكعبات عادة بعمر 7 و28 يومًا.";
+/* Label over the age chips */
+"cube_age" = "العمر";
+/* Chip and field for an age other than 7 or 28 */
+"cube_other_age" = "عمر آخر (أيام)";
+/* Field */
+"cube_lab" = "المختبر";
+/* Field */
+"cube_report" = "رقم التقرير";
+/* Field; %1$s is the cube's number */
+"cube_strength" = "المكعب %1$s (ميغاباسكال)";
+/* Dialog button */
+"cube_record" = "تسجيل";
+/* Result line; %1$s mean, %2$s lowest, both MPa */
+"cube_mean" = "المتوسط %1$s ميغاباسكال، الأدنى %2$s";
+/* Result line; %1$s the specified strength in MPa */
+"cube_specified" = "المطلوب %1$s";
+/* Verdict before 28 days */
+"cube_verdict_early" = "نتيجة مبكرة: للاسترشاد فقط";
+/* Verdict when the mix names no strength */
+"cube_verdict_no_spec" = "لا تذكر خلطة الصبّة المقاومة المطلوبة";
+/* Verdict, shown bold in red */
+"cube_verdict_mean_below" = "المتوسط أقل من المقاومة المطلوبة: يجب أن يطّلع المهندس على ذلك";
+/* Verdict, shown bold in red */
+"cube_verdict_cube_below" = "مكعب أقل من المقاومة المطلوبة: يجب أن يطّلع المهندس على ذلك";
+/* Verdict */
+"cube_verdict_meets" = "بالمقاومة المطلوبة أو أعلى";
+/* Marker on the pour list */
+"cube_needs_engineer" = "نتيجة مكعبات لاطلاع المهندس";
+/* Under the result form: the app does not decide conformity */
+"cube_disclaimer" = "مدى مطابقة الصبّة يقرره المهندس وفق المواصفة، وقد تتطلب فحوصًا إضافية. هنا تُعرض فقط النتائج التي تحتاج إلى مراجعة.";
+/* Refusal */
+"cube_refused_not_allowed" = "لا يسجّل النتائج إلا من يستلم الخرسانة.";
+/* Refusal */
+"cube_refused_no_cubes" = "اكتب مقاومة مكعب واحد على الأقل.";
+/* Refusal */
+"cube_refused_strength" = "لا يمكن أن تكون هذه مقاومة مكعب: يجب أن تكون بين 0 و150 ميغاباسكال.";
+/* Refusal */
+"cube_refused_age" = "يجب أن يكون العمر بين 1 و365 يومًا.";
+"summary_drawing_received" = "استُلم %1$s بالمراجعة %2$s";
+"summary_drawing_superseded" = "استُلم %1$s بالمراجعة %2$s بدلًا من %3$s";
+/* Drawing register screen title and job link */
+"dwg_title" = "المخططات";
+/* Hint under the job link */
+"dwg_row_hint" = "مراجعة كل مخطط التي يُبنى عليها";
+/* What the register is for */
+"dwg_blurb" = "تُعرض فقط المراجعة الحالية لكل مخطط. المراجعة الجديدة تحلّ محل القديمة في كل الهواتف.";
+/* Empty register */
+"dwg_empty" = "لا توجد مخططات في هذا المشروع بعد.";
+/* Button and dialog title */
+"dwg_record" = "تسجيل مخطط أو مراجعة جديدة";
+/* Field: drawing number from the title block */
+"dwg_number" = "رقم المخطط";
+/* Field */
+"dwg_title_field" = "العنوان";
+/* Field */
+"dwg_revision_field" = "المراجعة";
+/* Field */
+"dwg_notes" = "ملاحظات (اختياري)";
+/* Dialog button */
+"dwg_save" = "تسجيل";
+/* Row text; %1$s is the revision */
+"dwg_revision" = "المراجعة %1$s";
+/* Row text; %1$s is a date */
+"dwg_received" = "استُلمت %1$s";
+/* History row; %1$s is a date */
+"dwg_replaced_on" = "استُبدلت %1$s";
+/* Shown in the form when the number exists; %1$s is the current revision */
+"dwg_will_replace" = "هذه تحلّ محل المراجعة %1$s، التي لن تبقى المراجعة التي يُبنى عليها.";
+/* Banner on the current revision */
+"dwg_current" = "حالية: يُبنى على هذه المراجعة";
+/* Banner on an old revision */
+"dwg_superseded_banner" = "مستبدلة: لا يُبنى على هذه المراجعة";
+/* Section heading and image description */
+"dwg_sheet" = "اللوحة";
+/* No picture of the sheet yet */
+"dwg_no_sheet" = "لا توجد صورة للوحة";
+/* Button */
+"dwg_add_sheet" = "إضافة صورة للوحة";
+/* Section heading */
+"dwg_history" = "مراجعات سابقة";
+/* Empty history */
+"dwg_no_history" = "هذه أول مراجعة في السجل.";
+/* Refusal */
+"dwg_refused_not_allowed" = "لا يسجّل المخططات إلا من يخطط للمشروع.";
+/* Refusal */
+"dwg_refused_number" = "يجب أن يكون للمخطط رقمه الموجود في خانة العنوان.";
+/* Refusal */
+"dwg_refused_revision" = "اذكر أي مراجعة هذه.";
+/* Refusal */
+"dwg_refused_current" = "هذه المراجعة هي الحالية أصلًا.";

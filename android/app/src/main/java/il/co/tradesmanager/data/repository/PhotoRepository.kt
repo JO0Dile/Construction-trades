@@ -72,6 +72,14 @@ class PhotoRepository(
         const val WASTE_TICKET = "waste.ticket"
 
         /**
+         * The sheet itself, photographed off the table or picked from the
+         * files the architect sent, against one revision in the drawing
+         * register. The register says which revision is current; this is
+         * what it looks like.
+         */
+        const val DRAWING = "drawing"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

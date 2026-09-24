@@ -564,6 +564,36 @@ generators now rebuild the sheets from the app and the catalogue, carry
 across every column a translator typed, carry the developer's note on where
 a string appears, and fail the build when a sheet falls behind.
 
+**Choosing a language changes the whole app. Done.**
+For twenty-four versions picking Hebrew left most of the screen in English.
+The translations were all in the APK; the manifest told Android the activity
+handled language changes itself, so the screen was never rebuilt and only the
+text the app looks up for itself switched. Now the activity is recreated, the
+choice is kept across restarts on older Android, and the libraries' Hebrew is
+no longer stripped from the build. `tools/check-locale-switch.py` fails the
+build if any of the three comes back.
+
+**Every update says what it does. Done.**
+Written once per version in English, Hebrew and Arabic, shipped in the app
+and attached to the release. A phone offered an update lists every version
+between the one it has and the one on offer; after installing, What's new
+lists everything since it last looked; Settings keeps the history. The build
+fails until the version has notes in all three languages.
+
+**Concrete cube results. Done.**
+The lab's seven- and twenty-eight-day figures against each pour, every cube
+kept rather than only the mean. A twenty-eight-day mean under the strength the
+mix asks for, or any cube under it, is marked for the engineer on the pour and
+in the pour list. Whether a pour conforms is the engineer's call under the
+standard; the screen says so.
+
+**The drawing register. Done.**
+Each drawing and the revision of it to build from. A new revision replaces the
+old one on every phone in one step; the list shows only current revisions,
+and an earlier one opens marked as replaced. Revisions are ordered by when
+they arrived rather than by their letters, because firms letter them
+differently.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -628,14 +658,14 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~91 | *estimated — see below* |
-| Buildable here — on the device, no server | ~95 | where the work is |
+| Built | ~94 | *estimated — see below* |
+| Buildable here — on the device, no server | ~92 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the

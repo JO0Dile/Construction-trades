@@ -366,6 +366,13 @@ object Migrations {
         }
     }
 
+    /** Concrete cube results against each pour, and the drawing register. Two new tables. */
+    val MIGRATION_35_36 = object : Migration(35, 36) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_35_36.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -401,6 +408,7 @@ object Migrations {
         MIGRATION_32_33,
         MIGRATION_33_34,
         MIGRATION_34_35,
+        MIGRATION_35_36,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1010,5 +1018,25 @@ object Migrations {
         "CREATE INDEX IF NOT EXISTS `index_site_visits_projectId` ON `site_visits` (`projectId`)",
         "CREATE INDEX IF NOT EXISTS `index_site_visits_leftAt` ON `site_visits` (`leftAt`)",
         "ALTER TABLE `muster_people` ADD COLUMN `visitor` INTEGER NOT NULL DEFAULT 0",
+    )
+
+    /**
+     * Concrete cube results and the drawing register. `strengthsMpa` is the
+     * JSON the list converter writes.
+     */
+    val SQL_35_36: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `concrete_cube_sets` (`id` TEXT NOT NULL, " +
+            "`pourId` TEXT NOT NULL, `ageDays` INTEGER NOT NULL, `testedAt` INTEGER NOT NULL, " +
+            "`laboratory` TEXT, `reportNumber` TEXT, `strengthsMpa` TEXT NOT NULL, " +
+            "`recordedByName` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, " +
+            "PRIMARY KEY(`id`), FOREIGN KEY(`pourId`) REFERENCES " +
+            "`concrete_pours`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "CREATE INDEX IF NOT EXISTS `index_concrete_cube_sets_pourId` " +
+            "ON `concrete_cube_sets` (`pourId`)",
+        "CREATE TABLE IF NOT EXISTS `drawings` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`number` TEXT NOT NULL, `title` TEXT NOT NULL, `revision` TEXT NOT NULL, " +
+            "`receivedAt` INTEGER NOT NULL, `supersededAt` INTEGER, `notes` TEXT, " +
+            "`recordedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_drawings_projectId` ON `drawings` (`projectId`)",
     )
 }
