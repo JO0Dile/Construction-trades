@@ -1999,3 +1999,9 @@
 "qry_refused_answered" = "سبقت الإجابة عن هذا السؤال.";
 /* Handover pack row */
 "hv_queries" = "أسئلة للمصممين لم يُجَب عنها بعد";
+/* Search result kind */
+"search_kind_drawing" = "مخطط";
+/* Search result kind: a question to the designers */
+"search_kind_query" = "سؤال";
+/* Search result kind */
+"search_kind_visitor" = "زائر";

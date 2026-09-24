@@ -1999,3 +1999,9 @@
 "qry_refused_answered" = "That question has already been answered.";
 /* Handover pack row */
 "hv_queries" = "Questions to the designers still unanswered";
+/* Search result kind */
+"search_kind_drawing" = "Drawing";
+/* Search result kind: a question to the designers */
+"search_kind_query" = "Question";
+/* Search result kind */
+"search_kind_visitor" = "Visitor";

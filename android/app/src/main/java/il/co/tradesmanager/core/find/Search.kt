@@ -93,6 +93,9 @@ object Search {
         PERMIT(setOf(Lens.EVIDENCE)),
         SNAG(setOf(Lens.EVIDENCE)),
         PLANT(setOf(Lens.STUFF)),
+        DRAWING(setOf(Lens.PLAN)),
+        QUERY(setOf(Lens.PLAN)),
+        VISITOR(setOf(Lens.EVIDENCE)),
     }
 
     /**
@@ -114,6 +117,8 @@ object Search {
         val detail: String,
         val isOpen: Boolean,
         val score: Int,
+        /** The job it lives on, for the kinds whose screen is a job's register. */
+        val projectId: String? = null,
     )
 
     /**

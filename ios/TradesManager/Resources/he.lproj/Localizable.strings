@@ -1999,3 +1999,9 @@
 "qry_refused_answered" = "השאלה הזו כבר נענתה.";
 /* Handover pack row */
 "hv_queries" = "שאלות למתכננים שעדיין לא נענו";
+/* Search result kind */
+"search_kind_drawing" = "תוכנית";
+/* Search result kind: a question to the designers */
+"search_kind_query" = "שאלה";
+/* Search result kind */
+"search_kind_visitor" = "מבקר";

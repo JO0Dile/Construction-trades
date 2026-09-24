@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.29.0",
+      "points": [
+        {
+          "en": "The search box now finds drawings by number or title, questions to the designers by any word in them, and visitors by name, and opens the job's register they are in.",
+          "he": "תיבת החיפוש מוצאת עכשיו תוכניות לפי מספר או כותרת, שאלות למתכננים לפי כל מילה בהן, ומבקרים לפי שם, ופותחת את הפנקס של העבודה שבה הם נמצאים.",
+          "ar": "صندوق البحث يجد الآن المخططات برقمها أو عنوانها، وأسئلة المصممين بأي كلمة فيها، والزوار بأسمائهم، ويفتح سجل المشروع الذي هم فيه."
+        },
+        {
+          "en": "Hebrew and Arabic are now checked on every build against Android itself, so the app cannot quietly go back to showing English on a Hebrew or Arabic phone.",
+          "he": "העברית והערבית נבדקות עכשיו בכל בנייה מול אנדרואיד עצמה, כך שהאפליקציה לא יכולה לחזור בשקט להציג אנגלית בטלפון בעברית או בערבית.",
+          "ar": "تُفحص العبرية والعربية الآن في كل بناء مقابل نظام أندرويد نفسه، فلا يمكن أن يعود التطبيق خفيةً إلى عرض الإنجليزية على هاتف بالعبرية أو العربية."
+        }
+      ]
+    },
+    {
       "version": "0.28.0",
       "points": [
         {

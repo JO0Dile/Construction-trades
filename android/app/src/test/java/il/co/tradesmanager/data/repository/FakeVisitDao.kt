@@ -25,4 +25,7 @@ class FakeVisitDao : VisitDao {
         rows.value.filter { it.leftAt == null }.sortedBy { it.arrivedAt }
 
     override fun observeStillHereCount(): Flow<Int> = rows.map { all -> all.count { it.leftAt == null } }
+
+    override suspend fun all(): List<SiteVisitEntity> = rows.value
+
 }

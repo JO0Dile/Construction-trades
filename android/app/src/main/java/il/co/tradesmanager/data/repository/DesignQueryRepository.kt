@@ -37,6 +37,9 @@ class DesignQueryRepository(
 
     private val numbering = Mutex()
 
+    /** Every job's rows, recent first, for the search box. */
+    suspend fun all(): List<DesignQueryEntity> = dao.all()
+
     fun observeForProject(projectId: String): Flow<List<DesignQueryEntity>> = dao.observeForProject(projectId)
 
     suspend fun raise(

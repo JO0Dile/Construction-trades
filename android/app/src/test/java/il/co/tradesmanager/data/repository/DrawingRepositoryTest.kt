@@ -33,6 +33,9 @@ class FakeDrawingDao : DrawingDao {
         previous?.let { upsert(it) }
         upsert(current)
     }
+
+    override suspend fun all(): List<DrawingEntity> = rows.value
+
 }
 
 class DrawingRepositoryTest {

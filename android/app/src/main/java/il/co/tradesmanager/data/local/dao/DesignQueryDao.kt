@@ -21,4 +21,8 @@ interface DesignQueryDao {
 
     @Query("SELECT COUNT(*) FROM design_queries WHERE projectId = :projectId")
     suspend fun countForProject(projectId: String): Int
+
+    /** Every row on every job, for the search box. Capped: search wants the recent ones. */
+    @Query("SELECT * FROM design_queries ORDER BY askedAt DESC LIMIT 500")
+    suspend fun all(): List<DesignQueryEntity>
 }

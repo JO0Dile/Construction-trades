@@ -31,6 +31,9 @@ class DrawingRepository(
 
     private val recording = Mutex()
 
+    /** Every job's rows, recent first, for the search box. */
+    suspend fun all(): List<DrawingEntity> = dao.all()
+
     fun observeForProject(projectId: String): Flow<List<DrawingEntity>> = dao.observeForProject(projectId)
 
     suspend fun record(

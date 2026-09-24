@@ -30,4 +30,8 @@ interface DrawingDao {
         previous?.let { upsert(it) }
         upsert(current)
     }
+
+    /** Every row on every job, for the search box. Capped: search wants the recent ones. */
+    @Query("SELECT * FROM drawings ORDER BY receivedAt DESC LIMIT 500")
+    suspend fun all(): List<DrawingEntity>
 }

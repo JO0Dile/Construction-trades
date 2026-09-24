@@ -31,6 +31,9 @@ class VisitRepository(
 
     class Refused(val refusal: Refusal) : Exception(refusal.name)
 
+    /** Every job's rows, recent first, for the search box. */
+    suspend fun all(): List<SiteVisitEntity> = dao.all()
+
     fun observeForProject(projectId: String): Flow<List<SiteVisitEntity>> =
         dao.observeForProject(projectId)
 

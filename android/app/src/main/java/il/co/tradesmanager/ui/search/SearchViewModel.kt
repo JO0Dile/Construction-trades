@@ -123,6 +123,9 @@ class SearchViewModel(
         if (mayRead(Search.Kind.PERMIT)) hits += permits(terms, jobNames)
         if (mayRead(Search.Kind.SNAG)) hits += snags(terms, jobNames)
         if (mayRead(Search.Kind.PLANT)) hits += plant(terms, jobNames)
+        if (mayRead(Search.Kind.DRAWING)) hits += drawings(terms, jobNames)
+        if (mayRead(Search.Kind.QUERY)) hits += queries(terms, jobNames)
+        if (mayRead(Search.Kind.VISITOR)) hits += visitors(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -324,6 +327,67 @@ class SearchViewModel(
             )
         }
 
+    /* -------------------------------------------------------- the drawings */
+
+    private suspend fun drawings(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.drawings.all().mapNotNull { drawing ->
+            hit(
+                id = drawing.id,
+                kind = Search.Kind.DRAWING,
+                // The number is what people say: "the A-101", not the title.
+                title = listOf(drawing.number, drawing.title).filter { it.isNotBlank() }.joinToString(" "),
+                detail = listOfNotNull(drawing.revision, jobNames[drawing.projectId]).joinToString(" "),
+                matchAlso = drawing.notes.orEmpty(),
+                // A superseded revision is history: found, but below the one
+                // to build from.
+                isOpen = drawing.supersededAt == null,
+                terms = terms,
+                projectId = drawing.projectId,
+            )
+        }
+
+    /* -------------------------------------------- questions to the designers */
+
+    private suspend fun queries(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.designQueries.all().mapNotNull { query ->
+            hit(
+                id = query.id,
+                kind = Search.Kind.QUERY,
+                title = query.question,
+                detail = listOfNotNull(query.reference, query.askedOf, jobNames[query.projectId]).joinToString(" "),
+                matchAlso = listOfNotNull(query.drawingNumber, query.answer).joinToString(" "),
+                isOpen = query.answeredAt == null,
+                terms = terms,
+                projectId = query.projectId,
+            )
+        }
+
+    /* -------------------------------------------------------- the visitors */
+
+    private suspend fun visitors(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.visits.all().mapNotNull { visit ->
+            hit(
+                id = visit.id,
+                kind = Search.Kind.VISITOR,
+                title = visit.name,
+                detail = listOfNotNull(visit.organisation, jobNames[visit.projectId]).joinToString(" "),
+                // Who they came to see is worth matching; their phone number is not shown.
+                matchAlso = visit.hostName.orEmpty(),
+                isOpen = visit.leftAt == null,
+                terms = terms,
+                projectId = visit.projectId,
+            )
+        }
+
     /**
      * Scores a row, and drops it here rather than building a hit to throw away.
      *
@@ -342,6 +406,7 @@ class SearchViewModel(
         matchAlso: String,
         isOpen: Boolean,
         terms: List<String>,
+        projectId: String? = null,
     ): Search.Hit? {
         val score = Search.score(terms, title, "$detail $matchAlso")
         if (score == 0) return null
@@ -352,6 +417,7 @@ class SearchViewModel(
             detail = detail,
             isOpen = isOpen,
             score = score,
+            projectId = projectId,
         )
     }
 }

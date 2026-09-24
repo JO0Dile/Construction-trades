@@ -30,6 +30,9 @@ class FakeDesignQueryDao : DesignQueryDao {
         rows.map { all -> all.filter { it.projectId == projectId }.sortedBy { it.askedAt } }
 
     override suspend fun countForProject(projectId: String): Int = rows.value.count { it.projectId == projectId }
+
+    override suspend fun all(): List<DesignQueryEntity> = rows.value
+
 }
 
 class DesignQueryRepositoryTest {

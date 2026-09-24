@@ -2000,6 +2000,12 @@
     <string name="qry_refused_answered">That question has already been answered.</string>
     <!-- Handover pack row -->
     <string name="hv_queries">Questions to the designers still unanswered</string>
+    <!-- Search result kind -->
+    <string name="search_kind_drawing">Drawing</string>
+    <!-- Search result kind: a question to the designers -->
+    <string name="search_kind_query">Question</string>
+    <!-- Search result kind -->
+    <string name="search_kind_visitor">Visitor</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

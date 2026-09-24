@@ -1599,3 +1599,6 @@ qry_refused_date,Refusal,The date the answer is needed by cannot be before today
 qry_refused_answer,Refusal,Write the answer.,יש לכתוב את התשובה.,اكتب الإجابة.,,
 qry_refused_answered,Refusal,That question has already been answered.,השאלה הזו כבר נענתה.,سبقت الإجابة عن هذا السؤال.,,
 hv_queries,Handover pack row,Questions to the designers still unanswered,שאלות למתכננים שעדיין לא נענו,أسئلة للمصممين لم يُجَب عنها بعد,,
+search_kind_drawing,Search result kind,Drawing,תוכנית,مخطط,,
+search_kind_query,Search result kind: a question to the designers,Question,שאלה,سؤال,,
+search_kind_visitor,Search result kind,Visitor,מבקר,زائر,,

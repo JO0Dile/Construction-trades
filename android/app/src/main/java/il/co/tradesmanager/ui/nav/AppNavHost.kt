@@ -200,6 +200,10 @@ private fun routeFor(hit: Search.Hit): String = when (hit.kind) {
     Search.Kind.PERMIT -> Routes.permitDetail(hit.id)
     Search.Kind.SNAG -> Routes.snagDetail(hit.id)
     Search.Kind.PLANT -> Routes.PLANT
+    // A job's register, which is where one drawing, question or visit lives.
+    Search.Kind.DRAWING -> Routes.drawings(hit.projectId.orEmpty())
+    Search.Kind.QUERY -> Routes.queries(hit.projectId.orEmpty())
+    Search.Kind.VISITOR -> Routes.visitors(hit.projectId.orEmpty())
 }
 
 /**

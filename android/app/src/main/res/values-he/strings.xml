@@ -1578,6 +1578,9 @@
     <string name="qry_refused_answer">יש לכתוב את התשובה.</string>
     <string name="qry_refused_answered">השאלה הזו כבר נענתה.</string>
     <string name="hv_queries">שאלות למתכננים שעדיין לא נענו</string>
+    <string name="search_kind_drawing">תוכנית</string>
+    <string name="search_kind_query">שאלה</string>
+    <string name="search_kind_visitor">מבקר</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

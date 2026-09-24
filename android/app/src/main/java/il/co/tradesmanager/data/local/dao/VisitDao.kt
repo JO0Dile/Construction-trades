@@ -30,4 +30,8 @@ interface VisitDao {
     /** How many are signed in and not out: the visitors the next roll call will list. */
     @Query("SELECT COUNT(*) FROM site_visits WHERE leftAt IS NULL")
     fun observeStillHereCount(): Flow<Int>
+
+    /** Every row on every job, for the search box. Capped: search wants the recent ones. */
+    @Query("SELECT * FROM site_visits ORDER BY arrivedAt DESC LIMIT 500")
+    suspend fun all(): List<SiteVisitEntity>
 }

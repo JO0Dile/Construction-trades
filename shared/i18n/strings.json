@@ -8320,6 +8320,24 @@
       "en": "Questions to the designers still unanswered",
       "he": "שאלות למתכננים שעדיין לא נענו",
       "ar": "أسئلة للمصممين لم يُجَب عنها بعد"
+    },
+    "search_kind_drawing": {
+      "c": "Search result kind",
+      "en": "Drawing",
+      "he": "תוכנית",
+      "ar": "مخطط"
+    },
+    "search_kind_query": {
+      "c": "Search result kind: a question to the designers",
+      "en": "Question",
+      "he": "שאלה",
+      "ar": "سؤال"
+    },
+    "search_kind_visitor": {
+      "c": "Search result kind",
+      "en": "Visitor",
+      "he": "מבקר",
+      "ar": "زائر"
     }
   },
   "plurals": {

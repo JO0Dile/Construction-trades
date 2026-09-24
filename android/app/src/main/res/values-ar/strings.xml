@@ -1578,6 +1578,9 @@
     <string name="qry_refused_answer">اكتب الإجابة.</string>
     <string name="qry_refused_answered">سبقت الإجابة عن هذا السؤال.</string>
     <string name="hv_queries">أسئلة للمصممين لم يُجَب عنها بعد</string>
+    <string name="search_kind_drawing">مخطط</string>
+    <string name="search_kind_query">سؤال</string>
+    <string name="search_kind_visitor">زائر</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
