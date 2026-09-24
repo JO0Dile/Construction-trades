@@ -131,10 +131,10 @@ Until any of that is switched on, the running cost of this product is zero.
 **The iPhone app is well behind the Android one, and has never been compiled.**
 It covers the first version of the ground — inventory, projects, the
 schedule, safety checklists, the barcode scanner, export — over 14 data
-models. Android has 62 tables. Everything built since the first version is
+models. Android has 63 tables. Everything built since the first version is
 Android only: money, the people and the chain of command, the site registers
 (daily log, concrete, scaffolding, lifting, temporary works, excavations,
-permits, snags, violations), the roll call, heat checks and plant pre-use
+permits, snags, violations, inspection requests), the roll call, heat checks and plant pre-use
 checks.
 
 It has never been compiled because this repository has been worked on where

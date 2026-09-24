@@ -64,6 +64,12 @@ object HandoverPack {
         /** Questions put to the designers and never answered. */
         QUERIES_UNANSWERED,
 
+        /** Inspections still waiting, overdue, or failed and not asked again. */
+        INSPECTIONS_OUTSTANDING,
+
+        /** Pours with no passed inspection of the steel or the forms set against them. */
+        POURS_WITHOUT_INSPECTION,
+
         /**
          * Loads of waste with neither a ticket number nor a photograph of
          * the ticket: nothing yet shows where they went.

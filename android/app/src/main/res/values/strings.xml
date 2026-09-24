@@ -2006,6 +2006,103 @@
     <string name="search_kind_query">Question</string>
     <!-- Search result kind -->
     <string name="search_kind_visitor">Visitor</string>
+    <string name="summary_ir_cleared_pour">%1$s cleared %2$s</string>
+    <string name="summary_ir_failed">%1$s failed by %2$s</string>
+    <string name="summary_ir_passed">%1$s passed by %2$s</string>
+    <string name="summary_ir_passed_with_comments">%1$s passed with comments by %2$s</string>
+    <string name="summary_ir_requested">%1$s: inspection asked of %2$s</string>
+    <string name="summary_ir_requested_again">%1$s failed; asked again as %2$s</string>
+    <!-- Screen title and job link -->
+    <string name="ir_title">Inspection requests</string>
+    <!-- Hint under the job link -->
+    <string name="ir_row_hint">The steel, the membrane or the pipes, seen before they are covered</string>
+    <string name="ir_empty">No inspections asked for on this job yet.</string>
+    <string name="ir_blurb">Before steel is poured over, a membrane screeded or a wall closed, ask here for it to be seen. The result is written once; a failed one is asked again, and both stay on the record.</string>
+    <!-- Button and dialog title -->
+    <string name="ir_request">Ask for an inspection</string>
+    <string name="ir_kind">What kind</string>
+    <!-- Steel reinforcement, inspected before a pour -->
+    <string name="ir_kind_reinforcement">Reinforcement</string>
+    <string name="ir_kind_formwork">Formwork</string>
+    <string name="ir_kind_waterproofing">Waterproofing</string>
+    <string name="ir_kind_pipe_pressure">Pipe pressure test</string>
+    <string name="ir_kind_electrical">Electrical</string>
+    <string name="ir_kind_other">Other</string>
+    <string name="ir_element">What, and where</string>
+    <string name="ir_element_hint">Level 3 slab, grids A–D, bottom steel</string>
+    <string name="ir_requested_of">Asked of</string>
+    <string name="ir_requested_of_typed">Or type who</string>
+    <string name="ir_of_engineer">The structural engineer</string>
+    <!-- The owner's site supervisor -->
+    <string name="ir_of_supervisor">The supervisor</string>
+    <string name="ir_of_electrical">The electrical inspector</string>
+    <string name="ir_of_client">The client\'s representative</string>
+    <string name="ir_wanted_on">Wanted on</string>
+    <string name="ir_no_date">No date</string>
+    <string name="ir_today">Today</string>
+    <string name="ir_tomorrow">Tomorrow</string>
+    <string name="ir_in_2_days">In 2 days</string>
+    <string name="ir_send">Ask</string>
+    <!-- %1$s is a date -->
+    <string name="ir_wanted">Wanted %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="ir_asked_on">Asked %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="ir_overdue">Wanted %1$s, and nobody has come</string>
+    <!-- %1$s is a date, %2$s the inspector's name -->
+    <string name="ir_passed_on">Passed %1$s by %2$s</string>
+    <!-- %1$s is a date, %2$s the inspector's name -->
+    <string name="ir_failed_on">Failed %1$s by %2$s: the work is held</string>
+    <!-- %1$s is the new request's number -->
+    <string name="ir_reinspected_as">Failed, and asked again as %1$s</string>
+    <!-- %1$s is the failed request's number -->
+    <string name="ir_reinspection_of">Asked again after %1$s failed</string>
+    <string name="ir_result">Result</string>
+    <string name="ir_result_passed">Passed</string>
+    <string name="ir_result_comments">Passed with comments</string>
+    <string name="ir_result_failed">Failed</string>
+    <string name="ir_record_result">Record the result</string>
+    <string name="ir_inspector">Who inspected</string>
+    <string name="ir_inspector_hint">The person\'s name, not their title</string>
+    <string name="ir_comments">Comments</string>
+    <string name="ir_why_failed">Why it failed</string>
+    <string name="ir_record">Record</string>
+    <!-- %1$s is the name of whoever typed it in -->
+    <string name="ir_recorded_by">typed in by %1$s</string>
+    <string name="ir_ask_again">Ask again</string>
+    <string name="ir_ask_again_blurb">The same work, of the same person, under a new number that points back at this one.</string>
+    <!-- %1$s is a pour's number -->
+    <string name="ir_cleared">Cleared %1$s</string>
+    <string name="ir_form">The signed form</string>
+    <string name="ir_no_form">No photograph of the form yet.</string>
+    <string name="ir_add_form">Add a photograph of the form</string>
+    <string name="ir_refused_not_allowed">Your role does not keep the site\'s record.</string>
+    <string name="ir_refused_element">Say what is to be inspected, and where.</string>
+    <string name="ir_refused_nobody">Say who is asked to inspect.</string>
+    <string name="ir_refused_date">It cannot be wanted before today.</string>
+    <string name="ir_refused_decided">The result is already recorded. A failed inspection is asked again, not changed.</string>
+    <string name="ir_refused_inspector">Write the name of whoever inspected.</string>
+    <string name="ir_refused_reason">Say why it failed, so there is something to fix.</string>
+    <string name="ir_refused_comments">Write the comments it passed with.</string>
+    <string name="ir_refused_not_failed">Only a failed inspection is asked again.</string>
+    <string name="ir_refused_reinspected">It has already been asked again; follow that request.</string>
+    <string name="ir_refused_not_passed">Only a passed inspection clears a pour.</string>
+    <string name="ir_refused_not_pour">Only an inspection of the steel or the formwork clears a pour.</string>
+    <string name="ir_refused_cleared">That inspection has already cleared another pour.</string>
+    <string name="ir_refused_job">That inspection is on another job.</string>
+    <!-- Section heading on a pour -->
+    <string name="pour_inspected">Inspected before the pour</string>
+    <string name="pour_uninspected">No inspection is recorded against this pour.</string>
+    <!-- Short note on a row of the pour list -->
+    <string name="pour_no_inspection_short">no inspection recorded</string>
+    <string name="pour_link_inspection">Set a passed inspection against it</string>
+    <string name="pour_link_none">No passed inspection of the steel or the formwork on this job is free to set against it.</string>
+    <!-- Handover pack line -->
+    <string name="hv_inspections">Inspections still waiting, or failed and not asked again</string>
+    <!-- Handover pack line -->
+    <string name="hv_pours_uninspected">Pours with no inspection recorded against them</string>
+    <!-- Label on a search result -->
+    <string name="search_kind_inspection">Inspection</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

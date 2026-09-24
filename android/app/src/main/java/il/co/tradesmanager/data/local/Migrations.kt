@@ -380,6 +380,13 @@ object Migrations {
         }
     }
 
+    /** Inspection requests: one new table. */
+    val MIGRATION_37_38 = object : Migration(37, 38) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_37_38.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -417,6 +424,7 @@ object Migrations {
         MIGRATION_34_35,
         MIGRATION_35_36,
         MIGRATION_36_37,
+        MIGRATION_37_38,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1056,5 +1064,16 @@ object Migrations {
             "`askedByName` TEXT NOT NULL, `answer` TEXT, `answeredAt` INTEGER, " +
             "`answerRecordedByName` TEXT, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_design_queries_projectId` ON `design_queries` (`projectId`)",
+    )
+
+    /** Requests for somebody to inspect work before it is covered up. */
+    val SQL_37_38: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `inspections` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `kind` TEXT NOT NULL, `element` TEXT NOT NULL, " +
+            "`requestedOf` TEXT NOT NULL, `requestedAt` INTEGER NOT NULL, `wantedOn` INTEGER, " +
+            "`requestedByName` TEXT NOT NULL, `reinspectionOf` TEXT, `result` TEXT, " +
+            "`inspectorName` TEXT, `comments` TEXT, `decidedAt` INTEGER, " +
+            "`resultRecordedByName` TEXT, `clearedPourId` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_inspections_projectId` ON `inspections` (`projectId`)",
     )
 }

@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.30.0",
+      "points": [
+        {
+          "en": "Each job gets an inspection register. Before steel is poured over, a membrane screeded or a wall closed, ask for it to be inspected: what and where, of whom, and the day you want them. It is numbered IR-001, and an overdue one is shown first, in red.",
+          "he": "לכל עבודה יש עכשיו פנקס בדיקות. לפני שיוצקים על ברזל, מכסים איטום במדה או סוגרים קיר, מבקשים בדיקה: מה ואיפה, ממי, ובאיזה יום. כל בקשה ממוספרת IR-001, ובקשה שעבר מועדה מוצגת ראשונה, באדום.",
+          "ar": "لكل مشروع الآن سجل فحوصات. قبل صبّ الخرسانة على الحديد أو تغطية العزل أو إغلاق الجدار، اطلب فحصه: ماذا وأين، ومِن مَن، وفي أي يوم. يُرقَّم كل طلب IR-001، ويظهر الطلب المتأخر أولًا باللون الأحمر."
+        },
+        {
+          "en": "The result is written once, with the name of whoever inspected. A failure needs its reason, and is not edited into a pass: it is asked again under a new number, and both stay on the record. A photograph of the signed form can go with it.",
+          "he": "התוצאה נרשמת פעם אחת, עם שם מי שבדק. בדיקה שנפסלה צריכה סיבה, ואי אפשר לשנות אותה לאישור: מבקשים אותה שוב במספר חדש, ושתיהן נשארות ברישום. אפשר לצרף צילום של הטופס החתום.",
+          "ar": "تُسجَّل النتيجة مرة واحدة مع اسم مَن قام بالفحص. الفحص المرفوض يحتاج إلى سبب، ولا يُعدَّل إلى مقبول: يُطلب مجددًا برقم جديد، ويبقى الاثنان في السجل. ويمكن إرفاق صورة للنموذج الموقّع."
+        },
+        {
+          "en": "A pour now shows the passed inspection of the steel or the formwork that let it go ahead, or says that none is recorded. The handover pack counts inspections still waiting and pours with none, and the search box finds inspections by number, place, inspector or comment.",
+          "he": "יציקה מציגה עכשיו את בדיקת הברזל או הטפסנות שאושרה ושחררה אותה, או מציינת שלא נרשמה בדיקה. תיק המסירה סופר בדיקות שעדיין ממתינות ויציקות בלי בדיקה, ותיבת החיפוש מוצאת בדיקות לפי מספר, מקום, בודק או הערה.",
+          "ar": "تعرض الصبّة الآن فحص الحديد أو القوالب المقبول الذي أجازها، أو تذكر أنه لم يُسجَّل فحص. وتحصي حزمة التسليم الفحوصات التي لا تزال منتظرة والصبّات التي بلا فحص، ويجد صندوق البحث الفحوصات برقمها أو مكانها أو الفاحص أو الملاحظة."
+        }
+      ]
+    },
+    {
       "version": "0.29.0",
       "points": [
         {

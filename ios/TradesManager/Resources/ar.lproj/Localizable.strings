@@ -2005,3 +2005,100 @@
 "search_kind_query" = "سؤال";
 /* Search result kind */
 "search_kind_visitor" = "زائر";
+"summary_ir_cleared_pour" = "%1$s أجاز الصبّة %2$s";
+"summary_ir_failed" = "رفض %2$s الفحص %1$s";
+"summary_ir_passed" = "اعتمد %2$s الفحص %1$s";
+"summary_ir_passed_with_comments" = "اعتمد %2$s الفحص %1$s مع ملاحظات";
+"summary_ir_requested" = "%1$s: طُلب الفحص من %2$s";
+"summary_ir_requested_again" = "لم يجتز %1$s؛ طُلب مجددًا برقم %2$s";
+/* Screen title and job link */
+"ir_title" = "طلبات الفحص";
+/* Hint under the job link */
+"ir_row_hint" = "الحديد أو العزل أو الأنابيب، تُفحص قبل تغطيتها";
+"ir_empty" = "لم يُطلب أي فحص في هذا المشروع بعد.";
+"ir_blurb" = "قبل صبّ الخرسانة على الحديد أو تغطية العزل أو إغلاق الجدار، اطلب فحصه هنا. تُسجَّل النتيجة مرة واحدة؛ والفحص المرفوض يُطلب مجددًا، ويبقى الاثنان في السجل.";
+/* Button and dialog title */
+"ir_request" = "طلب فحص";
+"ir_kind" = "نوع الفحص";
+/* Steel reinforcement, inspected before a pour */
+"ir_kind_reinforcement" = "حديد التسليح";
+"ir_kind_formwork" = "القوالب";
+"ir_kind_waterproofing" = "العزل المائي";
+"ir_kind_pipe_pressure" = "اختبار ضغط الأنابيب";
+"ir_kind_electrical" = "الكهرباء";
+"ir_kind_other" = "أخرى";
+"ir_element" = "ماذا وأين";
+"ir_element_hint" = "سقف الطابق 3، المحاور A–D، الحديد السفلي";
+"ir_requested_of" = "مَن يُطلب منه";
+"ir_requested_of_typed" = "أو اكتب مَن";
+"ir_of_engineer" = "المهندس الإنشائي";
+/* The owner's site supervisor */
+"ir_of_supervisor" = "المشرف";
+"ir_of_electrical" = "فاحص الكهرباء";
+"ir_of_client" = "ممثل صاحب العمل";
+"ir_wanted_on" = "مطلوب يوم";
+"ir_no_date" = "بلا تاريخ";
+"ir_today" = "اليوم";
+"ir_tomorrow" = "غدًا";
+"ir_in_2_days" = "بعد يومين";
+"ir_send" = "إرسال الطلب";
+/* %1$s is a date */
+"ir_wanted" = "مطلوب في %1$s";
+/* %1$s is a date */
+"ir_asked_on" = "طُلب في %1$s";
+/* %1$s is a date */
+"ir_overdue" = "مطلوب في %1$s ولم يحضر أحد";
+/* %1$s is a date, %2$s the inspector's name */
+"ir_passed_on" = "اعتُمد في %1$s من %2$s";
+/* %1$s is a date, %2$s the inspector's name */
+"ir_failed_on" = "رُفض في %1$s من %2$s: العمل متوقف";
+/* %1$s is the new request's number */
+"ir_reinspected_as" = "رُفض، وطُلب مجددًا برقم %1$s";
+/* %1$s is the failed request's number */
+"ir_reinspection_of" = "طلب مجدد بعد رفض %1$s";
+"ir_result" = "النتيجة";
+"ir_result_passed" = "مقبول";
+"ir_result_comments" = "مقبول مع ملاحظات";
+"ir_result_failed" = "مرفوض";
+"ir_record_result" = "تسجيل النتيجة";
+"ir_inspector" = "مَن فحص";
+"ir_inspector_hint" = "اسم الشخص، لا صفته";
+"ir_comments" = "ملاحظات";
+"ir_why_failed" = "سبب الرفض";
+"ir_record" = "تسجيل";
+/* %1$s is the name of whoever typed it in */
+"ir_recorded_by" = "أدخله %1$s";
+"ir_ask_again" = "طلب مجدد";
+"ir_ask_again_blurb" = "العمل نفسه، من الشخص نفسه، برقم جديد يشير إلى هذا الطلب.";
+/* %1$s is a pour's number */
+"ir_cleared" = "أجاز الصبّة %1$s";
+"ir_form" = "النموذج الموقّع";
+"ir_no_form" = "لا توجد صورة للنموذج بعد.";
+"ir_add_form" = "إضافة صورة للنموذج";
+"ir_refused_not_allowed" = "دورك لا يتولى سجل الموقع.";
+"ir_refused_element" = "اذكر ما يجب فحصه وأين.";
+"ir_refused_nobody" = "اذكر مَن يُطلب منه الفحص.";
+"ir_refused_date" = "لا يمكن طلبه قبل اليوم.";
+"ir_refused_decided" = "النتيجة مسجلة بالفعل. الفحص المرفوض يُطلب مجددًا ولا يُعدَّل.";
+"ir_refused_inspector" = "اكتب اسم مَن قام بالفحص.";
+"ir_refused_reason" = "اذكر سبب الرفض ليكون هناك ما يُصلَح.";
+"ir_refused_comments" = "اكتب الملاحظات التي اعتُمد بها.";
+"ir_refused_not_failed" = "لا يُطلب مجددًا إلا الفحص المرفوض.";
+"ir_refused_reinspected" = "طُلب مجددًا بالفعل؛ تابع ذلك الطلب.";
+"ir_refused_not_passed" = "لا يُجيز الصبّة إلا فحص مقبول.";
+"ir_refused_not_pour" = "لا يُجيز الصبّة إلا فحص الحديد أو القوالب.";
+"ir_refused_cleared" = "هذا الفحص أجاز صبّة أخرى بالفعل.";
+"ir_refused_job" = "هذا الفحص يخص مشروعًا آخر.";
+/* Section heading on a pour */
+"pour_inspected" = "فُحص قبل الصب";
+"pour_uninspected" = "لم يُسجَّل فحص لهذه الصبّة.";
+/* Short note on a row of the pour list */
+"pour_no_inspection_short" = "لا فحص مسجل";
+"pour_link_inspection" = "ربط فحص مقبول";
+"pour_link_none" = "لا يوجد في هذا المشروع فحص مقبول للحديد أو القوالب لم يُربط بصبّة بعد.";
+/* Handover pack line */
+"hv_inspections" = "فحوصات لا تزال منتظرة، أو رُفضت ولم تُطلب مجددًا";
+/* Handover pack line */
+"hv_pours_uninspected" = "صبّات لم يُسجَّل لها فحص";
+/* Label on a search result */
+"search_kind_inspection" = "فحص";

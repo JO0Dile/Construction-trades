@@ -399,6 +399,60 @@
       "he": "%1$s שולמה",
       "ar": "%1$s دُفعت"
     },
+    "ir_cleared_pour": {
+      "arguments": [
+        "reference",
+        "pour"
+      ],
+      "en": "%1$s cleared %2$s",
+      "he": "%1$s שחררה את %2$s ליציקה",
+      "ar": "%1$s أجاز الصبّة %2$s"
+    },
+    "ir_failed": {
+      "arguments": [
+        "reference",
+        "inspector"
+      ],
+      "en": "%1$s failed by %2$s",
+      "he": "%1$s נפסלה על ידי %2$s",
+      "ar": "رفض %2$s الفحص %1$s"
+    },
+    "ir_passed": {
+      "arguments": [
+        "reference",
+        "inspector"
+      ],
+      "en": "%1$s passed by %2$s",
+      "he": "%1$s אושרה על ידי %2$s",
+      "ar": "اعتمد %2$s الفحص %1$s"
+    },
+    "ir_passed_with_comments": {
+      "arguments": [
+        "reference",
+        "inspector"
+      ],
+      "en": "%1$s passed with comments by %2$s",
+      "he": "%1$s אושרה עם הערות על ידי %2$s",
+      "ar": "اعتمد %2$s الفحص %1$s مع ملاحظات"
+    },
+    "ir_requested": {
+      "arguments": [
+        "reference",
+        "requested_of"
+      ],
+      "en": "%1$s: inspection asked of %2$s",
+      "he": "%1$s: התבקשה בדיקה מ־%2$s",
+      "ar": "%1$s: طُلب الفحص من %2$s"
+    },
+    "ir_requested_again": {
+      "arguments": [
+        "previous",
+        "reference"
+      ],
+      "en": "%1$s failed; asked again as %2$s",
+      "he": "%1$s נפסלה; התבקשה שוב כ־%2$s",
+      "ar": "لم يجتز %1$s؛ طُلب مجددًا برقم %2$s"
+    },
     "item_removed": {
       "arguments": [],
       "en": "Item removed from stock",

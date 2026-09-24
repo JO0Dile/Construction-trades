@@ -618,6 +618,18 @@ site's own calendar, so Thursday evening is still Thursday — is shown first
 and in red, the answer is written once and not edited afterwards, and the
 handover pack counts the ones never answered.
 
+**Inspection requests. Done.**
+Before the steel is poured over, the membrane screeded or the wall closed,
+somebody is asked to look. Each request says what and where, of whom, and
+the day the site wants them, and gets a number; the result is written once
+with the name of whoever inspected, a failure needs its reason, and a photo
+of the signed form can go with it. A failed inspection is not edited into a
+pass: it is asked again under a new number that points back at it, so the
+record keeps both. A pour shows the passed inspection of the steel or the
+forms that let it go ahead, or says none is recorded, and the handover pack
+counts both. Which elements need inspecting, and by whom, is the job's
+specification; the register only keeps the record.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -682,21 +694,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~96 | *estimated — see below* |
+| Built | ~97 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, and the visitor log.
+register, the visitor log, and inspection requests.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

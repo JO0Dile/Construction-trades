@@ -3,10 +3,13 @@ package il.co.tradesmanager.ui.concrete
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.evidence.CubeTests
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.data.local.entity.ConcreteCubeSetEntity
 import il.co.tradesmanager.data.local.entity.ConcretePourEntity
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
+import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.repository.ConcreteRepository
+import il.co.tradesmanager.data.repository.InspectionRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -18,6 +21,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -86,6 +90,68 @@ class ConcreteViewModel(
             CubeTests.judgeStored(set.ageDays, set.strengthsMpa, pour.mixDesign)?.needsEngineer == true
         }.map { it.pourId }.toSet()
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptySet())
+
+    /** Whether this person sees the site's record, which is where inspections live. */
+    val seesInspections: StateFlow<Boolean> = session
+        .map { (it as? SessionRepository.State.SignedIn)?.role?.let { InspectionRepository.mayRead(it) } == true }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    val mayClearPours: StateFlow<Boolean> = session
+        .map { (it as? SessionRepository.State.SignedIn)?.role?.let { InspectionRepository.mayWrite(it) } == true }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    /** The job's inspections, and none at all for somebody who may not read them. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val inspections = seesInspections.flatMapLatest { sees ->
+        if (sees) container.inspections.observeForProject(projectId) else flowOf(emptyList())
+    }
+
+    /** The inspections that cleared each pour. */
+    val inspectionsByPour: StateFlow<Map<String, List<InspectionEntity>>> = inspections
+        .map { all -> all.mapNotNull { row -> row.clearedPourId?.let { it to row } }.groupBy({ it.first }, { it.second }) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
+    /**
+     * Pours with no inspection set against them, for the list. Empty for
+     * somebody who cannot see inspections: to them the pour list says nothing
+     * about inspections either way.
+     */
+    val uninspected: StateFlow<Set<String>> = combine(pours, inspectionsByPour, seesInspections) { rows, cleared, sees ->
+        if (!sees) emptySet() else rows.map { it.id }.filterNot { it in cleared }.toSet()
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptySet())
+
+    /** Passed inspections of the steel or the forms not yet set against a pour. */
+    val clearable: StateFlow<List<InspectionEntity>> = inspections
+        .map { all ->
+            all.filter {
+                it.clearedPourId == null &&
+                    Inspections.kindOf(it.kind) in Inspections.POUR_KINDS &&
+                    Inspections.passed(Inspections.resultOf(it.result))
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    private val _inspectionRefusal = MutableStateFlow<InspectionRepository.Refusal?>(null)
+    val inspectionRefusal: StateFlow<InspectionRepository.Refusal?> = _inspectionRefusal.asStateFlow()
+
+    fun clearInspectionRefusal() {
+        _inspectionRefusal.value = null
+    }
+
+    /** Sets a passed inspection against the open pour. */
+    fun clearOpenPour(inspectionId: String) = viewModelScope.launch {
+        val pourId = _openPourId.value ?: return@launch
+        val me = session.value as? SessionRepository.State.SignedIn
+        if (me == null) {
+            _inspectionRefusal.value = InspectionRepository.Refusal.NOT_ALLOWED
+            return@launch
+        }
+        container.inspections.clearPour(me.role, inspectionId, pourId, me.account.displayName)
+            .onFailure { failure ->
+                _inspectionRefusal.value = (failure as? InspectionRepository.Refused)?.refusal
+                    ?: InspectionRepository.Refusal.UNKNOWN
+            }
+    }
 
     private val _cubeRefusal = MutableStateFlow<ConcreteRepository.CubeRefusal?>(null)
     val cubeRefusal: StateFlow<ConcreteRepository.CubeRefusal?> = _cubeRefusal.asStateFlow()

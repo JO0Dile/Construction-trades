@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
 import il.co.tradesmanager.core.find.Search
@@ -126,6 +127,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.DRAWING)) hits += drawings(terms, jobNames)
         if (mayRead(Search.Kind.QUERY)) hits += queries(terms, jobNames)
         if (mayRead(Search.Kind.VISITOR)) hits += visitors(terms, jobNames)
+        if (mayRead(Search.Kind.INSPECTION)) hits += inspections(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -385,6 +387,28 @@ class SearchViewModel(
                 isOpen = visit.leftAt == null,
                 terms = terms,
                 projectId = visit.projectId,
+            )
+        }
+
+    /* ----------------------------------------------------- the inspections */
+    private suspend fun inspections(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.inspections.all().mapNotNull { inspection ->
+            hit(
+                id = inspection.id,
+                kind = Search.Kind.INSPECTION,
+                title = inspection.reference + " " + inspection.element,
+                detail = listOfNotNull(inspection.requestedOf, jobNames[inspection.projectId]).joinToString(" "),
+                // Whoever inspected, and what they wrote: "the engineer said
+                // the laps were short" is found by "laps".
+                matchAlso = listOfNotNull(inspection.inspectorName, inspection.comments).joinToString(" "),
+                // Still open until somebody has passed it; a failed one is
+                // the most open of all.
+                isOpen = !Inspections.passed(Inspections.resultOf(inspection.result)),
+                terms = terms,
+                projectId = inspection.projectId,
             )
         }
 

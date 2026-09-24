@@ -44,6 +44,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.ConcretePour
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
@@ -57,6 +58,8 @@ import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberNow
 import il.co.tradesmanager.ui.evidence.pluralCount
+import il.co.tradesmanager.ui.inspections.inspectionRefusalText
+import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import java.time.Instant
 import java.time.ZoneId
 import java.util.Locale
@@ -87,6 +90,12 @@ fun ConcreteScreen(
     val cubeSets by viewModel.cubeSets.collectAsStateWithLifecycle()
     val needsEngineer by viewModel.needsEngineer.collectAsStateWithLifecycle()
     val cubeRefusal by viewModel.cubeRefusal.collectAsStateWithLifecycle()
+    val seesInspections by viewModel.seesInspections.collectAsStateWithLifecycle()
+    val mayClearPours by viewModel.mayClearPours.collectAsStateWithLifecycle()
+    val inspectionsByPour by viewModel.inspectionsByPour.collectAsStateWithLifecycle()
+    val uninspected by viewModel.uninspected.collectAsStateWithLifecycle()
+    val clearable by viewModel.clearable.collectAsStateWithLifecycle()
+    val inspectionRefusal by viewModel.inspectionRefusal.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
     // A minute is the right cadence: the numbers on this screen are minutes.
@@ -98,6 +107,7 @@ fun ConcreteScreen(
     var addingTruck by remember { mutableStateOf(false) }
     var rejecting by remember { mutableStateOf<ConcreteTicketEntity?>(null) }
     var addingCubes by remember { mutableStateOf(false) }
+    var clearing by remember { mutableStateOf(false) }
 
     val pour = openPour
     // Stable sort over a list the database already returns in batching order,
@@ -175,6 +185,7 @@ fun ConcreteScreen(
                                         } else {
                                             null
                                         },
+                                        if (row.id in uninspected) stringResource(R.string.pour_no_inspection_short) else null,
                                     ).joinToString(" · "),
                                 )
                             },
@@ -201,6 +212,47 @@ fun ConcreteScreen(
                             stringResource(R.string.pour_temperature),
                             Formats.quantity(it, locale),
                         )
+                    }
+                }
+            }
+
+            // What let the pour go ahead. Only for somebody who sees the
+            // site's record; to anybody else this section does not exist.
+            if (seesInspections) {
+                val cleared = inspectionsByPour[pour.id].orEmpty()
+                item { SectionHeader(stringResource(R.string.pour_inspected)) }
+                if (cleared.isEmpty()) {
+                    item {
+                        Text(
+                            stringResource(R.string.pour_uninspected),
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                        )
+                    }
+                }
+                items(cleared, key = { it.id }) { inspection ->
+                    ListItem(
+                        overlineContent = { Text(inspection.reference) },
+                        headlineContent = { Text(inspection.element) },
+                        supportingContent = {
+                            Text(
+                                listOfNotNull(
+                                    stringResource(inspectionKindLabel(Inspections.kindOf(inspection.kind))),
+                                    inspection.inspectorName,
+                                ).joinToString(" · "),
+                            )
+                        },
+                    )
+                }
+                if (mayClearPours) {
+                    item {
+                        OutlinedButton(
+                            onClick = { clearing = true },
+                            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                        ) {
+                            Text(stringResource(R.string.pour_link_inspection))
+                        }
                     }
                 }
             }
@@ -282,6 +334,47 @@ fun ConcreteScreen(
             onRecord = { age, laboratory, report, strengths ->
                 addingCubes = false
                 viewModel.recordCubes(age, laboratory, report, strengths)
+            },
+        )
+    }
+
+    if (clearing) {
+        AlertDialog(
+            onDismissRequest = { clearing = false },
+            title = { Text(stringResource(R.string.pour_link_inspection)) },
+            text = {
+                if (clearable.isEmpty()) {
+                    Text(stringResource(R.string.pour_link_none))
+                } else {
+                    Column(Modifier.verticalScroll(rememberScrollState())) {
+                        clearable.forEach { inspection ->
+                            ListItem(
+                                overlineContent = {
+                                    Text(inspection.reference + " · " + stringResource(inspectionKindLabel(Inspections.kindOf(inspection.kind))))
+                                },
+                                headlineContent = { Text(inspection.element) },
+                                supportingContent = { inspection.inspectorName?.let { Text(it) } },
+                                modifier = Modifier.clickable {
+                                    clearing = false
+                                    viewModel.clearOpenPour(inspection.id)
+                                },
+                            )
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { clearing = false }) { Text(stringResource(R.string.action_close)) }
+            },
+        )
+    }
+
+    inspectionRefusal?.let { refusal ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearInspectionRefusal,
+            text = { Text(stringResource(inspectionRefusalText(refusal))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearInspectionRefusal) { Text(stringResource(R.string.action_ok)) }
             },
         )
     }

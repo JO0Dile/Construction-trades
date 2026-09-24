@@ -2005,3 +2005,100 @@
 "search_kind_query" = "שאלה";
 /* Search result kind */
 "search_kind_visitor" = "מבקר";
+"summary_ir_cleared_pour" = "%1$s שחררה את %2$s ליציקה";
+"summary_ir_failed" = "%1$s נפסלה על ידי %2$s";
+"summary_ir_passed" = "%1$s אושרה על ידי %2$s";
+"summary_ir_passed_with_comments" = "%1$s אושרה עם הערות על ידי %2$s";
+"summary_ir_requested" = "%1$s: התבקשה בדיקה מ־%2$s";
+"summary_ir_requested_again" = "%1$s נפסלה; התבקשה שוב כ־%2$s";
+/* Screen title and job link */
+"ir_title" = "בקשות לבדיקה";
+/* Hint under the job link */
+"ir_row_hint" = "ברזל, איטום או צנרת, נבדקים לפני שהם מכוסים";
+"ir_empty" = "עדיין לא התבקשו בדיקות בעבודה הזו.";
+"ir_blurb" = "לפני שיוצקים על ברזל, מכסים איטום במדה או סוגרים קיר, בקשו כאן שיבדקו. התוצאה נרשמת פעם אחת; בדיקה שנפסלה מתבקשת שוב, ושתיהן נשארות ברישום.";
+/* Button and dialog title */
+"ir_request" = "בקשת בדיקה";
+"ir_kind" = "סוג הבדיקה";
+/* Steel reinforcement, inspected before a pour */
+"ir_kind_reinforcement" = "ברזל זיון";
+"ir_kind_formwork" = "טפסנות";
+"ir_kind_waterproofing" = "איטום";
+"ir_kind_pipe_pressure" = "בדיקת לחץ בצנרת";
+"ir_kind_electrical" = "חשמל";
+"ir_kind_other" = "אחר";
+"ir_element" = "מה ואיפה";
+"ir_element_hint" = "תקרת קומה 3, צירים A–D, ברזל תחתון";
+"ir_requested_of" = "ממי מבקשים";
+"ir_requested_of_typed" = "או הקלידו מי";
+"ir_of_engineer" = "מהנדס הקונסטרוקציה";
+/* The owner's site supervisor */
+"ir_of_supervisor" = "המפקח";
+"ir_of_electrical" = "בודק החשמל";
+"ir_of_client" = "נציג המזמין";
+"ir_wanted_on" = "מתי מבקשים";
+"ir_no_date" = "ללא תאריך";
+"ir_today" = "היום";
+"ir_tomorrow" = "מחר";
+"ir_in_2_days" = "בעוד יומיים";
+"ir_send" = "שליחת הבקשה";
+/* %1$s is a date */
+"ir_wanted" = "מבוקש ל־%1$s";
+/* %1$s is a date */
+"ir_asked_on" = "התבקשה ב־%1$s";
+/* %1$s is a date */
+"ir_overdue" = "התבקשה ל־%1$s ועדיין לא הגיעו";
+/* %1$s is a date, %2$s the inspector's name */
+"ir_passed_on" = "אושרה ב־%1$s על ידי %2$s";
+/* %1$s is a date, %2$s the inspector's name */
+"ir_failed_on" = "נפסלה ב־%1$s על ידי %2$s: העבודה מעוכבת";
+/* %1$s is the new request's number */
+"ir_reinspected_as" = "נפסלה, והתבקשה שוב כ־%1$s";
+/* %1$s is the failed request's number */
+"ir_reinspection_of" = "בקשה חוזרת אחרי ש־%1$s נפסלה";
+"ir_result" = "תוצאה";
+"ir_result_passed" = "אושרה";
+"ir_result_comments" = "אושרה עם הערות";
+"ir_result_failed" = "נפסלה";
+"ir_record_result" = "רישום התוצאה";
+"ir_inspector" = "מי בדק";
+"ir_inspector_hint" = "שם האדם, לא התפקיד";
+"ir_comments" = "הערות";
+"ir_why_failed" = "למה נפסלה";
+"ir_record" = "רישום";
+/* %1$s is the name of whoever typed it in */
+"ir_recorded_by" = "הוקלד על ידי %1$s";
+"ir_ask_again" = "בקשה חוזרת";
+"ir_ask_again_blurb" = "אותה עבודה, מאותו אדם, במספר חדש שמפנה לבקשה הזו.";
+/* %1$s is a pour's number */
+"ir_cleared" = "שחררה את %1$s ליציקה";
+"ir_form" = "הטופס החתום";
+"ir_no_form" = "עדיין אין צילום של הטופס.";
+"ir_add_form" = "הוספת צילום של הטופס";
+"ir_refused_not_allowed" = "התפקיד שלך לא מנהל את רישום האתר.";
+"ir_refused_element" = "כתבו מה לבדוק ואיפה.";
+"ir_refused_nobody" = "כתבו ממי מבקשים לבדוק.";
+"ir_refused_date" = "אי אפשר לבקש לתאריך שלפני היום.";
+"ir_refused_decided" = "התוצאה כבר נרשמה. בדיקה שנפסלה מבקשים שוב, לא משנים.";
+"ir_refused_inspector" = "כתבו את שם מי שבדק.";
+"ir_refused_reason" = "כתבו למה נפסלה, כדי שיהיה מה לתקן.";
+"ir_refused_comments" = "כתבו את ההערות שאיתן אושרה.";
+"ir_refused_not_failed" = "רק בדיקה שנפסלה מבקשים שוב.";
+"ir_refused_reinspected" = "כבר התבקשה שוב; עקבו אחרי הבקשה ההיא.";
+"ir_refused_not_passed" = "רק בדיקה שאושרה משחררת יציקה.";
+"ir_refused_not_pour" = "רק בדיקת ברזל או טפסנות משחררת יציקה.";
+"ir_refused_cleared" = "הבדיקה הזו כבר שחררה יציקה אחרת.";
+"ir_refused_job" = "הבדיקה הזו שייכת לעבודה אחרת.";
+/* Section heading on a pour */
+"pour_inspected" = "נבדק לפני היציקה";
+"pour_uninspected" = "לא נרשמה בדיקה עבור היציקה הזו.";
+/* Short note on a row of the pour list */
+"pour_no_inspection_short" = "לא נרשמה בדיקה";
+"pour_link_inspection" = "שיוך בדיקה שאושרה";
+"pour_link_none" = "אין בעבודה הזו בדיקת ברזל או טפסנות שאושרה ועדיין לא שויכה ליציקה.";
+/* Handover pack line */
+"hv_inspections" = "בדיקות שעדיין ממתינות, או שנפסלו ולא התבקשו שוב";
+/* Handover pack line */
+"hv_pours_uninspected" = "יציקות שלא נרשמה עבורן בדיקה";
+/* Label on a search result */
+"search_kind_inspection" = "בדיקה";

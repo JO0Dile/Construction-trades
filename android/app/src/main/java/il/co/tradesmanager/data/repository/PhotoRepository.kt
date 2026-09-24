@@ -80,6 +80,13 @@ class PhotoRepository(
         const val DRAWING = "drawing"
 
         /**
+         * The inspection as it was signed: the supervisor's form, the page
+         * in the site book, the steel with the tape on it. Against one
+         * request in the inspection register.
+         */
+        const val INSPECTION = "inspection"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

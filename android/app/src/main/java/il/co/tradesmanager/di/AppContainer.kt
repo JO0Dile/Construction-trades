@@ -20,6 +20,7 @@ import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
 import il.co.tradesmanager.data.repository.ExcavationRepository
 import il.co.tradesmanager.data.repository.HeatRepository
+import il.co.tradesmanager.data.repository.InspectionRepository
 import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
@@ -192,6 +193,11 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Questions put to the designers, and their answers. */
     val designQueries = DesignQueryRepository(database.designQueryDao(), auditTrail)
+
+    /** Requests to inspect work before it is covered up, and the pours they cleared. */
+    val inspections = InspectionRepository(database.inspectionDao(), auditTrail) { pourId ->
+        database.concreteDao().pour(pourId)?.let { InspectionRepository.PourRef(it.projectId, it.reference) }
+    }
 
     /**
      * Taking the record off the phone and putting it back.

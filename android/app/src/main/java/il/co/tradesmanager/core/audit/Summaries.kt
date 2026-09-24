@@ -332,6 +332,48 @@ object Summaries {
     const val INVOICE_PAID = "invoice_paid"
 
     /**
+     * %1$s cleared %2$s
+     *
+     * Arguments, in order: reference, pour.
+     */
+    const val IR_CLEARED_POUR = "ir_cleared_pour"
+
+    /**
+     * %1$s failed by %2$s
+     *
+     * Arguments, in order: reference, inspector.
+     */
+    const val IR_FAILED = "ir_failed"
+
+    /**
+     * %1$s passed by %2$s
+     *
+     * Arguments, in order: reference, inspector.
+     */
+    const val IR_PASSED = "ir_passed"
+
+    /**
+     * %1$s passed with comments by %2$s
+     *
+     * Arguments, in order: reference, inspector.
+     */
+    const val IR_PASSED_WITH_COMMENTS = "ir_passed_with_comments"
+
+    /**
+     * %1$s: inspection asked of %2$s
+     *
+     * Arguments, in order: reference, requested_of.
+     */
+    const val IR_REQUESTED = "ir_requested"
+
+    /**
+     * %1$s failed; asked again as %2$s
+     *
+     * Arguments, in order: previous, reference.
+     */
+    const val IR_REQUESTED_AGAIN = "ir_requested_again"
+
+    /**
      * Item removed from stock
      */
     const val ITEM_REMOVED = "item_removed"

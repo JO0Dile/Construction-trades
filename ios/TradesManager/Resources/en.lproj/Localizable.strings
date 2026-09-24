@@ -2005,3 +2005,100 @@
 "search_kind_query" = "Question";
 /* Search result kind */
 "search_kind_visitor" = "Visitor";
+"summary_ir_cleared_pour" = "%1$s cleared %2$s";
+"summary_ir_failed" = "%1$s failed by %2$s";
+"summary_ir_passed" = "%1$s passed by %2$s";
+"summary_ir_passed_with_comments" = "%1$s passed with comments by %2$s";
+"summary_ir_requested" = "%1$s: inspection asked of %2$s";
+"summary_ir_requested_again" = "%1$s failed; asked again as %2$s";
+/* Screen title and job link */
+"ir_title" = "Inspection requests";
+/* Hint under the job link */
+"ir_row_hint" = "The steel, the membrane or the pipes, seen before they are covered";
+"ir_empty" = "No inspections asked for on this job yet.";
+"ir_blurb" = "Before steel is poured over, a membrane screeded or a wall closed, ask here for it to be seen. The result is written once; a failed one is asked again, and both stay on the record.";
+/* Button and dialog title */
+"ir_request" = "Ask for an inspection";
+"ir_kind" = "What kind";
+/* Steel reinforcement, inspected before a pour */
+"ir_kind_reinforcement" = "Reinforcement";
+"ir_kind_formwork" = "Formwork";
+"ir_kind_waterproofing" = "Waterproofing";
+"ir_kind_pipe_pressure" = "Pipe pressure test";
+"ir_kind_electrical" = "Electrical";
+"ir_kind_other" = "Other";
+"ir_element" = "What, and where";
+"ir_element_hint" = "Level 3 slab, grids A–D, bottom steel";
+"ir_requested_of" = "Asked of";
+"ir_requested_of_typed" = "Or type who";
+"ir_of_engineer" = "The structural engineer";
+/* The owner's site supervisor */
+"ir_of_supervisor" = "The supervisor";
+"ir_of_electrical" = "The electrical inspector";
+"ir_of_client" = "The client's representative";
+"ir_wanted_on" = "Wanted on";
+"ir_no_date" = "No date";
+"ir_today" = "Today";
+"ir_tomorrow" = "Tomorrow";
+"ir_in_2_days" = "In 2 days";
+"ir_send" = "Ask";
+/* %1$s is a date */
+"ir_wanted" = "Wanted %1$s";
+/* %1$s is a date */
+"ir_asked_on" = "Asked %1$s";
+/* %1$s is a date */
+"ir_overdue" = "Wanted %1$s, and nobody has come";
+/* %1$s is a date, %2$s the inspector's name */
+"ir_passed_on" = "Passed %1$s by %2$s";
+/* %1$s is a date, %2$s the inspector's name */
+"ir_failed_on" = "Failed %1$s by %2$s: the work is held";
+/* %1$s is the new request's number */
+"ir_reinspected_as" = "Failed, and asked again as %1$s";
+/* %1$s is the failed request's number */
+"ir_reinspection_of" = "Asked again after %1$s failed";
+"ir_result" = "Result";
+"ir_result_passed" = "Passed";
+"ir_result_comments" = "Passed with comments";
+"ir_result_failed" = "Failed";
+"ir_record_result" = "Record the result";
+"ir_inspector" = "Who inspected";
+"ir_inspector_hint" = "The person's name, not their title";
+"ir_comments" = "Comments";
+"ir_why_failed" = "Why it failed";
+"ir_record" = "Record";
+/* %1$s is the name of whoever typed it in */
+"ir_recorded_by" = "typed in by %1$s";
+"ir_ask_again" = "Ask again";
+"ir_ask_again_blurb" = "The same work, of the same person, under a new number that points back at this one.";
+/* %1$s is a pour's number */
+"ir_cleared" = "Cleared %1$s";
+"ir_form" = "The signed form";
+"ir_no_form" = "No photograph of the form yet.";
+"ir_add_form" = "Add a photograph of the form";
+"ir_refused_not_allowed" = "Your role does not keep the site's record.";
+"ir_refused_element" = "Say what is to be inspected, and where.";
+"ir_refused_nobody" = "Say who is asked to inspect.";
+"ir_refused_date" = "It cannot be wanted before today.";
+"ir_refused_decided" = "The result is already recorded. A failed inspection is asked again, not changed.";
+"ir_refused_inspector" = "Write the name of whoever inspected.";
+"ir_refused_reason" = "Say why it failed, so there is something to fix.";
+"ir_refused_comments" = "Write the comments it passed with.";
+"ir_refused_not_failed" = "Only a failed inspection is asked again.";
+"ir_refused_reinspected" = "It has already been asked again; follow that request.";
+"ir_refused_not_passed" = "Only a passed inspection clears a pour.";
+"ir_refused_not_pour" = "Only an inspection of the steel or the formwork clears a pour.";
+"ir_refused_cleared" = "That inspection has already cleared another pour.";
+"ir_refused_job" = "That inspection is on another job.";
+/* Section heading on a pour */
+"pour_inspected" = "Inspected before the pour";
+"pour_uninspected" = "No inspection is recorded against this pour.";
+/* Short note on a row of the pour list */
+"pour_no_inspection_short" = "no inspection recorded";
+"pour_link_inspection" = "Set a passed inspection against it";
+"pour_link_none" = "No passed inspection of the steel or the formwork on this job is free to set against it.";
+/* Handover pack line */
+"hv_inspections" = "Inspections still waiting, or failed and not asked again";
+/* Handover pack line */
+"hv_pours_uninspected" = "Pours with no inspection recorded against them";
+/* Label on a search result */
+"search_kind_inspection" = "Inspection";

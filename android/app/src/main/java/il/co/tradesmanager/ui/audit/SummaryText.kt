@@ -123,6 +123,12 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.INSPECTION_FAILED -> R.string.summary_inspection_failed
     Summaries.INSPECTION_PASSED -> R.string.summary_inspection_passed
     Summaries.INVOICE_PAID -> R.string.summary_invoice_paid
+    Summaries.IR_CLEARED_POUR -> R.string.summary_ir_cleared_pour
+    Summaries.IR_FAILED -> R.string.summary_ir_failed
+    Summaries.IR_PASSED -> R.string.summary_ir_passed
+    Summaries.IR_PASSED_WITH_COMMENTS -> R.string.summary_ir_passed_with_comments
+    Summaries.IR_REQUESTED -> R.string.summary_ir_requested
+    Summaries.IR_REQUESTED_AGAIN -> R.string.summary_ir_requested_again
     Summaries.ITEM_REMOVED -> R.string.summary_item_removed
     Summaries.JOINED_AS -> R.string.summary_joined_as
     Summaries.LEFT_COMPANY -> R.string.summary_left_company
