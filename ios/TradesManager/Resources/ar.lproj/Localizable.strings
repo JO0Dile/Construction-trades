@@ -2102,3 +2102,80 @@
 "hv_pours_uninspected" = "صبّات لم يُسجَّل لها فحص";
 /* Label on a search result */
 "search_kind_inspection" = "فحص";
+"summary_ms_approved" = "اعتمد %2$s المادة %1$s";
+"summary_ms_approved_as_noted" = "اعتمد %2$s المادة %1$s مع ملاحظات";
+"summary_ms_rejected" = "رفض %2$s المادة %1$s";
+"summary_ms_resubmitted" = "أُعيد إرسال %1$s بالإصدار %2$s";
+"summary_ms_submitted" = "أُرسل %1$s للاعتماد إلى %2$s";
+/* Screen title and job link */
+"ms_title" = "اعتماد المواد";
+/* Hint under the job link */
+"ms_row_hint" = "ما أُرسل للاعتماد، ولمن، وبماذا أُجيب";
+"ms_empty" = "لم يُرسل شيء للاعتماد في هذا المشروع بعد.";
+"ms_blurb" = "قبل طلب البلاط أو مادة العزل أو نظام النوافذ، أرسلها هنا للاعتماد. تُسجَّل الإجابة مرة واحدة؛ وما يُرفض يُرفع إصداره بالرقم نفسه، وتبقى كل محاولة في السجل.";
+/* Button and dialog title */
+"ms_submit" = "إرسال للاعتماد";
+"ms_item" = "ما المقترح";
+"ms_item_hint" = "بلاط بورسلين للأرضيات 60×60، رمادي، مطفأ";
+"ms_supplier" = "المصنّع أو المورّد";
+"ms_location" = "أين يُستخدم، أو البند الذي يلبّيه";
+"ms_submitted_to" = "أُرسل إلى";
+"ms_submitted_to_typed" = "أو اكتب إلى مَن";
+"ms_to_architect" = "المهندس المعماري";
+/* The owner's site supervisor */
+"ms_to_supervisor" = "المشرف";
+"ms_to_engineer" = "المهندس الإنشائي";
+"ms_to_client" = "ممثل صاحب العمل";
+"ms_needed_by" = "الإجابة مطلوبة قبل";
+"ms_no_date" = "بلا تاريخ";
+"ms_in_3_days" = "بعد 3 أيام";
+"ms_in_a_week" = "بعد أسبوع";
+"ms_in_2_weeks" = "بعد أسبوعين";
+"ms_send" = "إرسال";
+/* %1$s is the number, %2$d the revision */
+"ms_revision_of" = "%1$s الإصدار %2$d";
+/* %1$s is a date */
+"ms_sent_on" = "أُرسل في %1$s";
+/* %1$s is a date */
+"ms_needed" = "مطلوب قبل %1$s";
+/* %1$s is a date */
+"ms_overdue" = "مطلوب قبل %1$s، ولا إجابة";
+/* %1$s is a date, %2$s the reviewer's name */
+"ms_approved_on" = "اعتُمد في %1$s من %2$s";
+/* %1$s is a date, %2$s the reviewer's name */
+"ms_rejected_on" = "رُفض في %1$s من %2$s: لا يُطلب";
+/* %1$d is the next revision */
+"ms_superseded" = "رُفض، وأُعيد إرساله بالإصدار %1$d";
+/* %1$d is the earlier revision */
+"ms_follows" = "يلي الإصدار %1$d الذي رُفض";
+"ms_decision" = "الإجابة";
+"ms_decision_approved" = "معتمد";
+"ms_decision_noted" = "معتمد مع ملاحظات";
+"ms_decision_rejected" = "مرفوض";
+"ms_record_decision" = "تسجيل الإجابة";
+"ms_reviewer" = "مَن قرّر";
+"ms_reviewer_hint" = "اسم الشخص، لا صفته";
+"ms_notes" = "ملاحظات";
+"ms_why_rejected" = "سبب الرفض";
+"ms_record" = "تسجيل";
+/* %1$s is the name of whoever typed it in */
+"ms_recorded_by" = "أدخله %1$s";
+"ms_send_again" = "إعادة الإرسال";
+"ms_send_again_blurb" = "الرقم نفسه، الإصدار التالي، إلى الشخص نفسه. غيّر المقترح إن تغيّر.";
+"ms_sheet" = "ورقة البيانات أو العينة";
+"ms_no_sheet" = "لا توجد صورة بعد.";
+"ms_add_sheet" = "إضافة صورة";
+"ms_refused_not_allowed" = "دورك لا يخطط للعمل.";
+"ms_refused_item" = "اذكر ما المقترح.";
+"ms_refused_nobody" = "اذكر إلى مَن يُرسل.";
+"ms_refused_date" = "لا يمكن أن تكون الإجابة مطلوبة قبل اليوم.";
+"ms_refused_decided" = "الإجابة مسجلة بالفعل. ما يُرفض يُعاد إرساله ولا يُعدَّل.";
+"ms_refused_reviewer" = "اكتب اسم مَن قرّر.";
+"ms_refused_reason" = "اذكر سبب الرفض ليجيب عنه الإصدار التالي.";
+"ms_refused_notes" = "اكتب الملاحظات التي اعتُمد بها.";
+"ms_refused_not_rejected" = "لا يُعاد إرسال إلا المرفوض.";
+"ms_refused_resubmitted" = "أُعيد إرساله بالفعل؛ تابع الإصدار اللاحق.";
+/* Handover pack line */
+"hv_submittals" = "مواد لا تزال تنتظر الاعتماد، أو رُفضت ولم يُعد إرسالها";
+/* Label on a search result */
+"search_kind_submittal" = "اعتماد مادة";

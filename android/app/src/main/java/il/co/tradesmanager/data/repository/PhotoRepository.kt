@@ -87,6 +87,12 @@ class PhotoRepository(
         const val INSPECTION = "inspection"
 
         /**
+         * What was submitted for approval: the datasheet, the sample on the
+         * table, the colour card. Against one revision of one submittal.
+         */
+        const val SUBMITTAL = "submittal"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

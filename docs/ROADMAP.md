@@ -630,6 +630,16 @@ forms that let it go ahead, or says none is recorded, and the handover pack
 counts both. Which elements need inspecting, and by whom, is the job's
 specification; the register only keeps the record.
 
+**Material approvals. Done.**
+The tile, the membrane, the window system: sent to the architect or the
+supervisor before it is ordered, with what is proposed, who makes it, where
+it goes, and the day the answer is needed to order in time. The answer --
+approved, approved as noted, or rejected -- is written once with the name of
+whoever gave it, and a rejection needs its reason. A rejected submittal keeps
+its number and goes up a revision, the way the trade numbers them, and every
+go stays on the record with its datasheet. The handover pack counts the ones
+still waiting or rejected and not sent again.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -694,21 +704,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~97 | *estimated — see below* |
+| Built | ~98 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, the visitor log, and inspection requests.
+register, the visitor log, inspection requests, and material approvals.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

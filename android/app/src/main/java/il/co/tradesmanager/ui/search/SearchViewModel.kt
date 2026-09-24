@@ -9,6 +9,7 @@ import il.co.tradesmanager.core.find.Search
 import il.co.tradesmanager.core.i18n.SOURCE_LANGUAGE
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.i18n.searchable
+import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
@@ -128,6 +129,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.QUERY)) hits += queries(terms, jobNames)
         if (mayRead(Search.Kind.VISITOR)) hits += visitors(terms, jobNames)
         if (mayRead(Search.Kind.INSPECTION)) hits += inspections(terms, jobNames)
+        if (mayRead(Search.Kind.SUBMITTAL)) hits += submittals(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -411,6 +413,32 @@ class SearchViewModel(
                 projectId = inspection.projectId,
             )
         }
+
+    /* ------------------------------------------------ the material approvals */
+    private suspend fun submittals(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        // One hit per submittal: its latest revision is the one that says where it stands.
+        container.submittals.all()
+            .groupBy { it.projectId to it.reference }
+            .values
+            .map { revisions -> revisions.maxBy { it.revision } }
+            .mapNotNull { submittal ->
+                hit(
+                    id = submittal.id,
+                    kind = Search.Kind.SUBMITTAL,
+                    title = submittal.reference + " " + submittal.item,
+                    detail = listOfNotNull(submittal.supplier, jobNames[submittal.projectId]).joinToString(" "),
+                    // Where it goes, who decided, and what they wrote are all
+                    // things somebody remembers a submittal by.
+                    matchAlso = listOfNotNull(submittal.location, submittal.submittedTo, submittal.reviewerName, submittal.notes)
+                        .joinToString(" "),
+                    isOpen = !Submittals.approved(Submittals.decisionOf(submittal.decision)),
+                    terms = terms,
+                    projectId = submittal.projectId,
+                )
+            }
 
     /**
      * Scores a row, and drops it here rather than building a hit to throw away.

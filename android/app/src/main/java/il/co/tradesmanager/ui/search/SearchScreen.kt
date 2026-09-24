@@ -194,4 +194,5 @@ private fun kindLabel(kind: Search.Kind): Int = when (kind) {
     Search.Kind.QUERY -> R.string.search_kind_query
     Search.Kind.VISITOR -> R.string.search_kind_visitor
     Search.Kind.INSPECTION -> R.string.search_kind_inspection
+    Search.Kind.SUBMITTAL -> R.string.search_kind_submittal
 }

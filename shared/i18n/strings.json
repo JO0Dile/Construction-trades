@@ -8747,6 +8747,331 @@
       "en": "Inspection",
       "he": "בדיקה",
       "ar": "فحص"
+    },
+    "summary_ms_approved": {
+      "en": "%1$s approved by %2$s",
+      "he": "%1$s אושר על ידי %2$s",
+      "ar": "اعتمد %2$s المادة %1$s"
+    },
+    "summary_ms_approved_as_noted": {
+      "en": "%1$s approved as noted by %2$s",
+      "he": "%1$s אושר בהערות על ידי %2$s",
+      "ar": "اعتمد %2$s المادة %1$s مع ملاحظات"
+    },
+    "summary_ms_rejected": {
+      "en": "%1$s rejected by %2$s",
+      "he": "%1$s נדחה על ידי %2$s",
+      "ar": "رفض %2$s المادة %1$s"
+    },
+    "summary_ms_resubmitted": {
+      "en": "%1$s sent again as revision %2$s",
+      "he": "%1$s נשלח שוב כמהדורה %2$s",
+      "ar": "أُعيد إرسال %1$s بالإصدار %2$s"
+    },
+    "summary_ms_submitted": {
+      "en": "%1$s sent for approval to %2$s",
+      "he": "%1$s נשלח לאישור אל %2$s",
+      "ar": "أُرسل %1$s للاعتماد إلى %2$s"
+    },
+    "ms_title": {
+      "c": "Screen title and job link",
+      "en": "Material approvals",
+      "he": "אישורי חומרים",
+      "ar": "اعتماد المواد"
+    },
+    "ms_row_hint": {
+      "c": "Hint under the job link",
+      "en": "What was sent for approval, to whom, and what they said",
+      "he": "מה נשלח לאישור, למי, ומה נענה",
+      "ar": "ما أُرسل للاعتماد، ولمن، وبماذا أُجيب"
+    },
+    "ms_empty": {
+      "en": "Nothing sent for approval on this job yet.",
+      "he": "עדיין לא נשלח דבר לאישור בעבודה הזו.",
+      "ar": "لم يُرسل شيء للاعتماد في هذا المشروع بعد."
+    },
+    "ms_blurb": {
+      "en": "Before a tile, a membrane or a window system is ordered, send it for approval here. The answer is written once; a rejected one goes up a revision under the same number, and every go stays on the record.",
+      "he": "לפני שמזמינים אריח, חומר איטום או מערכת חלונות, שלחו אותם כאן לאישור. התשובה נרשמת פעם אחת; מה שנדחה עולה מהדורה באותו מספר, וכל הגשה נשארת ברישום.",
+      "ar": "قبل طلب البلاط أو مادة العزل أو نظام النوافذ، أرسلها هنا للاعتماد. تُسجَّل الإجابة مرة واحدة؛ وما يُرفض يُرفع إصداره بالرقم نفسه، وتبقى كل محاولة في السجل."
+    },
+    "ms_submit": {
+      "c": "Button and dialog title",
+      "en": "Send for approval",
+      "he": "שליחה לאישור",
+      "ar": "إرسال للاعتماد"
+    },
+    "ms_item": {
+      "en": "What is proposed",
+      "he": "מה מוצע",
+      "ar": "ما المقترح"
+    },
+    "ms_item_hint": {
+      "en": "Porcelain floor tile 60×60, grey, matt",
+      "he": "אריח פורצלן לרצפה 60×60, אפור, מט",
+      "ar": "بلاط بورسلين للأرضيات 60×60، رمادي، مطفأ"
+    },
+    "ms_supplier": {
+      "en": "Maker or supplier",
+      "he": "יצרן או ספק",
+      "ar": "المصنّع أو المورّد"
+    },
+    "ms_location": {
+      "en": "Where it goes, or the clause it answers",
+      "he": "איפה ייושם, או הסעיף במפרט",
+      "ar": "أين يُستخدم، أو البند الذي يلبّيه"
+    },
+    "ms_submitted_to": {
+      "en": "Sent to",
+      "he": "נשלח אל",
+      "ar": "أُرسل إلى"
+    },
+    "ms_submitted_to_typed": {
+      "en": "Or type who",
+      "he": "או הקלידו למי",
+      "ar": "أو اكتب إلى مَن"
+    },
+    "ms_to_architect": {
+      "en": "The architect",
+      "he": "האדריכל",
+      "ar": "المهندس المعماري"
+    },
+    "ms_to_supervisor": {
+      "c": "The owner's site supervisor",
+      "en": "The supervisor",
+      "he": "המפקח",
+      "ar": "المشرف"
+    },
+    "ms_to_engineer": {
+      "en": "The structural engineer",
+      "he": "מהנדס הקונסטרוקציה",
+      "ar": "المهندس الإنشائي"
+    },
+    "ms_to_client": {
+      "en": "The client's representative",
+      "he": "נציג המזמין",
+      "ar": "ممثل صاحب العمل"
+    },
+    "ms_needed_by": {
+      "en": "Answer needed by",
+      "he": "תשובה נדרשת עד",
+      "ar": "الإجابة مطلوبة قبل"
+    },
+    "ms_no_date": {
+      "en": "No date",
+      "he": "ללא תאריך",
+      "ar": "بلا تاريخ"
+    },
+    "ms_in_3_days": {
+      "en": "In 3 days",
+      "he": "בעוד 3 ימים",
+      "ar": "بعد 3 أيام"
+    },
+    "ms_in_a_week": {
+      "en": "In a week",
+      "he": "בעוד שבוע",
+      "ar": "بعد أسبوع"
+    },
+    "ms_in_2_weeks": {
+      "en": "In 2 weeks",
+      "he": "בעוד שבועיים",
+      "ar": "بعد أسبوعين"
+    },
+    "ms_send": {
+      "en": "Send",
+      "he": "שליחה",
+      "ar": "إرسال"
+    },
+    "ms_revision_of": {
+      "c": "%1$s is the number, %2$d the revision",
+      "en": "%1$s rev. %2$d",
+      "he": "%1$s מהדורה %2$d",
+      "ar": "%1$s الإصدار %2$d"
+    },
+    "ms_sent_on": {
+      "c": "%1$s is a date",
+      "en": "Sent %1$s",
+      "he": "נשלח ב־%1$s",
+      "ar": "أُرسل في %1$s"
+    },
+    "ms_needed": {
+      "c": "%1$s is a date",
+      "en": "Needed by %1$s",
+      "he": "נדרש עד %1$s",
+      "ar": "مطلوب قبل %1$s"
+    },
+    "ms_overdue": {
+      "c": "%1$s is a date",
+      "en": "Needed by %1$s, and no answer",
+      "he": "נדרש עד %1$s, ואין תשובה",
+      "ar": "مطلوب قبل %1$s، ولا إجابة"
+    },
+    "ms_approved_on": {
+      "c": "%1$s is a date, %2$s the reviewer's name",
+      "en": "Approved %1$s by %2$s",
+      "he": "אושר ב־%1$s על ידי %2$s",
+      "ar": "اعتُمد في %1$s من %2$s"
+    },
+    "ms_rejected_on": {
+      "c": "%1$s is a date, %2$s the reviewer's name",
+      "en": "Rejected %1$s by %2$s: not to be ordered",
+      "he": "נדחה ב־%1$s על ידי %2$s: לא להזמין",
+      "ar": "رُفض في %1$s من %2$s: لا يُطلب"
+    },
+    "ms_superseded": {
+      "c": "%1$d is the next revision",
+      "en": "Rejected, and sent again as revision %1$d",
+      "he": "נדחה, ונשלח שוב כמהדורה %1$d",
+      "ar": "رُفض، وأُعيد إرساله بالإصدار %1$d"
+    },
+    "ms_follows": {
+      "c": "%1$d is the earlier revision",
+      "en": "Follows revision %1$d, which was rejected",
+      "he": "בא אחרי מהדורה %1$d, שנדחתה",
+      "ar": "يلي الإصدار %1$d الذي رُفض"
+    },
+    "ms_decision": {
+      "en": "Answer",
+      "he": "תשובה",
+      "ar": "الإجابة"
+    },
+    "ms_decision_approved": {
+      "en": "Approved",
+      "he": "אושר",
+      "ar": "معتمد"
+    },
+    "ms_decision_noted": {
+      "en": "Approved as noted",
+      "he": "אושר בהערות",
+      "ar": "معتمد مع ملاحظات"
+    },
+    "ms_decision_rejected": {
+      "en": "Rejected",
+      "he": "נדחה",
+      "ar": "مرفوض"
+    },
+    "ms_record_decision": {
+      "en": "Record the answer",
+      "he": "רישום התשובה",
+      "ar": "تسجيل الإجابة"
+    },
+    "ms_reviewer": {
+      "en": "Who decided",
+      "he": "מי החליט",
+      "ar": "مَن قرّر"
+    },
+    "ms_reviewer_hint": {
+      "en": "The person's name, not their title",
+      "he": "שם האדם, לא התפקיד",
+      "ar": "اسم الشخص، لا صفته"
+    },
+    "ms_notes": {
+      "en": "Notes",
+      "he": "הערות",
+      "ar": "ملاحظات"
+    },
+    "ms_why_rejected": {
+      "en": "Why it was rejected",
+      "he": "למה נדחה",
+      "ar": "سبب الرفض"
+    },
+    "ms_record": {
+      "en": "Record",
+      "he": "רישום",
+      "ar": "تسجيل"
+    },
+    "ms_recorded_by": {
+      "c": "%1$s is the name of whoever typed it in",
+      "en": "typed in by %1$s",
+      "he": "הוקלד על ידי %1$s",
+      "ar": "أدخله %1$s"
+    },
+    "ms_send_again": {
+      "en": "Send again",
+      "he": "שליחה חוזרת",
+      "ar": "إعادة الإرسال"
+    },
+    "ms_send_again_blurb": {
+      "en": "The same number, the next revision, to the same person. Change what is proposed if it has changed.",
+      "he": "אותו מספר, המהדורה הבאה, לאותו אדם. שנו את מה שמוצע אם הוא השתנה.",
+      "ar": "الرقم نفسه، الإصدار التالي، إلى الشخص نفسه. غيّر المقترح إن تغيّر."
+    },
+    "ms_sheet": {
+      "en": "Datasheet or sample",
+      "he": "דף נתונים או דוגמה",
+      "ar": "ورقة البيانات أو العينة"
+    },
+    "ms_no_sheet": {
+      "en": "No photograph yet.",
+      "he": "עדיין אין צילום.",
+      "ar": "لا توجد صورة بعد."
+    },
+    "ms_add_sheet": {
+      "en": "Add a photograph",
+      "he": "הוספת צילום",
+      "ar": "إضافة صورة"
+    },
+    "ms_refused_not_allowed": {
+      "en": "Your role does not plan the work.",
+      "he": "התפקיד שלך לא מתכנן את העבודה.",
+      "ar": "دورك لا يخطط للعمل."
+    },
+    "ms_refused_item": {
+      "en": "Say what is proposed.",
+      "he": "כתבו מה מוצע.",
+      "ar": "اذكر ما المقترح."
+    },
+    "ms_refused_nobody": {
+      "en": "Say who it is sent to.",
+      "he": "כתבו למי נשלח.",
+      "ar": "اذكر إلى مَن يُرسل."
+    },
+    "ms_refused_date": {
+      "en": "The answer cannot be needed before today.",
+      "he": "אי אפשר לדרוש תשובה לפני היום.",
+      "ar": "لا يمكن أن تكون الإجابة مطلوبة قبل اليوم."
+    },
+    "ms_refused_decided": {
+      "en": "The answer is already recorded. A rejected one is sent again, not changed.",
+      "he": "התשובה כבר נרשמה. מה שנדחה שולחים שוב, לא משנים.",
+      "ar": "الإجابة مسجلة بالفعل. ما يُرفض يُعاد إرساله ولا يُعدَّل."
+    },
+    "ms_refused_reviewer": {
+      "en": "Write the name of whoever decided.",
+      "he": "כתבו את שם מי שהחליט.",
+      "ar": "اكتب اسم مَن قرّر."
+    },
+    "ms_refused_reason": {
+      "en": "Say why it was rejected, so the next revision can answer it.",
+      "he": "כתבו למה נדחה, כדי שהמהדורה הבאה תענה על כך.",
+      "ar": "اذكر سبب الرفض ليجيب عنه الإصدار التالي."
+    },
+    "ms_refused_notes": {
+      "en": "Write the notes it was approved with.",
+      "he": "כתבו את ההערות שאיתן אושר.",
+      "ar": "اكتب الملاحظات التي اعتُمد بها."
+    },
+    "ms_refused_not_rejected": {
+      "en": "Only a rejected submittal is sent again.",
+      "he": "רק מה שנדחה שולחים שוב.",
+      "ar": "لا يُعاد إرسال إلا المرفوض."
+    },
+    "ms_refused_resubmitted": {
+      "en": "It has already been sent again; follow the later revision.",
+      "he": "כבר נשלח שוב; עקבו אחרי המהדורה המאוחרת.",
+      "ar": "أُعيد إرساله بالفعل؛ تابع الإصدار اللاحق."
+    },
+    "hv_submittals": {
+      "c": "Handover pack line",
+      "en": "Materials still waiting for approval, or rejected and not sent again",
+      "he": "חומרים שעדיין ממתינים לאישור, או שנדחו ולא נשלחו שוב",
+      "ar": "مواد لا تزال تنتظر الاعتماد، أو رُفضت ولم يُعد إرسالها"
+    },
+    "search_kind_submittal": {
+      "c": "Label on a search result",
+      "en": "Material approval",
+      "he": "אישור חומר",
+      "ar": "اعتماد مادة"
     }
   },
   "plurals": {

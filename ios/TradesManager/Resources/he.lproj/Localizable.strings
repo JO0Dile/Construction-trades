@@ -2102,3 +2102,80 @@
 "hv_pours_uninspected" = "יציקות שלא נרשמה עבורן בדיקה";
 /* Label on a search result */
 "search_kind_inspection" = "בדיקה";
+"summary_ms_approved" = "%1$s אושר על ידי %2$s";
+"summary_ms_approved_as_noted" = "%1$s אושר בהערות על ידי %2$s";
+"summary_ms_rejected" = "%1$s נדחה על ידי %2$s";
+"summary_ms_resubmitted" = "%1$s נשלח שוב כמהדורה %2$s";
+"summary_ms_submitted" = "%1$s נשלח לאישור אל %2$s";
+/* Screen title and job link */
+"ms_title" = "אישורי חומרים";
+/* Hint under the job link */
+"ms_row_hint" = "מה נשלח לאישור, למי, ומה נענה";
+"ms_empty" = "עדיין לא נשלח דבר לאישור בעבודה הזו.";
+"ms_blurb" = "לפני שמזמינים אריח, חומר איטום או מערכת חלונות, שלחו אותם כאן לאישור. התשובה נרשמת פעם אחת; מה שנדחה עולה מהדורה באותו מספר, וכל הגשה נשארת ברישום.";
+/* Button and dialog title */
+"ms_submit" = "שליחה לאישור";
+"ms_item" = "מה מוצע";
+"ms_item_hint" = "אריח פורצלן לרצפה 60×60, אפור, מט";
+"ms_supplier" = "יצרן או ספק";
+"ms_location" = "איפה ייושם, או הסעיף במפרט";
+"ms_submitted_to" = "נשלח אל";
+"ms_submitted_to_typed" = "או הקלידו למי";
+"ms_to_architect" = "האדריכל";
+/* The owner's site supervisor */
+"ms_to_supervisor" = "המפקח";
+"ms_to_engineer" = "מהנדס הקונסטרוקציה";
+"ms_to_client" = "נציג המזמין";
+"ms_needed_by" = "תשובה נדרשת עד";
+"ms_no_date" = "ללא תאריך";
+"ms_in_3_days" = "בעוד 3 ימים";
+"ms_in_a_week" = "בעוד שבוע";
+"ms_in_2_weeks" = "בעוד שבועיים";
+"ms_send" = "שליחה";
+/* %1$s is the number, %2$d the revision */
+"ms_revision_of" = "%1$s מהדורה %2$d";
+/* %1$s is a date */
+"ms_sent_on" = "נשלח ב־%1$s";
+/* %1$s is a date */
+"ms_needed" = "נדרש עד %1$s";
+/* %1$s is a date */
+"ms_overdue" = "נדרש עד %1$s, ואין תשובה";
+/* %1$s is a date, %2$s the reviewer's name */
+"ms_approved_on" = "אושר ב־%1$s על ידי %2$s";
+/* %1$s is a date, %2$s the reviewer's name */
+"ms_rejected_on" = "נדחה ב־%1$s על ידי %2$s: לא להזמין";
+/* %1$d is the next revision */
+"ms_superseded" = "נדחה, ונשלח שוב כמהדורה %1$d";
+/* %1$d is the earlier revision */
+"ms_follows" = "בא אחרי מהדורה %1$d, שנדחתה";
+"ms_decision" = "תשובה";
+"ms_decision_approved" = "אושר";
+"ms_decision_noted" = "אושר בהערות";
+"ms_decision_rejected" = "נדחה";
+"ms_record_decision" = "רישום התשובה";
+"ms_reviewer" = "מי החליט";
+"ms_reviewer_hint" = "שם האדם, לא התפקיד";
+"ms_notes" = "הערות";
+"ms_why_rejected" = "למה נדחה";
+"ms_record" = "רישום";
+/* %1$s is the name of whoever typed it in */
+"ms_recorded_by" = "הוקלד על ידי %1$s";
+"ms_send_again" = "שליחה חוזרת";
+"ms_send_again_blurb" = "אותו מספר, המהדורה הבאה, לאותו אדם. שנו את מה שמוצע אם הוא השתנה.";
+"ms_sheet" = "דף נתונים או דוגמה";
+"ms_no_sheet" = "עדיין אין צילום.";
+"ms_add_sheet" = "הוספת צילום";
+"ms_refused_not_allowed" = "התפקיד שלך לא מתכנן את העבודה.";
+"ms_refused_item" = "כתבו מה מוצע.";
+"ms_refused_nobody" = "כתבו למי נשלח.";
+"ms_refused_date" = "אי אפשר לדרוש תשובה לפני היום.";
+"ms_refused_decided" = "התשובה כבר נרשמה. מה שנדחה שולחים שוב, לא משנים.";
+"ms_refused_reviewer" = "כתבו את שם מי שהחליט.";
+"ms_refused_reason" = "כתבו למה נדחה, כדי שהמהדורה הבאה תענה על כך.";
+"ms_refused_notes" = "כתבו את ההערות שאיתן אושר.";
+"ms_refused_not_rejected" = "רק מה שנדחה שולחים שוב.";
+"ms_refused_resubmitted" = "כבר נשלח שוב; עקבו אחרי המהדורה המאוחרת.";
+/* Handover pack line */
+"hv_submittals" = "חומרים שעדיין ממתינים לאישור, או שנדחו ולא נשלחו שוב";
+/* Label on a search result */
+"search_kind_submittal" = "אישור חומר";

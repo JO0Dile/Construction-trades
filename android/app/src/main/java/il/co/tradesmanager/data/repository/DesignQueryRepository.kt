@@ -84,12 +84,13 @@ class DesignQueryRepository(
         answer: String,
         byName: String,
         now: Long = System.currentTimeMillis(),
-    ): Result<DesignQueryEntity> {
-        if (!mayWrite(role)) return Result.failure(Refused(Refusal.NOT_ALLOWED))
-        val query = dao.query(queryId) ?: return Result.failure(Refused(Refusal.UNKNOWN))
-        Queries.answerRefusal(answer, query.answeredAt)?.let { return Result.failure(Refused(it.asRefusal())) }
+    ): Result<DesignQueryEntity> = numbering.withLock {
+        // Under the lock, so two answers typed in the same second cannot both land.
+        if (!mayWrite(role)) return@withLock Result.failure(Refused(Refusal.NOT_ALLOWED))
+        val query = dao.query(queryId) ?: return@withLock Result.failure(Refused(Refusal.UNKNOWN))
+        Queries.answerRefusal(answer, query.answeredAt)?.let { return@withLock Result.failure(Refused(it.asRefusal())) }
         val answered = query.copy(answer = answer.trim(), answeredAt = now, answerRecordedByName = byName)
-        return runCatching {
+        runCatching {
             dao.upsert(answered)
             audit.record(
                 ENTITY, query.id, AuditTrail.Action.UPDATE, byName,

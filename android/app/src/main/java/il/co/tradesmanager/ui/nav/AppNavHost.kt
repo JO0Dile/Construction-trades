@@ -84,6 +84,7 @@ import il.co.tradesmanager.ui.drawings.DrawingsScreen
 import il.co.tradesmanager.ui.people.TicketGapsScreen
 import il.co.tradesmanager.ui.queries.QueriesScreen
 import il.co.tradesmanager.ui.inspections.InspectionsScreen
+import il.co.tradesmanager.ui.submittals.SubmittalsScreen
 import il.co.tradesmanager.ui.update.WhatsNewGate
 import il.co.tradesmanager.ui.visitors.VisitorsScreen
 import il.co.tradesmanager.ui.waste.WasteScreen
@@ -121,6 +122,7 @@ object Routes {
     const val DRAWINGS = "projects/drawings"
     const val QUERIES = "projects/queries"
     const val INSPECTIONS = "projects/inspections"
+    const val SUBMITTALS = "projects/submittals"
     const val TICKET_GAPS = "people/tickets"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
@@ -181,6 +183,7 @@ object Routes {
     fun drawings(projectId: String) = "$DRAWINGS/$projectId"
     fun queries(projectId: String) = "$QUERIES/$projectId"
     fun inspections(projectId: String) = "$INSPECTIONS/$projectId"
+    fun submittals(projectId: String) = "$SUBMITTALS/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
 }
 
@@ -208,6 +211,7 @@ private fun routeFor(hit: Search.Hit): String = when (hit.kind) {
     Search.Kind.QUERY -> Routes.queries(hit.projectId.orEmpty())
     Search.Kind.VISITOR -> Routes.visitors(hit.projectId.orEmpty())
     Search.Kind.INSPECTION -> Routes.inspections(hit.projectId.orEmpty())
+    Search.Kind.SUBMITTAL -> Routes.submittals(hit.projectId.orEmpty())
 }
 
 /**
@@ -385,6 +389,7 @@ fun AppNavHost(
                     onOpenDrawings = { navController.navigate(Routes.drawings(id)) },
                     onOpenQueries = { navController.navigate(Routes.queries(id)) },
                     onOpenInspections = { navController.navigate(Routes.inspections(id)) },
+                    onOpenSubmittals = { navController.navigate(Routes.submittals(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     // A part, or the job it belongs to. Same screen, so the
@@ -586,6 +591,13 @@ fun AppNavHost(
             }
             composable("${Routes.WASTE}/{projectId}") { entry ->
                 WasteScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.SUBMITTALS}/{projectId}") { entry ->
+                SubmittalsScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

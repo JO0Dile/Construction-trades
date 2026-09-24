@@ -2102,3 +2102,80 @@
 "hv_pours_uninspected" = "Pours with no inspection recorded against them";
 /* Label on a search result */
 "search_kind_inspection" = "Inspection";
+"summary_ms_approved" = "%1$s approved by %2$s";
+"summary_ms_approved_as_noted" = "%1$s approved as noted by %2$s";
+"summary_ms_rejected" = "%1$s rejected by %2$s";
+"summary_ms_resubmitted" = "%1$s sent again as revision %2$s";
+"summary_ms_submitted" = "%1$s sent for approval to %2$s";
+/* Screen title and job link */
+"ms_title" = "Material approvals";
+/* Hint under the job link */
+"ms_row_hint" = "What was sent for approval, to whom, and what they said";
+"ms_empty" = "Nothing sent for approval on this job yet.";
+"ms_blurb" = "Before a tile, a membrane or a window system is ordered, send it for approval here. The answer is written once; a rejected one goes up a revision under the same number, and every go stays on the record.";
+/* Button and dialog title */
+"ms_submit" = "Send for approval";
+"ms_item" = "What is proposed";
+"ms_item_hint" = "Porcelain floor tile 60×60, grey, matt";
+"ms_supplier" = "Maker or supplier";
+"ms_location" = "Where it goes, or the clause it answers";
+"ms_submitted_to" = "Sent to";
+"ms_submitted_to_typed" = "Or type who";
+"ms_to_architect" = "The architect";
+/* The owner's site supervisor */
+"ms_to_supervisor" = "The supervisor";
+"ms_to_engineer" = "The structural engineer";
+"ms_to_client" = "The client's representative";
+"ms_needed_by" = "Answer needed by";
+"ms_no_date" = "No date";
+"ms_in_3_days" = "In 3 days";
+"ms_in_a_week" = "In a week";
+"ms_in_2_weeks" = "In 2 weeks";
+"ms_send" = "Send";
+/* %1$s is the number, %2$d the revision */
+"ms_revision_of" = "%1$s rev. %2$d";
+/* %1$s is a date */
+"ms_sent_on" = "Sent %1$s";
+/* %1$s is a date */
+"ms_needed" = "Needed by %1$s";
+/* %1$s is a date */
+"ms_overdue" = "Needed by %1$s, and no answer";
+/* %1$s is a date, %2$s the reviewer's name */
+"ms_approved_on" = "Approved %1$s by %2$s";
+/* %1$s is a date, %2$s the reviewer's name */
+"ms_rejected_on" = "Rejected %1$s by %2$s: not to be ordered";
+/* %1$d is the next revision */
+"ms_superseded" = "Rejected, and sent again as revision %1$d";
+/* %1$d is the earlier revision */
+"ms_follows" = "Follows revision %1$d, which was rejected";
+"ms_decision" = "Answer";
+"ms_decision_approved" = "Approved";
+"ms_decision_noted" = "Approved as noted";
+"ms_decision_rejected" = "Rejected";
+"ms_record_decision" = "Record the answer";
+"ms_reviewer" = "Who decided";
+"ms_reviewer_hint" = "The person's name, not their title";
+"ms_notes" = "Notes";
+"ms_why_rejected" = "Why it was rejected";
+"ms_record" = "Record";
+/* %1$s is the name of whoever typed it in */
+"ms_recorded_by" = "typed in by %1$s";
+"ms_send_again" = "Send again";
+"ms_send_again_blurb" = "The same number, the next revision, to the same person. Change what is proposed if it has changed.";
+"ms_sheet" = "Datasheet or sample";
+"ms_no_sheet" = "No photograph yet.";
+"ms_add_sheet" = "Add a photograph";
+"ms_refused_not_allowed" = "Your role does not plan the work.";
+"ms_refused_item" = "Say what is proposed.";
+"ms_refused_nobody" = "Say who it is sent to.";
+"ms_refused_date" = "The answer cannot be needed before today.";
+"ms_refused_decided" = "The answer is already recorded. A rejected one is sent again, not changed.";
+"ms_refused_reviewer" = "Write the name of whoever decided.";
+"ms_refused_reason" = "Say why it was rejected, so the next revision can answer it.";
+"ms_refused_notes" = "Write the notes it was approved with.";
+"ms_refused_not_rejected" = "Only a rejected submittal is sent again.";
+"ms_refused_resubmitted" = "It has already been sent again; follow the later revision.";
+/* Handover pack line */
+"hv_submittals" = "Materials still waiting for approval, or rejected and not sent again";
+/* Label on a search result */
+"search_kind_submittal" = "Material approval";

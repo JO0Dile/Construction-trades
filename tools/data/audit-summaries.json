@@ -523,6 +523,51 @@
       "he": "%1$s נוסף בתפקיד %2$s",
       "ar": "%1$s أُضيف بصفة %2$s"
     },
+    "ms_approved": {
+      "arguments": [
+        "reference",
+        "reviewer"
+      ],
+      "en": "%1$s approved by %2$s",
+      "he": "%1$s אושר על ידי %2$s",
+      "ar": "اعتمد %2$s المادة %1$s"
+    },
+    "ms_approved_as_noted": {
+      "arguments": [
+        "reference",
+        "reviewer"
+      ],
+      "en": "%1$s approved as noted by %2$s",
+      "he": "%1$s אושר בהערות על ידי %2$s",
+      "ar": "اعتمد %2$s المادة %1$s مع ملاحظات"
+    },
+    "ms_rejected": {
+      "arguments": [
+        "reference",
+        "reviewer"
+      ],
+      "en": "%1$s rejected by %2$s",
+      "he": "%1$s נדחה על ידי %2$s",
+      "ar": "رفض %2$s المادة %1$s"
+    },
+    "ms_resubmitted": {
+      "arguments": [
+        "reference",
+        "revision"
+      ],
+      "en": "%1$s sent again as revision %2$s",
+      "he": "%1$s נשלח שוב כמהדורה %2$s",
+      "ar": "أُعيد إرسال %1$s بالإصدار %2$s"
+    },
+    "ms_submitted": {
+      "arguments": [
+        "reference",
+        "submitted_to"
+      ],
+      "en": "%1$s sent for approval to %2$s",
+      "he": "%1$s נשלח לאישור אל %2$s",
+      "ar": "أُرسل %1$s للاعتماد إلى %2$s"
+    },
     "muster_ended_all_out": {
       "arguments": [],
       "en": "Roll call ended, everybody accounted for",

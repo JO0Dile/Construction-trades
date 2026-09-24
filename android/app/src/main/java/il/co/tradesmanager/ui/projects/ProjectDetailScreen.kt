@@ -123,6 +123,7 @@ fun ProjectDetailScreen(
     onOpenDrawings: () -> Unit,
     onOpenQueries: () -> Unit,
     onOpenInspections: () -> Unit,
+    onOpenSubmittals: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -188,6 +189,8 @@ fun ProjectDetailScreen(
         if (canSeePlan) add(JobLink(R.string.dwg_title, R.string.dwg_row_hint, onOpenDrawings))
         // Beside the drawings, because most questions are about one.
         if (canSeePlan) add(JobLink(R.string.qry_title, R.string.qry_row_hint, onOpenQueries))
+        // The other thing sent to the designers and waited on: what is to be ordered.
+        if (canSeePlan) add(JobLink(R.string.ms_title, R.string.ms_row_hint, onOpenSubmittals))
         // Part of the site's record: who looked at the work before it was covered.
         if (canSeeEvidence) add(JobLink(R.string.ir_title, R.string.ir_row_hint, onOpenInspections))
         // Beside the log, because it is the other thing somebody at the gate

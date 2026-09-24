@@ -70,6 +70,9 @@ object HandoverPack {
         /** Pours with no passed inspection of the steel or the forms set against them. */
         POURS_WITHOUT_INSPECTION,
 
+        /** Materials still waiting for an answer, or rejected and not sent again. */
+        SUBMITTALS_OUTSTANDING,
+
         /**
          * Loads of waste with neither a ticket number nor a photograph of
          * the ticket: nothing yet shows where they went.

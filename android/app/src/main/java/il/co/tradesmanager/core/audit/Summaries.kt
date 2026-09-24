@@ -431,6 +431,41 @@ object Summaries {
     const val MEMBER_ADDED = "member_added"
 
     /**
+     * %1$s approved by %2$s
+     *
+     * Arguments, in order: reference, reviewer.
+     */
+    const val MS_APPROVED = "ms_approved"
+
+    /**
+     * %1$s approved as noted by %2$s
+     *
+     * Arguments, in order: reference, reviewer.
+     */
+    const val MS_APPROVED_AS_NOTED = "ms_approved_as_noted"
+
+    /**
+     * %1$s rejected by %2$s
+     *
+     * Arguments, in order: reference, reviewer.
+     */
+    const val MS_REJECTED = "ms_rejected"
+
+    /**
+     * %1$s sent again as revision %2$s
+     *
+     * Arguments, in order: reference, revision.
+     */
+    const val MS_RESUBMITTED = "ms_resubmitted"
+
+    /**
+     * %1$s sent for approval to %2$s
+     *
+     * Arguments, in order: reference, submitted_to.
+     */
+    const val MS_SUBMITTED = "ms_submitted"
+
+    /**
      * Roll call ended, everybody accounted for
      */
     const val MUSTER_ENDED_ALL_OUT = "muster_ended_all_out"

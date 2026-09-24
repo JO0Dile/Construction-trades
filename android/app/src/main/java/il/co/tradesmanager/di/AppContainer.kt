@@ -35,6 +35,7 @@ import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.SubmittalRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TemporaryWorksRepository
 import il.co.tradesmanager.data.repository.TradeRepository
@@ -193,6 +194,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Questions put to the designers, and their answers. */
     val designQueries = DesignQueryRepository(database.designQueryDao(), auditTrail)
+
+    /** Materials sent for approval before they are ordered. */
+    val submittals = SubmittalRepository(database.submittalDao(), auditTrail)
 
     /** Requests to inspect work before it is covered up, and the pours they cleared. */
     val inspections = InspectionRepository(database.inspectionDao(), auditTrail) { pourId ->

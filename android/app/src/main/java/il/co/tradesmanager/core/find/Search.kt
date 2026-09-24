@@ -97,6 +97,7 @@ object Search {
         QUERY(setOf(Lens.PLAN)),
         VISITOR(setOf(Lens.EVIDENCE)),
         INSPECTION(setOf(Lens.EVIDENCE)),
+        SUBMITTAL(setOf(Lens.PLAN)),
     }
 
     /**

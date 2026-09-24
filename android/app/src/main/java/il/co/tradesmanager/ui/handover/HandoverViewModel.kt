@@ -8,6 +8,7 @@ import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
+import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
@@ -148,13 +149,29 @@ class HandoverViewModel(
         )
     }
 
+    /** Materials, by the same rule the register lists them with -- see Submittals.state. */
+    private val fromSubmittals = container.submittals.observeForProject(projectId).map { submittals ->
+        val now = System.currentTimeMillis()
+        val zone = ZoneId.systemDefault()
+        val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
+        mapOf(
+            HandoverPack.Item.SUBMITTALS_OUTSTANDING to submittals.count {
+                Submittals.outstanding(
+                    Submittals.state(Submittals.decisionOf(it.decision), it.neededBy, it.id in sentAgain, now, zone),
+                )
+            },
+        )
+    }
+
+    private val fromAskedOf = combine(fromQueries, fromSubmittals) { queries, submittals -> queries + submittals }
+
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,
         fromWorks,
         fromWaste,
         fromCubes,
-        fromQueries,
-    ) { safety, works, waste, cubes, queries -> HandoverPack.readiness(safety + works + waste + cubes + queries) }
+        fromAskedOf,
+    ) { safety, works, waste, cubes, askedOf -> HandoverPack.readiness(safety + works + waste + cubes + askedOf) }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5_000),

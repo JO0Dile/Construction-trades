@@ -459,5 +459,6 @@ internal fun handoverItemLabel(item: HandoverPack.Item): Int = when (item) {
     HandoverPack.Item.QUERIES_UNANSWERED -> R.string.hv_queries
     HandoverPack.Item.INSPECTIONS_OUTSTANDING -> R.string.hv_inspections
     HandoverPack.Item.POURS_WITHOUT_INSPECTION -> R.string.hv_pours_uninspected
+    HandoverPack.Item.SUBMITTALS_OUTSTANDING -> R.string.hv_submittals
     HandoverPack.Item.WASTE_WITHOUT_TICKET -> R.string.hv_waste_unproven
 }

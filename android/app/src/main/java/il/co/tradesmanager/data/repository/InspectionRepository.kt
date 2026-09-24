@@ -144,11 +144,13 @@ class InspectionRepository(
         comments: String,
         byName: String,
         now: Long = System.currentTimeMillis(),
-    ): Result<InspectionEntity> {
-        if (!mayWrite(role)) return Result.failure(Refused(Refusal.NOT_ALLOWED))
-        val inspection = dao.inspection(inspectionId) ?: return Result.failure(Refused(Refusal.UNKNOWN))
+    ): Result<InspectionEntity> = numbering.withLock {
+        // Under the lock, so two phones' taps in the same second cannot both
+        // be the one result.
+        if (!mayWrite(role)) return@withLock Result.failure(Refused(Refusal.NOT_ALLOWED))
+        val inspection = dao.inspection(inspectionId) ?: return@withLock Result.failure(Refused(Refusal.UNKNOWN))
         Inspections.resultRefusal(result, inspectorName, comments, inspection.decidedAt)?.let {
-            return Result.failure(Refused(it.asRefusal()))
+            return@withLock Result.failure(Refused(it.asRefusal()))
         }
         val decided = inspection.copy(
             result = result.name,
@@ -162,7 +164,7 @@ class InspectionRepository(
             Inspections.Result.PASSED_WITH_COMMENTS -> Summaries.IR_PASSED_WITH_COMMENTS
             Inspections.Result.FAILED -> Summaries.IR_FAILED
         }
-        return runCatching {
+        runCatching {
             dao.upsert(decided)
             audit.record(
                 ENTITY, inspection.id, AuditTrail.Action.UPDATE, byName,

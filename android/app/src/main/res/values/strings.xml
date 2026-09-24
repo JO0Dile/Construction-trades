@@ -2103,6 +2103,83 @@
     <string name="hv_pours_uninspected">Pours with no inspection recorded against them</string>
     <!-- Label on a search result -->
     <string name="search_kind_inspection">Inspection</string>
+    <string name="summary_ms_approved">%1$s approved by %2$s</string>
+    <string name="summary_ms_approved_as_noted">%1$s approved as noted by %2$s</string>
+    <string name="summary_ms_rejected">%1$s rejected by %2$s</string>
+    <string name="summary_ms_resubmitted">%1$s sent again as revision %2$s</string>
+    <string name="summary_ms_submitted">%1$s sent for approval to %2$s</string>
+    <!-- Screen title and job link -->
+    <string name="ms_title">Material approvals</string>
+    <!-- Hint under the job link -->
+    <string name="ms_row_hint">What was sent for approval, to whom, and what they said</string>
+    <string name="ms_empty">Nothing sent for approval on this job yet.</string>
+    <string name="ms_blurb">Before a tile, a membrane or a window system is ordered, send it for approval here. The answer is written once; a rejected one goes up a revision under the same number, and every go stays on the record.</string>
+    <!-- Button and dialog title -->
+    <string name="ms_submit">Send for approval</string>
+    <string name="ms_item">What is proposed</string>
+    <string name="ms_item_hint">Porcelain floor tile 60×60, grey, matt</string>
+    <string name="ms_supplier">Maker or supplier</string>
+    <string name="ms_location">Where it goes, or the clause it answers</string>
+    <string name="ms_submitted_to">Sent to</string>
+    <string name="ms_submitted_to_typed">Or type who</string>
+    <string name="ms_to_architect">The architect</string>
+    <!-- The owner's site supervisor -->
+    <string name="ms_to_supervisor">The supervisor</string>
+    <string name="ms_to_engineer">The structural engineer</string>
+    <string name="ms_to_client">The client\'s representative</string>
+    <string name="ms_needed_by">Answer needed by</string>
+    <string name="ms_no_date">No date</string>
+    <string name="ms_in_3_days">In 3 days</string>
+    <string name="ms_in_a_week">In a week</string>
+    <string name="ms_in_2_weeks">In 2 weeks</string>
+    <string name="ms_send">Send</string>
+    <!-- %1$s is the number, %2$d the revision -->
+    <string name="ms_revision_of">%1$s rev. %2$d</string>
+    <!-- %1$s is a date -->
+    <string name="ms_sent_on">Sent %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="ms_needed">Needed by %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="ms_overdue">Needed by %1$s, and no answer</string>
+    <!-- %1$s is a date, %2$s the reviewer's name -->
+    <string name="ms_approved_on">Approved %1$s by %2$s</string>
+    <!-- %1$s is a date, %2$s the reviewer's name -->
+    <string name="ms_rejected_on">Rejected %1$s by %2$s: not to be ordered</string>
+    <!-- %1$d is the next revision -->
+    <string name="ms_superseded">Rejected, and sent again as revision %1$d</string>
+    <!-- %1$d is the earlier revision -->
+    <string name="ms_follows">Follows revision %1$d, which was rejected</string>
+    <string name="ms_decision">Answer</string>
+    <string name="ms_decision_approved">Approved</string>
+    <string name="ms_decision_noted">Approved as noted</string>
+    <string name="ms_decision_rejected">Rejected</string>
+    <string name="ms_record_decision">Record the answer</string>
+    <string name="ms_reviewer">Who decided</string>
+    <string name="ms_reviewer_hint">The person\'s name, not their title</string>
+    <string name="ms_notes">Notes</string>
+    <string name="ms_why_rejected">Why it was rejected</string>
+    <string name="ms_record">Record</string>
+    <!-- %1$s is the name of whoever typed it in -->
+    <string name="ms_recorded_by">typed in by %1$s</string>
+    <string name="ms_send_again">Send again</string>
+    <string name="ms_send_again_blurb">The same number, the next revision, to the same person. Change what is proposed if it has changed.</string>
+    <string name="ms_sheet">Datasheet or sample</string>
+    <string name="ms_no_sheet">No photograph yet.</string>
+    <string name="ms_add_sheet">Add a photograph</string>
+    <string name="ms_refused_not_allowed">Your role does not plan the work.</string>
+    <string name="ms_refused_item">Say what is proposed.</string>
+    <string name="ms_refused_nobody">Say who it is sent to.</string>
+    <string name="ms_refused_date">The answer cannot be needed before today.</string>
+    <string name="ms_refused_decided">The answer is already recorded. A rejected one is sent again, not changed.</string>
+    <string name="ms_refused_reviewer">Write the name of whoever decided.</string>
+    <string name="ms_refused_reason">Say why it was rejected, so the next revision can answer it.</string>
+    <string name="ms_refused_notes">Write the notes it was approved with.</string>
+    <string name="ms_refused_not_rejected">Only a rejected submittal is sent again.</string>
+    <string name="ms_refused_resubmitted">It has already been sent again; follow the later revision.</string>
+    <!-- Handover pack line -->
+    <string name="hv_submittals">Materials still waiting for approval, or rejected and not sent again</string>
+    <!-- Label on a search result -->
+    <string name="search_kind_submittal">Material approval</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

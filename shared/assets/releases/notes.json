@@ -2,6 +2,31 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.31.0",
+      "points": [
+        {
+          "en": "Each job gets a register of material approvals. Before a tile, a membrane or a window system is ordered, send it to the architect or the supervisor: what is proposed, who makes it, where it goes, and the day the answer is needed. It is numbered MS-001, and one past its day with no answer is shown first, in red.",
+          "he": "לכל עבודה יש עכשיו פנקס אישורי חומרים. לפני שמזמינים אריח, חומר איטום או מערכת חלונות, שולחים אותם לאדריכל או למפקח: מה מוצע, מי מייצר, איפה ייושם, ועד מתי נדרשת תשובה. כל הגשה ממוספרת MS-001, והגשה שעבר מועדה בלי תשובה מוצגת ראשונה, באדום.",
+          "ar": "لكل مشروع الآن سجل لاعتماد المواد. قبل طلب البلاط أو مادة العزل أو نظام النوافذ، أرسلها إلى المهندس المعماري أو المشرف: ما المقترح، ومَن يصنعه، وأين يُستخدم، ومتى تلزم الإجابة. يُرقَّم كل طلب MS-001، ويظهر الطلب الذي فات موعده بلا إجابة أولًا باللون الأحمر."
+        },
+        {
+          "en": "The answer is written once, with the name of whoever gave it: approved, approved as noted, or rejected with its reason. A rejected one keeps its number and goes up a revision, so MS-004 rev. 1 is the second go at the same thing, and every go stays on the record with a photograph of its datasheet or sample.",
+          "he": "התשובה נרשמת פעם אחת, עם שם מי שנתן אותה: אושר, אושר בהערות, או נדחה עם הסיבה. מה שנדחה שומר על המספר ועולה מהדורה, כך ש־MS-004 מהדורה 1 הוא הניסיון השני לאותו דבר, וכל הגשה נשארת ברישום עם צילום של דף הנתונים או הדוגמה.",
+          "ar": "تُسجَّل الإجابة مرة واحدة مع اسم مَن أعطاها: معتمد، أو معتمد مع ملاحظات، أو مرفوض مع السبب. ما يُرفض يحتفظ برقمه ويُرفع إصداره، فيكون MS-004 الإصدار 1 المحاولة الثانية للشيء نفسه، وتبقى كل محاولة في السجل مع صورة لورقة البيانات أو العينة."
+        },
+        {
+          "en": "The handover pack counts materials still waiting or rejected and not sent again, and the search box finds them by number, product, supplier, place or the reviewer's notes.",
+          "he": "תיק המסירה סופר חומרים שעדיין ממתינים, או שנדחו ולא נשלחו שוב, ותיבת החיפוש מוצאת אותם לפי מספר, מוצר, ספק, מקום או הערות הבודק.",
+          "ar": "تحصي حزمة التسليم المواد التي لا تزال تنتظر، أو رُفضت ولم يُعد إرسالها، ويجدها صندوق البحث برقمها أو المنتج أو المورّد أو المكان أو ملاحظات المراجع."
+        },
+        {
+          "en": "An answer from a designer, an inspection result or an approval can no longer be saved twice when two people record it at the same moment: the first one stands and the second is told it is already recorded.",
+          "he": "תשובה של מתכנן, תוצאת בדיקה או אישור חומר כבר לא יכולים להישמר פעמיים כששני אנשים רושמים אותם באותו רגע: הראשון נשאר, והשני מקבל הודעה שהם כבר נרשמו.",
+          "ar": "لم يعد ممكنًا حفظ إجابة المصمم أو نتيجة الفحص أو اعتماد المادة مرتين عندما يسجلها شخصان في اللحظة نفسها: يبقى الأول، ويُبلَّغ الثاني بأنها مسجلة بالفعل."
+        }
+      ]
+    },
+    {
       "version": "0.30.0",
       "points": [
         {
