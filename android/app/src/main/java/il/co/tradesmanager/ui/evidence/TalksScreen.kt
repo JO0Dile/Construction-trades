@@ -42,10 +42,13 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.Briefings
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
+import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.SectionPlaceholder
@@ -75,6 +78,8 @@ fun TalksScreen(
     )
     val talks by viewModel.talks.collectAsStateWithLifecycle()
     val projects by viewModel.projects.collectAsStateWithLifecycle()
+    val checklists by viewModel.checklists.collectAsStateWithLifecycle()
+    val languageTag = currentLanguageTag()
     val needBriefing by viewModel.needBriefing.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
@@ -163,6 +168,9 @@ fun TalksScreen(
     if (recording) {
         RecordTalkDialog(
             projects = projects,
+            checklists = checklists,
+            languageTag = languageTag,
+            onPickChecklist = { id, onReady -> viewModel.talkingPoints(id, languageTag, onReady) },
             onDismiss = { recording = false },
             onRecord = { projectId, topic, notes ->
                 recording = false
@@ -176,12 +184,16 @@ fun TalksScreen(
 @Composable
 private fun RecordTalkDialog(
     projects: List<ProjectEntity>,
+    checklists: List<ChecklistTemplateEntity>,
+    languageTag: String,
+    onPickChecklist: (templateId: String, onReady: (String) -> Unit) -> Unit,
     onDismiss: () -> Unit,
     onRecord: (projectId: String?, topic: String, notes: String?) -> Unit,
 ) {
     var topic by remember { mutableStateOf("") }
     var notes by remember { mutableStateOf("") }
     var projectId by remember { mutableStateOf<String?>(null) }
+    var fromChecklist by remember { mutableStateOf<String?>(null) }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -191,6 +203,28 @@ private fun RecordTalkDialog(
                 modifier = Modifier.verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
+                // Mandatory ones first: they are the talks a site is most
+                // likely to owe before the work that needs them starts.
+                if (checklists.isNotEmpty()) {
+                    Text(
+                        text = stringResource(R.string.tbt_from_checklist),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        checklists.sortedByDescending { it.mandatoryBeforeWork }.forEach { checklist ->
+                            FilterChip(
+                                selected = fromChecklist == checklist.id,
+                                onClick = {
+                                    fromChecklist = checklist.id
+                                    topic = checklist.titles.resolve(languageTag)
+                                    onPickChecklist(checklist.id) { points -> notes = points }
+                                },
+                                label = { Text(checklist.titles.resolve(languageTag)) },
+                            )
+                        }
+                    }
+                }
                 OutlinedTextField(
                     value = topic,
                     onValueChange = { topic = it },

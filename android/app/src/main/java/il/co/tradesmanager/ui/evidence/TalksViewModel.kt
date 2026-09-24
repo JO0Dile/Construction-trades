@@ -3,14 +3,20 @@ package il.co.tradesmanager.ui.evidence
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.evidence.Briefings
+import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.local.dao.BriefingRecord
+import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ToolboxTalkEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -38,6 +44,29 @@ class TalksViewModel(private val container: AppContainer) : ViewModel() {
                 .sortedBy { Briefings.urgency(it.lastAttendedAt, now) }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    private val tradeIds = MutableStateFlow<List<String>>(emptyList())
+
+    init {
+        viewModelScope.launch { tradeIds.value = container.catalogDao.selectedTradeIds() }
+    }
+
+    /** The checklists for this phone's trades, which a talk can start from. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val checklists: StateFlow<List<ChecklistTemplateEntity>> = tradeIds
+        .flatMapLatest { ids ->
+            if (ids.isEmpty()) flowOf(emptyList()) else container.safety.observeTemplates(ids)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** A checklist's checks as talking points, in [languageTag]. See Briefings.talkingPoints. */
+    fun talkingPoints(templateId: String, languageTag: String, onReady: (String) -> Unit) =
+        viewModelScope.launch {
+            val checks = container.safety.templateItems(templateId)
+                .sortedBy { it.sortOrder }
+                .map { it.texts.resolve(languageTag) to it.critical }
+            onReady(Briefings.talkingPoints(checks))
+        }
 
     val session: StateFlow<SessionRepository.State> = container.session.state
         .stateIn(

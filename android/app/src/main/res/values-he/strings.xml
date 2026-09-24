@@ -1481,6 +1481,10 @@
     <string name="visit_col_still_here">עדיין רשום באתר</string>
     <string name="visit_col_yes">כן</string>
     <string name="visit_col_no">לא</string>
+    <string name="tbt_from_checklist">התחלה מרשימת בדיקה</string>
+    <string name="whats_new_title">מה חדש</string>
+    <string name="whats_new_hint">מה השתנה בכל גרסה של האפליקציה</string>
+    <string name="whats_new_version">גרסה %1$s</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -1606,5 +1610,11 @@
         <item quantity="two">שני פריטי ציוד מגן עברו את מועד ההחלפה</item>
         <item quantity="many">%d פריטי ציוד מגן עברו את מועד ההחלפה</item>
         <item quantity="other">%d פריטי ציוד מגן עברו את מועד ההחלפה</item>
+    </plurals>
+    <plurals name="muster_visitors_on_site">
+        <item quantity="one">ועוד מבקר אחד רשום באתר</item>
+        <item quantity="two">ועוד שני מבקרים רשומים באתר</item>
+        <item quantity="many">ועוד %d מבקרים רשומים באתר</item>
+        <item quantity="other">ועוד %d מבקרים רשומים באתר</item>
     </plurals>
 </resources>

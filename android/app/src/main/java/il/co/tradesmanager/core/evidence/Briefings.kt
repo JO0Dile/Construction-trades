@@ -45,4 +45,19 @@ object Briefings {
     /** Sorts the people who need briefing to the top: never first, then oldest. */
     fun urgency(lastAttendedAt: Long?, now: Long): Long =
         lastAttendedAt?.let { -daysSince(it, now) } ?: Long.MIN_VALUE
+
+    /**
+     * A safety checklist as the talking points of a briefing: one line per
+     * check, the ones that block sign-off first.
+     *
+     * The checklist is already the list of what has to be true before the
+     * work starts, in the crew's own language, and a foreman asked to give a
+     * talk on a subject with nothing in front of him says "be careful" and
+     * stops. Starting from it gives him the sentence to say. The notes stay
+     * editable -- this is where a talk starts, not what it must be.
+     */
+    fun talkingPoints(checks: List<Pair<String, Boolean>>): String = checks
+        .filter { it.first.isNotBlank() }
+        .sortedByDescending { it.second }
+        .joinToString("\n") { "• " + it.first.trim() }
 }

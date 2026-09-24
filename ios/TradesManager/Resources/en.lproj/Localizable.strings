@@ -1810,3 +1810,11 @@
 "visit_col_yes" = "Yes";
 /* Export cell */
 "visit_col_no" = "No";
+/* Label over checklist chips in the new-talk dialog; picking one fills the topic and talking points */
+"tbt_from_checklist" = "Start from a checklist";
+/* Dialog after an update, and its Settings entry */
+"whats_new_title" = "What's new";
+/* Settings entry hint */
+"whats_new_hint" = "What each version of the app changed";
+/* Heading over one version's changes; %1$s is a version number */
+"whats_new_version" = "Version %1$s";

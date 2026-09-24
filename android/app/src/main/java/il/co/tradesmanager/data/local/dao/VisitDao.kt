@@ -26,4 +26,8 @@ interface VisitDao {
      */
     @Query("SELECT * FROM site_visits WHERE leftAt IS NULL ORDER BY arrivedAt")
     suspend fun stillHere(): List<SiteVisitEntity>
+
+    /** How many are signed in and not out: the visitors the next roll call will list. */
+    @Query("SELECT COUNT(*) FROM site_visits WHERE leftAt IS NULL")
+    fun observeStillHereCount(): Flow<Int>
 }

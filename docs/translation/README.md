@@ -41,13 +41,13 @@ formal name — so a foreman typing `العقدة` finds slab conduit, and `ال
 differs from the formal one, put it in `street_yours`; the field takes any
 language.
 
-## interface.csv — 1,412 strings
+## interface.csv — every string the app shows
 
 Every word the app itself says: buttons, labels, hints, warnings, error
 messages.
 
-Twenty rows are counts — "1 item", "2 items" — which Hebrew spells three ways
-and Arabic six. Their forms sit in one cell, `one: … | two: … | other: …`.
+The rows that are counts — "1 item", "2 items" — Hebrew spells three ways and
+Arabic six. Their forms sit in one cell, `one: … | two: … | other: …`.
 Answer in the same shape, keeping the names before each colon; a form you
 leave out keeps its draft. Same shape as the others — `hebrew_yours` and `arabic_yours` are the
 columns to fill, and blank means the draft is fine.

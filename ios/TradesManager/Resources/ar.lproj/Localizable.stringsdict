@@ -507,5 +507,29 @@
             <string>%d قطعة من معدات الوقاية تجاوزت موعد استبدالها</string>
         </dict>
     </dict>
+    <key>muster_visitors_on_site</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>ولا يوجد زوار مسجلون</string>
+            <key>one</key>
+            <string>وزائر واحد مسجل</string>
+            <key>two</key>
+            <string>وزائران مسجلان</string>
+            <key>few</key>
+            <string>و%d زوار مسجلين</string>
+            <key>many</key>
+            <string>و%d زائرًا مسجلًا</string>
+            <key>other</key>
+            <string>و%d زائر مسجل</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

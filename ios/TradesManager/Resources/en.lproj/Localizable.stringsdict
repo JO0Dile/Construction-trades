@@ -339,5 +339,21 @@
             <string>%d items of protective equipment are past their replacement date</string>
         </dict>
     </dict>
+    <key>muster_visitors_on_site</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>and %d visitor signed in</string>
+            <key>other</key>
+            <string>and %d visitors signed in</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

@@ -50,6 +50,12 @@ jobs:
         working-directory: android
         run: ./gradlew --no-daemon :app:assembleDebug
 
+      # What this version does, in three languages, from the same file the
+      # app ships. The JSON is attached so a phone being offered the update
+      # can list everything since the version it has, not just this one.
+      - name: Write the release notes
+        run: python3 tools/release-notes.py --release "${{ inputs.version || github.ref_name }}" build/release
+
       # The universal APK first: it runs on every phone, which is what someone
       # tapping "install" without knowing what a CPU ABI is needs.
       # A tag push already names the version; a manual run is told it. The
@@ -68,37 +74,15 @@ jobs:
           # build did not contain what it plainly contained.
           target_commitish: ${{ github.sha }}
           files: |
+            build/release/release-notes.json
             android/app/build/outputs/apk/debug/app-universal-debug.apk
             android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
             android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk
-          # Auto notes compare against the previous tag, which is only
-          # meaningful for a release cut from the default branch. The body
-          # says where to look either way, and is appended to rather than
-          # replaced by the generated list.
-          #
-          # In three languages, because this body is not only read on GitHub:
-          # the app fetches it and shows it under "What changed" when somebody
-          # taps Check for updates. An English-only release note is an English
-          # panel on a Hebrew phone, which is the one thing the rest of this
-          # app no longer does. The generated commit list below it stays in
-          # English — those are commit titles, and rewriting them would be
-          # lying about what the commits say.
-          body: |
-            Install `app-universal-debug.apk` below — it runs on any phone.
-            A phone that already has the app will be offered this build by
-            **Settings → Check for updates**.
-
-            התקינו את `app-universal-debug.apk` — הוא מתאים לכל טלפון.
-            במכשיר שהאפליקציה כבר מותקנת בו, **הגדרות ← בדיקת עדכונים**
-            תציע את הגרסה הזו.
-
-            ثبّت `app-universal-debug.apk` — يعمل على أي هاتف.
-            إن كان التطبيق مثبّتًا مسبقًا، **الإعدادات ← التحقق من التحديثات**
-            ستعرض هذه النسخة.
-
-            What is new and what to try with it is written up in
-            [`docs/TESTING.md`](https://github.com/JO0Dile/Construction-trades/blob/${{ github.sha }}/docs/TESTING.md).
-
-            Built from `${{ github.sha }}`.
+          # The body is this version's notes in English, Hebrew and Arabic,
+          # written by tools/release-notes.py from shared/assets/releases.
+          # The generated commit list below it stays in English: those are
+          # commit titles, and rewriting them would be lying about what the
+          # commits say.
+          body_path: build/release/release-body.md
           generate_release_notes: true
           fail_on_unmatched_files: true

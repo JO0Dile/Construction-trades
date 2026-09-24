@@ -7743,6 +7743,30 @@
       "en": "No",
       "he": "לא",
       "ar": "لا"
+    },
+    "tbt_from_checklist": {
+      "c": "Label over checklist chips in the new-talk dialog; picking one fills the topic and talking points",
+      "en": "Start from a checklist",
+      "he": "התחלה מרשימת בדיקה",
+      "ar": "البدء من قائمة فحص"
+    },
+    "whats_new_title": {
+      "c": "Dialog after an update, and its Settings entry",
+      "en": "What's new",
+      "he": "מה חדש",
+      "ar": "ما الجديد"
+    },
+    "whats_new_hint": {
+      "c": "Settings entry hint",
+      "en": "What each version of the app changed",
+      "he": "מה השתנה בכל גרסה של האפליקציה",
+      "ar": "ما الذي تغيّر في كل نسخة من التطبيق"
+    },
+    "whats_new_version": {
+      "c": "Heading over one version's changes; %1$s is a version number",
+      "en": "Version %1$s",
+      "he": "גרסה %1$s",
+      "ar": "النسخة %1$s"
     }
   },
   "plurals": {
@@ -8185,6 +8209,27 @@
         "few": "%d قطع من معدات الوقاية تجاوزت موعد استبدالها",
         "many": "%d قطعة من معدات الوقاية تجاوزت موعد استبدالها",
         "other": "%d قطعة من معدات الوقاية تجاوزت موعد استبدالها"
+      }
+    },
+    "muster_visitors_on_site": {
+      "c": "Under the checked-in count before a roll call starts: visitors signed in who will be on the list too",
+      "en": {
+        "one": "and %d visitor signed in",
+        "other": "and %d visitors signed in"
+      },
+      "he": {
+        "one": "ועוד מבקר אחד רשום באתר",
+        "two": "ועוד שני מבקרים רשומים באתר",
+        "many": "ועוד %d מבקרים רשומים באתר",
+        "other": "ועוד %d מבקרים רשומים באתר"
+      },
+      "ar": {
+        "zero": "ولا يوجد زوار مسجلون",
+        "one": "وزائر واحد مسجل",
+        "two": "وزائران مسجلان",
+        "few": "و%d زوار مسجلين",
+        "many": "و%d زائرًا مسجلًا",
+        "other": "و%d زائر مسجل"
       }
     }
   }

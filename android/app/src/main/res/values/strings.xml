@@ -1811,6 +1811,14 @@
     <string name="visit_col_yes">Yes</string>
     <!-- Export cell -->
     <string name="visit_col_no">No</string>
+    <!-- Label over checklist chips in the new-talk dialog; picking one fills the topic and talking points -->
+    <string name="tbt_from_checklist">Start from a checklist</string>
+    <!-- Dialog after an update, and its Settings entry -->
+    <string name="whats_new_title">What\'s new</string>
+    <!-- Settings entry hint -->
+    <string name="whats_new_hint">What each version of the app changed</string>
+    <!-- Heading over one version's changes; %1$s is a version number -->
+    <string name="whats_new_version">Version %1$s</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -1894,5 +1902,9 @@
     <plurals name="home_ppe_overdue">
         <item quantity="one">%d item of protective equipment is past its replacement date</item>
         <item quantity="other">%d items of protective equipment are past their replacement date</item>
+    </plurals>
+    <plurals name="muster_visitors_on_site">
+        <item quantity="one">and %d visitor signed in</item>
+        <item quantity="other">and %d visitors signed in</item>
     </plurals>
 </resources>

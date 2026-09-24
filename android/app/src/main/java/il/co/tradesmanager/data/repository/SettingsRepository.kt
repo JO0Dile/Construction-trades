@@ -60,6 +60,12 @@ class SettingsRepository(private val context: Context) {
          * purge records what it cut. See docs/AUDIT.md.
          */
         val auditRetentionDays: Int = 0,
+        /**
+         * The last version whose "What's new" this phone has shown. The next
+         * one lists everything after it, so an update that skips three
+         * versions is told about all three.
+         */
+        val whatsNewSeen: String? = null,
     )
 
     val settings: Flow<Settings> = context.dataStore.data.map { prefs ->
@@ -76,6 +82,7 @@ class SettingsRepository(private val context: Context) {
             signedInAccountId = prefs[KEY_ACCOUNT]?.takeIf { it.isNotBlank() },
             activeCompanyId = prefs[KEY_ACTIVE_COMPANY]?.takeIf { it.isNotBlank() },
             deviceId = prefs[KEY_DEVICE_ID].orEmpty(),
+            whatsNewSeen = prefs[KEY_WHATS_NEW_SEEN]?.takeIf { it.isNotBlank() },
         )
     }
 
@@ -86,6 +93,7 @@ class SettingsRepository(private val context: Context) {
     suspend fun setActorName(name: String) = put { it[KEY_ACTOR] = name }
     suspend fun setSeededCatalogVersion(version: Int) = put { it[KEY_SEEDED_VERSION] = version }
     suspend fun setProjectsAsGrid(value: Boolean) = put { it[KEY_PROJECTS_GRID] = value }
+    suspend fun setWhatsNewSeen(version: String) = put { it[KEY_WHATS_NEW_SEEN] = version }
 
     suspend fun setActiveCompany(companyId: String?) =
         put { it[KEY_ACTIVE_COMPANY] = companyId.orEmpty() }
@@ -157,5 +165,6 @@ class SettingsRepository(private val context: Context) {
         val KEY_ACTIVE_COMPANY = stringPreferencesKey("active_company")
         val KEY_DEVICE_ID = stringPreferencesKey("device_id")
         val KEY_AUDIT_RETENTION = intPreferencesKey("audit_retention_days")
+        val KEY_WHATS_NEW_SEEN = stringPreferencesKey("whats_new_seen")
     }
 }

@@ -139,7 +139,7 @@ rather than any more code.
 
 ## State of the work
 
-Every push builds the app, runs the tests and runs twenty-eight checks. Nothing
+Every push builds the app, runs the tests and runs thirty checks. Nothing
 below is a claim about what was intended — it is what the build proves.
 
 **Built and verified:**

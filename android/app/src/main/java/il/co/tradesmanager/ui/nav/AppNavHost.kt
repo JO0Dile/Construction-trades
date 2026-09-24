@@ -80,6 +80,7 @@ import il.co.tradesmanager.ui.settings.PlansScreen
 import il.co.tradesmanager.ui.settings.TermsScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
 import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
+import il.co.tradesmanager.ui.update.WhatsNewGate
 import il.co.tradesmanager.ui.visitors.VisitorsScreen
 import il.co.tradesmanager.ui.waste.WasteScreen
 import il.co.tradesmanager.ui.timesheet.TimesheetScreen
@@ -243,6 +244,9 @@ fun AppNavHost(
     LaunchedEffect(Unit) {
         container.photos.importFailures.collect { snackbar.showSnackbar(importFailed) }
     }
+
+    // What the update just installed does, once, in the phone's language.
+    WhatsNewGate(container)
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbar) },

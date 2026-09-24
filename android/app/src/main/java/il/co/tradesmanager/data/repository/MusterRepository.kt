@@ -75,6 +75,9 @@ class MusterRepository(
     /** How many are checked in right now, for the card that offers to start one. */
     fun observeOnSiteCount(): Flow<Int> = schedule.observeOnSiteCount()
 
+    /** Visitors signed in and not out, who will be on the list too. */
+    fun observeVisitorsHere(): Flow<Int> = visits.observeStillHereCount()
+
     /**
      * Take the list and start counting.
      *

@@ -151,6 +151,17 @@ jobs:
       - name: The translation sheets cover the whole catalogue
         run: python3 tools/gen-catalog-sheets.py --check
 
+      # Choosing Hebrew left the app in English for twenty-four versions: the
+      # manifest told Android the activity handled language changes itself,
+      # so the screen was never rebuilt. The translations were all there.
+      - name: Choosing a language changes the whole app
+        run: python3 tools/check-locale-switch.py
+
+      # Every update says what it does, in all three languages, before it can
+      # be built: the app shows it before and after installing.
+      - name: This version says what it does, in three languages
+        run: python3 tools/release-notes.py --check
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.

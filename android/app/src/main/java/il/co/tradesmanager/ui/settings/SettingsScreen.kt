@@ -43,6 +43,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import il.co.tradesmanager.ui.update.WhatsNewDialog
+import il.co.tradesmanager.data.update.ReleaseNotesFile
+import il.co.tradesmanager.core.update.ReleaseNotes
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.AppLanguages
 import il.co.tradesmanager.core.i18n.resolve
@@ -83,6 +86,8 @@ fun SettingsScreen(
     val context = LocalContext.current
     val languages = remember(languageTag) { AppLanguages.supported(context) }
     var confirmDelete by remember { mutableStateOf(false) }
+    // The whole history of what each version did, when somebody asks for it.
+    var history by remember { mutableStateOf<List<ReleaseNotes.Entry>>(emptyList()) }
 
     Scaffold(
         topBar = {
@@ -374,6 +379,14 @@ fun SettingsScreen(
             }
 
             item { SectionHeader(stringResource(R.string.set_about)) }
+            // Every version and what it did, in this phone's language.
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.whats_new_title)) },
+                    supportingContent = { Text(stringResource(R.string.whats_new_hint)) },
+                    modifier = Modifier.clickable { history = ReleaseNotesFile.bundled(context) },
+                )
+            }
             // Both stores require this and the app did not have it. The words
             // were written and translated the day the settings screen was
             // built; no screen ever showed them.
@@ -449,6 +462,10 @@ fun SettingsScreen(
                 }
             },
         )
+    }
+
+    if (history.isNotEmpty()) {
+        WhatsNewDialog(entries = history, onDismiss = { history = emptyList() })
     }
 
     if (confirmDelete) {

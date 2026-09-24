@@ -15,8 +15,8 @@ android {
         // Android 8.0 — the floor the tender documents ask for.
         minSdk = 26
         targetSdk = 35
-        versionCode = 41
-        versionName = "0.24.0"
+        versionCode = 42
+        versionName = "0.25.0"
 
         // Where the in-app update check looks. Read through BuildConfig so a
         // fork points at its own repository without touching Kotlin.
@@ -36,7 +36,13 @@ android {
         // The locales the app actually ships translations for. Adding a
         // language is: drop in values-<code>/strings.xml, add the code here
         // and to res/xml/locales_config.xml. No Kotlin changes.
-        resourceConfigurations += listOf("en", "he", "ar")
+        //
+        // "iw" as well as "he": they are the same language, and the AndroidX
+        // and Material libraries still file their Hebrew under the old code.
+        // Filtering on "he" alone stripped every library string's Hebrew out
+        // of the APK, so the system's own buttons and descriptions stayed in
+        // English on a Hebrew phone.
+        resourceConfigurations += listOf("en", "he", "iw", "ar")
 
         vectorDrawables.useSupportLibrary = true
     }

@@ -103,6 +103,10 @@ class MusterViewModel(
     val onSite: StateFlow<Int> = container.musters.observeOnSiteCount()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
+    /** Visitors signed in on a job's log, who the list will hold as well. */
+    val visitorsHere: StateFlow<Int> = container.musters.observeVisitorsHere()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
     /** This firm's past roll calls, newest first. */
     @OptIn(ExperimentalCoroutinesApi::class)
     val history: StateFlow<List<MusterEntity>> = session

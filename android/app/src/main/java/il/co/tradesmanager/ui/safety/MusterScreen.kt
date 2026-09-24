@@ -49,6 +49,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -89,6 +90,7 @@ fun MusterScreen(
     val live by viewModel.live.collectAsStateWithLifecycle()
     val roll by viewModel.roll.collectAsStateWithLifecycle()
     val onSite by viewModel.onSite.collectAsStateWithLifecycle()
+    val visitorsHere by viewModel.visitorsHere.collectAsStateWithLifecycle()
     val history by viewModel.history.collectAsStateWithLifecycle()
     val jobNames by viewModel.jobNames.collectAsStateWithLifecycle()
     val mayRun by viewModel.mayRun.collectAsStateWithLifecycle()
@@ -138,6 +140,7 @@ fun MusterScreen(
         } else {
             Waiting(
                 onSite = onSite,
+                visitorsHere = visitorsHere,
                 mayRun = mayRun,
                 history = history,
                 jobNames = jobNames,
@@ -154,6 +157,7 @@ fun MusterScreen(
 @Composable
 private fun Waiting(
     onSite: Int,
+    visitorsHere: Int,
     mayRun: Boolean,
     history: List<MusterEntity>,
     jobNames: Map<String, String>,
@@ -185,7 +189,16 @@ private fun Waiting(
                             stringResource(R.string.muster_on_site, onSite),
                             style = MaterialTheme.typography.titleMedium,
                         )
-                        if (onSite == 0) {
+                        // Visitors are counted separately because they are
+                        // not clocked on: the number above is the crew, and
+                        // this is who else the list will be looking for.
+                        if (visitorsHere > 0) {
+                            Text(
+                                pluralStringResource(R.plurals.muster_visitors_on_site, visitorsHere, visitorsHere),
+                                style = MaterialTheme.typography.bodyMedium,
+                            )
+                        }
+                        if (onSite == 0 && visitorsHere == 0) {
                             Spacer(Modifier.height(4.dp))
                             Text(
                                 stringResource(R.string.muster_nobody_checked_in),

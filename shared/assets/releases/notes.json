@@ -1,0 +1,55 @@
+{
+  "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
+  "versions": [
+    {
+      "version": "0.25.0",
+      "points": [
+        {
+          "en": "Choosing Hebrew or Arabic now changes the whole app, and the choice is kept after the phone restarts. Until now most of the app stayed in English.",
+          "he": "בחירת עברית או ערבית משנה עכשיו את כל האפליקציה, והבחירה נשמרת גם אחרי הפעלה מחדש של הטלפון. עד עכשיו רוב האפליקציה נשארה באנגלית.",
+          "ar": "اختيار العبرية أو العربية يغيّر الآن التطبيق كله، ويبقى الاختيار محفوظًا بعد إعادة تشغيل الهاتف. حتى الآن كان معظم التطبيق يبقى بالإنجليزية."
+        },
+        {
+          "en": "What's new: every update now says what it does, in your language. An update that skips versions lists everything since the one you have, and Settings keeps the whole history.",
+          "he": "מה חדש: כל עדכון מסביר עכשיו מה הוא עושה, בשפה שלכם. עדכון שמדלג על גרסאות מציג את כל מה שהשתנה מאז הגרסה שמותקנת, וההיסטוריה המלאה נמצאת בהגדרות.",
+          "ar": "ما الجديد: كل تحديث يشرح الآن ما يفعله، بلغتك. التحديث الذي يتخطى نسخًا يعرض كل ما تغيّر منذ النسخة المثبّتة، والسجل الكامل موجود في الإعدادات."
+        },
+        {
+          "en": "A toolbox talk can start from any safety checklist: its title becomes the topic and its checks the talking points, the critical ones first.",
+          "he": "תדריך בטיחות יכול להתחיל מכל רשימת בדיקה: שם הרשימה הופך לנושא והבדיקות לנקודות לשיחה, הקריטיות קודם.",
+          "ar": "يمكن أن يبدأ إيجاز السلامة من أي قائمة فحص: يصبح عنوانها الموضوع وتصبح بنودها نقاط الحديث، والحرجة أولًا."
+        },
+        {
+          "en": "Before a roll call starts, it says how many visitors are signed in and will be on the list as well as the crew.",
+          "he": "לפני שמתחיל מסדר, מוצג כמה מבקרים רשומים באתר ויופיעו ברשימה, בנוסף לצוות.",
+          "ar": "قبل بدء التفقد، يظهر عدد الزوار المسجلين الذين سيكونون في القائمة إضافة إلى الطاقم."
+        }
+      ]
+    },
+    {
+      "version": "0.24.0",
+      "points": [
+        {
+          "en": "Protective equipment register (Safety): hand a helmet, harness or gloves to a worker, who signs for it on the phone. It comes off the stock list, and anything past its replace-by date is shown first.",
+          "he": "פנקס ציוד מגן אישי (בטיחות): מסירת קסדה, רתמה או כפפות לעובד, שחותם על הקבלה בטלפון. הפריט יורד מהמלאי, ומה שעבר את מועד ההחלפה מוצג ראשון.",
+          "ar": "سجل معدات الوقاية الشخصية (السلامة): سلّم خوذة أو حزام أمان أو قفازات لعامل يوقّع على الاستلام في الهاتف. تُخصم القطعة من المخزون، ويظهر أولًا ما تجاوز موعد استبداله."
+        },
+        {
+          "en": "Visitor log on every job: sign inspectors, clients and drivers in and out. Anyone still signed in goes on the evacuation roll call, marked as a visitor.",
+          "he": "יומן מבקרים בכל עבודה: רישום כניסה ויציאה של מפקחים, לקוחות ונהגים. מי שעדיין רשום באתר נכלל במסדר הפינוי, מסומן כמבקר.",
+          "ar": "سجل الزوار في كل مشروع: سجّل دخول وخروج المفتشين والعملاء والسائقين. كل من ما زال مسجلًا يُدرج في تفقد الإخلاء بصفة زائر."
+        },
+        {
+          "en": "Both registers export to a spreadsheet and a PDF for an inspector. A worker's profile shows the equipment they hold, and home warns when equipment is overdue for replacement.",
+          "he": "שני הפנקסים מיוצאים לגיליון ול־PDF עבור מפקח. בפרופיל העובד מופיע הציוד שבידיו, ובמסך הבית מופיעה התראה כשציוד עבר את מועד ההחלפה.",
+          "ar": "يُصدَّر السجلان إلى جدول وإلى PDF للمفتش. يُظهر ملف العامل المعدات التي بحوزته، وتنبّه الشاشة الرئيسية عند تأخر استبدال المعدات."
+        },
+        {
+          "en": "Four new checklists: end-of-day site lock-up, first aid, fire extinguishers, and drinking water, toilets and rest.",
+          "he": "ארבע רשימות בדיקה חדשות: נעילת האתר בסוף יום, עזרה ראשונה, מטפים, ומי שתייה, שירותים ומנוחה.",
+          "ar": "أربع قوائم فحص جديدة: إغلاق الموقع في نهاية اليوم، الإسعافات الأولية، طفايات الحريق، ومياه الشرب والمراحيض والاستراحة."
+        }
+      ]
+    }
+  ]
+}
