@@ -4,6 +4,7 @@ import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.safety.Muster
+import il.co.tradesmanager.data.local.entity.SiteVisitEntity
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -28,6 +29,7 @@ class MusterRepositoryTest {
 
     private lateinit var dao: FakeMusterDao
     private lateinit var schedule: FakeScheduleDao
+    private lateinit var visits: FakeVisitDao
     private lateinit var audit: FakeAuditDao
     private lateinit var repo: MusterRepository
 
@@ -35,8 +37,9 @@ class MusterRepositoryTest {
     fun setUp() {
         dao = FakeMusterDao()
         schedule = FakeScheduleDao()
+        visits = FakeVisitDao()
         audit = FakeAuditDao()
-        repo = MusterRepository(dao, schedule, AuditTrail(audit))
+        repo = MusterRepository(dao, schedule, visits, AuditTrail(audit))
     }
 
     private fun checkedIn(
@@ -62,6 +65,23 @@ class MusterRepositoryTest {
             workerName = name,
             checkInAt = System.currentTimeMillis() - 8 * hour,
             checkOutAt = System.currentTimeMillis() - hour,
+        )
+    }
+
+    private suspend fun visiting(id: String, name: String, job: String, agoHours: Long, left: Boolean = false) {
+        val arrived = System.currentTimeMillis() - agoHours * hour
+        visits.upsert(
+            SiteVisitEntity(
+                id = id,
+                projectId = job,
+                companyId = "co.1",
+                name = name,
+                briefed = true,
+                arrivedAt = arrived,
+                leftAt = if (left) arrived + hour else null,
+                signedInByAccountId = "acc.1",
+                signedInByName = "Gate",
+            ),
         )
     }
 
@@ -302,5 +322,46 @@ class MusterRepositoryTest {
 
         assertEquals(1, roll.unaccountedCount)
         assertFalse(roll.everyoneAccountedFor)
+    }
+
+    @Test
+    fun `a visitor still signed in is on the roll call, and says so`() = runTest {
+        checkedIn("t1", "w1", "Ahmad", agoHours = 2, job = "job.1")
+        visiting("v1", "Council engineer", job = "job.1", agoHours = 1)
+        visiting("v2", "Gone already", job = "job.1", agoHours = 5, left = true)
+
+        val muster = start().getOrThrow()
+        val people = dao.people(muster.id)
+
+        assertEquals(setOf("Ahmad", "Council engineer"), people.map { it.name }.toSet())
+        assertTrue(people.first { it.name == "Council engineer" }.visitor)
+        assertFalse(people.first { it.name == "Ahmad" }.visitor)
+        assertEquals("both are on job.1, so that is the site", "job.1", muster.projectId)
+        assertTrue(
+            "and the flag survives the round trip through the table",
+            repo.rollOf(muster, people).people.first { it.name == "Council engineer" }.visitor,
+        )
+    }
+
+    @Test
+    fun `a visitor on another job means nobody can say which site this is`() = runTest {
+        checkedIn("t1", "w1", "Ahmad", agoHours = 2, job = "job.1")
+        visiting("v1", "Inspector", job = "job.2", agoHours = 1)
+
+        val muster = start().getOrThrow()
+
+        assertNull(muster.projectId)
+        assertEquals(2, dao.people(muster.id).size)
+    }
+
+    @Test
+    fun `a visitor signed in yesterday is flagged, never dropped`() = runTest {
+        visiting("v1", "Forgot to sign out", job = "job.1", agoHours = 30)
+
+        val muster = start().getOrThrow()
+        val person = dao.people(muster.id).single()
+
+        assertTrue(person.staleCheckIn)
+        assertTrue(person.visitor)
     }
 }

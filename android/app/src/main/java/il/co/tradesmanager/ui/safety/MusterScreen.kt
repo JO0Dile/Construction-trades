@@ -488,6 +488,7 @@ private fun PersonRow(
             if (firstAider) stringResource(R.string.muster_first_aider) else null,
             if (person.staleCheckIn) stringResource(R.string.muster_stale) else null,
             if (person.addedDuringRollCall) stringResource(R.string.muster_added_badge) else null,
+            if (person.visitor) stringResource(R.string.muster_visitor_badge) else null,
             person.account?.takeIf { it.isNotBlank() },
         )
         if (badges.isNotEmpty()) {
@@ -690,8 +691,13 @@ private fun listText(
     roll: Muster.Roll,
     note: String?,
 ): String {
-    val missing = roll.unaccounted().map { it.name }
-    val present = roll.people.filter { it.state == Muster.State.PRESENT }.map { it.name }.sorted()
+    // A visitor is marked as one in the text as well as on the screen: the
+    // person reading this in a group chat is the one who does not know that
+    // "Avi Cohen" is the engineer from the council and not one of the crew.
+    fun named(person: Muster.Person): String =
+        if (person.visitor) context.getString(R.string.muster_share_visitor, person.name) else person.name
+    val missing = roll.unaccounted().map(::named)
+    val present = roll.people.filter { it.state == Muster.State.PRESENT }.sortedBy { it.name }.map(::named)
     val elsewhere = roll.people.filter { it.state == Muster.State.ACCOUNTED_ELSEWHERE }
         .sortedBy { it.name }
         .map { person -> person.account?.let { "${person.name} (${it})" } ?: person.name }

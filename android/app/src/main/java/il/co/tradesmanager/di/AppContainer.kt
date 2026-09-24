@@ -25,6 +25,7 @@ import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.MusterRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
@@ -35,6 +36,7 @@ import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.data.repository.TemporaryWorksRepository
 import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.repository.ViolationRepository
+import il.co.tradesmanager.data.repository.VisitRepository
 import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.data.sync.NoOpSyncEngine
 import il.co.tradesmanager.data.sync.SyncEngine
@@ -164,12 +166,24 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
      * Takes the schedule DAO rather than the schedule repository: the only
      * thing it wants is the open check-ins, and the repository wraps those in
      * clocking rules that have nothing to do with counting heads at a gate.
+     * The visitor log likewise, for the visits nobody has signed out.
      */
-    val musters = MusterRepository(database.musterDao(), database.scheduleDao(), auditTrail)
+    val musters = MusterRepository(
+        database.musterDao(),
+        database.scheduleDao(),
+        database.visitDao(),
+        auditTrail,
+    )
 
     val heat = HeatRepository(database.heatDao(), database.scheduleDao(), auditTrail)
 
     val waste = WasteRepository(database.wasteDao(), auditTrail)
+
+    /** Protective equipment handed out, which comes off the stock list as it goes. */
+    val ppe = PpeRepository(database.ppeDao(), inventory, auditTrail)
+
+    /** Who is on a job without working there, until they sign out. */
+    val visits = VisitRepository(database.visitDao(), auditTrail)
 
     /**
      * Taking the record off the phone and putting it back.

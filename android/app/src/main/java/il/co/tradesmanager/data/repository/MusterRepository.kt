@@ -5,8 +5,10 @@ import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.safety.Muster
+import il.co.tradesmanager.core.safety.Visits
 import il.co.tradesmanager.data.local.dao.MusterDao
 import il.co.tradesmanager.data.local.dao.ScheduleDao
+import il.co.tradesmanager.data.local.dao.VisitDao
 import il.co.tradesmanager.data.local.entity.MusterEntity
 import il.co.tradesmanager.data.local.entity.MusterPersonEntity
 import java.util.UUID
@@ -29,6 +31,7 @@ import kotlinx.coroutines.flow.Flow
 class MusterRepository(
     private val dao: MusterDao,
     private val schedule: ScheduleDao,
+    private val visits: VisitDao,
     private val audit: AuditTrail,
 ) {
 
@@ -90,7 +93,7 @@ class MusterRepository(
         if (!mayRun(role)) return Result.failure(Refused(Refusal.NOT_ALLOWED))
         if (dao.liveNow() != null) return Result.failure(Refused(Refusal.ALREADY_RUNNING))
         val startedAt = System.currentTimeMillis()
-        val open = schedule.openCheckIns().map {
+        val clockedOn = schedule.openCheckIns().map {
             Muster.OpenCheckIn(
                 personId = it.workerId,
                 name = it.workerName,
@@ -98,6 +101,13 @@ class MusterRepository(
                 projectId = it.projectId,
             )
         }
+        // Visitors signed in and not out go on the list with everybody else,
+        // and count towards which site this is: an inspector on the job is on
+        // the job whether or not he clocked on to it.
+        val visiting = visits.stillHere().map {
+            Visits.onRollCall(name = it.name, arrivedAt = it.arrivedAt, projectId = it.projectId)
+        }
+        val open = clockedOn + visiting
         val roll = Muster.start(
             openCheckIns = open,
             startedAt = startedAt,
@@ -253,6 +263,7 @@ class MusterRepository(
                     addedDuringRollCall = row.addedDuringRollCall,
                     account = row.account,
                     settledAt = row.settledAt,
+                    visitor = row.visitor,
                 )
             },
         )
@@ -270,6 +281,7 @@ class MusterRepository(
         addedDuringRollCall = addedDuringRollCall,
         account = account,
         settledAt = settledAt,
+        visitor = visitor,
     )
 
     private fun Muster.Refusal.asRefusal(): Refusal = when (this) {

@@ -520,6 +520,50 @@ can see, and the first run of each found real bugs:
   recording an induction, adding an ID number. Each now says so when it is
   refused. Setting a person's trade had the same fault through a `Result`.
 
+**The protective equipment register. Done.**
+What an inspector asks for after an accident is not that the firm had
+helmets in the container. It is that this man was given this helmet on this
+day and put his name to it. So an issue is refused without the receiver's
+own signature, drawn on the phone at the container door, and it is refused
+for nothing else that is not a typo: a stock shelf that reads nought does not
+stop a helmet going on a head. Handing something out takes it off the stock
+list in the same step, and when the shelf count was short the person issuing
+is told, because they have just found out somebody took stock without
+recording it.
+
+The register shows who is holding what, with anything past its replace-by
+date first. The date is picked from a few intervals so nobody counts forward
+on their fingers, and the screen says that how long a harness lasts is on its
+label and the manufacturer's to say — the app has no opinion on it. Handing
+something back dates the row and puts nothing on the shelf, because a used
+harness is not stock. Issuing is for the owner, a manager or a safety
+officer, because it needs both the safety record and the list of who is in
+the firm, and a worker's role is shown neither.
+
+**The visitor log. Done.**
+An inspector, the client's engineer, a driver waiting to unload: the people
+least likely to know where the assembly point is, and most likely to be
+forgotten at it, because nobody on the site knows their face. Each job now
+has a visitor log — a name, and optionally who they are from, who they came
+to see, a phone number, whether they were told the site rules, and their
+signature. Only the name is required, because every field a gate log demands
+is a field that gets "x" typed into it.
+
+Anybody signed in and not out goes on the next roll call automatically,
+marked as a visitor on the screen and in the text that is shared from it, and
+counts towards which site the roll call is for. A visitor signed in more than
+a shift ago is flagged on both the log and the roll call — and, like a stale
+check-in, never dropped from it.
+
+**Translation sheets that keep up. Done.**
+The spreadsheets a buyer hands to the people who fix the Hebrew and Arabic
+were written once, by hand, and the app kept growing after them: 478
+interface strings, the twenty count forms and thirty hand tools had never
+been on them, so nobody would ever have been asked to translate them. Both
+generators now rebuild the sheets from the app and the catalogue, carry
+across every column a translator typed, carry the developer's note on where
+a string appears, and fail the build when a sheet falls behind.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -584,20 +628,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~89 | *estimated — see below* |
-| Buildable here — on the device, no server | ~97 | where the work is |
+| Built | ~91 | *estimated — see below* |
+| Buildable here — on the device, no server | ~95 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
-check, plant pre-use checks, and the waste register.
+check, plant pre-use checks, the waste register, the protective equipment
+register, and the visitor log.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

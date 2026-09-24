@@ -49,6 +49,7 @@ import il.co.tradesmanager.ui.orders.OrderDetailScreen
 import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.audit.AuditScreen
 import il.co.tradesmanager.ui.safety.HeatScreen
+import il.co.tradesmanager.ui.safety.PpeScreen
 import il.co.tradesmanager.ui.safety.IncidentsScreen
 import il.co.tradesmanager.ui.safety.MusterScreen
 import il.co.tradesmanager.ui.safety.ViolationsScreen
@@ -79,6 +80,7 @@ import il.co.tradesmanager.ui.settings.PlansScreen
 import il.co.tradesmanager.ui.settings.TermsScreen
 import il.co.tradesmanager.ui.settings.SettingsScreen
 import il.co.tradesmanager.ui.tempworks.TemporaryWorksScreen
+import il.co.tradesmanager.ui.visitors.VisitorsScreen
 import il.co.tradesmanager.ui.waste.WasteScreen
 import il.co.tradesmanager.ui.timesheet.TimesheetScreen
 
@@ -101,6 +103,7 @@ object Routes {
     const val VIOLATIONS = "safety/violations"
     const val MUSTER = "safety/muster"
     const val HEAT = "safety/heat"
+    const val PPE = "safety/ppe"
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
@@ -109,6 +112,7 @@ object Routes {
     const val TEMP_WORKS = "projects/tempworks"
     const val EXCAVATIONS = "projects/excavations"
     const val WASTE = "projects/waste"
+    const val VISITORS = "projects/visitors"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
     const val GATE = "people/gate"
@@ -164,6 +168,7 @@ object Routes {
     fun temporaryWorks(projectId: String) = "$TEMP_WORKS/$projectId"
     fun excavations(projectId: String) = "$EXCAVATIONS/$projectId"
     fun waste(projectId: String) = "$WASTE/$projectId"
+    fun visitors(projectId: String) = "$VISITORS/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
 }
 
@@ -355,6 +360,7 @@ fun AppNavHost(
                     },
                     onOpenExcavations = { navController.navigate(Routes.excavations(id)) },
                     onOpenWaste = { navController.navigate(Routes.waste(id)) },
+                    onOpenVisitors = { navController.navigate(Routes.visitors(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     // A part, or the job it belongs to. Same screen, so the
@@ -481,6 +487,7 @@ fun AppNavHost(
                     onOpenViolations = { navController.navigate(Routes.VIOLATIONS) },
                     onOpenMuster = { navController.navigate(Routes.MUSTER) },
                     onOpenHeat = { navController.navigate(Routes.HEAT) },
+                    onOpenPpe = { navController.navigate(Routes.PPE) },
                 )
             }
             composable(Routes.TALKS) {
@@ -553,6 +560,13 @@ fun AppNavHost(
                     onBack = { navController.popBackStack() },
                 )
             }
+            composable("${Routes.VISITORS}/{projectId}") { entry ->
+                VisitorsScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
             composable("${Routes.EXCAVATIONS}/{projectId}") { entry ->
                 ExcavationScreen(
                     container = container,
@@ -569,6 +583,12 @@ fun AppNavHost(
             }
             composable(Routes.HEAT) {
                 HeatScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable(Routes.PPE) {
+                PpeScreen(
                     container = container,
                     onBack = { navController.popBackStack() },
                 )

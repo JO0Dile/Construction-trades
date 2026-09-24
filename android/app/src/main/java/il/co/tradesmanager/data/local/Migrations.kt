@@ -356,6 +356,16 @@ object Migrations {
         }
     }
 
+    /**
+     * The protective equipment register and the visitor log: two new tables,
+     * and one column on the roll call so a visitor on it says so.
+     */
+    val MIGRATION_34_35 = object : Migration(34, 35) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_34_35.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -390,6 +400,7 @@ object Migrations {
         MIGRATION_31_32,
         MIGRATION_32_33,
         MIGRATION_33_34,
+        MIGRATION_34_35,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -975,5 +986,29 @@ object Migrations {
             "`facility` TEXT NOT NULL, `hauler` TEXT, `ticketNumber` TEXT, `notes` TEXT, " +
             "`recordedByAccountId` TEXT, `recordedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_waste_loads_projectId` ON `waste_loads` (`projectId`)",
+    )
+
+    /**
+     * The protective equipment register, the visitor log, and the flag that
+     * marks a visitor on a roll call. `visitor` is added with the default the
+     * entity declares, which is what Room checks it against.
+     */
+    val SQL_34_35: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `ppe_issues` (`id` TEXT NOT NULL, `companyId` TEXT, " +
+            "`accountId` TEXT, `holderName` TEXT NOT NULL, `inventoryItemId` TEXT, " +
+            "`itemName` TEXT NOT NULL, `quantity` INTEGER NOT NULL, `size` TEXT, " +
+            "`issuedAt` INTEGER NOT NULL, `replaceBy` INTEGER, `signature` TEXT NOT NULL, " +
+            "`issuedByAccountId` TEXT, `issuedByName` TEXT NOT NULL, `handedBackAt` INTEGER, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_ppe_issues_companyId` ON `ppe_issues` (`companyId`)",
+        "CREATE INDEX IF NOT EXISTS `index_ppe_issues_accountId` ON `ppe_issues` (`accountId`)",
+        "CREATE TABLE IF NOT EXISTS `site_visits` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`companyId` TEXT, `name` TEXT NOT NULL, `organisation` TEXT, `phone` TEXT, " +
+            "`hostName` TEXT, `briefed` INTEGER NOT NULL, `signature` TEXT, " +
+            "`arrivedAt` INTEGER NOT NULL, `leftAt` INTEGER, `signedInByAccountId` TEXT, " +
+            "`signedInByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_site_visits_projectId` ON `site_visits` (`projectId`)",
+        "CREATE INDEX IF NOT EXISTS `index_site_visits_leftAt` ON `site_visits` (`leftAt`)",
+        "ALTER TABLE `muster_people` ADD COLUMN `visitor` INTEGER NOT NULL DEFAULT 0",
     )
 }

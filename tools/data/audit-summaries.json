@@ -633,6 +633,33 @@
       "he": "%1$s הסתיימה",
       "ar": "%1$s انتهت"
     },
+    "ppe_handed_back": {
+      "arguments": [
+        "item",
+        "name"
+      ],
+      "en": "%1$s handed back by %2$s",
+      "he": "%1$s הוחזר על ידי %2$s",
+      "ar": "أعاد %2$s %1$s"
+    },
+    "ppe_issued": {
+      "arguments": [
+        "quantity",
+        "item",
+        "name"
+      ],
+      "en": "Issued to %3$s: %2$s, quantity %1$s",
+      "he": "נמסר ל־%3$s: %2$s, כמות %1$s",
+      "ar": "سُلِّم إلى %3$s: %2$s، الكمية %1$s"
+    },
+    "ppe_issued_to": {
+      "arguments": [
+        "name"
+      ],
+      "en": "Issued to %1$s",
+      "he": "נמסר ל־%1$s",
+      "ar": "سُلِّم إلى %1$s"
+    },
     "profile_published": {
       "arguments": [
         "fields"
@@ -860,6 +887,22 @@
       "en": "Violation confirmed against %1$s",
       "he": "עבירה אושרה נגד %1$s",
       "ar": "تأكّدت مخالفة بحق %1$s"
+    },
+    "visitor_signed_in": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s signed in as a visitor",
+      "he": "%1$s נרשם כמבקר",
+      "ar": "سُجّل %1$s كزائر"
+    },
+    "visitor_signed_out": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s signed out",
+      "he": "%1$s יצא מהאתר",
+      "ar": "غادر %1$s الموقع"
     },
     "waste_recorded": {
       "arguments": [

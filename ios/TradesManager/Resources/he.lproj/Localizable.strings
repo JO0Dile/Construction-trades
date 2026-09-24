@@ -196,7 +196,7 @@
 /* Privacy screen: the whole of it in one sentence */
 "priv_lead" = "כל מה שאתם רושמים נשאר בטלפון הזה.";
 "priv_where_title" = "היכן נשמרת העבודה שלכם";
-"priv_where_body" = "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה. אין חשבון אצלנו ואין שרת שמחזיק עותק.";
+"priv_where_body" = "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.";
 "priv_network_title" = "הדבר היחיד שיוצא מהטלפון";
 "priv_network_body" = "כשלוחצים על בדיקת עדכונים, האפליקציה שואלת את GitHub אם פורסמה גרסה חדשה. בבקשה הזו אין דבר על העבודות, הצוות או האתר שלכם. היא נשלחת רק בלחיצה על הכפתור ולא בשום מועד אחר.";
 "priv_none_title" = "מה האפליקציה אינה עושה";
@@ -1639,3 +1639,150 @@
 "waste_dest_landfill" = "הטמנה";
 "summary_waste_recorded" = "%1$s %2$s של %3$s אל %4$s";
 "summary_waste_ticket_added" = "נוספה תעודה למטען שנשלח אל %1$s";
+"summary_ppe_handed_back" = "%1$s הוחזר על ידי %2$s";
+"summary_ppe_issued" = "נמסר ל־%3$s: %2$s, כמות %1$s";
+"summary_ppe_issued_to" = "נמסר ל־%1$s";
+/* Protective equipment register screen title */
+"ppe_title" = "ציוד מגן אישי";
+/* What the register is for */
+"ppe_blurb" = "מי קיבל מה, בחתימת מי שקיבל. מסירת פריט מורידה אותו מרשימת המלאי.";
+/* Shown to a role that may not read the register */
+"ppe_not_allowed_view" = "פנקס הציוד נוקב בשמות אנשים, ולכן הוא שמור למי שרשאי לראות את עדשת האנשים ואת רישומי הבטיחות.";
+/* Button that opens the issue form */
+"ppe_issue" = "מסירת ציוד";
+/* Form heading: who receives it */
+"ppe_to_whom" = "למי";
+/* Search box narrowing the list of people */
+"ppe_find_person" = "חיפוש אדם";
+/* Free-text name for somebody with no account */
+"ppe_someone_else" = "או הקלדת שם של מי שאין לו חשבון";
+/* Form heading: what is handed over */
+"ppe_what" = "מה";
+/* Search box narrowing the stock items */
+"ppe_find_item" = "חיפוש במלאי";
+/* Stock count shown on an item chip; %1$s is a number */
+"ppe_in_stock" = "%1$s במלאי";
+/* Free-text item name for something not on the stock list */
+"ppe_item_typed" = "או הקלדת שם הפריט";
+/* Quantity field label */
+"ppe_quantity" = "כמות";
+/* Size field label: S, M, L, a shoe size, a glove size */
+"ppe_size" = "מידה (לא חובה)";
+/* Form heading: when it must be replaced */
+"ppe_replace_by" = "להחלפה עד";
+/* Chip: no replacement date */
+"ppe_replace_never" = "ללא תאריך";
+/* Replacement interval chip */
+"ppe_after_6_months" = "בעוד 6 חודשים";
+/* Replacement interval chip */
+"ppe_after_1_year" = "בעוד שנה";
+/* Replacement interval chip */
+"ppe_after_2_years" = "בעוד שנתיים";
+/* Replacement interval chip */
+"ppe_after_3_years" = "בעוד 3 שנים";
+/* Replacement interval chip */
+"ppe_after_5_years" = "בעוד 5 שנים";
+/* Under the replacement chips: the app gives no advice on lifespans */
+"ppe_replace_hint" = "משך השימוש מופיע על התווית, והוא נקבע בידי היצרן.";
+/* Heading over the signature pad; the RECEIVER signs */
+"ppe_sign" = "מקבל הציוד חותם כאן";
+/* Button that saves the issue */
+"ppe_record" = "רישום המסירה";
+/* Confirmation */
+"ppe_issued" = "נרשם.";
+/* Confirmation when the stock count was below what was handed over; %1$s is how many short */
+"ppe_issued_short" = "נרשם. ברשימת המלאי היו %1$s פחות ממה שנמסר, כך שהספירה כבר הייתה שגויה. כעת היא עומדת על אפס.";
+/* Section heading: people and what they hold */
+"ppe_holders" = "בידיהם כעת";
+/* Empty register */
+"ppe_nobody" = "עדיין לא נמסר ציוד.";
+/* An item past its replace-by date */
+"ppe_state_overdue" = "ההחלפה באיחור";
+/* An item due for replacement within a month */
+"ppe_state_due_soon" = "ההחלפה מתקרבת";
+/* An item still good */
+"ppe_state_in_use" = "בשימוש";
+/* Replace-by date; %1$s is a date */
+"ppe_replace_on" = "להחלפה עד %1$s";
+/* When and by whom; %1$s date, %2$s the person who issued it */
+"ppe_issued_on" = "נמסר ב־%1$s על ידי %2$s";
+/* Quantity on a row; %1$s is a number */
+"ppe_quantity_badge" = "כמות %1$s";
+/* Size on a row; %1$s is the size */
+"ppe_size_badge" = "מידה %1$s";
+/* Button: this is no longer theirs */
+"ppe_hand_back" = "סימון כהוחזר";
+/* Confirm dialog title */
+"ppe_hand_back_confirm" = "לסמן כהוחזר?";
+/* Confirm dialog body */
+"ppe_hand_back_body" = "הוחזר, הוחלף, או נלקח כי ניזוק. הפריט לא חוזר לרשימת המלאי: פריט משומש אינו מלאי.";
+/* Section heading and state: items no longer held */
+"ppe_history" = "הוחזרו";
+/* Refusal */
+"ppe_refused_not_allowed" = "רק הבעלים, מנהל או ממונה בטיחות מוסרים ציוד.";
+/* Refusal */
+"ppe_refused_worker" = "יש לציין למי נמסר.";
+/* Refusal */
+"ppe_refused_item" = "יש לציין מה נמסר.";
+/* Refusal */
+"ppe_refused_quantity" = "כמות בין 1 ל־50.";
+/* Refusal */
+"ppe_refused_signed" = "מקבל הציוד חייב לחתום.";
+/* Refusal */
+"ppe_refused_too_early" = "תאריך ההחלפה חייב להיות אחרי היום.";
+/* Refusal */
+"ppe_refused_not_held" = "הפריט כבר הוחזר.";
+"summary_visitor_signed_in" = "%1$s נרשם כמבקר";
+"summary_visitor_signed_out" = "%1$s יצא מהאתר";
+/* Visitor log screen title and job link */
+"visit_title" = "מבקרים";
+/* Hint under the job link */
+"visit_row_hint" = "מי נמצא באתר בלי לעבוד בו. הם נכללים במסדר עד שיוצאים.";
+/* What the log is for */
+"visit_blurb" = "מפקחים, הלקוח, מהנדסים, נהגים. כל מי שנרשם ולא יצא ייכלל במסדר הבא, לכן יש לרשום יציאה כשהם עוזבים.";
+/* Button opening the sign-in form */
+"visit_sign_in" = "רישום מבקר";
+/* Field */
+"visit_name" = "שם";
+/* Field: which firm or office */
+"visit_organisation" = "מטעם (חברה או משרד)";
+/* Field: who they came to see */
+"visit_host" = "מגיע אל";
+/* Field */
+"visit_phone" = "טלפון";
+/* Checkbox */
+"visit_briefed" = "קיבל הסבר על כללי האתר ועל נקודת הכינוס";
+/* Heading over the visitor's optional signature */
+"visit_sign_here" = "המבקר חותם כאן (לא חובה)";
+/* Button that saves the sign-in */
+"visit_record" = "רישום כניסה";
+/* Confirmation */
+"visit_signed_in" = "נרשם. הוא ייכלל במסדר עד שתירשם יציאתו.";
+/* Section heading */
+"visit_here" = "באתר כעת";
+/* Empty state */
+"visit_nobody_here" = "אין מבקרים רשומים באתר.";
+/* Who they are visiting; %1$s a name */
+"visit_seeing" = "אצל %1$s";
+/* When they arrived; %1$s a date and time */
+"visit_since" = "באתר מאז %1$s";
+/* Row badge */
+"visit_was_briefed" = "קיבל הסבר";
+/* Row badge, bold */
+"visit_not_briefed" = "לא קיבל הסבר";
+/* Warning on a visit open longer than a shift */
+"visit_forgotten" = "נרשם לפני יותר מ־16 שעות. אם עזב, יש לרשום יציאה, אחרת המסדר עדיין יחפש אותו.";
+/* Button */
+"visit_sign_out" = "רישום יציאה";
+/* Section heading */
+"visit_history" = "ביקורים קודמים";
+/* Refusal */
+"visit_refused_not_allowed" = "רק מי שרושם את רישומי האתר יכול לרשום מבקרים.";
+/* Refusal */
+"visit_refused_name" = "למבקר חייב להיות שם.";
+/* Refusal */
+"visit_refused_left" = "יציאתו כבר נרשמה.";
+/* Badge on a roll call row for a visitor */
+"muster_visitor_badge" = "מבקר";
+/* A visitor's name in the shared roll call text; %1$s the name */
+"muster_share_visitor" = "%1$s (מבקר)";

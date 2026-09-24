@@ -1,6 +1,6 @@
 {
   "tradeId": "general",
-  "catalogVersion": 1,
+  "catalogVersion": 2,
   "checklists": [
     {
       "id": "sf.ge.height",
@@ -50,6 +50,22 @@
         { "id": "sf.ge.ex.2", "critical": true, "texts": { "en": "Trench over 1.2 m shored, battered or benched", "he": "תעלה מעל 1.2 מ׳ נתמכת, משופעת או מדורגת", "ar": "الخندق فوق 1.2 م مدعوم أو مائل أو مدرّج" } },
         { "id": "sf.ge.ex.3", "critical": true, "texts": { "en": "Edges barriered and spoil kept back from the edge", "he": "הקצוות מגודרים והחומר החפור מורחק מהקצה", "ar": "الحواف مسيَّجة والأتربة مُبعدة عن الحافة" } },
         { "id": "sf.ge.ex.4", "critical": false, "texts": { "en": "Safe access ladder within 8 m of any working position", "he": "סולם גישה בטוח בטווח 8 מ׳ מכל עמדת עבודה", "ar": "سلّم وصول آمن ضمن 8 م من كل موقع عمل" } }
+      ]
+    },
+    {
+      "id": "sf.ge.lockup",
+      "mandatoryBeforeWork": false,
+      "titles": { "en": "End-of-day site lock-up", "he": "נעילת האתר בסוף יום", "ar": "إغلاق الموقع في نهاية اليوم" },
+      "references": ["תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988"],
+      "items": [
+        { "id": "sf.ge.lk.1", "critical": true, "texts": { "en": "Perimeter fence and gates closed and locked", "he": "גדר היקפית ושערים סגורים ונעולים", "ar": "السياج المحيط والبوابات مغلقة ومقفلة" } },
+        { "id": "sf.ge.lk.2", "critical": true, "texts": { "en": "Excavations and floor openings covered or fenced", "he": "חפירות ופתחים ברצפה מכוסים או מגודרים", "ar": "الحفريات وفتحات الأرضية مغطاة أو مسيّجة" } },
+        { "id": "sf.ge.lk.3", "critical": true, "texts": { "en": "Scaffold access ladders removed or boarded so nobody can climb", "he": "סולמות גישה לפיגום הוסרו או נחסמו כך שאי אפשר לטפס", "ar": "سلالم الوصول إلى السقالة أُزيلت أو سُدّت بحيث لا يمكن التسلق" } },
+        { "id": "sf.ge.lk.4", "critical": true, "texts": { "en": "Plant immobilised, keys removed and secured", "he": "הציוד הכבד הושבת, המפתחות הוצאו ואובטחו", "ar": "المعدات معطّلة والمفاتيح منزوعة ومؤمّنة" } },
+        { "id": "sf.ge.lk.5", "critical": false, "texts": { "en": "Temporary power isolated where it is not needed overnight", "he": "חשמל זמני מנותק במקום שאינו נדרש בלילה", "ar": "الكهرباء المؤقتة مفصولة حيث لا تلزم ليلًا" } },
+        { "id": "sf.ge.lk.6", "critical": false, "texts": { "en": "Gas cylinders, fuel and chemicals locked away", "he": "בלוני גז, דלק וכימיקלים נעולים", "ar": "أسطوانات الغاز والوقود والمواد الكيميائية مقفلة" } },
+        { "id": "sf.ge.lk.7", "critical": false, "texts": { "en": "Nobody left on site, checked against who checked in", "he": "אף אחד לא נשאר באתר, נבדק מול רשימת מי שנכנס", "ar": "لم يبقَ أحد في الموقع، تم التحقق مقابل من سجّلوا الدخول" } },
+        { "id": "sf.ge.lk.8", "critical": false, "texts": { "en": "Hot work areas checked again after the fire watch ended", "he": "אזורי עבודה חמה נבדקו שוב לאחר סיום משמרת האש", "ar": "مناطق الأعمال الساخنة فُحصت مجددًا بعد انتهاء مراقبة الحريق" } }
       ]
     }
   ]

@@ -141,6 +141,16 @@ jobs:
       - name: The photograph checklist matches the catalogue
         run: python3 tools/photo-worklist.py --check
 
+      # The translation sheets are what a buyer hands to the people who fix
+      # the Hebrew and Arabic. They were typed once and the app kept growing:
+      # 478 interface strings and thirty hand tools were never on them, so
+      # nobody was ever asked to translate them and they would have shipped
+      # in draft wording. Both generators keep what a translator typed.
+      - name: The translation sheets cover every string
+        run: python3 tools/gen-translation-sheet.py --check
+      - name: The translation sheets cover the whole catalogue
+        run: python3 tools/gen-catalog-sheets.py --check
+
       # Parses every catalogue file through the app's own model types with
       # unknown keys rejected, and runs the locale, format, time-of-day and
       # CSV tests. Needs no emulator.

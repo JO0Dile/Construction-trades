@@ -118,6 +118,9 @@ object Muster {
      *   a visitor, a delivery driver, a subcontractor who never uses the app.
      * @param account how they were accounted for, when that was not by being
      *   looked at. Null while [state] is [State.UNACCOUNTED].
+     * @param visitor signed in on a job's visitor log rather than clocked on:
+     *   an inspector, a client, somebody delivering. Said on the row, because
+     *   the man who knows the site by heart does not know their face.
      */
     data class Person(
         val id: String,
@@ -128,6 +131,7 @@ object Muster {
         val addedDuringRollCall: Boolean = false,
         val account: String? = null,
         val settledAt: Long? = null,
+        val visitor: Boolean = false,
     )
 
     /**
@@ -210,6 +214,8 @@ object Muster {
         val checkInAt: Long,
         /** The job they clocked on to, when the entry carries one. */
         val projectId: String? = null,
+        /** An open visit on a job's visitor log rather than a clocking. See [Person.visitor]. */
+        val visitor: Boolean = false,
     )
 
     /**
@@ -257,6 +263,7 @@ object Muster {
                 personId = checkIn.personId,
                 name = checkIn.name.trim().ifBlank { checkIn.personId.orEmpty() },
                 staleCheckIn = startedAt - checkIn.checkInAt > STALE_AFTER_MS,
+                visitor = checkIn.visitor,
             )
         }
         return Roll(startedAt = startedAt, people = people)

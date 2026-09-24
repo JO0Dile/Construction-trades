@@ -8,7 +8,7 @@ instead.** It is the same list as `items-needing-photos.csv`, written as a
 checklist that reads on a phone. Ten columns of spreadsheet render as a table
 wider than the screen of the person actually standing in the merchant's.
 
-## items.csv — 497 catalogue items
+## items.csv — 527 catalogue items
 
 One row per thing the app can stock. Columns:
 
@@ -41,10 +41,15 @@ formal name — so a foreman typing `العقدة` finds slab conduit, and `ال
 differs from the formal one, put it in `street_yours`; the field takes any
 language.
 
-## interface.csv — 901 strings
+## interface.csv — 1,412 strings
 
 Every word the app itself says: buttons, labels, hints, warnings, error
-messages. Same shape as the others — `hebrew_yours` and `arabic_yours` are the
+messages.
+
+Twenty rows are counts — "1 item", "2 items" — which Hebrew spells three ways
+and Arabic six. Their forms sit in one cell, `one: … | two: … | other: …`.
+Answer in the same shape, keeping the names before each colon; a form you
+leave out keeps its draft. Same shape as the others — `hebrew_yours` and `arabic_yours` are the
 columns to fill, and blank means the draft is fine.
 
 `where_it_appears` is a note about the context, present on the strings where
@@ -62,9 +67,22 @@ Two things not to change:
 This is the largest of the three and the least urgent. The item names are what
 the photography waits on; the interface can be corrected in passes.
 
-## safety-and-templates.csv — 404 rows
+## Keeping them current
 
-The text inside the checklists and the job templates: 46 checklist titles, 193
+The sheets are made from the app, not typed. After adding strings or catalogue
+content:
+
+    python3 tools/gen-strings.py
+    python3 tools/gen-translation-sheet.py
+    python3 tools/gen-catalog-sheets.py
+
+New rows appear; nothing already filled in is touched. A row whose string or
+item has left the app is removed only if nobody answered it. CI fails when a
+sheet is behind, so an untranslated string cannot reach a release unnoticed.
+
+## safety-and-templates.csv — 413 rows
+
+The text inside the checklists and the job templates: 47 checklist titles, 201
 safety checks, and the names, descriptions and 117 task steps of the 24
 templates.
 

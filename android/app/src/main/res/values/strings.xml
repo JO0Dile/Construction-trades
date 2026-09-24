@@ -197,7 +197,7 @@
     <!-- Privacy screen: the whole of it in one sentence -->
     <string name="priv_lead">Everything you record stays on this phone.</string>
     <string name="priv_where_title">Where your work is kept</string>
-    <string name="priv_where_body">Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.</string>
+    <string name="priv_where_body">Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site. There is no account with us and no server holding a copy.</string>
     <string name="priv_network_title">The one thing that leaves the phone</string>
     <string name="priv_network_body">When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.</string>
     <string name="priv_none_title">What the app does not do</string>
@@ -1640,6 +1640,153 @@
     <string name="waste_dest_landfill">Landfill</string>
     <string name="summary_waste_recorded">%1$s %2$s of %3$s to %4$s</string>
     <string name="summary_waste_ticket_added">Ticket added for a load to %1$s</string>
+    <string name="summary_ppe_handed_back">%1$s handed back by %2$s</string>
+    <string name="summary_ppe_issued">Issued to %3$s: %2$s, quantity %1$s</string>
+    <string name="summary_ppe_issued_to">Issued to %1$s</string>
+    <!-- Protective equipment register screen title -->
+    <string name="ppe_title">Protective equipment</string>
+    <!-- What the register is for -->
+    <string name="ppe_blurb">Who was given what, signed for by the person who took it. Handing something out takes it off the stock list.</string>
+    <!-- Shown to a role that may not read the register -->
+    <string name="ppe_not_allowed_view">The equipment register names people, so it is kept to those who can see the People lens and the safety record.</string>
+    <!-- Button that opens the issue form -->
+    <string name="ppe_issue">Issue equipment</string>
+    <!-- Form heading: who receives it -->
+    <string name="ppe_to_whom">To whom</string>
+    <!-- Search box narrowing the list of people -->
+    <string name="ppe_find_person">Find a person</string>
+    <!-- Free-text name for somebody with no account -->
+    <string name="ppe_someone_else">Or type the name of someone without an account</string>
+    <!-- Form heading: what is handed over -->
+    <string name="ppe_what">What</string>
+    <!-- Search box narrowing the stock items -->
+    <string name="ppe_find_item">Find in stock</string>
+    <!-- Stock count shown on an item chip; %1$s is a number -->
+    <string name="ppe_in_stock">%1$s in stock</string>
+    <!-- Free-text item name for something not on the stock list -->
+    <string name="ppe_item_typed">Or type what it is</string>
+    <!-- Quantity field label -->
+    <string name="ppe_quantity">Quantity</string>
+    <!-- Size field label: S, M, L, a shoe size, a glove size -->
+    <string name="ppe_size">Size (optional)</string>
+    <!-- Form heading: when it must be replaced -->
+    <string name="ppe_replace_by">Replace by</string>
+    <!-- Chip: no replacement date -->
+    <string name="ppe_replace_never">No date</string>
+    <!-- Replacement interval chip -->
+    <string name="ppe_after_6_months">In 6 months</string>
+    <!-- Replacement interval chip -->
+    <string name="ppe_after_1_year">In a year</string>
+    <!-- Replacement interval chip -->
+    <string name="ppe_after_2_years">In 2 years</string>
+    <!-- Replacement interval chip -->
+    <string name="ppe_after_3_years">In 3 years</string>
+    <!-- Replacement interval chip -->
+    <string name="ppe_after_5_years">In 5 years</string>
+    <!-- Under the replacement chips: the app gives no advice on lifespans -->
+    <string name="ppe_replace_hint">How long it lasts is on its label, and it is the manufacturer\'s to say.</string>
+    <!-- Heading over the signature pad; the RECEIVER signs -->
+    <string name="ppe_sign">The person receiving it signs here</string>
+    <!-- Button that saves the issue -->
+    <string name="ppe_record">Record the issue</string>
+    <!-- Confirmation -->
+    <string name="ppe_issued">Recorded.</string>
+    <!-- Confirmation when the stock count was below what was handed over; %1$s is how many short -->
+    <string name="ppe_issued_short">Recorded. The stock list showed %1$s fewer than were handed over, so its count was already wrong. It now reads nought.</string>
+    <!-- Section heading: people and what they hold -->
+    <string name="ppe_holders">Holding now</string>
+    <!-- Empty register -->
+    <string name="ppe_nobody">Nothing handed out yet.</string>
+    <!-- An item past its replace-by date -->
+    <string name="ppe_state_overdue">Replacement overdue</string>
+    <!-- An item due for replacement within a month -->
+    <string name="ppe_state_due_soon">Due for replacement soon</string>
+    <!-- An item still good -->
+    <string name="ppe_state_in_use">In use</string>
+    <!-- Replace-by date; %1$s is a date -->
+    <string name="ppe_replace_on">Replace by %1$s</string>
+    <!-- When and by whom; %1$s date, %2$s the person who issued it -->
+    <string name="ppe_issued_on">Issued %1$s by %2$s</string>
+    <!-- Quantity on a row; %1$s is a number -->
+    <string name="ppe_quantity_badge">Quantity %1$s</string>
+    <!-- Size on a row; %1$s is the size -->
+    <string name="ppe_size_badge">Size %1$s</string>
+    <!-- Button: this is no longer theirs -->
+    <string name="ppe_hand_back">Mark handed back</string>
+    <!-- Confirm dialog title -->
+    <string name="ppe_hand_back_confirm">Mark as handed back?</string>
+    <!-- Confirm dialog body -->
+    <string name="ppe_hand_back_body">Returned, replaced, or taken off them because it was damaged. It does not go back on the stock list: a used item is not stock.</string>
+    <!-- Section heading and state: items no longer held -->
+    <string name="ppe_history">Handed back</string>
+    <!-- Refusal -->
+    <string name="ppe_refused_not_allowed">Only the owner, a manager or a safety officer hands out equipment.</string>
+    <!-- Refusal -->
+    <string name="ppe_refused_worker">Say who it went to.</string>
+    <!-- Refusal -->
+    <string name="ppe_refused_item">Say what was handed over.</string>
+    <!-- Refusal -->
+    <string name="ppe_refused_quantity">A quantity from 1 to 50.</string>
+    <!-- Refusal -->
+    <string name="ppe_refused_signed">The person receiving it has to sign.</string>
+    <!-- Refusal -->
+    <string name="ppe_refused_too_early">The replace-by date has to be after today.</string>
+    <!-- Refusal -->
+    <string name="ppe_refused_not_held">That has already been handed back.</string>
+    <string name="summary_visitor_signed_in">%1$s signed in as a visitor</string>
+    <string name="summary_visitor_signed_out">%1$s signed out</string>
+    <!-- Visitor log screen title and job link -->
+    <string name="visit_title">Visitors</string>
+    <!-- Hint under the job link -->
+    <string name="visit_row_hint">Who is on site without working here. They go on the roll call until signed out.</string>
+    <!-- What the log is for -->
+    <string name="visit_blurb">Inspectors, the client, engineers, drivers. Anyone signed in and not out is put on the next roll call, so sign people out when they leave.</string>
+    <!-- Button opening the sign-in form -->
+    <string name="visit_sign_in">Sign a visitor in</string>
+    <!-- Field -->
+    <string name="visit_name">Name</string>
+    <!-- Field: which firm or office -->
+    <string name="visit_organisation">From (firm or office)</string>
+    <!-- Field: who they came to see -->
+    <string name="visit_host">Here to see</string>
+    <!-- Field -->
+    <string name="visit_phone">Phone</string>
+    <!-- Checkbox -->
+    <string name="visit_briefed">Told the site rules and where the assembly point is</string>
+    <!-- Heading over the visitor's optional signature -->
+    <string name="visit_sign_here">The visitor signs here (optional)</string>
+    <!-- Button that saves the sign-in -->
+    <string name="visit_record">Sign in</string>
+    <!-- Confirmation -->
+    <string name="visit_signed_in">Signed in. They are on the roll call until signed out.</string>
+    <!-- Section heading -->
+    <string name="visit_here">On site now</string>
+    <!-- Empty state -->
+    <string name="visit_nobody_here">No visitors signed in.</string>
+    <!-- Who they are visiting; %1$s a name -->
+    <string name="visit_seeing">seeing %1$s</string>
+    <!-- When they arrived; %1$s a date and time -->
+    <string name="visit_since">here since %1$s</string>
+    <!-- Row badge -->
+    <string name="visit_was_briefed">briefed</string>
+    <!-- Row badge, bold -->
+    <string name="visit_not_briefed">not briefed</string>
+    <!-- Warning on a visit open longer than a shift -->
+    <string name="visit_forgotten">Signed in over 16 hours ago. If they have gone, sign them out, or the roll call will still be looking for them.</string>
+    <!-- Button -->
+    <string name="visit_sign_out">Sign out</string>
+    <!-- Section heading -->
+    <string name="visit_history">Earlier visits</string>
+    <!-- Refusal -->
+    <string name="visit_refused_not_allowed">Only somebody who writes the site\'s records can sign visitors in.</string>
+    <!-- Refusal -->
+    <string name="visit_refused_name">A visitor needs a name.</string>
+    <!-- Refusal -->
+    <string name="visit_refused_left">They have already been signed out.</string>
+    <!-- Badge on a roll call row for a visitor -->
+    <string name="muster_visitor_badge">visitor</string>
+    <!-- A visitor's name in the shared roll call text; %1$s the name -->
+    <string name="muster_share_visitor">%1$s (visitor)</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

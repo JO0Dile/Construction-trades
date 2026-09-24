@@ -959,9 +959,9 @@
       "ar": "أين يُحفظ عملك"
     },
     "priv_where_body": {
-      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.",
-      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
-      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
+      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site. There is no account with us and no server holding a copy.",
+      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
+      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
     },
     "priv_network_title": {
       "en": "The one thing that leaves the phone",
@@ -7220,6 +7220,457 @@
       "en": "Ticket added for a load to %1$s",
       "he": "נוספה תעודה למטען שנשלח אל %1$s",
       "ar": "أُضيفت تذكرة لحمولة أُرسلت إلى %1$s"
+    },
+    "summary_ppe_handed_back": {
+      "en": "%1$s handed back by %2$s",
+      "he": "%1$s הוחזר על ידי %2$s",
+      "ar": "أعاد %2$s %1$s"
+    },
+    "summary_ppe_issued": {
+      "en": "Issued to %3$s: %2$s, quantity %1$s",
+      "he": "נמסר ל־%3$s: %2$s, כמות %1$s",
+      "ar": "سُلِّم إلى %3$s: %2$s، الكمية %1$s"
+    },
+    "summary_ppe_issued_to": {
+      "en": "Issued to %1$s",
+      "he": "נמסר ל־%1$s",
+      "ar": "سُلِّم إلى %1$s"
+    },
+    "ppe_title": {
+      "c": "Protective equipment register screen title",
+      "en": "Protective equipment",
+      "he": "ציוד מגן אישי",
+      "ar": "معدات الوقاية الشخصية"
+    },
+    "ppe_blurb": {
+      "c": "What the register is for",
+      "en": "Who was given what, signed for by the person who took it. Handing something out takes it off the stock list.",
+      "he": "מי קיבל מה, בחתימת מי שקיבל. מסירת פריט מורידה אותו מרשימת המלאי.",
+      "ar": "من استلم ماذا، بتوقيع من استلمه. تسليم أي قطعة يخصمها من قائمة المخزون."
+    },
+    "ppe_not_allowed_view": {
+      "c": "Shown to a role that may not read the register",
+      "en": "The equipment register names people, so it is kept to those who can see the People lens and the safety record.",
+      "he": "פנקס הציוד נוקב בשמות אנשים, ולכן הוא שמור למי שרשאי לראות את עדשת האנשים ואת רישומי הבטיחות.",
+      "ar": "سجل المعدات يذكر أشخاصًا بأسمائهم، لذا يقتصر على من يحق لهم رؤية عدسة الأشخاص وسجل السلامة."
+    },
+    "ppe_issue": {
+      "c": "Button that opens the issue form",
+      "en": "Issue equipment",
+      "he": "מסירת ציוד",
+      "ar": "تسليم معدات"
+    },
+    "ppe_to_whom": {
+      "c": "Form heading: who receives it",
+      "en": "To whom",
+      "he": "למי",
+      "ar": "لمن"
+    },
+    "ppe_find_person": {
+      "c": "Search box narrowing the list of people",
+      "en": "Find a person",
+      "he": "חיפוש אדם",
+      "ar": "ابحث عن شخص"
+    },
+    "ppe_someone_else": {
+      "c": "Free-text name for somebody with no account",
+      "en": "Or type the name of someone without an account",
+      "he": "או הקלדת שם של מי שאין לו חשבון",
+      "ar": "أو اكتب اسم شخص ليس له حساب"
+    },
+    "ppe_what": {
+      "c": "Form heading: what is handed over",
+      "en": "What",
+      "he": "מה",
+      "ar": "ماذا"
+    },
+    "ppe_find_item": {
+      "c": "Search box narrowing the stock items",
+      "en": "Find in stock",
+      "he": "חיפוש במלאי",
+      "ar": "ابحث في المخزون"
+    },
+    "ppe_in_stock": {
+      "c": "Stock count shown on an item chip; %1$s is a number",
+      "en": "%1$s in stock",
+      "he": "%1$s במלאי",
+      "ar": "%1$s في المخزون"
+    },
+    "ppe_item_typed": {
+      "c": "Free-text item name for something not on the stock list",
+      "en": "Or type what it is",
+      "he": "או הקלדת שם הפריט",
+      "ar": "أو اكتب ما هو"
+    },
+    "ppe_quantity": {
+      "c": "Quantity field label",
+      "en": "Quantity",
+      "he": "כמות",
+      "ar": "الكمية"
+    },
+    "ppe_size": {
+      "c": "Size field label: S, M, L, a shoe size, a glove size",
+      "en": "Size (optional)",
+      "he": "מידה (לא חובה)",
+      "ar": "المقاس (اختياري)"
+    },
+    "ppe_replace_by": {
+      "c": "Form heading: when it must be replaced",
+      "en": "Replace by",
+      "he": "להחלפה עד",
+      "ar": "يُستبدل قبل"
+    },
+    "ppe_replace_never": {
+      "c": "Chip: no replacement date",
+      "en": "No date",
+      "he": "ללא תאריך",
+      "ar": "بلا تاريخ"
+    },
+    "ppe_after_6_months": {
+      "c": "Replacement interval chip",
+      "en": "In 6 months",
+      "he": "בעוד 6 חודשים",
+      "ar": "بعد 6 أشهر"
+    },
+    "ppe_after_1_year": {
+      "c": "Replacement interval chip",
+      "en": "In a year",
+      "he": "בעוד שנה",
+      "ar": "بعد سنة"
+    },
+    "ppe_after_2_years": {
+      "c": "Replacement interval chip",
+      "en": "In 2 years",
+      "he": "בעוד שנתיים",
+      "ar": "بعد سنتين"
+    },
+    "ppe_after_3_years": {
+      "c": "Replacement interval chip",
+      "en": "In 3 years",
+      "he": "בעוד 3 שנים",
+      "ar": "بعد 3 سنوات"
+    },
+    "ppe_after_5_years": {
+      "c": "Replacement interval chip",
+      "en": "In 5 years",
+      "he": "בעוד 5 שנים",
+      "ar": "بعد 5 سنوات"
+    },
+    "ppe_replace_hint": {
+      "c": "Under the replacement chips: the app gives no advice on lifespans",
+      "en": "How long it lasts is on its label, and it is the manufacturer's to say.",
+      "he": "משך השימוש מופיע על התווית, והוא נקבע בידי היצרן.",
+      "ar": "مدة الاستخدام مكتوبة على الملصق، والصانع هو من يحددها."
+    },
+    "ppe_sign": {
+      "c": "Heading over the signature pad; the RECEIVER signs",
+      "en": "The person receiving it signs here",
+      "he": "מקבל הציוד חותם כאן",
+      "ar": "يوقّع مستلم المعدات هنا"
+    },
+    "ppe_record": {
+      "c": "Button that saves the issue",
+      "en": "Record the issue",
+      "he": "רישום המסירה",
+      "ar": "تسجيل التسليم"
+    },
+    "ppe_issued": {
+      "c": "Confirmation",
+      "en": "Recorded.",
+      "he": "נרשם.",
+      "ar": "سُجّل."
+    },
+    "ppe_issued_short": {
+      "c": "Confirmation when the stock count was below what was handed over; %1$s is how many short",
+      "en": "Recorded. The stock list showed %1$s fewer than were handed over, so its count was already wrong. It now reads nought.",
+      "he": "נרשם. ברשימת המלאי היו %1$s פחות ממה שנמסר, כך שהספירה כבר הייתה שגויה. כעת היא עומדת על אפס.",
+      "ar": "سُجّل. كانت قائمة المخزون تُظهر %1$s أقل مما سُلّم، أي أن العدد كان خاطئًا من قبل. وهو الآن صفر."
+    },
+    "ppe_holders": {
+      "c": "Section heading: people and what they hold",
+      "en": "Holding now",
+      "he": "בידיהם כעת",
+      "ar": "بحوزتهم الآن"
+    },
+    "ppe_nobody": {
+      "c": "Empty register",
+      "en": "Nothing handed out yet.",
+      "he": "עדיין לא נמסר ציוד.",
+      "ar": "لم يُسلَّم شيء بعد."
+    },
+    "ppe_state_overdue": {
+      "c": "An item past its replace-by date",
+      "en": "Replacement overdue",
+      "he": "ההחלפה באיחור",
+      "ar": "الاستبدال متأخر"
+    },
+    "ppe_state_due_soon": {
+      "c": "An item due for replacement within a month",
+      "en": "Due for replacement soon",
+      "he": "ההחלפה מתקרבת",
+      "ar": "يحين استبداله قريبًا"
+    },
+    "ppe_state_in_use": {
+      "c": "An item still good",
+      "en": "In use",
+      "he": "בשימוש",
+      "ar": "قيد الاستخدام"
+    },
+    "ppe_replace_on": {
+      "c": "Replace-by date; %1$s is a date",
+      "en": "Replace by %1$s",
+      "he": "להחלפה עד %1$s",
+      "ar": "يُستبدل قبل %1$s"
+    },
+    "ppe_issued_on": {
+      "c": "When and by whom; %1$s date, %2$s the person who issued it",
+      "en": "Issued %1$s by %2$s",
+      "he": "נמסר ב־%1$s על ידי %2$s",
+      "ar": "سُلّم في %1$s من قِبل %2$s"
+    },
+    "ppe_quantity_badge": {
+      "c": "Quantity on a row; %1$s is a number",
+      "en": "Quantity %1$s",
+      "he": "כמות %1$s",
+      "ar": "الكمية %1$s"
+    },
+    "ppe_size_badge": {
+      "c": "Size on a row; %1$s is the size",
+      "en": "Size %1$s",
+      "he": "מידה %1$s",
+      "ar": "المقاس %1$s"
+    },
+    "ppe_hand_back": {
+      "c": "Button: this is no longer theirs",
+      "en": "Mark handed back",
+      "he": "סימון כהוחזר",
+      "ar": "تعليم كمُعاد"
+    },
+    "ppe_hand_back_confirm": {
+      "c": "Confirm dialog title",
+      "en": "Mark as handed back?",
+      "he": "לסמן כהוחזר?",
+      "ar": "التعليم كمُعاد؟"
+    },
+    "ppe_hand_back_body": {
+      "c": "Confirm dialog body",
+      "en": "Returned, replaced, or taken off them because it was damaged. It does not go back on the stock list: a used item is not stock.",
+      "he": "הוחזר, הוחלף, או נלקח כי ניזוק. הפריט לא חוזר לרשימת המלאי: פריט משומש אינו מלאי.",
+      "ar": "أُعيد أو استُبدل أو سُحب لأنه تضرّر. لا يعود إلى قائمة المخزون: القطعة المستعملة ليست مخزونًا."
+    },
+    "ppe_history": {
+      "c": "Section heading and state: items no longer held",
+      "en": "Handed back",
+      "he": "הוחזרו",
+      "ar": "أُعيدت"
+    },
+    "ppe_refused_not_allowed": {
+      "c": "Refusal",
+      "en": "Only the owner, a manager or a safety officer hands out equipment.",
+      "he": "רק הבעלים, מנהל או ממונה בטיחות מוסרים ציוד.",
+      "ar": "لا يسلّم المعدات إلا المالك أو المدير أو مسؤول السلامة."
+    },
+    "ppe_refused_worker": {
+      "c": "Refusal",
+      "en": "Say who it went to.",
+      "he": "יש לציין למי נמסר.",
+      "ar": "اذكر لمن سُلّم."
+    },
+    "ppe_refused_item": {
+      "c": "Refusal",
+      "en": "Say what was handed over.",
+      "he": "יש לציין מה נמסר.",
+      "ar": "اذكر ما الذي سُلّم."
+    },
+    "ppe_refused_quantity": {
+      "c": "Refusal",
+      "en": "A quantity from 1 to 50.",
+      "he": "כמות בין 1 ל־50.",
+      "ar": "كمية من 1 إلى 50."
+    },
+    "ppe_refused_signed": {
+      "c": "Refusal",
+      "en": "The person receiving it has to sign.",
+      "he": "מקבל הציוד חייב לחתום.",
+      "ar": "يجب أن يوقّع المستلم."
+    },
+    "ppe_refused_too_early": {
+      "c": "Refusal",
+      "en": "The replace-by date has to be after today.",
+      "he": "תאריך ההחלפה חייב להיות אחרי היום.",
+      "ar": "يجب أن يكون تاريخ الاستبدال بعد اليوم."
+    },
+    "ppe_refused_not_held": {
+      "c": "Refusal",
+      "en": "That has already been handed back.",
+      "he": "הפריט כבר הוחזר.",
+      "ar": "أُعيدت هذه القطعة من قبل."
+    },
+    "summary_visitor_signed_in": {
+      "en": "%1$s signed in as a visitor",
+      "he": "%1$s נרשם כמבקר",
+      "ar": "سُجّل %1$s كزائر"
+    },
+    "summary_visitor_signed_out": {
+      "en": "%1$s signed out",
+      "he": "%1$s יצא מהאתר",
+      "ar": "غادر %1$s الموقع"
+    },
+    "visit_title": {
+      "c": "Visitor log screen title and job link",
+      "en": "Visitors",
+      "he": "מבקרים",
+      "ar": "الزوار"
+    },
+    "visit_row_hint": {
+      "c": "Hint under the job link",
+      "en": "Who is on site without working here. They go on the roll call until signed out.",
+      "he": "מי נמצא באתר בלי לעבוד בו. הם נכללים במסדר עד שיוצאים.",
+      "ar": "من في الموقع دون أن يعمل فيه. يُدرجون في التفقد حتى يُسجَّل خروجهم."
+    },
+    "visit_blurb": {
+      "c": "What the log is for",
+      "en": "Inspectors, the client, engineers, drivers. Anyone signed in and not out is put on the next roll call, so sign people out when they leave.",
+      "he": "מפקחים, הלקוח, מהנדסים, נהגים. כל מי שנרשם ולא יצא ייכלל במסדר הבא, לכן יש לרשום יציאה כשהם עוזבים.",
+      "ar": "مفتشون، العميل، مهندسون، سائقون. كل من سُجّل دخوله ولم يُسجَّل خروجه يُدرج في التفقد التالي، لذا سجّل خروجهم عند مغادرتهم."
+    },
+    "visit_sign_in": {
+      "c": "Button opening the sign-in form",
+      "en": "Sign a visitor in",
+      "he": "רישום מבקר",
+      "ar": "تسجيل زائر"
+    },
+    "visit_name": {
+      "c": "Field",
+      "en": "Name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "visit_organisation": {
+      "c": "Field: which firm or office",
+      "en": "From (firm or office)",
+      "he": "מטעם (חברה או משרד)",
+      "ar": "من طرف (شركة أو جهة)"
+    },
+    "visit_host": {
+      "c": "Field: who they came to see",
+      "en": "Here to see",
+      "he": "מגיע אל",
+      "ar": "جاء لمقابلة"
+    },
+    "visit_phone": {
+      "c": "Field",
+      "en": "Phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "visit_briefed": {
+      "c": "Checkbox",
+      "en": "Told the site rules and where the assembly point is",
+      "he": "קיבל הסבר על כללי האתר ועל נקודת הכינוס",
+      "ar": "أُبلغ بقواعد الموقع ومكان نقطة التجمع"
+    },
+    "visit_sign_here": {
+      "c": "Heading over the visitor's optional signature",
+      "en": "The visitor signs here (optional)",
+      "he": "המבקר חותם כאן (לא חובה)",
+      "ar": "يوقّع الزائر هنا (اختياري)"
+    },
+    "visit_record": {
+      "c": "Button that saves the sign-in",
+      "en": "Sign in",
+      "he": "רישום כניסה",
+      "ar": "تسجيل الدخول"
+    },
+    "visit_signed_in": {
+      "c": "Confirmation",
+      "en": "Signed in. They are on the roll call until signed out.",
+      "he": "נרשם. הוא ייכלל במסדר עד שתירשם יציאתו.",
+      "ar": "سُجّل. سيُدرج في التفقد حتى يُسجَّل خروجه."
+    },
+    "visit_here": {
+      "c": "Section heading",
+      "en": "On site now",
+      "he": "באתר כעת",
+      "ar": "في الموقع الآن"
+    },
+    "visit_nobody_here": {
+      "c": "Empty state",
+      "en": "No visitors signed in.",
+      "he": "אין מבקרים רשומים באתר.",
+      "ar": "لا يوجد زوار مسجلون."
+    },
+    "visit_seeing": {
+      "c": "Who they are visiting; %1$s a name",
+      "en": "seeing %1$s",
+      "he": "אצל %1$s",
+      "ar": "لدى %1$s"
+    },
+    "visit_since": {
+      "c": "When they arrived; %1$s a date and time",
+      "en": "here since %1$s",
+      "he": "באתר מאז %1$s",
+      "ar": "في الموقع منذ %1$s"
+    },
+    "visit_was_briefed": {
+      "c": "Row badge",
+      "en": "briefed",
+      "he": "קיבל הסבר",
+      "ar": "أُبلغ بالقواعد"
+    },
+    "visit_not_briefed": {
+      "c": "Row badge, bold",
+      "en": "not briefed",
+      "he": "לא קיבל הסבר",
+      "ar": "لم يُبلَّغ بالقواعد"
+    },
+    "visit_forgotten": {
+      "c": "Warning on a visit open longer than a shift",
+      "en": "Signed in over 16 hours ago. If they have gone, sign them out, or the roll call will still be looking for them.",
+      "he": "נרשם לפני יותר מ־16 שעות. אם עזב, יש לרשום יציאה, אחרת המסדר עדיין יחפש אותו.",
+      "ar": "سُجّل قبل أكثر من 16 ساعة. إن غادر فسجّل خروجه، وإلا سيظل التفقد يبحث عنه."
+    },
+    "visit_sign_out": {
+      "c": "Button",
+      "en": "Sign out",
+      "he": "רישום יציאה",
+      "ar": "تسجيل الخروج"
+    },
+    "visit_history": {
+      "c": "Section heading",
+      "en": "Earlier visits",
+      "he": "ביקורים קודמים",
+      "ar": "زيارات سابقة"
+    },
+    "visit_refused_not_allowed": {
+      "c": "Refusal",
+      "en": "Only somebody who writes the site's records can sign visitors in.",
+      "he": "רק מי שרושם את רישומי האתר יכול לרשום מבקרים.",
+      "ar": "لا يسجّل الزوار إلا من يكتب سجلات الموقع."
+    },
+    "visit_refused_name": {
+      "c": "Refusal",
+      "en": "A visitor needs a name.",
+      "he": "למבקר חייב להיות שם.",
+      "ar": "يجب أن يكون للزائر اسم."
+    },
+    "visit_refused_left": {
+      "c": "Refusal",
+      "en": "They have already been signed out.",
+      "he": "יציאתו כבר נרשמה.",
+      "ar": "سُجّل خروجه من قبل."
+    },
+    "muster_visitor_badge": {
+      "c": "Badge on a roll call row for a visitor",
+      "en": "visitor",
+      "he": "מבקר",
+      "ar": "زائر"
+    },
+    "muster_share_visitor": {
+      "c": "A visitor's name in the shared roll call text; %1$s the name",
+      "en": "%1$s (visitor)",
+      "he": "%1$s (מבקר)",
+      "ar": "%1$s (زائر)"
     }
   },
   "plurals": {

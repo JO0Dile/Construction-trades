@@ -154,6 +154,9 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.PLANT_TO_SITE -> R.string.summary_plant_to_site
     Summaries.PLANT_TO_YARD -> R.string.summary_plant_to_yard
     Summaries.POUR_FINISHED -> R.string.summary_pour_finished
+    Summaries.PPE_HANDED_BACK -> R.string.summary_ppe_handed_back
+    Summaries.PPE_ISSUED -> R.string.summary_ppe_issued
+    Summaries.PPE_ISSUED_TO -> R.string.summary_ppe_issued_to
     Summaries.PROFILE_PUBLISHED -> R.string.summary_profile_published
     Summaries.REPORTS_TO -> R.string.summary_reports_to
     Summaries.REPORTS_TO_NOBODY -> R.string.summary_reports_to_nobody
@@ -185,6 +188,8 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.USED_ON_SITE -> R.string.summary_used_on_site
     Summaries.VARIATION_STATUS -> R.string.summary_variation_status
     Summaries.VIOLATION_CONFIRMED -> R.string.summary_violation_confirmed
+    Summaries.VISITOR_SIGNED_IN -> R.string.summary_visitor_signed_in
+    Summaries.VISITOR_SIGNED_OUT -> R.string.summary_visitor_signed_out
     Summaries.WASTE_RECORDED -> R.string.summary_waste_recorded
     Summaries.WASTE_TICKET_ADDED -> R.string.summary_waste_ticket_added
     else -> null

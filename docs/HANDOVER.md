@@ -18,11 +18,14 @@ SQLCipher.
 So there is **no server to pay for, no hosting, and no per-user cost**. The
 whole product runs on the phones it is installed on:
 
-- 22 trades, 527 catalogue items, 193 safety checks, 17 project templates
+- 22 trades, 527 catalogue items, 201 safety checks, 24 project templates
 - the five lenses — plan, stuff, people, evidence, money — and every register
   under them: daily log, concrete pours, scaffolding, lifting, temporary
   works, excavations, permits, toolbox talks, snags, incidents, violations,
-  plant, purchase orders, payment applications, timesheets, handover packs
+  plant and its pre-use checks, purchase orders, payment applications,
+  timesheets, waste, protective equipment, visitors, handover packs
+- the emergency roll call, fed by the clockings and the visitor logs, and the
+  heat check
 - site admission at the gate, roles, and the chain of command that decides who
   may see what
 - a tamper-evident audit trail, and CSV and PDF export
@@ -128,7 +131,7 @@ Until any of that is switched on, the running cost of this product is zero.
 **The iPhone app is well behind the Android one, and has never been compiled.**
 It covers the first version of the ground — inventory, projects, the
 schedule, safety checklists, the barcode scanner, export — over 14 data
-models. Android has 57 tables. Everything built since the first version is
+models. Android has 59 tables. Everything built since the first version is
 Android only: money, the people and the chain of command, the site registers
 (daily log, concrete, scaffolding, lifting, temporary works, excavations,
 permits, snags, violations), the roll call, heat checks and plant pre-use

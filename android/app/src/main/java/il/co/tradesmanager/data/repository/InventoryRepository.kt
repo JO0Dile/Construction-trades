@@ -76,6 +76,8 @@ class InventoryRepository(
 
     suspend fun findByBarcode(barcode: String): InventoryItemEntity? = dao.itemByBarcode(barcode.trim())
 
+    suspend fun item(id: String): InventoryItemEntity? = dao.item(id)
+
     suspend fun save(item: InventoryItemEntity, actorName: String): InventoryItemEntity {
         val now = System.currentTimeMillis()
         val existing = dao.item(item.id)

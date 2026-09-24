@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -94,4 +95,10 @@ data class MusterPersonEntity(
      */
     val account: String? = null,
     val settledAt: Long? = null,
+    /**
+     * Came off a job's visitor log rather than the clockings. Defaulted for
+     * the roll calls taken before there was a visitor log, which had none.
+     */
+    @ColumnInfo(defaultValue = "0")
+    val visitor: Boolean = false,
 )

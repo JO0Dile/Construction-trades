@@ -529,6 +529,27 @@ object Summaries {
     const val POUR_FINISHED = "pour_finished"
 
     /**
+     * %1$s handed back by %2$s
+     *
+     * Arguments, in order: item, name.
+     */
+    const val PPE_HANDED_BACK = "ppe_handed_back"
+
+    /**
+     * Issued to %3$s: %2$s, quantity %1$s
+     *
+     * Arguments, in order: quantity, item, name.
+     */
+    const val PPE_ISSUED = "ppe_issued"
+
+    /**
+     * Issued to %1$s
+     *
+     * Arguments, in order: name.
+     */
+    const val PPE_ISSUED_TO = "ppe_issued_to"
+
+    /**
      * Company profile updated; shown to the crew: %1$s
      *
      * Arguments, in order: fields.
@@ -718,6 +739,20 @@ object Summaries {
      * Arguments, in order: name.
      */
     const val VIOLATION_CONFIRMED = "violation_confirmed"
+
+    /**
+     * %1$s signed in as a visitor
+     *
+     * Arguments, in order: name.
+     */
+    const val VISITOR_SIGNED_IN = "visitor_signed_in"
+
+    /**
+     * %1$s signed out
+     *
+     * Arguments, in order: name.
+     */
+    const val VISITOR_SIGNED_OUT = "visitor_signed_out"
 
     /**
      * %1$s %2$s of %3$s to %4$s

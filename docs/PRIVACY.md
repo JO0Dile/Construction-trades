@@ -14,7 +14,7 @@ source; neither can drift from the other.
 
 ### Where your work is kept
 
-Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone. There is no account with us and no server holding a copy.
+Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site. There is no account with us and no server holding a copy.
 
 ### The one thing that leaves the phone
 
@@ -48,7 +48,7 @@ A server is planned, so that phones can sync and a lost phone is not a lost site
 
 ### היכן נשמרת העבודה שלכם
 
-עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה. אין חשבון אצלנו ואין שרת שמחזיק עותק.
+עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.
 
 ### הדבר היחיד שיוצא מהטלפון
 
@@ -82,7 +82,7 @@ A server is planned, so that phones can sync and a lost phone is not a lost site
 
 ### أين يُحفظ عملك
 
-الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.
+الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.
 
 ### الشيء الوحيد الذي يغادر الهاتف
 

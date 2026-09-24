@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Assignment
 import androidx.compose.material.icons.filled.Campaign
 import androidx.compose.material.icons.filled.ChecklistRtl
+import androidx.compose.material.icons.filled.Engineering
 import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.HealthAndSafety
@@ -38,6 +39,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -56,6 +58,7 @@ fun SafetyScreen(
     onOpenViolations: () -> Unit,
     onOpenMuster: () -> Unit,
     onOpenHeat: () -> Unit,
+    onOpenPpe: () -> Unit,
 ) {
     val viewModel: SafetyViewModel = viewModel(factory = ViewModelFactory(container) { SafetyViewModel(it) })
     val templates by viewModel.templates.collectAsStateWithLifecycle()
@@ -66,6 +69,11 @@ fun SafetyScreen(
     // owner walking their own site should be able to write one too.
     val canRecordViolations =
         (session as? SessionRepository.State.SignedIn)?.role?.canWrite(Lens.EVIDENCE) == true
+    // The register names people, so its way in is only drawn for somebody
+    // who may read it. A card that opens onto "you may not see this" is a
+    // button that does nothing, with extra steps.
+    val canSeePpe =
+        (session as? SessionRepository.State.SignedIn)?.role?.let { PpeRepository.mayRead(it) } == true
     val languageTag = currentLanguageTag()
 
     Scaffold(
@@ -141,6 +149,17 @@ fun SafetyScreen(
                     onOpen = onOpenHeat,
                 )
             }
+            if (canSeePpe) {
+                item {
+                    EntryCard(
+                        title = stringResource(R.string.ppe_title),
+                        body = stringResource(R.string.ppe_blurb),
+                        icon = Icons.Filled.Engineering,
+                        alert = false,
+                        onOpen = onOpenPpe,
+                    )
+                }
+            }
             if (templates.isEmpty()) {
                 item {
                     EmptyState(
@@ -186,9 +205,10 @@ fun SafetyScreen(
 }
 
 /**
- * A way in to one of the two things on this screen that are not a register to
+ * A way in to one of the things on this screen that are not a checklist to
  * sit down and fill in: the roll call, needed in ten seconds while an alarm is
- * going, and the heat check, needed every hot morning.
+ * going, the heat check, needed every hot morning, and the equipment register,
+ * needed with a man standing at the container door.
  *
  * Top of the safety lens and drawn as a card rather than one more icon in the
  * top bar, because a 24dp icon among six others is not ten seconds. [alert]
