@@ -121,6 +121,7 @@ fun ProjectDetailScreen(
     onOpenWaste: () -> Unit,
     onOpenVisitors: () -> Unit,
     onOpenDrawings: () -> Unit,
+    onOpenQueries: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -184,6 +185,8 @@ fun ProjectDetailScreen(
         if (canSeeEvidence) add(JobLink(R.string.log_title, R.string.log_notes_hint, onOpenDailyLog))
         // What the job is being built from, which is part of the plan.
         if (canSeePlan) add(JobLink(R.string.dwg_title, R.string.dwg_row_hint, onOpenDrawings))
+        // Beside the drawings, because most questions are about one.
+        if (canSeePlan) add(JobLink(R.string.qry_title, R.string.qry_row_hint, onOpenQueries))
         // Beside the log, because it is the other thing somebody at the gate
         // writes in every day, and the roll call reads it.
         if (canSeeEvidence) add(JobLink(R.string.visit_title, R.string.visit_row_hint, onOpenVisitors))

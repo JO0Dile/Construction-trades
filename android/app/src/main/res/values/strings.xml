@@ -1932,6 +1932,74 @@
     <string name="gaps_missing">%1$s: none on record</string>
     <!-- Row line; %1$s is a ticket kind -->
     <string name="gaps_expired">%1$s: expired</string>
+    <string name="summary_query_answered">%1$s answered</string>
+    <string name="summary_query_raised">%1$s asked of %2$s</string>
+    <!-- Screen title and job link -->
+    <string name="qry_title">Questions to the designers</string>
+    <!-- Hint under the job link -->
+    <string name="qry_row_hint">What was asked, of whom, and whether it has been answered</string>
+    <!-- What the log is for -->
+    <string name="qry_blurb">Write down every question put to the architect, the engineer or the supervisor, and when the site needs the answer. Unanswered ones past that date are shown first.</string>
+    <!-- Empty log -->
+    <string name="qry_empty">No questions on this job yet.</string>
+    <!-- Button and dialog title -->
+    <string name="qry_raise">Ask a question</string>
+    <!-- Field -->
+    <string name="qry_question">The question</string>
+    <!-- Label over the chips -->
+    <string name="qry_asked_of">Asked of</string>
+    <!-- Field -->
+    <string name="qry_asked_of_typed">Or type who it was asked of</string>
+    <!-- Field -->
+    <string name="qry_drawing">Drawing number (optional)</string>
+    <!-- Label over the chips -->
+    <string name="qry_needed_by_label">The site needs the answer</string>
+    <!-- Chip -->
+    <string name="qry_no_date">No date</string>
+    <!-- Chip -->
+    <string name="qry_in_2_days">In 2 days</string>
+    <!-- Chip -->
+    <string name="qry_in_a_week">In a week</string>
+    <!-- Chip -->
+    <string name="qry_in_2_weeks">In 2 weeks</string>
+    <!-- Dialog button -->
+    <string name="qry_send">Record the question</string>
+    <!-- Row line; %1$s is a date -->
+    <string name="qry_answered_on">Answered %1$s</string>
+    <!-- Row line, red; %1$s is a date -->
+    <string name="qry_overdue">Needed by %1$s, still unanswered</string>
+    <!-- Row line; %1$s is a date -->
+    <string name="qry_needed_by">Needed by %1$s</string>
+    <!-- Row line; %1$s is a date -->
+    <string name="qry_asked_on">Asked %1$s</string>
+    <!-- Label -->
+    <string name="qry_answer">The answer</string>
+    <!-- Field -->
+    <string name="qry_answer_typed">The answer, as it was given</string>
+    <!-- Dialog button -->
+    <string name="qry_record_answer">Record the answer</string>
+    <!-- Chip -->
+    <string name="qry_architect">The architect</string>
+    <!-- Chip -->
+    <string name="qry_engineer">The structural engineer</string>
+    <!-- Chip: the client's site supervisor -->
+    <string name="qry_supervisor">The supervisor</string>
+    <!-- Chip -->
+    <string name="qry_client">The client</string>
+    <!-- Refusal -->
+    <string name="qry_refused_not_allowed">Only somebody who plans the job can record its questions.</string>
+    <!-- Refusal -->
+    <string name="qry_refused_question">Write the question.</string>
+    <!-- Refusal -->
+    <string name="qry_refused_nobody">Say who it was asked of.</string>
+    <!-- Refusal -->
+    <string name="qry_refused_date">The date the answer is needed by cannot be before today.</string>
+    <!-- Refusal -->
+    <string name="qry_refused_answer">Write the answer.</string>
+    <!-- Refusal -->
+    <string name="qry_refused_answered">That question has already been answered.</string>
+    <!-- Handover pack row -->
+    <string name="hv_queries">Questions to the designers still unanswered</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

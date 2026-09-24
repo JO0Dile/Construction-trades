@@ -121,12 +121,17 @@ class HandoverViewModel(
         )
     }
 
+    private val fromQueries = container.designQueries.observeForProject(projectId).map { queries ->
+        mapOf(HandoverPack.Item.QUERIES_UNANSWERED to queries.count { it.answeredAt == null })
+    }
+
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,
         fromWorks,
         fromWaste,
         fromCubes,
-    ) { safety, works, waste, cubes -> HandoverPack.readiness(safety + works + waste + cubes) }
+        fromQueries,
+    ) { safety, works, waste, cubes, queries -> HandoverPack.readiness(safety + works + waste + cubes + queries) }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5_000),

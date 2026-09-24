@@ -101,7 +101,10 @@ fun DrawingsScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(drawing?.let { it.number + SEPARATOR + it.title } ?: stringResource(R.string.dwg_title))
+                    Text(
+                        drawing?.let { listOf(it.number, it.title).filter { part -> part.isNotBlank() }.joinToString(SEPARATOR) }
+                            ?: stringResource(R.string.dwg_title),
+                    )
                 },
                 navigationIcon = {
                     IconButton(onClick = { if (drawing != null) viewModel.openDrawing(null) else onBack() }) {

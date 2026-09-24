@@ -2,6 +2,7 @@ package il.co.tradesmanager.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Upsert
 import il.co.tradesmanager.data.local.entity.DrawingEntity
 import kotlinx.coroutines.flow.Flow
@@ -19,4 +20,14 @@ interface DrawingDao {
 
     @Query("SELECT * FROM drawings WHERE projectId = :projectId")
     suspend fun forProject(projectId: String): List<DrawingEntity>
+
+    /**
+     * A new revision and the one it supersedes, in one transaction: no moment
+     * at which the old one is marked replaced and the new one is not there.
+     */
+    @Transaction
+    suspend fun supersede(previous: DrawingEntity?, current: DrawingEntity) {
+        previous?.let { upsert(it) }
+        upsert(current)
+    }
 }

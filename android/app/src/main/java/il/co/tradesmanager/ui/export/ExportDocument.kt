@@ -456,5 +456,6 @@ internal fun handoverItemLabel(item: HandoverPack.Item): Int = when (item) {
     HandoverPack.Item.CUBES_FOR_ENGINEER -> R.string.hv_cubes_engineer
     HandoverPack.Item.POURS_WITHOUT_28_DAY_RESULT -> R.string.hv_cubes_missing
     HandoverPack.Item.UNSIGNED_DAILY_LOGS -> R.string.hv_daily_logs
+    HandoverPack.Item.QUERIES_UNANSWERED -> R.string.hv_queries
     HandoverPack.Item.WASTE_WITHOUT_TICKET -> R.string.hv_waste_unproven
 }

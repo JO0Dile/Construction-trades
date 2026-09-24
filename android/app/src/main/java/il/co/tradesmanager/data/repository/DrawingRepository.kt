@@ -70,8 +70,7 @@ class DrawingRepository(
             recordedByName = byName,
         )
         runCatching {
-            current?.let { dao.upsert(it.copy(supersededAt = now)) }
-            dao.upsert(drawing)
+            dao.supersede(previous = current?.copy(supersededAt = now), current = drawing)
             audit.record(
                 ENTITY, drawing.id, AuditTrail.Action.CREATE, byName,
                 if (current == null) {

@@ -602,6 +602,14 @@ is the screen's own word: what a job calls for is the job's to say. A ticket
 counts when its title is the kind's name in any of the three languages, the
 rule the roll call already uses to find first aiders.
 
+**Questions to the designers. Done.**
+Every question put to the architect, the engineer or the supervisor gets a
+number, the day it was asked, who it was put to, the drawing it is about, and
+the day the site needs the answer. An unanswered one past that day — on the
+site's own calendar, so Thursday evening is still Thursday — is shown first
+and in red, the answer is written once and not edited afterwards, and the
+handover pack counts the ones never answered.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -666,14 +674,14 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~95 | *estimated — see below* |
-| Buildable here — on the device, no server | ~91 | where the work is |
+| Built | ~96 | *estimated — see below* |
+| Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the

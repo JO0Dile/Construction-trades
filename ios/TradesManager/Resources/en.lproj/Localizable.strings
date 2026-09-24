@@ -1931,3 +1931,71 @@
 "gaps_missing" = "%1$s: none on record";
 /* Row line; %1$s is a ticket kind */
 "gaps_expired" = "%1$s: expired";
+"summary_query_answered" = "%1$s answered";
+"summary_query_raised" = "%1$s asked of %2$s";
+/* Screen title and job link */
+"qry_title" = "Questions to the designers";
+/* Hint under the job link */
+"qry_row_hint" = "What was asked, of whom, and whether it has been answered";
+/* What the log is for */
+"qry_blurb" = "Write down every question put to the architect, the engineer or the supervisor, and when the site needs the answer. Unanswered ones past that date are shown first.";
+/* Empty log */
+"qry_empty" = "No questions on this job yet.";
+/* Button and dialog title */
+"qry_raise" = "Ask a question";
+/* Field */
+"qry_question" = "The question";
+/* Label over the chips */
+"qry_asked_of" = "Asked of";
+/* Field */
+"qry_asked_of_typed" = "Or type who it was asked of";
+/* Field */
+"qry_drawing" = "Drawing number (optional)";
+/* Label over the chips */
+"qry_needed_by_label" = "The site needs the answer";
+/* Chip */
+"qry_no_date" = "No date";
+/* Chip */
+"qry_in_2_days" = "In 2 days";
+/* Chip */
+"qry_in_a_week" = "In a week";
+/* Chip */
+"qry_in_2_weeks" = "In 2 weeks";
+/* Dialog button */
+"qry_send" = "Record the question";
+/* Row line; %1$s is a date */
+"qry_answered_on" = "Answered %1$s";
+/* Row line, red; %1$s is a date */
+"qry_overdue" = "Needed by %1$s, still unanswered";
+/* Row line; %1$s is a date */
+"qry_needed_by" = "Needed by %1$s";
+/* Row line; %1$s is a date */
+"qry_asked_on" = "Asked %1$s";
+/* Label */
+"qry_answer" = "The answer";
+/* Field */
+"qry_answer_typed" = "The answer, as it was given";
+/* Dialog button */
+"qry_record_answer" = "Record the answer";
+/* Chip */
+"qry_architect" = "The architect";
+/* Chip */
+"qry_engineer" = "The structural engineer";
+/* Chip: the client's site supervisor */
+"qry_supervisor" = "The supervisor";
+/* Chip */
+"qry_client" = "The client";
+/* Refusal */
+"qry_refused_not_allowed" = "Only somebody who plans the job can record its questions.";
+/* Refusal */
+"qry_refused_question" = "Write the question.";
+/* Refusal */
+"qry_refused_nobody" = "Say who it was asked of.";
+/* Refusal */
+"qry_refused_date" = "The date the answer is needed by cannot be before today.";
+/* Refusal */
+"qry_refused_answer" = "Write the answer.";
+/* Refusal */
+"qry_refused_answered" = "That question has already been answered.";
+/* Handover pack row */
+"hv_queries" = "Questions to the designers still unanswered";

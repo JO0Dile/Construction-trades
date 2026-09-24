@@ -28,6 +28,11 @@ class FakeDrawingDao : DrawingDao {
 
     override suspend fun forProject(projectId: String): List<DrawingEntity> =
         rows.value.filter { it.projectId == projectId }
+
+    override suspend fun supersede(previous: DrawingEntity?, current: DrawingEntity) {
+        previous?.let { upsert(it) }
+        upsert(current)
+    }
 }
 
 class DrawingRepositoryTest {

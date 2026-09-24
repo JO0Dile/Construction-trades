@@ -1931,3 +1931,71 @@
 "gaps_missing" = "%1$s: לא רשום";
 /* Row line; %1$s is a ticket kind */
 "gaps_expired" = "%1$s: פג תוקף";
+"summary_query_answered" = "התקבלה תשובה ל־%1$s";
+"summary_query_raised" = "%1$s נשאלה אצל %2$s";
+/* Screen title and job link */
+"qry_title" = "שאלות למתכננים";
+/* Hint under the job link */
+"qry_row_hint" = "מה נשאל, את מי, והאם התקבלה תשובה";
+/* What the log is for */
+"qry_blurb" = "רשמו כל שאלה שנשאלה את האדריכל, המהנדס או המפקח, ומתי האתר צריך את התשובה. שאלות שלא נענו אחרי התאריך מוצגות ראשונות.";
+/* Empty log */
+"qry_empty" = "עדיין אין שאלות בעבודה הזו.";
+/* Button and dialog title */
+"qry_raise" = "שאלה חדשה";
+/* Field */
+"qry_question" = "השאלה";
+/* Label over the chips */
+"qry_asked_of" = "נשאלה את";
+/* Field */
+"qry_asked_of_typed" = "או הקלדת למי נשאלה";
+/* Field */
+"qry_drawing" = "מספר תוכנית (לא חובה)";
+/* Label over the chips */
+"qry_needed_by_label" = "האתר צריך את התשובה";
+/* Chip */
+"qry_no_date" = "ללא תאריך";
+/* Chip */
+"qry_in_2_days" = "בעוד יומיים";
+/* Chip */
+"qry_in_a_week" = "בעוד שבוע";
+/* Chip */
+"qry_in_2_weeks" = "בעוד שבועיים";
+/* Dialog button */
+"qry_send" = "רישום השאלה";
+/* Row line; %1$s is a date */
+"qry_answered_on" = "נענתה ב־%1$s";
+/* Row line, red; %1$s is a date */
+"qry_overdue" = "נדרשה עד %1$s, עדיין ללא תשובה";
+/* Row line; %1$s is a date */
+"qry_needed_by" = "נדרשת עד %1$s";
+/* Row line; %1$s is a date */
+"qry_asked_on" = "נשאלה ב־%1$s";
+/* Label */
+"qry_answer" = "התשובה";
+/* Field */
+"qry_answer_typed" = "התשובה, כפי שנמסרה";
+/* Dialog button */
+"qry_record_answer" = "רישום התשובה";
+/* Chip */
+"qry_architect" = "האדריכל";
+/* Chip */
+"qry_engineer" = "מהנדס הקונסטרוקציה";
+/* Chip: the client's site supervisor */
+"qry_supervisor" = "המפקח";
+/* Chip */
+"qry_client" = "הלקוח";
+/* Refusal */
+"qry_refused_not_allowed" = "רק מי שמתכנן את העבודה יכול לרשום את השאלות שלה.";
+/* Refusal */
+"qry_refused_question" = "יש לכתוב את השאלה.";
+/* Refusal */
+"qry_refused_nobody" = "יש לציין את מי שאלו.";
+/* Refusal */
+"qry_refused_date" = "התאריך שבו נדרשת התשובה לא יכול להיות לפני היום.";
+/* Refusal */
+"qry_refused_answer" = "יש לכתוב את התשובה.";
+/* Refusal */
+"qry_refused_answered" = "השאלה הזו כבר נענתה.";
+/* Handover pack row */
+"hv_queries" = "שאלות למתכננים שעדיין לא נענו";

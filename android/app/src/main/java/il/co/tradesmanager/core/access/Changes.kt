@@ -41,6 +41,7 @@ object Changes {
         // What is supposed to happen.
         "project" to Lens.PLAN,
         "drawing" to Lens.PLAN,
+        "design_query" to Lens.PLAN,
         "project_task" to Lens.PLAN,
         "task_block" to Lens.PLAN,
         "assignment" to Lens.PLAN,

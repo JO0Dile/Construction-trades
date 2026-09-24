@@ -697,6 +697,23 @@
       "he": "פרטי החברה עודכנו; מוצג לצוות: %1$s",
       "ar": "حُدّث ملف الشركة؛ يظهر للطاقم: %1$s"
     },
+    "query_answered": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s answered",
+      "he": "התקבלה תשובה ל־%1$s",
+      "ar": "وردت إجابة على %1$s"
+    },
+    "query_raised": {
+      "arguments": [
+        "reference",
+        "asked_of"
+      ],
+      "en": "%1$s asked of %2$s",
+      "he": "%1$s נשאלה אצל %2$s",
+      "ar": "%1$s وُجّه إلى %2$s"
+    },
     "reports_to": {
       "arguments": [
         "boss"

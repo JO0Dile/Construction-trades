@@ -373,6 +373,13 @@ object Migrations {
         }
     }
 
+    /** Questions put to the designers. One new table. */
+    val MIGRATION_36_37 = object : Migration(36, 37) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_36_37.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -409,6 +416,7 @@ object Migrations {
         MIGRATION_33_34,
         MIGRATION_34_35,
         MIGRATION_35_36,
+        MIGRATION_36_37,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1038,5 +1046,15 @@ object Migrations {
             "`receivedAt` INTEGER NOT NULL, `supersededAt` INTEGER, `notes` TEXT, " +
             "`recordedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_drawings_projectId` ON `drawings` (`projectId`)",
+    )
+
+    /** The designer query log. */
+    val SQL_36_37: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `design_queries` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `question` TEXT NOT NULL, `askedOf` TEXT NOT NULL, " +
+            "`drawingNumber` TEXT, `askedAt` INTEGER NOT NULL, `neededBy` INTEGER, " +
+            "`askedByName` TEXT NOT NULL, `answer` TEXT, `answeredAt` INTEGER, " +
+            "`answerRecordedByName` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_design_queries_projectId` ON `design_queries` (`projectId`)",
     )
 }

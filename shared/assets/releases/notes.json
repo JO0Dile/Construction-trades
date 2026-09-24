@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.28.0",
+      "points": [
+        {
+          "en": "Questions to the designers, on every job: write down each question put to the architect, the engineer or the supervisor, when the site needs the answer, and the answer when it comes. Unanswered questions past their date are shown first, in red.",
+          "he": "שאלות למתכננים, בכל עבודה: רישום כל שאלה שנשאלה את האדריכל, המהנדס או המפקח, מתי האתר צריך את התשובה, והתשובה כשהיא מגיעה. שאלות שלא נענו אחרי התאריך מוצגות ראשונות, באדום.",
+          "ar": "أسئلة للمصممين، في كل مشروع: سجّل كل سؤال وُجّه إلى المعماري أو المهندس أو المشرف، ومتى يحتاج الموقع إلى الإجابة، والإجابة عند وصولها. الأسئلة التي لم يُجَب عنها بعد تاريخها تظهر أولًا بالأحمر."
+        },
+        {
+          "en": "The handover pack lists questions to the designers that were never answered.",
+          "he": "תיק המסירה מציג שאלות למתכננים שלא נענו מעולם.",
+          "ar": "يعرض ملف التسليم أسئلة المصممين التي لم يُجَب عنها قط."
+        }
+      ]
+    },
+    {
       "version": "0.27.0",
       "points": [
         {

@@ -13,6 +13,7 @@ import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
+import il.co.tradesmanager.data.repository.DesignQueryRepository
 import il.co.tradesmanager.data.repository.DrawingRepository
 import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
@@ -188,6 +189,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Which revision of each drawing a job is being built from. */
     val drawings = DrawingRepository(database.drawingDao(), auditTrail)
+
+    /** Questions put to the designers, and their answers. */
+    val designQueries = DesignQueryRepository(database.designQueryDao(), auditTrail)
 
     /**
      * Taking the record off the phone and putting it back.

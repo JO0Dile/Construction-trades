@@ -578,6 +578,20 @@ object Summaries {
     const val PROFILE_PUBLISHED = "profile_published"
 
     /**
+     * %1$s answered
+     *
+     * Arguments, in order: reference.
+     */
+    const val QUERY_ANSWERED = "query_answered"
+
+    /**
+     * %1$s asked of %2$s
+     *
+     * Arguments, in order: reference, asked_of.
+     */
+    const val QUERY_RAISED = "query_raised"
+
+    /**
      * Now reports to %1$s
      *
      * Arguments, in order: boss.

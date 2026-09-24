@@ -1931,3 +1931,71 @@
 "gaps_missing" = "%1$s: غير مسجلة";
 /* Row line; %1$s is a ticket kind */
 "gaps_expired" = "%1$s: منتهية الصلاحية";
+"summary_query_answered" = "وردت إجابة على %1$s";
+"summary_query_raised" = "%1$s وُجّه إلى %2$s";
+/* Screen title and job link */
+"qry_title" = "أسئلة للمصممين";
+/* Hint under the job link */
+"qry_row_hint" = "ما الذي سُئل، ولمن، وهل وردت إجابة";
+/* What the log is for */
+"qry_blurb" = "سجّل كل سؤال وُجّه إلى المعماري أو المهندس أو المشرف، ومتى يحتاج الموقع إلى الإجابة. الأسئلة التي لم يُجَب عنها بعد ذلك التاريخ تظهر أولًا.";
+/* Empty log */
+"qry_empty" = "لا توجد أسئلة في هذا المشروع بعد.";
+/* Button and dialog title */
+"qry_raise" = "طرح سؤال";
+/* Field */
+"qry_question" = "السؤال";
+/* Label over the chips */
+"qry_asked_of" = "موجّه إلى";
+/* Field */
+"qry_asked_of_typed" = "أو اكتب لمن وُجّه";
+/* Field */
+"qry_drawing" = "رقم المخطط (اختياري)";
+/* Label over the chips */
+"qry_needed_by_label" = "يحتاج الموقع إلى الإجابة";
+/* Chip */
+"qry_no_date" = "بلا تاريخ";
+/* Chip */
+"qry_in_2_days" = "خلال يومين";
+/* Chip */
+"qry_in_a_week" = "خلال أسبوع";
+/* Chip */
+"qry_in_2_weeks" = "خلال أسبوعين";
+/* Dialog button */
+"qry_send" = "تسجيل السؤال";
+/* Row line; %1$s is a date */
+"qry_answered_on" = "أُجيب في %1$s";
+/* Row line, red; %1$s is a date */
+"qry_overdue" = "مطلوبة قبل %1$s، ولا إجابة بعد";
+/* Row line; %1$s is a date */
+"qry_needed_by" = "مطلوبة قبل %1$s";
+/* Row line; %1$s is a date */
+"qry_asked_on" = "سُئل في %1$s";
+/* Label */
+"qry_answer" = "الإجابة";
+/* Field */
+"qry_answer_typed" = "الإجابة كما قُدّمت";
+/* Dialog button */
+"qry_record_answer" = "تسجيل الإجابة";
+/* Chip */
+"qry_architect" = "المعماري";
+/* Chip */
+"qry_engineer" = "المهندس الإنشائي";
+/* Chip: the client's site supervisor */
+"qry_supervisor" = "المشرف";
+/* Chip */
+"qry_client" = "العميل";
+/* Refusal */
+"qry_refused_not_allowed" = "لا يسجّل الأسئلة إلا من يخطط للمشروع.";
+/* Refusal */
+"qry_refused_question" = "اكتب السؤال.";
+/* Refusal */
+"qry_refused_nobody" = "اذكر لمن وُجّه السؤال.";
+/* Refusal */
+"qry_refused_date" = "لا يمكن أن يكون تاريخ الحاجة إلى الإجابة قبل اليوم.";
+/* Refusal */
+"qry_refused_answer" = "اكتب الإجابة.";
+/* Refusal */
+"qry_refused_answered" = "سبقت الإجابة عن هذا السؤال.";
+/* Handover pack row */
+"hv_queries" = "أسئلة للمصممين لم يُجَب عنها بعد";

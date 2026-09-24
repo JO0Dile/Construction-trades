@@ -8112,6 +8112,214 @@
       "en": "%1$s: expired",
       "he": "%1$s: פג תוקף",
       "ar": "%1$s: منتهية الصلاحية"
+    },
+    "summary_query_answered": {
+      "en": "%1$s answered",
+      "he": "התקבלה תשובה ל־%1$s",
+      "ar": "وردت إجابة على %1$s"
+    },
+    "summary_query_raised": {
+      "en": "%1$s asked of %2$s",
+      "he": "%1$s נשאלה אצל %2$s",
+      "ar": "%1$s وُجّه إلى %2$s"
+    },
+    "qry_title": {
+      "c": "Screen title and job link",
+      "en": "Questions to the designers",
+      "he": "שאלות למתכננים",
+      "ar": "أسئلة للمصممين"
+    },
+    "qry_row_hint": {
+      "c": "Hint under the job link",
+      "en": "What was asked, of whom, and whether it has been answered",
+      "he": "מה נשאל, את מי, והאם התקבלה תשובה",
+      "ar": "ما الذي سُئل، ولمن، وهل وردت إجابة"
+    },
+    "qry_blurb": {
+      "c": "What the log is for",
+      "en": "Write down every question put to the architect, the engineer or the supervisor, and when the site needs the answer. Unanswered ones past that date are shown first.",
+      "he": "רשמו כל שאלה שנשאלה את האדריכל, המהנדס או המפקח, ומתי האתר צריך את התשובה. שאלות שלא נענו אחרי התאריך מוצגות ראשונות.",
+      "ar": "سجّل كل سؤال وُجّه إلى المعماري أو المهندس أو المشرف، ومتى يحتاج الموقع إلى الإجابة. الأسئلة التي لم يُجَب عنها بعد ذلك التاريخ تظهر أولًا."
+    },
+    "qry_empty": {
+      "c": "Empty log",
+      "en": "No questions on this job yet.",
+      "he": "עדיין אין שאלות בעבודה הזו.",
+      "ar": "لا توجد أسئلة في هذا المشروع بعد."
+    },
+    "qry_raise": {
+      "c": "Button and dialog title",
+      "en": "Ask a question",
+      "he": "שאלה חדשה",
+      "ar": "طرح سؤال"
+    },
+    "qry_question": {
+      "c": "Field",
+      "en": "The question",
+      "he": "השאלה",
+      "ar": "السؤال"
+    },
+    "qry_asked_of": {
+      "c": "Label over the chips",
+      "en": "Asked of",
+      "he": "נשאלה את",
+      "ar": "موجّه إلى"
+    },
+    "qry_asked_of_typed": {
+      "c": "Field",
+      "en": "Or type who it was asked of",
+      "he": "או הקלדת למי נשאלה",
+      "ar": "أو اكتب لمن وُجّه"
+    },
+    "qry_drawing": {
+      "c": "Field",
+      "en": "Drawing number (optional)",
+      "he": "מספר תוכנית (לא חובה)",
+      "ar": "رقم المخطط (اختياري)"
+    },
+    "qry_needed_by_label": {
+      "c": "Label over the chips",
+      "en": "The site needs the answer",
+      "he": "האתר צריך את התשובה",
+      "ar": "يحتاج الموقع إلى الإجابة"
+    },
+    "qry_no_date": {
+      "c": "Chip",
+      "en": "No date",
+      "he": "ללא תאריך",
+      "ar": "بلا تاريخ"
+    },
+    "qry_in_2_days": {
+      "c": "Chip",
+      "en": "In 2 days",
+      "he": "בעוד יומיים",
+      "ar": "خلال يومين"
+    },
+    "qry_in_a_week": {
+      "c": "Chip",
+      "en": "In a week",
+      "he": "בעוד שבוע",
+      "ar": "خلال أسبوع"
+    },
+    "qry_in_2_weeks": {
+      "c": "Chip",
+      "en": "In 2 weeks",
+      "he": "בעוד שבועיים",
+      "ar": "خلال أسبوعين"
+    },
+    "qry_send": {
+      "c": "Dialog button",
+      "en": "Record the question",
+      "he": "רישום השאלה",
+      "ar": "تسجيل السؤال"
+    },
+    "qry_answered_on": {
+      "c": "Row line; %1$s is a date",
+      "en": "Answered %1$s",
+      "he": "נענתה ב־%1$s",
+      "ar": "أُجيب في %1$s"
+    },
+    "qry_overdue": {
+      "c": "Row line, red; %1$s is a date",
+      "en": "Needed by %1$s, still unanswered",
+      "he": "נדרשה עד %1$s, עדיין ללא תשובה",
+      "ar": "مطلوبة قبل %1$s، ولا إجابة بعد"
+    },
+    "qry_needed_by": {
+      "c": "Row line; %1$s is a date",
+      "en": "Needed by %1$s",
+      "he": "נדרשת עד %1$s",
+      "ar": "مطلوبة قبل %1$s"
+    },
+    "qry_asked_on": {
+      "c": "Row line; %1$s is a date",
+      "en": "Asked %1$s",
+      "he": "נשאלה ב־%1$s",
+      "ar": "سُئل في %1$s"
+    },
+    "qry_answer": {
+      "c": "Label",
+      "en": "The answer",
+      "he": "התשובה",
+      "ar": "الإجابة"
+    },
+    "qry_answer_typed": {
+      "c": "Field",
+      "en": "The answer, as it was given",
+      "he": "התשובה, כפי שנמסרה",
+      "ar": "الإجابة كما قُدّمت"
+    },
+    "qry_record_answer": {
+      "c": "Dialog button",
+      "en": "Record the answer",
+      "he": "רישום התשובה",
+      "ar": "تسجيل الإجابة"
+    },
+    "qry_architect": {
+      "c": "Chip",
+      "en": "The architect",
+      "he": "האדריכל",
+      "ar": "المعماري"
+    },
+    "qry_engineer": {
+      "c": "Chip",
+      "en": "The structural engineer",
+      "he": "מהנדס הקונסטרוקציה",
+      "ar": "المهندس الإنشائي"
+    },
+    "qry_supervisor": {
+      "c": "Chip: the client's site supervisor",
+      "en": "The supervisor",
+      "he": "המפקח",
+      "ar": "المشرف"
+    },
+    "qry_client": {
+      "c": "Chip",
+      "en": "The client",
+      "he": "הלקוח",
+      "ar": "العميل"
+    },
+    "qry_refused_not_allowed": {
+      "c": "Refusal",
+      "en": "Only somebody who plans the job can record its questions.",
+      "he": "רק מי שמתכנן את העבודה יכול לרשום את השאלות שלה.",
+      "ar": "لا يسجّل الأسئلة إلا من يخطط للمشروع."
+    },
+    "qry_refused_question": {
+      "c": "Refusal",
+      "en": "Write the question.",
+      "he": "יש לכתוב את השאלה.",
+      "ar": "اكتب السؤال."
+    },
+    "qry_refused_nobody": {
+      "c": "Refusal",
+      "en": "Say who it was asked of.",
+      "he": "יש לציין את מי שאלו.",
+      "ar": "اذكر لمن وُجّه السؤال."
+    },
+    "qry_refused_date": {
+      "c": "Refusal",
+      "en": "The date the answer is needed by cannot be before today.",
+      "he": "התאריך שבו נדרשת התשובה לא יכול להיות לפני היום.",
+      "ar": "لا يمكن أن يكون تاريخ الحاجة إلى الإجابة قبل اليوم."
+    },
+    "qry_refused_answer": {
+      "c": "Refusal",
+      "en": "Write the answer.",
+      "he": "יש לכתוב את התשובה.",
+      "ar": "اكتب الإجابة."
+    },
+    "qry_refused_answered": {
+      "c": "Refusal",
+      "en": "That question has already been answered.",
+      "he": "השאלה הזו כבר נענתה.",
+      "ar": "سبقت الإجابة عن هذا السؤال."
+    },
+    "hv_queries": {
+      "c": "Handover pack row",
+      "en": "Questions to the designers still unanswered",
+      "he": "שאלות למתכננים שעדיין לא נענו",
+      "ar": "أسئلة للمصممين لم يُجَب عنها بعد"
     }
   },
   "plurals": {

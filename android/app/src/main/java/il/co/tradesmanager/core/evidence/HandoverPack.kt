@@ -61,6 +61,9 @@ object HandoverPack {
         /** Days somebody wrote up and never signed. */
         UNSIGNED_DAILY_LOGS,
 
+        /** Questions put to the designers and never answered. */
+        QUERIES_UNANSWERED,
+
         /**
          * Loads of waste with neither a ticket number nor a photograph of
          * the ticket: nothing yet shows where they went.
