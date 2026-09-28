@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.34.0",
+      "points": [
+        {
+          "en": "The inspection requests, material approvals and delay register can now be printed or sent: the share button makes a PDF and a CSV of the register, in the app's language. A delay still going is counted to the day it was printed.",
+          "he": "את בקשות הבדיקה, אישורי החומרים ופנקס העיכובים אפשר עכשיו להדפיס או לשלוח: כפתור השיתוף יוצר PDF ו־CSV של הפנקס, בשפת האפליקציה. עיכוב שעדיין נמשך נספר עד יום ההדפסה.",
+          "ar": "يمكن الآن طباعة طلبات الفحص واعتماد المواد وسجل التأخيرات أو إرسالها: يُنشئ زر المشاركة ملف PDF وملف CSV للسجل بلغة التطبيق. ويُحسب التأخير المستمر حتى يوم الطباعة."
+        },
+        {
+          "en": "When adding a ticket to a person, the kinds offered now include a work permit, an entry permit and a crane signaller, so their expiry dates are watched and warned on like every other ticket.",
+          "he": "בהוספת תעודה לאדם, הסוגים המוצעים כוללים עכשיו היתר עבודה, היתר כניסה ואתת, כך שמועדי התפוגה שלהם נבדקים ומזהירים כמו בכל תעודה אחרת.",
+          "ar": "عند إضافة شهادة لشخص، تشمل الأنواع المعروضة الآن تصريح العمل وتصريح الدخول وموجّه الرافعة، فتُراقَب تواريخ انتهائها ويُنبَّه إليها كأي شهادة أخرى."
+        }
+      ]
+    },
+    {
       "version": "0.33.0",
       "points": [
         {

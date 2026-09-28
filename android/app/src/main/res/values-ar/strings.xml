@@ -1815,6 +1815,15 @@
     <string name="pe_refused_future">لا يمكن أن يكون الفحص بعد اليوم.</string>
     <string name="pe_refused_due">لا يمكن أن يسبق الفحص التالي هذا الفحص.</string>
     <string name="pe_refused_reason">اذكر سبب عدم الاجتياز ليكون هناك ما يُصلَح.</string>
+    <string name="ex_col_number">الرقم</string>
+    <string name="ex_col_asked">طُلب</string>
+    <string name="ex_col_sent">أُرسل</string>
+    <string name="ex_col_on">بتاريخ</string>
+    <string name="ex_col_from">من</string>
+    <string name="ex_col_to">إلى</string>
+    <string name="ex_col_days">الأيام</string>
+    <string name="ex_waiting">بالانتظار</string>
+    <string name="ex_still_going">لا يزال مستمرًا</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

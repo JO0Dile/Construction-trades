@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -38,8 +39,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -53,8 +57,11 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.PhotoViewer
+import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberImageAdder
+import il.co.tradesmanager.ui.export.ExportDocument
+import il.co.tradesmanager.ui.export.Exporter
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -81,6 +88,10 @@ fun InspectionsScreen(
     val openPhotos by viewModel.openPhotos.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val jobName by viewModel.jobName.collectAsStateWithLifecycle()
+    val languageTag = currentLanguageTag()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
 
     var requesting by remember { mutableStateOf(false) }
     var deciding by remember { mutableStateOf(false) }
@@ -100,6 +111,25 @@ fun InspectionsScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.action_back))
+                    }
+                },
+                actions = {
+                    // The register as a document: a PDF to print or send, and a CSV.
+                    if (rows.isNotEmpty()) {
+                        IconButton(
+                            onClick = {
+                                val result = Exporter.write(
+                                    context = context,
+                                    document = ExportDocument.InspectionRegister(jobName = jobName, inspections = rows.map { it.inspection }),
+                                    languageTag = languageTag,
+                                    locale = locale,
+                                    rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                                )
+                                context.startActivity(Exporter.shareIntent(context, result))
+                            },
+                        ) {
+                            Icon(Icons.Filled.IosShare, contentDescription = stringResource(R.string.set_export))
+                        }
                     }
                 },
             )
@@ -287,7 +317,7 @@ private fun DetailDialog(
                 if (result != null) {
                     Text(stringResource(R.string.ir_result), style = MaterialTheme.typography.labelLarge)
                     Text(
-                        stringResource(resultLabel(result)),
+                        stringResource(inspectionResultLabel(result)),
                         color = stateColour(row.state),
                         fontWeight = FontWeight.Bold,
                     )
@@ -463,7 +493,7 @@ private fun DecideDialog(
                         FilterChip(
                             selected = result == option,
                             onClick = { result = option },
-                            label = { Text(stringResource(resultLabel(option))) },
+                            label = { Text(stringResource(inspectionResultLabel(option))) },
                         )
                     }
                 }
@@ -541,7 +571,7 @@ internal fun inspectionKindLabel(kind: Inspections.Kind): Int = when (kind) {
 }
 
 @StringRes
-private fun resultLabel(result: Inspections.Result): Int = when (result) {
+internal fun inspectionResultLabel(result: Inspections.Result): Int = when (result) {
     Inspections.Result.PASSED -> R.string.ir_result_passed
     Inspections.Result.PASSED_WITH_COMMENTS -> R.string.ir_result_comments
     Inspections.Result.FAILED -> R.string.ir_result_failed

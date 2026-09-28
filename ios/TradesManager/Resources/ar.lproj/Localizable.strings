@@ -2291,3 +2291,21 @@
 "pe_refused_future" = "لا يمكن أن يكون الفحص بعد اليوم.";
 "pe_refused_due" = "لا يمكن أن يسبق الفحص التالي هذا الفحص.";
 "pe_refused_reason" = "اذكر سبب عدم الاجتياز ليكون هناك ما يُصلَح.";
+/* Column heading on an exported register */
+"ex_col_number" = "الرقم";
+/* Column heading: the day it was asked */
+"ex_col_asked" = "طُلب";
+/* Column heading: the day it was sent */
+"ex_col_sent" = "أُرسل";
+/* Column heading: the day it was decided */
+"ex_col_on" = "بتاريخ";
+/* Column heading: the first day */
+"ex_col_from" = "من";
+/* Column heading: the last day */
+"ex_col_to" = "إلى";
+/* Column heading: how many calendar days */
+"ex_col_days" = "الأيام";
+/* Cell in an exported register: no answer yet */
+"ex_waiting" = "بالانتظار";
+/* Cell in an exported register: a delay not yet ended */
+"ex_still_going" = "لا يزال مستمرًا";

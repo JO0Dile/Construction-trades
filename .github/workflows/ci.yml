@@ -151,6 +151,11 @@ jobs:
       - name: The translation sheets cover the whole catalogue
         run: python3 tools/gen-catalog-sheets.py --check
 
+      # An edit that drops a */ or a } turns the rest of a file into nonsense
+      # the compiler finds ten minutes in. This finds it in a second.
+      - name: Kotlin files close what they open
+        run: python3 tools/check-kotlin-balance.py
+
       # Choosing Hebrew left the app in English for twenty-four versions: the
       # manifest told Android the activity handled language changes itself,
       # so the screen was never rebuilt. The translations were all there.

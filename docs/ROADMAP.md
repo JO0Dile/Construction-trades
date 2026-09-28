@@ -662,6 +662,16 @@ walk-round does. The home screen counts the machines in red. A machine with
 no certificate recorded is shown as having none, not as overdue: which
 machines need one, and how often, is the examiner's and the regulations'.
 
+**Printing the new registers, and the permits a worker carries. Done.**
+The inspection requests, the material approvals and the delay register each
+export as a PDF to print or send and a CSV, the way the other registers do:
+every request with its result and inspector, every revision of every
+submittal with what was said to it, every delay with its days -- one still
+going counted to the day it was printed -- and whether notice was given. The
+ticket kinds offered for a person now include a work permit, an entry permit
+and a crane signaller, so the expiry warnings that already watch every
+ticket watch those too.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

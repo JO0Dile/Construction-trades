@@ -1815,6 +1815,15 @@
     <string name="pe_refused_future">הבדיקה לא יכולה להיות אחרי היום.</string>
     <string name="pe_refused_due">הבדיקה הבאה לא יכולה להיות לפני הבדיקה הזו.</string>
     <string name="pe_refused_reason">כתבו למה נכשל, כדי שיהיה מה לתקן.</string>
+    <string name="ex_col_number">מס׳</string>
+    <string name="ex_col_asked">התבקש</string>
+    <string name="ex_col_sent">נשלח</string>
+    <string name="ex_col_on">בתאריך</string>
+    <string name="ex_col_from">מ־</string>
+    <string name="ex_col_to">עד</string>
+    <string name="ex_col_days">ימים</string>
+    <string name="ex_waiting">ממתין</string>
+    <string name="ex_still_going">עדיין נמשך</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

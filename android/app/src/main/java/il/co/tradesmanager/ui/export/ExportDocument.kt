@@ -5,22 +5,32 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.ui.audit.auditActionLabel
 import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.core.evidence.HandoverPack
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.security.AuditChain
+import il.co.tradesmanager.core.work.Delays
+import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
+import il.co.tradesmanager.data.local.entity.DelayEventEntity
+import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.local.entity.SiteVisitEntity
+import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.components.unitLabel
+import il.co.tradesmanager.ui.delays.delayCauseLabel
+import il.co.tradesmanager.ui.inspections.inspectionKindLabel
+import il.co.tradesmanager.ui.inspections.inspectionResultLabel
+import il.co.tradesmanager.ui.submittals.submittalDecisionLabel
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -127,6 +137,33 @@ sealed interface ExportDocument {
     data class VisitorLog(
         val jobName: String,
         val visits: List<SiteVisitEntity>,
+    ) : ExportDocument
+
+    /**
+     * One job's inspection requests: what was asked to be seen, of whom, and
+     * what was found. The printout a supervisor files, or a client asks for
+     * before accepting a floor.
+     */
+    data class InspectionRegister(
+        val jobName: String,
+        val inspections: List<InspectionEntity>,
+    ) : ExportDocument
+
+    /** One job's material submittals, every revision, with what was said to each. */
+    data class SubmittalRegister(
+        val jobName: String,
+        val submittals: List<SubmittalEntity>,
+    ) : ExportDocument
+
+    /**
+     * One job's delay events, as a claim is prepared from them: the cause, the
+     * days, the work held, and whether notice was given. Days still running
+     * are counted to [today], the day the printout was made.
+     */
+    data class DelayRegister(
+        val jobName: String,
+        val events: List<DelayEventEntity>,
+        val today: LocalDate,
     ) : ExportDocument
 
     /**
@@ -262,6 +299,96 @@ sealed interface ExportDocument {
             },
         )
 
+        is InspectionRegister -> Table(
+            title = context.getString(R.string.ir_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.ir_kind),
+                context.getString(R.string.ir_element),
+                context.getString(R.string.ir_requested_of),
+                context.getString(R.string.ex_col_asked),
+                context.getString(R.string.ir_result),
+                context.getString(R.string.ir_inspector),
+                context.getString(R.string.ex_col_on),
+                context.getString(R.string.ir_comments),
+            ),
+            rows = inspections.sortedBy { it.requestedAt }.map { row ->
+                listOf(
+                    row.reference,
+                    context.getString(inspectionKindLabel(Inspections.kindOf(row.kind))),
+                    row.element,
+                    row.requestedOf,
+                    day(row.requestedAt, locale),
+                    Inspections.resultOf(row.result)?.let { context.getString(inspectionResultLabel(it)) }
+                        ?: context.getString(R.string.ex_waiting),
+                    row.inspectorName.orEmpty(),
+                    row.decidedAt?.let { day(it, locale) }.orEmpty(),
+                    row.comments.orEmpty(),
+                )
+            },
+        )
+
+        is SubmittalRegister -> Table(
+            title = context.getString(R.string.ms_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.ms_item),
+                context.getString(R.string.ms_supplier),
+                context.getString(R.string.ms_submitted_to),
+                context.getString(R.string.ex_col_sent),
+                context.getString(R.string.ms_decision),
+                context.getString(R.string.ms_reviewer),
+                context.getString(R.string.ex_col_on),
+                context.getString(R.string.ms_notes),
+            ),
+            rows = submittals.sortedWith(compareBy({ it.reference }, { it.revision })).map { row ->
+                listOf(
+                    if (row.revision == 0) row.reference else context.getString(R.string.ms_revision_of, row.reference, row.revision),
+                    row.item,
+                    row.supplier.orEmpty(),
+                    row.submittedTo,
+                    day(row.submittedAt, locale),
+                    Submittals.decisionOf(row.decision)?.let { context.getString(submittalDecisionLabel(it)) }
+                        ?: context.getString(R.string.ex_waiting),
+                    row.reviewerName.orEmpty(),
+                    row.decidedAt?.let { day(it, locale) }.orEmpty(),
+                    row.notes.orEmpty(),
+                )
+            },
+        )
+
+        is DelayRegister -> Table(
+            title = context.getString(R.string.de_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.de_cause),
+                context.getString(R.string.de_description),
+                context.getString(R.string.de_affected),
+                context.getString(R.string.ex_col_from),
+                context.getString(R.string.ex_col_to),
+                context.getString(R.string.ex_col_days),
+                context.getString(R.string.de_notice),
+                context.getString(R.string.de_related),
+            ),
+            rows = events.sortedBy { it.startedOnDay }.map { row ->
+                val started = LocalDate.ofEpochDay(row.startedOnDay)
+                val ended = row.endedOnDay?.let(LocalDate::ofEpochDay)
+                listOf(
+                    row.reference,
+                    context.getString(delayCauseLabel(Delays.causeOf(row.cause))),
+                    row.description,
+                    row.affectedWork.orEmpty(),
+                    Formats.date(started, locale),
+                    ended?.let { Formats.date(it, locale) } ?: context.getString(R.string.ex_still_going),
+                    Delays.days(started, ended, today).toString(),
+                    row.notifiedOnDay?.let { notified ->
+                        row.notifiedTo.orEmpty() + " · " + Formats.date(LocalDate.ofEpochDay(notified), locale)
+                    } ?: context.getString(R.string.de_no_notice),
+                    row.relatedReference.orEmpty(),
+                )
+            },
+        )
+
         is AuditTrail -> Table(
             title = context.getString(R.string.audit_title),
             headers = listOf(
@@ -388,6 +515,9 @@ sealed interface ExportDocument {
             is AuditTrail -> "audit-trail-" + exportedOn
             is PpeRegister -> "protective-equipment"
             is VisitorLog -> "visitors-" + jobName
+            is InspectionRegister -> "inspections-" + jobName
+            is SubmittalRegister -> "material-approvals-" + jobName
+            is DelayRegister -> "delays-" + jobName
         },
     )
 

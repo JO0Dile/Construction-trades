@@ -2291,3 +2291,21 @@
 "pe_refused_future" = "הבדיקה לא יכולה להיות אחרי היום.";
 "pe_refused_due" = "הבדיקה הבאה לא יכולה להיות לפני הבדיקה הזו.";
 "pe_refused_reason" = "כתבו למה נכשל, כדי שיהיה מה לתקן.";
+/* Column heading on an exported register */
+"ex_col_number" = "מס׳";
+/* Column heading: the day it was asked */
+"ex_col_asked" = "התבקש";
+/* Column heading: the day it was sent */
+"ex_col_sent" = "נשלח";
+/* Column heading: the day it was decided */
+"ex_col_on" = "בתאריך";
+/* Column heading: the first day */
+"ex_col_from" = "מ־";
+/* Column heading: the last day */
+"ex_col_to" = "עד";
+/* Column heading: how many calendar days */
+"ex_col_days" = "ימים";
+/* Cell in an exported register: no answer yet */
+"ex_waiting" = "ממתין";
+/* Cell in an exported register: a delay not yet ended */
+"ex_still_going" = "עדיין נמשך";

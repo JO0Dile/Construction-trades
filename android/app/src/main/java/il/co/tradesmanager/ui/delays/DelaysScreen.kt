@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -38,9 +39,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -54,8 +58,11 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.PhotoViewer
+import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberImageAdder
+import il.co.tradesmanager.ui.export.ExportDocument
+import il.co.tradesmanager.ui.export.Exporter
 import java.time.LocalDate
 import java.util.Locale
 
@@ -82,6 +89,10 @@ fun DelaysScreen(
     val openPhotos by viewModel.openPhotos.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val jobName by viewModel.jobName.collectAsStateWithLifecycle()
+    val languageTag = currentLanguageTag()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
 
     var recording by remember { mutableStateOf(false) }
     var ending by remember { mutableStateOf(false) }
@@ -101,6 +112,25 @@ fun DelaysScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.action_back))
+                    }
+                },
+                actions = {
+                    // The register as a document: a PDF to print or send, and a CSV.
+                    if (rows.isNotEmpty()) {
+                        IconButton(
+                            onClick = {
+                                val result = Exporter.write(
+                                    context = context,
+                                    document = ExportDocument.DelayRegister(jobName = jobName, events = rows.map { it.event }, today = LocalDate.now()),
+                                    languageTag = languageTag,
+                                    locale = locale,
+                                    rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                                )
+                                context.startActivity(Exporter.shareIntent(context, result))
+                            },
+                        ) {
+                            Icon(Icons.Filled.IosShare, contentDescription = stringResource(R.string.set_export))
+                        }
                     }
                 },
             )
@@ -137,7 +167,7 @@ fun DelaysScreen(
                                 onClick = {},
                                 label = {
                                     Text(
-                                        stringResource(causeLabel(cause)) + SEPARATOR +
+                                        stringResource(delayCauseLabel(cause)) + SEPARATOR +
                                             pluralStringResource(R.plurals.de_days, days.toInt(), days.toInt()),
                                     )
                                 },
@@ -157,7 +187,7 @@ fun DelaysScreen(
             }
             items(rows, key = { it.event.id }) { row ->
                 ListItem(
-                    overlineContent = { Text(row.event.reference + SEPARATOR + stringResource(causeLabel(row.cause))) },
+                    overlineContent = { Text(row.event.reference + SEPARATOR + stringResource(delayCauseLabel(row.cause))) },
                     headlineContent = { Text(row.event.description, maxLines = 3) },
                     supportingContent = {
                         Column {
@@ -274,7 +304,7 @@ private fun DetailDialog(
     val event = row.event
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(event.reference + SEPARATOR + stringResource(causeLabel(row.cause))) },
+        title = { Text(event.reference + SEPARATOR + stringResource(delayCauseLabel(row.cause))) },
         text = {
             Column(
                 modifier = Modifier.verticalScroll(rememberScrollState()),
@@ -371,7 +401,7 @@ private fun RecordDialog(
                         FilterChip(
                             selected = cause == option,
                             onClick = { cause = option },
-                            label = { Text(stringResource(causeLabel(option))) },
+                            label = { Text(stringResource(delayCauseLabel(option))) },
                         )
                     }
                 }
@@ -488,7 +518,7 @@ private fun NoticeDialog(onDismiss: () -> Unit, onNotice: (to: String, daysAgo: 
 }
 
 @StringRes
-private fun causeLabel(cause: Delays.Cause): Int = when (cause) {
+internal fun delayCauseLabel(cause: Delays.Cause): Int = when (cause) {
     Delays.Cause.WEATHER -> R.string.de_cause_weather
     Delays.Cause.LATE_INFORMATION -> R.string.de_cause_information
     Delays.Cause.CLIENT_CHANGE -> R.string.de_cause_client

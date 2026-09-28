@@ -83,6 +83,11 @@ class DelaysViewModel(
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), Tally(0, emptyMap(), 0))
 
+    /** The job's name, for the title of an export. */
+    val jobName: StateFlow<String> = container.projects.observeProjects()
+        .map { jobs -> jobs.firstOrNull { it.id == projectId }?.name.orEmpty() }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "")
+
     private val _openId = MutableStateFlow<String?>(null)
 
     val open: StateFlow<Row?> = combine(rows, _openId) { list, id -> list.firstOrNull { it.event.id == id } }

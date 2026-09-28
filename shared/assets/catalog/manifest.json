@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": 5,
-  "revisedOn": "2026-09-06",
+  "catalogVersion": 6,
+  "revisedOn": "2026-09-28",
   "sourceNote": {
     "en": "Trade catalogues compiled for the Israeli market. Standard references are pointers for the site file, not a substitute for the published standard.",
     "he": "קטלוגים מקצועיים שנערכו לשוק הישראלי. אזכורי התקנים הם הפניה לתיק האתר ואינם תחליף לתקן המלא.",
@@ -270,6 +270,30 @@
         "en": "Driving licence",
         "he": "רישיון נהיגה",
         "ar": "رخصة قيادة"
+      }
+    },
+    {
+      "id": "work-permit",
+      "names": {
+        "en": "Work permit",
+        "he": "היתר עבודה",
+        "ar": "تصريح عمل"
+      }
+    },
+    {
+      "id": "entry-permit",
+      "names": {
+        "en": "Entry permit",
+        "he": "היתר כניסה",
+        "ar": "تصريح دخول"
+      }
+    },
+    {
+      "id": "signaller",
+      "names": {
+        "en": "Crane signaller",
+        "he": "אתת",
+        "ar": "موجّه الرافعة"
       }
     }
   ],

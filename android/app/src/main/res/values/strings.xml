@@ -2292,6 +2292,24 @@
     <string name="pe_refused_future">It cannot have been examined after today.</string>
     <string name="pe_refused_due">The next examination cannot come before this one.</string>
     <string name="pe_refused_reason">Say why it failed, so there is something to fix.</string>
+    <!-- Column heading on an exported register -->
+    <string name="ex_col_number">No.</string>
+    <!-- Column heading: the day it was asked -->
+    <string name="ex_col_asked">Asked</string>
+    <!-- Column heading: the day it was sent -->
+    <string name="ex_col_sent">Sent</string>
+    <!-- Column heading: the day it was decided -->
+    <string name="ex_col_on">On</string>
+    <!-- Column heading: the first day -->
+    <string name="ex_col_from">From</string>
+    <!-- Column heading: the last day -->
+    <string name="ex_col_to">To</string>
+    <!-- Column heading: how many calendar days -->
+    <string name="ex_col_days">Days</string>
+    <!-- Cell in an exported register: no answer yet -->
+    <string name="ex_waiting">Waiting</string>
+    <!-- Cell in an exported register: a delay not yet ended -->
+    <string name="ex_still_going">Still going</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

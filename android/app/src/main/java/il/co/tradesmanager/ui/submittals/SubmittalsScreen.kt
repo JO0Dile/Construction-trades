@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -38,8 +39,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -54,8 +58,11 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.PhotoViewer
+import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberImageAdder
+import il.co.tradesmanager.ui.export.ExportDocument
+import il.co.tradesmanager.ui.export.Exporter
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -82,6 +89,10 @@ fun SubmittalsScreen(
     val openPhotos by viewModel.openPhotos.collectAsStateWithLifecycle()
     val refusal by viewModel.refusal.collectAsStateWithLifecycle()
     val locale = currentLocale()
+    val jobName by viewModel.jobName.collectAsStateWithLifecycle()
+    val languageTag = currentLanguageTag()
+    val context = LocalContext.current
+    val layoutDirection = LocalLayoutDirection.current
 
     var submitting by remember { mutableStateOf(false) }
     var deciding by remember { mutableStateOf(false) }
@@ -101,6 +112,25 @@ fun SubmittalsScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.action_back))
+                    }
+                },
+                actions = {
+                    // The register as a document: a PDF to print or send, and a CSV.
+                    if (rows.isNotEmpty()) {
+                        IconButton(
+                            onClick = {
+                                val result = Exporter.write(
+                                    context = context,
+                                    document = ExportDocument.SubmittalRegister(jobName = jobName, submittals = rows.map { it.submittal }),
+                                    languageTag = languageTag,
+                                    locale = locale,
+                                    rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                                )
+                                context.startActivity(Exporter.shareIntent(context, result))
+                            },
+                        ) {
+                            Icon(Icons.Filled.IosShare, contentDescription = stringResource(R.string.set_export))
+                        }
                     }
                 },
             )
@@ -293,7 +323,7 @@ private fun DetailDialog(
                 if (decision != null) {
                     Text(stringResource(R.string.ms_decision), style = MaterialTheme.typography.labelLarge)
                     Text(
-                        stringResource(decisionLabel(decision)),
+                        stringResource(submittalDecisionLabel(decision)),
                         color = stateColour(row.state),
                         fontWeight = FontWeight.Bold,
                     )
@@ -464,7 +494,7 @@ private fun DecideDialog(
                         FilterChip(
                             selected = decision == option,
                             onClick = { decision = option },
-                            label = { Text(stringResource(decisionLabel(option))) },
+                            label = { Text(stringResource(submittalDecisionLabel(option))) },
                         )
                     }
                 }
@@ -550,7 +580,7 @@ private fun dateOf(at: Long, locale: Locale): String =
     Formats.date(Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault()).toLocalDate(), locale)
 
 @StringRes
-private fun decisionLabel(decision: Submittals.Decision): Int = when (decision) {
+internal fun submittalDecisionLabel(decision: Submittals.Decision): Int = when (decision) {
     Submittals.Decision.APPROVED -> R.string.ms_decision_approved
     Submittals.Decision.APPROVED_AS_NOTED -> R.string.ms_decision_noted
     Submittals.Decision.REJECTED -> R.string.ms_decision_rejected

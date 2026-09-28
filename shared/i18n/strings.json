@@ -9560,6 +9560,60 @@
       "en": "Say why it failed, so there is something to fix.",
       "he": "כתבו למה נכשל, כדי שיהיה מה לתקן.",
       "ar": "اذكر سبب عدم الاجتياز ليكون هناك ما يُصلَح."
+    },
+    "ex_col_number": {
+      "c": "Column heading on an exported register",
+      "en": "No.",
+      "he": "מס׳",
+      "ar": "الرقم"
+    },
+    "ex_col_asked": {
+      "c": "Column heading: the day it was asked",
+      "en": "Asked",
+      "he": "התבקש",
+      "ar": "طُلب"
+    },
+    "ex_col_sent": {
+      "c": "Column heading: the day it was sent",
+      "en": "Sent",
+      "he": "נשלח",
+      "ar": "أُرسل"
+    },
+    "ex_col_on": {
+      "c": "Column heading: the day it was decided",
+      "en": "On",
+      "he": "בתאריך",
+      "ar": "بتاريخ"
+    },
+    "ex_col_from": {
+      "c": "Column heading: the first day",
+      "en": "From",
+      "he": "מ־",
+      "ar": "من"
+    },
+    "ex_col_to": {
+      "c": "Column heading: the last day",
+      "en": "To",
+      "he": "עד",
+      "ar": "إلى"
+    },
+    "ex_col_days": {
+      "c": "Column heading: how many calendar days",
+      "en": "Days",
+      "he": "ימים",
+      "ar": "الأيام"
+    },
+    "ex_waiting": {
+      "c": "Cell in an exported register: no answer yet",
+      "en": "Waiting",
+      "he": "ממתין",
+      "ar": "بالانتظار"
+    },
+    "ex_still_going": {
+      "c": "Cell in an exported register: a delay not yet ended",
+      "en": "Still going",
+      "he": "עדיין נמשך",
+      "ar": "لا يزال مستمرًا"
     }
   },
   "plurals": {

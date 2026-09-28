@@ -2291,3 +2291,21 @@
 "pe_refused_future" = "It cannot have been examined after today.";
 "pe_refused_due" = "The next examination cannot come before this one.";
 "pe_refused_reason" = "Say why it failed, so there is something to fix.";
+/* Column heading on an exported register */
+"ex_col_number" = "No.";
+/* Column heading: the day it was asked */
+"ex_col_asked" = "Asked";
+/* Column heading: the day it was sent */
+"ex_col_sent" = "Sent";
+/* Column heading: the day it was decided */
+"ex_col_on" = "On";
+/* Column heading: the first day */
+"ex_col_from" = "From";
+/* Column heading: the last day */
+"ex_col_to" = "To";
+/* Column heading: how many calendar days */
+"ex_col_days" = "Days";
+/* Cell in an exported register: no answer yet */
+"ex_waiting" = "Waiting";
+/* Cell in an exported register: a delay not yet ended */
+"ex_still_going" = "Still going";
