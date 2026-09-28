@@ -101,6 +101,7 @@ object Search {
         DELAY(setOf(Lens.PLAN)),
         RISK(setOf(Lens.EVIDENCE)),
         COMPLAINT(setOf(Lens.EVIDENCE)),
+        SUBSTANCE(setOf(Lens.EVIDENCE)),
     }
 
     /**

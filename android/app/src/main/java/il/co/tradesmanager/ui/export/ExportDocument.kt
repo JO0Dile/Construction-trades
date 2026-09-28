@@ -11,6 +11,7 @@ import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.safety.Risks
+import il.co.tradesmanager.core.safety.Substances
 import il.co.tradesmanager.core.security.AuditChain
 import il.co.tradesmanager.core.work.Delays
 import il.co.tradesmanager.core.work.Submittals
@@ -30,6 +31,7 @@ import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SiteVisitEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
+import il.co.tradesmanager.data.local.entity.SubstanceEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.complaints.complaintSubjectLabel
 import il.co.tradesmanager.ui.components.unitLabel
@@ -38,6 +40,7 @@ import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
 import il.co.tradesmanager.ui.risks.bandLabel
 import il.co.tradesmanager.ui.submittals.submittalDecisionLabel
+import il.co.tradesmanager.ui.substances.hazardLabel
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -181,6 +184,18 @@ sealed interface ExportDocument {
     data class ComplaintRegister(
         val jobName: String,
         val complaints: List<ComplaintEntity>,
+    ) : ExportDocument
+
+    /**
+     * One job's hazardous substances: what each is, what its label warns of,
+     * where the rest of it is kept, what to wear and what to do if somebody is
+     * splashed, and the date of the data sheet on file. The sheet for the
+     * store's door and for whoever arrives when something has gone wrong.
+     */
+    data class SubstanceRegister(
+        val jobName: String,
+        val substances: List<SubstanceEntity>,
+        val today: LocalDate,
     ) : ExportDocument
 
     /** One job's questions to its designers, with the answers and when they came. */
@@ -446,6 +461,40 @@ sealed interface ExportDocument {
             },
         )
 
+        is SubstanceRegister -> Table(
+            title = context.getString(R.string.hs_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.hs_name),
+                context.getString(R.string.hs_hazards),
+                context.getString(R.string.hs_kept_where),
+                context.getString(R.string.hs_quantity),
+                context.getString(R.string.hs_precautions),
+                context.getString(R.string.hs_first_aid),
+                context.getString(R.string.hs_sheet),
+                context.getString(R.string.ex_col_off_site),
+            ),
+            rows = substances.sortedBy { it.addedAt }.map { row ->
+                val sheetOn = row.sheetOnDay?.let(LocalDate::ofEpochDay)
+                val state = Substances.state(sheetOn, row.removedAt != null, today)
+                listOf(
+                    row.reference,
+                    row.name,
+                    Substances.decode(row.hazards).sortedBy { it.ordinal }.joinToString(", ") { context.getString(hazardLabel(it)) },
+                    row.keptWhere,
+                    row.quantity.orEmpty(),
+                    row.precautions.orEmpty(),
+                    row.firstAid.orEmpty(),
+                    when {
+                        sheetOn == null -> context.getString(R.string.hs_no_sheet)
+                        state == Substances.State.SHEET_OLD -> context.getString(R.string.hs_sheet_old, Formats.date(sheetOn, locale))
+                        else -> Formats.date(sheetOn, locale)
+                    },
+                    row.removedAt?.let { day(it, locale) }.orEmpty(),
+                )
+            },
+        )
+
         is QueryRegister -> Table(
             title = context.getString(R.string.qry_title) + " — " + jobName,
             headers = listOf(
@@ -638,6 +687,7 @@ sealed interface ExportDocument {
             is RiskRegister -> "risk-assessment-" + jobName
             is QueryRegister -> "questions-to-designers-" + jobName
             is ComplaintRegister -> "complaints-" + jobName
+            is SubstanceRegister -> "substances-" + jobName
         },
     )
 

@@ -10,6 +10,7 @@ import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
+import il.co.tradesmanager.data.local.entity.SubstanceEntity
 import java.time.LocalDate
 import java.util.Locale
 import org.junit.Assert.assertEquals
@@ -21,7 +22,7 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 
 /**
- * The inspection, material and delay registers as documents.
+ * The registers as documents.
  *
  * Run through Android's own resources, as the printout is, because the
  * things worth catching are the ones a reader would: a row with a cell
@@ -175,6 +176,37 @@ class RegisterExportTest {
         assertTrue(table.rows.flatten().none { it.contains("054-1234567") })
         assertTrue(table.extraCells.flatten().none { it.contains("054-1234567") })
         assertEquals(context.getString(R.string.ex_waiting), table.rows[0][5])
+    }
+
+    @Test
+    fun `the substances register says which have no data sheet, which have an old one, and which have gone`() {
+        val context = inLanguage("en")
+        val substances = listOf(
+            SubstanceEntity(
+                id = "h1", projectId = "job", reference = "HS-001", name = "Diesel", hazards = "FLAMMABLE,HARMFUL",
+                keptWhere = "Cage by the gate", quantity = "200 l", addedAt = 1_000L, addedByName = "Safety officer",
+            ),
+            SubstanceEntity(
+                id = "h2", projectId = "job", reference = "HS-002", name = "Form oil", hazards = "ENVIRONMENT",
+                keptWhere = "Store", sheetOnDay = today.minusYears(7).toEpochDay(), addedAt = 2_000L, addedByName = "Safety officer",
+            ),
+            SubstanceEntity(
+                id = "h3", projectId = "job", reference = "HS-003", name = "Acid", hazards = "CORROSIVE",
+                keptWhere = "Store", sheetOnDay = today.minusYears(1).toEpochDay(), addedAt = 3_000L, addedByName = "Safety officer",
+                removedAt = 4_000L, removedByName = "Site manager",
+            ),
+        )
+        val table = ExportDocument.SubstanceRegister("Tower A", substances, today).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(listOf("HS-001", "HS-002", "HS-003"), table.rows.map { it[0] })
+        assertEquals(
+            context.getString(R.string.hs_hazard_flammable) + ", " + context.getString(R.string.hs_hazard_harmful),
+            table.rows[0][2],
+        )
+        assertEquals(context.getString(R.string.hs_no_sheet), table.rows[0][7])
+        assertTrue(table.rows[1][7].endsWith(context.getString(R.string.hs_sheet_old, "").substringAfter(":").trim()))
+        assertEquals("still on site", "", table.rows[0][8])
+        assertTrue("gone, with the day", table.rows[2][8].isNotEmpty())
     }
 
     @Test

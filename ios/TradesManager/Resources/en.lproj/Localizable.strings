@@ -2487,3 +2487,92 @@
 "ex_col_received" = "Received";
 /* Label on a search result */
 "search_kind_complaint" = "Complaint";
+"summary_hs_added" = "%1$s: %2$s kept on site";
+"summary_hs_removed" = "%1$s taken off site";
+"summary_hs_sheet" = "%1$s: safety data sheet of %2$s on file";
+/* Screen title and job link */
+"hs_title" = "Hazardous substances";
+/* Hint under the job link */
+"hs_row_hint" = "What is kept on the site that can hurt somebody, where, and its data sheet";
+"hs_empty" = "No hazardous substances recorded on this job.";
+"hs_blurb" = "Diesel, gas bottles, form oil, epoxy, acid, solvents, cement: write down each one kept on the site, what its label warns of, where the rest of it is, and the date of its safety data sheet. One with no sheet on file is shown first.";
+"hs_add" = "Add a substance";
+/* Button */
+"hs_save" = "Save";
+/* Field label, and a column heading */
+"hs_name" = "Substance";
+"hs_name_hint" = "As it is called on the label";
+"hs_supplier" = "Supplier or maker";
+/* Heading over the hazard chips, and a column heading */
+"hs_hazards" = "What the label warns of";
+/* Field label, and a column heading */
+"hs_kept_where" = "Where it is kept";
+"hs_kept_where_hint" = "Where the rest of it is: the locked cage by the gate, the paint store";
+/* %1$s is a place on the site */
+"hs_kept_at" = "Kept at: %1$s";
+/* Field label, and a column heading */
+"hs_quantity" = "How much";
+/* Field label, heading and column heading */
+"hs_precautions" = "Precautions";
+"hs_precautions_hint" = "What the data sheet says to wear and to do when using it";
+/* Field label, heading and column heading */
+"hs_first_aid" = "First aid";
+"hs_first_aid_hint" = "What the data sheet says to do if somebody is splashed or breathes it";
+/* Heading, and a column heading */
+"hs_sheet" = "Safety data sheet";
+/* Button that opens a calendar */
+"hs_sheet_pick" = "Date printed on the data sheet";
+/* Title of the calendar */
+"hs_sheet_date_question" = "What date is printed on the data sheet?";
+/* %1$s is a date */
+"hs_sheet_dated" = "Data sheet of %1$s";
+"hs_no_sheet" = "No safety data sheet on file";
+/* %1$s is a date */
+"hs_sheet_old" = "Data sheet of %1$s: ask the supplier for the current one";
+"hs_sheet_old_hint" = "A data sheet more than five years old is worth replacing with the supplier's current one. It has not stopped counting; it may just not say what the current one does.";
+/* Button */
+"hs_record_sheet" = "Record a newer data sheet";
+/* Button */
+"hs_add_sheet_photo" = "Photograph the data sheet";
+/* %1$s is a date, %2$s a name */
+"hs_added_by" = "Added %1$s by %2$s";
+/* Button */
+"hs_remove" = "Taken off the site";
+/* %1$s is the substance */
+"hs_remove_question" = "Has %1$s been taken off the site?";
+"hs_remove_body" = "It stays on the register, marked off with today's date. Nothing more can be recorded against it.";
+/* %1$s is a date */
+"hs_removed_on" = "Off the site since %1$s";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_explosive" = "Explosive";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_flammable" = "Flammable";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_oxidising" = "Oxidising";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_gas" = "Gas under pressure";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_corrosive" = "Corrosive";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_toxic" = "Toxic";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_health" = "Serious health hazard";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_harmful" = "Harmful or irritant";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_environment" = "Harmful to the environment";
+"hs_refused_not_allowed" = "Your role cannot change the substances register.";
+"hs_refused_name" = "Write what the substance is called.";
+"hs_refused_hazard" = "Pick at least one thing its label warns of. A substance with none does not belong on this register.";
+"hs_refused_kept_where" = "Write where it is kept. It is the first thing asked when something goes wrong.";
+"hs_refused_sheet_future" = "A data sheet cannot be dated after today.";
+"hs_refused_sheet_not_newer" = "That sheet is not newer than the one on file.";
+"hs_refused_removed" = "It has been taken off the site; nothing more can be recorded against it.";
+/* Column heading: the day it left the site */
+"ex_col_off_site" = "Off site";
+/* Label on a search result */
+"search_kind_substance" = "Hazardous substance";
+/* Line in 'Needs attention', followed by a count */
+"at_complaints_waiting" = "Complaints unanswered for over a week";
+/* Line in 'Needs attention', followed by a count */
+"at_substances_no_sheet" = "Substances with no data sheet";

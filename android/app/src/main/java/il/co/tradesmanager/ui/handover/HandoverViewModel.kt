@@ -233,6 +233,7 @@ class HandoverViewModel(
             documents += ExportDocument.RiskRegister(job.name, container.risks.observeForProject(projectId).first())
             documents += ExportDocument.VisitorLog(job.name, container.visits.observeForProject(projectId).first())
             documents += ExportDocument.ComplaintRegister(job.name, container.complaints.observeForProject(projectId).first())
+            documents += ExportDocument.SubstanceRegister(job.name, container.substances.observeForProject(projectId).first(), LocalDate.now())
         }
         if (role.canRead(Lens.PLAN)) {
             documents += ExportDocument.QueryRegister(job.name, container.designQueries.observeForProject(projectId).first())

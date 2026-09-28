@@ -11,14 +11,16 @@ package il.co.tradesmanager.core.work
  * matter, and leaves out whatever is fine.
  *
  * Nothing is counted here. The counts come from each register's own rule --
- * Inspections.state, Submittals.state, Queries.state, Risks.state -- so this
- * cannot disagree with the screen it points to.
+ * Inspections.state, Submittals.state, Queries.state, Risks.state,
+ * Complaints.state, Substances.state -- so this cannot disagree with the
+ * screen it points to.
  */
 object Attention {
 
     /** In the order they are shown: what can hurt somebody first, then what holds the work, then paperwork. */
     enum class Item {
         RISKS_EXTREME,
+        SUBSTANCES_WITHOUT_SHEET,
         INSPECTIONS_FAILED,
         INSPECTIONS_OVERDUE,
         MATERIALS_REJECTED,
@@ -26,6 +28,7 @@ object Attention {
         QUERIES_OVERDUE,
         DELAYS_WITHOUT_NOTICE,
         DELAYS_RUNNING,
+        COMPLAINTS_WAITING,
         RISK_REVIEWS_OVERDUE,
     }
 

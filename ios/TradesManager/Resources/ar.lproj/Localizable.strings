@@ -2487,3 +2487,92 @@
 "ex_col_received" = "ورد";
 /* Label on a search result */
 "search_kind_complaint" = "شكوى";
+"summary_hs_added" = "%1$s: تخزين في الموقع — %2$s";
+"summary_hs_removed" = "%1$s أُخرج من الموقع";
+"summary_hs_sheet" = "%1$s: صحيفة بيانات السلامة بتاريخ %2$s في الملف";
+/* Screen title and job link */
+"hs_title" = "المواد الخطرة";
+/* Hint under the job link */
+"hs_row_hint" = "ما المخزَّن في الموقع ويمكن أن يؤذي أحدًا، وأين، وصحيفة بيانات سلامته";
+"hs_empty" = "لم تُسجَّل مواد خطرة في هذا المشروع.";
+"hs_blurb" = "الديزل، أسطوانات الغاز، زيت القوالب، الإيبوكسي، الحمض، المذيبات، الإسمنت: سجّل كل مادة مخزَّنة في الموقع، وممّ يحذّر ملصقها، وأين بقيتها، وتاريخ صحيفة بيانات سلامتها. المادة التي لا صحيفة لها في الملف تظهر أولًا.";
+"hs_add" = "إضافة مادة";
+/* Button */
+"hs_save" = "حفظ";
+/* Field label, and a column heading */
+"hs_name" = "المادة";
+"hs_name_hint" = "كما يُسمّى على الملصق";
+"hs_supplier" = "المورّد أو المصنّع";
+/* Heading over the hazard chips, and a column heading */
+"hs_hazards" = "ممّ يحذّر الملصق";
+/* Field label, and a column heading */
+"hs_kept_where" = "أين تُخزَّن";
+"hs_kept_where_hint" = "أين بقيتها: القفص المقفل عند البوابة، مخزن الدهان";
+/* %1$s is a place on the site */
+"hs_kept_at" = "مخزَّنة في: %1$s";
+/* Field label, and a column heading */
+"hs_quantity" = "الكمية";
+/* Field label, heading and column heading */
+"hs_precautions" = "الاحتياطات";
+"hs_precautions_hint" = "ما تقول صحيفة البيانات أن يُلبَس ويُفعَل عند استعمالها";
+/* Field label, heading and column heading */
+"hs_first_aid" = "الإسعاف الأولي";
+"hs_first_aid_hint" = "ما تقول صحيفة البيانات أن يُفعَل إذا تناثرت على أحد أو استنشقها";
+/* Heading, and a column heading */
+"hs_sheet" = "صحيفة بيانات السلامة";
+/* Button that opens a calendar */
+"hs_sheet_pick" = "التاريخ المطبوع على صحيفة البيانات";
+/* Title of the calendar */
+"hs_sheet_date_question" = "ما التاريخ المطبوع على صحيفة البيانات؟";
+/* %1$s is a date */
+"hs_sheet_dated" = "صحيفة بتاريخ %1$s";
+"hs_no_sheet" = "لا توجد صحيفة بيانات سلامة في الملف";
+/* %1$s is a date */
+"hs_sheet_old" = "صحيفة بتاريخ %1$s: اطلب من المورّد الصحيفة الحالية";
+"hs_sheet_old_hint" = "يُستحسن استبدال صحيفة بيانات عمرها أكثر من خمس سنوات بالصحيفة الحالية من المورّد. لم تتوقف عن أن تُعتمد؛ لكنها قد لا تقول ما تقوله الحالية.";
+/* Button */
+"hs_record_sheet" = "تسجيل صحيفة بيانات أحدث";
+/* Button */
+"hs_add_sheet_photo" = "تصوير صحيفة البيانات";
+/* %1$s is a date, %2$s a name */
+"hs_added_by" = "أُضيفت في %1$s بواسطة %2$s";
+/* Button */
+"hs_remove" = "أُخرجت من الموقع";
+/* %1$s is the substance */
+"hs_remove_question" = "هل أُخرجت %1$s من الموقع؟";
+"hs_remove_body" = "تبقى في السجل، مؤشَّرًا عليها بتاريخ اليوم. ولا يمكن تسجيل شيء آخر عليها.";
+/* %1$s is a date */
+"hs_removed_on" = "خارج الموقع منذ %1$s";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_explosive" = "متفجّرة";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_flammable" = "قابلة للاشتعال";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_oxidising" = "مؤكسِدة";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_gas" = "غاز مضغوط";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_corrosive" = "أكّالة";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_toxic" = "سامّة";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_health" = "خطر جسيم على الصحة";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_harmful" = "ضارّة أو مهيِّجة";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_environment" = "ضارّة بالبيئة";
+"hs_refused_not_allowed" = "دورك لا يسمح بتغيير سجل المواد الخطرة.";
+"hs_refused_name" = "اكتب اسم المادة.";
+"hs_refused_hazard" = "اختر شيئًا واحدًا على الأقل يحذّر منه الملصق. المادة التي لا تحذير عليها لا مكان لها في هذا السجل.";
+"hs_refused_kept_where" = "اكتب أين تُخزَّن. هذا أول ما يُسأل عنه حين يحدث خطأ.";
+"hs_refused_sheet_future" = "لا يمكن أن تكون صحيفة البيانات مؤرخة بعد اليوم.";
+"hs_refused_sheet_not_newer" = "هذه الصحيفة ليست أحدث من التي في الملف.";
+"hs_refused_removed" = "أُخرجت من الموقع؛ لا يمكن تسجيل شيء آخر عليها.";
+/* Column heading: the day it left the site */
+"ex_col_off_site" = "خارج الموقع";
+/* Label on a search result */
+"search_kind_substance" = "مادة خطرة";
+/* Line in 'Needs attention', followed by a count */
+"at_complaints_waiting" = "شكاوى بلا رد منذ أكثر من أسبوع";
+/* Line in 'Needs attention', followed by a count */
+"at_substances_no_sheet" = "مواد بلا صحيفة بيانات سلامة";

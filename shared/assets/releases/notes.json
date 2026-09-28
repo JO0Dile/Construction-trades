@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.40.0",
+      "points": [
+        {
+          "en": "A new hazardous substances register on every job: the diesel, the gas bottles, the form oil, the epoxy, the acid. Each one gets a number, what its label warns of, where it is kept and how much, the precautions and first aid from its safety data sheet, the sheet's date and a photograph of it. One with no data sheet is shown first and in red, and one whose sheet is more than five years old says to ask the supplier for the current one.",
+          "he": "פנקס חומרים מסוכנים חדש בכל עבודה: הסולר, בלוני הגז, שמן התבניות, האפוקסי, החומצה. כל חומר מקבל מספר, ממה התווית שלו מזהירה, איפה הוא מאוחסן ובאיזו כמות, אמצעי הזהירות והעזרה הראשונה מגיליון הבטיחות, תאריך הגיליון ותמונה שלו. חומר בלי גיליון בטיחות מוצג ראשון ובאדום, וחומר שהגיליון שלו בן יותר מחמש שנים מציין לבקש מהספק את העדכני.",
+          "ar": "سجل مواد خطرة جديد في كل مشروع: الديزل، أسطوانات الغاز، زيت القوالب، الإيبوكسي، الحمض. تحصل كل مادة على رقم، وممّ يحذّر ملصقها، وأين تُخزَّن وبأي كمية، والاحتياطات والإسعاف الأولي من صحيفة بيانات سلامتها، وتاريخ الصحيفة وصورة لها. المادة التي لا صحيفة لها تظهر أولًا وبالأحمر، والمادة التي عمر صحيفتها أكثر من خمس سنوات تنبّه إلى طلب الصحيفة الحالية من المورّد."
+        },
+        {
+          "en": "A substance taken off the site is marked off with the date, not deleted. The register prints and exports, goes into the job's archive, and can be found from the search box.",
+          "he": "חומר שהוצא מהאתר מסומן בתאריך, ולא נמחק. אפשר להדפיס ולייצא את הפנקס, הוא נכלל בארכיון העבודה, ואפשר למצוא אותו מתיבת החיפוש.",
+          "ar": "المادة التي أُخرجت من الموقع يؤشَّر عليها بالتاريخ، ولا تُحذف. يمكن طباعة السجل وتصديره، ويدخل في أرشيف المشروع، ويمكن إيجاده من مربع البحث."
+        },
+        {
+          "en": "The top of each job page now also counts substances with no data sheet and complaints unanswered for more than a week.",
+          "he": "ראש דף העבודה סופר עכשיו גם חומרים בלי גיליון בטיחות ותלונות שלא נענו יותר משבוע.",
+          "ar": "أعلى صفحة كل مشروع يعدّ الآن أيضًا المواد التي لا صحيفة بيانات لها والشكاوى التي بقيت بلا رد أكثر من أسبوع."
+        }
+      ]
+    },
+    {
       "version": "0.39.0",
       "points": [
         {

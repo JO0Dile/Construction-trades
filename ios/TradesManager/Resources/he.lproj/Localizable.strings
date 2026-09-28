@@ -2487,3 +2487,92 @@
 "ex_col_received" = "התקבל";
 /* Label on a search result */
 "search_kind_complaint" = "תלונה";
+"summary_hs_added" = "%1$s: אחסון באתר — %2$s";
+"summary_hs_removed" = "%1$s הוצא מהאתר";
+"summary_hs_sheet" = "%1$s: גיליון בטיחות מתאריך %2$s בתיק";
+/* Screen title and job link */
+"hs_title" = "חומרים מסוכנים";
+/* Hint under the job link */
+"hs_row_hint" = "מה מאוחסן באתר שעלול לפגוע, איפה, וגיליון הבטיחות שלו";
+"hs_empty" = "לא נרשמו חומרים מסוכנים בעבודה הזו.";
+"hs_blurb" = "סולר, בלוני גז, שמן תבניות, אפוקסי, חומצה, ממיסים, מלט: רשמו כל חומר שמאוחסן באתר, ממה התווית שלו מזהירה, איפה שאר הכמות, ואת התאריך של גיליון הבטיחות שלו. חומר בלי גיליון בתיק מוצג ראשון.";
+"hs_add" = "הוספת חומר";
+/* Button */
+"hs_save" = "שמירה";
+/* Field label, and a column heading */
+"hs_name" = "חומר";
+"hs_name_hint" = "כפי שהוא נקרא על התווית";
+"hs_supplier" = "ספק או יצרן";
+/* Heading over the hazard chips, and a column heading */
+"hs_hazards" = "ממה התווית מזהירה";
+/* Field label, and a column heading */
+"hs_kept_where" = "איפה הוא מאוחסן";
+"hs_kept_where_hint" = "איפה שאר הכמות: הכלוב הנעול ליד השער, מחסן הצבע";
+/* %1$s is a place on the site */
+"hs_kept_at" = "מאוחסן ב: %1$s";
+/* Field label, and a column heading */
+"hs_quantity" = "כמות";
+/* Field label, heading and column heading */
+"hs_precautions" = "אמצעי זהירות";
+"hs_precautions_hint" = "מה גיליון הבטיחות אומר ללבוש ולעשות בזמן השימוש";
+/* Field label, heading and column heading */
+"hs_first_aid" = "עזרה ראשונה";
+"hs_first_aid_hint" = "מה גיליון הבטיחות אומר לעשות אם מישהו נותז או שאף אותו";
+/* Heading, and a column heading */
+"hs_sheet" = "גיליון בטיחות";
+/* Button that opens a calendar */
+"hs_sheet_pick" = "התאריך המודפס על גיליון הבטיחות";
+/* Title of the calendar */
+"hs_sheet_date_question" = "איזה תאריך מודפס על גיליון הבטיחות?";
+/* %1$s is a date */
+"hs_sheet_dated" = "גיליון מתאריך %1$s";
+"hs_no_sheet" = "אין גיליון בטיחות בתיק";
+/* %1$s is a date */
+"hs_sheet_old" = "גיליון מתאריך %1$s: בקשו מהספק את העדכני";
+"hs_sheet_old_hint" = "כדאי להחליף גיליון בטיחות בן יותר מחמש שנים בגיליון העדכני של הספק. הוא לא הפסיק להיות תקף; ייתכן שפשוט אינו אומר את מה שאומר העדכני.";
+/* Button */
+"hs_record_sheet" = "רישום גיליון בטיחות חדש יותר";
+/* Button */
+"hs_add_sheet_photo" = "צילום גיליון הבטיחות";
+/* %1$s is a date, %2$s a name */
+"hs_added_by" = "נוסף ב־%1$s על ידי %2$s";
+/* Button */
+"hs_remove" = "הוצא מהאתר";
+/* %1$s is the substance */
+"hs_remove_question" = "האם %1$s הוצא מהאתר?";
+"hs_remove_body" = "הוא נשאר בפנקס, מסומן בתאריך של היום. לא ניתן לרשום עליו דבר נוסף.";
+/* %1$s is a date */
+"hs_removed_on" = "מחוץ לאתר מאז %1$s";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_explosive" = "נפיץ";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_flammable" = "דליק";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_oxidising" = "מחמצן";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_gas" = "גז בלחץ";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_corrosive" = "מאכל";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_toxic" = "רעיל";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_health" = "סכנה חמורה לבריאות";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_harmful" = "מזיק או מגרה";
+/* A hazard pictogram on a chemical's label */
+"hs_hazard_environment" = "מזיק לסביבה";
+"hs_refused_not_allowed" = "התפקיד שלך אינו מאפשר לשנות את פנקס החומרים המסוכנים.";
+"hs_refused_name" = "כתבו איך נקרא החומר.";
+"hs_refused_hazard" = "בחרו לפחות דבר אחד שהתווית מזהירה ממנו. חומר בלי אף אחד אינו שייך לפנקס הזה.";
+"hs_refused_kept_where" = "כתבו איפה הוא מאוחסן. זה הדבר הראשון שנשאל כשמשהו משתבש.";
+"hs_refused_sheet_future" = "גיליון בטיחות לא יכול להיות מתוארך אחרי היום.";
+"hs_refused_sheet_not_newer" = "הגיליון הזה אינו חדש יותר מזה שבתיק.";
+"hs_refused_removed" = "הוא הוצא מהאתר; לא ניתן לרשום עליו דבר נוסף.";
+/* Column heading: the day it left the site */
+"ex_col_off_site" = "מחוץ לאתר";
+/* Label on a search result */
+"search_kind_substance" = "חומר מסוכן";
+/* Line in 'Needs attention', followed by a count */
+"at_complaints_waiting" = "תלונות שלא נענו יותר משבוע";
+/* Line in 'Needs attention', followed by a count */
+"at_substances_no_sheet" = "חומרים בלי גיליון בטיחות";

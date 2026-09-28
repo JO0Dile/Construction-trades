@@ -407,6 +407,32 @@
       "he": "בדיקת חום: תחושת חום %1$s°C, %2$s",
       "ar": "فحص الحرارة: الحرارة المحسوسة %1$s°C، %2$s"
     },
+    "hs_added": {
+      "arguments": [
+        "reference",
+        "name"
+      ],
+      "en": "%1$s: %2$s kept on site",
+      "he": "%1$s: אחסון באתר — %2$s",
+      "ar": "%1$s: تخزين في الموقع — %2$s"
+    },
+    "hs_removed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s taken off site",
+      "he": "%1$s הוצא מהאתר",
+      "ar": "%1$s أُخرج من الموقع"
+    },
+    "hs_sheet": {
+      "arguments": [
+        "reference",
+        "date"
+      ],
+      "en": "%1$s: safety data sheet of %2$s on file",
+      "he": "%1$s: גיליון בטיחות מתאריך %2$s בתיק",
+      "ar": "%1$s: صحيفة بيانات السلامة بتاريخ %2$s في الملف"
+    },
     "id_number_set": {
       "arguments": [],
       "en": "ID number set",

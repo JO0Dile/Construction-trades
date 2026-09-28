@@ -4,10 +4,12 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.evidence.Complaints
 import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.safety.Risks
+import il.co.tradesmanager.core.safety.Substances
 import il.co.tradesmanager.core.work.Attention
 import il.co.tradesmanager.core.work.Queries
 import il.co.tradesmanager.core.work.Submittals
@@ -160,7 +162,9 @@ class ProjectDetailViewModel(
                 combine(
                     container.inspections.observeForProject(projectId),
                     container.risks.observeForProject(projectId),
-                ) { inspections, risks ->
+                    container.complaints.observeForProject(projectId),
+                    container.substances.observeForProject(projectId),
+                ) { inspections, risks, complaints, substances ->
                     val now = System.currentTimeMillis()
                     val zone = ZoneId.systemDefault()
                     val today = LocalDate.now()
@@ -176,6 +180,12 @@ class ProjectDetailViewModel(
                         Attention.Item.INSPECTIONS_OVERDUE to inspected.count { it == Inspections.State.OVERDUE },
                         Attention.Item.RISKS_EXTREME to riskStates.count { it == Risks.State.EXTREME },
                         Attention.Item.RISK_REVIEWS_OVERDUE to riskStates.count { it == Risks.State.REVIEW_OVERDUE },
+                        Attention.Item.COMPLAINTS_WAITING to complaints.count {
+                            Complaints.state(it.receivedAt, it.answeredAt, now, zone) == Complaints.State.WAITING_LONG
+                        },
+                        Attention.Item.SUBSTANCES_WITHOUT_SHEET to substances.count {
+                            Substances.state(it.sheetOnDay?.let(LocalDate::ofEpochDay), it.removedAt != null, today) == Substances.State.NO_SHEET
+                        },
                     )
                 }
             } else {

@@ -133,6 +133,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.DELAY)) hits += delays(terms, jobNames)
         if (mayRead(Search.Kind.RISK)) hits += risks(terms, jobNames)
         if (mayRead(Search.Kind.COMPLAINT)) hits += complaints(terms, jobNames)
+        if (mayRead(Search.Kind.SUBSTANCE)) hits += substances(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -497,6 +498,24 @@ class SearchViewModel(
                 isOpen = complaint.answeredAt == null,
                 terms = terms,
                 projectId = complaint.projectId,
+            )
+        }
+
+    private suspend fun substances(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.substances.all().mapNotNull { substance ->
+            hit(
+                id = substance.id,
+                kind = Search.Kind.SUBSTANCE,
+                title = substance.reference + " " + substance.name,
+                detail = listOfNotNull(substance.keptWhere, substance.supplier, jobNames[substance.projectId]).joinToString(" "),
+                // What the label warns of is matched as the stored names ("FLAMMABLE"), which is how an English search finds it.
+                matchAlso = substance.hazards.replace(',', ' '),
+                isOpen = substance.removedAt == null,
+                terms = terms,
+                projectId = substance.projectId,
             )
         }
 

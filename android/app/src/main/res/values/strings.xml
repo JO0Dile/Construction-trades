@@ -2488,6 +2488,95 @@
     <string name="ex_col_received">Received</string>
     <!-- Label on a search result -->
     <string name="search_kind_complaint">Complaint</string>
+    <string name="summary_hs_added">%1$s: %2$s kept on site</string>
+    <string name="summary_hs_removed">%1$s taken off site</string>
+    <string name="summary_hs_sheet">%1$s: safety data sheet of %2$s on file</string>
+    <!-- Screen title and job link -->
+    <string name="hs_title">Hazardous substances</string>
+    <!-- Hint under the job link -->
+    <string name="hs_row_hint">What is kept on the site that can hurt somebody, where, and its data sheet</string>
+    <string name="hs_empty">No hazardous substances recorded on this job.</string>
+    <string name="hs_blurb">Diesel, gas bottles, form oil, epoxy, acid, solvents, cement: write down each one kept on the site, what its label warns of, where the rest of it is, and the date of its safety data sheet. One with no sheet on file is shown first.</string>
+    <string name="hs_add">Add a substance</string>
+    <!-- Button -->
+    <string name="hs_save">Save</string>
+    <!-- Field label, and a column heading -->
+    <string name="hs_name">Substance</string>
+    <string name="hs_name_hint">As it is called on the label</string>
+    <string name="hs_supplier">Supplier or maker</string>
+    <!-- Heading over the hazard chips, and a column heading -->
+    <string name="hs_hazards">What the label warns of</string>
+    <!-- Field label, and a column heading -->
+    <string name="hs_kept_where">Where it is kept</string>
+    <string name="hs_kept_where_hint">Where the rest of it is: the locked cage by the gate, the paint store</string>
+    <!-- %1$s is a place on the site -->
+    <string name="hs_kept_at">Kept at: %1$s</string>
+    <!-- Field label, and a column heading -->
+    <string name="hs_quantity">How much</string>
+    <!-- Field label, heading and column heading -->
+    <string name="hs_precautions">Precautions</string>
+    <string name="hs_precautions_hint">What the data sheet says to wear and to do when using it</string>
+    <!-- Field label, heading and column heading -->
+    <string name="hs_first_aid">First aid</string>
+    <string name="hs_first_aid_hint">What the data sheet says to do if somebody is splashed or breathes it</string>
+    <!-- Heading, and a column heading -->
+    <string name="hs_sheet">Safety data sheet</string>
+    <!-- Button that opens a calendar -->
+    <string name="hs_sheet_pick">Date printed on the data sheet</string>
+    <!-- Title of the calendar -->
+    <string name="hs_sheet_date_question">What date is printed on the data sheet?</string>
+    <!-- %1$s is a date -->
+    <string name="hs_sheet_dated">Data sheet of %1$s</string>
+    <string name="hs_no_sheet">No safety data sheet on file</string>
+    <!-- %1$s is a date -->
+    <string name="hs_sheet_old">Data sheet of %1$s: ask the supplier for the current one</string>
+    <string name="hs_sheet_old_hint">A data sheet more than five years old is worth replacing with the supplier\'s current one. It has not stopped counting; it may just not say what the current one does.</string>
+    <!-- Button -->
+    <string name="hs_record_sheet">Record a newer data sheet</string>
+    <!-- Button -->
+    <string name="hs_add_sheet_photo">Photograph the data sheet</string>
+    <!-- %1$s is a date, %2$s a name -->
+    <string name="hs_added_by">Added %1$s by %2$s</string>
+    <!-- Button -->
+    <string name="hs_remove">Taken off the site</string>
+    <!-- %1$s is the substance -->
+    <string name="hs_remove_question">Has %1$s been taken off the site?</string>
+    <string name="hs_remove_body">It stays on the register, marked off with today\'s date. Nothing more can be recorded against it.</string>
+    <!-- %1$s is a date -->
+    <string name="hs_removed_on">Off the site since %1$s</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_explosive">Explosive</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_flammable">Flammable</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_oxidising">Oxidising</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_gas">Gas under pressure</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_corrosive">Corrosive</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_toxic">Toxic</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_health">Serious health hazard</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_harmful">Harmful or irritant</string>
+    <!-- A hazard pictogram on a chemical's label -->
+    <string name="hs_hazard_environment">Harmful to the environment</string>
+    <string name="hs_refused_not_allowed">Your role cannot change the substances register.</string>
+    <string name="hs_refused_name">Write what the substance is called.</string>
+    <string name="hs_refused_hazard">Pick at least one thing its label warns of. A substance with none does not belong on this register.</string>
+    <string name="hs_refused_kept_where">Write where it is kept. It is the first thing asked when something goes wrong.</string>
+    <string name="hs_refused_sheet_future">A data sheet cannot be dated after today.</string>
+    <string name="hs_refused_sheet_not_newer">That sheet is not newer than the one on file.</string>
+    <string name="hs_refused_removed">It has been taken off the site; nothing more can be recorded against it.</string>
+    <!-- Column heading: the day it left the site -->
+    <string name="ex_col_off_site">Off site</string>
+    <!-- Label on a search result -->
+    <string name="search_kind_substance">Hazardous substance</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_complaints_waiting">Complaints unanswered for over a week</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_substances_no_sheet">Substances with no data sheet</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

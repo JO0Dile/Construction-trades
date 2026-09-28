@@ -129,6 +129,7 @@ fun ProjectDetailScreen(
     onOpenDelays: () -> Unit,
     onOpenRisks: () -> Unit,
     onOpenComplaints: () -> Unit,
+    onOpenSubstances: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -203,6 +204,8 @@ fun ProjectDetailScreen(
         if (canSeeEvidence) add(JobLink(R.string.ir_title, R.string.ir_row_hint, onOpenInspections))
         // What could hurt somebody on this job, and what is done about it.
         if (canSeeEvidence) add(JobLink(R.string.ra_title, R.string.ra_row_hint, onOpenRisks))
+        // What is kept on the site that can hurt somebody, and where its data sheet is.
+        if (canSeeEvidence) add(JobLink(R.string.hs_title, R.string.hs_row_hint, onOpenSubstances))
         // What the street said about the site, and what it was told.
         if (canSeeEvidence) add(JobLink(R.string.cp_title, R.string.cp_row_hint, onOpenComplaints))
         // Beside the log, because it is the other thing somebody at the gate
@@ -346,6 +349,8 @@ fun ProjectDetailScreen(
                                                 Attention.Item.MATERIALS_REJECTED, Attention.Item.MATERIALS_OVERDUE -> onOpenSubmittals()
                                                 Attention.Item.QUERIES_OVERDUE -> onOpenQueries()
                                                 Attention.Item.DELAYS_WITHOUT_NOTICE, Attention.Item.DELAYS_RUNNING -> onOpenDelays()
+                                                Attention.Item.COMPLAINTS_WAITING -> onOpenComplaints()
+                                                Attention.Item.SUBSTANCES_WITHOUT_SHEET -> onOpenSubstances()
                                             }
                                         }
                                         .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -1009,4 +1014,6 @@ private fun attentionLabel(item: Attention.Item): Int = when (item) {
     Attention.Item.DELAYS_WITHOUT_NOTICE -> R.string.at_delays_no_notice
     Attention.Item.DELAYS_RUNNING -> R.string.at_delays_running
     Attention.Item.RISK_REVIEWS_OVERDUE -> R.string.at_risk_reviews
+    Attention.Item.COMPLAINTS_WAITING -> R.string.at_complaints_waiting
+    Attention.Item.SUBSTANCES_WITHOUT_SHEET -> R.string.at_substances_no_sheet
 }

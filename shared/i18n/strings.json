@@ -10304,6 +10304,315 @@
       "en": "Complaint",
       "he": "תלונה",
       "ar": "شكوى"
+    },
+    "summary_hs_added": {
+      "en": "%1$s: %2$s kept on site",
+      "he": "%1$s: אחסון באתר — %2$s",
+      "ar": "%1$s: تخزين في الموقع — %2$s"
+    },
+    "summary_hs_removed": {
+      "en": "%1$s taken off site",
+      "he": "%1$s הוצא מהאתר",
+      "ar": "%1$s أُخرج من الموقع"
+    },
+    "summary_hs_sheet": {
+      "en": "%1$s: safety data sheet of %2$s on file",
+      "he": "%1$s: גיליון בטיחות מתאריך %2$s בתיק",
+      "ar": "%1$s: صحيفة بيانات السلامة بتاريخ %2$s في الملف"
+    },
+    "hs_title": {
+      "c": "Screen title and job link",
+      "en": "Hazardous substances",
+      "he": "חומרים מסוכנים",
+      "ar": "المواد الخطرة"
+    },
+    "hs_row_hint": {
+      "c": "Hint under the job link",
+      "en": "What is kept on the site that can hurt somebody, where, and its data sheet",
+      "he": "מה מאוחסן באתר שעלול לפגוע, איפה, וגיליון הבטיחות שלו",
+      "ar": "ما المخزَّن في الموقع ويمكن أن يؤذي أحدًا، وأين، وصحيفة بيانات سلامته"
+    },
+    "hs_empty": {
+      "en": "No hazardous substances recorded on this job.",
+      "he": "לא נרשמו חומרים מסוכנים בעבודה הזו.",
+      "ar": "لم تُسجَّل مواد خطرة في هذا المشروع."
+    },
+    "hs_blurb": {
+      "en": "Diesel, gas bottles, form oil, epoxy, acid, solvents, cement: write down each one kept on the site, what its label warns of, where the rest of it is, and the date of its safety data sheet. One with no sheet on file is shown first.",
+      "he": "סולר, בלוני גז, שמן תבניות, אפוקסי, חומצה, ממיסים, מלט: רשמו כל חומר שמאוחסן באתר, ממה התווית שלו מזהירה, איפה שאר הכמות, ואת התאריך של גיליון הבטיחות שלו. חומר בלי גיליון בתיק מוצג ראשון.",
+      "ar": "الديزل، أسطوانات الغاز، زيت القوالب، الإيبوكسي، الحمض، المذيبات، الإسمنت: سجّل كل مادة مخزَّنة في الموقع، وممّ يحذّر ملصقها، وأين بقيتها، وتاريخ صحيفة بيانات سلامتها. المادة التي لا صحيفة لها في الملف تظهر أولًا."
+    },
+    "hs_add": {
+      "en": "Add a substance",
+      "he": "הוספת חומר",
+      "ar": "إضافة مادة"
+    },
+    "hs_save": {
+      "c": "Button",
+      "en": "Save",
+      "he": "שמירה",
+      "ar": "حفظ"
+    },
+    "hs_name": {
+      "c": "Field label, and a column heading",
+      "en": "Substance",
+      "he": "חומר",
+      "ar": "المادة"
+    },
+    "hs_name_hint": {
+      "en": "As it is called on the label",
+      "he": "כפי שהוא נקרא על התווית",
+      "ar": "كما يُسمّى على الملصق"
+    },
+    "hs_supplier": {
+      "en": "Supplier or maker",
+      "he": "ספק או יצרן",
+      "ar": "المورّد أو المصنّع"
+    },
+    "hs_hazards": {
+      "c": "Heading over the hazard chips, and a column heading",
+      "en": "What the label warns of",
+      "he": "ממה התווית מזהירה",
+      "ar": "ممّ يحذّر الملصق"
+    },
+    "hs_kept_where": {
+      "c": "Field label, and a column heading",
+      "en": "Where it is kept",
+      "he": "איפה הוא מאוחסן",
+      "ar": "أين تُخزَّن"
+    },
+    "hs_kept_where_hint": {
+      "en": "Where the rest of it is: the locked cage by the gate, the paint store",
+      "he": "איפה שאר הכמות: הכלוב הנעול ליד השער, מחסן הצבע",
+      "ar": "أين بقيتها: القفص المقفل عند البوابة، مخزن الدهان"
+    },
+    "hs_kept_at": {
+      "c": "%1$s is a place on the site",
+      "en": "Kept at: %1$s",
+      "he": "מאוחסן ב: %1$s",
+      "ar": "مخزَّنة في: %1$s"
+    },
+    "hs_quantity": {
+      "c": "Field label, and a column heading",
+      "en": "How much",
+      "he": "כמות",
+      "ar": "الكمية"
+    },
+    "hs_precautions": {
+      "c": "Field label, heading and column heading",
+      "en": "Precautions",
+      "he": "אמצעי זהירות",
+      "ar": "الاحتياطات"
+    },
+    "hs_precautions_hint": {
+      "en": "What the data sheet says to wear and to do when using it",
+      "he": "מה גיליון הבטיחות אומר ללבוש ולעשות בזמן השימוש",
+      "ar": "ما تقول صحيفة البيانات أن يُلبَس ويُفعَل عند استعمالها"
+    },
+    "hs_first_aid": {
+      "c": "Field label, heading and column heading",
+      "en": "First aid",
+      "he": "עזרה ראשונה",
+      "ar": "الإسعاف الأولي"
+    },
+    "hs_first_aid_hint": {
+      "en": "What the data sheet says to do if somebody is splashed or breathes it",
+      "he": "מה גיליון הבטיחות אומר לעשות אם מישהו נותז או שאף אותו",
+      "ar": "ما تقول صحيفة البيانات أن يُفعَل إذا تناثرت على أحد أو استنشقها"
+    },
+    "hs_sheet": {
+      "c": "Heading, and a column heading",
+      "en": "Safety data sheet",
+      "he": "גיליון בטיחות",
+      "ar": "صحيفة بيانات السلامة"
+    },
+    "hs_sheet_pick": {
+      "c": "Button that opens a calendar",
+      "en": "Date printed on the data sheet",
+      "he": "התאריך המודפס על גיליון הבטיחות",
+      "ar": "التاريخ المطبوع على صحيفة البيانات"
+    },
+    "hs_sheet_date_question": {
+      "c": "Title of the calendar",
+      "en": "What date is printed on the data sheet?",
+      "he": "איזה תאריך מודפס על גיליון הבטיחות?",
+      "ar": "ما التاريخ المطبوع على صحيفة البيانات؟"
+    },
+    "hs_sheet_dated": {
+      "c": "%1$s is a date",
+      "en": "Data sheet of %1$s",
+      "he": "גיליון מתאריך %1$s",
+      "ar": "صحيفة بتاريخ %1$s"
+    },
+    "hs_no_sheet": {
+      "en": "No safety data sheet on file",
+      "he": "אין גיליון בטיחות בתיק",
+      "ar": "لا توجد صحيفة بيانات سلامة في الملف"
+    },
+    "hs_sheet_old": {
+      "c": "%1$s is a date",
+      "en": "Data sheet of %1$s: ask the supplier for the current one",
+      "he": "גיליון מתאריך %1$s: בקשו מהספק את העדכני",
+      "ar": "صحيفة بتاريخ %1$s: اطلب من المورّد الصحيفة الحالية"
+    },
+    "hs_sheet_old_hint": {
+      "en": "A data sheet more than five years old is worth replacing with the supplier's current one. It has not stopped counting; it may just not say what the current one does.",
+      "he": "כדאי להחליף גיליון בטיחות בן יותר מחמש שנים בגיליון העדכני של הספק. הוא לא הפסיק להיות תקף; ייתכן שפשוט אינו אומר את מה שאומר העדכני.",
+      "ar": "يُستحسن استبدال صحيفة بيانات عمرها أكثر من خمس سنوات بالصحيفة الحالية من المورّد. لم تتوقف عن أن تُعتمد؛ لكنها قد لا تقول ما تقوله الحالية."
+    },
+    "hs_record_sheet": {
+      "c": "Button",
+      "en": "Record a newer data sheet",
+      "he": "רישום גיליון בטיחות חדש יותר",
+      "ar": "تسجيل صحيفة بيانات أحدث"
+    },
+    "hs_add_sheet_photo": {
+      "c": "Button",
+      "en": "Photograph the data sheet",
+      "he": "צילום גיליון הבטיחות",
+      "ar": "تصوير صحيفة البيانات"
+    },
+    "hs_added_by": {
+      "c": "%1$s is a date, %2$s a name",
+      "en": "Added %1$s by %2$s",
+      "he": "נוסף ב־%1$s על ידי %2$s",
+      "ar": "أُضيفت في %1$s بواسطة %2$s"
+    },
+    "hs_remove": {
+      "c": "Button",
+      "en": "Taken off the site",
+      "he": "הוצא מהאתר",
+      "ar": "أُخرجت من الموقع"
+    },
+    "hs_remove_question": {
+      "c": "%1$s is the substance",
+      "en": "Has %1$s been taken off the site?",
+      "he": "האם %1$s הוצא מהאתר?",
+      "ar": "هل أُخرجت %1$s من الموقع؟"
+    },
+    "hs_remove_body": {
+      "en": "It stays on the register, marked off with today's date. Nothing more can be recorded against it.",
+      "he": "הוא נשאר בפנקס, מסומן בתאריך של היום. לא ניתן לרשום עליו דבר נוסף.",
+      "ar": "تبقى في السجل، مؤشَّرًا عليها بتاريخ اليوم. ولا يمكن تسجيل شيء آخر عليها."
+    },
+    "hs_removed_on": {
+      "c": "%1$s is a date",
+      "en": "Off the site since %1$s",
+      "he": "מחוץ לאתר מאז %1$s",
+      "ar": "خارج الموقع منذ %1$s"
+    },
+    "hs_hazard_explosive": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Explosive",
+      "he": "נפיץ",
+      "ar": "متفجّرة"
+    },
+    "hs_hazard_flammable": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Flammable",
+      "he": "דליק",
+      "ar": "قابلة للاشتعال"
+    },
+    "hs_hazard_oxidising": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Oxidising",
+      "he": "מחמצן",
+      "ar": "مؤكسِدة"
+    },
+    "hs_hazard_gas": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Gas under pressure",
+      "he": "גז בלחץ",
+      "ar": "غاز مضغوط"
+    },
+    "hs_hazard_corrosive": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Corrosive",
+      "he": "מאכל",
+      "ar": "أكّالة"
+    },
+    "hs_hazard_toxic": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Toxic",
+      "he": "רעיל",
+      "ar": "سامّة"
+    },
+    "hs_hazard_health": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Serious health hazard",
+      "he": "סכנה חמורה לבריאות",
+      "ar": "خطر جسيم على الصحة"
+    },
+    "hs_hazard_harmful": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Harmful or irritant",
+      "he": "מזיק או מגרה",
+      "ar": "ضارّة أو مهيِّجة"
+    },
+    "hs_hazard_environment": {
+      "c": "A hazard pictogram on a chemical's label",
+      "en": "Harmful to the environment",
+      "he": "מזיק לסביבה",
+      "ar": "ضارّة بالبيئة"
+    },
+    "hs_refused_not_allowed": {
+      "en": "Your role cannot change the substances register.",
+      "he": "התפקיד שלך אינו מאפשר לשנות את פנקס החומרים המסוכנים.",
+      "ar": "دورك لا يسمح بتغيير سجل المواد الخطرة."
+    },
+    "hs_refused_name": {
+      "en": "Write what the substance is called.",
+      "he": "כתבו איך נקרא החומר.",
+      "ar": "اكتب اسم المادة."
+    },
+    "hs_refused_hazard": {
+      "en": "Pick at least one thing its label warns of. A substance with none does not belong on this register.",
+      "he": "בחרו לפחות דבר אחד שהתווית מזהירה ממנו. חומר בלי אף אחד אינו שייך לפנקס הזה.",
+      "ar": "اختر شيئًا واحدًا على الأقل يحذّر منه الملصق. المادة التي لا تحذير عليها لا مكان لها في هذا السجل."
+    },
+    "hs_refused_kept_where": {
+      "en": "Write where it is kept. It is the first thing asked when something goes wrong.",
+      "he": "כתבו איפה הוא מאוחסן. זה הדבר הראשון שנשאל כשמשהו משתבש.",
+      "ar": "اكتب أين تُخزَّن. هذا أول ما يُسأل عنه حين يحدث خطأ."
+    },
+    "hs_refused_sheet_future": {
+      "en": "A data sheet cannot be dated after today.",
+      "he": "גיליון בטיחות לא יכול להיות מתוארך אחרי היום.",
+      "ar": "لا يمكن أن تكون صحيفة البيانات مؤرخة بعد اليوم."
+    },
+    "hs_refused_sheet_not_newer": {
+      "en": "That sheet is not newer than the one on file.",
+      "he": "הגיליון הזה אינו חדש יותר מזה שבתיק.",
+      "ar": "هذه الصحيفة ليست أحدث من التي في الملف."
+    },
+    "hs_refused_removed": {
+      "en": "It has been taken off the site; nothing more can be recorded against it.",
+      "he": "הוא הוצא מהאתר; לא ניתן לרשום עליו דבר נוסף.",
+      "ar": "أُخرجت من الموقع؛ لا يمكن تسجيل شيء آخر عليها."
+    },
+    "ex_col_off_site": {
+      "c": "Column heading: the day it left the site",
+      "en": "Off site",
+      "he": "מחוץ לאתר",
+      "ar": "خارج الموقع"
+    },
+    "search_kind_substance": {
+      "c": "Label on a search result",
+      "en": "Hazardous substance",
+      "he": "חומר מסוכן",
+      "ar": "مادة خطرة"
+    },
+    "at_complaints_waiting": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Complaints unanswered for over a week",
+      "he": "תלונות שלא נענו יותר משבוע",
+      "ar": "شكاوى بلا رد منذ أكثر من أسبوع"
+    },
+    "at_substances_no_sheet": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Substances with no data sheet",
+      "he": "חומרים בלי גיליון בטיחות",
+      "ar": "مواد بلا صحيفة بيانات سلامة"
     }
   },
   "plurals": {

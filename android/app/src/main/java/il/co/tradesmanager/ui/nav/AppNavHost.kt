@@ -85,6 +85,7 @@ import il.co.tradesmanager.ui.people.TicketGapsScreen
 import il.co.tradesmanager.ui.queries.QueriesScreen
 import il.co.tradesmanager.ui.inspections.InspectionsScreen
 import il.co.tradesmanager.ui.submittals.SubmittalsScreen
+import il.co.tradesmanager.ui.substances.SubstancesScreen
 import il.co.tradesmanager.ui.delays.DelaysScreen
 import il.co.tradesmanager.ui.risks.RisksScreen
 import il.co.tradesmanager.ui.complaints.ComplaintsScreen
@@ -129,6 +130,7 @@ object Routes {
     const val DELAYS = "projects/delays"
     const val RISKS = "projects/risks"
     const val COMPLAINTS = "projects/complaints"
+    const val SUBSTANCES = "projects/substances"
     const val TICKET_GAPS = "people/tickets"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
@@ -193,6 +195,7 @@ object Routes {
     fun delays(projectId: String) = "$DELAYS/$projectId"
     fun risks(projectId: String) = "$RISKS/$projectId"
     fun complaints(projectId: String) = "$COMPLAINTS/$projectId"
+    fun substances(projectId: String) = "$SUBSTANCES/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
 }
 
@@ -224,6 +227,7 @@ private fun routeFor(hit: Search.Hit): String = when (hit.kind) {
     Search.Kind.DELAY -> Routes.delays(hit.projectId.orEmpty())
     Search.Kind.RISK -> Routes.risks(hit.projectId.orEmpty())
     Search.Kind.COMPLAINT -> Routes.complaints(hit.projectId.orEmpty())
+    Search.Kind.SUBSTANCE -> Routes.substances(hit.projectId.orEmpty())
 }
 
 /**
@@ -405,6 +409,7 @@ fun AppNavHost(
                     onOpenDelays = { navController.navigate(Routes.delays(id)) },
                     onOpenRisks = { navController.navigate(Routes.risks(id)) },
                     onOpenComplaints = { navController.navigate(Routes.complaints(id)) },
+                    onOpenSubstances = { navController.navigate(Routes.substances(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     // A part, or the job it belongs to. Same screen, so the
@@ -613,6 +618,13 @@ fun AppNavHost(
             }
             composable("${Routes.COMPLAINTS}/{projectId}") { entry ->
                 ComplaintsScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.SUBSTANCES}/{projectId}") { entry ->
+                SubstancesScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

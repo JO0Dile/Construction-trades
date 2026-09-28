@@ -336,6 +336,27 @@ object Summaries {
     const val HEAT_CHECKED = "heat_checked"
 
     /**
+     * %1$s: %2$s kept on site
+     *
+     * Arguments, in order: reference, name.
+     */
+    const val HS_ADDED = "hs_added"
+
+    /**
+     * %1$s taken off site
+     *
+     * Arguments, in order: reference.
+     */
+    const val HS_REMOVED = "hs_removed"
+
+    /**
+     * %1$s: safety data sheet of %2$s on file
+     *
+     * Arguments, in order: reference, date.
+     */
+    const val HS_SHEET = "hs_sheet"
+
+    /**
      * ID number set
      */
     const val ID_NUMBER_SET = "id_number_set"

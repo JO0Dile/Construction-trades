@@ -106,6 +106,13 @@ class PhotoRepository(
         const val PLANT_EXAMINATION = "plant.examination"
 
         /**
+         * A substance's safety data sheet, photographed off the store's
+         * folder or picked from what the supplier sent. Against one
+         * substance; the register keeps the date printed on it.
+         */
+        const val SUBSTANCE_SHEET = "substance.sheet"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

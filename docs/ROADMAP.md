@@ -710,6 +710,18 @@ unanswered for more than a week is shown first and in red. Only somebody who
 may answer it sees how to reach the person; the printout, the export and the
 job's archive carry the complaint without the phone number or address.
 
+**Hazardous substances. Done.**
+The diesel for the generator, the roofer's gas bottles, the form oil, the
+epoxy, the acid for the brick: each substance kept on the site gets a number,
+the hazards its label shows, where the rest of it is and how much, the
+precautions and first aid its safety data sheet gives, the sheet's date and
+a photograph of it. One with no sheet on file is shown first and in red, and
+counted at the top of the job page; one with a sheet over five years old says
+to ask the supplier for the current one, without pretending the old one has
+stopped counting. A substance taken off the site is marked off with the
+date. Which substances need a permit, and in what quantities, is the
+regulations' to say and not this register's.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -774,21 +786,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~102 | *estimated — see below* |
+| Built | ~103 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 → ~101 → ~102 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 → ~101 → ~102 → ~103 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, the visitor log, inspection requests, material approvals, the delay register, plant examination certificates, the risk assessment, and the complaints register.
+register, the visitor log, inspection requests, material approvals, the delay register, plant examination certificates, the risk assessment, the complaints register, and the hazardous substances register.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

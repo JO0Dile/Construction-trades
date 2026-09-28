@@ -41,6 +41,7 @@ import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.SubmittalRepository
 import il.co.tradesmanager.data.repository.SettingsRepository
+import il.co.tradesmanager.data.repository.SubstanceRepository
 import il.co.tradesmanager.data.repository.TemporaryWorksRepository
 import il.co.tradesmanager.data.repository.TradeRepository
 import il.co.tradesmanager.data.repository.ViolationRepository
@@ -214,6 +215,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Complaints about the site from the neighbours and the municipality. */
     val complaints = ComplaintRepository(database.complaintDao(), auditTrail)
+
+    /** What is kept on the site that can hurt somebody, and where. */
+    val substances = SubstanceRepository(database.substanceDao(), auditTrail)
 
     /** The job's risk assessment: hazards, scored before and after their controls. */
     val risks = RiskRepository(database.riskDao(), auditTrail)
