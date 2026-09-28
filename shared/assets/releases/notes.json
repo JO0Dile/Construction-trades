@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.39.0",
+      "points": [
+        {
+          "en": "A new complaints register on every job: the neighbour woken by the pump, dust on the cars, a lorry across a drive, the municipality's inspector. Each complaint gets a number, who made it, how it came in and what it was about, and the answer is written once by whoever gave it. A complaint left unanswered for more than a week is shown first.",
+          "he": "פנקס תלונות חדש בכל עבודה: השכן שהתעורר מהמשאבה, אבק על המכוניות, משאית שחוסמת כניסה, פקח העירייה. כל תלונה מקבלת מספר, מי התלונן, איך היא הגיעה ועל מה, והתשובה נרשמת פעם אחת בידי מי שנתן אותה. תלונה שלא נענתה יותר משבוע מוצגת ראשונה.",
+          "ar": "سجل شكاوى جديد في كل مشروع: الجار الذي أيقظته المضخة، الغبار على السيارات، شاحنة تسد مدخلًا، مفتش البلدية. تحصل كل شكوى على رقم، ومن قدّمها، وكيف وصلت وعمّ كانت، ويُكتب الرد مرة واحدة بيد من قدّمه. الشكوى التي بقيت دون رد أكثر من أسبوع تُعرض أولًا."
+        },
+        {
+          "en": "The register can be printed and exported, and it goes into the job's archive — without the complainant's phone number or address, which stay on the phone for whoever answers.",
+          "he": "אפשר להדפיס ולייצא את הפנקס, והוא נכלל בארכיון העבודה — בלי הטלפון או הכתובת של המתלונן, שנשארים במכשיר בשביל מי שעונה.",
+          "ar": "يمكن طباعة السجل وتصديره، ويدخل في أرشيف المشروع — دون هاتف مقدّم الشكوى أو عنوانه، اللذين يبقيان على الجهاز لمن يرد عليه."
+        }
+      ]
+    },
+    {
       "version": "0.38.0",
       "points": [
         {

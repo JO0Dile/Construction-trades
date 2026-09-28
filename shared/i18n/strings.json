@@ -959,9 +959,9 @@
       "ar": "أين يُحفظ عملك"
     },
     "priv_where_body": {
-      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site. There is no account with us and no server holding a copy.",
-      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
-      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
+      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, and of anybody who made a complaint about one and left a way to answer them. Neither is ever printed or exported. There is no account with us and no server holding a copy.",
+      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, ושל מי שהתלונן על אתר והשאיר דרך לענות לו. הם לעולם אינם מודפסים או מיוצאים. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
+      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه. ولا تُطبع أي منها أو تُصدَّر أبدًا. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
     },
     "priv_network_title": {
       "en": "The one thing that leaves the phone",
@@ -10062,9 +10062,248 @@
       "ar": "تصدير كل سجلات هذا المشروع"
     },
     "hv_export_all_hint": {
-      "en": "One file with the handover summary and every register you may see — inspections, risks, visitors, questions to the designers, material approvals and delays — each as a PDF and a CSV.",
-      "he": "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.",
-      "ar": "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV."
+      "en": "One file with the handover summary and every register you may see — inspections, risks, visitors, complaints, questions to the designers, material approvals and delays — each as a PDF and a CSV.",
+      "he": "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.",
+      "ar": "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV."
+    },
+    "summary_cp_answered": {
+      "en": "%1$s answered",
+      "he": "נשלחה תשובה ל־%1$s",
+      "ar": "أُجيب على %1$s"
+    },
+    "summary_cp_received": {
+      "en": "%1$s: complaint from %2$s",
+      "he": "%1$s: תלונה מ־%2$s",
+      "ar": "%1$s: شكوى من %2$s"
+    },
+    "cp_title": {
+      "c": "Screen title and job link",
+      "en": "Complaints",
+      "he": "תלונות",
+      "ar": "الشكاوى"
+    },
+    "cp_row_hint": {
+      "c": "Hint under the job link",
+      "en": "What the neighbours and the municipality said, and what was done",
+      "he": "מה אמרו השכנים והעירייה, ומה נעשה",
+      "ar": "ما قاله الجيران والبلدية، وما الذي فُعل"
+    },
+    "cp_empty": {
+      "en": "No complaints recorded on this job.",
+      "he": "לא נרשמו תלונות בעבודה הזו.",
+      "ar": "لم تُسجَّل شكاوى في هذا المشروع."
+    },
+    "cp_blurb": {
+      "en": "When a neighbour or the municipality complains about noise, dust, the hours, a blocked road or damage, write it down the same day, and then what was done and what they were told. One left unanswered for a week is shown first.",
+      "he": "כששכן או העירייה מתלוננים על רעש, אבק, שעות העבודה, דרך חסומה או נזק, רשמו את זה באותו יום, ואחר כך מה נעשה ומה נאמר להם. תלונה שלא נענתה שבוע מוצגת ראשונה.",
+      "ar": "عندما يشتكي جار أو البلدية من الضجيج أو الغبار أو ساعات العمل أو طريق مغلق أو ضرر، سجّل ذلك في اليوم نفسه، ثم ما الذي فُعل وما الذي قيل لهم. الشكوى التي لم يُرد عليها أسبوعًا تظهر أولًا."
+    },
+    "cp_receive": {
+      "c": "Button and dialog title",
+      "en": "Record a complaint",
+      "he": "רישום תלונה",
+      "ar": "تسجيل شكوى"
+    },
+    "cp_subject": {
+      "en": "About",
+      "he": "נושא",
+      "ar": "الموضوع"
+    },
+    "cp_subject_noise": {
+      "en": "Noise",
+      "he": "רעש",
+      "ar": "ضجيج"
+    },
+    "cp_subject_dust": {
+      "en": "Dust",
+      "he": "אבק",
+      "ar": "غبار"
+    },
+    "cp_subject_hours": {
+      "en": "Working hours",
+      "he": "שעות עבודה",
+      "ar": "ساعات العمل"
+    },
+    "cp_subject_blocking": {
+      "en": "Blocked road or access",
+      "he": "חסימת דרך או גישה",
+      "ar": "إغلاق طريق أو مدخل"
+    },
+    "cp_subject_damage": {
+      "en": "Damage",
+      "he": "נזק",
+      "ar": "ضرر"
+    },
+    "cp_subject_dirt": {
+      "en": "Mud or dirt on the road",
+      "he": "בוץ או לכלוך בכביש",
+      "ar": "طين أو أوساخ على الطريق"
+    },
+    "cp_subject_safety": {
+      "en": "Safety",
+      "he": "בטיחות",
+      "ar": "السلامة"
+    },
+    "cp_subject_other": {
+      "en": "Other",
+      "he": "אחר",
+      "ar": "أخرى"
+    },
+    "cp_description": {
+      "en": "What they said",
+      "he": "מה נאמר",
+      "ar": "ما قيل"
+    },
+    "cp_description_hint": {
+      "en": "The pump started at six and woke the children",
+      "he": "המשאבה התחילה בשש והעירה את הילדים",
+      "ar": "بدأت المضخة في السادسة وأيقظت الأطفال"
+    },
+    "cp_from": {
+      "en": "From",
+      "he": "ממי",
+      "ar": "مِن"
+    },
+    "cp_from_hint": {
+      "en": "The neighbour at 12 Herzl, the municipality's inspector",
+      "he": "השכן מהרצל 12, פקח העירייה",
+      "ar": "الجار في هرتسل 12، مراقب البلدية"
+    },
+    "cp_contact": {
+      "en": "How to reach them",
+      "he": "איך ליצור קשר",
+      "ar": "كيفية التواصل"
+    },
+    "cp_contact_hint": {
+      "en": "Kept for answering them; never printed",
+      "he": "נשמר לצורך מתן תשובה; לא מודפס לעולם",
+      "ar": "يُحفظ للرد عليهم؛ ولا يُطبع أبدًا"
+    },
+    "cp_channel": {
+      "en": "How it came",
+      "he": "איך הגיעה",
+      "ar": "كيف وصلت"
+    },
+    "cp_channel_in_person": {
+      "en": "In person",
+      "he": "פנים אל פנים",
+      "ar": "شخصيًا"
+    },
+    "cp_channel_phone": {
+      "en": "Phone",
+      "he": "טלפון",
+      "ar": "هاتف"
+    },
+    "cp_channel_writing": {
+      "en": "In writing",
+      "he": "בכתב",
+      "ar": "كتابيًا"
+    },
+    "cp_channel_municipality": {
+      "en": "Through the municipality",
+      "he": "דרך העירייה",
+      "ar": "عبر البلدية"
+    },
+    "cp_when": {
+      "en": "When",
+      "he": "מתי",
+      "ar": "متى"
+    },
+    "cp_just_now": {
+      "en": "Just now",
+      "he": "זה עתה",
+      "ar": "الآن"
+    },
+    "cp_3_hours_ago": {
+      "en": "3 hours ago",
+      "he": "לפני 3 שעות",
+      "ar": "قبل 3 ساعات"
+    },
+    "cp_save": {
+      "en": "Save",
+      "he": "שמירה",
+      "ar": "حفظ"
+    },
+    "cp_received_on": {
+      "c": "%1$s is a date",
+      "en": "Received %1$s",
+      "he": "התקבלה ב־%1$s",
+      "ar": "وردت في %1$s"
+    },
+    "cp_waiting_long": {
+      "c": "%1$s is a date",
+      "en": "Received %1$s, still no answer",
+      "he": "התקבלה ב־%1$s, ועדיין אין תשובה",
+      "ar": "وردت في %1$s، ولا رد بعد"
+    },
+    "cp_answered_on": {
+      "c": "%1$s is a date",
+      "en": "Answered %1$s",
+      "he": "נענתה ב־%1$s",
+      "ar": "أُجيب عليها في %1$s"
+    },
+    "cp_taken_by": {
+      "c": "%1$s is a name",
+      "en": "taken by %1$s",
+      "he": "נרשמה על ידי %1$s",
+      "ar": "سجّلها %1$s"
+    },
+    "cp_response": {
+      "en": "What was done",
+      "he": "מה נעשה",
+      "ar": "ما الذي فُعل"
+    },
+    "cp_response_typed": {
+      "en": "What was done, and what they were told",
+      "he": "מה נעשה, ומה נאמר להם",
+      "ar": "ما الذي فُعل، وما الذي قيل لهم"
+    },
+    "cp_record_response": {
+      "en": "Record the answer",
+      "he": "רישום התשובה",
+      "ar": "تسجيل الرد"
+    },
+    "cp_refused_not_allowed": {
+      "en": "Your role does not keep the site's record.",
+      "he": "התפקיד שלך לא מנהל את רישום האתר.",
+      "ar": "دورك لا يتولى سجل الموقع."
+    },
+    "cp_refused_from": {
+      "en": "Say who complained.",
+      "he": "כתבו מי התלונן.",
+      "ar": "اذكر مَن اشتكى."
+    },
+    "cp_refused_description": {
+      "en": "Say what the complaint was.",
+      "he": "כתבו מה הייתה התלונה.",
+      "ar": "اذكر ما كانت الشكوى."
+    },
+    "cp_refused_future": {
+      "en": "A complaint cannot have been made after now.",
+      "he": "תלונה לא יכולה להיות מאוחרת מעכשיו.",
+      "ar": "لا يمكن أن تكون الشكوى بعد الآن."
+    },
+    "cp_refused_response": {
+      "en": "Write what was done.",
+      "he": "כתבו מה נעשה.",
+      "ar": "اكتب ما الذي فُعل."
+    },
+    "cp_refused_answered": {
+      "en": "This complaint has already been answered.",
+      "he": "התלונה הזו כבר נענתה.",
+      "ar": "أُجيب على هذه الشكوى بالفعل."
+    },
+    "ex_col_received": {
+      "c": "Column heading: the day it was received",
+      "en": "Received",
+      "he": "התקבל",
+      "ar": "ورد"
+    },
+    "search_kind_complaint": {
+      "c": "Label on a search result",
+      "en": "Complaint",
+      "he": "תלונה",
+      "ar": "شكوى"
     }
   },
   "plurals": {

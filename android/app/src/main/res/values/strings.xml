@@ -197,7 +197,7 @@
     <!-- Privacy screen: the whole of it in one sentence -->
     <string name="priv_lead">Everything you record stays on this phone.</string>
     <string name="priv_where_title">Where your work is kept</string>
-    <string name="priv_where_body">Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site. There is no account with us and no server holding a copy.</string>
+    <string name="priv_where_body">Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, and of anybody who made a complaint about one and left a way to answer them. Neither is ever printed or exported. There is no account with us and no server holding a copy.</string>
     <string name="priv_network_title">The one thing that leaves the phone</string>
     <string name="priv_network_body">When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.</string>
     <string name="priv_none_title">What the app does not do</string>
@@ -2432,7 +2432,62 @@
     <string name="at_risk_reviews">Risk reviews overdue</string>
     <!-- Button on the handover pack -->
     <string name="hv_export_all">Export all of this job\'s records</string>
-    <string name="hv_export_all_hint">One file with the handover summary and every register you may see — inspections, risks, visitors, questions to the designers, material approvals and delays — each as a PDF and a CSV.</string>
+    <string name="hv_export_all_hint">One file with the handover summary and every register you may see — inspections, risks, visitors, complaints, questions to the designers, material approvals and delays — each as a PDF and a CSV.</string>
+    <string name="summary_cp_answered">%1$s answered</string>
+    <string name="summary_cp_received">%1$s: complaint from %2$s</string>
+    <!-- Screen title and job link -->
+    <string name="cp_title">Complaints</string>
+    <!-- Hint under the job link -->
+    <string name="cp_row_hint">What the neighbours and the municipality said, and what was done</string>
+    <string name="cp_empty">No complaints recorded on this job.</string>
+    <string name="cp_blurb">When a neighbour or the municipality complains about noise, dust, the hours, a blocked road or damage, write it down the same day, and then what was done and what they were told. One left unanswered for a week is shown first.</string>
+    <!-- Button and dialog title -->
+    <string name="cp_receive">Record a complaint</string>
+    <string name="cp_subject">About</string>
+    <string name="cp_subject_noise">Noise</string>
+    <string name="cp_subject_dust">Dust</string>
+    <string name="cp_subject_hours">Working hours</string>
+    <string name="cp_subject_blocking">Blocked road or access</string>
+    <string name="cp_subject_damage">Damage</string>
+    <string name="cp_subject_dirt">Mud or dirt on the road</string>
+    <string name="cp_subject_safety">Safety</string>
+    <string name="cp_subject_other">Other</string>
+    <string name="cp_description">What they said</string>
+    <string name="cp_description_hint">The pump started at six and woke the children</string>
+    <string name="cp_from">From</string>
+    <string name="cp_from_hint">The neighbour at 12 Herzl, the municipality\'s inspector</string>
+    <string name="cp_contact">How to reach them</string>
+    <string name="cp_contact_hint">Kept for answering them; never printed</string>
+    <string name="cp_channel">How it came</string>
+    <string name="cp_channel_in_person">In person</string>
+    <string name="cp_channel_phone">Phone</string>
+    <string name="cp_channel_writing">In writing</string>
+    <string name="cp_channel_municipality">Through the municipality</string>
+    <string name="cp_when">When</string>
+    <string name="cp_just_now">Just now</string>
+    <string name="cp_3_hours_ago">3 hours ago</string>
+    <string name="cp_save">Save</string>
+    <!-- %1$s is a date -->
+    <string name="cp_received_on">Received %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="cp_waiting_long">Received %1$s, still no answer</string>
+    <!-- %1$s is a date -->
+    <string name="cp_answered_on">Answered %1$s</string>
+    <!-- %1$s is a name -->
+    <string name="cp_taken_by">taken by %1$s</string>
+    <string name="cp_response">What was done</string>
+    <string name="cp_response_typed">What was done, and what they were told</string>
+    <string name="cp_record_response">Record the answer</string>
+    <string name="cp_refused_not_allowed">Your role does not keep the site\'s record.</string>
+    <string name="cp_refused_from">Say who complained.</string>
+    <string name="cp_refused_description">Say what the complaint was.</string>
+    <string name="cp_refused_future">A complaint cannot have been made after now.</string>
+    <string name="cp_refused_response">Write what was done.</string>
+    <string name="cp_refused_answered">This complaint has already been answered.</string>
+    <!-- Column heading: the day it was received -->
+    <string name="ex_col_received">Received</string>
+    <!-- Label on a search result -->
+    <string name="search_kind_complaint">Complaint</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

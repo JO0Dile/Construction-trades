@@ -196,7 +196,7 @@
 /* Privacy screen: the whole of it in one sentence */
 "priv_lead" = "כל מה שאתם רושמים נשאר בטלפון הזה.";
 "priv_where_title" = "היכן נשמרת העבודה שלכם";
-"priv_where_body" = "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.";
+"priv_where_body" = "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, ושל מי שהתלונן על אתר והשאיר דרך לענות לו. הם לעולם אינם מודפסים או מיוצאים. אין חשבון אצלנו ואין שרת שמחזיק עותק.";
 "priv_network_title" = "הדבר היחיד שיוצא מהטלפון";
 "priv_network_body" = "כשלוחצים על בדיקת עדכונים, האפליקציה שואלת את GitHub אם פורסמה גרסה חדשה. בבקשה הזו אין דבר על העבודות, הצוות או האתר שלכם. היא נשלחת רק בלחיצה על הכפתור ולא בשום מועד אחר.";
 "priv_none_title" = "מה האפליקציה אינה עושה";
@@ -2431,4 +2431,59 @@
 "at_risk_reviews" = "בדיקות חוזרות של סיכונים באיחור";
 /* Button on the handover pack */
 "hv_export_all" = "ייצוא כל הרישומים של העבודה";
-"hv_export_all_hint" = "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.";
+"hv_export_all_hint" = "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.";
+"summary_cp_answered" = "נשלחה תשובה ל־%1$s";
+"summary_cp_received" = "%1$s: תלונה מ־%2$s";
+/* Screen title and job link */
+"cp_title" = "תלונות";
+/* Hint under the job link */
+"cp_row_hint" = "מה אמרו השכנים והעירייה, ומה נעשה";
+"cp_empty" = "לא נרשמו תלונות בעבודה הזו.";
+"cp_blurb" = "כששכן או העירייה מתלוננים על רעש, אבק, שעות העבודה, דרך חסומה או נזק, רשמו את זה באותו יום, ואחר כך מה נעשה ומה נאמר להם. תלונה שלא נענתה שבוע מוצגת ראשונה.";
+/* Button and dialog title */
+"cp_receive" = "רישום תלונה";
+"cp_subject" = "נושא";
+"cp_subject_noise" = "רעש";
+"cp_subject_dust" = "אבק";
+"cp_subject_hours" = "שעות עבודה";
+"cp_subject_blocking" = "חסימת דרך או גישה";
+"cp_subject_damage" = "נזק";
+"cp_subject_dirt" = "בוץ או לכלוך בכביש";
+"cp_subject_safety" = "בטיחות";
+"cp_subject_other" = "אחר";
+"cp_description" = "מה נאמר";
+"cp_description_hint" = "המשאבה התחילה בשש והעירה את הילדים";
+"cp_from" = "ממי";
+"cp_from_hint" = "השכן מהרצל 12, פקח העירייה";
+"cp_contact" = "איך ליצור קשר";
+"cp_contact_hint" = "נשמר לצורך מתן תשובה; לא מודפס לעולם";
+"cp_channel" = "איך הגיעה";
+"cp_channel_in_person" = "פנים אל פנים";
+"cp_channel_phone" = "טלפון";
+"cp_channel_writing" = "בכתב";
+"cp_channel_municipality" = "דרך העירייה";
+"cp_when" = "מתי";
+"cp_just_now" = "זה עתה";
+"cp_3_hours_ago" = "לפני 3 שעות";
+"cp_save" = "שמירה";
+/* %1$s is a date */
+"cp_received_on" = "התקבלה ב־%1$s";
+/* %1$s is a date */
+"cp_waiting_long" = "התקבלה ב־%1$s, ועדיין אין תשובה";
+/* %1$s is a date */
+"cp_answered_on" = "נענתה ב־%1$s";
+/* %1$s is a name */
+"cp_taken_by" = "נרשמה על ידי %1$s";
+"cp_response" = "מה נעשה";
+"cp_response_typed" = "מה נעשה, ומה נאמר להם";
+"cp_record_response" = "רישום התשובה";
+"cp_refused_not_allowed" = "התפקיד שלך לא מנהל את רישום האתר.";
+"cp_refused_from" = "כתבו מי התלונן.";
+"cp_refused_description" = "כתבו מה הייתה התלונה.";
+"cp_refused_future" = "תלונה לא יכולה להיות מאוחרת מעכשיו.";
+"cp_refused_response" = "כתבו מה נעשה.";
+"cp_refused_answered" = "התלונה הזו כבר נענתה.";
+/* Column heading: the day it was received */
+"ex_col_received" = "התקבל";
+/* Label on a search result */
+"search_kind_complaint" = "תלונה";

@@ -128,6 +128,7 @@ fun ProjectDetailScreen(
     onOpenSubmittals: () -> Unit,
     onOpenDelays: () -> Unit,
     onOpenRisks: () -> Unit,
+    onOpenComplaints: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -202,6 +203,8 @@ fun ProjectDetailScreen(
         if (canSeeEvidence) add(JobLink(R.string.ir_title, R.string.ir_row_hint, onOpenInspections))
         // What could hurt somebody on this job, and what is done about it.
         if (canSeeEvidence) add(JobLink(R.string.ra_title, R.string.ra_row_hint, onOpenRisks))
+        // What the street said about the site, and what it was told.
+        if (canSeeEvidence) add(JobLink(R.string.cp_title, R.string.cp_row_hint, onOpenComplaints))
         // Beside the log, because it is the other thing somebody at the gate
         // writes in every day, and the roll call reads it.
         if (canSeeEvidence) add(JobLink(R.string.visit_title, R.string.visit_row_hint, onOpenVisitors))

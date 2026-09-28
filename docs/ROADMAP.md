@@ -701,6 +701,15 @@ PDF and a CSV, the same files each register exports alone. It is what a
 client asks for at handover and what a firm keeps when a job is closed. A
 register the role may not read is left out, not put in empty.
 
+**Complaints from outside the site. Done.**
+The neighbour woken at six by the pump, the dust on the cars in the street,
+the lorry across a drive, the municipality's inspector who came because
+somebody phoned: each complaint gets a number, who made it, how it came in,
+what it was about, and the answer, written once by whoever gave it. One left
+unanswered for more than a week is shown first and in red. Only somebody who
+may answer it sees how to reach the person; the printout, the export and the
+job's archive carry the complaint without the phone number or address.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -765,21 +774,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~101 | *estimated — see below* |
+| Built | ~102 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 → ~101 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 → ~101 → ~102 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, the visitor log, inspection requests, material approvals, the delay register, plant examination certificates, and the risk assessment.
+register, the visitor log, inspection requests, material approvals, the delay register, plant examination certificates, the risk assessment, and the complaints register.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

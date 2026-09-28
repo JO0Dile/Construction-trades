@@ -195,6 +195,23 @@
       "he": "שווי החוזה נקבע",
       "ar": "حُدّدت قيمة العقد"
     },
+    "cp_answered": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s answered",
+      "he": "נשלחה תשובה ל־%1$s",
+      "ar": "أُجيب على %1$s"
+    },
+    "cp_received": {
+      "arguments": [
+        "reference",
+        "from"
+      ],
+      "en": "%1$s: complaint from %2$s",
+      "he": "%1$s: תלונה מ־%2$s",
+      "ar": "%1$s: شكوى من %2$s"
+    },
     "created_from_template": {
       "arguments": [
         "template"

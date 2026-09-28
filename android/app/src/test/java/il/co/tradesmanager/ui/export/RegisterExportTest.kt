@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import il.co.tradesmanager.R
+import il.co.tradesmanager.data.local.entity.ComplaintEntity
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
@@ -157,6 +158,23 @@ class RegisterExportTest {
         table.assertSquare()
         assertEquals("Drop the duct 200", table.rows[0][6])
         assertEquals(context.getString(R.string.ex_waiting), table.rows[1][6])
+    }
+
+    @Test
+    fun `the complaints register never prints how to reach the person who complained`() {
+        val context = inLanguage("en")
+        val complaints = listOf(
+            ComplaintEntity(
+                id = "c1", projectId = "job", reference = "CP-001", fromWhom = "Neighbour at 12 Herzl",
+                contact = "054-1234567", channel = "PHONE", subject = "NOISE", description = "Pump at six",
+                receivedAt = 1_000L, receivedByName = "Safety officer",
+            ),
+        )
+        val table = ExportDocument.ComplaintRegister("Tower A", complaints).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertTrue(table.rows.flatten().none { it.contains("054-1234567") })
+        assertTrue(table.extraCells.flatten().none { it.contains("054-1234567") })
+        assertEquals(context.getString(R.string.ex_waiting), table.rows[0][5])
     }
 
     @Test

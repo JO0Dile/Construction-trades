@@ -11,6 +11,7 @@ import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.CertificationRepository
+import il.co.tradesmanager.data.repository.ComplaintRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
 import il.co.tradesmanager.data.repository.DelayRepository
@@ -210,6 +211,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
             }
         }
     }
+
+    /** Complaints about the site from the neighbours and the municipality. */
+    val complaints = ComplaintRepository(database.complaintDao(), auditTrail)
 
     /** The job's risk assessment: hazards, scored before and after their controls. */
     val risks = RiskRepository(database.riskDao(), auditTrail)

@@ -166,6 +166,20 @@ object Summaries {
     const val CONTRACT_VALUE_SET = "contract_value_set"
 
     /**
+     * %1$s answered
+     *
+     * Arguments, in order: reference.
+     */
+    const val CP_ANSWERED = "cp_answered"
+
+    /**
+     * %1$s: complaint from %2$s
+     *
+     * Arguments, in order: reference, from.
+     */
+    const val CP_RECEIVED = "cp_received"
+
+    /**
      * Created from the template %1$s
      *
      * Arguments, in order: template.

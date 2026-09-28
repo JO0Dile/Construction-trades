@@ -415,6 +415,13 @@ object Migrations {
         }
     }
 
+    /** The complaints register: one new table. */
+    val MIGRATION_42_43 = object : Migration(42, 43) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_42_43.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -457,6 +464,7 @@ object Migrations {
         MIGRATION_39_40,
         MIGRATION_40_41,
         MIGRATION_41_42,
+        MIGRATION_42_43,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1149,5 +1157,15 @@ object Migrations {
             "`reviewOnDay` INTEGER, `closed` INTEGER NOT NULL, `recordedByName` TEXT NOT NULL, " +
             "`createdAt` INTEGER NOT NULL, `lastReviewedAt` INTEGER, `lastReviewedByName` TEXT, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_risk_assessments_projectId` ON `risk_assessments` (`projectId`)",
+    )
+
+    /** Complaints about the site from outside it. */
+    val SQL_42_43: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `complaints` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `fromWhom` TEXT NOT NULL, `contact` TEXT, `channel` TEXT NOT NULL, " +
+            "`subject` TEXT NOT NULL, `description` TEXT NOT NULL, `receivedAt` INTEGER NOT NULL, " +
+            "`receivedByName` TEXT NOT NULL, `response` TEXT, `answeredAt` INTEGER, `answeredByName` TEXT, " +
+            "PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_complaints_projectId` ON `complaints` (`projectId`)",
     )
 }

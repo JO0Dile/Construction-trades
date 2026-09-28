@@ -4,6 +4,7 @@ import android.content.Context
 import il.co.tradesmanager.R
 import il.co.tradesmanager.ui.audit.auditActionLabel
 import il.co.tradesmanager.ui.audit.summaryText
+import il.co.tradesmanager.core.evidence.Complaints
 import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.Formats
@@ -17,6 +18,7 @@ import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
+import il.co.tradesmanager.data.local.entity.ComplaintEntity
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
@@ -29,6 +31,7 @@ import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SiteVisitEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
+import il.co.tradesmanager.ui.complaints.complaintSubjectLabel
 import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.delays.delayCauseLabel
 import il.co.tradesmanager.ui.inspections.inspectionKindLabel
@@ -168,6 +171,16 @@ sealed interface ExportDocument {
         val jobName: String,
         val events: List<DelayEventEntity>,
         val today: LocalDate,
+    ) : ExportDocument
+
+    /**
+     * One job's complaints and what was done about each. The complainants'
+     * contact details are left out: the register is printed for the
+     * municipality or the client, not to hand strangers' numbers around.
+     */
+    data class ComplaintRegister(
+        val jobName: String,
+        val complaints: List<ComplaintEntity>,
     ) : ExportDocument
 
     /** One job's questions to its designers, with the answers and when they came. */
@@ -409,6 +422,30 @@ sealed interface ExportDocument {
             },
         )
 
+        is ComplaintRegister -> Table(
+            title = context.getString(R.string.cp_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.cp_subject),
+                context.getString(R.string.cp_from),
+                context.getString(R.string.cp_description),
+                context.getString(R.string.ex_col_received),
+                context.getString(R.string.cp_response),
+                context.getString(R.string.ex_col_on),
+            ),
+            rows = complaints.sortedBy { it.receivedAt }.map { row ->
+                listOf(
+                    row.reference,
+                    context.getString(complaintSubjectLabel(Complaints.subjectOf(row.subject))),
+                    row.fromWhom,
+                    row.description,
+                    day(row.receivedAt, locale),
+                    row.response ?: context.getString(R.string.ex_waiting),
+                    row.answeredAt?.let { day(it, locale) }.orEmpty(),
+                )
+            },
+        )
+
         is QueryRegister -> Table(
             title = context.getString(R.string.qry_title) + " — " + jobName,
             headers = listOf(
@@ -600,6 +637,7 @@ sealed interface ExportDocument {
             is DelayRegister -> "delays-" + jobName
             is RiskRegister -> "risk-assessment-" + jobName
             is QueryRegister -> "questions-to-designers-" + jobName
+            is ComplaintRegister -> "complaints-" + jobName
         },
     )
 

@@ -38,6 +38,7 @@ import il.co.tradesmanager.data.local.dao.SubmittalDao
 import il.co.tradesmanager.data.local.dao.DelayDao
 import il.co.tradesmanager.data.local.dao.PlantExaminationDao
 import il.co.tradesmanager.data.local.dao.RiskDao
+import il.co.tradesmanager.data.local.dao.ComplaintDao
 import il.co.tradesmanager.data.local.entity.AccountEntity
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
@@ -105,6 +106,7 @@ import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.PlantExaminationEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
+import il.co.tradesmanager.data.local.entity.ComplaintEntity
 
 /**
  * The schema version the code expects.
@@ -115,7 +117,7 @@ import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 42
+const val DATABASE_VERSION = 43
 
 @Database(
     entities = [
@@ -186,6 +188,7 @@ const val DATABASE_VERSION = 42
         DelayEventEntity::class,
         PlantExaminationEntity::class,
         RiskAssessmentEntity::class,
+        ComplaintEntity::class,
     ],
     version = DATABASE_VERSION,
     exportSchema = true,
@@ -238,6 +241,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun plantExaminationDao(): PlantExaminationDao
 
     abstract fun riskDao(): RiskDao
+
+    abstract fun complaintDao(): ComplaintDao
 
     abstract fun temporaryWorksDao(): TemporaryWorksDao
 

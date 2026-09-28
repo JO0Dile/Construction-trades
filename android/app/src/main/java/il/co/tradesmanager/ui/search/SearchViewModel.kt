@@ -132,6 +132,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.SUBMITTAL)) hits += submittals(terms, jobNames)
         if (mayRead(Search.Kind.DELAY)) hits += delays(terms, jobNames)
         if (mayRead(Search.Kind.RISK)) hits += risks(terms, jobNames)
+        if (mayRead(Search.Kind.COMPLAINT)) hits += complaints(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -477,6 +478,25 @@ class SearchViewModel(
                 isOpen = !risk.closed,
                 terms = terms,
                 projectId = risk.projectId,
+            )
+        }
+
+    /* ------------------------------------------------------ the complaints */
+    private suspend fun complaints(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.complaints.all().mapNotNull { complaint ->
+            hit(
+                id = complaint.id,
+                kind = Search.Kind.COMPLAINT,
+                title = complaint.reference + " " + complaint.description,
+                detail = listOfNotNull(complaint.fromWhom, jobNames[complaint.projectId]).joinToString(" "),
+                // What was done about it is matched, not shown; the contact is neither.
+                matchAlso = complaint.response.orEmpty(),
+                isOpen = complaint.answeredAt == null,
+                terms = terms,
+                projectId = complaint.projectId,
             )
         }
 

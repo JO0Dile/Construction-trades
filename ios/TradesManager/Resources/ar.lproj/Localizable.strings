@@ -196,7 +196,7 @@
 /* Privacy screen: the whole of it in one sentence */
 "priv_lead" = "كل ما تُسجّله يبقى على هذا الهاتف.";
 "priv_where_title" = "أين يُحفظ عملك";
-"priv_where_body" = "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.";
+"priv_where_body" = "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه. ولا تُطبع أي منها أو تُصدَّر أبدًا. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.";
 "priv_network_title" = "الشيء الوحيد الذي يغادر الهاتف";
 "priv_network_body" = "عند الضغط على التحقق من التحديثات، يسأل التطبيق GitHub إن كانت هناك نسخة أحدث. هذا الطلب لا يحمل شيئًا عن أعمالك أو طاقمك أو موقعك. ويحدث عند الضغط على الزر فقط.";
 "priv_none_title" = "ما لا يفعله التطبيق";
@@ -2431,4 +2431,59 @@
 "at_risk_reviews" = "مراجعات مخاطر متأخرة";
 /* Button on the handover pack */
 "hv_export_all" = "تصدير كل سجلات هذا المشروع";
-"hv_export_all_hint" = "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV.";
+"hv_export_all_hint" = "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV.";
+"summary_cp_answered" = "أُجيب على %1$s";
+"summary_cp_received" = "%1$s: شكوى من %2$s";
+/* Screen title and job link */
+"cp_title" = "الشكاوى";
+/* Hint under the job link */
+"cp_row_hint" = "ما قاله الجيران والبلدية، وما الذي فُعل";
+"cp_empty" = "لم تُسجَّل شكاوى في هذا المشروع.";
+"cp_blurb" = "عندما يشتكي جار أو البلدية من الضجيج أو الغبار أو ساعات العمل أو طريق مغلق أو ضرر، سجّل ذلك في اليوم نفسه، ثم ما الذي فُعل وما الذي قيل لهم. الشكوى التي لم يُرد عليها أسبوعًا تظهر أولًا.";
+/* Button and dialog title */
+"cp_receive" = "تسجيل شكوى";
+"cp_subject" = "الموضوع";
+"cp_subject_noise" = "ضجيج";
+"cp_subject_dust" = "غبار";
+"cp_subject_hours" = "ساعات العمل";
+"cp_subject_blocking" = "إغلاق طريق أو مدخل";
+"cp_subject_damage" = "ضرر";
+"cp_subject_dirt" = "طين أو أوساخ على الطريق";
+"cp_subject_safety" = "السلامة";
+"cp_subject_other" = "أخرى";
+"cp_description" = "ما قيل";
+"cp_description_hint" = "بدأت المضخة في السادسة وأيقظت الأطفال";
+"cp_from" = "مِن";
+"cp_from_hint" = "الجار في هرتسل 12، مراقب البلدية";
+"cp_contact" = "كيفية التواصل";
+"cp_contact_hint" = "يُحفظ للرد عليهم؛ ولا يُطبع أبدًا";
+"cp_channel" = "كيف وصلت";
+"cp_channel_in_person" = "شخصيًا";
+"cp_channel_phone" = "هاتف";
+"cp_channel_writing" = "كتابيًا";
+"cp_channel_municipality" = "عبر البلدية";
+"cp_when" = "متى";
+"cp_just_now" = "الآن";
+"cp_3_hours_ago" = "قبل 3 ساعات";
+"cp_save" = "حفظ";
+/* %1$s is a date */
+"cp_received_on" = "وردت في %1$s";
+/* %1$s is a date */
+"cp_waiting_long" = "وردت في %1$s، ولا رد بعد";
+/* %1$s is a date */
+"cp_answered_on" = "أُجيب عليها في %1$s";
+/* %1$s is a name */
+"cp_taken_by" = "سجّلها %1$s";
+"cp_response" = "ما الذي فُعل";
+"cp_response_typed" = "ما الذي فُعل، وما الذي قيل لهم";
+"cp_record_response" = "تسجيل الرد";
+"cp_refused_not_allowed" = "دورك لا يتولى سجل الموقع.";
+"cp_refused_from" = "اذكر مَن اشتكى.";
+"cp_refused_description" = "اذكر ما كانت الشكوى.";
+"cp_refused_future" = "لا يمكن أن تكون الشكوى بعد الآن.";
+"cp_refused_response" = "اكتب ما الذي فُعل.";
+"cp_refused_answered" = "أُجيب على هذه الشكوى بالفعل.";
+/* Column heading: the day it was received */
+"ex_col_received" = "ورد";
+/* Label on a search result */
+"search_kind_complaint" = "شكوى";

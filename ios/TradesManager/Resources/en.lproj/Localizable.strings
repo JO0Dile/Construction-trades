@@ -196,7 +196,7 @@
 /* Privacy screen: the whole of it in one sentence */
 "priv_lead" = "Everything you record stays on this phone.";
 "priv_where_title" = "Where your work is kept";
-"priv_where_body" = "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site. There is no account with us and no server holding a copy.";
+"priv_where_body" = "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, and of anybody who made a complaint about one and left a way to answer them. Neither is ever printed or exported. There is no account with us and no server holding a copy.";
 "priv_network_title" = "The one thing that leaves the phone";
 "priv_network_body" = "When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.";
 "priv_none_title" = "What the app does not do";
@@ -2431,4 +2431,59 @@
 "at_risk_reviews" = "Risk reviews overdue";
 /* Button on the handover pack */
 "hv_export_all" = "Export all of this job's records";
-"hv_export_all_hint" = "One file with the handover summary and every register you may see — inspections, risks, visitors, questions to the designers, material approvals and delays — each as a PDF and a CSV.";
+"hv_export_all_hint" = "One file with the handover summary and every register you may see — inspections, risks, visitors, complaints, questions to the designers, material approvals and delays — each as a PDF and a CSV.";
+"summary_cp_answered" = "%1$s answered";
+"summary_cp_received" = "%1$s: complaint from %2$s";
+/* Screen title and job link */
+"cp_title" = "Complaints";
+/* Hint under the job link */
+"cp_row_hint" = "What the neighbours and the municipality said, and what was done";
+"cp_empty" = "No complaints recorded on this job.";
+"cp_blurb" = "When a neighbour or the municipality complains about noise, dust, the hours, a blocked road or damage, write it down the same day, and then what was done and what they were told. One left unanswered for a week is shown first.";
+/* Button and dialog title */
+"cp_receive" = "Record a complaint";
+"cp_subject" = "About";
+"cp_subject_noise" = "Noise";
+"cp_subject_dust" = "Dust";
+"cp_subject_hours" = "Working hours";
+"cp_subject_blocking" = "Blocked road or access";
+"cp_subject_damage" = "Damage";
+"cp_subject_dirt" = "Mud or dirt on the road";
+"cp_subject_safety" = "Safety";
+"cp_subject_other" = "Other";
+"cp_description" = "What they said";
+"cp_description_hint" = "The pump started at six and woke the children";
+"cp_from" = "From";
+"cp_from_hint" = "The neighbour at 12 Herzl, the municipality's inspector";
+"cp_contact" = "How to reach them";
+"cp_contact_hint" = "Kept for answering them; never printed";
+"cp_channel" = "How it came";
+"cp_channel_in_person" = "In person";
+"cp_channel_phone" = "Phone";
+"cp_channel_writing" = "In writing";
+"cp_channel_municipality" = "Through the municipality";
+"cp_when" = "When";
+"cp_just_now" = "Just now";
+"cp_3_hours_ago" = "3 hours ago";
+"cp_save" = "Save";
+/* %1$s is a date */
+"cp_received_on" = "Received %1$s";
+/* %1$s is a date */
+"cp_waiting_long" = "Received %1$s, still no answer";
+/* %1$s is a date */
+"cp_answered_on" = "Answered %1$s";
+/* %1$s is a name */
+"cp_taken_by" = "taken by %1$s";
+"cp_response" = "What was done";
+"cp_response_typed" = "What was done, and what they were told";
+"cp_record_response" = "Record the answer";
+"cp_refused_not_allowed" = "Your role does not keep the site's record.";
+"cp_refused_from" = "Say who complained.";
+"cp_refused_description" = "Say what the complaint was.";
+"cp_refused_future" = "A complaint cannot have been made after now.";
+"cp_refused_response" = "Write what was done.";
+"cp_refused_answered" = "This complaint has already been answered.";
+/* Column heading: the day it was received */
+"ex_col_received" = "Received";
+/* Label on a search result */
+"search_kind_complaint" = "Complaint";
