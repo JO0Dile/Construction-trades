@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.37.0",
+      "points": [
+        {
+          "en": "Each job page now opens with what needs attention: risks still extreme, inspections failed or overdue, materials rejected or waiting past their day, overdue questions to the designers, delays with no notice or still running, and risk reviews overdue. Tap a line to open that register.",
+          "he": "כל עמוד עבודה נפתח עכשיו במה שדורש טיפול: סיכונים שנשארו קיצוניים, בדיקות שנפסלו או באיחור, חומרים שנדחו או שהתשובה עליהם באיחור, שאלות למתכננים באיחור, עיכובים ללא הודעה או שעדיין נמשכים, ובדיקות חוזרות של סיכונים באיחור. הקשה על שורה פותחת את הפנקס שלה.",
+          "ar": "تبدأ كل صفحة مشروع الآن بما يحتاج إلى متابعة: المخاطر التي لا تزال شديدة، والفحوصات غير المجتازة أو المتأخرة، والمواد المرفوضة أو التي تأخرت إجابتها، وأسئلة المصممين المتأخرة، والتأخيرات بلا إشعار أو الجارية، ومراجعات المخاطر المتأخرة. اضغط على سطر لفتح سجله."
+        },
+        {
+          "en": "Each line is shown only to someone allowed to see the register it counts, and a job with nothing wrong shows nothing.",
+          "he": "כל שורה מוצגת רק למי שמורשה לראות את הפנקס שהיא סופרת, ועבודה שאין בה בעיה לא מציגה דבר.",
+          "ar": "يظهر كل سطر فقط لمن يُسمح له برؤية السجل الذي يحصيه، والمشروع الذي لا مشكلة فيه لا يُظهر شيئًا."
+        }
+      ]
+    },
+    {
       "version": "0.36.0",
       "points": [
         {

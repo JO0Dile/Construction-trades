@@ -2409,3 +2409,23 @@
 "log_visitors" = "Visitors signed in";
 /* Daily log line */
 "log_drawings" = "Drawings received";
+/* Top of a job page: what is waiting on somebody */
+"at_title" = "Needs attention";
+/* Line in 'Needs attention', followed by a count */
+"at_risks_extreme" = "Risks still extreme";
+/* Line in 'Needs attention', followed by a count */
+"at_inspections_failed" = "Inspections failed, not asked again";
+/* Line in 'Needs attention', followed by a count */
+"at_inspections_overdue" = "Inspections overdue";
+/* Line in 'Needs attention', followed by a count */
+"at_materials_rejected" = "Materials rejected, not sent again";
+/* Line in 'Needs attention', followed by a count */
+"at_materials_overdue" = "Material answers overdue";
+/* Line in 'Needs attention', followed by a count */
+"at_queries_overdue" = "Questions to the designers overdue";
+/* Line in 'Needs attention', followed by a count */
+"at_delays_no_notice" = "Delays with no notice recorded";
+/* Line in 'Needs attention', followed by a count */
+"at_delays_running" = "Delays still running";
+/* Line in 'Needs attention', followed by a count */
+"at_risk_reviews" = "Risk reviews overdue";

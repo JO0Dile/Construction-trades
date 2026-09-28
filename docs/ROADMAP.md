@@ -683,6 +683,15 @@ and the audit trail keeps the scores it had; a finished activity's risk is
 closed, not deleted. It prints and exports like every other register. The
 bands are a common scheme, and the screen does not pretend they are a rule.
 
+**What needs attention on a job. Done.**
+The top of every job page answers "what is going wrong here" before anything
+else: risks still extreme with their controls, inspections failed and not
+asked again or past their day, materials rejected or with answers overdue,
+questions to the designers overdue, delays with no notice and delays still
+running, risk reviews overdue. Each count comes from its register's own rule,
+each line opens that register, and a line is there only for somebody who may
+read what it counts. A job with nothing wrong shows nothing.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

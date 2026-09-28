@@ -2409,3 +2409,23 @@
 "log_visitors" = "מבקרים שנרשמו";
 /* Daily log line */
 "log_drawings" = "תוכניות שהתקבלו";
+/* Top of a job page: what is waiting on somebody */
+"at_title" = "דורש טיפול";
+/* Line in 'Needs attention', followed by a count */
+"at_risks_extreme" = "סיכונים שנשארו קיצוניים";
+/* Line in 'Needs attention', followed by a count */
+"at_inspections_failed" = "בדיקות שנפסלו ולא התבקשו שוב";
+/* Line in 'Needs attention', followed by a count */
+"at_inspections_overdue" = "בדיקות באיחור";
+/* Line in 'Needs attention', followed by a count */
+"at_materials_rejected" = "חומרים שנדחו ולא נשלחו שוב";
+/* Line in 'Needs attention', followed by a count */
+"at_materials_overdue" = "תשובות על חומרים באיחור";
+/* Line in 'Needs attention', followed by a count */
+"at_queries_overdue" = "שאלות למתכננים באיחור";
+/* Line in 'Needs attention', followed by a count */
+"at_delays_no_notice" = "עיכובים ללא הודעה רשומה";
+/* Line in 'Needs attention', followed by a count */
+"at_delays_running" = "עיכובים שעדיין נמשכים";
+/* Line in 'Needs attention', followed by a count */
+"at_risk_reviews" = "בדיקות חוזרות של סיכונים באיחור";

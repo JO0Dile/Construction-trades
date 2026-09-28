@@ -3,8 +3,14 @@ package il.co.tradesmanager.ui.projects
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.money.JobFinancials
+import il.co.tradesmanager.core.safety.Risks
+import il.co.tradesmanager.core.work.Attention
+import il.co.tradesmanager.core.work.Queries
+import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
@@ -14,6 +20,8 @@ import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import java.time.LocalDate
+import java.time.ZoneId
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
@@ -112,6 +120,70 @@ class ProjectDetailViewModel(
             SharingStarted.WhileSubscribed(5_000),
             SessionRepository.State.Loading,
         )
+
+    /**
+     * What on this job is waiting on somebody, by each register's own rule.
+     * The plan's registers are counted only for somebody who may read the
+     * plan, the site record's only for somebody who may read that: for
+     * anybody else those lines are absent, not zero.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val attention: StateFlow<List<Attention.Line>> = container.session.state
+        .flatMapLatest { state ->
+            val role = (state as? SessionRepository.State.SignedIn)?.role
+            val fromPlan = if (role != null && role.canRead(Lens.PLAN)) {
+                combine(
+                    container.designQueries.observeForProject(projectId),
+                    container.submittals.observeForProject(projectId),
+                    container.delays.observeForProject(projectId),
+                ) { queries, submittals, delays ->
+                    val now = System.currentTimeMillis()
+                    val zone = ZoneId.systemDefault()
+                    val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
+                    val materials = submittals.map {
+                        Submittals.state(Submittals.decisionOf(it.decision), it.neededBy, it.id in sentAgain, now, zone)
+                    }
+                    mapOf(
+                        Attention.Item.QUERIES_OVERDUE to queries.count {
+                            Queries.state(it.neededBy, it.answeredAt, now, zone) == Queries.State.OVERDUE
+                        },
+                        Attention.Item.MATERIALS_REJECTED to materials.count { it == Submittals.State.REJECTED },
+                        Attention.Item.MATERIALS_OVERDUE to materials.count { it == Submittals.State.OVERDUE },
+                        Attention.Item.DELAYS_RUNNING to delays.count { it.endedOnDay == null },
+                        Attention.Item.DELAYS_WITHOUT_NOTICE to delays.count { it.notifiedOnDay == null },
+                    )
+                }
+            } else {
+                flowOf(emptyMap<Attention.Item, Int>())
+            }
+            val fromRecord = if (role != null && role.canRead(Lens.EVIDENCE)) {
+                combine(
+                    container.inspections.observeForProject(projectId),
+                    container.risks.observeForProject(projectId),
+                ) { inspections, risks ->
+                    val now = System.currentTimeMillis()
+                    val zone = ZoneId.systemDefault()
+                    val today = LocalDate.now()
+                    val askedAgain = inspections.mapNotNull { it.reinspectionOf }.toSet()
+                    val inspected = inspections.map {
+                        Inspections.state(Inspections.resultOf(it.result), it.wantedOn, it.id in askedAgain, now, zone)
+                    }
+                    val riskStates = risks.map {
+                        Risks.state(it.closed, Risks.score(it.likelihoodAfter, it.severityAfter), it.reviewOnDay?.let(LocalDate::ofEpochDay), today)
+                    }
+                    mapOf(
+                        Attention.Item.INSPECTIONS_FAILED to inspected.count { it == Inspections.State.FAILED },
+                        Attention.Item.INSPECTIONS_OVERDUE to inspected.count { it == Inspections.State.OVERDUE },
+                        Attention.Item.RISKS_EXTREME to riskStates.count { it == Risks.State.EXTREME },
+                        Attention.Item.RISK_REVIEWS_OVERDUE to riskStates.count { it == Risks.State.REVIEW_OVERDUE },
+                    )
+                }
+            } else {
+                flowOf(emptyMap<Attention.Item, Int>())
+            }
+            combine(fromPlan, fromRecord) { plan, record -> Attention.lines(plan + record) }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     fun newCameraTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
 

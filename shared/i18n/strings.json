@@ -9994,6 +9994,66 @@
       "en": "Drawings received",
       "he": "תוכניות שהתקבלו",
       "ar": "مخططات وردت"
+    },
+    "at_title": {
+      "c": "Top of a job page: what is waiting on somebody",
+      "en": "Needs attention",
+      "he": "דורש טיפול",
+      "ar": "يحتاج إلى متابعة"
+    },
+    "at_risks_extreme": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Risks still extreme",
+      "he": "סיכונים שנשארו קיצוניים",
+      "ar": "مخاطر لا تزال شديدة"
+    },
+    "at_inspections_failed": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Inspections failed, not asked again",
+      "he": "בדיקות שנפסלו ולא התבקשו שוב",
+      "ar": "فحوصات لم تُجتز ولم تُطلب مجددًا"
+    },
+    "at_inspections_overdue": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Inspections overdue",
+      "he": "בדיקות באיחור",
+      "ar": "فحوصات متأخرة"
+    },
+    "at_materials_rejected": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Materials rejected, not sent again",
+      "he": "חומרים שנדחו ולא נשלחו שוב",
+      "ar": "مواد رُفضت ولم يُعد إرسالها"
+    },
+    "at_materials_overdue": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Material answers overdue",
+      "he": "תשובות על חומרים באיחור",
+      "ar": "إجابات مواد متأخرة"
+    },
+    "at_queries_overdue": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Questions to the designers overdue",
+      "he": "שאלות למתכננים באיחור",
+      "ar": "أسئلة للمصممين متأخرة"
+    },
+    "at_delays_no_notice": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Delays with no notice recorded",
+      "he": "עיכובים ללא הודעה רשומה",
+      "ar": "تأخيرات بلا إشعار مسجل"
+    },
+    "at_delays_running": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Delays still running",
+      "he": "עיכובים שעדיין נמשכים",
+      "ar": "تأخيرات لا تزال جارية"
+    },
+    "at_risk_reviews": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Risk reviews overdue",
+      "he": "בדיקות חוזרות של סיכונים באיחור",
+      "ar": "مراجعات مخاطر متأخرة"
     }
   },
   "plurals": {

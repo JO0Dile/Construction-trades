@@ -1894,6 +1894,16 @@
     <string name="log_delays">تأخيرات جارية</string>
     <string name="log_visitors">زوار سُجّلوا</string>
     <string name="log_drawings">مخططات وردت</string>
+    <string name="at_title">يحتاج إلى متابعة</string>
+    <string name="at_risks_extreme">مخاطر لا تزال شديدة</string>
+    <string name="at_inspections_failed">فحوصات لم تُجتز ولم تُطلب مجددًا</string>
+    <string name="at_inspections_overdue">فحوصات متأخرة</string>
+    <string name="at_materials_rejected">مواد رُفضت ولم يُعد إرسالها</string>
+    <string name="at_materials_overdue">إجابات مواد متأخرة</string>
+    <string name="at_queries_overdue">أسئلة للمصممين متأخرة</string>
+    <string name="at_delays_no_notice">تأخيرات بلا إشعار مسجل</string>
+    <string name="at_delays_running">تأخيرات لا تزال جارية</string>
+    <string name="at_risk_reviews">مراجعات مخاطر متأخرة</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

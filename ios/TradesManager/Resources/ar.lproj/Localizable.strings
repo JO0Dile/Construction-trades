@@ -2409,3 +2409,23 @@
 "log_visitors" = "زوار سُجّلوا";
 /* Daily log line */
 "log_drawings" = "مخططات وردت";
+/* Top of a job page: what is waiting on somebody */
+"at_title" = "يحتاج إلى متابعة";
+/* Line in 'Needs attention', followed by a count */
+"at_risks_extreme" = "مخاطر لا تزال شديدة";
+/* Line in 'Needs attention', followed by a count */
+"at_inspections_failed" = "فحوصات لم تُجتز ولم تُطلب مجددًا";
+/* Line in 'Needs attention', followed by a count */
+"at_inspections_overdue" = "فحوصات متأخرة";
+/* Line in 'Needs attention', followed by a count */
+"at_materials_rejected" = "مواد رُفضت ولم يُعد إرسالها";
+/* Line in 'Needs attention', followed by a count */
+"at_materials_overdue" = "إجابات مواد متأخرة";
+/* Line in 'Needs attention', followed by a count */
+"at_queries_overdue" = "أسئلة للمصممين متأخرة";
+/* Line in 'Needs attention', followed by a count */
+"at_delays_no_notice" = "تأخيرات بلا إشعار مسجل";
+/* Line in 'Needs attention', followed by a count */
+"at_delays_running" = "تأخيرات لا تزال جارية";
+/* Line in 'Needs attention', followed by a count */
+"at_risk_reviews" = "مراجعات مخاطر متأخرة";

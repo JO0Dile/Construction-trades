@@ -2410,6 +2410,26 @@
     <string name="log_visitors">Visitors signed in</string>
     <!-- Daily log line -->
     <string name="log_drawings">Drawings received</string>
+    <!-- Top of a job page: what is waiting on somebody -->
+    <string name="at_title">Needs attention</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_risks_extreme">Risks still extreme</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_inspections_failed">Inspections failed, not asked again</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_inspections_overdue">Inspections overdue</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_materials_rejected">Materials rejected, not sent again</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_materials_overdue">Material answers overdue</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_queries_overdue">Questions to the designers overdue</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_delays_no_notice">Delays with no notice recorded</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_delays_running">Delays still running</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_risk_reviews">Risk reviews overdue</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

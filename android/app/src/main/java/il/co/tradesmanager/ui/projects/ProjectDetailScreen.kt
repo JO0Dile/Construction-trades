@@ -39,6 +39,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -65,6 +66,7 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.work.Attention
 import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
@@ -139,6 +141,7 @@ fun ProjectDetailScreen(
     val money by viewModel.financials.collectAsStateWithLifecycle()
     val parts by viewModel.parts.collectAsStateWithLifecycle()
     val parent by viewModel.parent.collectAsStateWithLifecycle()
+    val attention by viewModel.attention.collectAsStateWithLifecycle()
     // A job is all five lenses at once, so each section asks separately. A
     // finance clerk opening a job sees what it cost, not the task list.
     val signedIn = session as? SessionRepository.State.SignedIn
@@ -312,6 +315,46 @@ fun ProjectDetailScreen(
         },
     ) { padding ->
         LazyColumn(state = listState, modifier = Modifier.padding(padding)) {
+            // The short answer to "what is going wrong on this job", before
+            // anything else, each line a way into the register it came from.
+            if (attention.isNotEmpty()) {
+                item {
+                    Surface(
+                        color = MaterialTheme.colorScheme.errorContainer,
+                        contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                    ) {
+                        Column(Modifier.padding(vertical = 8.dp)) {
+                            Text(
+                                stringResource(R.string.at_title),
+                                style = MaterialTheme.typography.titleSmall,
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                            )
+                            attention.forEach { line ->
+                                Row(
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable {
+                                            when (line.item) {
+                                                Attention.Item.RISKS_EXTREME, Attention.Item.RISK_REVIEWS_OVERDUE -> onOpenRisks()
+                                                Attention.Item.INSPECTIONS_FAILED, Attention.Item.INSPECTIONS_OVERDUE -> onOpenInspections()
+                                                Attention.Item.MATERIALS_REJECTED, Attention.Item.MATERIALS_OVERDUE -> onOpenSubmittals()
+                                                Attention.Item.QUERIES_OVERDUE -> onOpenQueries()
+                                                Attention.Item.DELAYS_WITHOUT_NOTICE, Attention.Item.DELAYS_RUNNING -> onOpenDelays()
+                                            }
+                                        }
+                                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                                ) {
+                                    Text(stringResource(attentionLabel(line.item)), style = MaterialTheme.typography.bodyMedium)
+                                    Text(line.count.toString(), style = MaterialTheme.typography.titleMedium)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             if (project != null) {
                 item {
                     Column(Modifier.padding(vertical = 8.dp)) {
@@ -952,3 +995,15 @@ private fun AddPartDialog(onDismiss: () -> Unit, onAdd: (String, String) -> Unit
     )
 }
 
+@StringRes
+private fun attentionLabel(item: Attention.Item): Int = when (item) {
+    Attention.Item.RISKS_EXTREME -> R.string.at_risks_extreme
+    Attention.Item.INSPECTIONS_FAILED -> R.string.at_inspections_failed
+    Attention.Item.INSPECTIONS_OVERDUE -> R.string.at_inspections_overdue
+    Attention.Item.MATERIALS_REJECTED -> R.string.at_materials_rejected
+    Attention.Item.MATERIALS_OVERDUE -> R.string.at_materials_overdue
+    Attention.Item.QUERIES_OVERDUE -> R.string.at_queries_overdue
+    Attention.Item.DELAYS_WITHOUT_NOTICE -> R.string.at_delays_no_notice
+    Attention.Item.DELAYS_RUNNING -> R.string.at_delays_running
+    Attention.Item.RISK_REVIEWS_OVERDUE -> R.string.at_risk_reviews
+}

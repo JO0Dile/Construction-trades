@@ -1894,6 +1894,16 @@
     <string name="log_delays">עיכובים שנמשכו</string>
     <string name="log_visitors">מבקרים שנרשמו</string>
     <string name="log_drawings">תוכניות שהתקבלו</string>
+    <string name="at_title">דורש טיפול</string>
+    <string name="at_risks_extreme">סיכונים שנשארו קיצוניים</string>
+    <string name="at_inspections_failed">בדיקות שנפסלו ולא התבקשו שוב</string>
+    <string name="at_inspections_overdue">בדיקות באיחור</string>
+    <string name="at_materials_rejected">חומרים שנדחו ולא נשלחו שוב</string>
+    <string name="at_materials_overdue">תשובות על חומרים באיחור</string>
+    <string name="at_queries_overdue">שאלות למתכננים באיחור</string>
+    <string name="at_delays_no_notice">עיכובים ללא הודעה רשומה</string>
+    <string name="at_delays_running">עיכובים שעדיין נמשכים</string>
+    <string name="at_risk_reviews">בדיקות חוזרות של סיכונים באיחור</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
