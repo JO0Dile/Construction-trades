@@ -650,6 +650,18 @@ counted in full, and the screen says so -- and counts the events with no
 notice in red, because those are the ones lost later. How much time a
 contract allows, and how soon notice is due, is the contract's to say.
 
+**Plant examination certificates. Done.**
+The morning walk-round is the operator looking for a leak; the examination is
+a qualified examiner signing that a crane, a hoist, a forklift or a pressure
+vessel is fit until a date. Each certificate is recorded against its machine
+with the examiner, the number, the result, the next date and a photograph of
+it. The plant register says when a certificate runs out, warns thirty days
+before, and says in red when it has run out or the machine failed; a failure
+takes the machine out of service the same way a defect found on the
+walk-round does. The home screen counts the machines in red. A machine with
+no certificate recorded is shown as having none, not as overdue: which
+machines need one, and how often, is the examiner's and the regulations'.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -714,21 +726,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~99 | *estimated — see below* |
+| Built | ~100 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, the visitor log, inspection requests, material approvals, and the delay register.
+register, the visitor log, inspection requests, material approvals, the delay register, and plant examination certificates.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

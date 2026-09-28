@@ -29,6 +29,7 @@ import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.MusterRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.data.repository.PlantExaminationRepository
 import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
@@ -196,7 +197,20 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
     /** Questions put to the designers, and their answers. */
     val designQueries = DesignQueryRepository(database.designQueryDao(), auditTrail)
 
-    /** Days the work could not go ahead, and why. */
+    /**
+     * Plant examination certificates. A failure takes the machine out of
+     * service through the plant register itself, as a defect found on the
+     * morning walk-round does.
+     */
+    val examinations = PlantExaminationRepository(database.plantExaminationDao(), auditTrail) { equipmentId, byName ->
+        database.equipmentDao().equipment(equipmentId)?.let { machine ->
+            if (machine.status != EquipmentRepository.Status.MAINTENANCE && machine.status != EquipmentRepository.Status.OFF_HIRE) {
+                equipment.setStatus(machine, EquipmentRepository.Status.MAINTENANCE, byName)
+            }
+        }
+    }
+
+    /** Days the work could not go ahead, and why.
     val delays = DelayRepository(database.delayDao(), auditTrail)
 
     /** Materials sent for approval before they are ordered. */

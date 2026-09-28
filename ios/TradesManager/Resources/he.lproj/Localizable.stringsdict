@@ -523,5 +523,25 @@
             <string>%d מהם ללא הודעה רשומה</string>
         </dict>
     </dict>
+    <key>home_plant_examination_due</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>לכלי אחד פג תוקף התסקיר או שנכשל בבדיקה</string>
+            <key>two</key>
+            <string>לשני כלים פג תוקף התסקיר או שנכשלו בבדיקה</string>
+            <key>many</key>
+            <string>ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה</string>
+            <key>other</key>
+            <string>ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

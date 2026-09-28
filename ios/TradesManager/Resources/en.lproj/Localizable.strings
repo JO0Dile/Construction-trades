@@ -2250,3 +2250,44 @@
 "de_refused_notice_early" = "Notice cannot be given before the delay started.";
 /* Label on a search result */
 "search_kind_delay" = "Delay";
+"summary_pe_failed" = "%1$s failed its examination by %2$s";
+"summary_pe_passed" = "%1$s examined and passed by %2$s";
+/* Plant: the periodic examination by a qualified examiner */
+"pe_title" = "Examination certificates";
+"pe_none" = "No examination recorded for this machine.";
+"pe_blurb" = "Cranes, hoists, forklifts and pressure equipment are examined by a qualified examiner, who signs a certificate until a date. Record each one here, with a photograph of it; which machines need one, and how often, is the examiner's to say.";
+/* %1$s is a date */
+"pe_current" = "Certificate runs to %1$s";
+/* %1$s is a date */
+"pe_no_next" = "Examined %1$s, no next date recorded";
+/* %1$s is a date */
+"pe_due_soon" = "Examination due %1$s";
+/* %1$s is a date */
+"pe_overdue" = "Examination certificate ran out %1$s";
+/* %1$s is a date */
+"pe_failed_on" = "Failed its examination %1$s";
+/* %1$s is a date */
+"pe_next_due_on" = "Next examination %1$s";
+"pe_certificate" = "The certificate";
+"pe_no_photo" = "No photograph of the certificate yet.";
+"pe_add_photo" = "Add a photograph of the certificate";
+"pe_record" = "Record an examination";
+"pe_examined" = "Examined";
+"pe_examiner" = "Examiner";
+"pe_examiner_hint" = "The qualified examiner who signed it";
+"pe_certificate_number" = "Certificate number";
+"pe_next_due" = "Next examination";
+"pe_no_date" = "Not written";
+"pe_in_3_months" = "In 3 months";
+"pe_in_6_months" = "In 6 months";
+"pe_in_12_months" = "In 12 months";
+"pe_why_failed" = "Why it failed";
+"pe_conditions" = "Conditions or notes";
+"pe_save" = "Save";
+"pe_result_passed" = "Passed";
+"pe_result_failed" = "Failed";
+"pe_refused_not_allowed" = "Your role does not keep the plant register.";
+"pe_refused_examiner" = "Write the name of the examiner who signed it.";
+"pe_refused_future" = "It cannot have been examined after today.";
+"pe_refused_due" = "The next examination cannot come before this one.";
+"pe_refused_reason" = "Say why it failed, so there is something to fix.";

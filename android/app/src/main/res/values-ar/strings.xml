@@ -1781,6 +1781,40 @@
     <string name="de_refused_nobody">اذكر مَن أُبلغ.</string>
     <string name="de_refused_notice_early">لا يمكن الإشعار قبل بدء التأخير.</string>
     <string name="search_kind_delay">تأخير</string>
+    <string name="summary_pe_failed">لم يجتز %1$s فحص %2$s</string>
+    <string name="summary_pe_passed">فحص %2$s المعدّة %1$s واعتمدها</string>
+    <string name="pe_title">شهادات الفحص</string>
+    <string name="pe_none">لم يُسجَّل فحص لهذه المعدّة.</string>
+    <string name="pe_blurb">تُفحص الرافعات والمصاعد والرافعات الشوكية ومعدات الضغط من قِبل فاحص مؤهل يوقّع شهادة سارية حتى تاريخ معيّن. سجّل كل شهادة هنا مع صورة لها؛ أما أي المعدات تحتاجها وكم مرة فذلك يحدده الفاحص.</string>
+    <string name="pe_current">الشهادة سارية حتى %1$s</string>
+    <string name="pe_no_next">فُحص في %1$s، دون تاريخ للفحص التالي</string>
+    <string name="pe_due_soon">الفحص التالي في %1$s</string>
+    <string name="pe_overdue">انتهت صلاحية شهادة الفحص في %1$s</string>
+    <string name="pe_failed_on">لم يجتز الفحص في %1$s</string>
+    <string name="pe_next_due_on">الفحص التالي في %1$s</string>
+    <string name="pe_certificate">الشهادة</string>
+    <string name="pe_no_photo">لا توجد صورة للشهادة بعد.</string>
+    <string name="pe_add_photo">إضافة صورة للشهادة</string>
+    <string name="pe_record">تسجيل فحص</string>
+    <string name="pe_examined">تاريخ الفحص</string>
+    <string name="pe_examiner">الفاحص</string>
+    <string name="pe_examiner_hint">الفاحص المؤهل الذي وقّع</string>
+    <string name="pe_certificate_number">رقم الشهادة</string>
+    <string name="pe_next_due">الفحص التالي</string>
+    <string name="pe_no_date">غير مذكور</string>
+    <string name="pe_in_3_months">بعد 3 أشهر</string>
+    <string name="pe_in_6_months">بعد 6 أشهر</string>
+    <string name="pe_in_12_months">بعد 12 شهرًا</string>
+    <string name="pe_why_failed">سبب عدم الاجتياز</string>
+    <string name="pe_conditions">شروط أو ملاحظات</string>
+    <string name="pe_save">حفظ</string>
+    <string name="pe_result_passed">اجتاز</string>
+    <string name="pe_result_failed">لم يجتز</string>
+    <string name="pe_refused_not_allowed">دورك لا يتولى سجل المعدات.</string>
+    <string name="pe_refused_examiner">اكتب اسم الفاحص الذي وقّع.</string>
+    <string name="pe_refused_future">لا يمكن أن يكون الفحص بعد اليوم.</string>
+    <string name="pe_refused_due">لا يمكن أن يسبق الفحص التالي هذا الفحص.</string>
+    <string name="pe_refused_reason">اذكر سبب عدم الاجتياز ليكون هناك ما يُصلَح.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -1988,5 +2022,13 @@
         <item quantity="few">%d منها بلا إشعار مسجل</item>
         <item quantity="many">%d منها بلا إشعار مسجل</item>
         <item quantity="other">%d منها بلا إشعار مسجل</item>
+    </plurals>
+    <plurals name="home_plant_examination_due">
+        <item quantity="zero">لا توجد معدات انتهت شهادة فحصها أو لم تجتزه</item>
+        <item quantity="one">معدّة واحدة انتهت شهادة فحصها أو لم تجتزه</item>
+        <item quantity="two">معدّتان انتهت شهادتا فحصهما أو لم تجتازاه</item>
+        <item quantity="few">%d معدات انتهت شهادات فحصها أو لم تجتزه</item>
+        <item quantity="many">%d معدّة انتهت شهادات فحصها أو لم تجتزه</item>
+        <item quantity="other">%d معدّة انتهت شهادات فحصها أو لم تجتزه</item>
     </plurals>
 </resources>

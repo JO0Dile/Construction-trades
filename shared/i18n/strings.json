@@ -9383,6 +9383,183 @@
       "en": "Delay",
       "he": "עיכוב",
       "ar": "تأخير"
+    },
+    "summary_pe_failed": {
+      "en": "%1$s failed its examination by %2$s",
+      "he": "%1$s נכשל בבדיקה של %2$s",
+      "ar": "لم يجتز %1$s فحص %2$s"
+    },
+    "summary_pe_passed": {
+      "en": "%1$s examined and passed by %2$s",
+      "he": "%1$s נבדק ואושר על ידי %2$s",
+      "ar": "فحص %2$s المعدّة %1$s واعتمدها"
+    },
+    "pe_title": {
+      "c": "Plant: the periodic examination by a qualified examiner",
+      "en": "Examination certificates",
+      "he": "תסקירי בדיקה",
+      "ar": "شهادات الفحص"
+    },
+    "pe_none": {
+      "en": "No examination recorded for this machine.",
+      "he": "לא נרשמה בדיקה לכלי הזה.",
+      "ar": "لم يُسجَّل فحص لهذه المعدّة."
+    },
+    "pe_blurb": {
+      "en": "Cranes, hoists, forklifts and pressure equipment are examined by a qualified examiner, who signs a certificate until a date. Record each one here, with a photograph of it; which machines need one, and how often, is the examiner's to say.",
+      "he": "עגורנים, מעליות משא, מלגזות וציוד בלחץ נבדקים על ידי בודק מוסמך, שחותם על תסקיר עד תאריך. רשמו כאן כל תסקיר, עם צילום שלו; אילו כלים צריכים תסקיר ובאיזו תדירות, זה עניינו של הבודק.",
+      "ar": "تُفحص الرافعات والمصاعد والرافعات الشوكية ومعدات الضغط من قِبل فاحص مؤهل يوقّع شهادة سارية حتى تاريخ معيّن. سجّل كل شهادة هنا مع صورة لها؛ أما أي المعدات تحتاجها وكم مرة فذلك يحدده الفاحص."
+    },
+    "pe_current": {
+      "c": "%1$s is a date",
+      "en": "Certificate runs to %1$s",
+      "he": "התסקיר בתוקף עד %1$s",
+      "ar": "الشهادة سارية حتى %1$s"
+    },
+    "pe_no_next": {
+      "c": "%1$s is a date",
+      "en": "Examined %1$s, no next date recorded",
+      "he": "נבדק ב־%1$s, לא נרשם מועד הבדיקה הבאה",
+      "ar": "فُحص في %1$s، دون تاريخ للفحص التالي"
+    },
+    "pe_due_soon": {
+      "c": "%1$s is a date",
+      "en": "Examination due %1$s",
+      "he": "הבדיקה הבאה ב־%1$s",
+      "ar": "الفحص التالي في %1$s"
+    },
+    "pe_overdue": {
+      "c": "%1$s is a date",
+      "en": "Examination certificate ran out %1$s",
+      "he": "תוקף התסקיר פג ב־%1$s",
+      "ar": "انتهت صلاحية شهادة الفحص في %1$s"
+    },
+    "pe_failed_on": {
+      "c": "%1$s is a date",
+      "en": "Failed its examination %1$s",
+      "he": "נכשל בבדיקה ב־%1$s",
+      "ar": "لم يجتز الفحص في %1$s"
+    },
+    "pe_next_due_on": {
+      "c": "%1$s is a date",
+      "en": "Next examination %1$s",
+      "he": "הבדיקה הבאה ב־%1$s",
+      "ar": "الفحص التالي في %1$s"
+    },
+    "pe_certificate": {
+      "en": "The certificate",
+      "he": "התסקיר",
+      "ar": "الشهادة"
+    },
+    "pe_no_photo": {
+      "en": "No photograph of the certificate yet.",
+      "he": "עדיין אין צילום של התסקיר.",
+      "ar": "لا توجد صورة للشهادة بعد."
+    },
+    "pe_add_photo": {
+      "en": "Add a photograph of the certificate",
+      "he": "הוספת צילום של התסקיר",
+      "ar": "إضافة صورة للشهادة"
+    },
+    "pe_record": {
+      "en": "Record an examination",
+      "he": "רישום בדיקה",
+      "ar": "تسجيل فحص"
+    },
+    "pe_examined": {
+      "en": "Examined",
+      "he": "נבדק",
+      "ar": "تاريخ الفحص"
+    },
+    "pe_examiner": {
+      "en": "Examiner",
+      "he": "הבודק",
+      "ar": "الفاحص"
+    },
+    "pe_examiner_hint": {
+      "en": "The qualified examiner who signed it",
+      "he": "הבודק המוסמך שחתם",
+      "ar": "الفاحص المؤهل الذي وقّع"
+    },
+    "pe_certificate_number": {
+      "en": "Certificate number",
+      "he": "מספר תסקיר",
+      "ar": "رقم الشهادة"
+    },
+    "pe_next_due": {
+      "en": "Next examination",
+      "he": "הבדיקה הבאה",
+      "ar": "الفحص التالي"
+    },
+    "pe_no_date": {
+      "en": "Not written",
+      "he": "לא נכתב",
+      "ar": "غير مذكور"
+    },
+    "pe_in_3_months": {
+      "en": "In 3 months",
+      "he": "בעוד 3 חודשים",
+      "ar": "بعد 3 أشهر"
+    },
+    "pe_in_6_months": {
+      "en": "In 6 months",
+      "he": "בעוד 6 חודשים",
+      "ar": "بعد 6 أشهر"
+    },
+    "pe_in_12_months": {
+      "en": "In 12 months",
+      "he": "בעוד 12 חודשים",
+      "ar": "بعد 12 شهرًا"
+    },
+    "pe_why_failed": {
+      "en": "Why it failed",
+      "he": "למה נכשל",
+      "ar": "سبب عدم الاجتياز"
+    },
+    "pe_conditions": {
+      "en": "Conditions or notes",
+      "he": "תנאים או הערות",
+      "ar": "شروط أو ملاحظات"
+    },
+    "pe_save": {
+      "en": "Save",
+      "he": "שמירה",
+      "ar": "حفظ"
+    },
+    "pe_result_passed": {
+      "en": "Passed",
+      "he": "אושר",
+      "ar": "اجتاز"
+    },
+    "pe_result_failed": {
+      "en": "Failed",
+      "he": "נכשל",
+      "ar": "لم يجتز"
+    },
+    "pe_refused_not_allowed": {
+      "en": "Your role does not keep the plant register.",
+      "he": "התפקיד שלך לא מנהל את רישום הכלים.",
+      "ar": "دورك لا يتولى سجل المعدات."
+    },
+    "pe_refused_examiner": {
+      "en": "Write the name of the examiner who signed it.",
+      "he": "כתבו את שם הבודק שחתם.",
+      "ar": "اكتب اسم الفاحص الذي وقّع."
+    },
+    "pe_refused_future": {
+      "en": "It cannot have been examined after today.",
+      "he": "הבדיקה לא יכולה להיות אחרי היום.",
+      "ar": "لا يمكن أن يكون الفحص بعد اليوم."
+    },
+    "pe_refused_due": {
+      "en": "The next examination cannot come before this one.",
+      "he": "הבדיקה הבאה לא יכולה להיות לפני הבדיקה הזו.",
+      "ar": "لا يمكن أن يسبق الفحص التالي هذا الفحص."
+    },
+    "pe_refused_reason": {
+      "en": "Say why it failed, so there is something to fix.",
+      "he": "כתבו למה נכשל, כדי שיהיה מה לתקן.",
+      "ar": "اذكر سبب عدم الاجتياز ليكون هناك ما يُصلَح."
     }
   },
   "plurals": {
@@ -9930,6 +10107,27 @@
         "few": "%d منها بلا إشعار مسجل",
         "many": "%d منها بلا إشعار مسجل",
         "other": "%d منها بلا إشعار مسجل"
+      }
+    },
+    "home_plant_examination_due": {
+      "c": "Home banner: machines whose examination certificate ran out or failed",
+      "en": {
+        "one": "%d machine's examination certificate has run out or failed",
+        "other": "%d machines' examination certificates have run out or failed"
+      },
+      "he": {
+        "one": "לכלי אחד פג תוקף התסקיר או שנכשל בבדיקה",
+        "two": "לשני כלים פג תוקף התסקיר או שנכשלו בבדיקה",
+        "many": "ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה",
+        "other": "ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה"
+      },
+      "ar": {
+        "zero": "لا توجد معدات انتهت شهادة فحصها أو لم تجتزه",
+        "one": "معدّة واحدة انتهت شهادة فحصها أو لم تجتزه",
+        "two": "معدّتان انتهت شهادتا فحصهما أو لم تجتازاه",
+        "few": "%d معدات انتهت شهادات فحصها أو لم تجتزه",
+        "many": "%d معدّة انتهت شهادات فحصها أو لم تجتزه",
+        "other": "%d معدّة انتهت شهادات فحصها أو لم تجتزه"
       }
     }
   }

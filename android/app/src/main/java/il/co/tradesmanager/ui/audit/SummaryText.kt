@@ -161,6 +161,8 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.PARTY_SECOND_TIER -> R.string.summary_party_second_tier
     Summaries.PASSCODE_CHANGED -> R.string.summary_passcode_changed
     Summaries.PASSCODE_REMOVED -> R.string.summary_passcode_removed
+    Summaries.PE_FAILED -> R.string.summary_pe_failed
+    Summaries.PE_PASSED -> R.string.summary_pe_passed
     Summaries.PERMIT_CANCELLED -> R.string.summary_permit_cancelled
     Summaries.PERMIT_ISSUED -> R.string.summary_permit_issued
     Summaries.PERMIT_SIGNED_BACK -> R.string.summary_permit_signed_back

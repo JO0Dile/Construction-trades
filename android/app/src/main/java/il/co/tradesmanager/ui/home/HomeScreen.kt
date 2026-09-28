@@ -92,6 +92,7 @@ fun HomeScreen(
     val rollCallRunning by viewModel.rollCallRunning.collectAsStateWithLifecycle()
     val plantUnchecked by viewModel.plantUnchecked.collectAsStateWithLifecycle()
     val ppeOverdue by viewModel.ppeOverdue.collectAsStateWithLifecycle()
+    val plantExaminationsDue by viewModel.plantExaminationsDue.collectAsStateWithLifecycle()
     val locale = currentLocale()
     val zone = ZoneId.systemDefault()
 
@@ -185,6 +186,28 @@ fun HomeScreen(
                     ) {
                         Text(
                             pluralStringResource(R.plurals.home_plant_unchecked, plantUnchecked, plantUnchecked),
+                            style = MaterialTheme.typography.titleSmall,
+                            modifier = Modifier.padding(16.dp),
+                        )
+                    }
+                }
+            }
+
+            // A certificate that ran out is what an inspector finds first.
+            if (seesStuff && plantExaminationsDue > 0) {
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                            .clickable(onClick = onOpenPlant),
+                    ) {
+                        Text(
+                            pluralStringResource(R.plurals.home_plant_examination_due, plantExaminationsDue, plantExaminationsDue),
                             style = MaterialTheme.typography.titleSmall,
                             modifier = Modifier.padding(16.dp),
                         )

@@ -48,6 +48,8 @@ import il.co.tradesmanager.core.money.HireCost
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
+import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.PlantExaminationEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.SessionRepository
@@ -55,6 +57,8 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
 import il.co.tradesmanager.ui.components.NotSavedDialog
+import il.co.tradesmanager.ui.components.PhotoViewer
+import il.co.tradesmanager.ui.components.rememberImageAdder
 import il.co.tradesmanager.ui.components.currentLocale
 import java.time.ZoneId
 
@@ -80,7 +84,13 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
     val latestChecks by viewModel.latestChecks.collectAsStateWithLifecycle()
     val preUseRefused by viewModel.preUseRefused.collectAsStateWithLifecycle()
     val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    val latestExaminations by viewModel.latestExaminations.collectAsStateWithLifecycle()
+    val mayRecordExaminations by viewModel.mayRecordExaminations.collectAsStateWithLifecycle()
+    val examinations by viewModel.examinations.collectAsStateWithLifecycle()
+    val certificatePhotos by viewModel.certificatePhotos.collectAsStateWithLifecycle()
+    val examinationRefusal by viewModel.examinationRefusal.collectAsStateWithLifecycle()
     NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
+    val locale = currentLocale()
 
     val signedIn = session as? SessionRepository.State.SignedIn
     val canEdit = signedIn?.canWrite(Lens.STUFF) != false
@@ -88,6 +98,14 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
     var adding by remember { mutableStateOf(false) }
     var chosen by remember { mutableStateOf<EquipmentEntity?>(null) }
     var checking by remember { mutableStateOf<EquipmentEntity?>(null) }
+    var examining by remember { mutableStateOf<EquipmentEntity?>(null) }
+    var recordingExamination by remember { mutableStateOf(false) }
+    var viewingPhoto by remember { mutableStateOf<PhotoEntity?>(null) }
+    val addCertificate = rememberImageAdder(
+        newCameraTarget = { viewModel.newCertificateTarget() },
+        onCaptured = { viewModel.certificateCaptured(it) },
+        onPicked = { viewModel.certificatePicked(it) },
+    )
 
     Scaffold(
         topBar = {
@@ -135,6 +153,7 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
                         projectName = projects.firstOrNull {
                             it.id == machine.assignedProjectId
                         }?.name,
+                        examination = latestExaminations[machine.id],
                         onClick = { if (canEdit) chosen = machine },
                     )
                 }
@@ -173,9 +192,66 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
                 checking = machine
                 chosen = null
             },
+            onExaminations = {
+                examining = machine
+                viewModel.openExaminations(machine.id)
+                chosen = null
+            },
             onRemove = {
                 viewModel.remove(machine)
                 chosen = null
+            },
+        )
+    }
+
+    examining?.let { machine ->
+        ExaminationsDialog(
+            machine = machine,
+            examinations = examinations,
+            photos = certificatePhotos,
+            locale = locale,
+            mayRecord = mayRecordExaminations,
+            onRecord = { recordingExamination = true },
+            onAddPhoto = addCertificate,
+            onViewPhoto = { viewingPhoto = it },
+            onDismiss = {
+                examining = null
+                viewModel.openExaminations(null)
+            },
+        )
+    }
+
+    val examinedMachine = examining
+    if (recordingExamination && examinedMachine != null) {
+        RecordExaminationDialog(
+            onDismiss = { recordingExamination = false },
+            onRecord = { daysAgo, examiner, certificate, result, months, notes ->
+                recordingExamination = false
+                viewModel.recordExamination(examinedMachine, daysAgo, examiner, certificate, result, months, notes)
+            },
+        )
+    }
+
+    viewingPhoto?.let { photo ->
+        PhotoViewer(
+            photo = photo,
+            // "Set as plan" belongs to a job's own plan, not to a certificate.
+            isPlan = true,
+            onSetAsPlan = {},
+            onDelete = {
+                viewModel.deletePhoto(photo)
+                viewingPhoto = null
+            },
+            onDismiss = { viewingPhoto = null },
+        )
+    }
+
+    examinationRefusal?.let { reason ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearExaminationRefusal,
+            text = { Text(stringResource(examinationRefusalText(reason))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearExaminationRefusal) { Text(stringResource(R.string.action_ok)) }
             },
         )
     }
@@ -201,8 +277,10 @@ private fun PlantRow(
     machine: EquipmentEntity,
     today: PreUse.Today,
     projectName: String?,
+    examination: PlantExaminationEntity?,
     onClick: () -> Unit,
 ) {
+    val locale = currentLocale()
     val now = System.currentTimeMillis()
     val service = Expiry.state(machine.serviceDueOn, now)
     val trailing: (@Composable () -> Unit)? = machine.serialNumber?.let { serial ->
@@ -249,6 +327,9 @@ private fun PlantRow(
                         else -> Amber
                     },
                 )
+                // The certificate, when one has ever been recorded: an inspector's
+                // first question about a crane is when it was last examined.
+                ExaminationLine(examination, locale, Amber)
             }
         },
         trailingContent = trailing,
@@ -378,6 +459,7 @@ private fun PlantActionsDialog(
     onStatus: (String) -> Unit,
     onServiced: () -> Unit,
     onPreUse: () -> Unit,
+    onExaminations: () -> Unit,
     onRemove: () -> Unit,
 ) {
     val locale = currentLocale()
@@ -444,6 +526,9 @@ private fun PlantActionsDialog(
 
                 TextButton(onClick = onPreUse) {
                     Text(stringResource(R.string.plant_preuse))
+                }
+                TextButton(onClick = onExaminations) {
+                    Text(stringResource(R.string.pe_title))
                 }
                 TextButton(onClick = onServiced) {
                     Text(stringResource(R.string.plant_serviced))

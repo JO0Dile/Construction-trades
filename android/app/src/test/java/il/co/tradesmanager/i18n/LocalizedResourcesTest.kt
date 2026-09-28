@@ -67,6 +67,10 @@ class LocalizedResourcesTest {
         "cube_title" to R.string.cube_title,
         "whats_new_title" to R.string.whats_new_title,
         "gaps_title" to R.string.gaps_title,
+        "ir_title" to R.string.ir_title,
+        "ms_title" to R.string.ms_title,
+        "de_title" to R.string.de_title,
+        "pe_title" to R.string.pe_title,
     )
 
     @Test

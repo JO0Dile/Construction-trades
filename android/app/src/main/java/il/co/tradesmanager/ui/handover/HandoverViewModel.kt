@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.handover
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.DailyLog
 import il.co.tradesmanager.core.evidence.CubeTests
 import il.co.tradesmanager.core.evidence.HandoverPack
@@ -15,9 +16,12 @@ import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.di.AppContainer
 import java.time.ZoneId
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -125,21 +129,19 @@ class HandoverViewModel(
     }
 
     /**
-     * What was asked of somebody else and has not come back: questions to the
-     * designers, and inspections, by the same rule the register lists them
-     * with -- see Inspections.state -- so the two cannot disagree.
+     * Inspections still outstanding, and pours none was set against, by the
+     * same rule the register lists them with -- see Inspections.state -- so
+     * the two cannot disagree.
      */
-    private val fromQueries = combine(
-        container.designQueries.observeForProject(projectId),
+    private val fromInspections = combine(
         container.inspections.observeForProject(projectId),
         container.concrete.observePours(projectId),
-    ) { queries, inspections, pours ->
+    ) { inspections, pours ->
         val now = System.currentTimeMillis()
         val zone = ZoneId.systemDefault()
         val askedAgain = inspections.mapNotNull { it.reinspectionOf }.toSet()
         val cleared = inspections.mapNotNull { it.clearedPourId }.toSet()
         mapOf(
-            HandoverPack.Item.QUERIES_UNANSWERED to queries.count { it.answeredAt == null },
             HandoverPack.Item.INSPECTIONS_OUTSTANDING to inspections.count {
                 Inspections.outstanding(
                     Inspections.state(Inspections.resultOf(it.result), it.wantedOn, it.id in askedAgain, now, zone),
@@ -149,21 +151,40 @@ class HandoverViewModel(
         )
     }
 
-    /** Materials, by the same rule the register lists them with -- see Submittals.state. */
-    private val fromSubmittals = container.submittals.observeForProject(projectId).map { submittals ->
-        val now = System.currentTimeMillis()
-        val zone = ZoneId.systemDefault()
-        val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
-        mapOf(
-            HandoverPack.Item.SUBMITTALS_OUTSTANDING to submittals.count {
-                Submittals.outstanding(
-                    Submittals.state(Submittals.decisionOf(it.decision), it.neededBy, it.id in sentAgain, now, zone),
+    /**
+     * What was asked of the designers and has not come back: questions and
+     * materials, by the rules their registers use. Both are the plan, and the
+     * pack is open to anybody who reads the site's record, so these are
+     * counted only for somebody who may read the plan -- for anybody else
+     * they are absent, which the pack reads as nothing to show, rather than
+     * sent and hidden.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val fromPlan = container.session.state.flatMapLatest { state ->
+        val role = (state as? SessionRepository.State.SignedIn)?.role
+        if (role == null || !role.canRead(Lens.PLAN)) {
+            flowOf(emptyMap<HandoverPack.Item, Int>())
+        } else {
+            combine(
+                container.designQueries.observeForProject(projectId),
+                container.submittals.observeForProject(projectId),
+            ) { queries, submittals ->
+                val now = System.currentTimeMillis()
+                val zone = ZoneId.systemDefault()
+                val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
+                mapOf(
+                    HandoverPack.Item.QUERIES_UNANSWERED to queries.count { it.answeredAt == null },
+                    HandoverPack.Item.SUBMITTALS_OUTSTANDING to submittals.count {
+                        Submittals.outstanding(
+                            Submittals.state(Submittals.decisionOf(it.decision), it.neededBy, it.id in sentAgain, now, zone),
+                        )
+                    },
                 )
-            },
-        )
+            }
+        }
     }
 
-    private val fromAskedOf = combine(fromQueries, fromSubmittals) { queries, submittals -> queries + submittals }
+    private val fromAskedOf = combine(fromInspections, fromPlan) { inspections, plan -> inspections + plan }
 
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,

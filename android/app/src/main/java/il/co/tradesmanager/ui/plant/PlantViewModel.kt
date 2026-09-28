@@ -1,19 +1,29 @@
 package il.co.tradesmanager.ui.plant
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.safety.Examinations
 import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
+import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.PlantExaminationEntity
 import il.co.tradesmanager.data.local.entity.PlantCheckEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.EquipmentRepository
+import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.data.repository.PlantExaminationRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import java.time.LocalDate
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -107,5 +117,102 @@ class PlantViewModel(private val container: AppContainer) : ViewModel() {
 
     fun remove(equipment: EquipmentEntity) = viewModelScope.launch {
         container.equipment.remove(equipment, actor())
+    }
+
+    /* --------------------------------------------- examination certificates */
+
+    /** Every machine's latest examination, by machine. */
+    val latestExaminations: StateFlow<Map<String, PlantExaminationEntity>> = container.examinations.observeLatest()
+        .map { rows -> rows.associateBy { it.equipmentId } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
+    val mayRecordExaminations: StateFlow<Boolean> = session
+        .map { (it as? SessionRepository.State.SignedIn)?.role?.let { role -> PlantExaminationRepository.mayWrite(role) } == true }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    private val _examiningId = MutableStateFlow<String?>(null)
+
+    /** The open machine's certificates, newest first. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val examinations: StateFlow<List<PlantExaminationEntity>> = _examiningId
+        .flatMapLatest { id -> if (id == null) flowOf(emptyList()) else container.examinations.observeFor(id) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** Photographs of the newest certificate, which is the one an inspector asks to see. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val certificatePhotos: StateFlow<List<PhotoEntity>> = examinations
+        .map { it.firstOrNull()?.id }
+        .flatMapLatest { id ->
+            if (id == null) flowOf(emptyList()) else container.photos.observeFor(PhotoRepository.Owner.PLANT_EXAMINATION, id)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    fun openExaminations(equipmentId: String?) {
+        _examiningId.value = equipmentId
+    }
+
+    private val _examinationRefusal = MutableStateFlow<PlantExaminationRepository.Refusal?>(null)
+    val examinationRefusal: StateFlow<PlantExaminationRepository.Refusal?> = _examinationRefusal.asStateFlow()
+
+    fun clearExaminationRefusal() {
+        _examinationRefusal.value = null
+    }
+
+    fun recordExamination(
+        machine: EquipmentEntity,
+        examinedDaysAgo: Int,
+        examinerName: String,
+        certificateNumber: String,
+        result: Examinations.Result,
+        nextDueInMonths: Int?,
+        notes: String,
+    ) = viewModelScope.launch {
+        val me = session.value as? SessionRepository.State.SignedIn
+        if (me == null) {
+            _examinationRefusal.value = PlantExaminationRepository.Refusal.NOT_ALLOWED
+            return@launch
+        }
+        val examinedOn = LocalDate.now().minusDays(examinedDaysAgo.toLong())
+        container.examinations.record(
+            role = me.role,
+            equipmentId = machine.id,
+            equipmentName = machine.name,
+            examinedOn = examinedOn,
+            examinerName = examinerName,
+            certificateNumber = certificateNumber,
+            result = result,
+            nextDueOn = nextDueInMonths?.let { examinedOn.plusMonths(it.toLong()) },
+            notes = notes,
+            byName = me.account.displayName,
+        ).onFailure { failure ->
+            _examinationRefusal.value = (failure as? PlantExaminationRepository.Refused)?.refusal
+                ?: PlantExaminationRepository.Refusal.UNKNOWN
+        }
+    }
+
+    fun newCertificateTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
+
+    fun certificateCaptured(photoId: String) = viewModelScope.launch {
+        val id = examinations.value.firstOrNull()?.id ?: return@launch
+        container.photos.recordCameraPhoto(
+            id = photoId,
+            ownerType = PhotoRepository.Owner.PLANT_EXAMINATION,
+            ownerId = id,
+            actorName = actor(),
+        )
+    }
+
+    fun certificatePicked(uri: Uri) = viewModelScope.launch {
+        val id = examinations.value.firstOrNull()?.id ?: return@launch
+        container.photos.importPhoto(
+            source = uri,
+            ownerType = PhotoRepository.Owner.PLANT_EXAMINATION,
+            ownerId = id,
+            actorName = actor(),
+        )
+    }
+
+    fun deletePhoto(photo: PhotoEntity) = viewModelScope.launch {
+        container.photos.delete(photo, actor())
     }
 }

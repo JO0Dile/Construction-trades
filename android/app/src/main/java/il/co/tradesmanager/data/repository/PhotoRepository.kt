@@ -100,6 +100,12 @@ class PhotoRepository(
         const val DELAY = "delay"
 
         /**
+         * A machine's examination certificate as it was signed. Against one
+         * examination, the newest when it was taken.
+         */
+        const val PLANT_EXAMINATION = "plant.examination"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

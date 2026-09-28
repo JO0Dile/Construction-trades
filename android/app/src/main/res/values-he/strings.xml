@@ -1781,6 +1781,40 @@
     <string name="de_refused_nobody">כתבו למי נמסרה ההודעה.</string>
     <string name="de_refused_notice_early">אי אפשר למסור הודעה לפני שהעיכוב התחיל.</string>
     <string name="search_kind_delay">עיכוב</string>
+    <string name="summary_pe_failed">%1$s נכשל בבדיקה של %2$s</string>
+    <string name="summary_pe_passed">%1$s נבדק ואושר על ידי %2$s</string>
+    <string name="pe_title">תסקירי בדיקה</string>
+    <string name="pe_none">לא נרשמה בדיקה לכלי הזה.</string>
+    <string name="pe_blurb">עגורנים, מעליות משא, מלגזות וציוד בלחץ נבדקים על ידי בודק מוסמך, שחותם על תסקיר עד תאריך. רשמו כאן כל תסקיר, עם צילום שלו; אילו כלים צריכים תסקיר ובאיזו תדירות, זה עניינו של הבודק.</string>
+    <string name="pe_current">התסקיר בתוקף עד %1$s</string>
+    <string name="pe_no_next">נבדק ב־%1$s, לא נרשם מועד הבדיקה הבאה</string>
+    <string name="pe_due_soon">הבדיקה הבאה ב־%1$s</string>
+    <string name="pe_overdue">תוקף התסקיר פג ב־%1$s</string>
+    <string name="pe_failed_on">נכשל בבדיקה ב־%1$s</string>
+    <string name="pe_next_due_on">הבדיקה הבאה ב־%1$s</string>
+    <string name="pe_certificate">התסקיר</string>
+    <string name="pe_no_photo">עדיין אין צילום של התסקיר.</string>
+    <string name="pe_add_photo">הוספת צילום של התסקיר</string>
+    <string name="pe_record">רישום בדיקה</string>
+    <string name="pe_examined">נבדק</string>
+    <string name="pe_examiner">הבודק</string>
+    <string name="pe_examiner_hint">הבודק המוסמך שחתם</string>
+    <string name="pe_certificate_number">מספר תסקיר</string>
+    <string name="pe_next_due">הבדיקה הבאה</string>
+    <string name="pe_no_date">לא נכתב</string>
+    <string name="pe_in_3_months">בעוד 3 חודשים</string>
+    <string name="pe_in_6_months">בעוד 6 חודשים</string>
+    <string name="pe_in_12_months">בעוד 12 חודשים</string>
+    <string name="pe_why_failed">למה נכשל</string>
+    <string name="pe_conditions">תנאים או הערות</string>
+    <string name="pe_save">שמירה</string>
+    <string name="pe_result_passed">אושר</string>
+    <string name="pe_result_failed">נכשל</string>
+    <string name="pe_refused_not_allowed">התפקיד שלך לא מנהל את רישום הכלים.</string>
+    <string name="pe_refused_examiner">כתבו את שם הבודק שחתם.</string>
+    <string name="pe_refused_future">הבדיקה לא יכולה להיות אחרי היום.</string>
+    <string name="pe_refused_due">הבדיקה הבאה לא יכולה להיות לפני הבדיקה הזו.</string>
+    <string name="pe_refused_reason">כתבו למה נכשל, כדי שיהיה מה לתקן.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -1936,5 +1970,11 @@
         <item quantity="two">שניים מהם ללא הודעה רשומה</item>
         <item quantity="many">%d מהם ללא הודעה רשומה</item>
         <item quantity="other">%d מהם ללא הודעה רשומה</item>
+    </plurals>
+    <plurals name="home_plant_examination_due">
+        <item quantity="one">לכלי אחד פג תוקף התסקיר או שנכשל בבדיקה</item>
+        <item quantity="two">לשני כלים פג תוקף התסקיר או שנכשלו בבדיקה</item>
+        <item quantity="many">ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה</item>
+        <item quantity="other">ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה</item>
     </plurals>
 </resources>

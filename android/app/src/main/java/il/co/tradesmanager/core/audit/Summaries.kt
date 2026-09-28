@@ -580,6 +580,20 @@ object Summaries {
     const val PASSCODE_REMOVED = "passcode_removed"
 
     /**
+     * %1$s failed its examination by %2$s
+     *
+     * Arguments, in order: machine, examiner.
+     */
+    const val PE_FAILED = "pe_failed"
+
+    /**
+     * %1$s examined and passed by %2$s
+     *
+     * Arguments, in order: machine, examiner.
+     */
+    const val PE_PASSED = "pe_passed"
+
+    /**
      * %1$s cancelled
      *
      * Arguments, in order: reference.

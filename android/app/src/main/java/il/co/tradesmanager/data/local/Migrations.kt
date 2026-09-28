@@ -401,6 +401,13 @@ object Migrations {
         }
     }
 
+    /** Plant examination certificates: one new table. */
+    val MIGRATION_40_41 = object : Migration(40, 41) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_40_41.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -441,6 +448,7 @@ object Migrations {
         MIGRATION_37_38,
         MIGRATION_38_39,
         MIGRATION_39_40,
+        MIGRATION_40_41,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1113,5 +1121,14 @@ object Migrations {
             "`endRecordedByName` TEXT, `notifiedTo` TEXT, `notifiedOnDay` INTEGER, " +
             "`noticeRecordedByName` TEXT, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_delay_events_projectId` ON `delay_events` (`projectId`)",
+    )
+
+    /** A machine's periodic examinations, each one a certificate. */
+    val SQL_40_41: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `plant_examinations` (`id` TEXT NOT NULL, `equipmentId` TEXT NOT NULL, " +
+            "`examinedOnDay` INTEGER NOT NULL, `examinerName` TEXT NOT NULL, `certificateNumber` TEXT, " +
+            "`result` TEXT NOT NULL, `nextDueDay` INTEGER, `notes` TEXT, `recordedByName` TEXT NOT NULL, " +
+            "`recordedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_plant_examinations_equipmentId` ON `plant_examinations` (`equipmentId`)",
     )
 }

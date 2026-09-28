@@ -2,6 +2,31 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.33.0",
+      "points": [
+        {
+          "en": "Plant can now carry its examination certificates: the date examined, the qualified examiner who signed, the certificate number, the result and the next date due, with a photograph of the certificate. Open a machine in the plant register and choose Examination certificates.",
+          "he": "לכלים אפשר עכשיו לרשום תסקירי בדיקה: תאריך הבדיקה, הבודק המוסמך שחתם, מספר התסקיר, התוצאה ומועד הבדיקה הבאה, עם צילום של התסקיר. פותחים כלי ברישום הכלים ובוחרים תסקירי בדיקה.",
+          "ar": "يمكن الآن تسجيل شهادات الفحص للمعدات: تاريخ الفحص، والفاحص المؤهل الذي وقّع، ورقم الشهادة، والنتيجة، وتاريخ الفحص التالي، مع صورة للشهادة. افتح معدّة في سجل المعدات واختر شهادات الفحص."
+        },
+        {
+          "en": "The plant register says when each certificate runs out, warns thirty days before, and shows in red a certificate that has run out or a machine that failed. A failed examination takes the machine out of service, and the home screen counts the machines in red.",
+          "he": "רישום הכלים מציג מתי פג תוקף כל תסקיר, מזהיר שלושים יום מראש, ומציג באדום תסקיר שפג תוקפו או כלי שנכשל. בדיקה שנכשלה מוציאה את הכלי משימוש, ומסך הבית סופר את הכלים שבאדום.",
+          "ar": "يعرض سجل المعدات موعد انتهاء كل شهادة، وينبّه قبل ثلاثين يومًا، ويُظهر باللون الأحمر الشهادة المنتهية أو المعدّة التي لم تجتز الفحص. والفحص غير المجتاز يُخرج المعدّة من الخدمة، وتحصي الشاشة الرئيسية المعدات المعروضة بالأحمر."
+        },
+        {
+          "en": "A machine with no certificate recorded is shown as having none, not as overdue: which machines need examining, and how often, is the examiner's to say.",
+          "he": "כלי שלא נרשם לו תסקיר מוצג כחסר תסקיר, לא כמאחר: אילו כלים צריכים בדיקה ובאיזו תדירות, זה עניינו של הבודק.",
+          "ar": "المعدّة التي لم تُسجَّل لها شهادة تظهر بلا شهادة، لا متأخرة: أي المعدات تحتاج إلى فحص وكم مرة، فذلك يحدده الفاحص."
+        },
+        {
+          "en": "A check of everything added since 0.24: the handover pack now counts questions to the designers and material approvals only for someone allowed to see the plan, and the home screen counts lapsed examination certificates only for someone allowed to see the plant register.",
+          "he": "בדיקה של כל מה שנוסף מאז 0.24: תיק המסירה סופר עכשיו שאלות למתכננים ואישורי חומרים רק למי שמורשה לראות את התכנון, ומסך הבית סופר תסקירים שפג תוקפם רק למי שמורשה לראות את רישום הכלים.",
+          "ar": "فحص لكل ما أُضيف منذ 0.24: تحصي حزمة التسليم الآن أسئلة المصممين واعتمادات المواد فقط لمن يُسمح له برؤية التخطيط، وتحصي الشاشة الرئيسية شهادات الفحص المنتهية فقط لمن يُسمح له برؤية سجل المعدات."
+        }
+      ]
+    },
+    {
       "version": "0.32.0",
       "points": [
         {

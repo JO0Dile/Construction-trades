@@ -2250,3 +2250,44 @@
 "de_refused_notice_early" = "لا يمكن الإشعار قبل بدء التأخير.";
 /* Label on a search result */
 "search_kind_delay" = "تأخير";
+"summary_pe_failed" = "لم يجتز %1$s فحص %2$s";
+"summary_pe_passed" = "فحص %2$s المعدّة %1$s واعتمدها";
+/* Plant: the periodic examination by a qualified examiner */
+"pe_title" = "شهادات الفحص";
+"pe_none" = "لم يُسجَّل فحص لهذه المعدّة.";
+"pe_blurb" = "تُفحص الرافعات والمصاعد والرافعات الشوكية ومعدات الضغط من قِبل فاحص مؤهل يوقّع شهادة سارية حتى تاريخ معيّن. سجّل كل شهادة هنا مع صورة لها؛ أما أي المعدات تحتاجها وكم مرة فذلك يحدده الفاحص.";
+/* %1$s is a date */
+"pe_current" = "الشهادة سارية حتى %1$s";
+/* %1$s is a date */
+"pe_no_next" = "فُحص في %1$s، دون تاريخ للفحص التالي";
+/* %1$s is a date */
+"pe_due_soon" = "الفحص التالي في %1$s";
+/* %1$s is a date */
+"pe_overdue" = "انتهت صلاحية شهادة الفحص في %1$s";
+/* %1$s is a date */
+"pe_failed_on" = "لم يجتز الفحص في %1$s";
+/* %1$s is a date */
+"pe_next_due_on" = "الفحص التالي في %1$s";
+"pe_certificate" = "الشهادة";
+"pe_no_photo" = "لا توجد صورة للشهادة بعد.";
+"pe_add_photo" = "إضافة صورة للشهادة";
+"pe_record" = "تسجيل فحص";
+"pe_examined" = "تاريخ الفحص";
+"pe_examiner" = "الفاحص";
+"pe_examiner_hint" = "الفاحص المؤهل الذي وقّع";
+"pe_certificate_number" = "رقم الشهادة";
+"pe_next_due" = "الفحص التالي";
+"pe_no_date" = "غير مذكور";
+"pe_in_3_months" = "بعد 3 أشهر";
+"pe_in_6_months" = "بعد 6 أشهر";
+"pe_in_12_months" = "بعد 12 شهرًا";
+"pe_why_failed" = "سبب عدم الاجتياز";
+"pe_conditions" = "شروط أو ملاحظات";
+"pe_save" = "حفظ";
+"pe_result_passed" = "اجتاز";
+"pe_result_failed" = "لم يجتز";
+"pe_refused_not_allowed" = "دورك لا يتولى سجل المعدات.";
+"pe_refused_examiner" = "اكتب اسم الفاحص الذي وقّع.";
+"pe_refused_future" = "لا يمكن أن يكون الفحص بعد اليوم.";
+"pe_refused_due" = "لا يمكن أن يسبق الفحص التالي هذا الفحص.";
+"pe_refused_reason" = "اذكر سبب عدم الاجتياز ليكون هناك ما يُصلَح.";

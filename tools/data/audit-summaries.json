@@ -708,6 +708,24 @@
       "he": "הסיסמה הוסרה",
       "ar": "أُزيلت كلمة المرور"
     },
+    "pe_failed": {
+      "arguments": [
+        "machine",
+        "examiner"
+      ],
+      "en": "%1$s failed its examination by %2$s",
+      "he": "%1$s נכשל בבדיקה של %2$s",
+      "ar": "لم يجتز %1$s فحص %2$s"
+    },
+    "pe_passed": {
+      "arguments": [
+        "machine",
+        "examiner"
+      ],
+      "en": "%1$s examined and passed by %2$s",
+      "he": "%1$s נבדק ואושר על ידי %2$s",
+      "ar": "فحص %2$s المعدّة %1$s واعتمدها"
+    },
     "permit_cancelled": {
       "arguments": [
         "reference"

@@ -2250,3 +2250,44 @@
 "de_refused_notice_early" = "אי אפשר למסור הודעה לפני שהעיכוב התחיל.";
 /* Label on a search result */
 "search_kind_delay" = "עיכוב";
+"summary_pe_failed" = "%1$s נכשל בבדיקה של %2$s";
+"summary_pe_passed" = "%1$s נבדק ואושר על ידי %2$s";
+/* Plant: the periodic examination by a qualified examiner */
+"pe_title" = "תסקירי בדיקה";
+"pe_none" = "לא נרשמה בדיקה לכלי הזה.";
+"pe_blurb" = "עגורנים, מעליות משא, מלגזות וציוד בלחץ נבדקים על ידי בודק מוסמך, שחותם על תסקיר עד תאריך. רשמו כאן כל תסקיר, עם צילום שלו; אילו כלים צריכים תסקיר ובאיזו תדירות, זה עניינו של הבודק.";
+/* %1$s is a date */
+"pe_current" = "התסקיר בתוקף עד %1$s";
+/* %1$s is a date */
+"pe_no_next" = "נבדק ב־%1$s, לא נרשם מועד הבדיקה הבאה";
+/* %1$s is a date */
+"pe_due_soon" = "הבדיקה הבאה ב־%1$s";
+/* %1$s is a date */
+"pe_overdue" = "תוקף התסקיר פג ב־%1$s";
+/* %1$s is a date */
+"pe_failed_on" = "נכשל בבדיקה ב־%1$s";
+/* %1$s is a date */
+"pe_next_due_on" = "הבדיקה הבאה ב־%1$s";
+"pe_certificate" = "התסקיר";
+"pe_no_photo" = "עדיין אין צילום של התסקיר.";
+"pe_add_photo" = "הוספת צילום של התסקיר";
+"pe_record" = "רישום בדיקה";
+"pe_examined" = "נבדק";
+"pe_examiner" = "הבודק";
+"pe_examiner_hint" = "הבודק המוסמך שחתם";
+"pe_certificate_number" = "מספר תסקיר";
+"pe_next_due" = "הבדיקה הבאה";
+"pe_no_date" = "לא נכתב";
+"pe_in_3_months" = "בעוד 3 חודשים";
+"pe_in_6_months" = "בעוד 6 חודשים";
+"pe_in_12_months" = "בעוד 12 חודשים";
+"pe_why_failed" = "למה נכשל";
+"pe_conditions" = "תנאים או הערות";
+"pe_save" = "שמירה";
+"pe_result_passed" = "אושר";
+"pe_result_failed" = "נכשל";
+"pe_refused_not_allowed" = "התפקיד שלך לא מנהל את רישום הכלים.";
+"pe_refused_examiner" = "כתבו את שם הבודק שחתם.";
+"pe_refused_future" = "הבדיקה לא יכולה להיות אחרי היום.";
+"pe_refused_due" = "הבדיקה הבאה לא יכולה להיות לפני הבדיקה הזו.";
+"pe_refused_reason" = "כתבו למה נכשל, כדי שיהיה מה לתקן.";

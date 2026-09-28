@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.access.Changes
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.people.Expiry
+import il.co.tradesmanager.core.safety.Examinations
 import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
@@ -13,6 +14,7 @@ import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
 import il.co.tradesmanager.data.repository.EquipmentRepository
+import il.co.tradesmanager.data.repository.PlantExaminationRepository
 import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -112,6 +114,36 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
                 } in NEEDS_A_CHECK
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    /**
+     * Machines whose latest examination certificate has run out, or which
+     * failed it. Machines with no certificate recorded are not counted: which
+     * ones need one is not the app's to say.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val plantExaminationsDue: StateFlow<Int> = session
+        .flatMapLatest { state ->
+            val me = state as? SessionRepository.State.SignedIn
+            // Nought for somebody who may not read the plant register, rather
+            // than a count the screen then has to remember to hide.
+            if (me == null || !PlantExaminationRepository.mayRead(me.role)) {
+                flowOf(0)
+            } else {
+                container.examinations.observeLatest().map { latest ->
+                    val today = java.time.LocalDate.now()
+                    latest.count { exam ->
+                        Examinations.needsAttention(
+                            Examinations.state(
+                                Examinations.resultOf(exam.result),
+                                exam.nextDueDay?.let(java.time.LocalDate::ofEpochDay),
+                                today,
+                            ),
+                        )
+                    }
+                }
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
     /**
      * Protective equipment past its replace-by date, in this firm, for

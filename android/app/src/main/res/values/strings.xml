@@ -2251,6 +2251,47 @@
     <string name="de_refused_notice_early">Notice cannot be given before the delay started.</string>
     <!-- Label on a search result -->
     <string name="search_kind_delay">Delay</string>
+    <string name="summary_pe_failed">%1$s failed its examination by %2$s</string>
+    <string name="summary_pe_passed">%1$s examined and passed by %2$s</string>
+    <!-- Plant: the periodic examination by a qualified examiner -->
+    <string name="pe_title">Examination certificates</string>
+    <string name="pe_none">No examination recorded for this machine.</string>
+    <string name="pe_blurb">Cranes, hoists, forklifts and pressure equipment are examined by a qualified examiner, who signs a certificate until a date. Record each one here, with a photograph of it; which machines need one, and how often, is the examiner\'s to say.</string>
+    <!-- %1$s is a date -->
+    <string name="pe_current">Certificate runs to %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="pe_no_next">Examined %1$s, no next date recorded</string>
+    <!-- %1$s is a date -->
+    <string name="pe_due_soon">Examination due %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="pe_overdue">Examination certificate ran out %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="pe_failed_on">Failed its examination %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="pe_next_due_on">Next examination %1$s</string>
+    <string name="pe_certificate">The certificate</string>
+    <string name="pe_no_photo">No photograph of the certificate yet.</string>
+    <string name="pe_add_photo">Add a photograph of the certificate</string>
+    <string name="pe_record">Record an examination</string>
+    <string name="pe_examined">Examined</string>
+    <string name="pe_examiner">Examiner</string>
+    <string name="pe_examiner_hint">The qualified examiner who signed it</string>
+    <string name="pe_certificate_number">Certificate number</string>
+    <string name="pe_next_due">Next examination</string>
+    <string name="pe_no_date">Not written</string>
+    <string name="pe_in_3_months">In 3 months</string>
+    <string name="pe_in_6_months">In 6 months</string>
+    <string name="pe_in_12_months">In 12 months</string>
+    <string name="pe_why_failed">Why it failed</string>
+    <string name="pe_conditions">Conditions or notes</string>
+    <string name="pe_save">Save</string>
+    <string name="pe_result_passed">Passed</string>
+    <string name="pe_result_failed">Failed</string>
+    <string name="pe_refused_not_allowed">Your role does not keep the plant register.</string>
+    <string name="pe_refused_examiner">Write the name of the examiner who signed it.</string>
+    <string name="pe_refused_future">It cannot have been examined after today.</string>
+    <string name="pe_refused_due">The next examination cannot come before this one.</string>
+    <string name="pe_refused_reason">Say why it failed, so there is something to fix.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -2354,5 +2395,9 @@
     <plurals name="de_without_notice">
         <item quantity="one">%d with no notice recorded</item>
         <item quantity="other">%d with no notice recorded</item>
+    </plurals>
+    <plurals name="home_plant_examination_due">
+        <item quantity="one">%d machine\'s examination certificate has run out or failed</item>
+        <item quantity="other">%d machines\' examination certificates have run out or failed</item>
     </plurals>
 </resources>
