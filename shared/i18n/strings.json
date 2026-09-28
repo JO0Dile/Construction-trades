@@ -10054,6 +10054,17 @@
       "en": "Risk reviews overdue",
       "he": "בדיקות חוזרות של סיכונים באיחור",
       "ar": "مراجعات مخاطر متأخرة"
+    },
+    "hv_export_all": {
+      "c": "Button on the handover pack",
+      "en": "Export all of this job's records",
+      "he": "ייצוא כל הרישומים של העבודה",
+      "ar": "تصدير كل سجلات هذا المشروع"
+    },
+    "hv_export_all_hint": {
+      "en": "One file with the handover summary and every register you may see — inspections, risks, visitors, questions to the designers, material approvals and delays — each as a PDF and a CSV.",
+      "he": "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.",
+      "ar": "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV."
     }
   },
   "plurals": {

@@ -692,6 +692,15 @@ running, risk reviews overdue. Each count comes from its register's own rule,
 each line opens that register, and a line is there only for somebody who may
 read what it counts. A job with nothing wrong shows nothing.
 
+**A job's whole record in one file. Done.**
+The handover pack exports the job's records as one archive: the handover
+summary, then every register the person exporting may read -- inspections,
+the risk assessment and the visitor log from the site's record; questions
+to the designers, material approvals and delays from the plan -- each as a
+PDF and a CSV, the same files each register exports alone. It is what a
+client asks for at handover and what a firm keeps when a job is closed. A
+register the role may not read is left out, not put in empty.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

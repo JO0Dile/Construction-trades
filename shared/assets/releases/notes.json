@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.38.0",
+      "points": [
+        {
+          "en": "The handover pack can now export all of a job's records in one file: the handover summary and every register you may see — inspections, risks, visitors, questions to the designers, material approvals and delays — each as a PDF and a CSV. It is what a client asks for at handover and what the firm keeps when the job closes.",
+          "he": "מתיק המסירה אפשר עכשיו לייצא את כל הרישומים של עבודה בקובץ אחד: סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV. זה מה שהמזמין מבקש במסירה ומה שהחברה שומרת כשהעבודה נסגרת.",
+          "ar": "يمكن الآن من حزمة التسليم تصدير كل سجلات المشروع في ملف واحد: ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV. هذا ما يطلبه صاحب العمل عند التسليم وما تحتفظ به الشركة عند إغلاق المشروع."
+        },
+        {
+          "en": "The questions to the designers can now be printed and exported on their own too, with every answer and the day it came.",
+          "he": "גם את השאלות למתכננים אפשר עכשיו להדפיס ולייצא בנפרד, עם כל תשובה והיום שבו התקבלה.",
+          "ar": "ويمكن الآن أيضًا طباعة أسئلة المصممين وتصديرها وحدها، مع كل إجابة ويوم ورودها."
+        }
+      ]
+    },
+    {
       "version": "0.37.0",
       "points": [
         {

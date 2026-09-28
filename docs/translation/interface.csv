@@ -1929,3 +1929,5 @@ at_queries_overdue,"Line in 'Needs attention', followed by a count",Questions to
 at_delays_no_notice,"Line in 'Needs attention', followed by a count",Delays with no notice recorded,עיכובים ללא הודעה רשומה,تأخيرات بلا إشعار مسجل,,
 at_delays_running,"Line in 'Needs attention', followed by a count",Delays still running,עיכובים שעדיין נמשכים,تأخيرات لا تزال جارية,,
 at_risk_reviews,"Line in 'Needs attention', followed by a count",Risk reviews overdue,בדיקות חוזרות של סיכונים באיחור,مراجعات مخاطر متأخرة,,
+hv_export_all,Button on the handover pack,Export all of this job's records,ייצוא כל הרישומים של העבודה,تصدير كل سجلات هذا المشروع,,
+hv_export_all_hint,,"One file with the handover summary and every register you may see — inspections, risks, visitors, questions to the designers, material approvals and delays — each as a PDF and a CSV.","קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.",ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV.,,

@@ -133,6 +133,38 @@ object Exporter {
         return text.take(end).trimEnd() + "…"
     }
 
+    /**
+     * Several documents as one archive: each written as it would be on its
+     * own, then the PDFs and CSVs packed into [stem].zip. The whole record of
+     * a job in the one file a client or an archive asks for.
+     */
+    fun writeArchive(
+        context: Context,
+        documents: List<ExportDocument>,
+        stem: String,
+        languageTag: String,
+        locale: Locale,
+        rightToLeft: Boolean,
+    ): File {
+        val written = documents.flatMap { document ->
+            val result = write(context, document, languageTag, locale, rightToLeft)
+            listOf(result.pdf, result.csv)
+        }
+        val directory = File(context.cacheDir, "exports").apply { mkdirs() }
+        return ExportArchive.zip(written, File(directory, ExportFormat.safeFileStem(stem) + ".zip"))
+    }
+
+    /** A share chooser holding the one archive, with read permission granted. */
+    fun shareArchiveIntent(context: Context, archive: File): Intent {
+        val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", archive)
+        val send = Intent(Intent.ACTION_SEND).apply {
+            type = "application/zip"
+            putExtra(Intent.EXTRA_STREAM, uri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        return Intent.createChooser(send, null)
+    }
+
     /** A share chooser holding both files, with read permission granted. */
     fun shareIntent(context: Context, result: Result): Intent {
         val authority = "${context.packageName}.fileprovider"

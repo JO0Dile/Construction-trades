@@ -18,6 +18,7 @@ import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
+import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.PpeIssueEntity
@@ -167,6 +168,12 @@ sealed interface ExportDocument {
         val jobName: String,
         val events: List<DelayEventEntity>,
         val today: LocalDate,
+    ) : ExportDocument
+
+    /** One job's questions to its designers, with the answers and when they came. */
+    data class QueryRegister(
+        val jobName: String,
+        val queries: List<DesignQueryEntity>,
     ) : ExportDocument
 
     /**
@@ -402,6 +409,32 @@ sealed interface ExportDocument {
             },
         )
 
+        is QueryRegister -> Table(
+            title = context.getString(R.string.qry_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.qry_question),
+                context.getString(R.string.qry_asked_of),
+                context.getString(R.string.qry_drawing),
+                context.getString(R.string.ex_col_asked),
+                context.getString(R.string.qry_needed_by_label),
+                context.getString(R.string.qry_answer),
+                context.getString(R.string.ex_col_on),
+            ),
+            rows = queries.sortedBy { it.askedAt }.map { row ->
+                listOf(
+                    row.reference,
+                    row.question,
+                    row.askedOf,
+                    row.drawingNumber.orEmpty(),
+                    day(row.askedAt, locale),
+                    row.neededBy?.let { day(it, locale) }.orEmpty(),
+                    row.answer ?: context.getString(R.string.ex_waiting),
+                    row.answeredAt?.let { day(it, locale) }.orEmpty(),
+                )
+            },
+        )
+
         is RiskRegister -> Table(
             title = context.getString(R.string.ra_title) + " — " + jobName,
             headers = listOf(
@@ -566,6 +599,7 @@ sealed interface ExportDocument {
             is SubmittalRegister -> "material-approvals-" + jobName
             is DelayRegister -> "delays-" + jobName
             is RiskRegister -> "risk-assessment-" + jobName
+            is QueryRegister -> "questions-to-designers-" + jobName
         },
     )
 

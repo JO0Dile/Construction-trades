@@ -2429,3 +2429,6 @@
 "at_delays_running" = "עיכובים שעדיין נמשכים";
 /* Line in 'Needs attention', followed by a count */
 "at_risk_reviews" = "בדיקות חוזרות של סיכונים באיחור";
+/* Button on the handover pack */
+"hv_export_all" = "ייצוא כל הרישומים של העבודה";
+"hv_export_all_hint" = "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.";

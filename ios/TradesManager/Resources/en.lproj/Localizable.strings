@@ -2429,3 +2429,6 @@
 "at_delays_running" = "Delays still running";
 /* Line in 'Needs attention', followed by a count */
 "at_risk_reviews" = "Risk reviews overdue";
+/* Button on the handover pack */
+"hv_export_all" = "Export all of this job's records";
+"hv_export_all_hint" = "One file with the handover summary and every register you may see — inspections, risks, visitors, questions to the designers, material approvals and delays — each as a PDF and a CSV.";

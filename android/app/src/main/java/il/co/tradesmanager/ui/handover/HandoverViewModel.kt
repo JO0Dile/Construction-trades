@@ -15,11 +15,14 @@ import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.export.ExportDocument
+import java.time.LocalDate
 import java.time.ZoneId
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
@@ -205,6 +208,38 @@ class HandoverViewModel(
             SharingStarted.WhileSubscribed(5_000),
             SessionRepository.State.Loading,
         )
+
+    /**
+     * Every register of the job that the person asking may read, as
+     * documents: the handover summary first, then the registers. Read once,
+     * at the moment of export, from the same repositories the screens use --
+     * and a register the role may not read is left out of the archive, not
+     * put in empty.
+     */
+    suspend fun archive(): List<ExportDocument> {
+        val job = project.value ?: return emptyList()
+        val role = (container.session.state.first() as? SessionRepository.State.SignedIn)?.role
+            ?: return emptyList()
+        val documents = mutableListOf<ExportDocument>(
+            ExportDocument.Handover(
+                project = job,
+                readiness = readiness.value,
+                producedByName = producedBy.value,
+                producedOn = LocalDate.now(),
+            ),
+        )
+        if (role.canRead(Lens.EVIDENCE)) {
+            documents += ExportDocument.InspectionRegister(job.name, container.inspections.observeForProject(projectId).first())
+            documents += ExportDocument.RiskRegister(job.name, container.risks.observeForProject(projectId).first())
+            documents += ExportDocument.VisitorLog(job.name, container.visits.observeForProject(projectId).first())
+        }
+        if (role.canRead(Lens.PLAN)) {
+            documents += ExportDocument.QueryRegister(job.name, container.designQueries.observeForProject(projectId).first())
+            documents += ExportDocument.SubmittalRegister(job.name, container.submittals.observeForProject(projectId).first())
+            documents += ExportDocument.DelayRegister(job.name, container.delays.observeForProject(projectId).first(), LocalDate.now())
+        }
+        return documents
+    }
 
     /** Recorded on the pack so an interim one reads as interim. */
     val producedBy: StateFlow<String> = container.settings.settings

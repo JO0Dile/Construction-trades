@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.Configuration
 import il.co.tradesmanager.R
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
+import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
@@ -136,6 +137,26 @@ class RegisterExportTest {
         assertEquals("20 " + context.getString(R.string.ra_band_extreme), table.rows[0][4])
         assertEquals("10 " + context.getString(R.string.ra_band_high), table.rows[0][6])
         assertEquals(context.getString(R.string.ra_closed), table.rows[1][8])
+    }
+
+    @Test
+    fun `the questions register shows an unanswered question as waiting`() {
+        val context = inLanguage("en")
+        val queries = listOf(
+            DesignQueryEntity(
+                id = "q1", projectId = "job", reference = "Q-001", question = "Beam clashes with the duct",
+                askedOf = "Engineer", drawingNumber = "S-201", askedAt = 1_000L, askedByName = "Foreman",
+                answer = "Drop the duct 200", answeredAt = 2_000L,
+            ),
+            DesignQueryEntity(
+                id = "q2", projectId = "job", reference = "Q-002", question = "Which tile?",
+                askedOf = "Architect", askedAt = 3_000L, askedByName = "Foreman",
+            ),
+        )
+        val table = ExportDocument.QueryRegister("Tower A", queries).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals("Drop the duct 200", table.rows[0][6])
+        assertEquals(context.getString(R.string.ex_waiting), table.rows[1][6])
     }
 
     @Test

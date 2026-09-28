@@ -2429,3 +2429,6 @@
 "at_delays_running" = "تأخيرات لا تزال جارية";
 /* Line in 'Needs attention', followed by a count */
 "at_risk_reviews" = "مراجعات مخاطر متأخرة";
+/* Button on the handover pack */
+"hv_export_all" = "تصدير كل سجلات هذا المشروع";
+"hv_export_all_hint" = "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV.";
