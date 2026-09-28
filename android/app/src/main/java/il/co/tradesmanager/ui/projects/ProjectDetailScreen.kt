@@ -124,6 +124,7 @@ fun ProjectDetailScreen(
     onOpenQueries: () -> Unit,
     onOpenInspections: () -> Unit,
     onOpenSubmittals: () -> Unit,
+    onOpenDelays: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -191,6 +192,8 @@ fun ProjectDetailScreen(
         if (canSeePlan) add(JobLink(R.string.qry_title, R.string.qry_row_hint, onOpenQueries))
         // The other thing sent to the designers and waited on: what is to be ordered.
         if (canSeePlan) add(JobLink(R.string.ms_title, R.string.ms_row_hint, onOpenSubmittals))
+        // What held the programme up, beside what it was waiting on.
+        if (canSeePlan) add(JobLink(R.string.de_title, R.string.de_row_hint, onOpenDelays))
         // Part of the site's record: who looked at the work before it was covered.
         if (canSeeEvidence) add(JobLink(R.string.ir_title, R.string.ir_row_hint, onOpenInspections))
         // Beside the log, because it is the other thing somebody at the gate

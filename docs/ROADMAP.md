@@ -640,6 +640,16 @@ its number and goes up a revision, the way the trade numbers them, and every
 go stays on the record with its datasheet. The handover pack counts the ones
 still waiting or rejected and not sent again.
 
+**Delays. Done.**
+Rain on the slab, an answer that came three weeks late, the connection
+somebody else did not make: each stoppage is recorded on the day with its
+cause, the calendar days it ran, the work it held, what it rests on (a query
+number, an instruction), and whether notice was given, to whom and when.
+The top of the register adds the days up by cause -- overlapping events each
+counted in full, and the screen says so -- and counts the events with no
+notice in red, because those are the ones lost later. How much time a
+contract allows, and how soon notice is due, is the contract's to say.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -704,21 +714,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~98 | *estimated — see below* |
+| Built | ~99 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, the visitor log, inspection requests, and material approvals.
+register, the visitor log, inspection requests, material approvals, and the delay register.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

@@ -43,6 +43,7 @@ object Changes {
         "drawing" to Lens.PLAN,
         "design_query" to Lens.PLAN,
         "submittal" to Lens.PLAN,
+        "delay_event" to Lens.PLAN,
         "project_task" to Lens.PLAN,
         "task_block" to Lens.PLAN,
         "assignment" to Lens.PLAN,

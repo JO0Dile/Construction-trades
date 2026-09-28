@@ -225,6 +225,33 @@
       "he": "יומן העבודה נחתם",
       "ar": "وُقّعت يومية العمل"
     },
+    "de_ended": {
+      "arguments": [
+        "reference",
+        "until"
+      ],
+      "en": "%1$s ended %2$s",
+      "he": "%1$s הסתיים ב־%2$s",
+      "ar": "انتهى %1$s في %2$s"
+    },
+    "de_notified": {
+      "arguments": [
+        "reference",
+        "notified_to"
+      ],
+      "en": "%1$s: notice given to %2$s",
+      "he": "%1$s: נמסרה הודעה ל־%2$s",
+      "ar": "%1$s: أُبلغ %2$s"
+    },
+    "de_recorded": {
+      "arguments": [
+        "reference",
+        "from"
+      ],
+      "en": "%1$s: work held from %2$s",
+      "he": "%1$s: העבודה עוכבה מ־%2$s",
+      "ar": "%1$s: توقف العمل منذ %2$s"
+    },
     "delivered_on": {
       "arguments": [
         "reference"

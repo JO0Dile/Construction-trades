@@ -190,6 +190,27 @@ object Summaries {
     const val DAILY_LOG_SIGNED = "daily_log_signed"
 
     /**
+     * %1$s ended %2$s
+     *
+     * Arguments, in order: reference, until.
+     */
+    const val DE_ENDED = "de_ended"
+
+    /**
+     * %1$s: notice given to %2$s
+     *
+     * Arguments, in order: reference, notified_to.
+     */
+    const val DE_NOTIFIED = "de_notified"
+
+    /**
+     * %1$s: work held from %2$s
+     *
+     * Arguments, in order: reference, from.
+     */
+    const val DE_RECORDED = "de_recorded"
+
+    /**
      * Delivered on %1$s
      *
      * Arguments, in order: reference.

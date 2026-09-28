@@ -2179,3 +2179,74 @@
 "hv_submittals" = "Materials still waiting for approval, or rejected and not sent again";
 /* Label on a search result */
 "search_kind_submittal" = "Material approval";
+"summary_de_ended" = "%1$s ended %2$s";
+"summary_de_notified" = "%1$s: notice given to %2$s";
+"summary_de_recorded" = "%1$s: work held from %2$s";
+/* Screen title and job link */
+"de_title" = "Delays";
+/* Hint under the job link */
+"de_row_hint" = "Days the work could not go ahead, why, and who was told";
+"de_empty" = "No delays recorded on this job.";
+"de_blurb" = "When rain, a late answer, the client or somebody else's connection stops the work, write it down on the day: what stopped, from when, and who was told. Months later that record is the one that counts.";
+/* Button and dialog title */
+"de_record" = "Record a delay";
+"de_overlap_note" = "Delays that overlap are each counted in full.";
+"de_no_notice" = "No notice recorded";
+"de_ended_title" = "When could the work go ahead again?";
+/* %1$s and %2$s are dates */
+"de_span" = "%1$s to %2$s";
+/* %1$s is a date */
+"de_since" = "Since %1$s, still going";
+/* %1$s is the work affected */
+"de_affected_is" = "Held: %1$s";
+/* %1$s is a reference */
+"de_related_is" = "Rests on: %1$s";
+/* %1$s is a name */
+"de_recorded_by" = "Recorded by %1$s";
+"de_notice" = "Notice";
+/* %1$s is who was told, %2$s a date */
+"de_notified" = "Notice given to %1$s on %2$s";
+"de_record_notice" = "Record the notice";
+"de_notice_blurb" = "Who was told, formally, and on what day. The letter or the email itself can go with it as a photograph.";
+"de_notified_to" = "Told to";
+"de_notice_on" = "On";
+"de_to_client" = "The client";
+/* The owner's site supervisor */
+"de_to_supervisor" = "The supervisor";
+"de_to_manager" = "The project manager";
+"de_photos" = "Photographs";
+"de_no_photos" = "No photographs yet.";
+"de_add_photo" = "Add a photograph";
+"de_end" = "It has ended";
+"de_cause" = "Why";
+"de_description" = "What happened";
+"de_description_hint" = "Rain from 6am, the slab could not be poured";
+"de_affected" = "The work it held";
+"de_related" = "What it rests on";
+"de_related_hint" = "Q-004, an instruction number, a letter";
+"de_started" = "Started";
+"de_save" = "Save";
+"de_cause_weather" = "Weather";
+"de_cause_information" = "Late information";
+"de_cause_client" = "Client change";
+"de_cause_access" = "No access";
+"de_cause_utilities" = "Utilities";
+"de_cause_authority" = "An authority";
+"de_cause_supply" = "Supply";
+"de_cause_labour" = "Labour";
+"de_cause_other" = "Other";
+"de_today" = "Today";
+"de_yesterday" = "Yesterday";
+"de_2_days_ago" = "2 days ago";
+"de_3_days_ago" = "3 days ago";
+"de_a_week_ago" = "A week ago";
+"de_refused_not_allowed" = "Your role does not plan the work.";
+"de_refused_description" = "Say what happened.";
+"de_refused_future" = "A delay that has not started yet is a warning, not a delay.";
+"de_refused_ends_early" = "It cannot end before it started.";
+"de_refused_ended" = "Its end is already recorded.";
+"de_refused_notice_given" = "Notice is already recorded for this delay.";
+"de_refused_nobody" = "Say who was told.";
+"de_refused_notice_early" = "Notice cannot be given before the delay started.";
+/* Label on a search result */
+"search_kind_delay" = "Delay";

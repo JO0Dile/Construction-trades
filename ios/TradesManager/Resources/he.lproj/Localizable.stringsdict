@@ -463,5 +463,65 @@
             <string>%d ימים</string>
         </dict>
     </dict>
+    <key>de_events</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>עיכוב אחד נרשם</string>
+            <key>two</key>
+            <string>שני עיכובים נרשמו</string>
+            <key>many</key>
+            <string>%d עיכובים נרשמו</string>
+            <key>other</key>
+            <string>%d עיכובים נרשמו</string>
+        </dict>
+    </dict>
+    <key>de_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>יום אחד</string>
+            <key>two</key>
+            <string>יומיים</string>
+            <key>many</key>
+            <string>%d ימים</string>
+            <key>other</key>
+            <string>%d ימים</string>
+        </dict>
+    </dict>
+    <key>de_without_notice</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>אחד מהם ללא הודעה רשומה</string>
+            <key>two</key>
+            <string>שניים מהם ללא הודעה רשומה</string>
+            <key>many</key>
+            <string>%d מהם ללא הודעה רשומה</string>
+            <key>other</key>
+            <string>%d מהם ללא הודעה רשומה</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

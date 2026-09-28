@@ -394,6 +394,13 @@ object Migrations {
         }
     }
 
+    /** Delay events: one new table. */
+    val MIGRATION_39_40 = object : Migration(39, 40) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_39_40.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -433,6 +440,7 @@ object Migrations {
         MIGRATION_36_37,
         MIGRATION_37_38,
         MIGRATION_38_39,
+        MIGRATION_39_40,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1094,5 +1102,16 @@ object Migrations {
             "`decision` TEXT, `reviewerName` TEXT, `notes` TEXT, `decidedAt` INTEGER, " +
             "`decisionRecordedByName` TEXT, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_submittals_projectId` ON `submittals` (`projectId`)",
+    )
+
+    /** Days the work could not go ahead, and why. */
+    val SQL_39_40: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `delay_events` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `cause` TEXT NOT NULL, `description` TEXT NOT NULL, " +
+            "`affectedWork` TEXT, `startedOnDay` INTEGER NOT NULL, `endedOnDay` INTEGER, " +
+            "`relatedReference` TEXT, `recordedByName` TEXT NOT NULL, `recordedAt` INTEGER NOT NULL, " +
+            "`endRecordedByName` TEXT, `notifiedTo` TEXT, `notifiedOnDay` INTEGER, " +
+            "`noticeRecordedByName` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_delay_events_projectId` ON `delay_events` (`projectId`)",
     )
 }

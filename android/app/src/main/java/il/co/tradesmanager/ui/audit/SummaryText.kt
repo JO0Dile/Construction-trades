@@ -99,6 +99,9 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.CUBES_RECORDED -> R.string.summary_cubes_recorded
     Summaries.CUSTOM_TRADE_REMOVED -> R.string.summary_custom_trade_removed
     Summaries.DAILY_LOG_SIGNED -> R.string.summary_daily_log_signed
+    Summaries.DE_ENDED -> R.string.summary_de_ended
+    Summaries.DE_NOTIFIED -> R.string.summary_de_notified
+    Summaries.DE_RECORDED -> R.string.summary_de_recorded
     Summaries.DELIVERED_ON -> R.string.summary_delivered_on
     Summaries.DRAWING_RECEIVED -> R.string.summary_drawing_received
     Summaries.DRAWING_SUPERSEDED -> R.string.summary_drawing_superseded

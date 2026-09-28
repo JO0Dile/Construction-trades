@@ -2180,6 +2180,77 @@
     <string name="hv_submittals">Materials still waiting for approval, or rejected and not sent again</string>
     <!-- Label on a search result -->
     <string name="search_kind_submittal">Material approval</string>
+    <string name="summary_de_ended">%1$s ended %2$s</string>
+    <string name="summary_de_notified">%1$s: notice given to %2$s</string>
+    <string name="summary_de_recorded">%1$s: work held from %2$s</string>
+    <!-- Screen title and job link -->
+    <string name="de_title">Delays</string>
+    <!-- Hint under the job link -->
+    <string name="de_row_hint">Days the work could not go ahead, why, and who was told</string>
+    <string name="de_empty">No delays recorded on this job.</string>
+    <string name="de_blurb">When rain, a late answer, the client or somebody else\'s connection stops the work, write it down on the day: what stopped, from when, and who was told. Months later that record is the one that counts.</string>
+    <!-- Button and dialog title -->
+    <string name="de_record">Record a delay</string>
+    <string name="de_overlap_note">Delays that overlap are each counted in full.</string>
+    <string name="de_no_notice">No notice recorded</string>
+    <string name="de_ended_title">When could the work go ahead again?</string>
+    <!-- %1$s and %2$s are dates -->
+    <string name="de_span">%1$s to %2$s</string>
+    <!-- %1$s is a date -->
+    <string name="de_since">Since %1$s, still going</string>
+    <!-- %1$s is the work affected -->
+    <string name="de_affected_is">Held: %1$s</string>
+    <!-- %1$s is a reference -->
+    <string name="de_related_is">Rests on: %1$s</string>
+    <!-- %1$s is a name -->
+    <string name="de_recorded_by">Recorded by %1$s</string>
+    <string name="de_notice">Notice</string>
+    <!-- %1$s is who was told, %2$s a date -->
+    <string name="de_notified">Notice given to %1$s on %2$s</string>
+    <string name="de_record_notice">Record the notice</string>
+    <string name="de_notice_blurb">Who was told, formally, and on what day. The letter or the email itself can go with it as a photograph.</string>
+    <string name="de_notified_to">Told to</string>
+    <string name="de_notice_on">On</string>
+    <string name="de_to_client">The client</string>
+    <!-- The owner's site supervisor -->
+    <string name="de_to_supervisor">The supervisor</string>
+    <string name="de_to_manager">The project manager</string>
+    <string name="de_photos">Photographs</string>
+    <string name="de_no_photos">No photographs yet.</string>
+    <string name="de_add_photo">Add a photograph</string>
+    <string name="de_end">It has ended</string>
+    <string name="de_cause">Why</string>
+    <string name="de_description">What happened</string>
+    <string name="de_description_hint">Rain from 6am, the slab could not be poured</string>
+    <string name="de_affected">The work it held</string>
+    <string name="de_related">What it rests on</string>
+    <string name="de_related_hint">Q-004, an instruction number, a letter</string>
+    <string name="de_started">Started</string>
+    <string name="de_save">Save</string>
+    <string name="de_cause_weather">Weather</string>
+    <string name="de_cause_information">Late information</string>
+    <string name="de_cause_client">Client change</string>
+    <string name="de_cause_access">No access</string>
+    <string name="de_cause_utilities">Utilities</string>
+    <string name="de_cause_authority">An authority</string>
+    <string name="de_cause_supply">Supply</string>
+    <string name="de_cause_labour">Labour</string>
+    <string name="de_cause_other">Other</string>
+    <string name="de_today">Today</string>
+    <string name="de_yesterday">Yesterday</string>
+    <string name="de_2_days_ago">2 days ago</string>
+    <string name="de_3_days_ago">3 days ago</string>
+    <string name="de_a_week_ago">A week ago</string>
+    <string name="de_refused_not_allowed">Your role does not plan the work.</string>
+    <string name="de_refused_description">Say what happened.</string>
+    <string name="de_refused_future">A delay that has not started yet is a warning, not a delay.</string>
+    <string name="de_refused_ends_early">It cannot end before it started.</string>
+    <string name="de_refused_ended">Its end is already recorded.</string>
+    <string name="de_refused_notice_given">Notice is already recorded for this delay.</string>
+    <string name="de_refused_nobody">Say who was told.</string>
+    <string name="de_refused_notice_early">Notice cannot be given before the delay started.</string>
+    <!-- Label on a search result -->
+    <string name="search_kind_delay">Delay</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -2271,5 +2342,17 @@
     <plurals name="cube_age_days">
         <item quantity="one">%d day</item>
         <item quantity="other">%d days</item>
+    </plurals>
+    <plurals name="de_events">
+        <item quantity="one">%d delay recorded</item>
+        <item quantity="other">%d delays recorded</item>
+    </plurals>
+    <plurals name="de_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <plurals name="de_without_notice">
+        <item quantity="one">%d with no notice recorded</item>
+        <item quantity="other">%d with no notice recorded</item>
     </plurals>
 </resources>

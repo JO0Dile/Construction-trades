@@ -130,6 +130,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.VISITOR)) hits += visitors(terms, jobNames)
         if (mayRead(Search.Kind.INSPECTION)) hits += inspections(terms, jobNames)
         if (mayRead(Search.Kind.SUBMITTAL)) hits += submittals(terms, jobNames)
+        if (mayRead(Search.Kind.DELAY)) hits += delays(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -439,6 +440,25 @@ class SearchViewModel(
                     projectId = submittal.projectId,
                 )
             }
+
+    /* ----------------------------------------------------------- the delays */
+    private suspend fun delays(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.delays.all().mapNotNull { event ->
+            hit(
+                id = event.id,
+                kind = Search.Kind.DELAY,
+                title = event.reference + " " + event.description,
+                detail = listOfNotNull(event.affectedWork, jobNames[event.projectId]).joinToString(" "),
+                // "Q-004" finds the delay the late answer caused.
+                matchAlso = listOfNotNull(event.relatedReference, event.notifiedTo).joinToString(" "),
+                isOpen = event.endedOnDay == null,
+                terms = terms,
+                projectId = event.projectId,
+            )
+        }
 
     /**
      * Scores a row, and drops it here rather than building a hit to throw away.

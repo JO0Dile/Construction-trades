@@ -13,6 +13,7 @@ import il.co.tradesmanager.data.repository.AuditTrail
 import il.co.tradesmanager.data.repository.CertificationRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
+import il.co.tradesmanager.data.repository.DelayRepository
 import il.co.tradesmanager.data.repository.DesignQueryRepository
 import il.co.tradesmanager.data.repository.DrawingRepository
 import il.co.tradesmanager.data.repository.EngagementRepository
@@ -194,6 +195,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Questions put to the designers, and their answers. */
     val designQueries = DesignQueryRepository(database.designQueryDao(), auditTrail)
+
+    /** Days the work could not go ahead, and why. */
+    val delays = DelayRepository(database.delayDao(), auditTrail)
 
     /** Materials sent for approval before they are ordered. */
     val submittals = SubmittalRepository(database.submittalDao(), auditTrail)

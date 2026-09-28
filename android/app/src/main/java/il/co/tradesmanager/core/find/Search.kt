@@ -98,6 +98,7 @@ object Search {
         VISITOR(setOf(Lens.EVIDENCE)),
         INSPECTION(setOf(Lens.EVIDENCE)),
         SUBMITTAL(setOf(Lens.PLAN)),
+        DELAY(setOf(Lens.PLAN)),
     }
 
     /**

@@ -2179,3 +2179,74 @@
 "hv_submittals" = "مواد لا تزال تنتظر الاعتماد، أو رُفضت ولم يُعد إرسالها";
 /* Label on a search result */
 "search_kind_submittal" = "اعتماد مادة";
+"summary_de_ended" = "انتهى %1$s في %2$s";
+"summary_de_notified" = "%1$s: أُبلغ %2$s";
+"summary_de_recorded" = "%1$s: توقف العمل منذ %2$s";
+/* Screen title and job link */
+"de_title" = "التأخيرات";
+/* Hint under the job link */
+"de_row_hint" = "أيام تعذّر فيها العمل، ولماذا، ومَن أُبلغ";
+"de_empty" = "لم تُسجَّل تأخيرات في هذا المشروع.";
+"de_blurb" = "عندما يوقف المطر أو إجابة متأخرة أو صاحب العمل أو توصيلة جهة أخرى العمل، سجّل ذلك في اليوم نفسه: ما الذي توقف، ومنذ متى، ومَن أُبلغ. بعد أشهر، هذا السجل هو ما يُعتدّ به.";
+/* Button and dialog title */
+"de_record" = "تسجيل تأخير";
+"de_overlap_note" = "التأخيرات المتداخلة يُحسب كل منها كاملًا.";
+"de_no_notice" = "لم يُسجَّل إشعار";
+"de_ended_title" = "متى أمكن استئناف العمل؟";
+/* %1$s and %2$s are dates */
+"de_span" = "من %1$s إلى %2$s";
+/* %1$s is a date */
+"de_since" = "منذ %1$s، ولا يزال مستمرًا";
+/* %1$s is the work affected */
+"de_affected_is" = "تعطّل: %1$s";
+/* %1$s is a reference */
+"de_related_is" = "يستند إلى: %1$s";
+/* %1$s is a name */
+"de_recorded_by" = "سجّله %1$s";
+"de_notice" = "الإشعار";
+/* %1$s is who was told, %2$s a date */
+"de_notified" = "أُبلغ %1$s في %2$s";
+"de_record_notice" = "تسجيل الإشعار";
+"de_notice_blurb" = "مَن أُبلغ رسميًا، وفي أي يوم. ويمكن إرفاق الرسالة أو البريد نفسه كصورة.";
+"de_notified_to" = "أُبلغ إلى";
+"de_notice_on" = "في يوم";
+"de_to_client" = "صاحب العمل";
+/* The owner's site supervisor */
+"de_to_supervisor" = "المشرف";
+"de_to_manager" = "مدير المشروع";
+"de_photos" = "الصور";
+"de_no_photos" = "لا توجد صور بعد.";
+"de_add_photo" = "إضافة صورة";
+"de_end" = "انتهى التأخير";
+"de_cause" = "السبب";
+"de_description" = "ماذا حدث";
+"de_description_hint" = "مطر منذ السادسة صباحًا، تعذّر صبّ السقف";
+"de_affected" = "العمل الذي تعطّل";
+"de_related" = "ما يستند إليه";
+"de_related_hint" = "Q-004، رقم تعليمات، رسالة";
+"de_started" = "بدأ";
+"de_save" = "حفظ";
+"de_cause_weather" = "الطقس";
+"de_cause_information" = "معلومات متأخرة";
+"de_cause_client" = "تغيير من صاحب العمل";
+"de_cause_access" = "لا وصول";
+"de_cause_utilities" = "المرافق";
+"de_cause_authority" = "جهة رسمية";
+"de_cause_supply" = "التوريد";
+"de_cause_labour" = "العمالة";
+"de_cause_other" = "أخرى";
+"de_today" = "اليوم";
+"de_yesterday" = "أمس";
+"de_2_days_ago" = "قبل يومين";
+"de_3_days_ago" = "قبل 3 أيام";
+"de_a_week_ago" = "قبل أسبوع";
+"de_refused_not_allowed" = "دورك لا يخطط للعمل.";
+"de_refused_description" = "اذكر ما حدث.";
+"de_refused_future" = "التأخير الذي لم يبدأ بعد تحذير وليس تأخيرًا.";
+"de_refused_ends_early" = "لا يمكن أن ينتهي قبل أن يبدأ.";
+"de_refused_ended" = "نهايته مسجلة بالفعل.";
+"de_refused_notice_given" = "الإشعار مسجل بالفعل لهذا التأخير.";
+"de_refused_nobody" = "اذكر مَن أُبلغ.";
+"de_refused_notice_early" = "لا يمكن الإشعار قبل بدء التأخير.";
+/* Label on a search result */
+"search_kind_delay" = "تأخير";

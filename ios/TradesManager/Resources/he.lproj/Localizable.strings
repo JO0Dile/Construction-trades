@@ -2179,3 +2179,74 @@
 "hv_submittals" = "חומרים שעדיין ממתינים לאישור, או שנדחו ולא נשלחו שוב";
 /* Label on a search result */
 "search_kind_submittal" = "אישור חומר";
+"summary_de_ended" = "%1$s הסתיים ב־%2$s";
+"summary_de_notified" = "%1$s: נמסרה הודעה ל־%2$s";
+"summary_de_recorded" = "%1$s: העבודה עוכבה מ־%2$s";
+/* Screen title and job link */
+"de_title" = "עיכובים";
+/* Hint under the job link */
+"de_row_hint" = "ימים שבהם העבודה לא התקדמה, למה, ולמי נמסרה הודעה";
+"de_empty" = "לא נרשמו עיכובים בעבודה הזו.";
+"de_blurb" = "כשגשם, תשובה מאוחרת, המזמין או חיבור של גורם אחר עוצרים את העבודה, רשמו את זה באותו יום: מה נעצר, ממתי, ולמי נמסרה הודעה. חודשים אחר כך, הרישום הזה הוא מה שקובע.";
+/* Button and dialog title */
+"de_record" = "רישום עיכוב";
+"de_overlap_note" = "עיכובים חופפים נספרים כל אחד במלואו.";
+"de_no_notice" = "לא נרשמה הודעה";
+"de_ended_title" = "מתי העבודה יכלה להמשיך?";
+/* %1$s and %2$s are dates */
+"de_span" = "%1$s עד %2$s";
+/* %1$s is a date */
+"de_since" = "מאז %1$s, עדיין נמשך";
+/* %1$s is the work affected */
+"de_affected_is" = "עוכב: %1$s";
+/* %1$s is a reference */
+"de_related_is" = "מתבסס על: %1$s";
+/* %1$s is a name */
+"de_recorded_by" = "נרשם על ידי %1$s";
+"de_notice" = "הודעה";
+/* %1$s is who was told, %2$s a date */
+"de_notified" = "נמסרה הודעה ל־%1$s ב־%2$s";
+"de_record_notice" = "רישום ההודעה";
+"de_notice_blurb" = "למי נמסרה הודעה רשמית, ובאיזה יום. אפשר לצרף את המכתב או המייל עצמו כצילום.";
+"de_notified_to" = "נמסרה ל־";
+"de_notice_on" = "ביום";
+"de_to_client" = "המזמין";
+/* The owner's site supervisor */
+"de_to_supervisor" = "המפקח";
+"de_to_manager" = "מנהל הפרויקט";
+"de_photos" = "צילומים";
+"de_no_photos" = "עדיין אין צילומים.";
+"de_add_photo" = "הוספת צילום";
+"de_end" = "העיכוב הסתיים";
+"de_cause" = "סיבה";
+"de_description" = "מה קרה";
+"de_description_hint" = "גשם מ־6 בבוקר, לא ניתן היה לצקת את התקרה";
+"de_affected" = "העבודה שעוכבה";
+"de_related" = "על מה זה מתבסס";
+"de_related_hint" = "Q-004, מספר הוראה, מכתב";
+"de_started" = "התחיל";
+"de_save" = "שמירה";
+"de_cause_weather" = "מזג אוויר";
+"de_cause_information" = "מידע שהתעכב";
+"de_cause_client" = "שינוי של המזמין";
+"de_cause_access" = "אין גישה";
+"de_cause_utilities" = "תשתיות";
+"de_cause_authority" = "רשות";
+"de_cause_supply" = "אספקה";
+"de_cause_labour" = "כוח אדם";
+"de_cause_other" = "אחר";
+"de_today" = "היום";
+"de_yesterday" = "אתמול";
+"de_2_days_ago" = "לפני יומיים";
+"de_3_days_ago" = "לפני 3 ימים";
+"de_a_week_ago" = "לפני שבוע";
+"de_refused_not_allowed" = "התפקיד שלך לא מתכנן את העבודה.";
+"de_refused_description" = "כתבו מה קרה.";
+"de_refused_future" = "עיכוב שעוד לא התחיל הוא אזהרה, לא עיכוב.";
+"de_refused_ends_early" = "עיכוב לא יכול להסתיים לפני שהתחיל.";
+"de_refused_ended" = "סיום העיכוב כבר נרשם.";
+"de_refused_notice_given" = "כבר נרשמה הודעה על העיכוב הזה.";
+"de_refused_nobody" = "כתבו למי נמסרה ההודעה.";
+"de_refused_notice_early" = "אי אפשר למסור הודעה לפני שהעיכוב התחיל.";
+/* Label on a search result */
+"search_kind_delay" = "עיכוב";

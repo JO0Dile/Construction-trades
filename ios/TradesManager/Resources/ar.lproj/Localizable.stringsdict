@@ -555,5 +555,77 @@
             <string>%d يوم</string>
         </dict>
     </dict>
+    <key>de_events</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لم يُسجَّل أي تأخير</string>
+            <key>one</key>
+            <string>تأخير واحد مسجل</string>
+            <key>two</key>
+            <string>تأخيران مسجلان</string>
+            <key>few</key>
+            <string>%d تأخيرات مسجلة</string>
+            <key>many</key>
+            <string>%d تأخيرًا مسجلًا</string>
+            <key>other</key>
+            <string>%d تأخير مسجل</string>
+        </dict>
+    </dict>
+    <key>de_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا أيام</string>
+            <key>one</key>
+            <string>يوم واحد</string>
+            <key>two</key>
+            <string>يومان</string>
+            <key>few</key>
+            <string>%d أيام</string>
+            <key>many</key>
+            <string>%d يومًا</string>
+            <key>other</key>
+            <string>%d يوم</string>
+        </dict>
+    </dict>
+    <key>de_without_notice</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا شيء منها بلا إشعار</string>
+            <key>one</key>
+            <string>واحد منها بلا إشعار مسجل</string>
+            <key>two</key>
+            <string>اثنان منها بلا إشعار مسجل</string>
+            <key>few</key>
+            <string>%d منها بلا إشعار مسجل</string>
+            <key>many</key>
+            <string>%d منها بلا إشعار مسجل</string>
+            <key>other</key>
+            <string>%d منها بلا إشعار مسجل</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

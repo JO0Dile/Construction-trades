@@ -93,6 +93,13 @@ class PhotoRepository(
         const val SUBMITTAL = "submittal"
 
         /**
+         * What a delay looked like on the day: the flooded trench, the
+         * locked gate, the empty slab waiting for a drawing. Against one
+         * delay event.
+         */
+        const val DELAY = "delay"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

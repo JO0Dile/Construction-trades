@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.32.0",
+      "points": [
+        {
+          "en": "Each job gets a delay register. When rain, a late answer, the client, an authority or somebody else's connection stops the work, record it on the day: the cause, what happened, the work it held, and what it rests on, such as a question number. It is numbered DE-001.",
+          "he": "לכל עבודה יש עכשיו פנקס עיכובים. כשגשם, תשובה מאוחרת, המזמין, רשות או חיבור של גורם אחר עוצרים את העבודה, רושמים את זה באותו יום: הסיבה, מה קרה, העבודה שעוכבה, ועל מה זה מתבסס, למשל מספר שאלה. כל עיכוב ממוספר DE-001.",
+          "ar": "لكل مشروع الآن سجل تأخيرات. عندما يوقف المطر أو إجابة متأخرة أو صاحب العمل أو جهة رسمية أو توصيلة جهة أخرى العمل، سجّله في اليوم نفسه: السبب، وما حدث، والعمل الذي تعطّل، وما يستند إليه مثل رقم سؤال. يُرقَّم كل تأخير DE-001."
+        },
+        {
+          "en": "Record the day it ended, and the notice: who was told and on what day. The top of the register adds up the days by cause, and counts in red the delays with no notice recorded, which are the ones most easily lost later. Photographs of the day can go with each one.",
+          "he": "רושמים את היום שבו העיכוב הסתיים, ואת ההודעה: למי נמסרה ובאיזה יום. בראש הפנקס מסוכמים הימים לפי סיבה, ובאדום נספרים העיכובים שלא נרשמה עליהם הודעה, שהם אלה שהכי קל לאבד בהמשך. אפשר לצרף לכל עיכוב צילומים מאותו יום.",
+          "ar": "سجّل يوم انتهاء التأخير، والإشعار: مَن أُبلغ وفي أي يوم. يجمع أعلى السجل الأيام حسب السبب، ويحصي باللون الأحمر التأخيرات التي لم يُسجَّل لها إشعار، وهي الأسهل ضياعًا لاحقًا. ويمكن إرفاق صور من ذلك اليوم بكل تأخير."
+        },
+        {
+          "en": "The search box finds delays by number, what happened, the work held, or the reference they rest on, so \"Q-004\" finds the delay a late answer caused.",
+          "he": "תיבת החיפוש מוצאת עיכובים לפי מספר, מה קרה, העבודה שעוכבה או ההפניה שעליה הם מתבססים, כך ש־\"Q-004\" מוצא את העיכוב שתשובה מאוחרת גרמה לו.",
+          "ar": "يجد صندوق البحث التأخيرات برقمها أو بما حدث أو بالعمل الذي تعطّل أو بالمرجع الذي تستند إليه، فيجد \"Q-004\" التأخير الذي سبّبته إجابة متأخرة."
+        }
+      ]
+    },
+    {
       "version": "0.31.0",
       "points": [
         {
