@@ -210,7 +210,7 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
         }
     }
 
-    /** Days the work could not go ahead, and why.
+    /** Days the work could not go ahead, and why. */
     val delays = DelayRepository(database.delayDao(), auditTrail)
 
     /** Materials sent for approval before they are ordered. */
