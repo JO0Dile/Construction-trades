@@ -2397,3 +2397,15 @@
 "ex_col_review" = "בדיקה חוזרת";
 /* Label on a search result */
 "search_kind_risk" = "סיכון";
+/* Daily log line */
+"log_pours" = "יציקות בטון שהתחילו";
+/* Daily log line */
+"log_inspections_passed" = "בדיקות שאושרו";
+/* Daily log line */
+"log_inspections_failed" = "בדיקות שנפסלו";
+/* Daily log line: delay events that ran that day */
+"log_delays" = "עיכובים שנמשכו";
+/* Daily log line */
+"log_visitors" = "מבקרים שנרשמו";
+/* Daily log line */
+"log_drawings" = "תוכניות שהתקבלו";

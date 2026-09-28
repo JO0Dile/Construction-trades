@@ -1888,6 +1888,12 @@
     <string name="ra_refused_closed">هذا الخطر مغلق.</string>
     <string name="ex_col_review">المراجعة</string>
     <string name="search_kind_risk">خطر</string>
+    <string name="log_pours">صبّات خرسانة بدأت</string>
+    <string name="log_inspections_passed">فحوصات اجتيزت</string>
+    <string name="log_inspections_failed">فحوصات لم تُجتز</string>
+    <string name="log_delays">تأخيرات جارية</string>
+    <string name="log_visitors">زوار سُجّلوا</string>
+    <string name="log_drawings">مخططات وردت</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

@@ -113,4 +113,56 @@ interface DailyLogDao {
         """,
     )
     suspend fun checkedIn(projectId: String, from: Long, to: Long): Int
+
+    @Query(
+        """
+        SELECT COUNT(*) FROM concrete_pours
+        WHERE projectId = :projectId AND startedAt >= :from AND startedAt <= :to
+        """,
+    )
+    suspend fun poursStarted(projectId: String, from: Long, to: Long): Int
+
+    /** The result names are core.evidence.Inspections.Result's, as stored. */
+    @Query(
+        """
+        SELECT COUNT(*) FROM inspections
+        WHERE projectId = :projectId AND decidedAt >= :from AND decidedAt <= :to
+          AND result IN ('PASSED', 'PASSED_WITH_COMMENTS')
+        """,
+    )
+    suspend fun inspectionsPassed(projectId: String, from: Long, to: Long): Int
+
+    @Query(
+        """
+        SELECT COUNT(*) FROM inspections
+        WHERE projectId = :projectId AND decidedAt >= :from AND decidedAt <= :to AND result = 'FAILED'
+        """,
+    )
+    suspend fun inspectionsFailed(projectId: String, from: Long, to: Long): Int
+
+    /** Delays are kept as calendar days, so this one takes the day itself rather than a window. */
+    @Query(
+        """
+        SELECT COUNT(*) FROM delay_events
+        WHERE projectId = :projectId AND startedOnDay <= :epochDay
+          AND (endedOnDay IS NULL OR endedOnDay >= :epochDay)
+        """,
+    )
+    suspend fun delaysRunning(projectId: String, epochDay: Long): Int
+
+    @Query(
+        """
+        SELECT COUNT(*) FROM site_visits
+        WHERE projectId = :projectId AND arrivedAt >= :from AND arrivedAt <= :to
+        """,
+    )
+    suspend fun visitors(projectId: String, from: Long, to: Long): Int
+
+    @Query(
+        """
+        SELECT COUNT(*) FROM drawings
+        WHERE projectId = :projectId AND receivedAt >= :from AND receivedAt <= :to
+        """,
+    )
+    suspend fun drawingsReceived(projectId: String, from: Long, to: Long): Int
 }

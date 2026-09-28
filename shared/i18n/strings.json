@@ -9958,6 +9958,42 @@
       "en": "Risk",
       "he": "סיכון",
       "ar": "خطر"
+    },
+    "log_pours": {
+      "c": "Daily log line",
+      "en": "Concrete pours started",
+      "he": "יציקות בטון שהתחילו",
+      "ar": "صبّات خرسانة بدأت"
+    },
+    "log_inspections_passed": {
+      "c": "Daily log line",
+      "en": "Inspections passed",
+      "he": "בדיקות שאושרו",
+      "ar": "فحوصات اجتيزت"
+    },
+    "log_inspections_failed": {
+      "c": "Daily log line",
+      "en": "Inspections failed",
+      "he": "בדיקות שנפסלו",
+      "ar": "فحوصات لم تُجتز"
+    },
+    "log_delays": {
+      "c": "Daily log line: delay events that ran that day",
+      "en": "Delays running",
+      "he": "עיכובים שנמשכו",
+      "ar": "تأخيرات جارية"
+    },
+    "log_visitors": {
+      "c": "Daily log line",
+      "en": "Visitors signed in",
+      "he": "מבקרים שנרשמו",
+      "ar": "زوار سُجّلوا"
+    },
+    "log_drawings": {
+      "c": "Daily log line",
+      "en": "Drawings received",
+      "he": "תוכניות שהתקבלו",
+      "ar": "مخططات وردت"
     }
   },
   "plurals": {

@@ -72,6 +72,12 @@ class DailyLogRepository(
             snagsRaised = dao.snagsRaised(projectId, from, to),
             incidents = dao.incidents(projectId, from, to),
             checkedIn = dao.checkedIn(projectId, from, to),
+            poursStarted = dao.poursStarted(projectId, from, to),
+            inspectionsPassed = dao.inspectionsPassed(projectId, from, to),
+            inspectionsFailed = dao.inspectionsFailed(projectId, from, to),
+            delaysRunning = dao.delaysRunning(projectId, logDate),
+            visitors = dao.visitors(projectId, from, to),
+            drawingsReceived = dao.drawingsReceived(projectId, from, to),
         )
     }
 

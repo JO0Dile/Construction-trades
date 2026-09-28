@@ -2398,6 +2398,18 @@
     <string name="ex_col_review">Review</string>
     <!-- Label on a search result -->
     <string name="search_kind_risk">Risk</string>
+    <!-- Daily log line -->
+    <string name="log_pours">Concrete pours started</string>
+    <!-- Daily log line -->
+    <string name="log_inspections_passed">Inspections passed</string>
+    <!-- Daily log line -->
+    <string name="log_inspections_failed">Inspections failed</string>
+    <!-- Daily log line: delay events that ran that day -->
+    <string name="log_delays">Delays running</string>
+    <!-- Daily log line -->
+    <string name="log_visitors">Visitors signed in</string>
+    <!-- Daily log line -->
+    <string name="log_drawings">Drawings received</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

@@ -2397,3 +2397,15 @@
 "ex_col_review" = "Review";
 /* Label on a search result */
 "search_kind_risk" = "Risk";
+/* Daily log line */
+"log_pours" = "Concrete pours started";
+/* Daily log line */
+"log_inspections_passed" = "Inspections passed";
+/* Daily log line */
+"log_inspections_failed" = "Inspections failed";
+/* Daily log line: delay events that ran that day */
+"log_delays" = "Delays running";
+/* Daily log line */
+"log_visitors" = "Visitors signed in";
+/* Daily log line */
+"log_drawings" = "Drawings received";

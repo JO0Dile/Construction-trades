@@ -1888,6 +1888,12 @@
     <string name="ra_refused_closed">הסיכון הזה סגור.</string>
     <string name="ex_col_review">בדיקה חוזרת</string>
     <string name="search_kind_risk">סיכון</string>
+    <string name="log_pours">יציקות בטון שהתחילו</string>
+    <string name="log_inspections_passed">בדיקות שאושרו</string>
+    <string name="log_inspections_failed">בדיקות שנפסלו</string>
+    <string name="log_delays">עיכובים שנמשכו</string>
+    <string name="log_visitors">מבקרים שנרשמו</string>
+    <string name="log_drawings">תוכניות שהתקבלו</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

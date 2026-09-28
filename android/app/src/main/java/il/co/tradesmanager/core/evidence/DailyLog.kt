@@ -106,10 +106,27 @@ object DailyLog {
          * two is itself worth a site manager's attention.
          */
         val checkedIn: Int = 0,
+        /** Concrete pours started that day. */
+        val poursStarted: Int = 0,
+        /** Inspections passed that day, with or without comments. */
+        val inspectionsPassed: Int = 0,
+        val inspectionsFailed: Int = 0,
+        /**
+         * Delay events that ran on the day, begun that day or earlier and not
+         * ended before it: a delay into its third week is on every one of its
+         * days' logs, which is what a claim reads them for.
+         */
+        val delaysRunning: Int = 0,
+        /** People signed in at the gate as visitors that day. */
+        val visitors: Int = 0,
+        /** Drawings, or revisions of them, received that day. */
+        val drawingsReceived: Int = 0,
     ) {
         /** True when the app watched nothing happen — worth saying out loud. */
         val isQuiet: Boolean
             get() = tasksCompleted == 0 && deliveries == 0 && permitsIssued == 0 &&
-                talksHeld == 0 && snagsRaised == 0 && incidents == 0 && checkedIn == 0
+                talksHeld == 0 && snagsRaised == 0 && incidents == 0 && checkedIn == 0 &&
+                poursStarted == 0 && inspectionsPassed == 0 && inspectionsFailed == 0 &&
+                delaysRunning == 0 && visitors == 0 && drawingsReceived == 0
     }
 }

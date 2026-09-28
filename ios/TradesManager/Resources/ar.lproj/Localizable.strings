@@ -2397,3 +2397,15 @@
 "ex_col_review" = "المراجعة";
 /* Label on a search result */
 "search_kind_risk" = "خطر";
+/* Daily log line */
+"log_pours" = "صبّات خرسانة بدأت";
+/* Daily log line */
+"log_inspections_passed" = "فحوصات اجتيزت";
+/* Daily log line */
+"log_inspections_failed" = "فحوصات لم تُجتز";
+/* Daily log line: delay events that ran that day */
+"log_delays" = "تأخيرات جارية";
+/* Daily log line */
+"log_visitors" = "زوار سُجّلوا";
+/* Daily log line */
+"log_drawings" = "مخططات وردت";

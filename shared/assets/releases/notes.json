@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.36.0",
+      "points": [
+        {
+          "en": "The daily log now gathers more of the day by itself: concrete pours started, inspections passed and failed, delays that ran that day, visitors signed in, and drawings received, beside the tasks, deliveries, permits, talks, snags, incidents and people it already counted.",
+          "he": "יומן העבודה אוסף עכשיו לבד יותר מהיום: יציקות בטון שהתחילו, בדיקות שאושרו ושנפסלו, עיכובים שנמשכו באותו יום, מבקרים שנרשמו ותוכניות שהתקבלו, לצד המשימות, האספקות, ההיתרים, התדריכים, הליקויים, האירועים והאנשים שכבר ספר.",
+          "ar": "يجمع سجل العمل اليومي الآن المزيد من اليوم تلقائيًا: صبّات الخرسانة التي بدأت، والفحوصات المجتازة وغير المجتازة، والتأخيرات الجارية في ذلك اليوم، والزوار المسجلين، والمخططات الواردة، إلى جانب المهام والتوريدات والتصاريح والإحاطات والعيوب والحوادث والأشخاص الذين كان يحصيهم."
+        },
+        {
+          "en": "A delay is counted on every day it ran, not only the day it began, so each day's log shows what was holding the work.",
+          "he": "עיכוב נספר בכל יום שבו נמשך, לא רק ביום שבו התחיל, כך שהיומן של כל יום מראה מה עיכב את העבודה.",
+          "ar": "يُحسب التأخير في كل يوم استمر فيه، لا في يوم بدئه فقط، فيُظهر سجل كل يوم ما كان يعيق العمل."
+        }
+      ]
+    },
+    {
       "version": "0.35.0",
       "points": [
         {
