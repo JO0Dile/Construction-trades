@@ -30,6 +30,7 @@ import il.co.tradesmanager.data.repository.MusterRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.PlantExaminationRepository
+import il.co.tradesmanager.data.repository.RiskRepository
 import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
@@ -209,6 +210,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
             }
         }
     }
+
+    /** The job's risk assessment: hazards, scored before and after their controls. */
+    val risks = RiskRepository(database.riskDao(), auditTrail)
 
     /** Days the work could not go ahead, and why. */
     val delays = DelayRepository(database.delayDao(), auditTrail)

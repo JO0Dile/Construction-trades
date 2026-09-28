@@ -858,6 +858,33 @@
       "he": "%1$s נשאלה אצל %2$s",
       "ar": "%1$s وُجّه إلى %2$s"
     },
+    "ra_assessed": {
+      "arguments": [
+        "reference",
+        "residual"
+      ],
+      "en": "%1$s assessed, residual risk %2$s",
+      "he": "%1$s הוערך, סיכון שיורי %2$s",
+      "ar": "قُيّم %1$s، الخطر المتبقي %2$s"
+    },
+    "ra_closed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s closed",
+      "he": "%1$s נסגר",
+      "ar": "أُغلق %1$s"
+    },
+    "ra_reviewed": {
+      "arguments": [
+        "reference",
+        "was",
+        "now"
+      ],
+      "en": "%1$s reviewed, residual risk %2$s to %3$s",
+      "he": "%1$s נבדק מחדש, סיכון שיורי מ־%2$s ל־%3$s",
+      "ar": "روجع %1$s، الخطر المتبقي من %2$s إلى %3$s"
+    },
     "reports_to": {
       "arguments": [
         "boss"

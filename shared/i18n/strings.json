@@ -9614,6 +9614,350 @@
       "en": "Still going",
       "he": "עדיין נמשך",
       "ar": "لا يزال مستمرًا"
+    },
+    "summary_ra_assessed": {
+      "en": "%1$s assessed, residual risk %2$s",
+      "he": "%1$s הוערך, סיכון שיורי %2$s",
+      "ar": "قُيّم %1$s، الخطر المتبقي %2$s"
+    },
+    "summary_ra_closed": {
+      "en": "%1$s closed",
+      "he": "%1$s נסגר",
+      "ar": "أُغلق %1$s"
+    },
+    "summary_ra_reviewed": {
+      "en": "%1$s reviewed, residual risk %2$s to %3$s",
+      "he": "%1$s נבדק מחדש, סיכון שיורי מ־%2$s ל־%3$s",
+      "ar": "روجع %1$s، الخطر المتبقي من %2$s إلى %3$s"
+    },
+    "ra_title": {
+      "c": "Screen title and job link: the job's risk assessment",
+      "en": "Risk assessment",
+      "he": "סקר סיכונים",
+      "ar": "تقييم المخاطر"
+    },
+    "ra_row_hint": {
+      "c": "Hint under the job link",
+      "en": "What could hurt somebody, how badly, and what is done about it",
+      "he": "מה עלול לפגוע במישהו, כמה חמור, ומה נעשה בעניין",
+      "ar": "ما قد يؤذي أحدًا، ومدى خطورته، وما يُفعل حياله"
+    },
+    "ra_empty": {
+      "en": "No risks assessed on this job yet.",
+      "he": "עדיין לא הוערכו סיכונים בעבודה הזו.",
+      "ar": "لم تُقيَّم أي مخاطر في هذا المشروع بعد."
+    },
+    "ra_blurb": {
+      "en": "For each activity, write what could hurt somebody and who, score it from one to five for how likely and how bad, then again with the controls in place. A risk that is still extreme with its controls is shown first, in red.",
+      "he": "לכל פעילות, כתבו מה עלול לפגוע ובמי, דרגו מאחת עד חמש את הסבירות ואת החומרה, ושוב עם אמצעי הבקרה במקומם. סיכון שנשאר קיצוני גם עם אמצעי הבקרה מוצג ראשון, באדום.",
+      "ar": "لكل نشاط، اكتب ما قد يؤذي ومَن، وقيّم من واحد إلى خمسة مدى الاحتمال والخطورة، ثم مرة أخرى مع وجود تدابير التحكم. الخطر الذي يبقى شديدًا مع تدابيره يظهر أولًا باللون الأحمر."
+    },
+    "ra_add": {
+      "c": "Button and dialog title",
+      "en": "Assess a risk",
+      "he": "הערכת סיכון",
+      "ar": "تقييم خطر"
+    },
+    "ra_activity": {
+      "en": "Activity",
+      "he": "פעילות",
+      "ar": "النشاط"
+    },
+    "ra_activity_hint": {
+      "en": "Formwork at the slab edge, level 5",
+      "he": "טפסנות בשפת התקרה, קומה 5",
+      "ar": "القوالب عند حافة السقف، الطابق 5"
+    },
+    "ra_hazard": {
+      "en": "Hazard",
+      "he": "גורם סיכון",
+      "ar": "مصدر الخطر"
+    },
+    "ra_hazard_hint": {
+      "en": "Fall from height",
+      "he": "נפילה מגובה",
+      "ar": "السقوط من ارتفاع"
+    },
+    "ra_who": {
+      "en": "Who is at risk",
+      "he": "מי בסיכון",
+      "ar": "مَن المعرَّض للخطر"
+    },
+    "ra_who_is": {
+      "c": "%1$s is who is at risk",
+      "en": "At risk: %1$s",
+      "he": "בסיכון: %1$s",
+      "ar": "المعرَّضون: %1$s"
+    },
+    "ra_likelihood": {
+      "en": "How likely",
+      "he": "סבירות",
+      "ar": "الاحتمال"
+    },
+    "ra_severity": {
+      "en": "How bad",
+      "he": "חומרה",
+      "ar": "الخطورة"
+    },
+    "ra_l1": {
+      "c": "Likelihood 1",
+      "en": "Rare",
+      "he": "נדיר",
+      "ar": "نادر"
+    },
+    "ra_l2": {
+      "c": "Likelihood 2",
+      "en": "Unlikely",
+      "he": "לא סביר",
+      "ar": "غير مرجّح"
+    },
+    "ra_l3": {
+      "c": "Likelihood 3",
+      "en": "Possible",
+      "he": "אפשרי",
+      "ar": "ممكن"
+    },
+    "ra_l4": {
+      "c": "Likelihood 4",
+      "en": "Likely",
+      "he": "סביר",
+      "ar": "مرجّح"
+    },
+    "ra_l5": {
+      "c": "Likelihood 5",
+      "en": "Almost certain",
+      "he": "כמעט ודאי",
+      "ar": "شبه مؤكد"
+    },
+    "ra_s1": {
+      "c": "Severity 1",
+      "en": "Negligible",
+      "he": "זניח",
+      "ar": "طفيف"
+    },
+    "ra_s2": {
+      "c": "Severity 2",
+      "en": "Minor",
+      "he": "קל",
+      "ar": "بسيط"
+    },
+    "ra_s3": {
+      "c": "Severity 3",
+      "en": "Moderate",
+      "he": "בינוני",
+      "ar": "متوسط"
+    },
+    "ra_s4": {
+      "c": "Severity 4",
+      "en": "Major",
+      "he": "חמור",
+      "ar": "كبير"
+    },
+    "ra_s5": {
+      "c": "Severity 5",
+      "en": "Catastrophic",
+      "he": "הרסני",
+      "ar": "كارثي"
+    },
+    "ra_band_low": {
+      "en": "low",
+      "he": "נמוך",
+      "ar": "منخفض"
+    },
+    "ra_band_medium": {
+      "en": "medium",
+      "he": "בינוני",
+      "ar": "متوسط"
+    },
+    "ra_band_high": {
+      "en": "high",
+      "he": "גבוה",
+      "ar": "مرتفع"
+    },
+    "ra_band_extreme": {
+      "en": "extreme",
+      "he": "קיצוני",
+      "ar": "شديد"
+    },
+    "ra_before": {
+      "en": "Before the controls",
+      "he": "לפני אמצעי הבקרה",
+      "ar": "قبل تدابير التحكم"
+    },
+    "ra_after": {
+      "en": "With the controls",
+      "he": "עם אמצעי הבקרה",
+      "ar": "مع تدابير التحكم"
+    },
+    "ra_controls": {
+      "en": "Controls",
+      "he": "אמצעי בקרה",
+      "ar": "تدابير التحكم"
+    },
+    "ra_controls_hint": {
+      "en": "Edge protection, harness clipped to the anchor line",
+      "he": "מעקה בטיחות, רתמה מחוברת לקו העיגון",
+      "ar": "حماية الحافة، وحزام مثبّت بخط الإرساء"
+    },
+    "ra_no_controls": {
+      "en": "No controls written.",
+      "he": "לא נכתבו אמצעי בקרה.",
+      "ar": "لم تُكتب تدابير تحكم."
+    },
+    "ra_scores": {
+      "c": "%1$d is the score before, %2$d after, %3$s the band after",
+      "en": "Before %1$d · with controls %2$d, %3$s",
+      "he": "לפני %1$d · עם בקרה %2$d, %3$s",
+      "ar": "قبل %1$d · مع التحكم %2$d، %3$s"
+    },
+    "ra_score_detail": {
+      "c": "%1$s likelihood word, %2$s severity word, %3$d score, %4$s band",
+      "en": "%1$s × %2$s = %3$d, %4$s",
+      "he": "%1$s × %2$s = %3$d, %4$s",
+      "ar": "%1$s × %2$s = %3$d، %4$s"
+    },
+    "ra_still_extreme": {
+      "en": "Still extreme with the controls in place",
+      "he": "נשאר קיצוני גם עם אמצעי הבקרה",
+      "ar": "لا يزال شديدًا مع وجود تدابير التحكم"
+    },
+    "ra_review_overdue": {
+      "c": "%1$s is a date",
+      "en": "Review overdue since %1$s",
+      "he": "הבדיקה החוזרת באיחור מאז %1$s",
+      "ar": "المراجعة متأخرة منذ %1$s"
+    },
+    "ra_review_by": {
+      "c": "%1$s is a date",
+      "en": "Review by %1$s",
+      "he": "בדיקה חוזרת עד %1$s",
+      "ar": "المراجعة قبل %1$s"
+    },
+    "ra_closed": {
+      "en": "Closed",
+      "he": "נסגר",
+      "ar": "مغلق"
+    },
+    "ra_owner": {
+      "en": "Who sees to the controls",
+      "he": "האחראי על אמצעי הבקרה",
+      "ar": "المسؤول عن تدابير التحكم"
+    },
+    "ra_owner_is": {
+      "c": "%1$s is a name",
+      "en": "Controls: %1$s",
+      "he": "אחראי: %1$s",
+      "ar": "المسؤول: %1$s"
+    },
+    "ra_recorded_by": {
+      "c": "%1$s is a name",
+      "en": "Assessed by %1$s",
+      "he": "הוערך על ידי %1$s",
+      "ar": "قيّمه %1$s"
+    },
+    "ra_reviewed_by": {
+      "c": "%1$s is a name",
+      "en": "last reviewed by %1$s",
+      "he": "נבדק לאחרונה על ידי %1$s",
+      "ar": "روجع آخر مرة من %1$s"
+    },
+    "ra_review": {
+      "en": "Review",
+      "he": "בדיקה חוזרת",
+      "ar": "مراجعة"
+    },
+    "ra_review_in": {
+      "en": "Review again",
+      "he": "בדיקה חוזרת בעוד",
+      "ar": "المراجعة التالية"
+    },
+    "ra_no_review": {
+      "en": "No date",
+      "he": "ללא תאריך",
+      "ar": "بلا تاريخ"
+    },
+    "ra_in_a_week": {
+      "en": "In a week",
+      "he": "בעוד שבוע",
+      "ar": "بعد أسبوع"
+    },
+    "ra_in_a_month": {
+      "en": "In a month",
+      "he": "בעוד חודש",
+      "ar": "بعد شهر"
+    },
+    "ra_in_3_months": {
+      "en": "In 3 months",
+      "he": "בעוד 3 חודשים",
+      "ar": "بعد 3 أشهر"
+    },
+    "ra_save": {
+      "en": "Save",
+      "he": "שמירה",
+      "ar": "حفظ"
+    },
+    "ra_close": {
+      "en": "Close this risk",
+      "he": "סגירת הסיכון",
+      "ar": "إغلاق هذا الخطر"
+    },
+    "ra_close_confirm": {
+      "c": "%1$s is the risk's number",
+      "en": "Close %1$s? Do this when the activity is finished. It stays on the record.",
+      "he": "לסגור את %1$s? עשו זאת כשהפעילות הסתיימה. הסיכון נשאר ברישום.",
+      "ar": "إغلاق %1$s؟ افعل ذلك عند انتهاء النشاط. يبقى في السجل."
+    },
+    "ra_refused_not_allowed": {
+      "en": "Your role does not keep the site's record.",
+      "he": "התפקיד שלך לא מנהל את רישום האתר.",
+      "ar": "دورك لا يتولى سجل الموقع."
+    },
+    "ra_refused_activity": {
+      "en": "Say what the activity is.",
+      "he": "כתבו מהי הפעילות.",
+      "ar": "اذكر ما النشاط."
+    },
+    "ra_refused_hazard": {
+      "en": "Say what could hurt somebody.",
+      "he": "כתבו מה עלול לפגוע.",
+      "ar": "اذكر ما قد يؤذي."
+    },
+    "ra_refused_range": {
+      "en": "Scores run from one to five.",
+      "he": "הדירוג הוא מאחת עד חמש.",
+      "ar": "التقييم من واحد إلى خمسة."
+    },
+    "ra_refused_controls": {
+      "en": "The risk comes down, so write what is being done to bring it down.",
+      "he": "הסיכון יורד, אז כתבו מה נעשה כדי להוריד אותו.",
+      "ar": "الخطر ينخفض، فاكتب ما يُفعل لخفضه."
+    },
+    "ra_refused_worse": {
+      "en": "The controls cannot leave the risk higher than it was before them. Check the scores.",
+      "he": "אמצעי הבקרה לא יכולים להשאיר את הסיכון גבוה יותר מלפניהם. בדקו את הדירוג.",
+      "ar": "لا يمكن أن تترك تدابير التحكم الخطر أعلى مما كان قبلها. راجع التقييم."
+    },
+    "ra_refused_review": {
+      "en": "The next review cannot be before today.",
+      "he": "הבדיקה החוזרת לא יכולה להיות לפני היום.",
+      "ar": "لا يمكن أن تكون المراجعة التالية قبل اليوم."
+    },
+    "ra_refused_closed": {
+      "en": "This risk is closed.",
+      "he": "הסיכון הזה סגור.",
+      "ar": "هذا الخطر مغلق."
+    },
+    "ex_col_review": {
+      "c": "Column heading: the next review date",
+      "en": "Review",
+      "he": "בדיקה חוזרת",
+      "ar": "المراجعة"
+    },
+    "search_kind_risk": {
+      "c": "Label on a search result",
+      "en": "Risk",
+      "he": "סיכון",
+      "ar": "خطر"
     }
   },
   "plurals": {

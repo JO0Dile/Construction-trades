@@ -99,6 +99,7 @@ object Search {
         INSPECTION(setOf(Lens.EVIDENCE)),
         SUBMITTAL(setOf(Lens.PLAN)),
         DELAY(setOf(Lens.PLAN)),
+        RISK(setOf(Lens.EVIDENCE)),
     }
 
     /**

@@ -704,6 +704,27 @@ object Summaries {
     const val QUERY_RAISED = "query_raised"
 
     /**
+     * %1$s assessed, residual risk %2$s
+     *
+     * Arguments, in order: reference, residual.
+     */
+    const val RA_ASSESSED = "ra_assessed"
+
+    /**
+     * %1$s closed
+     *
+     * Arguments, in order: reference.
+     */
+    const val RA_CLOSED = "ra_closed"
+
+    /**
+     * %1$s reviewed, residual risk %2$s to %3$s
+     *
+     * Arguments, in order: reference, was, now.
+     */
+    const val RA_REVIEWED = "ra_reviewed"
+
+    /**
      * Now reports to %1$s
      *
      * Arguments, in order: boss.

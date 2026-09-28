@@ -179,6 +179,9 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.PROFILE_PUBLISHED -> R.string.summary_profile_published
     Summaries.QUERY_ANSWERED -> R.string.summary_query_answered
     Summaries.QUERY_RAISED -> R.string.summary_query_raised
+    Summaries.RA_ASSESSED -> R.string.summary_ra_assessed
+    Summaries.RA_CLOSED -> R.string.summary_ra_closed
+    Summaries.RA_REVIEWED -> R.string.summary_ra_reviewed
     Summaries.REPORTS_TO -> R.string.summary_reports_to
     Summaries.REPORTS_TO_NOBODY -> R.string.summary_reports_to_nobody
     Summaries.RESTOCKED -> R.string.summary_restocked

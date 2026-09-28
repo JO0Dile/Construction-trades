@@ -2309,3 +2309,91 @@
 "ex_waiting" = "بالانتظار";
 /* Cell in an exported register: a delay not yet ended */
 "ex_still_going" = "لا يزال مستمرًا";
+"summary_ra_assessed" = "قُيّم %1$s، الخطر المتبقي %2$s";
+"summary_ra_closed" = "أُغلق %1$s";
+"summary_ra_reviewed" = "روجع %1$s، الخطر المتبقي من %2$s إلى %3$s";
+/* Screen title and job link: the job's risk assessment */
+"ra_title" = "تقييم المخاطر";
+/* Hint under the job link */
+"ra_row_hint" = "ما قد يؤذي أحدًا، ومدى خطورته، وما يُفعل حياله";
+"ra_empty" = "لم تُقيَّم أي مخاطر في هذا المشروع بعد.";
+"ra_blurb" = "لكل نشاط، اكتب ما قد يؤذي ومَن، وقيّم من واحد إلى خمسة مدى الاحتمال والخطورة، ثم مرة أخرى مع وجود تدابير التحكم. الخطر الذي يبقى شديدًا مع تدابيره يظهر أولًا باللون الأحمر.";
+/* Button and dialog title */
+"ra_add" = "تقييم خطر";
+"ra_activity" = "النشاط";
+"ra_activity_hint" = "القوالب عند حافة السقف، الطابق 5";
+"ra_hazard" = "مصدر الخطر";
+"ra_hazard_hint" = "السقوط من ارتفاع";
+"ra_who" = "مَن المعرَّض للخطر";
+/* %1$s is who is at risk */
+"ra_who_is" = "المعرَّضون: %1$s";
+"ra_likelihood" = "الاحتمال";
+"ra_severity" = "الخطورة";
+/* Likelihood 1 */
+"ra_l1" = "نادر";
+/* Likelihood 2 */
+"ra_l2" = "غير مرجّح";
+/* Likelihood 3 */
+"ra_l3" = "ممكن";
+/* Likelihood 4 */
+"ra_l4" = "مرجّح";
+/* Likelihood 5 */
+"ra_l5" = "شبه مؤكد";
+/* Severity 1 */
+"ra_s1" = "طفيف";
+/* Severity 2 */
+"ra_s2" = "بسيط";
+/* Severity 3 */
+"ra_s3" = "متوسط";
+/* Severity 4 */
+"ra_s4" = "كبير";
+/* Severity 5 */
+"ra_s5" = "كارثي";
+"ra_band_low" = "منخفض";
+"ra_band_medium" = "متوسط";
+"ra_band_high" = "مرتفع";
+"ra_band_extreme" = "شديد";
+"ra_before" = "قبل تدابير التحكم";
+"ra_after" = "مع تدابير التحكم";
+"ra_controls" = "تدابير التحكم";
+"ra_controls_hint" = "حماية الحافة، وحزام مثبّت بخط الإرساء";
+"ra_no_controls" = "لم تُكتب تدابير تحكم.";
+/* %1$d is the score before, %2$d after, %3$s the band after */
+"ra_scores" = "قبل %1$d · مع التحكم %2$d، %3$s";
+/* %1$s likelihood word, %2$s severity word, %3$d score, %4$s band */
+"ra_score_detail" = "%1$s × %2$s = %3$d، %4$s";
+"ra_still_extreme" = "لا يزال شديدًا مع وجود تدابير التحكم";
+/* %1$s is a date */
+"ra_review_overdue" = "المراجعة متأخرة منذ %1$s";
+/* %1$s is a date */
+"ra_review_by" = "المراجعة قبل %1$s";
+"ra_closed" = "مغلق";
+"ra_owner" = "المسؤول عن تدابير التحكم";
+/* %1$s is a name */
+"ra_owner_is" = "المسؤول: %1$s";
+/* %1$s is a name */
+"ra_recorded_by" = "قيّمه %1$s";
+/* %1$s is a name */
+"ra_reviewed_by" = "روجع آخر مرة من %1$s";
+"ra_review" = "مراجعة";
+"ra_review_in" = "المراجعة التالية";
+"ra_no_review" = "بلا تاريخ";
+"ra_in_a_week" = "بعد أسبوع";
+"ra_in_a_month" = "بعد شهر";
+"ra_in_3_months" = "بعد 3 أشهر";
+"ra_save" = "حفظ";
+"ra_close" = "إغلاق هذا الخطر";
+/* %1$s is the risk's number */
+"ra_close_confirm" = "إغلاق %1$s؟ افعل ذلك عند انتهاء النشاط. يبقى في السجل.";
+"ra_refused_not_allowed" = "دورك لا يتولى سجل الموقع.";
+"ra_refused_activity" = "اذكر ما النشاط.";
+"ra_refused_hazard" = "اذكر ما قد يؤذي.";
+"ra_refused_range" = "التقييم من واحد إلى خمسة.";
+"ra_refused_controls" = "الخطر ينخفض، فاكتب ما يُفعل لخفضه.";
+"ra_refused_worse" = "لا يمكن أن تترك تدابير التحكم الخطر أعلى مما كان قبلها. راجع التقييم.";
+"ra_refused_review" = "لا يمكن أن تكون المراجعة التالية قبل اليوم.";
+"ra_refused_closed" = "هذا الخطر مغلق.";
+/* Column heading: the next review date */
+"ex_col_review" = "المراجعة";
+/* Label on a search result */
+"search_kind_risk" = "خطر";

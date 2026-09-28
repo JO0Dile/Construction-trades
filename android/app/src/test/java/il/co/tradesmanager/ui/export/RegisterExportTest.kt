@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import il.co.tradesmanager.R
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
+import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import java.time.LocalDate
 import java.util.Locale
@@ -113,6 +114,28 @@ class RegisterExportTest {
         assertEquals(context.getString(R.string.ex_still_going), table.rows[1][5])
         assertEquals(context.getString(R.string.de_no_notice), table.rows[1][7])
         assertTrue(table.rows[0][7].startsWith("Supervisor"))
+    }
+
+    @Test
+    fun `the risk register shows each score with its band, and a closed risk as closed`() {
+        val context = inLanguage("en")
+        val risks = listOf(
+            RiskAssessmentEntity(
+                id = "r1", projectId = "job", reference = "RA-001", activity = "Formwork at the edge", hazard = "Fall",
+                likelihoodBefore = 4, severityBefore = 5, controls = "Edge protection", likelihoodAfter = 2, severityAfter = 5,
+                recordedByName = "Safety officer", createdAt = 1_000L,
+            ),
+            RiskAssessmentEntity(
+                id = "r2", projectId = "job", reference = "RA-002", activity = "Deliveries", hazard = "Struck by a lorry",
+                likelihoodBefore = 2, severityBefore = 2, likelihoodAfter = 2, severityAfter = 2,
+                closed = true, recordedByName = "Safety officer", createdAt = 2_000L,
+            ),
+        )
+        val table = ExportDocument.RiskRegister("Tower A", risks).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals("20 " + context.getString(R.string.ra_band_extreme), table.rows[0][4])
+        assertEquals("10 " + context.getString(R.string.ra_band_high), table.rows[0][6])
+        assertEquals(context.getString(R.string.ra_closed), table.rows[1][8])
     }
 
     @Test

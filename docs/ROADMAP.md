@@ -672,6 +672,17 @@ ticket kinds offered for a person now include a work permit, an entry permit
 and a crane signaller, so the expiry warnings that already watch every
 ticket watch those too.
 
+**The risk assessment. Done.**
+Each job's סקר סיכונים: every activity and the hazard in it, who is exposed,
+the risk on the usual five by five scale before and after its controls, the
+controls themselves, who sees to them, and when it is looked at again. A risk
+cannot come down with nothing written about how, and the controls cannot
+leave it higher than it was. One still extreme with its controls in place is
+shown first and in red, a late review next. A review rescores the whole row
+and the audit trail keeps the scores it had; a finished activity's risk is
+closed, not deleted. It prints and exports like every other register. The
+bands are a common scheme, and the screen does not pretend they are a rule.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -736,21 +747,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~100 | *estimated — see below* |
+| Built | ~101 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 → ~101 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, the visitor log, inspection requests, material approvals, the delay register, and plant examination certificates.
+register, the visitor log, inspection requests, material approvals, the delay register, plant examination certificates, and the risk assessment.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.

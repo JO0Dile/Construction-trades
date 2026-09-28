@@ -9,6 +9,7 @@ import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.safety.Ppe
+import il.co.tradesmanager.core.safety.Risks
 import il.co.tradesmanager.core.security.AuditChain
 import il.co.tradesmanager.core.work.Delays
 import il.co.tradesmanager.core.work.Submittals
@@ -23,6 +24,7 @@ import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
+import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SiteVisitEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
@@ -30,6 +32,7 @@ import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.delays.delayCauseLabel
 import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
+import il.co.tradesmanager.ui.risks.bandLabel
 import il.co.tradesmanager.ui.submittals.submittalDecisionLabel
 import java.time.Instant
 import java.time.LocalDate
@@ -164,6 +167,16 @@ sealed interface ExportDocument {
         val jobName: String,
         val events: List<DelayEventEntity>,
         val today: LocalDate,
+    ) : ExportDocument
+
+    /**
+     * One job's risk assessment: every hazard, its score before and after the
+     * controls, the controls themselves, who owns them and when it is looked at
+     * again. The document a safety officer is asked for first.
+     */
+    data class RiskRegister(
+        val jobName: String,
+        val risks: List<RiskAssessmentEntity>,
     ) : ExportDocument
 
     /**
@@ -389,6 +402,40 @@ sealed interface ExportDocument {
             },
         )
 
+        is RiskRegister -> Table(
+            title = context.getString(R.string.ra_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.ra_activity),
+                context.getString(R.string.ra_hazard),
+                context.getString(R.string.ra_who),
+                context.getString(R.string.ra_before),
+                context.getString(R.string.ra_controls),
+                context.getString(R.string.ra_after),
+                context.getString(R.string.ra_owner),
+                context.getString(R.string.ex_col_review),
+            ),
+            rows = risks.sortedBy { it.reference }.map { row ->
+                val before = Risks.score(row.likelihoodBefore, row.severityBefore)
+                val after = Risks.score(row.likelihoodAfter, row.severityAfter)
+                listOf(
+                    row.reference,
+                    row.activity,
+                    row.hazard,
+                    row.whoAtRisk.orEmpty(),
+                    "$before " + context.getString(bandLabel(Risks.band(before))),
+                    row.controls.orEmpty(),
+                    "$after " + context.getString(bandLabel(Risks.band(after))),
+                    row.ownerName.orEmpty(),
+                    if (row.closed) {
+                        context.getString(R.string.ra_closed)
+                    } else {
+                        row.reviewOnDay?.let { Formats.date(LocalDate.ofEpochDay(it), locale) }.orEmpty()
+                    },
+                )
+            },
+        )
+
         is AuditTrail -> Table(
             title = context.getString(R.string.audit_title),
             headers = listOf(
@@ -518,6 +565,7 @@ sealed interface ExportDocument {
             is InspectionRegister -> "inspections-" + jobName
             is SubmittalRegister -> "material-approvals-" + jobName
             is DelayRegister -> "delays-" + jobName
+            is RiskRegister -> "risk-assessment-" + jobName
         },
     )
 

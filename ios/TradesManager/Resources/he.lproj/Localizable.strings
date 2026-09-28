@@ -2309,3 +2309,91 @@
 "ex_waiting" = "ממתין";
 /* Cell in an exported register: a delay not yet ended */
 "ex_still_going" = "עדיין נמשך";
+"summary_ra_assessed" = "%1$s הוערך, סיכון שיורי %2$s";
+"summary_ra_closed" = "%1$s נסגר";
+"summary_ra_reviewed" = "%1$s נבדק מחדש, סיכון שיורי מ־%2$s ל־%3$s";
+/* Screen title and job link: the job's risk assessment */
+"ra_title" = "סקר סיכונים";
+/* Hint under the job link */
+"ra_row_hint" = "מה עלול לפגוע במישהו, כמה חמור, ומה נעשה בעניין";
+"ra_empty" = "עדיין לא הוערכו סיכונים בעבודה הזו.";
+"ra_blurb" = "לכל פעילות, כתבו מה עלול לפגוע ובמי, דרגו מאחת עד חמש את הסבירות ואת החומרה, ושוב עם אמצעי הבקרה במקומם. סיכון שנשאר קיצוני גם עם אמצעי הבקרה מוצג ראשון, באדום.";
+/* Button and dialog title */
+"ra_add" = "הערכת סיכון";
+"ra_activity" = "פעילות";
+"ra_activity_hint" = "טפסנות בשפת התקרה, קומה 5";
+"ra_hazard" = "גורם סיכון";
+"ra_hazard_hint" = "נפילה מגובה";
+"ra_who" = "מי בסיכון";
+/* %1$s is who is at risk */
+"ra_who_is" = "בסיכון: %1$s";
+"ra_likelihood" = "סבירות";
+"ra_severity" = "חומרה";
+/* Likelihood 1 */
+"ra_l1" = "נדיר";
+/* Likelihood 2 */
+"ra_l2" = "לא סביר";
+/* Likelihood 3 */
+"ra_l3" = "אפשרי";
+/* Likelihood 4 */
+"ra_l4" = "סביר";
+/* Likelihood 5 */
+"ra_l5" = "כמעט ודאי";
+/* Severity 1 */
+"ra_s1" = "זניח";
+/* Severity 2 */
+"ra_s2" = "קל";
+/* Severity 3 */
+"ra_s3" = "בינוני";
+/* Severity 4 */
+"ra_s4" = "חמור";
+/* Severity 5 */
+"ra_s5" = "הרסני";
+"ra_band_low" = "נמוך";
+"ra_band_medium" = "בינוני";
+"ra_band_high" = "גבוה";
+"ra_band_extreme" = "קיצוני";
+"ra_before" = "לפני אמצעי הבקרה";
+"ra_after" = "עם אמצעי הבקרה";
+"ra_controls" = "אמצעי בקרה";
+"ra_controls_hint" = "מעקה בטיחות, רתמה מחוברת לקו העיגון";
+"ra_no_controls" = "לא נכתבו אמצעי בקרה.";
+/* %1$d is the score before, %2$d after, %3$s the band after */
+"ra_scores" = "לפני %1$d · עם בקרה %2$d, %3$s";
+/* %1$s likelihood word, %2$s severity word, %3$d score, %4$s band */
+"ra_score_detail" = "%1$s × %2$s = %3$d, %4$s";
+"ra_still_extreme" = "נשאר קיצוני גם עם אמצעי הבקרה";
+/* %1$s is a date */
+"ra_review_overdue" = "הבדיקה החוזרת באיחור מאז %1$s";
+/* %1$s is a date */
+"ra_review_by" = "בדיקה חוזרת עד %1$s";
+"ra_closed" = "נסגר";
+"ra_owner" = "האחראי על אמצעי הבקרה";
+/* %1$s is a name */
+"ra_owner_is" = "אחראי: %1$s";
+/* %1$s is a name */
+"ra_recorded_by" = "הוערך על ידי %1$s";
+/* %1$s is a name */
+"ra_reviewed_by" = "נבדק לאחרונה על ידי %1$s";
+"ra_review" = "בדיקה חוזרת";
+"ra_review_in" = "בדיקה חוזרת בעוד";
+"ra_no_review" = "ללא תאריך";
+"ra_in_a_week" = "בעוד שבוע";
+"ra_in_a_month" = "בעוד חודש";
+"ra_in_3_months" = "בעוד 3 חודשים";
+"ra_save" = "שמירה";
+"ra_close" = "סגירת הסיכון";
+/* %1$s is the risk's number */
+"ra_close_confirm" = "לסגור את %1$s? עשו זאת כשהפעילות הסתיימה. הסיכון נשאר ברישום.";
+"ra_refused_not_allowed" = "התפקיד שלך לא מנהל את רישום האתר.";
+"ra_refused_activity" = "כתבו מהי הפעילות.";
+"ra_refused_hazard" = "כתבו מה עלול לפגוע.";
+"ra_refused_range" = "הדירוג הוא מאחת עד חמש.";
+"ra_refused_controls" = "הסיכון יורד, אז כתבו מה נעשה כדי להוריד אותו.";
+"ra_refused_worse" = "אמצעי הבקרה לא יכולים להשאיר את הסיכון גבוה יותר מלפניהם. בדקו את הדירוג.";
+"ra_refused_review" = "הבדיקה החוזרת לא יכולה להיות לפני היום.";
+"ra_refused_closed" = "הסיכון הזה סגור.";
+/* Column heading: the next review date */
+"ex_col_review" = "בדיקה חוזרת";
+/* Label on a search result */
+"search_kind_risk" = "סיכון";

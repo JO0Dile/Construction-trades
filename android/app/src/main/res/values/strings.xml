@@ -2310,6 +2310,94 @@
     <string name="ex_waiting">Waiting</string>
     <!-- Cell in an exported register: a delay not yet ended -->
     <string name="ex_still_going">Still going</string>
+    <string name="summary_ra_assessed">%1$s assessed, residual risk %2$s</string>
+    <string name="summary_ra_closed">%1$s closed</string>
+    <string name="summary_ra_reviewed">%1$s reviewed, residual risk %2$s to %3$s</string>
+    <!-- Screen title and job link: the job's risk assessment -->
+    <string name="ra_title">Risk assessment</string>
+    <!-- Hint under the job link -->
+    <string name="ra_row_hint">What could hurt somebody, how badly, and what is done about it</string>
+    <string name="ra_empty">No risks assessed on this job yet.</string>
+    <string name="ra_blurb">For each activity, write what could hurt somebody and who, score it from one to five for how likely and how bad, then again with the controls in place. A risk that is still extreme with its controls is shown first, in red.</string>
+    <!-- Button and dialog title -->
+    <string name="ra_add">Assess a risk</string>
+    <string name="ra_activity">Activity</string>
+    <string name="ra_activity_hint">Formwork at the slab edge, level 5</string>
+    <string name="ra_hazard">Hazard</string>
+    <string name="ra_hazard_hint">Fall from height</string>
+    <string name="ra_who">Who is at risk</string>
+    <!-- %1$s is who is at risk -->
+    <string name="ra_who_is">At risk: %1$s</string>
+    <string name="ra_likelihood">How likely</string>
+    <string name="ra_severity">How bad</string>
+    <!-- Likelihood 1 -->
+    <string name="ra_l1">Rare</string>
+    <!-- Likelihood 2 -->
+    <string name="ra_l2">Unlikely</string>
+    <!-- Likelihood 3 -->
+    <string name="ra_l3">Possible</string>
+    <!-- Likelihood 4 -->
+    <string name="ra_l4">Likely</string>
+    <!-- Likelihood 5 -->
+    <string name="ra_l5">Almost certain</string>
+    <!-- Severity 1 -->
+    <string name="ra_s1">Negligible</string>
+    <!-- Severity 2 -->
+    <string name="ra_s2">Minor</string>
+    <!-- Severity 3 -->
+    <string name="ra_s3">Moderate</string>
+    <!-- Severity 4 -->
+    <string name="ra_s4">Major</string>
+    <!-- Severity 5 -->
+    <string name="ra_s5">Catastrophic</string>
+    <string name="ra_band_low">low</string>
+    <string name="ra_band_medium">medium</string>
+    <string name="ra_band_high">high</string>
+    <string name="ra_band_extreme">extreme</string>
+    <string name="ra_before">Before the controls</string>
+    <string name="ra_after">With the controls</string>
+    <string name="ra_controls">Controls</string>
+    <string name="ra_controls_hint">Edge protection, harness clipped to the anchor line</string>
+    <string name="ra_no_controls">No controls written.</string>
+    <!-- %1$d is the score before, %2$d after, %3$s the band after -->
+    <string name="ra_scores">Before %1$d · with controls %2$d, %3$s</string>
+    <!-- %1$s likelihood word, %2$s severity word, %3$d score, %4$s band -->
+    <string name="ra_score_detail">%1$s × %2$s = %3$d, %4$s</string>
+    <string name="ra_still_extreme">Still extreme with the controls in place</string>
+    <!-- %1$s is a date -->
+    <string name="ra_review_overdue">Review overdue since %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="ra_review_by">Review by %1$s</string>
+    <string name="ra_closed">Closed</string>
+    <string name="ra_owner">Who sees to the controls</string>
+    <!-- %1$s is a name -->
+    <string name="ra_owner_is">Controls: %1$s</string>
+    <!-- %1$s is a name -->
+    <string name="ra_recorded_by">Assessed by %1$s</string>
+    <!-- %1$s is a name -->
+    <string name="ra_reviewed_by">last reviewed by %1$s</string>
+    <string name="ra_review">Review</string>
+    <string name="ra_review_in">Review again</string>
+    <string name="ra_no_review">No date</string>
+    <string name="ra_in_a_week">In a week</string>
+    <string name="ra_in_a_month">In a month</string>
+    <string name="ra_in_3_months">In 3 months</string>
+    <string name="ra_save">Save</string>
+    <string name="ra_close">Close this risk</string>
+    <!-- %1$s is the risk's number -->
+    <string name="ra_close_confirm">Close %1$s? Do this when the activity is finished. It stays on the record.</string>
+    <string name="ra_refused_not_allowed">Your role does not keep the site\'s record.</string>
+    <string name="ra_refused_activity">Say what the activity is.</string>
+    <string name="ra_refused_hazard">Say what could hurt somebody.</string>
+    <string name="ra_refused_range">Scores run from one to five.</string>
+    <string name="ra_refused_controls">The risk comes down, so write what is being done to bring it down.</string>
+    <string name="ra_refused_worse">The controls cannot leave the risk higher than it was before them. Check the scores.</string>
+    <string name="ra_refused_review">The next review cannot be before today.</string>
+    <string name="ra_refused_closed">This risk is closed.</string>
+    <!-- Column heading: the next review date -->
+    <string name="ex_col_review">Review</string>
+    <!-- Label on a search result -->
+    <string name="search_kind_risk">Risk</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

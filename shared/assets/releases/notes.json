@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.35.0",
+      "points": [
+        {
+          "en": "Each job gets a risk assessment. For every activity, write the hazard and who is exposed, score how likely and how bad from one to five before the controls and again with them, the controls themselves, who sees to them, and when to look again. It is numbered RA-001.",
+          "he": "לכל עבודה יש עכשיו סקר סיכונים. לכל פעילות רושמים את גורם הסיכון ומי חשוף לו, מדרגים מאחת עד חמש את הסבירות ואת החומרה לפני אמצעי הבקרה ושוב איתם, את אמצעי הבקרה עצמם, מי אחראי עליהם, ומתי לבדוק שוב. כל סיכון ממוספר RA-001.",
+          "ar": "لكل مشروع الآن تقييم للمخاطر. لكل نشاط، اكتب مصدر الخطر ومَن المعرَّض له، وقيّم من واحد إلى خمسة الاحتمال والخطورة قبل تدابير التحكم ومعها، والتدابير نفسها، والمسؤول عنها، وموعد المراجعة. يُرقَّم كل خطر RA-001."
+        },
+        {
+          "en": "A risk cannot come down with nothing written about how, and the controls cannot leave it higher than before. One still extreme with its controls in place is shown first, in red, then any past its review date. A review rescores the whole row, and the audit trail keeps what it was.",
+          "he": "סיכון לא יכול לרדת בלי שייכתב איך, ואמצעי הבקרה לא יכולים להשאיר אותו גבוה מלפניהם. סיכון שנשאר קיצוני גם עם אמצעי הבקרה מוצג ראשון, באדום, ואחריו סיכונים שמועד הבדיקה החוזרת שלהם עבר. בדיקה חוזרת מדרגת מחדש את כל השורה, ויומן הביקורת שומר את מה שהיה.",
+          "ar": "لا يمكن أن ينخفض الخطر دون أن يُكتب كيف، ولا يمكن أن تتركه تدابير التحكم أعلى مما كان. الخطر الذي يبقى شديدًا مع تدابيره يظهر أولًا باللون الأحمر، ثم ما فات موعد مراجعته. والمراجعة تعيد تقييم السطر كله، ويحفظ سجل التدقيق ما كان عليه."
+        },
+        {
+          "en": "The risk assessment prints and exports as a PDF and a CSV, and the search box finds risks by number, hazard, activity or control.",
+          "he": "את סקר הסיכונים אפשר להדפיס ולייצא כ־PDF וכ־CSV, ותיבת החיפוש מוצאת סיכונים לפי מספר, גורם סיכון, פעילות או אמצעי בקרה.",
+          "ar": "يُطبع تقييم المخاطر ويُصدَّر كملف PDF وملف CSV، ويجد صندوق البحث المخاطر برقمها أو مصدرها أو النشاط أو تدبير التحكم."
+        }
+      ]
+    },
+    {
       "version": "0.34.0",
       "points": [
         {

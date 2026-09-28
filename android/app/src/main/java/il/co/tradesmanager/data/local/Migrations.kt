@@ -408,6 +408,13 @@ object Migrations {
         }
     }
 
+    /** The risk assessment register: one new table. */
+    val MIGRATION_41_42 = object : Migration(41, 42) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_41_42.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -449,6 +456,7 @@ object Migrations {
         MIGRATION_38_39,
         MIGRATION_39_40,
         MIGRATION_40_41,
+        MIGRATION_41_42,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1130,5 +1138,16 @@ object Migrations {
             "`result` TEXT NOT NULL, `nextDueDay` INTEGER, `notes` TEXT, `recordedByName` TEXT NOT NULL, " +
             "`recordedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_plant_examinations_equipmentId` ON `plant_examinations` (`equipmentId`)",
+    )
+
+    /** A job's risk assessment, one hazard to a row. */
+    val SQL_41_42: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `risk_assessments` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `activity` TEXT NOT NULL, `hazard` TEXT NOT NULL, `whoAtRisk` TEXT, " +
+            "`likelihoodBefore` INTEGER NOT NULL, `severityBefore` INTEGER NOT NULL, `controls` TEXT, " +
+            "`likelihoodAfter` INTEGER NOT NULL, `severityAfter` INTEGER NOT NULL, `ownerName` TEXT, " +
+            "`reviewOnDay` INTEGER, `closed` INTEGER NOT NULL, `recordedByName` TEXT NOT NULL, " +
+            "`createdAt` INTEGER NOT NULL, `lastReviewedAt` INTEGER, `lastReviewedByName` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_risk_assessments_projectId` ON `risk_assessments` (`projectId`)",
     )
 }

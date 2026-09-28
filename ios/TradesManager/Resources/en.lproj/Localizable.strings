@@ -2309,3 +2309,91 @@
 "ex_waiting" = "Waiting";
 /* Cell in an exported register: a delay not yet ended */
 "ex_still_going" = "Still going";
+"summary_ra_assessed" = "%1$s assessed, residual risk %2$s";
+"summary_ra_closed" = "%1$s closed";
+"summary_ra_reviewed" = "%1$s reviewed, residual risk %2$s to %3$s";
+/* Screen title and job link: the job's risk assessment */
+"ra_title" = "Risk assessment";
+/* Hint under the job link */
+"ra_row_hint" = "What could hurt somebody, how badly, and what is done about it";
+"ra_empty" = "No risks assessed on this job yet.";
+"ra_blurb" = "For each activity, write what could hurt somebody and who, score it from one to five for how likely and how bad, then again with the controls in place. A risk that is still extreme with its controls is shown first, in red.";
+/* Button and dialog title */
+"ra_add" = "Assess a risk";
+"ra_activity" = "Activity";
+"ra_activity_hint" = "Formwork at the slab edge, level 5";
+"ra_hazard" = "Hazard";
+"ra_hazard_hint" = "Fall from height";
+"ra_who" = "Who is at risk";
+/* %1$s is who is at risk */
+"ra_who_is" = "At risk: %1$s";
+"ra_likelihood" = "How likely";
+"ra_severity" = "How bad";
+/* Likelihood 1 */
+"ra_l1" = "Rare";
+/* Likelihood 2 */
+"ra_l2" = "Unlikely";
+/* Likelihood 3 */
+"ra_l3" = "Possible";
+/* Likelihood 4 */
+"ra_l4" = "Likely";
+/* Likelihood 5 */
+"ra_l5" = "Almost certain";
+/* Severity 1 */
+"ra_s1" = "Negligible";
+/* Severity 2 */
+"ra_s2" = "Minor";
+/* Severity 3 */
+"ra_s3" = "Moderate";
+/* Severity 4 */
+"ra_s4" = "Major";
+/* Severity 5 */
+"ra_s5" = "Catastrophic";
+"ra_band_low" = "low";
+"ra_band_medium" = "medium";
+"ra_band_high" = "high";
+"ra_band_extreme" = "extreme";
+"ra_before" = "Before the controls";
+"ra_after" = "With the controls";
+"ra_controls" = "Controls";
+"ra_controls_hint" = "Edge protection, harness clipped to the anchor line";
+"ra_no_controls" = "No controls written.";
+/* %1$d is the score before, %2$d after, %3$s the band after */
+"ra_scores" = "Before %1$d · with controls %2$d, %3$s";
+/* %1$s likelihood word, %2$s severity word, %3$d score, %4$s band */
+"ra_score_detail" = "%1$s × %2$s = %3$d, %4$s";
+"ra_still_extreme" = "Still extreme with the controls in place";
+/* %1$s is a date */
+"ra_review_overdue" = "Review overdue since %1$s";
+/* %1$s is a date */
+"ra_review_by" = "Review by %1$s";
+"ra_closed" = "Closed";
+"ra_owner" = "Who sees to the controls";
+/* %1$s is a name */
+"ra_owner_is" = "Controls: %1$s";
+/* %1$s is a name */
+"ra_recorded_by" = "Assessed by %1$s";
+/* %1$s is a name */
+"ra_reviewed_by" = "last reviewed by %1$s";
+"ra_review" = "Review";
+"ra_review_in" = "Review again";
+"ra_no_review" = "No date";
+"ra_in_a_week" = "In a week";
+"ra_in_a_month" = "In a month";
+"ra_in_3_months" = "In 3 months";
+"ra_save" = "Save";
+"ra_close" = "Close this risk";
+/* %1$s is the risk's number */
+"ra_close_confirm" = "Close %1$s? Do this when the activity is finished. It stays on the record.";
+"ra_refused_not_allowed" = "Your role does not keep the site's record.";
+"ra_refused_activity" = "Say what the activity is.";
+"ra_refused_hazard" = "Say what could hurt somebody.";
+"ra_refused_range" = "Scores run from one to five.";
+"ra_refused_controls" = "The risk comes down, so write what is being done to bring it down.";
+"ra_refused_worse" = "The controls cannot leave the risk higher than it was before them. Check the scores.";
+"ra_refused_review" = "The next review cannot be before today.";
+"ra_refused_closed" = "This risk is closed.";
+/* Column heading: the next review date */
+"ex_col_review" = "Review";
+/* Label on a search result */
+"search_kind_risk" = "Risk";

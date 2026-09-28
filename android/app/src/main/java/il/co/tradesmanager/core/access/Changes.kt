@@ -75,6 +75,7 @@ object Changes {
         "ppe_issue" to Lens.EVIDENCE,
         "site_visit" to Lens.EVIDENCE,
         "inspection" to Lens.EVIDENCE,
+        "risk_assessment" to Lens.EVIDENCE,
         "snag" to Lens.EVIDENCE,
         "toolbox_talk" to Lens.EVIDENCE,
         "permit" to Lens.EVIDENCE,

@@ -131,6 +131,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.INSPECTION)) hits += inspections(terms, jobNames)
         if (mayRead(Search.Kind.SUBMITTAL)) hits += submittals(terms, jobNames)
         if (mayRead(Search.Kind.DELAY)) hits += delays(terms, jobNames)
+        if (mayRead(Search.Kind.RISK)) hits += risks(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -457,6 +458,25 @@ class SearchViewModel(
                 isOpen = event.endedOnDay == null,
                 terms = terms,
                 projectId = event.projectId,
+            )
+        }
+
+    /* ------------------------------------------------ the risk assessments */
+    private suspend fun risks(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.risks.all().mapNotNull { risk ->
+            hit(
+                id = risk.id,
+                kind = Search.Kind.RISK,
+                title = risk.reference + " " + risk.hazard,
+                detail = listOfNotNull(risk.activity, jobNames[risk.projectId]).joinToString(" "),
+                // The controls are what somebody half-remembers: "the one with the netting".
+                matchAlso = listOfNotNull(risk.controls, risk.whoAtRisk, risk.ownerName).joinToString(" "),
+                isOpen = !risk.closed,
+                terms = terms,
+                projectId = risk.projectId,
             )
         }
 
