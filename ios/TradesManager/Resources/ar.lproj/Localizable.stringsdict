@@ -651,5 +651,29 @@
             <string>%d معدّة انتهت شهادات فحصها أو لم تجتزه</string>
         </dict>
     </dict>
+    <key>fp_looks_more</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>ولا فحوصات سابقة</string>
+            <key>one</key>
+            <string>وفحص سابق واحد</string>
+            <key>two</key>
+            <string>وفحصان سابقان</string>
+            <key>few</key>
+            <string>و%d فحوصات سابقة</string>
+            <key>many</key>
+            <string>و%d فحصًا سابقًا</string>
+            <key>other</key>
+            <string>و%d فحص سابق</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

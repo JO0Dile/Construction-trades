@@ -121,6 +121,11 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.FIELD_PHONE -> R.string.summary_field_phone
     Summaries.FIELD_REGISTRATION -> R.string.summary_field_registration
     Summaries.FIELD_WEBSITE -> R.string.summary_field_website
+    Summaries.FP_ADDED -> R.string.summary_fp_added
+    Summaries.FP_CHECKED -> R.string.summary_fp_checked
+    Summaries.FP_FAULT -> R.string.summary_fp_fault
+    Summaries.FP_REMOVED -> R.string.summary_fp_removed
+    Summaries.FP_SERVICED -> R.string.summary_fp_serviced
     Summaries.GOODS_RECEIVED -> R.string.summary_goods_received
     Summaries.HEAT_CHECKED -> R.string.summary_heat_checked
     Summaries.HS_ADDED -> R.string.summary_hs_added

@@ -10613,6 +10613,340 @@
       "en": "Substances with no data sheet",
       "he": "חומרים בלי גיליון בטיחות",
       "ar": "مواد بلا صحيفة بيانات سلامة"
+    },
+    "summary_fp_added": {
+      "en": "%1$s: fire point, %2$s",
+      "he": "%1$s: עמדת כיבוי — %2$s",
+      "ar": "%1$s: نقطة إطفاء — %2$s"
+    },
+    "summary_fp_checked": {
+      "en": "%1$s looked at: fine",
+      "he": "%1$s נבדק: תקין",
+      "ar": "%1$s فُحصت: سليمة"
+    },
+    "summary_fp_fault": {
+      "en": "%1$s looked at: %2$s",
+      "he": "%1$s נבדק: %2$s",
+      "ar": "%1$s فُحصت: %2$s"
+    },
+    "summary_fp_removed": {
+      "en": "%1$s taken away",
+      "he": "%1$s הוסר",
+      "ar": "%1$s أُزيلت"
+    },
+    "summary_fp_serviced": {
+      "en": "%1$s serviced, next service %2$s",
+      "he": "%1$s עבר טיפול, הטיפול הבא %2$s",
+      "ar": "%1$s خضعت للصيانة، الصيانة التالية %2$s"
+    },
+    "fp_title": {
+      "c": "Screen title and job link: extinguishers, blankets, hose reels",
+      "en": "Fire points",
+      "he": "עמדות כיבוי אש",
+      "ar": "نقاط إطفاء الحريق"
+    },
+    "fp_row_hint": {
+      "c": "Hint under the job link",
+      "en": "The extinguishers and hose reels, the monthly look, and the service date",
+      "he": "המטפים וגלגלוני הכיבוי, הבדיקה החודשית ותאריך הטיפול",
+      "ar": "طفايات الحريق وبكرات الخراطيم، والفحص الشهري، وتاريخ الصيانة"
+    },
+    "fp_empty": {
+      "en": "No fire points recorded on this job.",
+      "he": "לא נרשמו עמדות כיבוי בעבודה הזו.",
+      "ar": "لم تُسجَّل نقاط إطفاء في هذا المشروع."
+    },
+    "fp_blurb": {
+      "en": "Record each extinguisher, fire blanket and hose reel: where it is, its tag, and the service date on its label. Once a month, look at each one and say whether it is fine. A fault, a service date passed or a month without a look is shown first.",
+      "he": "רשמו כל מטף, שמיכת כיבוי וגלגלון: איפה הוא, מספר התג שלו ותאריך הטיפול שעל התווית. פעם בחודש בדקו כל אחד ורשמו אם הוא תקין. תקלה, תאריך טיפול שעבר או חודש בלי בדיקה מוצגים ראשונים.",
+      "ar": "سجّل كل طفاية وبطانية إطفاء وبكرة خرطوم: أين هي، ورقم بطاقتها، وتاريخ الصيانة على ملصقها. مرة في الشهر افحص كل واحدة وسجّل إن كانت سليمة. العطل أو تاريخ الصيانة الفائت أو شهر بلا فحص يظهر أولًا."
+    },
+    "fp_add": {
+      "en": "Add a fire point",
+      "he": "הוספת עמדת כיבוי",
+      "ar": "إضافة نقطة إطفاء"
+    },
+    "fp_save": {
+      "c": "Button",
+      "en": "Save",
+      "he": "שמירה",
+      "ar": "حفظ"
+    },
+    "fp_kind": {
+      "c": "Heading over the kind chips, and a column heading",
+      "en": "Kind",
+      "he": "סוג",
+      "ar": "النوع"
+    },
+    "fp_kind_powder": {
+      "en": "Powder extinguisher",
+      "he": "מטף אבקה",
+      "ar": "طفاية مسحوق"
+    },
+    "fp_kind_co2": {
+      "en": "CO₂ extinguisher",
+      "he": "מטף CO₂",
+      "ar": "طفاية CO₂"
+    },
+    "fp_kind_foam": {
+      "en": "Foam extinguisher",
+      "he": "מטף קצף",
+      "ar": "طفاية رغوة"
+    },
+    "fp_kind_water": {
+      "en": "Water extinguisher",
+      "he": "מטף מים",
+      "ar": "طفاية ماء"
+    },
+    "fp_kind_blanket": {
+      "en": "Fire blanket",
+      "he": "שמיכת כיבוי",
+      "ar": "بطانية إطفاء"
+    },
+    "fp_kind_hose_reel": {
+      "en": "Hose reel",
+      "he": "גלגלון כיבוי",
+      "ar": "بكرة خرطوم"
+    },
+    "fp_location": {
+      "c": "Field label, and a column heading",
+      "en": "Where it is",
+      "he": "איפה הוא",
+      "ar": "أين هي"
+    },
+    "fp_location_hint": {
+      "en": "By the stair on level 2, outside the site office, in the welding bay",
+      "he": "ליד המדרגות בקומה 2, מחוץ למשרד האתר, באזור הריתוך",
+      "ar": "عند الدرج في الطابق 2، خارج مكتب الموقع، في منطقة اللحام"
+    },
+    "fp_tag": {
+      "c": "Field label, and a column heading",
+      "en": "Tag number",
+      "he": "מספר תג",
+      "ar": "رقم البطاقة"
+    },
+    "fp_tag_is": {
+      "c": "%1$s is the tag number",
+      "en": "Tag %1$s",
+      "he": "תג %1$s",
+      "ar": "بطاقة %1$s"
+    },
+    "fp_service_label": {
+      "en": "Service date on its label",
+      "he": "תאריך הטיפול שעל התווית",
+      "ar": "تاريخ الصيانة على الملصق"
+    },
+    "fp_service_pick": {
+      "c": "Button that opens a calendar",
+      "en": "Pick the date on the label",
+      "he": "בחירת התאריך שעל התווית",
+      "ar": "اختيار التاريخ على الملصق"
+    },
+    "fp_service_question": {
+      "c": "Title of the calendar",
+      "en": "When is its next service due?",
+      "he": "מתי הטיפול הבא?",
+      "ar": "متى موعد الصيانة التالية؟"
+    },
+    "fp_next_service_question": {
+      "c": "Title of the calendar",
+      "en": "What is the next service date on the new label?",
+      "he": "מה תאריך הטיפול הבא שעל התווית החדשה?",
+      "ar": "ما تاريخ الصيانة التالية على الملصق الجديد؟"
+    },
+    "fp_service_due": {
+      "c": "%1$s is a date",
+      "en": "Service due %1$s",
+      "he": "טיפול עד %1$s",
+      "ar": "الصيانة مستحقة %1$s"
+    },
+    "fp_no_service_date": {
+      "en": "No service date recorded",
+      "he": "לא נרשם תאריך טיפול",
+      "ar": "لم يُسجَّل تاريخ صيانة"
+    },
+    "fp_looked_fine": {
+      "c": "Button: record a monthly look that found it fine",
+      "en": "Looked at: fine",
+      "he": "נבדק: תקין",
+      "ar": "فُحصت: سليمة"
+    },
+    "fp_found_fault": {
+      "c": "Button and dialog title",
+      "en": "Found a fault",
+      "he": "נמצאה תקלה",
+      "ar": "وُجد عطل"
+    },
+    "fp_fault_what": {
+      "en": "What is wrong",
+      "he": "מה לא תקין",
+      "ar": "ما الخلل"
+    },
+    "fp_fault_hint": {
+      "en": "Gauge in the red, pin missing, blocked, gone, used",
+      "he": "מד בתחום האדום, נצרה חסרה, חסום, נעלם, בשימוש",
+      "ar": "المؤشر في الأحمر، المسمار مفقود، مسدودة، مفقودة، مستعملة"
+    },
+    "fp_record_fault": {
+      "c": "Button",
+      "en": "Record the fault",
+      "he": "רישום התקלה",
+      "ar": "تسجيل العطل"
+    },
+    "fp_fine": {
+      "c": "Result of one look",
+      "en": "Fine",
+      "he": "תקין",
+      "ar": "سليمة"
+    },
+    "fp_fault": {
+      "c": "Result of one look",
+      "en": "Fault",
+      "he": "תקלה",
+      "ar": "عطل"
+    },
+    "fp_looks": {
+      "c": "Heading over the list of monthly looks, and a CSV column",
+      "en": "Looks",
+      "he": "בדיקות",
+      "ar": "الفحوصات"
+    },
+    "fp_serviced": {
+      "c": "Button",
+      "en": "Serviced: new label date",
+      "he": "עבר טיפול: תאריך חדש על התווית",
+      "ar": "خضعت للصيانة: تاريخ جديد على الملصق"
+    },
+    "fp_remove": {
+      "c": "Button",
+      "en": "Taken away",
+      "he": "הוסר",
+      "ar": "أُزيلت"
+    },
+    "fp_remove_question": {
+      "c": "%1$s is the reference, e.g. FP-003",
+      "en": "Has %1$s been taken away?",
+      "he": "האם %1$s הוסר?",
+      "ar": "هل أُزيلت %1$s؟"
+    },
+    "fp_remove_body": {
+      "en": "It stays on the register with its looks, marked off with today's date.",
+      "he": "הוא נשאר בפנקס עם הבדיקות שלו, מסומן בתאריך של היום.",
+      "ar": "تبقى في السجل مع فحوصاتها، مؤشَّرًا عليها بتاريخ اليوم."
+    },
+    "fp_added_by": {
+      "c": "%1$s is a date, %2$s a name",
+      "en": "Added %1$s by %2$s",
+      "he": "נוסף ב־%1$s על ידי %2$s",
+      "ar": "أُضيفت في %1$s بواسطة %2$s"
+    },
+    "fp_state_fault": {
+      "c": "%1$s is what was wrong",
+      "en": "Fault: %1$s",
+      "he": "תקלה: %1$s",
+      "ar": "عطل: %1$s"
+    },
+    "fp_state_service_overdue": {
+      "c": "%1$s is a date",
+      "en": "Service was due %1$s",
+      "he": "הטיפול היה אמור להתבצע עד %1$s",
+      "ar": "كانت الصيانة مستحقة في %1$s"
+    },
+    "fp_state_never_checked": {
+      "en": "Never looked at",
+      "he": "לא נבדק מעולם",
+      "ar": "لم تُفحص قط"
+    },
+    "fp_state_check_overdue": {
+      "c": "%1$s is a date",
+      "en": "Not looked at since %1$s",
+      "he": "לא נבדק מאז %1$s",
+      "ar": "لم تُفحص منذ %1$s"
+    },
+    "fp_state_service_soon": {
+      "c": "%1$s is a date",
+      "en": "Service due %1$s: book the technician",
+      "he": "טיפול עד %1$s: הזמינו טכנאי",
+      "ar": "الصيانة مستحقة %1$s: احجز الفني"
+    },
+    "fp_state_ready": {
+      "c": "%1$s is a date",
+      "en": "Fine when looked at on %1$s",
+      "he": "תקין בבדיקה ב־%1$s",
+      "ar": "سليمة عند فحصها في %1$s"
+    },
+    "fp_state_removed": {
+      "c": "%1$s is a date",
+      "en": "Taken away %1$s",
+      "he": "הוסר ב־%1$s",
+      "ar": "أُزيلت في %1$s"
+    },
+    "fp_refused_not_allowed": {
+      "en": "Your role cannot change the fire points register.",
+      "he": "התפקיד שלך אינו מאפשר לשנות את פנקס עמדות הכיבוי.",
+      "ar": "دورك لا يسمح بتغيير سجل نقاط الإطفاء."
+    },
+    "fp_refused_location": {
+      "en": "Write where it is. Somebody has to find it in smoke.",
+      "he": "כתבו איפה הוא. מישהו יצטרך למצוא אותו בעשן.",
+      "ar": "اكتب أين هي. سيحتاج أحد إلى إيجادها وسط الدخان."
+    },
+    "fp_refused_service_past": {
+      "en": "The service date on the label has to be ahead of today.",
+      "he": "תאריך הטיפול שעל התווית צריך להיות אחרי היום.",
+      "ar": "يجب أن يكون تاريخ الصيانة على الملصق بعد اليوم."
+    },
+    "fp_refused_fault_note": {
+      "en": "Write what is wrong, so whoever puts it right knows.",
+      "he": "כתבו מה לא תקין, כדי שמי שיתקן ידע.",
+      "ar": "اكتب ما الخلل، ليعرف من سيصلحه."
+    },
+    "fp_refused_removed": {
+      "en": "It has been taken away; nothing more can be recorded against it.",
+      "he": "הוא הוסר; לא ניתן לרשום עליו דבר נוסף.",
+      "ar": "أُزيلت؛ لا يمكن تسجيل شيء آخر عليها."
+    },
+    "ex_col_service_due": {
+      "c": "Column heading",
+      "en": "Service due",
+      "he": "טיפול עד",
+      "ar": "الصيانة مستحقة"
+    },
+    "ex_col_last_look": {
+      "c": "Column heading",
+      "en": "Last looked at",
+      "he": "נבדק לאחרונה",
+      "ar": "آخر فحص"
+    },
+    "ex_col_result": {
+      "c": "Column heading",
+      "en": "Result",
+      "he": "תוצאה",
+      "ar": "النتيجة"
+    },
+    "ex_col_by": {
+      "c": "Column heading: who did it",
+      "en": "By",
+      "he": "על ידי",
+      "ar": "بواسطة"
+    },
+    "ex_overdue": {
+      "c": "Added after a date that has passed",
+      "en": "overdue",
+      "he": "באיחור",
+      "ar": "متأخرة"
+    },
+    "search_kind_fire_point": {
+      "c": "Label on a search result",
+      "en": "Fire point",
+      "he": "עמדת כיבוי",
+      "ar": "نقطة إطفاء"
+    },
+    "at_fire_points": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Fire points with a fault or overdue",
+      "he": "עמדות כיבוי עם תקלה או באיחור",
+      "ar": "نقاط إطفاء بها عطل أو متأخرة"
     }
   },
   "plurals": {
@@ -11181,6 +11515,27 @@
         "few": "%d معدات انتهت شهادات فحصها أو لم تجتزه",
         "many": "%d معدّة انتهت شهادات فحصها أو لم تجتزه",
         "other": "%d معدّة انتهت شهادات فحصها أو لم تجتزه"
+      }
+    },
+    "fp_looks_more": {
+      "c": "Under the newest looks at one fire point",
+      "en": {
+        "one": "and %d earlier look",
+        "other": "and %d earlier looks"
+      },
+      "he": {
+        "one": "ועוד בדיקה קודמת אחת",
+        "two": "ועוד שתי בדיקות קודמות",
+        "many": "ועוד %d בדיקות קודמות",
+        "other": "ועוד %d בדיקות קודמות"
+      },
+      "ar": {
+        "zero": "ولا فحوصات سابقة",
+        "one": "وفحص سابق واحد",
+        "two": "وفحصان سابقان",
+        "few": "و%d فحوصات سابقة",
+        "many": "و%d فحصًا سابقًا",
+        "other": "و%d فحص سابق"
       }
     }
   }

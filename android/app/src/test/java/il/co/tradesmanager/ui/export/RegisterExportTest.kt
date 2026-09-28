@@ -7,11 +7,14 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.data.local.entity.ComplaintEntity
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.DesignQueryEntity
+import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
+import il.co.tradesmanager.data.local.entity.FirePointEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.local.entity.SubstanceEntity
 import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Locale
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -207,6 +210,40 @@ class RegisterExportTest {
         assertTrue(table.rows[1][7].endsWith(context.getString(R.string.hs_sheet_old, "").substringAfter(":").trim()))
         assertEquals("still on site", "", table.rows[0][8])
         assertTrue("gone, with the day", table.rows[2][8].isNotEmpty())
+    }
+
+    @Test
+    fun `the fire points register shows the newest look, and the CSV carries every one`() {
+        val context = inLanguage("en")
+        val zone = ZoneId.systemDefault()
+        val now = today.atTime(10, 0).atZone(zone).toInstant().toEpochMilli()
+        fun daysAgo(days: Long) = today.minusDays(days).atTime(9, 0).atZone(zone).toInstant().toEpochMilli()
+        val points = listOf(
+            FirePointEntity(
+                id = "f1", projectId = "job", reference = "FP-001", kind = "CO2", location = "Stair 2",
+                serviceDueOnDay = today.minusDays(2).toEpochDay(), addedAt = 1_000L, addedByName = "Safety officer",
+            ),
+            FirePointEntity(
+                id = "f2", projectId = "job", reference = "FP-002", kind = "HOSE_REEL", location = "Gate",
+                addedAt = 2_000L, addedByName = "Safety officer",
+            ),
+        )
+        val checks = listOf(
+            FirePointCheckEntity(id = "c1", firePointId = "f1", projectId = "job", checkedAt = daysAgo(40), ok = true, checkedByName = "Foreman"),
+            FirePointCheckEntity(
+                id = "c2", firePointId = "f1", projectId = "job", checkedAt = daysAgo(3), ok = false,
+                note = "Pin missing", checkedByName = "Foreman",
+            ),
+        )
+        val table = ExportDocument.FirePointRegister("Tower A", points, checks, now).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(listOf("FP-001", "FP-002"), table.rows.map { it[0] })
+        assertEquals(context.getString(R.string.fp_kind_co2), table.rows[0][1])
+        assertTrue("a service date passed says so", table.rows[0][4].endsWith(context.getString(R.string.ex_overdue)))
+        assertEquals(context.getString(R.string.fp_fault) + " — Pin missing", table.rows[0][6])
+        assertEquals(context.getString(R.string.fp_state_never_checked), table.rows[1][5])
+        assertEquals("both looks, newest first", 2, table.extraCells[0][0].split("; ").size)
+        assertTrue(table.extraCells[0][0].startsWith(table.rows[0][5]))
     }
 
     @Test

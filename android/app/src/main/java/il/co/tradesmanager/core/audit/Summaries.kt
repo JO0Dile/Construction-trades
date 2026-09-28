@@ -322,6 +322,41 @@ object Summaries {
     const val FIELD_WEBSITE = "field_website"
 
     /**
+     * %1$s: fire point, %2$s
+     *
+     * Arguments, in order: reference, location.
+     */
+    const val FP_ADDED = "fp_added"
+
+    /**
+     * %1$s looked at: fine
+     *
+     * Arguments, in order: reference.
+     */
+    const val FP_CHECKED = "fp_checked"
+
+    /**
+     * %1$s looked at: %2$s
+     *
+     * Arguments, in order: reference, note.
+     */
+    const val FP_FAULT = "fp_fault"
+
+    /**
+     * %1$s taken away
+     *
+     * Arguments, in order: reference.
+     */
+    const val FP_REMOVED = "fp_removed"
+
+    /**
+     * %1$s serviced, next service %2$s
+     *
+     * Arguments, in order: reference, date.
+     */
+    const val FP_SERVICED = "fp_serviced"
+
+    /**
      * Received %1$s %2$s of %3$s
      *
      * Arguments, in order: quantity, unit, item.

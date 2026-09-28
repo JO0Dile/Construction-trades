@@ -428,6 +428,12 @@ object Migrations {
         }
     }
 
+    val MIGRATION_44_45 = object : Migration(44, 45) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_44_45.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -472,6 +478,7 @@ object Migrations {
         MIGRATION_41_42,
         MIGRATION_42_43,
         MIGRATION_43_44,
+        MIGRATION_44_45,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1183,5 +1190,18 @@ object Migrations {
             "`addedAt` INTEGER NOT NULL, `addedByName` TEXT NOT NULL, `removedAt` INTEGER, `removedByName` TEXT, " +
             "PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_substances_projectId` ON `substances` (`projectId`)",
+    )
+
+    val SQL_44_45: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `fire_points` (`id` TEXT NOT NULL, `projectId` TEXT NOT NULL, " +
+            "`reference` TEXT NOT NULL, `kind` TEXT NOT NULL, `location` TEXT NOT NULL, `tagNumber` TEXT, " +
+            "`serviceDueOnDay` INTEGER, `addedAt` INTEGER NOT NULL, `addedByName` TEXT NOT NULL, " +
+            "`removedAt` INTEGER, `removedByName` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_fire_points_projectId` ON `fire_points` (`projectId`)",
+        "CREATE TABLE IF NOT EXISTS `fire_point_checks` (`id` TEXT NOT NULL, `firePointId` TEXT NOT NULL, " +
+            "`projectId` TEXT NOT NULL, `checkedAt` INTEGER NOT NULL, `ok` INTEGER NOT NULL, `note` TEXT, " +
+            "`checkedByName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_fire_point_checks_firePointId` ON `fire_point_checks` (`firePointId`)",
+        "CREATE INDEX IF NOT EXISTS `index_fire_point_checks_projectId` ON `fire_point_checks` (`projectId`)",
     )
 }

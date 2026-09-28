@@ -8,6 +8,7 @@ import il.co.tradesmanager.core.evidence.Complaints
 import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.money.JobFinancials
+import il.co.tradesmanager.core.safety.FirePoints
 import il.co.tradesmanager.core.safety.Risks
 import il.co.tradesmanager.core.safety.Substances
 import il.co.tradesmanager.core.work.Attention
@@ -22,6 +23,7 @@ import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.firepoints.FirePointsViewModel
 import java.time.LocalDate
 import java.time.ZoneId
 import kotlinx.coroutines.flow.SharingStarted
@@ -164,7 +166,11 @@ class ProjectDetailViewModel(
                     container.risks.observeForProject(projectId),
                     container.complaints.observeForProject(projectId),
                     container.substances.observeForProject(projectId),
-                ) { inspections, risks, complaints, substances ->
+                    combine(
+                        container.firePoints.observeForProject(projectId),
+                        container.firePoints.observeChecksForProject(projectId),
+                    ) { points, checks -> FirePointsViewModel.rowsOf(points, checks) },
+                ) { inspections, risks, complaints, substances, firePoints ->
                     val now = System.currentTimeMillis()
                     val zone = ZoneId.systemDefault()
                     val today = LocalDate.now()
@@ -183,6 +189,7 @@ class ProjectDetailViewModel(
                         Attention.Item.COMPLAINTS_WAITING to complaints.count {
                             Complaints.state(it.receivedAt, it.answeredAt, now, zone) == Complaints.State.WAITING_LONG
                         },
+                        Attention.Item.FIRE_POINTS to firePoints.count { FirePoints.needsAttention(it.state) },
                         Attention.Item.SUBSTANCES_WITHOUT_SHEET to substances.count {
                             Substances.state(it.sheetOnDay?.let(LocalDate::ofEpochDay), it.removedAt != null, today) == Substances.State.NO_SHEET
                         },

@@ -134,6 +134,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.RISK)) hits += risks(terms, jobNames)
         if (mayRead(Search.Kind.COMPLAINT)) hits += complaints(terms, jobNames)
         if (mayRead(Search.Kind.SUBSTANCE)) hits += substances(terms, jobNames)
+        if (mayRead(Search.Kind.FIRE_POINT)) hits += firePoints(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -516,6 +517,24 @@ class SearchViewModel(
                 isOpen = substance.removedAt == null,
                 terms = terms,
                 projectId = substance.projectId,
+            )
+        }
+
+    private suspend fun firePoints(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.firePoints.all().mapNotNull { point ->
+            hit(
+                id = point.id,
+                kind = Search.Kind.FIRE_POINT,
+                title = point.reference + " " + point.location,
+                detail = listOfNotNull(point.tagNumber, jobNames[point.projectId]).joinToString(" "),
+                // The kind is matched as stored ("CO2", "HOSE_REEL"), not shown twice.
+                matchAlso = point.kind.replace('_', ' '),
+                isOpen = point.removedAt == null,
+                terms = terms,
+                projectId = point.projectId,
             )
         }
 

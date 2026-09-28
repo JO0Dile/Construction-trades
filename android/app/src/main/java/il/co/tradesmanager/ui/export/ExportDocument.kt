@@ -9,6 +9,7 @@ import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.safety.FirePoints
 import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.safety.Risks
 import il.co.tradesmanager.core.safety.Substances
@@ -22,6 +23,8 @@ import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.ComplaintEntity
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.DesignQueryEntity
+import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
+import il.co.tradesmanager.data.local.entity.FirePointEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.PpeIssueEntity
@@ -36,6 +39,7 @@ import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.complaints.complaintSubjectLabel
 import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.delays.delayCauseLabel
+import il.co.tradesmanager.ui.firepoints.firePointKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
 import il.co.tradesmanager.ui.risks.bandLabel
@@ -196,6 +200,18 @@ sealed interface ExportDocument {
         val jobName: String,
         val substances: List<SubstanceEntity>,
         val today: LocalDate,
+    ) : ExportDocument
+
+    /**
+     * One job's fire points: where each one is, its service date, and the
+     * newest look at it. The CSV carries every look, for whoever asks to see
+     * that somebody walked round every month.
+     */
+    data class FirePointRegister(
+        val jobName: String,
+        val points: List<FirePointEntity>,
+        val checks: List<FirePointCheckEntity>,
+        val now: Long = System.currentTimeMillis(),
     ) : ExportDocument
 
     /** One job's questions to its designers, with the answers and when they came. */
@@ -495,6 +511,58 @@ sealed interface ExportDocument {
             },
         )
 
+        is FirePointRegister -> {
+            val looksByPoint = checks.groupBy { it.firePointId }.mapValues { (_, looks) -> looks.sortedByDescending { it.checkedAt } }
+            val sorted = points.sortedBy { it.addedAt }
+            fun lookText(look: FirePointCheckEntity): String =
+                if (look.ok) {
+                    context.getString(R.string.fp_fine) + (look.note?.let { " — $it" }.orEmpty())
+                } else {
+                    context.getString(R.string.fp_fault) + " — " + look.note.orEmpty()
+                }
+            Table(
+                title = context.getString(R.string.fp_title) + " — " + jobName,
+                headers = listOf(
+                    context.getString(R.string.ex_col_number),
+                    context.getString(R.string.fp_kind),
+                    context.getString(R.string.fp_location),
+                    context.getString(R.string.fp_tag),
+                    context.getString(R.string.ex_col_service_due),
+                    context.getString(R.string.ex_col_last_look),
+                    context.getString(R.string.ex_col_result),
+                    context.getString(R.string.ex_col_by),
+                    context.getString(R.string.ex_col_off_site),
+                ),
+                rows = sorted.map { point ->
+                    val latest = looksByPoint[point.id]?.firstOrNull()
+                    val serviceDueOn = point.serviceDueOnDay?.let(LocalDate::ofEpochDay)
+                    val state = FirePoints.state(serviceDueOn, latest?.checkedAt, latest?.ok, point.removedAt != null, now, ZoneId.systemDefault())
+                    listOf(
+                        point.reference,
+                        context.getString(firePointKindLabel(FirePoints.kindOf(point.kind))),
+                        point.location,
+                        point.tagNumber.orEmpty(),
+                        serviceDueOn?.let {
+                            Formats.date(it, locale) +
+                                if (state == FirePoints.State.SERVICE_OVERDUE) " — " + context.getString(R.string.ex_overdue) else ""
+                        }.orEmpty(),
+                        latest?.let { day(it.checkedAt, locale) } ?: context.getString(R.string.fp_state_never_checked),
+                        latest?.let { lookText(it) }.orEmpty(),
+                        latest?.checkedByName.orEmpty(),
+                        point.removedAt?.let { day(it, locale) }.orEmpty(),
+                    )
+                },
+                extraHeaders = listOf(context.getString(R.string.fp_looks)),
+                extraCells = sorted.map { point ->
+                    listOf(
+                        looksByPoint[point.id].orEmpty().joinToString("; ") { look ->
+                            day(look.checkedAt, locale) + " " + look.checkedByName + ": " + lookText(look)
+                        },
+                    )
+                },
+            )
+        }
+
         is QueryRegister -> Table(
             title = context.getString(R.string.qry_title) + " — " + jobName,
             headers = listOf(
@@ -688,6 +756,7 @@ sealed interface ExportDocument {
             is QueryRegister -> "questions-to-designers-" + jobName
             is ComplaintRegister -> "complaints-" + jobName
             is SubstanceRegister -> "substances-" + jobName
+            is FirePointRegister -> "fire-points-" + jobName
         },
     )
 

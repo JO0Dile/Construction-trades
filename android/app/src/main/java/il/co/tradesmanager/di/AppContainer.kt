@@ -21,6 +21,7 @@ import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
 import il.co.tradesmanager.data.repository.ExcavationRepository
+import il.co.tradesmanager.data.repository.FirePointRepository
 import il.co.tradesmanager.data.repository.HeatRepository
 import il.co.tradesmanager.data.repository.InspectionRepository
 import il.co.tradesmanager.data.repository.InventoryRepository
@@ -218,6 +219,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** What is kept on the site that can hurt somebody, and where. */
     val substances = SubstanceRepository(database.substanceDao(), auditTrail)
+
+    /** The extinguishers, blankets and hose reels, and the monthly looks at them. */
+    val firePoints = FirePointRepository(database.firePointDao(), auditTrail)
 
     /** The job's risk assessment: hazards, scored before and after their controls. */
     val risks = RiskRepository(database.riskDao(), auditTrail)

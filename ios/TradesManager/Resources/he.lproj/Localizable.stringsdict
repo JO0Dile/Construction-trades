@@ -543,5 +543,25 @@
             <string>ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה</string>
         </dict>
     </dict>
+    <key>fp_looks_more</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>ועוד בדיקה קודמת אחת</string>
+            <key>two</key>
+            <string>ועוד שתי בדיקות קודמות</string>
+            <key>many</key>
+            <string>ועוד %d בדיקות קודמות</string>
+            <key>other</key>
+            <string>ועוד %d בדיקות קודמות</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

@@ -2576,3 +2576,97 @@
 "at_complaints_waiting" = "Complaints unanswered for over a week";
 /* Line in 'Needs attention', followed by a count */
 "at_substances_no_sheet" = "Substances with no data sheet";
+"summary_fp_added" = "%1$s: fire point, %2$s";
+"summary_fp_checked" = "%1$s looked at: fine";
+"summary_fp_fault" = "%1$s looked at: %2$s";
+"summary_fp_removed" = "%1$s taken away";
+"summary_fp_serviced" = "%1$s serviced, next service %2$s";
+/* Screen title and job link: extinguishers, blankets, hose reels */
+"fp_title" = "Fire points";
+/* Hint under the job link */
+"fp_row_hint" = "The extinguishers and hose reels, the monthly look, and the service date";
+"fp_empty" = "No fire points recorded on this job.";
+"fp_blurb" = "Record each extinguisher, fire blanket and hose reel: where it is, its tag, and the service date on its label. Once a month, look at each one and say whether it is fine. A fault, a service date passed or a month without a look is shown first.";
+"fp_add" = "Add a fire point";
+/* Button */
+"fp_save" = "Save";
+/* Heading over the kind chips, and a column heading */
+"fp_kind" = "Kind";
+"fp_kind_powder" = "Powder extinguisher";
+"fp_kind_co2" = "CO₂ extinguisher";
+"fp_kind_foam" = "Foam extinguisher";
+"fp_kind_water" = "Water extinguisher";
+"fp_kind_blanket" = "Fire blanket";
+"fp_kind_hose_reel" = "Hose reel";
+/* Field label, and a column heading */
+"fp_location" = "Where it is";
+"fp_location_hint" = "By the stair on level 2, outside the site office, in the welding bay";
+/* Field label, and a column heading */
+"fp_tag" = "Tag number";
+/* %1$s is the tag number */
+"fp_tag_is" = "Tag %1$s";
+"fp_service_label" = "Service date on its label";
+/* Button that opens a calendar */
+"fp_service_pick" = "Pick the date on the label";
+/* Title of the calendar */
+"fp_service_question" = "When is its next service due?";
+/* Title of the calendar */
+"fp_next_service_question" = "What is the next service date on the new label?";
+/* %1$s is a date */
+"fp_service_due" = "Service due %1$s";
+"fp_no_service_date" = "No service date recorded";
+/* Button: record a monthly look that found it fine */
+"fp_looked_fine" = "Looked at: fine";
+/* Button and dialog title */
+"fp_found_fault" = "Found a fault";
+"fp_fault_what" = "What is wrong";
+"fp_fault_hint" = "Gauge in the red, pin missing, blocked, gone, used";
+/* Button */
+"fp_record_fault" = "Record the fault";
+/* Result of one look */
+"fp_fine" = "Fine";
+/* Result of one look */
+"fp_fault" = "Fault";
+/* Heading over the list of monthly looks, and a CSV column */
+"fp_looks" = "Looks";
+/* Button */
+"fp_serviced" = "Serviced: new label date";
+/* Button */
+"fp_remove" = "Taken away";
+/* %1$s is the reference, e.g. FP-003 */
+"fp_remove_question" = "Has %1$s been taken away?";
+"fp_remove_body" = "It stays on the register with its looks, marked off with today's date.";
+/* %1$s is a date, %2$s a name */
+"fp_added_by" = "Added %1$s by %2$s";
+/* %1$s is what was wrong */
+"fp_state_fault" = "Fault: %1$s";
+/* %1$s is a date */
+"fp_state_service_overdue" = "Service was due %1$s";
+"fp_state_never_checked" = "Never looked at";
+/* %1$s is a date */
+"fp_state_check_overdue" = "Not looked at since %1$s";
+/* %1$s is a date */
+"fp_state_service_soon" = "Service due %1$s: book the technician";
+/* %1$s is a date */
+"fp_state_ready" = "Fine when looked at on %1$s";
+/* %1$s is a date */
+"fp_state_removed" = "Taken away %1$s";
+"fp_refused_not_allowed" = "Your role cannot change the fire points register.";
+"fp_refused_location" = "Write where it is. Somebody has to find it in smoke.";
+"fp_refused_service_past" = "The service date on the label has to be ahead of today.";
+"fp_refused_fault_note" = "Write what is wrong, so whoever puts it right knows.";
+"fp_refused_removed" = "It has been taken away; nothing more can be recorded against it.";
+/* Column heading */
+"ex_col_service_due" = "Service due";
+/* Column heading */
+"ex_col_last_look" = "Last looked at";
+/* Column heading */
+"ex_col_result" = "Result";
+/* Column heading: who did it */
+"ex_col_by" = "By";
+/* Added after a date that has passed */
+"ex_overdue" = "overdue";
+/* Label on a search result */
+"search_kind_fire_point" = "Fire point";
+/* Line in 'Needs attention', followed by a count */
+"at_fire_points" = "Fire points with a fault or overdue";

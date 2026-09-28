@@ -12,8 +12,8 @@ package il.co.tradesmanager.core.work
  *
  * Nothing is counted here. The counts come from each register's own rule --
  * Inspections.state, Submittals.state, Queries.state, Risks.state,
- * Complaints.state, Substances.state -- so this cannot disagree with the
- * screen it points to.
+ * Complaints.state, Substances.state, FirePoints.state -- so this cannot
+ * disagree with the screen it points to.
  */
 object Attention {
 
@@ -21,6 +21,7 @@ object Attention {
     enum class Item {
         RISKS_EXTREME,
         SUBSTANCES_WITHOUT_SHEET,
+        FIRE_POINTS,
         INSPECTIONS_FAILED,
         INSPECTIONS_OVERDUE,
         MATERIALS_REJECTED,

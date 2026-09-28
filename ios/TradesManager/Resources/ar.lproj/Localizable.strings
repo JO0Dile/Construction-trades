@@ -2576,3 +2576,97 @@
 "at_complaints_waiting" = "شكاوى بلا رد منذ أكثر من أسبوع";
 /* Line in 'Needs attention', followed by a count */
 "at_substances_no_sheet" = "مواد بلا صحيفة بيانات سلامة";
+"summary_fp_added" = "%1$s: نقطة إطفاء — %2$s";
+"summary_fp_checked" = "%1$s فُحصت: سليمة";
+"summary_fp_fault" = "%1$s فُحصت: %2$s";
+"summary_fp_removed" = "%1$s أُزيلت";
+"summary_fp_serviced" = "%1$s خضعت للصيانة، الصيانة التالية %2$s";
+/* Screen title and job link: extinguishers, blankets, hose reels */
+"fp_title" = "نقاط إطفاء الحريق";
+/* Hint under the job link */
+"fp_row_hint" = "طفايات الحريق وبكرات الخراطيم، والفحص الشهري، وتاريخ الصيانة";
+"fp_empty" = "لم تُسجَّل نقاط إطفاء في هذا المشروع.";
+"fp_blurb" = "سجّل كل طفاية وبطانية إطفاء وبكرة خرطوم: أين هي، ورقم بطاقتها، وتاريخ الصيانة على ملصقها. مرة في الشهر افحص كل واحدة وسجّل إن كانت سليمة. العطل أو تاريخ الصيانة الفائت أو شهر بلا فحص يظهر أولًا.";
+"fp_add" = "إضافة نقطة إطفاء";
+/* Button */
+"fp_save" = "حفظ";
+/* Heading over the kind chips, and a column heading */
+"fp_kind" = "النوع";
+"fp_kind_powder" = "طفاية مسحوق";
+"fp_kind_co2" = "طفاية CO₂";
+"fp_kind_foam" = "طفاية رغوة";
+"fp_kind_water" = "طفاية ماء";
+"fp_kind_blanket" = "بطانية إطفاء";
+"fp_kind_hose_reel" = "بكرة خرطوم";
+/* Field label, and a column heading */
+"fp_location" = "أين هي";
+"fp_location_hint" = "عند الدرج في الطابق 2، خارج مكتب الموقع، في منطقة اللحام";
+/* Field label, and a column heading */
+"fp_tag" = "رقم البطاقة";
+/* %1$s is the tag number */
+"fp_tag_is" = "بطاقة %1$s";
+"fp_service_label" = "تاريخ الصيانة على الملصق";
+/* Button that opens a calendar */
+"fp_service_pick" = "اختيار التاريخ على الملصق";
+/* Title of the calendar */
+"fp_service_question" = "متى موعد الصيانة التالية؟";
+/* Title of the calendar */
+"fp_next_service_question" = "ما تاريخ الصيانة التالية على الملصق الجديد؟";
+/* %1$s is a date */
+"fp_service_due" = "الصيانة مستحقة %1$s";
+"fp_no_service_date" = "لم يُسجَّل تاريخ صيانة";
+/* Button: record a monthly look that found it fine */
+"fp_looked_fine" = "فُحصت: سليمة";
+/* Button and dialog title */
+"fp_found_fault" = "وُجد عطل";
+"fp_fault_what" = "ما الخلل";
+"fp_fault_hint" = "المؤشر في الأحمر، المسمار مفقود، مسدودة، مفقودة، مستعملة";
+/* Button */
+"fp_record_fault" = "تسجيل العطل";
+/* Result of one look */
+"fp_fine" = "سليمة";
+/* Result of one look */
+"fp_fault" = "عطل";
+/* Heading over the list of monthly looks, and a CSV column */
+"fp_looks" = "الفحوصات";
+/* Button */
+"fp_serviced" = "خضعت للصيانة: تاريخ جديد على الملصق";
+/* Button */
+"fp_remove" = "أُزيلت";
+/* %1$s is the reference, e.g. FP-003 */
+"fp_remove_question" = "هل أُزيلت %1$s؟";
+"fp_remove_body" = "تبقى في السجل مع فحوصاتها، مؤشَّرًا عليها بتاريخ اليوم.";
+/* %1$s is a date, %2$s a name */
+"fp_added_by" = "أُضيفت في %1$s بواسطة %2$s";
+/* %1$s is what was wrong */
+"fp_state_fault" = "عطل: %1$s";
+/* %1$s is a date */
+"fp_state_service_overdue" = "كانت الصيانة مستحقة في %1$s";
+"fp_state_never_checked" = "لم تُفحص قط";
+/* %1$s is a date */
+"fp_state_check_overdue" = "لم تُفحص منذ %1$s";
+/* %1$s is a date */
+"fp_state_service_soon" = "الصيانة مستحقة %1$s: احجز الفني";
+/* %1$s is a date */
+"fp_state_ready" = "سليمة عند فحصها في %1$s";
+/* %1$s is a date */
+"fp_state_removed" = "أُزيلت في %1$s";
+"fp_refused_not_allowed" = "دورك لا يسمح بتغيير سجل نقاط الإطفاء.";
+"fp_refused_location" = "اكتب أين هي. سيحتاج أحد إلى إيجادها وسط الدخان.";
+"fp_refused_service_past" = "يجب أن يكون تاريخ الصيانة على الملصق بعد اليوم.";
+"fp_refused_fault_note" = "اكتب ما الخلل، ليعرف من سيصلحه.";
+"fp_refused_removed" = "أُزيلت؛ لا يمكن تسجيل شيء آخر عليها.";
+/* Column heading */
+"ex_col_service_due" = "الصيانة مستحقة";
+/* Column heading */
+"ex_col_last_look" = "آخر فحص";
+/* Column heading */
+"ex_col_result" = "النتيجة";
+/* Column heading: who did it */
+"ex_col_by" = "بواسطة";
+/* Added after a date that has passed */
+"ex_overdue" = "متأخرة";
+/* Label on a search result */
+"search_kind_fire_point" = "نقطة إطفاء";
+/* Line in 'Needs attention', followed by a count */
+"at_fire_points" = "نقاط إطفاء بها عطل أو متأخرة";

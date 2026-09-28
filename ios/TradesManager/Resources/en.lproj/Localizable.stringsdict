@@ -435,5 +435,21 @@
             <string>%d machines' examination certificates have run out or failed</string>
         </dict>
     </dict>
+    <key>fp_looks_more</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>and %d earlier look</string>
+            <key>other</key>
+            <string>and %d earlier looks</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

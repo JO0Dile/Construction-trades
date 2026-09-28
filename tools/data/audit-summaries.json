@@ -388,6 +388,49 @@
       "he": "אתר אינטרנט",
       "ar": "الموقع الإلكتروني"
     },
+    "fp_added": {
+      "arguments": [
+        "reference",
+        "location"
+      ],
+      "en": "%1$s: fire point, %2$s",
+      "he": "%1$s: עמדת כיבוי — %2$s",
+      "ar": "%1$s: نقطة إطفاء — %2$s"
+    },
+    "fp_checked": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s looked at: fine",
+      "he": "%1$s נבדק: תקין",
+      "ar": "%1$s فُحصت: سليمة"
+    },
+    "fp_fault": {
+      "arguments": [
+        "reference",
+        "note"
+      ],
+      "en": "%1$s looked at: %2$s",
+      "he": "%1$s נבדק: %2$s",
+      "ar": "%1$s فُحصت: %2$s"
+    },
+    "fp_removed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s taken away",
+      "he": "%1$s הוסר",
+      "ar": "%1$s أُزيلت"
+    },
+    "fp_serviced": {
+      "arguments": [
+        "reference",
+        "date"
+      ],
+      "en": "%1$s serviced, next service %2$s",
+      "he": "%1$s עבר טיפול, הטיפול הבא %2$s",
+      "ar": "%1$s خضعت للصيانة، الصيانة التالية %2$s"
+    },
     "goods_received": {
       "arguments": [
         "quantity",

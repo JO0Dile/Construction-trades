@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.41.0",
+      "points": [
+        {
+          "en": "A new fire points register on every job: each extinguisher, fire blanket and hose reel, where it is, its tag, and the service date on its label. Once a month, open it and tap 'Looked at: fine' or record the fault you found. Every look is kept, with who and when.",
+          "he": "פנקס עמדות כיבוי חדש בכל עבודה: כל מטף, שמיכת כיבוי וגלגלון, איפה הוא, מספר התג ותאריך הטיפול שעל התווית. פעם בחודש פתחו אותו והקישו 'נבדק: תקין', או רשמו את התקלה שמצאתם. כל בדיקה נשמרת, עם מי ומתי.",
+          "ar": "سجل نقاط إطفاء جديد في كل مشروع: كل طفاية وبطانية إطفاء وبكرة خرطوم، وأين هي، ورقم بطاقتها، وتاريخ الصيانة على ملصقها. مرة في الشهر افتحها واضغط 'فُحصت: سليمة' أو سجّل العطل الذي وجدته. يُحفظ كل فحص، مع من ومتى."
+        },
+        {
+          "en": "A fault is shown first and in red until a later look finds it fine, then a service date passed, then a point not looked at for a month; these are counted at the top of the job page too. When the technician has been, record the new date on the label.",
+          "he": "תקלה מוצגת ראשונה ובאדום עד שבדיקה מאוחרת יותר מוצאת שהכול תקין, אחריה תאריך טיפול שעבר, ואחריה עמדה שלא נבדקה חודש; הן נספרות גם בראש דף העבודה. אחרי ביקור הטכנאי, רשמו את התאריך החדש שעל התווית.",
+          "ar": "يظهر العطل أولًا وبالأحمر حتى يجد فحص لاحق أنها سليمة، ثم تاريخ صيانة فائت، ثم نقطة لم تُفحص منذ شهر؛ وتُعدّ هذه أيضًا أعلى صفحة المشروع. بعد زيارة الفني، سجّل التاريخ الجديد على الملصق."
+        },
+        {
+          "en": "The register prints and exports — the CSV carries every look — goes into the job's archive, and can be found from the search box.",
+          "he": "אפשר להדפיס ולייצא את הפנקס — קובץ ה־CSV כולל כל בדיקה — הוא נכלל בארכיון העבודה, ואפשר למצוא אותו מתיבת החיפוש.",
+          "ar": "يمكن طباعة السجل وتصديره — ويحمل ملف CSV كل فحص — ويدخل في أرشيف المشروع، ويمكن إيجاده من مربع البحث."
+        }
+      ]
+    },
+    {
       "version": "0.40.0",
       "points": [
         {

@@ -722,6 +722,17 @@ stopped counting. A substance taken off the site is marked off with the
 date. Which substances need a permit, and in what quantities, is the
 regulations' to say and not this register's.
 
+**Fire points. Done.**
+Every extinguisher, fire blanket and hose reel on the job: where it is, its
+tag, and the service date on its label. The monthly look is a row of its own
+-- who, when, fine or what was wrong -- so the register shows that somebody
+walked round every month, not only that the last one was fine. A fault is
+the point's state until a later look finds it fine, and is shown first; then
+a service date passed; then a point not looked at for a month. Those three
+are counted at the top of the job page. The technician's visit moves the
+label date on. How many a site needs, and where, is the fire authority's to
+say.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app
@@ -786,21 +797,21 @@ by what it would actually take to build them, it comes out roughly:
 
 | | About | |
 | --- | ---: | --- |
-| Built | ~103 | *estimated — see below* |
+| Built | ~104 | *estimated — see below* |
 | Buildable here — on the device, no server | ~90 | where the work is |
 | Needs a server | 60 | sync, chat, push-to-talk, client portal |
 | Needs an API somebody has to grant | 55 | government bodies, Priority/SAP, weather, traffic, CCTV |
 | Needs hardware | 30 | turnstiles, biometrics, sensors, drones, wearables |
 | Is a product in its own right | 25 | BIM viewer, AR overlay, CAD engine, the AI predictions |
 
-The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 → ~101 → ~102 → ~103 since the third of
+The built figure has gone 35 → 44 → 76 → 77 → ~89 → ~91 → ~94 → ~95 → ~96 → ~97 → ~98 → ~99 → ~100 → ~101 → ~102 → ~103 → ~104 since the third of
 September. The last exact count was 77, on the fourteenth. Landing since
 then, and plausibly items on the list: site admission at the gate, one search
 box across the whole app, terms of service, the stock item detail sheet, the
 plans screen, the rules for a phone verification code, restore actually
 reaching the end of its own mechanism, the emergency roll call, the heat
 check, plant pre-use checks, the waste register, the protective equipment
-register, the visitor log, inspection requests, material approvals, the delay register, plant examination certificates, the risk assessment, the complaints register, and the hazardous substances register.
+register, the visitor log, inspection requests, material approvals, the delay register, plant examination certificates, the risk assessment, the complaints register, the hazardous substances register, and the fire points register.
 
 **It is an estimate and it should not be quoted as anything else.** Counting
 it properly needs the 350-item list, which lives outside this repository.
