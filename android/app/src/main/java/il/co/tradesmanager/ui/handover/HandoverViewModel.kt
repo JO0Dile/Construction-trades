@@ -251,6 +251,12 @@ class HandoverViewModel(
             documents += ExportDocument.QueryRegister(job.name, container.designQueries.observeForProject(projectId).first())
             documents += ExportDocument.SubmittalRegister(job.name, container.submittals.observeForProject(projectId).first())
             documents += ExportDocument.DelayRegister(job.name, container.delays.observeForProject(projectId).first(), LocalDate.now())
+            documents += ExportDocument.MeetingActionLog(
+                jobName = job.name,
+                meetings = container.meetings.observeForProject(projectId).first(),
+                actions = container.meetings.observeActionsForProject(projectId).first(),
+                today = LocalDate.now(),
+            )
         }
         return documents
     }

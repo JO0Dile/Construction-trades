@@ -675,5 +675,53 @@
             <string>و%d فحص سابق</string>
         </dict>
     </dict>
+    <key>mt_points_open</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا نقاط مفتوحة</string>
+            <key>one</key>
+            <string>نقطة واحدة لا تزال مفتوحة</string>
+            <key>two</key>
+            <string>نقطتان لا تزالان مفتوحتين</string>
+            <key>few</key>
+            <string>%d نقاط لا تزال مفتوحة</string>
+            <key>many</key>
+            <string>%d نقطة لا تزال مفتوحة</string>
+            <key>other</key>
+            <string>%d نقطة لا تزال مفتوحة</string>
+        </dict>
+    </dict>
+    <key>mt_points_of_meeting</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا نقاط</string>
+            <key>one</key>
+            <string>نقطة واحدة، %2$d لا تزال مفتوحة</string>
+            <key>two</key>
+            <string>نقطتان، %2$d لا تزال مفتوحة</string>
+            <key>few</key>
+            <string>%1$d نقاط، %2$d لا تزال مفتوحة</string>
+            <key>many</key>
+            <string>%1$d نقطة، %2$d لا تزال مفتوحة</string>
+            <key>other</key>
+            <string>%1$d نقطة، %2$d لا تزال مفتوحة</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

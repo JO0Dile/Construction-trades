@@ -135,6 +135,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.COMPLAINT)) hits += complaints(terms, jobNames)
         if (mayRead(Search.Kind.SUBSTANCE)) hits += substances(terms, jobNames)
         if (mayRead(Search.Kind.FIRE_POINT)) hits += firePoints(terms, jobNames)
+        if (mayRead(Search.Kind.MEETING_POINT)) hits += meetingPoints(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -517,6 +518,24 @@ class SearchViewModel(
                 isOpen = substance.removedAt == null,
                 terms = terms,
                 projectId = substance.projectId,
+            )
+        }
+
+    private suspend fun meetingPoints(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.meetings.allActions().mapNotNull { point ->
+            hit(
+                id = point.id,
+                kind = Search.Kind.MEETING_POINT,
+                title = point.reference + " " + point.text,
+                detail = listOfNotNull(point.ownerName, jobNames[point.projectId]).joinToString(" "),
+                // What was done is matched, not shown.
+                matchAlso = point.closingNote.orEmpty(),
+                isOpen = point.closedAt == null,
+                terms = terms,
+                projectId = point.projectId,
             )
         }
 

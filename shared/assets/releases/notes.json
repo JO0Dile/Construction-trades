@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.44.0",
+      "points": [
+        {
+          "en": "A new Meetings page on every job: minute the coordination meeting, the progress meeting with the client or the safety committee — who was there and what was said — and each point agreed, numbered under its meeting, with who does it and by when.",
+          "he": "דף ישיבות חדש בכל עבודה: רשמו את ישיבת התיאום, ישיבת ההתקדמות עם המזמין או ועדת הבטיחות — מי השתתף ומה נאמר — וכל נקודה שסוכמה, ממוספרת תחת הישיבה שלה, עם מי מבצע ועד מתי.",
+          "ar": "صفحة اجتماعات جديدة في كل مشروع: سجّل محضر اجتماع التنسيق أو اجتماع التقدّم مع صاحب العمل أو لجنة السلامة — من حضر وما قيل — وكل نقطة اتُّفق عليها، مرقّمة تحت اجتماعها، مع من ينفّذها ومتى."
+        },
+        {
+          "en": "A point stays open from meeting to meeting until somebody closes it with what was done. The points still open come first, overdue ones in red, and overdue points are counted at the top of the job page.",
+          "he": "נקודה נשארת פתוחה מישיבה לישיבה עד שמישהו סוגר אותה עם מה שנעשה. הנקודות הפתוחות מוצגות ראשונות, אלה שבאיחור באדום, ונקודות באיחור נספרות בראש דף העבודה.",
+          "ar": "تبقى النقطة مفتوحة من اجتماع إلى آخر حتى يغلقها أحد بما أُنجز. تظهر النقاط المفتوحة أولًا، والمتأخرة بالأحمر، وتُعدّ النقاط المتأخرة أعلى صفحة المشروع."
+        },
+        {
+          "en": "Every point, open and closed, prints and exports as the action log, goes into the job's archive, and can be found from the search box.",
+          "he": "כל הנקודות, פתוחות וסגורות, מודפסות ומיוצאות כיומן המשימות, נכללות בארכיון העבודה, ואפשר למצוא אותן מתיבת החיפוש.",
+          "ar": "تُطبع كل النقاط، المفتوحة والمغلقة، وتُصدَّر كسجل المهام، وتدخل في أرشيف المشروع، ويمكن إيجادها من مربع البحث."
+        }
+      ]
+    },
+    {
       "version": "0.43.0",
       "points": [
         {

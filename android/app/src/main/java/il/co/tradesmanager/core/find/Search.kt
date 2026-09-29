@@ -103,6 +103,7 @@ object Search {
         COMPLAINT(setOf(Lens.EVIDENCE)),
         SUBSTANCE(setOf(Lens.EVIDENCE)),
         FIRE_POINT(setOf(Lens.EVIDENCE)),
+        MEETING_POINT(setOf(Lens.PLAN)),
     }
 
     /**

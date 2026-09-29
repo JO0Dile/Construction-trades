@@ -2431,7 +2431,7 @@
 "at_risk_reviews" = "Risk reviews overdue";
 /* Button on the handover pack */
 "hv_export_all" = "Export all of this job's records";
-"hv_export_all_hint" = "One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals and delays — each as a PDF and a CSV.";
+"hv_export_all_hint" = "One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals, delays and the meeting points — each as a PDF and a CSV.";
 "summary_cp_answered" = "%1$s answered";
 "summary_cp_received" = "%1$s: complaint from %2$s";
 /* Screen title and job link */
@@ -2723,3 +2723,77 @@
 "es_refused_phone" = "A phone number can only have digits, spaces, dashes and a leading +.";
 /* Line in 'Needs attention', followed by how many essentials are missing */
 "at_emergency_missing" = "Emergency information still missing";
+"summary_mt_action_closed" = "%1$s closed";
+"summary_mt_action_raised" = "%1$s agreed, for %2$s";
+"summary_mt_recorded" = "%1$s: meeting of %2$s minuted";
+/* Screen title and job link */
+"mt_title" = "Meetings";
+/* Hint under the job link */
+"mt_row_hint" = "What the site meetings agreed, and what is still not done";
+"mt_empty" = "No meetings minuted on this job.";
+"mt_blurb" = "After the coordination meeting, the progress meeting with the client or the safety committee, write down who was there and each point agreed, with who does it and by when. A point stays open from meeting to meeting until somebody closes it with what was done.";
+"mt_record" = "Minute a meeting";
+/* Button */
+"mt_save" = "Save";
+/* Section header */
+"mt_meetings" = "Meetings";
+"mt_kind" = "Kind of meeting";
+"mt_kind_coordination" = "Coordination";
+"mt_kind_progress" = "Progress, with the client";
+"mt_kind_safety" = "Safety committee";
+"mt_kind_design" = "Design";
+"mt_kind_other" = "Other";
+"mt_held" = "When it was held";
+"mt_today" = "Today";
+"mt_a_week_ago" = "A week ago";
+/* Field label and heading */
+"mt_attendees" = "Who was there";
+"mt_attendees_hint" = "As the minutes would list them: the site manager, Cohen Electric, the architect";
+"mt_no_attendees" = "Attendance not recorded";
+/* Field label and heading */
+"mt_notes" = "What was said";
+/* %1$s is a name */
+"mt_minuted_by" = "Minuted by %1$s";
+/* Heading */
+"mt_points" = "Points agreed";
+"mt_no_points" = "No points recorded at this meeting yet.";
+/* Button and dialog title */
+"mt_raise" = "Add a point agreed";
+/* Field label and column heading: the point agreed */
+"mt_point_what" = "What";
+/* Field label and column heading: who does it */
+"mt_point_who" = "Who";
+"mt_point_who_hint" = "A person or a firm";
+/* Heading and column heading */
+"mt_point_when" = "By when";
+"mt_in_3_days" = "In 3 days";
+"mt_in_a_week" = "In a week";
+"mt_in_2_weeks" = "In two weeks";
+"mt_no_date" = "No date set";
+/* %1$s is a date */
+"mt_due" = "Due %1$s";
+/* %1$s is a date */
+"mt_overdue" = "Was due %1$s";
+/* %1$s is a date */
+"mt_done_on" = "Done %1$s";
+/* Field label, heading and column heading */
+"mt_what_was_done" = "What was done";
+"mt_what_was_done_hint" = "So the next meeting knows: \"Drawing rev C received on the 9th\"";
+/* Button */
+"mt_close_point" = "Close the point";
+/* %1$s is a point reference, e.g. MT-004/2 */
+"mt_close_question" = "Close %1$s?";
+/* %1$s is a name */
+"mt_closed_by" = "Closed by %1$s";
+"mt_refused_not_allowed" = "Your role cannot change the meetings.";
+"mt_refused_future" = "Minutes are written after a meeting, not before it.";
+"mt_refused_blank" = "Write what was agreed.";
+"mt_refused_due" = "A point cannot be due before the meeting that agreed it.";
+"mt_refused_note" = "Write what was done, so the next meeting knows.";
+"mt_refused_closed" = "That point is already closed.";
+/* Column heading */
+"ex_col_meeting" = "Meeting";
+/* Label on a search result */
+"search_kind_meeting_point" = "Meeting point";
+/* Line in 'Needs attention', followed by a count */
+"at_meeting_points" = "Meeting points overdue";

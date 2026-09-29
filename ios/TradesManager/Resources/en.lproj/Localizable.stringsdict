@@ -451,5 +451,37 @@
             <string>and %d earlier looks</string>
         </dict>
     </dict>
+    <key>mt_points_open</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d point still open</string>
+            <key>other</key>
+            <string>%d points still open</string>
+        </dict>
+    </dict>
+    <key>mt_points_of_meeting</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%1$d point, %2$d still open</string>
+            <key>other</key>
+            <string>%1$d points, %2$d still open</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

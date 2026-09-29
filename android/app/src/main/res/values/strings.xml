@@ -2432,7 +2432,7 @@
     <string name="at_risk_reviews">Risk reviews overdue</string>
     <!-- Button on the handover pack -->
     <string name="hv_export_all">Export all of this job\'s records</string>
-    <string name="hv_export_all_hint">One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals and delays — each as a PDF and a CSV.</string>
+    <string name="hv_export_all_hint">One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals, delays and the meeting points — each as a PDF and a CSV.</string>
     <string name="summary_cp_answered">%1$s answered</string>
     <string name="summary_cp_received">%1$s: complaint from %2$s</string>
     <!-- Screen title and job link -->
@@ -2724,6 +2724,80 @@
     <string name="es_refused_phone">A phone number can only have digits, spaces, dashes and a leading +.</string>
     <!-- Line in 'Needs attention', followed by how many essentials are missing -->
     <string name="at_emergency_missing">Emergency information still missing</string>
+    <string name="summary_mt_action_closed">%1$s closed</string>
+    <string name="summary_mt_action_raised">%1$s agreed, for %2$s</string>
+    <string name="summary_mt_recorded">%1$s: meeting of %2$s minuted</string>
+    <!-- Screen title and job link -->
+    <string name="mt_title">Meetings</string>
+    <!-- Hint under the job link -->
+    <string name="mt_row_hint">What the site meetings agreed, and what is still not done</string>
+    <string name="mt_empty">No meetings minuted on this job.</string>
+    <string name="mt_blurb">After the coordination meeting, the progress meeting with the client or the safety committee, write down who was there and each point agreed, with who does it and by when. A point stays open from meeting to meeting until somebody closes it with what was done.</string>
+    <string name="mt_record">Minute a meeting</string>
+    <!-- Button -->
+    <string name="mt_save">Save</string>
+    <!-- Section header -->
+    <string name="mt_meetings">Meetings</string>
+    <string name="mt_kind">Kind of meeting</string>
+    <string name="mt_kind_coordination">Coordination</string>
+    <string name="mt_kind_progress">Progress, with the client</string>
+    <string name="mt_kind_safety">Safety committee</string>
+    <string name="mt_kind_design">Design</string>
+    <string name="mt_kind_other">Other</string>
+    <string name="mt_held">When it was held</string>
+    <string name="mt_today">Today</string>
+    <string name="mt_a_week_ago">A week ago</string>
+    <!-- Field label and heading -->
+    <string name="mt_attendees">Who was there</string>
+    <string name="mt_attendees_hint">As the minutes would list them: the site manager, Cohen Electric, the architect</string>
+    <string name="mt_no_attendees">Attendance not recorded</string>
+    <!-- Field label and heading -->
+    <string name="mt_notes">What was said</string>
+    <!-- %1$s is a name -->
+    <string name="mt_minuted_by">Minuted by %1$s</string>
+    <!-- Heading -->
+    <string name="mt_points">Points agreed</string>
+    <string name="mt_no_points">No points recorded at this meeting yet.</string>
+    <!-- Button and dialog title -->
+    <string name="mt_raise">Add a point agreed</string>
+    <!-- Field label and column heading: the point agreed -->
+    <string name="mt_point_what">What</string>
+    <!-- Field label and column heading: who does it -->
+    <string name="mt_point_who">Who</string>
+    <string name="mt_point_who_hint">A person or a firm</string>
+    <!-- Heading and column heading -->
+    <string name="mt_point_when">By when</string>
+    <string name="mt_in_3_days">In 3 days</string>
+    <string name="mt_in_a_week">In a week</string>
+    <string name="mt_in_2_weeks">In two weeks</string>
+    <string name="mt_no_date">No date set</string>
+    <!-- %1$s is a date -->
+    <string name="mt_due">Due %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="mt_overdue">Was due %1$s</string>
+    <!-- %1$s is a date -->
+    <string name="mt_done_on">Done %1$s</string>
+    <!-- Field label, heading and column heading -->
+    <string name="mt_what_was_done">What was done</string>
+    <string name="mt_what_was_done_hint">So the next meeting knows: \"Drawing rev C received on the 9th\"</string>
+    <!-- Button -->
+    <string name="mt_close_point">Close the point</string>
+    <!-- %1$s is a point reference, e.g. MT-004/2 -->
+    <string name="mt_close_question">Close %1$s?</string>
+    <!-- %1$s is a name -->
+    <string name="mt_closed_by">Closed by %1$s</string>
+    <string name="mt_refused_not_allowed">Your role cannot change the meetings.</string>
+    <string name="mt_refused_future">Minutes are written after a meeting, not before it.</string>
+    <string name="mt_refused_blank">Write what was agreed.</string>
+    <string name="mt_refused_due">A point cannot be due before the meeting that agreed it.</string>
+    <string name="mt_refused_note">Write what was done, so the next meeting knows.</string>
+    <string name="mt_refused_closed">That point is already closed.</string>
+    <!-- Column heading -->
+    <string name="ex_col_meeting">Meeting</string>
+    <!-- Label on a search result -->
+    <string name="search_kind_meeting_point">Meeting point</string>
+    <!-- Line in 'Needs attention', followed by a count -->
+    <string name="at_meeting_points">Meeting points overdue</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -2835,5 +2909,13 @@
     <plurals name="fp_looks_more">
         <item quantity="one">and %d earlier look</item>
         <item quantity="other">and %d earlier looks</item>
+    </plurals>
+    <plurals name="mt_points_open">
+        <item quantity="one">%d point still open</item>
+        <item quantity="other">%d points still open</item>
+    </plurals>
+    <plurals name="mt_points_of_meeting">
+        <item quantity="one">%1$d point, %2$d still open</item>
+        <item quantity="other">%1$d points, %2$d still open</item>
     </plurals>
 </resources>

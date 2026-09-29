@@ -689,6 +689,32 @@
       "he": "%1$s נשלח לאישור אל %2$s",
       "ar": "أُرسل %1$s للاعتماد إلى %2$s"
     },
+    "mt_action_closed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s closed",
+      "he": "%1$s נסגר",
+      "ar": "%1$s أُغلقت"
+    },
+    "mt_action_raised": {
+      "arguments": [
+        "reference",
+        "owner"
+      ],
+      "en": "%1$s agreed, for %2$s",
+      "he": "%1$s סוכם, באחריות %2$s",
+      "ar": "%1$s اتُّفق عليها، على مسؤولية %2$s"
+    },
+    "mt_recorded": {
+      "arguments": [
+        "reference",
+        "date"
+      ],
+      "en": "%1$s: meeting of %2$s minuted",
+      "he": "%1$s: פרוטוקול ישיבה מתאריך %2$s",
+      "ar": "%1$s: محضر اجتماع بتاريخ %2$s"
+    },
     "muster_ended_all_out": {
       "arguments": [],
       "en": "Roll call ended, everybody accounted for",

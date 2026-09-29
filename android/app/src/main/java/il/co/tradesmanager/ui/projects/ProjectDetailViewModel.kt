@@ -13,6 +13,7 @@ import il.co.tradesmanager.core.safety.FirePoints
 import il.co.tradesmanager.core.safety.Risks
 import il.co.tradesmanager.core.safety.Substances
 import il.co.tradesmanager.core.work.Attention
+import il.co.tradesmanager.core.work.Meetings
 import il.co.tradesmanager.core.work.Queries
 import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.catalog.WorkStage
@@ -147,7 +148,8 @@ class ProjectDetailViewModel(
                     container.designQueries.observeForProject(projectId),
                     container.submittals.observeForProject(projectId),
                     container.delays.observeForProject(projectId),
-                ) { queries, submittals, delays ->
+                    container.meetings.observeActionsForProject(projectId),
+                ) { queries, submittals, delays, points ->
                     val now = System.currentTimeMillis()
                     val zone = ZoneId.systemDefault()
                     val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
@@ -162,6 +164,10 @@ class ProjectDetailViewModel(
                         Attention.Item.MATERIALS_OVERDUE to materials.count { it == Submittals.State.OVERDUE },
                         Attention.Item.DELAYS_RUNNING to delays.count { it.endedOnDay == null },
                         Attention.Item.DELAYS_WITHOUT_NOTICE to delays.count { it.notifiedOnDay == null },
+                        Attention.Item.MEETING_POINTS_OVERDUE to points.count {
+                            Meetings.actionState(it.dueOnDay?.let(LocalDate::ofEpochDay), it.closedAt != null, LocalDate.now()) ==
+                                Meetings.ActionState.OVERDUE
+                        },
                     )
                 }
             } else {

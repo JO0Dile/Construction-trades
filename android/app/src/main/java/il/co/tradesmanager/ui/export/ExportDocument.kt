@@ -16,6 +16,7 @@ import il.co.tradesmanager.core.safety.Risks
 import il.co.tradesmanager.core.safety.Substances
 import il.co.tradesmanager.core.security.AuditChain
 import il.co.tradesmanager.core.work.Delays
+import il.co.tradesmanager.core.work.Meetings
 import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
@@ -29,6 +30,8 @@ import il.co.tradesmanager.data.local.entity.FirePointEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
+import il.co.tradesmanager.data.local.entity.MeetingActionEntity
+import il.co.tradesmanager.data.local.entity.MeetingEntity
 import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
@@ -44,6 +47,7 @@ import il.co.tradesmanager.ui.delays.delayCauseLabel
 import il.co.tradesmanager.ui.emergency.nationalNumberLabel
 import il.co.tradesmanager.ui.firepoints.firePointKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionKindLabel
+import il.co.tradesmanager.ui.meetings.meetingKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
 import il.co.tradesmanager.ui.risks.bandLabel
 import il.co.tradesmanager.ui.submittals.submittalDecisionLabel
@@ -228,6 +232,18 @@ sealed interface ExportDocument {
         val jobName: String,
         val address: String,
         val sheet: JobEmergencyEntity?,
+    ) : ExportDocument
+
+    /**
+     * Every point agreed at the job's meetings, with the meeting that raised
+     * it: what, who, by when, and whether it was done and how. The document
+     * the next meeting opens with.
+     */
+    data class MeetingActionLog(
+        val jobName: String,
+        val meetings: List<MeetingEntity>,
+        val actions: List<MeetingActionEntity>,
+        val today: LocalDate,
     ) : ExportDocument
 
     /** One job's questions to its designers, with the answers and when they came. */
@@ -604,6 +620,42 @@ sealed interface ExportDocument {
             )
         }
 
+        is MeetingActionLog -> {
+            val byId = meetings.associateBy { it.id }
+            Table(
+                title = context.getString(R.string.mt_title) + " — " + jobName,
+                headers = listOf(
+                    context.getString(R.string.ex_col_number),
+                    context.getString(R.string.ex_col_meeting),
+                    context.getString(R.string.mt_point_what),
+                    context.getString(R.string.mt_point_who),
+                    context.getString(R.string.mt_point_when),
+                    context.getString(R.string.ex_col_result),
+                    context.getString(R.string.mt_what_was_done),
+                ),
+                rows = actions.sortedWith(compareBy<MeetingActionEntity> { byId[it.meetingId]?.heldOnDay ?: 0L }.thenBy { it.raisedAt }).map { row ->
+                    val meeting = byId[row.meetingId]
+                    val dueOn = row.dueOnDay?.let(LocalDate::ofEpochDay)
+                    val state = Meetings.actionState(dueOn, row.closedAt != null, today)
+                    listOf(
+                        row.reference,
+                        meeting?.let {
+                            context.getString(meetingKindLabel(Meetings.kindOf(it.kind))) + " · " + Formats.date(LocalDate.ofEpochDay(it.heldOnDay), locale)
+                        }.orEmpty(),
+                        row.text,
+                        row.ownerName.orEmpty(),
+                        dueOn?.let { Formats.date(it, locale) }.orEmpty(),
+                        when (state) {
+                            Meetings.ActionState.DONE -> context.getString(R.string.mt_done_on, row.closedAt?.let { day(it, locale) }.orEmpty())
+                            Meetings.ActionState.OVERDUE -> context.getString(R.string.ex_overdue)
+                            Meetings.ActionState.OPEN -> context.getString(R.string.ex_waiting)
+                        },
+                        row.closingNote.orEmpty(),
+                    )
+                },
+            )
+        }
+
         is QueryRegister -> Table(
             title = context.getString(R.string.qry_title) + " — " + jobName,
             headers = listOf(
@@ -799,6 +851,7 @@ sealed interface ExportDocument {
             is SubstanceRegister -> "substances-" + jobName
             is FirePointRegister -> "fire-points-" + jobName
             is EmergencyInformation -> "emergency-" + jobName
+            is MeetingActionLog -> "meetings-" + jobName
         },
     )
 

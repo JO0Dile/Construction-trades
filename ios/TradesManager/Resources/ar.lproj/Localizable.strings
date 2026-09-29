@@ -2431,7 +2431,7 @@
 "at_risk_reviews" = "مراجعات مخاطر متأخرة";
 /* Button on the handover pack */
 "hv_export_all" = "تصدير كل سجلات هذا المشروع";
-"hv_export_all_hint" = "ملف واحد فيه ملخص التسليم وورقة الطوارئ وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى والمواد الخطرة ونقاط الإطفاء وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV.";
+"hv_export_all_hint" = "ملف واحد فيه ملخص التسليم وورقة الطوارئ وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى والمواد الخطرة ونقاط الإطفاء وأسئلة المصممين واعتماد المواد والتأخيرات ونقاط الاجتماعات — كلٌّ منها بصيغة PDF وCSV.";
 "summary_cp_answered" = "أُجيب على %1$s";
 "summary_cp_received" = "%1$s: شكوى من %2$s";
 /* Screen title and job link */
@@ -2723,3 +2723,77 @@
 "es_refused_phone" = "يمكن أن يحتوي رقم الهاتف على أرقام ومسافات وشرطات و+ في أوله فقط.";
 /* Line in 'Needs attention', followed by how many essentials are missing */
 "at_emergency_missing" = "معلومات طوارئ لا تزال ناقصة";
+"summary_mt_action_closed" = "%1$s أُغلقت";
+"summary_mt_action_raised" = "%1$s اتُّفق عليها، على مسؤولية %2$s";
+"summary_mt_recorded" = "%1$s: محضر اجتماع بتاريخ %2$s";
+/* Screen title and job link */
+"mt_title" = "الاجتماعات";
+/* Hint under the job link */
+"mt_row_hint" = "ما اتُّفق عليه في اجتماعات الموقع، وما لم يُنجز بعد";
+"mt_empty" = "لم تُسجَّل محاضر اجتماعات في هذا المشروع.";
+"mt_blurb" = "بعد اجتماع التنسيق أو اجتماع التقدّم مع صاحب العمل أو لجنة السلامة، سجّل من حضر وكل نقطة اتُّفق عليها، ومن ينفّذها ومتى. تبقى النقطة مفتوحة من اجتماع إلى آخر حتى يغلقها أحد بما أُنجز.";
+"mt_record" = "تسجيل محضر اجتماع";
+/* Button */
+"mt_save" = "حفظ";
+/* Section header */
+"mt_meetings" = "الاجتماعات";
+"mt_kind" = "نوع الاجتماع";
+"mt_kind_coordination" = "تنسيق";
+"mt_kind_progress" = "تقدّم، مع صاحب العمل";
+"mt_kind_safety" = "لجنة السلامة";
+"mt_kind_design" = "تصميم";
+"mt_kind_other" = "أخرى";
+"mt_held" = "متى عُقد";
+"mt_today" = "اليوم";
+"mt_a_week_ago" = "قبل أسبوع";
+/* Field label and heading */
+"mt_attendees" = "من حضر";
+"mt_attendees_hint" = "كما سترد في المحضر: مدير الموقع، كهرباء كوهين، المهندس المعماري";
+"mt_no_attendees" = "لم يُسجَّل الحضور";
+/* Field label and heading */
+"mt_notes" = "ما قيل";
+/* %1$s is a name */
+"mt_minuted_by" = "سجّله %1$s";
+/* Heading */
+"mt_points" = "النقاط المتفق عليها";
+"mt_no_points" = "لم تُسجَّل نقاط في هذا الاجتماع بعد.";
+/* Button and dialog title */
+"mt_raise" = "إضافة نقطة متفق عليها";
+/* Field label and column heading: the point agreed */
+"mt_point_what" = "ماذا";
+/* Field label and column heading: who does it */
+"mt_point_who" = "من";
+"mt_point_who_hint" = "شخص أو شركة";
+/* Heading and column heading */
+"mt_point_when" = "حتى متى";
+"mt_in_3_days" = "خلال 3 أيام";
+"mt_in_a_week" = "خلال أسبوع";
+"mt_in_2_weeks" = "خلال أسبوعين";
+"mt_no_date" = "لم يُحدَّد موعد";
+/* %1$s is a date */
+"mt_due" = "مستحقة %1$s";
+/* %1$s is a date */
+"mt_overdue" = "كانت مستحقة %1$s";
+/* %1$s is a date */
+"mt_done_on" = "أُنجزت %1$s";
+/* Field label, heading and column heading */
+"mt_what_was_done" = "ما الذي أُنجز";
+"mt_what_was_done_hint" = "لكي يعرف الاجتماع القادم: \"استُلم المخطط النسخة C في التاسع\"";
+/* Button */
+"mt_close_point" = "إغلاق النقطة";
+/* %1$s is a point reference, e.g. MT-004/2 */
+"mt_close_question" = "إغلاق %1$s؟";
+/* %1$s is a name */
+"mt_closed_by" = "أغلقها %1$s";
+"mt_refused_not_allowed" = "دورك لا يسمح بتغيير الاجتماعات.";
+"mt_refused_future" = "يُكتب المحضر بعد الاجتماع، لا قبله.";
+"mt_refused_blank" = "اكتب ما اتُّفق عليه.";
+"mt_refused_due" = "لا يمكن أن تستحق النقطة قبل الاجتماع الذي اتفق عليها.";
+"mt_refused_note" = "اكتب ما أُنجز، ليعرف الاجتماع القادم.";
+"mt_refused_closed" = "هذه النقطة مغلقة بالفعل.";
+/* Column heading */
+"ex_col_meeting" = "الاجتماع";
+/* Label on a search result */
+"search_kind_meeting_point" = "نقطة من اجتماع";
+/* Line in 'Needs attention', followed by a count */
+"at_meeting_points" = "نقاط اجتماعات متأخرة";

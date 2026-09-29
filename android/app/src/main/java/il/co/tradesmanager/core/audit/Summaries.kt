@@ -564,6 +564,27 @@ object Summaries {
     const val MS_SUBMITTED = "ms_submitted"
 
     /**
+     * %1$s closed
+     *
+     * Arguments, in order: reference.
+     */
+    const val MT_ACTION_CLOSED = "mt_action_closed"
+
+    /**
+     * %1$s agreed, for %2$s
+     *
+     * Arguments, in order: reference, owner.
+     */
+    const val MT_ACTION_RAISED = "mt_action_raised"
+
+    /**
+     * %1$s: meeting of %2$s minuted
+     *
+     * Arguments, in order: reference, date.
+     */
+    const val MT_RECORDED = "mt_recorded"
+
+    /**
      * Roll call ended, everybody accounted for
      */
     const val MUSTER_ENDED_ALL_OUT = "muster_ended_all_out"

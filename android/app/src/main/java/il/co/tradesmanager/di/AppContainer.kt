@@ -27,6 +27,7 @@ import il.co.tradesmanager.data.repository.HeatRepository
 import il.co.tradesmanager.data.repository.InspectionRepository
 import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
+import il.co.tradesmanager.data.repository.MeetingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
 import il.co.tradesmanager.data.repository.MusterRepository
@@ -226,6 +227,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** Each job's sheet for the site office wall: the hospital, the assembly point, the first aiders. */
     val emergencySheets = EmergencySheetRepository(database.jobEmergencyDao(), auditTrail)
+
+    /** The job's meetings and the points agreed at them. */
+    val meetings = MeetingRepository(database.meetingDao(), auditTrail)
 
     /** The job's risk assessment: hazards, scored before and after their controls. */
     val risks = RiskRepository(database.riskDao(), auditTrail)

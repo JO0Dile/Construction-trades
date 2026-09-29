@@ -2431,7 +2431,7 @@
 "at_risk_reviews" = "בדיקות חוזרות של סיכונים באיחור";
 /* Button on the handover pack */
 "hv_export_all" = "ייצוא כל הרישומים של העבודה";
-"hv_export_all_hint" = "קובץ אחד עם סיכום המסירה, דף החירום וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, חומרים מסוכנים, עמדות כיבוי, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.";
+"hv_export_all_hint" = "קובץ אחד עם סיכום המסירה, דף החירום וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, חומרים מסוכנים, עמדות כיבוי, שאלות למתכננים, אישורי חומרים, עיכובים ונקודות מהישיבות — כל אחד כ־PDF וכ־CSV.";
 "summary_cp_answered" = "נשלחה תשובה ל־%1$s";
 "summary_cp_received" = "%1$s: תלונה מ־%2$s";
 /* Screen title and job link */
@@ -2723,3 +2723,77 @@
 "es_refused_phone" = "מספר טלפון יכול לכלול רק ספרות, רווחים, מקפים ו־+ בהתחלה.";
 /* Line in 'Needs attention', followed by how many essentials are missing */
 "at_emergency_missing" = "מידע לשעת חירום שעדיין חסר";
+"summary_mt_action_closed" = "%1$s נסגר";
+"summary_mt_action_raised" = "%1$s סוכם, באחריות %2$s";
+"summary_mt_recorded" = "%1$s: פרוטוקול ישיבה מתאריך %2$s";
+/* Screen title and job link */
+"mt_title" = "ישיבות";
+/* Hint under the job link */
+"mt_row_hint" = "מה סוכם בישיבות האתר, ומה עדיין לא בוצע";
+"mt_empty" = "לא נרשמו פרוטוקולים של ישיבות בעבודה הזו.";
+"mt_blurb" = "אחרי ישיבת התיאום, ישיבת ההתקדמות עם המזמין או ועדת הבטיחות, רשמו מי השתתף וכל נקודה שסוכמה, מי מבצע ועד מתי. נקודה נשארת פתוחה מישיבה לישיבה עד שמישהו סוגר אותה עם מה שנעשה.";
+"mt_record" = "רישום פרוטוקול ישיבה";
+/* Button */
+"mt_save" = "שמירה";
+/* Section header */
+"mt_meetings" = "ישיבות";
+"mt_kind" = "סוג הישיבה";
+"mt_kind_coordination" = "תיאום";
+"mt_kind_progress" = "התקדמות, עם המזמין";
+"mt_kind_safety" = "ועדת בטיחות";
+"mt_kind_design" = "תכנון";
+"mt_kind_other" = "אחר";
+"mt_held" = "מתי התקיימה";
+"mt_today" = "היום";
+"mt_a_week_ago" = "לפני שבוע";
+/* Field label and heading */
+"mt_attendees" = "מי השתתף";
+"mt_attendees_hint" = "כפי שיופיעו בפרוטוקול: מנהל העבודה, כהן חשמל, האדריכל";
+"mt_no_attendees" = "הנוכחות לא נרשמה";
+/* Field label and heading */
+"mt_notes" = "מה נאמר";
+/* %1$s is a name */
+"mt_minuted_by" = "נרשם על ידי %1$s";
+/* Heading */
+"mt_points" = "נקודות שסוכמו";
+"mt_no_points" = "עדיין לא נרשמו נקודות בישיבה הזו.";
+/* Button and dialog title */
+"mt_raise" = "הוספת נקודה שסוכמה";
+/* Field label and column heading: the point agreed */
+"mt_point_what" = "מה";
+/* Field label and column heading: who does it */
+"mt_point_who" = "מי";
+"mt_point_who_hint" = "אדם או חברה";
+/* Heading and column heading */
+"mt_point_when" = "עד מתי";
+"mt_in_3_days" = "בעוד 3 ימים";
+"mt_in_a_week" = "בעוד שבוע";
+"mt_in_2_weeks" = "בעוד שבועיים";
+"mt_no_date" = "לא נקבע תאריך";
+/* %1$s is a date */
+"mt_due" = "עד %1$s";
+/* %1$s is a date */
+"mt_overdue" = "היה אמור להתבצע עד %1$s";
+/* %1$s is a date */
+"mt_done_on" = "בוצע ב־%1$s";
+/* Field label, heading and column heading */
+"mt_what_was_done" = "מה נעשה";
+"mt_what_was_done_hint" = "כדי שהישיבה הבאה תדע: \"תוכנית גרסה C התקבלה ב־9 לחודש\"";
+/* Button */
+"mt_close_point" = "סגירת הנקודה";
+/* %1$s is a point reference, e.g. MT-004/2 */
+"mt_close_question" = "לסגור את %1$s?";
+/* %1$s is a name */
+"mt_closed_by" = "נסגר על ידי %1$s";
+"mt_refused_not_allowed" = "התפקיד שלך אינו מאפשר לשנות את הישיבות.";
+"mt_refused_future" = "פרוטוקול נרשם אחרי הישיבה, לא לפניה.";
+"mt_refused_blank" = "כתבו מה סוכם.";
+"mt_refused_due" = "נקודה לא יכולה להיות מתוזמנת לפני הישיבה שבה סוכמה.";
+"mt_refused_note" = "כתבו מה נעשה, כדי שהישיבה הבאה תדע.";
+"mt_refused_closed" = "הנקודה הזו כבר נסגרה.";
+/* Column heading */
+"ex_col_meeting" = "ישיבה";
+/* Label on a search result */
+"search_kind_meeting_point" = "נקודה מישיבה";
+/* Line in 'Needs attention', followed by a count */
+"at_meeting_points" = "נקודות מישיבות באיחור";

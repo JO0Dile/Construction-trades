@@ -11,6 +11,8 @@ import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
 import il.co.tradesmanager.data.local.entity.FirePointEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
+import il.co.tradesmanager.data.local.entity.MeetingActionEntity
+import il.co.tradesmanager.data.local.entity.MeetingEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.local.entity.SubstanceEntity
@@ -264,6 +266,34 @@ class RegisterExportTest {
         blank.assertSquare()
         assertEquals("the numbers print even with nothing recorded", 3 + 8, blank.rows.size)
         assertTrue(blank.rows.drop(3).all { it[1] == context.getString(R.string.es_not_recorded) })
+    }
+
+    @Test
+    fun `the action log lists every point under its meeting, overdue said as overdue and done with what was done`() {
+        val context = inLanguage("en")
+        val meetings = listOf(
+            MeetingEntity(
+                id = "m1", projectId = "job", reference = "MT-001", kind = "COORDINATION", heldOnDay = today.minusDays(14).toEpochDay(),
+                recordedByName = "Site manager", recordedAt = 1_000L,
+            ),
+        )
+        val actions = listOf(
+            MeetingActionEntity(
+                id = "a1", meetingId = "m1", projectId = "job", reference = "MT-001/1", text = "Send rev C", ownerName = "Architect",
+                dueOnDay = today.minusDays(7).toEpochDay(), raisedAt = 1_000L,
+            ),
+            MeetingActionEntity(
+                id = "a2", meetingId = "m1", projectId = "job", reference = "MT-001/2", text = "Book the pump",
+                raisedAt = 2_000L, closedAt = 3_000L, closedByName = "Foreman", closingNote = "Booked for Tuesday",
+            ),
+        )
+        val table = ExportDocument.MeetingActionLog("Tower A", meetings, actions, today).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(listOf("MT-001/1", "MT-001/2"), table.rows.map { it[0] })
+        assertTrue(table.rows[0][1].startsWith(context.getString(R.string.mt_kind_coordination)))
+        assertEquals(context.getString(R.string.ex_overdue), table.rows[0][5])
+        assertEquals("Booked for Tuesday", table.rows[1][6])
+        assertTrue(table.rows[1][5].isNotEmpty())
     }
 
     @Test

@@ -157,6 +157,9 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.MS_REJECTED -> R.string.summary_ms_rejected
     Summaries.MS_RESUBMITTED -> R.string.summary_ms_resubmitted
     Summaries.MS_SUBMITTED -> R.string.summary_ms_submitted
+    Summaries.MT_ACTION_CLOSED -> R.string.summary_mt_action_closed
+    Summaries.MT_ACTION_RAISED -> R.string.summary_mt_action_raised
+    Summaries.MT_RECORDED -> R.string.summary_mt_recorded
     Summaries.MUSTER_ENDED_ALL_OUT -> R.string.summary_muster_ended_all_out
     Summaries.MUSTER_ENDED_MISSING -> R.string.summary_muster_ended_missing
     Summaries.MUSTER_PERSON_ADDED -> R.string.summary_muster_person_added

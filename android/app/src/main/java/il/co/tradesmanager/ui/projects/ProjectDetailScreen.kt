@@ -132,6 +132,7 @@ fun ProjectDetailScreen(
     onOpenSubstances: () -> Unit,
     onOpenFirePoints: () -> Unit,
     onOpenEmergency: () -> Unit,
+    onOpenMeetings: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -194,6 +195,8 @@ fun ProjectDetailScreen(
         // with more than one firm this is the first screen a crew leader
         // opens in the morning.
         if (canSeePlan) add(JobLink(R.string.wp_title, R.string.wp_row_hint, onOpenWorkPackages))
+        // What the meetings agreed, and which of it is still not done.
+        if (canSeePlan) add(JobLink(R.string.mt_title, R.string.mt_row_hint, onOpenMeetings))
         // The day's log lives beside the money for the same reason: too much
         // to inline, too important to bury in a menu.
         if (canSeeEvidence) add(JobLink(R.string.log_title, R.string.log_notes_hint, onOpenDailyLog))
@@ -360,6 +363,7 @@ fun ProjectDetailScreen(
                                                 Attention.Item.SUBSTANCES_WITHOUT_SHEET -> onOpenSubstances()
                                                 Attention.Item.FIRE_POINTS -> onOpenFirePoints()
                                                 Attention.Item.EMERGENCY_INFO_MISSING -> onOpenEmergency()
+                                                Attention.Item.MEETING_POINTS_OVERDUE -> onOpenMeetings()
                                             }
                                         }
                                         .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -1028,4 +1032,5 @@ private fun attentionLabel(item: Attention.Item): Int = when (item) {
     Attention.Item.SUBSTANCES_WITHOUT_SHEET -> R.string.at_substances_no_sheet
     Attention.Item.FIRE_POINTS -> R.string.at_fire_points
     Attention.Item.EMERGENCY_INFO_MISSING -> R.string.at_emergency_missing
+    Attention.Item.MEETING_POINTS_OVERDUE -> R.string.at_meeting_points
 }

@@ -563,5 +563,45 @@
             <string>ועוד %d בדיקות קודמות</string>
         </dict>
     </dict>
+    <key>mt_points_open</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נקודה אחת עדיין פתוחה</string>
+            <key>two</key>
+            <string>שתי נקודות עדיין פתוחות</string>
+            <key>many</key>
+            <string>%d נקודות עדיין פתוחות</string>
+            <key>other</key>
+            <string>%d נקודות עדיין פתוחות</string>
+        </dict>
+    </dict>
+    <key>mt_points_of_meeting</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נקודה אחת, %2$d עדיין פתוחות</string>
+            <key>two</key>
+            <string>שתי נקודות, %2$d עדיין פתוחות</string>
+            <key>many</key>
+            <string>%1$d נקודות, %2$d עדיין פתוחות</string>
+            <key>other</key>
+            <string>%1$d נקודות, %2$d עדיין פתוחות</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

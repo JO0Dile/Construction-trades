@@ -10062,9 +10062,9 @@
       "ar": "تصدير كل سجلات هذا المشروع"
     },
     "hv_export_all_hint": {
-      "en": "One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals and delays — each as a PDF and a CSV.",
-      "he": "קובץ אחד עם סיכום המסירה, דף החירום וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, חומרים מסוכנים, עמדות כיבוי, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.",
-      "ar": "ملف واحد فيه ملخص التسليم وورقة الطوارئ وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى والمواد الخطرة ونقاط الإطفاء وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV."
+      "en": "One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals, delays and the meeting points — each as a PDF and a CSV.",
+      "he": "קובץ אחד עם סיכום המסירה, דף החירום וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, חומרים מסוכנים, עמדות כיבוי, שאלות למתכננים, אישורי חומרים, עיכובים ונקודות מהישיבות — כל אחד כ־PDF וכ־CSV.",
+      "ar": "ملف واحد فيه ملخص التسليم وورقة الطوارئ وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى والمواد الخطرة ونقاط الإطفاء وأسئلة المصممين واعتماد المواد والتأخيرات ونقاط الاجتماعات — كلٌّ منها بصيغة PDF وCSV."
     },
     "summary_cp_answered": {
       "en": "%1$s answered",
@@ -11128,6 +11128,288 @@
       "en": "Emergency information still missing",
       "he": "מידע לשעת חירום שעדיין חסר",
       "ar": "معلومات طوارئ لا تزال ناقصة"
+    },
+    "summary_mt_action_closed": {
+      "en": "%1$s closed",
+      "he": "%1$s נסגר",
+      "ar": "%1$s أُغلقت"
+    },
+    "summary_mt_action_raised": {
+      "en": "%1$s agreed, for %2$s",
+      "he": "%1$s סוכם, באחריות %2$s",
+      "ar": "%1$s اتُّفق عليها، على مسؤولية %2$s"
+    },
+    "summary_mt_recorded": {
+      "en": "%1$s: meeting of %2$s minuted",
+      "he": "%1$s: פרוטוקול ישיבה מתאריך %2$s",
+      "ar": "%1$s: محضر اجتماع بتاريخ %2$s"
+    },
+    "mt_title": {
+      "c": "Screen title and job link",
+      "en": "Meetings",
+      "he": "ישיבות",
+      "ar": "الاجتماعات"
+    },
+    "mt_row_hint": {
+      "c": "Hint under the job link",
+      "en": "What the site meetings agreed, and what is still not done",
+      "he": "מה סוכם בישיבות האתר, ומה עדיין לא בוצע",
+      "ar": "ما اتُّفق عليه في اجتماعات الموقع، وما لم يُنجز بعد"
+    },
+    "mt_empty": {
+      "en": "No meetings minuted on this job.",
+      "he": "לא נרשמו פרוטוקולים של ישיבות בעבודה הזו.",
+      "ar": "لم تُسجَّل محاضر اجتماعات في هذا المشروع."
+    },
+    "mt_blurb": {
+      "en": "After the coordination meeting, the progress meeting with the client or the safety committee, write down who was there and each point agreed, with who does it and by when. A point stays open from meeting to meeting until somebody closes it with what was done.",
+      "he": "אחרי ישיבת התיאום, ישיבת ההתקדמות עם המזמין או ועדת הבטיחות, רשמו מי השתתף וכל נקודה שסוכמה, מי מבצע ועד מתי. נקודה נשארת פתוחה מישיבה לישיבה עד שמישהו סוגר אותה עם מה שנעשה.",
+      "ar": "بعد اجتماع التنسيق أو اجتماع التقدّم مع صاحب العمل أو لجنة السلامة، سجّل من حضر وكل نقطة اتُّفق عليها، ومن ينفّذها ومتى. تبقى النقطة مفتوحة من اجتماع إلى آخر حتى يغلقها أحد بما أُنجز."
+    },
+    "mt_record": {
+      "en": "Minute a meeting",
+      "he": "רישום פרוטוקול ישיבה",
+      "ar": "تسجيل محضر اجتماع"
+    },
+    "mt_save": {
+      "c": "Button",
+      "en": "Save",
+      "he": "שמירה",
+      "ar": "حفظ"
+    },
+    "mt_meetings": {
+      "c": "Section header",
+      "en": "Meetings",
+      "he": "ישיבות",
+      "ar": "الاجتماعات"
+    },
+    "mt_kind": {
+      "en": "Kind of meeting",
+      "he": "סוג הישיבה",
+      "ar": "نوع الاجتماع"
+    },
+    "mt_kind_coordination": {
+      "en": "Coordination",
+      "he": "תיאום",
+      "ar": "تنسيق"
+    },
+    "mt_kind_progress": {
+      "en": "Progress, with the client",
+      "he": "התקדמות, עם המזמין",
+      "ar": "تقدّم، مع صاحب العمل"
+    },
+    "mt_kind_safety": {
+      "en": "Safety committee",
+      "he": "ועדת בטיחות",
+      "ar": "لجنة السلامة"
+    },
+    "mt_kind_design": {
+      "en": "Design",
+      "he": "תכנון",
+      "ar": "تصميم"
+    },
+    "mt_kind_other": {
+      "en": "Other",
+      "he": "אחר",
+      "ar": "أخرى"
+    },
+    "mt_held": {
+      "en": "When it was held",
+      "he": "מתי התקיימה",
+      "ar": "متى عُقد"
+    },
+    "mt_today": {
+      "en": "Today",
+      "he": "היום",
+      "ar": "اليوم"
+    },
+    "mt_a_week_ago": {
+      "en": "A week ago",
+      "he": "לפני שבוע",
+      "ar": "قبل أسبوع"
+    },
+    "mt_attendees": {
+      "c": "Field label and heading",
+      "en": "Who was there",
+      "he": "מי השתתף",
+      "ar": "من حضر"
+    },
+    "mt_attendees_hint": {
+      "en": "As the minutes would list them: the site manager, Cohen Electric, the architect",
+      "he": "כפי שיופיעו בפרוטוקול: מנהל העבודה, כהן חשמל, האדריכל",
+      "ar": "كما سترد في المحضر: مدير الموقع، كهرباء كوهين، المهندس المعماري"
+    },
+    "mt_no_attendees": {
+      "en": "Attendance not recorded",
+      "he": "הנוכחות לא נרשמה",
+      "ar": "لم يُسجَّل الحضور"
+    },
+    "mt_notes": {
+      "c": "Field label and heading",
+      "en": "What was said",
+      "he": "מה נאמר",
+      "ar": "ما قيل"
+    },
+    "mt_minuted_by": {
+      "c": "%1$s is a name",
+      "en": "Minuted by %1$s",
+      "he": "נרשם על ידי %1$s",
+      "ar": "سجّله %1$s"
+    },
+    "mt_points": {
+      "c": "Heading",
+      "en": "Points agreed",
+      "he": "נקודות שסוכמו",
+      "ar": "النقاط المتفق عليها"
+    },
+    "mt_no_points": {
+      "en": "No points recorded at this meeting yet.",
+      "he": "עדיין לא נרשמו נקודות בישיבה הזו.",
+      "ar": "لم تُسجَّل نقاط في هذا الاجتماع بعد."
+    },
+    "mt_raise": {
+      "c": "Button and dialog title",
+      "en": "Add a point agreed",
+      "he": "הוספת נקודה שסוכמה",
+      "ar": "إضافة نقطة متفق عليها"
+    },
+    "mt_point_what": {
+      "c": "Field label and column heading: the point agreed",
+      "en": "What",
+      "he": "מה",
+      "ar": "ماذا"
+    },
+    "mt_point_who": {
+      "c": "Field label and column heading: who does it",
+      "en": "Who",
+      "he": "מי",
+      "ar": "من"
+    },
+    "mt_point_who_hint": {
+      "en": "A person or a firm",
+      "he": "אדם או חברה",
+      "ar": "شخص أو شركة"
+    },
+    "mt_point_when": {
+      "c": "Heading and column heading",
+      "en": "By when",
+      "he": "עד מתי",
+      "ar": "حتى متى"
+    },
+    "mt_in_3_days": {
+      "en": "In 3 days",
+      "he": "בעוד 3 ימים",
+      "ar": "خلال 3 أيام"
+    },
+    "mt_in_a_week": {
+      "en": "In a week",
+      "he": "בעוד שבוע",
+      "ar": "خلال أسبوع"
+    },
+    "mt_in_2_weeks": {
+      "en": "In two weeks",
+      "he": "בעוד שבועיים",
+      "ar": "خلال أسبوعين"
+    },
+    "mt_no_date": {
+      "en": "No date set",
+      "he": "לא נקבע תאריך",
+      "ar": "لم يُحدَّد موعد"
+    },
+    "mt_due": {
+      "c": "%1$s is a date",
+      "en": "Due %1$s",
+      "he": "עד %1$s",
+      "ar": "مستحقة %1$s"
+    },
+    "mt_overdue": {
+      "c": "%1$s is a date",
+      "en": "Was due %1$s",
+      "he": "היה אמור להתבצע עד %1$s",
+      "ar": "كانت مستحقة %1$s"
+    },
+    "mt_done_on": {
+      "c": "%1$s is a date",
+      "en": "Done %1$s",
+      "he": "בוצע ב־%1$s",
+      "ar": "أُنجزت %1$s"
+    },
+    "mt_what_was_done": {
+      "c": "Field label, heading and column heading",
+      "en": "What was done",
+      "he": "מה נעשה",
+      "ar": "ما الذي أُنجز"
+    },
+    "mt_what_was_done_hint": {
+      "en": "So the next meeting knows: \"Drawing rev C received on the 9th\"",
+      "he": "כדי שהישיבה הבאה תדע: \"תוכנית גרסה C התקבלה ב־9 לחודש\"",
+      "ar": "لكي يعرف الاجتماع القادم: \"استُلم المخطط النسخة C في التاسع\""
+    },
+    "mt_close_point": {
+      "c": "Button",
+      "en": "Close the point",
+      "he": "סגירת הנקודה",
+      "ar": "إغلاق النقطة"
+    },
+    "mt_close_question": {
+      "c": "%1$s is a point reference, e.g. MT-004/2",
+      "en": "Close %1$s?",
+      "he": "לסגור את %1$s?",
+      "ar": "إغلاق %1$s؟"
+    },
+    "mt_closed_by": {
+      "c": "%1$s is a name",
+      "en": "Closed by %1$s",
+      "he": "נסגר על ידי %1$s",
+      "ar": "أغلقها %1$s"
+    },
+    "mt_refused_not_allowed": {
+      "en": "Your role cannot change the meetings.",
+      "he": "התפקיד שלך אינו מאפשר לשנות את הישיבות.",
+      "ar": "دورك لا يسمح بتغيير الاجتماعات."
+    },
+    "mt_refused_future": {
+      "en": "Minutes are written after a meeting, not before it.",
+      "he": "פרוטוקול נרשם אחרי הישיבה, לא לפניה.",
+      "ar": "يُكتب المحضر بعد الاجتماع، لا قبله."
+    },
+    "mt_refused_blank": {
+      "en": "Write what was agreed.",
+      "he": "כתבו מה סוכם.",
+      "ar": "اكتب ما اتُّفق عليه."
+    },
+    "mt_refused_due": {
+      "en": "A point cannot be due before the meeting that agreed it.",
+      "he": "נקודה לא יכולה להיות מתוזמנת לפני הישיבה שבה סוכמה.",
+      "ar": "لا يمكن أن تستحق النقطة قبل الاجتماع الذي اتفق عليها."
+    },
+    "mt_refused_note": {
+      "en": "Write what was done, so the next meeting knows.",
+      "he": "כתבו מה נעשה, כדי שהישיבה הבאה תדע.",
+      "ar": "اكتب ما أُنجز، ليعرف الاجتماع القادم."
+    },
+    "mt_refused_closed": {
+      "en": "That point is already closed.",
+      "he": "הנקודה הזו כבר נסגרה.",
+      "ar": "هذه النقطة مغلقة بالفعل."
+    },
+    "ex_col_meeting": {
+      "c": "Column heading",
+      "en": "Meeting",
+      "he": "ישיבה",
+      "ar": "الاجتماع"
+    },
+    "search_kind_meeting_point": {
+      "c": "Label on a search result",
+      "en": "Meeting point",
+      "he": "נקודה מישיבה",
+      "ar": "نقطة من اجتماع"
+    },
+    "at_meeting_points": {
+      "c": "Line in 'Needs attention', followed by a count",
+      "en": "Meeting points overdue",
+      "he": "נקודות מישיבות באיחור",
+      "ar": "نقاط اجتماعات متأخرة"
     }
   },
   "plurals": {
@@ -11717,6 +11999,48 @@
         "few": "و%d فحوصات سابقة",
         "many": "و%d فحصًا سابقًا",
         "other": "و%d فحص سابق"
+      }
+    },
+    "mt_points_open": {
+      "c": "Header over the points still open on a job",
+      "en": {
+        "one": "%d point still open",
+        "other": "%d points still open"
+      },
+      "he": {
+        "one": "נקודה אחת עדיין פתוחה",
+        "two": "שתי נקודות עדיין פתוחות",
+        "many": "%d נקודות עדיין פתוחות",
+        "other": "%d נקודות עדיין פתוחות"
+      },
+      "ar": {
+        "zero": "لا نقاط مفتوحة",
+        "one": "نقطة واحدة لا تزال مفتوحة",
+        "two": "نقطتان لا تزالان مفتوحتين",
+        "few": "%d نقاط لا تزال مفتوحة",
+        "many": "%d نقطة لا تزال مفتوحة",
+        "other": "%d نقطة لا تزال مفتوحة"
+      }
+    },
+    "mt_points_of_meeting": {
+      "c": "Under a meeting: %1$d points raised, %2$d of them still open",
+      "en": {
+        "one": "%1$d point, %2$d still open",
+        "other": "%1$d points, %2$d still open"
+      },
+      "he": {
+        "one": "נקודה אחת, %2$d עדיין פתוחות",
+        "two": "שתי נקודות, %2$d עדיין פתוחות",
+        "many": "%1$d נקודות, %2$d עדיין פתוחות",
+        "other": "%1$d נקודות, %2$d עדיין פתוחות"
+      },
+      "ar": {
+        "zero": "لا نقاط",
+        "one": "نقطة واحدة، %2$d لا تزال مفتوحة",
+        "two": "نقطتان، %2$d لا تزال مفتوحة",
+        "few": "%1$d نقاط، %2$d لا تزال مفتوحة",
+        "many": "%1$d نقطة، %2$d لا تزال مفتوحة",
+        "other": "%1$d نقطة، %2$d لا تزال مفتوحة"
       }
     }
   }

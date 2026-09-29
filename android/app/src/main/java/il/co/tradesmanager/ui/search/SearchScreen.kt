@@ -200,4 +200,5 @@ private fun kindLabel(kind: Search.Kind): Int = when (kind) {
     Search.Kind.COMPLAINT -> R.string.search_kind_complaint
     Search.Kind.SUBSTANCE -> R.string.search_kind_substance
     Search.Kind.FIRE_POINT -> R.string.search_kind_fire_point
+    Search.Kind.MEETING_POINT -> R.string.search_kind_meeting_point
 }
