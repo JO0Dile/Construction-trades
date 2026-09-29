@@ -12,6 +12,7 @@ import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
 import il.co.tradesmanager.data.local.entity.FirePointEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
+import il.co.tradesmanager.data.local.entity.JobContactEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
 import il.co.tradesmanager.data.local.entity.MeetingActionEntity
 import il.co.tradesmanager.data.local.entity.MeetingEntity
@@ -310,6 +311,30 @@ class RegisterExportTest {
         assertEquals(listOf(context.getString(R.string.ws_incidents), "1"), table.rows[5])
         assertTrue(table.rows.last()[0].startsWith(context.getString(R.string.ws_open_now)))
         assertEquals("3", table.rows.last()[1])
+    }
+
+    @Test
+    fun `the contact directory prints those still on the job, by what they are`() {
+        val context = inLanguage("en")
+        val contacts = listOf(
+            JobContactEntity(
+                id = "c1", projectId = "job", name = "Cohen Electric", kind = "SUBCONTRACTOR", phone = "03-5555555",
+                addedAt = 1_000L, addedByName = "Manager", updatedAt = 1_000L,
+            ),
+            JobContactEntity(
+                id = "c2", projectId = "job", name = "Dana Levi", kind = "SUPERVISOR", email = "dana@city.gov.il",
+                addedAt = 2_000L, addedByName = "Manager", updatedAt = 2_000L,
+            ),
+            JobContactEntity(
+                id = "c3", projectId = "job", name = "Former supervisor", kind = "SUPERVISOR", phone = "050-0000000",
+                addedAt = 500L, addedByName = "Manager", updatedAt = 3_000L, removedAt = 3_000L, removedByName = "Manager",
+            ),
+        )
+        val table = ExportDocument.ContactDirectory("Tower A", contacts).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(listOf("Dana Levi", "Cohen Electric"), table.rows.map { it[1] })
+        assertEquals(context.getString(R.string.jc_kind_supervisor), table.rows[0][0])
+        assertEquals("dana@city.gov.il", table.rows[0][4])
     }
 
     @Test

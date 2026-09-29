@@ -144,6 +144,9 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.IR_REQUESTED -> R.string.summary_ir_requested
     Summaries.IR_REQUESTED_AGAIN -> R.string.summary_ir_requested_again
     Summaries.ITEM_REMOVED -> R.string.summary_item_removed
+    Summaries.JC_ADDED -> R.string.summary_jc_added
+    Summaries.JC_CORRECTED -> R.string.summary_jc_corrected
+    Summaries.JC_REMOVED -> R.string.summary_jc_removed
     Summaries.JOINED_AS -> R.string.summary_joined_as
     Summaries.LEFT_COMPANY -> R.string.summary_left_company
     Summaries.LIFT_APPROVED -> R.string.summary_lift_approved

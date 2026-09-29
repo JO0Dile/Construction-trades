@@ -16,6 +16,7 @@ import il.co.tradesmanager.data.local.dao.ExcavationDao
 import il.co.tradesmanager.data.local.dao.FirePointDao
 import il.co.tradesmanager.data.local.dao.HeatDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
+import il.co.tradesmanager.data.local.dao.JobContactDao
 import il.co.tradesmanager.data.local.dao.JobEmergencyDao
 import il.co.tradesmanager.data.local.dao.LiftingDao
 import il.co.tradesmanager.data.local.dao.MeetingDao
@@ -71,6 +72,7 @@ import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
 import il.co.tradesmanager.data.local.entity.JobBudgetEntity
+import il.co.tradesmanager.data.local.entity.JobContactEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
 import il.co.tradesmanager.data.local.entity.LiftCrewEntity
 import il.co.tradesmanager.data.local.entity.LiftPlanEntity
@@ -128,7 +130,7 @@ import il.co.tradesmanager.data.local.entity.ComplaintEntity
  * database refused to open on a phone that already had data. The chain is
  * checked against this now, in a unit test that runs on every push.
  */
-const val DATABASE_VERSION = 47
+const val DATABASE_VERSION = 48
 
 @Database(
     entities = [
@@ -206,6 +208,7 @@ const val DATABASE_VERSION = 47
         JobEmergencyEntity::class,
         MeetingEntity::class,
         MeetingActionEntity::class,
+        JobContactEntity::class,
     ],
     version = DATABASE_VERSION,
     exportSchema = true,
@@ -270,6 +273,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun meetingDao(): MeetingDao
 
     abstract fun safetyReportDao(): SafetyReportDao
+
+    abstract fun jobContactDao(): JobContactDao
 
     abstract fun temporaryWorksDao(): TemporaryWorksDao
 

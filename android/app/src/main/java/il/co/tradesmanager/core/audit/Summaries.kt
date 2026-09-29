@@ -477,6 +477,27 @@ object Summaries {
     const val ITEM_REMOVED = "item_removed"
 
     /**
+     * %1$s added to the job's contacts
+     *
+     * Arguments, in order: name.
+     */
+    const val JC_ADDED = "jc_added"
+
+    /**
+     * Contact details of %1$s corrected
+     *
+     * Arguments, in order: name.
+     */
+    const val JC_CORRECTED = "jc_corrected"
+
+    /**
+     * %1$s no longer on the job
+     *
+     * Arguments, in order: name.
+     */
+    const val JC_REMOVED = "jc_removed"
+
+    /**
      * Joined as %1$s
      *
      * Arguments, in order: role.

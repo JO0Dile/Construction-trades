@@ -82,6 +82,7 @@ object Changes {
         "job_emergency" to Lens.EVIDENCE,
         "meeting" to Lens.PLAN,
         "meeting_action" to Lens.PLAN,
+        "job_contact" to Lens.PLAN,
         "snag" to Lens.EVIDENCE,
         "toolbox_talk" to Lens.EVIDENCE,
         "permit" to Lens.EVIDENCE,

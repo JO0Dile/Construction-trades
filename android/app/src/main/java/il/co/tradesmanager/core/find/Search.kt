@@ -104,6 +104,7 @@ object Search {
         SUBSTANCE(setOf(Lens.EVIDENCE)),
         FIRE_POINT(setOf(Lens.EVIDENCE)),
         MEETING_POINT(setOf(Lens.PLAN)),
+        CONTACT(setOf(Lens.PLAN, Lens.EVIDENCE)),
     }
 
     /**

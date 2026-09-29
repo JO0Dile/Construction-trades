@@ -14,7 +14,7 @@ source; neither can drift from the other.
 
 ### Where your work is kept
 
-Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, and of anybody who made a complaint about one and left a way to answer them. Neither is ever printed or exported. There is no account with us and no server holding a copy.
+Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, of anybody who made a complaint about one and left a way to answer them, and of the people from outside the firm listed as a job's contacts. Visitors' and complainants' details are never printed or exported; a job's contacts are, in the directory somebody chooses to print for the site office. There is no account with us and no server holding a copy.
 
 ### The one thing that leaves the phone
 
@@ -48,7 +48,7 @@ A server is planned, so that phones can sync and a lost phone is not a lost site
 
 ### היכן נשמרת העבודה שלכם
 
-עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, ושל מי שהתלונן על אתר והשאיר דרך לענות לו. הם לעולם אינם מודפסים או מיוצאים. אין חשבון אצלנו ואין שרת שמחזיק עותק.
+עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, של מי שהתלונן על אתר והשאיר דרך לענות לו, ושל אנשים מחוץ לחברה שרשומים כאנשי הקשר של עבודה. פרטי מבקרים ומתלוננים לעולם אינם מודפסים או מיוצאים; אנשי הקשר של עבודה כן, ברשימה שמישהו בוחר להדפיס למשרד האתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.
 
 ### הדבר היחיד שיוצא מהטלפון
 
@@ -82,7 +82,7 @@ A server is planned, so that phones can sync and a lost phone is not a lost site
 
 ### أين يُحفظ عملك
 
-الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه. ولا تُطبع أي منها أو تُصدَّر أبدًا. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.
+الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه، والأشخاص من خارج الشركة المدرجين كجهات اتصال لمشروع. بيانات الزوار والمشتكين لا تُطبع أو تُصدَّر أبدًا؛ أما جهات اتصال المشروع فتُطبع، في الدليل الذي يختار أحدهم طباعته لمكتب الموقع. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.
 
 ### الشيء الوحيد الذي يغادر الهاتف
 

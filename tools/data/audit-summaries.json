@@ -580,6 +580,30 @@
       "he": "הפריט הוסר מהמלאי",
       "ar": "أُزيل الصنف من المخزون"
     },
+    "jc_added": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s added to the job's contacts",
+      "he": "%1$s נוסף לאנשי הקשר של העבודה",
+      "ar": "أُضيف %1$s إلى جهات اتصال المشروع"
+    },
+    "jc_corrected": {
+      "arguments": [
+        "name"
+      ],
+      "en": "Contact details of %1$s corrected",
+      "he": "פרטי הקשר של %1$s תוקנו",
+      "ar": "صُحّحت بيانات الاتصال لـ %1$s"
+    },
+    "jc_removed": {
+      "arguments": [
+        "name"
+      ],
+      "en": "%1$s no longer on the job",
+      "he": "%1$s כבר לא בעבודה",
+      "ar": "%1$s لم يعد في المشروع"
+    },
     "joined_as": {
       "arguments": [
         "role"

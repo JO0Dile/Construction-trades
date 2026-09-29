@@ -26,6 +26,7 @@ import il.co.tradesmanager.data.repository.FirePointRepository
 import il.co.tradesmanager.data.repository.HeatRepository
 import il.co.tradesmanager.data.repository.InspectionRepository
 import il.co.tradesmanager.data.repository.InventoryRepository
+import il.co.tradesmanager.data.repository.JobContactRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
 import il.co.tradesmanager.data.repository.MeetingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
@@ -234,6 +235,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** A job's week of safety, counted from the registers. */
     val safetyReports = SafetyReportRepository(database.safetyReportDao())
+
+    /** Who is who on each job from outside the firm, and how to reach them. */
+    val jobContacts = JobContactRepository(database.jobContactDao(), auditTrail)
 
     /** The job's risk assessment: hazards, scored before and after their controls. */
     val risks = RiskRepository(database.riskDao(), auditTrail)

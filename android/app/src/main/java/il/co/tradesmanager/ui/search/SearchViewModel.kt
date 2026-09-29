@@ -136,6 +136,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.SUBSTANCE)) hits += substances(terms, jobNames)
         if (mayRead(Search.Kind.FIRE_POINT)) hits += firePoints(terms, jobNames)
         if (mayRead(Search.Kind.MEETING_POINT)) hits += meetingPoints(terms, jobNames)
+        if (mayRead(Search.Kind.CONTACT)) hits += contacts(terms, jobNames)
         return Search.best(hits)
     }
 
@@ -518,6 +519,24 @@ class SearchViewModel(
                 isOpen = substance.removedAt == null,
                 terms = terms,
                 projectId = substance.projectId,
+            )
+        }
+
+    private suspend fun contacts(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.jobContacts.all().mapNotNull { contact ->
+            hit(
+                id = contact.id,
+                kind = Search.Kind.CONTACT,
+                title = contact.name,
+                detail = listOfNotNull(contact.organisation, jobNames[contact.projectId]).joinToString(" "),
+                // Found by number too, which is how somebody holding a missed call looks.
+                matchAlso = listOfNotNull(contact.phone, contact.email, contact.kind.replace('_', ' ')).joinToString(" "),
+                isOpen = contact.removedAt == null,
+                terms = terms,
+                projectId = contact.projectId,
             )
         }
 

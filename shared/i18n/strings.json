@@ -959,9 +959,9 @@
       "ar": "أين يُحفظ عملك"
     },
     "priv_where_body": {
-      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, and of anybody who made a complaint about one and left a way to answer them. Neither is ever printed or exported. There is no account with us and no server holding a copy.",
-      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, ושל מי שהתלונן על אתר והשאיר דרך לענות לו. הם לעולם אינם מודפסים או מיוצאים. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
-      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه. ولا تُطبع أي منها أو تُصدَّر أبدًا. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
+      "en": "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, of anybody who made a complaint about one and left a way to answer them, and of the people from outside the firm listed as a job's contacts. Visitors' and complainants' details are never printed or exported; a job's contacts are, in the directory somebody chooses to print for the site office. There is no account with us and no server holding a copy.",
+      "he": "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, של מי שהתלונן על אתר והשאיר דרך לענות לו, ושל אנשים מחוץ לחברה שרשומים כאנשי הקשר של עבודה. פרטי מבקרים ומתלוננים לעולם אינם מודפסים או מיוצאים; אנשי הקשר של עבודה כן, ברשימה שמישהו בוחר להדפיס למשרד האתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.",
+      "ar": "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه، والأشخاص من خارج الشركة المدرجين كجهات اتصال لمشروع. بيانات الزوار والمشتكين لا تُطبع أو تُصدَّر أبدًا؛ أما جهات اتصال المشروع فتُطبع، في الدليل الذي يختار أحدهم طباعته لمكتب الموقع. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة."
     },
     "priv_network_title": {
       "en": "The one thing that leaves the phone",
@@ -11589,11 +11589,230 @@
       "he": "נקודות מישיבות שעדיין פתוחות",
       "ar": "نقاط اجتماعات لا تزال مفتوحة"
     },
+    "summary_jc_added": {
+      "en": "%1$s added to the job's contacts",
+      "he": "%1$s נוסף לאנשי הקשר של העבודה",
+      "ar": "أُضيف %1$s إلى جهات اتصال المشروع"
+    },
+    "summary_jc_corrected": {
+      "en": "Contact details of %1$s corrected",
+      "he": "פרטי הקשר של %1$s תוקנו",
+      "ar": "صُحّحت بيانات الاتصال لـ %1$s"
+    },
+    "summary_jc_removed": {
+      "en": "%1$s no longer on the job",
+      "he": "%1$s כבר לא בעבודה",
+      "ar": "%1$s لم يعد في المشروع"
+    },
     "plant_service_hint": {
       "c": "Under the next service date field",
       "en": "Day, month, year: 31.03.2026. Leave empty if it has no service date.",
       "he": "יום, חודש, שנה: 31.03.2026. השאירו ריק אם אין תאריך טיפול.",
       "ar": "يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن لم يكن له موعد صيانة."
+    },
+    "jc_title": {
+      "c": "Screen title and job link: who is who on the job from outside the firm",
+      "en": "Contacts",
+      "he": "אנשי קשר",
+      "ar": "جهات الاتصال"
+    },
+    "jc_row_hint": {
+      "c": "Hint under the job link",
+      "en": "The client, the supervisor, the designers, the municipality, the subcontractors",
+      "he": "המזמין, המפקח, המתכננים, העירייה, קבלני המשנה",
+      "ar": "صاحب العمل، المشرف، المصممون، البلدية، المقاولون الفرعيون"
+    },
+    "jc_empty": {
+      "en": "No contacts recorded on this job.",
+      "he": "לא נרשמו אנשי קשר בעבודה הזו.",
+      "ar": "لم تُسجَّل جهات اتصال في هذا المشروع."
+    },
+    "jc_blurb": {
+      "en": "Write down who is who from outside the firm — the client, the supervisor, the architect and engineers, the municipality's inspector, the subcontractors and suppliers — with a number or an address to reach each of them.",
+      "he": "רשמו מי הוא מי מחוץ לחברה — המזמין, המפקח, האדריכל והמהנדסים, פקח העירייה, קבלני המשנה והספקים — עם מספר או כתובת כדי להשיג כל אחד מהם.",
+      "ar": "سجّل من هو من خارج الشركة — صاحب العمل، المشرف، المهندس المعماري والمهندسون، مفتش البلدية، المقاولون الفرعيون والمورّدون — مع رقم أو عنوان للتواصل مع كل منهم."
+    },
+    "jc_add": {
+      "en": "Add a contact",
+      "he": "הוספת איש קשר",
+      "ar": "إضافة جهة اتصال"
+    },
+    "jc_correct": {
+      "c": "Button and dialog title",
+      "en": "Correct the details",
+      "he": "תיקון הפרטים",
+      "ar": "تصحيح البيانات"
+    },
+    "jc_remove": {
+      "c": "Button",
+      "en": "No longer on the job",
+      "he": "כבר לא בעבודה",
+      "ar": "لم يعد في المشروع"
+    },
+    "jc_remove_question": {
+      "c": "%1$s is a name",
+      "en": "Is %1$s no longer on the job?",
+      "he": "האם %1$s כבר לא בעבודה?",
+      "ar": "هل لم يعد %1$s في المشروع؟"
+    },
+    "jc_remove_body": {
+      "en": "They stay in the list, marked as having left, and out of the printed directory.",
+      "he": "הם נשארים ברשימה, מסומנים כמי שעזבו, ומחוץ לרשימה המודפסת.",
+      "ar": "يبقون في القائمة مؤشَّرًا عليهم بأنهم غادروا، وخارج الدليل المطبوع."
+    },
+    "jc_left_the_job": {
+      "c": "Under a contact who has left",
+      "en": "No longer on the job",
+      "he": "כבר לא בעבודה",
+      "ar": "لم يعد في المشروع"
+    },
+    "jc_call": {
+      "c": "Accessibility label of the call button; %1$s is a name",
+      "en": "Call %1$s",
+      "he": "התקשרות אל %1$s",
+      "ar": "الاتصال بـ %1$s"
+    },
+    "jc_nothing_to_open": {
+      "en": "This device has nothing to call or write with.",
+      "he": "אין במכשיר הזה אפליקציה לחיוג או לשליחת דואר.",
+      "ar": "لا يوجد على هذا الجهاز ما يُتصل أو يُراسَل به."
+    },
+    "jc_kind": {
+      "c": "Heading over the kind chips, and a column heading",
+      "en": "What they are on the job",
+      "he": "תפקידם בעבודה",
+      "ar": "صفتهم في المشروع"
+    },
+    "jc_name": {
+      "c": "Field label and column heading",
+      "en": "Name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "jc_organisation": {
+      "c": "Field label and column heading",
+      "en": "Firm or office",
+      "he": "חברה או משרד",
+      "ar": "الشركة أو المكتب"
+    },
+    "jc_phone": {
+      "c": "Field label and column heading",
+      "en": "Phone",
+      "he": "טלפון",
+      "ar": "الهاتف"
+    },
+    "jc_email": {
+      "c": "Field label and column heading",
+      "en": "Email",
+      "he": "דוא״ל",
+      "ar": "البريد الإلكتروني"
+    },
+    "jc_reach_hint": {
+      "en": "A phone number or an email, at least one.",
+      "he": "מספר טלפון או דוא״ל, לפחות אחד מהם.",
+      "ar": "رقم هاتف أو بريد إلكتروني، واحد على الأقل."
+    },
+    "jc_notes": {
+      "c": "Field label and column heading",
+      "en": "Notes",
+      "he": "הערות",
+      "ar": "ملاحظات"
+    },
+    "jc_notes_hint": {
+      "en": "Best times to ring, who to ask for, the office address",
+      "he": "השעות הטובות להתקשר, את מי לבקש, כתובת המשרד",
+      "ar": "أفضل أوقات الاتصال، من يُطلب، عنوان المكتب"
+    },
+    "jc_kind_client": {
+      "c": "What a contact is on the job",
+      "en": "Client",
+      "he": "מזמין",
+      "ar": "صاحب العمل"
+    },
+    "jc_kind_supervisor": {
+      "c": "What a contact is on the job",
+      "en": "Supervisor",
+      "he": "מפקח",
+      "ar": "المشرف"
+    },
+    "jc_kind_architect": {
+      "c": "What a contact is on the job",
+      "en": "Architect",
+      "he": "אדריכל",
+      "ar": "المهندس المعماري"
+    },
+    "jc_kind_structural": {
+      "c": "What a contact is on the job",
+      "en": "Structural engineer",
+      "he": "מהנדס קונסטרוקציה",
+      "ar": "مهندس إنشائي"
+    },
+    "jc_kind_engineer": {
+      "c": "What a contact is on the job",
+      "en": "Other engineer or consultant",
+      "he": "מהנדס או יועץ אחר",
+      "ar": "مهندس أو مستشار آخر"
+    },
+    "jc_kind_safety": {
+      "c": "What a contact is on the job",
+      "en": "Safety consultant",
+      "he": "יועץ בטיחות",
+      "ar": "مستشار السلامة"
+    },
+    "jc_kind_municipality": {
+      "c": "What a contact is on the job",
+      "en": "Municipality",
+      "he": "עירייה",
+      "ar": "البلدية"
+    },
+    "jc_kind_subcontractor": {
+      "c": "What a contact is on the job",
+      "en": "Subcontractor",
+      "he": "קבלן משנה",
+      "ar": "مقاول فرعي"
+    },
+    "jc_kind_supplier": {
+      "c": "What a contact is on the job",
+      "en": "Supplier",
+      "he": "ספק",
+      "ar": "مورّد"
+    },
+    "jc_kind_other": {
+      "c": "What a contact is on the job",
+      "en": "Other",
+      "he": "אחר",
+      "ar": "أخرى"
+    },
+    "jc_refused_not_allowed": {
+      "en": "Your role cannot change the job's contacts.",
+      "he": "התפקיד שלך אינו מאפשר לשנות את אנשי הקשר של העבודה.",
+      "ar": "دورك لا يسمح بتغيير جهات اتصال المشروع."
+    },
+    "jc_refused_name": {
+      "en": "Write their name.",
+      "he": "כתבו את השם.",
+      "ar": "اكتب الاسم."
+    },
+    "jc_refused_reach": {
+      "en": "Give a phone number or an email: a contact nobody can reach is not one.",
+      "he": "הזינו מספר טלפון או דוא״ל: איש קשר שאי אפשר להשיג אינו איש קשר.",
+      "ar": "أدخل رقم هاتف أو بريدًا إلكترونيًا: جهة اتصال لا يمكن الوصول إليها ليست جهة اتصال."
+    },
+    "jc_refused_email": {
+      "en": "That does not look like an email address.",
+      "he": "זו לא נראית כתובת דוא״ל.",
+      "ar": "لا يبدو هذا عنوان بريد إلكتروني."
+    },
+    "jc_refused_removed": {
+      "en": "They have left the job; their entry is kept as it was.",
+      "he": "הם עזבו את העבודה; הרשומה שלהם נשמרת כפי שהייתה.",
+      "ar": "غادروا المشروع؛ يبقى سجلّهم كما كان."
+    },
+    "search_kind_contact": {
+      "c": "Label on a search result",
+      "en": "Contact",
+      "he": "איש קשר",
+      "ar": "جهة اتصال"
     }
   },
   "plurals": {

@@ -196,7 +196,7 @@
 /* Privacy screen: the whole of it in one sentence */
 "priv_lead" = "كل ما تُسجّله يبقى على هذا الهاتف.";
 "priv_where_title" = "أين يُحفظ عملك";
-"priv_where_body" = "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه. ولا تُطبع أي منها أو تُصدَّر أبدًا. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.";
+"priv_where_body" = "الأعمال والطاقم والصور والتواقيع وقوائم الفحص والمال محفوظة في قاعدة بيانات على هذا الهاتف، وكذلك أسماء وأرقام هواتف الزوار المسجلين في الموقع، ومَن اشتكى من موقع وترك وسيلة للرد عليه، والأشخاص من خارج الشركة المدرجين كجهات اتصال لمشروع. بيانات الزوار والمشتكين لا تُطبع أو تُصدَّر أبدًا؛ أما جهات اتصال المشروع فتُطبع، في الدليل الذي يختار أحدهم طباعته لمكتب الموقع. لا يوجد حساب لدينا ولا خادم يحتفظ بنسخة.";
 "priv_network_title" = "الشيء الوحيد الذي يغادر الهاتف";
 "priv_network_body" = "عند الضغط على التحقق من التحديثات، يسأل التطبيق GitHub إن كانت هناك نسخة أحدث. هذا الطلب لا يحمل شيئًا عن أعمالك أو طاقمك أو موقعك. ويحدث عند الضغط على الزر فقط.";
 "priv_none_title" = "ما لا يفعله التطبيق";
@@ -2851,5 +2851,68 @@
 "hv_complaints" = "شكاوى لم يُكتب لها رد";
 /* Handover pack row */
 "hv_meeting_points" = "نقاط اجتماعات لا تزال مفتوحة";
+"summary_jc_added" = "أُضيف %1$s إلى جهات اتصال المشروع";
+"summary_jc_corrected" = "صُحّحت بيانات الاتصال لـ %1$s";
+"summary_jc_removed" = "%1$s لم يعد في المشروع";
 /* Under the next service date field */
 "plant_service_hint" = "يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن لم يكن له موعد صيانة.";
+/* Screen title and job link: who is who on the job from outside the firm */
+"jc_title" = "جهات الاتصال";
+/* Hint under the job link */
+"jc_row_hint" = "صاحب العمل، المشرف، المصممون، البلدية، المقاولون الفرعيون";
+"jc_empty" = "لم تُسجَّل جهات اتصال في هذا المشروع.";
+"jc_blurb" = "سجّل من هو من خارج الشركة — صاحب العمل، المشرف، المهندس المعماري والمهندسون، مفتش البلدية، المقاولون الفرعيون والمورّدون — مع رقم أو عنوان للتواصل مع كل منهم.";
+"jc_add" = "إضافة جهة اتصال";
+/* Button and dialog title */
+"jc_correct" = "تصحيح البيانات";
+/* Button */
+"jc_remove" = "لم يعد في المشروع";
+/* %1$s is a name */
+"jc_remove_question" = "هل لم يعد %1$s في المشروع؟";
+"jc_remove_body" = "يبقون في القائمة مؤشَّرًا عليهم بأنهم غادروا، وخارج الدليل المطبوع.";
+/* Under a contact who has left */
+"jc_left_the_job" = "لم يعد في المشروع";
+/* Accessibility label of the call button; %1$s is a name */
+"jc_call" = "الاتصال بـ %1$s";
+"jc_nothing_to_open" = "لا يوجد على هذا الجهاز ما يُتصل أو يُراسَل به.";
+/* Heading over the kind chips, and a column heading */
+"jc_kind" = "صفتهم في المشروع";
+/* Field label and column heading */
+"jc_name" = "الاسم";
+/* Field label and column heading */
+"jc_organisation" = "الشركة أو المكتب";
+/* Field label and column heading */
+"jc_phone" = "الهاتف";
+/* Field label and column heading */
+"jc_email" = "البريد الإلكتروني";
+"jc_reach_hint" = "رقم هاتف أو بريد إلكتروني، واحد على الأقل.";
+/* Field label and column heading */
+"jc_notes" = "ملاحظات";
+"jc_notes_hint" = "أفضل أوقات الاتصال، من يُطلب، عنوان المكتب";
+/* What a contact is on the job */
+"jc_kind_client" = "صاحب العمل";
+/* What a contact is on the job */
+"jc_kind_supervisor" = "المشرف";
+/* What a contact is on the job */
+"jc_kind_architect" = "المهندس المعماري";
+/* What a contact is on the job */
+"jc_kind_structural" = "مهندس إنشائي";
+/* What a contact is on the job */
+"jc_kind_engineer" = "مهندس أو مستشار آخر";
+/* What a contact is on the job */
+"jc_kind_safety" = "مستشار السلامة";
+/* What a contact is on the job */
+"jc_kind_municipality" = "البلدية";
+/* What a contact is on the job */
+"jc_kind_subcontractor" = "مقاول فرعي";
+/* What a contact is on the job */
+"jc_kind_supplier" = "مورّد";
+/* What a contact is on the job */
+"jc_kind_other" = "أخرى";
+"jc_refused_not_allowed" = "دورك لا يسمح بتغيير جهات اتصال المشروع.";
+"jc_refused_name" = "اكتب الاسم.";
+"jc_refused_reach" = "أدخل رقم هاتف أو بريدًا إلكترونيًا: جهة اتصال لا يمكن الوصول إليها ليست جهة اتصال.";
+"jc_refused_email" = "لا يبدو هذا عنوان بريد إلكتروني.";
+"jc_refused_removed" = "غادروا المشروع؛ يبقى سجلّهم كما كان.";
+/* Label on a search result */
+"search_kind_contact" = "جهة اتصال";

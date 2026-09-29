@@ -4,6 +4,8 @@ import android.content.Context
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.safety.WeeklySafety
 import il.co.tradesmanager.core.work.Attention
+import il.co.tradesmanager.core.work.Contacts
+import il.co.tradesmanager.data.local.entity.JobContactEntity
 import il.co.tradesmanager.ui.audit.auditActionLabel
 import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.core.evidence.Complaints
@@ -45,6 +47,7 @@ import il.co.tradesmanager.data.local.entity.SubstanceEntity
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.complaints.complaintSubjectLabel
 import il.co.tradesmanager.ui.components.unitLabel
+import il.co.tradesmanager.ui.contacts.contactKindLabel
 import il.co.tradesmanager.ui.delays.delayCauseLabel
 import il.co.tradesmanager.ui.emergency.nationalNumberLabel
 import il.co.tradesmanager.ui.firepoints.firePointKindLabel
@@ -259,6 +262,16 @@ sealed interface ExportDocument {
         val weekStart: LocalDate,
         val report: WeeklySafety.Report,
         val openNow: List<Attention.Line>,
+    ) : ExportDocument
+
+    /**
+     * Who is who on the job from outside the firm and how to reach them --
+     * only those still on it, since a directory with last year's supervisor
+     * in it rings the wrong phone.
+     */
+    data class ContactDirectory(
+        val jobName: String,
+        val contacts: List<JobContactEntity>,
     ) : ExportDocument
 
     /** One job's questions to its designers, with the answers and when they came. */
@@ -679,6 +692,32 @@ sealed interface ExportDocument {
                 openNow.map { line -> listOf(context.getString(R.string.ws_open_now) + ": " + context.getString(attentionLabel(line.item)), line.count.toString()) },
         )
 
+        is ContactDirectory -> {
+            val current = contacts.filter { it.removedAt == null }
+            val ordered = Contacts.order(current.map { Triple(Contacts.kindOf(it.kind), it.name, false) }).map { current[it] }
+            Table(
+                title = context.getString(R.string.jc_title) + " — " + jobName,
+                headers = listOf(
+                    context.getString(R.string.jc_kind),
+                    context.getString(R.string.jc_name),
+                    context.getString(R.string.jc_organisation),
+                    context.getString(R.string.jc_phone),
+                    context.getString(R.string.jc_email),
+                    context.getString(R.string.jc_notes),
+                ),
+                rows = ordered.map { row ->
+                    listOf(
+                        context.getString(contactKindLabel(Contacts.kindOf(row.kind))),
+                        row.name,
+                        row.organisation.orEmpty(),
+                        row.phone.orEmpty(),
+                        row.email.orEmpty(),
+                        row.notes.orEmpty(),
+                    )
+                },
+            )
+        }
+
         is QueryRegister -> Table(
             title = context.getString(R.string.qry_title) + " — " + jobName,
             headers = listOf(
@@ -876,6 +915,7 @@ sealed interface ExportDocument {
             is EmergencyInformation -> "emergency-" + jobName
             is MeetingActionLog -> "meetings-" + jobName
             is WeeklySafetyReport -> "safety-week-" + weekStart + "-" + jobName
+            is ContactDirectory -> "contacts-" + jobName
         },
     )
 

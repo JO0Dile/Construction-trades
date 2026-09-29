@@ -196,7 +196,7 @@
 /* Privacy screen: the whole of it in one sentence */
 "priv_lead" = "Everything you record stays on this phone.";
 "priv_where_title" = "Where your work is kept";
-"priv_where_body" = "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, and of anybody who made a complaint about one and left a way to answer them. Neither is ever printed or exported. There is no account with us and no server holding a copy.";
+"priv_where_body" = "Jobs, crew, photographs, signatures, checklists and money are held in a database on this phone, and so are the names and phone numbers of visitors signed in at a site, of anybody who made a complaint about one and left a way to answer them, and of the people from outside the firm listed as a job's contacts. Visitors' and complainants' details are never printed or exported; a job's contacts are, in the directory somebody chooses to print for the site office. There is no account with us and no server holding a copy.";
 "priv_network_title" = "The one thing that leaves the phone";
 "priv_network_body" = "When you press Check for updates, the app asks GitHub whether a newer version has been published. That request carries nothing about your jobs, your crew or your site. It happens when you press the button and at no other time.";
 "priv_none_title" = "What the app does not do";
@@ -2851,5 +2851,68 @@
 "hv_complaints" = "Complaints with no answer written";
 /* Handover pack row */
 "hv_meeting_points" = "Meeting points still open";
+"summary_jc_added" = "%1$s added to the job's contacts";
+"summary_jc_corrected" = "Contact details of %1$s corrected";
+"summary_jc_removed" = "%1$s no longer on the job";
 /* Under the next service date field */
 "plant_service_hint" = "Day, month, year: 31.03.2026. Leave empty if it has no service date.";
+/* Screen title and job link: who is who on the job from outside the firm */
+"jc_title" = "Contacts";
+/* Hint under the job link */
+"jc_row_hint" = "The client, the supervisor, the designers, the municipality, the subcontractors";
+"jc_empty" = "No contacts recorded on this job.";
+"jc_blurb" = "Write down who is who from outside the firm — the client, the supervisor, the architect and engineers, the municipality's inspector, the subcontractors and suppliers — with a number or an address to reach each of them.";
+"jc_add" = "Add a contact";
+/* Button and dialog title */
+"jc_correct" = "Correct the details";
+/* Button */
+"jc_remove" = "No longer on the job";
+/* %1$s is a name */
+"jc_remove_question" = "Is %1$s no longer on the job?";
+"jc_remove_body" = "They stay in the list, marked as having left, and out of the printed directory.";
+/* Under a contact who has left */
+"jc_left_the_job" = "No longer on the job";
+/* Accessibility label of the call button; %1$s is a name */
+"jc_call" = "Call %1$s";
+"jc_nothing_to_open" = "This device has nothing to call or write with.";
+/* Heading over the kind chips, and a column heading */
+"jc_kind" = "What they are on the job";
+/* Field label and column heading */
+"jc_name" = "Name";
+/* Field label and column heading */
+"jc_organisation" = "Firm or office";
+/* Field label and column heading */
+"jc_phone" = "Phone";
+/* Field label and column heading */
+"jc_email" = "Email";
+"jc_reach_hint" = "A phone number or an email, at least one.";
+/* Field label and column heading */
+"jc_notes" = "Notes";
+"jc_notes_hint" = "Best times to ring, who to ask for, the office address";
+/* What a contact is on the job */
+"jc_kind_client" = "Client";
+/* What a contact is on the job */
+"jc_kind_supervisor" = "Supervisor";
+/* What a contact is on the job */
+"jc_kind_architect" = "Architect";
+/* What a contact is on the job */
+"jc_kind_structural" = "Structural engineer";
+/* What a contact is on the job */
+"jc_kind_engineer" = "Other engineer or consultant";
+/* What a contact is on the job */
+"jc_kind_safety" = "Safety consultant";
+/* What a contact is on the job */
+"jc_kind_municipality" = "Municipality";
+/* What a contact is on the job */
+"jc_kind_subcontractor" = "Subcontractor";
+/* What a contact is on the job */
+"jc_kind_supplier" = "Supplier";
+/* What a contact is on the job */
+"jc_kind_other" = "Other";
+"jc_refused_not_allowed" = "Your role cannot change the job's contacts.";
+"jc_refused_name" = "Write their name.";
+"jc_refused_reach" = "Give a phone number or an email: a contact nobody can reach is not one.";
+"jc_refused_email" = "That does not look like an email address.";
+"jc_refused_removed" = "They have left the job; their entry is kept as it was.";
+/* Label on a search result */
+"search_kind_contact" = "Contact";

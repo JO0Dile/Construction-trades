@@ -134,6 +134,7 @@ fun ProjectDetailScreen(
     onOpenEmergency: () -> Unit,
     onOpenMeetings: () -> Unit,
     onOpenSafetyWeek: () -> Unit,
+    onOpenContacts: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -191,6 +192,8 @@ fun ProjectDetailScreen(
         // First, and for everybody on the job: the sheet somebody needs when
         // a man is on the ground is not the one to hunt for under a lens.
         add(JobLink(R.string.es_title, R.string.es_row_hint, onOpenEmergency))
+        // Who is who from outside the firm, for whoever works on the plan or keeps the record.
+        if (canSeePlan || canSeeEvidence) add(JobLink(R.string.jc_title, R.string.jc_row_hint, onOpenContacts))
         // Work packages sit under Plan: they are what has been agreed will
         // happen, before anything has. Above the registers because on a job
         // with more than one firm this is the first screen a crew leader

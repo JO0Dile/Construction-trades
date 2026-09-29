@@ -196,7 +196,7 @@
 /* Privacy screen: the whole of it in one sentence */
 "priv_lead" = "כל מה שאתם רושמים נשאר בטלפון הזה.";
 "priv_where_title" = "היכן נשמרת העבודה שלכם";
-"priv_where_body" = "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, ושל מי שהתלונן על אתר והשאיר דרך לענות לו. הם לעולם אינם מודפסים או מיוצאים. אין חשבון אצלנו ואין שרת שמחזיק עותק.";
+"priv_where_body" = "עבודות, צוות, תמונות, חתימות, רשימות בדיקה וכספים נשמרים במסד נתונים בטלפון הזה, וכך גם שמות ומספרי טלפון של מבקרים שנרשמו באתר, של מי שהתלונן על אתר והשאיר דרך לענות לו, ושל אנשים מחוץ לחברה שרשומים כאנשי הקשר של עבודה. פרטי מבקרים ומתלוננים לעולם אינם מודפסים או מיוצאים; אנשי הקשר של עבודה כן, ברשימה שמישהו בוחר להדפיס למשרד האתר. אין חשבון אצלנו ואין שרת שמחזיק עותק.";
 "priv_network_title" = "הדבר היחיד שיוצא מהטלפון";
 "priv_network_body" = "כשלוחצים על בדיקת עדכונים, האפליקציה שואלת את GitHub אם פורסמה גרסה חדשה. בבקשה הזו אין דבר על העבודות, הצוות או האתר שלכם. היא נשלחת רק בלחיצה על הכפתור ולא בשום מועד אחר.";
 "priv_none_title" = "מה האפליקציה אינה עושה";
@@ -2851,5 +2851,68 @@
 "hv_complaints" = "תלונות שלא נרשמה להן תשובה";
 /* Handover pack row */
 "hv_meeting_points" = "נקודות מישיבות שעדיין פתוחות";
+"summary_jc_added" = "%1$s נוסף לאנשי הקשר של העבודה";
+"summary_jc_corrected" = "פרטי הקשר של %1$s תוקנו";
+"summary_jc_removed" = "%1$s כבר לא בעבודה";
 /* Under the next service date field */
 "plant_service_hint" = "יום, חודש, שנה: 31.03.2026. השאירו ריק אם אין תאריך טיפול.";
+/* Screen title and job link: who is who on the job from outside the firm */
+"jc_title" = "אנשי קשר";
+/* Hint under the job link */
+"jc_row_hint" = "המזמין, המפקח, המתכננים, העירייה, קבלני המשנה";
+"jc_empty" = "לא נרשמו אנשי קשר בעבודה הזו.";
+"jc_blurb" = "רשמו מי הוא מי מחוץ לחברה — המזמין, המפקח, האדריכל והמהנדסים, פקח העירייה, קבלני המשנה והספקים — עם מספר או כתובת כדי להשיג כל אחד מהם.";
+"jc_add" = "הוספת איש קשר";
+/* Button and dialog title */
+"jc_correct" = "תיקון הפרטים";
+/* Button */
+"jc_remove" = "כבר לא בעבודה";
+/* %1$s is a name */
+"jc_remove_question" = "האם %1$s כבר לא בעבודה?";
+"jc_remove_body" = "הם נשארים ברשימה, מסומנים כמי שעזבו, ומחוץ לרשימה המודפסת.";
+/* Under a contact who has left */
+"jc_left_the_job" = "כבר לא בעבודה";
+/* Accessibility label of the call button; %1$s is a name */
+"jc_call" = "התקשרות אל %1$s";
+"jc_nothing_to_open" = "אין במכשיר הזה אפליקציה לחיוג או לשליחת דואר.";
+/* Heading over the kind chips, and a column heading */
+"jc_kind" = "תפקידם בעבודה";
+/* Field label and column heading */
+"jc_name" = "שם";
+/* Field label and column heading */
+"jc_organisation" = "חברה או משרד";
+/* Field label and column heading */
+"jc_phone" = "טלפון";
+/* Field label and column heading */
+"jc_email" = "דוא״ל";
+"jc_reach_hint" = "מספר טלפון או דוא״ל, לפחות אחד מהם.";
+/* Field label and column heading */
+"jc_notes" = "הערות";
+"jc_notes_hint" = "השעות הטובות להתקשר, את מי לבקש, כתובת המשרד";
+/* What a contact is on the job */
+"jc_kind_client" = "מזמין";
+/* What a contact is on the job */
+"jc_kind_supervisor" = "מפקח";
+/* What a contact is on the job */
+"jc_kind_architect" = "אדריכל";
+/* What a contact is on the job */
+"jc_kind_structural" = "מהנדס קונסטרוקציה";
+/* What a contact is on the job */
+"jc_kind_engineer" = "מהנדס או יועץ אחר";
+/* What a contact is on the job */
+"jc_kind_safety" = "יועץ בטיחות";
+/* What a contact is on the job */
+"jc_kind_municipality" = "עירייה";
+/* What a contact is on the job */
+"jc_kind_subcontractor" = "קבלן משנה";
+/* What a contact is on the job */
+"jc_kind_supplier" = "ספק";
+/* What a contact is on the job */
+"jc_kind_other" = "אחר";
+"jc_refused_not_allowed" = "התפקיד שלך אינו מאפשר לשנות את אנשי הקשר של העבודה.";
+"jc_refused_name" = "כתבו את השם.";
+"jc_refused_reach" = "הזינו מספר טלפון או דוא״ל: איש קשר שאי אפשר להשיג אינו איש קשר.";
+"jc_refused_email" = "זו לא נראית כתובת דוא״ל.";
+"jc_refused_removed" = "הם עזבו את העבודה; הרשומה שלהם נשמרת כפי שהייתה.";
+/* Label on a search result */
+"search_kind_contact" = "איש קשר";

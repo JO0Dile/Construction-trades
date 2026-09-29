@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.49.0",
+      "points": [
+        {
+          "en": "A contacts page on every job: the client, the supervisor, the architect and engineers, the municipality, the subcontractors and suppliers — what each is on the job, their firm, and a phone number or an email. A tap rings or writes to them.",
+          "he": "דף אנשי קשר בכל עבודה: המזמין, המפקח, האדריכל והמהנדסים, העירייה, קבלני המשנה והספקים — מה התפקיד של כל אחד בעבודה, החברה שלו, ומספר טלפון או דוא״ל. הקשה מחייגת או כותבת אליהם.",
+          "ar": "صفحة جهات اتصال في كل مشروع: صاحب العمل، المشرف، المهندس المعماري والمهندسون، البلدية، المقاولون الفرعيون والمورّدون — صفة كل منهم في المشروع، وشركته، ورقم هاتف أو بريد إلكتروني. لمسة واحدة تتصل بهم أو تراسلهم."
+        },
+        {
+          "en": "A changed number is corrected in place; somebody who has left the job is marked off, not deleted. The directory prints for the site office with only those still on the job, and the search box finds a contact by name, firm or number.",
+          "he": "מספר שהשתנה מתוקן במקומו; מי שעזב את העבודה מסומן, ולא נמחק. אפשר להדפיס את הרשימה למשרד האתר, רק עם מי שעדיין בעבודה, ותיבת החיפוש מוצאת איש קשר לפי שם, חברה או מספר.",
+          "ar": "الرقم الذي تغيّر يُصحَّح في مكانه؛ ومن غادر المشروع يُؤشَّر عليه ولا يُحذف. يُطبع الدليل لمكتب الموقع بمن لا يزال في المشروع فقط، ويجد مربع البحث جهة الاتصال بالاسم أو الشركة أو الرقم."
+        }
+      ]
+    },
+    {
       "version": "0.48.1",
       "points": [
         {

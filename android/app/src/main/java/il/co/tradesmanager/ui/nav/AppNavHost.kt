@@ -36,6 +36,7 @@ import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.data.repository.SettingsRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.concrete.ConcreteScreen
+import il.co.tradesmanager.ui.contacts.JobContactsScreen
 import il.co.tradesmanager.ui.emergency.EmergencyScreen
 import il.co.tradesmanager.ui.excavation.ExcavationScreen
 import il.co.tradesmanager.ui.firepoints.FirePointsScreen
@@ -139,6 +140,7 @@ object Routes {
     const val EMERGENCY = "projects/emergency"
     const val MEETINGS = "projects/meetings"
     const val SAFETY_WEEK = "projects/safety-week"
+    const val CONTACTS = "projects/contacts"
     const val TICKET_GAPS = "people/tickets"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
@@ -208,6 +210,7 @@ object Routes {
     fun emergency(projectId: String) = "$EMERGENCY/$projectId"
     fun meetings(projectId: String) = "$MEETINGS/$projectId"
     fun safetyWeek(projectId: String) = "$SAFETY_WEEK/$projectId"
+    fun contacts(projectId: String) = "$CONTACTS/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
 }
 
@@ -242,6 +245,7 @@ private fun routeFor(hit: Search.Hit): String = when (hit.kind) {
     Search.Kind.SUBSTANCE -> Routes.substances(hit.projectId.orEmpty())
     Search.Kind.FIRE_POINT -> Routes.firePoints(hit.projectId.orEmpty())
     Search.Kind.MEETING_POINT -> Routes.meetings(hit.projectId.orEmpty())
+    Search.Kind.CONTACT -> Routes.contacts(hit.projectId.orEmpty())
 }
 
 /**
@@ -429,6 +433,7 @@ fun AppNavHost(
                     onOpenEmergency = { navController.navigate(Routes.emergency(id)) },
                     onOpenMeetings = { navController.navigate(Routes.meetings(id)) },
                     onOpenSafetyWeek = { navController.navigate(Routes.safetyWeek(id)) },
+                    onOpenContacts = { navController.navigate(Routes.contacts(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     // A part, or the job it belongs to. Same screen, so the
@@ -644,6 +649,13 @@ fun AppNavHost(
             }
             composable("${Routes.SUBSTANCES}/{projectId}") { entry ->
                 SubstancesScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.CONTACTS}/{projectId}") { entry ->
+                JobContactsScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },
