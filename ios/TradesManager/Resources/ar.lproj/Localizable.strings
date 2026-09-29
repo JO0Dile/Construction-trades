@@ -2803,3 +2803,43 @@
 "log_fire_faults" = "أعطال وُجدت في نقاط الإطفاء";
 /* Home section header: jobs with something going wrong */
 "home_jobs_attention" = "مشاريع تحتاج إلى متابعة";
+/* Screen title and job link */
+"ws_title" = "تقرير السلامة الأسبوعي";
+/* Hint under the job link */
+"ws_row_hint" = "الأسبوع كما عُدّ من السجلات، ليوقّعه مسؤول السلامة";
+"ws_this_week" = "هذا الأسبوع";
+"ws_last_week" = "الأسبوع الماضي";
+"ws_2_weeks_ago" = "قبل أسبوعين";
+"ws_3_weeks_ago" = "قبل ثلاثة أسابيع";
+/* %1$s and %2$s are dates */
+"ws_week_of" = "من الأحد %1$s إلى السبت %2$s";
+"ws_counting" = "جارٍ العدّ…";
+"ws_nothing_wrong" = "لم يُسجَّل هذا الأسبوع حادث أو مخالفة أو فحص فاشل أو عطل في نقطة إطفاء.";
+/* Report line, followed by a count */
+"ws_people" = "أشخاص عملوا نوبة في المشروع";
+/* Report line, followed by a count */
+"ws_visitors" = "زوار سُجّلوا";
+/* Report line, followed by a count */
+"ws_talks" = "إحاطات سلامة عُقدت";
+/* Report line, followed by a count */
+"ws_permits" = "تصاريح عمل صدرت";
+/* Report line, followed by a count */
+"ws_near_misses" = "حوادث وشيكة بُلّغ عنها";
+/* Report line, followed by a count */
+"ws_incidents" = "حوادث فيها أذى أو ضرر";
+/* Report line, followed by a count */
+"ws_violations" = "مخالفات سلامة سُجّلت";
+/* Report line, followed by a count */
+"ws_inspections_passed" = "فحوصات نجحت";
+/* Report line, followed by a count */
+"ws_inspections_failed" = "فحوصات فشلت";
+/* Report line, followed by a count */
+"ws_fire_faults" = "أعطال وُجدت في نقاط الإطفاء";
+/* Report line, followed by a count */
+"ws_complaints" = "شكاوى وردت";
+/* Section header, and a prefix on printed lines */
+"ws_open_now" = "لا يزال مفتوحًا الآن";
+"ws_nothing_open" = "لا شيء في المشروع ينتظر أحدًا.";
+"ws_counted_hint" = "كل رقم معدود مما سُجّل في السجلات. وما لم يُكتب ليس هنا.";
+/* Column heading */
+"ws_col_count" = "العدد";

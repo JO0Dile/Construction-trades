@@ -2804,6 +2804,46 @@
     <string name="log_fire_faults">Fire point faults found</string>
     <!-- Home section header: jobs with something going wrong -->
     <string name="home_jobs_attention">Jobs needing attention</string>
+    <!-- Screen title and job link -->
+    <string name="ws_title">Weekly safety report</string>
+    <!-- Hint under the job link -->
+    <string name="ws_row_hint">The week counted from the registers, for the safety officer to sign</string>
+    <string name="ws_this_week">This week</string>
+    <string name="ws_last_week">Last week</string>
+    <string name="ws_2_weeks_ago">Two weeks ago</string>
+    <string name="ws_3_weeks_ago">Three weeks ago</string>
+    <!-- %1$s and %2$s are dates -->
+    <string name="ws_week_of">Sunday %1$s to Saturday %2$s</string>
+    <string name="ws_counting">Counting…</string>
+    <string name="ws_nothing_wrong">No incident, violation, failed inspection or fire point fault recorded this week.</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_people">People with a shift on the job</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_visitors">Visitors signed in</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_talks">Toolbox talks held</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_permits">Permits to work issued</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_near_misses">Near misses reported</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_incidents">Incidents with harm or damage</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_violations">Safety violations recorded</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_inspections_passed">Inspections passed</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_inspections_failed">Inspections failed</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_fire_faults">Fire point faults found</string>
+    <!-- Report line, followed by a count -->
+    <string name="ws_complaints">Complaints received</string>
+    <!-- Section header, and a prefix on printed lines -->
+    <string name="ws_open_now">Still open now</string>
+    <string name="ws_nothing_open">Nothing on the job is waiting on anybody.</string>
+    <string name="ws_counted_hint">Every figure is counted from what was recorded in the registers. What was not written down is not here.</string>
+    <!-- Column heading -->
+    <string name="ws_col_count">Count</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

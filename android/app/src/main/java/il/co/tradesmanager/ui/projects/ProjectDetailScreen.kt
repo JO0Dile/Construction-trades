@@ -133,6 +133,7 @@ fun ProjectDetailScreen(
     onOpenFirePoints: () -> Unit,
     onOpenEmergency: () -> Unit,
     onOpenMeetings: () -> Unit,
+    onOpenSafetyWeek: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -212,6 +213,8 @@ fun ProjectDetailScreen(
         if (canSeeEvidence) add(JobLink(R.string.ir_title, R.string.ir_row_hint, onOpenInspections))
         // What could hurt somebody on this job, and what is done about it.
         if (canSeeEvidence) add(JobLink(R.string.ra_title, R.string.ra_row_hint, onOpenRisks))
+        // The week of it all, counted, for the safety officer to sign.
+        if (canSeeEvidence) add(JobLink(R.string.ws_title, R.string.ws_row_hint, onOpenSafetyWeek))
         // What is kept on the site that can hurt somebody, and where its data sheet is.
         if (canSeeEvidence) add(JobLink(R.string.hs_title, R.string.hs_row_hint, onOpenSubstances))
         // Beside what can catch fire: what puts it out, and whether anybody has looked this month.

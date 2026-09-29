@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.47.0",
+      "points": [
+        {
+          "en": "A weekly safety report on every job: Sunday to Saturday, counted from the registers — people on site, visitors, toolbox talks, permits, near misses, incidents, violations, inspections passed and failed, fire point faults and complaints — and what is still open on the job now.",
+          "he": "דוח בטיחות שבועי בכל עבודה: מיום ראשון עד שבת, כפי שנספר מהפנקסים — אנשים באתר, מבקרים, תדריכי בטיחות, היתרי עבודה, כמעט תאונות, אירועים, הפרות, בדיקות שעברו ונכשלו, תקלות בעמדות כיבוי ותלונות — ומה עדיין פתוח בעבודה עכשיו.",
+          "ar": "تقرير سلامة أسبوعي في كل مشروع: من الأحد إلى السبت، معدود من السجلات — الأشخاص في الموقع، الزوار، إحاطات السلامة، التصاريح، الحوادث الوشيكة، الحوادث، المخالفات، الفحوصات الناجحة والفاشلة، أعطال نقاط الإطفاء والشكاوى — وما لا يزال مفتوحًا في المشروع الآن."
+        },
+        {
+          "en": "Pick this week or one of the three before it, and print or send it for the safety officer to sign. Nothing in it is typed: what was not recorded is not there.",
+          "he": "בחרו את השבוע הזה או אחד משלושת השבועות שלפניו, והדפיסו או שלחו אותו לחתימת ממונה הבטיחות. שום דבר בו אינו מוקלד: מה שלא נרשם אינו מופיע.",
+          "ar": "اختر هذا الأسبوع أو أحد الأسابيع الثلاثة التي قبله، واطبعه أو أرسله ليوقّعه مسؤول السلامة. لا شيء فيه مكتوب يدويًا: ما لم يُسجَّل ليس فيه."
+        }
+      ]
+    },
+    {
       "version": "0.46.0",
       "points": [
         {

@@ -58,6 +58,7 @@ import il.co.tradesmanager.ui.safety.MusterScreen
 import il.co.tradesmanager.ui.safety.ViolationsScreen
 import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
+import il.co.tradesmanager.ui.safetyreport.WeeklySafetyScreen
 import il.co.tradesmanager.ui.work.ContractsScreen
 import il.co.tradesmanager.ui.work.WorkPackagesScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
@@ -137,6 +138,7 @@ object Routes {
     const val FIRE_POINTS = "projects/fire-points"
     const val EMERGENCY = "projects/emergency"
     const val MEETINGS = "projects/meetings"
+    const val SAFETY_WEEK = "projects/safety-week"
     const val TICKET_GAPS = "people/tickets"
     const val HANDOVER = "projects/handover"
     const val PEOPLE = "people"
@@ -205,6 +207,7 @@ object Routes {
     fun firePoints(projectId: String) = "$FIRE_POINTS/$projectId"
     fun emergency(projectId: String) = "$EMERGENCY/$projectId"
     fun meetings(projectId: String) = "$MEETINGS/$projectId"
+    fun safetyWeek(projectId: String) = "$SAFETY_WEEK/$projectId"
     fun handover(projectId: String) = "$HANDOVER/$projectId"
 }
 
@@ -425,6 +428,7 @@ fun AppNavHost(
                     onOpenFirePoints = { navController.navigate(Routes.firePoints(id)) },
                     onOpenEmergency = { navController.navigate(Routes.emergency(id)) },
                     onOpenMeetings = { navController.navigate(Routes.meetings(id)) },
+                    onOpenSafetyWeek = { navController.navigate(Routes.safetyWeek(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
                     // A part, or the job it belongs to. Same screen, so the
@@ -640,6 +644,13 @@ fun AppNavHost(
             }
             composable("${Routes.SUBSTANCES}/{projectId}") { entry ->
                 SubstancesScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.SAFETY_WEEK}/{projectId}") { entry ->
+                WeeklySafetyScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

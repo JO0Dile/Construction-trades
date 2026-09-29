@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.safety.WeeklySafety
+import il.co.tradesmanager.core.work.Attention
 import il.co.tradesmanager.data.local.entity.ComplaintEntity
 import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.DesignQueryEntity
@@ -294,6 +296,20 @@ class RegisterExportTest {
         assertEquals(context.getString(R.string.ex_overdue), table.rows[0][5])
         assertEquals("Booked for Tuesday", table.rows[1][6])
         assertTrue(table.rows[1][5].isNotEmpty())
+    }
+
+    @Test
+    fun `the weekly safety report prints every count, then what is still open`() {
+        val context = inLanguage("en")
+        val report = WeeklySafety.Report(peopleOnSite = 14, nearMisses = 2, incidents = 1)
+        val open = listOf(Attention.Line(Attention.Item.FIRE_POINTS, 3))
+        val table = ExportDocument.WeeklySafetyReport("Tower A", LocalDate.of(2026, 10, 4), report, open).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(11 + 1, table.rows.size)
+        assertEquals(listOf(context.getString(R.string.ws_people), "14"), table.rows[0])
+        assertEquals(listOf(context.getString(R.string.ws_incidents), "1"), table.rows[5])
+        assertTrue(table.rows.last()[0].startsWith(context.getString(R.string.ws_open_now)))
+        assertEquals("3", table.rows.last()[1])
     }
 
     @Test

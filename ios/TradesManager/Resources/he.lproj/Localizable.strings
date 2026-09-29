@@ -2803,3 +2803,43 @@
 "log_fire_faults" = "תקלות שנמצאו בעמדות כיבוי";
 /* Home section header: jobs with something going wrong */
 "home_jobs_attention" = "עבודות שדורשות תשומת לב";
+/* Screen title and job link */
+"ws_title" = "דוח בטיחות שבועי";
+/* Hint under the job link */
+"ws_row_hint" = "השבוע כפי שנספר מהפנקסים, לחתימת ממונה הבטיחות";
+"ws_this_week" = "השבוע";
+"ws_last_week" = "שבוע שעבר";
+"ws_2_weeks_ago" = "לפני שבועיים";
+"ws_3_weeks_ago" = "לפני שלושה שבועות";
+/* %1$s and %2$s are dates */
+"ws_week_of" = "יום ראשון %1$s עד שבת %2$s";
+"ws_counting" = "סופר…";
+"ws_nothing_wrong" = "השבוע לא נרשמו אירוע, הפרה, בדיקה שנכשלה או תקלה בעמדת כיבוי.";
+/* Report line, followed by a count */
+"ws_people" = "אנשים שעבדו משמרת בעבודה";
+/* Report line, followed by a count */
+"ws_visitors" = "מבקרים שנרשמו";
+/* Report line, followed by a count */
+"ws_talks" = "תדריכי בטיחות שהתקיימו";
+/* Report line, followed by a count */
+"ws_permits" = "היתרי עבודה שהונפקו";
+/* Report line, followed by a count */
+"ws_near_misses" = "כמעט תאונות שדווחו";
+/* Report line, followed by a count */
+"ws_incidents" = "אירועים עם פגיעה או נזק";
+/* Report line, followed by a count */
+"ws_violations" = "הפרות בטיחות שנרשמו";
+/* Report line, followed by a count */
+"ws_inspections_passed" = "בדיקות שעברו";
+/* Report line, followed by a count */
+"ws_inspections_failed" = "בדיקות שנכשלו";
+/* Report line, followed by a count */
+"ws_fire_faults" = "תקלות שנמצאו בעמדות כיבוי";
+/* Report line, followed by a count */
+"ws_complaints" = "תלונות שהתקבלו";
+/* Section header, and a prefix on printed lines */
+"ws_open_now" = "עדיין פתוח עכשיו";
+"ws_nothing_open" = "שום דבר בעבודה לא ממתין לאף אחד.";
+"ws_counted_hint" = "כל מספר נספר ממה שנרשם בפנקסים. מה שלא נרשם אינו מופיע כאן.";
+/* Column heading */
+"ws_col_count" = "מספר";

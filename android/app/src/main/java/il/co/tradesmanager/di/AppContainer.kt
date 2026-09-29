@@ -38,6 +38,7 @@ import il.co.tradesmanager.data.repository.RiskRepository
 import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
+import il.co.tradesmanager.data.repository.SafetyReportRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
@@ -230,6 +231,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** The job's meetings and the points agreed at them. */
     val meetings = MeetingRepository(database.meetingDao(), auditTrail)
+
+    /** A job's week of safety, counted from the registers. */
+    val safetyReports = SafetyReportRepository(database.safetyReportDao())
 
     /** The job's risk assessment: hazards, scored before and after their controls. */
     val risks = RiskRepository(database.riskDao(), auditTrail)

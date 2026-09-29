@@ -2803,3 +2803,43 @@
 "log_fire_faults" = "Fire point faults found";
 /* Home section header: jobs with something going wrong */
 "home_jobs_attention" = "Jobs needing attention";
+/* Screen title and job link */
+"ws_title" = "Weekly safety report";
+/* Hint under the job link */
+"ws_row_hint" = "The week counted from the registers, for the safety officer to sign";
+"ws_this_week" = "This week";
+"ws_last_week" = "Last week";
+"ws_2_weeks_ago" = "Two weeks ago";
+"ws_3_weeks_ago" = "Three weeks ago";
+/* %1$s and %2$s are dates */
+"ws_week_of" = "Sunday %1$s to Saturday %2$s";
+"ws_counting" = "Counting…";
+"ws_nothing_wrong" = "No incident, violation, failed inspection or fire point fault recorded this week.";
+/* Report line, followed by a count */
+"ws_people" = "People with a shift on the job";
+/* Report line, followed by a count */
+"ws_visitors" = "Visitors signed in";
+/* Report line, followed by a count */
+"ws_talks" = "Toolbox talks held";
+/* Report line, followed by a count */
+"ws_permits" = "Permits to work issued";
+/* Report line, followed by a count */
+"ws_near_misses" = "Near misses reported";
+/* Report line, followed by a count */
+"ws_incidents" = "Incidents with harm or damage";
+/* Report line, followed by a count */
+"ws_violations" = "Safety violations recorded";
+/* Report line, followed by a count */
+"ws_inspections_passed" = "Inspections passed";
+/* Report line, followed by a count */
+"ws_inspections_failed" = "Inspections failed";
+/* Report line, followed by a count */
+"ws_fire_faults" = "Fire point faults found";
+/* Report line, followed by a count */
+"ws_complaints" = "Complaints received";
+/* Section header, and a prefix on printed lines */
+"ws_open_now" = "Still open now";
+"ws_nothing_open" = "Nothing on the job is waiting on anybody.";
+"ws_counted_hint" = "Every figure is counted from what was recorded in the registers. What was not written down is not here.";
+/* Column heading */
+"ws_col_count" = "Count";

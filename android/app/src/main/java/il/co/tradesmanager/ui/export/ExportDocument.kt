@@ -2,6 +2,8 @@ package il.co.tradesmanager.ui.export
 
 import android.content.Context
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.safety.WeeklySafety
+import il.co.tradesmanager.core.work.Attention
 import il.co.tradesmanager.ui.audit.auditActionLabel
 import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.core.evidence.Complaints
@@ -49,7 +51,9 @@ import il.co.tradesmanager.ui.firepoints.firePointKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import il.co.tradesmanager.ui.meetings.meetingKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
+import il.co.tradesmanager.ui.projects.attentionLabel
 import il.co.tradesmanager.ui.risks.bandLabel
+import il.co.tradesmanager.ui.safetyreport.reportLines
 import il.co.tradesmanager.ui.submittals.submittalDecisionLabel
 import il.co.tradesmanager.ui.substances.hazardLabel
 import java.time.Instant
@@ -244,6 +248,17 @@ sealed interface ExportDocument {
         val meetings: List<MeetingEntity>,
         val actions: List<MeetingActionEntity>,
         val today: LocalDate,
+    ) : ExportDocument
+
+    /**
+     * One job's week of safety, Sunday to Saturday, counted from its
+     * registers, and what was still open on the job when it was printed.
+     */
+    data class WeeklySafetyReport(
+        val jobName: String,
+        val weekStart: LocalDate,
+        val report: WeeklySafety.Report,
+        val openNow: List<Attention.Line>,
     ) : ExportDocument
 
     /** One job's questions to its designers, with the answers and when they came. */
@@ -656,6 +671,14 @@ sealed interface ExportDocument {
             )
         }
 
+        is WeeklySafetyReport -> Table(
+            title = context.getString(R.string.ws_title) + " — " + jobName + " — " +
+                Formats.date(weekStart, locale) + "–" + Formats.date(weekStart.plusDays(WeeklySafety.DAYS - 1), locale),
+            headers = listOf(context.getString(R.string.es_col_what), context.getString(R.string.ws_col_count)),
+            rows = reportLines(report).map { (label, count) -> listOf(context.getString(label), count.toString()) } +
+                openNow.map { line -> listOf(context.getString(R.string.ws_open_now) + ": " + context.getString(attentionLabel(line.item)), line.count.toString()) },
+        )
+
         is QueryRegister -> Table(
             title = context.getString(R.string.qry_title) + " — " + jobName,
             headers = listOf(
@@ -852,6 +875,7 @@ sealed interface ExportDocument {
             is FirePointRegister -> "fire-points-" + jobName
             is EmergencyInformation -> "emergency-" + jobName
             is MeetingActionLog -> "meetings-" + jobName
+            is WeeklySafetyReport -> "safety-week-" + weekStart + "-" + jobName
         },
     )
 

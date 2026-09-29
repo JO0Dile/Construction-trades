@@ -11428,6 +11428,142 @@
       "en": "Jobs needing attention",
       "he": "עבודות שדורשות תשומת לב",
       "ar": "مشاريع تحتاج إلى متابعة"
+    },
+    "ws_title": {
+      "c": "Screen title and job link",
+      "en": "Weekly safety report",
+      "he": "דוח בטיחות שבועי",
+      "ar": "تقرير السلامة الأسبوعي"
+    },
+    "ws_row_hint": {
+      "c": "Hint under the job link",
+      "en": "The week counted from the registers, for the safety officer to sign",
+      "he": "השבוע כפי שנספר מהפנקסים, לחתימת ממונה הבטיחות",
+      "ar": "الأسبوع كما عُدّ من السجلات، ليوقّعه مسؤول السلامة"
+    },
+    "ws_this_week": {
+      "en": "This week",
+      "he": "השבוע",
+      "ar": "هذا الأسبوع"
+    },
+    "ws_last_week": {
+      "en": "Last week",
+      "he": "שבוע שעבר",
+      "ar": "الأسبوع الماضي"
+    },
+    "ws_2_weeks_ago": {
+      "en": "Two weeks ago",
+      "he": "לפני שבועיים",
+      "ar": "قبل أسبوعين"
+    },
+    "ws_3_weeks_ago": {
+      "en": "Three weeks ago",
+      "he": "לפני שלושה שבועות",
+      "ar": "قبل ثلاثة أسابيع"
+    },
+    "ws_week_of": {
+      "c": "%1$s and %2$s are dates",
+      "en": "Sunday %1$s to Saturday %2$s",
+      "he": "יום ראשון %1$s עד שבת %2$s",
+      "ar": "من الأحد %1$s إلى السبت %2$s"
+    },
+    "ws_counting": {
+      "en": "Counting…",
+      "he": "סופר…",
+      "ar": "جارٍ العدّ…"
+    },
+    "ws_nothing_wrong": {
+      "en": "No incident, violation, failed inspection or fire point fault recorded this week.",
+      "he": "השבוע לא נרשמו אירוע, הפרה, בדיקה שנכשלה או תקלה בעמדת כיבוי.",
+      "ar": "لم يُسجَّل هذا الأسبوع حادث أو مخالفة أو فحص فاشل أو عطل في نقطة إطفاء."
+    },
+    "ws_people": {
+      "c": "Report line, followed by a count",
+      "en": "People with a shift on the job",
+      "he": "אנשים שעבדו משמרת בעבודה",
+      "ar": "أشخاص عملوا نوبة في المشروع"
+    },
+    "ws_visitors": {
+      "c": "Report line, followed by a count",
+      "en": "Visitors signed in",
+      "he": "מבקרים שנרשמו",
+      "ar": "زوار سُجّلوا"
+    },
+    "ws_talks": {
+      "c": "Report line, followed by a count",
+      "en": "Toolbox talks held",
+      "he": "תדריכי בטיחות שהתקיימו",
+      "ar": "إحاطات سلامة عُقدت"
+    },
+    "ws_permits": {
+      "c": "Report line, followed by a count",
+      "en": "Permits to work issued",
+      "he": "היתרי עבודה שהונפקו",
+      "ar": "تصاريح عمل صدرت"
+    },
+    "ws_near_misses": {
+      "c": "Report line, followed by a count",
+      "en": "Near misses reported",
+      "he": "כמעט תאונות שדווחו",
+      "ar": "حوادث وشيكة بُلّغ عنها"
+    },
+    "ws_incidents": {
+      "c": "Report line, followed by a count",
+      "en": "Incidents with harm or damage",
+      "he": "אירועים עם פגיעה או נזק",
+      "ar": "حوادث فيها أذى أو ضرر"
+    },
+    "ws_violations": {
+      "c": "Report line, followed by a count",
+      "en": "Safety violations recorded",
+      "he": "הפרות בטיחות שנרשמו",
+      "ar": "مخالفات سلامة سُجّلت"
+    },
+    "ws_inspections_passed": {
+      "c": "Report line, followed by a count",
+      "en": "Inspections passed",
+      "he": "בדיקות שעברו",
+      "ar": "فحوصات نجحت"
+    },
+    "ws_inspections_failed": {
+      "c": "Report line, followed by a count",
+      "en": "Inspections failed",
+      "he": "בדיקות שנכשלו",
+      "ar": "فحوصات فشلت"
+    },
+    "ws_fire_faults": {
+      "c": "Report line, followed by a count",
+      "en": "Fire point faults found",
+      "he": "תקלות שנמצאו בעמדות כיבוי",
+      "ar": "أعطال وُجدت في نقاط الإطفاء"
+    },
+    "ws_complaints": {
+      "c": "Report line, followed by a count",
+      "en": "Complaints received",
+      "he": "תלונות שהתקבלו",
+      "ar": "شكاوى وردت"
+    },
+    "ws_open_now": {
+      "c": "Section header, and a prefix on printed lines",
+      "en": "Still open now",
+      "he": "עדיין פתוח עכשיו",
+      "ar": "لا يزال مفتوحًا الآن"
+    },
+    "ws_nothing_open": {
+      "en": "Nothing on the job is waiting on anybody.",
+      "he": "שום דבר בעבודה לא ממתין לאף אחד.",
+      "ar": "لا شيء في المشروع ينتظر أحدًا."
+    },
+    "ws_counted_hint": {
+      "en": "Every figure is counted from what was recorded in the registers. What was not written down is not here.",
+      "he": "כל מספר נספר ממה שנרשם בפנקסים. מה שלא נרשם אינו מופיע כאן.",
+      "ar": "كل رقم معدود مما سُجّل في السجلات. وما لم يُكتب ليس هنا."
+    },
+    "ws_col_count": {
+      "c": "Column heading",
+      "en": "Count",
+      "he": "מספר",
+      "ar": "العدد"
     }
   },
   "plurals": {
