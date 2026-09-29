@@ -2431,7 +2431,7 @@
 "at_risk_reviews" = "مراجعات مخاطر متأخرة";
 /* Button on the handover pack */
 "hv_export_all" = "تصدير كل سجلات هذا المشروع";
-"hv_export_all_hint" = "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV.";
+"hv_export_all_hint" = "ملف واحد فيه ملخص التسليم وورقة الطوارئ وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى والمواد الخطرة ونقاط الإطفاء وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV.";
 "summary_cp_answered" = "أُجيب على %1$s";
 "summary_cp_received" = "%1$s: شكوى من %2$s";
 /* Screen title and job link */
@@ -2670,3 +2670,56 @@
 "search_kind_fire_point" = "نقطة إطفاء";
 /* Line in 'Needs attention', followed by a count */
 "at_fire_points" = "نقاط إطفاء بها عطل أو متأخرة";
+"summary_es_saved" = "حُفظت معلومات الطوارئ (%1$s بيانات أساسية لا تزال ناقصة)";
+/* Screen title and job link */
+"es_title" = "معلومات الطوارئ";
+/* Hint under the job link */
+"es_row_hint" = "الأرقام، المستشفى، مكان التجمّع، من يعرف الإسعاف الأولي";
+"es_edit" = "تعديل معلومات الطوارئ";
+/* Heading: the site address to tell the ambulance */
+"es_address" = "العنوان الذي يُعطى";
+"es_no_address" = "لم يُسجَّل عنوان لهذا المشروع. أضفه في صفحة المشروع.";
+/* Heading, and an item in the list of what is missing */
+"es_hospital" = "أقرب مستشفى";
+/* Field label */
+"es_hospital_name" = "أقرب مستشفى أو غرفة طوارئ";
+"es_hospital_hint" = "الذي فيه غرفة طوارئ، لا أقرب عيادة فقط";
+/* Field label */
+"es_hospital_address" = "عنوانه";
+/* Field label */
+"es_hospital_phone" = "رقم هاتفه";
+/* Heading, field label, and an item in the list of what is missing */
+"es_assembly_point" = "نقطة التجمّع";
+"es_assembly_hint" = "أين يتجمّع الجميع للعدّ: موقف السيارات عند البوابة";
+/* Heading, field label, and an item in the list of what is missing */
+"es_first_aiders" = "المسعفون";
+"es_first_aiders_hint" = "أسماؤهم كما يُنادى عليهم، وأين يكونون عادةً";
+/* Heading, and an item in the list of what is missing */
+"es_site_contact" = "بمن يُتّصل في الموقع";
+/* Field label: the person to ring on site */
+"es_site_contact_name" = "الاسم";
+/* Field label */
+"es_site_contact_phone" = "رقم الهاتف في الموقع";
+/* Heading and field label: where the main switch is */
+"es_electricity" = "تُفصل الكهرباء من";
+/* Heading and field label */
+"es_water" = "يُقطع الماء من";
+/* Heading and field label */
+"es_gas" = "يُغلق الغاز من";
+/* Heading and field label */
+"es_notes" = "أي شيء آخر";
+"es_not_recorded" = "غير مسجّل";
+/* %1$s is a list such as "Nearest hospital, First aiders" */
+"es_missing" = "لا يزال ناقصًا: %1$s";
+"es_missing_hint_writer" = "املأ هذه واطبع الورقة لمكتب الموقع والبوابة.";
+"es_missing_hint_reader" = "اطلب من مسؤول السلامة أو مدير الموقع ملء هذه.";
+/* %1$s is a date, %2$s a name */
+"es_updated" = "حُدّث في %1$s بواسطة %2$s";
+/* Column heading on the printed sheet */
+"es_col_what" = "ماذا";
+/* Column heading on the printed sheet */
+"es_col_detail" = "التفاصيل";
+"es_refused_not_allowed" = "دورك لا يسمح بتغيير معلومات الطوارئ.";
+"es_refused_phone" = "يمكن أن يحتوي رقم الهاتف على أرقام ومسافات وشرطات و+ في أوله فقط.";
+/* Line in 'Needs attention', followed by how many essentials are missing */
+"at_emergency_missing" = "معلومات طوارئ لا تزال ناقصة";

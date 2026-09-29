@@ -10,6 +10,7 @@ import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
 import il.co.tradesmanager.data.local.entity.FirePointEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
+import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.local.entity.SubstanceEntity
@@ -244,6 +245,25 @@ class RegisterExportTest {
         assertEquals(context.getString(R.string.fp_state_never_checked), table.rows[1][5])
         assertEquals("both looks, newest first", 2, table.extraCells[0][0].split("; ").size)
         assertTrue(table.extraCells[0][0].startsWith(table.rows[0][5]))
+    }
+
+    @Test
+    fun `the emergency sheet prints the national numbers first, and a gap as not recorded`() {
+        val context = inLanguage("en")
+        val sheet = JobEmergencyEntity(
+            projectId = "job", hospitalName = "Soroka", hospitalPhone = "08-6400111", assemblyPoint = "Car park by the gate",
+            updatedAt = 1_000L, updatedByName = "Safety officer",
+        )
+        val table = ExportDocument.EmergencyInformation("Tower A", "12 Herzl, Beersheba", sheet).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(context.getString(R.string.muster_call_ambulance), table.rows[0][1])
+        assertEquals("12 Herzl, Beersheba", table.rows[3][1])
+        assertEquals("Soroka · 08-6400111", table.rows[4][1])
+        assertEquals(context.getString(R.string.es_not_recorded), table.rows[6][1])
+        val blank = ExportDocument.EmergencyInformation("Tower A", "", null).table(context, "en", Locale.ENGLISH)
+        blank.assertSquare()
+        assertEquals("the numbers print even with nothing recorded", 3 + 8, blank.rows.size)
+        assertTrue(blank.rows.drop(3).all { it[1] == context.getString(R.string.es_not_recorded) })
     }
 
     @Test

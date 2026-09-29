@@ -131,6 +131,7 @@ fun ProjectDetailScreen(
     onOpenComplaints: () -> Unit,
     onOpenSubstances: () -> Unit,
     onOpenFirePoints: () -> Unit,
+    onOpenEmergency: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
     onOpenProject: (String) -> Unit,
@@ -185,6 +186,9 @@ fun ProjectDetailScreen(
     // links are a list now: rendered from it, counted from it, so adding a row
     // is one entry and the arithmetic follows on its own.
     val links = buildList {
+        // First, and for everybody on the job: the sheet somebody needs when
+        // a man is on the ground is not the one to hunt for under a lens.
+        add(JobLink(R.string.es_title, R.string.es_row_hint, onOpenEmergency))
         // Work packages sit under Plan: they are what has been agreed will
         // happen, before anything has. Above the registers because on a job
         // with more than one firm this is the first screen a crew leader
@@ -355,6 +359,7 @@ fun ProjectDetailScreen(
                                                 Attention.Item.COMPLAINTS_WAITING -> onOpenComplaints()
                                                 Attention.Item.SUBSTANCES_WITHOUT_SHEET -> onOpenSubstances()
                                                 Attention.Item.FIRE_POINTS -> onOpenFirePoints()
+                                                Attention.Item.EMERGENCY_INFO_MISSING -> onOpenEmergency()
                                             }
                                         }
                                         .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -1021,4 +1026,5 @@ private fun attentionLabel(item: Attention.Item): Int = when (item) {
     Attention.Item.COMPLAINTS_WAITING -> R.string.at_complaints_waiting
     Attention.Item.SUBSTANCES_WITHOUT_SHEET -> R.string.at_substances_no_sheet
     Attention.Item.FIRE_POINTS -> R.string.at_fire_points
+    Attention.Item.EMERGENCY_INFO_MISSING -> R.string.at_emergency_missing
 }

@@ -15,6 +15,7 @@ import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.emergency.addressOf
 import il.co.tradesmanager.ui.export.ExportDocument
 import java.time.LocalDate
 import java.time.ZoneId
@@ -227,6 +228,12 @@ class HandoverViewModel(
                 producedByName = producedBy.value,
                 producedOn = LocalDate.now(),
             ),
+        )
+        // Everybody on the job may read the emergency sheet, so it goes in whatever the role.
+        documents += ExportDocument.EmergencyInformation(
+            jobName = job.name,
+            address = addressOf(job),
+            sheet = container.emergencySheets.sheet(projectId),
         )
         if (role.canRead(Lens.EVIDENCE)) {
             documents += ExportDocument.InspectionRegister(job.name, container.inspections.observeForProject(projectId).first())

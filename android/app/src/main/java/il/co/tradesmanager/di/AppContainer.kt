@@ -17,6 +17,7 @@ import il.co.tradesmanager.data.repository.DailyLogRepository
 import il.co.tradesmanager.data.repository.DelayRepository
 import il.co.tradesmanager.data.repository.DesignQueryRepository
 import il.co.tradesmanager.data.repository.DrawingRepository
+import il.co.tradesmanager.data.repository.EmergencySheetRepository
 import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
@@ -222,6 +223,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** The extinguishers, blankets and hose reels, and the monthly looks at them. */
     val firePoints = FirePointRepository(database.firePointDao(), auditTrail)
+
+    /** Each job's sheet for the site office wall: the hospital, the assembly point, the first aiders. */
+    val emergencySheets = EmergencySheetRepository(database.jobEmergencyDao(), auditTrail)
 
     /** The job's risk assessment: hazards, scored before and after their controls. */
     val risks = RiskRepository(database.riskDao(), auditTrail)

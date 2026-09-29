@@ -297,8 +297,14 @@ private fun DetailDialog(
                 Text(
                     listOfNotNull(
                         point.tagNumber?.let { stringResource(R.string.fp_tag_is, it) },
-                        row.serviceDueOn?.let { stringResource(R.string.fp_service_due, dayText(it, locale)) }
-                            ?: stringResource(R.string.fp_no_service_date),
+                        row.serviceDueOn?.let {
+                            // A fault is the headline; a run-out service is still said here.
+                            if (inPlace && it.isBefore(LocalDate.now())) {
+                                stringResource(R.string.fp_state_service_overdue, dayText(it, locale))
+                            } else {
+                                stringResource(R.string.fp_service_due, dayText(it, locale))
+                            }
+                        } ?: stringResource(R.string.fp_no_service_date),
                     ).joinToString(SEPARATOR),
                     style = MaterialTheme.typography.bodyMedium,
                 )

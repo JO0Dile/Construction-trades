@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.42.0",
+      "points": [
+        {
+          "en": "Every job now opens with Emergency information: the ambulance, fire and police numbers as buttons that open the dialler, the site's address to give, the nearest hospital, the assembly point, the first aiders, who to ring on site, and where the electricity, water and gas are turned off. Everybody on the job can see it.",
+          "he": "כל עבודה נפתחת עכשיו עם מידע לשעת חירום: המספרים של מד״א, כבאות ומשטרה ככפתורים שפותחים את החייגן, כתובת האתר למסירה, בית החולים הקרוב, נקודת האיסוף, מגישי העזרה הראשונה, למי להתקשר באתר, ואיפה מנתקים חשמל, מים וגז. כל מי שבעבודה יכול לראות אותו.",
+          "ar": "كل مشروع يبدأ الآن بمعلومات الطوارئ: أرقام الإسعاف والإطفاء والشرطة كأزرار تفتح لوحة الاتصال، وعنوان الموقع الذي يُعطى، وأقرب مستشفى، ونقطة التجمّع، والمسعفون، وبمن يُتّصل في الموقع، وأين تُفصل الكهرباء والماء والغاز. يستطيع كل من في المشروع رؤيتها."
+        },
+        {
+          "en": "What is still missing is said in red on the sheet and counted at the top of the job page. The sheet prints as a page for the site office wall and the gate, gaps shown as not recorded, and goes into the job's archive.",
+          "he": "מה שעדיין חסר מוצג באדום בדף ונספר בראש דף העבודה. אפשר להדפיס את הדף לקיר משרד האתר ולשער, כשהחסר מסומן כ'לא נרשם', והוא נכלל בארכיון העבודה.",
+          "ar": "ما لا يزال ناقصًا يظهر بالأحمر في الورقة ويُعدّ أعلى صفحة المشروع. تُطبع الورقة لجدار مكتب الموقع والبوابة، والناقص مؤشَّر عليه بأنه غير مسجّل، وتدخل في أرشيف المشروع."
+        },
+        {
+          "en": "Fixed: a fire point with a fault whose service date had also passed now says both, on the screen and on the printout.",
+          "he": "תוקן: עמדת כיבוי עם תקלה שגם תאריך הטיפול שלה עבר מציגה עכשיו את שניהם, במסך ובהדפסה.",
+          "ar": "أُصلح: نقطة الإطفاء التي بها عطل وفات أيضًا تاريخ صيانتها تُظهر الآن الأمرين، على الشاشة وفي الطباعة."
+        }
+      ]
+    },
+    {
       "version": "0.41.0",
       "points": [
         {

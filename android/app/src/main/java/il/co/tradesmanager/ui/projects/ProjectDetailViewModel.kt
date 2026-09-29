@@ -8,6 +8,7 @@ import il.co.tradesmanager.core.evidence.Complaints
 import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.money.JobFinancials
+import il.co.tradesmanager.core.safety.EmergencySheet
 import il.co.tradesmanager.core.safety.FirePoints
 import il.co.tradesmanager.core.safety.Risks
 import il.co.tradesmanager.core.safety.Substances
@@ -20,6 +21,7 @@ import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
 import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
+import il.co.tradesmanager.data.repository.EmergencySheetRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -169,8 +171,9 @@ class ProjectDetailViewModel(
                     combine(
                         container.firePoints.observeForProject(projectId),
                         container.firePoints.observeChecksForProject(projectId),
-                    ) { points, checks -> FirePointsViewModel.rowsOf(points, checks) },
-                ) { inspections, risks, complaints, substances, firePoints ->
+                        container.emergencySheets.observe(projectId),
+                    ) { points, checks, sheet -> FirePointsViewModel.rowsOf(points, checks) to sheet },
+                ) { inspections, risks, complaints, substances, (firePoints, emergency) ->
                     val now = System.currentTimeMillis()
                     val zone = ZoneId.systemDefault()
                     val today = LocalDate.now()
@@ -190,6 +193,7 @@ class ProjectDetailViewModel(
                             Complaints.state(it.receivedAt, it.answeredAt, now, zone) == Complaints.State.WAITING_LONG
                         },
                         Attention.Item.FIRE_POINTS to firePoints.count { FirePoints.needsAttention(it.state) },
+                        Attention.Item.EMERGENCY_INFO_MISSING to EmergencySheet.missing(EmergencySheetRepository.sheetOf(emergency)).size,
                         Attention.Item.SUBSTANCES_WITHOUT_SHEET to substances.count {
                             Substances.state(it.sheetOnDay?.let(LocalDate::ofEpochDay), it.removedAt != null, today) == Substances.State.NO_SHEET
                         },

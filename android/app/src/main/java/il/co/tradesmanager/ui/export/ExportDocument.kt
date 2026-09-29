@@ -9,6 +9,7 @@ import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.safety.Emergency
 import il.co.tradesmanager.core.safety.FirePoints
 import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.safety.Risks
@@ -27,6 +28,7 @@ import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
 import il.co.tradesmanager.data.local.entity.FirePointEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
+import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
 import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
@@ -39,6 +41,7 @@ import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.ui.complaints.complaintSubjectLabel
 import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.delays.delayCauseLabel
+import il.co.tradesmanager.ui.emergency.nationalNumberLabel
 import il.co.tradesmanager.ui.firepoints.firePointKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
@@ -212,6 +215,19 @@ sealed interface ExportDocument {
         val points: List<FirePointEntity>,
         val checks: List<FirePointCheckEntity>,
         val now: Long = System.currentTimeMillis(),
+    ) : ExportDocument
+
+    /**
+     * A job's emergency sheet, for the site office wall and the gate: the
+     * national numbers, the address to give, the hospital, the assembly
+     * point, the first aiders, the number on site and the shut-offs. What is
+     * not recorded is printed as not recorded, not left out, so the gap is
+     * seen on the wall and not first found on the day.
+     */
+    data class EmergencyInformation(
+        val jobName: String,
+        val address: String,
+        val sheet: JobEmergencyEntity?,
     ) : ExportDocument
 
     /** One job's questions to its designers, with the answers and when they came. */
@@ -566,6 +582,28 @@ sealed interface ExportDocument {
             )
         }
 
+        is EmergencyInformation -> {
+            val none = context.getString(R.string.es_not_recorded)
+            fun line(heading: Int, vararg values: String?): List<String> =
+                listOf(context.getString(heading), values.filterNotNull().filter { it.isNotBlank() }.joinToString(" · ").ifBlank { none })
+            Table(
+                title = context.getString(R.string.es_title) + " — " + jobName,
+                headers = listOf(context.getString(R.string.es_col_what), context.getString(R.string.es_col_detail)),
+                rows = Emergency.ORDER.map { number ->
+                    listOf(context.getString(R.string.muster_call_title), context.getString(nationalNumberLabel(number)))
+                } + listOf(
+                    line(R.string.es_address, address),
+                    line(R.string.es_hospital, sheet?.hospitalName, sheet?.hospitalAddress, sheet?.hospitalPhone),
+                    line(R.string.es_assembly_point, sheet?.assemblyPoint),
+                    line(R.string.es_first_aiders, sheet?.firstAiders),
+                    line(R.string.es_site_contact, sheet?.siteContactName, sheet?.siteContactPhone),
+                    line(R.string.es_electricity, sheet?.electricityShutOff),
+                    line(R.string.es_water, sheet?.waterShutOff),
+                    line(R.string.es_gas, sheet?.gasShutOff),
+                ) + listOfNotNull(sheet?.notes?.let { line(R.string.es_notes, it) }),
+            )
+        }
+
         is QueryRegister -> Table(
             title = context.getString(R.string.qry_title) + " — " + jobName,
             headers = listOf(
@@ -760,6 +798,7 @@ sealed interface ExportDocument {
             is ComplaintRegister -> "complaints-" + jobName
             is SubstanceRegister -> "substances-" + jobName
             is FirePointRegister -> "fire-points-" + jobName
+            is EmergencyInformation -> "emergency-" + jobName
         },
     )
 

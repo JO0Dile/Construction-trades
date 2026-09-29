@@ -267,6 +267,13 @@ object Summaries {
     const val EQUIPMENT_STATUS = "equipment_status"
 
     /**
+     * Emergency information saved (%1$s essentials still missing)
+     *
+     * Arguments, in order: missing.
+     */
+    const val ES_SAVED = "es_saved"
+
+    /**
      * Backfilled
      */
     const val EXCAVATION_BACKFILLED = "excavation_backfilled"

@@ -2432,7 +2432,7 @@
     <string name="at_risk_reviews">Risk reviews overdue</string>
     <!-- Button on the handover pack -->
     <string name="hv_export_all">Export all of this job\'s records</string>
-    <string name="hv_export_all_hint">One file with the handover summary and every register you may see — inspections, risks, visitors, complaints, questions to the designers, material approvals and delays — each as a PDF and a CSV.</string>
+    <string name="hv_export_all_hint">One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals and delays — each as a PDF and a CSV.</string>
     <string name="summary_cp_answered">%1$s answered</string>
     <string name="summary_cp_received">%1$s: complaint from %2$s</string>
     <!-- Screen title and job link -->
@@ -2671,6 +2671,59 @@
     <string name="search_kind_fire_point">Fire point</string>
     <!-- Line in 'Needs attention', followed by a count -->
     <string name="at_fire_points">Fire points with a fault or overdue</string>
+    <string name="summary_es_saved">Emergency information saved (%1$s essentials still missing)</string>
+    <!-- Screen title and job link -->
+    <string name="es_title">Emergency information</string>
+    <!-- Hint under the job link -->
+    <string name="es_row_hint">The numbers, the hospital, where to gather, who knows first aid</string>
+    <string name="es_edit">Edit the emergency information</string>
+    <!-- Heading: the site address to tell the ambulance -->
+    <string name="es_address">The address to give</string>
+    <string name="es_no_address">No address recorded for this job. Add it on the job page.</string>
+    <!-- Heading, and an item in the list of what is missing -->
+    <string name="es_hospital">Nearest hospital</string>
+    <!-- Field label -->
+    <string name="es_hospital_name">Nearest hospital or emergency room</string>
+    <string name="es_hospital_hint">The one with an emergency room, not only the nearest clinic</string>
+    <!-- Field label -->
+    <string name="es_hospital_address">Its address</string>
+    <!-- Field label -->
+    <string name="es_hospital_phone">Its phone number</string>
+    <!-- Heading, field label, and an item in the list of what is missing -->
+    <string name="es_assembly_point">Assembly point</string>
+    <string name="es_assembly_hint">Where everybody gathers to be counted: the car park by the gate</string>
+    <!-- Heading, field label, and an item in the list of what is missing -->
+    <string name="es_first_aiders">First aiders</string>
+    <string name="es_first_aiders_hint">Their names as they would be shouted, and where they usually are</string>
+    <!-- Heading, and an item in the list of what is missing -->
+    <string name="es_site_contact">Who to ring on site</string>
+    <!-- Field label: the person to ring on site -->
+    <string name="es_site_contact_name">Name</string>
+    <!-- Field label -->
+    <string name="es_site_contact_phone">Phone number on site</string>
+    <!-- Heading and field label: where the main switch is -->
+    <string name="es_electricity">Electricity is turned off at</string>
+    <!-- Heading and field label -->
+    <string name="es_water">Water is turned off at</string>
+    <!-- Heading and field label -->
+    <string name="es_gas">Gas is turned off at</string>
+    <!-- Heading and field label -->
+    <string name="es_notes">Anything else</string>
+    <string name="es_not_recorded">Not recorded</string>
+    <!-- %1$s is a list such as "Nearest hospital, First aiders" -->
+    <string name="es_missing">Still missing: %1$s</string>
+    <string name="es_missing_hint_writer">Fill these in and print the sheet for the site office and the gate.</string>
+    <string name="es_missing_hint_reader">Ask the safety officer or the site manager to fill these in.</string>
+    <!-- %1$s is a date, %2$s a name -->
+    <string name="es_updated">Updated %1$s by %2$s</string>
+    <!-- Column heading on the printed sheet -->
+    <string name="es_col_what">What</string>
+    <!-- Column heading on the printed sheet -->
+    <string name="es_col_detail">Details</string>
+    <string name="es_refused_not_allowed">Your role cannot change the emergency information.</string>
+    <string name="es_refused_phone">A phone number can only have digits, spaces, dashes and a leading +.</string>
+    <!-- Line in 'Needs attention', followed by how many essentials are missing -->
+    <string name="at_emergency_missing">Emergency information still missing</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

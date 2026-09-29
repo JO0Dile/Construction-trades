@@ -10062,9 +10062,9 @@
       "ar": "تصدير كل سجلات هذا المشروع"
     },
     "hv_export_all_hint": {
-      "en": "One file with the handover summary and every register you may see — inspections, risks, visitors, complaints, questions to the designers, material approvals and delays — each as a PDF and a CSV.",
-      "he": "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.",
-      "ar": "ملف واحد فيه ملخص التسليم وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV."
+      "en": "One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals and delays — each as a PDF and a CSV.",
+      "he": "קובץ אחד עם סיכום המסירה, דף החירום וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, חומרים מסוכנים, עמדות כיבוי, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.",
+      "ar": "ملف واحد فيه ملخص التسليم وورقة الطوارئ وكل سجل يُسمح لك برؤيته — الفحوصات والمخاطر والزوار والشكاوى والمواد الخطرة ونقاط الإطفاء وأسئلة المصممين واعتماد المواد والتأخيرات — كلٌّ منها بصيغة PDF وCSV."
     },
     "summary_cp_answered": {
       "en": "%1$s answered",
@@ -10947,6 +10947,187 @@
       "en": "Fire points with a fault or overdue",
       "he": "עמדות כיבוי עם תקלה או באיחור",
       "ar": "نقاط إطفاء بها عطل أو متأخرة"
+    },
+    "summary_es_saved": {
+      "en": "Emergency information saved (%1$s essentials still missing)",
+      "he": "מידע לשעת חירום נשמר (%1$s פרטים חיוניים עדיין חסרים)",
+      "ar": "حُفظت معلومات الطوارئ (%1$s بيانات أساسية لا تزال ناقصة)"
+    },
+    "es_title": {
+      "c": "Screen title and job link",
+      "en": "Emergency information",
+      "he": "מידע לשעת חירום",
+      "ar": "معلومات الطوارئ"
+    },
+    "es_row_hint": {
+      "c": "Hint under the job link",
+      "en": "The numbers, the hospital, where to gather, who knows first aid",
+      "he": "המספרים, בית החולים, נקודת האיסוף, מי יודע עזרה ראשונה",
+      "ar": "الأرقام، المستشفى، مكان التجمّع، من يعرف الإسعاف الأولي"
+    },
+    "es_edit": {
+      "en": "Edit the emergency information",
+      "he": "עריכת המידע לשעת חירום",
+      "ar": "تعديل معلومات الطوارئ"
+    },
+    "es_address": {
+      "c": "Heading: the site address to tell the ambulance",
+      "en": "The address to give",
+      "he": "הכתובת למסור",
+      "ar": "العنوان الذي يُعطى"
+    },
+    "es_no_address": {
+      "en": "No address recorded for this job. Add it on the job page.",
+      "he": "לא נרשמה כתובת לעבודה הזו. הוסיפו אותה בדף העבודה.",
+      "ar": "لم يُسجَّل عنوان لهذا المشروع. أضفه في صفحة المشروع."
+    },
+    "es_hospital": {
+      "c": "Heading, and an item in the list of what is missing",
+      "en": "Nearest hospital",
+      "he": "בית החולים הקרוב",
+      "ar": "أقرب مستشفى"
+    },
+    "es_hospital_name": {
+      "c": "Field label",
+      "en": "Nearest hospital or emergency room",
+      "he": "בית החולים או חדר המיון הקרוב",
+      "ar": "أقرب مستشفى أو غرفة طوارئ"
+    },
+    "es_hospital_hint": {
+      "en": "The one with an emergency room, not only the nearest clinic",
+      "he": "זה שיש בו חדר מיון, לא רק המרפאה הקרובה",
+      "ar": "الذي فيه غرفة طوارئ، لا أقرب عيادة فقط"
+    },
+    "es_hospital_address": {
+      "c": "Field label",
+      "en": "Its address",
+      "he": "הכתובת שלו",
+      "ar": "عنوانه"
+    },
+    "es_hospital_phone": {
+      "c": "Field label",
+      "en": "Its phone number",
+      "he": "מספר הטלפון שלו",
+      "ar": "رقم هاتفه"
+    },
+    "es_assembly_point": {
+      "c": "Heading, field label, and an item in the list of what is missing",
+      "en": "Assembly point",
+      "he": "נקודת איסוף",
+      "ar": "نقطة التجمّع"
+    },
+    "es_assembly_hint": {
+      "en": "Where everybody gathers to be counted: the car park by the gate",
+      "he": "איפה כולם מתאספים לספירה: החניה ליד השער",
+      "ar": "أين يتجمّع الجميع للعدّ: موقف السيارات عند البوابة"
+    },
+    "es_first_aiders": {
+      "c": "Heading, field label, and an item in the list of what is missing",
+      "en": "First aiders",
+      "he": "מגישי עזרה ראשונה",
+      "ar": "المسعفون"
+    },
+    "es_first_aiders_hint": {
+      "en": "Their names as they would be shouted, and where they usually are",
+      "he": "השמות שלהם כפי שיקראו להם בצעקה, ואיפה הם בדרך כלל",
+      "ar": "أسماؤهم كما يُنادى عليهم، وأين يكونون عادةً"
+    },
+    "es_site_contact": {
+      "c": "Heading, and an item in the list of what is missing",
+      "en": "Who to ring on site",
+      "he": "למי להתקשר באתר",
+      "ar": "بمن يُتّصل في الموقع"
+    },
+    "es_site_contact_name": {
+      "c": "Field label: the person to ring on site",
+      "en": "Name",
+      "he": "שם",
+      "ar": "الاسم"
+    },
+    "es_site_contact_phone": {
+      "c": "Field label",
+      "en": "Phone number on site",
+      "he": "מספר טלפון באתר",
+      "ar": "رقم الهاتف في الموقع"
+    },
+    "es_electricity": {
+      "c": "Heading and field label: where the main switch is",
+      "en": "Electricity is turned off at",
+      "he": "החשמל מנותק ב",
+      "ar": "تُفصل الكهرباء من"
+    },
+    "es_water": {
+      "c": "Heading and field label",
+      "en": "Water is turned off at",
+      "he": "המים נסגרים ב",
+      "ar": "يُقطع الماء من"
+    },
+    "es_gas": {
+      "c": "Heading and field label",
+      "en": "Gas is turned off at",
+      "he": "הגז נסגר ב",
+      "ar": "يُغلق الغاز من"
+    },
+    "es_notes": {
+      "c": "Heading and field label",
+      "en": "Anything else",
+      "he": "משהו נוסף",
+      "ar": "أي شيء آخر"
+    },
+    "es_not_recorded": {
+      "en": "Not recorded",
+      "he": "לא נרשם",
+      "ar": "غير مسجّل"
+    },
+    "es_missing": {
+      "c": "%1$s is a list such as \"Nearest hospital, First aiders\"",
+      "en": "Still missing: %1$s",
+      "he": "עדיין חסר: %1$s",
+      "ar": "لا يزال ناقصًا: %1$s"
+    },
+    "es_missing_hint_writer": {
+      "en": "Fill these in and print the sheet for the site office and the gate.",
+      "he": "מלאו את אלה והדפיסו את הדף למשרד האתר ולשער.",
+      "ar": "املأ هذه واطبع الورقة لمكتب الموقع والبوابة."
+    },
+    "es_missing_hint_reader": {
+      "en": "Ask the safety officer or the site manager to fill these in.",
+      "he": "בקשו מממונה הבטיחות או ממנהל העבודה למלא את אלה.",
+      "ar": "اطلب من مسؤول السلامة أو مدير الموقع ملء هذه."
+    },
+    "es_updated": {
+      "c": "%1$s is a date, %2$s a name",
+      "en": "Updated %1$s by %2$s",
+      "he": "עודכן ב־%1$s על ידי %2$s",
+      "ar": "حُدّث في %1$s بواسطة %2$s"
+    },
+    "es_col_what": {
+      "c": "Column heading on the printed sheet",
+      "en": "What",
+      "he": "מה",
+      "ar": "ماذا"
+    },
+    "es_col_detail": {
+      "c": "Column heading on the printed sheet",
+      "en": "Details",
+      "he": "פרטים",
+      "ar": "التفاصيل"
+    },
+    "es_refused_not_allowed": {
+      "en": "Your role cannot change the emergency information.",
+      "he": "התפקיד שלך אינו מאפשר לשנות את המידע לשעת חירום.",
+      "ar": "دورك لا يسمح بتغيير معلومات الطوارئ."
+    },
+    "es_refused_phone": {
+      "en": "A phone number can only have digits, spaces, dashes and a leading +.",
+      "he": "מספר טלפון יכול לכלול רק ספרות, רווחים, מקפים ו־+ בהתחלה.",
+      "ar": "يمكن أن يحتوي رقم الهاتف على أرقام ومسافات وشرطات و+ في أوله فقط."
+    },
+    "at_emergency_missing": {
+      "c": "Line in 'Needs attention', followed by how many essentials are missing",
+      "en": "Emergency information still missing",
+      "he": "מידע לשעת חירום שעדיין חסר",
+      "ar": "معلومات طوارئ لا تزال ناقصة"
     }
   },
   "plurals": {

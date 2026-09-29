@@ -322,6 +322,14 @@
       "he": "%1$s: %2$s",
       "ar": "%1$s: %2$s"
     },
+    "es_saved": {
+      "arguments": [
+        "missing"
+      ],
+      "en": "Emergency information saved (%1$s essentials still missing)",
+      "he": "מידע לשעת חירום נשמר (%1$s פרטים חיוניים עדיין חסרים)",
+      "ar": "حُفظت معلومات الطوارئ (%1$s بيانات أساسية لا تزال ناقصة)"
+    },
     "excavation_backfilled": {
       "arguments": [],
       "en": "Backfilled",

@@ -12,13 +12,15 @@ package il.co.tradesmanager.core.work
  *
  * Nothing is counted here. The counts come from each register's own rule --
  * Inspections.state, Submittals.state, Queries.state, Risks.state,
- * Complaints.state, Substances.state, FirePoints.state -- so this cannot
- * disagree with the screen it points to.
+ * Complaints.state, Substances.state, FirePoints.state,
+ * EmergencySheet.missing -- so this cannot disagree with the screen it
+ * points to.
  */
 object Attention {
 
     /** In the order they are shown: what can hurt somebody first, then what holds the work, then paperwork. */
     enum class Item {
+        EMERGENCY_INFO_MISSING,
         RISKS_EXTREME,
         SUBSTANCES_WITHOUT_SHEET,
         FIRE_POINTS,

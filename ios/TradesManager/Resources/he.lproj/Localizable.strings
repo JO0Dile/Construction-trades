@@ -2431,7 +2431,7 @@
 "at_risk_reviews" = "בדיקות חוזרות של סיכונים באיחור";
 /* Button on the handover pack */
 "hv_export_all" = "ייצוא כל הרישומים של העבודה";
-"hv_export_all_hint" = "קובץ אחד עם סיכום המסירה וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.";
+"hv_export_all_hint" = "קובץ אחד עם סיכום המסירה, דף החירום וכל פנקס שמותר לך לראות — בדיקות, סיכונים, מבקרים, תלונות, חומרים מסוכנים, עמדות כיבוי, שאלות למתכננים, אישורי חומרים ועיכובים — כל אחד כ־PDF וכ־CSV.";
 "summary_cp_answered" = "נשלחה תשובה ל־%1$s";
 "summary_cp_received" = "%1$s: תלונה מ־%2$s";
 /* Screen title and job link */
@@ -2670,3 +2670,56 @@
 "search_kind_fire_point" = "עמדת כיבוי";
 /* Line in 'Needs attention', followed by a count */
 "at_fire_points" = "עמדות כיבוי עם תקלה או באיחור";
+"summary_es_saved" = "מידע לשעת חירום נשמר (%1$s פרטים חיוניים עדיין חסרים)";
+/* Screen title and job link */
+"es_title" = "מידע לשעת חירום";
+/* Hint under the job link */
+"es_row_hint" = "המספרים, בית החולים, נקודת האיסוף, מי יודע עזרה ראשונה";
+"es_edit" = "עריכת המידע לשעת חירום";
+/* Heading: the site address to tell the ambulance */
+"es_address" = "הכתובת למסור";
+"es_no_address" = "לא נרשמה כתובת לעבודה הזו. הוסיפו אותה בדף העבודה.";
+/* Heading, and an item in the list of what is missing */
+"es_hospital" = "בית החולים הקרוב";
+/* Field label */
+"es_hospital_name" = "בית החולים או חדר המיון הקרוב";
+"es_hospital_hint" = "זה שיש בו חדר מיון, לא רק המרפאה הקרובה";
+/* Field label */
+"es_hospital_address" = "הכתובת שלו";
+/* Field label */
+"es_hospital_phone" = "מספר הטלפון שלו";
+/* Heading, field label, and an item in the list of what is missing */
+"es_assembly_point" = "נקודת איסוף";
+"es_assembly_hint" = "איפה כולם מתאספים לספירה: החניה ליד השער";
+/* Heading, field label, and an item in the list of what is missing */
+"es_first_aiders" = "מגישי עזרה ראשונה";
+"es_first_aiders_hint" = "השמות שלהם כפי שיקראו להם בצעקה, ואיפה הם בדרך כלל";
+/* Heading, and an item in the list of what is missing */
+"es_site_contact" = "למי להתקשר באתר";
+/* Field label: the person to ring on site */
+"es_site_contact_name" = "שם";
+/* Field label */
+"es_site_contact_phone" = "מספר טלפון באתר";
+/* Heading and field label: where the main switch is */
+"es_electricity" = "החשמל מנותק ב";
+/* Heading and field label */
+"es_water" = "המים נסגרים ב";
+/* Heading and field label */
+"es_gas" = "הגז נסגר ב";
+/* Heading and field label */
+"es_notes" = "משהו נוסף";
+"es_not_recorded" = "לא נרשם";
+/* %1$s is a list such as "Nearest hospital, First aiders" */
+"es_missing" = "עדיין חסר: %1$s";
+"es_missing_hint_writer" = "מלאו את אלה והדפיסו את הדף למשרד האתר ולשער.";
+"es_missing_hint_reader" = "בקשו מממונה הבטיחות או ממנהל העבודה למלא את אלה.";
+/* %1$s is a date, %2$s a name */
+"es_updated" = "עודכן ב־%1$s על ידי %2$s";
+/* Column heading on the printed sheet */
+"es_col_what" = "מה";
+/* Column heading on the printed sheet */
+"es_col_detail" = "פרטים";
+"es_refused_not_allowed" = "התפקיד שלך אינו מאפשר לשנות את המידע לשעת חירום.";
+"es_refused_phone" = "מספר טלפון יכול לכלול רק ספרות, רווחים, מקפים ו־+ בהתחלה.";
+/* Line in 'Needs attention', followed by how many essentials are missing */
+"at_emergency_missing" = "מידע לשעת חירום שעדיין חסר";

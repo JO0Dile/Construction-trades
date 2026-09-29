@@ -2431,7 +2431,7 @@
 "at_risk_reviews" = "Risk reviews overdue";
 /* Button on the handover pack */
 "hv_export_all" = "Export all of this job's records";
-"hv_export_all_hint" = "One file with the handover summary and every register you may see — inspections, risks, visitors, complaints, questions to the designers, material approvals and delays — each as a PDF and a CSV.";
+"hv_export_all_hint" = "One file with the handover summary, the emergency sheet and every register you may see — inspections, risks, visitors, complaints, hazardous substances, fire points, questions to the designers, material approvals and delays — each as a PDF and a CSV.";
 "summary_cp_answered" = "%1$s answered";
 "summary_cp_received" = "%1$s: complaint from %2$s";
 /* Screen title and job link */
@@ -2670,3 +2670,56 @@
 "search_kind_fire_point" = "Fire point";
 /* Line in 'Needs attention', followed by a count */
 "at_fire_points" = "Fire points with a fault or overdue";
+"summary_es_saved" = "Emergency information saved (%1$s essentials still missing)";
+/* Screen title and job link */
+"es_title" = "Emergency information";
+/* Hint under the job link */
+"es_row_hint" = "The numbers, the hospital, where to gather, who knows first aid";
+"es_edit" = "Edit the emergency information";
+/* Heading: the site address to tell the ambulance */
+"es_address" = "The address to give";
+"es_no_address" = "No address recorded for this job. Add it on the job page.";
+/* Heading, and an item in the list of what is missing */
+"es_hospital" = "Nearest hospital";
+/* Field label */
+"es_hospital_name" = "Nearest hospital or emergency room";
+"es_hospital_hint" = "The one with an emergency room, not only the nearest clinic";
+/* Field label */
+"es_hospital_address" = "Its address";
+/* Field label */
+"es_hospital_phone" = "Its phone number";
+/* Heading, field label, and an item in the list of what is missing */
+"es_assembly_point" = "Assembly point";
+"es_assembly_hint" = "Where everybody gathers to be counted: the car park by the gate";
+/* Heading, field label, and an item in the list of what is missing */
+"es_first_aiders" = "First aiders";
+"es_first_aiders_hint" = "Their names as they would be shouted, and where they usually are";
+/* Heading, and an item in the list of what is missing */
+"es_site_contact" = "Who to ring on site";
+/* Field label: the person to ring on site */
+"es_site_contact_name" = "Name";
+/* Field label */
+"es_site_contact_phone" = "Phone number on site";
+/* Heading and field label: where the main switch is */
+"es_electricity" = "Electricity is turned off at";
+/* Heading and field label */
+"es_water" = "Water is turned off at";
+/* Heading and field label */
+"es_gas" = "Gas is turned off at";
+/* Heading and field label */
+"es_notes" = "Anything else";
+"es_not_recorded" = "Not recorded";
+/* %1$s is a list such as "Nearest hospital, First aiders" */
+"es_missing" = "Still missing: %1$s";
+"es_missing_hint_writer" = "Fill these in and print the sheet for the site office and the gate.";
+"es_missing_hint_reader" = "Ask the safety officer or the site manager to fill these in.";
+/* %1$s is a date, %2$s a name */
+"es_updated" = "Updated %1$s by %2$s";
+/* Column heading on the printed sheet */
+"es_col_what" = "What";
+/* Column heading on the printed sheet */
+"es_col_detail" = "Details";
+"es_refused_not_allowed" = "Your role cannot change the emergency information.";
+"es_refused_phone" = "A phone number can only have digits, spaces, dashes and a leading +.";
+/* Line in 'Needs attention', followed by how many essentials are missing */
+"at_emergency_missing" = "Emergency information still missing";

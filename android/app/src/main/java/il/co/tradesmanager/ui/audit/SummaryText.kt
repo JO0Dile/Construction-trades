@@ -110,6 +110,7 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.DETAILS_CORRECTED -> R.string.summary_details_corrected
     Summaries.EQUIPMENT_SERVICED -> R.string.summary_equipment_serviced
     Summaries.EQUIPMENT_STATUS -> R.string.summary_equipment_status
+    Summaries.ES_SAVED -> R.string.summary_es_saved
     Summaries.EXCAVATION_BACKFILLED -> R.string.summary_excavation_backfilled
     Summaries.EXCAVATION_DISTURBED -> R.string.summary_excavation_disturbed
     Summaries.FIELD_ADDRESS -> R.string.summary_field_address
