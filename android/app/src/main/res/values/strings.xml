@@ -2798,6 +2798,10 @@
     <string name="search_kind_meeting_point">Meeting point</string>
     <!-- Line in 'Needs attention', followed by a count -->
     <string name="at_meeting_points">Meeting points overdue</string>
+    <!-- Daily log row, followed by a count -->
+    <string name="log_complaints">Complaints received</string>
+    <!-- Daily log row, followed by a count -->
+    <string name="log_fire_faults">Fire point faults found</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

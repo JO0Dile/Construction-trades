@@ -11410,6 +11410,18 @@
       "en": "Meeting points overdue",
       "he": "נקודות מישיבות באיחור",
       "ar": "نقاط اجتماعات متأخرة"
+    },
+    "log_complaints": {
+      "c": "Daily log row, followed by a count",
+      "en": "Complaints received",
+      "he": "תלונות שהתקבלו",
+      "ar": "شكاوى وردت"
+    },
+    "log_fire_faults": {
+      "c": "Daily log row, followed by a count",
+      "en": "Fire point faults found",
+      "he": "תקלות שנמצאו בעמדות כיבוי",
+      "ar": "أعطال وُجدت في نقاط الإطفاء"
     }
   },
   "plurals": {

@@ -2797,3 +2797,7 @@
 "search_kind_meeting_point" = "نقطة من اجتماع";
 /* Line in 'Needs attention', followed by a count */
 "at_meeting_points" = "نقاط اجتماعات متأخرة";
+/* Daily log row, followed by a count */
+"log_complaints" = "شكاوى وردت";
+/* Daily log row, followed by a count */
+"log_fire_faults" = "أعطال وُجدت في نقاط الإطفاء";

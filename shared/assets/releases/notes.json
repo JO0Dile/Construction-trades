@@ -2,6 +2,16 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.45.0",
+      "points": [
+        {
+          "en": "The daily log now also counts the complaints received that day and the fire point faults found, beside the pours, inspections, visitors and the rest.",
+          "he": "יומן העבודה סופר עכשיו גם את התלונות שהתקבלו באותו יום ואת התקלות שנמצאו בעמדות הכיבוי, לצד היציקות, הבדיקות, המבקרים וכל השאר.",
+          "ar": "يعدّ سجل العمل اليومي الآن أيضًا الشكاوى التي وردت في ذلك اليوم والأعطال التي وُجدت في نقاط الإطفاء، إلى جانب الصبّات والفحوصات والزوار وغيرها."
+        }
+      ]
+    },
+    {
       "version": "0.44.0",
       "points": [
         {

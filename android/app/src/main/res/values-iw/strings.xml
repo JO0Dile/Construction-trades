@@ -2151,6 +2151,8 @@
     <string name="ex_col_meeting">ישיבה</string>
     <string name="search_kind_meeting_point">נקודה מישיבה</string>
     <string name="at_meeting_points">נקודות מישיבות באיחור</string>
+    <string name="log_complaints">תלונות שהתקבלו</string>
+    <string name="log_fire_faults">תקלות שנמצאו בעמדות כיבוי</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

@@ -78,6 +78,8 @@ class DailyLogRepository(
             delaysRunning = dao.delaysRunning(projectId, logDate),
             visitors = dao.visitors(projectId, from, to),
             drawingsReceived = dao.drawingsReceived(projectId, from, to),
+            complaintsReceived = dao.complaintsReceived(projectId, from, to),
+            fireFaults = dao.fireFaults(projectId, from, to),
         )
     }
 

@@ -2151,6 +2151,8 @@
     <string name="ex_col_meeting">الاجتماع</string>
     <string name="search_kind_meeting_point">نقطة من اجتماع</string>
     <string name="at_meeting_points">نقاط اجتماعات متأخرة</string>
+    <string name="log_complaints">شكاوى وردت</string>
+    <string name="log_fire_faults">أعطال وُجدت في نقاط الإطفاء</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

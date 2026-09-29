@@ -121,12 +121,17 @@ object DailyLog {
         val visitors: Int = 0,
         /** Drawings, or revisions of them, received that day. */
         val drawingsReceived: Int = 0,
+        /** Complaints from outside the site received that day. */
+        val complaintsReceived: Int = 0,
+        /** Looks at fire points that found something wrong that day. */
+        val fireFaults: Int = 0,
     ) {
         /** True when the app watched nothing happen — worth saying out loud. */
         val isQuiet: Boolean
             get() = tasksCompleted == 0 && deliveries == 0 && permitsIssued == 0 &&
                 talksHeld == 0 && snagsRaised == 0 && incidents == 0 && checkedIn == 0 &&
                 poursStarted == 0 && inspectionsPassed == 0 && inspectionsFailed == 0 &&
-                delaysRunning == 0 && visitors == 0 && drawingsReceived == 0
+                delaysRunning == 0 && visitors == 0 && drawingsReceived == 0 &&
+                complaintsReceived == 0 && fireFaults == 0
     }
 }

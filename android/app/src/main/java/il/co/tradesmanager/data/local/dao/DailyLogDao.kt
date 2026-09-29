@@ -165,4 +165,20 @@ interface DailyLogDao {
         """,
     )
     suspend fun drawingsReceived(projectId: String, from: Long, to: Long): Int
+
+    @Query(
+        """
+        SELECT COUNT(*) FROM complaints
+        WHERE projectId = :projectId AND receivedAt >= :from AND receivedAt <= :to
+        """,
+    )
+    suspend fun complaintsReceived(projectId: String, from: Long, to: Long): Int
+
+    @Query(
+        """
+        SELECT COUNT(*) FROM fire_point_checks
+        WHERE projectId = :projectId AND ok = 0 AND checkedAt >= :from AND checkedAt <= :to
+        """,
+    )
+    suspend fun fireFaults(projectId: String, from: Long, to: Long): Int
 }

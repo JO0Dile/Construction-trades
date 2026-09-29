@@ -111,5 +111,7 @@ class DailyLogTest {
         assertFalse(DailyLog.Summary(poursStarted = 1).isQuiet)
         assertFalse(DailyLog.Summary(visitors = 2).isQuiet)
         assertFalse(DailyLog.Summary(drawingsReceived = 1).isQuiet)
+        assertFalse("a complaint made the day not a quiet one", DailyLog.Summary(complaintsReceived = 1).isQuiet)
+        assertFalse(DailyLog.Summary(fireFaults = 1).isQuiet)
     }
 }

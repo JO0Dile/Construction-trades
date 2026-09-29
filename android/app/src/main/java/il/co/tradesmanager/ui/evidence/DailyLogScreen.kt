@@ -158,6 +158,8 @@ fun DailyLogScreen(
                     DetailRow(stringResource(R.string.log_delays), "${summary.delaysRunning}")
                     DetailRow(stringResource(R.string.log_visitors), "${summary.visitors}")
                     DetailRow(stringResource(R.string.log_drawings), "${summary.drawingsReceived}")
+                    DetailRow(stringResource(R.string.log_complaints), "${summary.complaintsReceived}")
+                    DetailRow(stringResource(R.string.log_fire_faults), "${summary.fireFaults}")
                     DetailRow(
                         stringResource(R.string.log_checked_in),
                         pluralStringResource(R.plurals.log_workers, summary.checkedIn, summary.checkedIn),
