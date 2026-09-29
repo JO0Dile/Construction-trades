@@ -2843,3 +2843,11 @@
 "ws_counted_hint" = "כל מספר נספר ממה שנרשם בפנקסים. מה שלא נרשם אינו מופיע כאן.";
 /* Column heading */
 "ws_col_count" = "מספר";
+/* Handover pack row */
+"hv_substances" = "חומרים מסוכנים שעדיין באתר";
+/* Handover pack row */
+"hv_risks_open" = "סיכונים שהוערכו ועדיין לא נסגרו";
+/* Handover pack row */
+"hv_complaints" = "תלונות שלא נרשמה להן תשובה";
+/* Handover pack row */
+"hv_meeting_points" = "נקודות מישיבות שעדיין פתוחות";

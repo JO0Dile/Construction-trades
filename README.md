@@ -147,7 +147,7 @@ below is a claim about what was intended — it is what the build proves.
 - 22 trades, **527 catalogue items**, 219 safety checks and 24 project
   templates, all parsed through the app's own model types with unknown keys
   rejected
-- **2,177 interface strings and 31 plural rules in Hebrew, Arabic and
+- **2,181 interface strings and 31 plural rules in Hebrew, Arabic and
   English**, with every catalogue block trilingual too. The build fails if one
   language goes missing, if the English is pasted into another, or if an
   English sentence is written into the audit register

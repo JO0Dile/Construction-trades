@@ -2,6 +2,16 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.48.0",
+      "points": [
+        {
+          "en": "The handover pack now also lists hazardous substances still on the site, risks never closed, complaints with no answer and meeting points still open, so a job is not called ready while any of them remain.",
+          "he": "תיק המסירה מציג עכשיו גם חומרים מסוכנים שעדיין באתר, סיכונים שלא נסגרו, תלונות ללא תשובה ונקודות מישיבות שעדיין פתוחות, כך שעבודה לא תוגדר מוכנה כל עוד נשאר מהם משהו.",
+          "ar": "تعرض حزمة التسليم الآن أيضًا المواد الخطرة التي لا تزال في الموقع، والمخاطر التي لم تُغلق، والشكاوى بلا رد، ونقاط الاجتماعات التي لا تزال مفتوحة، فلا يُعدّ المشروع جاهزًا ما دام شيء منها باقيًا."
+        }
+      ]
+    },
+    {
       "version": "0.47.0",
       "points": [
         {

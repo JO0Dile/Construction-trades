@@ -939,14 +939,18 @@ internal fun handoverItemLabel(item: HandoverPack.Item): Int = when (item) {
     HandoverPack.Item.SCAFFOLDS_STANDING -> R.string.hv_scaffolds
     HandoverPack.Item.TEMPORARY_WORKS_STANDING -> R.string.hv_temporary_works
     HandoverPack.Item.EXCAVATIONS_OPEN -> R.string.hv_excavations
+    HandoverPack.Item.SUBSTANCES_ON_SITE -> R.string.hv_substances
     HandoverPack.Item.LIFTS_INCOMPLETE -> R.string.hv_lifts
     HandoverPack.Item.POURS_UNFINISHED -> R.string.hv_pours
     HandoverPack.Item.CUBES_FOR_ENGINEER -> R.string.hv_cubes_engineer
     HandoverPack.Item.POURS_WITHOUT_28_DAY_RESULT -> R.string.hv_cubes_missing
     HandoverPack.Item.UNSIGNED_DAILY_LOGS -> R.string.hv_daily_logs
+    HandoverPack.Item.RISKS_OPEN -> R.string.hv_risks_open
+    HandoverPack.Item.COMPLAINTS_UNANSWERED -> R.string.hv_complaints
     HandoverPack.Item.QUERIES_UNANSWERED -> R.string.hv_queries
     HandoverPack.Item.INSPECTIONS_OUTSTANDING -> R.string.hv_inspections
     HandoverPack.Item.POURS_WITHOUT_INSPECTION -> R.string.hv_pours_uninspected
     HandoverPack.Item.SUBMITTALS_OUTSTANDING -> R.string.hv_submittals
+    HandoverPack.Item.MEETING_POINTS_OPEN -> R.string.hv_meeting_points
     HandoverPack.Item.WASTE_WITHOUT_TICKET -> R.string.hv_waste_unproven
 }

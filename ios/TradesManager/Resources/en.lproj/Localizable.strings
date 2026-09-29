@@ -2843,3 +2843,11 @@
 "ws_counted_hint" = "Every figure is counted from what was recorded in the registers. What was not written down is not here.";
 /* Column heading */
 "ws_col_count" = "Count";
+/* Handover pack row */
+"hv_substances" = "Hazardous substances still on the site";
+/* Handover pack row */
+"hv_risks_open" = "Risks assessed and not yet closed";
+/* Handover pack row */
+"hv_complaints" = "Complaints with no answer written";
+/* Handover pack row */
+"hv_meeting_points" = "Meeting points still open";

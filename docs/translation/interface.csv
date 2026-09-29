@@ -2207,3 +2207,7 @@ ws_open_now,"Section header, and a prefix on printed lines",Still open now,עד�
 ws_nothing_open,,Nothing on the job is waiting on anybody.,שום דבר בעבודה לא ממתין לאף אחד.,لا شيء في المشروع ينتظر أحدًا.,,
 ws_counted_hint,,Every figure is counted from what was recorded in the registers. What was not written down is not here.,כל מספר נספר ממה שנרשם בפנקסים. מה שלא נרשם אינו מופיע כאן.,كل رقم معدود مما سُجّل في السجلات. وما لم يُكتب ليس هنا.,,
 ws_col_count,Column heading,Count,מספר,العدد,,
+hv_substances,Handover pack row,Hazardous substances still on the site,חומרים מסוכנים שעדיין באתר,مواد خطرة لا تزال في الموقع,,
+hv_risks_open,Handover pack row,Risks assessed and not yet closed,סיכונים שהוערכו ועדיין לא נסגרו,مخاطر قُيّمت ولم تُغلق بعد,,
+hv_complaints,Handover pack row,Complaints with no answer written,תלונות שלא נרשמה להן תשובה,شكاوى لم يُكتب لها رد,,
+hv_meeting_points,Handover pack row,Meeting points still open,נקודות מישיבות שעדיין פתוחות,نقاط اجتماعات لا تزال مفتوحة,,

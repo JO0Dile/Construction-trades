@@ -11564,6 +11564,30 @@
       "en": "Count",
       "he": "מספר",
       "ar": "العدد"
+    },
+    "hv_substances": {
+      "c": "Handover pack row",
+      "en": "Hazardous substances still on the site",
+      "he": "חומרים מסוכנים שעדיין באתר",
+      "ar": "مواد خطرة لا تزال في الموقع"
+    },
+    "hv_risks_open": {
+      "c": "Handover pack row",
+      "en": "Risks assessed and not yet closed",
+      "he": "סיכונים שהוערכו ועדיין לא נסגרו",
+      "ar": "مخاطر قُيّمت ولم تُغلق بعد"
+    },
+    "hv_complaints": {
+      "c": "Handover pack row",
+      "en": "Complaints with no answer written",
+      "he": "תלונות שלא נרשמה להן תשובה",
+      "ar": "شكاوى لم يُكتب لها رد"
+    },
+    "hv_meeting_points": {
+      "c": "Handover pack row",
+      "en": "Meeting points still open",
+      "he": "נקודות מישיבות שעדיין פתוחות",
+      "ar": "نقاط اجتماعات لا تزال مفتوحة"
     }
   },
   "plurals": {

@@ -2844,6 +2844,14 @@
     <string name="ws_counted_hint">Every figure is counted from what was recorded in the registers. What was not written down is not here.</string>
     <!-- Column heading -->
     <string name="ws_col_count">Count</string>
+    <!-- Handover pack row -->
+    <string name="hv_substances">Hazardous substances still on the site</string>
+    <!-- Handover pack row -->
+    <string name="hv_risks_open">Risks assessed and not yet closed</string>
+    <!-- Handover pack row -->
+    <string name="hv_complaints">Complaints with no answer written</string>
+    <!-- Handover pack row -->
+    <string name="hv_meeting_points">Meeting points still open</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

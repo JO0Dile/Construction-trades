@@ -135,12 +135,17 @@ class HandoverViewModel(
     /**
      * Inspections still outstanding, and pours none was set against, by the
      * same rule the register lists them with -- see Inspections.state -- so
-     * the two cannot disagree.
+     * the two cannot disagree. Beside them, what else in the site's record a
+     * job should not be handed over with: hazardous substances still on the
+     * site, risks never closed, complaints never answered.
      */
     private val fromInspections = combine(
         container.inspections.observeForProject(projectId),
         container.concrete.observePours(projectId),
-    ) { inspections, pours ->
+        container.substances.observeForProject(projectId),
+        container.risks.observeForProject(projectId),
+        container.complaints.observeForProject(projectId),
+    ) { inspections, pours, substances, risks, complaints ->
         val now = System.currentTimeMillis()
         val zone = ZoneId.systemDefault()
         val askedAgain = inspections.mapNotNull { it.reinspectionOf }.toSet()
@@ -152,6 +157,9 @@ class HandoverViewModel(
                 )
             },
             HandoverPack.Item.POURS_WITHOUT_INSPECTION to pours.count { it.id !in cleared },
+            HandoverPack.Item.SUBSTANCES_ON_SITE to substances.count { it.removedAt == null },
+            HandoverPack.Item.RISKS_OPEN to risks.count { !it.closed },
+            HandoverPack.Item.COMPLAINTS_UNANSWERED to complaints.count { it.answeredAt == null },
         )
     }
 
@@ -172,12 +180,14 @@ class HandoverViewModel(
             combine(
                 container.designQueries.observeForProject(projectId),
                 container.submittals.observeForProject(projectId),
-            ) { queries, submittals ->
+                container.meetings.observeActionsForProject(projectId),
+            ) { queries, submittals, points ->
                 val now = System.currentTimeMillis()
                 val zone = ZoneId.systemDefault()
                 val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
                 mapOf(
                     HandoverPack.Item.QUERIES_UNANSWERED to queries.count { it.answeredAt == null },
+                    HandoverPack.Item.MEETING_POINTS_OPEN to points.count { it.closedAt == null },
                     HandoverPack.Item.SUBMITTALS_OUTSTANDING to submittals.count {
                         Submittals.outstanding(
                             Submittals.state(Submittals.decisionOf(it.decision), it.neededBy, it.id in sentAgain, now, zone),

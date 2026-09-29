@@ -41,6 +41,9 @@ object HandoverPack {
         /** Trenches not backfilled. */
         EXCAVATIONS_OPEN,
 
+        /** Hazardous substances not yet taken off the site. */
+        SUBSTANCES_ON_SITE,
+
         /** Lift plans raised and never marked done. */
         LIFTS_INCOMPLETE,
 
@@ -61,6 +64,12 @@ object HandoverPack {
         /** Days somebody wrote up and never signed. */
         UNSIGNED_DAILY_LOGS,
 
+        /** Risks assessed and never closed: the activity is over or it is not. */
+        RISKS_OPEN,
+
+        /** Complaints from outside the site with no answer written. */
+        COMPLAINTS_UNANSWERED,
+
         /** Questions put to the designers and never answered. */
         QUERIES_UNANSWERED,
 
@@ -72,6 +81,9 @@ object HandoverPack {
 
         /** Materials still waiting for an answer, or rejected and not sent again. */
         SUBMITTALS_OUTSTANDING,
+
+        /** Points agreed at meetings and never closed. */
+        MEETING_POINTS_OPEN,
 
         /**
          * Loads of waste with neither a ticket number nor a photograph of
