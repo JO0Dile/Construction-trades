@@ -331,12 +331,12 @@
 "cert_name" = "What it is for";
 "cert_reference" = "Certificate number (optional)";
 "cert_expires" = "Expires";
-"cert_expires_hint" = "DD/MM/YYYY. Leave empty if it does not expire.";
+"cert_expires_hint" = "Day, month, year: 31.03.2026. Leave empty if it does not expire.";
 "cert_no_expiry" = "No expiry";
 "cert_expired" = "Expired";
 "cert_empty" = "No tickets recorded.";
 "cert_attention" = "Tickets needing attention";
-"cert_date_bad" = "Use DD/MM/YYYY.";
+"cert_date_bad" = "Type the day, month and year, like 31.03.2026.";
 "home_overdue" = "Overdue";
 "home_book" = "Across all jobs";
 "home_owed" = "Owed to you";
@@ -2851,3 +2851,5 @@
 "hv_complaints" = "Complaints with no answer written";
 /* Handover pack row */
 "hv_meeting_points" = "Meeting points still open";
+/* Under the next service date field */
+"plant_service_hint" = "Day, month, year: 31.03.2026. Leave empty if it has no service date.";

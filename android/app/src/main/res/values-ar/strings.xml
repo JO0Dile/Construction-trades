@@ -323,12 +323,12 @@
     <string name="cert_name">لماذا هي</string>
     <string name="cert_reference">رقم الشهادة (اختياري)</string>
     <string name="cert_expires">صالحة حتى</string>
-    <string name="cert_expires_hint">يوم/شهر/سنة. اتركه فارغًا إن كانت لا تنتهي.</string>
+    <string name="cert_expires_hint">يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن كانت لا تنتهي.</string>
     <string name="cert_no_expiry">بدون انتهاء</string>
     <string name="cert_expired">منتهية</string>
     <string name="cert_empty">لم تُسجَّل شهادات.</string>
     <string name="cert_attention">شهادات تحتاج انتباهًا</string>
-    <string name="cert_date_bad">استخدم يوم/شهر/سنة.</string>
+    <string name="cert_date_bad">اكتب اليوم والشهر والسنة، مثل 31.03.2026.</string>
     <string name="home_overdue">متأخر</string>
     <string name="home_book">في كل الأعمال</string>
     <string name="home_owed">مستحق لك</string>
@@ -2182,6 +2182,7 @@
     <string name="hv_risks_open">مخاطر قُيّمت ولم تُغلق بعد</string>
     <string name="hv_complaints">شكاوى لم يُكتب لها رد</string>
     <string name="hv_meeting_points">نقاط اجتماعات لا تزال مفتوحة</string>
+    <string name="plant_service_hint">يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن لم يكن له موعد صيانة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

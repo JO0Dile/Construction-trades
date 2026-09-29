@@ -1634,9 +1634,9 @@
       "ar": "صالحة حتى"
     },
     "cert_expires_hint": {
-      "en": "DD/MM/YYYY. Leave empty if it does not expire.",
-      "he": "DD/MM/YYYY. השאירו ריק אם אין תפוגה.",
-      "ar": "يوم/شهر/سنة. اتركه فارغًا إن كانت لا تنتهي."
+      "en": "Day, month, year: 31.03.2026. Leave empty if it does not expire.",
+      "he": "יום, חודש, שנה: 31.03.2026. השאירו ריק אם אין תפוגה.",
+      "ar": "يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن كانت لا تنتهي."
     },
     "cert_no_expiry": {
       "en": "No expiry",
@@ -1659,9 +1659,9 @@
       "ar": "شهادات تحتاج انتباهًا"
     },
     "cert_date_bad": {
-      "en": "Use DD/MM/YYYY.",
-      "he": "יש להזין DD/MM/YYYY.",
-      "ar": "استخدم يوم/شهر/سنة."
+      "en": "Type the day, month and year, like 31.03.2026.",
+      "he": "הקלידו יום, חודש ושנה, למשל 31.03.2026.",
+      "ar": "اكتب اليوم والشهر والسنة، مثل 31.03.2026."
     },
     "home_overdue": {
       "en": "Overdue",
@@ -11588,6 +11588,12 @@
       "en": "Meeting points still open",
       "he": "נקודות מישיבות שעדיין פתוחות",
       "ar": "نقاط اجتماعات لا تزال مفتوحة"
+    },
+    "plant_service_hint": {
+      "c": "Under the next service date field",
+      "en": "Day, month, year: 31.03.2026. Leave empty if it has no service date.",
+      "he": "יום, חודש, שנה: 31.03.2026. השאירו ריק אם אין תאריך טיפול.",
+      "ar": "يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن لم يكن له موعد صيانة."
     }
   },
   "plurals": {

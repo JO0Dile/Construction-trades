@@ -331,12 +331,12 @@
 "cert_name" = "لماذا هي";
 "cert_reference" = "رقم الشهادة (اختياري)";
 "cert_expires" = "صالحة حتى";
-"cert_expires_hint" = "يوم/شهر/سنة. اتركه فارغًا إن كانت لا تنتهي.";
+"cert_expires_hint" = "يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن كانت لا تنتهي.";
 "cert_no_expiry" = "بدون انتهاء";
 "cert_expired" = "منتهية";
 "cert_empty" = "لم تُسجَّل شهادات.";
 "cert_attention" = "شهادات تحتاج انتباهًا";
-"cert_date_bad" = "استخدم يوم/شهر/سنة.";
+"cert_date_bad" = "اكتب اليوم والشهر والسنة، مثل 31.03.2026.";
 "home_overdue" = "متأخر";
 "home_book" = "في كل الأعمال";
 "home_owed" = "مستحق لك";
@@ -2851,3 +2851,5 @@
 "hv_complaints" = "شكاوى لم يُكتب لها رد";
 /* Handover pack row */
 "hv_meeting_points" = "نقاط اجتماعات لا تزال مفتوحة";
+/* Under the next service date field */
+"plant_service_hint" = "يوم، شهر، سنة: 31.03.2026. اتركه فارغًا إن لم يكن له موعد صيانة.";

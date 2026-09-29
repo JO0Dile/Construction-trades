@@ -417,7 +417,7 @@ private fun AddPlantDialog(
                     supportingText = {
                         Text(
                             stringResource(
-                                if (dueOk) R.string.cert_expires_hint else R.string.cert_date_bad,
+                                if (dueOk) R.string.plant_service_hint else R.string.cert_date_bad,
                             ),
                         )
                     },

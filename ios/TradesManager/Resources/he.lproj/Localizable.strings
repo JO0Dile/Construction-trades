@@ -331,12 +331,12 @@
 "cert_name" = "עבור מה";
 "cert_reference" = "מספר תעודה (לא חובה)";
 "cert_expires" = "בתוקף עד";
-"cert_expires_hint" = "DD/MM/YYYY. השאירו ריק אם אין תפוגה.";
+"cert_expires_hint" = "יום, חודש, שנה: 31.03.2026. השאירו ריק אם אין תפוגה.";
 "cert_no_expiry" = "ללא תפוגה";
 "cert_expired" = "פג תוקף";
 "cert_empty" = "לא נרשמו הסמכות.";
 "cert_attention" = "הסמכות שדורשות טיפול";
-"cert_date_bad" = "יש להזין DD/MM/YYYY.";
+"cert_date_bad" = "הקלידו יום, חודש ושנה, למשל 31.03.2026.";
 "home_overdue" = "באיחור";
 "home_book" = "בכל העבודות";
 "home_owed" = "חייבים לך";
@@ -2851,3 +2851,5 @@
 "hv_complaints" = "תלונות שלא נרשמה להן תשובה";
 /* Handover pack row */
 "hv_meeting_points" = "נקודות מישיבות שעדיין פתוחות";
+/* Under the next service date field */
+"plant_service_hint" = "יום, חודש, שנה: 31.03.2026. השאירו ריק אם אין תאריך טיפול.";

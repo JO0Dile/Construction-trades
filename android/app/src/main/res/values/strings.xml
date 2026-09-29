@@ -332,12 +332,12 @@
     <string name="cert_name">What it is for</string>
     <string name="cert_reference">Certificate number (optional)</string>
     <string name="cert_expires">Expires</string>
-    <string name="cert_expires_hint">DD/MM/YYYY. Leave empty if it does not expire.</string>
+    <string name="cert_expires_hint">Day, month, year: 31.03.2026. Leave empty if it does not expire.</string>
     <string name="cert_no_expiry">No expiry</string>
     <string name="cert_expired">Expired</string>
     <string name="cert_empty">No tickets recorded.</string>
     <string name="cert_attention">Tickets needing attention</string>
-    <string name="cert_date_bad">Use DD/MM/YYYY.</string>
+    <string name="cert_date_bad">Type the day, month and year, like 31.03.2026.</string>
     <string name="home_overdue">Overdue</string>
     <string name="home_book">Across all jobs</string>
     <string name="home_owed">Owed to you</string>
@@ -2852,6 +2852,8 @@
     <string name="hv_complaints">Complaints with no answer written</string>
     <!-- Handover pack row -->
     <string name="hv_meeting_points">Meeting points still open</string>
+    <!-- Under the next service date field -->
+    <string name="plant_service_hint">Day, month, year: 31.03.2026. Leave empty if it has no service date.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

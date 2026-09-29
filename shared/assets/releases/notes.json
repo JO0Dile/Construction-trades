@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.48.1",
+      "points": [
+        {
+          "en": "Fixed: date fields could not be filled in from the phone's number keyboard, which has no slash. A date can now be typed with dots, dashes, commas or spaces between the day, month and year — 31.03.2026 — or as eight digits, 31032026.",
+          "he": "תוקן: לא היה אפשר למלא שדות תאריך מלוח המספרים של הטלפון, שאין בו לוכסן. עכשיו אפשר להקליד תאריך עם נקודות, מקפים, פסיקים או רווחים בין היום, החודש והשנה — 31.03.2026 — או כשמונה ספרות, 31032026.",
+          "ar": "أُصلح: لم يكن ممكنًا ملء حقول التاريخ من لوحة أرقام الهاتف التي لا تحوي شرطة مائلة. يمكن الآن كتابة التاريخ بنقاط أو شرطات أو فواصل أو مسافات بين اليوم والشهر والسنة — 31.03.2026 — أو كثمانية أرقام، 31032026."
+        },
+        {
+          "en": "A date that does not exist, like 31.02, is still refused rather than moved to another day.",
+          "he": "תאריך שאינו קיים, כמו 31.02, עדיין נדחה ולא מוזז ליום אחר.",
+          "ar": "التاريخ غير الموجود، مثل 31.02، لا يزال يُرفض بدل نقله إلى يوم آخر."
+        }
+      ]
+    },
+    {
       "version": "0.48.0",
       "points": [
         {

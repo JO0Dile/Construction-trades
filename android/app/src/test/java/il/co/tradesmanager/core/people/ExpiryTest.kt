@@ -66,9 +66,23 @@ class TypedDateTest {
         // Lenient parsing turns 31/02 into 3 March and stores a date nobody
         // typed. Better to say it is not a date.
         assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate("31/02/2027"))
-        assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate("07-03-2027"))
         assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate(""))
         assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate("soon"))
+        // Year first is not guessed at, and neither is a two-digit year.
+        assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate("2027-03-07"))
+        assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate("07/03/27"))
+        assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate("0703202"))
+        assertEquals(null, il.co.tradesmanager.core.i18n.Formats.parseDate("07/03"))
+    }
+
+    @Test
+    fun `whatever the number pad offers between the parts reads as a slash`() {
+        // A phone's number keyboard has no slash; people type what it has.
+        val march7 = java.time.LocalDate.of(2027, 3, 7)
+        listOf("07.03.2027", "07-03-2027", "07,03,2027", "07 03 2027", "7.3.2027", "07032027", " 07/03/2027 ").forEach {
+            assertEquals(it, march7, il.co.tradesmanager.core.i18n.Formats.parseDate(it))
+        }
+        assertEquals(java.time.LocalDate.of(2005, 3, 31), il.co.tradesmanager.core.i18n.Formats.parseDate("31,03,2005"))
     }
 
     @Test
