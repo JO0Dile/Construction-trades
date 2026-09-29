@@ -241,7 +241,7 @@ fun PlantScreen(container: AppContainer, onBack: () -> Unit) {
             onDelete = {
                 viewModel.deletePhoto(photo)
                 viewingPhoto = null
-            },
+            }.takeIf { mayRecordExaminations },
             onDismiss = { viewingPhoto = null },
         )
     }

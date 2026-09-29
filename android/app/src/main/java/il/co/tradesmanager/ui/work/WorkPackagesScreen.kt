@@ -94,6 +94,7 @@ fun WorkPackagesScreen(
     val engagements by viewModel.engagements.collectAsStateWithLifecycle()
     val myParty by viewModel.myParty.collectAsStateWithLifecycle()
     val claimable by viewModel.claimable.collectAsStateWithLifecycle()
+    val mayClaim by viewModel.mayClaim.collectAsStateWithLifecycle()
     val language = currentLocale().toLanguageTag()
     val locale = currentLocale()
 
@@ -174,7 +175,7 @@ fun WorkPackagesScreen(
                     item { HorizontalDivider() }
                     item { SectionHeader(stringResource(R.string.wp_title)) }
                 }
-                if (Assignment.canRaiseApplication(claimable)) {
+                if (mayClaim && Assignment.canRaiseApplication(claimable)) {
                     item {
                         ClaimCard(
                             total = Assignment.claimToDate(claimable),

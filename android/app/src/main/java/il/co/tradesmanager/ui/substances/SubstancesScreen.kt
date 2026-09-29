@@ -243,7 +243,7 @@ fun SubstancesScreen(
             onDelete = {
                 viewModel.deletePhoto(photo)
                 viewing = null
-            },
+            }.takeIf { mayWrite },
             onDismiss = { viewing = null },
         )
     }

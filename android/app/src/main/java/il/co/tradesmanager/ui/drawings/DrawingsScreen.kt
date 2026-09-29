@@ -240,7 +240,7 @@ fun DrawingsScreen(
             onDelete = {
                 viewModel.deletePhoto(photo)
                 viewing = null
-            },
+            }.takeIf { mayRecord },
             onDismiss = { viewing = null },
         )
     }

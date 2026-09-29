@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.payments
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
 import il.co.tradesmanager.data.local.entity.PaymentApplicationLineEntity
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
@@ -40,12 +42,17 @@ class PaymentsViewModel(
     private val _openId = MutableStateFlow<String?>(null)
     val openId: StateFlow<String?> = _openId.asStateFlow()
 
-    val applications: StateFlow<List<PaymentApplicationEntity>> = container.payments
-        .observeForProject(projectId)
+    /** Whether the signed-in role reads the money lens. Nothing below is sent to anybody else. */
+    private val readsMoney = container.session.state
+        .map { (it as? SessionRepository.State.SignedIn)?.role?.canRead(Lens.MONEY) == true }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val applications: StateFlow<List<PaymentApplicationEntity>> = readsMoney
+        .flatMapLatest { reads -> if (reads) container.payments.observeForProject(projectId) else flowOf(emptyList<PaymentApplicationEntity>()) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val open: StateFlow<PaymentApplicationEntity?> = _openId
+    val open: StateFlow<PaymentApplicationEntity?> = combine(_openId, readsMoney) { id, reads -> id.takeIf { reads } }
         .flatMapLatest { id -> if (id == null) flowOf(null) else container.payments.observe(id) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
@@ -57,7 +64,7 @@ class PaymentsViewModel(
      * empty list and letting it read as a claim for nothing.
      */
     @OptIn(ExperimentalCoroutinesApi::class)
-    val lines: StateFlow<List<PaymentApplicationLineEntity>> = _openId
+    val lines: StateFlow<List<PaymentApplicationLineEntity>> = combine(_openId, readsMoney) { id, reads -> id.takeIf { reads } }
         .flatMapLatest { id ->
             if (id == null) flowOf(emptyList()) else container.payments.observeLines(id)
         }
@@ -69,8 +76,9 @@ class PaymentsViewModel(
      * Retention is held against the work being done rather than against what
      * was first agreed, so variations count.
      */
-    val contractSum: StateFlow<Double> = container.money.observeFinancials(projectId)
-        .map { it.revisedContract }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val contractSum: StateFlow<Double> = readsMoney
+        .flatMapLatest { reads -> if (reads) container.money.observeFinancials(projectId).map { it.revisedContract } else flowOf(0.0) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0.0)
 
     val session: StateFlow<SessionRepository.State> = container.session.state
@@ -89,6 +97,7 @@ class PaymentsViewModel(
         retentionRate: Double,
         terms: Payments.Terms,
     ) = viewModelScope.launch {
+        if (!writesMoney()) return@launch
         val actor = container.settings.settings.first().actorName
         val raised = container.payments.raise(
             projectId = projectId,
@@ -127,9 +136,14 @@ class PaymentsViewModel(
 
     private fun withOpen(block: suspend (PaymentApplicationEntity, String) -> Unit) =
         viewModelScope.launch {
+            if (!writesMoney()) return@launch
             val application = open.value ?: return@launch
             block(application, container.settings.settings.first().actorName)
         }
+
+    /** Only a role that writes the money lens raises, certifies or pays; anybody else changes nothing. */
+    private suspend fun writesMoney(): Boolean =
+        (container.session.state.first() as? SessionRepository.State.SignedIn)?.role?.canWrite(Lens.MONEY) == true
 
     companion object {
 

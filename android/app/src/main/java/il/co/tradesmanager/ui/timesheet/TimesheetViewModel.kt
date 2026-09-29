@@ -2,9 +2,11 @@ package il.co.tradesmanager.ui.timesheet
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.money.Timesheet
+import il.co.tradesmanager.data.local.dao.CostByCategory
 import il.co.tradesmanager.data.local.entity.TimeEntryEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -15,6 +17,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -144,9 +147,14 @@ class TimesheetViewModel(
                 kotlin.math.abs(difference) > 0.005
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val reconciliation: StateFlow<Reconciliation> = combine(
         days,
-        container.money.observeCostsByCategory(projectId),
+        // The job's costed labour is money, read only by a role that reads the money lens.
+        session.flatMapLatest { state ->
+            val role = (state as? SessionRepository.State.SignedIn)?.role
+            if (role?.canRead(Lens.MONEY) == true) container.money.observeCostsByCategory(projectId) else flowOf(emptyList<CostByCategory>())
+        },
         withheldPeople,
     ) { personDays, byCategory, withheld ->
         Reconciliation(

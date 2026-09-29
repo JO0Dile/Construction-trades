@@ -233,7 +233,7 @@ fun InspectionsScreen(
             onDelete = {
                 viewModel.deletePhoto(photo)
                 viewing = null
-            },
+            }.takeIf { mayWrite },
             onDismiss = { viewing = null },
         )
     }

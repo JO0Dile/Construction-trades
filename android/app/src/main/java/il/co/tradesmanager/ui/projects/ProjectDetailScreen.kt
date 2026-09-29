@@ -681,7 +681,8 @@ fun ProjectDetailScreen(
     viewing?.let { photo ->
         PhotoViewer(
             photo = photo,
-            isPlan = photo.id == state.plan?.id,
+            // "Set as plan" and delete are for whoever may change the site's record.
+            isPlan = photo.id == state.plan?.id || !canEditEvidence,
             onSetAsPlan = {
                 viewModel.setAsPlan(photo)
                 viewing = null
@@ -689,7 +690,7 @@ fun ProjectDetailScreen(
             onDelete = {
                 viewModel.deletePhoto(photo)
                 viewing = null
-            },
+            }.takeIf { canEditEvidence },
             onDismiss = { viewing = null },
         )
     }

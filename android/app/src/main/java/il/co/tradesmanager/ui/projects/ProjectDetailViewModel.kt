@@ -116,7 +116,12 @@ class ProjectDetailViewModel(
     }
 
     /** Enough of the Money lens for the one line that opens it. */
-    val financials: StateFlow<JobFinancials> = container.money.observeFinancials(projectId)
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val financials: StateFlow<JobFinancials> = container.session.state
+        .flatMapLatest { session ->
+            val role = (session as? SessionRepository.State.SignedIn)?.role
+            if (role?.canRead(Lens.MONEY) == true) container.money.observeFinancials(projectId) else flowOf(JobFinancials())
+        }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), JobFinancials())
 
     /** What the person looking at this job is allowed to see and change. */
@@ -295,11 +300,16 @@ class ProjectDetailViewModel(
         }
 
     fun setAsPlan(photo: PhotoEntity) = viewModelScope.launch {
+        val role = (container.session.state.first() as? SessionRepository.State.SignedIn)?.role
+        if (role == null || !role.canWrite(Lens.EVIDENCE)) return@launch
         val actor = container.settings.settings.first().actorName
         container.photos.markAsPlan(photo, state.value.plan, actor)
     }
 
+    /** Only for somebody who may change the site's record; the job's photographs are part of it. */
     fun deletePhoto(photo: PhotoEntity) = viewModelScope.launch {
+        val role = (container.session.state.first() as? SessionRepository.State.SignedIn)?.role
+        if (role == null || !role.canWrite(Lens.EVIDENCE)) return@launch
         container.photos.delete(photo, container.settings.settings.first().actorName)
     }
 

@@ -3,6 +3,7 @@ package il.co.tradesmanager.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.access.Changes
+import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.safety.Examinations
@@ -10,6 +11,7 @@ import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CertificationEntity
+import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.TaskBlockEntity
@@ -49,28 +51,52 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
         val ticketsNeedingAttention: List<CertificationEntity> = emptyList(),
     )
 
-    val state: StateFlow<State> = combine(
-        container.schedule.observeDay(LocalDate.now()),
-        container.inventory.observeLowStock(),
-        container.projects.observeActive(),
-        container.safety.observeRuns(),
-        container.projects.observeOverdue(),
-    ) { today, lowStock, projects, runs, overdue ->
-        State(
-            today = today,
-            lowStock = lowStock,
-            activeProjects = projects,
-            openChecklists = runs.count { it.completedAt == null },
-            overdue = overdue,
-        )
+    /**
+     * The stock, the checklists and the overdue jobs each only for the role
+     * that reads their lens, as the tiles are shown; the day and the jobs
+     * themselves for everybody on them.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val state: StateFlow<State> = container.session.state.flatMapLatest { session ->
+        val role = (session as? SessionRepository.State.SignedIn)?.role
+        combine(
+            container.schedule.observeDay(LocalDate.now()),
+            if (role?.canRead(Lens.STUFF) == true) container.inventory.observeLowStock() else flowOf(emptyList<InventoryItemEntity>()),
+            container.projects.observeActive(),
+            if (role?.canRead(Lens.EVIDENCE) == true) container.safety.observeRuns() else flowOf(emptyList<ChecklistRunEntity>()),
+            if (role?.canRead(Lens.PLAN) == true) container.projects.observeOverdue() else flowOf(emptyList<ProjectEntity>()),
+        ) { today, lowStock, projects, runs, overdue ->
+            State(
+                today = today,
+                lowStock = lowStock,
+                activeProjects = projects,
+                openChecklists = runs.count { it.completedAt == null },
+                overdue = overdue,
+            )
+        }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), State())
 
-    val portfolio: StateFlow<Portfolio> = combine(
-        container.money.observePortfolio(),
-        container.certifications.observeNeedingAttention(),
-    ) { money, tickets ->
-        Portfolio(money = money, ticketsNeedingAttention = tickets)
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), Portfolio())
+    /**
+     * Each half only for the role that reads it: the money for the money
+     * lens, the tickets for the people lens. The screen hides the tiles too;
+     * this does not rely on it.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val portfolio: StateFlow<Portfolio> = container.session.state
+        .flatMapLatest { session ->
+            val role = (session as? SessionRepository.State.SignedIn)?.role
+            combine(
+                if (role?.canRead(Lens.MONEY) == true) container.money.observePortfolio() else flowOf(JobFinancials()),
+                if (role?.canRead(Lens.PEOPLE) == true) {
+                    container.certifications.observeNeedingAttention()
+                } else {
+                    flowOf(emptyList<CertificationEntity>())
+                },
+            ) { money, tickets ->
+                Portfolio(money = money, ticketsNeedingAttention = tickets)
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), Portfolio())
 
     val session: StateFlow<SessionRepository.State> = container.session.state
         .stateIn(

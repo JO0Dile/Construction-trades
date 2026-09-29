@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.43.0",
+      "points": [
+        {
+          "en": "Photographs kept as evidence — inspection forms, material datasheets, delay photos, drawings, plant certificates and data sheets — can now only be deleted by someone allowed to write to that register. Everyone who may read the register can still look at them.",
+          "he": "צילומים שנשמרים כראיה — טופסי בדיקה, דפי נתונים של חומרים, תמונות עיכובים, תוכניות, תעודות ציוד וגיליונות בטיחות — אפשר עכשיו למחוק רק למי שמותר לו לכתוב בפנקס הזה. כל מי שמותר לו לקרוא את הפנקס עדיין יכול לצפות בהם.",
+          "ar": "الصور المحفوظة كدليل — نماذج الفحص وصحائف بيانات المواد وصور التأخيرات والمخططات وشهادات المعدات وصحائف البيانات — لا يمكن حذفها الآن إلا لمن يُسمح له بالكتابة في ذلك السجل. ولا يزال كل من يُسمح له بقراءة السجل يستطيع رؤيتها."
+        },
+        {
+          "en": "Money is now kept from anyone whose role does not include it on every screen that touches it, not only hidden: the job's figures, payment applications, the home totals and the labour costs beside the timesheet. Raising a payment application from approved work packages now needs the right to change money.",
+          "he": "הכסף מוסתר עכשיו ממי שהתפקיד שלו אינו כולל אותו בכל מסך שנוגע בו, ולא רק מוחבא: נתוני העבודה, בקשות התשלום, הסיכומים בדף הבית ועלויות העבודה ליד דוח השעות. הגשת בקשת תשלום מחבילות עבודה שאושרו דורשת עכשיו הרשאה לשנות כספים.",
+          "ar": "أصبح المال الآن محجوبًا عمّن لا يشمله دوره في كل شاشة تتعامل معه، لا مخفيًّا فقط: أرقام المشروع وطلبات الدفع ومجاميع الصفحة الرئيسية وتكاليف العمل بجانب سجل الساعات. ويتطلب تقديم طلب دفع من حزم العمل المعتمدة الآن صلاحية تغيير المال."
+        },
+        {
+          "en": "The home screen's counts of low stock, open checklists and overdue jobs follow the same rule.",
+          "he": "הספירות בדף הבית של מלאי נמוך, רשימות תיוג פתוחות ועבודות באיחור פועלות לפי אותו כלל.",
+          "ar": "وتتبع أعداد الصفحة الرئيسية للمخزون المنخفض وقوائم الفحص المفتوحة والمشاريع المتأخرة القاعدة نفسها."
+        }
+      ]
+    },
+    {
       "version": "0.42.0",
       "points": [
         {

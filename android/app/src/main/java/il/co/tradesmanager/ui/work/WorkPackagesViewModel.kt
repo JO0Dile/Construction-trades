@@ -1,6 +1,7 @@
 package il.co.tradesmanager.ui.work
 
 import android.net.Uri
+import il.co.tradesmanager.core.access.Lens
 import java.util.UUID
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -50,6 +51,15 @@ class WorkPackagesViewModel(
             SharingStarted.WhileSubscribed(5_000),
             SessionRepository.State.Loading,
         )
+
+    /**
+     * Whether this person may turn approved work into a claim for money. Which
+     * side of an agreement the firm sits on decides the package buttons; a
+     * payment application is also money, so it is the money lens's too.
+     */
+    val mayClaim: StateFlow<Boolean> = session
+        .map { (it as? SessionRepository.State.SignedIn)?.role?.canWrite(Lens.MONEY) == true }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
     /**
      * Which organisation is looking.
@@ -267,6 +277,8 @@ class WorkPackagesViewModel(
      * are already on somebody else's application is worse than no claim.
      */
     fun raiseApplication() = viewModelScope.launch {
+        val role = (container.session.state.first() as? SessionRepository.State.SignedIn)?.role
+        if (role == null || !role.canWrite(Lens.MONEY)) return@launch
         val org = orgId.value
         val ready = Assignment.readyToClaim(claimable.value)
         if (ready.isEmpty()) return@launch
@@ -320,8 +332,12 @@ class WorkPackagesViewModel(
      * is capped against the value of the job, and the packages this firm holds
      * are not the job.
      */
-    val contractSum: StateFlow<Double> = container.money.observeFinancials(projectId)
-        .map { it.revisedContract }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val contractSum: StateFlow<Double> = session
+        .flatMapLatest { state ->
+            val role = (state as? SessionRepository.State.SignedIn)?.role
+            if (role?.canRead(Lens.MONEY) == true) container.money.observeFinancials(projectId).map { it.revisedContract } else flowOf(0.0)
+        }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0.0)
 
     companion object {

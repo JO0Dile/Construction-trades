@@ -173,7 +173,9 @@ class DelaysViewModel(
         )
     }
 
+    /** Only for somebody who may write to the register: a reader looks at the evidence, and does not remove it. */
     fun deletePhoto(photo: PhotoEntity) = viewModelScope.launch {
+        if (!mayWrite.value) return@launch
         container.photos.delete(photo, actor())
     }
 }
