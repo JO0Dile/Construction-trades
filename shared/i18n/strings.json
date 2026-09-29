@@ -11422,6 +11422,12 @@
       "en": "Fire point faults found",
       "he": "תקלות שנמצאו בעמדות כיבוי",
       "ar": "أعطال وُجدت في نقاط الإطفاء"
+    },
+    "home_jobs_attention": {
+      "c": "Home section header: jobs with something going wrong",
+      "en": "Jobs needing attention",
+      "he": "עבודות שדורשות תשומת לב",
+      "ar": "مشاريع تحتاج إلى متابعة"
     }
   },
   "plurals": {
@@ -12053,6 +12059,27 @@
         "few": "%1$d نقاط، %2$d لا تزال مفتوحة",
         "many": "%1$d نقطة، %2$d لا تزال مفتوحة",
         "other": "%1$d نقطة، %2$d لا تزال مفتوحة"
+      }
+    },
+    "home_more_lines": {
+      "c": "After the first line of what needs attention on a job: how many more lines there are",
+      "en": {
+        "one": "%d more",
+        "other": "%d more"
+      },
+      "he": {
+        "one": "ועוד אחד",
+        "two": "ועוד שניים",
+        "many": "ועוד %d",
+        "other": "ועוד %d"
+      },
+      "ar": {
+        "zero": "لا شيء آخر",
+        "one": "وواحد آخر",
+        "two": "واثنان آخران",
+        "few": "و%d أخرى",
+        "many": "و%d أخرى",
+        "other": "و%d أخرى"
       }
     }
   }

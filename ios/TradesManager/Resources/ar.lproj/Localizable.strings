@@ -2801,3 +2801,5 @@
 "log_complaints" = "شكاوى وردت";
 /* Daily log row, followed by a count */
 "log_fire_faults" = "أعطال وُجدت في نقاط الإطفاء";
+/* Home section header: jobs with something going wrong */
+"home_jobs_attention" = "مشاريع تحتاج إلى متابعة";

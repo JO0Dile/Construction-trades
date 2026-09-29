@@ -1018,7 +1018,7 @@ private fun AddPartDialog(onDismiss: () -> Unit, onAdd: (String, String) -> Unit
 }
 
 @StringRes
-private fun attentionLabel(item: Attention.Item): Int = when (item) {
+internal fun attentionLabel(item: Attention.Item): Int = when (item) {
     Attention.Item.RISKS_EXTREME -> R.string.at_risks_extreme
     Attention.Item.INSPECTIONS_FAILED -> R.string.at_inspections_failed
     Attention.Item.INSPECTIONS_OVERDUE -> R.string.at_inspections_overdue

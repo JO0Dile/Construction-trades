@@ -483,5 +483,21 @@
             <string>%1$d points, %2$d still open</string>
         </dict>
     </dict>
+    <key>home_more_lines</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d more</string>
+            <key>other</key>
+            <string>%d more</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

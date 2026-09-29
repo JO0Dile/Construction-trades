@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.46.0",
+      "points": [
+        {
+          "en": "The home screen now lists the jobs needing attention: each active job with something going wrong, the most serious first, with its first line and how many more. Tap one to open the job.",
+          "he": "דף הבית מציג עכשיו את העבודות שדורשות תשומת לב: כל עבודה פעילה שמשהו בה משתבש, החמורה ביותר ראשונה, עם השורה הראשונה וכמה נוספות. הקישו על אחת כדי לפתוח את העבודה.",
+          "ar": "تعرض الصفحة الرئيسية الآن المشاريع التي تحتاج إلى متابعة: كل مشروع نشط فيه خلل، الأخطر أولًا، مع السطر الأول وكم غيره. اضغط على أحدها لفتح المشروع."
+        },
+        {
+          "en": "It counts each job exactly as the job page does, and only the registers your role may read.",
+          "he": "היא סופרת כל עבודה בדיוק כמו דף העבודה, ורק את הפנקסים שהתפקיד שלך רשאי לקרוא.",
+          "ar": "وتعدّ كل مشروع تمامًا كما تفعل صفحة المشروع، ولا تشمل إلا السجلات التي يُسمح لدورك بقراءتها."
+        }
+      ]
+    },
+    {
       "version": "0.45.0",
       "points": [
         {

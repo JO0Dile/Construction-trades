@@ -30,6 +30,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -56,6 +57,7 @@ import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.ui.components.SectionHeader
 import il.co.tradesmanager.ui.components.currentLocale
+import il.co.tradesmanager.ui.projects.attentionLabel
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalTime
@@ -76,6 +78,7 @@ fun HomeScreen(
     onOpenInventory: () -> Unit,
     onOpenSchedule: () -> Unit,
     onOpenProjects: () -> Unit,
+    onOpenProject: (String) -> Unit,
     onOpenSafety: () -> Unit,
     onOpenMuster: () -> Unit,
     onOpenPlant: () -> Unit,
@@ -93,6 +96,7 @@ fun HomeScreen(
     val plantUnchecked by viewModel.plantUnchecked.collectAsStateWithLifecycle()
     val ppeOverdue by viewModel.ppeOverdue.collectAsStateWithLifecycle()
     val plantExaminationsDue by viewModel.plantExaminationsDue.collectAsStateWithLifecycle()
+    val jobsNeedingAttention by viewModel.jobsNeedingAttention.collectAsStateWithLifecycle()
     val locale = currentLocale()
     val zone = ZoneId.systemDefault()
 
@@ -330,6 +334,30 @@ fun HomeScreen(
                             )
                         }
                     }
+                }
+            }
+
+            // Across every active job, what is going wrong, worst first: the
+            // same lines each job page opens with, one row per job.
+            if (jobsNeedingAttention.isNotEmpty()) {
+                item { SectionHeader(stringResource(R.string.home_jobs_attention)) }
+                items(jobsNeedingAttention, key = { "attention-" + it.job.id }) { row ->
+                    val first = row.lines.first()
+                    ListItem(
+                        headlineContent = { Text(row.job.name) },
+                        supportingContent = {
+                            Text(
+                                stringResource(attentionLabel(first.item)) + " · " + first.count +
+                                    if (row.lines.size > 1) {
+                                        " · " + pluralStringResource(R.plurals.home_more_lines, row.lines.size - 1, row.lines.size - 1)
+                                    } else {
+                                        ""
+                                    },
+                                color = MaterialTheme.colorScheme.error,
+                            )
+                        },
+                        modifier = Modifier.fillMaxWidth().clickable { onOpenProject(row.job.id) },
+                    )
                 }
             }
 

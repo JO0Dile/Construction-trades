@@ -2802,6 +2802,8 @@
     <string name="log_complaints">Complaints received</string>
     <!-- Daily log row, followed by a count -->
     <string name="log_fire_faults">Fire point faults found</string>
+    <!-- Home section header: jobs with something going wrong -->
+    <string name="home_jobs_attention">Jobs needing attention</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -2921,5 +2923,9 @@
     <plurals name="mt_points_of_meeting">
         <item quantity="one">%1$d point, %2$d still open</item>
         <item quantity="other">%1$d points, %2$d still open</item>
+    </plurals>
+    <plurals name="home_more_lines">
+        <item quantity="one">%d more</item>
+        <item quantity="other">%d more</item>
     </plurals>
 </resources>

@@ -2153,6 +2153,7 @@
     <string name="at_meeting_points">نقاط اجتماعات متأخرة</string>
     <string name="log_complaints">شكاوى وردت</string>
     <string name="log_fire_faults">أعطال وُجدت في نقاط الإطفاء</string>
+    <string name="home_jobs_attention">مشاريع تحتاج إلى متابعة</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -2392,5 +2393,13 @@
         <item quantity="few">%1$d نقاط، %2$d لا تزال مفتوحة</item>
         <item quantity="many">%1$d نقطة، %2$d لا تزال مفتوحة</item>
         <item quantity="other">%1$d نقطة، %2$d لا تزال مفتوحة</item>
+    </plurals>
+    <plurals name="home_more_lines">
+        <item quantity="zero">لا شيء آخر</item>
+        <item quantity="one">وواحد آخر</item>
+        <item quantity="two">واثنان آخران</item>
+        <item quantity="few">و%d أخرى</item>
+        <item quantity="many">و%d أخرى</item>
+        <item quantity="other">و%d أخرى</item>
     </plurals>
 </resources>

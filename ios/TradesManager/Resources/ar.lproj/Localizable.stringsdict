@@ -723,5 +723,29 @@
             <string>%1$d نقطة، %2$d لا تزال مفتوحة</string>
         </dict>
     </dict>
+    <key>home_more_lines</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لا شيء آخر</string>
+            <key>one</key>
+            <string>وواحد آخر</string>
+            <key>two</key>
+            <string>واثنان آخران</string>
+            <key>few</key>
+            <string>و%d أخرى</string>
+            <key>many</key>
+            <string>و%d أخرى</string>
+            <key>other</key>
+            <string>و%d أخرى</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

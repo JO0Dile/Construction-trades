@@ -9,6 +9,7 @@ import il.co.tradesmanager.core.people.Expiry
 import il.co.tradesmanager.core.safety.Examinations
 import il.co.tradesmanager.core.safety.Ppe
 import il.co.tradesmanager.core.safety.PreUse
+import il.co.tradesmanager.core.work.Attention
 import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CertificationEntity
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
@@ -20,6 +21,7 @@ import il.co.tradesmanager.data.repository.PlantExaminationRepository
 import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.projects.observeJobAttention
 import java.time.LocalDate
 import java.time.ZoneId
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -141,6 +143,39 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
+    /** One active job and what on it is waiting on somebody. */
+    data class JobAttention(val job: ProjectEntity, val lines: List<Attention.Line>)
+
+    /**
+     * The active jobs with something waiting on somebody, the one with the
+     * most serious line first. Each job is counted by the same function the
+     * job page uses, and only for the lenses this role reads.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val jobsNeedingAttention: StateFlow<List<JobAttention>> = session
+        .flatMapLatest { state ->
+            val role = (state as? SessionRepository.State.SignedIn)?.role
+            if (role == null) {
+                flowOf(emptyList<JobAttention>())
+            } else {
+                container.projects.observeActive().flatMapLatest { jobs ->
+                    val watched = jobs.take(MAX_JOBS_WATCHED)
+                    if (watched.isEmpty()) {
+                        flowOf(emptyList<JobAttention>())
+                    } else {
+                        combine(watched.map { job -> observeJobAttention(container, job.id, role).map { JobAttention(job, it) } }) { rows ->
+                            rows.filter { it.lines.isNotEmpty() }
+                                .sortedWith(
+                                    compareBy<JobAttention> { it.lines.first().item.ordinal }
+                                        .thenByDescending { row -> row.lines.sumOf { it.count } },
+                                )
+                        }
+                    }
+                }
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
     /**
      * Machines whose latest examination certificate has run out, or which
      * failed it. Machines with no certificate recorded are not counted: which
@@ -242,5 +277,11 @@ class HomeViewModel(private val container: AppContainer) : ViewModel() {
 
         /** The pre-use states that mean a machine should not be started yet. */
         val NEEDS_A_CHECK = setOf(PreUse.Today.NEVER_CHECKED, PreUse.Today.NOT_CHECKED_TODAY)
+
+        /**
+         * Each job watched is a dozen registers read; past this many active
+         * jobs the home screen shows the first ones and the job list has the rest.
+         */
+        const val MAX_JOBS_WATCHED = 25
     }
 }

@@ -2153,6 +2153,7 @@
     <string name="at_meeting_points">נקודות מישיבות באיחור</string>
     <string name="log_complaints">תלונות שהתקבלו</string>
     <string name="log_fire_faults">תקלות שנמצאו בעמדות כיבוי</string>
+    <string name="home_jobs_attention">עבודות שדורשות תשומת לב</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -2332,5 +2333,11 @@
         <item quantity="two">שתי נקודות, %2$d עדיין פתוחות</item>
         <item quantity="many">%1$d נקודות, %2$d עדיין פתוחות</item>
         <item quantity="other">%1$d נקודות, %2$d עדיין פתוחות</item>
+    </plurals>
+    <plurals name="home_more_lines">
+        <item quantity="one">ועוד אחד</item>
+        <item quantity="two">ועוד שניים</item>
+        <item quantity="many">ועוד %d</item>
+        <item quantity="other">ועוד %d</item>
     </plurals>
 </resources>

@@ -603,5 +603,25 @@
             <string>%1$d נקודות, %2$d עדיין פתוחות</string>
         </dict>
     </dict>
+    <key>home_more_lines</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>ועוד אחד</string>
+            <key>two</key>
+            <string>ועוד שניים</string>
+            <key>many</key>
+            <string>ועוד %d</string>
+            <key>other</key>
+            <string>ועוד %d</string>
+        </dict>
+    </dict>
 </dict>
 </plist>
