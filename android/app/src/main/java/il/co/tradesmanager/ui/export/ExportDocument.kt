@@ -514,6 +514,7 @@ sealed interface ExportDocument {
         is FirePointRegister -> {
             val looksByPoint = checks.groupBy { it.firePointId }.mapValues { (_, looks) -> looks.sortedByDescending { it.checkedAt } }
             val sorted = points.sortedBy { it.addedAt }
+            val printedOn = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
             fun lookText(look: FirePointCheckEntity): String =
                 if (look.ok) {
                     context.getString(R.string.fp_fine) + (look.note?.let { " — $it" }.orEmpty())
@@ -536,7 +537,9 @@ sealed interface ExportDocument {
                 rows = sorted.map { point ->
                     val latest = looksByPoint[point.id]?.firstOrNull()
                     val serviceDueOn = point.serviceDueOnDay?.let(LocalDate::ofEpochDay)
-                    val state = FirePoints.state(serviceDueOn, latest?.checkedAt, latest?.ok, point.removedAt != null, now, ZoneId.systemDefault())
+                    // Against the day it is printed, not the point's state: a point with a fault whose
+                    // service has also run out is both, and the printout says both.
+                    val serviceOverdue = point.removedAt == null && serviceDueOn != null && serviceDueOn.isBefore(printedOn)
                     listOf(
                         point.reference,
                         context.getString(firePointKindLabel(FirePoints.kindOf(point.kind))),
@@ -544,7 +547,7 @@ sealed interface ExportDocument {
                         point.tagNumber.orEmpty(),
                         serviceDueOn?.let {
                             Formats.date(it, locale) +
-                                if (state == FirePoints.State.SERVICE_OVERDUE) " — " + context.getString(R.string.ex_overdue) else ""
+                                if (serviceOverdue) " — " + context.getString(R.string.ex_overdue) else ""
                         }.orEmpty(),
                         latest?.let { day(it.checkedAt, locale) } ?: context.getString(R.string.fp_state_never_checked),
                         latest?.let { lookText(it) }.orEmpty(),
