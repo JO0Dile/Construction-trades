@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -62,9 +63,17 @@ class InventoryEditViewModel(
         container.photos.observeFor(PhotoRepository.Owner.INVENTORY_ITEM, editingId)
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
+    /** Whether the signed-in role may change stock; the form is read only for anybody else. */
+    val canEdit: StateFlow<Boolean> = container.session.state
+        .map { InventoryViewModel.mayWrite(it) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    private suspend fun mayWrite(): Boolean = InventoryViewModel.mayWrite(container.session.state.first())
+
     fun newCameraTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
 
     fun onCaptured(photoId: String) = viewModelScope.launch {
+        if (!mayWrite()) return@launch
         container.photos.recordCameraPhoto(
             id = photoId,
             ownerType = PhotoRepository.Owner.INVENTORY_ITEM,
@@ -74,6 +83,7 @@ class InventoryEditViewModel(
     }
 
     fun onPicked(uri: Uri) = viewModelScope.launch {
+        if (!mayWrite()) return@launch
         container.photos.importPhoto(
             source = uri,
             ownerType = PhotoRepository.Owner.INVENTORY_ITEM,
@@ -83,6 +93,7 @@ class InventoryEditViewModel(
     }
 
     fun deletePhoto(photo: PhotoEntity) = viewModelScope.launch {
+        if (!mayWrite()) return@launch
         container.photos.delete(photo, container.settings.settings.first().actorName)
     }
 
@@ -132,6 +143,7 @@ class InventoryEditViewModel(
             return
         }
         viewModelScope.launch {
+            if (!mayWrite()) return@launch
             val existing = loaded
             val now = System.currentTimeMillis()
             val item = InventoryItemEntity(
@@ -163,6 +175,7 @@ class InventoryEditViewModel(
     fun delete(onDone: () -> Unit) {
         val id = itemId ?: return onDone()
         viewModelScope.launch {
+            if (!mayWrite()) return@launch
             container.inventory.delete(id, container.settings.settings.first().actorName)
             onDone()
         }

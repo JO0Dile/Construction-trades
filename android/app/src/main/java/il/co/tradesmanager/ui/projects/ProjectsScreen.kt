@@ -69,6 +69,7 @@ fun ProjectsScreen(container: AppContainer, onOpenProject: (String) -> Unit) {
     val progress by viewModel.progress.collectAsStateWithLifecycle()
     val covers by viewModel.covers.collectAsStateWithLifecycle()
     val asGrid by viewModel.asGrid.collectAsStateWithLifecycle()
+    val canCreate by viewModel.canCreate.collectAsStateWithLifecycle()
     var showNewProject by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -88,15 +89,17 @@ fun ProjectsScreen(container: AppContainer, onOpenProject: (String) -> Unit) {
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { showNewProject = true }) {
-                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.proj_new))
+            if (canCreate) {
+                FloatingActionButton(onClick = { showNewProject = true }) {
+                    Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.proj_new))
+                }
             }
         },
     ) { padding ->
         if (projects.isEmpty()) {
             EmptyState(
                 message = stringResource(R.string.proj_empty),
-                hint = stringResource(R.string.proj_from_template),
+                hint = stringResource(if (canCreate) R.string.proj_from_template else R.string.proj_started_by_managers),
                 modifier = Modifier.padding(padding),
             )
         } else if (asGrid) {
@@ -134,7 +137,7 @@ fun ProjectsScreen(container: AppContainer, onOpenProject: (String) -> Unit) {
         }
     }
 
-    if (showNewProject) {
+    if (showNewProject && canCreate) {
         NewProjectSheet(
             kinds = kinds,
             templates = templates,

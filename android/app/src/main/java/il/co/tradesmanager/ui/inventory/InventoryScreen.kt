@@ -94,6 +94,7 @@ fun InventoryScreen(
     val photoByItem by viewModel.photoByItem.collectAsStateWithLifecycle()
     val details by viewModel.details.collectAsStateWithLifecycle()
     val movements by viewModel.detailsMovements.collectAsStateWithLifecycle()
+    val canEdit by viewModel.canEdit.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
     val locale = currentLocale()
     val context = LocalContext.current
@@ -109,7 +110,13 @@ fun InventoryScreen(
         val code = scanned ?: return@LaunchedEffect
         savedStateHandle[Routes.SCAN_RESULT] = null
         val match = viewModel.findByBarcode(code)
-        if (match != null) onEditItem(match.id) else onAddItem()
+        // Somebody who may only read the stock is shown what the label is,
+        // not a form they cannot save; an unknown label is simply not found.
+        when {
+            match != null && viewModel.canEdit.value -> onEditItem(match.id)
+            match != null -> viewModel.openDetails(match.id)
+            viewModel.canEdit.value -> onAddItem()
+        }
     }
 
     // Finding the item you just saved.
@@ -214,8 +221,10 @@ fun InventoryScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = onAddItem) {
-                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.inv_add_item))
+            if (canEdit) {
+                FloatingActionButton(onClick = onAddItem) {
+                    Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.inv_add_item))
+                }
             }
         },
     ) { padding ->
@@ -284,8 +293,8 @@ fun InventoryScreen(
                     message = stringResource(R.string.inv_empty),
                     hint = stringResource(R.string.inv_from_catalog),
                     icon = Icons.Filled.Inventory2,
-                    actionLabel = stringResource(R.string.inv_add_item),
-                    onAction = onAddItem,
+                    actionLabel = if (canEdit) stringResource(R.string.inv_add_item) else null,
+                    onAction = if (canEdit) onAddItem else null,
                 )
             } else {
                 LazyColumn(state = listState, modifier = Modifier.fillMaxWidth()) {
@@ -317,21 +326,23 @@ fun InventoryScreen(
                             },
                             trailingContent = {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
-                                    IconButton(
-                                        onClick = {
-                                            viewModel.adjustStock(item.id, -1.0, InventoryViewModel.USED_ON_SITE)
-                                        },
-                                        // Off on an empty shelf, the same as
-                                        // in the item sheet. It was live here
-                                        // and did nothing when pressed, which
-                                        // is how a working app reads as
-                                        // broken.
-                                        enabled = item.quantity > 0.0,
-                                    ) {
-                                        Icon(
-                                            Icons.Filled.Remove,
-                                            contentDescription = stringResource(R.string.inv_stock_remove),
-                                        )
+                                    if (canEdit) {
+                                        IconButton(
+                                            onClick = {
+                                                viewModel.adjustStock(item.id, -1.0, InventoryViewModel.USED_ON_SITE)
+                                            },
+                                            // Off on an empty shelf, the same as
+                                            // in the item sheet. It was live here
+                                            // and did nothing when pressed, which
+                                            // is how a working app reads as
+                                            // broken.
+                                            enabled = item.quantity > 0.0,
+                                        ) {
+                                            Icon(
+                                                Icons.Filled.Remove,
+                                                contentDescription = stringResource(R.string.inv_stock_remove),
+                                            )
+                                        }
                                     }
                                     AssistChip(
                                         // The chip reads as a count, so it
@@ -346,13 +357,15 @@ fun InventoryScreen(
                                             )
                                         },
                                     )
-                                    IconButton(
-                                        onClick = { viewModel.adjustStock(item.id, 1.0, InventoryViewModel.RESTOCKED) },
-                                    ) {
-                                        Icon(
-                                            Icons.Filled.Add,
-                                            contentDescription = stringResource(R.string.inv_stock_add),
-                                        )
+                                    if (canEdit) {
+                                        IconButton(
+                                            onClick = { viewModel.adjustStock(item.id, 1.0, InventoryViewModel.RESTOCKED) },
+                                        ) {
+                                            Icon(
+                                                Icons.Filled.Add,
+                                                contentDescription = stringResource(R.string.inv_stock_add),
+                                            )
+                                        }
                                     }
                                 }
                             },
@@ -374,10 +387,18 @@ fun InventoryScreen(
             item = item,
             movements = movements,
             photoUri = photoByItem[item.id],
-            onAdjust = { delta, reason -> viewModel.adjustStock(item.id, delta, reason) },
-            onEdit = {
-                viewModel.closeDetails()
-                onEditItem(item.id)
+            onAdjust = if (canEdit) {
+                { delta, reason -> viewModel.adjustStock(item.id, delta, reason) }
+            } else {
+                null
+            },
+            onEdit = if (canEdit) {
+                {
+                    viewModel.closeDetails()
+                    onEditItem(item.id)
+                }
+            } else {
+                null
             },
             onDismiss = viewModel::closeDetails,
         )

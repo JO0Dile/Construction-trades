@@ -2969,6 +2969,8 @@
     <string name="sst_col_job">Job</string>
     <!-- The totals row on the printed sheet -->
     <string name="sst_total">All jobs</string>
+    <!-- Under "no jobs yet", for somebody who may not start one -->
+    <string name="proj_started_by_managers">Jobs are started by the owner or a manager.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

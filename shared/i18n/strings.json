@@ -11973,6 +11973,12 @@
       "en": "All jobs",
       "he": "כל העבודות",
       "ar": "جميع الأعمال"
+    },
+    "proj_started_by_managers": {
+      "c": "Under \"no jobs yet\", for somebody who may not start one",
+      "en": "Jobs are started by the owner or a manager.",
+      "he": "עבודות חדשות נפתחות על ידי הבעלים או מנהל.",
+      "ar": "يبدأ المالك أو المدير الأعمال الجديدة."
     }
   },
   "plurals": {

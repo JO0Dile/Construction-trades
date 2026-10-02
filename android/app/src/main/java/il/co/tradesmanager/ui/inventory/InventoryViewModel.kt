@@ -2,10 +2,12 @@ package il.co.tradesmanager.ui.inventory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.audit.Summaries
 import il.co.tradesmanager.data.catalog.WorkStage
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.StockMovementEntity
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,6 +18,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -129,12 +132,26 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
     suspend fun findByBarcode(code: String): InventoryItemEntity? =
         container.inventory.findByBarcode(code)
 
+    /**
+     * Whether the signed-in role may change the stock, not only look at it.
+     *
+     * A finance clerk reads the stock list to price a job; until now the same
+     * screen let them add, count down and delete it, because nothing on it
+     * asked. Asked here, and asked again before every write below, so a
+     * button drawn a moment before the role changed still writes nothing.
+     */
+    val canEdit: StateFlow<Boolean> = container.session.state
+        .map { mayWrite(it) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
     fun adjustStock(itemId: String, delta: Double, reason: String) = viewModelScope.launch {
+        if (!mayWrite(container.session.state.first())) return@launch
         val actor = container.settings.settings.first().actorName
         container.inventory.adjustStock(itemId, delta, reason, actor)
     }
 
     fun delete(itemId: String) = viewModelScope.launch {
+        if (!mayWrite(container.session.state.first())) return@launch
         val actor = container.settings.settings.first().actorName
         container.inventory.delete(itemId, actor)
     }
@@ -149,5 +166,9 @@ class InventoryViewModel(private val container: AppContainer) : ViewModel() {
          */
         const val USED_ON_SITE = Summaries.USED_ON_SITE
         const val RESTOCKED = Summaries.RESTOCKED
+
+        /** Signed in with a role that writes stock. Nobody signed in is nobody's to change. */
+        fun mayWrite(state: SessionRepository.State): Boolean =
+            (state as? SessionRepository.State.SignedIn)?.canWrite(Lens.STUFF) == true
     }
 }

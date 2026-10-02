@@ -13,6 +13,11 @@
           "en": "The hours come from check-ins and check-outs and the injuries from the incident register, so the figures cannot be typed in. Each job has its own row, the worst first, and the sheet prints for a tender or a client's audit. A shift nobody checked out of is counted as sixteen hours, and the page says how many there were.",
           "he": "השעות נלקחות מהכניסות והיציאות והפגיעות מפנקס האירועים, כך שאי אפשר להקליד את המספרים. לכל עבודה שורה משלה, הגרועה ביותר ראשונה, ואפשר להדפיס את הגיליון למכרז או לביקורת של לקוח. משמרת שאף אחד לא יצא ממנה נספרת כ-16 שעות, והדף מציין כמה כאלה היו.",
           "ar": "تُؤخذ الساعات من تسجيلات الدخول والخروج والإصابات من سجل الحوادث، فلا يمكن كتابة الأرقام باليد. لكل مشروع صفّه الخاص، والأسوأ أولًا، ويُطبع الكشف لمناقصة أو لتدقيق العميل. الوردية التي لم يُسجَّل الخروج منها تُحسب 16 ساعة، وتذكر الصفحة عددها."
+        },
+        {
+          "en": "Only the people who may change something are offered the buttons that change it: the stock list is read-only for finance, a new job is started by the owner or a manager, and a job's dates, address, client and parts are changed by whoever plans the work. Every change is checked again as it is saved.",
+          "he": "רק מי שרשאי לשנות משהו מקבל את הכפתורים שמשנים אותו: רשימת המלאי היא לקריאה בלבד עבור הכספים, עבודה חדשה נפתחת על ידי הבעלים או מנהל, ואת התאריכים, הכתובת, המזמין והחלקים של עבודה משנה מי שמתכנן את העבודה. כל שינוי נבדק שוב בזמן השמירה.",
+          "ar": "لا تظهر أزرار التغيير إلا لمن يحق له التغيير: قائمة المخزون للقراءة فقط لقسم المالية، والعمل الجديد يبدؤه المالك أو المدير، وتواريخ العمل وعنوانه وصاحبه وأجزاؤه يغيّرها من يخطط للعمل. ويُفحص كل تغيير مرة أخرى عند حفظه."
         }
       ]
     },

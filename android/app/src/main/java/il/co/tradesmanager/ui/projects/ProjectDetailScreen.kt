@@ -396,9 +396,12 @@ fun ProjectDetailScreen(
                                 modifier = Modifier.clickable { onOpenProject(it.id) },
                             )
                         }
+                        // Where the job is, who it is for and when it runs are
+                        // the plan's. Anybody else reads them; until now a
+                        // tap let them change them too.
                         PlaceAndClient(
                             project = project,
-                            onEdit = { showPlaceEditor = true },
+                            onEdit = { showPlaceEditor = true }.takeIf { canEditPlan },
                         )
                         // Both dates have been columns since the beginning
                         // with nothing writing to either, so the dashboard
@@ -409,13 +412,13 @@ fun ProjectDetailScreen(
                             stringResource(R.string.proj_start),
                             project.startDate?.let { asDate(it, locale) }
                                 ?: stringResource(R.string.proj_no_date),
-                            Modifier.clickable { pickingStart = true },
+                            if (canEditPlan) Modifier.clickable { pickingStart = true } else Modifier,
                         )
                         DetailRow(
                             stringResource(R.string.proj_due),
                             project.dueDate?.let { asDate(it, locale) }
                                 ?: stringResource(R.string.proj_no_date),
-                            Modifier.clickable { pickingDue = true },
+                            if (canEditPlan) Modifier.clickable { pickingDue = true } else Modifier,
                         )
                     }
                 }
@@ -436,7 +439,7 @@ fun ProjectDetailScreen(
                 // Offered only on a whole job. A part that can be broken up is
                 // a tree somebody can bury a floor four taps down; if nesting
                 // deeper is ever needed it should be built on purpose.
-                if (project.parentProjectId == null) {
+                if (project.parentProjectId == null && canEditPlan) {
                     item {
                         TextButton(onClick = { addingPart = true }) {
                             Text(stringResource(R.string.proj_add_part))
@@ -853,7 +856,7 @@ private fun StagePicker(
  * later, and pulling it back out of one is guesswork.
  */
 @Composable
-private fun PlaceAndClient(project: ProjectEntity, onEdit: () -> Unit) {
+private fun PlaceAndClient(project: ProjectEntity, onEdit: (() -> Unit)?) {
     val context = LocalContext.current
     val address = listOfNotNull(
         project.street?.takeIf { it.isNotBlank() },
@@ -895,7 +898,9 @@ private fun PlaceAndClient(project: ProjectEntity, onEdit: () -> Unit) {
                 },
             ) { Text(stringResource(R.string.crew_call)) }
         }
-        TextButton(onClick = onEdit) { Text(stringResource(R.string.action_edit)) }
+        if (onEdit != null) {
+            TextButton(onClick = onEdit) { Text(stringResource(R.string.action_edit)) }
+        }
     }
 }
 

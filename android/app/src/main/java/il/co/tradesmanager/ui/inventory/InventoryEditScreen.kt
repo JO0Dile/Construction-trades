@@ -59,6 +59,9 @@ fun InventoryEditScreen(
     )
     val form by viewModel.form.collectAsStateWithLifecycle()
     val photos by viewModel.photos.collectAsStateWithLifecycle()
+    // Nothing leads here for somebody who may only read the stock; if
+    // something ever does, the form can be read and not saved.
+    val canEdit by viewModel.canEdit.collectAsStateWithLifecycle()
     var viewing by remember { mutableStateOf<PhotoEntity?>(null) }
     val addImage = rememberImageAdder(
         newCameraTarget = viewModel::newCameraTarget,
@@ -111,17 +114,19 @@ fun InventoryEditScreen(
                             .clickable { viewing = photo },
                     )
                 }
-                OutlinedButton(onClick = addImage, modifier = Modifier.size(64.dp)) {
-                    Icon(
-                        Icons.Filled.AddAPhoto,
-                        contentDescription = stringResource(R.string.item_photo),
-                    )
+                if (canEdit) {
+                    OutlinedButton(onClick = addImage, modifier = Modifier.size(64.dp)) {
+                        Icon(
+                            Icons.Filled.AddAPhoto,
+                            contentDescription = stringResource(R.string.item_photo),
+                        )
+                    }
                 }
             }
 
-            Field(form.name, viewModel::setName, R.string.inv_name, isError = form.nameError)
-            Field(form.spec, viewModel::setSpec, R.string.inv_spec, singleLine = false)
-            Field(form.category, viewModel::setCategory, R.string.inv_category)
+            Field(form.name, viewModel::setName, R.string.inv_name, isError = form.nameError, readOnly = !canEdit)
+            Field(form.spec, viewModel::setSpec, R.string.inv_spec, singleLine = false, readOnly = !canEdit)
+            Field(form.category, viewModel::setCategory, R.string.inv_category, readOnly = !canEdit)
 
             Row(Modifier.fillMaxWidth()) {
                 Field(
@@ -130,6 +135,7 @@ fun InventoryEditScreen(
                     labelRes = R.string.inv_quantity,
                     numeric = true,
                     modifier = Modifier.weight(1f).padding(end = 8.dp),
+                    readOnly = !canEdit,
                 )
                 Field(
                     value = form.minStock,
@@ -137,23 +143,24 @@ fun InventoryEditScreen(
                     labelRes = R.string.inv_min_stock,
                     numeric = true,
                     modifier = Modifier.weight(1f),
+                    readOnly = !canEdit,
                 )
             }
 
-            Field(form.unit, viewModel::setUnit, R.string.inv_unit)
-            Field(form.barcode, viewModel::setBarcode, R.string.inv_barcode)
-            Field(form.price, viewModel::setPrice, R.string.inv_price, numeric = true)
-            Field(form.tags, viewModel::setTags, R.string.inv_tags)
+            Field(form.unit, viewModel::setUnit, R.string.inv_unit, readOnly = !canEdit)
+            Field(form.barcode, viewModel::setBarcode, R.string.inv_barcode, readOnly = !canEdit)
+            Field(form.price, viewModel::setPrice, R.string.inv_price, numeric = true, readOnly = !canEdit)
+            Field(form.tags, viewModel::setTags, R.string.inv_tags, readOnly = !canEdit)
 
             Button(
                 onClick = { viewModel.save { id -> onDone(id) } },
-                enabled = !form.nameError,
+                enabled = canEdit && !form.nameError,
                 modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
             ) {
                 Text(stringResource(R.string.action_save))
             }
 
-            if (itemId != null) {
+            if (itemId != null && canEdit) {
                 OutlinedButton(
                     onClick = { viewModel.delete { onDone(null) } },
                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
@@ -173,7 +180,7 @@ fun InventoryEditScreen(
             onDelete = {
                 viewModel.deletePhoto(photo)
                 viewing = null
-            },
+            }.takeIf { canEdit },
             onDismiss = { viewing = null },
         )
     }
@@ -188,12 +195,14 @@ private fun Field(
     numeric: Boolean = false,
     singleLine: Boolean = true,
     isError: Boolean = false,
+    readOnly: Boolean = false,
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(stringResource(labelRes)) },
         singleLine = singleLine,
+        readOnly = readOnly,
         isError = isError,
         supportingText = if (isError) {
             { Text(stringResource(R.string.error_required)) }

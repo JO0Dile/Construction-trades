@@ -118,6 +118,16 @@ class AccessTest {
     }
 
     @Test
+    fun `only an owner or a manager starts a job, and only those on the stock change it`() {
+        // The job list and the stock list are both shown to more people than
+        // may change them: the buttons ask these, and so does every write.
+        assertEquals(setOf(Role.OWNER, Role.MANAGER), Role.entries.filter { it.canManageJobs }.toSet())
+        assertEquals(setOf(Role.OWNER, Role.MANAGER, Role.WORKER), Role.entries.filter { it.canWrite(Lens.STUFF) }.toSet())
+        assertEquals(setOf(Role.OWNER, Role.MANAGER, Role.WORKER), Role.entries.filter { it.canWrite(Lens.PLAN) }.toSet())
+        assertTrue(Role.FINANCE.canRead(Lens.STUFF))
+    }
+
+    @Test
     fun `access is ordered so a comparison is the whole check`() {
         assertTrue(Access.WRITE > Access.READ)
         assertTrue(Access.READ > Access.NONE)

@@ -2968,3 +2968,5 @@
 "sst_col_job" = "עבודה";
 /* The totals row on the printed sheet */
 "sst_total" = "כל העבודות";
+/* Under "no jobs yet", for somebody who may not start one */
+"proj_started_by_managers" = "עבודות חדשות נפתחות על ידי הבעלים או מנהל.";

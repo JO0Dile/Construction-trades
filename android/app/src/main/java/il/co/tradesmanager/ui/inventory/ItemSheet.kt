@@ -67,8 +67,10 @@ fun ItemSheet(
     item: InventoryItemEntity,
     movements: List<StockMovementEntity>,
     photoUri: String?,
-    onAdjust: (delta: Double, reason: String) -> Unit,
-    onEdit: () -> Unit,
+    /** Null for somebody who may look at the stock and not change it: the count is shown without its buttons. */
+    onAdjust: ((delta: Double, reason: String) -> Unit)?,
+    /** Null for the same reason, and the Edit button is not drawn. */
+    onEdit: (() -> Unit)?,
     onDismiss: () -> Unit,
 ) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
@@ -124,17 +126,19 @@ fun ItemSheet(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                FilledTonalIconButton(
-                    onClick = { onAdjust(-1.0, InventoryViewModel.USED_ON_SITE) },
-                    // The repository clamps at zero, so pressing this on an
-                    // empty shelf was already harmless — but silently
-                    // harmless, which reads as broken. Now it is visibly off.
-                    enabled = item.quantity > 0.0,
-                ) {
-                    Icon(
-                        Icons.Filled.Remove,
-                        contentDescription = stringResource(R.string.inv_stock_remove),
-                    )
+                if (onAdjust != null) {
+                    FilledTonalIconButton(
+                        onClick = { onAdjust(-1.0, InventoryViewModel.USED_ON_SITE) },
+                        // The repository clamps at zero, so pressing this on an
+                        // empty shelf was already harmless — but silently
+                        // harmless, which reads as broken. Now it is visibly off.
+                        enabled = item.quantity > 0.0,
+                    ) {
+                        Icon(
+                            Icons.Filled.Remove,
+                            contentDescription = stringResource(R.string.inv_stock_remove),
+                        )
+                    }
                 }
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -150,13 +154,15 @@ fun ItemSheet(
                         color = muted,
                     )
                 }
-                FilledTonalIconButton(
-                    onClick = { onAdjust(1.0, InventoryViewModel.RESTOCKED) },
-                ) {
-                    Icon(
-                        Icons.Filled.Add,
-                        contentDescription = stringResource(R.string.inv_stock_add),
-                    )
+                if (onAdjust != null) {
+                    FilledTonalIconButton(
+                        onClick = { onAdjust(1.0, InventoryViewModel.RESTOCKED) },
+                    ) {
+                        Icon(
+                            Icons.Filled.Add,
+                            contentDescription = stringResource(R.string.inv_stock_add),
+                        )
+                    }
                 }
             }
 
@@ -215,8 +221,10 @@ fun ItemSheet(
                     Text(stringResource(R.string.action_close))
                 }
                 Spacer(Modifier.width(8.dp))
-                FilledTonalButton(onClick = onEdit) {
-                    Text(stringResource(R.string.inv_edit_item))
+                if (onEdit != null) {
+                    FilledTonalButton(onClick = onEdit) {
+                        Text(stringResource(R.string.inv_edit_item))
+                    }
                 }
             }
             Spacer(Modifier.height(20.dp))

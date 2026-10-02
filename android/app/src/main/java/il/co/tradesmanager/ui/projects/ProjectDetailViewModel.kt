@@ -94,7 +94,7 @@ class ProjectDetailViewModel(
      * that turns out to be needed it should be built deliberately.
      */
     fun addPart(name: String, kindLabel: String) = viewModelScope.launch {
-        if (name.isBlank()) return@launch
+        if (name.isBlank() || !mayWrite(Lens.PLAN)) return@launch
         container.projects.createBlank(
             name = name,
             kindLabel = kindLabel,
@@ -139,6 +139,7 @@ class ProjectDetailViewModel(
      * they start.
      */
     fun onCaptured(photoId: String) = viewModelScope.launch {
+        if (!mayWrite(Lens.EVIDENCE)) return@launch
         val actor = container.settings.settings.first().actorName
         container.photos.recordCameraPhoto(
             id = photoId,
@@ -149,6 +150,7 @@ class ProjectDetailViewModel(
     }
 
     fun onPicked(uri: Uri) = viewModelScope.launch {
+        if (!mayWrite(Lens.EVIDENCE)) return@launch
         val actor = container.settings.settings.first().actorName
         container.photos.importPhoto(
             source = uri,
@@ -173,6 +175,7 @@ class ProjectDetailViewModel(
      * open-ended until somebody signs something.
      */
     fun setDates(startDate: Long?, dueDate: Long?) = viewModelScope.launch {
+        if (!mayWrite(Lens.PLAN)) return@launch
         val project = state.value.project ?: return@launch
         container.projects.save(
             project.copy(
@@ -199,6 +202,7 @@ class ProjectDetailViewModel(
         clientName: String,
         clientPhone: String,
     ) = viewModelScope.launch {
+        if (!mayWrite(Lens.PLAN)) return@launch
         val project = state.value.project ?: return@launch
         container.projects.save(
             project.copy(
@@ -246,6 +250,7 @@ class ProjectDetailViewModel(
 
     fun addMaterial(label: String, unit: String, quantity: Double, catalogItemId: String?) =
         viewModelScope.launch {
+            if (!mayWrite(Lens.STUFF)) return@launch
             val actor = container.settings.settings.first().actorName
             container.projects.addMaterial(
                 projectId = projectId,
@@ -258,10 +263,12 @@ class ProjectDetailViewModel(
         }
 
     fun removeMaterial(material: ProjectMaterialEntity) = viewModelScope.launch {
+        if (!mayWrite(Lens.STUFF)) return@launch
         container.projects.removeMaterial(material, container.settings.settings.first().actorName)
     }
 
     fun addTask(title: String, stageId: String? = null) = viewModelScope.launch {
+        if (!mayWrite(Lens.PLAN)) return@launch
         container.projects.addTask(
             projectId = projectId,
             title = title,
@@ -277,6 +284,7 @@ class ProjectDetailViewModel(
         container.scopes.stage(id)?.names?.resolve(languageTag)
 
     fun setTaskStage(task: ProjectTaskEntity, stageId: String?) = viewModelScope.launch {
+        if (!mayWrite(Lens.PLAN)) return@launch
         container.projects.setTaskStage(
             task = task,
             stageId = stageId,
@@ -286,11 +294,21 @@ class ProjectDetailViewModel(
     }
 
     fun removeTask(task: ProjectTaskEntity) = viewModelScope.launch {
+        if (!mayWrite(Lens.PLAN)) return@launch
         container.projects.removeTask(task, container.settings.settings.first().actorName)
     }
 
     fun setTaskDone(taskId: String, done: Boolean) = viewModelScope.launch {
+        if (!mayWrite(Lens.PLAN)) return@launch
         val actor = container.settings.settings.first().actorName
         container.projects.setTaskDone(taskId, done, actor)
     }
+
+    /**
+     * Asked again at the moment of writing, whatever the screen drew: the
+     * job page hides what a role may not change, and this is what makes
+     * hiding it more than a suggestion.
+     */
+    private suspend fun mayWrite(lens: Lens): Boolean =
+        (container.session.state.first() as? SessionRepository.State.SignedIn)?.canWrite(lens) == true
 }

@@ -2249,6 +2249,7 @@
     <string name="sst_how">المعدل هو عدد الإصابات مضروبًا في مليون، مقسومًا على ساعات العمل. تُؤخذ الساعات من تسجيلات الدخول والخروج؛ والوردية التي لم تُغلق بعد لا تُحسب. هذا مقياس شائع في القطاع، وليس تعريفًا من أي نظام، ولا يحسب إلا ما سُجّل في التطبيق.</string>
     <string name="sst_col_job">العمل</string>
     <string name="sst_total">جميع الأعمال</string>
+    <string name="proj_started_by_managers">يبدأ المالك أو المدير الأعمال الجديدة.</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>

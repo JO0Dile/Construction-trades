@@ -2249,6 +2249,7 @@
     <string name="sst_how">שיעור הוא מספר הפגיעות כפול מיליון, חלקי שעות העבודה. השעות נלקחות מהכניסות והיציאות; משמרת שעדיין פתוחה אינה נספרת עדיין. זהו מדד מקובל בענף, לא הגדרה מתוך תקנה כלשהי, והוא סופר רק את מה שנרשם באפליקציה.</string>
     <string name="sst_col_job">עבודה</string>
     <string name="sst_total">כל העבודות</string>
+    <string name="proj_started_by_managers">עבודות חדשות נפתחות על ידי הבעלים או מנהל.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
