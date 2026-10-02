@@ -490,6 +490,14 @@
       "he": "מספר הזהות נקבע",
       "ar": "حُدّد رقم الهوية"
     },
+    "inc_placed": {
+      "arguments": [
+        "job"
+      ],
+      "en": "Incident placed on the job %1$s",
+      "he": "האירוע שויך לעבודה %1$s",
+      "ar": "رُبط الحادث بالعمل %1$s"
+    },
     "induction_signed": {
       "arguments": [],
       "en": "Safety induction signed",

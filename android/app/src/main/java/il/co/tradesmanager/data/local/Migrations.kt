@@ -452,6 +452,13 @@ object Migrations {
         }
     }
 
+    val MIGRATION_48_49 = object : Migration(48, 49) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_48_49.forEach(db::execSQL)
+            BACKFILL_48_49.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -500,6 +507,7 @@ object Migrations {
         MIGRATION_45_46,
         MIGRATION_46_47,
         MIGRATION_47_48,
+        MIGRATION_48_49,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1253,5 +1261,24 @@ object Migrations {
             "`notes` TEXT, `addedAt` INTEGER NOT NULL, `addedByName` TEXT NOT NULL, `updatedAt` INTEGER NOT NULL, " +
             "`removedAt` INTEGER, `removedByName` TEXT, PRIMARY KEY(`id`))",
         "CREATE INDEX IF NOT EXISTS `index_job_contacts_projectId` ON `job_contacts` (`projectId`)",
+    )
+
+    val SQL_48_49: List<String> = listOf(
+        "ALTER TABLE `incidents` ADD COLUMN `companyId` TEXT",
+        "CREATE INDEX IF NOT EXISTS `index_incidents_companyId` ON `incidents` (`companyId`)",
+    )
+
+    /**
+     * Data, not schema. An incident already on a job takes that job's company
+     * -- null for a sole trader's own job. Every other one, which is every
+     * incident the app filed before it asked for a job, cannot be placed and
+     * is marked as such (core.safety.Incidents.UNATTRIBUTED), so it stays in
+     * every register until somebody says which job it was on.
+     */
+    val BACKFILL_48_49: List<String> = listOf(
+        "UPDATE incidents SET companyId = CASE " +
+            "WHEN EXISTS (SELECT 1 FROM projects WHERE projects.id = incidents.projectId) " +
+            "THEN (SELECT companyId FROM projects WHERE projects.id = incidents.projectId) " +
+            "ELSE '' END",
     )
 }

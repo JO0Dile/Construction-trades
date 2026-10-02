@@ -785,6 +785,17 @@ audit. A shift nobody checked out of counts the roll call's sixteen hours,
 not the weekend, and the page says how many did. Called a common industry
 measure on the page itself, not a regulator's definition.
 
+Building it showed that every incident until then had been filed with no
+job and no company, so the weekly report had never counted one and a phone
+signed in to two firms showed each the other's accidents. A report now says
+which job it happened on, offered the job the reporter is checked in to,
+and carries the company; one filed before can be placed on its job once,
+from the register, and is audited. Somebody hurt on no job is still in the
+company's total. The same pass found the stock list, the job list and a
+job's details open to change by roles that may only read them, and the
+purchase price and incident cost shown to roles that see no money; each is
+now drawn only for those it is for, and checked again at the write.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

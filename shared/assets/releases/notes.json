@@ -15,9 +15,14 @@
           "ar": "تُؤخذ الساعات من تسجيلات الدخول والخروج والإصابات من سجل الحوادث، فلا يمكن كتابة الأرقام باليد. لكل مشروع صفّه الخاص، والأسوأ أولًا، ويُطبع الكشف لمناقصة أو لتدقيق العميل. الوردية التي لم يُسجَّل الخروج منها تُحسب 16 ساعة، وتذكر الصفحة عددها."
         },
         {
-          "en": "Only the people who may change something are offered the buttons that change it: the stock list is read-only for finance, a new job is started by the owner or a manager, and a job's dates, address, client and parts are changed by whoever plans the work. What an item cost is shown only to those who see the money. Every change is checked again as it is saved.",
-          "he": "רק מי שרשאי לשנות משהו מקבל את הכפתורים שמשנים אותו: רשימת המלאי היא לקריאה בלבד עבור הכספים, עבודה חדשה נפתחת על ידי הבעלים או מנהל, ואת התאריכים, הכתובת, המזמין והחלקים של עבודה משנה מי שמתכנן את העבודה. מחיר הקנייה של פריט מוצג רק למי שרואה את הכספים. כל שינוי נבדק שוב בזמן השמירה.",
-          "ar": "لا تظهر أزرار التغيير إلا لمن يحق له التغيير: قائمة المخزون للقراءة فقط لقسم المالية، والعمل الجديد يبدؤه المالك أو المدير، وتواريخ العمل وعنوانه وصاحبه وأجزاؤه يغيّرها من يخطط للعمل. ولا يظهر سعر شراء الصنف إلا لمن يطّلع على المال. ويُفحص كل تغيير مرة أخرى عند حفظه."
+          "en": "Only the people who may change something are offered the buttons that change it: the stock list is read-only for finance, a new job is started by the owner or a manager, and a job's dates, address, client and parts are changed by whoever plans the work. What an item or an incident cost is shown only to those who see the money. Every change is checked again as it is saved.",
+          "he": "רק מי שרשאי לשנות משהו מקבל את הכפתורים שמשנים אותו: רשימת המלאי היא לקריאה בלבד עבור הכספים, עבודה חדשה נפתחת על ידי הבעלים או מנהל, ואת התאריכים, הכתובת, המזמין והחלקים של עבודה משנה מי שמתכנן את העבודה. מחיר הקנייה של פריט ועלות של אירוע מוצגים רק למי שרואה את הכספים. כל שינוי נבדק שוב בזמן השמירה.",
+          "ar": "لا تظهر أزرار التغيير إلا لمن يحق له التغيير: قائمة المخزون للقراءة فقط لقسم المالية، والعمل الجديد يبدؤه المالك أو المدير، وتواريخ العمل وعنوانه وصاحبه وأجزاؤه يغيّرها من يخطط للعمل. ولا يظهر سعر شراء الصنف وكلفة الحادث إلا لمن يطّلع على المال. ويُفحص كل تغيير مرة أخرى عند حفظه."
+        },
+        {
+          "en": "An incident report now says which job it happened on — the job you are checked in to is chosen for you — and belongs to the company you work for, so the weekly report and the statistics count it and another firm on the same phone does not see it. A report filed before this can be given its job once, from the register.",
+          "he": "דיווח על אירוע מציין עכשיו באיזו עבודה הוא קרה — העבודה שבה נרשמה כניסתך נבחרת עבורך — ושייך לחברה שבה אתה עובד, כך שהדוח השבועי והסטטיסטיקה סופרים אותו, וחברה אחרת באותו טלפון אינה רואה אותו. לדיווח שהוגש לפני כן אפשר לשייך עבודה פעם אחת, מתוך הפנקס.",
+          "ar": "صار بلاغ الحادث يذكر في أي عمل وقع — ويُختار لك العمل الذي سجّلت دخولك إليه — وينتمي إلى الشركة التي تعمل لديها، فيحسبه التقرير الأسبوعي والإحصاءات، ولا تراه شركة أخرى على الهاتف نفسه. ويمكن ربط البلاغ المقدَّم قبل ذلك بعمله مرة واحدة، من السجل."
         }
       ]
     },

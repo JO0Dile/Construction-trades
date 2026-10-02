@@ -57,6 +57,18 @@ object Incidents {
         compareByDescending<T> { occurredAt(it) }.thenByDescending { severity(it).ordinal },
     )
 
+    /**
+     * The company of an incident recorded before incidents carried one.
+     *
+     * Every incident until 0.50 was filed with neither a job nor a company,
+     * so nothing can say whose it was. Such a report stays in every register
+     * on the phone, as it always was, and is counted in nobody's statistics
+     * until somebody says which job it happened on -- which gives it that
+     * job's company. Null still means what it means on a job: a sole
+     * trader's own record.
+     */
+    const val UNATTRIBUTED = ""
+
     /** Stored as the enum name; unknown text reads as the least assuming value. */
     fun parse(stored: String?): Severity =
         Severity.entries.firstOrNull { it.name == stored } ?: Severity.NEAR_MISS

@@ -11979,6 +11979,46 @@
       "en": "Jobs are started by the owner or a manager.",
       "he": "עבודות חדשות נפתחות על ידי הבעלים או מנהל.",
       "ar": "يبدأ المالك أو المدير الأعمال الجديدة."
+    },
+    "summary_inc_placed": {
+      "en": "Incident placed on the job %1$s",
+      "he": "האירוע שויך לעבודה %1$s",
+      "ar": "رُبط الحادث بالعمل %1$s"
+    },
+    "inc_where": {
+      "c": "Above the job chips on a new incident report",
+      "en": "Where it happened",
+      "he": "איפה זה קרה",
+      "ar": "أين حدث ذلك"
+    },
+    "inc_no_job": {
+      "c": "An incident, or a row of statistics, on no job: in the yard, on the road",
+      "en": "Not on a job",
+      "he": "לא באף עבודה",
+      "ar": "ليس في أي عمل"
+    },
+    "inc_place": {
+      "c": "Button on an incident filed with no job",
+      "en": "Which job?",
+      "he": "איזו עבודה?",
+      "ar": "أي عمل؟"
+    },
+    "inc_place_title": {
+      "c": "Dialog title",
+      "en": "Which job did it happen on?",
+      "he": "באיזו עבודה זה קרה?",
+      "ar": "في أي عمل حدث ذلك؟"
+    },
+    "inc_place_hint": {
+      "en": "Once placed, it is counted in that job's weekly report and in the safety statistics. It cannot be moved afterwards.",
+      "he": "לאחר השיוך הוא נספר בדוח השבועי של אותה עבודה ובסטטיסטיקת הבטיחות. אי אפשר להעביר אותו אחר כך.",
+      "ar": "بعد ربطه يُحسب في التقرير الأسبوعي لذلك العمل وفي إحصاءات السلامة. ولا يمكن نقله بعد ذلك."
+    },
+    "inc_place_refused": {
+      "c": "Above the register, when placing a report on a job did not happen",
+      "en": "That report already has a job, or is no longer there.",
+      "he": "לדיווח הזה כבר יש עבודה, או שהוא כבר לא קיים.",
+      "ar": "هذا البلاغ مرتبط بعمل بالفعل، أو لم يعد موجودًا."
     }
   },
   "plurals": {

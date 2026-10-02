@@ -135,7 +135,14 @@ object SafetyStats {
     data class Sheet(
         /** Worst first: most injuries, then most hours. Jobs with nothing in the period are left out. */
         val rows: List<Row>,
+        /** The rows, and [offJob]. */
         val total: Figures,
+        /**
+         * Incidents the company recorded on no job: in the yard, on the road.
+         * Somebody hurt there was still hurt at work, so they are in the
+         * total; no hours are booked to no job, so this row has no rate.
+         */
+        val offJob: Figures = Figures(),
         /** When the last serious injury or death on any of the jobs happened, ever; null if none was recorded. */
         val lastSeriousAt: Long? = null,
     )
@@ -155,6 +162,7 @@ object SafetyStats {
         violations: List<Tally>,
         talks: List<Tally>,
         lastSeriousAt: Long? = null,
+        offJobIncidents: List<Tally> = emptyList(),
     ): Sheet {
         val parentOf = jobs.associate { it.id to it.parentId }
         val byRow = HashMap<String, Figures>()
@@ -170,16 +178,7 @@ object SafetyStats {
                 add(shift.projectId) { it.copy(workedMillis = it.workedMillis + counted, shifts = it.shifts + 1, shiftsCapped = it.shiftsCapped + capped) }
             }
         }
-        incidents.forEach { tally ->
-            add(tally.projectId) {
-                when (Incidents.parse(tally.kind)) {
-                    Incidents.Severity.NEAR_MISS -> it.copy(nearMisses = it.nearMisses + tally.total)
-                    Incidents.Severity.MINOR -> it.copy(minorInjuries = it.minorInjuries + tally.total)
-                    Incidents.Severity.SERIOUS -> it.copy(seriousInjuries = it.seriousInjuries + tally.total)
-                    Incidents.Severity.FATAL -> it.copy(fatalities = it.fatalities + tally.total)
-                }
-            }
-        }
+        incidents.forEach { tally -> add(tally.projectId) { it.counting(tally) } }
         violations.forEach { tally -> add(tally.projectId) { it.copy(violations = it.violations + tally.total) } }
         talks.forEach { tally -> add(tally.projectId) { it.copy(talksHeld = it.talksHeld + tally.total) } }
         val rows = byRow.filterValues { !it.isEmpty }
@@ -189,7 +188,21 @@ object SafetyStats {
                     .thenByDescending { it.figures.workedMillis }
                     .thenBy { it.projectId },
             )
-        return Sheet(rows = rows, total = rows.fold(Figures()) { sum, row -> sum + row.figures }, lastSeriousAt = lastSeriousAt)
+        val offJob = offJobIncidents.fold(Figures()) { sum, tally -> sum.counting(tally) }
+        return Sheet(
+            rows = rows,
+            total = rows.fold(offJob) { sum, row -> sum + row.figures },
+            offJob = offJob,
+            lastSeriousAt = lastSeriousAt,
+        )
+    }
+
+    /** One register line of incidents added in, by the severity it was filed at. */
+    private fun Figures.counting(tally: Tally): Figures = when (Incidents.parse(tally.kind)) {
+        Incidents.Severity.NEAR_MISS -> copy(nearMisses = nearMisses + tally.total)
+        Incidents.Severity.MINOR -> copy(minorInjuries = minorInjuries + tally.total)
+        Incidents.Severity.SERIOUS -> copy(seriousInjuries = seriousInjuries + tally.total)
+        Incidents.Severity.FATAL -> copy(fatalities = fatalities + tally.total)
     }
 
     /**

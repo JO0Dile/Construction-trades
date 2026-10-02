@@ -140,6 +140,24 @@ class SafetyStatsTest {
     }
 
     @Test
+    fun `incidents on no job count in the total and have no rate of their own`() {
+        val sheet = SafetyStats.sheetOf(
+            jobs = listOf(SafetyStats.Job("a", null)),
+            window = 0L until 1_000 * hour,
+            shifts = listOf(SafetyStats.Shift("a", 0, 10 * hour)),
+            incidents = emptyList(),
+            violations = emptyList(),
+            talks = emptyList(),
+            offJobIncidents = listOf(SafetyStats.Tally(null, "MINOR", 2)),
+        )
+        assertEquals(2, sheet.offJob.minorInjuries)
+        assertNull(sheet.offJob.injuryRate)
+        assertEquals(2, sheet.total.injuries)
+        assertEquals(10 * hour, sheet.total.workedMillis)
+        assertEquals(listOf("a"), sheet.rows.map { it.projectId })
+    }
+
+    @Test
     fun `an unknown severity is counted as the least assuming one`() {
         val sheet = SafetyStats.sheetOf(
             jobs = listOf(SafetyStats.Job("a", null)),

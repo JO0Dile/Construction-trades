@@ -2971,6 +2971,18 @@
     <string name="sst_total">All jobs</string>
     <!-- Under "no jobs yet", for somebody who may not start one -->
     <string name="proj_started_by_managers">Jobs are started by the owner or a manager.</string>
+    <string name="summary_inc_placed">Incident placed on the job %1$s</string>
+    <!-- Above the job chips on a new incident report -->
+    <string name="inc_where">Where it happened</string>
+    <!-- An incident, or a row of statistics, on no job: in the yard, on the road -->
+    <string name="inc_no_job">Not on a job</string>
+    <!-- Button on an incident filed with no job -->
+    <string name="inc_place">Which job?</string>
+    <!-- Dialog title -->
+    <string name="inc_place_title">Which job did it happen on?</string>
+    <string name="inc_place_hint">Once placed, it is counted in that job\'s weekly report and in the safety statistics. It cannot be moved afterwards.</string>
+    <!-- Above the register, when placing a report on a job did not happen -->
+    <string name="inc_place_refused">That report already has a job, or is no longer there.</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

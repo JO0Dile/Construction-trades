@@ -2970,3 +2970,15 @@
 "sst_total" = "כל העבודות";
 /* Under "no jobs yet", for somebody who may not start one */
 "proj_started_by_managers" = "עבודות חדשות נפתחות על ידי הבעלים או מנהל.";
+"summary_inc_placed" = "האירוע שויך לעבודה %1$s";
+/* Above the job chips on a new incident report */
+"inc_where" = "איפה זה קרה";
+/* An incident, or a row of statistics, on no job: in the yard, on the road */
+"inc_no_job" = "לא באף עבודה";
+/* Button on an incident filed with no job */
+"inc_place" = "איזו עבודה?";
+/* Dialog title */
+"inc_place_title" = "באיזו עבודה זה קרה?";
+"inc_place_hint" = "לאחר השיוך הוא נספר בדוח השבועי של אותה עבודה ובסטטיסטיקת הבטיחות. אי אפשר להעביר אותו אחר כך.";
+/* Above the register, when placing a report on a job did not happen */
+"inc_place_refused" = "לדיווח הזה כבר יש עבודה, או שהוא כבר לא קיים.";

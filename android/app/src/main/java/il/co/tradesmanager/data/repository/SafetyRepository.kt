@@ -143,7 +143,23 @@ class SafetyRepository(
         )
     }
 
-    fun observeIncidents(): Flow<List<IncidentEntity>> = safetyDao.observeIncidents()
+    fun observeIncidents(companyId: String?): Flow<List<IncidentEntity>> = safetyDao.observeIncidents(companyId)
+
+    /**
+     * Says which job an incident filed without one happened on, and so whose
+     * record it is: the job's company comes with it.
+     *
+     * Only for a report with no job yet. Moving one from a job to another is
+     * rewriting where an accident happened, which is not a correction this
+     * register offers. False when the report is gone or already placed.
+     */
+    suspend fun placeIncident(incidentId: String, projectId: String, companyId: String?, jobName: String, byName: String): Boolean {
+        val incident = safetyDao.incident(incidentId) ?: return false
+        if (incident.projectId != null) return false
+        safetyDao.upsertIncident(incident.copy(projectId = projectId, companyId = companyId))
+        audit.record("incident", incident.id, AuditTrail.Action.UPDATE, byName, Summary.of(Summaries.INC_PLACED, jobName))
+        return true
+    }
 
     private companion object {
         const val ENTITY = "checklist_run"

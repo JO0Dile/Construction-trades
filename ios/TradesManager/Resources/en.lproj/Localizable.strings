@@ -2970,3 +2970,15 @@
 "sst_total" = "All jobs";
 /* Under "no jobs yet", for somebody who may not start one */
 "proj_started_by_managers" = "Jobs are started by the owner or a manager.";
+"summary_inc_placed" = "Incident placed on the job %1$s";
+/* Above the job chips on a new incident report */
+"inc_where" = "Where it happened";
+/* An incident, or a row of statistics, on no job: in the yard, on the road */
+"inc_no_job" = "Not on a job";
+/* Button on an incident filed with no job */
+"inc_place" = "Which job?";
+/* Dialog title */
+"inc_place_title" = "Which job did it happen on?";
+"inc_place_hint" = "Once placed, it is counted in that job's weekly report and in the safety statistics. It cannot be moved afterwards.";
+/* Above the register, when placing a report on a job did not happen */
+"inc_place_refused" = "That report already has a job, or is no longer there.";

@@ -64,4 +64,29 @@ interface SafetyStatsDao {
     /** The severity names are core.safety.Incidents.Severity's, as stored. */
     @Query("SELECT MAX(occurredAt) FROM incidents WHERE projectId IN (:projectIds) AND severity IN ('SERIOUS', 'FATAL')")
     suspend fun lastSerious(projectIds: List<String>): Long?
+
+    /**
+     * The company's incidents that are on no job -- reported in the yard,
+     * on the road, at the office -- by severity. Null [companyId] is a sole
+     * trader's own. Those filed before incidents carried a company are
+     * nobody's until placed on a job, and are not here.
+     */
+    @Query(
+        """
+        SELECT projectId, severity AS kind, COUNT(*) AS total FROM incidents
+        WHERE projectId IS NULL AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+          AND occurredAt >= :from AND occurredAt < :to
+        GROUP BY severity
+        """,
+    )
+    suspend fun offJobIncidents(companyId: String?, from: Long, to: Long): List<JobTally>
+
+    @Query(
+        """
+        SELECT MAX(occurredAt) FROM incidents
+        WHERE projectId IS NULL AND ((:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId)
+          AND severity IN ('SERIOUS', 'FATAL')
+        """,
+    )
+    suspend fun lastSeriousOffJob(companyId: String?): Long?
 }

@@ -44,6 +44,20 @@ interface SafetyDao {
     @Upsert
     suspend fun upsertIncident(incident: IncidentEntity)
 
-    @Query("SELECT * FROM incidents ORDER BY occurredAt DESC LIMIT 200")
-    fun observeIncidents(): Flow<List<IncidentEntity>>
+    /**
+     * The register for one company, or for a sole trader when [companyId] is
+     * null, with the reports filed before incidents carried a company
+     * (marked '') in every register, as they always were.
+     */
+    @Query(
+        """
+        SELECT * FROM incidents
+        WHERE (:companyId IS NULL AND companyId IS NULL) OR companyId = :companyId OR companyId = ''
+        ORDER BY occurredAt DESC LIMIT 200
+        """,
+    )
+    fun observeIncidents(companyId: String?): Flow<List<IncidentEntity>>
+
+    @Query("SELECT * FROM incidents WHERE id = :id")
+    suspend fun incident(id: String): IncidentEntity?
 }

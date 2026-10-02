@@ -11,20 +11,23 @@ class SafetyStatsRepository(private val dao: SafetyStatsDao) {
 
     /**
      * The sheet for [jobs] -- the company's own, which the caller passes --
-     * over [span]. Null for a role that may not read the site's record: the
-     * figures are not counted for it at all.
+     * and for [companyId]'s incidents on no job, over [span]. Null for a role
+     * that may not read the site's record: the figures are not counted for it
+     * at all.
      */
     suspend fun sheet(
         role: Role,
+        companyId: String?,
         jobs: List<SafetyStats.Job>,
         span: SafetyStats.Span,
         zone: ZoneId = ZoneId.systemDefault(),
     ): SafetyStats.Sheet? {
         if (!mayRead(role)) return null
-        if (jobs.isEmpty()) return SafetyStats.Sheet(rows = emptyList(), total = SafetyStats.Figures())
         val window = SafetyStats.window(span, zone)
         val from = window.first
         val to = window.last + 1
+        val offJob = dao.offJobIncidents(companyId, from, to).map { SafetyStats.Tally(null, it.kind, it.total) }
+        val lastSeriousOffJob = dao.lastSeriousOffJob(companyId)
         // SQLite caps the number of values one query may be handed, so a
         // company with a great many jobs is asked about them in batches.
         val batches = jobs.map { it.id }.distinct().chunked(BATCH)
@@ -36,8 +39,8 @@ class SafetyStatsRepository(private val dao: SafetyStatsDao) {
             .map { SafetyStats.Tally(it.projectId, null, it.total) }
         val talks = batches.flatMap { ids -> dao.talks(ids, from, to) }
             .map { SafetyStats.Tally(it.projectId, null, it.total) }
-        val lastSerious = batches.mapNotNull { ids -> dao.lastSerious(ids) }.maxOrNull()
-        return SafetyStats.sheetOf(jobs, window, shifts, incidents, violations, talks, lastSerious)
+        val lastSerious = (batches.mapNotNull { ids -> dao.lastSerious(ids) } + listOfNotNull(lastSeriousOffJob)).maxOrNull()
+        return SafetyStats.sheetOf(jobs, window, shifts, incidents, violations, talks, lastSerious, offJob)
     }
 
     companion object {

@@ -149,31 +149,35 @@ fun SafetyStatsScreen(
                     }
                     HorizontalDivider()
                     Text(stringResource(R.string.sst_by_job), style = MaterialTheme.typography.titleSmall)
-                    if (current.rows.isEmpty()) {
+                    if (current.rows.isEmpty() && current.offJob.isEmpty) {
                         Text(stringResource(R.string.sst_nothing), style = MaterialTheme.typography.bodyMedium)
                     } else {
-                        current.rows.forEach { row ->
-                            Card(Modifier.fillMaxWidth()) {
-                                Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                                    Text(names[row.projectId].orEmpty(), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                                    Text(
-                                        stringResource(
-                                            R.string.sst_row_line,
-                                            wholeHours(row.figures, locale),
-                                            row.figures.injuries.toString(),
-                                            rateText(row.figures.injuryRate, locale) ?: stringResource(R.string.sst_no_hours),
-                                            row.figures.nearMisses.toString(),
-                                        ),
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = if (row.figures.injuries > 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
-                                    )
-                                }
-                            }
-                        }
+                        current.rows.forEach { row -> JobCard(names[row.projectId].orEmpty(), row.figures, locale) }
+                        if (!current.offJob.isEmpty) JobCard(stringResource(R.string.inc_no_job), current.offJob, locale)
                     }
                     Text(stringResource(R.string.sst_how), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun JobCard(name: String, figures: SafetyStats.Figures, locale: Locale) {
+    Card(Modifier.fillMaxWidth()) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            Text(name, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+            Text(
+                stringResource(
+                    R.string.sst_row_line,
+                    wholeHours(figures, locale),
+                    figures.injuries.toString(),
+                    rateText(figures.injuryRate, locale) ?: stringResource(R.string.sst_no_hours),
+                    figures.nearMisses.toString(),
+                ),
+                style = MaterialTheme.typography.bodyMedium,
+                color = if (figures.injuries > 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
+            )
         }
     }
 }

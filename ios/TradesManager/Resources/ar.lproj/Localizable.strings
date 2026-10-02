@@ -2970,3 +2970,15 @@
 "sst_total" = "جميع الأعمال";
 /* Under "no jobs yet", for somebody who may not start one */
 "proj_started_by_managers" = "يبدأ المالك أو المدير الأعمال الجديدة.";
+"summary_inc_placed" = "رُبط الحادث بالعمل %1$s";
+/* Above the job chips on a new incident report */
+"inc_where" = "أين حدث ذلك";
+/* An incident, or a row of statistics, on no job: in the yard, on the road */
+"inc_no_job" = "ليس في أي عمل";
+/* Button on an incident filed with no job */
+"inc_place" = "أي عمل؟";
+/* Dialog title */
+"inc_place_title" = "في أي عمل حدث ذلك؟";
+"inc_place_hint" = "بعد ربطه يُحسب في التقرير الأسبوعي لذلك العمل وفي إحصاءات السلامة. ولا يمكن نقله بعد ذلك.";
+/* Above the register, when placing a report on a job did not happen */
+"inc_place_refused" = "هذا البلاغ مرتبط بعمل بالفعل، أو لم يعد موجودًا.";

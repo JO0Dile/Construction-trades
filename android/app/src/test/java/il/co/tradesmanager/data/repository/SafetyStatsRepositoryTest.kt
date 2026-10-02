@@ -21,7 +21,10 @@ private class FakeSafetyStatsDao(
     private val shiftRows: List<ShiftSpan> = emptyList(),
     private val incidentRows: List<JobTally> = emptyList(),
     private val lastSeriousByJob: Map<String, Long> = emptyMap(),
+    private val offJobRows: List<JobTally> = emptyList(),
+    private val lastSeriousOffJobAt: Long? = null,
 ) : SafetyStatsDao {
+    var offJobCompany: String? = "not asked"
     val batches = mutableListOf<List<String>>()
     var from = 0L
     var to = 0L
@@ -37,6 +40,11 @@ private class FakeSafetyStatsDao(
     override suspend fun violations(projectIds: List<String>, from: Long, to: Long) = emptyList<JobCount>()
     override suspend fun talks(projectIds: List<String>, from: Long, to: Long) = listOf(JobCount(projectIds.first(), 1))
     override suspend fun lastSerious(projectIds: List<String>): Long? = projectIds.mapNotNull { lastSeriousByJob[it] }.maxOrNull()
+    override suspend fun offJobIncidents(companyId: String?, from: Long, to: Long): List<JobTally> {
+        offJobCompany = companyId
+        return offJobRows
+    }
+    override suspend fun lastSeriousOffJob(companyId: String?): Long? = lastSeriousOffJobAt
 }
 
 class SafetyStatsRepositoryTest {
@@ -50,7 +58,7 @@ class SafetyStatsRepositoryTest {
     fun `only a role that reads the site's record is counted anything`() = runTest {
         val repo = SafetyStatsRepository(FakeSafetyStatsDao())
         Role.entries.forEach { role ->
-            val sheet = repo.sheet(role, listOf(SafetyStats.Job("a", null)), span, zone)
+            val sheet = repo.sheet(role, "co.1", listOf(SafetyStats.Job("a", null)), span, zone)
             if (role.canRead(Lens.EVIDENCE)) assertNotNull(role.name, sheet) else assertNull(role.name, sheet)
         }
     }
@@ -65,7 +73,7 @@ class SafetyStatsRepositoryTest {
             incidentRows = listOf(JobTally("a", "MINOR", 1)),
             lastSeriousByJob = mapOf("a" to 5L),
         )
-        val sheet = SafetyStatsRepository(dao).sheet(Role.SAFETY_OFFICER, listOf(SafetyStats.Job("a", null)), span, zone)!!
+        val sheet = SafetyStatsRepository(dao).sheet(Role.SAFETY_OFFICER, "co.1", listOf(SafetyStats.Job("a", null)), span, zone)!!
         assertEquals(window.first, dao.from)
         assertEquals(window.last + 1, dao.to)
         assertEquals(8 * hour, sheet.total.workedMillis)
@@ -78,7 +86,7 @@ class SafetyStatsRepositoryTest {
     fun `a great many jobs are asked about in batches, every one of them once`() = runTest {
         val jobs = (1..1_234).map { SafetyStats.Job("job.$it", null) }
         val dao = FakeSafetyStatsDao()
-        val sheet = SafetyStatsRepository(dao).sheet(Role.OWNER, jobs, span, zone)!!
+        val sheet = SafetyStatsRepository(dao).sheet(Role.OWNER, "co.1", jobs, span, zone)!!
         assertTrue(dao.batches.all { it.size <= SafetyStatsRepository.BATCH })
         assertEquals(jobs.map { it.id }, dao.batches.flatten())
         // One talk answered per batch, each on a different job.
@@ -88,8 +96,24 @@ class SafetyStatsRepositoryTest {
     @Test
     fun `a company with no jobs has an empty sheet, not an error`() = runTest {
         val dao = FakeSafetyStatsDao()
-        val sheet = SafetyStatsRepository(dao).sheet(Role.OWNER, emptyList(), span, zone)!!
+        val sheet = SafetyStatsRepository(dao).sheet(Role.OWNER, "co.1", emptyList(), span, zone)!!
         assertTrue(sheet.rows.isEmpty())
         assertTrue(dao.batches.isEmpty())
+    }
+
+    @Test
+    fun `somebody hurt on no job is in the company's total, asked about for that company`() = runTest {
+        val dao = FakeSafetyStatsDao(
+            offJobRows = listOf(JobTally(null, "SERIOUS", 1), JobTally(null, "NEAR_MISS", 2)),
+            lastSeriousOffJobAt = 99L,
+            lastSeriousByJob = mapOf("a" to 50L),
+        )
+        val sheet = SafetyStatsRepository(dao).sheet(Role.MANAGER, "co.1", listOf(SafetyStats.Job("a", null)), span, zone)!!
+        assertEquals("co.1", dao.offJobCompany)
+        assertEquals(1, sheet.offJob.seriousInjuries)
+        assertEquals(2, sheet.offJob.nearMisses)
+        assertEquals(1, sheet.total.seriousInjuries)
+        assertTrue(sheet.rows.none { it.figures.seriousInjuries > 0 })
+        assertEquals(99L, sheet.lastSeriousAt)
     }
 }

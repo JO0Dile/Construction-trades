@@ -48,6 +48,14 @@ class MigrationChainTest {
     }
 
     @Test
+    fun incidentsFiledBeforeTheyHadACompanyAreMarkedWithTheMarkTheRegisterReads() {
+        // The register and the statistics tell an old report from a sole
+        // trader's own by this mark; the backfill and the rule must agree on it.
+        val backfill = Migrations.BACKFILL_48_49.single()
+        assertTrue(backfill.contains("ELSE '" + il.co.tradesmanager.core.safety.Incidents.UNATTRIBUTED + "' END"))
+    }
+
+    @Test
     fun declaredVersionIsAtLeastOne() {
         assertTrue("a database version below 1 is not a version", DATABASE_VERSION >= 1)
     }

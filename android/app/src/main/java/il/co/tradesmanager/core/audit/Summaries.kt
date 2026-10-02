@@ -404,6 +404,13 @@ object Summaries {
     const val ID_NUMBER_SET = "id_number_set"
 
     /**
+     * Incident placed on the job %1$s
+     *
+     * Arguments, in order: job.
+     */
+    const val INC_PLACED = "inc_placed"
+
+    /**
      * Safety induction signed
      */
     const val INDUCTION_SIGNED = "induction_signed"

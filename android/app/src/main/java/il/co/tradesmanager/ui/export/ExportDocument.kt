@@ -741,6 +741,7 @@ sealed interface ExportDocument {
                     context.getString(R.string.ws_talks),
                 ),
                 rows = sheet.rows.map { row -> cells(jobNames[row.projectId].orEmpty(), row.figures) } +
+                    listOfNotNull(sheet.offJob.takeUnless { it.isEmpty }?.let { cells(context.getString(R.string.inc_no_job), it) }) +
                     listOf(
                         cells(context.getString(R.string.sst_total), sheet.total),
                         listOf(context.getString(R.string.sst_days_since), sinceSerious) + List(9) { "" },

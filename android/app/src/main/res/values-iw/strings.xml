@@ -2250,6 +2250,13 @@
     <string name="sst_col_job">עבודה</string>
     <string name="sst_total">כל העבודות</string>
     <string name="proj_started_by_managers">עבודות חדשות נפתחות על ידי הבעלים או מנהל.</string>
+    <string name="summary_inc_placed">האירוע שויך לעבודה %1$s</string>
+    <string name="inc_where">איפה זה קרה</string>
+    <string name="inc_no_job">לא באף עבודה</string>
+    <string name="inc_place">איזו עבודה?</string>
+    <string name="inc_place_title">באיזו עבודה זה קרה?</string>
+    <string name="inc_place_hint">לאחר השיוך הוא נספר בדוח השבועי של אותה עבודה ובסטטיסטיקת הבטיחות. אי אפשר להעביר אותו אחר כך.</string>
+    <string name="inc_place_refused">לדיווח הזה כבר יש עבודה, או שהוא כבר לא קיים.</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>

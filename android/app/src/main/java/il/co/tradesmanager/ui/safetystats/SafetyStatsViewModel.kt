@@ -45,12 +45,21 @@ class SafetyStatsViewModel(private val container: AppContainer) : ViewModel() {
     /** Null while counting, and for a role that may not read the site's record. */
     @OptIn(ExperimentalCoroutinesApi::class)
     val sheet: StateFlow<SafetyStats.Sheet?> = combine(container.session.state, span, jobs) { state, span, jobs ->
-        Triple((state as? SessionRepository.State.SignedIn)?.role, span, jobs)
+        Triple(state as? SessionRepository.State.SignedIn, span, jobs)
     }
-        .flatMapLatest { (role, span, jobs) ->
+        .flatMapLatest { (signedIn, span, jobs) ->
             flow {
                 emit(null)
-                emit(role?.let { container.safetyStats.sheet(it, jobs.map { job -> SafetyStats.Job(job.id, job.parentProjectId) }, span) })
+                emit(
+                    signedIn?.let {
+                        container.safetyStats.sheet(
+                            role = it.role,
+                            companyId = it.active?.companyId,
+                            jobs = jobs.map { job -> SafetyStats.Job(job.id, job.parentProjectId) },
+                            span = span,
+                        )
+                    },
+                )
             }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
