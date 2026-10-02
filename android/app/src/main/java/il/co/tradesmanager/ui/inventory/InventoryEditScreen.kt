@@ -62,6 +62,7 @@ fun InventoryEditScreen(
     // Nothing leads here for somebody who may only read the stock; if
     // something ever does, the form can be read and not saved.
     val canEdit by viewModel.canEdit.collectAsStateWithLifecycle()
+    val canSeePrice by viewModel.canSeePrice.collectAsStateWithLifecycle()
     var viewing by remember { mutableStateOf<PhotoEntity?>(null) }
     val addImage = rememberImageAdder(
         newCameraTarget = viewModel::newCameraTarget,
@@ -149,7 +150,9 @@ fun InventoryEditScreen(
 
             Field(form.unit, viewModel::setUnit, R.string.inv_unit, readOnly = !canEdit)
             Field(form.barcode, viewModel::setBarcode, R.string.inv_barcode, readOnly = !canEdit)
-            Field(form.price, viewModel::setPrice, R.string.inv_price, numeric = true, readOnly = !canEdit)
+            if (canSeePrice) {
+                Field(form.price, viewModel::setPrice, R.string.inv_price, numeric = true, readOnly = !canEdit)
+            }
             Field(form.tags, viewModel::setTags, R.string.inv_tags, readOnly = !canEdit)
 
             Button(

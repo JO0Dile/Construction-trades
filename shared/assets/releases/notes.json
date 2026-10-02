@@ -15,9 +15,9 @@
           "ar": "تُؤخذ الساعات من تسجيلات الدخول والخروج والإصابات من سجل الحوادث، فلا يمكن كتابة الأرقام باليد. لكل مشروع صفّه الخاص، والأسوأ أولًا، ويُطبع الكشف لمناقصة أو لتدقيق العميل. الوردية التي لم يُسجَّل الخروج منها تُحسب 16 ساعة، وتذكر الصفحة عددها."
         },
         {
-          "en": "Only the people who may change something are offered the buttons that change it: the stock list is read-only for finance, a new job is started by the owner or a manager, and a job's dates, address, client and parts are changed by whoever plans the work. Every change is checked again as it is saved.",
-          "he": "רק מי שרשאי לשנות משהו מקבל את הכפתורים שמשנים אותו: רשימת המלאי היא לקריאה בלבד עבור הכספים, עבודה חדשה נפתחת על ידי הבעלים או מנהל, ואת התאריכים, הכתובת, המזמין והחלקים של עבודה משנה מי שמתכנן את העבודה. כל שינוי נבדק שוב בזמן השמירה.",
-          "ar": "لا تظهر أزرار التغيير إلا لمن يحق له التغيير: قائمة المخزون للقراءة فقط لقسم المالية، والعمل الجديد يبدؤه المالك أو المدير، وتواريخ العمل وعنوانه وصاحبه وأجزاؤه يغيّرها من يخطط للعمل. ويُفحص كل تغيير مرة أخرى عند حفظه."
+          "en": "Only the people who may change something are offered the buttons that change it: the stock list is read-only for finance, a new job is started by the owner or a manager, and a job's dates, address, client and parts are changed by whoever plans the work. What an item cost is shown only to those who see the money. Every change is checked again as it is saved.",
+          "he": "רק מי שרשאי לשנות משהו מקבל את הכפתורים שמשנים אותו: רשימת המלאי היא לקריאה בלבד עבור הכספים, עבודה חדשה נפתחת על ידי הבעלים או מנהל, ואת התאריכים, הכתובת, המזמין והחלקים של עבודה משנה מי שמתכנן את העבודה. מחיר הקנייה של פריט מוצג רק למי שרואה את הכספים. כל שינוי נבדק שוב בזמן השמירה.",
+          "ar": "لا تظهر أزرار التغيير إلا لمن يحق له التغيير: قائمة المخزون للقراءة فقط لقسم المالية، والعمل الجديد يبدؤه المالك أو المدير، وتواريخ العمل وعنوانه وصاحبه وأجزاؤه يغيّرها من يخطط للعمل. ولا يظهر سعر شراء الصنف إلا لمن يطّلع على المال. ويُفحص كل تغيير مرة أخرى عند حفظه."
         }
       ]
     },
