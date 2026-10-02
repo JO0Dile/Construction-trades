@@ -2222,6 +2222,33 @@
     <string name="jc_refused_email">זו לא נראית כתובת דוא״ל.</string>
     <string name="jc_refused_removed">הם עזבו את העבודה; הרשומה שלהם נשמרת כפי שהייתה.</string>
     <string name="search_kind_contact">איש קשר</string>
+    <string name="sst_title">סטטיסטיקת בטיחות</string>
+    <string name="sst_blurb">פגיעות למיליון שעות עבודה, בכל העבודות, לכל תקופה. מודפס למכרז או לביקורת של לקוח.</string>
+    <string name="sst_this_month">החודש</string>
+    <string name="sst_last_month">החודש שעבר</string>
+    <string name="sst_this_quarter">הרבעון הנוכחי</string>
+    <string name="sst_this_year">השנה</string>
+    <string name="sst_last_12_months">12 החודשים האחרונים</string>
+    <string name="sst_span">%1$s עד %2$s</string>
+    <string name="sst_not_allowed">התפקיד שלך אינו רואה את רישומי הבטיחות של האתר, ולכן לא נספר כאן דבר.</string>
+    <string name="sst_hours">שעות עבודה</string>
+    <string name="sst_shifts">משמרות</string>
+    <string name="sst_injuries">פגיעות, מכל הסוגים</string>
+    <string name="sst_minor">קלות (עזרה ראשונה)</string>
+    <string name="sst_serious">קשות (בית חולים או היעדרות)</string>
+    <string name="sst_fatal">מקרי מוות</string>
+    <string name="sst_injury_rate">פגיעות למיליון שעות</string>
+    <string name="sst_serious_rate">פגיעות קשות ומקרי מוות למיליון שעות</string>
+    <string name="sst_near_miss_ratio">כמעט תאונות שדווחו לכל פגיעה</string>
+    <string name="sst_days_since">ימים מאז הפגיעה הקשה האחרונה</string>
+    <string name="sst_none_recorded">לא נרשמה</string>
+    <string name="sst_by_job">לפי עבודה</string>
+    <string name="sst_nothing">בתקופה זו לא נרשמו שעות, אירועים, הפרות או תדריכים באף עבודה.</string>
+    <string name="sst_row_line">שעות %1$s · פגיעות %2$s · למיליון שעות %3$s · כמעט תאונות %4$s</string>
+    <string name="sst_no_hours">אין שעות</string>
+    <string name="sst_how">שיעור הוא מספר הפגיעות כפול מיליון, חלקי שעות העבודה. השעות נלקחות מהכניסות והיציאות; משמרת שעדיין פתוחה אינה נספרת עדיין. זהו מדד מקובל בענף, לא הגדרה מתוך תקנה כלשהי, והוא סופר רק את מה שנרשם באפליקציה.</string>
+    <string name="sst_col_job">עבודה</string>
+    <string name="sst_total">כל העבודות</string>
     <plurals name="items_count">
         <item quantity="one">פריט אחד</item>
         <item quantity="two">שני פריטים</item>
@@ -2407,5 +2434,11 @@
         <item quantity="two">ועוד שניים</item>
         <item quantity="many">ועוד %d</item>
         <item quantity="other">ועוד %d</item>
+    </plurals>
+    <plurals name="sst_capped">
+        <item quantity="one">משמרת אחת נמשכה יותר מ-16 שעות ונספרת כ-16: כנראה שמישהו שכח לצאת.</item>
+        <item quantity="two">שתי משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.</item>
+        <item quantity="many">%d משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.</item>
+        <item quantity="other">%d משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.</item>
     </plurals>
 </resources>

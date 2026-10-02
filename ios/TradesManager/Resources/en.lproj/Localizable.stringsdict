@@ -499,5 +499,21 @@
             <string>%d more</string>
         </dict>
     </dict>
+    <key>sst_capped</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d shift ran past 16 hours and is counted as 16: probably somebody forgot to check out.</string>
+            <key>other</key>
+            <string>%d shifts ran past 16 hours and are counted as 16 each: probably somebody forgot to check out.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

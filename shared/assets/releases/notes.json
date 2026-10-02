@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.50.0",
+      "points": [
+        {
+          "en": "Safety statistics for the whole company, from the Safety tab: injuries per million hours worked, serious injuries and deaths per million hours, near misses reported per injury, and the days since the last serious injury — for this month, last month, the quarter, the year or the last twelve months.",
+          "he": "סטטיסטיקת בטיחות לכל החברה, מלשונית הבטיחות: פגיעות למיליון שעות עבודה, פגיעות קשות ומקרי מוות למיליון שעות, כמעט תאונות שדווחו לכל פגיעה, והימים מאז הפגיעה הקשה האחרונה — לחודש הנוכחי, לחודש שעבר, לרבעון, לשנה או ל-12 החודשים האחרונים.",
+          "ar": "إحصاءات السلامة للشركة كلها، من تبويب السلامة: الإصابات لكل مليون ساعة عمل، والإصابات الخطيرة والوفيات لكل مليون ساعة، والحوادث الوشيكة المُبلّغ عنها لكل إصابة، والأيام منذ آخر إصابة خطيرة — لهذا الشهر أو الشهر الماضي أو الربع أو السنة أو آخر 12 شهرًا."
+        },
+        {
+          "en": "The hours come from check-ins and check-outs and the injuries from the incident register, so the figures cannot be typed in. Each job has its own row, the worst first, and the sheet prints for a tender or a client's audit. A shift nobody checked out of is counted as sixteen hours, and the page says how many there were.",
+          "he": "השעות נלקחות מהכניסות והיציאות והפגיעות מפנקס האירועים, כך שאי אפשר להקליד את המספרים. לכל עבודה שורה משלה, הגרועה ביותר ראשונה, ואפשר להדפיס את הגיליון למכרז או לביקורת של לקוח. משמרת שאף אחד לא יצא ממנה נספרת כ-16 שעות, והדף מציין כמה כאלה היו.",
+          "ar": "تُؤخذ الساعات من تسجيلات الدخول والخروج والإصابات من سجل الحوادث، فلا يمكن كتابة الأرقام باليد. لكل مشروع صفّه الخاص، والأسوأ أولًا، ويُطبع الكشف لمناقصة أو لتدقيق العميل. الوردية التي لم يُسجَّل الخروج منها تُحسب 16 ساعة، وتذكر الصفحة عددها."
+        }
+      ]
+    },
+    {
       "version": "0.49.0",
       "points": [
         {

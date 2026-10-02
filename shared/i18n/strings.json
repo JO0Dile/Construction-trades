@@ -11813,6 +11813,166 @@
       "en": "Contact",
       "he": "איש קשר",
       "ar": "جهة اتصال"
+    },
+    "sst_title": {
+      "c": "Screen title and Safety tab card",
+      "en": "Safety statistics",
+      "he": "סטטיסטיקת בטיחות",
+      "ar": "إحصاءات السلامة"
+    },
+    "sst_blurb": {
+      "c": "What the page is for, on the Safety tab card",
+      "en": "Injuries per million hours worked, across every job, for any period. Prints for a tender or a client's audit.",
+      "he": "פגיעות למיליון שעות עבודה, בכל העבודות, לכל תקופה. מודפס למכרז או לביקורת של לקוח.",
+      "ar": "الإصابات لكل مليون ساعة عمل، في جميع الأعمال، لأي فترة. يُطبع لمناقصة أو لتدقيق العميل."
+    },
+    "sst_this_month": {
+      "c": "Period chip",
+      "en": "This month",
+      "he": "החודש",
+      "ar": "هذا الشهر"
+    },
+    "sst_last_month": {
+      "c": "Period chip",
+      "en": "Last month",
+      "he": "החודש שעבר",
+      "ar": "الشهر الماضي"
+    },
+    "sst_this_quarter": {
+      "c": "Period chip",
+      "en": "This quarter",
+      "he": "הרבעון הנוכחי",
+      "ar": "هذا الربع"
+    },
+    "sst_this_year": {
+      "c": "Period chip",
+      "en": "This year",
+      "he": "השנה",
+      "ar": "هذه السنة"
+    },
+    "sst_last_12_months": {
+      "c": "Period chip",
+      "en": "Last 12 months",
+      "he": "12 החודשים האחרונים",
+      "ar": "آخر 12 شهرًا"
+    },
+    "sst_span": {
+      "c": "%1$s and %2$s are dates, the first and last day counted",
+      "en": "%1$s to %2$s",
+      "he": "%1$s עד %2$s",
+      "ar": "من %1$s إلى %2$s"
+    },
+    "sst_not_allowed": {
+      "en": "Your role does not see the site's safety record, so nothing is counted here.",
+      "he": "התפקיד שלך אינו רואה את רישומי הבטיחות של האתר, ולכן לא נספר כאן דבר.",
+      "ar": "دورك لا يطّلع على سجل السلامة في الموقع، لذلك لا يُحسب هنا شيء."
+    },
+    "sst_hours": {
+      "c": "Figure label and column heading",
+      "en": "Hours worked",
+      "he": "שעות עבודה",
+      "ar": "ساعات العمل"
+    },
+    "sst_shifts": {
+      "c": "Figure label and column heading: finished shifts counted",
+      "en": "Shifts",
+      "he": "משמרות",
+      "ar": "الورديات"
+    },
+    "sst_injuries": {
+      "c": "Figure label: every incident that is not a near miss",
+      "en": "Injuries, all kinds",
+      "he": "פגיעות, מכל הסוגים",
+      "ar": "الإصابات بجميع أنواعها"
+    },
+    "sst_minor": {
+      "c": "Figure label and column heading",
+      "en": "Minor (first aid)",
+      "he": "קלות (עזרה ראשונה)",
+      "ar": "طفيفة (إسعاف أولي)"
+    },
+    "sst_serious": {
+      "c": "Figure label and column heading",
+      "en": "Serious (hospital or time off)",
+      "he": "קשות (בית חולים או היעדרות)",
+      "ar": "خطيرة (مستشفى أو غياب عن العمل)"
+    },
+    "sst_fatal": {
+      "c": "Figure label and column heading",
+      "en": "Deaths",
+      "he": "מקרי מוות",
+      "ar": "الوفيات"
+    },
+    "sst_injury_rate": {
+      "c": "Figure label and column heading",
+      "en": "Injuries per million hours",
+      "he": "פגיעות למיליון שעות",
+      "ar": "الإصابات لكل مليون ساعة"
+    },
+    "sst_serious_rate": {
+      "c": "Figure label and column heading",
+      "en": "Serious injuries and deaths per million hours",
+      "he": "פגיעות קשות ומקרי מוות למיליון שעות",
+      "ar": "الإصابات الخطيرة والوفيات لكل مليون ساعة"
+    },
+    "sst_near_miss_ratio": {
+      "c": "Figure label",
+      "en": "Near misses reported per injury",
+      "he": "כמעט תאונות שדווחו לכל פגיעה",
+      "ar": "الحوادث الوشيكة المُبلّغ عنها لكل إصابة"
+    },
+    "sst_days_since": {
+      "c": "Figure label, followed by a number of days",
+      "en": "Days since the last serious injury",
+      "he": "ימים מאז הפגיעה הקשה האחרונה",
+      "ar": "أيام منذ آخر إصابة خطيرة"
+    },
+    "sst_none_recorded": {
+      "c": "In place of a number of days, when there has never been one",
+      "en": "None recorded",
+      "he": "לא נרשמה",
+      "ar": "لم تُسجَّل"
+    },
+    "sst_by_job": {
+      "c": "Section heading",
+      "en": "Job by job",
+      "he": "לפי עבודה",
+      "ar": "حسب العمل"
+    },
+    "sst_nothing": {
+      "en": "No hours, incidents, violations or talks were recorded on any job in this period.",
+      "he": "בתקופה זו לא נרשמו שעות, אירועים, הפרות או תדריכים באף עבודה.",
+      "ar": "لم تُسجَّل في هذه الفترة ساعات أو حوادث أو مخالفات أو إحاطات في أي عمل."
+    },
+    "sst_row_line": {
+      "c": "One job's figures: %1$s hours, %2$s injuries, %3$s the rate, %4$s near misses",
+      "en": "Hours %1$s · Injuries %2$s · Per million hours %3$s · Near misses %4$s",
+      "he": "שעות %1$s · פגיעות %2$s · למיליון שעות %3$s · כמעט תאונות %4$s",
+      "ar": "الساعات %1$s · الإصابات %2$s · لكل مليون ساعة %3$s · حوادث وشيكة %4$s"
+    },
+    "sst_no_hours": {
+      "c": "In place of a rate, when no hours were recorded",
+      "en": "no hours",
+      "he": "אין שעות",
+      "ar": "لا ساعات"
+    },
+    "sst_how": {
+      "c": "Footnote under the figures",
+      "en": "A rate is the injuries counted, times a million, divided by the hours worked. Hours come from check-ins and check-outs; a shift still open is not counted yet. This is a common industry measure, not a definition from any regulation, and it counts only what was recorded in the app.",
+      "he": "שיעור הוא מספר הפגיעות כפול מיליון, חלקי שעות העבודה. השעות נלקחות מהכניסות והיציאות; משמרת שעדיין פתוחה אינה נספרת עדיין. זהו מדד מקובל בענף, לא הגדרה מתוך תקנה כלשהי, והוא סופר רק את מה שנרשם באפליקציה.",
+      "ar": "المعدل هو عدد الإصابات مضروبًا في مليون، مقسومًا على ساعات العمل. تُؤخذ الساعات من تسجيلات الدخول والخروج؛ والوردية التي لم تُغلق بعد لا تُحسب. هذا مقياس شائع في القطاع، وليس تعريفًا من أي نظام، ولا يحسب إلا ما سُجّل في التطبيق."
+    },
+    "sst_col_job": {
+      "c": "Column heading on the printed sheet",
+      "en": "Job",
+      "he": "עבודה",
+      "ar": "العمل"
+    },
+    "sst_total": {
+      "c": "The totals row on the printed sheet",
+      "en": "All jobs",
+      "he": "כל העבודות",
+      "ar": "جميع الأعمال"
     }
   },
   "plurals": {
@@ -12465,6 +12625,27 @@
         "few": "و%d أخرى",
         "many": "و%d أخرى",
         "other": "و%d أخرى"
+      }
+    },
+    "sst_capped": {
+      "c": "Under the figures, when shifts were counted short",
+      "en": {
+        "one": "%d shift ran past 16 hours and is counted as 16: probably somebody forgot to check out.",
+        "other": "%d shifts ran past 16 hours and are counted as 16 each: probably somebody forgot to check out."
+      },
+      "he": {
+        "one": "משמרת אחת נמשכה יותר מ-16 שעות ונספרת כ-16: כנראה שמישהו שכח לצאת.",
+        "two": "שתי משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.",
+        "many": "%d משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.",
+        "other": "%d משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת."
+      },
+      "ar": {
+        "zero": "لم تتجاوز أي وردية 16 ساعة.",
+        "one": "وردية واحدة تجاوزت 16 ساعة وتُحسب 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.",
+        "two": "ورديتان تجاوزتا 16 ساعة وتُحسب كل منهما 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.",
+        "few": "%d ورديات تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.",
+        "many": "%d وردية تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.",
+        "other": "%d وردية تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج."
       }
     }
   }

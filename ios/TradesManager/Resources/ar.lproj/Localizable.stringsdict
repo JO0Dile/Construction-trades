@@ -747,5 +747,29 @@
             <string>و%d أخرى</string>
         </dict>
     </dict>
+    <key>sst_capped</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>لم تتجاوز أي وردية 16 ساعة.</string>
+            <key>one</key>
+            <string>وردية واحدة تجاوزت 16 ساعة وتُحسب 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</string>
+            <key>two</key>
+            <string>ورديتان تجاوزتا 16 ساعة وتُحسب كل منهما 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</string>
+            <key>few</key>
+            <string>%d ورديات تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</string>
+            <key>many</key>
+            <string>%d وردية تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</string>
+            <key>other</key>
+            <string>%d وردية تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

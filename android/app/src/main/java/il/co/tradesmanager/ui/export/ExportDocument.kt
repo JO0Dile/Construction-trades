@@ -2,6 +2,7 @@ package il.co.tradesmanager.ui.export
 
 import android.content.Context
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.safety.SafetyStats
 import il.co.tradesmanager.core.safety.WeeklySafety
 import il.co.tradesmanager.core.work.Attention
 import il.co.tradesmanager.core.work.Contacts
@@ -57,6 +58,9 @@ import il.co.tradesmanager.ui.inspections.inspectionResultLabel
 import il.co.tradesmanager.ui.projects.attentionLabel
 import il.co.tradesmanager.ui.risks.bandLabel
 import il.co.tradesmanager.ui.safetyreport.reportLines
+import il.co.tradesmanager.ui.safetystats.NO_FIGURE
+import il.co.tradesmanager.ui.safetystats.rateText
+import il.co.tradesmanager.ui.safetystats.wholeHours
 import il.co.tradesmanager.ui.submittals.submittalDecisionLabel
 import il.co.tradesmanager.ui.substances.hazardLabel
 import java.time.Instant
@@ -262,6 +266,17 @@ sealed interface ExportDocument {
         val weekStart: LocalDate,
         val report: WeeklySafety.Report,
         val openNow: List<Attention.Line>,
+    ) : ExportDocument
+
+    /**
+     * The company's injury rates per million hours worked over a period, job
+     * by job and in total, and how long since the last serious injury.
+     */
+    data class SafetyStatistics(
+        val span: SafetyStats.Span,
+        val sheet: SafetyStats.Sheet,
+        val jobNames: Map<String, String>,
+        val today: LocalDate,
     ) : ExportDocument
 
     /**
@@ -692,6 +707,47 @@ sealed interface ExportDocument {
                 openNow.map { line -> listOf(context.getString(R.string.ws_open_now) + ": " + context.getString(attentionLabel(line.item)), line.count.toString()) },
         )
 
+        is SafetyStatistics -> {
+            fun cells(name: String, figures: SafetyStats.Figures): List<String> = listOf(
+                name,
+                wholeHours(figures, locale),
+                figures.shifts.toString(),
+                figures.nearMisses.toString(),
+                figures.minorInjuries.toString(),
+                figures.seriousInjuries.toString(),
+                figures.fatalities.toString(),
+                rateText(figures.injuryRate, locale) ?: NO_FIGURE,
+                rateText(figures.seriousRate, locale) ?: NO_FIGURE,
+                figures.violations.toString(),
+                figures.talksHeld.toString(),
+            )
+            val sinceSerious = sheet.lastSeriousAt
+                ?.let { Formats.quantity(SafetyStats.daysSince(it, today, ZoneId.systemDefault()).toDouble(), locale) }
+                ?: context.getString(R.string.sst_none_recorded)
+            Table(
+                title = context.getString(R.string.sst_title) + " — " +
+                    Formats.date(span.first, locale) + "–" + Formats.date(span.last, locale),
+                headers = listOf(
+                    context.getString(R.string.sst_col_job),
+                    context.getString(R.string.sst_hours),
+                    context.getString(R.string.sst_shifts),
+                    context.getString(R.string.ws_near_misses),
+                    context.getString(R.string.sst_minor),
+                    context.getString(R.string.sst_serious),
+                    context.getString(R.string.sst_fatal),
+                    context.getString(R.string.sst_injury_rate),
+                    context.getString(R.string.sst_serious_rate),
+                    context.getString(R.string.ws_violations),
+                    context.getString(R.string.ws_talks),
+                ),
+                rows = sheet.rows.map { row -> cells(jobNames[row.projectId].orEmpty(), row.figures) } +
+                    listOf(
+                        cells(context.getString(R.string.sst_total), sheet.total),
+                        listOf(context.getString(R.string.sst_days_since), sinceSerious) + List(9) { "" },
+                    ),
+            )
+        }
+
         is ContactDirectory -> {
             val current = contacts.filter { it.removedAt == null }
             val ordered = Contacts.order(current.map { Triple(Contacts.kindOf(it.kind), it.name, false) }).map { current[it] }
@@ -916,6 +972,7 @@ sealed interface ExportDocument {
             is MeetingActionLog -> "meetings-" + jobName
             is WeeklySafetyReport -> "safety-week-" + weekStart + "-" + jobName
             is ContactDirectory -> "contacts-" + jobName
+            is SafetyStatistics -> "safety-statistics-" + span.first + "-" + span.last
         },
     )
 

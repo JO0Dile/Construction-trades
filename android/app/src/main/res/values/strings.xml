@@ -2917,6 +2917,58 @@
     <string name="jc_refused_removed">They have left the job; their entry is kept as it was.</string>
     <!-- Label on a search result -->
     <string name="search_kind_contact">Contact</string>
+    <!-- Screen title and Safety tab card -->
+    <string name="sst_title">Safety statistics</string>
+    <!-- What the page is for, on the Safety tab card -->
+    <string name="sst_blurb">Injuries per million hours worked, across every job, for any period. Prints for a tender or a client\'s audit.</string>
+    <!-- Period chip -->
+    <string name="sst_this_month">This month</string>
+    <!-- Period chip -->
+    <string name="sst_last_month">Last month</string>
+    <!-- Period chip -->
+    <string name="sst_this_quarter">This quarter</string>
+    <!-- Period chip -->
+    <string name="sst_this_year">This year</string>
+    <!-- Period chip -->
+    <string name="sst_last_12_months">Last 12 months</string>
+    <!-- %1$s and %2$s are dates, the first and last day counted -->
+    <string name="sst_span">%1$s to %2$s</string>
+    <string name="sst_not_allowed">Your role does not see the site\'s safety record, so nothing is counted here.</string>
+    <!-- Figure label and column heading -->
+    <string name="sst_hours">Hours worked</string>
+    <!-- Figure label and column heading: finished shifts counted -->
+    <string name="sst_shifts">Shifts</string>
+    <!-- Figure label: every incident that is not a near miss -->
+    <string name="sst_injuries">Injuries, all kinds</string>
+    <!-- Figure label and column heading -->
+    <string name="sst_minor">Minor (first aid)</string>
+    <!-- Figure label and column heading -->
+    <string name="sst_serious">Serious (hospital or time off)</string>
+    <!-- Figure label and column heading -->
+    <string name="sst_fatal">Deaths</string>
+    <!-- Figure label and column heading -->
+    <string name="sst_injury_rate">Injuries per million hours</string>
+    <!-- Figure label and column heading -->
+    <string name="sst_serious_rate">Serious injuries and deaths per million hours</string>
+    <!-- Figure label -->
+    <string name="sst_near_miss_ratio">Near misses reported per injury</string>
+    <!-- Figure label, followed by a number of days -->
+    <string name="sst_days_since">Days since the last serious injury</string>
+    <!-- In place of a number of days, when there has never been one -->
+    <string name="sst_none_recorded">None recorded</string>
+    <!-- Section heading -->
+    <string name="sst_by_job">Job by job</string>
+    <string name="sst_nothing">No hours, incidents, violations or talks were recorded on any job in this period.</string>
+    <!-- One job's figures: %1$s hours, %2$s injuries, %3$s the rate, %4$s near misses -->
+    <string name="sst_row_line">Hours %1$s · Injuries %2$s · Per million hours %3$s · Near misses %4$s</string>
+    <!-- In place of a rate, when no hours were recorded -->
+    <string name="sst_no_hours">no hours</string>
+    <!-- Footnote under the figures -->
+    <string name="sst_how">A rate is the injuries counted, times a million, divided by the hours worked. Hours come from check-ins and check-outs; a shift still open is not counted yet. This is a common industry measure, not a definition from any regulation, and it counts only what was recorded in the app.</string>
+    <!-- Column heading on the printed sheet -->
+    <string name="sst_col_job">Job</string>
+    <!-- The totals row on the printed sheet -->
+    <string name="sst_total">All jobs</string>
     <plurals name="items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>
@@ -3040,5 +3092,9 @@
     <plurals name="home_more_lines">
         <item quantity="one">%d more</item>
         <item quantity="other">%d more</item>
+    </plurals>
+    <plurals name="sst_capped">
+        <item quantity="one">%d shift ran past 16 hours and is counted as 16: probably somebody forgot to check out.</item>
+        <item quantity="other">%d shifts ran past 16 hours and are counted as 16 each: probably somebody forgot to check out.</item>
     </plurals>
 </resources>

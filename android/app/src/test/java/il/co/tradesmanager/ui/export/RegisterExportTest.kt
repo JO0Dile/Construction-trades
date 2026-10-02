@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.safety.SafetyStats
 import il.co.tradesmanager.core.safety.WeeklySafety
 import il.co.tradesmanager.core.work.Attention
 import il.co.tradesmanager.data.local.entity.ComplaintEntity
@@ -335,6 +336,31 @@ class RegisterExportTest {
         assertEquals(listOf("Dana Levi", "Cohen Electric"), table.rows.map { it[1] })
         assertEquals(context.getString(R.string.jc_kind_supervisor), table.rows[0][0])
         assertEquals("dana@city.gov.il", table.rows[0][4])
+    }
+
+    @Test
+    fun `the safety statistics print a row a job, the totals, and the days since the last serious injury`() {
+        val context = inLanguage("en")
+        val hour = 3_600_000L
+        val tower = SafetyStats.Figures(workedMillis = 500_000 * hour, shifts = 60_000, minorInjuries = 2, seriousInjuries = 1, nearMisses = 9)
+        val house = SafetyStats.Figures(workedMillis = 4_000 * hour, shifts = 500, talksHeld = 12)
+        val sheet = SafetyStats.Sheet(
+            rows = listOf(SafetyStats.Row("tower", tower), SafetyStats.Row("house", house)),
+            total = tower + house,
+            lastSeriousAt = null,
+        )
+        val span = SafetyStats.Span(LocalDate.of(2026, 1, 1), LocalDate.of(2026, 10, 2))
+        val table = ExportDocument.SafetyStatistics(span, sheet, mapOf("tower" to "Tower A", "house" to "Cohen house"), LocalDate.of(2026, 10, 2))
+            .table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(listOf("Tower A", "Cohen house", context.getString(R.string.sst_total), context.getString(R.string.sst_days_since)), table.rows.map { it[0] })
+        assertEquals("500,000", table.rows[0][1])
+        assertEquals("6", table.rows[0][7])
+        assertEquals("2", table.rows[0][8])
+        assertEquals("0", table.rows[1][7])
+        assertEquals("12", table.rows[1][10])
+        assertEquals("504,000", table.rows[2][1])
+        assertEquals(context.getString(R.string.sst_none_recorded), table.rows[3][1])
     }
 
     @Test

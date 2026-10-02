@@ -2222,6 +2222,33 @@
     <string name="jc_refused_email">لا يبدو هذا عنوان بريد إلكتروني.</string>
     <string name="jc_refused_removed">غادروا المشروع؛ يبقى سجلّهم كما كان.</string>
     <string name="search_kind_contact">جهة اتصال</string>
+    <string name="sst_title">إحصاءات السلامة</string>
+    <string name="sst_blurb">الإصابات لكل مليون ساعة عمل، في جميع الأعمال، لأي فترة. يُطبع لمناقصة أو لتدقيق العميل.</string>
+    <string name="sst_this_month">هذا الشهر</string>
+    <string name="sst_last_month">الشهر الماضي</string>
+    <string name="sst_this_quarter">هذا الربع</string>
+    <string name="sst_this_year">هذه السنة</string>
+    <string name="sst_last_12_months">آخر 12 شهرًا</string>
+    <string name="sst_span">من %1$s إلى %2$s</string>
+    <string name="sst_not_allowed">دورك لا يطّلع على سجل السلامة في الموقع، لذلك لا يُحسب هنا شيء.</string>
+    <string name="sst_hours">ساعات العمل</string>
+    <string name="sst_shifts">الورديات</string>
+    <string name="sst_injuries">الإصابات بجميع أنواعها</string>
+    <string name="sst_minor">طفيفة (إسعاف أولي)</string>
+    <string name="sst_serious">خطيرة (مستشفى أو غياب عن العمل)</string>
+    <string name="sst_fatal">الوفيات</string>
+    <string name="sst_injury_rate">الإصابات لكل مليون ساعة</string>
+    <string name="sst_serious_rate">الإصابات الخطيرة والوفيات لكل مليون ساعة</string>
+    <string name="sst_near_miss_ratio">الحوادث الوشيكة المُبلّغ عنها لكل إصابة</string>
+    <string name="sst_days_since">أيام منذ آخر إصابة خطيرة</string>
+    <string name="sst_none_recorded">لم تُسجَّل</string>
+    <string name="sst_by_job">حسب العمل</string>
+    <string name="sst_nothing">لم تُسجَّل في هذه الفترة ساعات أو حوادث أو مخالفات أو إحاطات في أي عمل.</string>
+    <string name="sst_row_line">الساعات %1$s · الإصابات %2$s · لكل مليون ساعة %3$s · حوادث وشيكة %4$s</string>
+    <string name="sst_no_hours">لا ساعات</string>
+    <string name="sst_how">المعدل هو عدد الإصابات مضروبًا في مليون، مقسومًا على ساعات العمل. تُؤخذ الساعات من تسجيلات الدخول والخروج؛ والوردية التي لم تُغلق بعد لا تُحسب. هذا مقياس شائع في القطاع، وليس تعريفًا من أي نظام، ولا يحسب إلا ما سُجّل في التطبيق.</string>
+    <string name="sst_col_job">العمل</string>
+    <string name="sst_total">جميع الأعمال</string>
     <plurals name="items_count">
         <item quantity="zero">لا أصناف</item>
         <item quantity="one">صنف واحد</item>
@@ -2469,5 +2496,13 @@
         <item quantity="few">و%d أخرى</item>
         <item quantity="many">و%d أخرى</item>
         <item quantity="other">و%d أخرى</item>
+    </plurals>
+    <plurals name="sst_capped">
+        <item quantity="zero">لم تتجاوز أي وردية 16 ساعة.</item>
+        <item quantity="one">وردية واحدة تجاوزت 16 ساعة وتُحسب 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</item>
+        <item quantity="two">ورديتان تجاوزتا 16 ساعة وتُحسب كل منهما 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</item>
+        <item quantity="few">%d ورديات تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</item>
+        <item quantity="many">%d وردية تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</item>
+        <item quantity="other">%d وردية تجاوزت 16 ساعة وتُحسب كل منها 16 ساعة: على الأرجح نسي أحدهم تسجيل الخروج.</item>
     </plurals>
 </resources>

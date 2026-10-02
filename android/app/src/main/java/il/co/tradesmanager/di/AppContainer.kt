@@ -40,6 +40,7 @@ import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SafetyReportRepository
+import il.co.tradesmanager.data.repository.SafetyStatsRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
@@ -235,6 +236,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** A job's week of safety, counted from the registers. */
     val safetyReports = SafetyReportRepository(database.safetyReportDao())
+
+    /** The company's injury rates per million hours worked, across every job. */
+    val safetyStats = SafetyStatsRepository(database.safetyStatsDao())
 
     /** Who is who on each job from outside the firm, and how to reach them. */
     val jobContacts = JobContactRepository(database.jobContactDao(), auditTrail)

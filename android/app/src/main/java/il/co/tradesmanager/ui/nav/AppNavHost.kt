@@ -60,6 +60,7 @@ import il.co.tradesmanager.ui.safety.ViolationsScreen
 import il.co.tradesmanager.ui.company.CompanyProfileScreen
 import il.co.tradesmanager.ui.payments.PaymentsScreen
 import il.co.tradesmanager.ui.safetyreport.WeeklySafetyScreen
+import il.co.tradesmanager.ui.safetystats.SafetyStatsScreen
 import il.co.tradesmanager.ui.work.ContractsScreen
 import il.co.tradesmanager.ui.work.WorkPackagesScreen
 import il.co.tradesmanager.ui.plant.PlantScreen
@@ -119,6 +120,7 @@ object Routes {
     const val MUSTER = "safety/muster"
     const val HEAT = "safety/heat"
     const val PPE = "safety/ppe"
+    const val SAFETY_STATS = "safety/statistics"
     const val SNAG_DETAIL = "safety/snags/detail"
     const val DAILY_LOG = "projects/log"
     const val CONCRETE = "projects/concrete"
@@ -568,6 +570,13 @@ fun AppNavHost(
                     onOpenMuster = { navController.navigate(Routes.MUSTER) },
                     onOpenHeat = { navController.navigate(Routes.HEAT) },
                     onOpenPpe = { navController.navigate(Routes.PPE) },
+                    onOpenStatistics = { navController.navigate(Routes.SAFETY_STATS) },
+                )
+            }
+            composable(Routes.SAFETY_STATS) {
+                SafetyStatsScreen(
+                    container = container,
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable(Routes.TALKS) {

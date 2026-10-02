@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Assignment
+import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Campaign
 import androidx.compose.material.icons.filled.ChecklistRtl
 import androidx.compose.material.icons.filled.Engineering
@@ -40,6 +41,7 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.data.repository.PpeRepository
+import il.co.tradesmanager.data.repository.SafetyStatsRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
@@ -59,6 +61,7 @@ fun SafetyScreen(
     onOpenMuster: () -> Unit,
     onOpenHeat: () -> Unit,
     onOpenPpe: () -> Unit,
+    onOpenStatistics: () -> Unit,
 ) {
     val viewModel: SafetyViewModel = viewModel(factory = ViewModelFactory(container) { SafetyViewModel(it) })
     val templates by viewModel.templates.collectAsStateWithLifecycle()
@@ -74,6 +77,8 @@ fun SafetyScreen(
     // button that does nothing, with extra steps.
     val canSeePpe =
         (session as? SessionRepository.State.SignedIn)?.role?.let { PpeRepository.mayRead(it) } == true
+    val canSeeStatistics =
+        (session as? SessionRepository.State.SignedIn)?.role?.let { SafetyStatsRepository.mayRead(it) } == true
     val languageTag = currentLanguageTag()
 
     Scaffold(
@@ -157,6 +162,17 @@ fun SafetyScreen(
                         icon = Icons.Filled.Engineering,
                         alert = false,
                         onOpen = onOpenPpe,
+                    )
+                }
+            }
+            if (canSeeStatistics) {
+                item {
+                    EntryCard(
+                        title = stringResource(R.string.sst_title),
+                        body = stringResource(R.string.sst_blurb),
+                        icon = Icons.Filled.BarChart,
+                        alert = false,
+                        onOpen = onOpenStatistics,
                     )
                 }
             }

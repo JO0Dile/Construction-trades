@@ -2916,3 +2916,55 @@
 "jc_refused_removed" = "غادروا المشروع؛ يبقى سجلّهم كما كان.";
 /* Label on a search result */
 "search_kind_contact" = "جهة اتصال";
+/* Screen title and Safety tab card */
+"sst_title" = "إحصاءات السلامة";
+/* What the page is for, on the Safety tab card */
+"sst_blurb" = "الإصابات لكل مليون ساعة عمل، في جميع الأعمال، لأي فترة. يُطبع لمناقصة أو لتدقيق العميل.";
+/* Period chip */
+"sst_this_month" = "هذا الشهر";
+/* Period chip */
+"sst_last_month" = "الشهر الماضي";
+/* Period chip */
+"sst_this_quarter" = "هذا الربع";
+/* Period chip */
+"sst_this_year" = "هذه السنة";
+/* Period chip */
+"sst_last_12_months" = "آخر 12 شهرًا";
+/* %1$s and %2$s are dates, the first and last day counted */
+"sst_span" = "من %1$s إلى %2$s";
+"sst_not_allowed" = "دورك لا يطّلع على سجل السلامة في الموقع، لذلك لا يُحسب هنا شيء.";
+/* Figure label and column heading */
+"sst_hours" = "ساعات العمل";
+/* Figure label and column heading: finished shifts counted */
+"sst_shifts" = "الورديات";
+/* Figure label: every incident that is not a near miss */
+"sst_injuries" = "الإصابات بجميع أنواعها";
+/* Figure label and column heading */
+"sst_minor" = "طفيفة (إسعاف أولي)";
+/* Figure label and column heading */
+"sst_serious" = "خطيرة (مستشفى أو غياب عن العمل)";
+/* Figure label and column heading */
+"sst_fatal" = "الوفيات";
+/* Figure label and column heading */
+"sst_injury_rate" = "الإصابات لكل مليون ساعة";
+/* Figure label and column heading */
+"sst_serious_rate" = "الإصابات الخطيرة والوفيات لكل مليون ساعة";
+/* Figure label */
+"sst_near_miss_ratio" = "الحوادث الوشيكة المُبلّغ عنها لكل إصابة";
+/* Figure label, followed by a number of days */
+"sst_days_since" = "أيام منذ آخر إصابة خطيرة";
+/* In place of a number of days, when there has never been one */
+"sst_none_recorded" = "لم تُسجَّل";
+/* Section heading */
+"sst_by_job" = "حسب العمل";
+"sst_nothing" = "لم تُسجَّل في هذه الفترة ساعات أو حوادث أو مخالفات أو إحاطات في أي عمل.";
+/* One job's figures: %1$s hours, %2$s injuries, %3$s the rate, %4$s near misses */
+"sst_row_line" = "الساعات %1$s · الإصابات %2$s · لكل مليون ساعة %3$s · حوادث وشيكة %4$s";
+/* In place of a rate, when no hours were recorded */
+"sst_no_hours" = "لا ساعات";
+/* Footnote under the figures */
+"sst_how" = "المعدل هو عدد الإصابات مضروبًا في مليون، مقسومًا على ساعات العمل. تُؤخذ الساعات من تسجيلات الدخول والخروج؛ والوردية التي لم تُغلق بعد لا تُحسب. هذا مقياس شائع في القطاع، وليس تعريفًا من أي نظام، ولا يحسب إلا ما سُجّل في التطبيق.";
+/* Column heading on the printed sheet */
+"sst_col_job" = "العمل";
+/* The totals row on the printed sheet */
+"sst_total" = "جميع الأعمال";

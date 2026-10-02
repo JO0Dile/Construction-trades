@@ -2916,3 +2916,55 @@
 "jc_refused_removed" = "They have left the job; their entry is kept as it was.";
 /* Label on a search result */
 "search_kind_contact" = "Contact";
+/* Screen title and Safety tab card */
+"sst_title" = "Safety statistics";
+/* What the page is for, on the Safety tab card */
+"sst_blurb" = "Injuries per million hours worked, across every job, for any period. Prints for a tender or a client's audit.";
+/* Period chip */
+"sst_this_month" = "This month";
+/* Period chip */
+"sst_last_month" = "Last month";
+/* Period chip */
+"sst_this_quarter" = "This quarter";
+/* Period chip */
+"sst_this_year" = "This year";
+/* Period chip */
+"sst_last_12_months" = "Last 12 months";
+/* %1$s and %2$s are dates, the first and last day counted */
+"sst_span" = "%1$s to %2$s";
+"sst_not_allowed" = "Your role does not see the site's safety record, so nothing is counted here.";
+/* Figure label and column heading */
+"sst_hours" = "Hours worked";
+/* Figure label and column heading: finished shifts counted */
+"sst_shifts" = "Shifts";
+/* Figure label: every incident that is not a near miss */
+"sst_injuries" = "Injuries, all kinds";
+/* Figure label and column heading */
+"sst_minor" = "Minor (first aid)";
+/* Figure label and column heading */
+"sst_serious" = "Serious (hospital or time off)";
+/* Figure label and column heading */
+"sst_fatal" = "Deaths";
+/* Figure label and column heading */
+"sst_injury_rate" = "Injuries per million hours";
+/* Figure label and column heading */
+"sst_serious_rate" = "Serious injuries and deaths per million hours";
+/* Figure label */
+"sst_near_miss_ratio" = "Near misses reported per injury";
+/* Figure label, followed by a number of days */
+"sst_days_since" = "Days since the last serious injury";
+/* In place of a number of days, when there has never been one */
+"sst_none_recorded" = "None recorded";
+/* Section heading */
+"sst_by_job" = "Job by job";
+"sst_nothing" = "No hours, incidents, violations or talks were recorded on any job in this period.";
+/* One job's figures: %1$s hours, %2$s injuries, %3$s the rate, %4$s near misses */
+"sst_row_line" = "Hours %1$s · Injuries %2$s · Per million hours %3$s · Near misses %4$s";
+/* In place of a rate, when no hours were recorded */
+"sst_no_hours" = "no hours";
+/* Footnote under the figures */
+"sst_how" = "A rate is the injuries counted, times a million, divided by the hours worked. Hours come from check-ins and check-outs; a shift still open is not counted yet. This is a common industry measure, not a definition from any regulation, and it counts only what was recorded in the app.";
+/* Column heading on the printed sheet */
+"sst_col_job" = "Job";
+/* The totals row on the printed sheet */
+"sst_total" = "All jobs";

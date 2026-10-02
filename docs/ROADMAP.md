@@ -773,6 +773,18 @@ changed is corrected in place and the audit trail keeps that it changed;
 somebody who left is marked off, not deleted, and left out of the printed
 directory. The privacy notice says their details are kept, and printed.
 
+**Safety statistics across the company. Done.**
+Injuries per million hours worked, for this month, last month, the quarter,
+the year or the last twelve months: the hours from check-ins and check-outs,
+the injuries from the incident register, so neither can be typed in to make
+a better number. Serious injuries and deaths have a rate of their own, near
+misses are counted against injuries, and the days since the last serious
+injury are on the page. Each job is a row with its floors and parts counted
+in it, the worst first, and the sheet prints for a tender or a client's
+audit. A shift nobody checked out of counts the roll call's sixteen hours,
+not the weekend, and the page says how many did. Called a common industry
+measure on the page itself, not a regulator's definition.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

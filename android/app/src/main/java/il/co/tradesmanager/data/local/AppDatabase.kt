@@ -26,6 +26,7 @@ import il.co.tradesmanager.data.local.dao.MusterDao
 import il.co.tradesmanager.data.local.dao.PaymentsDao
 import il.co.tradesmanager.data.local.dao.PhotoDao
 import il.co.tradesmanager.data.local.dao.SafetyReportDao
+import il.co.tradesmanager.data.local.dao.SafetyStatsDao
 import il.co.tradesmanager.data.local.dao.SubstanceDao
 import il.co.tradesmanager.data.local.dao.ViolationDao
 import il.co.tradesmanager.data.local.dao.WasteDao
@@ -273,6 +274,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun meetingDao(): MeetingDao
 
     abstract fun safetyReportDao(): SafetyReportDao
+
+    abstract fun safetyStatsDao(): SafetyStatsDao
 
     abstract fun jobContactDao(): JobContactDao
 
