@@ -36,6 +36,17 @@ fun rememberImageAdder(
     newCameraTarget: () -> Pair<String, Uri>,
     onCaptured: (photoId: String) -> Unit,
     onPicked: (Uri) -> Unit,
+    /**
+     * What the gallery will offer.
+     *
+     * Stills only by default, which is what every caller wanted until
+     * violations. A photograph of a man on a ladder does not always show what
+     * was wrong with how he was standing on it, so that one screen asks for
+     * both — and only that one, because a video where a photograph would do
+     * is a large file somebody has to send off a site with no signal.
+     */
+    allowed: ActivityResultContracts.PickVisualMedia.VisualMediaType =
+        ActivityResultContracts.PickVisualMedia.ImageOnly,
 ): () -> Unit {
 
     var showChooser by remember { mutableStateOf(false) }
@@ -89,7 +100,7 @@ fun rememberImageAdder(
                     onClick = {
                         showChooser = false
                         galleryLauncher.launch(
-                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly),
+                            PickVisualMediaRequest(allowed),
                         )
                     },
                 ) {

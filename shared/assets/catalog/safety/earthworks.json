@@ -1,0 +1,117 @@
+{
+  "tradeId": "earthworks",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.ew.services",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Before breaking ground",
+        "he": "לפני תחילת חפירה",
+        "ar": "قبل بدء الحفر"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (חשמל), התש״ן-1990"
+      ],
+      "items": [
+        {
+          "id": "sf.ew.services.1",
+          "critical": true,
+          "texts": {
+            "en": "Utility drawings obtained and on site, not in an office",
+            "he": "תוכניות תשתית התקבלו ונמצאות באתר, לא במשרד",
+            "ar": "مخططات الخدمات مستلمة وموجودة في الموقع، لا في المكتب"
+          }
+        },
+        {
+          "id": "sf.ew.services.2",
+          "critical": true,
+          "texts": {
+            "en": "Ground scanned with a cable avoidance tool along the whole line",
+            "he": "הקרקע נסרקה בגלאי תשתיות לאורך כל הקו",
+            "ar": "الأرض ممسوحة بجهاز كشف الخدمات على طول الخط"
+          }
+        },
+        {
+          "id": "sf.ew.services.3",
+          "critical": true,
+          "texts": {
+            "en": "Live services marked on the ground and hand-dug to expose",
+            "he": "תשתיות חיות סומנו על הקרקע ונחשפו בחפירת יד",
+            "ar": "الخدمات الحية معلّمة على الأرض ومكشوفة بالحفر اليدوي"
+          }
+        },
+        {
+          "id": "sf.ew.services.4",
+          "critical": false,
+          "texts": {
+            "en": "Emergency numbers for gas, water and electricity to hand",
+            "he": "מספרי חירום לגז, מים וחשמל זמינים",
+            "ar": "أرقام الطوارئ للغاز والماء والكهرباء بالمتناول"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.ew.trench",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Entering an excavation",
+        "he": "כניסה לחפירה",
+        "ar": "الدخول إلى الحفرة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (עבודה בחלל מוקף), התשע״ח-2018"
+      ],
+      "items": [
+        {
+          "id": "sf.ew.trench.1",
+          "critical": true,
+          "texts": {
+            "en": "Sides supported, battered or benched — never left vertical and unsupported",
+            "he": "הדפנות נתמכות, משופעות או מדורגות — לעולם לא אנכיות ללא תמיכה",
+            "ar": "الجوانب مدعومة أو مائلة أو مدرّجة — لا تُترك عمودية بلا دعم"
+          }
+        },
+        {
+          "id": "sf.ew.trench.2",
+          "critical": true,
+          "texts": {
+            "en": "Inspected today by a competent person and the register signed",
+            "he": "נבדקה היום על ידי אדם מוסמך והפנקס נחתם",
+            "ar": "مفحوصة اليوم من قبل شخص مؤهل والسجل موقّع"
+          }
+        },
+        {
+          "id": "sf.ew.trench.3",
+          "critical": true,
+          "texts": {
+            "en": "Ladder or ramp within reach of anybody inside",
+            "he": "סולם או רמפה בהישג יד לכל מי שבפנים",
+            "ar": "سلّم أو منحدر في متناول كل من في الداخل"
+          }
+        },
+        {
+          "id": "sf.ew.trench.4",
+          "critical": true,
+          "texts": {
+            "en": "Spoil, plant and stored material set back from the edge",
+            "he": "ערמות עפר, ציוד וחומר מאוחסן מרוחקים מהשפה",
+            "ar": "الأتربة والمعدات والمواد المخزّنة مُبعدة عن الحافة"
+          }
+        },
+        {
+          "id": "sf.ew.trench.5",
+          "critical": false,
+          "texts": {
+            "en": "Atmosphere tested where the trench is deep or near a drain",
+            "he": "האטמוספרה נבדקה בחפירה עמוקה או ליד ביוב",
+            "ar": "الجو مفحوص في الحفرة العميقة أو قرب المجاري"
+          }
+        }
+      ]
+    }
+  ]
+}

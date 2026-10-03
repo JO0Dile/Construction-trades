@@ -46,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.money.JobFinancials
 import il.co.tradesmanager.data.local.entity.CostEntryEntity
 import il.co.tradesmanager.data.local.entity.InvoiceEntity
@@ -530,7 +531,7 @@ private fun BudgetDialog(
     }
     var rate by remember { mutableStateOf((current.vatRate * 100).toInt().toString()) }
     val amount = value.toAmount()
-    val vat = rate.replace(',', '.').toDoubleOrNull()
+    val vat = Numbers.parseDecimal(rate)
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -738,7 +739,7 @@ private fun AmountField(
  * typed rather than what they meant.
  */
 private fun String.toAmount(allowNegative: Boolean = false): Double? {
-    val parsed = trim().replace(',', '.').replace(" ", "").toDoubleOrNull() ?: return null
+    val parsed = Numbers.parseDecimal(this) ?: return null
     return if (!allowNegative && parsed < 0.0) null else parsed
 }
 

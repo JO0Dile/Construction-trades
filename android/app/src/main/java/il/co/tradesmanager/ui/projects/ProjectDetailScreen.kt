@@ -1,36 +1,47 @@
 package il.co.tradesmanager.ui.projects
 
+import android.content.Intent
+import android.net.Uri
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AddAPhoto
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.IosShare
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -54,22 +65,30 @@ import coil.compose.AsyncImage
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.resolve
+import il.co.tradesmanager.core.work.Attention
+import il.co.tradesmanager.data.catalog.WorkStage
+import il.co.tradesmanager.data.local.entity.PhotoEntity
+import il.co.tradesmanager.data.local.entity.ProjectEntity
+import il.co.tradesmanager.data.local.entity.ProjectTaskEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
-import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.ItemThumbnail
 import il.co.tradesmanager.ui.components.PhotoViewer
-import il.co.tradesmanager.ui.components.rememberImageAdder
+import il.co.tradesmanager.ui.components.PickDate
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.asDate
 import il.co.tradesmanager.ui.components.SectionHeaderWithAdd
 import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLanguageTag
 import il.co.tradesmanager.ui.components.currentLocale
+import il.co.tradesmanager.ui.components.rememberImageAdder
+import il.co.tradesmanager.core.people.Contact
+import il.co.tradesmanager.ui.components.unitLabel
 import il.co.tradesmanager.ui.export.ExportDocument
 import il.co.tradesmanager.ui.export.Exporter
-import il.co.tradesmanager.ui.components.unitLabel
 
 /**
  * A way from a job into one of its registers.
@@ -101,7 +120,26 @@ fun ProjectDetailScreen(
     onOpenLifts: () -> Unit,
     onOpenTemporaryWorks: () -> Unit,
     onOpenExcavations: () -> Unit,
+    onOpenWaste: () -> Unit,
+    onOpenVisitors: () -> Unit,
+    onOpenDrawings: () -> Unit,
+    onOpenQueries: () -> Unit,
+    onOpenInspections: () -> Unit,
+    onOpenSubmittals: () -> Unit,
+    onOpenDelays: () -> Unit,
+    onOpenRisks: () -> Unit,
+    onOpenComplaints: () -> Unit,
+    onOpenNonConformances: () -> Unit,
+    onOpenSubstances: () -> Unit,
+    onOpenFirePoints: () -> Unit,
+    onOpenEmergency: () -> Unit,
+    onOpenMeetings: () -> Unit,
+    onOpenSafetyWeek: () -> Unit,
+    onOpenIncidents: () -> Unit,
+    onOpenContacts: () -> Unit,
     onOpenHandover: () -> Unit,
+    onOpenWorkPackages: () -> Unit,
+    onOpenProject: (String) -> Unit,
     onBack: () -> Unit,
 ) {
     val viewModel: ProjectDetailViewModel = viewModel(
@@ -110,6 +148,9 @@ fun ProjectDetailScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val money by viewModel.financials.collectAsStateWithLifecycle()
+    val parts by viewModel.parts.collectAsStateWithLifecycle()
+    val parent by viewModel.parent.collectAsStateWithLifecycle()
+    val attention by viewModel.attention.collectAsStateWithLifecycle()
     // A job is all five lenses at once, so each section asks separately. A
     // finance clerk opening a job sees what it cost, not the task list.
     val signedIn = session as? SessionRepository.State.SignedIn
@@ -127,6 +168,10 @@ fun ProjectDetailScreen(
     val project = state.project
     var viewing by remember { mutableStateOf<PhotoEntity?>(null) }
     var addingMaterial by remember { mutableStateOf(false) }
+    var showPlaceEditor by remember { mutableStateOf(false) }
+    var addingPart by remember { mutableStateOf(false) }
+    var pickingStart by remember { mutableStateOf(false) }
+    var pickingDue by remember { mutableStateOf(false) }
     var addingTask by remember { mutableStateOf(false) }
     val addImage = rememberImageAdder(
         newCameraTarget = viewModel::newCameraTarget,
@@ -146,9 +191,46 @@ fun ProjectDetailScreen(
     // links are a list now: rendered from it, counted from it, so adding a row
     // is one entry and the arithmetic follows on its own.
     val links = buildList {
+        // First, and for everybody on the job: the sheet somebody needs when
+        // a man is on the ground is not the one to hunt for under a lens.
+        add(JobLink(R.string.es_title, R.string.es_row_hint, onOpenEmergency))
+        // Who is who from outside the firm, for whoever works on the plan or keeps the record.
+        if (canSeePlan || canSeeEvidence) add(JobLink(R.string.jc_title, R.string.jc_row_hint, onOpenContacts))
+        // Work packages sit under Plan: they are what has been agreed will
+        // happen, before anything has. Above the registers because on a job
+        // with more than one firm this is the first screen a crew leader
+        // opens in the morning.
+        if (canSeePlan) add(JobLink(R.string.wp_title, R.string.wp_row_hint, onOpenWorkPackages))
+        // What the meetings agreed, and which of it is still not done.
+        if (canSeePlan) add(JobLink(R.string.mt_title, R.string.mt_row_hint, onOpenMeetings))
         // The day's log lives beside the money for the same reason: too much
         // to inline, too important to bury in a menu.
         if (canSeeEvidence) add(JobLink(R.string.log_title, R.string.log_notes_hint, onOpenDailyLog))
+        // What the job is being built from, which is part of the plan.
+        if (canSeePlan) add(JobLink(R.string.dwg_title, R.string.dwg_row_hint, onOpenDrawings))
+        // Beside the drawings, because most questions are about one.
+        if (canSeePlan) add(JobLink(R.string.qry_title, R.string.qry_row_hint, onOpenQueries))
+        // The other thing sent to the designers and waited on: what is to be ordered.
+        if (canSeePlan) add(JobLink(R.string.ms_title, R.string.ms_row_hint, onOpenSubmittals))
+        // What held the programme up, beside what it was waiting on.
+        if (canSeePlan) add(JobLink(R.string.de_title, R.string.de_row_hint, onOpenDelays))
+        // Part of the site's record: who looked at the work before it was covered.
+        if (canSeeEvidence) add(JobLink(R.string.ir_title, R.string.ir_row_hint, onOpenInspections))
+        // Beside the inspections: what an inspection found wrong, and what was done about it.
+        if (canSeeEvidence) add(JobLink(R.string.ncr_title, R.string.ncr_row_hint, onOpenNonConformances))
+        // What could hurt somebody on this job, and what is done about it.
+        if (canSeeEvidence) add(JobLink(R.string.ra_title, R.string.ra_row_hint, onOpenRisks))
+        // The week of it all, counted, for the safety officer to sign.
+        if (canSeeEvidence) add(JobLink(R.string.ws_title, R.string.ws_row_hint, onOpenSafetyWeek))
+        // What is kept on the site that can hurt somebody, and where its data sheet is.
+        if (canSeeEvidence) add(JobLink(R.string.hs_title, R.string.hs_row_hint, onOpenSubstances))
+        // Beside what can catch fire: what puts it out, and whether anybody has looked this month.
+        if (canSeeEvidence) add(JobLink(R.string.fp_title, R.string.fp_row_hint, onOpenFirePoints))
+        // What the street said about the site, and what it was told.
+        if (canSeeEvidence) add(JobLink(R.string.cp_title, R.string.cp_row_hint, onOpenComplaints))
+        // Beside the log, because it is the other thing somebody at the gate
+        // writes in every day, and the roll call reads it.
+        if (canSeeEvidence) add(JobLink(R.string.visit_title, R.string.visit_row_hint, onOpenVisitors))
         // Concrete is under Stuff, not Evidence: it is material arriving on a
         // lorry, and whoever books it in books in everything else delivered.
         if (canSeeStuff) add(JobLink(R.string.pour_title, R.string.pour_row_hint, onOpenConcrete))
@@ -160,10 +242,14 @@ fun ProjectDetailScreen(
             add(JobLink(R.string.lift_title, R.string.lift_row_hint, onOpenLifts))
             add(JobLink(R.string.tw_title, R.string.tw_row_hint, onOpenTemporaryWorks))
             add(JobLink(R.string.exc_title, R.string.exc_row_hint, onOpenExcavations))
+            add(JobLink(R.string.waste_title, R.string.waste_row_hint, onOpenWaste))
             // Last, because it is the one that reads all the others.
             add(JobLink(R.string.hv_title, R.string.hv_row_hint, onOpenHandover))
         }
     }
+
+    var stagingTask by remember { mutableStateOf<ProjectTaskEntity?>(null) }
+    val language = currentLocale().toLanguageTag()
 
     val listState = rememberLazyListState()
     val rowsAboveTasks = (if (project != null) 1 else 0) +
@@ -221,7 +307,15 @@ fun ProjectDetailScreen(
                             if (project == null) return@IconButton
                             val result = Exporter.write(
                                 context = context,
-                                document = ExportDocument.ProjectSheet(project, state.tasks, state.materials),
+                                document = ExportDocument.ProjectSheet(
+                                    project = project,
+                                    tasks = state.tasks,
+                                    materials = state.materials,
+                                    taskStages = state.tasks.mapNotNull { task ->
+                                        viewModel.stageName(task.stageId, language)
+                                            ?.let { task.id to it }
+                                    }.toMap(),
+                                ),
                                 languageTag = languageTag,
                                 locale = locale,
                                 rightToLeft = layoutDirection == LayoutDirection.Rtl,
@@ -247,12 +341,115 @@ fun ProjectDetailScreen(
         },
     ) { padding ->
         LazyColumn(state = listState, modifier = Modifier.padding(padding)) {
+            // The short answer to "what is going wrong on this job", before
+            // anything else, each line a way into the register it came from.
+            if (attention.isNotEmpty()) {
+                item {
+                    Surface(
+                        color = MaterialTheme.colorScheme.errorContainer,
+                        contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                    ) {
+                        Column(Modifier.padding(vertical = 8.dp)) {
+                            Text(
+                                stringResource(R.string.at_title),
+                                style = MaterialTheme.typography.titleSmall,
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                            )
+                            attention.forEach { line ->
+                                Row(
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable {
+                                            when (line.item) {
+                                                Attention.Item.RISKS_EXTREME, Attention.Item.RISK_REVIEWS_OVERDUE -> onOpenRisks()
+                                                Attention.Item.INSPECTIONS_FAILED, Attention.Item.INSPECTIONS_OVERDUE -> onOpenInspections()
+                                                Attention.Item.MATERIALS_REJECTED, Attention.Item.MATERIALS_OVERDUE -> onOpenSubmittals()
+                                                Attention.Item.QUERIES_OVERDUE -> onOpenQueries()
+                                                Attention.Item.DELAYS_WITHOUT_NOTICE, Attention.Item.DELAYS_RUNNING -> onOpenDelays()
+                                                Attention.Item.COMPLAINTS_WAITING -> onOpenComplaints()
+                                                Attention.Item.NCRS_OVERDUE, Attention.Item.NCRS_AWAITING_DECISION -> onOpenNonConformances()
+                                                Attention.Item.SUBSTANCES_WITHOUT_SHEET -> onOpenSubstances()
+                                                Attention.Item.FIRE_POINTS -> onOpenFirePoints()
+                                                Attention.Item.EMERGENCY_INFO_MISSING -> onOpenEmergency()
+                                                Attention.Item.MEETING_POINTS_OVERDUE -> onOpenMeetings()
+                                                Attention.Item.INVESTIGATIONS_OUTSTANDING, Attention.Item.INCIDENT_ACTIONS_OVERDUE -> onOpenIncidents()
+                                            }
+                                        }
+                                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                                ) {
+                                    Text(stringResource(attentionLabel(line.item)), style = MaterialTheme.typography.bodyMedium)
+                                    Text(line.count.toString(), style = MaterialTheme.typography.titleMedium)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             if (project != null) {
                 item {
                     Column(Modifier.padding(vertical = 8.dp)) {
                         DetailRow(stringResource(R.string.proj_status), stringResource(statusLabel(project.status)))
-                        project.city?.let { DetailRow(stringResource(R.string.proj_address), it) }
-                        project.clientName?.let { DetailRow(stringResource(R.string.proj_client), it) }
+                        // Said before anything else on the screen. Somebody
+                        // opening the twelfth floor needs to know which tower
+                        // they are in before they read a single task.
+                        parent?.let {
+                            ListItem(
+                                headlineContent = { Text(it.name) },
+                                overlineContent = { Text(stringResource(R.string.proj_part_of)) },
+                                modifier = Modifier.clickable { onOpenProject(it.id) },
+                            )
+                        }
+                        // Where the job is, who it is for and when it runs are
+                        // the plan's. Anybody else reads them; until now a
+                        // tap let them change them too.
+                        PlaceAndClient(
+                            project = project,
+                            onEdit = { showPlaceEditor = true }.takeIf { canEditPlan },
+                        )
+                        // Both dates have been columns since the beginning
+                        // with nothing writing to either, so the dashboard
+                        // tile for jobs running late has always been empty and
+                        // the list's ORDER BY dueDate has been ordering by
+                        // nothing.
+                        DetailRow(
+                            stringResource(R.string.proj_start),
+                            project.startDate?.let { asDate(it, locale) }
+                                ?: stringResource(R.string.proj_no_date),
+                            if (canEditPlan) Modifier.clickable { pickingStart = true } else Modifier,
+                        )
+                        DetailRow(
+                            stringResource(R.string.proj_due),
+                            project.dueDate?.let { asDate(it, locale) }
+                                ?: stringResource(R.string.proj_no_date),
+                            if (canEditPlan) Modifier.clickable { pickingDue = true } else Modifier,
+                        )
+                    }
+                }
+
+                item {
+                    SectionHeader(stringResource(R.string.proj_parts))
+                }
+                if (parts.isEmpty()) {
+                    item { SectionPlaceholder(stringResource(R.string.proj_no_parts)) }
+                }
+                items(parts, key = { "part-" + it.id }) { part ->
+                    ListItem(
+                        headlineContent = { Text(part.name) },
+                        supportingContent = { Text(part.kindLabel) },
+                        modifier = Modifier.clickable { onOpenProject(part.id) },
+                    )
+                }
+                // Offered only on a whole job. A part that can be broken up is
+                // a tree somebody can bury a floor four taps down; if nesting
+                // deeper is ever needed it should be built on purpose.
+                if (project.parentProjectId == null && canEditPlan) {
+                    item {
+                        TextButton(onClick = { addingPart = true }) {
+                            Text(stringResource(R.string.proj_add_part))
+                        }
                     }
                 }
             }
@@ -337,8 +534,14 @@ fun ProjectDetailScreen(
                     item { SectionPlaceholder(stringResource(R.string.proj_tasks_empty)) }
                 }
                 items(state.tasks, key = { it.id }) { task ->
+                    val stage = viewModel.stageName(task.stageId, language)
                     ListItem(
                         headlineContent = { Text(task.title) },
+                        // The stage under the title rather than beside it: the
+                        // title is what somebody reads, and three tasks that
+                        // read the same on three floors are the reason the
+                        // stage is worth showing at all.
+                        supportingContent = stage?.let { { Text(it) } },
                         leadingContent = {
                             Checkbox(
                                 checked = task.isDone,
@@ -355,6 +558,11 @@ fun ProjectDetailScreen(
                                     )
                                 }
                             }
+                        },
+                        modifier = if (canEditPlan) {
+                            Modifier.clickable { stagingTask = task }
+                        } else {
+                            Modifier
                         },
                     )
                 }
@@ -405,6 +613,55 @@ fun ProjectDetailScreen(
         }
     }
 
+    if (pickingStart) {
+        state.project?.let { project ->
+            PickDate(
+                initial = project.startDate,
+                onDismiss = { pickingStart = false },
+                onPick = { chosen ->
+                    pickingStart = false
+                    viewModel.setDates(chosen, project.dueDate)
+                },
+            )
+        }
+    }
+
+    if (pickingDue) {
+        state.project?.let { project ->
+            PickDate(
+                initial = project.dueDate,
+                onDismiss = { pickingDue = false },
+                onPick = { chosen ->
+                    pickingDue = false
+                    viewModel.setDates(project.startDate, chosen)
+                },
+            )
+        }
+    }
+
+    if (addingPart) {
+        AddPartDialog(
+            onDismiss = { addingPart = false },
+            onAdd = { name, kind ->
+                viewModel.addPart(name, kind)
+                addingPart = false
+            },
+        )
+    }
+
+    if (showPlaceEditor) {
+        state.project?.let { project ->
+            PlaceAndClientDialog(
+                project = project,
+                onDismiss = { showPlaceEditor = false },
+                onSave = { street, city, postalCode, clientName, clientPhone ->
+                    viewModel.setPlaceAndClient(street, city, postalCode, clientName, clientPhone)
+                    showPlaceEditor = false
+                },
+            )
+        }
+    }
+
     if (addingMaterial) {
         AddMaterialDialog(
             languageTag = languageTag,
@@ -427,10 +684,24 @@ fun ProjectDetailScreen(
         )
     }
 
+    stagingTask?.let { task ->
+        StagePicker(
+            task = task,
+            stages = viewModel.stages,
+            language = language,
+            onDismiss = { stagingTask = null },
+            onChoose = { stageId ->
+                stagingTask = null
+                viewModel.setTaskStage(task, stageId)
+            },
+        )
+    }
+
     viewing?.let { photo ->
         PhotoViewer(
             photo = photo,
-            isPlan = photo.id == state.plan?.id,
+            // "Set as plan" and delete are for whoever may change the site's record.
+            isPlan = photo.id == state.plan?.id || !canEditEvidence,
             onSetAsPlan = {
                 viewModel.setAsPlan(photo)
                 viewing = null
@@ -438,7 +709,7 @@ fun ProjectDetailScreen(
             onDelete = {
                 viewModel.deletePhoto(photo)
                 viewing = null
-            },
+            }.takeIf { canEditEvidence },
             onDismiss = { viewing = null },
         )
     }
@@ -526,4 +797,261 @@ private fun ProjectImages(
             }
         }
     }
+}
+
+/**
+ * Which stage of the job a task belongs to.
+ *
+ * Every stage is offered plus "no stage", because plenty of tasks belong to
+ * none — "call the crane company" is not rough-in — and a picker with no way
+ * out would force a wrong answer rather than accept an empty one.
+ */
+@Composable
+private fun StagePicker(
+    task: ProjectTaskEntity,
+    stages: List<WorkStage>,
+    language: String,
+    onDismiss: () -> Unit,
+    onChoose: (String?) -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.task_stage)) },
+        text = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                Text(
+                    text = stringResource(R.string.task_stage_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                FilterChip(
+                    selected = task.stageId == null,
+                    onClick = { onChoose(null) },
+                    label = { Text(stringResource(R.string.task_stage_none)) },
+                )
+                stages.forEach { stage ->
+                    FilterChip(
+                        selected = task.stageId == stage.id,
+                        onClick = { onChoose(stage.id) },
+                        label = { Text(stage.names.resolve(language)) },
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+/**
+ * Where the job is, and who it is for.
+ *
+ * These columns have been in the database since the beginning and no screen
+ * ever wrote to them, so the detail page has been showing an Address row and
+ * a Client row that could not appear. A job with no address is one a
+ * subcontractor cannot drive to and a client nobody can ring, which is most of
+ * what a contractor needs a job record for.
+ *
+ * The address is one line built from the parts, because that is how somebody
+ * reads it and how a maps app wants it. The parts are kept separate in the
+ * database all the same: a postcode glued into a string cannot be searched on
+ * later, and pulling it back out of one is guesswork.
+ */
+@Composable
+private fun PlaceAndClient(project: ProjectEntity, onEdit: (() -> Unit)?) {
+    val context = LocalContext.current
+    val address = listOfNotNull(
+        project.street?.takeIf { it.isNotBlank() },
+        project.city?.takeIf { it.isNotBlank() },
+        project.postalCode?.takeIf { it.isNotBlank() },
+    ).joinToString(", ")
+
+    if (address.isBlank()) {
+        DetailRow(stringResource(R.string.proj_address), stringResource(R.string.proj_no_address))
+    } else {
+        DetailRow(stringResource(R.string.proj_address), address)
+    }
+    project.clientName?.takeIf { it.isNotBlank() }
+        ?.let { DetailRow(stringResource(R.string.proj_client), it) }
+    project.clientPhone?.takeIf { it.isNotBlank() }
+        ?.let { DetailRow(stringResource(R.string.proj_client_phone), it) }
+
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        if (address.isNotBlank()) {
+            // geo: with a query, rather than coordinates the app does not
+            // have. Any maps app on the phone answers it, which matters
+            // because not every site phone has Google's.
+            OutlinedButton(
+                onClick = {
+                    val query = Uri.encode(address)
+                    runCatching {
+                        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$query")))
+                    }
+                },
+            ) { Text(stringResource(R.string.proj_open_map)) }
+        }
+        project.clientPhone?.takeIf { it.isNotBlank() }?.let { phone ->
+            FilledTonalButton(
+                onClick = {
+                    val number = Contact.dialable(phone)
+                    runCatching {
+                        context.startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number")))
+                    }
+                },
+            ) { Text(stringResource(R.string.crew_call)) }
+        }
+        if (onEdit != null) {
+            TextButton(onClick = onEdit) { Text(stringResource(R.string.action_edit)) }
+        }
+    }
+}
+
+@Composable
+private fun PlaceAndClientDialog(
+    project: ProjectEntity,
+    onDismiss: () -> Unit,
+    onSave: (
+        street: String,
+        city: String,
+        postalCode: String,
+        clientName: String,
+        clientPhone: String,
+    ) -> Unit,
+) {
+    var street by remember { mutableStateOf(project.street.orEmpty()) }
+    var city by remember { mutableStateOf(project.city.orEmpty()) }
+    var postalCode by remember { mutableStateOf(project.postalCode.orEmpty()) }
+    var clientName by remember { mutableStateOf(project.clientName.orEmpty()) }
+    var clientPhone by remember { mutableStateOf(project.clientPhone.orEmpty()) }
+
+    // Every field optional. A job is usually created in ten seconds when it is
+    // won, and the address turns up in a message that evening.
+    val phoneFault = Contact.blocksPhone(clientPhone).takeIf { clientPhone.isNotBlank() }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.proj_where_and_who)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedTextField(
+                    value = street,
+                    onValueChange = { street = it },
+                    label = { Text(stringResource(R.string.proj_street)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = city,
+                    onValueChange = { city = it },
+                    label = { Text(stringResource(R.string.proj_city)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = postalCode,
+                    onValueChange = { postalCode = it },
+                    label = { Text(stringResource(R.string.proj_postal_code)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = clientName,
+                    onValueChange = { clientName = it },
+                    label = { Text(stringResource(R.string.proj_client)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = clientPhone,
+                    onValueChange = { clientPhone = it },
+                    label = { Text(stringResource(R.string.proj_client_phone)) },
+                    isError = phoneFault != null,
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                enabled = phoneFault == null,
+                onClick = { onSave(street, city, postalCode, clientName, clientPhone) },
+            ) { Text(stringResource(R.string.action_save)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+/**
+ * A part of a job: a floor, a flat, a plot.
+ *
+ * Two boxes and no more. Everything else a part needs -- its address, its
+ * client, its dates -- it inherits by being inside the job, and asking for
+ * them again at the moment somebody is adding a twelfth floor is how twenty
+ * floors never get added.
+ */
+@Composable
+private fun AddPartDialog(onDismiss: () -> Unit, onAdd: (String, String) -> Unit) {
+    var name by remember { mutableStateOf("") }
+    var kind by remember { mutableStateOf("") }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.proj_add_part)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text(stringResource(R.string.proj_name)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = kind,
+                    onValueChange = { kind = it },
+                    label = { Text(stringResource(R.string.proj_kind)) },
+                    supportingText = { Text(stringResource(R.string.proj_part_hint)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                enabled = name.isNotBlank(),
+                onClick = { onAdd(name, kind) },
+            ) { Text(stringResource(R.string.action_add)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}
+
+@StringRes
+internal fun attentionLabel(item: Attention.Item): Int = when (item) {
+    Attention.Item.RISKS_EXTREME -> R.string.at_risks_extreme
+    Attention.Item.INSPECTIONS_FAILED -> R.string.at_inspections_failed
+    Attention.Item.INSPECTIONS_OVERDUE -> R.string.at_inspections_overdue
+    Attention.Item.MATERIALS_REJECTED -> R.string.at_materials_rejected
+    Attention.Item.MATERIALS_OVERDUE -> R.string.at_materials_overdue
+    Attention.Item.QUERIES_OVERDUE -> R.string.at_queries_overdue
+    Attention.Item.DELAYS_WITHOUT_NOTICE -> R.string.at_delays_no_notice
+    Attention.Item.DELAYS_RUNNING -> R.string.at_delays_running
+    Attention.Item.RISK_REVIEWS_OVERDUE -> R.string.at_risk_reviews
+    Attention.Item.COMPLAINTS_WAITING -> R.string.at_complaints_waiting
+    Attention.Item.SUBSTANCES_WITHOUT_SHEET -> R.string.at_substances_no_sheet
+    Attention.Item.FIRE_POINTS -> R.string.at_fire_points
+    Attention.Item.EMERGENCY_INFO_MISSING -> R.string.at_emergency_missing
+    Attention.Item.MEETING_POINTS_OVERDUE -> R.string.at_meeting_points
+    Attention.Item.INVESTIGATIONS_OUTSTANDING -> R.string.at_investigations
+    Attention.Item.INCIDENT_ACTIONS_OVERDUE -> R.string.at_incident_actions
+    Attention.Item.NCRS_OVERDUE -> R.string.at_ncrs_overdue
+    Attention.Item.NCRS_AWAITING_DECISION -> R.string.at_ncrs_awaiting
 }

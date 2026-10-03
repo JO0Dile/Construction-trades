@@ -1,5 +1,6 @@
 package il.co.tradesmanager.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -80,4 +81,16 @@ data class PhotoEntity(
     val latitude: Double? = null,
     val longitude: Double? = null,
     val note: String? = null,
+    /**
+     * "image" or "video".
+     *
+     * A violation has to be arguable by the person it is written against, and
+     * a still of a man on a ladder does not always show what was wrong with
+     * how he was standing on it. The table stores a URI either way; this is
+     * how a screen knows whether to draw a thumbnail or a play button.
+     *
+     * Defaults to image, which is what every row written before this was.
+     */
+    @ColumnInfo(defaultValue = "'image'")
+    val mediaType: String = "image",
 )

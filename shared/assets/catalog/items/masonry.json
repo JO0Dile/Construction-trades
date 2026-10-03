@@ -1,0 +1,289 @@
+{
+  "tradeId": "masonry",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "ms.block.concrete.20",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete block 20 cm",
+        "he": "בלוק בטון 20 ס״מ",
+        "ar": "بلوك باطون 20 سم"
+      },
+      "spec": {
+        "en": "The structural width for external and separating walls.",
+        "he": "הרוחב המבני לקירות חוץ וקירות הפרדה.",
+        "ar": "العرض الإنشائي للجدران الخارجية والفاصلة."
+      },
+      "attributes": {
+        "widthCm": "20"
+      },
+      "tags": [
+        "block"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ms.block.concrete.10",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete block 10 cm",
+        "he": "בלוק בטון 10 ס״מ",
+        "ar": "بلوك باطون 10 سم"
+      },
+      "spec": {
+        "en": "Partitions, where nothing is being carried but the wall itself.",
+        "he": "מחיצות, שם אין נשיאה מלבד הקיר עצמו.",
+        "ar": "قواطع، حيث لا يُحمل شيء سوى الجدار نفسه."
+      },
+      "attributes": {
+        "widthCm": "10"
+      },
+      "tags": [
+        "block",
+        "partition"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ms.block.thermal",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Thermal block (ytong/aerated)",
+        "he": "בלוק תרמי / איטונג",
+        "ar": "بلوك حراري (يتونغ)"
+      },
+      "spec": {
+        "en": "Insulates as it builds. Cuts clean, and it does not hold a heavy fixing.",
+        "he": "מבודד תוך כדי בנייה. נחתך נקי, ואינו מחזיק עיגון כבד.",
+        "ar": "يعزل أثناء البناء. يُقصّ بنظافة، ولا يمسك تثبيتاً ثقيلاً."
+      },
+      "tags": [
+        "block",
+        "thermal"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ms.block.hollow.clay",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Hollow clay block",
+        "he": "בלוק חרס חלול",
+        "ar": "طوب فخار مفرّغ"
+      },
+      "spec": {
+        "en": "Light and breathable. The cavities are why it insulates and why it breaks in handling.",
+        "he": "קל ונושם. החללים הם הסיבה לבידוד והסיבה לשבירה בהובלה.",
+        "ar": "خفيف ويتنفّس. التجاويف سبب العزل وسبب الكسر أثناء المناولة."
+      },
+      "tags": [
+        "block"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ms.brick.silicate",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Silicate brick",
+        "he": "לבנת סיליקט",
+        "ar": "طوب سيليكات"
+      },
+      "spec": {
+        "en": "Dense and dimensionally accurate, which is why it is laid fair-faced.",
+        "he": "צפופה ומדויקת במידות, ולכן נבנית כבנייה גלויה.",
+        "ar": "كثيف ودقيق الأبعاد، ولهذا يُبنى ظاهراً."
+      },
+      "tags": [
+        "block"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ms.mortar.masonry",
+      "kind": "MATERIAL",
+      "category": "binders",
+      "unit": "BAG",
+      "names": {
+        "en": "Masonry mortar",
+        "he": "טיט בנייה",
+        "ar": "مونة بناء"
+      },
+      "spec": {
+        "en": "Mixed to a consistency, not a stopwatch. Retempering a stiffened batch weakens it.",
+        "he": "מעורבב לסמיכות ולא לפי שעון. הוספת מים לטיט שהתקשה מחלישה אותו.",
+        "ar": "تُخلط للقوام لا للساعة. إعادة ترطيب خلطة متيبّسة تُضعفها."
+      },
+      "tags": [
+        "mortar"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ms.lintel.precast",
+      "kind": "MATERIAL",
+      "category": "masonry",
+      "unit": "PCS",
+      "names": {
+        "en": "Precast lintel",
+        "he": "משקוף טרומי",
+        "ar": "عتب جاهز"
+      },
+      "spec": {
+        "en": "Bears on both sides by the amount the drawing says, not by what fits.",
+        "he": "נשען משני הצדדים במידה שבתוכנית, לא לפי מה שמסתדר.",
+        "ar": "يرتكز من الجانبين بالمقدار الذي في المخطط لا بما يناسب."
+      },
+      "tags": [
+        "opening"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "ms.tie.wall",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Wall tie / connector",
+        "he": "מקשר קיר",
+        "ar": "رابط حائط"
+      },
+      "spec": {
+        "en": "Ties the leaves together so they act as one wall and not as two thin ones.",
+        "he": "מקשר בין השכבות כך שיפעלו כקיר אחד ולא כשניים דקים.",
+        "ar": "يربط الطبقتين لتعملا كجدار واحد لا كجدارين رقيقين."
+      },
+      "tags": [
+        "fixing"
+      ]
+    },
+    {
+      "id": "ms.tool.trowel.brick",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Brick trowel",
+        "he": "כף בנאי",
+        "ar": "مالج بناء"
+      },
+      "spec": {
+        "en": "Picks up and spreads in one motion. Weight and balance matter over a full day.",
+        "he": "אוסף ומורח בתנועה אחת. משקל ואיזון חשובים לאורך יום שלם.",
+        "ar": "يلتقط ويفرد بحركة واحدة. الوزن والاتزان يهمّان على مدار يوم."
+      },
+      "tags": [
+        "hand-tool"
+      ]
+    },
+    {
+      "id": "ms.tool.line.block",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PAIR",
+      "names": {
+        "en": "Line blocks and string",
+        "he": "בלוקי חוט ומיתר",
+        "ar": "بكرات خيط البناء"
+      },
+      "spec": {
+        "en": "The line is the wall. Everything else is following it.",
+        "he": "החוט הוא הקיר. כל השאר עוקב אחריו.",
+        "ar": "الخيط هو الجدار. كل ما عداه يتبعه."
+      },
+      "tags": [
+        "setting-out"
+      ]
+    },
+    {
+      "id": "ms.tool.saw.block",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Block saw",
+        "he": "מסור בלוקים",
+        "ar": "منشار بلوك"
+      },
+      "spec": {
+        "en": "Cut wet or wear the mask. Dry-cutting blocks makes respirable silica.",
+        "he": "יש לחתוך ברטוב או להרכיב מסכה. חיתוך יבש יוצר אבק סיליקה נשים.",
+        "ar": "اقطع مبلّلاً أو البس الكمامة. القصّ الجاف يولّد غبار سيليكا يُستنشق."
+      },
+      "tags": [
+        "cutting"
+      ]
+    },
+    {
+      "id": "ms.tool.level.spirit",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Spirit level 120 cm",
+        "he": "פלס 120 ס״מ",
+        "ar": "ميزان ماء 120 سم"
+      },
+      "spec": {
+        "en": "Long enough to span the course. A short level makes a wall that is locally perfect and overall wrong.",
+        "he": "ארוך דיו לגשר על הנדבך. פלס קצר יוצר קיר מדויק מקומית ושגוי בכללותו.",
+        "ar": "طويل بما يكفي ليجسر المدماك. الميزان القصير يصنع جداراً دقيقاً موضعياً وخاطئاً إجمالاً."
+      },
+      "attributes": {
+        "lengthCm": "120"
+      },
+      "tags": [
+        "measuring"
+      ]
+    },
+    {
+      "id": "ms.tool.hammer.club",
+      "kind": "TOOL",
+      "category": "hand-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Club hammer",
+        "he": "פטיש כבד",
+        "ar": "شاكوش دقّ"
+      },
+      "spec": {
+        "en": "1.5 kg, for chasing and setting blocks.",
+        "he": "1.5 ק״ג, לחריצה ולהנחת בלוקים.",
+        "ar": "1.5 كغ، للتفنيص ولضبط البلوك."
+      },
+      "attributes": {},
+      "tags": [
+        "hammer"
+      ],
+      "colloquial": {
+        "ar": "شاكوش دق"
+      }
+    }
+  ]
+}

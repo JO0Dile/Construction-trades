@@ -259,5 +259,261 @@
             <string>%d days overdue</string>
         </dict>
     </dict>
+    <key>ts_withheld</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d person on this job is not yours to price.</string>
+            <key>other</key>
+            <string>%d people on this job are not yours to price.</string>
+        </dict>
+    </dict>
+    <key>crew_no_trade</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d person has no trade recorded and is on none of these lists.</string>
+            <key>other</key>
+            <string>%d people have no trade recorded and are on none of these lists.</string>
+        </dict>
+    </dict>
+    <key>home_plant_unchecked</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d machine on site not checked today</string>
+            <key>other</key>
+            <string>%d machines on site not checked today</string>
+        </dict>
+    </dict>
+    <key>waste_unproven</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d load with no ticket</string>
+            <key>other</key>
+            <string>%d loads with no ticket</string>
+        </dict>
+    </dict>
+    <key>home_ppe_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d item of protective equipment is past its replacement date</string>
+            <key>other</key>
+            <string>%d items of protective equipment are past their replacement date</string>
+        </dict>
+    </dict>
+    <key>muster_visitors_on_site</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>and %d visitor signed in</string>
+            <key>other</key>
+            <string>and %d visitors signed in</string>
+        </dict>
+    </dict>
+    <key>cube_age_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d day</string>
+            <key>other</key>
+            <string>%d days</string>
+        </dict>
+    </dict>
+    <key>de_events</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d delay recorded</string>
+            <key>other</key>
+            <string>%d delays recorded</string>
+        </dict>
+    </dict>
+    <key>de_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d day</string>
+            <key>other</key>
+            <string>%d days</string>
+        </dict>
+    </dict>
+    <key>de_without_notice</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d with no notice recorded</string>
+            <key>other</key>
+            <string>%d with no notice recorded</string>
+        </dict>
+    </dict>
+    <key>home_plant_examination_due</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d machine's examination certificate has run out or failed</string>
+            <key>other</key>
+            <string>%d machines' examination certificates have run out or failed</string>
+        </dict>
+    </dict>
+    <key>fp_looks_more</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>and %d earlier look</string>
+            <key>other</key>
+            <string>and %d earlier looks</string>
+        </dict>
+    </dict>
+    <key>mt_points_open</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d point still open</string>
+            <key>other</key>
+            <string>%d points still open</string>
+        </dict>
+    </dict>
+    <key>mt_points_of_meeting</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%1$d point, %2$d still open</string>
+            <key>other</key>
+            <string>%1$d points, %2$d still open</string>
+        </dict>
+    </dict>
+    <key>home_more_lines</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d more</string>
+            <key>other</key>
+            <string>%d more</string>
+        </dict>
+    </dict>
+    <key>sst_capped</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d shift ran past 16 hours and is counted as 16: probably somebody forgot to check out.</string>
+            <key>other</key>
+            <string>%d shifts ran past 16 hours and are counted as 16 each: probably somebody forgot to check out.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

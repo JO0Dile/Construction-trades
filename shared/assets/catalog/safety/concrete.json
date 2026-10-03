@@ -1,0 +1,66 @@
+{
+  "tradeId": "concrete",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.cn.pour",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "During a pour",
+        "he": "במהלך יציקה",
+        "ar": "أثناء الصبّة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"
+      ],
+      "items": [
+        {
+          "id": "sf.cn.pour.1",
+          "critical": true,
+          "texts": {
+            "en": "Nobody under the skip, the boom or the hose at any time",
+            "he": "אין איש מתחת לדלי, לזרוע או לצינור בשום שלב",
+            "ar": "لا أحد تحت الدلو أو الذراع أو الخرطوم في أي وقت"
+          }
+        },
+        {
+          "id": "sf.cn.pour.2",
+          "critical": true,
+          "texts": {
+            "en": "Formwork and props watched by a named person throughout",
+            "he": "תבניות ותמוכות במעקב של אדם מוגדר לאורך היציקה",
+            "ar": "الطوبار والدعامات تحت مراقبة شخص محدّد طوال الصبّة"
+          }
+        },
+        {
+          "id": "sf.cn.pour.3",
+          "critical": true,
+          "texts": {
+            "en": "Eye protection and gloves worn — wet concrete burns",
+            "he": "מגן עיניים וכפפות — בטון רטוב כווה",
+            "ar": "واقي العينين وقفازات — الباطون الرطب يحرق"
+          }
+        },
+        {
+          "id": "sf.cn.pour.4",
+          "critical": false,
+          "texts": {
+            "en": "Slump taken off the truck before discharge, not after",
+            "he": "בדיקת שקיעה נלקחה מהמערבל לפני פריקה, לא אחריה",
+            "ar": "فحص الهبوط مأخوذ من المكسر قبل التفريغ، لا بعده"
+          }
+        },
+        {
+          "id": "sf.cn.pour.5",
+          "critical": false,
+          "texts": {
+            "en": "No water added on the truck to make it flow",
+            "he": "לא הוספו מים במערבל כדי לשפר זרימה",
+            "ar": "لم يُضف ماء على المكسر لتحسين السيولة"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 package il.co.tradesmanager.core.money
 
+import il.co.tradesmanager.core.audit.Summaries
+
 /**
  * What a job is worth, what it has cost, and what is still owed.
  *
@@ -75,6 +77,19 @@ data class JobFinancials(
         const val PROPOSED = "PROPOSED"
         const val APPROVED = "APPROVED"
         const val REJECTED = "REJECTED"
+
+        /**
+         * What this status is called in an audit summary.
+         *
+         * The key names the string the screens already show, so the register
+         * and the screen it came from cannot say two different things.
+         */
+        fun summaryKey(status: String): String = when (status) {
+            PROPOSED -> Summaries.STATUS_PROPOSED
+            APPROVED -> "wp_status_approved"
+            REJECTED -> "pay_status_rejected"
+            else -> status
+        }
     }
 
     object InvoiceStatus {

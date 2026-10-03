@@ -1,0 +1,320 @@
+{
+  "tradeId": "concrete",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "cn.readymix.b30",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "M3",
+      "names": {
+        "en": "Ready-mix concrete B30",
+        "he": "בטון מובא ב-30",
+        "ar": "باطون جاهز B30"
+      },
+      "spec": {
+        "en": "The common structural grade. The delivery note is the record; keep it.",
+        "he": "הסוג המבני הנפוץ. תעודת המשלוח היא התיעוד; יש לשמור אותה.",
+        "ar": "الدرجة الإنشائية الشائعة. سند التوريد هو السجل؛ احتفظ به."
+      },
+      "attributes": {
+        "grade": "B30"
+      },
+      "tags": [
+        "concrete"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "cn.readymix.b40",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "M3",
+      "names": {
+        "en": "Ready-mix concrete B40",
+        "he": "בטון מובא ב-40",
+        "ar": "باطون جاهز B40"
+      },
+      "spec": {
+        "en": "Where the engineer asked for more than B30. Not a substitution to make on site.",
+        "he": "כאשר המהנדס דרש יותר מב-30. אין להחליף זאת באתר.",
+        "ar": "حين يطلب المهندس أكثر من B30. ليس استبدالاً يُقرَّر في الموقع."
+      },
+      "attributes": {
+        "grade": "B40"
+      },
+      "tags": [
+        "concrete"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "cn.formwork.panel",
+      "kind": "MATERIAL",
+      "category": "timber",
+      "unit": "M2",
+      "names": {
+        "en": "Formwork panel",
+        "he": "לוח תבנית",
+        "ar": "لوح طوبار"
+      },
+      "spec": {
+        "en": "Clean and oil it between pours or the next face comes out torn.",
+        "he": "יש לנקות ולשמן בין יציקות, אחרת הפנים הבאות יוצאות קרועות.",
+        "ar": "نظّفه وزيّته بين الصبّات وإلا خرج الوجه التالي ممزّقاً."
+      },
+      "tags": [
+        "formwork"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "cn.formwork.prop",
+      "kind": "MATERIAL",
+      "category": "site-equipment",
+      "unit": "PCS",
+      "names": {
+        "en": "Adjustable prop",
+        "he": "תמוכה מתכווננת",
+        "ar": "دعامة قابلة للضبط"
+      },
+      "spec": {
+        "en": "Carries the slab until it carries itself. Striking early is how slabs come down.",
+        "he": "נושאת את התקרה עד שתישא את עצמה. פירוק מוקדם כך תקרות קורסות.",
+        "ar": "تحمل السقف حتى يحمل نفسه. الفكّ المبكر هكذا تسقط الأسقف."
+      },
+      "tags": [
+        "formwork",
+        "temporary-works"
+      ]
+    },
+    {
+      "id": "cn.formwork.tie",
+      "kind": "MATERIAL",
+      "category": "fixings",
+      "unit": "PCS",
+      "names": {
+        "en": "Formwork tie rod",
+        "he": "מוט קשירה לתבנית",
+        "ar": "قضيب ربط الطوبار"
+      },
+      "spec": {
+        "en": "Holds the two faces apart against the pressure of wet concrete.",
+        "he": "מחזיק את שתי הפנים במרחק כנגד לחץ הבטון הרטוב.",
+        "ar": "يثبّت الوجهين على المسافة ضد ضغط الباطون الطري."
+      },
+      "tags": [
+        "formwork"
+      ]
+    },
+    {
+      "id": "cn.release.agent",
+      "kind": "CONSUMABLE",
+      "category": "consumables",
+      "unit": "L",
+      "names": {
+        "en": "Formwork release agent",
+        "he": "שמן תבניות",
+        "ar": "زيت طوبار"
+      },
+      "spec": {
+        "en": "A thin film, not a puddle. Too much and the face dusts off.",
+        "he": "שכבה דקה, לא שלולית. עודף גורם לפני הבטון להתפורר.",
+        "ar": "طبقة رقيقة لا بركة. الزيادة تجعل الوجه يتفتّت."
+      },
+      "tags": [
+        "formwork"
+      ]
+    },
+    {
+      "id": "cn.admix.plasticiser",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "L",
+      "names": {
+        "en": "Plasticiser admixture",
+        "he": "מוסף מפלסטיסייזר",
+        "ar": "مادة ملدّنة"
+      },
+      "spec": {
+        "en": "Adds workability without adding water. Water added on the truck is strength thrown away.",
+        "he": "מוסיף סחירות בלי להוסיף מים. מים שמוסיפים במערבל הם חוזק שנזרק.",
+        "ar": "تزيد القابلية للتشغيل دون ماء. الماء المضاف على المكسر هو قوة مرمية."
+      },
+      "tags": [
+        "admixture",
+        "quality"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "cn.curing.compound",
+      "kind": "MATERIAL",
+      "category": "concrete",
+      "unit": "L",
+      "names": {
+        "en": "Curing compound",
+        "he": "חומר אשפרה",
+        "ar": "مادة معالجة الباطون"
+      },
+      "spec": {
+        "en": "Keeps the water in for the first days, which is where the strength comes from.",
+        "he": "שומר על הלחות בימים הראשונים, ומשם מגיע החוזק.",
+        "ar": "يحبس الماء في الأيام الأولى، ومن هناك تأتي المقاومة."
+      },
+      "tags": [
+        "curing"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "cn.waterstop.pvc",
+      "kind": "MATERIAL",
+      "category": "waterproofing",
+      "unit": "M",
+      "names": {
+        "en": "PVC waterstop",
+        "he": "ווטרסטופ PVC",
+        "ar": "ووتر ستوب PVC"
+      },
+      "spec": {
+        "en": "Cast into a construction joint so the joint does not become the leak.",
+        "he": "נוצק בתפר יציקה כדי שהתפר לא יהפוך לנזילה.",
+        "ar": "يُصبّ في فاصل الصبّ كي لا يصبح الفاصل مكان التسريب."
+      },
+      "tags": [
+        "joint",
+        "waterproofing"
+      ],
+      "stages": [
+        "civil"
+      ]
+    },
+    {
+      "id": "cn.tool.vibrator.poker",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete poker vibrator",
+        "he": "ויברטור מחט",
+        "ar": "هزّاز باطون (إبرة)"
+      },
+      "spec": {
+        "en": "Until the surface glistens and the bubbles stop, then move on. Over-vibrating separates it.",
+        "he": "עד שהפני מבריקים והבועות פוסקות, ואז ממשיכים. רטט יתר מפריד את התערובת.",
+        "ar": "حتى يلمع السطح وتتوقف الفقاعات، ثم انتقل. الهزّ الزائد يفصل الخلطة."
+      },
+      "tags": [
+        "pour"
+      ]
+    },
+    {
+      "id": "cn.tool.power.float",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Power float",
+        "he": "מחליק בטון",
+        "ar": "هيليكوبتر تنعيم الباطون"
+      },
+      "spec": {
+        "en": "Too early and it sinks; too late and it skates. The window is short.",
+        "he": "מוקדם מדי הוא שוקע, מאוחר מדי הוא מחליק. החלון קצר.",
+        "ar": "مبكراً يغوص ومتأخراً ينزلق. النافذة قصيرة."
+      },
+      "tags": [
+        "finishing"
+      ]
+    },
+    {
+      "id": "cn.tool.screed.vibrating",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Vibrating screed",
+        "he": "סרגל רוטט",
+        "ar": "قدّة هزّازة"
+      },
+      "spec": {
+        "en": "Levels and compacts a slab in one pass along the rails.",
+        "he": "מפלס ומהדק את היציקה במעבר אחד לאורך המסילות.",
+        "ar": "يسوّي ويرصّ الصبّة بمرور واحد على السكك."
+      },
+      "tags": [
+        "pour"
+      ]
+    },
+    {
+      "id": "cn.tool.slump.cone",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Slump cone set",
+        "he": "ערכת קונוס שקיעה",
+        "ar": "طقم مخروط الهبوط (سلامب)"
+      },
+      "spec": {
+        "en": "The test taken off the truck before it discharges, not after.",
+        "he": "הבדיקה הנלקחת מהמערבל לפני הפריקה, לא אחריה.",
+        "ar": "الفحص يُؤخذ من المكسر قبل التفريغ، لا بعده."
+      },
+      "tags": [
+        "quality",
+        "testing"
+      ]
+    },
+    {
+      "id": "cn.tool.cube.mould",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Concrete cube mould",
+        "he": "תבנית קובייה לבדיקה",
+        "ar": "قالب مكعّب فحص"
+      },
+      "spec": {
+        "en": "The cubes are the proof the pour was what the ticket said.",
+        "he": "הקוביות הן ההוכחה שהיציקה תאמה את התעודה.",
+        "ar": "المكعبات هي البرهان أن الصبّة طابقت السند."
+      },
+      "tags": [
+        "quality",
+        "testing"
+      ]
+    },
+    {
+      "id": "cn.tool.core.drill",
+      "kind": "TOOL",
+      "category": "power-tools",
+      "unit": "PCS",
+      "names": {
+        "en": "Diamond core drill",
+        "he": "מקדח ליבה יהלום",
+        "ar": "دريل كور ألماس"
+      },
+      "spec": {
+        "en": "Scan for bar before it spins. A cut tendon is a structural repair.",
+        "he": "יש לסרוק ברזל לפני הקידוח. כבל חתוך הוא תיקון מבני.",
+        "ar": "افحص الحديد قبل التشغيل. قطع كابل يعني إصلاحاً إنشائياً."
+      },
+      "tags": [
+        "cutting"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.data.local.dao.ScaffoldDao
 import il.co.tradesmanager.data.local.entity.ScaffoldEntity
 import il.co.tradesmanager.data.local.entity.ScaffoldInspectionEntity
@@ -123,7 +125,10 @@ class ScaffoldRepository(
         }
         audit.record(
             SCAFFOLD, scaffold.id, AuditTrail.Action.SIGN_OFF, inspectorName,
-            "${scaffold.reference} ${if (passed) "passed" else "failed"}",
+            Summary.of(
+                if (passed) Summaries.INSPECTION_PASSED else Summaries.INSPECTION_FAILED,
+                scaffold.reference,
+            ),
         )
     }
 
@@ -144,13 +149,13 @@ class ScaffoldRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(SCAFFOLD, scaffold.id, AuditTrail.Action.UPDATE, actorName, "Altered")
+        audit.record(SCAFFOLD, scaffold.id, AuditTrail.Action.UPDATE, actorName, Summaries.SCAFFOLD_ALTERED)
     }
 
     suspend fun dismantle(scaffold: ScaffoldEntity, actorName: String) {
         val now = System.currentTimeMillis()
         dao.upsert(scaffold.copy(dismantledAt = now, updatedAt = now))
-        audit.record(SCAFFOLD, scaffold.id, AuditTrail.Action.UPDATE, actorName, "Dismantled")
+        audit.record(SCAFFOLD, scaffold.id, AuditTrail.Action.UPDATE, actorName, Summaries.SCAFFOLD_DISMANTLED)
     }
 
     suspend fun remove(scaffold: ScaffoldEntity, actorName: String) {

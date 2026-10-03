@@ -1,15 +1,14 @@
 package il.co.tradesmanager.data.catalog
 
 import il.co.tradesmanager.core.i18n.searchable
-import il.co.tradesmanager.data.local.dao.AuditDao
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.InventoryDao
-import il.co.tradesmanager.data.local.entity.AuditLogEntity
 import il.co.tradesmanager.data.local.entity.CatalogItemEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateEntity
 import il.co.tradesmanager.data.local.entity.ChecklistTemplateItemEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.TradeEntity
+import il.co.tradesmanager.data.repository.AuditTrail
 import java.util.UUID
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -32,7 +31,7 @@ class CatalogSeeder(
     private val source: CatalogSource,
     private val catalogDao: CatalogDao,
     private val inventoryDao: InventoryDao,
-    private val auditDao: AuditDao,
+    private val audit: AuditTrail,
 ) {
 
     data class SeedReport(val trades: Int, val catalogItems: Int, val checklists: Int, val version: Int)
@@ -131,18 +130,23 @@ class CatalogSeeder(
         newRows.size
     }
 
+    /**
+     * Seeding goes through the trail like everything else.
+     *
+     * It used to insert straight into the DAO, which was harmless while an
+     * audit row was just a row. Now that each one is hashed against the one
+     * before it, an insert that skipped the chain would leave a permanently
+     * unverifiable entry in the middle of the log — and one on every catalogue
+     * refresh, so the count of "cannot be checked" would climb for the life of
+     * the install.
+     */
     private suspend fun record(action: String, type: String, id: String, summary: String) {
-        auditDao.insert(
-            AuditLogEntity(
-                id = UUID.randomUUID().toString(),
-                entityType = type,
-                entityId = id,
-                action = action,
-                actorId = null,
-                actorName = SYSTEM_ACTOR,
-                summary = summary,
-                occurredAt = System.currentTimeMillis(),
-            ),
+        audit.record(
+            entityType = type,
+            entityId = id,
+            action = action,
+            actorName = SYSTEM_ACTOR,
+            summary = summary,
         )
     }
 
@@ -158,6 +162,7 @@ class CatalogSeeder(
         tags = tags,
         catalogVersion = version,
         searchIndex = buildSearchIndex(),
+        stages = stages,
     )
 
     private fun CatalogItemDto.toInventoryRow(tradeId: String, now: Long) = InventoryItemEntity(
@@ -186,6 +191,10 @@ class CatalogSeeder(
     private fun CatalogItemDto.buildSearchIndex(): String =
         buildString {
             append(names.searchable()).append(' ')
+            // Beside the formal names, not instead of them. Somebody hunting
+            // for a מברגה types מברגה, not "cordless screwdriver-drill", and
+            // an Arabic-speaking crew types مفريغا for the same tool.
+            append(colloquial.searchable()).append(' ')
             append(spec.searchable()).append(' ')
             append(tags.joinToString(" ") { it.lowercase() }).append(' ')
             append(category.lowercase()).append(' ')

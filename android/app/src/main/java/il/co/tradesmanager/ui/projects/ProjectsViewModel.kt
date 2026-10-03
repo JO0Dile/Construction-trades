@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.data.catalog.ProjectKind
 import il.co.tradesmanager.data.catalog.ProjectTemplateDto
 import il.co.tradesmanager.data.local.entity.ProjectEntity
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -20,7 +21,9 @@ class ProjectsViewModel(
     private val languageTag: String,
 ) : ViewModel() {
 
-    val projects: StateFlow<List<ProjectEntity>> = container.projects.observeProjects()
+    // Top level only: a tower's floors are reached through the tower, not
+    // listed beside it. Pickers elsewhere still offer every part.
+    val projects: StateFlow<List<ProjectEntity>> = container.projects.observeTopLevel()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     /** Project id -> how far through its task list it is. */
@@ -50,6 +53,16 @@ class ProjectsViewModel(
         }
     }
 
+    /**
+     * Whether the signed-in role starts jobs: an owner or a manager, which a
+     * sole trader is. Anybody who could see the list used to be offered the
+     * button, so a finance clerk or a safety officer could add a job to the
+     * company's list that nobody running the company had decided on.
+     */
+    val canCreate: StateFlow<Boolean> = container.session.state
+        .map { mayCreate(it) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
     fun setAsGrid(value: Boolean) = viewModelScope.launch {
         container.settings.setProjectsAsGrid(value)
     }
@@ -64,6 +77,7 @@ class ProjectsViewModel(
         template: Pair<String, ProjectTemplateDto>?,
         onCreated: (String) -> Unit,
     ) = viewModelScope.launch {
+        if (!mayCreate(container.session.state.first())) return@launch
         val actor = container.settings.settings.first().actorName
         val project = if (template == null) {
             container.projects.createBlank(
@@ -82,5 +96,10 @@ class ProjectsViewModel(
             )
         }
         onCreated(project.id)
+    }
+
+    companion object {
+        fun mayCreate(state: SessionRepository.State): Boolean =
+            (state as? SessionRepository.State.SignedIn)?.canManageJobs == true
     }
 }

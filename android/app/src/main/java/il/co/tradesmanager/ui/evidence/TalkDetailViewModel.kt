@@ -57,13 +57,22 @@ class TalkDetailViewModel(
             SessionRepository.State.Loading,
         )
 
-    fun signIn(accountId: String?, name: String) = viewModelScope.launch {
+    /**
+     * Adds somebody to the attendance register, with their signature.
+     *
+     * The signature parameter has been here since toolbox talks were built
+     * and every caller passed null, so the register was a list of names a
+     * foreman ticked. That is the document produced after an accident to show
+     * a man was briefed, and a name somebody else typed proves only that
+     * somebody else typed it.
+     */
+    fun signIn(accountId: String?, name: String, signature: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
         container.evidence.signIn(
             talkId = talkId,
             accountId = accountId,
             name = name,
-            signatureStrokes = null,
+            signatureStrokes = signature,
             actorName = actor,
         )
     }

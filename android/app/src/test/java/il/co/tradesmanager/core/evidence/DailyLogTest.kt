@@ -105,5 +105,13 @@ class DailyLogTest {
         assertTrue(DailyLog.Summary().isQuiet)
         assertFalse(DailyLog.Summary(talksHeld = 1).isQuiet)
         assertFalse(DailyLog.Summary(incidents = 1).isQuiet)
+        assertFalse("a day people were on site is not a quiet one", DailyLog.Summary(checkedIn = 3).isQuiet)
+        assertFalse("a day a delay ran is not a quiet one", DailyLog.Summary(delaysRunning = 1).isQuiet)
+        assertFalse(DailyLog.Summary(inspectionsFailed = 1).isQuiet)
+        assertFalse(DailyLog.Summary(poursStarted = 1).isQuiet)
+        assertFalse(DailyLog.Summary(visitors = 2).isQuiet)
+        assertFalse(DailyLog.Summary(drawingsReceived = 1).isQuiet)
+        assertFalse("a complaint made the day not a quiet one", DailyLog.Summary(complaintsReceived = 1).isQuiet)
+        assertFalse(DailyLog.Summary(fireFaults = 1).isQuiet)
     }
 }

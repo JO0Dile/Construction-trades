@@ -15,12 +15,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -38,6 +40,7 @@ import il.co.tradesmanager.ui.export.ExportDocument
 import il.co.tradesmanager.ui.export.Exporter
 import il.co.tradesmanager.ui.export.handoverItemLabel
 import java.time.LocalDate
+import kotlinx.coroutines.launch
 
 /**
  * What is still open on a job, and the pack that goes out.
@@ -69,6 +72,7 @@ fun HandoverScreen(
     val locale = currentLocale()
     val languageTag = currentLanguageTag()
     val layoutDirection = LocalLayoutDirection.current
+    val scope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -160,6 +164,37 @@ fun HandoverScreen(
                 ) {
                     Text(stringResource(R.string.hv_export))
                 }
+            }
+
+            // Everything the job kept, in one file: the summary above and every
+            // register the person exporting may read, each as a PDF and a CSV.
+            item {
+                val current = project
+                OutlinedButton(
+                    enabled = current != null,
+                    onClick = {
+                        if (current == null) return@OutlinedButton
+                        scope.launch {
+                            val archive = Exporter.writeArchive(
+                                context = context,
+                                documents = viewModel.archive(),
+                                stem = "records-" + current.name,
+                                languageTag = languageTag,
+                                locale = locale,
+                                rightToLeft = layoutDirection == LayoutDirection.Rtl,
+                            )
+                            context.startActivity(Exporter.shareArchiveIntent(context, archive))
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                ) {
+                    Text(stringResource(R.string.hv_export_all))
+                }
+                Text(
+                    stringResource(R.string.hv_export_all_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(16.dp),
+                )
             }
         }
     }

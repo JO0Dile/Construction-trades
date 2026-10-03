@@ -32,7 +32,24 @@ data class TimeEntryEntity(
     @PrimaryKey val id: String,
     val blockId: String? = null,
     val projectId: String? = null,
+    /**
+     * The account that checked in.
+     *
+     * Declared from the start and written by nothing until now, so every
+     * timesheet in the app was keyed on a typed name -- which meant two men
+     * called Hammam on one job were one row, and no rule could tell whose
+     * wages anybody was looking at.
+     */
     val workerId: String? = null,
+    /**
+     * Which company they were working for when they checked in.
+     *
+     * The chain of command is per company, so this is what decides who may be
+     * shown the money on this shift. Null for a shift recorded before the app
+     * knew, and for a sole trader with no company at all.
+     */
+    val workerMembershipId: String? = null,
+    /** Kept beside the ids, because a register has to read when the account is gone. */
     val workerName: String,
     val checkInAt: Long,
     val checkOutAt: Long? = null,

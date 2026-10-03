@@ -39,10 +39,6 @@
     <string>Used to photograph items and site progress, and to scan barcodes. Photos stay on this device unless you sync.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Used to attach existing photos of items and site progress to your records.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Used only while you dictate a task note in Hebrew or Arabic.</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>Used only while you dictate a task note in Hebrew or Arabic.</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Optional. Stamps check-ins, site photos and incident reports with where they happened. The app works fully without it.</string>
 

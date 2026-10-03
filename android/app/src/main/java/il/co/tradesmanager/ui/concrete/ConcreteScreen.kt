@@ -44,7 +44,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.ConcretePour
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
@@ -56,6 +58,8 @@ import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberNow
 import il.co.tradesmanager.ui.evidence.pluralCount
+import il.co.tradesmanager.ui.inspections.inspectionRefusalText
+import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import java.time.Instant
 import java.time.ZoneId
 import java.util.Locale
@@ -83,6 +87,15 @@ fun ConcreteScreen(
     val openPour by viewModel.openPour.collectAsStateWithLifecycle()
     val tickets by viewModel.tickets.collectAsStateWithLifecycle()
     val placed by viewModel.placedVolume.collectAsStateWithLifecycle()
+    val cubeSets by viewModel.cubeSets.collectAsStateWithLifecycle()
+    val needsEngineer by viewModel.needsEngineer.collectAsStateWithLifecycle()
+    val cubeRefusal by viewModel.cubeRefusal.collectAsStateWithLifecycle()
+    val seesInspections by viewModel.seesInspections.collectAsStateWithLifecycle()
+    val mayClearPours by viewModel.mayClearPours.collectAsStateWithLifecycle()
+    val inspectionsByPour by viewModel.inspectionsByPour.collectAsStateWithLifecycle()
+    val uninspected by viewModel.uninspected.collectAsStateWithLifecycle()
+    val clearable by viewModel.clearable.collectAsStateWithLifecycle()
+    val inspectionRefusal by viewModel.inspectionRefusal.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
     // A minute is the right cadence: the numbers on this screen are minutes.
@@ -93,6 +106,8 @@ fun ConcreteScreen(
     var starting by remember { mutableStateOf(false) }
     var addingTruck by remember { mutableStateOf(false) }
     var rejecting by remember { mutableStateOf<ConcreteTicketEntity?>(null) }
+    var addingCubes by remember { mutableStateOf(false) }
+    var clearing by remember { mutableStateOf(false) }
 
     val pour = openPour
     // Stable sort over a list the database already returns in batching order,
@@ -162,6 +177,15 @@ fun ConcreteScreen(
                                                 R.string.pour_running
                                             },
                                         ),
+                                        // Said on the list, because a low
+                                        // result a month later is the thing
+                                        // nobody opens an old pour to find.
+                                        if (row.id in needsEngineer) {
+                                            stringResource(R.string.cube_needs_engineer)
+                                        } else {
+                                            null
+                                        },
+                                        if (row.id in uninspected) stringResource(R.string.pour_no_inspection_short) else null,
                                     ).joinToString(" · "),
                                 )
                             },
@@ -192,6 +216,47 @@ fun ConcreteScreen(
                 }
             }
 
+            // What let the pour go ahead. Only for somebody who sees the
+            // site's record; to anybody else this section does not exist.
+            if (seesInspections) {
+                val cleared = inspectionsByPour[pour.id].orEmpty()
+                item { SectionHeader(stringResource(R.string.pour_inspected)) }
+                if (cleared.isEmpty()) {
+                    item {
+                        Text(
+                            stringResource(R.string.pour_uninspected),
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                        )
+                    }
+                }
+                items(cleared, key = { it.id }) { inspection ->
+                    ListItem(
+                        overlineContent = { Text(inspection.reference) },
+                        headlineContent = { Text(inspection.element) },
+                        supportingContent = {
+                            Text(
+                                listOfNotNull(
+                                    stringResource(inspectionKindLabel(Inspections.kindOf(inspection.kind))),
+                                    inspection.inspectorName,
+                                ).joinToString(" · "),
+                            )
+                        },
+                    )
+                }
+                if (mayClearPours) {
+                    item {
+                        OutlinedButton(
+                            onClick = { clearing = true },
+                            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                        ) {
+                            Text(stringResource(R.string.pour_link_inspection))
+                        }
+                    }
+                }
+            }
+
             item { SectionHeader(stringResource(R.string.tick_title)) }
             if (ordered.isEmpty()) {
                 item { SectionPlaceholder(stringResource(R.string.tick_empty)) }
@@ -207,6 +272,26 @@ fun ConcreteScreen(
                     onReject = { rejecting = ticket },
                     onSlump = { viewModel.recordSlump(ticket, it) },
                 )
+            }
+
+            // Results come back from the lab weeks after the pour, so this is
+            // open whether the pour is finished or not.
+            item { SectionHeader(stringResource(R.string.cube_title)) }
+            if (cubeSets.isEmpty()) {
+                item { SectionPlaceholder(stringResource(R.string.cube_empty)) }
+            }
+            items(cubeSets, key = { it.id }) { set ->
+                CubeSetRow(set = set, mixDesign = pour.mixDesign, locale = locale)
+            }
+            if (canEdit) {
+                item {
+                    OutlinedButton(
+                        onClick = { addingCubes = true },
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                    ) {
+                        Text(stringResource(R.string.cube_add))
+                    }
+                }
             }
 
             if (canEdit && pour.completedAt == null) {
@@ -239,6 +324,67 @@ fun ConcreteScreen(
             onAdd = { ticketNumber, truck, volume, dispatchedAt ->
                 addingTruck = false
                 viewModel.addTicket(ticketNumber, truck, volume, dispatchedAt)
+            },
+        )
+    }
+
+    if (addingCubes) {
+        CubeDialog(
+            onDismiss = { addingCubes = false },
+            onRecord = { age, laboratory, report, strengths ->
+                addingCubes = false
+                viewModel.recordCubes(age, laboratory, report, strengths)
+            },
+        )
+    }
+
+    if (clearing) {
+        AlertDialog(
+            onDismissRequest = { clearing = false },
+            title = { Text(stringResource(R.string.pour_link_inspection)) },
+            text = {
+                if (clearable.isEmpty()) {
+                    Text(stringResource(R.string.pour_link_none))
+                } else {
+                    Column(Modifier.verticalScroll(rememberScrollState())) {
+                        clearable.forEach { inspection ->
+                            ListItem(
+                                overlineContent = {
+                                    Text(inspection.reference + " · " + stringResource(inspectionKindLabel(Inspections.kindOf(inspection.kind))))
+                                },
+                                headlineContent = { Text(inspection.element) },
+                                supportingContent = { inspection.inspectorName?.let { Text(it) } },
+                                modifier = Modifier.clickable {
+                                    clearing = false
+                                    viewModel.clearOpenPour(inspection.id)
+                                },
+                            )
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { clearing = false }) { Text(stringResource(R.string.action_close)) }
+            },
+        )
+    }
+
+    inspectionRefusal?.let { refusal ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearInspectionRefusal,
+            text = { Text(stringResource(inspectionRefusalText(refusal))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearInspectionRefusal) { Text(stringResource(R.string.action_ok)) }
+            },
+        )
+    }
+
+    cubeRefusal?.let { refusal ->
+        AlertDialog(
+            onDismissRequest = viewModel::clearCubeRefusal,
+            text = { Text(stringResource(cubeRefusalLabel(refusal))) },
+            confirmButton = {
+                TextButton(onClick = viewModel::clearCubeRefusal) { Text(stringResource(R.string.action_ok)) }
             },
         )
     }
@@ -325,8 +471,8 @@ private fun TruckRow(
                 OutlinedTextField(
                     value = slump,
                     onValueChange = {
-                        slump = it.filter { ch -> ch.isDigit() || ch == '.' }
-                        onSlump(slump.toDoubleOrNull())
+                        slump = Numbers.typingDecimal(it)
+                        onSlump(Numbers.parseDecimal(slump))
                     },
                     label = { Text(stringResource(R.string.tick_slump)) },
                     singleLine = true,
@@ -398,7 +544,7 @@ private fun StartPourDialog(
                 )
                 OutlinedTextField(
                     value = volume,
-                    onValueChange = { volume = it.filter { c -> c.isDigit() || c == '.' } },
+                    onValueChange = { volume = Numbers.typingDecimal(it) },
                     label = { Text(stringResource(R.string.pour_ordered)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -413,7 +559,7 @@ private fun StartPourDialog(
                 )
                 OutlinedTextField(
                     value = temperature,
-                    onValueChange = { temperature = it.filter { c -> c.isDigit() || c == '.' } },
+                    onValueChange = { temperature = Numbers.typingDecimal(it, allowNegative = true) },
                     label = { Text(stringResource(R.string.pour_temperature)) },
                     supportingText = { Text(stringResource(R.string.pour_temperature_hint)) },
                     singleLine = true,
@@ -429,9 +575,9 @@ private fun StartPourDialog(
                     onStart(
                         element.trim(),
                         mix.trim().takeIf { it.isNotEmpty() },
-                        volume.toDoubleOrNull(),
+                        Numbers.parseDecimal(volume),
                         supplier.trim().takeIf { it.isNotEmpty() },
-                        temperature.toDoubleOrNull(),
+                        Numbers.parseDecimal(temperature),
                     )
                 },
             ) {
@@ -486,7 +632,7 @@ private fun AddTruckDialog(
                 )
                 OutlinedTextField(
                     value = volume,
-                    onValueChange = { volume = it.filter { c -> c.isDigit() || c == '.' } },
+                    onValueChange = { volume = Numbers.typingDecimal(it) },
                     label = { Text(stringResource(R.string.tick_volume)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -505,16 +651,16 @@ private fun AddTruckDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = (volume.toDoubleOrNull() ?: 0.0) > 0.0,
+                enabled = (Numbers.parseDecimal(volume) ?: 0.0) > 0.0,
                 onClick = {
                     // Counted from the tap, not from the screen's ticking
                     // clock: that one only moves once a minute, and every
                     // judgement on this screen is measured off this number.
-                    val ago = (minutesAgo.toLongOrNull() ?: 0L) * 60_000L
+                    val ago = (Numbers.parseWhole(minutesAgo) ?: 0L) * 60_000L
                     onAdd(
                         ticketNumber.trim().takeIf { it.isNotEmpty() },
                         truck.trim().takeIf { it.isNotEmpty() },
-                        volume.toDoubleOrNull() ?: 0.0,
+                        Numbers.parseDecimal(volume) ?: 0.0,
                         System.currentTimeMillis() - ago,
                     )
                 },

@@ -2,7 +2,6 @@ package il.co.tradesmanager.ui.evidence
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.SnagEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
@@ -47,12 +46,11 @@ class SnagsViewModel(private val container: AppContainer) : ViewModel() {
     @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
     val thumbnails: StateFlow<Map<String, String>> = snags
         .flatMapLatest { rows ->
-            container.photos.observeForOwners(
+            container.photos.observeNewestForOwners(
                 PhotoRepository.Owner.SNAG_RAISED,
                 rows.map { it.id },
             )
         }
-        .map { photos: List<PhotoEntity> -> photos.associate { it.ownerId to it.uri } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val session: StateFlow<SessionRepository.State> = container.session.state

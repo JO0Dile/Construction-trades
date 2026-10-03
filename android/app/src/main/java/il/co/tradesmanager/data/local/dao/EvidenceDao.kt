@@ -104,6 +104,21 @@ interface EvidenceDao {
     )
     fun observePermits(projectId: String?): Flow<List<PermitEntity>>
 
+    /**
+     * Every permit, with no cap, for the search box.
+     *
+     * [observePermits] stops at two hundred because a screen is a screen and
+     * nobody scrolls past that. A search cannot borrow that limit: it would
+     * answer "no such permit" for the two hundred and first, which is a wrong
+     * answer given confidently, and the one thing worse than no search.
+     *
+     * Suspending rather than a Flow on purpose. Searching is a question asked
+     * once, not a list kept up to date, and a live query over every permit in
+     * the database re-running on every keystroke is how a phone gets hot.
+     */
+    @Query("SELECT * FROM permits")
+    suspend fun allPermits(): List<PermitEntity>
+
     @Query("SELECT COUNT(*) FROM permits")
     suspend fun permitCount(): Int
 
@@ -147,6 +162,10 @@ interface EvidenceDao {
         """,
     )
     fun observeSnags(projectId: String?): Flow<List<SnagEntity>>
+
+    /** Every snag, with no cap, for the search box. See [allPermits]. */
+    @Query("SELECT * FROM snags")
+    suspend fun allSnags(): List<SnagEntity>
 
     @Query("SELECT COUNT(*) FROM snags")
     suspend fun snagCount(): Int

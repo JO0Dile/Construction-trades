@@ -47,7 +47,13 @@ fun PhotoViewer(
     photo: PhotoEntity,
     isPlan: Boolean,
     onSetAsPlan: () -> Unit,
-    onDelete: () -> Unit,
+    /**
+     * Null when the person looking may not take the picture off the record.
+     * A photograph is evidence -- the signed form, the datasheet, the flooded
+     * trench -- and whoever may only read a register may look at it, not
+     * remove it.
+     */
+    onDelete: (() -> Unit)?,
     onDismiss: () -> Unit,
 ) {
     Dialog(
@@ -108,12 +114,14 @@ fun PhotoViewer(
                         Text(stringResource(R.string.photo_set_plan), color = Color.White)
                     }
                 }
-                IconButton(onClick = { confirmDelete = true }) {
-                    Icon(
-                        Icons.Filled.Delete,
-                        contentDescription = stringResource(R.string.action_delete),
-                        tint = Color.White,
-                    )
+                if (onDelete != null) {
+                    IconButton(onClick = { confirmDelete = true }) {
+                        Icon(
+                            Icons.Filled.Delete,
+                            contentDescription = stringResource(R.string.action_delete),
+                            tint = Color.White,
+                        )
+                    }
                 }
             }
         }
@@ -126,7 +134,7 @@ fun PhotoViewer(
                     TextButton(
                         onClick = {
                             confirmDelete = false
-                            onDelete()
+                            onDelete?.invoke()
                         },
                     ) {
                         Text(stringResource(R.string.action_delete))

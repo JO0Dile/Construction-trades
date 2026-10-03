@@ -44,6 +44,24 @@ public struct CatalogItem: Codable, Sendable, Identifiable {
     public let spec: LocalizedText
     public let attributes: [String: String]
     public let tags: [String]
+
+    /// What the trade actually calls it: a מברגה, a مفريغا, a كونجو.
+    ///
+    /// Optional because most items have no street name and because the two
+    /// platforms read the same files — a required key here would refuse to
+    /// decode a catalogue Android is perfectly happy with. Use ``spokenNames``
+    /// rather than unwrapping it at each call site.
+    public let colloquial: LocalizedText?
+
+    /// Stage ids from `scopes.json`; see ``workStages``.
+    public let stages: [String]?
+
+    public var spokenNames: LocalizedText { colloquial ?? [:] }
+
+    /// Empty means every stage, which is the default and the safe direction:
+    /// an untagged item stays on the list under every filter rather than
+    /// disappearing on somebody who needs it.
+    public var workStages: [String] { stages ?? [] }
 }
 
 public struct SafetyFile: Codable, Sendable {

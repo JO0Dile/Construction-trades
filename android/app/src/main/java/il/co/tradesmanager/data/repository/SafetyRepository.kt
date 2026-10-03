@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.data.local.dao.CatalogDao
 import il.co.tradesmanager.data.local.dao.SafetyDao
 import il.co.tradesmanager.data.local.entity.ChecklistRunEntity
@@ -43,16 +45,29 @@ class SafetyRepository(
             blocked = true,
         )
         safetyDao.upsertRun(run)
-        audit.record(ENTITY, run.id, AuditTrail.Action.CREATE, actorName, "Started checklist $templateId")
+        audit.record(ENTITY, run.id, AuditTrail.Action.CREATE, actorName, Summary.of(Summaries.CHECKLIST_STARTED, templateId))
         return run
     }
+
+    /**
+     * The row a single check answers to.
+     *
+     * Deterministic, so answering the same check twice replaces the answer
+     * instead of leaving two contradictory rows behind — and so a photograph
+     * can be filed against a check before anybody has answered it, which is
+     * the order an inspector actually works in: you see the thing, you
+     * photograph the thing, then you write it down.
+     *
+     * Exposed rather than rebuilt at each call site, because two places
+     * deriving the same id from the same rule is one place for them to stop
+     * agreeing.
+     */
+    fun runItemId(runId: String, templateItemId: String): String = "$runId:$templateItemId"
 
     suspend fun answer(runId: String, templateItemId: String, state: String, note: String?) {
         safetyDao.upsertRunItem(
             ChecklistRunItemEntity(
-                // Deterministic id: answering the same check twice replaces the
-                // answer instead of leaving two contradictory rows behind.
-                id = "$runId:$templateItemId",
+                id = runItemId(runId, templateItemId),
                 runId = runId,
                 templateItemId = templateItemId,
                 state = state,
@@ -90,18 +105,33 @@ class SafetyRepository(
      * critical check is outstanding — the regulation the checklist encodes is
      * not something a signature is allowed to override.
      */
-    suspend fun signOff(runId: String, signerName: String, signatureStrokes: String?): Boolean {
+    suspend fun signOff(
+        runId: String,
+        signerName: String,
+        signatureStrokes: String?,
+        /**
+         * The account that signed, when somebody is signed in.
+         *
+         * `signedById` has been on the table since checklists were built and
+         * nothing has ever written to it, so a run was signed by a typed name
+         * and nothing else. Two men on a site share a name often enough that
+         * the name alone cannot say which of them walked the scaffold, and the
+         * whole value of the record is that it can.
+         */
+        signedById: String? = null,
+    ): Boolean {
         if (refreshBlockedState(runId)) return false
         val run = safetyDao.run(runId) ?: return false
         safetyDao.upsertRun(
             run.copy(
                 completedAt = System.currentTimeMillis(),
                 signedByName = signerName,
+                signedById = signedById,
                 signatureStrokes = signatureStrokes,
                 blocked = false,
             ),
         )
-        audit.record(ENTITY, runId, AuditTrail.Action.SIGN_OFF, signerName, "Checklist signed")
+        audit.record(ENTITY, runId, AuditTrail.Action.SIGN_OFF, signerName, Summaries.CHECKLIST_SIGNED)
         return true
     }
 
@@ -113,7 +143,25 @@ class SafetyRepository(
         )
     }
 
-    fun observeIncidents(): Flow<List<IncidentEntity>> = safetyDao.observeIncidents()
+    fun observeIncidents(companyId: String?): Flow<List<IncidentEntity>> = safetyDao.observeIncidents(companyId)
+
+    fun observeIncident(id: String): Flow<IncidentEntity?> = safetyDao.observeIncident(id)
+
+    /**
+     * Says which job an incident filed without one happened on, and so whose
+     * record it is: the job's company comes with it.
+     *
+     * Only for a report with no job yet. Moving one from a job to another is
+     * rewriting where an accident happened, which is not a correction this
+     * register offers. False when the report is gone or already placed.
+     */
+    suspend fun placeIncident(incidentId: String, projectId: String, companyId: String?, jobName: String, byName: String): Boolean {
+        val incident = safetyDao.incident(incidentId) ?: return false
+        if (incident.projectId != null) return false
+        safetyDao.upsertIncident(incident.copy(projectId = projectId, companyId = companyId))
+        audit.record("incident", incident.id, AuditTrail.Action.UPDATE, byName, Summary.of(Summaries.INC_PLACED, jobName))
+        return true
+    }
 
     private companion object {
         const val ENTITY = "checklist_run"

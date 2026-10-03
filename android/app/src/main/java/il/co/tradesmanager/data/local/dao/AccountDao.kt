@@ -67,13 +67,28 @@ interface AccountDao {
     suspend fun accountCount(): Int
 
     /** Whether an ID number is already spoken for, so sign-up can say so. */
+    /**
+     * Every account carrying an ID number, for comparing one against.
+     *
+     * This replaced a COUNT with `TRIM(idNumber) = TRIM(:idNumber)`, which
+     * compared the numbers as text. An ID number is a number: the same one
+     * reaches this app as 301234567, as 301-234-567 off a document, and as
+     * Arabic-Indic digits off an Arabic keypad, and SQL sees three different
+     * strings. Comparing the digits cannot be done in SQLite, so the rows come
+     * out and `IdNumbers` decides — see AccountRepository.matchingIdNumber.
+     *
+     * The list is the crew of one site office, read on a deliberate press
+     * rather than per keystroke, so reading it whole costs nothing worth
+     * saving.
+     */
     @Query(
         """
-        SELECT COUNT(*) FROM accounts
-        WHERE deletedAt IS NULL AND TRIM(idNumber) = TRIM(:idNumber) COLLATE NOCASE
+        SELECT * FROM accounts
+        WHERE deletedAt IS NULL AND idNumber IS NOT NULL AND TRIM(idNumber) != ''
         """,
     )
-    suspend fun countWithIdNumber(idNumber: String): Int
+    suspend fun accountsWithIdNumber(): List<AccountEntity>
+
 
     @Query("UPDATE accounts SET lastSignInAt = :at WHERE id = :id")
     suspend fun recordSignIn(id: String, at: Long)

@@ -1,0 +1,200 @@
+{
+  "tradeId": "elevators",
+  "catalogVersion": 3,
+  "items": [
+    {
+      "id": "lf.guide.rail",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "M",
+      "names": {
+        "en": "Elevator guide rail",
+        "he": "מסילת מוביל למעלית",
+        "ar": "سكة توجيه المصعد"
+      },
+      "spec": {
+        "en": "Plumb over the full height. Everything a passenger feels as rough ride starts here.",
+        "he": "אנכית לכל הגובה. כל מה שנוסע חש כנסיעה גסה מתחיל כאן.",
+        "ar": "شاقولية على كامل الارتفاع. كل ما يشعر به الراكب من خشونة يبدأ هنا."
+      },
+      "tags": [
+        "elevator"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "lf.machine.gearless",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Gearless traction machine",
+        "he": "מנוע גירלס",
+        "ar": "ماكينة جر بدون تروس"
+      },
+      "spec": {
+        "en": "Quiet, efficient, and it fits where a machine room will not.",
+        "he": "שקט, יעיל, ונכנס היכן שחדר מכונות לא נכנס.",
+        "ar": "هادئة وكفؤة، وتتّسع حيث لا تتّسع غرفة مكائن."
+      },
+      "tags": [
+        "elevator"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "lf.rope.traction",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "M",
+      "names": {
+        "en": "Traction rope / belt",
+        "he": "כבל משיכה",
+        "ar": "حبل جر"
+      },
+      "spec": {
+        "en": "Inspected and replaced on wear, not on age. The discard criteria are the manufacturer's.",
+        "he": "נבדק ומוחלף לפי בלאי ולא לפי גיל. קריטריוני הפסילה הם של היצרן.",
+        "ar": "يُفحص ويُستبدل بحسب التآكل لا العمر. معايير الاستبعاد من الصانع."
+      },
+      "tags": [
+        "elevator"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "lf.controller",
+      "kind": "MATERIAL",
+      "category": "units",
+      "unit": "PCS",
+      "names": {
+        "en": "Elevator controller",
+        "he": "בקר מעלית",
+        "ar": "لوحة تحكم المصعد"
+      },
+      "spec": {
+        "en": "Decides every movement the car makes. Nobody but the lift company opens it.",
+        "he": "מחליט על כל תנועה של התא. איש מלבד חברת המעליות אינו פותח אותו.",
+        "ar": "يقرّر كل حركة للمقصورة. لا يفتحه إلا شركة المصاعد."
+      },
+      "tags": [
+        "elevator"
+      ],
+      "stages": [
+        "rough-in"
+      ]
+    },
+    {
+      "id": "lf.door.landing",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Landing door assembly",
+        "he": "דלת פיר",
+        "ar": "باب الطابق للمصعد"
+      },
+      "spec": {
+        "en": "The only part of the lift the public touches, and the part most people fall through.",
+        "he": "החלק היחיד שהציבור נוגע בו, והחלק שדרכו אנשים נופלים.",
+        "ar": "الجزء الوحيد الذي يلمسه الناس، ومنه يسقطون غالباً."
+      },
+      "tags": [
+        "elevator"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "lf.buffer",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Pit buffer",
+        "he": "בולם בור",
+        "ar": "مصدّ الحفرة"
+      },
+      "spec": {
+        "en": "The last thing between a descending car and the pit floor. Checked, never assumed.",
+        "he": "הדבר האחרון בין תא יורד לרצפת הבור. נבדק, לא מונח כמובן מאליו.",
+        "ar": "آخر ما بين المقصورة الهابطة وأرض الحفرة. يُفحص ولا يُفترض."
+      },
+      "tags": [
+        "elevator",
+        "safety"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "lf.governor",
+      "kind": "MATERIAL",
+      "category": "fixtures",
+      "unit": "PCS",
+      "names": {
+        "en": "Overspeed governor",
+        "he": "מווסת מהירות יתר",
+        "ar": "منظّم السرعة الزائدة"
+      },
+      "spec": {
+        "en": "Trips the safety gear if the car runs away. Tested at commissioning and at every inspection.",
+        "he": "מפעיל את התפסנים אם התא בורח. נבדק בהרצה ובכל בדיקה.",
+        "ar": "يشغّل مانع السقوط إن انفلتت المقصورة. يُختبر عند التشغيل وفي كل فحص."
+      },
+      "tags": [
+        "elevator",
+        "safety"
+      ],
+      "stages": [
+        "second-fix"
+      ]
+    },
+    {
+      "id": "lf.tool.plumb.shaft",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Shaft plumbing kit",
+        "he": "ערכת אנך לפיר",
+        "ar": "طقم شاقول البئر"
+      },
+      "spec": {
+        "en": "Sets the shaft true before a single bracket is fixed. Everything else follows it.",
+        "he": "מכייל את הפיר לפני קיבוע תושבת אחת. כל השאר נגזר ממנו.",
+        "ar": "يضبط البئر قبل تثبيت أي كتيفة. كل شيء بعده يتبعه."
+      },
+      "tags": [
+        "setting-out"
+      ]
+    },
+    {
+      "id": "lf.tool.tension.meter",
+      "kind": "TOOL",
+      "category": "measuring",
+      "unit": "PCS",
+      "names": {
+        "en": "Rope tension meter",
+        "he": "מד מתיחות כבלים",
+        "ar": "مقياس شد الحبال"
+      },
+      "spec": {
+        "en": "Equal tension across the ropes, or one rope wears out for all of them.",
+        "he": "מתיחות שווה בכל הכבלים, אחרת כבל אחד נשחק עבור כולם.",
+        "ar": "شدّ متساوٍ في كل الحبال، وإلا تآكل حبل واحد عن الجميع."
+      },
+      "tags": [
+        "commissioning"
+      ]
+    }
+  ]
+}

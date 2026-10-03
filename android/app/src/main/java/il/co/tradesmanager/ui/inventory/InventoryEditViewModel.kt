@@ -2,11 +2,14 @@ package il.co.tradesmanager.ui.inventory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Lens
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.i18n.resolve
 import android.net.Uri
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
+import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
 import java.util.UUID
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,6 +17,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -61,9 +65,32 @@ class InventoryEditViewModel(
         container.photos.observeFor(PhotoRepository.Owner.INVENTORY_ITEM, editingId)
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
+    /** Whether the signed-in role may change stock; the form is read only for anybody else. */
+    val canEdit: StateFlow<Boolean> = container.session.state
+        .map { InventoryViewModel.mayWrite(it) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    private suspend fun mayWrite(): Boolean = InventoryViewModel.mayWrite(container.session.state.first())
+
+    /**
+     * Whether the signed-in role sees what the item cost.
+     *
+     * A worker keeps the stock and has no business with the money, and the
+     * purchase price is money: it was on this form for anybody who could open
+     * it. Not loaded into the form at all for anybody else, and left as it was
+     * when they save, so hiding it never wipes it.
+     */
+    val canSeePrice: StateFlow<Boolean> = container.session.state
+        .map { mayReadMoney(it) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    private fun mayReadMoney(state: SessionRepository.State): Boolean =
+        (state as? SessionRepository.State.SignedIn)?.canRead(Lens.MONEY) == true
+
     fun newCameraTarget(): Pair<String, Uri> = container.photos.newCameraTarget()
 
     fun onCaptured(photoId: String) = viewModelScope.launch {
+        if (!mayWrite()) return@launch
         container.photos.recordCameraPhoto(
             id = photoId,
             ownerType = PhotoRepository.Owner.INVENTORY_ITEM,
@@ -73,6 +100,7 @@ class InventoryEditViewModel(
     }
 
     fun onPicked(uri: Uri) = viewModelScope.launch {
+        if (!mayWrite()) return@launch
         container.photos.importPhoto(
             source = uri,
             ownerType = PhotoRepository.Owner.INVENTORY_ITEM,
@@ -82,12 +110,14 @@ class InventoryEditViewModel(
     }
 
     fun deletePhoto(photo: PhotoEntity) = viewModelScope.launch {
+        if (!mayWrite()) return@launch
         container.photos.delete(photo, container.settings.settings.first().actorName)
     }
 
     init {
         if (itemId != null) {
             viewModelScope.launch {
+                val seesPrice = mayReadMoney(container.session.state.first())
                 container.inventory.observeItem(itemId).first()?.let { item ->
                     loaded = item
                     _form.value = Form(
@@ -98,7 +128,7 @@ class InventoryEditViewModel(
                         minStock = trimNumber(item.minStock),
                         unit = item.unit,
                         barcode = item.barcode.orEmpty(),
-                        price = item.purchasePrice?.let(::trimNumber).orEmpty(),
+                        price = item.purchasePrice?.takeIf { seesPrice }?.let(::trimNumber).orEmpty(),
                         tags = item.tags.joinToString(", "),
                     )
                 }
@@ -131,6 +161,8 @@ class InventoryEditViewModel(
             return
         }
         viewModelScope.launch {
+            if (!mayWrite()) return@launch
+            val seesPrice = mayReadMoney(container.session.state.first())
             val existing = loaded
             val now = System.currentTimeMillis()
             val item = InventoryItemEntity(
@@ -144,10 +176,10 @@ class InventoryEditViewModel(
                 spec = existing?.spec.orEmpty() + (languageTag.substringBefore('-') to form.spec),
                 attributes = existing?.attributes.orEmpty(),
                 tags = form.tags.split(',').map { it.trim() }.filter { it.isNotBlank() },
-                quantity = form.quantity.toDoubleOrNull() ?: 0.0,
-                minStock = form.minStock.toDoubleOrNull() ?: 0.0,
+                quantity = Numbers.parseDecimal(form.quantity) ?: 0.0,
+                minStock = Numbers.parseDecimal(form.minStock) ?: 0.0,
                 supplierId = existing?.supplierId,
-                purchasePrice = form.price.toDoubleOrNull(),
+                purchasePrice = if (seesPrice) Numbers.parseDecimal(form.price) else existing?.purchasePrice,
                 barcode = form.barcode.takeIf { it.isNotBlank() },
                 searchIndex = "",
                 createdAt = existing?.createdAt ?: now,
@@ -162,6 +194,7 @@ class InventoryEditViewModel(
     fun delete(onDone: () -> Unit) {
         val id = itemId ?: return onDone()
         viewModelScope.launch {
+            if (!mayWrite()) return@launch
             container.inventory.delete(id, container.settings.settings.first().actorName)
             onDone()
         }

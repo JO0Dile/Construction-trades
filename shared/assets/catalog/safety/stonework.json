@@ -1,0 +1,126 @@
+{
+  "tradeId": "stonework",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.st.silica",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Silica dust before cutting stone",
+        "he": "אבק צורן לפני חיתוך אבן",
+        "ar": "غبار السيليكا قبل قص الحجر"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (גיהות תעסוקתית ובריאות העובדים באבק מזיק)",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"
+      ],
+      "items": [
+        {
+          "id": "sf.st.silica.1",
+          "critical": true,
+          "texts": {
+            "en": "Water suppression or on-tool extraction fitted and working",
+            "he": "דיכוי במים או שאיבה על הכלי מותקנים ופועלים",
+            "ar": "الترطيب بالماء أو الشفط على العدة مركّب ويعمل"
+          }
+        },
+        {
+          "id": "sf.st.silica.2",
+          "critical": true,
+          "texts": {
+            "en": "Every person in the cutting area wearing a fitted P3 respirator",
+            "he": "כל אדם באזור החיתוך חובש מסכת P3 מותאמת",
+            "ar": "كل شخص في منطقة القص يرتدي كمامة P3 مُقاسة"
+          }
+        },
+        {
+          "id": "sf.st.silica.3",
+          "critical": true,
+          "texts": {
+            "en": "Dry cutting not being used where a wet or extracted method exists",
+            "he": "אין חיתוך יבש היכן שקיימת שיטה רטובה או עם שאיבה",
+            "ar": "لا يُستخدم القص الجاف حيث توجد طريقة مبلّلة أو بشفط"
+          }
+        },
+        {
+          "id": "sf.st.silica.4",
+          "critical": false,
+          "texts": {
+            "en": "Cutting area separated from other trades, or they have stopped",
+            "he": "אזור החיתוך מופרד מבעלי מקצוע אחרים, או שהם הפסיקו",
+            "ar": "منطقة القص معزولة عن باقي المهن، أو أنهم توقّفوا"
+          }
+        },
+        {
+          "id": "sf.st.silica.5",
+          "critical": false,
+          "texts": {
+            "en": "Slurry and dust cleared wet, never swept dry",
+            "he": "בוצה ואבק נוקו ברטוב, לעולם לא בטאטוא יבש",
+            "ar": "الطين والغبار يُنظّفان مبلّلين، لا يُكنسان جافّين"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.st.facade",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Fixing stone to a facade",
+        "he": "עיגון אבן לחזית",
+        "ar": "تثبيت الحجر على الواجهة"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודות בנייה), התשמ״ח-1988",
+        "תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007"
+      ],
+      "items": [
+        {
+          "id": "sf.st.facade.1",
+          "critical": true,
+          "texts": {
+            "en": "Mechanical anchors specified by the engineer are the ones on site",
+            "he": "העוגנים המכניים שנקבעו על ידי המהנדס הם אלה שבאתר",
+            "ar": "المثبّتات الميكانيكية التي حدّدها المهندس هي الموجودة في الموقع"
+          }
+        },
+        {
+          "id": "sf.st.facade.2",
+          "critical": true,
+          "texts": {
+            "en": "No stone relying on mortar alone to stay on the building",
+            "he": "אין אבן הנשענת על טיט בלבד כדי להישאר על המבנה",
+            "ar": "لا يوجد حجر يعتمد على المونة وحدها ليبقى على المبنى"
+          }
+        },
+        {
+          "id": "sf.st.facade.3",
+          "critical": true,
+          "texts": {
+            "en": "Exclusion zone below the working face, and it is manned or barriered",
+            "he": "אזור אסור מתחת לחזית העבודה, מאויש או מגודר",
+            "ar": "منطقة محظورة تحت واجهة العمل، مأهولة أو مسيّجة"
+          }
+        },
+        {
+          "id": "sf.st.facade.4",
+          "critical": false,
+          "texts": {
+            "en": "Vacuum lifter tested on the day and its seal checked",
+            "he": "מרים ואקום נבדק ביום העבודה ואטמו נבדק",
+            "ar": "رافعة الشفط مفحوصة اليوم وجلدتها مفحوصة"
+          }
+        },
+        {
+          "id": "sf.st.facade.5",
+          "critical": false,
+          "texts": {
+            "en": "Weather checked: wind speed within the lifter's stated limit",
+            "he": "מזג האוויר נבדק: מהירות הרוח בתחום המותר למרים",
+            "ar": "الطقس مفحوص: سرعة الرياح ضمن حد الرافعة المعلن"
+          }
+        }
+      ]
+    }
+  ]
+}

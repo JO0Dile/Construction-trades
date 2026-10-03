@@ -50,6 +50,12 @@ jobs:
         working-directory: android
         run: ./gradlew --no-daemon :app:assembleDebug
 
+      # What this version does, in three languages, from the same file the
+      # app ships. The JSON is attached so a phone being offered the update
+      # can list everything since the version it has, not just this one.
+      - name: Write the release notes
+        run: python3 tools/release-notes.py --release "${{ inputs.version || github.ref_name }}" build/release
+
       # The universal APK first: it runs on every phone, which is what someone
       # tapping "install" without knowing what a CPU ABI is needs.
       # A tag push already names the version; a manual run is told it. The
@@ -60,9 +66,23 @@ jobs:
         with:
           tag_name: ${{ inputs.version || github.ref_name }}
           name: ${{ inputs.version || github.ref_name }}
+          # The commit the tag lands on. Without this the action defaults to
+          # the repository's default branch, so a release built from a feature
+          # branch attached the right APK to a tag pointing at main: the binary
+          # was correct and `git log v0.6.0` showed none of the code in it.
+          # Anyone auditing the release by its tag would have concluded the
+          # build did not contain what it plainly contained.
+          target_commitish: ${{ github.sha }}
           files: |
+            build/release/release-notes.json
             android/app/build/outputs/apk/debug/app-universal-debug.apk
             android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
             android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk
+          # The body is this version's notes in English, Hebrew and Arabic,
+          # written by tools/release-notes.py from shared/assets/releases.
+          # The generated commit list below it stays in English: those are
+          # commit titles, and rewriting them would be lying about what the
+          # commits say.
+          body_path: build/release/release-body.md
           generate_release_notes: true
           fail_on_unmatched_files: true

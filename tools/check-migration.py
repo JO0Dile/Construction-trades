@@ -37,12 +37,23 @@ ADD_COLUMN = re.compile(
     r"ALTER\s+TABLE\s+`([^`]+)`\s+ADD\s+(?:COLUMN\s+)?`([^`]+)`\s*(.*)$",
     re.IGNORECASE,
 )
+# "DROP TABLE `violations`" -> violations
+DROP_TABLE = re.compile(r"DROP\s+TABLE\s+(?:IF\s+EXISTS\s+)?`([^`]+)`", re.IGNORECASE)
+# "ALTER TABLE `violations_new` RENAME TO `violations`" -> (violations_new, violations)
+RENAME_TABLE = re.compile(
+    r"ALTER\s+TABLE\s+`([^`]+)`\s+RENAME\s+TO\s+`([^`]+)`",
+    re.IGNORECASE,
+)
+# The table a CREATE INDEX is on: "... ON `violations` (`companyId`)" -> violations
+INDEX_TABLE = re.compile(r"\bON\s+`([^`]+)`", re.IGNORECASE)
 # "val SQL_7_8: List<String> = listOf(" -> (7, 8)
 SQL_BLOCK = re.compile(r"val\s+SQL_(\d+)_(\d+)\s*:\s*List<String>\s*=\s*listOf\(")
 # "val MIGRATION_7_8 = object : Migration(7, 8)" -> (7, 8)
 MIGRATION_OBJECT = re.compile(r"Migration\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)")
-# "version = 9," in the @Database annotation
+# "version = 9," in the @Database annotation, or the constant it names:
+# "version = DATABASE_VERSION," alongside "const val DATABASE_VERSION = 9".
 DB_VERSION = re.compile(r"\bversion\s*=\s*(\d+)")
+DB_VERSION_CONST = re.compile(r"\bversion\s*=\s*([A-Z_][A-Z0-9_]*)\s*,")
 
 
 def normalise(sql: str) -> str:
@@ -65,7 +76,13 @@ def statements_in(source: str) -> list[str]:
             for part in re.findall(LITERAL, chain)
         )
         stripped = joined.strip()
-        if TABLE_NAME.match(stripped) or INDEX_NAME.match(stripped) or ADD_COLUMN.match(stripped):
+        if (
+            TABLE_NAME.match(stripped)
+            or INDEX_NAME.match(stripped)
+            or ADD_COLUMN.match(stripped)
+            or DROP_TABLE.match(stripped)
+            or RENAME_TABLE.match(stripped)
+        ):
             found.append(normalise(joined))
     return found
 
@@ -148,8 +165,41 @@ def split_body(create_table: str) -> tuple[dict[str, str], list[str]]:
     return columns, constraints
 
 
+def index_table(statement: str) -> str | None:
+    """The table a CREATE INDEX is on, or None if it does not say."""
+    match = INDEX_TABLE.search(statement)
+    return match.group(1) if match else None
+
+
+def rename_created(create: str, now: str) -> str:
+    """A CREATE TABLE, said about the name the table ends up with.
+
+    Replaces the first backticked name, which in a CREATE TABLE is the table.
+    """
+    return re.sub(r"`[^`]+`", f"`{now}`", create, count=1)
+
+
+def rename_indexed(statement: str, now: str) -> str:
+    """A CREATE INDEX, pointed at the table's new name.
+
+    Anchored on the `ON` rather than on position: the first backticked name in
+    a CREATE INDEX is the index, not the table it covers.
+    """
+    return INDEX_TABLE.sub(lambda match: match.group(0).replace(
+        f"`{match.group(1)}`", f"`{now}`"
+    ), statement, count=1)
+
+
 def replay(statements: list[str]) -> tuple[dict[str, str], dict[str, list[tuple[str, str]]], list[str]]:
-    """What the migrations do, gathered per table."""
+    """What the migrations do, gathered per table.
+
+    Drops and renames are replayed rather than ignored, because SQLite cannot
+    change a column in place: loosening a NOT NULL means building the table
+    again, copying the rows across, dropping the original and renaming. Read
+    without those two statements, that sequence looks like the old table plus
+    a stray second one, and this file would report a table Room does not have
+    and a column that never changed — two complaints, neither of them true.
+    """
     created: dict[str, str] = {}
     added: dict[str, list[tuple[str, str]]] = {}
     indexes: list[str] = []
@@ -162,6 +212,29 @@ def replay(statements: list[str]) -> tuple[dict[str, str], dict[str, list[tuple[
         index = INDEX_NAME.match(statement)
         if index:
             indexes.append(statement)
+            continue
+        dropped = DROP_TABLE.match(statement)
+        if dropped:
+            gone = dropped.group(1)
+            created.pop(gone, None)
+            added.pop(gone, None)
+            # SQLite takes a table's indexes with it, so a migration that
+            # drops one has to create them again and this has to expect that.
+            indexes = [each for each in indexes if index_table(each) != gone]
+            continue
+        rename = RENAME_TABLE.match(statement)
+        if rename:
+            was, now = rename.group(1), rename.group(2)
+            create = created.pop(was, None)
+            if create:
+                created[now] = rename_created(create, now)
+            moved = added.pop(was, None)
+            if moved:
+                added.setdefault(now, []).extend(moved)
+            indexes = [
+                rename_indexed(each, now) if index_table(each) == was else each
+                for each in indexes
+            ]
             continue
         alter = ADD_COLUMN.match(statement)
         if alter:
@@ -227,6 +300,40 @@ def check_added_column(table: str, column: str, definition: str, room: str) -> l
     return []
 
 
+def declared_version() -> tuple[int | None, str]:
+    """The version AppDatabase declares, whether a literal or a constant.
+
+    One function because there were two readers of it and only one of them was
+    updated when the literal became a constant. The other crashed with a
+    traceback on CI, which is a strictly worse failure than the drift this file
+    exists to catch: a checker that dies looks the same as a checker that has
+    nothing to say.
+
+    Returns the version, or None and a sentence saying what is wrong.
+    """
+    database = DATABASE.read_text(encoding="utf-8")
+
+    literal = DB_VERSION.search(database)
+    if literal:
+        return int(literal.group(1)), ""
+
+    # The version may be a constant so that a unit test can read it.
+    named = DB_VERSION_CONST.search(database)
+    if not named:
+        return None, f"No `version = N` found in {DATABASE.name}."
+
+    constant = re.search(
+        rf"\b(?:const\s+)?val\s+{re.escape(named.group(1))}\s*(?::\s*Int\s*)?=\s*(\d+)",
+        database,
+    )
+    if not constant:
+        return None, (
+            f"{DATABASE.name} says `version = {named.group(1)}`, but no "
+            f"`val {named.group(1)} = N` is declared in the same file."
+        )
+    return int(constant.group(1)), ""
+
+
 def check_version_chain(source: str) -> list[str]:
     """The migrations must reach the version the database says it is.
 
@@ -238,10 +345,9 @@ def check_version_chain(source: str) -> list[str]:
     This file was written to catch launch crashes and did not catch that one,
     because it only ever compared SQL. It compares the numbers now too.
     """
-    declared = DB_VERSION.search(DATABASE.read_text(encoding="utf-8"))
-    if not declared:
-        return [f"No `version = N` found in {DATABASE.name}."]
-    version = int(declared.group(1))
+    version, complaint = declared_version()
+    if version is None:
+        return [complaint]
 
     steps = sorted(
         {(int(a), int(b)) for a, b in MIGRATION_OBJECT.findall(COMMENTS.sub("", source))}
@@ -342,7 +448,7 @@ def main() -> int:
             print(f"  {problem}\n")
         return 1
 
-    version = DB_VERSION.search(DATABASE.read_text(encoding="utf-8")).group(1)
+    version, _ = declared_version()
     print(
         f"Migration SQL matches the schema Room expects at version {version} "
         f"({', '.join(sorted(checked))})."

@@ -83,3 +83,37 @@ data class ConcreteTicketEntity(
     val recordedByName: String,
     val createdAt: Long,
 )
+
+/**
+ * One set of cubes crushed by a lab: its age, its report, and each result.
+ *
+ * [strengthsMpa] holds every cube's figure as written, rather than only the
+ * mean, because "one of the three was low" is a different conversation with
+ * the engineer from "the mean was low", and a mean alone cannot tell them
+ * apart. Stored as text through the list converter; see core.evidence.CubeTests.
+ */
+@Entity(
+    tableName = "concrete_cube_sets",
+    foreignKeys = [
+        ForeignKey(
+            entity = ConcretePourEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["pourId"],
+            onDelete = ForeignKey.CASCADE,
+        ),
+    ],
+    indices = [Index("pourId")],
+)
+data class ConcreteCubeSetEntity(
+    @PrimaryKey val id: String,
+    val pourId: String,
+    /** Days from casting to crushing: 7 and 28 are usual. */
+    val ageDays: Int,
+    val testedAt: Long,
+    val laboratory: String?,
+    /** The lab report's number, for whoever needs to find the paper. */
+    val reportNumber: String?,
+    val strengthsMpa: List<String>,
+    val recordedByName: String,
+    val createdAt: Long,
+)

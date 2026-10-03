@@ -97,10 +97,41 @@ object DailyLog {
         val talksHeld: Int = 0,
         val snagsRaised: Int = 0,
         val incidents: Int = 0,
+        /**
+         * Different people with a shift on this job that overlapped the day.
+         *
+         * Counted from the check-ins, so it is the app's figure and not the
+         * site's: somebody who never uses the app is not in it. It sits beside
+         * the typed headcount rather than replacing it, and a gap between the
+         * two is itself worth a site manager's attention.
+         */
+        val checkedIn: Int = 0,
+        /** Concrete pours started that day. */
+        val poursStarted: Int = 0,
+        /** Inspections passed that day, with or without comments. */
+        val inspectionsPassed: Int = 0,
+        val inspectionsFailed: Int = 0,
+        /**
+         * Delay events that ran on the day, begun that day or earlier and not
+         * ended before it: a delay into its third week is on every one of its
+         * days' logs, which is what a claim reads them for.
+         */
+        val delaysRunning: Int = 0,
+        /** People signed in at the gate as visitors that day. */
+        val visitors: Int = 0,
+        /** Drawings, or revisions of them, received that day. */
+        val drawingsReceived: Int = 0,
+        /** Complaints from outside the site received that day. */
+        val complaintsReceived: Int = 0,
+        /** Looks at fire points that found something wrong that day. */
+        val fireFaults: Int = 0,
     ) {
         /** True when the app watched nothing happen — worth saying out loud. */
         val isQuiet: Boolean
             get() = tasksCompleted == 0 && deliveries == 0 && permitsIssued == 0 &&
-                talksHeld == 0 && snagsRaised == 0 && incidents == 0
+                talksHeld == 0 && snagsRaised == 0 && incidents == 0 && checkedIn == 0 &&
+                poursStarted == 0 && inspectionsPassed == 0 && inspectionsFailed == 0 &&
+                delaysRunning == 0 && visitors == 0 && drawingsReceived == 0 &&
+                complaintsReceived == 0 && fireFaults == 0
     }
 }

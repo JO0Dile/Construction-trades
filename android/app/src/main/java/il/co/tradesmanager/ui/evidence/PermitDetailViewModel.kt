@@ -6,8 +6,10 @@ import il.co.tradesmanager.data.local.entity.PermitEntity
 import il.co.tradesmanager.data.local.entity.PermitPrecautionEntity
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -16,6 +18,17 @@ class PermitDetailViewModel(
     private val container: AppContainer,
     private val permitId: String,
 ) : ViewModel() {
+
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
 
     val permit: StateFlow<PermitEntity?> = container.evidence.observePermit(permitId)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
@@ -41,25 +54,35 @@ class PermitDetailViewModel(
      * the result, because there is no sensible screen for "the rule you can
      * see on this page was broken" — its purpose is that no code path skips it.
      */
-    fun issue(validFrom: Long, validTo: Long) = viewModelScope.launch {
+    /**
+     * Issues the permit, signed.
+     *
+     * The signature parameter has been here since permits were built and every
+     * caller passed null, so the document that authorises hot work, confined
+     * space and work at height carried a typed name and nothing else. A permit
+     * is not paperwork about the work -- it is the authority to do it, and an
+     * authority nobody put their hand to is one nobody has to stand behind.
+     */
+    fun issue(validFrom: Long, validTo: Long, signature: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.issue(
+        val issued = container.evidence.issue(
             permitId = permitId,
             validFrom = validFrom,
             validTo = validTo,
             issuedByName = actor,
-            signatureStrokes = null,
+            signatureStrokes = signature,
         )
+        if (!issued) _notSaved.value = true
     }
 
     fun recordWorkStopped() = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.recordWorkStopped(permitId, actor)
+        if (!container.evidence.recordWorkStopped(permitId, actor)) _notSaved.value = true
     }
 
     fun close(notes: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.close(permitId, actor, notes)
+        if (!container.evidence.close(permitId, actor, notes)) _notSaved.value = true
     }
 
     fun cancel() = viewModelScope.launch {

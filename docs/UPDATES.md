@@ -39,6 +39,29 @@ Bump both numbers in `android/app/build.gradle.kts`:
 A tag that does not parse as a version (`latest`, `test`) is ignored by the
 check rather than offered to everyone — see `UpdateVersionTest`.
 
+## Saying what the update does
+
+Every version gets an entry at the top of
+[`shared/assets/releases/notes.json`](../shared/assets/releases/notes.json):
+a few short points, each written in English, Hebrew and Arabic, in the words
+somebody on a site would use. **The build fails until it is there** —
+`tools/release-notes.py --check` compares it with `versionName` — so an
+update nobody described cannot be shipped.
+
+The one file does three jobs:
+
+- **Before installing.** The release carries a copy (`release-notes.json`).
+  A phone offered the update lists every version between the one it has and
+  the one on offer, newest first, in its own language. Somebody going from
+  0.17.0 to 0.20.0 sees 0.18, 0.19 and 0.20, not only the last.
+- **After installing.** The first time the app opens on a new version it
+  shows *What's new* — again everything since the version that phone last
+  showed — and then not again. Nothing is shown on a first install.
+- **Any time.** Settings → About → *What's new* lists the whole history.
+
+The release page on GitHub is written from the same entry, in all three
+languages, by the release workflow.
+
 ## "Could not check for updates"
 
 Two different things used to say this, and only one of them was true.

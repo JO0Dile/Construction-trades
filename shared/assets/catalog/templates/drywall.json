@@ -1,0 +1,189 @@
+{
+  "tradeId": "drywall",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.gb.partition",
+      "estimatedDays": 3,
+      "names": {
+        "en": "Stud partition wall, one room",
+        "he": "מחיצת גבס לחדר אחד",
+        "ar": "قاطع جبس لغرفة واحدة"
+      },
+      "descriptions": {
+        "en": "Metal stud partition with insulation, boarded both sides and taped ready for paint.",
+        "he": "מחיצה על שלד מתכת עם בידוד, לוחות משני צדדים ורובה מוכנה לצבע.",
+        "ar": "قاطع على هيكل معدني مع عزل، ألواح من الجهتين ومعجون جاهز للدهان."
+      },
+      "materials": [
+        {
+          "itemId": "gb.track.u.70",
+          "quantity": 12
+        },
+        {
+          "itemId": "gb.stud.c.70",
+          "quantity": 30
+        },
+        {
+          "itemId": "gb.board.standard.12_5",
+          "quantity": 26
+        },
+        {
+          "itemId": "gb.insulation.rockwool",
+          "quantity": 13
+        },
+        {
+          "itemId": "gb.screw.drywall.25",
+          "quantity": 3
+        },
+        {
+          "itemId": "gb.tape.paper",
+          "quantity": 2
+        },
+        {
+          "itemId": "gb.compound.joint",
+          "quantity": 3
+        },
+        {
+          "itemId": "gb.corner.bead",
+          "quantity": 6
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.gb.pt.1",
+          "order": 1,
+          "titles": {
+            "en": "Set out the line and check it against the drawing",
+            "he": "סימון הקו ובדיקתו מול התוכנית",
+            "ar": "تعليم الخط وفحصه مقابل المخطط"
+          }
+        },
+        {
+          "id": "tpl.gb.pt.2",
+          "order": 2,
+          "titles": {
+            "en": "Fix track to floor and ceiling",
+            "he": "קיבוע מסילה לרצפה ולתקרה",
+            "ar": "تثبيت المسار بالأرضية والسقف"
+          }
+        },
+        {
+          "id": "tpl.gb.pt.3",
+          "order": 3,
+          "titles": {
+            "en": "Stand studs at centres and check for plumb",
+            "he": "העמדת פרופילים במרווחים ובדיקת אנך",
+            "ar": "نصب البروفيلات بالمسافات وفحص الشاقول"
+          }
+        },
+        {
+          "id": "tpl.gb.pt.4",
+          "order": 4,
+          "titles": {
+            "en": "First side boarded, services run inside before closing",
+            "he": "לוחות בצד ראשון, מערכות מותקנות לפני הסגירה",
+            "ar": "ألواح الجهة الأولى، المنظومات تُمدّ قبل الإغلاق"
+          }
+        },
+        {
+          "id": "tpl.gb.pt.5",
+          "order": 5,
+          "titles": {
+            "en": "Insulation in, then the second side",
+            "he": "בידוד פנימה ואז הצד השני",
+            "ar": "العزل بالداخل ثم الجهة الثانية"
+          }
+        },
+        {
+          "id": "tpl.gb.pt.6",
+          "order": 6,
+          "titles": {
+            "en": "Tape, fill and sand ready for paint",
+            "he": "רובה, שפכטל וליטוש לקראת צבע",
+            "ar": "معجون وشريط وصنفرة تحضيراً للدهان"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tpl.gb.ceiling",
+      "estimatedDays": 2,
+      "names": {
+        "en": "Suspended ceiling, one room",
+        "he": "תקרה אקוסטית לחדר אחד",
+        "ar": "سقف معلّق لغرفة واحدة"
+      },
+      "descriptions": {
+        "en": "Grid ceiling with access hatches where valves and dampers sit above it.",
+        "he": "תקרת שלד עם דלתות שירות במקומות שבהם שסתומים ומדפים נמצאים מעליה.",
+        "ar": "سقف بشبكة مع فتحات صيانة حيث توجد المحابس والدامبرات فوقه."
+      },
+      "materials": [
+        {
+          "itemId": "gb.grid.t24",
+          "quantity": 20
+        },
+        {
+          "itemId": "gb.tile.mineral.60x60",
+          "quantity": 20
+        },
+        {
+          "itemId": "gb.hanger.ceiling",
+          "quantity": 30
+        },
+        {
+          "itemId": "gb.access.hatch",
+          "quantity": 2
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.gb.ct.1",
+          "order": 1,
+          "titles": {
+            "en": "Mark the ceiling line at the finished height",
+            "he": "סימון קו התקרה בגובה הסופי",
+            "ar": "تعليم خط السقف على الارتفاع النهائي"
+          }
+        },
+        {
+          "id": "tpl.gb.ct.2",
+          "order": 2,
+          "titles": {
+            "en": "Fix perimeter angle and hang the grid",
+            "he": "קיבוע זווית היקפית ותליית השלד",
+            "ar": "تثبيت الزاوية المحيطة وتعليق الشبكة"
+          }
+        },
+        {
+          "id": "tpl.gb.ct.3",
+          "order": 3,
+          "titles": {
+            "en": "Level the grid across the whole room",
+            "he": "פילוס השלד בכל החדר",
+            "ar": "تسوية الشبكة في كامل الغرفة"
+          }
+        },
+        {
+          "id": "tpl.gb.ct.4",
+          "order": 4,
+          "titles": {
+            "en": "Access hatch at every valve and damper above",
+            "he": "דלת שירות בכל שסתום ומדף מעל",
+            "ar": "فتحة صيانة عند كل محبس ودامبر فوق"
+          }
+        },
+        {
+          "id": "tpl.gb.ct.5",
+          "order": 5,
+          "titles": {
+            "en": "Lay tiles last, after the dust has stopped",
+            "he": "הנחת אריחים אחרונה, אחרי שהאבק פסק",
+            "ar": "وضع البلاطات أخيراً بعد توقّف الغبار"
+          }
+        }
+      ]
+    }
+  ]
+}

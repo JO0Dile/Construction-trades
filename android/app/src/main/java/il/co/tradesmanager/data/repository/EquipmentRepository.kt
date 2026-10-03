@@ -1,9 +1,13 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.money.HireCost
 import il.co.tradesmanager.core.people.Expiry
+import il.co.tradesmanager.core.safety.PreUse
 import il.co.tradesmanager.data.local.dao.EquipmentDao
 import il.co.tradesmanager.data.local.entity.EquipmentEntity
+import il.co.tradesmanager.data.local.entity.PlantCheckEntity
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -34,6 +38,22 @@ class EquipmentRepository(
         const val MAINTENANCE = "MAINTENANCE"
         /** Hired kit that has gone back. Stops accruing on its return date. */
         const val OFF_HIRE = "OFF_HIRE"
+
+        /**
+         * What this status is called in an audit summary.
+         *
+         * The key names the string the screens already show, so the register
+         * and the chip it came from cannot say two different things. An
+         * unknown value falls through to itself, which prints as it stands
+         * rather than vanishing.
+         */
+        fun summaryKey(status: String): String = when (status) {
+            AVAILABLE -> "plant_available"
+            ON_SITE -> "plant_on_site"
+            MAINTENANCE -> "plant_maintenance"
+            OFF_HIRE -> "plant_off_hire"
+            else -> status
+        }
 
         val all = listOf(AVAILABLE, ON_SITE, MAINTENANCE, OFF_HIRE)
     }
@@ -110,7 +130,10 @@ class EquipmentRepository(
         )
         audit.record(
             ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName,
-            if (projectId == null) "${equipment.name} back in the yard" else "${equipment.name} on site",
+            Summary.of(
+                if (projectId == null) Summaries.PLANT_TO_YARD else Summaries.PLANT_TO_SITE,
+                equipment.name,
+            ),
         )
     }
 
@@ -126,8 +149,71 @@ class EquipmentRepository(
         )
         audit.record(
             ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName,
-            "${equipment.name} ${status.lowercase().replace('_', ' ')}",
+            Summary.of(
+                Summaries.EQUIPMENT_STATUS,
+                equipment.name,
+                Summary.nest(Status.summaryKey(status)),
+            ),
         )
+    }
+
+    /** A pre-use check the rules would not accept, carrying which rule. */
+    class PreUseRefused(val refusal: PreUse.Refusal) : Exception(refusal.name)
+
+    /** Every machine's newest pre-use check. */
+    fun observeLatestChecks(): Flow<List<PlantCheckEntity>> = dao.observeLatestChecks()
+
+    fun observeChecks(equipmentId: String): Flow<List<PlantCheckEntity>> = dao.observeChecks(equipmentId)
+
+    /**
+     * Records a walk-round, and stops the machine if it found anything.
+     *
+     * A defect sets the machine to maintenance through [setStatus], so the
+     * register, the dashboard and the audit trail all say it is out of
+     * service -- not a note in a check nobody opens. A later check that finds
+     * nothing does **not** put it back: a defect is put right by somebody who
+     * then says so, and a walk-round that happens not to spot the leak again
+     * is not that.
+     *
+     * A machine already off hire keeps that status. It has gone back, and
+     * saying it is in maintenance here would be saying something untrue.
+     */
+    suspend fun recordPreUse(
+        equipment: EquipmentEntity,
+        answers: Map<PreUse.Item, PreUse.Answer>,
+        defectNote: String?,
+        byAccountId: String?,
+        byName: String,
+    ): Result<PlantCheckEntity> {
+        val judged = when (val verdict = PreUse.judge(answers, defectNote)) {
+            is PreUse.Verdict.Refused -> return Result.failure(PreUseRefused(verdict.reason))
+            is PreUse.Verdict.Judged -> verdict
+        }
+        val unfit = judged.outcome == PreUse.Outcome.UNFIT
+        val note = defectNote?.trim()?.takeIf { unfit && it.isNotEmpty() }
+        val check = PlantCheckEntity(
+            id = UUID.randomUUID().toString(),
+            equipmentId = equipment.id,
+            checkedAt = System.currentTimeMillis(),
+            outcome = judged.outcome.name,
+            answers = answers.entries.associate { (item, answer) -> item.name to answer.name },
+            defectNote = note,
+            checkedByAccountId = byAccountId,
+            checkedByName = byName,
+        )
+        dao.upsertCheck(check)
+        audit.record(
+            ENTITY, equipment.id, AuditTrail.Action.CREATE, byName,
+            if (unfit) {
+                Summary.of(Summaries.PLANT_CHECKED_UNFIT, equipment.name, note.orEmpty())
+            } else {
+                Summary.of(Summaries.PLANT_CHECKED_FIT, equipment.name)
+            },
+        )
+        if (unfit && equipment.status != Status.MAINTENANCE && equipment.status != Status.OFF_HIRE) {
+            setStatus(equipment, Status.MAINTENANCE, byName)
+        }
+        return Result.success(check)
     }
 
     suspend fun recordService(equipment: EquipmentEntity, nextDueOn: Long?, actorName: String) {
@@ -135,7 +221,7 @@ class EquipmentRepository(
         dao.upsert(
             equipment.copy(lastServicedOn = now, serviceDueOn = nextDueOn, updatedAt = now),
         )
-        audit.record(ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName, "${equipment.name} serviced")
+        audit.record(ENTITY, equipment.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.EQUIPMENT_SERVICED, equipment.name))
     }
 
     suspend fun remove(equipment: EquipmentEntity, actorName: String) {

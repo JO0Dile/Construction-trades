@@ -44,7 +44,7 @@ data class ChecklistRunItemEntity(
     val answeredAt: Long? = null,
 )
 
-@Entity(tableName = "incidents", indices = [Index("projectId"), Index("occurredAt")])
+@Entity(tableName = "incidents", indices = [Index("projectId"), Index("occurredAt"), Index("companyId")])
 data class IncidentEntity(
     @PrimaryKey val id: String,
     val projectId: String? = null,
@@ -56,4 +56,20 @@ data class IncidentEntity(
     val longitude: Double? = null,
     val signatureStrokes: String? = null,
     val createdAt: Long,
+    /**
+     * What it cost, when anybody has put a figure on it.
+     *
+     * Null rather than zero for "not known yet", which is the answer for most
+     * reports at the moment they are filed. Zero is a claim that it cost
+     * nothing, and a register that cannot tell the two apart will one day be
+     * used to argue that it did.
+     */
+    val costAmount: Double? = null,
+    /**
+     * Whose record it is: the company the reporter was working for, null for a
+     * sole trader's own, or [il.co.tradesmanager.core.safety.Incidents.UNATTRIBUTED]
+     * for one filed before incidents carried a company. The register and the
+     * statistics are scoped by it, the same as the jobs.
+     */
+    val companyId: String? = null,
 )

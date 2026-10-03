@@ -1,38 +1,65 @@
 package il.co.tradesmanager.di
 
 import android.content.Context
+import il.co.tradesmanager.data.backup.BackupRepository
+import il.co.tradesmanager.data.backup.StagedRestore
 import il.co.tradesmanager.data.catalog.CatalogSeeder
 import il.co.tradesmanager.data.catalog.CatalogSource
+import il.co.tradesmanager.data.catalog.ScopeCatalog
 import il.co.tradesmanager.data.local.AppDatabase
 import il.co.tradesmanager.data.local.DatabaseFactory
 import il.co.tradesmanager.data.repository.AccountRepository
 import il.co.tradesmanager.data.repository.AuditTrail
-import il.co.tradesmanager.data.repository.ExcavationRepository
-import il.co.tradesmanager.data.repository.InventoryRepository
 import il.co.tradesmanager.data.repository.CertificationRepository
+import il.co.tradesmanager.data.repository.ComplaintRepository
 import il.co.tradesmanager.data.repository.ConcreteRepository
 import il.co.tradesmanager.data.repository.DailyLogRepository
+import il.co.tradesmanager.data.repository.DelayRepository
+import il.co.tradesmanager.data.repository.DesignQueryRepository
+import il.co.tradesmanager.data.repository.DrawingRepository
+import il.co.tradesmanager.data.repository.EmergencySheetRepository
+import il.co.tradesmanager.data.repository.EngagementRepository
 import il.co.tradesmanager.data.repository.EquipmentRepository
 import il.co.tradesmanager.data.repository.EvidenceRepository
+import il.co.tradesmanager.data.repository.ExcavationRepository
+import il.co.tradesmanager.data.repository.FirePointRepository
+import il.co.tradesmanager.data.repository.HeatRepository
+import il.co.tradesmanager.data.repository.InspectionRepository
+import il.co.tradesmanager.data.repository.InventoryRepository
+import il.co.tradesmanager.data.repository.JobContactRepository
 import il.co.tradesmanager.data.repository.LiftingRepository
+import il.co.tradesmanager.data.repository.MeetingRepository
 import il.co.tradesmanager.data.repository.MembershipRepository
 import il.co.tradesmanager.data.repository.MoneyRepository
+import il.co.tradesmanager.data.repository.MusterRepository
 import il.co.tradesmanager.data.repository.PaymentsRepository
 import il.co.tradesmanager.data.repository.PhotoRepository
-import il.co.tradesmanager.data.repository.PurchasingRepository
+import il.co.tradesmanager.data.repository.PlantExaminationRepository
+import il.co.tradesmanager.data.repository.RiskRepository
+import il.co.tradesmanager.data.repository.PpeRepository
 import il.co.tradesmanager.data.repository.ProjectRepository
+import il.co.tradesmanager.data.repository.PurchasingRepository
+import il.co.tradesmanager.data.repository.SafetyReportRepository
+import il.co.tradesmanager.data.repository.SafetyStatsRepository
+import il.co.tradesmanager.data.repository.InvestigationRepository
+import il.co.tradesmanager.data.repository.NonConformanceRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.SubmittalRepository
+import il.co.tradesmanager.data.repository.SettingsRepository
+import il.co.tradesmanager.data.repository.SubstanceRepository
 import il.co.tradesmanager.data.repository.TemporaryWorksRepository
+import il.co.tradesmanager.data.repository.TradeRepository
+import il.co.tradesmanager.data.repository.ViolationRepository
+import il.co.tradesmanager.data.repository.VisitRepository
+import il.co.tradesmanager.data.repository.WasteRepository
+import il.co.tradesmanager.data.sync.NoOpSyncEngine
+import il.co.tradesmanager.data.sync.SyncEngine
+import il.co.tradesmanager.data.update.UpdateRepository
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import il.co.tradesmanager.data.repository.SettingsRepository
-import il.co.tradesmanager.data.repository.TradeRepository
-import il.co.tradesmanager.data.sync.NoOpSyncEngine
-import il.co.tradesmanager.data.update.UpdateRepository
-import il.co.tradesmanager.data.sync.SyncEngine
 
 /**
  * Hand-rolled dependency container.
@@ -53,7 +80,20 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val database: AppDatabase = databaseResult.database
 
+    /**
+     * What a restore staged in the last session did on the way into this one.
+     *
+     * Read once, at launch, and shown in Settings. A restore that silently
+     * worked and a restore that silently did not look identical from the
+     * outside, and the second one leaves somebody believing they have their
+     * site diary back.
+     */
+    val restoreOutcome: StagedRestore.Outcome = databaseResult.restore
+
     val catalogSource = CatalogSource(appContext)
+
+    /** Stages and scopes of work. Read-only reference data, never seeded. */
+    val scopes = ScopeCatalog(catalogSource)
 
     val settings = SettingsRepository(appContext)
 
@@ -113,6 +153,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val payments = PaymentsRepository(database.paymentsDao(), auditTrail)
 
+    /** Who is on a job, what they agreed, and what they were asked to do. */
+    val engagements = EngagementRepository(database.engagementDao(), auditTrail)
+
     /** The daily site log — the יומן עבודה a site manager has to keep. */
     val dailyLogs = DailyLogRepository(database.dailyLogDao(), auditTrail)
 
@@ -132,6 +175,107 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     val safety = SafetyRepository(database.safetyDao(), database.catalogDao(), auditTrail)
 
+    val violations = ViolationRepository(database.violationDao(), photos, auditTrail)
+
+    /**
+     * The roll call after an evacuation.
+     *
+     * Takes the schedule DAO rather than the schedule repository: the only
+     * thing it wants is the open check-ins, and the repository wraps those in
+     * clocking rules that have nothing to do with counting heads at a gate.
+     * The visitor log likewise, for the visits nobody has signed out.
+     */
+    val musters = MusterRepository(
+        database.musterDao(),
+        database.scheduleDao(),
+        database.visitDao(),
+        auditTrail,
+    )
+
+    val heat = HeatRepository(database.heatDao(), database.scheduleDao(), auditTrail)
+
+    val waste = WasteRepository(database.wasteDao(), auditTrail)
+
+    /** Protective equipment handed out, which comes off the stock list as it goes. */
+    val ppe = PpeRepository(database.ppeDao(), inventory, auditTrail)
+
+    /** Who is on a job without working there, until they sign out. */
+    val visits = VisitRepository(database.visitDao(), auditTrail)
+
+    /** Which revision of each drawing a job is being built from. */
+    val drawings = DrawingRepository(database.drawingDao(), auditTrail)
+
+    /** Questions put to the designers, and their answers. */
+    val designQueries = DesignQueryRepository(database.designQueryDao(), auditTrail)
+
+    /**
+     * Plant examination certificates. A failure takes the machine out of
+     * service through the plant register itself, as a defect found on the
+     * morning walk-round does.
+     */
+    val examinations = PlantExaminationRepository(database.plantExaminationDao(), auditTrail) { equipmentId, byName ->
+        database.equipmentDao().equipment(equipmentId)?.let { machine ->
+            if (machine.status != EquipmentRepository.Status.MAINTENANCE && machine.status != EquipmentRepository.Status.OFF_HIRE) {
+                equipment.setStatus(machine, EquipmentRepository.Status.MAINTENANCE, byName)
+            }
+        }
+    }
+
+    /** Complaints about the site from the neighbours and the municipality. */
+    val complaints = ComplaintRepository(database.complaintDao(), auditTrail)
+
+    /** What is kept on the site that can hurt somebody, and where. */
+    val substances = SubstanceRepository(database.substanceDao(), auditTrail)
+
+    /** The extinguishers, blankets and hose reels, and the monthly looks at them. */
+    val firePoints = FirePointRepository(database.firePointDao(), auditTrail)
+
+    /** Each job's sheet for the site office wall: the hospital, the assembly point, the first aiders. */
+    val emergencySheets = EmergencySheetRepository(database.jobEmergencyDao(), auditTrail)
+
+    /** The job's meetings and the points agreed at them. */
+    val meetings = MeetingRepository(database.meetingDao(), auditTrail)
+
+    /** A job's week of safety, counted from the registers. */
+    val safetyReports = SafetyReportRepository(database.safetyReportDao())
+
+    /** The company's injury rates per million hours worked, across every job. */
+    val safetyStats = SafetyStatsRepository(database.safetyStatsDao())
+
+    /** What was found after each incident, and the actions taken because of it. */
+    val investigations = InvestigationRepository(database.investigationDao(), { database.safetyDao().incident(it) }, auditTrail)
+
+    /** Work that does not meet its requirement, what is decided about it, and how it was checked. */
+    val nonConformances = NonConformanceRepository(database.nonConformanceDao(), auditTrail)
+
+    /** Who is who on each job from outside the firm, and how to reach them. */
+    val jobContacts = JobContactRepository(database.jobContactDao(), auditTrail)
+
+    /** The job's risk assessment: hazards, scored before and after their controls. */
+    val risks = RiskRepository(database.riskDao(), auditTrail)
+
+    /** Days the work could not go ahead, and why. */
+    val delays = DelayRepository(database.delayDao(), auditTrail)
+
+    /** Materials sent for approval before they are ordered. */
+    val submittals = SubmittalRepository(database.submittalDao(), auditTrail)
+
+    /** Requests to inspect work before it is covered up, and the pours they cleared. */
+    val inspections = InspectionRepository(database.inspectionDao(), auditTrail) { pourId ->
+        database.concreteDao().pour(pourId)?.let { InspectionRepository.PourRef(it.projectId, it.reference) }
+    }
+
+    /**
+     * Taking the record off the phone and putting it back.
+     *
+     * Needs to know whether the database it is copying is encrypted, because
+     * that decides how a plaintext copy is made of it — see BackupRepository.
+     * The archive is always locked by the person's passphrase either way; the
+     * device's own key never leaves the device and would be no use on another
+     * phone if it did.
+     */
+    val backups = BackupRepository(appContext, database, auditTrail, databaseIsEncrypted)
+
     val catalogDao = database.catalogDao()
 
     val trades = TradeRepository(catalogDao, auditTrail)
@@ -140,7 +284,7 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
         source = catalogSource,
         catalogDao = catalogDao,
         inventoryDao = database.inventoryDao(),
-        auditDao = database.auditDao(),
+        audit = auditTrail,
     )
 
     /**

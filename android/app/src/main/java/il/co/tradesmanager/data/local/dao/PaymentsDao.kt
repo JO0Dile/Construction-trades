@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
+import il.co.tradesmanager.data.local.entity.PaymentApplicationLineEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -12,6 +13,25 @@ interface PaymentsDao {
 
     @Upsert
     suspend fun upsert(application: PaymentApplicationEntity)
+
+    @Upsert
+    suspend fun upsertLines(lines: List<PaymentApplicationLineEntity>)
+
+    /**
+     * What one application is made of, in the order it was assembled.
+     *
+     * Ordered by when the line was written rather than by amount or title:
+     * a breakdown that reorders itself between two readings of the same
+     * certified application is a breakdown somebody stops trusting.
+     */
+    @Query(
+        """
+        SELECT * FROM payment_application_lines
+        WHERE applicationId = :applicationId
+        ORDER BY createdAt, id
+        """,
+    )
+    fun observeLines(applicationId: String): Flow<List<PaymentApplicationLineEntity>>
 
     @Delete
     suspend fun delete(application: PaymentApplicationEntity)
@@ -50,7 +70,7 @@ interface PaymentsDao {
     suspend fun lastNumber(projectId: String, direction: String): Int?
 
     /**
-     * The furthest-advanced application that has actually been paid.
+     * The furthest-advanced paid application below [number].
      *
      * Returns the row rather than a computed net figure. Working the net out
      * in SQL would mean a second implementation of the retention rule — one
@@ -60,18 +80,25 @@ interface PaymentsDao {
      *
      * Ordered by application number rather than by when it was paid: the
      * applications are cumulative, so the highest number is the one that
-     * carries the running total, whatever order the cheques arrived in.
+     * carries the running total, whatever order the cheques arrived in. That
+     * is also why [number] is a bound and not decoration — asking on behalf of
+     * application four must not hand back application nine.
      */
     @Query(
         """
         SELECT * FROM payment_applications
         WHERE projectId = :projectId AND direction = :direction
+          AND applicationNumber < :number
           AND paidAt IS NOT NULL AND certifiedGrossToDate IS NOT NULL
         ORDER BY applicationNumber DESC
         LIMIT 1
         """,
     )
-    suspend fun lastPaid(projectId: String, direction: String): PaymentApplicationEntity?
+    suspend fun lastPaidBefore(
+        projectId: String,
+        direction: String,
+        number: Int,
+    ): PaymentApplicationEntity?
 
     @Query("SELECT COUNT(*) FROM payment_applications")
     suspend fun count(): Int

@@ -8,8 +8,10 @@ import il.co.tradesmanager.data.local.entity.SnagEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -18,6 +20,17 @@ class SnagDetailViewModel(
     private val container: AppContainer,
     private val snagId: String,
 ) : ViewModel() {
+
+    /**
+     * Set when a write was refused. See NotSavedDialog: the answer used to be
+     * thrown away, and a refused write looked like a button that did nothing.
+     */
+    private val _notSaved = MutableStateFlow(false)
+    val notSaved: StateFlow<Boolean> = _notSaved.asStateFlow()
+
+    fun clearNotSaved() {
+        _notSaved.value = false
+    }
 
     val snag: StateFlow<SnagEntity?> = container.evidence.observeSnag(snagId)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
@@ -51,11 +64,11 @@ class SnagDetailViewModel(
 
     fun markFixed() = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.markSnagFixed(snagId, actor)
+        if (!container.evidence.markSnagFixed(snagId, actor)) _notSaved.value = true
     }
 
     fun verify(accepted: Boolean, notes: String?) = viewModelScope.launch {
         val actor = container.settings.settings.first().actorName
-        container.evidence.verifySnag(snagId, accepted, notes, actor)
+        if (!container.evidence.verifySnag(snagId, accepted, notes, actor)) _notSaved.value = true
     }
 }

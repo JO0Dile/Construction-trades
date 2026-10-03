@@ -1,7 +1,11 @@
 package il.co.tradesmanager.ui.schedule
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,6 +23,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.RadioButton
+import il.co.tradesmanager.data.local.entity.AccountEntity
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -41,7 +47,6 @@ import il.co.tradesmanager.core.time.TimeOfDay
 import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.EmptyState
-import il.co.tradesmanager.ui.components.rememberPermissionRequest
 import il.co.tradesmanager.ui.components.currentLocale
 import java.time.LocalTime
 
@@ -54,17 +59,23 @@ fun ScheduleScreen(container: AppContainer) {
     val date by viewModel.date.collectAsStateWithLifecycle()
     val blocks by viewModel.blocks.collectAsStateWithLifecycle()
     val openEntry by viewModel.openTimeEntry.collectAsStateWithLifecycle()
+    val crew by viewModel.crew.collectAsStateWithLifecycle()
+    val jobs by viewModel.jobs.collectAsStateWithLifecycle()
     val locale = currentLocale()
     var showAdd by remember { mutableStateOf(false) }
+    var assigning by remember { mutableStateOf<String?>(null) }
+    var choosingJob by remember { mutableStateOf(false) }
 
-    // Location is asked for at the moment of a check-in, with a reason, and a
-    // refusal still records the check-in — just without the GPS stamp.
-    val requestLocation = rememberPermissionRequest(
-        permission = android.Manifest.permission.ACCESS_COARSE_LOCATION,
-        titleRes = R.string.perm_location_title,
-        bodyRes = R.string.perm_location_body,
-        onResult = { viewModel.toggleCheckIn(null, null) },
-    )
+    // There is no location prompt here any more, and there was never a GPS
+    // stamp. The prompt passed null coordinates to the check-in whatever the
+    // answer was, so it asked a worker for their position every time they
+    // started a shift and did nothing with the reply — the comment that used
+    // to sit here claimed a refusal cost you the stamp, when accepting cost
+    // you it too. Nothing in the app reads a location.
+    //
+    // The columns on the time entry stay, so a real GPS stamp can be added
+    // later with the permission it needs. Asking first and using it never is
+    // the wrong order.
 
     Scaffold(
         topBar = {
@@ -102,7 +113,18 @@ fun ScheduleScreen(container: AppContainer) {
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Button(
-                        onClick = { if (openEntry == null) requestLocation() else viewModel.toggleCheckIn(null, null) },
+                        // Checking out never asks: the shift already knows
+                        // which job it was. Checking in asks only when there
+                        // is a choice to make -- one job is not a question,
+                        // and a man clocking on at six does not want one.
+                        onClick = {
+                            when {
+                                openEntry != null -> viewModel.toggleCheckIn(null)
+                                jobs.size == 1 -> viewModel.toggleCheckIn(jobs.first().id)
+                                jobs.isEmpty() -> viewModel.toggleCheckIn(null)
+                                else -> choosingJob = true
+                            }
+                        },
                         modifier = Modifier.weight(1f),
                     ) {
                         Text(
@@ -130,13 +152,26 @@ fun ScheduleScreen(container: AppContainer) {
                 }
             } else {
                 items(blocks, key = { it.id }) { block ->
+                    val assignee = crew.firstOrNull { it.id == block.assigneeId }
                     ListItem(
                         headlineContent = { Text(block.title) },
                         supportingContent = {
+                            val hours = Formats.time(LocalTime.ofSecondOfDay(block.startMinute * 60L), locale) +
+                                " – " +
+                                Formats.time(LocalTime.ofSecondOfDay(block.endMinute * 60L), locale)
+                            // Named on the row rather than a tap away. The
+                            // question at seven in the morning is who is doing
+                            // it, and an answer you have to open something to
+                            // read is not on the list at all.
                             Text(
-                                Formats.time(LocalTime.ofSecondOfDay(block.startMinute * 60L), locale) +
-                                    " – " +
-                                    Formats.time(LocalTime.ofSecondOfDay(block.endMinute * 60L), locale),
+                                if (crew.isEmpty()) {
+                                    hours
+                                } else {
+                                    hours + " · " + (
+                                        assignee?.displayName
+                                            ?: stringResource(R.string.sch_nobody)
+                                        )
+                                },
                             )
                         },
                         leadingContent = {
@@ -146,14 +181,63 @@ fun ScheduleScreen(container: AppContainer) {
                             )
                         },
                         trailingContent = {
-                            TextButton(onClick = { viewModel.delete(block.id) }) {
-                                Text(stringResource(R.string.action_delete))
+                            Row {
+                                // Offered only where there is somebody to hand
+                                // it to. A sole trader has no crew, and a
+                                // button that opens an empty list is a button
+                                // that teaches people not to press buttons.
+                                if (crew.isNotEmpty()) {
+                                    TextButton(onClick = { assigning = block.id }) {
+                                        Text(stringResource(R.string.sch_assign))
+                                    }
+                                }
+                                TextButton(onClick = { viewModel.delete(block.id) }) {
+                                    Text(stringResource(R.string.action_delete))
+                                }
                             }
                         },
                     )
                 }
             }
         }
+    }
+
+    if (choosingJob) {
+        AlertDialog(
+            onDismissRequest = { choosingJob = false },
+            title = { Text(stringResource(R.string.sch_which_job)) },
+            text = {
+                Column(Modifier.verticalScroll(rememberScrollState())) {
+                    jobs.forEach { job ->
+                        ListItem(
+                            headlineContent = { Text(job.name) },
+                            supportingContent = { Text(job.kindLabel) },
+                            modifier = Modifier.clickable {
+                                choosingJob = false
+                                viewModel.toggleCheckIn(job.id)
+                            },
+                        )
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { choosingJob = false }) {
+                    Text(stringResource(R.string.action_cancel))
+                }
+            },
+        )
+    }
+
+    assigning?.let { blockId ->
+        AssignDialog(
+            crew = crew,
+            current = blocks.firstOrNull { it.id == blockId }?.assigneeId,
+            onDismiss = { assigning = null },
+            onPick = { accountId ->
+                viewModel.setAssignee(blockId, accountId)
+                assigning = null
+            },
+        )
     }
 
     if (showAdd) {
@@ -216,3 +300,49 @@ private fun AddBlockDialog(onDismiss: () -> Unit, onConfirm: (String, Int, Int) 
     )
 }
 
+/**
+ * Who is doing this block.
+ *
+ * "Nobody" is the first row rather than a missing option. Work gets handed
+ * back as often as it gets handed out -- somebody is off sick, somebody is
+ * needed on the other floor -- and a picker you can only add to leaves the
+ * wrong name against the job until somebody deletes the block and retypes it.
+ */
+@Composable
+private fun AssignDialog(
+    crew: List<AccountEntity>,
+    current: String?,
+    onDismiss: () -> Unit,
+    onPick: (String?) -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.sch_assignee)) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.sch_unassign)) },
+                    leadingContent = {
+                        RadioButton(selected = current == null, onClick = { onPick(null) })
+                    },
+                    modifier = Modifier.clickable { onPick(null) },
+                )
+                crew.forEach { person ->
+                    ListItem(
+                        headlineContent = { Text(person.displayName) },
+                        leadingContent = {
+                            RadioButton(
+                                selected = current == person.id,
+                                onClick = { onPick(person.id) },
+                            )
+                        },
+                        modifier = Modifier.clickable { onPick(person.id) },
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        },
+    )
+}

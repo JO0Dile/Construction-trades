@@ -23,6 +23,8 @@ class AccountViewModel(private val container: AppContainer) : ViewModel() {
         name: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         passcode: String?,
     ) = viewModelScope.launch {
         container.session.adopt(
@@ -31,6 +33,8 @@ class AccountViewModel(private val container: AppContainer) : ViewModel() {
                 passcode = passcode,
                 username = username,
                 idNumber = idNumber,
+                phone = phone,
+                email = email,
             ),
         )
     }
@@ -41,6 +45,8 @@ class AccountViewModel(private val container: AppContainer) : ViewModel() {
         ownerName: String,
         username: String?,
         idNumber: String?,
+        phone: String?,
+        email: String?,
         passcode: String?,
     ) = viewModelScope.launch {
         container.session.adopt(
@@ -51,6 +57,8 @@ class AccountViewModel(private val container: AppContainer) : ViewModel() {
                 passcode = passcode,
                 ownerUsername = username,
                 ownerIdNumber = idNumber,
+                ownerPhone = phone,
+                ownerEmail = email,
             ),
         )
     }

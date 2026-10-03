@@ -1,0 +1,119 @@
+{
+  "tradeId": "waterproofing",
+  "catalogVersion": 2,
+  "checklists": [
+    {
+      "id": "sf.wp.torch",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Torch-on membrane",
+        "he": "יריעה בהלחמה",
+        "ar": "الرول بالحرق"
+      },
+      "references": [
+        "פקודת הבטיחות בעבודה [נוסח חדש], התש״ל-1970",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997",
+        "תקנות הבטיחות בעבודה (עבודה בגובה), התשס״ז-2007"
+      ],
+      "items": [
+        {
+          "id": "sf.wp.torch.1",
+          "critical": true,
+          "texts": {
+            "en": "Hot work permit issued and the fire watch arranged",
+            "he": "היתר עבודה חמה הונפק ושמירת אש סודרה",
+            "ar": "تصريح شغل ساخن صادر وحراسة الحريق مرتّبة"
+          }
+        },
+        {
+          "id": "sf.wp.torch.2",
+          "critical": true,
+          "texts": {
+            "en": "Nothing combustible in the roof build-up under the flame",
+            "he": "אין חומר דליק בהרכב הגג מתחת ללהבה",
+            "ar": "لا مادة قابلة للاشتعال في تركيب السطح تحت اللهب"
+          }
+        },
+        {
+          "id": "sf.wp.torch.3",
+          "critical": true,
+          "texts": {
+            "en": "Gas bottles upright, secured, and outside when not in use",
+            "he": "מיכלי גז זקופים, מאובטחים, ומחוץ למבנה כשאינם בשימוש",
+            "ar": "أسطوانات الغاز قائمة ومثبّتة وخارج المبنى عند عدم الاستعمال"
+          }
+        },
+        {
+          "id": "sf.wp.torch.4",
+          "critical": true,
+          "texts": {
+            "en": "Roof edge protected — the membrane goes right to the fall",
+            "he": "שפת הגג מוגנת — היריעה מגיעה עד לקצה",
+            "ar": "حافة السطح محمية — الرول يصل حتى الحافة"
+          }
+        },
+        {
+          "id": "sf.wp.torch.5",
+          "critical": true,
+          "texts": {
+            "en": "Fire watch continues for a full hour after the torch goes out",
+            "he": "שמירת אש נמשכת שעה מלאה אחרי כיבוי המבער",
+            "ar": "حراسة الحريق تستمر ساعة كاملة بعد إطفاء الشعّالة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf.wp.tank",
+      "mandatoryBeforeWork": true,
+      "titles": {
+        "en": "Coating inside a tank or a shaft",
+        "he": "ציפוי בתוך מיכל או פיר",
+        "ar": "الطلاء داخل خزان أو بئر"
+      },
+      "references": [
+        "תקנות הבטיחות בעבודה (עבודה בחלל מוקף), התשע״ח-2018",
+        "תקנות הבטיחות בעבודה (גיהות תעסוקתית ובריאות העובדים בממיסים פחמימניים ארומטיים)",
+        "תקנות הבטיחות בעבודה (ציוד מגן אישי), התשנ״ז-1997"
+      ],
+      "items": [
+        {
+          "id": "sf.wp.tank.1",
+          "critical": true,
+          "texts": {
+            "en": "Confined space permit issued and an attendant is outside",
+            "he": "היתר חלל מוקף הונפק ומשגיח נמצא בחוץ",
+            "ar": "تصريح حيّز مغلق صادر ومراقب في الخارج"
+          }
+        },
+        {
+          "id": "sf.wp.tank.2",
+          "critical": true,
+          "texts": {
+            "en": "Atmosphere tested and forced ventilation running",
+            "he": "האטמוספרה נבדקה ואוורור מאולץ פועל",
+            "ar": "الجو مفحوص والتهوية القسرية تعمل"
+          }
+        },
+        {
+          "id": "sf.wp.tank.3",
+          "critical": true,
+          "texts": {
+            "en": "Solvent vapour is heavier than air and collects at the bottom — extraction is low",
+            "he": "אדי ממס כבדים מאוויר ומצטברים בתחתית — השאיבה נמוכה",
+            "ar": "بخار المذيب أثقل من الهواء ويتجمّع في القاع — الشفط منخفض"
+          }
+        },
+        {
+          "id": "sf.wp.tank.4",
+          "critical": true,
+          "texts": {
+            "en": "No ignition source at all, lighting included",
+            "he": "אין כל מקור הצתה, לרבות תאורה",
+            "ar": "لا مصدر إشعال إطلاقاً، بما في ذلك الإنارة"
+          }
+        }
+      ]
+    }
+  ]
+}

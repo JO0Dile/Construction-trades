@@ -2,16 +2,30 @@ package il.co.tradesmanager.ui.handover
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.evidence.DailyLog
+import il.co.tradesmanager.core.evidence.CubeTests
 import il.co.tradesmanager.core.evidence.HandoverPack
+import il.co.tradesmanager.core.evidence.Inspections
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
+import il.co.tradesmanager.core.work.Submittals
 import il.co.tradesmanager.data.local.entity.ProjectEntity
+import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
+import il.co.tradesmanager.data.repository.WasteRepository
 import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.emergency.addressOf
+import il.co.tradesmanager.ui.export.ExportDocument
+import java.time.LocalDate
+import java.time.ZoneId
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -77,10 +91,126 @@ class HandoverViewModel(
         )
     }
 
+    /**
+     * Loads nothing yet shows went anywhere. The ticket photographs are in
+     * another table, so the two are read together and weighed by the same
+     * rule the register uses -- see Waste.Load.proven.
+     */
+    private val fromWaste = combine(
+        container.waste.observeForProject(projectId),
+        container.photos.observeCountsFor(PhotoRepository.Owner.WASTE_TICKET),
+    ) { loads, photographed ->
+        mapOf(
+            HandoverPack.Item.WASTE_WITHOUT_TICKET to loads.count { row ->
+                WasteRepository.asLoad(row, photographed[row.id] ?: 0)?.proven == false
+            },
+        )
+    }
+
+    /**
+     * The cube results, by the same rule the pour screen marks them with --
+     * see CubeTests -- so the pack and the pour list cannot disagree about
+     * which pours the engineer still has to see.
+     */
+    private val fromCubes = combine(
+        container.concrete.observePours(projectId),
+        container.concrete.observeCubeSetsForProject(projectId),
+    ) { pours, sets ->
+        val byPour = sets.groupBy { it.pourId }
+        mapOf(
+            HandoverPack.Item.CUBES_FOR_ENGINEER to pours.count { pour ->
+                byPour[pour.id].orEmpty().any { set ->
+                    CubeTests.judgeStored(set.ageDays, set.strengthsMpa, pour.mixDesign)?.needsEngineer == true
+                }
+            },
+            HandoverPack.Item.POURS_WITHOUT_28_DAY_RESULT to pours.count { pour ->
+                CubeTests.awaitingJudgedResult(
+                    finished = pour.completedAt != null,
+                    setAges = byPour[pour.id].orEmpty().map { it.ageDays },
+                )
+            },
+        )
+    }
+
+    /**
+     * Inspections still outstanding, and pours none was set against, by the
+     * same rule the register lists them with -- see Inspections.state -- so
+     * the two cannot disagree. Beside them, what else in the site's record a
+     * job should not be handed over with: hazardous substances still on the
+     * site, risks never closed, complaints never answered.
+     */
+    private val fromInspections = combine(
+        container.inspections.observeForProject(projectId),
+        container.concrete.observePours(projectId),
+        container.substances.observeForProject(projectId),
+        container.risks.observeForProject(projectId),
+        container.complaints.observeForProject(projectId),
+    ) { inspections, pours, substances, risks, complaints ->
+        val now = System.currentTimeMillis()
+        val zone = ZoneId.systemDefault()
+        val askedAgain = inspections.mapNotNull { it.reinspectionOf }.toSet()
+        val cleared = inspections.mapNotNull { it.clearedPourId }.toSet()
+        mapOf(
+            HandoverPack.Item.INSPECTIONS_OUTSTANDING to inspections.count {
+                Inspections.outstanding(
+                    Inspections.state(Inspections.resultOf(it.result), it.wantedOn, it.id in askedAgain, now, zone),
+                )
+            },
+            HandoverPack.Item.POURS_WITHOUT_INSPECTION to pours.count { it.id !in cleared },
+            HandoverPack.Item.SUBSTANCES_ON_SITE to substances.count { it.removedAt == null },
+            HandoverPack.Item.RISKS_OPEN to risks.count { !it.closed },
+            HandoverPack.Item.COMPLAINTS_UNANSWERED to complaints.count { it.answeredAt == null },
+        )
+    }
+
+    /**
+     * What was asked of the designers and has not come back: questions and
+     * materials, by the rules their registers use. Both are the plan, and the
+     * pack is open to anybody who reads the site's record, so these are
+     * counted only for somebody who may read the plan -- for anybody else
+     * they are absent, which the pack reads as nothing to show, rather than
+     * sent and hidden.
+     */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val fromPlan = container.session.state.flatMapLatest { state ->
+        val role = (state as? SessionRepository.State.SignedIn)?.role
+        if (role == null || !role.canRead(Lens.PLAN)) {
+            flowOf(emptyMap<HandoverPack.Item, Int>())
+        } else {
+            combine(
+                container.designQueries.observeForProject(projectId),
+                container.submittals.observeForProject(projectId),
+                container.meetings.observeActionsForProject(projectId),
+            ) { queries, submittals, points ->
+                val now = System.currentTimeMillis()
+                val zone = ZoneId.systemDefault()
+                val sentAgain = submittals.mapNotNull { it.resubmissionOf }.toSet()
+                mapOf(
+                    HandoverPack.Item.QUERIES_UNANSWERED to queries.count { it.answeredAt == null },
+                    HandoverPack.Item.MEETING_POINTS_OPEN to points.count { it.closedAt == null },
+                    HandoverPack.Item.SUBMITTALS_OUTSTANDING to submittals.count {
+                        Submittals.outstanding(
+                            Submittals.state(Submittals.decisionOf(it.decision), it.neededBy, it.id in sentAgain, now, zone),
+                        )
+                    },
+                )
+            }
+        }
+    }
+
+    /** Non-conformances not closed: the register a public client reads before signing a handover. */
+    private val fromQuality = container.nonConformances.observeForProject(projectId)
+        .map { reports -> mapOf(HandoverPack.Item.NCRS_OPEN to reports.count { it.closedAt == null }) }
+
+    private val fromAskedOf = combine(fromInspections, fromPlan, fromQuality) { inspections, plan, quality -> inspections + plan + quality }
+
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,
         fromWorks,
-    ) { safety, works -> HandoverPack.readiness(safety + works) }
+        fromWaste,
+        fromCubes,
+        fromAskedOf,
+    ) { safety, works, waste, cubes, askedOf -> HandoverPack.readiness(safety + works + waste + cubes + askedOf) }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5_000),
@@ -93,6 +223,62 @@ class HandoverViewModel(
             SharingStarted.WhileSubscribed(5_000),
             SessionRepository.State.Loading,
         )
+
+    /**
+     * Every register of the job that the person asking may read, as
+     * documents: the handover summary first, then the registers. Read once,
+     * at the moment of export, from the same repositories the screens use --
+     * and a register the role may not read is left out of the archive, not
+     * put in empty.
+     */
+    suspend fun archive(): List<ExportDocument> {
+        val job = project.value ?: return emptyList()
+        val role = (container.session.state.first() as? SessionRepository.State.SignedIn)?.role
+            ?: return emptyList()
+        val documents = mutableListOf<ExportDocument>(
+            ExportDocument.Handover(
+                project = job,
+                readiness = readiness.value,
+                producedByName = producedBy.value,
+                producedOn = LocalDate.now(),
+            ),
+        )
+        // Everybody on the job may read the emergency sheet, so it goes in whatever the role.
+        documents += ExportDocument.EmergencyInformation(
+            jobName = job.name,
+            address = addressOf(job),
+            sheet = container.emergencySheets.sheet(projectId),
+        )
+        if (role.canRead(Lens.EVIDENCE)) {
+            documents += ExportDocument.InspectionRegister(job.name, container.inspections.observeForProject(projectId).first())
+            documents += ExportDocument.RiskRegister(job.name, container.risks.observeForProject(projectId).first())
+            documents += ExportDocument.VisitorLog(job.name, container.visits.observeForProject(projectId).first())
+            documents += ExportDocument.ComplaintRegister(job.name, container.complaints.observeForProject(projectId).first())
+            documents += ExportDocument.NonConformanceRegister(
+                job.name,
+                container.nonConformances.observeForProject(projectId).first(),
+                LocalDate.now(),
+            )
+            documents += ExportDocument.SubstanceRegister(job.name, container.substances.observeForProject(projectId).first(), LocalDate.now())
+            documents += ExportDocument.FirePointRegister(
+                job.name,
+                container.firePoints.observeForProject(projectId).first(),
+                container.firePoints.observeChecksForProject(projectId).first(),
+            )
+        }
+        if (role.canRead(Lens.PLAN)) {
+            documents += ExportDocument.QueryRegister(job.name, container.designQueries.observeForProject(projectId).first())
+            documents += ExportDocument.SubmittalRegister(job.name, container.submittals.observeForProject(projectId).first())
+            documents += ExportDocument.DelayRegister(job.name, container.delays.observeForProject(projectId).first(), LocalDate.now())
+            documents += ExportDocument.MeetingActionLog(
+                jobName = job.name,
+                meetings = container.meetings.observeForProject(projectId).first(),
+                actions = container.meetings.observeActionsForProject(projectId).first(),
+                today = LocalDate.now(),
+            )
+        }
+        return documents
+    }
 
     /** Recorded on the pack so an interim one reads as interim. */
     val producedBy: StateFlow<String> = container.settings.settings

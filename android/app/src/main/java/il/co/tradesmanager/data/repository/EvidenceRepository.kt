@@ -1,5 +1,7 @@
 package il.co.tradesmanager.data.repository
 
+import il.co.tradesmanager.core.audit.Summaries
+import il.co.tradesmanager.core.audit.Summary
 import il.co.tradesmanager.core.evidence.Permits
 import il.co.tradesmanager.core.evidence.Snags
 import il.co.tradesmanager.data.local.dao.BriefingRecord
@@ -94,20 +96,16 @@ class EvidenceRepository(
             signedAt = System.currentTimeMillis(),
         )
         dao.upsertAttendee(attendee)
-        audit.record(TALK, talkId, AuditTrail.Action.SIGN_OFF, actorName, "${attendee.name} attended")
+        audit.record(TALK, talkId, AuditTrail.Action.SIGN_OFF, actorName, Summary.of(Summaries.ATTENDEE_ADDED, attendee.name))
     }
 
     suspend fun removeAttendee(attendee: ToolboxTalkAttendeeEntity, actorName: String) {
         dao.deleteAttendee(attendee)
-        audit.record(TALK, attendee.talkId, AuditTrail.Action.UPDATE, actorName, "Removed ${attendee.name}")
+        audit.record(TALK, attendee.talkId, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.ATTENDEE_REMOVED, attendee.name))
     }
 
-    suspend fun removeTalk(talk: ToolboxTalkEntity, actorName: String) {
-        dao.deleteTalk(talk)
-        audit.record(TALK, talk.id, AuditTrail.Action.DELETE, actorName, talk.topic)
-    }
 
-    /** A briefing nobody attended records nothing. Used to mark the row unfinished. */
+    /** A briefing nobody attended records nothing. Nothing reads this yet. */
     suspend fun isRegisterEmpty(talkId: String): Boolean = dao.attendeeCount(talkId) == 0
 
     // ---- Permits to work ----
@@ -116,6 +114,9 @@ class EvidenceRepository(
         dao.observePermits(projectId)
 
     fun observePermit(id: String): Flow<PermitEntity?> = dao.observePermit(id)
+
+    /** Every permit there is, for search. Uncapped: see EvidenceDao.allPermits. */
+    suspend fun allPermits(): List<PermitEntity> = dao.allPermits()
 
     fun observePrecautions(permitId: String): Flow<List<PermitPrecautionEntity>> =
         dao.observePrecautions(permitId)
@@ -225,7 +226,7 @@ class EvidenceRepository(
         )
         audit.record(
             PERMIT, permitId, AuditTrail.Action.SIGN_OFF, issuedByName,
-            "${permit.reference} issued to ${permit.issuedToName}",
+            Summary.of(Summaries.PERMIT_ISSUED, permit.reference, permit.issuedToName),
         )
         return true
     }
@@ -245,7 +246,7 @@ class EvidenceRepository(
         dao.upsertPermit(permit.copy(workStoppedAt = now, updatedAt = now))
         audit.record(
             PERMIT, permitId, AuditTrail.Action.UPDATE, actorName,
-            "${permit.reference} work stopped",
+            Summary.of(Summaries.PERMIT_STOPPED, permit.reference),
         )
         return true
     }
@@ -280,7 +281,7 @@ class EvidenceRepository(
         )
         audit.record(
             PERMIT, permitId, AuditTrail.Action.SIGN_OFF, closedByName,
-            "${permit.reference} signed back",
+            Summary.of(Summaries.PERMIT_SIGNED_BACK, permit.reference),
         )
         return true
     }
@@ -294,13 +295,9 @@ class EvidenceRepository(
         dao.upsertPermit(
             permit.copy(status = Permits.Status.CANCELLED, updatedAt = System.currentTimeMillis()),
         )
-        audit.record(PERMIT, permit.id, AuditTrail.Action.UPDATE, actorName, "${permit.reference} cancelled")
+        audit.record(PERMIT, permit.id, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.PERMIT_CANCELLED, permit.reference))
     }
 
-    suspend fun removePermit(permit: PermitEntity, actorName: String) {
-        dao.deletePermit(permit)
-        audit.record(PERMIT, permit.id, AuditTrail.Action.DELETE, actorName, permit.reference)
-    }
 
     // ---- Snagging ----
 
@@ -308,6 +305,9 @@ class EvidenceRepository(
         dao.observeSnags(projectId)
 
     fun observeSnag(id: String): Flow<SnagEntity?> = dao.observeSnag(id)
+
+    /** Every snag there is, for search. Uncapped: see EvidenceDao.allSnags. */
+    suspend fun allSnags(): List<SnagEntity> = dao.allSnags()
 
     suspend fun raiseSnag(
         projectId: String,
@@ -369,7 +369,7 @@ class EvidenceRepository(
                 updatedAt = now,
             ),
         )
-        audit.record(SNAG, snagId, AuditTrail.Action.UPDATE, actorName, "${snag.reference} claimed fixed")
+        audit.record(SNAG, snagId, AuditTrail.Action.UPDATE, actorName, Summary.of(Summaries.SNAG_CLAIMED_FIXED, snag.reference))
         return true
     }
 
@@ -399,15 +399,15 @@ class EvidenceRepository(
         )
         audit.record(
             SNAG, snagId, AuditTrail.Action.SIGN_OFF, actorName,
-            "${snag.reference} ${status.lowercase()}",
+            Summary.of(
+                Summaries.SNAG_STATUS,
+                snag.reference,
+                Summary.nest(Snags.Status.summaryKey(status)),
+            ),
         )
         return true
     }
 
-    suspend fun removeSnag(snag: SnagEntity, actorName: String) {
-        dao.deleteSnag(snag)
-        audit.record(SNAG, snag.id, AuditTrail.Action.DELETE, actorName, snag.reference)
-    }
 
     private companion object {
         const val TALK = "toolbox_talk"

@@ -46,7 +46,9 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.LoadingState
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.SignaturePad
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberNow
 import java.time.Instant
@@ -74,6 +76,8 @@ fun PermitDetailScreen(
         factory = ViewModelFactory(container) { PermitDetailViewModel(it, permitId) },
     )
     val permit by viewModel.permit.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val precautions by viewModel.precautions.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val now = rememberNow()
@@ -247,9 +251,9 @@ fun PermitDetailScreen(
         IssuePermitDialog(
             now = now,
             onDismiss = { issuing = false },
-            onIssue = { from, to ->
+            onIssue = { from, to, signature ->
                 issuing = false
-                viewModel.issue(from, to)
+                viewModel.issue(from, to, signature)
             },
         )
     }
@@ -322,10 +326,11 @@ private fun formatMoment(millis: Long, locale: java.util.Locale): String {
 private fun IssuePermitDialog(
     now: Long,
     onDismiss: () -> Unit,
-    onIssue: (validFrom: Long, validTo: Long) -> Unit,
+    onIssue: (validFrom: Long, validTo: Long, signature: String?) -> Unit,
 ) {
     var hours by remember { mutableStateOf(8) }
     var startTomorrow by remember { mutableStateOf(false) }
+    var signature by remember { mutableStateOf("") }
     val hourMillis = 60L * 60L * 1000L
     val from = if (startTomorrow) tomorrowMorning(now) else now
     val to = from + hours * hourMillis
@@ -371,10 +376,23 @@ private fun IssuePermitDialog(
                         formatMoment(to, currentLocale()),
                     style = MaterialTheme.typography.bodyMedium,
                 )
+                Text(
+                    text = stringResource(R.string.ptw_sign),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                SignaturePad(onSignatureChange = { signature = it }, height = 140.dp)
             }
         },
         confirmButton = {
-            TextButton(onClick = { onIssue(from, to) }) {
+            // Cannot be issued unsigned. Every other field on this dialog has
+            // a sensible default and this one deliberately does not: a permit
+            // is the authority to do the work, and the signature is the whole
+            // of what makes it one.
+            TextButton(
+                enabled = signature.isNotBlank(),
+                onClick = { onIssue(from, to, signature) },
+            ) {
                 Text(stringResource(R.string.ptw_issue))
             }
         },

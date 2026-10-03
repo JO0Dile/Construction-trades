@@ -1,0 +1,85 @@
+{
+  "tradeId": "masonry",
+  "catalogVersion": 2,
+  "templates": [
+    {
+      "id": "tpl.ms.wall",
+      "estimatedDays": 4,
+      "names": {
+        "en": "Block wall, one room",
+        "he": "קיר בלוקים לחדר אחד",
+        "ar": "حائط بلوك لغرفة واحدة"
+      },
+      "descriptions": {
+        "en": "Blockwork with ties, a lintel over every opening, propped until it has gone off.",
+        "he": "בנייה עם מקשרים, משקוף מעל כל פתח, נתמכת עד להתקשות.",
+        "ar": "بناء مع روابط، عتب فوق كل فتحة، مدعوم حتى يشدّ."
+      },
+      "materials": [
+        {
+          "itemId": "ms.block.concrete.20",
+          "quantity": 260
+        },
+        {
+          "itemId": "ms.mortar.masonry",
+          "quantity": 30
+        },
+        {
+          "itemId": "ms.tie.wall",
+          "quantity": 40
+        },
+        {
+          "itemId": "ms.lintel.precast",
+          "quantity": 2
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tpl.ms.wt.1",
+          "order": 1,
+          "titles": {
+            "en": "Set out and check the opening sizes against the joinery",
+            "he": "סימון ובדיקת מידות הפתחים מול הנגרות",
+            "ar": "التعليم وفحص مقاسات الفتحات مقابل النجارة"
+          }
+        },
+        {
+          "id": "tpl.ms.wt.2",
+          "order": 2,
+          "titles": {
+            "en": "First course level — everything above follows it",
+            "he": "נדבך ראשון מפולס — כל מה שמעליו הולך אחריו",
+            "ar": "المدماك الأول مستوٍ — كل ما فوقه يتبعه"
+          }
+        },
+        {
+          "id": "tpl.ms.wt.3",
+          "order": 3,
+          "titles": {
+            "en": "Build in ties to the structure as you go",
+            "he": "שילוב מקשרים למבנה תוך כדי בנייה",
+            "ar": "تركيب الروابط بالهيكل أثناء البناء"
+          }
+        },
+        {
+          "id": "tpl.ms.wt.4",
+          "order": 4,
+          "titles": {
+            "en": "Lintel over every opening, bearing both sides",
+            "he": "משקוף מעל כל פתח, עם משען משני הצדדים",
+            "ar": "عتب فوق كل فتحة، مرتكز من الجهتين"
+          }
+        },
+        {
+          "id": "tpl.ms.wt.5",
+          "order": 5,
+          "titles": {
+            "en": "Prop and leave — do not load it the same day",
+            "he": "תמיכה והשארה — לא להעמיס באותו יום",
+            "ar": "دعم وترك — لا تحميل في نفس اليوم"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -46,6 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import il.co.tradesmanager.R
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.i18n.Formats
+import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.money.Payments
 import il.co.tradesmanager.data.local.entity.PaymentApplicationEntity
 import il.co.tradesmanager.data.repository.PaymentsRepository
@@ -54,7 +54,9 @@ import il.co.tradesmanager.di.AppContainer
 import il.co.tradesmanager.ui.ViewModelFactory
 import il.co.tradesmanager.ui.components.DetailRow
 import il.co.tradesmanager.ui.components.EmptyState
+import il.co.tradesmanager.ui.components.NotSavedDialog
 import il.co.tradesmanager.ui.components.SectionHeader
+import il.co.tradesmanager.ui.components.SectionPlaceholder
 import il.co.tradesmanager.ui.components.currentLocale
 import il.co.tradesmanager.ui.components.rememberNow
 import il.co.tradesmanager.ui.evidence.pluralCount
@@ -87,7 +89,10 @@ fun PaymentsScreen(
         factory = ViewModelFactory(container) { PaymentsViewModel(it, projectId) },
     )
     val applications by viewModel.applications.collectAsStateWithLifecycle()
+    val notSaved by viewModel.notSaved.collectAsStateWithLifecycle()
+    NotSavedDialog(visible = notSaved, onDismiss = viewModel::clearNotSaved)
     val open by viewModel.open.collectAsStateWithLifecycle()
+    val lines by viewModel.lines.collectAsStateWithLifecycle()
     val contractSum by viewModel.contractSum.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val locale = currentLocale()
@@ -141,6 +146,7 @@ fun PaymentsScreen(
                 items(applications, key = { it.id }) { application ->
                     ApplicationRow(
                         application = application,
+                        applications = applications,
                         contractSum = contractSum,
                         now = now,
                         zone = zone,
@@ -152,7 +158,7 @@ fun PaymentsScreen(
             return@Scaffold
         }
 
-        val assessment = PaymentsViewModel.assess(current, contractSum)
+        val assessment = PaymentsViewModel.assess(current, applications, contractSum)
         val capped = contractSum > 0.0 &&
             assessment.retentionHeld >= contractSum * current.retentionLimit
 
@@ -191,7 +197,10 @@ fun PaymentsScreen(
                     )
                     DetailRow(
                         stringResource(R.string.pay_previously_paid),
-                        Formats.money(current.previouslyPaidNet, locale),
+                        Formats.money(
+                            PaymentsViewModel.previouslyPaidNet(current, applications, contractSum),
+                            locale,
+                        ),
                     )
                 }
             }
@@ -219,6 +228,25 @@ fun PaymentsScreen(
                     current.certifiedByName?.let {
                         DetailRow(stringResource(R.string.pay_certify), it)
                     }
+                }
+            }
+
+            // A cumulative figure with nothing behind it is the thing every
+            // dispute starts from. This is what the number is made of.
+            item { SectionHeader(stringResource(R.string.pay_breakdown)) }
+            if (lines.isEmpty()) {
+                item { SectionPlaceholder(stringResource(R.string.pay_breakdown_none)) }
+            } else {
+                item {
+                    Text(
+                        text = stringResource(R.string.pay_breakdown_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                    )
+                }
+                items(lines, key = { it.id }) { line ->
+                    DetailRow(line.title, Formats.money(line.amount, locale))
                 }
             }
 
@@ -379,13 +407,14 @@ private fun DueNowBanner(dueNow: Double, locale: Locale) {
 @Composable
 private fun ApplicationRow(
     application: PaymentApplicationEntity,
+    applications: List<PaymentApplicationEntity>,
     contractSum: Double,
     now: Long,
     zone: ZoneId,
     locale: Locale,
     onOpen: () -> Unit,
 ) {
-    val assessment = PaymentsViewModel.assess(application, contractSum)
+    val assessment = PaymentsViewModel.assess(application, applications, contractSum)
     val overdueDays = application.dueOn
         ?.takeIf { application.paidAt == null }
         ?.let {
@@ -461,7 +490,7 @@ private fun MoneyField(value: String, onChange: (String) -> Unit, labelRes: Int)
         value = value,
         // Digits and a dot only, so a phone set to a comma decimal cannot write
         // a figure the app then fails to read back.
-        onValueChange = { onChange(it.filter { c -> c.isDigit() || c == '.' }) },
+        onValueChange = { onChange(Numbers.typingDecimal(it)) },
         label = { Text(stringResource(labelRes)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -550,13 +579,13 @@ private fun RaiseDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = party.isNotBlank() && claimed.toDoubleOrNull() != null,
+                enabled = party.isNotBlank() && Numbers.parseDecimal(claimed) != null,
                 onClick = {
                     onRaise(
                         direction,
                         party.trim(),
-                        claimed.toDoubleOrNull() ?: 0.0,
-                        (retention.toIntOrNull() ?: 0).coerceIn(0, 100) / 100.0,
+                        Numbers.parseDecimal(claimed) ?: 0.0,
+                        (Numbers.parseWhole(retention)?.toInt() ?: 0).coerceIn(0, 100) / 100.0,
                         terms,
                     )
                 },
@@ -596,8 +625,8 @@ private fun AmountDialog(
         },
         confirmButton = {
             TextButton(
-                enabled = amount.toDoubleOrNull() != null,
-                onClick = { onSave(amount.toDoubleOrNull() ?: 0.0) },
+                enabled = Numbers.parseDecimal(amount) != null,
+                onClick = { onSave(Numbers.parseDecimal(amount) ?: 0.0) },
             ) {
                 Text(stringResource(R.string.action_save))
             }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.core.content.FileProvider
 import il.co.tradesmanager.BuildConfig
+import il.co.tradesmanager.core.update.ReleaseNotes
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
@@ -53,11 +54,18 @@ class UpdateRepository(private val context: Context) {
         data object Unavailable : Result
     }
 
+    /**
+     * [changes] is every version between the one installed and this one,
+     * newest first, from the notes attached to the release. Empty for a
+     * release published before notes were attached, when [notes] -- the
+     * release's own text -- is all there is to show.
+     */
     data class Release(
         val versionName: String,
         val notes: String,
         val downloadUrl: String,
         val sizeBytes: Long,
+        val changes: List<ReleaseNotes.Entry> = emptyList(),
     )
 
     @Serializable
@@ -108,12 +116,22 @@ class UpdateRepository(private val context: Context) {
             return@withContext Result.UpToDate
         }
 
+        // What is about to change, stacked from the version installed to this
+        // one. A second small request; if it fails the update is still
+        // offered, with the release's own text instead.
+        val changes = dto.assets.firstOrNull { it.name == ReleaseNotesFile.RELEASE_ASSET }
+            ?.let { notes -> fetch(notes.browserDownloadUrl) as? Response.Body }
+            ?.let { ReleaseNotesFile.decode(it.text) }
+            ?.let { ReleaseNotes.between(it, installed = BuildConfig.VERSION_NAME, target = dto.tagName) }
+            .orEmpty()
+
         Result.Available(
             Release(
                 versionName = dto.name?.takeIf { it.isNotBlank() } ?: dto.tagName,
                 notes = dto.body.orEmpty().trim(),
                 downloadUrl = asset.browserDownloadUrl,
                 sizeBytes = asset.size,
+                changes = changes,
             ),
         )
     }
@@ -210,22 +228,11 @@ class UpdateRepository(private val context: Context) {
         private const val TIMEOUT = 15_000
         private const val BUFFER = 32 * 1024
 
-        /** "v1.2.3", "1.2.3-debug" and "1.2.3" all compare as 1.2.3. */
-        fun normalise(version: String): List<Int> =
-            version.trim().removePrefix("v").removePrefix("V")
-                .substringBefore('-')
-                .split('.')
-                .map { part -> part.filter { it.isDigit() }.toIntOrNull() ?: 0 }
+        /** "v1.2.3", "1.2.3-debug" and "1.2.3" all compare as 1.2.3. One definition: ReleaseNotes'. */
+        fun normalise(version: String): List<Int> = ReleaseNotes.parse(version)
 
         /** Compares part by part, treating a missing part as zero. */
-        fun isNewer(remote: List<Int>, installed: List<Int>): Boolean {
-            val length = maxOf(remote.size, installed.size)
-            for (index in 0 until length) {
-                val a = remote.getOrElse(index) { 0 }
-                val b = installed.getOrElse(index) { 0 }
-                if (a != b) return a > b
-            }
-            return false
-        }
+        fun isNewer(remote: List<Int>, installed: List<Int>): Boolean =
+            ReleaseNotes.compare(remote, installed) > 0
     }
 }

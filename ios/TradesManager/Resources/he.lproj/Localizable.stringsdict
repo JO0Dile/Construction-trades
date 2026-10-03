@@ -323,5 +323,325 @@
             <string>באיחור של %d ימים</string>
         </dict>
     </dict>
+    <key>ts_withheld</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>אדם אחד בפרויקט זה אינו בסמכותכם לתמחר.</string>
+            <key>two</key>
+            <string>שני אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+            <key>many</key>
+            <string>%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+            <key>other</key>
+            <string>%d אנשים בפרויקט זה אינם בסמכותכם לתמחר.</string>
+        </dict>
+    </dict>
+    <key>crew_no_trade</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>לאדם אחד לא נרשם מקצוע והוא אינו באף אחת מהרשימות.</string>
+            <key>two</key>
+            <string>לשני אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+            <key>many</key>
+            <string>ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+            <key>other</key>
+            <string>ל-%d אנשים לא נרשם מקצוע והם אינם באף אחת מהרשימות.</string>
+        </dict>
+    </dict>
+    <key>home_plant_unchecked</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>מכונה אחת באתר לא נבדקה היום</string>
+            <key>two</key>
+            <string>שתי מכונות באתר לא נבדקו היום</string>
+            <key>many</key>
+            <string>%d מכונות באתר לא נבדקו היום</string>
+            <key>other</key>
+            <string>%d מכונות באתר לא נבדקו היום</string>
+        </dict>
+    </dict>
+    <key>waste_unproven</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>מטען אחד בלי תעודה</string>
+            <key>two</key>
+            <string>שני מטענים בלי תעודה</string>
+            <key>many</key>
+            <string>%d מטענים בלי תעודה</string>
+            <key>other</key>
+            <string>%d מטענים בלי תעודה</string>
+        </dict>
+    </dict>
+    <key>home_ppe_overdue</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>פריט ציוד מגן אחד עבר את מועד ההחלפה</string>
+            <key>two</key>
+            <string>שני פריטי ציוד מגן עברו את מועד ההחלפה</string>
+            <key>many</key>
+            <string>%d פריטי ציוד מגן עברו את מועד ההחלפה</string>
+            <key>other</key>
+            <string>%d פריטי ציוד מגן עברו את מועד ההחלפה</string>
+        </dict>
+    </dict>
+    <key>muster_visitors_on_site</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>ועוד מבקר אחד רשום באתר</string>
+            <key>two</key>
+            <string>ועוד שני מבקרים רשומים באתר</string>
+            <key>many</key>
+            <string>ועוד %d מבקרים רשומים באתר</string>
+            <key>other</key>
+            <string>ועוד %d מבקרים רשומים באתר</string>
+        </dict>
+    </dict>
+    <key>cube_age_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>יום אחד</string>
+            <key>two</key>
+            <string>יומיים</string>
+            <key>many</key>
+            <string>%d ימים</string>
+            <key>other</key>
+            <string>%d ימים</string>
+        </dict>
+    </dict>
+    <key>de_events</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>עיכוב אחד נרשם</string>
+            <key>two</key>
+            <string>שני עיכובים נרשמו</string>
+            <key>many</key>
+            <string>%d עיכובים נרשמו</string>
+            <key>other</key>
+            <string>%d עיכובים נרשמו</string>
+        </dict>
+    </dict>
+    <key>de_days</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>יום אחד</string>
+            <key>two</key>
+            <string>יומיים</string>
+            <key>many</key>
+            <string>%d ימים</string>
+            <key>other</key>
+            <string>%d ימים</string>
+        </dict>
+    </dict>
+    <key>de_without_notice</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>אחד מהם ללא הודעה רשומה</string>
+            <key>two</key>
+            <string>שניים מהם ללא הודעה רשומה</string>
+            <key>many</key>
+            <string>%d מהם ללא הודעה רשומה</string>
+            <key>other</key>
+            <string>%d מהם ללא הודעה רשומה</string>
+        </dict>
+    </dict>
+    <key>home_plant_examination_due</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>לכלי אחד פג תוקף התסקיר או שנכשל בבדיקה</string>
+            <key>two</key>
+            <string>לשני כלים פג תוקף התסקיר או שנכשלו בבדיקה</string>
+            <key>many</key>
+            <string>ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה</string>
+            <key>other</key>
+            <string>ל־%d כלים פג תוקף התסקיר או שנכשלו בבדיקה</string>
+        </dict>
+    </dict>
+    <key>fp_looks_more</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>ועוד בדיקה קודמת אחת</string>
+            <key>two</key>
+            <string>ועוד שתי בדיקות קודמות</string>
+            <key>many</key>
+            <string>ועוד %d בדיקות קודמות</string>
+            <key>other</key>
+            <string>ועוד %d בדיקות קודמות</string>
+        </dict>
+    </dict>
+    <key>mt_points_open</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נקודה אחת עדיין פתוחה</string>
+            <key>two</key>
+            <string>שתי נקודות עדיין פתוחות</string>
+            <key>many</key>
+            <string>%d נקודות עדיין פתוחות</string>
+            <key>other</key>
+            <string>%d נקודות עדיין פתוחות</string>
+        </dict>
+    </dict>
+    <key>mt_points_of_meeting</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>נקודה אחת, %2$d עדיין פתוחות</string>
+            <key>two</key>
+            <string>שתי נקודות, %2$d עדיין פתוחות</string>
+            <key>many</key>
+            <string>%1$d נקודות, %2$d עדיין פתוחות</string>
+            <key>other</key>
+            <string>%1$d נקודות, %2$d עדיין פתוחות</string>
+        </dict>
+    </dict>
+    <key>home_more_lines</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>ועוד אחד</string>
+            <key>two</key>
+            <string>ועוד שניים</string>
+            <key>many</key>
+            <string>ועוד %d</string>
+            <key>other</key>
+            <string>ועוד %d</string>
+        </dict>
+    </dict>
+    <key>sst_capped</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>משמרת אחת נמשכה יותר מ-16 שעות ונספרת כ-16: כנראה שמישהו שכח לצאת.</string>
+            <key>two</key>
+            <string>שתי משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.</string>
+            <key>many</key>
+            <string>%d משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.</string>
+            <key>other</key>
+            <string>%d משמרות נמשכו יותר מ-16 שעות ונספרות כ-16 כל אחת: כנראה שמישהו שכח לצאת.</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

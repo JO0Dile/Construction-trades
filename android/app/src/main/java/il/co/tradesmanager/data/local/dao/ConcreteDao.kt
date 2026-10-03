@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
+import il.co.tradesmanager.data.local.entity.ConcreteCubeSetEntity
 import il.co.tradesmanager.data.local.entity.ConcretePourEntity
 import il.co.tradesmanager.data.local.entity.ConcreteTicketEntity
 import kotlinx.coroutines.flow.Flow
@@ -67,4 +68,21 @@ interface ConcreteDao {
         """,
     )
     fun observePlacedVolume(pourId: String): Flow<Double>
+
+    @Upsert
+    suspend fun upsertCubeSet(set: ConcreteCubeSetEntity)
+
+    /** A pour's results, oldest age first, so seven days reads before twenty-eight. */
+    @Query("SELECT * FROM concrete_cube_sets WHERE pourId = :pourId ORDER BY ageDays, testedAt")
+    fun observeCubeSets(pourId: String): Flow<List<ConcreteCubeSetEntity>>
+
+    /** Every result on a job, for the pour list to say which pours need the engineer. */
+    @Query(
+        """
+        SELECT s.* FROM concrete_cube_sets AS s
+        JOIN concrete_pours AS p ON p.id = s.pourId
+        WHERE p.projectId = :projectId
+        """,
+    )
+    fun observeCubeSetsForProject(projectId: String): Flow<List<ConcreteCubeSetEntity>>
 }
