@@ -173,6 +173,9 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.MUSTER_ENDED_MISSING -> R.string.summary_muster_ended_missing
     Summaries.MUSTER_PERSON_ADDED -> R.string.summary_muster_person_added
     Summaries.MUSTER_STARTED -> R.string.summary_muster_started
+    Summaries.NCR_CLOSED -> R.string.summary_ncr_closed
+    Summaries.NCR_DECIDED -> R.string.summary_ncr_decided
+    Summaries.NCR_RAISED -> R.string.summary_ncr_raised
     Summaries.ORDER_CANCELLED -> R.string.summary_order_cancelled
     Summaries.ORDER_DUE -> R.string.summary_order_due
     Summaries.ORDER_NO_DATE -> R.string.summary_order_no_date

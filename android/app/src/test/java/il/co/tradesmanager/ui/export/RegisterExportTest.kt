@@ -20,6 +20,7 @@ import il.co.tradesmanager.data.local.entity.JobContactEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
 import il.co.tradesmanager.data.local.entity.MeetingActionEntity
 import il.co.tradesmanager.data.local.entity.MeetingEntity
+import il.co.tradesmanager.data.local.entity.NonConformanceEntity
 import il.co.tradesmanager.data.local.entity.RiskAssessmentEntity
 import il.co.tradesmanager.data.local.entity.SubmittalEntity
 import il.co.tradesmanager.data.local.entity.SubstanceEntity
@@ -404,6 +405,32 @@ class RegisterExportTest {
         assertTrue(table.rows[7][1].contains(context.getString(R.string.iv_action_overdue, "").trim()))
         assertTrue(table.rows[8][1].endsWith("Briefed"))
         assertEquals(context.getString(R.string.iv_started_col), table.rows.last()[0])
+    }
+
+    @Test
+    fun `the non-conformance register prints the decision, who accepted it, and how it was checked`() {
+        val context = inLanguage("en")
+        val reports = listOf(
+            NonConformanceEntity(
+                id = "n2", projectId = "job", reference = "NCR-002", element = "Flat 12 bathroom", requirement = "Spec 08.2",
+                finding = "Wrong waterproofing", foundBy = "CLIENT", raisedAt = 2_000L, raisedByName = "Foreman",
+            ),
+            NonConformanceEntity(
+                id = "n1", projectId = "job", reference = "NCR-001", element = "L3 slab", requirement = "S-102 rev C",
+                finding = "Cover 25 mm", foundBy = "SUPERVISOR", raisedAt = 1_000L, raisedByName = "Foreman",
+                disposition = "ACCEPT_AS_IS", acceptedBy = "Dana Levi", decidedAt = 1_500L, decidedByName = "Manager",
+                verification = "Engineer's letter on file", closedAt = 3_000L, closedByName = "Manager",
+            ),
+        )
+        val table = ExportDocument.NonConformanceRegister("Tower A", reports, today).table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(listOf("NCR-001", "NCR-002"), table.rows.map { it[0] })
+        assertEquals(context.getString(R.string.ncr_by_supervisor), table.rows[0][4])
+        assertTrue(table.rows[0][6].startsWith(context.getString(R.string.ncr_disp_accept_as_is)))
+        assertEquals(context.getString(R.string.ncr_accepted_by) + ": Dana Levi", table.rows[0][7])
+        assertEquals("Engineer's letter on file", table.rows[0][10])
+        assertEquals("", table.rows[1][6])
+        assertEquals(context.getString(R.string.ncr_col_awaiting), table.rows[1][9])
     }
 
     @Test

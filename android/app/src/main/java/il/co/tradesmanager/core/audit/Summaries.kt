@@ -668,6 +668,27 @@ object Summaries {
     const val MUSTER_STARTED = "muster_started"
 
     /**
+     * %1$s closed
+     *
+     * Arguments, in order: reference.
+     */
+    const val NCR_CLOSED = "ncr_closed"
+
+    /**
+     * %1$s decided: %2$s
+     *
+     * Arguments, in order: reference, disposition.
+     */
+    const val NCR_DECIDED = "ncr_decided"
+
+    /**
+     * %1$s raised: %2$s
+     *
+     * Arguments, in order: reference, element.
+     */
+    const val NCR_RAISED = "ncr_raised"
+
+    /**
      * %1$s cancelled
      *
      * Arguments, in order: reference.

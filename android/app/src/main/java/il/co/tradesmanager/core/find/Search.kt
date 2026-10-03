@@ -105,6 +105,7 @@ object Search {
         FIRE_POINT(setOf(Lens.EVIDENCE)),
         MEETING_POINT(setOf(Lens.PLAN)),
         CONTACT(setOf(Lens.PLAN, Lens.EVIDENCE)),
+        NON_CONFORMANCE(setOf(Lens.EVIDENCE)),
     }
 
     /**

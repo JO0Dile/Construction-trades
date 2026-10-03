@@ -2,6 +2,21 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.52.0",
+      "points": [
+        {
+          "en": "A non-conformance register on every job: where the work is, which requirement it fails — a drawing, a specification clause, a standard — what was found and who found it, with photographs. Each one is numbered NCR-001 and on.",
+          "he": "פנקס אי-התאמות בכל עבודה: איפה העבודה, באיזו דרישה היא אינה עומדת — תוכנית, סעיף במפרט, תקן — מה נמצא ומי מצא, עם תמונות. כל אחת ממוספרת NCR-001 והלאה.",
+          "ar": "سجل حالات عدم المطابقة في كل مشروع: أين العمل، وأي متطلب لا يحققه — مخطط، بند في المواصفات، معيار — وما الذي وُجد ومن وجده، مع صور. كل حالة مرقّمة NCR-001 وما بعدها."
+        },
+        {
+          "en": "Then what is decided — rework, repair in place, keep as it is with the name of who agreed, or remove — with the corrective work and a date, and a close-out that says how the result was checked. Overdue ones and those waiting for a decision show on the job, open ones count against the handover, and the register prints and is searchable.",
+          "he": "אחר כך ההחלטה — עבודה מחדש, תיקון במקום, השארה כפי שהיא עם שם מי שהסכים, או הסרה — עם העבודה המתקנת ותאריך, וסגירה שמציינת איך התוצאה נבדקה. אי-התאמות באיחור או ממתינות להחלטה מופיעות בעבודה, פתוחות נספרות במסירה, ואפשר להדפיס את הפנקס ולחפש בו.",
+          "ar": "ثم القرار — إعادة العمل، أو الإصلاح في المكان، أو الإبقاء كما هو مع اسم من وافق، أو الإزالة — مع العمل التصحيحي وموعد، وإغلاق يذكر كيف فُحصت النتيجة. تظهر الحالات المتأخرة والتي بانتظار قرار في المشروع، وتُحسب المفتوحة منها عند التسليم، ويُطبع السجل ويمكن البحث فيه."
+        }
+      ]
+    },
+    {
       "version": "0.51.0",
       "points": [
         {

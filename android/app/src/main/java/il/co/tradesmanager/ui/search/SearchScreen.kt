@@ -202,4 +202,5 @@ private fun kindLabel(kind: Search.Kind): Int = when (kind) {
     Search.Kind.FIRE_POINT -> R.string.search_kind_fire_point
     Search.Kind.MEETING_POINT -> R.string.search_kind_meeting_point
     Search.Kind.CONTACT -> R.string.search_kind_contact
+    Search.Kind.NON_CONFORMANCE -> R.string.search_kind_ncr
 }

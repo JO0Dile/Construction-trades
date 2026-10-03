@@ -809,6 +809,17 @@ prints. When the law requires an investigation, and by whom, is left to
 a qualified professional, and the page says so. New talks and permits
 start on the job the person is checked in to, as incident reports do.
 
+**The non-conformance register. Done.**
+Work that does not meet what it was meant to: where it is, which
+requirement it fails, what was found and by whom, with photographs,
+numbered NCR-001 per job. What is decided is written once -- rework,
+repair in place, keep as it is with the name of whoever agreed, or remove
+-- with the corrective work and a date, and it closes only with a note of
+how the result was checked. Overdue reports and those waiting for a
+decision are lines on the job, open ones are counted in the handover pack
+and the register goes into its archive, and search finds a report by its
+number, place, requirement or finding.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

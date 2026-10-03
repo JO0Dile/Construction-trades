@@ -42,6 +42,7 @@ import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SafetyReportRepository
 import il.co.tradesmanager.data.repository.SafetyStatsRepository
 import il.co.tradesmanager.data.repository.InvestigationRepository
+import il.co.tradesmanager.data.repository.NonConformanceRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
@@ -243,6 +244,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** What was found after each incident, and the actions taken because of it. */
     val investigations = InvestigationRepository(database.investigationDao(), { database.safetyDao().incident(it) }, auditTrail)
+
+    /** Work that does not meet its requirement, what is decided about it, and how it was checked. */
+    val nonConformances = NonConformanceRepository(database.nonConformanceDao(), auditTrail)
 
     /** Who is who on each job from outside the firm, and how to reach them. */
     val jobContacts = JobContactRepository(database.jobContactDao(), auditTrail)

@@ -3087,3 +3087,99 @@
 "at_investigations" = "Serious incidents not investigated";
 /* A line on a job's list of what needs attention, followed by a count */
 "at_incident_actions" = "Incident actions overdue";
+/* Screen title and job link */
+"ncr_title" = "Non-conformances";
+/* Under the job link */
+"ncr_row_hint" = "Work that does not meet the drawing or the specification, and what is done about it";
+"ncr_empty" = "No non-conformances raised.";
+"ncr_blurb" = "Raise one when work does not meet what it was meant to: the drawing, the specification, a standard. It stays open until something is decided and the result is checked.";
+/* Button and dialog title */
+"ncr_raise" = "Raise a non-conformance";
+/* Field label and column heading */
+"ncr_element" = "Where";
+"ncr_element_hint" = "L3 slab, grid C-4";
+/* Field label and column heading */
+"ncr_requirement" = "Which requirement it fails";
+"ncr_requirement_hint" = "Drawing S-102 rev C, a specification clause, a standard";
+/* Field label and column heading */
+"ncr_finding" = "What was found";
+/* Field label and column heading */
+"ncr_found_by" = "Found by";
+/* Who found a non-conformance */
+"ncr_by_own_qc" = "Our quality control";
+/* Who found a non-conformance */
+"ncr_by_supervisor" = "The supervisor";
+/* Who found a non-conformance */
+"ncr_by_client" = "The client";
+/* Who found a non-conformance */
+"ncr_by_authority" = "An authority";
+/* Who found a non-conformance */
+"ncr_by_laboratory" = "A laboratory";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_rework" = "Rework: take out and do again";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_repair" = "Repair in place";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_accept_as_is" = "Keep as it is, by agreement";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_remove" = "Remove";
+/* %1$s is a date */
+"ncr_state_overdue" = "Overdue since %1$s";
+/* %1$s is a date */
+"ncr_state_awaiting" = "Waiting for a decision since %1$s";
+/* %1$s is a date */
+"ncr_state_in_hand" = "In hand, due %1$s";
+"ncr_state_in_hand_no_date" = "In hand, no date set";
+/* %1$s is a date */
+"ncr_state_closed" = "Closed %1$s";
+/* %1$s a name, %2$s a date */
+"ncr_raised_by" = "Raised by %1$s, %2$s";
+/* Button */
+"ncr_add_photo" = "Add a photograph";
+/* Field label and column heading */
+"ncr_decision" = "Decision";
+/* Button and dialog title */
+"ncr_decide" = "Decide what to do";
+/* Field label */
+"ncr_accepted_by" = "Who agreed to keep it";
+"ncr_accepted_by_hint" = "The supervisor or the designer, by name";
+/* Field label and column heading */
+"ncr_correction" = "What will be done";
+/* %1$s a name, %2$s a date */
+"ncr_decided_by" = "Decided by %1$s, %2$s";
+/* Button and dialog title */
+"ncr_close" = "Close: the result was checked";
+/* Field label and column heading */
+"ncr_verification" = "How it was checked";
+"ncr_verification_hint" = "Inspected again by the supervisor on the 12th; the cube results";
+/* %1$s a name, %2$s a date, %3$s how it was checked */
+"ncr_closed_by" = "Closed by %1$s, %2$s: %3$s";
+/* Column heading */
+"ncr_col_raised" = "Raised";
+/* Column heading */
+"ncr_col_state" = "State";
+/* A state on the printed register */
+"ncr_col_awaiting" = "Waiting for a decision";
+/* A state on the printed register */
+"ncr_col_in_hand" = "In hand";
+"ncr_refused_element" = "Say where it is.";
+"ncr_refused_requirement" = "Say which requirement it fails: a drawing, a clause, a standard.";
+"ncr_refused_finding" = "Say what was found.";
+"ncr_refused_acceptor" = "Name who agreed to keep it as it is.";
+"ncr_refused_correction" = "Say what will be done.";
+"ncr_refused_due" = "The date cannot be before it was raised.";
+"ncr_refused_decided" = "It has already been decided.";
+"ncr_refused_not_decided" = "Decide what to do before closing it.";
+"ncr_refused_verification" = "Say how the result was checked.";
+"ncr_refused_closed" = "This report is closed.";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_ncrs_overdue" = "Non-conformances overdue";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_ncrs_awaiting" = "Non-conformances waiting for a decision";
+/* A line in the handover pack, followed by a count */
+"hv_ncrs" = "Non-conformances not closed";
+/* The kind of a search result */
+"search_kind_ncr" = "Non-conformance";
+"summary_ncr_closed" = "%1$s closed";
+"summary_ncr_decided" = "%1$s decided: %2$s";
+"summary_ncr_raised" = "%1$s raised: %2$s";

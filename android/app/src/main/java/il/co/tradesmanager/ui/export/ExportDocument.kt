@@ -14,6 +14,7 @@ import il.co.tradesmanager.ui.audit.summaryText
 import il.co.tradesmanager.core.evidence.Complaints
 import il.co.tradesmanager.core.evidence.HandoverPack
 import il.co.tradesmanager.core.evidence.Inspections
+import il.co.tradesmanager.core.evidence.NonConformances
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.resolve
 import il.co.tradesmanager.core.safety.Emergency
@@ -42,6 +43,7 @@ import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
 import il.co.tradesmanager.data.local.entity.MeetingActionEntity
 import il.co.tradesmanager.data.local.entity.MeetingEntity
+import il.co.tradesmanager.data.local.entity.NonConformanceEntity
 import il.co.tradesmanager.data.local.entity.PpeIssueEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.local.entity.ProjectMaterialEntity
@@ -59,6 +61,8 @@ import il.co.tradesmanager.ui.emergency.nationalNumberLabel
 import il.co.tradesmanager.ui.firepoints.firePointKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionKindLabel
 import il.co.tradesmanager.ui.meetings.meetingKindLabel
+import il.co.tradesmanager.ui.ncr.dispositionLabel
+import il.co.tradesmanager.ui.ncr.foundByLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
 import il.co.tradesmanager.ui.projects.attentionLabel
 import il.co.tradesmanager.ui.risks.bandLabel
@@ -284,6 +288,16 @@ sealed interface ExportDocument {
         val span: SafetyStats.Span,
         val sheet: SafetyStats.Sheet,
         val jobNames: Map<String, String>,
+        val today: LocalDate,
+    ) : ExportDocument
+
+    /**
+     * One job's non-conformance register: what failed which requirement,
+     * what was decided and by whom, and how the result was checked.
+     */
+    data class NonConformanceRegister(
+        val jobName: String,
+        val reports: List<NonConformanceEntity>,
         val today: LocalDate,
     ) : ExportDocument
 
@@ -770,6 +784,46 @@ sealed interface ExportDocument {
             )
         }
 
+        is NonConformanceRegister -> Table(
+            title = context.getString(R.string.ncr_title) + " — " + jobName,
+            headers = listOf(
+                context.getString(R.string.ex_col_number),
+                context.getString(R.string.ncr_element),
+                context.getString(R.string.ncr_requirement),
+                context.getString(R.string.ncr_finding),
+                context.getString(R.string.ncr_found_by),
+                context.getString(R.string.ncr_col_raised),
+                context.getString(R.string.ncr_decision),
+                context.getString(R.string.ncr_correction),
+                context.getString(R.string.iv_action_when),
+                context.getString(R.string.ncr_col_state),
+                context.getString(R.string.ncr_verification),
+            ),
+            rows = reports.sortedBy { it.reference }.map { row ->
+                val disposition = NonConformances.dispositionOf(row.disposition)
+                val dueOn = row.dueOnDay?.let(LocalDate::ofEpochDay)
+                val state = NonConformances.state(row.decidedAt != null, dueOn, row.closedAt != null, today)
+                listOf(
+                    row.reference,
+                    row.element,
+                    row.requirement,
+                    row.finding,
+                    context.getString(foundByLabel(NonConformances.foundByOf(row.foundBy))),
+                    day(row.raisedAt, locale) + " · " + row.raisedByName,
+                    disposition?.let { context.getString(dispositionLabel(it)) + (row.decidedByName?.let { name -> " · $name" } ?: "") }.orEmpty(),
+                    row.acceptedBy?.let { context.getString(R.string.ncr_accepted_by) + ": " + it } ?: row.correction.orEmpty(),
+                    dueOn?.let { Formats.date(it, locale) }.orEmpty(),
+                    when (state) {
+                        NonConformances.State.OVERDUE -> context.getString(R.string.ex_overdue)
+                        NonConformances.State.AWAITING_DECISION -> context.getString(R.string.ncr_col_awaiting)
+                        NonConformances.State.IN_HAND -> context.getString(R.string.ncr_col_in_hand)
+                        NonConformances.State.CLOSED -> day(row.closedAt ?: row.raisedAt, locale) + " · " + row.closedByName.orEmpty()
+                    },
+                    row.verification.orEmpty(),
+                )
+            },
+        )
+
         is IncidentInvestigationReport -> {
             val none = context.getString(R.string.iv_not_written)
             val severity = Incidents.parse(incident.severity)
@@ -1046,6 +1100,7 @@ sealed interface ExportDocument {
             is WeeklySafetyReport -> "safety-week-" + weekStart + "-" + jobName
             is ContactDirectory -> "contacts-" + jobName
             is SafetyStatistics -> "safety-statistics-" + span.first + "-" + span.last
+            is NonConformanceRegister -> "non-conformances-" + jobName
             is IncidentInvestigationReport -> "incident-investigation-" +
                 Instant.ofEpochMilli(incident.occurredAt).atZone(ZoneId.systemDefault()).toLocalDate() + "-" + (jobName ?: "no-job")
         },
@@ -1119,6 +1174,7 @@ internal fun handoverItemLabel(item: HandoverPack.Item): Int = when (item) {
     HandoverPack.Item.UNSIGNED_DAILY_LOGS -> R.string.hv_daily_logs
     HandoverPack.Item.RISKS_OPEN -> R.string.hv_risks_open
     HandoverPack.Item.COMPLAINTS_UNANSWERED -> R.string.hv_complaints
+    HandoverPack.Item.NCRS_OPEN -> R.string.hv_ncrs
     HandoverPack.Item.QUERIES_UNANSWERED -> R.string.hv_queries
     HandoverPack.Item.INSPECTIONS_OUTSTANDING -> R.string.hv_inspections
     HandoverPack.Item.POURS_WITHOUT_INSPECTION -> R.string.hv_pours_uninspected

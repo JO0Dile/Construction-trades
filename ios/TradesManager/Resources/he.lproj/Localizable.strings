@@ -3087,3 +3087,99 @@
 "at_investigations" = "פגיעות קשות שחקירתן לא הושלמה";
 /* A line on a job's list of what needs attention, followed by a count */
 "at_incident_actions" = "פעולות מתקנות באיחור";
+/* Screen title and job link */
+"ncr_title" = "אי-התאמות";
+/* Under the job link */
+"ncr_row_hint" = "עבודה שאינה תואמת את התוכנית או המפרט, ומה נעשה לגביה";
+"ncr_empty" = "לא נפתחו אי-התאמות.";
+"ncr_blurb" = "פותחים אי-התאמה כשעבודה אינה עומדת במה שנדרש: התוכנית, המפרט, תקן. היא נשארת פתוחה עד שמחליטים מה לעשות ובודקים את התוצאה.";
+/* Button and dialog title */
+"ncr_raise" = "פתיחת אי-התאמה";
+/* Field label and column heading */
+"ncr_element" = "איפה";
+"ncr_element_hint" = "תקרת קומה 3, ציר C-4";
+/* Field label and column heading */
+"ncr_requirement" = "באיזו דרישה אינה עומדת";
+"ncr_requirement_hint" = "תוכנית S-102 גרסה C, סעיף במפרט, תקן";
+/* Field label and column heading */
+"ncr_finding" = "מה נמצא";
+/* Field label and column heading */
+"ncr_found_by" = "נמצא על ידי";
+/* Who found a non-conformance */
+"ncr_by_own_qc" = "בקרת האיכות שלנו";
+/* Who found a non-conformance */
+"ncr_by_supervisor" = "המפקח";
+/* Who found a non-conformance */
+"ncr_by_client" = "המזמין";
+/* Who found a non-conformance */
+"ncr_by_authority" = "רשות";
+/* Who found a non-conformance */
+"ncr_by_laboratory" = "מעבדה";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_rework" = "עבודה מחדש: פירוק וביצוע מחדש";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_repair" = "תיקון במקום";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_accept_as_is" = "השארה כפי שהיא, בהסכמה";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_remove" = "הסרה";
+/* %1$s is a date */
+"ncr_state_overdue" = "באיחור מאז %1$s";
+/* %1$s is a date */
+"ncr_state_awaiting" = "ממתין להחלטה מאז %1$s";
+/* %1$s is a date */
+"ncr_state_in_hand" = "בטיפול, עד %1$s";
+"ncr_state_in_hand_no_date" = "בטיפול, ללא תאריך";
+/* %1$s is a date */
+"ncr_state_closed" = "נסגר %1$s";
+/* %1$s a name, %2$s a date */
+"ncr_raised_by" = "נפתח על ידי %1$s, %2$s";
+/* Button */
+"ncr_add_photo" = "הוספת תמונה";
+/* Field label and column heading */
+"ncr_decision" = "החלטה";
+/* Button and dialog title */
+"ncr_decide" = "החלטה מה לעשות";
+/* Field label */
+"ncr_accepted_by" = "מי הסכים להשאיר";
+"ncr_accepted_by_hint" = "המפקח או המתכנן, בשמם";
+/* Field label and column heading */
+"ncr_correction" = "מה ייעשה";
+/* %1$s a name, %2$s a date */
+"ncr_decided_by" = "הוחלט על ידי %1$s, %2$s";
+/* Button and dialog title */
+"ncr_close" = "סגירה: התוצאה נבדקה";
+/* Field label and column heading */
+"ncr_verification" = "איך זה נבדק";
+"ncr_verification_hint" = "נבדק שוב על ידי המפקח ב-12 לחודש; תוצאות הקוביות";
+/* %1$s a name, %2$s a date, %3$s how it was checked */
+"ncr_closed_by" = "נסגר על ידי %1$s, %2$s: %3$s";
+/* Column heading */
+"ncr_col_raised" = "נפתח";
+/* Column heading */
+"ncr_col_state" = "מצב";
+/* A state on the printed register */
+"ncr_col_awaiting" = "ממתין להחלטה";
+/* A state on the printed register */
+"ncr_col_in_hand" = "בטיפול";
+"ncr_refused_element" = "יש לרשום איפה זה.";
+"ncr_refused_requirement" = "יש לרשום באיזו דרישה מדובר: תוכנית, סעיף, תקן.";
+"ncr_refused_finding" = "יש לרשום מה נמצא.";
+"ncr_refused_acceptor" = "יש לרשום מי הסכים להשאיר זאת כפי שהיא.";
+"ncr_refused_correction" = "יש לרשום מה ייעשה.";
+"ncr_refused_due" = "התאריך לא יכול להיות לפני הפתיחה.";
+"ncr_refused_decided" = "כבר הוחלט לגביה.";
+"ncr_refused_not_decided" = "יש להחליט מה לעשות לפני הסגירה.";
+"ncr_refused_verification" = "יש לרשום איך התוצאה נבדקה.";
+"ncr_refused_closed" = "הדיווח הזה סגור.";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_ncrs_overdue" = "אי-התאמות באיחור";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_ncrs_awaiting" = "אי-התאמות הממתינות להחלטה";
+/* A line in the handover pack, followed by a count */
+"hv_ncrs" = "אי-התאמות שלא נסגרו";
+/* The kind of a search result */
+"search_kind_ncr" = "אי-התאמה";
+"summary_ncr_closed" = "%1$s נסגר";
+"summary_ncr_decided" = "הוחלט על %1$s: %2$s";
+"summary_ncr_raised" = "%1$s נפתח: %2$s";

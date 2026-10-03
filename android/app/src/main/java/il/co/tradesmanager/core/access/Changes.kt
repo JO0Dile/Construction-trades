@@ -79,6 +79,7 @@ object Changes {
         "inspection" to Lens.EVIDENCE,
         "risk_assessment" to Lens.EVIDENCE,
         "complaint" to Lens.EVIDENCE,
+        "non_conformance" to Lens.EVIDENCE,
         "substance" to Lens.EVIDENCE,
         "fire_point" to Lens.EVIDENCE,
         "job_emergency" to Lens.EVIDENCE,

@@ -14,7 +14,8 @@
       "muster_reason_",
       "heat_band_",
       "waste_stream_",
-      "waste_unit_"
+      "waste_unit_",
+      "ncr_disp_"
     ]
   },
   "phrases": {
@@ -813,6 +814,32 @@
       "en": "Roll call started (%1$s), %2$s on site",
       "he": "מפקד נוכחות החל (%1$s), %2$s באתר",
       "ar": "بدأ نداء الأسماء (%1$s)، %2$s في الموقع"
+    },
+    "ncr_closed": {
+      "arguments": [
+        "reference"
+      ],
+      "en": "%1$s closed",
+      "he": "%1$s נסגר",
+      "ar": "أُغلق %1$s"
+    },
+    "ncr_decided": {
+      "arguments": [
+        "reference",
+        "disposition"
+      ],
+      "en": "%1$s decided: %2$s",
+      "he": "הוחלט על %1$s: %2$s",
+      "ar": "تقرّر بشأن %1$s: %2$s"
+    },
+    "ncr_raised": {
+      "arguments": [
+        "reference",
+        "element"
+      ],
+      "en": "%1$s raised: %2$s",
+      "he": "%1$s נפתח: %2$s",
+      "ar": "فُتح %1$s: %2$s"
     },
     "order_cancelled": {
       "arguments": [

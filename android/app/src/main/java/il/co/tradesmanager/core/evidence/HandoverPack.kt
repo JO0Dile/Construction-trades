@@ -70,6 +70,9 @@ object HandoverPack {
         /** Complaints from outside the site with no answer written. */
         COMPLAINTS_UNANSWERED,
 
+        /** Work found not to meet its requirement and not yet closed. */
+        NCRS_OPEN,
+
         /** Questions put to the designers and never answered. */
         QUERIES_UNANSWERED,
 

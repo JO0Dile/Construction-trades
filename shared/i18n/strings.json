@@ -12380,6 +12380,334 @@
       "en": "Incident actions overdue",
       "he": "פעולות מתקנות באיחור",
       "ar": "إجراءات تصحيحية متأخرة"
+    },
+    "ncr_title": {
+      "c": "Screen title and job link",
+      "en": "Non-conformances",
+      "he": "אי-התאמות",
+      "ar": "حالات عدم المطابقة"
+    },
+    "ncr_row_hint": {
+      "c": "Under the job link",
+      "en": "Work that does not meet the drawing or the specification, and what is done about it",
+      "he": "עבודה שאינה תואמת את התוכנית או המפרט, ומה נעשה לגביה",
+      "ar": "أعمال لا تطابق المخطط أو المواصفات، وما يُفعل بشأنها"
+    },
+    "ncr_empty": {
+      "en": "No non-conformances raised.",
+      "he": "לא נפתחו אי-התאמות.",
+      "ar": "لم تُفتح حالات عدم مطابقة."
+    },
+    "ncr_blurb": {
+      "en": "Raise one when work does not meet what it was meant to: the drawing, the specification, a standard. It stays open until something is decided and the result is checked.",
+      "he": "פותחים אי-התאמה כשעבודה אינה עומדת במה שנדרש: התוכנית, המפרט, תקן. היא נשארת פתוחה עד שמחליטים מה לעשות ובודקים את התוצאה.",
+      "ar": "افتح حالة عدم مطابقة عندما لا يحقق العمل المطلوب: المخطط، المواصفات، معيار. تبقى مفتوحة حتى يُتخذ قرار وتُفحص النتيجة."
+    },
+    "ncr_raise": {
+      "c": "Button and dialog title",
+      "en": "Raise a non-conformance",
+      "he": "פתיחת אי-התאמה",
+      "ar": "فتح حالة عدم مطابقة"
+    },
+    "ncr_element": {
+      "c": "Field label and column heading",
+      "en": "Where",
+      "he": "איפה",
+      "ar": "أين"
+    },
+    "ncr_element_hint": {
+      "en": "L3 slab, grid C-4",
+      "he": "תקרת קומה 3, ציר C-4",
+      "ar": "بلاطة الطابق 3، المحور C-4"
+    },
+    "ncr_requirement": {
+      "c": "Field label and column heading",
+      "en": "Which requirement it fails",
+      "he": "באיזו דרישה אינה עומדת",
+      "ar": "أي متطلب لا يحققه"
+    },
+    "ncr_requirement_hint": {
+      "en": "Drawing S-102 rev C, a specification clause, a standard",
+      "he": "תוכנית S-102 גרסה C, סעיף במפרט, תקן",
+      "ar": "المخطط S-102 النسخة C، بند في المواصفات، معيار"
+    },
+    "ncr_finding": {
+      "c": "Field label and column heading",
+      "en": "What was found",
+      "he": "מה נמצא",
+      "ar": "ما الذي وُجد"
+    },
+    "ncr_found_by": {
+      "c": "Field label and column heading",
+      "en": "Found by",
+      "he": "נמצא על ידי",
+      "ar": "وجده"
+    },
+    "ncr_by_own_qc": {
+      "c": "Who found a non-conformance",
+      "en": "Our quality control",
+      "he": "בקרת האיכות שלנו",
+      "ar": "مراقبة الجودة لدينا"
+    },
+    "ncr_by_supervisor": {
+      "c": "Who found a non-conformance",
+      "en": "The supervisor",
+      "he": "המפקח",
+      "ar": "المشرف"
+    },
+    "ncr_by_client": {
+      "c": "Who found a non-conformance",
+      "en": "The client",
+      "he": "המזמין",
+      "ar": "صاحب العمل"
+    },
+    "ncr_by_authority": {
+      "c": "Who found a non-conformance",
+      "en": "An authority",
+      "he": "רשות",
+      "ar": "جهة رسمية"
+    },
+    "ncr_by_laboratory": {
+      "c": "Who found a non-conformance",
+      "en": "A laboratory",
+      "he": "מעבדה",
+      "ar": "مختبر"
+    },
+    "ncr_disp_rework": {
+      "c": "What is decided about a non-conformance; also read inside the audit trail",
+      "en": "Rework: take out and do again",
+      "he": "עבודה מחדש: פירוק וביצוע מחדש",
+      "ar": "إعادة العمل: الإزالة والتنفيذ من جديد"
+    },
+    "ncr_disp_repair": {
+      "c": "What is decided about a non-conformance; also read inside the audit trail",
+      "en": "Repair in place",
+      "he": "תיקון במקום",
+      "ar": "إصلاح في المكان"
+    },
+    "ncr_disp_accept_as_is": {
+      "c": "What is decided about a non-conformance; also read inside the audit trail",
+      "en": "Keep as it is, by agreement",
+      "he": "השארה כפי שהיא, בהסכמה",
+      "ar": "الإبقاء كما هو، بموافقة"
+    },
+    "ncr_disp_remove": {
+      "c": "What is decided about a non-conformance; also read inside the audit trail",
+      "en": "Remove",
+      "he": "הסרה",
+      "ar": "إزالة"
+    },
+    "ncr_state_overdue": {
+      "c": "%1$s is a date",
+      "en": "Overdue since %1$s",
+      "he": "באיחור מאז %1$s",
+      "ar": "متأخر منذ %1$s"
+    },
+    "ncr_state_awaiting": {
+      "c": "%1$s is a date",
+      "en": "Waiting for a decision since %1$s",
+      "he": "ממתין להחלטה מאז %1$s",
+      "ar": "بانتظار قرار منذ %1$s"
+    },
+    "ncr_state_in_hand": {
+      "c": "%1$s is a date",
+      "en": "In hand, due %1$s",
+      "he": "בטיפול, עד %1$s",
+      "ar": "قيد المعالجة، حتى %1$s"
+    },
+    "ncr_state_in_hand_no_date": {
+      "en": "In hand, no date set",
+      "he": "בטיפול, ללא תאריך",
+      "ar": "قيد المعالجة، دون موعد"
+    },
+    "ncr_state_closed": {
+      "c": "%1$s is a date",
+      "en": "Closed %1$s",
+      "he": "נסגר %1$s",
+      "ar": "أُغلق %1$s"
+    },
+    "ncr_raised_by": {
+      "c": "%1$s a name, %2$s a date",
+      "en": "Raised by %1$s, %2$s",
+      "he": "נפתח על ידי %1$s, %2$s",
+      "ar": "فتحه %1$s، %2$s"
+    },
+    "ncr_add_photo": {
+      "c": "Button",
+      "en": "Add a photograph",
+      "he": "הוספת תמונה",
+      "ar": "إضافة صورة"
+    },
+    "ncr_decision": {
+      "c": "Field label and column heading",
+      "en": "Decision",
+      "he": "החלטה",
+      "ar": "القرار"
+    },
+    "ncr_decide": {
+      "c": "Button and dialog title",
+      "en": "Decide what to do",
+      "he": "החלטה מה לעשות",
+      "ar": "تقرير ما يجب فعله"
+    },
+    "ncr_accepted_by": {
+      "c": "Field label",
+      "en": "Who agreed to keep it",
+      "he": "מי הסכים להשאיר",
+      "ar": "من وافق على الإبقاء"
+    },
+    "ncr_accepted_by_hint": {
+      "en": "The supervisor or the designer, by name",
+      "he": "המפקח או המתכנן, בשמם",
+      "ar": "المشرف أو المصمم، بالاسم"
+    },
+    "ncr_correction": {
+      "c": "Field label and column heading",
+      "en": "What will be done",
+      "he": "מה ייעשה",
+      "ar": "ما الذي سيُفعل"
+    },
+    "ncr_decided_by": {
+      "c": "%1$s a name, %2$s a date",
+      "en": "Decided by %1$s, %2$s",
+      "he": "הוחלט על ידי %1$s, %2$s",
+      "ar": "قرّره %1$s، %2$s"
+    },
+    "ncr_close": {
+      "c": "Button and dialog title",
+      "en": "Close: the result was checked",
+      "he": "סגירה: התוצאה נבדקה",
+      "ar": "إغلاق: فُحصت النتيجة"
+    },
+    "ncr_verification": {
+      "c": "Field label and column heading",
+      "en": "How it was checked",
+      "he": "איך זה נבדק",
+      "ar": "كيف فُحص"
+    },
+    "ncr_verification_hint": {
+      "en": "Inspected again by the supervisor on the 12th; the cube results",
+      "he": "נבדק שוב על ידי המפקח ב-12 לחודש; תוצאות הקוביות",
+      "ar": "أعاد المشرف فحصه في 12 من الشهر؛ نتائج المكعبات"
+    },
+    "ncr_closed_by": {
+      "c": "%1$s a name, %2$s a date, %3$s how it was checked",
+      "en": "Closed by %1$s, %2$s: %3$s",
+      "he": "נסגר על ידי %1$s, %2$s: %3$s",
+      "ar": "أغلقه %1$s، %2$s: %3$s"
+    },
+    "ncr_col_raised": {
+      "c": "Column heading",
+      "en": "Raised",
+      "he": "נפתח",
+      "ar": "فُتح"
+    },
+    "ncr_col_state": {
+      "c": "Column heading",
+      "en": "State",
+      "he": "מצב",
+      "ar": "الحالة"
+    },
+    "ncr_col_awaiting": {
+      "c": "A state on the printed register",
+      "en": "Waiting for a decision",
+      "he": "ממתין להחלטה",
+      "ar": "بانتظار قرار"
+    },
+    "ncr_col_in_hand": {
+      "c": "A state on the printed register",
+      "en": "In hand",
+      "he": "בטיפול",
+      "ar": "قيد المعالجة"
+    },
+    "ncr_refused_element": {
+      "en": "Say where it is.",
+      "he": "יש לרשום איפה זה.",
+      "ar": "اذكر أين هو."
+    },
+    "ncr_refused_requirement": {
+      "en": "Say which requirement it fails: a drawing, a clause, a standard.",
+      "he": "יש לרשום באיזו דרישה מדובר: תוכנית, סעיף, תקן.",
+      "ar": "اذكر أي متطلب لا يحققه: مخطط، بند، معيار."
+    },
+    "ncr_refused_finding": {
+      "en": "Say what was found.",
+      "he": "יש לרשום מה נמצא.",
+      "ar": "اذكر ما الذي وُجد."
+    },
+    "ncr_refused_acceptor": {
+      "en": "Name who agreed to keep it as it is.",
+      "he": "יש לרשום מי הסכים להשאיר זאת כפי שהיא.",
+      "ar": "اذكر من وافق على الإبقاء عليه كما هو."
+    },
+    "ncr_refused_correction": {
+      "en": "Say what will be done.",
+      "he": "יש לרשום מה ייעשה.",
+      "ar": "اذكر ما الذي سيُفعل."
+    },
+    "ncr_refused_due": {
+      "en": "The date cannot be before it was raised.",
+      "he": "התאריך לא יכול להיות לפני הפתיחה.",
+      "ar": "لا يمكن أن يكون الموعد قبل فتحه."
+    },
+    "ncr_refused_decided": {
+      "en": "It has already been decided.",
+      "he": "כבר הוחלט לגביה.",
+      "ar": "تقرّر بشأنه بالفعل."
+    },
+    "ncr_refused_not_decided": {
+      "en": "Decide what to do before closing it.",
+      "he": "יש להחליט מה לעשות לפני הסגירה.",
+      "ar": "قرّر ما يجب فعله قبل إغلاقه."
+    },
+    "ncr_refused_verification": {
+      "en": "Say how the result was checked.",
+      "he": "יש לרשום איך התוצאה נבדקה.",
+      "ar": "اذكر كيف فُحصت النتيجة."
+    },
+    "ncr_refused_closed": {
+      "en": "This report is closed.",
+      "he": "הדיווח הזה סגור.",
+      "ar": "هذا التقرير مغلق."
+    },
+    "at_ncrs_overdue": {
+      "c": "A line on a job's list of what needs attention, followed by a count",
+      "en": "Non-conformances overdue",
+      "he": "אי-התאמות באיחור",
+      "ar": "حالات عدم مطابقة متأخرة"
+    },
+    "at_ncrs_awaiting": {
+      "c": "A line on a job's list of what needs attention, followed by a count",
+      "en": "Non-conformances waiting for a decision",
+      "he": "אי-התאמות הממתינות להחלטה",
+      "ar": "حالات عدم مطابقة بانتظار قرار"
+    },
+    "hv_ncrs": {
+      "c": "A line in the handover pack, followed by a count",
+      "en": "Non-conformances not closed",
+      "he": "אי-התאמות שלא נסגרו",
+      "ar": "حالات عدم مطابقة لم تُغلق"
+    },
+    "search_kind_ncr": {
+      "c": "The kind of a search result",
+      "en": "Non-conformance",
+      "he": "אי-התאמה",
+      "ar": "عدم مطابقة"
+    },
+    "summary_ncr_closed": {
+      "en": "%1$s closed",
+      "he": "%1$s נסגר",
+      "ar": "أُغلق %1$s"
+    },
+    "summary_ncr_decided": {
+      "en": "%1$s decided: %2$s",
+      "he": "הוחלט על %1$s: %2$s",
+      "ar": "تقرّر بشأن %1$s: %2$s"
+    },
+    "summary_ncr_raised": {
+      "en": "%1$s raised: %2$s",
+      "he": "%1$s נפתח: %2$s",
+      "ar": "فُتح %1$s: %2$s"
     }
   },
   "plurals": {

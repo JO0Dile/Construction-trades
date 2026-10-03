@@ -129,6 +129,7 @@ fun ProjectDetailScreen(
     onOpenDelays: () -> Unit,
     onOpenRisks: () -> Unit,
     onOpenComplaints: () -> Unit,
+    onOpenNonConformances: () -> Unit,
     onOpenSubstances: () -> Unit,
     onOpenFirePoints: () -> Unit,
     onOpenEmergency: () -> Unit,
@@ -215,6 +216,8 @@ fun ProjectDetailScreen(
         if (canSeePlan) add(JobLink(R.string.de_title, R.string.de_row_hint, onOpenDelays))
         // Part of the site's record: who looked at the work before it was covered.
         if (canSeeEvidence) add(JobLink(R.string.ir_title, R.string.ir_row_hint, onOpenInspections))
+        // Beside the inspections: what an inspection found wrong, and what was done about it.
+        if (canSeeEvidence) add(JobLink(R.string.ncr_title, R.string.ncr_row_hint, onOpenNonConformances))
         // What could hurt somebody on this job, and what is done about it.
         if (canSeeEvidence) add(JobLink(R.string.ra_title, R.string.ra_row_hint, onOpenRisks))
         // The week of it all, counted, for the safety officer to sign.
@@ -367,6 +370,7 @@ fun ProjectDetailScreen(
                                                 Attention.Item.QUERIES_OVERDUE -> onOpenQueries()
                                                 Attention.Item.DELAYS_WITHOUT_NOTICE, Attention.Item.DELAYS_RUNNING -> onOpenDelays()
                                                 Attention.Item.COMPLAINTS_WAITING -> onOpenComplaints()
+                                                Attention.Item.NCRS_OVERDUE, Attention.Item.NCRS_AWAITING_DECISION -> onOpenNonConformances()
                                                 Attention.Item.SUBSTANCES_WITHOUT_SHEET -> onOpenSubstances()
                                                 Attention.Item.FIRE_POINTS -> onOpenFirePoints()
                                                 Attention.Item.EMERGENCY_INFO_MISSING -> onOpenEmergency()
@@ -1048,4 +1052,6 @@ internal fun attentionLabel(item: Attention.Item): Int = when (item) {
     Attention.Item.MEETING_POINTS_OVERDUE -> R.string.at_meeting_points
     Attention.Item.INVESTIGATIONS_OUTSTANDING -> R.string.at_investigations
     Attention.Item.INCIDENT_ACTIONS_OVERDUE -> R.string.at_incident_actions
+    Attention.Item.NCRS_OVERDUE -> R.string.at_ncrs_overdue
+    Attention.Item.NCRS_AWAITING_DECISION -> R.string.at_ncrs_awaiting
 }

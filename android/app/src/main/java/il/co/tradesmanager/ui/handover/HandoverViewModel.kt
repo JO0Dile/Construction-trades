@@ -198,7 +198,11 @@ class HandoverViewModel(
         }
     }
 
-    private val fromAskedOf = combine(fromInspections, fromPlan) { inspections, plan -> inspections + plan }
+    /** Non-conformances not closed: the register a public client reads before signing a handover. */
+    private val fromQuality = container.nonConformances.observeForProject(projectId)
+        .map { reports -> mapOf(HandoverPack.Item.NCRS_OPEN to reports.count { it.closedAt == null }) }
+
+    private val fromAskedOf = combine(fromInspections, fromPlan, fromQuality) { inspections, plan, quality -> inspections + plan + quality }
 
     val readiness: StateFlow<HandoverPack.Readiness> = combine(
         fromSafety,
@@ -250,6 +254,11 @@ class HandoverViewModel(
             documents += ExportDocument.RiskRegister(job.name, container.risks.observeForProject(projectId).first())
             documents += ExportDocument.VisitorLog(job.name, container.visits.observeForProject(projectId).first())
             documents += ExportDocument.ComplaintRegister(job.name, container.complaints.observeForProject(projectId).first())
+            documents += ExportDocument.NonConformanceRegister(
+                job.name,
+                container.nonConformances.observeForProject(projectId).first(),
+                LocalDate.now(),
+            )
             documents += ExportDocument.SubstanceRegister(job.name, container.substances.observeForProject(projectId).first(), LocalDate.now())
             documents += ExportDocument.FirePointRegister(
                 job.name,

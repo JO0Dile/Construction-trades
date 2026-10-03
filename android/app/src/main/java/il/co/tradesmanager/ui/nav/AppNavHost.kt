@@ -96,6 +96,7 @@ import il.co.tradesmanager.ui.substances.SubstancesScreen
 import il.co.tradesmanager.ui.delays.DelaysScreen
 import il.co.tradesmanager.ui.risks.RisksScreen
 import il.co.tradesmanager.ui.complaints.ComplaintsScreen
+import il.co.tradesmanager.ui.ncr.NonConformancesScreen
 import il.co.tradesmanager.ui.update.WhatsNewGate
 import il.co.tradesmanager.ui.visitors.VisitorsScreen
 import il.co.tradesmanager.ui.waste.WasteScreen
@@ -139,6 +140,7 @@ object Routes {
     const val DELAYS = "projects/delays"
     const val RISKS = "projects/risks"
     const val COMPLAINTS = "projects/complaints"
+    const val NON_CONFORMANCES = "projects/non-conformances"
     const val SUBSTANCES = "projects/substances"
     const val FIRE_POINTS = "projects/fire-points"
     const val EMERGENCY = "projects/emergency"
@@ -210,6 +212,7 @@ object Routes {
     fun delays(projectId: String) = "$DELAYS/$projectId"
     fun risks(projectId: String) = "$RISKS/$projectId"
     fun complaints(projectId: String) = "$COMPLAINTS/$projectId"
+    fun nonConformances(projectId: String) = "$NON_CONFORMANCES/$projectId"
     fun substances(projectId: String) = "$SUBSTANCES/$projectId"
     fun firePoints(projectId: String) = "$FIRE_POINTS/$projectId"
     fun emergency(projectId: String) = "$EMERGENCY/$projectId"
@@ -251,6 +254,7 @@ private fun routeFor(hit: Search.Hit): String = when (hit.kind) {
     Search.Kind.FIRE_POINT -> Routes.firePoints(hit.projectId.orEmpty())
     Search.Kind.MEETING_POINT -> Routes.meetings(hit.projectId.orEmpty())
     Search.Kind.CONTACT -> Routes.contacts(hit.projectId.orEmpty())
+    Search.Kind.NON_CONFORMANCE -> Routes.nonConformances(hit.projectId.orEmpty())
 }
 
 /**
@@ -433,6 +437,7 @@ fun AppNavHost(
                     onOpenDelays = { navController.navigate(Routes.delays(id)) },
                     onOpenRisks = { navController.navigate(Routes.risks(id)) },
                     onOpenComplaints = { navController.navigate(Routes.complaints(id)) },
+                    onOpenNonConformances = { navController.navigate(Routes.nonConformances(id)) },
                     onOpenSubstances = { navController.navigate(Routes.substances(id)) },
                     onOpenFirePoints = { navController.navigate(Routes.firePoints(id)) },
                     onOpenEmergency = { navController.navigate(Routes.emergency(id)) },
@@ -655,6 +660,13 @@ fun AppNavHost(
             }
             composable("${Routes.COMPLAINTS}/{projectId}") { entry ->
                 ComplaintsScreen(
+                    container = container,
+                    projectId = entry.arguments?.getString("projectId").orEmpty(),
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable("${Routes.NON_CONFORMANCES}/{projectId}") { entry ->
+                NonConformancesScreen(
                     container = container,
                     projectId = entry.arguments?.getString("projectId").orEmpty(),
                     onBack = { navController.popBackStack() },

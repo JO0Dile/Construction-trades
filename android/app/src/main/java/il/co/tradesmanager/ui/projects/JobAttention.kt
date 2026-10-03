@@ -4,6 +4,7 @@ import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.access.Role
 import il.co.tradesmanager.core.evidence.Complaints
 import il.co.tradesmanager.core.evidence.Inspections
+import il.co.tradesmanager.core.evidence.NonConformances
 import il.co.tradesmanager.core.safety.EmergencySheet
 import il.co.tradesmanager.core.safety.FirePoints
 import il.co.tradesmanager.core.safety.Risks
@@ -62,7 +63,10 @@ fun observeJobAttention(container: AppContainer, projectId: String, role: Role?)
     }
     val fromRecord = if (role != null && role.canRead(Lens.EVIDENCE)) {
         combine(
-            container.inspections.observeForProject(projectId),
+            combine(
+                container.inspections.observeForProject(projectId),
+                container.nonConformances.observeForProject(projectId),
+            ) { inspections, reports -> inspections to reports },
             container.risks.observeForProject(projectId),
             container.complaints.observeForProject(projectId),
             container.substances.observeForProject(projectId),
@@ -75,7 +79,7 @@ fun observeJobAttention(container: AppContainer, projectId: String, role: Role?)
             ) { points, checks, sheet, outstanding, overdue ->
                 Triple(FirePointsViewModel.rowsOf(points, checks), sheet, outstanding to overdue)
             },
-        ) { inspections, risks, complaints, substances, (firePoints, emergency, investigations) ->
+        ) { (inspections, reports), risks, complaints, substances, (firePoints, emergency, investigations) ->
             val now = System.currentTimeMillis()
             val zone = ZoneId.systemDefault()
             val today = LocalDate.now()
@@ -99,6 +103,11 @@ fun observeJobAttention(container: AppContainer, projectId: String, role: Role?)
                 Attention.Item.SUBSTANCES_WITHOUT_SHEET to substances.count {
                     Substances.state(it.sheetOnDay?.let(LocalDate::ofEpochDay), it.removedAt != null, today) == Substances.State.NO_SHEET
                 },
+                Attention.Item.NCRS_OVERDUE to reports.count {
+                    NonConformances.state(it.decidedAt != null, it.dueOnDay?.let(LocalDate::ofEpochDay), it.closedAt != null, today) ==
+                        NonConformances.State.OVERDUE
+                },
+                Attention.Item.NCRS_AWAITING_DECISION to reports.count { it.decidedAt == null && it.closedAt == null },
                 Attention.Item.INVESTIGATIONS_OUTSTANDING to investigations.first,
                 Attention.Item.INCIDENT_ACTIONS_OVERDUE to investigations.second,
             )

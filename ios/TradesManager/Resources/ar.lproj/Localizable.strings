@@ -3087,3 +3087,99 @@
 "at_investigations" = "إصابات خطيرة لم يُستكمل التحقيق فيها";
 /* A line on a job's list of what needs attention, followed by a count */
 "at_incident_actions" = "إجراءات تصحيحية متأخرة";
+/* Screen title and job link */
+"ncr_title" = "حالات عدم المطابقة";
+/* Under the job link */
+"ncr_row_hint" = "أعمال لا تطابق المخطط أو المواصفات، وما يُفعل بشأنها";
+"ncr_empty" = "لم تُفتح حالات عدم مطابقة.";
+"ncr_blurb" = "افتح حالة عدم مطابقة عندما لا يحقق العمل المطلوب: المخطط، المواصفات، معيار. تبقى مفتوحة حتى يُتخذ قرار وتُفحص النتيجة.";
+/* Button and dialog title */
+"ncr_raise" = "فتح حالة عدم مطابقة";
+/* Field label and column heading */
+"ncr_element" = "أين";
+"ncr_element_hint" = "بلاطة الطابق 3، المحور C-4";
+/* Field label and column heading */
+"ncr_requirement" = "أي متطلب لا يحققه";
+"ncr_requirement_hint" = "المخطط S-102 النسخة C، بند في المواصفات، معيار";
+/* Field label and column heading */
+"ncr_finding" = "ما الذي وُجد";
+/* Field label and column heading */
+"ncr_found_by" = "وجده";
+/* Who found a non-conformance */
+"ncr_by_own_qc" = "مراقبة الجودة لدينا";
+/* Who found a non-conformance */
+"ncr_by_supervisor" = "المشرف";
+/* Who found a non-conformance */
+"ncr_by_client" = "صاحب العمل";
+/* Who found a non-conformance */
+"ncr_by_authority" = "جهة رسمية";
+/* Who found a non-conformance */
+"ncr_by_laboratory" = "مختبر";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_rework" = "إعادة العمل: الإزالة والتنفيذ من جديد";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_repair" = "إصلاح في المكان";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_accept_as_is" = "الإبقاء كما هو، بموافقة";
+/* What is decided about a non-conformance; also read inside the audit trail */
+"ncr_disp_remove" = "إزالة";
+/* %1$s is a date */
+"ncr_state_overdue" = "متأخر منذ %1$s";
+/* %1$s is a date */
+"ncr_state_awaiting" = "بانتظار قرار منذ %1$s";
+/* %1$s is a date */
+"ncr_state_in_hand" = "قيد المعالجة، حتى %1$s";
+"ncr_state_in_hand_no_date" = "قيد المعالجة، دون موعد";
+/* %1$s is a date */
+"ncr_state_closed" = "أُغلق %1$s";
+/* %1$s a name, %2$s a date */
+"ncr_raised_by" = "فتحه %1$s، %2$s";
+/* Button */
+"ncr_add_photo" = "إضافة صورة";
+/* Field label and column heading */
+"ncr_decision" = "القرار";
+/* Button and dialog title */
+"ncr_decide" = "تقرير ما يجب فعله";
+/* Field label */
+"ncr_accepted_by" = "من وافق على الإبقاء";
+"ncr_accepted_by_hint" = "المشرف أو المصمم، بالاسم";
+/* Field label and column heading */
+"ncr_correction" = "ما الذي سيُفعل";
+/* %1$s a name, %2$s a date */
+"ncr_decided_by" = "قرّره %1$s، %2$s";
+/* Button and dialog title */
+"ncr_close" = "إغلاق: فُحصت النتيجة";
+/* Field label and column heading */
+"ncr_verification" = "كيف فُحص";
+"ncr_verification_hint" = "أعاد المشرف فحصه في 12 من الشهر؛ نتائج المكعبات";
+/* %1$s a name, %2$s a date, %3$s how it was checked */
+"ncr_closed_by" = "أغلقه %1$s، %2$s: %3$s";
+/* Column heading */
+"ncr_col_raised" = "فُتح";
+/* Column heading */
+"ncr_col_state" = "الحالة";
+/* A state on the printed register */
+"ncr_col_awaiting" = "بانتظار قرار";
+/* A state on the printed register */
+"ncr_col_in_hand" = "قيد المعالجة";
+"ncr_refused_element" = "اذكر أين هو.";
+"ncr_refused_requirement" = "اذكر أي متطلب لا يحققه: مخطط، بند، معيار.";
+"ncr_refused_finding" = "اذكر ما الذي وُجد.";
+"ncr_refused_acceptor" = "اذكر من وافق على الإبقاء عليه كما هو.";
+"ncr_refused_correction" = "اذكر ما الذي سيُفعل.";
+"ncr_refused_due" = "لا يمكن أن يكون الموعد قبل فتحه.";
+"ncr_refused_decided" = "تقرّر بشأنه بالفعل.";
+"ncr_refused_not_decided" = "قرّر ما يجب فعله قبل إغلاقه.";
+"ncr_refused_verification" = "اذكر كيف فُحصت النتيجة.";
+"ncr_refused_closed" = "هذا التقرير مغلق.";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_ncrs_overdue" = "حالات عدم مطابقة متأخرة";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_ncrs_awaiting" = "حالات عدم مطابقة بانتظار قرار";
+/* A line in the handover pack, followed by a count */
+"hv_ncrs" = "حالات عدم مطابقة لم تُغلق";
+/* The kind of a search result */
+"search_kind_ncr" = "عدم مطابقة";
+"summary_ncr_closed" = "أُغلق %1$s";
+"summary_ncr_decided" = "تقرّر بشأن %1$s: %2$s";
+"summary_ncr_raised" = "فُتح %1$s: %2$s";

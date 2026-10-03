@@ -113,6 +113,13 @@ class PhotoRepository(
         const val SUBSTANCE_SHEET = "substance.sheet"
 
         /**
+         * What does not conform, as it was found: the honeycombed column, the
+         * wrong pipe, the tape on the out-of-level sill. Against one
+         * non-conformance report.
+         */
+        const val NON_CONFORMANCE = "non_conformance"
+
+        /**
          * The two identity pictures: a face for the gate, and the ID document
          * itself. Both stay on the device — the app has no server to send them
          * to, and an ID document is not something to be casual about.

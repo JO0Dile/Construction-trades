@@ -133,6 +133,7 @@ class SearchViewModel(
         if (mayRead(Search.Kind.DELAY)) hits += delays(terms, jobNames)
         if (mayRead(Search.Kind.RISK)) hits += risks(terms, jobNames)
         if (mayRead(Search.Kind.COMPLAINT)) hits += complaints(terms, jobNames)
+        if (mayRead(Search.Kind.NON_CONFORMANCE)) hits += nonConformances(terms, jobNames)
         if (mayRead(Search.Kind.SUBSTANCE)) hits += substances(terms, jobNames)
         if (mayRead(Search.Kind.FIRE_POINT)) hits += firePoints(terms, jobNames)
         if (mayRead(Search.Kind.MEETING_POINT)) hits += meetingPoints(terms, jobNames)
@@ -482,6 +483,25 @@ class SearchViewModel(
                 isOpen = !risk.closed,
                 terms = terms,
                 projectId = risk.projectId,
+            )
+        }
+
+    /* ------------------------------------------------------ the non-conformances */
+    private suspend fun nonConformances(
+        terms: List<String>,
+        jobNames: Map<String, String>,
+    ): List<Search.Hit> =
+        container.nonConformances.all().mapNotNull { report ->
+            hit(
+                id = report.id,
+                kind = Search.Kind.NON_CONFORMANCE,
+                title = report.reference + " " + report.finding,
+                detail = listOfNotNull(report.element, jobNames[report.projectId]).joinToString(" "),
+                // The requirement, the decision and who accepted it are matched, not shown.
+                matchAlso = listOfNotNull(report.requirement, report.correction, report.acceptedBy).joinToString(" "),
+                isOpen = report.closedAt == null,
+                terms = terms,
+                projectId = report.projectId,
             )
         }
 
