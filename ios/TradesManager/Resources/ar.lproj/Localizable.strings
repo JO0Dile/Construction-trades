@@ -2982,3 +2982,108 @@
 "inc_place_hint" = "بعد ربطه يُحسب في التقرير الأسبوعي لذلك العمل وفي إحصاءات السلامة. ولا يمكن نقله بعد ذلك.";
 /* Above the register, when placing a report on a job did not happen */
 "inc_place_refused" = "هذا البلاغ مرتبط بعمل بالفعل، أو لم يعد موجودًا.";
+"summary_inv_action_closed" = "أُغلق الإجراء التصحيحي %1$s";
+"summary_inv_action_raised" = "فُتح الإجراء التصحيحي %1$s، ومسؤوله %2$s";
+"summary_inv_closed" = "أُغلق التحقيق";
+"summary_inv_started" = "بدأ التحقيق";
+"summary_inv_updated" = "سُجّلت نتائج التحقيق";
+/* Screen title, and the title of the printed investigation */
+"iv_title" = "حادث";
+/* %1$s is a name, %2$s a date and time */
+"iv_reported" = "أبلغ عنه %1$s، %2$s";
+/* Row heading on the printed investigation */
+"iv_reported_col" = "الإبلاغ";
+/* Description of a photograph filed with an incident */
+"iv_evidence" = "دليل";
+/* Section heading */
+"iv_investigation" = "التحقيق";
+/* State of an incident's investigation */
+"iv_state_needed" = "يحتاج إلى تحقيق";
+/* State of an incident's investigation */
+"iv_state_open" = "قيد التحقيق";
+/* State of an incident's investigation */
+"iv_state_closed" = "حُقّق فيه وأُغلق";
+/* State of an incident's investigation */
+"iv_state_not_started" = "لم يُحقَّق فيه";
+"iv_required_hint" = "الإصابة الخطيرة أو الوفاة يُحقَّق فيها. متى يوجب القانون التحقيق ومن يجريه سؤالٌ لمختص مؤهل.";
+/* Button */
+"iv_start" = "بدء التحقيق";
+/* Button */
+"iv_edit" = "تسجيل النتائج";
+/* Field label */
+"iv_immediate_cause" = "ما الذي سبّبه مباشرة";
+"iv_immediate_cause_hint" = "ما حدث في تلك اللحظة: انزلق اللوح، كان الواقي مُزالًا.";
+/* Field label, above the cause chips */
+"iv_causes" = "ما الذي كان وراءه";
+/* Field label */
+"iv_findings" = "ما الذي وُجد، وما يجب أن تعرفه المواقع الأخرى";
+"iv_not_written" = "لم يُكتب بعد";
+/* %1$s is a name, %2$s a date */
+"iv_started_by" = "بدأه %1$s، %2$s";
+/* %1$s is a name, %2$s a date */
+"iv_closed_by" = "أغلقه %1$s، %2$s";
+/* Row heading on the printed investigation */
+"iv_started_col" = "بدء التحقيق";
+/* Row heading on the printed investigation */
+"iv_closed_col" = "إغلاق التحقيق";
+/* Section heading */
+"iv_actions" = "الإجراءات التصحيحية";
+"iv_no_actions" = "لا إجراءات بعد.";
+/* Button and dialog title */
+"iv_add_action" = "إضافة إجراء";
+/* Field label */
+"iv_action_what" = "ما الذي يجب فعله";
+/* Field label */
+"iv_action_who" = "من ينفّذه";
+/* Label above the date chips */
+"iv_action_when" = "حتى متى";
+/* %1$d is the action's number, %2$s what is to be done */
+"iv_action_line" = "%1$d. %2$s";
+"iv_action_owner" = "من: %1$s";
+/* %1$s is a date */
+"iv_action_due" = "حتى %1$s";
+/* %1$s is a date */
+"iv_action_overdue" = "متأخر منذ %1$s";
+/* %1$s a date, %2$s a name, %3$s what was done */
+"iv_action_done" = "نُفّذ %1$s على يد %2$s: %3$s";
+/* Button on an action */
+"iv_close_action" = "إغلاق";
+/* %1$d is the action's number */
+"iv_close_action_title" = "إغلاق الإجراء %1$d؟";
+/* Button */
+"iv_close" = "إغلاق التحقيق";
+"iv_close_hint" = "يُغلق التحقيق عندما يُذكر ما سبّب الحادث وما كان وراءه، وتُنفَّذ كل الإجراءات.";
+"iv_gone" = "هذا البلاغ غير موجود، أو ليس مما يحق لك رؤيته.";
+/* A cause behind an incident */
+"iv_cause_way_of_working" = "طريقة تنفيذ العمل";
+/* A cause behind an incident */
+"iv_cause_equipment" = "أداة أو آلة، أو حالتها";
+/* A cause behind an incident */
+"iv_cause_site_conditions" = "ظروف الموقع: الأرض، الطقس، الترتيب، الإضاءة";
+/* A cause behind an incident */
+"iv_cause_protective_equipment" = "معدات وقاية ناقصة أو غير مرتداة";
+/* A cause behind an incident */
+"iv_cause_supervision" = "الإشراف";
+/* A cause behind an incident */
+"iv_cause_training" = "التدريب أو الخبرة";
+/* A cause behind an incident */
+"iv_cause_planning" = "التخطيط أو التصميم";
+/* A cause behind an incident */
+"iv_cause_communication" = "التواصل";
+/* A cause behind an incident */
+"iv_cause_other" = "أمر آخر";
+"iv_refused_not_allowed" = "لا يمكن لدورك تغيير سجل الموقع.";
+"iv_refused_not_started" = "ابدأ التحقيق أولًا.";
+"iv_refused_immediate_cause" = "اذكر أولًا ما الذي سبّبه مباشرة.";
+"iv_refused_no_cause" = "اختر أمرًا واحدًا على الأقل كان وراءه.";
+"iv_refused_actions_open" = "يجب تنفيذ كل الإجراءات قبل الإغلاق.";
+"iv_refused_closed" = "التحقيق مغلق.";
+"iv_refused_blank_action" = "اذكر ما الذي يجب فعله.";
+"iv_refused_due" = "لا يمكن أن يكون موعد الإجراء قبل وقوع الحادث.";
+"iv_refused_note" = "اذكر ما الذي تم.";
+"iv_refused_action_closed" = "هذا الإجراء مغلق بالفعل.";
+"iv_refused_unknown" = "تعذّر الحفظ. حاول مرة أخرى.";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_investigations" = "إصابات خطيرة لم يُستكمل التحقيق فيها";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_incident_actions" = "إجراءات تصحيحية متأخرة";

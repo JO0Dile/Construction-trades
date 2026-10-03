@@ -61,7 +61,9 @@ class WeeklySafetyViewModel(
         /** The lines a safety report carries; the plan's delays and materials are for another page. */
         val SAFETY_ITEMS: Set<Attention.Item> = setOf(
             Attention.Item.EMERGENCY_INFO_MISSING,
+            Attention.Item.INVESTIGATIONS_OUTSTANDING,
             Attention.Item.RISKS_EXTREME,
+            Attention.Item.INCIDENT_ACTIONS_OVERDUE,
             Attention.Item.SUBSTANCES_WITHOUT_SHEET,
             Attention.Item.FIRE_POINTS,
             Attention.Item.INSPECTIONS_FAILED,

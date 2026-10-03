@@ -12,6 +12,9 @@ import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
 import il.co.tradesmanager.data.local.entity.FirePointEntity
+import il.co.tradesmanager.data.local.entity.IncidentActionEntity
+import il.co.tradesmanager.data.local.entity.IncidentEntity
+import il.co.tradesmanager.data.local.entity.IncidentInvestigationEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.JobContactEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
@@ -361,6 +364,46 @@ class RegisterExportTest {
         assertEquals("12", table.rows[1][10])
         assertEquals("504,000", table.rows[2][1])
         assertEquals(context.getString(R.string.sst_none_recorded), table.rows[3][1])
+    }
+
+    @Test
+    fun `an investigation prints the report, the causes, and each action with its state`() {
+        val context = inLanguage("en")
+        val zone = ZoneId.systemDefault()
+        val incident = IncidentEntity(
+            id = "inc.1", projectId = "job", severity = "SERIOUS", description = "Fell from the second rung",
+            occurredAt = today.minusDays(5).atTime(10, 0).atZone(zone).toInstant().toEpochMilli(),
+            reportedByName = "Foreman", createdAt = 0L, companyId = "co.1",
+        )
+        val investigation = IncidentInvestigationEntity(
+            incidentId = "inc.1", immediateCause = "The ladder foot slid", causes = "EQUIPMENT,SUPERVISION",
+            findings = null, startedAt = 1_000L, startedByName = "Safety officer", updatedAt = 1_000L,
+        )
+        val actions = listOf(
+            IncidentActionEntity(
+                id = "a1", incidentId = "inc.1", number = 1, text = "Buy ladder feet", ownerName = "Stores",
+                dueOnDay = today.minusDays(1).toEpochDay(), raisedAt = 1_000L, raisedByName = "Safety officer",
+            ),
+            IncidentActionEntity(
+                id = "a2", incidentId = "inc.1", number = 2, text = "Brief the crew", raisedAt = 1_000L,
+                raisedByName = "Safety officer", closedAt = 2_000L, closedByName = "Foreman", closingNote = "Briefed",
+            ),
+        )
+        val table = ExportDocument.IncidentInvestigationReport(incident, "Tower A", investigation, actions, today)
+            .table(context, "en", Locale.ENGLISH)
+        table.assertSquare()
+        assertEquals(context.getString(R.string.inc_serious), table.rows[0][1])
+        assertEquals(context.getString(R.string.iv_state_open), table.rows[3][1])
+        assertEquals("The ladder foot slid", table.rows[4][1])
+        assertEquals(
+            context.getString(R.string.iv_cause_equipment) + " · " + context.getString(R.string.iv_cause_supervision),
+            table.rows[5][1],
+        )
+        assertEquals(context.getString(R.string.iv_not_written), table.rows[6][1])
+        assertEquals("1. Buy ladder feet", table.rows[7][0])
+        assertTrue(table.rows[7][1].contains(context.getString(R.string.iv_action_overdue, "").trim()))
+        assertTrue(table.rows[8][1].endsWith("Briefed"))
+        assertEquals(context.getString(R.string.iv_started_col), table.rows.last()[0])
     }
 
     @Test

@@ -1,6 +1,7 @@
 package il.co.tradesmanager.ui.safety
 
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -41,6 +42,7 @@ import il.co.tradesmanager.R
 import il.co.tradesmanager.core.i18n.Formats
 import il.co.tradesmanager.core.i18n.Numbers
 import il.co.tradesmanager.core.safety.Incidents
+import il.co.tradesmanager.core.safety.Investigations
 import il.co.tradesmanager.data.local.entity.IncidentEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.di.AppContainer
@@ -66,6 +68,7 @@ fun IncidentsScreen(
     container: AppContainer,
     projectId: String?,
     onBack: () -> Unit,
+    onOpenIncident: (String) -> Unit,
 ) {
     val viewModel: IncidentsViewModel = viewModel(
         factory = ViewModelFactory(container) { IncidentsViewModel(it, projectId) },
@@ -78,6 +81,7 @@ fun IncidentsScreen(
     val canPlace by viewModel.canPlace.collectAsStateWithLifecycle()
     var placing by remember { mutableStateOf<IncidentEntity?>(null) }
     val placeRefused by viewModel.placeRefused.collectAsStateWithLifecycle()
+    val investigations by viewModel.investigations.collectAsStateWithLifecycle()
     val locale = currentLocale()
     val zone = ZoneId.systemDefault()
 
@@ -152,8 +156,21 @@ fun IncidentsScreen(
                                     ?: stringResource(R.string.inc_no_job),
                             )
                             if (canSeeCost) incident.costAmount?.let { Text(Formats.money(it, locale)) }
+                            val record = investigations[incident.id]
+                            val state = Investigations.state(severity, record != null, record?.closedAt != null)
+                            if (state != Investigations.State.NOT_STARTED) {
+                                Text(
+                                    stringResource(investigationStateLabel(state)),
+                                    color = if (state == Investigations.State.NEEDED) {
+                                        MaterialTheme.colorScheme.error
+                                    } else {
+                                        MaterialTheme.colorScheme.primary
+                                    },
+                                )
+                            }
                         }
                     },
+                    modifier = Modifier.clickable { onOpenIncident(incident.id) },
                     trailingContent = if (incident.projectId == null && canPlace && jobs.isNotEmpty()) {
                         {
                             TextButton(
@@ -403,7 +420,7 @@ private fun blockerText(blocker: Incidents.Blocker): Int = when (blocker) {
     Incidents.Blocker.BAD_COST -> R.string.inc_bad_cost
 }
 
-private fun severityLabel(severity: Incidents.Severity): Int = when (severity) {
+internal fun severityLabel(severity: Incidents.Severity): Int = when (severity) {
     Incidents.Severity.NEAR_MISS -> R.string.inc_near_miss
     Incidents.Severity.MINOR -> R.string.inc_minor
     Incidents.Severity.SERIOUS -> R.string.inc_serious

@@ -114,4 +114,15 @@ class IncidentsTest {
             Incidents.blocksReporting(report(description = "", evidenceCount = 0)),
         )
     }
+
+    @Test
+    fun `a report is shown to its own company, and one from before companies to everyone`() {
+        assertTrue(Incidents.visibleTo("co.1", "co.1"))
+        assertFalse(Incidents.visibleTo("co.2", "co.1"))
+        assertFalse(Incidents.visibleTo("co.1", null))
+        assertFalse(Incidents.visibleTo(null, "co.1"))
+        assertTrue(Incidents.visibleTo(null, null))
+        assertTrue(Incidents.visibleTo(Incidents.UNATTRIBUTED, "co.1"))
+        assertTrue(Incidents.visibleTo(Incidents.UNATTRIBUTED, null))
+    }
 }

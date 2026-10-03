@@ -54,6 +54,7 @@ import il.co.tradesmanager.ui.orders.OrdersScreen
 import il.co.tradesmanager.ui.audit.AuditScreen
 import il.co.tradesmanager.ui.safety.HeatScreen
 import il.co.tradesmanager.ui.safety.PpeScreen
+import il.co.tradesmanager.ui.safety.IncidentDetailScreen
 import il.co.tradesmanager.ui.safety.IncidentsScreen
 import il.co.tradesmanager.ui.safety.MusterScreen
 import il.co.tradesmanager.ui.safety.ViolationsScreen
@@ -116,6 +117,7 @@ object Routes {
     const val PERMIT_DETAIL = "safety/permits/detail"
     const val SNAGS = "safety/snags"
     const val INCIDENTS = "safety/incidents"
+    const val INCIDENT_DETAIL = "safety/incidents/detail"
     const val VIOLATIONS = "safety/violations"
     const val MUSTER = "safety/muster"
     const val HEAT = "safety/heat"
@@ -190,6 +192,7 @@ object Routes {
     fun orderDetail(orderId: String) = "$ORDER_DETAIL/$orderId"
     fun checklistRun(templateId: String) = "$CHECKLIST_RUN/$templateId"
     fun talkDetail(talkId: String) = "$TALK_DETAIL/$talkId"
+    fun incidentDetail(incidentId: String) = "$INCIDENT_DETAIL/$incidentId"
     fun permitDetail(permitId: String) = "$PERMIT_DETAIL/$permitId"
     fun snagDetail(snagId: String) = "$SNAG_DETAIL/$snagId"
     fun dailyLog(projectId: String) = "$DAILY_LOG/$projectId"
@@ -435,6 +438,7 @@ fun AppNavHost(
                     onOpenEmergency = { navController.navigate(Routes.emergency(id)) },
                     onOpenMeetings = { navController.navigate(Routes.meetings(id)) },
                     onOpenSafetyWeek = { navController.navigate(Routes.safetyWeek(id)) },
+                    onOpenIncidents = { navController.navigate(Routes.INCIDENTS) },
                     onOpenContacts = { navController.navigate(Routes.contacts(id)) },
                     onOpenHandover = { navController.navigate(Routes.handover(id)) },
                     onOpenWorkPackages = { navController.navigate(Routes.workPackages(id)) },
@@ -789,10 +793,18 @@ fun AppNavHost(
             composable(Routes.INCIDENTS) {
                 IncidentsScreen(
                     container = container,
-                    // Not scoped to a job: an incident is reported by whoever
-                    // saw it, and making them find the right project first is
-                    // how a near miss goes unrecorded.
+                    // Not opened on a job: an incident is reported by whoever
+                    // saw it, and the report offers the job they are checked
+                    // in to rather than making them find it first.
                     projectId = null,
+                    onBack = { navController.popBackStack() },
+                    onOpenIncident = { navController.navigate(Routes.incidentDetail(it)) },
+                )
+            }
+            composable("${Routes.INCIDENT_DETAIL}/{incidentId}") { entry ->
+                IncidentDetailScreen(
+                    container = container,
+                    incidentId = entry.arguments?.getString("incidentId").orEmpty(),
                     onBack = { navController.popBackStack() },
                 )
             }

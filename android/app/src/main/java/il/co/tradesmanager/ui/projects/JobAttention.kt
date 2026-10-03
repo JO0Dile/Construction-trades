@@ -70,8 +70,12 @@ fun observeJobAttention(container: AppContainer, projectId: String, role: Role?)
                 container.firePoints.observeForProject(projectId),
                 container.firePoints.observeChecksForProject(projectId),
                 container.emergencySheets.observe(projectId),
-            ) { points, checks, sheet -> FirePointsViewModel.rowsOf(points, checks) to sheet },
-        ) { inspections, risks, complaints, substances, (firePoints, emergency) ->
+                container.investigations.observeOutstandingForProject(projectId),
+                container.investigations.observeOverdueActionsForProject(projectId, LocalDate.now()),
+            ) { points, checks, sheet, outstanding, overdue ->
+                Triple(FirePointsViewModel.rowsOf(points, checks), sheet, outstanding to overdue)
+            },
+        ) { inspections, risks, complaints, substances, (firePoints, emergency, investigations) ->
             val now = System.currentTimeMillis()
             val zone = ZoneId.systemDefault()
             val today = LocalDate.now()
@@ -95,6 +99,8 @@ fun observeJobAttention(container: AppContainer, projectId: String, role: Role?)
                 Attention.Item.SUBSTANCES_WITHOUT_SHEET to substances.count {
                     Substances.state(it.sheetOnDay?.let(LocalDate::ofEpochDay), it.removedAt != null, today) == Substances.State.NO_SHEET
                 },
+                Attention.Item.INVESTIGATIONS_OUTSTANDING to investigations.first,
+                Attention.Item.INCIDENT_ACTIONS_OVERDUE to investigations.second,
             )
         }
     } else {

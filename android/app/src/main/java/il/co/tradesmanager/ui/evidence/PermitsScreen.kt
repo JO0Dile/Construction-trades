@@ -69,6 +69,7 @@ fun PermitsScreen(
     )
     val permits by viewModel.permits.collectAsStateWithLifecycle()
     val projects by viewModel.projects.collectAsStateWithLifecycle()
+    val suggestedJob by viewModel.suggestedJob.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val now = rememberNow()
 
@@ -128,6 +129,7 @@ fun PermitsScreen(
     if (raising) {
         RaisePermitDialog(
             projects = projects,
+            suggestedJob = suggestedJob,
             onDismiss = { raising = false },
             onRaise = { projectId, kind, description, location, issuedTo, precautions ->
                 raising = false
@@ -212,6 +214,7 @@ internal fun pluralCount(id: Int, count: Long): String {
 @Composable
 private fun RaisePermitDialog(
     projects: List<ProjectEntity>,
+    suggestedJob: String?,
     onDismiss: () -> Unit,
     onRaise: (
         projectId: String?,
@@ -226,7 +229,11 @@ private fun RaisePermitDialog(
     var description by remember { mutableStateOf("") }
     var location by remember { mutableStateOf("") }
     var issuedTo by remember { mutableStateOf("") }
-    var projectId by remember { mutableStateOf<String?>(null) }
+    // The job the person is checked in to arrives a moment after the dialog
+    // opens; it is the answer until they pick one themselves.
+    var pickedJob by remember { mutableStateOf<String?>(null) }
+    var picked by remember { mutableStateOf(false) }
+    val projectId = if (picked) pickedJob else suggestedJob
 
     // Resolved here, in the language on screen, and carried onto the permit.
     val precautions = kind.precautionRes.map { stringResource(it) }
@@ -281,13 +288,19 @@ private fun RaisePermitDialog(
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(
                         selected = projectId == null,
-                        onClick = { projectId = null },
+                        onClick = {
+                            picked = true
+                            pickedJob = null
+                        },
                         label = { Text(stringResource(R.string.po_yard)) },
                     )
                     projects.forEach { project ->
                         FilterChip(
                             selected = projectId == project.id,
-                            onClick = { projectId = project.id },
+                            onClick = {
+                                picked = true
+                                pickedJob = project.id
+                            },
                             label = { Text(project.name) },
                         )
                     }

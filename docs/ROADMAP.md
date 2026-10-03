@@ -796,6 +796,19 @@ job's details open to change by roles that may only read them, and the
 purchase price and incident cost shown to roles that see no money; each is
 now drawn only for those it is for, and checked again at the write.
 
+**Incident investigations. Done.**
+Each incident can carry one investigation: what directly caused it, what
+lay behind it from a fixed list (the way of working, equipment, site
+conditions, protective equipment, supervision, training, planning,
+communication), and what was found, with numbered corrective actions,
+each with somebody to do it and a date, closed with what was done. A
+serious injury or a death needs one, and it closes only once it says why
+and every action is done. Serious incidents not investigated and overdue
+actions are lines on the job and the home screen, and the investigation
+prints. When the law requires an investigation, and by whom, is left to
+a qualified professional, and the page says so. New talks and permits
+start on the job the person is checked in to, as incident reports do.
+
 **Phase 5 — integrations, at the edge. Not started.**
 Israeli government and enterprise systems, accounting exports, weather,
 equipment telematics. Each one is an adapter that reads or writes data the app

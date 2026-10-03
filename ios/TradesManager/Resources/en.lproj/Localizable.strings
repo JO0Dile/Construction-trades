@@ -2982,3 +2982,108 @@
 "inc_place_hint" = "Once placed, it is counted in that job's weekly report and in the safety statistics. It cannot be moved afterwards.";
 /* Above the register, when placing a report on a job did not happen */
 "inc_place_refused" = "That report already has a job, or is no longer there.";
+"summary_inv_action_closed" = "Corrective action %1$s closed";
+"summary_inv_action_raised" = "Corrective action %1$s raised, for %2$s";
+"summary_inv_closed" = "Investigation closed";
+"summary_inv_started" = "Investigation started";
+"summary_inv_updated" = "Investigation findings written";
+/* Screen title, and the title of the printed investigation */
+"iv_title" = "Incident";
+/* %1$s is a name, %2$s a date and time */
+"iv_reported" = "Reported by %1$s, %2$s";
+/* Row heading on the printed investigation */
+"iv_reported_col" = "Reported";
+/* Description of a photograph filed with an incident */
+"iv_evidence" = "Evidence";
+/* Section heading */
+"iv_investigation" = "Investigation";
+/* State of an incident's investigation */
+"iv_state_needed" = "Needs investigating";
+/* State of an incident's investigation */
+"iv_state_open" = "Being investigated";
+/* State of an incident's investigation */
+"iv_state_closed" = "Investigated and closed";
+/* State of an incident's investigation */
+"iv_state_not_started" = "Not investigated";
+"iv_required_hint" = "A serious injury or a death is investigated. When the law requires an investigation, and by whom, is a question for a qualified professional.";
+/* Button */
+"iv_start" = "Start the investigation";
+/* Button */
+"iv_edit" = "Write what was found";
+/* Field label */
+"iv_immediate_cause" = "What directly caused it";
+"iv_immediate_cause_hint" = "What happened at the moment: the board slid, the guard was off.";
+/* Field label, above the cause chips */
+"iv_causes" = "What lay behind it";
+/* Field label */
+"iv_findings" = "What was found, and what other sites should know";
+"iv_not_written" = "Not written yet";
+/* %1$s is a name, %2$s a date */
+"iv_started_by" = "Started by %1$s, %2$s";
+/* %1$s is a name, %2$s a date */
+"iv_closed_by" = "Closed by %1$s, %2$s";
+/* Row heading on the printed investigation */
+"iv_started_col" = "Investigation started";
+/* Row heading on the printed investigation */
+"iv_closed_col" = "Investigation closed";
+/* Section heading */
+"iv_actions" = "Corrective actions";
+"iv_no_actions" = "No actions yet.";
+/* Button and dialog title */
+"iv_add_action" = "Add an action";
+/* Field label */
+"iv_action_what" = "What is to be done";
+/* Field label */
+"iv_action_who" = "Who does it";
+/* Label above the date chips */
+"iv_action_when" = "By when";
+/* %1$d is the action's number, %2$s what is to be done */
+"iv_action_line" = "%1$d. %2$s";
+"iv_action_owner" = "Who: %1$s";
+/* %1$s is a date */
+"iv_action_due" = "By %1$s";
+/* %1$s is a date */
+"iv_action_overdue" = "Overdue since %1$s";
+/* %1$s a date, %2$s a name, %3$s what was done */
+"iv_action_done" = "Done %1$s by %2$s: %3$s";
+/* Button on an action */
+"iv_close_action" = "Close";
+/* %1$d is the action's number */
+"iv_close_action_title" = "Close action %1$d?";
+/* Button */
+"iv_close" = "Close the investigation";
+"iv_close_hint" = "It closes once it says what caused it and what lay behind it, and every action is done.";
+"iv_gone" = "This report is not here, or is not yours to see.";
+/* A cause behind an incident */
+"iv_cause_way_of_working" = "The way the work was done";
+/* A cause behind an incident */
+"iv_cause_equipment" = "A tool or machine, or its condition";
+/* A cause behind an incident */
+"iv_cause_site_conditions" = "Site conditions: ground, weather, order, light";
+/* A cause behind an incident */
+"iv_cause_protective_equipment" = "Protective equipment missing or not worn";
+/* A cause behind an incident */
+"iv_cause_supervision" = "Supervision";
+/* A cause behind an incident */
+"iv_cause_training" = "Training or experience";
+/* A cause behind an incident */
+"iv_cause_planning" = "Planning or design";
+/* A cause behind an incident */
+"iv_cause_communication" = "Communication";
+/* A cause behind an incident */
+"iv_cause_other" = "Something else";
+"iv_refused_not_allowed" = "Your role cannot change the site's record.";
+"iv_refused_not_started" = "Start the investigation first.";
+"iv_refused_immediate_cause" = "Say what directly caused it first.";
+"iv_refused_no_cause" = "Choose at least one thing that lay behind it.";
+"iv_refused_actions_open" = "Every action has to be done before it closes.";
+"iv_refused_closed" = "The investigation is closed.";
+"iv_refused_blank_action" = "Say what is to be done.";
+"iv_refused_due" = "An action cannot be due before the incident happened.";
+"iv_refused_note" = "Say what was done.";
+"iv_refused_action_closed" = "That action is already closed.";
+"iv_refused_unknown" = "That could not be saved. Try again.";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_investigations" = "Serious incidents not investigated";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_incident_actions" = "Incident actions overdue";

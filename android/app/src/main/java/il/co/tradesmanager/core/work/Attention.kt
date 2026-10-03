@@ -21,7 +21,9 @@ object Attention {
     /** In the order they are shown: what can hurt somebody first, then what holds the work, then paperwork. */
     enum class Item {
         EMERGENCY_INFO_MISSING,
+        INVESTIGATIONS_OUTSTANDING,
         RISKS_EXTREME,
+        INCIDENT_ACTIONS_OVERDUE,
         SUBSTANCES_WITHOUT_SHEET,
         FIRE_POINTS,
         INSPECTIONS_FAILED,

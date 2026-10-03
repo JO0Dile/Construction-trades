@@ -12019,6 +12019,367 @@
       "en": "That report already has a job, or is no longer there.",
       "he": "לדיווח הזה כבר יש עבודה, או שהוא כבר לא קיים.",
       "ar": "هذا البلاغ مرتبط بعمل بالفعل، أو لم يعد موجودًا."
+    },
+    "summary_inv_action_closed": {
+      "en": "Corrective action %1$s closed",
+      "he": "פעולה מתקנת %1$s נסגרה",
+      "ar": "أُغلق الإجراء التصحيحي %1$s"
+    },
+    "summary_inv_action_raised": {
+      "en": "Corrective action %1$s raised, for %2$s",
+      "he": "נפתחה פעולה מתקנת %1$s, באחריות %2$s",
+      "ar": "فُتح الإجراء التصحيحي %1$s، ومسؤوله %2$s"
+    },
+    "summary_inv_closed": {
+      "en": "Investigation closed",
+      "he": "החקירה נסגרה",
+      "ar": "أُغلق التحقيق"
+    },
+    "summary_inv_started": {
+      "en": "Investigation started",
+      "he": "נפתחה חקירה",
+      "ar": "بدأ التحقيق"
+    },
+    "summary_inv_updated": {
+      "en": "Investigation findings written",
+      "he": "ממצאי החקירה נרשמו",
+      "ar": "سُجّلت نتائج التحقيق"
+    },
+    "iv_title": {
+      "c": "Screen title, and the title of the printed investigation",
+      "en": "Incident",
+      "he": "אירוע",
+      "ar": "حادث"
+    },
+    "iv_reported": {
+      "c": "%1$s is a name, %2$s a date and time",
+      "en": "Reported by %1$s, %2$s",
+      "he": "דווח על ידי %1$s, %2$s",
+      "ar": "أبلغ عنه %1$s، %2$s"
+    },
+    "iv_reported_col": {
+      "c": "Row heading on the printed investigation",
+      "en": "Reported",
+      "he": "דווח",
+      "ar": "الإبلاغ"
+    },
+    "iv_evidence": {
+      "c": "Description of a photograph filed with an incident",
+      "en": "Evidence",
+      "he": "ראיה",
+      "ar": "دليل"
+    },
+    "iv_investigation": {
+      "c": "Section heading",
+      "en": "Investigation",
+      "he": "חקירה",
+      "ar": "التحقيق"
+    },
+    "iv_state_needed": {
+      "c": "State of an incident's investigation",
+      "en": "Needs investigating",
+      "he": "דורש חקירה",
+      "ar": "يحتاج إلى تحقيق"
+    },
+    "iv_state_open": {
+      "c": "State of an incident's investigation",
+      "en": "Being investigated",
+      "he": "בחקירה",
+      "ar": "قيد التحقيق"
+    },
+    "iv_state_closed": {
+      "c": "State of an incident's investigation",
+      "en": "Investigated and closed",
+      "he": "נחקר ונסגר",
+      "ar": "حُقّق فيه وأُغلق"
+    },
+    "iv_state_not_started": {
+      "c": "State of an incident's investigation",
+      "en": "Not investigated",
+      "he": "לא נחקר",
+      "ar": "لم يُحقَّق فيه"
+    },
+    "iv_required_hint": {
+      "en": "A serious injury or a death is investigated. When the law requires an investigation, and by whom, is a question for a qualified professional.",
+      "he": "פגיעה קשה או מוות נחקרים. מתי החוק מחייב חקירה, ועל ידי מי, היא שאלה לאיש מקצוע מוסמך.",
+      "ar": "الإصابة الخطيرة أو الوفاة يُحقَّق فيها. متى يوجب القانون التحقيق ومن يجريه سؤالٌ لمختص مؤهل."
+    },
+    "iv_start": {
+      "c": "Button",
+      "en": "Start the investigation",
+      "he": "פתיחת חקירה",
+      "ar": "بدء التحقيق"
+    },
+    "iv_edit": {
+      "c": "Button",
+      "en": "Write what was found",
+      "he": "רישום הממצאים",
+      "ar": "تسجيل النتائج"
+    },
+    "iv_immediate_cause": {
+      "c": "Field label",
+      "en": "What directly caused it",
+      "he": "מה גרם לזה ישירות",
+      "ar": "ما الذي سبّبه مباشرة"
+    },
+    "iv_immediate_cause_hint": {
+      "en": "What happened at the moment: the board slid, the guard was off.",
+      "he": "מה קרה באותו רגע: הקרש החליק, המגן היה מורד.",
+      "ar": "ما حدث في تلك اللحظة: انزلق اللوح، كان الواقي مُزالًا."
+    },
+    "iv_causes": {
+      "c": "Field label, above the cause chips",
+      "en": "What lay behind it",
+      "he": "מה עמד מאחורי זה",
+      "ar": "ما الذي كان وراءه"
+    },
+    "iv_findings": {
+      "c": "Field label",
+      "en": "What was found, and what other sites should know",
+      "he": "מה נמצא, ומה אתרים אחרים צריכים לדעת",
+      "ar": "ما الذي وُجد، وما يجب أن تعرفه المواقع الأخرى"
+    },
+    "iv_not_written": {
+      "en": "Not written yet",
+      "he": "עדיין לא נרשם",
+      "ar": "لم يُكتب بعد"
+    },
+    "iv_started_by": {
+      "c": "%1$s is a name, %2$s a date",
+      "en": "Started by %1$s, %2$s",
+      "he": "נפתחה על ידי %1$s, %2$s",
+      "ar": "بدأه %1$s، %2$s"
+    },
+    "iv_closed_by": {
+      "c": "%1$s is a name, %2$s a date",
+      "en": "Closed by %1$s, %2$s",
+      "he": "נסגרה על ידי %1$s, %2$s",
+      "ar": "أغلقه %1$s، %2$s"
+    },
+    "iv_started_col": {
+      "c": "Row heading on the printed investigation",
+      "en": "Investigation started",
+      "he": "החקירה נפתחה",
+      "ar": "بدء التحقيق"
+    },
+    "iv_closed_col": {
+      "c": "Row heading on the printed investigation",
+      "en": "Investigation closed",
+      "he": "החקירה נסגרה",
+      "ar": "إغلاق التحقيق"
+    },
+    "iv_actions": {
+      "c": "Section heading",
+      "en": "Corrective actions",
+      "he": "פעולות מתקנות",
+      "ar": "الإجراءات التصحيحية"
+    },
+    "iv_no_actions": {
+      "en": "No actions yet.",
+      "he": "אין עדיין פעולות.",
+      "ar": "لا إجراءات بعد."
+    },
+    "iv_add_action": {
+      "c": "Button and dialog title",
+      "en": "Add an action",
+      "he": "הוספת פעולה",
+      "ar": "إضافة إجراء"
+    },
+    "iv_action_what": {
+      "c": "Field label",
+      "en": "What is to be done",
+      "he": "מה צריך לעשות",
+      "ar": "ما الذي يجب فعله"
+    },
+    "iv_action_who": {
+      "c": "Field label",
+      "en": "Who does it",
+      "he": "מי מבצע",
+      "ar": "من ينفّذه"
+    },
+    "iv_action_when": {
+      "c": "Label above the date chips",
+      "en": "By when",
+      "he": "עד מתי",
+      "ar": "حتى متى"
+    },
+    "iv_action_line": {
+      "c": "%1$d is the action's number, %2$s what is to be done",
+      "en": "%1$d. %2$s",
+      "he": "%1$d. %2$s",
+      "ar": "%1$d. %2$s"
+    },
+    "iv_action_owner": {
+      "en": "Who: %1$s",
+      "he": "מי: %1$s",
+      "ar": "من: %1$s"
+    },
+    "iv_action_due": {
+      "c": "%1$s is a date",
+      "en": "By %1$s",
+      "he": "עד %1$s",
+      "ar": "حتى %1$s"
+    },
+    "iv_action_overdue": {
+      "c": "%1$s is a date",
+      "en": "Overdue since %1$s",
+      "he": "באיחור מאז %1$s",
+      "ar": "متأخر منذ %1$s"
+    },
+    "iv_action_done": {
+      "c": "%1$s a date, %2$s a name, %3$s what was done",
+      "en": "Done %1$s by %2$s: %3$s",
+      "he": "בוצע %1$s על ידי %2$s: %3$s",
+      "ar": "نُفّذ %1$s على يد %2$s: %3$s"
+    },
+    "iv_close_action": {
+      "c": "Button on an action",
+      "en": "Close",
+      "he": "סגירה",
+      "ar": "إغلاق"
+    },
+    "iv_close_action_title": {
+      "c": "%1$d is the action's number",
+      "en": "Close action %1$d?",
+      "he": "לסגור את פעולה %1$d?",
+      "ar": "إغلاق الإجراء %1$d؟"
+    },
+    "iv_close": {
+      "c": "Button",
+      "en": "Close the investigation",
+      "he": "סגירת החקירה",
+      "ar": "إغلاق التحقيق"
+    },
+    "iv_close_hint": {
+      "en": "It closes once it says what caused it and what lay behind it, and every action is done.",
+      "he": "החקירה נסגרת כשנרשם מה גרם לאירוע ומה עמד מאחוריו, וכל הפעולות בוצעו.",
+      "ar": "يُغلق التحقيق عندما يُذكر ما سبّب الحادث وما كان وراءه، وتُنفَّذ كل الإجراءات."
+    },
+    "iv_gone": {
+      "en": "This report is not here, or is not yours to see.",
+      "he": "הדיווח הזה אינו כאן, או שאינו מיועד לך.",
+      "ar": "هذا البلاغ غير موجود، أو ليس مما يحق لك رؤيته."
+    },
+    "iv_cause_way_of_working": {
+      "c": "A cause behind an incident",
+      "en": "The way the work was done",
+      "he": "שיטת העבודה",
+      "ar": "طريقة تنفيذ العمل"
+    },
+    "iv_cause_equipment": {
+      "c": "A cause behind an incident",
+      "en": "A tool or machine, or its condition",
+      "he": "כלי או מכונה, או מצבם",
+      "ar": "أداة أو آلة، أو حالتها"
+    },
+    "iv_cause_site_conditions": {
+      "c": "A cause behind an incident",
+      "en": "Site conditions: ground, weather, order, light",
+      "he": "תנאי האתר: קרקע, מזג אוויר, סדר, תאורה",
+      "ar": "ظروف الموقع: الأرض، الطقس، الترتيب، الإضاءة"
+    },
+    "iv_cause_protective_equipment": {
+      "c": "A cause behind an incident",
+      "en": "Protective equipment missing or not worn",
+      "he": "ציוד מגן חסר או לא נלבש",
+      "ar": "معدات وقاية ناقصة أو غير مرتداة"
+    },
+    "iv_cause_supervision": {
+      "c": "A cause behind an incident",
+      "en": "Supervision",
+      "he": "פיקוח",
+      "ar": "الإشراف"
+    },
+    "iv_cause_training": {
+      "c": "A cause behind an incident",
+      "en": "Training or experience",
+      "he": "הדרכה או ניסיון",
+      "ar": "التدريب أو الخبرة"
+    },
+    "iv_cause_planning": {
+      "c": "A cause behind an incident",
+      "en": "Planning or design",
+      "he": "תכנון",
+      "ar": "التخطيط أو التصميم"
+    },
+    "iv_cause_communication": {
+      "c": "A cause behind an incident",
+      "en": "Communication",
+      "he": "תקשורת",
+      "ar": "التواصل"
+    },
+    "iv_cause_other": {
+      "c": "A cause behind an incident",
+      "en": "Something else",
+      "he": "משהו אחר",
+      "ar": "أمر آخر"
+    },
+    "iv_refused_not_allowed": {
+      "en": "Your role cannot change the site's record.",
+      "he": "התפקיד שלך אינו יכול לשנות את רישומי האתר.",
+      "ar": "لا يمكن لدورك تغيير سجل الموقع."
+    },
+    "iv_refused_not_started": {
+      "en": "Start the investigation first.",
+      "he": "יש לפתוח קודם את החקירה.",
+      "ar": "ابدأ التحقيق أولًا."
+    },
+    "iv_refused_immediate_cause": {
+      "en": "Say what directly caused it first.",
+      "he": "יש לרשום קודם מה גרם לזה ישירות.",
+      "ar": "اذكر أولًا ما الذي سبّبه مباشرة."
+    },
+    "iv_refused_no_cause": {
+      "en": "Choose at least one thing that lay behind it.",
+      "he": "יש לבחור לפחות דבר אחד שעמד מאחורי זה.",
+      "ar": "اختر أمرًا واحدًا على الأقل كان وراءه."
+    },
+    "iv_refused_actions_open": {
+      "en": "Every action has to be done before it closes.",
+      "he": "כל הפעולות צריכות להתבצע לפני הסגירה.",
+      "ar": "يجب تنفيذ كل الإجراءات قبل الإغلاق."
+    },
+    "iv_refused_closed": {
+      "en": "The investigation is closed.",
+      "he": "החקירה סגורה.",
+      "ar": "التحقيق مغلق."
+    },
+    "iv_refused_blank_action": {
+      "en": "Say what is to be done.",
+      "he": "יש לרשום מה צריך לעשות.",
+      "ar": "اذكر ما الذي يجب فعله."
+    },
+    "iv_refused_due": {
+      "en": "An action cannot be due before the incident happened.",
+      "he": "פעולה לא יכולה להיות מתוזמנת לפני שהאירוע קרה.",
+      "ar": "لا يمكن أن يكون موعد الإجراء قبل وقوع الحادث."
+    },
+    "iv_refused_note": {
+      "en": "Say what was done.",
+      "he": "יש לרשום מה נעשה.",
+      "ar": "اذكر ما الذي تم."
+    },
+    "iv_refused_action_closed": {
+      "en": "That action is already closed.",
+      "he": "הפעולה הזו כבר סגורה.",
+      "ar": "هذا الإجراء مغلق بالفعل."
+    },
+    "iv_refused_unknown": {
+      "en": "That could not be saved. Try again.",
+      "he": "לא ניתן היה לשמור. נסו שוב.",
+      "ar": "تعذّر الحفظ. حاول مرة أخرى."
+    },
+    "at_investigations": {
+      "c": "A line on a job's list of what needs attention, followed by a count",
+      "en": "Serious incidents not investigated",
+      "he": "פגיעות קשות שחקירתן לא הושלמה",
+      "ar": "إصابات خطيرة لم يُستكمل التحقيق فيها"
+    },
+    "at_incident_actions": {
+      "c": "A line on a job's list of what needs attention, followed by a count",
+      "en": "Incident actions overdue",
+      "he": "פעולות מתקנות באיחור",
+      "ar": "إجراءات تصحيحية متأخرة"
     }
   },
   "plurals": {

@@ -430,6 +430,35 @@ object Summaries {
     const val INSPECTION_PASSED = "inspection_passed"
 
     /**
+     * Corrective action %1$s closed
+     *
+     * Arguments, in order: number.
+     */
+    const val INV_ACTION_CLOSED = "inv_action_closed"
+
+    /**
+     * Corrective action %1$s raised, for %2$s
+     *
+     * Arguments, in order: number, owner.
+     */
+    const val INV_ACTION_RAISED = "inv_action_raised"
+
+    /**
+     * Investigation closed
+     */
+    const val INV_CLOSED = "inv_closed"
+
+    /**
+     * Investigation started
+     */
+    const val INV_STARTED = "inv_started"
+
+    /**
+     * Investigation findings written
+     */
+    const val INV_UPDATED = "inv_updated"
+
+    /**
      * %1$s paid
      *
      * Arguments, in order: number.

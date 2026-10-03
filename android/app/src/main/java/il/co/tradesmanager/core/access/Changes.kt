@@ -68,6 +68,8 @@ object Changes {
         "photo" to Lens.EVIDENCE,
         "checklist_run" to Lens.EVIDENCE,
         "incident" to Lens.EVIDENCE,
+        "incident_investigation" to Lens.EVIDENCE,
+        "incident_action" to Lens.EVIDENCE,
         "violation" to Lens.EVIDENCE,
         "muster" to Lens.EVIDENCE,
         "heat_check" to Lens.EVIDENCE,

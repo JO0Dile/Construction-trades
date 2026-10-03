@@ -6,11 +6,13 @@ import androidx.lifecycle.viewModelScope
 import il.co.tradesmanager.core.access.Lens
 import il.co.tradesmanager.core.safety.Incidents
 import il.co.tradesmanager.data.local.entity.IncidentEntity
+import il.co.tradesmanager.data.local.entity.IncidentInvestigationEntity
 import il.co.tradesmanager.data.local.entity.PhotoEntity
 import il.co.tradesmanager.data.local.entity.ProjectEntity
 import il.co.tradesmanager.data.repository.PhotoRepository
 import il.co.tradesmanager.data.repository.SessionRepository
 import il.co.tradesmanager.di.AppContainer
+import il.co.tradesmanager.ui.projects.jobOnShift
 import java.util.UUID
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -54,6 +56,11 @@ class IncidentsViewModel(
             )
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** Each report's investigation, by incident, for the state shown beside it. */
+    val investigations: StateFlow<Map<String, IncidentInvestigationEntity>> = container.investigations.observeAll()
+        .map { all -> all.associateBy { it.incidentId } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     /** The company's jobs, parts included: where a report can say it happened, and the names in the register. */
     val jobs: StateFlow<List<ProjectEntity>> = container.projects.observeProjects()
@@ -130,9 +137,8 @@ class IncidentsViewModel(
         _draftId.value = UUID.randomUUID().toString()
         _suggestedJob.value = projectId
         viewModelScope.launch {
-            val onShift = container.schedule.observeOpenTimeEntry().first()?.projectId
             val known = container.projects.observeProjects().first().map { it.id }.toSet()
-            _suggestedJob.value = (projectId ?: onShift)?.takeIf { it in known }
+            _suggestedJob.value = projectId?.takeIf { it in known } ?: jobOnShift(container)
         }
     }
 

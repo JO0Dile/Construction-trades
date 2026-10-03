@@ -520,6 +520,41 @@
       "he": "%1$s עבר בדיקה",
       "ar": "%1$s اجتاز الفحص"
     },
+    "inv_action_closed": {
+      "arguments": [
+        "number"
+      ],
+      "en": "Corrective action %1$s closed",
+      "he": "פעולה מתקנת %1$s נסגרה",
+      "ar": "أُغلق الإجراء التصحيحي %1$s"
+    },
+    "inv_action_raised": {
+      "arguments": [
+        "number",
+        "owner"
+      ],
+      "en": "Corrective action %1$s raised, for %2$s",
+      "he": "נפתחה פעולה מתקנת %1$s, באחריות %2$s",
+      "ar": "فُتح الإجراء التصحيحي %1$s، ومسؤوله %2$s"
+    },
+    "inv_closed": {
+      "arguments": [],
+      "en": "Investigation closed",
+      "he": "החקירה נסגרה",
+      "ar": "أُغلق التحقيق"
+    },
+    "inv_started": {
+      "arguments": [],
+      "en": "Investigation started",
+      "he": "נפתחה חקירה",
+      "ar": "بدأ التحقيق"
+    },
+    "inv_updated": {
+      "arguments": [],
+      "en": "Investigation findings written",
+      "he": "ממצאי החקירה נרשמו",
+      "ar": "سُجّلت نتائج التحقيق"
+    },
     "invoice_paid": {
       "arguments": [
         "number"

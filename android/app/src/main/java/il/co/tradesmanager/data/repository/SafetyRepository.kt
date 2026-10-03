@@ -145,6 +145,8 @@ class SafetyRepository(
 
     fun observeIncidents(companyId: String?): Flow<List<IncidentEntity>> = safetyDao.observeIncidents(companyId)
 
+    fun observeIncident(id: String): Flow<IncidentEntity?> = safetyDao.observeIncident(id)
+
     /**
      * Says which job an incident filed without one happened on, and so whose
      * record it is: the job's company comes with it.

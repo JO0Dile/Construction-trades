@@ -41,6 +41,7 @@ import il.co.tradesmanager.data.repository.ProjectRepository
 import il.co.tradesmanager.data.repository.PurchasingRepository
 import il.co.tradesmanager.data.repository.SafetyReportRepository
 import il.co.tradesmanager.data.repository.SafetyStatsRepository
+import il.co.tradesmanager.data.repository.InvestigationRepository
 import il.co.tradesmanager.data.repository.SafetyRepository
 import il.co.tradesmanager.data.repository.ScaffoldRepository
 import il.co.tradesmanager.data.repository.ScheduleRepository
@@ -239,6 +240,9 @@ class AppContainer(context: Context, encryptDatabase: Boolean = true) {
 
     /** The company's injury rates per million hours worked, across every job. */
     val safetyStats = SafetyStatsRepository(database.safetyStatsDao())
+
+    /** What was found after each incident, and the actions taken because of it. */
+    val investigations = InvestigationRepository(database.investigationDao(), { database.safetyDao().incident(it) }, auditTrail)
 
     /** Who is who on each job from outside the firm, and how to reach them. */
     val jobContacts = JobContactRepository(database.jobContactDao(), auditTrail)

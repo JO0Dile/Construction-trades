@@ -60,4 +60,7 @@ interface SafetyDao {
 
     @Query("SELECT * FROM incidents WHERE id = :id")
     suspend fun incident(id: String): IncidentEntity?
+
+    @Query("SELECT * FROM incidents WHERE id = :id")
+    fun observeIncident(id: String): Flow<IncidentEntity?>
 }

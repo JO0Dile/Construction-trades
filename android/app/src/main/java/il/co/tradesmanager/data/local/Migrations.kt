@@ -459,6 +459,12 @@ object Migrations {
         }
     }
 
+    val MIGRATION_49_50 = object : Migration(49, 50) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            SQL_49_50.forEach(db::execSQL)
+        }
+    }
+
     val ALL: Array<Migration> = arrayOf(
         MIGRATION_1_2,
         MIGRATION_2_3,
@@ -508,6 +514,7 @@ object Migrations {
         MIGRATION_46_47,
         MIGRATION_47_48,
         MIGRATION_48_49,
+        MIGRATION_49_50,
     )
 
     /** Exposed so the CI check can read the same strings the migration runs. */
@@ -1280,5 +1287,17 @@ object Migrations {
             "WHEN EXISTS (SELECT 1 FROM projects WHERE projects.id = incidents.projectId) " +
             "THEN (SELECT companyId FROM projects WHERE projects.id = incidents.projectId) " +
             "ELSE '' END",
+    )
+
+    val SQL_49_50: List<String> = listOf(
+        "CREATE TABLE IF NOT EXISTS `incident_investigations` (`incidentId` TEXT NOT NULL, " +
+            "`immediateCause` TEXT, `causes` TEXT NOT NULL, `findings` TEXT, `startedAt` INTEGER NOT NULL, " +
+            "`startedByName` TEXT NOT NULL, `updatedAt` INTEGER NOT NULL, `closedAt` INTEGER, " +
+            "`closedByName` TEXT, PRIMARY KEY(`incidentId`))",
+        "CREATE TABLE IF NOT EXISTS `incident_actions` (`id` TEXT NOT NULL, `incidentId` TEXT NOT NULL, " +
+            "`number` INTEGER NOT NULL, `text` TEXT NOT NULL, `ownerName` TEXT, `dueOnDay` INTEGER, " +
+            "`raisedAt` INTEGER NOT NULL, `raisedByName` TEXT NOT NULL, `closedAt` INTEGER, " +
+            "`closedByName` TEXT, `closingNote` TEXT, PRIMARY KEY(`id`))",
+        "CREATE INDEX IF NOT EXISTS `index_incident_actions_incidentId` ON `incident_actions` (`incidentId`)",
     )
 }

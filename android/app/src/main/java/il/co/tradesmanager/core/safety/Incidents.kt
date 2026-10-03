@@ -69,6 +69,15 @@ object Incidents {
      */
     const val UNATTRIBUTED = ""
 
+    /**
+     * Whether a report is shown to somebody working for [activeCompany] (null
+     * for a sole trader's own work): the company's own, and those filed
+     * before reports had a company. Another firm's never. The register's
+     * query asks the same thing of the database.
+     */
+    fun visibleTo(incidentCompany: String?, activeCompany: String?): Boolean =
+        incidentCompany == UNATTRIBUTED || incidentCompany == activeCompany
+
     /** Stored as the enum name; unknown text reads as the least assuming value. */
     fun parse(stored: String?): Severity =
         Severity.entries.firstOrNull { it.name == stored } ?: Severity.NEAR_MISS

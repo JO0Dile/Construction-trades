@@ -2,6 +2,8 @@ package il.co.tradesmanager.ui.export
 
 import android.content.Context
 import il.co.tradesmanager.R
+import il.co.tradesmanager.core.safety.Incidents
+import il.co.tradesmanager.core.safety.Investigations
 import il.co.tradesmanager.core.safety.SafetyStats
 import il.co.tradesmanager.core.safety.WeeklySafety
 import il.co.tradesmanager.core.work.Attention
@@ -32,6 +34,9 @@ import il.co.tradesmanager.data.local.entity.DelayEventEntity
 import il.co.tradesmanager.data.local.entity.DesignQueryEntity
 import il.co.tradesmanager.data.local.entity.FirePointCheckEntity
 import il.co.tradesmanager.data.local.entity.FirePointEntity
+import il.co.tradesmanager.data.local.entity.IncidentActionEntity
+import il.co.tradesmanager.data.local.entity.IncidentEntity
+import il.co.tradesmanager.data.local.entity.IncidentInvestigationEntity
 import il.co.tradesmanager.data.local.entity.InspectionEntity
 import il.co.tradesmanager.data.local.entity.InventoryItemEntity
 import il.co.tradesmanager.data.local.entity.JobEmergencyEntity
@@ -57,6 +62,9 @@ import il.co.tradesmanager.ui.meetings.meetingKindLabel
 import il.co.tradesmanager.ui.inspections.inspectionResultLabel
 import il.co.tradesmanager.ui.projects.attentionLabel
 import il.co.tradesmanager.ui.risks.bandLabel
+import il.co.tradesmanager.ui.safety.causeLabel
+import il.co.tradesmanager.ui.safety.investigationStateLabel
+import il.co.tradesmanager.ui.safety.severityLabel
 import il.co.tradesmanager.ui.safetyreport.reportLines
 import il.co.tradesmanager.ui.safetystats.NO_FIGURE
 import il.co.tradesmanager.ui.safetystats.rateText
@@ -276,6 +284,19 @@ sealed interface ExportDocument {
         val span: SafetyStats.Span,
         val sheet: SafetyStats.Sheet,
         val jobNames: Map<String, String>,
+        val today: LocalDate,
+    ) : ExportDocument
+
+    /**
+     * One incident as reported and as investigated: what caused it, what lay
+     * behind it, what was found, and every corrective action with who did
+     * it and when -- or that it is still open.
+     */
+    data class IncidentInvestigationReport(
+        val incident: IncidentEntity,
+        val jobName: String?,
+        val investigation: IncidentInvestigationEntity?,
+        val actions: List<IncidentActionEntity>,
         val today: LocalDate,
     ) : ExportDocument
 
@@ -749,6 +770,57 @@ sealed interface ExportDocument {
             )
         }
 
+        is IncidentInvestigationReport -> {
+            val none = context.getString(R.string.iv_not_written)
+            val severity = Incidents.parse(incident.severity)
+            val record = investigation
+            val state = Investigations.state(severity, record != null, record?.closedAt != null)
+            fun line(heading: Int, value: String?): List<String> =
+                listOf(context.getString(heading), value?.takeIf { it.isNotBlank() } ?: none)
+            Table(
+                title = context.getString(R.string.iv_title) + " — " + (jobName ?: context.getString(R.string.inc_no_job)) +
+                    " — " + day(incident.occurredAt, locale),
+                headers = listOf(context.getString(R.string.es_col_what), context.getString(R.string.es_col_detail)),
+                rows = listOf(
+                    line(R.string.inc_severity, context.getString(severityLabel(severity))),
+                    line(R.string.inc_what, incident.description),
+                    listOf(context.getString(R.string.iv_reported_col), incident.reportedByName + " · " + moment(incident.occurredAt, locale)),
+                    line(R.string.iv_investigation, context.getString(investigationStateLabel(state))),
+                    line(R.string.iv_immediate_cause, record?.immediateCause),
+                    line(
+                        R.string.iv_causes,
+                        Investigations.decode(record?.causes).joinToString(" · ") { context.getString(causeLabel(it)) },
+                    ),
+                    line(R.string.iv_findings, record?.findings),
+                ) + actions.map { action ->
+                    val dueOn = action.dueOnDay?.let(LocalDate::ofEpochDay)
+                    val status = when (Investigations.actionState(dueOn, action.closedAt != null, today)) {
+                        Investigations.ActionState.DONE -> context.getString(
+                            R.string.iv_action_done,
+                            day(action.closedAt ?: 0L, locale),
+                            action.closedByName.orEmpty(),
+                            action.closingNote.orEmpty(),
+                        )
+                        Investigations.ActionState.OVERDUE -> context.getString(R.string.iv_action_overdue, Formats.date(dueOn ?: today, locale))
+                        Investigations.ActionState.OPEN ->
+                            dueOn?.let { context.getString(R.string.iv_action_due, Formats.date(it, locale)) }
+                                ?: context.getString(R.string.mt_no_date)
+                    }
+                    listOf(
+                        context.getString(R.string.iv_action_line, action.number, action.text),
+                        listOfNotNull(action.ownerName?.let { context.getString(R.string.iv_action_owner, it) }, status).joinToString(" · "),
+                    )
+                } + listOfNotNull(
+                    record?.let { listOf(context.getString(R.string.iv_started_col), it.startedByName + " · " + day(it.startedAt, locale)) },
+                    record?.let { closed ->
+                        closed.closedAt?.let { closedAt ->
+                            listOf(context.getString(R.string.iv_closed_col), closed.closedByName.orEmpty() + " · " + day(closedAt, locale))
+                        }
+                    },
+                ),
+            )
+        }
+
         is ContactDirectory -> {
             val current = contacts.filter { it.removedAt == null }
             val ordered = Contacts.order(current.map { Triple(Contacts.kindOf(it.kind), it.name, false) }).map { current[it] }
@@ -974,6 +1046,8 @@ sealed interface ExportDocument {
             is WeeklySafetyReport -> "safety-week-" + weekStart + "-" + jobName
             is ContactDirectory -> "contacts-" + jobName
             is SafetyStatistics -> "safety-statistics-" + span.first + "-" + span.last
+            is IncidentInvestigationReport -> "incident-investigation-" +
+                Instant.ofEpochMilli(incident.occurredAt).atZone(ZoneId.systemDefault()).toLocalDate() + "-" + (jobName ?: "no-job")
         },
     )
 

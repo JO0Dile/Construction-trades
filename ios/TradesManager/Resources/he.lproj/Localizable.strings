@@ -2982,3 +2982,108 @@
 "inc_place_hint" = "לאחר השיוך הוא נספר בדוח השבועי של אותה עבודה ובסטטיסטיקת הבטיחות. אי אפשר להעביר אותו אחר כך.";
 /* Above the register, when placing a report on a job did not happen */
 "inc_place_refused" = "לדיווח הזה כבר יש עבודה, או שהוא כבר לא קיים.";
+"summary_inv_action_closed" = "פעולה מתקנת %1$s נסגרה";
+"summary_inv_action_raised" = "נפתחה פעולה מתקנת %1$s, באחריות %2$s";
+"summary_inv_closed" = "החקירה נסגרה";
+"summary_inv_started" = "נפתחה חקירה";
+"summary_inv_updated" = "ממצאי החקירה נרשמו";
+/* Screen title, and the title of the printed investigation */
+"iv_title" = "אירוע";
+/* %1$s is a name, %2$s a date and time */
+"iv_reported" = "דווח על ידי %1$s, %2$s";
+/* Row heading on the printed investigation */
+"iv_reported_col" = "דווח";
+/* Description of a photograph filed with an incident */
+"iv_evidence" = "ראיה";
+/* Section heading */
+"iv_investigation" = "חקירה";
+/* State of an incident's investigation */
+"iv_state_needed" = "דורש חקירה";
+/* State of an incident's investigation */
+"iv_state_open" = "בחקירה";
+/* State of an incident's investigation */
+"iv_state_closed" = "נחקר ונסגר";
+/* State of an incident's investigation */
+"iv_state_not_started" = "לא נחקר";
+"iv_required_hint" = "פגיעה קשה או מוות נחקרים. מתי החוק מחייב חקירה, ועל ידי מי, היא שאלה לאיש מקצוע מוסמך.";
+/* Button */
+"iv_start" = "פתיחת חקירה";
+/* Button */
+"iv_edit" = "רישום הממצאים";
+/* Field label */
+"iv_immediate_cause" = "מה גרם לזה ישירות";
+"iv_immediate_cause_hint" = "מה קרה באותו רגע: הקרש החליק, המגן היה מורד.";
+/* Field label, above the cause chips */
+"iv_causes" = "מה עמד מאחורי זה";
+/* Field label */
+"iv_findings" = "מה נמצא, ומה אתרים אחרים צריכים לדעת";
+"iv_not_written" = "עדיין לא נרשם";
+/* %1$s is a name, %2$s a date */
+"iv_started_by" = "נפתחה על ידי %1$s, %2$s";
+/* %1$s is a name, %2$s a date */
+"iv_closed_by" = "נסגרה על ידי %1$s, %2$s";
+/* Row heading on the printed investigation */
+"iv_started_col" = "החקירה נפתחה";
+/* Row heading on the printed investigation */
+"iv_closed_col" = "החקירה נסגרה";
+/* Section heading */
+"iv_actions" = "פעולות מתקנות";
+"iv_no_actions" = "אין עדיין פעולות.";
+/* Button and dialog title */
+"iv_add_action" = "הוספת פעולה";
+/* Field label */
+"iv_action_what" = "מה צריך לעשות";
+/* Field label */
+"iv_action_who" = "מי מבצע";
+/* Label above the date chips */
+"iv_action_when" = "עד מתי";
+/* %1$d is the action's number, %2$s what is to be done */
+"iv_action_line" = "%1$d. %2$s";
+"iv_action_owner" = "מי: %1$s";
+/* %1$s is a date */
+"iv_action_due" = "עד %1$s";
+/* %1$s is a date */
+"iv_action_overdue" = "באיחור מאז %1$s";
+/* %1$s a date, %2$s a name, %3$s what was done */
+"iv_action_done" = "בוצע %1$s על ידי %2$s: %3$s";
+/* Button on an action */
+"iv_close_action" = "סגירה";
+/* %1$d is the action's number */
+"iv_close_action_title" = "לסגור את פעולה %1$d?";
+/* Button */
+"iv_close" = "סגירת החקירה";
+"iv_close_hint" = "החקירה נסגרת כשנרשם מה גרם לאירוע ומה עמד מאחוריו, וכל הפעולות בוצעו.";
+"iv_gone" = "הדיווח הזה אינו כאן, או שאינו מיועד לך.";
+/* A cause behind an incident */
+"iv_cause_way_of_working" = "שיטת העבודה";
+/* A cause behind an incident */
+"iv_cause_equipment" = "כלי או מכונה, או מצבם";
+/* A cause behind an incident */
+"iv_cause_site_conditions" = "תנאי האתר: קרקע, מזג אוויר, סדר, תאורה";
+/* A cause behind an incident */
+"iv_cause_protective_equipment" = "ציוד מגן חסר או לא נלבש";
+/* A cause behind an incident */
+"iv_cause_supervision" = "פיקוח";
+/* A cause behind an incident */
+"iv_cause_training" = "הדרכה או ניסיון";
+/* A cause behind an incident */
+"iv_cause_planning" = "תכנון";
+/* A cause behind an incident */
+"iv_cause_communication" = "תקשורת";
+/* A cause behind an incident */
+"iv_cause_other" = "משהו אחר";
+"iv_refused_not_allowed" = "התפקיד שלך אינו יכול לשנות את רישומי האתר.";
+"iv_refused_not_started" = "יש לפתוח קודם את החקירה.";
+"iv_refused_immediate_cause" = "יש לרשום קודם מה גרם לזה ישירות.";
+"iv_refused_no_cause" = "יש לבחור לפחות דבר אחד שעמד מאחורי זה.";
+"iv_refused_actions_open" = "כל הפעולות צריכות להתבצע לפני הסגירה.";
+"iv_refused_closed" = "החקירה סגורה.";
+"iv_refused_blank_action" = "יש לרשום מה צריך לעשות.";
+"iv_refused_due" = "פעולה לא יכולה להיות מתוזמנת לפני שהאירוע קרה.";
+"iv_refused_note" = "יש לרשום מה נעשה.";
+"iv_refused_action_closed" = "הפעולה הזו כבר סגורה.";
+"iv_refused_unknown" = "לא ניתן היה לשמור. נסו שוב.";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_investigations" = "פגיעות קשות שחקירתן לא הושלמה";
+/* A line on a job's list of what needs attention, followed by a count */
+"at_incident_actions" = "פעולות מתקנות באיחור";

@@ -134,6 +134,11 @@ private fun summaryPhrase(key: String): Int? = when (key) {
     Summaries.HS_SHEET -> R.string.summary_hs_sheet
     Summaries.ID_NUMBER_SET -> R.string.summary_id_number_set
     Summaries.INC_PLACED -> R.string.summary_inc_placed
+    Summaries.INV_ACTION_CLOSED -> R.string.summary_inv_action_closed
+    Summaries.INV_ACTION_RAISED -> R.string.summary_inv_action_raised
+    Summaries.INV_CLOSED -> R.string.summary_inv_closed
+    Summaries.INV_STARTED -> R.string.summary_inv_started
+    Summaries.INV_UPDATED -> R.string.summary_inv_updated
     Summaries.INDUCTION_SIGNED -> R.string.summary_induction_signed
     Summaries.INSPECTION_FAILED -> R.string.summary_inspection_failed
     Summaries.INSPECTION_PASSED -> R.string.summary_inspection_passed

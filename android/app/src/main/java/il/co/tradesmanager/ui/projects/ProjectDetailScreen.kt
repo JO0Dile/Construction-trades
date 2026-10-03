@@ -134,6 +134,7 @@ fun ProjectDetailScreen(
     onOpenEmergency: () -> Unit,
     onOpenMeetings: () -> Unit,
     onOpenSafetyWeek: () -> Unit,
+    onOpenIncidents: () -> Unit,
     onOpenContacts: () -> Unit,
     onOpenHandover: () -> Unit,
     onOpenWorkPackages: () -> Unit,
@@ -370,6 +371,7 @@ fun ProjectDetailScreen(
                                                 Attention.Item.FIRE_POINTS -> onOpenFirePoints()
                                                 Attention.Item.EMERGENCY_INFO_MISSING -> onOpenEmergency()
                                                 Attention.Item.MEETING_POINTS_OVERDUE -> onOpenMeetings()
+                                                Attention.Item.INVESTIGATIONS_OUTSTANDING, Attention.Item.INCIDENT_ACTIONS_OVERDUE -> onOpenIncidents()
                                             }
                                         }
                                         .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -1044,4 +1046,6 @@ internal fun attentionLabel(item: Attention.Item): Int = when (item) {
     Attention.Item.FIRE_POINTS -> R.string.at_fire_points
     Attention.Item.EMERGENCY_INFO_MISSING -> R.string.at_emergency_missing
     Attention.Item.MEETING_POINTS_OVERDUE -> R.string.at_meeting_points
+    Attention.Item.INVESTIGATIONS_OUTSTANDING -> R.string.at_investigations
+    Attention.Item.INCIDENT_ACTIONS_OVERDUE -> R.string.at_incident_actions
 }

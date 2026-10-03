@@ -78,6 +78,7 @@ fun TalksScreen(
     )
     val talks by viewModel.talks.collectAsStateWithLifecycle()
     val projects by viewModel.projects.collectAsStateWithLifecycle()
+    val suggestedJob by viewModel.suggestedJob.collectAsStateWithLifecycle()
     val checklists by viewModel.checklists.collectAsStateWithLifecycle()
     val languageTag = currentLanguageTag()
     val needBriefing by viewModel.needBriefing.collectAsStateWithLifecycle()
@@ -168,6 +169,7 @@ fun TalksScreen(
     if (recording) {
         RecordTalkDialog(
             projects = projects,
+            suggestedJob = suggestedJob,
             checklists = checklists,
             languageTag = languageTag,
             onPickChecklist = { id, onReady -> viewModel.talkingPoints(id, languageTag, onReady) },
@@ -184,6 +186,7 @@ fun TalksScreen(
 @Composable
 private fun RecordTalkDialog(
     projects: List<ProjectEntity>,
+    suggestedJob: String?,
     checklists: List<ChecklistTemplateEntity>,
     languageTag: String,
     onPickChecklist: (templateId: String, onReady: (String) -> Unit) -> Unit,
@@ -192,7 +195,11 @@ private fun RecordTalkDialog(
 ) {
     var topic by remember { mutableStateOf("") }
     var notes by remember { mutableStateOf("") }
-    var projectId by remember { mutableStateOf<String?>(null) }
+    // The job the person is checked in to arrives a moment after the dialog
+    // opens; it is the answer until they pick one themselves.
+    var pickedJob by remember { mutableStateOf<String?>(null) }
+    var picked by remember { mutableStateOf(false) }
+    val projectId = if (picked) pickedJob else suggestedJob
     var fromChecklist by remember { mutableStateOf<String?>(null) }
 
     AlertDialog(
@@ -246,13 +253,19 @@ private fun RecordTalkDialog(
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(
                         selected = projectId == null,
-                        onClick = { projectId = null },
+                        onClick = {
+                            picked = true
+                            pickedJob = null
+                        },
                         label = { Text(stringResource(R.string.po_yard)) },
                     )
                     projects.forEach { project ->
                         FilterChip(
                             selected = projectId == project.id,
-                            onClick = { projectId = project.id },
+                            onClick = {
+                                picked = true
+                                pickedJob = project.id
+                            },
                             label = { Text(project.name) },
                         )
                     }

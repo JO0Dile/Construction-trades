@@ -2,6 +2,26 @@
   "note": "What each version does, in the words shown to the people using it. Newest first. The app shows the current version's points under What's new, and the release on GitHub is written from the same entry, so the phone offering an update and the phone that installed it say the same thing. tools/release-notes.py --check fails the build when the version in build.gradle.kts has no entry, or an entry is missing a language.",
   "versions": [
     {
+      "version": "0.51.0",
+      "points": [
+        {
+          "en": "Incident investigations: open an incident from the register to record what directly caused it, what lay behind it — the way of working, equipment, site conditions, protective equipment, supervision, training, planning, communication — and what was found. Corrective actions are numbered, each with who does it and by when, and closed with what was done.",
+          "he": "חקירת אירועים: פותחים אירוע מתוך הפנקס ורושמים מה גרם לו ישירות, מה עמד מאחוריו — שיטת העבודה, כלים, תנאי האתר, ציוד מגן, פיקוח, הדרכה, תכנון, תקשורת — ומה נמצא. הפעולות המתקנות ממוספרות, לכל אחת מי מבצע ועד מתי, והן נסגרות עם מה שנעשה.",
+          "ar": "التحقيق في الحوادث: افتح الحادث من السجل لتسجيل ما سبّبه مباشرة، وما كان وراءه — طريقة العمل، المعدات، ظروف الموقع، معدات الوقاية، الإشراف، التدريب، التخطيط، التواصل — وما الذي وُجد. الإجراءات التصحيحية مرقّمة، لكل منها منفّذ وموعد، وتُغلق بما تم فعله."
+        },
+        {
+          "en": "A serious injury or a death needs an investigation, and it closes only once it says why and every action is done. Serious incidents not investigated and overdue actions show on the job and on the home screen, and the investigation prints for a client or an insurer.",
+          "he": "פגיעה קשה או מוות מחייבים חקירה, והיא נסגרת רק כשנרשם למה זה קרה וכל הפעולות בוצעו. פגיעות קשות שלא נחקרו ופעולות באיחור מופיעות בעבודה ובמסך הבית, ואפשר להדפיס את החקירה ללקוח או לחברת הביטוח.",
+          "ar": "الإصابة الخطيرة أو الوفاة تستوجب تحقيقًا، ولا يُغلق إلا عندما يُذكر السبب وتُنفَّذ كل الإجراءات. تظهر الإصابات الخطيرة غير المحقَّق فيها والإجراءات المتأخرة في المشروع وفي الشاشة الرئيسية، ويُطبع التحقيق للعميل أو لشركة التأمين."
+        },
+        {
+          "en": "A new toolbox talk or permit starts on the job you are checked in to, as an incident report does, so it is counted in that job's weekly report.",
+          "he": "תדריך בטיחות או היתר עבודה חדשים מתחילים בעבודה שבה נרשמה כניסתך, כמו דיווח על אירוע, כך שהם נספרים בדוח השבועי של אותה עבודה.",
+          "ar": "تبدأ إحاطة السلامة أو تصريح العمل الجديد في العمل الذي سجّلت دخولك إليه، مثل بلاغ الحادث، فيُحسب في التقرير الأسبوعي لذلك العمل."
+        }
+      ]
+    },
+    {
       "version": "0.50.0",
       "points": [
         {
